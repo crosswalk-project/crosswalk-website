@@ -10,4 +10,5 @@ wiki/php_errors.log
 *.map
 xwalk.css
 markdown.css
+menus.js
 *.log
