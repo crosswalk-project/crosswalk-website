@@ -24,11 +24,16 @@ require_clean_work_tree "Can't go live."
 
 ./cleanup.sh
 ./generate.sh
+
 cat << EOF > .htaccess
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^(\..*) %{REQUEST_URI}$1 [R=404]
 EOF
+
+sed -i -e 's:^wiki/\*\.html:#wiki/*.html:' \
+       -e 's:^wiki/documentation:#wiki/documentation:' \
+       -e 's:^wiki/contribute:#wiki/contribute:' .gitignore
 
 find wiki -name '*html' -exec git add {} \;
 git add xwalk.css
@@ -40,6 +45,3 @@ for file in xwalk markdown; do
 		[ -e ${file}.${extension} ] && rm ${file}.${extension}
 	done
 done
-
-
-
