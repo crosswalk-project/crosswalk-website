@@ -7,10 +7,15 @@ MultiViewsMatch Any
 # request.
 RewriteEngine on
 
+# The rewrites below take into account possible
+# mod_userdir expantion by rewriting the URL to be
+# based on the absolute path %{REQUEST_URI}
+#
 # The ../ request is because REQUEST_URI will 
 # include the full filepath, including filename; the
 # .. strips that
 #
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{ENV:REDIRECT_STATUS} !200

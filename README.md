@@ -2,13 +2,26 @@
 There are two versions of this website. The development version 
 and the live version.
 
-
 ### Live Website
 The live version consists of static content, pre-generated and 
 unchanging. This version has minimal server requrements, needing
-only PHP and the rewrite module.
+only PHP and the rewrite module. This is the version hosted on
+http://crosswalk-project.org.
 
-The live version lives in the 'live' branch.
+#### Quick Steps
+To create a local copy of the live website:
+```
+git clone git@github.com/crosswalk-project/crosswalk-website.git -b live
+```
+The above includes the entire website, including the cached
+Wiki content, and excluding binary downloads (releases)
+
+#### Details
+The live version lives in the 'live' branch. Running the live
+version requires the rewrite module in Apache2. This is used
+in the wiki subsystem to map requested URLs through a PHP
+script which will then perform smart matching of leave names
+(disregarding case, spacing, etc.)
 
 If you don't have the rewrite module enabled, you can do so via:
 
