@@ -48,3 +48,7 @@ for file in xwalk markdown; do
 		[ -e ${file}.${extension} ] && rm ${file}.${extension}
 	done
 done
+
+find wiki -name '*.md' -exec rm {} \;
+find wiki -name '*.mediawiki' -exec rm {} \;
+find wiki -name '*.org' -exec rm {} \;
