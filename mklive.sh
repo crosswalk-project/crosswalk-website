@@ -29,3 +29,17 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^(\..*) %{REQUEST_URI}$1 [R=404]
 EOF
+
+find wiki -name '*html' -exec git add {} \;
+git add xwalk.css
+git add markdown.css
+git add menus.js
+
+for file in xwalk markdown; do
+	for extension in msg css.php scss css.map; do
+		[ -e ${file}.${extension} ] && rm ${file}.${extension}
+	done
+done
+
+
+
