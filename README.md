@@ -11,9 +11,9 @@ http://crosswalk-project.org.
 #### Quick Steps
 To create a local copy of the live website:
 ```
-git clone git@github.com/crosswalk-project/crosswalk-website.git -b live
+git clone git@github.com:crosswalk-project/crosswalk-website.git -b live
 ```
-The above includes the entire website, including the cached
+The above will checkout the entire website, including the cached
 Wiki content, and excluding binary downloads (releases)
 
 #### Details
