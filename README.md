@@ -37,10 +37,10 @@ as those content items are updated. To set up a local development
 version:
 
 ```
-git clone git@github.com/crosswalk-project/crosswalk-website
+git clone git@github.com:crosswalk-project/crosswalk-website
 cd crosswalk-website
 cd wiki
-git clone git@github.com/crosswalk-project/crosswalk-website.wiki.git --bare .git
+git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git --bare .git
 sed -i -e 's/bare = true/bare = false/' .git/config
 git checkout
 cd ..
@@ -77,7 +77,7 @@ sub-directory, as follows:
 ```
 cd crosswalk-website
 cd wiki
-git clone git@github.com/crosswalk-project/crosswalk-website.wiki.git --bare .git
+git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git --bare .git
 sed -i -e 's/bare = true/bare = false/' .git/config
 git checkout
 ```
