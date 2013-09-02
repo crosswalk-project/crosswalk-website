@@ -10,6 +10,12 @@ function file_smart_match ($filepath) {
             if (strtolower ($matches[3]) == $lower)
                 return $f;
         }
+        if (preg_match ('/(([0-9]*-)?(.*))((\.md)|(\.mediawiki)|(\.org)|(\.php))(.html)$/i', 
+                        basename ($f), $matches)) {
+            if (strtolower ($matches[3]) == $lower)
+		if (!file_exists (dirname ($filepath).'/'.$matches[1].$matches[3]))
+	                return $f;
+        }
     }
     return false;
 }
@@ -27,6 +33,10 @@ if (isset($argv[1]))
 $request = isset ($_REQUEST['f']) ? $_REQUEST['f'] : 'Home';
 $md = file_smart_match (dirname (__FILE__).'/'.$request);
 $md = realpath ($md);
+if (preg_match ('/.html$/', $md)) {
+    require ($md);
+    exit;
+}
 
 if (!preg_match ('#^'.dirname (__FILE__).'/#', $md)) {
     missing ();
@@ -67,13 +77,17 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
             missing ();
         }
         while ($f && !feof ($f)) {
-//        fwrite ($d, preg_replace ('/"wiki\//', '"', fgets ($f)));
             fwrite ($d, fgets ($f));
         }
         fclose ($f);
     }
 
     fclose ($d);
+}
+
+if (filesize ($md.'.html') == 0) {
+    unlink ($md.'.html');
+    missing ();
 }
 
 touch ($md.'.html', $source['mtime']);
