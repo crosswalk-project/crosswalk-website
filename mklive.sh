@@ -1,4 +1,17 @@
 #!/bin/bash
+
+git diff-files --quiet --ignore-submodules || {
+	echo "Can't go live with uncommitted changes."
+	git diff-files --name-status -r --ignore-submodules
+	exit 1
+}
+
+git diff-index --cached --quiet HEAD --ignore-submodules || {
+	echo "Can't go live with uncommitted changes."
+	git diff-index --cached --name-status -r --ignore-submodules HEAD
+	exit 1
+}
+
 git branch | grep -q '\* live' || {
 	echo ""
 	echo "mklive.sh can only be run in the 'live' branch."
@@ -6,13 +19,9 @@ git branch | grep -q '\* live' || {
 	echo ""
 	exit
 }
-git status >/dev/null 2>&1 && {
-	echo ""
-	echo "Untracked local changes. Can't go live."
-	echo ""
-	git status
-	exit
-}
+
+require_clean_work_tree "Can't go live."
+
 ./cleanup.sh
 ./generate.sh
 cat << EOF > .htaccess
