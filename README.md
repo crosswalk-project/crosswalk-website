@@ -10,9 +10,10 @@ essentially just Apache2 with the rewrite module enabled:
 
 If you don't have that module enabled, you can do so via:
 
-$ sudo a2enmod rewrite
-$ sudo service apache2 restart
-
+```
+sudo a2enmod rewrite
+sudo service apache2 restart
+```
 
 ### Development Website
 
@@ -22,8 +23,10 @@ as those content items are updated.
 
 To create the live version, one runs the following scripts:
 
+```
 ./cleanup-local.sh
 ./generate-local.sh
+```
 
 The first deletes all old generated content. The second generates
 new cached copies of all dynamic content.
@@ -32,7 +35,9 @@ After running the generate script, testing should be done locally
 to ensure the site is functional. Once testing is complete, the 
 go-staging script can be used:
 
+```
 ./go-staging.sh
+```
 
 That script will create a fresh install of the website out of the 
 current working tree into the GIT staging directory, commit
@@ -66,33 +71,52 @@ Apache2 configured with PHP and the following:
   -MultiViews: it breaks the usage of php to create HTML from markup
   +FollowSymLinks: required for mod_rewrite
 
-mod_rewrite is used to load php scripts which will generate both cached
+To enable the rewrite module:
 
-$ sudo a2enmod rewrite
-$ sudo service apache2 restart
-
+```
+sudo a2enmod rewrite
+sudo service apache2 restart
+```
 
 ### GOLLUM AND THE WIKI
 
 The wiki subsystem uses gollum internally to create cached pages. 
+The website itself does not contain the Crosswalk wiki content.
+That content is managed as the wiki associated with the
+crosswalk-website project.
+
+The website is designed to have the wiki checked out in the wiki/
+sub-directory, as follows:
+
+```
+cd crosswalk-website
+cd wiki
+git clone git@github.com/crosswalk-project/crosswalk-website.wiki.git --bare .git
+sed -i -e 's/bare = true/bare = false/' .git/config
+git checkout
+```
 
 NOTE: 
 gollum requires ruby >= 1.9.2 (gollum requires nokogiri which requires 
 ruby >= 1.9.2) On older Ubuntu systems, this required:
 
-$ sudo apt-get install ruby1.9.3 rubygems1.9
-$ sudo update-alternatives --config gem
-$ sudo update-alternatives --config ruby
+```
+sudo apt-get install ruby1.9.3 rubygems1.9
+sudo update-alternatives --config gem
+sudo update-alternatives --config ruby
+```
 
-Now we can install Gollum. Any markup used in the files hosted in Gollum 
+Now we can install gollum. Any markup used in the files hosted in gollum 
 must be installed. Currently the Crosswalk Wiki has content in three 
 different markups:
 
- * MediaWiki (*.mediawiki)
- * GitHub Markdown (*.md)
- * Org Mode (*.org)
+* MediaWiki (*.mediawiki)
+* GitHub Markdown (*.md)
+* Org Mode (*.org)
 
-$ sudo gem install gollum redcarpet org-ruby wikicloth
+```
+sudo gem install gollum redcarpet org-ruby wikicloth
+```
 
 To generate the cached HTML files, gollum needs to be running. When a 
 wiki page is requested, a php script will perform a local connection to 
@@ -102,19 +126,22 @@ file is newer than the cached file.
 
 Gollum should be launched with the following option:
 
-$ gollum --base-path wiki ${DOCROOT}/wiki >/dev/null 2>&1 &
+```
+gollum --base-path wiki ${DOCROOT}/wiki >/dev/null 2>&1 &
+```
 
 It is expected that the path above is immediately below the main site 
 root and that the wiki directory contains the .git/ tree from the GitHub 
-hosted Gollum site where the wiki is edited.
+hosted gollum site where the wiki is edited.
 
 In addition, the git tree must be checked out. When new content is ready 
 to be used, the following can be executed:
 
+```
 cd ${DOCROOT}/wiki
 git pull
 git checkout -f
-
+```
 
 ### CSS and SASS
 
@@ -129,9 +156,10 @@ In addition to generating the CSS from the scss file, source maps are
 generated. This requires sass >= 3.3.0. You can install that version 
 via:
 
-$ sudo gem install sass -v ">=3.3.0alpha' --pre
-$ sudo gem install bourbon
-
+```
+sudo gem install sass -v ">=3.3.0alpha' --pre
+sudo gem install bourbon
+```
 
 If you do not have a version greater than 3.3.0 installed, source maps 
 will not be generated.
