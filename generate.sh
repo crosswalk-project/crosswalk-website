@@ -15,7 +15,7 @@ echo 'none found. OK.'
 
 test=$(ps -o pid= -C gollum)
 [ -z ${test} ] && {
-	gollum --base-path wiki $(PWD)/wiki >/dev/null 2>&1 &
+	gollum --base-path wiki ${PWD}/wiki >/dev/null 2>&1 &
 	gollum=$!
 }
 
