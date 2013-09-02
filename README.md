@@ -14,16 +14,15 @@ To create a local copy of the live website:
 git clone git@github.com:crosswalk-project/crosswalk-website.git -b live
 ```
 The above will checkout the entire website, including the cached
-Wiki content, and excluding binary downloads (releases)
+Wiki content, and excluding binary downloads.
 
 #### Details
 The live version lives in the 'live' branch. Running the live
 version requires the rewrite module in Apache2. This is used
 in the wiki subsystem to map requested URLs through a PHP
-script which will then perform smart matching of leave names
-(disregarding case, spacing, etc.)
+script which will then perform smart matching of leaf names.
 
-If you don't have the rewrite module enabled, you can do so via:
+Enable the rewrite module via:
 
 ```
 sudo a2enmod rewrite
@@ -32,55 +31,27 @@ sudo service apache2 restart
 
 ### Development Website
 
-The development version will automatically generate new versions
+The development version automatically generates new versions
 of various files (*.css, menus.js, and the wiki/*.html content)
-as those content items are updated.
-
-To create the live version, one runs the following scripts:
-
-```
-./cleanup-local.sh
-./generate-local.sh
-```
-
-The first deletes all old generated content. The second generates
-new cached copies of all dynamic content.
-
-After running the generate script, testing should be done locally
-to ensure the site is functional. Once testing is complete, the 
-go-staging script can be used:
+as those content items are updated. To set up a local development
+version:
 
 ```
-./go-staging.sh
+git clone git@github.com/crosswalk-project/crosswalk-website
+cd crosswalk-website
+cd wiki
+git clone git@github.com/crosswalk-project/crosswalk-website.wiki.git --bare .git
+sed -i -e 's/bare = true/bare = false/' .git/config
+git checkout
+cd ..
 ```
 
-That script will create a fresh install of the website out of the 
-current working tree into the GIT staging directory, commit
-those changes, push those changes to GitHub, and then invoke a
-command on the staging server to update its document root with
-the static web-site content.
-
+#### Requirements
 Running the development version of the site has several additional
 software dependencies, located toward the end of this file under
 Development Site Software Dependencies.
 
-## Website Design
-The Crosswalk website consists of the styles (CSS), the main page 
-(index.html), and the functional logic (xwalk.js) that executes to 
-adapt the DOM as necessary when the user is navigating the site.
-
-The content is all of the information presented in the three 
-sub-pages:
-
-* Documentation
-* Contribute
-* Wiki
-
-...
-
-## Development Site Software Dependencies
-
-### APACHE2 AND PHP
+##### APACHE2 AND PHP
 
 Apache2 configured with PHP and the following:
   -MultiViews: it breaks the usage of php to create HTML from markup
@@ -93,7 +64,7 @@ sudo a2enmod rewrite
 sudo service apache2 restart
 ```
 
-### GOLLUM AND THE WIKI
+##### GOLLUM AND THE WIKI
 
 The wiki subsystem uses gollum internally to create cached pages. 
 The website itself does not contain the Crosswalk wiki content.
@@ -181,3 +152,50 @@ will not be generated.
 
 NOTE:
 sass files should be verified to be correct prior to committing to git!
+
+
+#### Development scripts
+
+```
+./cleanup.sh
+./generate.sh
+```
+
+The first deletes all old generated content. The second generates
+new cached copies of all dynamic content. If gollum isn't running,
+the generate script will attempt to launch it.
+
+To update the Wiki content:
+```
+cd wiki
+git checkout
+```
+
+After running the generate script, testing should be done locally
+to ensure the site is functional. Once testing is complete, a
+live version can be built:
+
+```
+git checkout live
+./mklive.sh
+```
+
+That script will update the current working tree to the state
+the live site will be in, including caching all dynamic 
+content, removing the source files that generate the dynamic
+content, and removing the dynamic scripts.
+
+## Website Design
+The Crosswalk website consists of the styles (CSS), the main page 
+(index.html), and the functional logic (xwalk.js) that executes to 
+adapt the DOM as necessary when the user is navigating the site.
+
+The content is all of the information presented in the three 
+sub-pages:
+
+* Documentation
+* Contribute
+* Wiki
+
+...
+
