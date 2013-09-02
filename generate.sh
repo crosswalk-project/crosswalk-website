@@ -8,7 +8,7 @@ found=$(find . -not -group www-data | wc -l)
   echo 'Please correct and try again.'
   echo 'Correct via: chown :www-data . -R'
   echo ''
-  exit
+  exit 1
 }
 
 echo 'none found. OK.'
@@ -26,6 +26,11 @@ find . -type f -not -path "./.git/*" -and -not -name "*.html" | while read file;
 	[ "${file}" == "./php_errors.log" ] && continue
 	echo "Processing wiki/${file/.\//}..."
 	php gfm.php ${file/.\//} > /dev/null
+	html=${file/.\//}.html
+	find ${html} -size 0 | grep -q ${html} && {
+		echo "Could not generate ${html}."
+		exit 1
+	}
 done
 cd ..
 
