@@ -1,0 +1,20 @@
+# Automatically map foo => foo.*.html
+MultiViewsMatch Any
+
+# For instances where the html cache has not been
+# generated, or if there is a case mismatch, the
+# gfm.php script will be used to do a match
+# request.
+RewriteEngine on
+
+# The ../ request is because REQUEST_URI will 
+# include the full filepath, including filename; the
+# .. strips that
+#
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^(.*)$ %{REQUEST_URI}/../gfm.php?f=$1 [L,NS]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)gfm.php gfm.php [L,QSA]

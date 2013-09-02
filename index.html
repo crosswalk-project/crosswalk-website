@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link type="image/x-icon" rel="icon" href="favicon.ico">
+        <link type="image/x-icon" rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="font.css">
+        <link rel="stylesheet" href="xwalk.css">
+        <link rel="stylesheet" href="markdown.css">
+        <title>Crosswalk</title>
+        <script src="menus.js"></script>
+        <script src="xwalk.js"></script>
+    </head>
+    <body>
+        <div id='top-menu'><div>
+            <div class='slider'></div>
+            <a href='#home'></a>
+            <a class='menu-item' href='#documentation/Getting_Started'>Documentation</a>
+            <a class='menu-item' href='#contribute/Overview'>Contribute</a>
+            <a class='menu-item' href='#wiki'>Wiki</a>
+        </div></div>
+        <div id='page'>
+            <div id='home-column' class='column'>
+            <div id='home' class='section'>
+                <div class='background' id='sunburst'></div>
+                <div class='background' id='small-circle'></div>
+                <div class='background' id='big-circle'></div>
+                <div class='background tile-overlay'></div>
+                <div class='content'>
+                    <!--div class='fork'>Fork on Github</div-->
+                    <div class='logo'></div>
+                    <p>Current version: 1.29.3.0</p>
+                    <p style='text-align: left'>Many HTML5 applications need more than just a browser&mdash;they need all the features of a native application. Crosswalk is a portable runtime for applications written in HTML5, CSS and JavaScript.</p>
+                    <div id='button-box'>
+                        <div id='download-button' class='button'><a href='#documentation/downloads'>DOWNLOAD</a></div>
+                        <div id='documentation-button' class='button'><a href='#documentation/getting_started'>DOCUMENTATION</a></div>
+                        <div id='contribute-button' class='button'><a href='#contribute/overview'>CONTRIBUTE</a></div>
+                    </div>
+                    <!--p>Get Involved</p>
+                    <p>IRC&mdash;GitHub&mdash;Mailing List&mdash;Wiki</p-->
+                    <div class='more-button-box'><a href='#overview-content' class='boxed'></a></div>
+                </div>
+            </div>
+
+            <div id='overview' class='section'>
+                <div class='divider'><div class="right-corner"></div><div class="left-corner"></div></div>
+                <div class='background tile-overlay'></div>
+                <div id='overview-content' class='content'>
+                        <h1>The Crosswalk Architecture</h1>
+                        <div id='illustration'></div>
+                        <p>Crosswalk provides an HTML5 application runtime built using various other open source projects.</p>
+<p>Crosswalk extends the features available on the web platform today with new capabilities for applications written using web technologies. This includes the introduction of an application Runtime Model, an implementation of the W3C SysApps Working Group APIs, and a JavaScript Extension Framework which allows application vendors to add additional native capabilities (if necessary.)</p>                    
+                        <p>At the heart of Crosswalk is the Blink rendering and layout engine. This provides the same HTML5 features and capabilities expected in the modern web ecosystem.</p>
+                        <p>Building on Blink, Crosswalk uses the Chromium Content module to provide a multi-process architecture. The Chromium Content module is designed for security and performance. In addition to interacting with Blink, the
+                    Content Module manages the Graphics Subsystem. The Graphics Subsystem provides 2D rendering services and Web GL.
+                </p>
+                </div>
+            </div>
+
+            <div id='samples-overview' class='section'>
+                <div class='divider'><div class="right-corner"></div><div class="left-corner"></div></div>
+                <div class='background tile-overlay'></div>
+                <div class='background' id='crossing-tile'><div></div></div>
+                <div class='content'>
+                    <table>
+                        <thead><tr><td><h1>SAMPLE APPLICATIONS</h1></td><td><h1>COMMUNITY</h1></td></tr></thead>
+                        <tbody id='samples-body'><tr><td>
+                            <a href='#documentation/samples/hello_world'><div class='sample sample-1'>&nbsp;</div></a>
+                            <a href='#documentation/samples/tizen_apis'><div class='sample sample-2'>&nbsp;</div></a>
+                            <a href='#documentation/samples/webgl'><div class='sample sample-3'>&nbsp;</div></a>
+                            <div class='sample sample-4'>Coming Soon</div>
+                        </td><td>
+                            <!--div class='community-button'><a href='#wiki/home/For-Developers'>Mailing Lists</a></div-->
+                            <div class='community-button'><a href='#documentation/Community/irc-channel'>IRC Channel</a></div>
+                            <div class='community-button'><a href='#wiki'>Wiki</a></div>
+                            <div class='community-button'><a href='http://github.com/crosswalk-project/crosswalk'>Source</a></div>
+                            <div class='community-button'><a href='http://github.com/crosswalk-project/crosswalk/issues'>Issue Tracking</a></div><!--div class='community-button'><a href='#documentation/Graphics'>Graphics</a></div-->          
+                            </td></tr></tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div> <!-- end of #page -->
+        <div id='footer'>
+            <div class='background tile-overlay'></div>
+            <div class='divider'></div>
+            <a href='#page'><div id='footer-logo'></div></a>
+            <div id='who'>Crosswalk is a project from Intel's Opensource Technology Center.</div>
+            <div id='copyright'>Copyright &copy; 2013 Intel Corporation. All rights reserved.</div>
+            <div id='others'>*Other names and brands may be claimed as the property of others.</div>
+        </div>
+        <div id='footer-padding'><div class='background tile-overlay'></div></div>
+        <div id='documentation-column' class='column hidden'>
+            <div class='sub-menu'></div><div class='sub-content'></div>
+        </div>
+        <div id='contribute-column' class='column hidden'>
+            <div class='sub-menu'></div><div class='sub-content'></div>
+        </div>
+        <div id='wiki-column' class='column hidden'>
+            <div class='sub-content'></div>
+        </div>
+    </body>
+</html>
