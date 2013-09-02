@@ -1,15 +1,17 @@
 #!/bin/bash
 
-git diff-files --quiet --ignore-submodules || {
-	echo "Can't go live with uncommitted changes."
-	git diff-files --name-status -r --ignore-submodules
-	exit 1
-}
+function check_unstaged () {
+	git diff-files --quiet --ignore-submodules || {
+		echo "Can't go live with uncommitted changes in $(basename ${PWD})"
+		git diff-files --name-status -r --ignore-submodules
+		exit 1
+	}
 
-git diff-index --cached --quiet HEAD --ignore-submodules || {
-	echo "Can't go live with uncommitted changes."
-	git diff-index --cached --name-status -r --ignore-submodules HEAD
-	exit 1
+	git diff-index --cached --quiet HEAD --ignore-submodules || {
+		echo "Can't go live with uncommitted changes in $(basename ${PWD})"
+		git diff-index --cached --name-status -r --ignore-submodules HEAD
+		exit 1
+	}
 }
 
 git branch | grep -q '\* live' || {
@@ -20,7 +22,10 @@ git branch | grep -q '\* live' || {
 	exit
 }
 
-require_clean_work_tree "Can't go live."
+check_unstaged
+cd wiki
+check_unstaged
+cd ..
 
 ./cleanup.sh
 ./generate.sh
