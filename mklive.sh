@@ -1,5 +1,5 @@
 #!/bin/bash
-git branch | grep '\* live' || {
+git branch | grep -q '\* live' || {
 	echo ""
 	echo "mklive.sh can only be run in the 'live' branch."
 	echo "$ git checkout live"
