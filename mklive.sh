@@ -34,6 +34,9 @@ EOF
 sed -i -e 's:^wiki/\*\.html:#wiki/*.html:' \
        -e 's:^wiki/documentation:#wiki/documentation:' \
        -e 's:^wiki/contribute:#wiki/contribute:' .gitignore
+for i in xwalk.css markdown.css menus.js; do
+	sed -i -e s:^${i}:#${i}: .gitignore
+done
 
 find wiki -name '*html' -exec git add {} \;
 git add xwalk.css
