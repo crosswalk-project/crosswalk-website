@@ -1,0 +1,7 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^[^/]*(.*)$ %{REQUEST_URI}$1.php [L]
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(\..*) %{REQUEST_URI}$1 [R=404]

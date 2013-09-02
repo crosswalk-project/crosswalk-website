@@ -1,0 +1,13 @@
+wiki/*.md
+wiki/*.mediawiki
+wiki/*.org
+wiki/*.html
+wiki/documentation
+wiki/contribute
+wiki/.git
+wiki/php_errors.log
+*.msg
+*.map
+xwalk.css
+markdown.css
+*.log
