@@ -5,10 +5,12 @@ and the live version.
 
 ### Live Website
 The live version consists of static content, pre-generated and 
-unchanging. This version has minimal server requrements;
-essentially just Apache2 with the rewrite module enabled:
+unchanging. This version has minimal server requrements, needing
+only PHP and the rewrite module.
 
-If you don't have that module enabled, you can do so via:
+The live version lives in the 'live' branch.
+
+If you don't have the rewrite module enabled, you can do so via:
 
 ```
 sudo a2enmod rewrite
