@@ -15,9 +15,9 @@ function check_unstaged () {
 }
 
 #
-# Verify this tree is on the 'live' branch
+# Verify this tree is on the 'master' branch
 #
-git branch | grep -q '\* live' || {
+git branch | grep -q '\* master' || {
 	echo ""
 	echo "mklive.sh can only be run in the 'live' branch."
 	echo "$ git checkout live"
