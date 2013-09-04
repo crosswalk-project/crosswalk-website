@@ -49,6 +49,7 @@ cd ..
 # -f force -- delete branch if it already exists
 branch=live-$(date +%Y%m%d)
 git branch -t -f ${branch}
+git checkout ${branch}
 
 #
 # Nuke all dynamic content and regenerate it
