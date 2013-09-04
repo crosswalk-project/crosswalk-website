@@ -94,6 +94,9 @@ for file in xwalk markdown; do
 	done
 done
 [ -e menus.js.php ] && rm menus.js.php
+#
+# Remove bash scripts from the Live site
+rm *.sh
 
 #
 # Remove all Wiki markdown content from Live site
