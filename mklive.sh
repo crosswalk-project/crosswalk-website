@@ -45,14 +45,13 @@ git branch -t -f $(date +%Y%m%d)
 ./generate.sh
 
 #
-# Turn off the PHP script override for the root
-# directory.
+# Turn off the PHP script override for the root directory
+# by commenting out the RewriteCond and Rule 
 #
-cat << EOF > .htaccess
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^(\..*) %{REQUEST_URI}$1 [R=404]
-EOF
+sed -i \
+    -e 's/^\(.*RewriteCond %{REQUEST_FILENAME}\.php -f\)$/#\1/' \
+    -e 's/^\(.*RewriteRule .* %{REQUEST_URI}\$1\.php \[L\]\)$/#\1/' \
+    .htaccess
 
 #
 # Modify .gitignore to track/manage the generated content
@@ -89,3 +88,15 @@ done
 find wiki -name '*.md' -exec rm {} \;
 find wiki -name '*.mediawiki' -exec rm {} \;
 find wiki -name '*.org' -exec rm {} \;
+
+git commit -s -a -m "Automatic static version commit for ${branch}"
+cd wiki
+git checkout -f
+cd ..
+git checkout master
+cat < EOF
+
+Changes committed to git as branch ${branch}.
+
+Current tree set back to 'master'.
+EOF
