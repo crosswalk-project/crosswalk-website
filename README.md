@@ -45,13 +45,14 @@ When you are satisfied with the results, push all of the changes back to GitHub:
 git push origin master
 git push origin ${branch}
 ```
-On the live size:
+And then log into the crosswalk-project.org server, change to the site docroot, and run:
 ```
 git pull -a
 branch=$(git branch | grep live | sort -r | head -n 1)
 echo ${branch}
 # Verify the correct branch will be used
 git checkout -track origin/${branch}
+git clean -f
 ```
 
 ### Live Website
