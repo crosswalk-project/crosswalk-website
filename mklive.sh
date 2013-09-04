@@ -47,7 +47,8 @@ cd ..
 # Make new branch for live-YYYYMMDD
 # -t track upstream (push/pull from github will work)
 # -f force -- delete branch if it already exists
-git branch -t -f $(date +%Y%m%d)
+branch=live-$(date +%Y%m%d)
+git branch -t -f ${branch}
 
 #
 # Nuke all dynamic content and regenerate it
@@ -105,7 +106,7 @@ cd wiki
 git checkout -f
 cd ..
 git checkout master
-cat < EOF
+cat << EOF
 
 Changes committed to git as branch ${branch}.
 
