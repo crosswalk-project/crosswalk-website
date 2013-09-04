@@ -33,6 +33,11 @@ cd wiki
 check_unstaged
 cd ..
 
+# Make new branch for live-YYYYMMDD
+# -t track upstream (push/pull from github will work)
+# -f force -- delete branch if it already exists
+git branch -t -f $(date +%Y%m%d)
+
 #
 # Nuke all dynamic content and regenerate it
 #
