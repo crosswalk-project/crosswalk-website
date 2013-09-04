@@ -367,10 +367,13 @@ function navigateTo (href) {
     if (requested_page == '') {
         switch (requested_column) {
         case 'documentation':
-            requested_page = 'Getting_Started';
+            requested_page = 'getting_started';
+            break;
+        case 'contribute':
+            requested_page = 'overview';
             break;
         default:
-            requested_page = 'Home';
+            requested_page = 'home';
             break;
         }
     }
