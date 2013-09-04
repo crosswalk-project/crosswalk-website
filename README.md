@@ -6,26 +6,53 @@ and the live version.
 Changes are made to source files (scss, js, and html) in a Development version of the site. The following content is generated dynamically:
 
 ```
-Generated      Source
-xwalk.css      xwalk.scss
-markdown.css   markdown.scss
-menus.js       dynamic based on contents of 
-               wiki/{documentation,contribute}
-wiki/*.html    *.md, *.mediawiki, *.org               
+Generated File      Source
+xwalk.css           xwalk.scss
+markdown.css        markdown.scss
+menus.js            dynamic based on contents of wiki/{documentation,contribute}
+wiki/*.html         *.md, *.mediawiki, *.org               
 ```
 
-The generated files are re-generated dynamically by the PHP scripts
-running in the Development site. You can change xwalk.scss and then
-immediately reload your browser pointed to the site and when xwalk.css
-is requested, xwalk.css.php is invoked to determine if a new version
-of the source file exists.
+The generated files are updated as needed by the PHP scripts when 
+running in a Development version of the site. If you can change xwalk.scss and 
+reload the page, when xwalk.css is requested the script xwalk.css.php will determine
+if a new version of the source file exists.
 
-Never edit the Generated files directly.
+**Never edit the Generated files directly.**
 
 If you encounter a red web page, this means the scss to css compilation
 failed. If you were just editing xwalk.scss, you can look in the file xwalk.msg to view the Sass compiler output.
 
-When appropriate changes have been made, those changes are committed locally in the master branch. The live branch is then checked out and the generation scripts are executed to create a new base live version.
+When appropriate changes have been made, commit the changes locally on the master branch. 
+To stage and test the content for the live vesrion, run the mklive.sh script:
+```
+./mklive.sh
+```
+At the completion of the above script, a new branch will have been created based on
+the current date in the form "live-YYYYMMdd". To test the new content:
+```
+branch=$(git branch | grep live | sort -r | head -n 1)
+branch=${branch// }
+echo ${branch}
+git archive --format=tar --prefix=${branch}/ ${branch} | (cd /var/www ; tar xf -)
+```
+This will create the path /var/www/${branch}, for example:
+
+/var/www/live-20130904
+
+When you are satisfied with the results, push all of the changes back to GitHub:
+```
+git push origin master
+git push origin ${branch}
+```
+On the live size:
+```
+git pull -a
+branch=$(git branch | grep live | sort -r | head -n 1)
+echo ${branch}
+# Verify the correct branch will be used
+git checkout -track origin/${branch}
+```
 
 ### Live Website
 The live version consists of static content, pre-generated and 
