@@ -2,6 +2,31 @@
 There are two versions of this website. The development version 
 and the live version.
 
+### Workflow
+Changes are made to source files (scss, js, and html) in a Development version of the site. The following content is generated dynamically:
+
+```
+Generated      Source
+xwalk.css      xwalk.scss
+markdown.css   markdown.scss
+menus.js       dynamic based on contents of 
+               wiki/{documentation,contribute}
+wiki/*.html    *.md, *.mediawiki, *.org               
+```
+
+The generated files are re-generated dynamically by the PHP scripts
+running in the Development site. You can change xwalk.scss and then
+immediately reload your browser pointed to the site and when xwalk.css
+is requested, xwalk.css.php is invoked to determine if a new version
+of the source file exists.
+
+Never edit the Generated files directly.
+
+If you encounter a red web page, this means the scss to css compilation
+failed. If you were just editing xwalk.scss, you can look in the file xwalk.msg to view the Sass compiler output.
+
+When appropriate changes have been made, those changes are committed locally in the master branch. The live branch is then checked out and the generation scripts are executed to create a new base live version.
+
 ### Live Website
 The live version consists of static content, pre-generated and 
 unchanging. This version has minimal server requrements, needing
@@ -28,6 +53,10 @@ Enable the rewrite module via:
 sudo a2enmod rewrite
 sudo service apache2 restart
 ```
+
+The rest of the content is served from static files that were
+generated as part of the development cycle as described in the Workflow
+section.
 
 ### Development Website
 

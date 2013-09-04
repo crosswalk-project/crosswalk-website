@@ -467,19 +467,19 @@ function onScroll () {
     var scroll = window.scrollY || window.pageYOffset, sub_menu;
 
     /* Animate in menu when top of home hides too much */
-    if ((column.id != 'home-column') ||
+/*    if ((column.id != 'home-column') ||
         (home.offsetHeight - scroll <= 
-         document.getElementById ('download-button').offsetTop)) {
+         document.getElementById ('download-button').offsetTop)) {*/
         top_menu.style.removeProperty ('opacity');
         top_menu.style.top = '0px';
         sub_menu = column.querySelector ('.sub-menu');
         if (sub_menu) {
             sub_menu.style.top = top_menu.offsetHeight + 'px';
         }
-    } else {
+/*    } else {
         top_menu.style.opacity = 0;
         top_menu.style.top = '-' + top_menu.offsetHeight + 'px';
-    }
+    }*/
 }
 
 var resize_timer = 0;
@@ -497,7 +497,7 @@ function _onResize () {
      * There is probably a CSS way to do this (it broke when I switched away
      * from absolute positioning on #home), but user's don't care if 
      * the implementation is a hack, so long as it works... */
-    home.style.minHeight = Math.round (0.8 * viewHeight) + 'px';
+    home.style.minHeight = Math.round (0.5 * viewHeight) + 'px';
 
     /* Calculate the size of the page so we can resize the footer-padding
      * to fill any bottom part of the page w/ the tile overlay */

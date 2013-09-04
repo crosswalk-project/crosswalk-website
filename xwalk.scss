@@ -453,7 +453,7 @@ p {
     }
 
     .content {
-        padding: 0 16px 64px 16px;
+        padding: 48px 16px 64px 16px;
         text-align: left;
         color: #fcfcfc;
         width: auto;
@@ -468,13 +468,6 @@ p {
         padding-bottom: percentage(313/564);
         margin-bottom: 20px;
     }
-}
-
-#samples-overview {
-    @include background(linear-gradient(to bottom, #354b3d 0%, #55523e 80%));
-    padding-top: 40px;
-    min-width: 408px;
-    padding-bottom: 64px;
 }
 
 .community-button {
@@ -506,6 +499,11 @@ p {
 }
 
 #samples-overview {
+    @include background(linear-gradient(to bottom, #354b3d 0%, #55523e 80%));
+    padding-top: 40px;
+    min-width: 408px;
+    padding-bottom: 64px;
+
     .content {
         text-align: center;
         max-width: 800px;
@@ -541,6 +539,9 @@ p {
         tr:first-child > td {
             font-size: 18px;
             line-height: 1.5em;
+        }
+        tr:first-child td:first-child h1 {
+            padding-left: 12px;
         }
         td {
             vertical-align: top;
@@ -688,22 +689,28 @@ p {
     display: inline-block;
     position: relative;
     height: 76px;
-    top: -31px;
-    margin-bottom: -31px;
+    top: 0px;
+    margin-bottom: -20px;
     width: 100%;
-    background: url(assets/bottom-logo.png) 50% 50% no-repeat;
-    background-size: 76px 76px;
+    background: url(assets/crosswalk-LOGO-med.png) 50% 50% no-repeat;
+    background-size: 150px 15px;
     z-index: 100;
 }
 
 #footer #who {
-    padding-top: 36px;
+    line-height: 1rem;
+    font-size: 0.8rem;
+    padding-top: 18px;
 }
 
 #footer #copyright {
+    line-height: 1rem;
+    font-size: 0.8rem;
 }
 
 #footer #others {
+    line-height: 1rem;
+    font-size: 0.8rem;
     color: #808080;
 }
 
