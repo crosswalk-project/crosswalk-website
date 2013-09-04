@@ -170,12 +170,15 @@ file is newer than the cached file.
 Gollum should be launched with the following option:
 
 ```
-gollum --base-path wiki ${DOCROOT}/wiki >/dev/null 2>&1 &
+gollum --base-path wiki --live-preview ${DOCROOT}/wiki >/dev/null 2>&1 &
 ```
 
 It is expected that the path above is immediately below the main site 
 root and that the wiki directory contains the .git/ tree from the GitHub 
 hosted gollum site where the wiki is edited.
+
+By providing the --live-preview option you can use a live editor to edit
+the documentation content locally by navigating to http://localhost:4567/.
 
 In addition, the git tree must be checked out. When new content is ready 
 to be used, the following can be executed:
