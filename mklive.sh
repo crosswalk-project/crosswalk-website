@@ -30,8 +30,8 @@ function check_unstaged () {
 #
 git branch | grep -q '\* master' || {
 	echo ""
-	echo "mklive.sh can only be run in the 'live' branch."
-	echo "$ git checkout live"
+	echo "mklive.sh can only be run in the 'master' branch."
+	echo "$ git checkout master"
 	echo ""
 	exit
 }
