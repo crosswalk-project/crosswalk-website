@@ -741,7 +741,6 @@ p {
     }
     
     .slider {
-        @include transition(left 0.2s ease-out, width 0.2s ease-out);
         left: 0px;
         position: absolute;
         display: inline-block;
@@ -752,6 +751,9 @@ p {
         border-color: $top-menu-border;
         border-width: 0 2px;
         z-index: -1;
+        &.slide-around {
+            @include transition(left 0.2s ease-out, width 0.2s ease-out);
+        }
     }
     
     a {
@@ -768,6 +770,7 @@ p {
     }
     a.active {
         color: $top-menu-selected-fg;
+        background: none;
     }
 
     a[href="#home"] {

@@ -135,7 +135,7 @@ function activateColumn (name) {
     column.style.position.left = '0px';
     column.style.position.top = top_menu.offsetHeight + 'px';
 
-    onResize ();
+    _onResize ();
 }
 
 var pending = 0;
@@ -278,7 +278,7 @@ function content_response (e) {
         scrollTo (page);
     }
     
-    onResize ();
+    _onResize ();
 }
 
 function subMenuClick (e) {
@@ -485,13 +485,9 @@ function onScroll () {
     }*/
 }
 
-var resize_timer = 0;
-function _onResize () {
+function _onResize (from_resize_event) {
     var y = 0, z_index = 10, button,
         scroll = window.scrollY || window.pageYOffset, item;
-
-    // Clear out the timer flag
-    resize_timer = 0;
 
     // Cache the window height dimension
     viewHeight = window.innerHeight;
@@ -523,8 +519,12 @@ function _onResize () {
     document.body.style.height = y + 'px';
 
     item = top_menu.querySelector ('a[href^="#' + column_name + '"]');
+    if (from_resize_event)
+        slider.classList.remove ('slide-around');
     slider.style.width = (item.offsetWidth) + 'px';
     slider.style.left = (item.offsetLeft - slider.clientLeft) + 'px';
+    if (from_resize_event)
+        slider.classList.add ('slide-around');
     
     /* The sub-content isn't resizing correctly with CSS, so hack the width 
      * here based on the column width minus the sub-menu width */
@@ -547,9 +547,7 @@ function _onResize () {
 }
 
 function onResize () {
-    if (resize_timer)
-        clearTimeout (resize_timer);
-    resize_timer = setTimeout (_onResize, 50);
+    _onResize (true);
 }
 
 var scroll_target = 0, scroll_start = 0, scroll_start_pos = 0;
@@ -686,7 +684,7 @@ function init () {
         }
     }
     
-    onResize ();
+    setTimeout (_onResize, 50);
 }
 
 document.addEventListener ('DOMContentLoaded', init);
