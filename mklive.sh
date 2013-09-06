@@ -48,7 +48,13 @@ cd ..
 # -t track upstream (push/pull from github will work)
 # -f force -- delete branch if it already exists
 branch=live-$(date +%Y%m%d)
-git branch -t -f ${branch}
+iter=1
+while git show-ref --verify --quiet refs/heads/${branch}; do
+	branch="${branch/.*}.${iter}"
+	iter=$((iter+1))
+done
+echo "Using branch: ${branch}"
+git branch -t ${branch}
 git checkout ${branch}
 
 #
