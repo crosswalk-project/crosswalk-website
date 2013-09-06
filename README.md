@@ -47,11 +47,12 @@ git push origin ${branch}
 ```
 And then log into the crosswalk-project.org server, change to the site docroot, and run:
 ```
-git pull -a
+git pull --all
 branch=$(git branch -a | grep remotes.*live | sort -r | head -n 1)
 branch=${branch//  remotes\/origin\//}
 echo ${branch}
 # Verify the correct branch will be used
+git branch -D ${branch}
 git checkout --track origin/${branch}
 git clean -f
 ```
