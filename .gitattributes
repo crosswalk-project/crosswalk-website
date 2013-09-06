@@ -4,4 +4,4 @@
 *.scss   text
 *.js     text
 *.md     text diff=astextplain
-
+*.svg    text eol=crlf
