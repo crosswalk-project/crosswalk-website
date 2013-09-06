@@ -9,12 +9,12 @@ var context = this,
     slider, active_uri = '',
     active_target = '', sub_link = '',
     anchor_scroll_timer = 0, samples_background = null, samples_table = null;
-    
+
 var debug = {
-    navigation: true,
+    navigation: false,
     history: false,
     scroll: false
-};    
+};
 
 window.requestAnimationFrame = (function () {
     return window.requestAnimationFrame ||
@@ -38,7 +38,7 @@ window.requestAnimationFrame = (function () {
  */
 function onPopState (e) {
     var href;
-    
+
     if (debug.history) {
         console.log ('popstate: ' + history.state);
     }
@@ -47,8 +47,8 @@ function onPopState (e) {
         href = window.location.href.replace(/^.*#/, '#').toLowerCase ();
         if (!href.match (/^#/))
             href = '';
-        
-        if (document.querySelector ('.column[id^="'+ 
+
+        if (document.querySelector ('.column[id^="'+
                                     href.replace (/^#([^\/]*).*$/, '$1')+'"]')) {
             navigateTo (href);
         } else {
@@ -62,20 +62,20 @@ function onPopState (e) {
     }
 }
 
-    
+
 var hide_delay_timeout = 0;
-    
+
 /*
  * Hide all columns, and show the one selected
  */
 function activateColumn (name) {
     var tmp = document.getElementById (name + '-column'), item;
-    
+
     if (!tmp) {
         console.warn ('Request to activate non-existent column: ' + name);
         return;
     }
-    
+
     column = tmp;
     column_name = name;
 
@@ -104,7 +104,7 @@ function activateColumn (name) {
         top_menu.style.removeProperty ('opacity');
         top_menu.style.top = '0px';
     }
-    
+
     /* Only activate if this column isn't already active... */
     if (!column.classList.contains ('hidden')) {
         return;
@@ -115,7 +115,7 @@ function activateColumn (name) {
     }
     window.scrollTo (0, 0);
 
-    Array.prototype.forEach.call (top_menu.querySelectorAll ('#top-menu .active'), 
+    Array.prototype.forEach.call (top_menu.querySelectorAll ('#top-menu .active'),
                                   function (el) {
         el.classList.remove ('active');
     });
@@ -157,7 +157,7 @@ function loadingGraphicStop () {
             el.classList.remove ('loading');
     });
 }
-    
+
 function content_response (e) {
     if (xhr.readyState != XMLHttpRequest.DONE) {
         console.log (xhr.status);
@@ -167,14 +167,14 @@ function content_response (e) {
     loadingGraphicStop ();
 
     if (xhr.status != 200) {
-        var tmp = 'Unable to fetch content:<br><div class="error">' + 
+        var tmp = 'Unable to fetch content:<br><div class="error">' +
             xhr.status + ' ' + xhr.statusText + '</div>';
-        
+
         if (column.hasAttribute ('referring_page')) {
             var referring_page = column.getAttribute ('referring_page');
             tmp += '<br>' +
                 'Reffering page: ' +
-                '<a href="#' + column_name + '/' + 
+                '<a href="#' + column_name + '/' +
                 referring_page + '">' +
                 referring_page + '</a>';
         }
@@ -183,13 +183,13 @@ function content_response (e) {
         xhr = null;
         return;
     }
-    
+
     xhr = null;
 
-    /* Replace the currently visible content with the newly received 
+    /* Replace the currently visible content with the newly received
      * content */
     activateColumn (column_name);
-    
+
     /* This is Wiki content generated from Gollum, which means its a full
      * HTML page. Load it into a context free div element and then extract
      * the node we care about.
@@ -211,14 +211,14 @@ function content_response (e) {
     while (div.firstChild)
         div.removeChild (div.firstChild);
 
-    /* If the content contains the 'missing' class then the Wiki 
+    /* If the content contains the 'missing' class then the Wiki
      * request hit a 404 */
     if (content.querySelector ('.missing')) {
         var referring_page = column.hasAttribute ('referring_page') ?
             column.getAttribute ('referring_page') : 'Internal link',
             tmp = document.createElement ('div');
         tmp.innerHTML = 'Reffering page: ' +
-                        '<a href="#' + column_name + '/' + 
+                        '<a href="#' + column_name + '/' +
                         referring_page + '">' +
                         referring_page + '</a><br>';
         content.appendChild (tmp);
@@ -227,15 +227,15 @@ function content_response (e) {
     div.appendChild (content);
 
     /*
-     * Wiki link rewriting magic... the Gollum system returns links 
-     * relative to the paths inside of GitHub and Gollum. Some of 
+     * Wiki link rewriting magic... the Gollum system returns links
+     * relative to the paths inside of GitHub and Gollum. Some of
      * those links have been hand code by Wiki editors.
      *
-     * Our task is to find those URLs and rewrite them to be relative 
+     * Our task is to find those URLs and rewrite them to be relative
      * to this #wiki system.
      */
-    var sub_page = column.hasAttribute ('loading_page') ? 
-        column.getAttribute ('loading_page') : 'Home', 
+    var sub_page = column.hasAttribute ('loading_page') ?
+        column.getAttribute ('loading_page') : 'Home',
         c;
     column.removeAttribute ('loading_page');
     column.setAttribute ('active_page', sub_page);
@@ -245,8 +245,8 @@ function content_response (e) {
                 return;
             /* Remove any prefix / and convert to lower case */
             href = link.getAttribute ('href').replace (/^\//, '').toLowerCase ();
-            
-            /* If the URL starts with #, then check if it is a valid column request. 
+
+            /* If the URL starts with #, then check if it is a valid column request.
              *
              * If not, assume it is a local anchor to the current page (eg., a
              * header tag in a wiki page)
@@ -256,7 +256,7 @@ function content_response (e) {
                 if (document.querySelector ('.column[id="'+c+'-column"]')) {
                     link.href = href;
                 } else {
-                    link.href = '#' + column_name + '/' + sub_page + '/' + 
+                    link.href = '#' + column_name + '/' + sub_page + '/' +
                         href.replace (/#/, '');
                 }
             } else if (!href.match (/^wiki/)) {
@@ -277,7 +277,7 @@ function content_response (e) {
     } else {
         scrollTo (page);
     }
-    
+
     _onResize ();
 }
 
@@ -286,8 +286,8 @@ function subMenuClick (e) {
     e.preventDefault ();
 
     navigateTo (href);
-    
-    /* When navigating to the Home column, we want the relative 
+
+    /* When navigating to the Home column, we want the relative
      * part of the URL to be empty, so set the href to .
      */
     if (column_name == 'home')
@@ -298,15 +298,15 @@ function subMenuClick (e) {
         console.log ('pushState: ' + history.state);
     }
 }
-    
-function navigateTo (href) {    
+
+function navigateTo (href) {
     var requested_column, requested_page, requested_anchor,
         new_content, content, url, column_changed;
 
     if (debug.navigation) {
         console.log ('Navigate to: ' + href);
     }
-    
+
     /*
      * Incoming requests are of the forum:
      * #[COLUMN-NAME](/[PAGE](/[ANCHOR]))
@@ -330,14 +330,14 @@ function navigateTo (href) {
         return;
     }
     active_uri = tmp_request;
-    
-    
+
+
     if (debug.navigation) {
         console.log ('Column: ' + requested_column);
         console.log ('Page: ' + requested_page);
         console.log ('Anchor: ' + requested_anchor);
     }
-    
+
     /* The "Loading..." animation is a class added to any <a> with an href
      * that begins with the 'active_target' string.
      */
@@ -351,7 +351,7 @@ function navigateTo (href) {
     }
 
     column_changed = requested_column != column_name;
-    
+
     /* If no column has been activated yet (initial page load) then
      * turn this column active now (vs. waiting for the XHR to
      * complete
@@ -361,8 +361,8 @@ function navigateTo (href) {
     if (requested_column == 'home') {
         return;
     }
-    
-    active_page = column.hasAttribute ('active_page') ? 
+
+    active_page = column.hasAttribute ('active_page') ?
         column.getAttribute ('active_page') : '';
     if (requested_page == '') {
         switch (requested_column) {
@@ -377,7 +377,7 @@ function navigateTo (href) {
             break;
         }
     }
-                    
+
     if (column_changed || active_page != requested_page) {
         if (active_page != '')
             column.setAttribute ('referring_page', active_page);
@@ -387,7 +387,7 @@ function navigateTo (href) {
             column.removeAttribute ('requested_anchor');
         else
             column.setAttribute ('requested_anchor', requested_anchor);
-        
+
         xhr = new XMLHttpRequest;
         xhr.onload = content_response;
         loadingGraphicStart ();
@@ -419,8 +419,8 @@ function navigateTo (href) {
 
     /* Add the 'active' class to any menu items that reference this href */
     Array.prototype.forEach.call (
-        document.querySelectorAll ('#page a[href="#' + 
-                                   requested_column + '/' + 
+        document.querySelectorAll ('#page a[href="#' +
+                                   requested_column + '/' +
                                    requested_page + '"]'), function (el) {
         el.classList.add ('active');
     });
@@ -453,8 +453,8 @@ function buildSubMenu () {
                                   function (link) {
         link.addEventListener ('click', subMenuClick);
     });
-    
-    /* Connect to any local anchor links that directing to one of our 
+
+    /* Connect to any local anchor links that directing to one of our
      * columns... */
     Array.prototype.forEach.call (document.querySelectorAll ('.column'), function (el) {
         var name = el.id.replace (/-column$/, '');
@@ -471,7 +471,7 @@ function onScroll () {
 
     /* Animate in menu when top of home hides too much */
 /*    if ((column.id != 'home-column') ||
-        (home.offsetHeight - scroll <= 
+        (home.offsetHeight - scroll <=
          document.getElementById ('download-button').offsetTop)) {*/
         top_menu.style.removeProperty ('opacity');
         top_menu.style.top = '0px';
@@ -494,18 +494,18 @@ function _onResize (from_resize_event) {
 
     /* Set the home height to be a minimum of 80% of the window.innerHeight
      * There is probably a CSS way to do this (it broke when I switched away
-     * from absolute positioning on #home), but user's don't care if 
+     * from absolute positioning on #home), but user's don't care if
      * the implementation is a hack, so long as it works... */
     home.style.minHeight = Math.round (0.5 * viewHeight) + 'px';
 
     /* Calculate the size of the page so we can resize the footer-padding
      * to fill any bottom part of the page w/ the tile overlay */
-    
+
     y = page.offsetHeight;
     y += footer.offsetHeight;
     if (y < viewHeight) {
         var delta = viewHeight - y;
-        document.getElementById ('footer-padding').style.height = 
+        document.getElementById ('footer-padding').style.height =
             delta + 'px';
         y += delta;
     } else {
@@ -514,7 +514,7 @@ function _onResize (from_resize_event) {
 
     button = home.querySelector ('.more-button-box');
     button.style.top = (home.offsetHeight - button.offsetHeight) + 'px';
-    
+
     /* Set the window height based on content */
     document.body.style.height = y + 'px';
 
@@ -525,8 +525,8 @@ function _onResize (from_resize_event) {
     slider.style.left = (item.offsetLeft - slider.clientLeft) + 'px';
     if (from_resize_event)
         slider.classList.add ('slide-around');
-    
-    /* The sub-content isn't resizing correctly with CSS, so hack the width 
+
+    /* The sub-content isn't resizing correctly with CSS, so hack the width
      * here based on the column width minus the sub-menu width */
     var sub_menu = column.querySelector ('.sub-menu');
     if (sub_menu) {
@@ -537,10 +537,10 @@ function _onResize (from_resize_event) {
 //        sub_content.style.minHeight = height + 'px';
         sub_content.style.minHeight = (viewHeight - top_menu.offsetHeight) + 'px';
     }
-    
+
     samples_background.style.top = getAbsolutePos (samples_table, document.getElementById ('samples-overview')).y + 'px';
     samples_background.style.height = samples_table.offsetHeight + 'px';
-    
+
     /* The resize may have adjusted the scroll position or need for the
      * top-menu, which is scroll dependent, so trigger a scroll calculation */
     onScroll ();
@@ -598,7 +598,7 @@ function scrollTo (e) {
          * Since this sub-component of scrollTo () isn't called very frequently,
          * we'll just do our own DOM search... */
         e = e.toLowerCase ();
-        Array.prototype.forEach.call (document.querySelectorAll ('*[id]'), 
+        Array.prototype.forEach.call (document.querySelectorAll ('*[id]'),
                                       function (item) {
             if (el != null)
                 return;
@@ -624,7 +624,7 @@ function scrollTo (e) {
             if (el)
                 console.log ('Scrolling not necessary for "' + el.id + '"');
             else
-                console.log ('Scrolling not necessary for "' + 
+                console.log ('Scrolling not necessary for "' +
                              e.currentTarget.getAttribute ('href') + '"');
         }
         return;
@@ -633,7 +633,7 @@ function scrollTo (e) {
     if (debug.scroll) {
         console.log ('Scrolling ' + scroll_delta + ' to ' + y + ' for "' + el.id + '"');
     }
-    
+
     requestAnimationFrame (smoothScroll);
 }
 
@@ -647,7 +647,7 @@ function init () {
     slider = top_menu.querySelector ('.slider');
     samples_background = document.getElementById ('crossing-tile');
     samples_table = document.getElementById ('samples-body');
-    
+
     Array.prototype.forEach.call (
         document.querySelectorAll ('#home a[href^="#"]'), function (el) {
         el.addEventListener ('click', scrollTo)
@@ -667,11 +667,11 @@ function init () {
     href = window.location.href.replace(/^.*#/, '#').toLowerCase ();
     if (!href.match (/^#/))
         href = '';
-    
+
     if (history.state) {
 //        onPopState (history);
     }
-        
+
     if (document.querySelector ('.column[id^="'+href.replace (/^#([^\/]*).*$/, '$1')+'"]')) {
         navigateTo (href);
         use_default = false;
@@ -683,7 +683,7 @@ function init () {
             scrollTo (href.replace (/^#/, ''));
         }
     }
-    
+
     setTimeout (_onResize, 50);
 }
 
