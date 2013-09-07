@@ -49,7 +49,8 @@ cd ..
 # -f force -- delete branch if it already exists
 branch=live-$(date +%Y%m%d)
 iter=1
-while git show-ref --verify --quiet refs/heads/${branch}; do
+while git show-ref --verify --quiet refs/heads/${branch} || 
+      git show-ref --verify --quiet refs/remotes/origin/${branch}; do
 	branch="${branch/.*}.${iter}"
 	iter=$((iter+1))
 done
