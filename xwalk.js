@@ -245,7 +245,11 @@ function content_response (e) {
                 return;
             /* Remove any prefix / and convert to lower case */
             href = link.getAttribute ('href').replace (/^\//, '').toLowerCase ();
-
+            
+            /* Discard any URLs with a protocol:// prefix (for example irc://) */
+            if (href.match (/^.*:\/\//))
+                return;
+            
             /* If the URL starts with #, then check if it is a valid column request.
              *
              * If not, assume it is a local anchor to the current page (eg., a
