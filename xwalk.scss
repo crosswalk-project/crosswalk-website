@@ -828,3 +828,27 @@ p {
 .hidden {
     display: none;
 }
+
+/*
+ * Wiki Markdown styling
+ */
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    clear: both;
+}
+
+#wiki-content .sample-thumb {
+    display: inline-block;
+    width: 100px;
+    height: 75px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    padding-right: 1.5ex;
+    vertical-align: top;
+}
