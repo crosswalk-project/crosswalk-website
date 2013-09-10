@@ -21,6 +21,7 @@ function file_smart_match ($filepath) {
 }
 
 function missing () {
+global $_REQUEST;
 ?>
 Missing wiki leaf: <span class='missing'><?= $_REQUEST['f'] ?>
 <?php
