@@ -430,9 +430,14 @@ p {
     }
 }
 
-#footer .divider {
-    border-color: #6c5245;
-    background-color: #331c22;
+#footer {
+    .divider {
+        border-color: #6c5245;
+        background-color: #331c22;
+    }
+    .content {
+        padding: 0;
+    }
 }
 
 .tile-overlay {
