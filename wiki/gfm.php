@@ -21,10 +21,8 @@ function file_smart_match ($filepath) {
 }
 
 function missing () {
-global $_REQUEST;
-?>
-Missing wiki leaf: <span class='missing'><?= $_REQUEST['f'] ?>
-<?php
+    global $_REQUEST;
+    print "Missing wiki leaf: <span class='missing'>".$_REQUEST['f']."</span>";
     exit;
 }
 
