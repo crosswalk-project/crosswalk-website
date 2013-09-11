@@ -655,6 +655,10 @@ function scrollTo (e) {
 function init () {
     var name, href, use_default = true;
 
+    if (!window.addEventListener) {
+        window.location.href = 'you-need-html5.html';
+    }
+    
     top_menu = document.getElementById ('top-menu');
     home = document.getElementById ('home');
     page = document.getElementById ('page');
