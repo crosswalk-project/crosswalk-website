@@ -297,9 +297,13 @@ function subMenuClick (e) {
     if (column_name == 'home')
         href = '.';
 
-    history.pushState ({ href: href }, '', href);
-    if (debug.history) {
-        console.log ('pushState: ' + history.state);
+    if (history.pushState) {
+        history.pushState ({ href: href }, '', href);
+        if (debug.history) {
+            console.log ('pushState: ' + history.state);
+        }
+    } else {
+        window.location.href = href;
     }
 }
 
@@ -673,15 +677,13 @@ function init () {
 
     document.addEventListener ('scroll', onScroll);
     window.addEventListener ('resize', onResize);
-    window.addEventListener ('popstate', onPopState);
+    
+    if (history.pushState)
+        window.addEventListener ('popstate', onPopState);
 
     href = window.location.href.replace(/^.*#/, '#').toLowerCase ();
     if (!href.match (/^#/))
         href = '';
-
-    if (history.state) {
-//        onPopState (history);
-    }
 
     if (document.querySelector ('.column[id^="'+href.replace (/^#([^\/]*).*$/, '$1')+'"]')) {
         navigateTo (href);
