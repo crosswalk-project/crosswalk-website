@@ -24,6 +24,8 @@ https://developers.google.com/chrome-developer-tools/docs/css-preprocessors
 $small-break: 480px;
 $medium-break: 960px;
 
+$grapefruit: #ed7332;
+
 $top-menu-fg: #ffefd8;
 $top-menu-bg: hsl(13, 66%, 52%);
 $top-menu-border: #f8d0ad;
@@ -461,6 +463,9 @@ p {
     }
     .content {
         padding: 0;
+    }
+    a {
+        color: $grapefruit;
     }
 }
 
