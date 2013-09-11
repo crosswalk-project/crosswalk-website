@@ -117,9 +117,21 @@ cd wiki
 git checkout -f
 cd ..
 git checkout master
+git tag ${branch}
+cd wiki
+git tag ${branch}
+cd ..
 cat << EOF
 
 Changes committed to git as branch ${branch}.
 
-Current tree set back to 'master'.
+Current tree set back to 'master'. Commands to run:
+
+git push --tags origin master
+git push origin ${branch}
+ssh stg-sites.vlan14.01.org "cd /srv/www/stg.crosswalk-project.org/docroot ; sudo su drush -c '../update.sh'"
+cd wiki
+git push --tags origin master
+cd ..
+
 EOF
