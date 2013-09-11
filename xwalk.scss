@@ -204,8 +204,8 @@ p {
 
 #home {
     min-width: 408px;
-    @include background(linear-gradient(to top, #e76840 0%, #f49541 65%, #ed7332 100%));    
-    
+    background-color: #f49541;
+    @include background(linear-gradient(to top, #e76840 0%, #f49541 65%, #ed7332 100%));
     .logo {
         padding-top: 5em;
         display: inline-block;
@@ -446,6 +446,7 @@ p {
 
 
 #overview {
+    background-color: #3e2220;
     @include background(radial-gradient(circle at 50% 50%, #532824 0%, #3e2220 300px, #2f191e 100%));
     min-width: 408px;
     
@@ -504,6 +505,7 @@ p {
 }
 
 #samples-overview {
+    background-color: #55523e;
     @include background(linear-gradient(to bottom, #354b3d 0%, #55523e 80%));
     padding-top: 40px;
     min-width: 408px;
@@ -666,6 +668,7 @@ p {
 
 #footer {
     position: relative;
+    background-color: #1c1305;
     @include background(linear-gradient(to bottom, #262414 0%, #1c1305 100px));
     color: #cbc6c2;
     padding: 0 0 32px 0;
