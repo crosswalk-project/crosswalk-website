@@ -117,9 +117,9 @@ cd wiki
 git checkout -f
 cd ..
 git checkout master
-git tag ${branch}
+git tag tag-${branch}
 cd wiki
-git tag ${branch}
+git tag tag-${branch}
 cd ..
 cat << EOF
 
