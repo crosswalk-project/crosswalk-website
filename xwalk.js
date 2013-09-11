@@ -655,10 +655,6 @@ function scrollTo (e) {
 function init () {
     var name, href, use_default = true;
 
-    if (!window.addEventListener) {
-        window.location.href = 'you-need-html5.html';
-    }
-    
     top_menu = document.getElementById ('top-menu');
     home = document.getElementById ('home');
     page = document.getElementById ('page');
@@ -704,7 +700,11 @@ function init () {
     setTimeout (_onResize, 50);
 }
 
-document.addEventListener ('DOMContentLoaded', init);
+if (!document.addEventListener) {
+    window.location.href = 'you-need-html5.html';
+} else {
+    document.addEventListener ('DOMContentLoaded', init);
+}
 }) ();
 
 /* google analystics */
