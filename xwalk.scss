@@ -93,6 +93,25 @@ p {
     color: red;
 }
 
+.channel {
+    text-decoration: none;
+    
+    &.canary {
+        color: hsl(13, 60%, 39%);
+        border-color: hsl(13, 60%, 39%);
+    }
+    
+    &.beta {
+        color: hsl(53, 60%, 39%);
+        border-color: hsl(53, 60%, 39%);
+    }
+    
+    &.stable {
+        color: hsl(97, 60%, 39%);
+        border-color: hsl(97, 60%, 39%)
+    }
+}
+
 #page {
     background: url(assets/tile-chocolate.jpg);
     position: relative;
