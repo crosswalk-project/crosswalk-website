@@ -166,6 +166,10 @@ function content_response (e) {
 
     loadingGraphicStop ();
 
+    /* Replace the currently visible content with the newly received
+     * content */
+    activateColumn (column_name);
+    
     if (xhr.status != 200) {
         var tmp = 'Unable to fetch content:<br><div class="error">' +
             xhr.status + ' ' + xhr.statusText + '</div>';
@@ -186,22 +190,26 @@ function content_response (e) {
 
     xhr = null;
 
-    /* Replace the currently visible content with the newly received
-     * content */
-    activateColumn (column_name);
-
     /* This is Wiki content generated from Gollum, which means its a full
      * HTML page. Load it into a context free div element and then extract
      * the node we care about.
      * Then insert that node into the current column's sub-content */
-    var div = document.createElement ('div'), content, href;
+    var div = document.createElement ('div'), content, href, wiki_body;
 
     div.innerHTML = e.currentTarget.response ?
         e.currentTarget.response :
         e.currentTarget.responseText;
     content = div.querySelector ('#wiki-content');
-    if (!content)
-        content = div;
+    wiki_body = div.querySelector ('#wiki-body');
+    if (!content) {
+        content = document.createElement ('div');
+        content.id = 'wiki-content';
+        wiki_body = document.createElement ('div');
+        wiki_body.id = 'wiki-body';
+        div.classList.add ('markdown-body');
+        wiki_body.insertBefore (div);
+        content.insertBefore (wiki_body);
+    }
     div = column.querySelector ('.sub-content');
     /* If this was a delayed load, it may have finished after a switch
      * to the #home column, in which case there is no sub-content field */
@@ -217,11 +225,13 @@ function content_response (e) {
         var referring_page = column.hasAttribute ('referring_page') ?
             column.getAttribute ('referring_page') : 'Internal link',
             tmp = document.createElement ('div');
-        tmp.innerHTML = 'Reffering page: ' +
+        tmp.innerHTML = '<h2>Missing Page</h2>' +
+                        'Reffering page: ' +
                         '<a href="#' + column_name + '/' +
                         referring_page + '">' +
-                        referring_page + '</a><br>';
-        content.appendChild (tmp);
+                        '#' + column_name + '/' + referring_page + '</a><br>';
+        var el = wiki_body.querySelector ('.markdown-body');
+        el.insertBefore (tmp, el.firstChild);
     }
 
     div.appendChild (content);

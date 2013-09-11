@@ -97,6 +97,10 @@ p {
     background: url(assets/tile-chocolate.jpg);
     position: relative;
     
+    .missing {
+        color: red;
+    }
+    
     .sub-menu {
         background-color: $sub-nav-bg;
         color: $sub-nav-fg;
@@ -177,6 +181,7 @@ p {
     max-width: 70ex;
     font-size: 1.5rem;
     .sub-content {
+        width: 100%;
         position: relative;
         left: 0px;
     }
