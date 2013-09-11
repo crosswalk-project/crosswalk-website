@@ -166,7 +166,7 @@ p {
         a.loading {
             background-image: url(assets/loading.gif);
             background-size: 16px 16px;
-            background-position: 0px 50%;
+            background-position: 2px 50%;
             background-repeat: no-repeat;
         }
     }
@@ -766,6 +766,12 @@ p {
         padding-right: 100px;
     }
 
+    .menu-item {
+        position: relative;
+        top: 0px;
+        @include transition(top 0.25s ease-out);
+    }
+    
     @include transition(opacity 0.125s ease-out, top 0.125s ease-out);
 
     &.hide-delay {
@@ -816,6 +822,16 @@ p {
         left: 0px;
         min-width: 200px;
     }
+    
+    a.loading {
+        background-image: url(assets/loading.gif);
+        background-size: 16px 16px;
+        background-position: 50% 34px;
+        background-repeat: no-repeat;
+        top: -5px;
+        height: 53px;
+    }
+
     
     @media (max-width: $medium-break) {
         min-height: 48px;

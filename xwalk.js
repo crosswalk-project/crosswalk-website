@@ -1,6 +1,3 @@
-/*
- * The site is made up of
- */
 (function () {
 var context = this,
     home, page, footer,
@@ -140,12 +137,29 @@ function activateColumn (name) {
 
 var pending = 0;
 function loadingGraphicStart () {
+    var indicator = false;
     if (pending++ != 0)
         return;
+    
+    /* Add the loading class to all anchors that directly reference this exact target */
     Array.prototype.forEach.call (
-        document.querySelectorAll ('a[href^="' + active_target + '"]'), function (el) {
+        document.querySelectorAll ('#page a[href^="' + active_target + '"]'),
+        function (el) {
             el.classList.add ('loading');
+            indicator = true;
     });
+    
+    /* If no on-page indicators are showing the loading indicator, then add
+     * the indicator to the top-menu item that will host the active_target */
+    if (!indicator) {
+        Array.prototype.forEach.call (
+            document.querySelectorAll (
+                '#top-menu a[href^="' + 
+                active_target.replace(/^(#[^\/]*).*$/, '$1') + '"]'),
+            function (el) {
+                el.classList.add ('loading');
+        });
+    }
 }
 
 function loadingGraphicStop () {
@@ -157,7 +171,7 @@ function loadingGraphicStop () {
             el.classList.remove ('loading');
     });
 }
-
+    
 function content_response (e) {
     if (xhr.readyState != XMLHttpRequest.DONE) {
         console.log (xhr.status);
