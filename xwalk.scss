@@ -45,6 +45,8 @@ $doc-body-fg: #361d23;
 $doc-body-bg: #fbf7f0;
 
 body {
+    background-color: $grapefruit;
+    
 //    font-size: 17px;
     line-height: 1.4rem;
     @media screen and (max-width: 80ex) {
@@ -225,6 +227,39 @@ p {
     h1 {
         margin-left: 16px;
         margin-right: 16px;
+    }
+}
+
+#error {
+    min-width: 408px;
+    background-color: #ef7332;
+    .logo {
+        padding-top: 5em;
+        display: inline-block;
+        background-image: url(assets/crosswalk-LOGO-lrg.png);
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+        background-size: 477px auto;
+        height: 51px;
+        width: 100%;
+        margin-bottom: 36px;
+    }
+
+    @media (max-width: $small-break) {
+        .logo {
+            background-size: 400px auto;
+            height: (51*400/477)px;
+        }
+    }
+    
+    .content {
+        white-space: normal;
+        margin: 32px 0;
+        color: #fff4e5;
+        position: relative;
+        padding: 0;
+        height: 100%;
+        padding-bottom: 100px;
     }
 }
 

@@ -679,6 +679,11 @@ function scrollTo (e) {
 function init () {
     var name, href, use_default = true;
 
+    /* To keep the home-column from flashing away on IE8 prior to the "You need to upgrade"
+     * page being shown, we start with the home-column hidden and only show it in
+     * the DOMContentLoaded event handler */
+    document.getElementById ('home-column').classList.remove ('hidden');
+    
     top_menu = document.getElementById ('top-menu');
     home = document.getElementById ('home');
     page = document.getElementById ('page');
@@ -725,7 +730,14 @@ function init () {
 }
 
 if (!document.addEventListener) {
-    window.location.href = 'you-need-html5.html';
+    document.attachEvent ('onreadystatechange', function () {
+        var page = document.getElementById ('page'),
+            error = document.getElementById ('error-column');
+        while (page.firstChild)
+            page.removeChild (page.firstChild);
+        error.className = 'column';
+        page.appendChild (error);
+    });
 } else {
     document.addEventListener ('DOMContentLoaded', init);
 }
