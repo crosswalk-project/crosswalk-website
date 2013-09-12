@@ -221,8 +221,8 @@ function content_response (e) {
         wiki_body = document.createElement ('div');
         wiki_body.id = 'wiki-body';
         div.classList.add ('markdown-body');
-        wiki_body.insertBefore (div);
-        content.insertBefore (wiki_body);
+        wiki_body.appendChild (div);
+        content.appendChild (wiki_body);
     }
     div = column.querySelector ('.sub-content');
     /* If this was a delayed load, it may have finished after a switch
