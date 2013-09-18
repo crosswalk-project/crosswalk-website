@@ -227,7 +227,7 @@ function content_response (e) {
         content.appendChild (wiki_body);
     } else {
         last_edit = div.querySelector ('#last-edit');
-        if (last_edit) {
+        if (last_edit && column_name == 'wiki') {
             var github_link = div.querySelector ('a.action-edit-page');
             if (github_link) {
                 /* GitHub URL syntax for starting the editing; GitHub flattens
