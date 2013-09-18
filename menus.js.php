@@ -75,6 +75,9 @@ if ($rebuild) {
                      'items' => scan_dir ('wiki/documentation'));
     $json[] = Array ('menu' => 'contribute', 
                      'items' => scan_dir ('wiki/contribute'));
+    $json[] = Array ('menu' => 'wiki',
+                     'items' => Array (Array ('name' => 'Home', 'file' => 'Home' ),
+                                       Array ('name' => 'Pages', 'file' => 'Pages' )));
     $f = fopen ('menus.js', 'w');
     fwrite ($f, 'var menus = '.json_encode ($json).';');
     fclose ($f);

@@ -5,12 +5,14 @@ function file_smart_match ($filepath) {
     $lower = strtolower (basename ($filepath));
     $files = glob (dirname ($filepath).'/*');
     foreach ($files as $f) {
-        if (preg_match ('/(([0-9]*-)?(.*))((\.md)|(\.mediawiki)|(\.org)|(\.php))$/i', 
+        if (preg_match (
+            '/(([0-9]*-)?(.*))((\.md)|(\.mediawiki)|(\.org)|(\.php))$/i', 
                         basename ($f), $matches)) {
             if (strtolower ($matches[3]) == $lower)
                 return $f;
         }
-        if (preg_match ('/(([0-9]*-)?(.*))((\.md)|(\.mediawiki)|(\.org)|(\.php))(.html)$/i', 
+        if (preg_match (
+            '/(([0-9]*-)?(.*))((\.md)|(\.mediawiki)|(\.org)|(\.php))(.html)$/i', 
                         basename ($f), $matches)) {
             if (strtolower ($matches[3]) == $lower)
 		if (!file_exists (dirname ($filepath).'/'.$matches[1].$matches[3]))
@@ -26,6 +28,58 @@ function missing () {
     exit;
 }
 
+function make_name ($name) {
+    return preg_replace ('/_+/', ' ', 
+           preg_replace ('/-+/', ' ', 
+           preg_replace ('/^[0-9]*[-_]/', '', 
+           $name)));
+}
+
+function sort_entries ($a, $b) {
+    return strcasecmp ($a['wiki'], $b['wiki']);
+}
+
+function generatePageList ($path) {
+    $d = @opendir ($path);
+    $entries = Array ();
+    if (!$d)
+        return;
+    
+    while (($n = readdir ($d)) !== false) {
+        if (is_dir ($path.'/'.$n) || 
+            preg_match ('/\.(html|php|htaccess|js|log|git)$/', $n))
+            continue;
+        $entry = null;
+        $f = fopen ($path.'/'.$n, 'r');
+        while (!feof ($f)) {
+            $l = trim (fgets ($f));
+            if (preg_match ('/^.*data-name=[\'"]([^"\']*)["\']/', $l, $matches)) {
+                $entry = Array ('wiki' => $n, 'name' => $matches[1]);
+                break;
+            }
+        }
+        fclose ($f);
+        /* A title wasn't found with the above preg_match, so use the filename */
+        if (!$entry) {
+            $entry = Array ('wiki' => $n,
+                            'name' => make_name (
+                                pathinfo ($path.'/'.$n, PATHINFO_FILENAME)));
+        }
+        if ($entry != null) {
+            $entries [] = $entry;
+        }
+    }
+    closedir ($d);
+    usort ($entries, "sort_entries");
+    for ($i = 0; $i < count ($entries); $i++) {
+        $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
+        $name = preg_replace ('/\.[^.]*$/', '', $name);
+        $entries[$i]['file'] = $name;
+        $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
+    }
+    return $entries;
+}
+
 if (isset($argv[1]))
     $_REQUEST['f'] = $argv[1];
 
@@ -34,6 +88,30 @@ $md = file_smart_match (dirname (__FILE__).'/'.$request);
 $md = realpath ($md);
 if (preg_match ('/.html$/', $md)) {
     require ($md);
+    exit;
+}
+
+/*
+ * Special case for Pages request which is dynamically built
+ * from the list of pages in the main Wiki directory
+ */
+if (strtolower ($request) == 'pages') {
+    $pages = generatePageList ('.');
+    $f = fopen ('pages.md.html', 'w');
+    if (!$f) {
+        missing ();
+    }
+    fwrite ($f, '<h2>Crosswalk Wiki Pages</h2>');
+    fwrite ($f, '<ul>');
+    foreach ($pages as $page) {
+        if (strlen (trim ($page['name'])) == 0 ||
+            strlen (trim ($page['file'])) == 0)
+            continue;
+        fwrite ($f, '<li><a href="'.$page['file'].'">'.$page['name'].'</a></li>');
+    }
+    fwrite ($f, '</ul>');
+    fclose ($f);
+    require('pages.md.html');
     exit;
 }
 
