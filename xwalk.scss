@@ -43,6 +43,8 @@ $sub-nav-hover-fg: #736e6c;
 
 $doc-body-fg: #361d23;
 $doc-body-bg: #fbf7f0;
+$doc-last-edit-fg: #af966e;
+$doc-last-edit-divider: hsl(38, 58%, 80%);
 
 body {
     background-color: $grapefruit;
@@ -930,14 +932,30 @@ p {
     clear: both;
 }
 
-#wiki-content .sample-thumb {
-    display: inline-block;
-    width: 100px;
-    height: 75px;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: 100% 100%;
-    padding-right: 1.5ex;
-    vertical-align: top;
-    float: left;
+#wiki-content {
+    .sample-thumb {
+        display: inline-block;
+        width: 100px;
+        height: 75px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 100% 100%;
+        padding-right: 1.5ex;
+        vertical-align: top;
+        float: left;
+    }
+    
+    #last-edit {
+        border-top: 1px solid $doc-last-edit-divider;
+        margin-top: 3rem;
+        margin-bottom: -3rem;
+        color: $doc-last-edit-fg;
+        font-size: 0.8rem;
+        
+        a {
+            color: $doc-last-edit-fg;
+            float: right;
+            opacity: 0.5;
+        }
+    }
 }

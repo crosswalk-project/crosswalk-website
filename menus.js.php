@@ -20,14 +20,14 @@ function scan_dir ($path) {
         while (!feof ($f)) {
             $l = trim (fgets ($f));
             if (preg_match ('/^.*data-name=[\'"]([^"\']*)["\']/', $l, $matches)) {
-                $entry = Array ('file' => $n, 'name' => $matches[1]);
+                $entry = Array ('wiki' => $n, 'name' => $matches[1]);
                 break;
             }
         }
         fclose ($f);
         /* A title wasn't found with the above preg_match, so use the filename */
         if (!$entry) {
-            $entry = Array ('file' => $n,
+            $entry = Array ('wiki' => $n,
                             'name' => make_name (
                                 pathinfo ($path.'/'.$n, PATHINFO_FILENAME)));
         }
@@ -38,9 +38,10 @@ function scan_dir ($path) {
     closedir ($d);
     usort ($entries, "sort_entries");
     for ($i = 0; $i < count ($entries); $i++) {
-        $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['file']);
+        $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
         $name = preg_replace ('/\.[^.]*$/', '', $name);
         $entries[$i]['file'] = $name;
+        $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
     }
     return $entries;
 }
@@ -53,7 +54,7 @@ function make_name ($name) {
 }
 
 function sort_entries ($a, $b) {
-    return strcasecmp ($a['file'], $b['file']);
+    return strcasecmp ($a['wiki'], $b['wiki']);
 }
 
 $rebuild = false;

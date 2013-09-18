@@ -208,7 +208,9 @@ function content_response (e) {
      * HTML page. Load it into a context free div element and then extract
      * the node we care about.
      * Then insert that node into the current column's sub-content */
-    var div = document.createElement ('div'), content, href, wiki_body;
+    var div = document.createElement ('div'), content, href, wiki_body,
+        sub_page = column.hasAttribute ('loading_page') ?
+            column.getAttribute ('loading_page') : 'Home';
 
     div.innerHTML = e.currentTarget.response ?
         e.currentTarget.response :
@@ -223,7 +225,28 @@ function content_response (e) {
         div.classList.add ('markdown-body');
         wiki_body.appendChild (div);
         content.appendChild (wiki_body);
+    } else {
+        last_edit = div.querySelector ('#last-edit');
+        if (last_edit) {
+            var github_link = div.querySelector ('a.action-edit-page');
+            if (github_link) {
+                /* GitHub URL syntax for starting the editing; GitHub flattens
+                 * the wiki structure, so no path structure (vs. Gollum which
+                 * does support a directory structure) */
+                github_link.href = 
+                    'http://github.com/crosswalk-project/crosswalk-website/wiki/' + 
+                    github_link.getAttribute ('href').replace (/^.*\//, '');
+                github_link.textContent = 'GitHub';
+                github_link.target = '_blank';
+                github_link.className = '';
+                last_edit.appendChild (github_link);
+            }
+            last_edit.innerHTML = last_edit.innerHTML.replace (
+                /Last edited/, 'Content last edited');
+            content.appendChild (last_edit);
+        }
     }
+
     div = column.querySelector ('.sub-content');
     /* If this was a delayed load, it may have finished after a switch
      * to the #home column, in which case there is no sub-content field */
@@ -258,9 +281,7 @@ function content_response (e) {
      * Our task is to find those URLs and rewrite them to be relative
      * to this #wiki system.
      */
-    var sub_page = column.hasAttribute ('loading_page') ?
-        column.getAttribute ('loading_page') : 'Home',
-        c;
+    var c;
     column.removeAttribute ('loading_page');
     column.setAttribute ('active_page', sub_page);
     Array.prototype.forEach.call (
