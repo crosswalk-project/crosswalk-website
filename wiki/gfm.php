@@ -95,7 +95,7 @@ if (preg_match ('/.html$/', $md)) {
  * Special case for Pages request which is dynamically built
  * from the list of pages in the main Wiki directory
  */
-if (strtolower ($request) == 'pages') {
+if (strtolower ($request) == 'pages' || strtolower ($request) == 'pages.md') {
     $pages = generatePageList ('.');
     $f = fopen ('pages.md.html', 'w');
     if (!$f) {

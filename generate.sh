@@ -28,11 +28,8 @@ test=$(ps -o pid= -C gollum)
 	echo ""
 }
 
-cd wiki
-find . -type f -not -path "./.git/*" -and -not -name "*.html" | while read file; do
-	[ "${file}" == "./gfm.php" ] && continue
-	[ "${file}" == "./.htaccess" ] && continue
-	[ "${file}" == "./php_errors.log" ] && continue
+function generate () {
+    file=$1
 	echo "Processing wiki/${file/.\//}..."
 	php gfm.php ${file/.\//} > /dev/null
 	html=${file/.\//}.html
@@ -45,7 +42,17 @@ find . -type f -not -path "./.git/*" -and -not -name "*.html" | while read file;
 		echo "Could not generate ${html}."
 		exit 1
 	}
+}
+    
+cd wiki
+find . -type f -not -path "./.git/*" -and -not -name "*.html" | while read file; do
+	[ "${file}" == "./gfm.php" ] && continue
+	[ "${file}" == "./.htaccess" ] && continue
+	[ "${file}" == "./php_errors.log" ] && continue
+	[ "${file}" == "./custom.js" ] && continue
+    generate "${file}"
 done
+generate "pages.md"
 cd ..
 
 for i in menus.js xwalk.css markdown.css; do
