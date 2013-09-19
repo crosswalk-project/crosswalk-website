@@ -185,18 +185,20 @@ function content_response (e) {
     activateColumn (column_name);
     
     if (xhr.status != 200) {
-        var tmp = 'Unable to fetch content:<br><div class="error">' +
-            xhr.status + ' ' + xhr.statusText + '</div>';
-
+        var tmp = '<div id="wiki-content"><div id="wiki-body">' +
+            '<div class="markdown-body"><h2>Unable to fetch content</h2>' +
+            'Reason: <span class="error">' + xhr.status + ' ' + xhr.statusText + '</span>';
+           
         if (column.hasAttribute ('referring_page')) {
             var referring_page = column.getAttribute ('referring_page');
             tmp += '<br>' +
                 'Reffering page: ' +
                 '<a href="#' + column_name + '/' +
                 referring_page + '">' +
-                referring_page + '</a>';
+                '#' + column_name + '/' + referring_page + '</a><br>';
         }
 
+        tmp += '</div></div>',
         column.querySelector ('.sub-content').innerHTML = tmp;
         xhr = null;
         return;
