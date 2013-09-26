@@ -98,6 +98,7 @@ sed -i \
 # from under the wiki/ path
 #
 sed -i -e 's:^wiki/\*\.html:#wiki/*.html:' \
+       -e 's:^wiki/assets:#wiki/assets:' \
        -e 's:^wiki/documentation:#wiki/documentation:' \
        -e 's:^wiki/contribute:#wiki/contribute:' .gitignore
 for i in xwalk.css markdown.css menus.js; do
