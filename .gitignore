@@ -6,6 +6,7 @@ wiki/documentation
 wiki/contribute
 wiki/.git
 wiki/php_errors.log
+wiki/assets
 *.msg
 *.map
 xwalk.css
