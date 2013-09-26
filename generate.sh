@@ -45,7 +45,7 @@ function generate () {
 }
     
 cd wiki
-find . -type f -not -path "./.git/*" -and -not -name "*.html" | while read file; do
+find . -type f -not -path "./.git/*" -and -not -name "*.html" -and -not -path '*/assets/*' | while read file; do
 	[ "${file}" == "./gfm.php" ] && continue
 	[ "${file}" == "./.htaccess" ] && continue
 	[ "${file}" == "./php_errors.log" ] && continue
