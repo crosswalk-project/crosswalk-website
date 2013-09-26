@@ -44,6 +44,9 @@ cd wiki
 check_unstaged
 cd ..
 
+echo "Check complete. Enter to continue." 
+read
+
 # Make new branch for live-YYYYMMDD
 # -t track upstream (push/pull from github will work)
 # -f force -- delete branch if it already exists
@@ -58,11 +61,20 @@ echo "Using branch: ${branch}"
 git branch -t ${branch}
 git checkout ${branch}
 
+
+echo "Branch / Checkout to ${branch} complete. Enter to continue." 
+read
+
 #
 # Nuke all dynamic content and regenerate it
 #
 ./cleanup.sh
+echo "Cleanup complete. Enter to continue." 
+read
 ./generate.sh
+echo "Generate complete. Enter to continue." 
+read
+
 
 #
 # Turn off the PHP script override for the root directory
@@ -93,6 +105,9 @@ git add xwalk.css
 git add markdown.css
 git add menus.js
 
+echo "git add complete. Enter to continue." 
+read
+
 #
 # Remove PHP generating scripts from Live site
 #
@@ -113,11 +128,18 @@ find wiki -name '*.md' -exec rm {} \;
 find wiki -name '*.mediawiki' -exec rm {} \;
 find wiki -name '*.org' -exec rm {} \;
 
+echo "Markdown content removal complete. Enter to continue." 
+read
+
 git commit -s -a -m "Automatic static version commit for ${branch}"
 cd wiki
 git checkout -f
+echo "Wiki checkout complete. Enter to continue." 
+read
 cd ..
 git checkout master
+echo "Site checkout complete. Enter to continue." 
+read
 git tag tag-${branch}
 cd wiki
 git tag tag-${branch}
