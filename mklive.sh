@@ -88,6 +88,7 @@ done
 # Adding generated Wiki content to the Live site
 #
 find wiki -name '*html' -exec git add {} \;
+find wiki/assets -exec git add {} \;
 git add xwalk.css
 git add markdown.css
 git add menus.js
