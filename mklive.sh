@@ -143,23 +143,23 @@ read
 }
 
 git commit -s -a -m "Automatic static version commit for ${branch}"
+
+git checkout master
+git tag tag-${branch}
+(( debug )) && {
+	echo "Site checkout complete. Enter to continue." 
+	read
+}
+
 cd wiki
 git checkout -f
+git tag tag-${branch}
+(( debug )) && {
+	echo "Wiki checkout complete. Enter to continue." 
+	read
+}
+cd ..
 
-(( debug )) && {
-echo "Wiki checkout complete. Enter to continue." 
-read
-}
-cd ..
-git checkout master
-(( debug )) && {
-echo "Site checkout complete. Enter to continue." 
-read
-}
-git tag tag-${branch}
-cd wiki
-git tag tag-${branch}
-cd ..
 cat << EOF
 
 Changes committed to git as branch ${branch}.
