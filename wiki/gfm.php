@@ -200,7 +200,7 @@ if (strtolower ($request) == 'history' ||
             'crosswalk-website/wiki/'.$event['file'].
             '/_compare/'.$event['sha'].'..'.$event['prev_sha'].
             '"">view diff</a>';
-        fwrite ($f, '<li>'.$event['name'].
+        fwrite ($f, '<li><a href="'.$event['file'].'">'.$event['name'].'</a>'.
                 '<ul><li>'.$subject.'</li>'.
                 '<li>'.$event['date'].' - '.$event['author'].'</li></ul></li>');
     }
