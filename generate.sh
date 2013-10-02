@@ -53,6 +53,7 @@ find . -type f -not -path "./.git/*" -and -not -name "*.html" -and -not -path '*
     generate "${file}"
 done
 generate "pages.md"
+generate "history.md"
 cd ..
 
 for i in menus.js xwalk.css markdown.css; do

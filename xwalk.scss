@@ -200,6 +200,17 @@ p {
     }
 }
 
+.history-list {
+    &>li>ul {
+        &>li{
+            list-style: none
+        }
+        a {
+            font-size: 0.75rem;
+        }
+    }
+}
+
 #documentation-column, #contribute-column, #wiki-column {
     max-width: 900px;
     margin: 0 auto;

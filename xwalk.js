@@ -487,7 +487,9 @@ function navigateTo (href) {
         el.classList.add ('active');
     });
     
-    if (column_name == 'wiki' && requested_page != 'home')
+    if (column_name == 'wiki' && 
+        requested_page != 'home' && 
+        requested_page != 'history')
         document.querySelector (
             '.sub-menu a[href="#wiki/pages"]').classList.add ('active');
 }

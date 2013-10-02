@@ -77,7 +77,8 @@ if ($rebuild) {
                      'items' => scan_dir ('wiki/contribute'));
     $json[] = Array ('menu' => 'wiki',
                      'items' => Array (Array ('name' => 'Home', 'file' => 'Home' ),
-                                       Array ('name' => 'Pages', 'file' => 'Pages' )));
+                                       Array ('name' => 'Pages', 'file' => 'Pages' ),
+                                       Array ('name' => 'History', 'file' => 'History' )));
     $f = @fopen ('menus.js', 'w');
     if (!$f) {
 	print 'Unable to open menus.js for writing.'."\n";
