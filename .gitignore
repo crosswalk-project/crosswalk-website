@@ -1,3 +1,5 @@
+wiki/.gitignore
+wiki/.htaccess
 wiki/*.md
 wiki/*.mediawiki
 wiki/*.org
