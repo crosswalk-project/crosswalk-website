@@ -95,6 +95,9 @@ fclose ($m);
  * '.BASENAME.css' with 'BASENAME.css' 
  */
 $c = @fopen ($basename.'.css', 'w');
+if (!$c) {
+    failure ('Can not create '.$basename.'.css');
+}
 while (!feof ($f)) {
     fwrite ($c, preg_replace ('/\.'.$basename.'\.css/', $basename.'.css', fgets ($f)));
 }
