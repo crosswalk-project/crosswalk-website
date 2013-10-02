@@ -73,6 +73,9 @@ if (!$p) {
 
 /* Write any output from the sass command into BASENAME.msg for later retrieval (if needed) */
 $m = @fopen ($basename.'.msg', 'w');
+if (!$m) {
+    failure ('Unable to open '.$basename.'.msg for writing');
+}
 fwrite ($m, "/* $basename.'.css' generated ".strftime ("%F %r")." via:\n *\n * ".$cmd."\n".
             " * sass output:\n");
 while (!feof ($p)) {

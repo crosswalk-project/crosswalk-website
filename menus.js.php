@@ -78,7 +78,11 @@ if ($rebuild) {
     $json[] = Array ('menu' => 'wiki',
                      'items' => Array (Array ('name' => 'Home', 'file' => 'Home' ),
                                        Array ('name' => 'Pages', 'file' => 'Pages' )));
-    $f = fopen ('menus.js', 'w');
+    $f = @fopen ('menus.js', 'w');
+    if (!$f) {
+	print 'Unable to open menus.js for writing.'."\n";
+        exit -1;
+    }
     fwrite ($f, 'var menus = '.json_encode ($json).';');
     fclose ($f);
     @chmod ('menus.js', 0644);
