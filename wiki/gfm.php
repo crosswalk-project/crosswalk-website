@@ -204,17 +204,17 @@ if (strtolower ($request) == 'history' ||
     $spans = Array ('days' => Array ('show_date' => 1,
                                      'start' => 0, 
                                      'end' => 6, 
-                                     'names' => Array ('Today', 'Yesterday', ' Days Ago')), 
+                                     'names' => Array ('today', 'yesterday', ' days ago')), 
                     'weeks' => Array ('show_date' => 0,
                                       'start' => 1, 
                                       'end' => 3,
-                                      'names' => Array ('This Week', 'Last Week', 
-                                                        ' Weeks Ago')),
+                                      'names' => Array ('this week', 'last week', 
+                                                        ' weeks ago')),
                     'months' => Array ('show_date' => 0,
                                        'start' => 1, 
                                        'end' => 12,
-                                       'names' => Array ('This Month', 'Last Month', 
-                                                        ' Months Ago')));
+                                       'names' => Array ('this month', 'last month', 
+                                                        ' months ago')));
     foreach ($spans as $key => $value) {
         for ($i = $value['start']; $i <= $value['end']; $i++) {
             $history = generateHistory ('.git', $i.'.'.$key, ($i+1).'.'.$key);
@@ -228,7 +228,7 @@ if (strtolower ($request) == 'history' ||
             if ($value['show_date']) {
                 $period .= ' &ndash; '.strftime ('%A, %B %e', $history[0]['date']);
             }
-            fwrite ($f, '<h3>Pages Changed '.$period.'</h3>');
+            fwrite ($f, '<h3>Pages changed '.$period.'</h3>');
             fwrite ($f, '<ul class="history-list">');
             foreach ($history as $event) {
                 $str = '<li><a href="'.$event['file'].'">'.$event['name'].'</a>&mdash;';
