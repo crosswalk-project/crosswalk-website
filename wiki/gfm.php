@@ -116,12 +116,16 @@ if (strtolower ($request) == 'pages' ||
     exit;
 }
 
-function generateHistory ($path) {
-    $f = @popen ('git --git-dir='.$path.' log '.
-                 '--name-only '.
-                 '--no-merges --pretty=format:">>> %s|%an|%cd|%H "', 'r');
+function generateHistory ($path, $start, $end) {
+    $cmd = 'git --git-dir='.$path.' log '.
+        '--since='.$end.' --until='.$start.' '.
+        '--name-only '.
+        '--no-merges '.
+        '--pretty=format:">>> %s|%an|%ct|%H"';
+    $f = @popen ($cmd, 'r');
     $history = Array ();
     $tracking = Array ();
+
     while (!feof ($f)) {
         $line = trim (fgets ($f));
         $skip = trim (fgets ($f));
@@ -137,30 +141,31 @@ function generateHistory ($path) {
         while ($skip != '') {
             $file = $skip;
             /* Only add if:
-             * No entry has been started for this commit
-             * AND this file does not contain a path (/)
-             * AND this file exists on the file system
-             * AND this file is a recognized markdown type
-             * AND if this file isn't already being tracked in another commit
+             * + this file does not contain a path (/)
+             * + this file exists on the file system
+             * + this file is a recognized markdown type
              */
-            if ($event == null &&
-                !preg_match ('/\//', $file) &&
-                file_exists ($file) &&
-                preg_match ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/', $file) &&
-                !in_array ($file, $tracking)) {
-                $parts = explode ('|', preg_replace ('/^>>> /', '', $line));
-                $event = Array (
-                    'orig' => $file,
-                    'file' => preg_replace ('/\.[^.]*$/', '', $file),
-                    'name' => make_name (preg_replace ('/\.[^.]*$/', '', $file)),
-                    'subject' => $parts[0],
-                    'author' => $parts[1],
-                    'date' => preg_replace ('/-[^-]*$/', '', $parts[2]),
-                    'sha' => $parts[3]
-                );
+            if (!preg_match ('/\//', $file) && file_exists ($file) &&
+                preg_match ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/', $file)) {
                 
-                $tracking [] = $file;
-                $history [] = $event;
+                $parts = explode ('|', preg_replace ('/^>>> /', '', $line));
+
+                if (($key = array_search ($file, $tracking)) !== false) {
+                    $history [$key]['end_sha'] = $parts[3];
+                } else {
+                    $event = Array (
+                        'orig' => $file,
+                        'file' => preg_replace ('/\.[^.]*$/', '', $file),
+                        'name' => make_name (preg_replace ('/\.[^.]*$/', '', $file)),
+                        'subject' => $parts[0],
+                        'author' => $parts[1],
+                        'date' => preg_replace ('/-[^-]*$/', '', $parts[2]),
+                        'start_sha' => $parts[3],
+                        'end_sha' => ''
+                    );
+                    $tracking [] = $file;
+                    $history [] = $event;
+                }
             }
             $skip = trim (fgets ($f));
         }
@@ -168,10 +173,14 @@ function generateHistory ($path) {
     pclose ($f);
     
     for ($i = 0; $i < count ($history); $i++) {
-        $f = @popen ('git --git-dir='.$path.' log -n 1 --pretty=format:"%H" '.
-                     $history[$i]['sha'].'^ -- '.
-                     $history[$i]['orig'], 'r');
-        $history[$i]['prev_sha'] = trim (fgets ($f));
+        if ($history[$i]['end_sha'] != '')
+            continue;
+        
+        $cmd = 'git --git-dir='.$path.' log -n 1 --pretty=format:"%H" '.
+                     $history[$i]['start_sha'].'^ -- '.
+                     '"'.$history[$i]['orig'].'"';
+        $f = @popen ($cmd, 'r');
+        $history[$i]['end_sha'] = trim (fgets ($f));
         pclose ($f);
     }
     
@@ -185,26 +194,58 @@ function generateHistory ($path) {
  */
 if (strtolower ($request) == 'history' || 
     strtolower ($request) == 'history.md') {
-    $history = generateHistory ('.git');
+
     $f = fopen ('history.md.html', 'w');
     if (!$f) {
         missing ();
     }
     fwrite ($f, '<h2>Crosswalk Wiki History</h2>');
-    fwrite ($f, '<ul class="history-list">');
-    foreach ($history as $event) {
-        $subject = $event['subject'];
-        if ($event['prev_sha'] != '')
-            $subject .= ' <a href="'.
-            'https://github.com/crosswalk-project/'.
-            'crosswalk-website/wiki/'.$event['file'].
-            '/_compare/'.$event['sha'].'..'.$event['prev_sha'].
-            '"">view diff</a>';
-        fwrite ($f, '<li><a href="'.$event['file'].'">'.$event['name'].'</a>'.
-                '<ul><li>'.$subject.'</li>'.
-                '<li>'.$event['date'].' - '.$event['author'].'</li></ul></li>');
+    
+    $spans = Array ('days' => Array ('show_date' => 1,
+                                     'start' => 0, 
+                                     'end' => 6, 
+                                     'names' => Array ('Today', 'Yesterday', ' Days Ago')), 
+                    'weeks' => Array ('show_date' => 0,
+                                      'start' => 1, 
+                                      'end' => 3,
+                                      'names' => Array ('This Week', 'Last Week', 
+                                                        ' Weeks Ago')),
+                    'months' => Array ('show_date' => 0,
+                                       'start' => 1, 
+                                       'end' => 12,
+                                       'names' => Array ('This Month', 'Last Month', 
+                                                        ' Months Ago')));
+    foreach ($spans as $key => $value) {
+        for ($i = $value['start']; $i <= $value['end']; $i++) {
+            $history = generateHistory ('.git', $i.'.'.$key, ($i+1).'.'.$key);
+            if (count ($history) == 0)
+                continue;
+            if ($i >= count ($value['names']) - 1) {
+                $period = ''.($i+1).''.$value['names'][count($value['names'])-1];
+            } else {
+                $period = $value['names'][$i];
+            }
+            if ($value['show_date']) {
+                $period .= ' &ndash; '.strftime ('%A, %B %e', $history[0]['date']);
+            }
+            fwrite ($f, '<h3>Pages Changed '.$period.'</h3>');
+            fwrite ($f, '<ul class="history-list">');
+            foreach ($history as $event) {
+                $str = '<li><a href="'.$event['file'].'">'.$event['name'].'</a>&mdash;';
+                if ($event['end_sha'] != '')
+                    $str .= '<a target="_blank" href="'.
+                    'https://github.com/crosswalk-project/'.
+                    'crosswalk-website/wiki/'.$event['file'].
+                    '/_compare/'.$event['start_sha'].'..'.$event['end_sha'].
+                    '"">view changes</a>';
+                else
+                    $str .= 'added';
+                $str .= '</li>';
+                fwrite ($f, $str);
+            }
+            fwrite ($f, '</ul>');
+        }
     }
-    fwrite ($f, '</ul>');
     fclose ($f);
     require('history.md.html');
     exit;
