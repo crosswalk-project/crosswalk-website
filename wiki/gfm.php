@@ -157,8 +157,8 @@ function generateHistory ($path, $start, $end) {
                         'orig' => $file,
                         'file' => preg_replace ('/\.[^.]*$/', '', $file),
                         'name' => make_name (preg_replace ('/\.[^.]*$/', '', $file)),
-                        'subject' => $parts[0],
-                        'author' => $parts[1],
+//                        'subject' => $parts[0],
+//                        'author' => $parts[1],
                         'date' => preg_replace ('/-[^-]*$/', '', $parts[2]),
                         'start_sha' => $parts[3],
                         'end_sha' => ''
@@ -194,64 +194,37 @@ function generateHistory ($path, $start, $end) {
  */
 if (strtolower ($request) == 'history' || 
     strtolower ($request) == 'history.md') {
-
-    $f = fopen ('history.md.html', 'w');
-    if (!$f) {
-        missing ();
-    }
-    fwrite ($f, '<h2>Crosswalk Wiki History</h2>');
     
     $spans = Array ('days' => Array ('show_date' => 1,
                                      'start' => 0, 
-                                     'end' => 6, 
-                                     'names' => Array ()),
+                                     'end' => 6),
                     //'today', 'yesterday', ' days ago')), 
                     'weeks' => Array ('show_date' => 0,
                                       'start' => 1, 
-                                      'end' => 3,
-                                      'names' => Array ('This week', 'Last week', 
-                                                        ' weeks ago')),
+                                      'end' => 3),
                     'months' => Array ('show_date' => 0,
                                        'start' => 1, 
-                                       'end' => 12,
-                                       'names' => Array ('This month', 'Last month', 
-                                                        ' months ago')));
+                                       'end' => 12));
+    $events = Array ();
+    
     foreach ($spans as $key => $value) {
         for ($i = $value['start']; $i <= $value['end']; $i++) {
             $history = generateHistory ('.git', $i.'.'.$key, ($i+1).'.'.$key);
             if (count ($history) == 0)
                 continue;
-            if (count ($value['names'])) {
-                if ($i >= count ($value['names']) - 1) {
-                    $period = ''.($i+1).''.$value['names'][count($value['names'])-1];
-                } else {
-                    $period = $value['names'][$i];
-                }
-                if ($value['show_date']) {
-                    $period .= ' &ndash; '.strftime ('%A, %B %e', $history[0]['date']);
-                }
-                fwrite ($f, '<h3>'.$period.'</h3>');
-            } else {
-                fwrite ($f, '<h3>'.strftime ('%A, %B %e', $history[0]['date']).'</h3>');
-            }
-            fwrite ($f, '<ul class="history-list">');
             foreach ($history as $event) {
-                $str = '<li><a href="'.$event['file'].'">'.$event['name'].'</a> ';
-                if ($event['end_sha'] != '')
-                    $str .= '<a target="_blank" href="'.
-                    'https://github.com/crosswalk-project/'.
-                    'crosswalk-website/wiki/'.$event['file'].
-                    '/_compare/'.$event['start_sha'].'..'.$event['end_sha'].
-                    '"">View changes on GitHub</a>';
-                else
-                    $str .= '<span>New page</span>';
-                $str .= '</li>';
-                fwrite ($f, $str);
+                $events [] = $event;
             }
-            fwrite ($f, '</ul>');
         }
     }
+
+    $f = fopen ('history.md.html', 'w');
+    if (!$f) {
+        missing ();
+    }
+    fwrite ($f, json_encode ($events));
     fclose ($f);
+    
     require('history.md.html');
     exit;
 }

@@ -172,6 +172,188 @@ function loadingGraphicStop () {
     });
 }
     
+function generate_wiki_page (contents) {
+    var content = document.createElement ('div'),
+        wiki_body = document.createElement ('div'),
+        div = document.createElement ('div');
+    
+    div.innerHTML = contents;
+    content = div.querySelector ('#wiki-content');
+    wiki_body = div.querySelector ('#wiki-body');
+    
+    if (!content) {
+        content = document.createElement ('div');
+        content.id = 'wiki-content';
+        wiki_body = document.createElement ('div');
+        wiki_body.id = 'wiki-body';
+        div.classList.add ('markdown-body');
+        wiki_body.appendChild (div);
+        content.appendChild (wiki_body);
+    } else {
+        last_edit = div.querySelector ('#last-edit');
+        if (last_edit && column_name == 'wiki') {
+            var github_link = div.querySelector ('a.action-edit-page');
+            if (github_link) {
+                /* GitHub URL syntax for starting the editing; GitHub flattens
+                 * the wiki structure, so no path structure (vs. Gollum which
+                 * does support a directory structure) */
+                github_link.href = 
+                    'http://github.com/crosswalk-project/crosswalk-website/wiki/' + 
+                    github_link.getAttribute ('href').replace (/^.*\//, '');
+                github_link.textContent = 'GitHub';
+                github_link.target = '_blank';
+                github_link.className = '';
+                last_edit.appendChild (github_link);
+            }
+            last_edit.innerHTML = last_edit.innerHTML.replace (
+                /Last edited/, 'Content last edited');
+            content.appendChild (last_edit);
+        }
+    }
+    
+    /* If the content contains the 'missing' class then the Wiki
+     * request hit a 404 */
+    if (content.querySelector ('.missing')) {
+        var referring_page = column.hasAttribute ('referring_page') ?
+            column.getAttribute ('referring_page') : 'Internal link',
+            tmp = document.createElement ('div');
+        tmp.innerHTML = '<h2>Missing Page</h2>' +
+                        'Reffering page: ' +
+                        '<a href="#' + column_name + '/' +
+                        referring_page + '">' +
+                        '#' + column_name + '/' + referring_page + '</a><br>';
+        var el = wiki_body.querySelector ('.markdown-body');
+        el.insertBefore (tmp, el.firstChild);
+    }
+
+    return content;
+}
+
+function generate_history_page (contents) {
+    var content = document.createElement ('div'),
+        wiki_body = document.createElement ('div'),
+        div = document.createElement ('div');
+
+    content.id = 'wiki-content';
+    wiki_body.id = 'wiki-body';
+    div.classList.add ('markdown-body');
+    
+    wiki_body.appendChild (div);
+    content.appendChild (wiki_body);
+    
+    try {
+        var html, events, spans, i, j, time,
+            date = new Date (),
+            now = Date.now ();
+        
+        events = JSON.parse (contents);
+        
+        html = '<h2>Crosswalk Wiki History</h2>';
+        
+        spans = new Array (
+            { /* days */
+                length: 60 * 60 * 24 * 1000, /* 60s * 60m * 24h = 1 day */
+                start: now,
+                end: now - (60 * 60 * 24) * (8 - date.getDay ()) * 1000,
+                names: null 
+            }, { /* weeks */
+                length: 60 * 60 * 24 * 7 * 1000, /* 60s * 60m * 24h * 7d = 1 week */
+                start: now - (60 * 60 * 24 * date.getDay () * 1000),
+                end: now - (60 * 60 * 24 * 7) * 4 * 1000,
+                names: new Array ('Last week', ' weeks ago') 
+            }, { /* months */
+                length: 60 * 60 * 24 * 30 * 1000, /* 60s * 60m * 24h * 30d = ~1 month */
+                start: now - (60 * 60 * 24 * 7 * 1000 * date.getDate ()),
+                end: now - (60 * 60 * 24 * 30 * 12 * 1000),
+                names: new Array ('Last month', ' months ago')
+            }
+        );
+
+
+        j = 0;
+        spans.forEach (function (span) {
+            var period = null, period_index = 0, last_period_index = 0, 
+                tracked = [], k;
+                                    
+            while (j < events.length) {
+                event = events[j];
+            
+                /* Events are delivered chronologically, with future events 
+                 * (due to timezone) being processed by the first span "Today"
+                 * 
+                 * If this events happened farther back in time than this span 
+                 * handles exit the while () loop to process the event under 
+                 * the next span */
+                if (parseInt (event.date) * 1000 <= span.end) {
+                    break;
+                }
+                
+                /* Check if this particular file is already listed as being 
+                 * edited in this time period, and if so, so skip it... */
+                for (k = 0; k < tracked.length; k++) {
+                    if (event.file == tracked[k])
+                        break;
+                }
+                if (k != tracked.length) {
+                    j++;
+                    continue;
+                }
+                tracked.push (event.file);
+                
+                event.date = parseInt (event.date) * 1000;
+                
+                period_index = Math.max (
+                    0, Math.floor ((span.start - event.date) / span.length));
+                if (period == null || period_index != last_period_index) {
+                    if (period != null)
+                        html += '</ul>';
+                    if (span.names) {
+                        if (period_index >= span.names.length - 1) {
+                            period = '' + (period_index + 1) + 
+                                span.names[span.names.length - 1];
+                        } else {
+                            period = span.names[period_index];
+                        }
+                    } else {
+                        period = new Date(event.date).toDateString ();
+                    }
+                    html += '<h3>' + period + '</h3>';
+                    html += '<ul class="history-list">';
+                    last_period_index = period_index;
+                }
+                
+                html += '<li><a href="' + event.file + '">' + event.name + '</a> ';
+                if (event.end_sha != '') {
+                    html += '<a target="_blank" href="' + 
+                        'https://github.com/crosswalk-project/' + 
+                        'crosswalk-website/wiki/' + event.file + 
+                        '/_compare/' + event.start_sha + '..' + event.end_sha + 
+                        '"">View changes on GitHub</a>';
+                } else {
+                    html += '<span>New page</span>';
+                }
+
+                html += '</li>';
+                
+                j++;
+            }
+            
+            if (period != null) {
+                html += '</ul>';
+            }
+            
+            
+        });
+
+        div.innerHTML = html;
+
+    } catch (e) {
+        div.textContent = 'Error parsing Wiki History';
+    }
+    
+    return content;
+}    
+    
 function content_response (e) {
     if (xhr.readyState != XMLHttpRequest.DONE) {
         console.log (xhr.status);
@@ -210,45 +392,28 @@ function content_response (e) {
      * HTML page. Load it into a context free div element and then extract
      * the node we care about.
      * Then insert that node into the current column's sub-content */
-    var div = document.createElement ('div'), content, href, wiki_body,
+    var content, href, wiki_body,
         sub_page = column.hasAttribute ('loading_page') ?
             column.getAttribute ('loading_page') : 'Home';
 
-    div.innerHTML = e.currentTarget.response ?
-        e.currentTarget.response :
-        e.currentTarget.responseText;
-    content = div.querySelector ('#wiki-content');
-    wiki_body = div.querySelector ('#wiki-body');
-    if (!content) {
-        content = document.createElement ('div');
-        content.id = 'wiki-content';
-        wiki_body = document.createElement ('div');
-        wiki_body.id = 'wiki-body';
-        div.classList.add ('markdown-body');
-        wiki_body.appendChild (div);
-        content.appendChild (wiki_body);
+    /* The Wiki History is a dynamically generated JSON list of page edits
+     * clustered chronologically. However the content on the server may not
+     * be updated every day, which would result in stale time indicators.
+     * 
+     * So, the server returns the collected/clustered JSON data, and the
+     * client then post-filteres it into "current" time periods for display
+     * to the user.
+     */
+    if (column_name == 'wiki' && sub_page == 'history') {
+        content = generate_history_page (e.currentTarget.response ?
+                e.currentTarget.response :
+                e.currentTarget.responseText);
     } else {
-        last_edit = div.querySelector ('#last-edit');
-        if (last_edit && column_name == 'wiki') {
-            var github_link = div.querySelector ('a.action-edit-page');
-            if (github_link) {
-                /* GitHub URL syntax for starting the editing; GitHub flattens
-                 * the wiki structure, so no path structure (vs. Gollum which
-                 * does support a directory structure) */
-                github_link.href = 
-                    'http://github.com/crosswalk-project/crosswalk-website/wiki/' + 
-                    github_link.getAttribute ('href').replace (/^.*\//, '');
-                github_link.textContent = 'GitHub';
-                github_link.target = '_blank';
-                github_link.className = '';
-                last_edit.appendChild (github_link);
-            }
-            last_edit.innerHTML = last_edit.innerHTML.replace (
-                /Last edited/, 'Content last edited');
-            content.appendChild (last_edit);
-        }
+        content = generate_wiki_page (e.currentTarget.response ?
+            e.currentTarget.response :
+            e.currentTarget.responseText);
     }
-
+                                        
     div = column.querySelector ('.sub-content');
     /* If this was a delayed load, it may have finished after a switch
      * to the #home column, in which case there is no sub-content field */
@@ -257,21 +422,6 @@ function content_response (e) {
     }
     while (div.firstChild)
         div.removeChild (div.firstChild);
-
-    /* If the content contains the 'missing' class then the Wiki
-     * request hit a 404 */
-    if (content.querySelector ('.missing')) {
-        var referring_page = column.hasAttribute ('referring_page') ?
-            column.getAttribute ('referring_page') : 'Internal link',
-            tmp = document.createElement ('div');
-        tmp.innerHTML = '<h2>Missing Page</h2>' +
-                        'Reffering page: ' +
-                        '<a href="#' + column_name + '/' +
-                        referring_page + '">' +
-                        '#' + column_name + '/' + referring_page + '</a><br>';
-        var el = wiki_body.querySelector ('.markdown-body');
-        el.insertBefore (tmp, el.firstChild);
-    }
 
     div.appendChild (content);
 
