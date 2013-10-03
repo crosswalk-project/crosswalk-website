@@ -200,17 +200,6 @@ p {
     }
 }
 
-.history-list {
-    &>li>ul {
-        &>li{
-            list-style: none
-        }
-        a {
-            font-size: 0.75rem;
-        }
-    }
-}
-
 #documentation-column, #contribute-column, #wiki-column {
     max-width: 900px;
     margin: 0 auto;
@@ -959,6 +948,33 @@ p {
         a {
             color: $doc-last-edit-fg;
             float: right;
+        }
+    }
+    
+    .markdown-body h3 {
+        font-weight: bold;
+        font-size: 15px;
+        color: black;
+    }
+    
+    ul.history-list {
+        padding-left: 1.75ex;
+        li {
+            list-style: none;
+        }
+        li a:last-child {
+            color: #8eb08f;
+/*            top: -8px;
+            position: relative;
+            display:inline-block;*/
+            font-size: 0.8rem;
+        }
+        li span:last-child {
+            color: #736e6c;
+/*            top: -8px;
+            position: relative;
+            display:inline-block;*/
+            font-size: 0.8rem;
         }
     }
 }

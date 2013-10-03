@@ -204,42 +204,47 @@ if (strtolower ($request) == 'history' ||
     $spans = Array ('days' => Array ('show_date' => 1,
                                      'start' => 0, 
                                      'end' => 6, 
-                                     'names' => Array ('today', 'yesterday', ' days ago')), 
+                                     'names' => Array ()),
+                    //'today', 'yesterday', ' days ago')), 
                     'weeks' => Array ('show_date' => 0,
                                       'start' => 1, 
                                       'end' => 3,
-                                      'names' => Array ('this week', 'last week', 
+                                      'names' => Array ('This week', 'Last week', 
                                                         ' weeks ago')),
                     'months' => Array ('show_date' => 0,
                                        'start' => 1, 
                                        'end' => 12,
-                                       'names' => Array ('this month', 'last month', 
+                                       'names' => Array ('This month', 'Last month', 
                                                         ' months ago')));
     foreach ($spans as $key => $value) {
         for ($i = $value['start']; $i <= $value['end']; $i++) {
             $history = generateHistory ('.git', $i.'.'.$key, ($i+1).'.'.$key);
             if (count ($history) == 0)
                 continue;
-            if ($i >= count ($value['names']) - 1) {
-                $period = ''.($i+1).''.$value['names'][count($value['names'])-1];
+            if (count ($value['names'])) {
+                if ($i >= count ($value['names']) - 1) {
+                    $period = ''.($i+1).''.$value['names'][count($value['names'])-1];
+                } else {
+                    $period = $value['names'][$i];
+                }
+                if ($value['show_date']) {
+                    $period .= ' &ndash; '.strftime ('%A, %B %e', $history[0]['date']);
+                }
+                fwrite ($f, '<h3>'.$period.'</h3>');
             } else {
-                $period = $value['names'][$i];
+                fwrite ($f, '<h3>'.strftime ('%A, %B %e', $history[0]['date']).'</h3>');
             }
-            if ($value['show_date']) {
-                $period .= ' &ndash; '.strftime ('%A, %B %e', $history[0]['date']);
-            }
-            fwrite ($f, '<h3>Pages changed '.$period.'</h3>');
             fwrite ($f, '<ul class="history-list">');
             foreach ($history as $event) {
-                $str = '<li><a href="'.$event['file'].'">'.$event['name'].'</a>&mdash;';
+                $str = '<li><a href="'.$event['file'].'">'.$event['name'].'</a> ';
                 if ($event['end_sha'] != '')
                     $str .= '<a target="_blank" href="'.
                     'https://github.com/crosswalk-project/'.
                     'crosswalk-website/wiki/'.$event['file'].
                     '/_compare/'.$event['start_sha'].'..'.$event['end_sha'].
-                    '"">view changes</a>';
+                    '"">View changes on GitHub</a>';
                 else
-                    $str .= 'added';
+                    $str .= '<span>New page</span>';
                 $str .= '</li>';
                 fwrite ($f, $str);
             }
