@@ -179,7 +179,6 @@ function generate_wiki_page (contents) {
     
     div.innerHTML = contents;
     content = div.querySelector ('#wiki-content');
-    wiki_body = div.querySelector ('#wiki-body');
     
     if (!content) {
         content = document.createElement ('div');
@@ -190,6 +189,16 @@ function generate_wiki_page (contents) {
         wiki_body.appendChild (div);
         content.appendChild (wiki_body);
     } else {
+        var last_edit, title;
+        wiki_body = div.querySelector ('#wiki-body .markdown-body');
+        /* Inject title in header if not found */
+        title = wiki_body.querySelector ('h2:first-child');
+        if (title == null) { /* Wiki entry does not start with a header... so add title */
+            title = document.createElement ('h2');
+            title.textContent = div.querySelector ('#head h1').textContent;
+            wiki_body.insertBefore (title, wiki_body.firstChild);
+        }
+        /* Inject Last Edit in footer */
         last_edit = div.querySelector ('#last-edit');
         if (last_edit && column_name == 'wiki') {
             var github_link = div.querySelector ('a.action-edit-page');
@@ -222,8 +231,7 @@ function generate_wiki_page (contents) {
                         '<a href="#' + column_name + '/' +
                         referring_page + '">' +
                         '#' + column_name + '/' + referring_page + '</a><br>';
-        var el = wiki_body.querySelector ('.markdown-body');
-        el.insertBefore (tmp, el.firstChild);
+        wiki_body.insertBefore (tmp, wiki_body.firstChild);
     }
 
     return content;
@@ -392,7 +400,7 @@ function content_response (e) {
      * HTML page. Load it into a context free div element and then extract
      * the node we care about.
      * Then insert that node into the current column's sub-content */
-    var content, href, wiki_body,
+    var content, href,
         sub_page = column.hasAttribute ('loading_page') ?
             column.getAttribute ('loading_page') : 'Home';
 
