@@ -285,15 +285,22 @@ function generate_history_page (contents) {
                                     
             while (j < events.length) {
                 event = events[j];
-            
+                event.date = parseInt (event.date) * 1000;
+                
                 /* Events are delivered chronologically, with future events 
                  * (due to timezone) being processed by the first span "Today"
                  * 
                  * If this events happened farther back in time than this span 
                  * handles exit the while () loop to process the event under 
                  * the next span */
-                if (parseInt (event.date) * 1000 <= span.end) {
+                if (event.date <= span.end) {
                     break;
+                }
+                
+                period_index = Math.max (
+                    0, Math.floor ((span.start - event.date) / span.length));
+                if (period == null || period_index != last_period_index) {
+                    tracked = [];
                 }
                 
                 /* Check if this particular file is already listed as being 
@@ -302,17 +309,14 @@ function generate_history_page (contents) {
                     if (event.file == tracked[k])
                         break;
                 }
+                
                 if (k != tracked.length) {
                     j++;
                     continue;
                 }
-                tracked.push (event.file);
                 
-                event.date = parseInt (event.date) * 1000;
-                
-                period_index = Math.max (
-                    0, Math.floor ((span.start - event.date) / span.length));
                 if (period == null || period_index != last_period_index) {
+                    /* Reset the tracked list */
                     if (period != null)
                         html += '</ul>';
                     if (span.names) {
@@ -329,7 +333,7 @@ function generate_history_page (contents) {
                     html += '<ul class="history-list">';
                     last_period_index = period_index;
                 }
-                
+
                 html += '<li><a href="' + event.file + '">' + event.name + '</a> ';
                 if (event.end_sha != '') {
                     html += '<a target="_blank" href="' + 
@@ -343,6 +347,7 @@ function generate_history_page (contents) {
 
                 html += '</li>';
                 
+                tracked.push (event.file);
                 j++;
             }
             
