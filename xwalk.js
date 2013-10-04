@@ -335,7 +335,7 @@ function generate_history_page (contents) {
                     html += '<a target="_blank" href="' + 
                         'https://github.com/crosswalk-project/' + 
                         'crosswalk-website/wiki/' + event.file + 
-                        '/_compare/' + event.start_sha + '..' + event.end_sha + 
+                        '/_compare/' + event.end_sha + '..' + event.start_sha + 
                         '"">View changes on GitHub</a>';
                 } else {
                     html += '<span>New page</span>';
