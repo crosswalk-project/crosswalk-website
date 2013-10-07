@@ -201,6 +201,11 @@ function generate_wiki_page (contents) {
         /* Inject Last Edit in footer */
         last_edit = div.querySelector ('#last-edit');
         if (last_edit && column_name == 'wiki') {
+            /* If the only edit was the initial import from 2013-09-01 21:04:08, don't show it.. */
+            if (last_edit.textContent.search (/2013-09-01 21:04:08/) != -1) {
+                last_edit.textContent = '';
+            }
+
             var github_link = div.querySelector ('a.action-edit-page');
             if (github_link) {
                 /* GitHub URL syntax for starting the editing; GitHub flattens
@@ -214,6 +219,7 @@ function generate_wiki_page (contents) {
                 github_link.className = '';
                 last_edit.appendChild (github_link);
             }
+
             last_edit.innerHTML = last_edit.innerHTML.replace (
                 /Last edited/, 'Content last edited');
             content.appendChild (last_edit);
