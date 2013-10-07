@@ -260,6 +260,8 @@ function generate_history_page (contents) {
             date = new Date (),
             now = Date.now ();
         
+        now -= now % (60 * 60 * 24 * 86400); // Set to 12:00am today
+        
         events = JSON.parse (contents);
         
         html = '<h2>Crosswalk Wiki History</h2>';
@@ -268,7 +270,7 @@ function generate_history_page (contents) {
             { /* days */
                 length: 60 * 60 * 24 * 1000, /* 60s * 60m * 24h = 1 day */
                 start: now,
-                end: now - (60 * 60 * 24) * (8 - date.getDay ()) * 1000,
+                end: now - (60 * 60 * 24) * (date.getDay ()) * 1000,
                 names: null 
             }, { /* weeks */
                 length: 60 * 60 * 24 * 7 * 1000, /* 60s * 60m * 24h * 7d = 1 week */
