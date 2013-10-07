@@ -268,7 +268,12 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
             missing ();
         }
         while ($f && !feof ($f)) {
-            fwrite ($d, fgets ($f));
+	    $line = fgets ($f);
+            fwrite ($d, $line);
+            /* Sometimes the connection doesn't close after the </html>, so 
+             * watch for it, and if we see it, close the read. */
+            if (preg_match ('/<\/html>/', $line))
+                break;
         }
         fclose ($f);
     }
