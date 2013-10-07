@@ -40,9 +40,9 @@ git branch | grep -q '\* master' || {
 #
 # Ensure no unstaged changes in wiki/ or /
 #
-check_unstaged
+[ "$1" != "-f" ] && check_unstaged
 cd wiki
-check_unstaged
+[ "$1" != "-f" ] && check_unstaged
 cd ..
 
 (( debug )) && {

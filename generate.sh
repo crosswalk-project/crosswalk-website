@@ -30,8 +30,9 @@ test=$(ps -o pid= -C gollum)
 
 function generate () {
     file=$1
-	echo "Processing wiki/${file/.\//}..."
+	echo -n "Processing wiki/${file/.\//}..."
 	php gfm.php ${file/.\//} > /dev/null
+	echo "done."
 	html=${file/.\//}.html
 	[ ! -e ${html} ] && {
 		echo "Could not create ${html}."
