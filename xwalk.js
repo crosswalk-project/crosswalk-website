@@ -260,7 +260,7 @@ function generate_history_page (contents) {
             date = new Date (),
             now = Date.now ();
         
-        now -= now % (60 * 60 * 24 * 86400); // Set to 12:00am today
+        now += (60 * 60 * 24 * 1000) - now % (60 * 60 * 24 * 1000); // Set to 12:00am tonight
         
         events = JSON.parse (contents);
         
@@ -270,17 +270,17 @@ function generate_history_page (contents) {
             { /* days */
                 length: 60 * 60 * 24 * 1000, /* 60s * 60m * 24h = 1 day */
                 start: now,
-                end: now - (60 * 60 * 24) * (date.getDay ()) * 1000,
+                end: now - (60 * 60 * 24) * date.getDay () * 1000,
                 names: null 
             }, { /* weeks */
                 length: 60 * 60 * 24 * 7 * 1000, /* 60s * 60m * 24h * 7d = 1 week */
-                start: now - (60 * 60 * 24 * date.getDay () * 1000),
+                start: now - (60 * 60 * 24) * date.getDay () * 1000,
                 end: now - (60 * 60 * 24 * 7) * 4 * 1000,
                 names: new Array ('Last week', ' weeks ago') 
             }, { /* months */
                 length: 60 * 60 * 24 * 30 * 1000, /* 60s * 60m * 24h * 30d = ~1 month */
-                start: now - (60 * 60 * 24 * 7 * 1000 * date.getDate ()),
-                end: now - (60 * 60 * 24 * 30 * 12 * 1000),
+                start: now - (60 * 60 * 24 * 7) * 4 * 1000 * date.getDate (),
+                end: now - (60 * 60 * 24) * 30 * 12 * 1000,
                 names: new Array ('Last month', ' months ago')
             }
         );
@@ -304,11 +304,11 @@ function generate_history_page (contents) {
                 if (event.date <= span.end) {
                     break;
                 }
-                
                 period_index = Math.max (
                     0, Math.floor ((span.start - event.date) / span.length));
                 if (period == null || period_index != last_period_index) {
                     tracked = [];
+                    
                 }
                 
                 /* Check if this particular file is already listed as being 
