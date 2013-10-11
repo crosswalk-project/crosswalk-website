@@ -283,12 +283,10 @@ p {
     
     .content {
         white-space: normal;
-        margin: 32px 0;
         color: #fff4e5;
         position: relative;
-        padding: 0;
+        padding: 0 0 72px 0;
         height: 100%;
-        padding-bottom: 100px;
     }
     
     .container {
@@ -304,19 +302,20 @@ p {
     }
     
     .more-button-box {
-        top: -100px;
         position: absolute;
-        height: 130px;
+        height: 58px;
         left: 0px;
         width: 100%;
         display: inline-block;
         text-align: center;
+
         a {
-            background-size: 64px 64px;
-            border-radius: 32px;
+            background: url(assets/home-arrow.png) 50% 50% no-repeat;
+            background-size: 48px;
+            border-radius: 48px;
             display: inline-block;
-            height: 64px;
-            width: 64px;
+            height: 48px;
+            width: 48px;
             &:hover {
                 outline: none;
                 box-shadow: 0 0 10px hsla(47, 96%, 67%, 0.8);
@@ -648,24 +647,6 @@ p {
     left: 0px;
     opacity: 1;
     text-align: center;
-}
-
-.boxed {
-    background: url(assets/home-arrow.png) 50% 50% no-repeat;
-    background-size: 100% 100%;
-}
-
-.unboxed {
-    background: url(assets/down-arrow-unboxed.png) 50% 50% no-repeat;
-    background-size: 100% 100%;
-}
-
-.unboxed-to-top {
-    background: url(assets/up-arrow-unboxed.png) 50% 50% no-repeat;
-    background-size: 50% auto;
-    padding-top: 42px;
-    text-decoration: none;
-    color: hsl(0, 0%, 40%);
 }
 
 /*
