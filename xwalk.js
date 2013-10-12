@@ -191,10 +191,28 @@ function generate_wiki_page (contents) {
     } else {
         var last_edit, title;
         wiki_body = div.querySelector ('#wiki-body .markdown-body');
+        /* If title found in header, move it into the body as an H1 */
+        title = div.querySelector ('#head h1:first-child');
+        if (title) {
+            wiki_body.insertBefore (title, wiki_body.firstChild);
+        }
         /* Inject title in header if not found */
-        title = wiki_body.querySelector ('h1:first-child');
         if (!title)
+            title = wiki_body.querySelector ('h1:first-child');
+        if (!title) {
+            /* If there isn't an H1 title, check for an H2 and convert
+             * to an H2 if found */
             title = wiki_body.querySelector ('h2:first-child');
+            if (title) {
+                var h1 = document.createElement ('h1');
+                while (title.firstChild) {
+                    h1.appendChild (title.firstChild);
+                }
+                wiki_body.removeChild (title);
+                title = h1;
+                wiki_body.insertBefore (title, wiki_body.firstChild);
+            }
+        }
         if (title == null) { /* Wiki entry does not start with a header... so add title */
             title = document.createElement ('h1');
             title.textContent = div.querySelector ('#head h1').textContent;
