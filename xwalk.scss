@@ -243,7 +243,7 @@ p {
     @media (max-width: $small-break) {
         .logo {
             background-size: 400px auto;
-            height: (51*400/477)px;
+            height: round(51px*400px/477px);
         }
     }
     
@@ -277,7 +277,7 @@ p {
     @media (max-width: $small-break) {
         .logo {
             background-size: 400px auto;
-            height: (51*400/477)px;
+            height: round(51px*400px/477px);
         }
     }
     
