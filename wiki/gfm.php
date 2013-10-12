@@ -102,7 +102,7 @@ if (strtolower ($request) == 'pages' ||
     if (!$f) {
         missing ();
     }
-    fwrite ($f, '<h2>Crosswalk Wiki Pages</h2>');
+    fwrite ($f, '<h1>Crosswalk Wiki Pages</h1>');
     fwrite ($f, '<ul class="pages-list">');
     foreach ($pages as $page) {
         if (strlen (trim ($page['name'])) == 0 ||

@@ -192,9 +192,11 @@ function generate_wiki_page (contents) {
         var last_edit, title;
         wiki_body = div.querySelector ('#wiki-body .markdown-body');
         /* Inject title in header if not found */
-        title = wiki_body.querySelector ('h2:first-child');
+        title = wiki_body.querySelector ('h1:first-child');
+        if (!title)
+            title = wiki_body.querySelector ('h2:first-child');
         if (title == null) { /* Wiki entry does not start with a header... so add title */
-            title = document.createElement ('h2');
+            title = document.createElement ('h1');
             title.textContent = div.querySelector ('#head h1').textContent;
             wiki_body.insertBefore (title, wiki_body.firstChild);
         }
@@ -232,7 +234,7 @@ function generate_wiki_page (contents) {
         var referring_page = column.hasAttribute ('referring_page') ?
             column.getAttribute ('referring_page') : 'Internal link',
             tmp = document.createElement ('div');
-        tmp.innerHTML = '<h2>Missing Page</h2>' +
+        tmp.innerHTML = '<h1>Missing Page</h1>' +
                         'Reffering page: ' +
                         '<a href="#' + column_name + '/' +
                         referring_page + '">' +
@@ -264,7 +266,7 @@ function generate_history_page (contents) {
         
         events = JSON.parse (contents);
         
-        html = '<h2>Crosswalk Wiki History</h2>';
+        html = '<h1>Crosswalk Wiki History</h1>';
         
         spans = new Array (
             { /* days */
@@ -389,7 +391,7 @@ function content_response (e) {
     
     if (xhr.status != 200) {
         var tmp = '<div id="wiki-content"><div id="wiki-body">' +
-            '<div class="markdown-body"><h2>Unable to fetch content</h2>' +
+            '<div class="markdown-body"><h1>Unable to fetch content</h1>' +
             'Reason: <span class="error">' + xhr.status + ' ' + xhr.statusText + '</span>';
            
         if (column.hasAttribute ('referring_page')) {
@@ -731,11 +733,25 @@ function _onResize (from_resize_event) {
     // Cache the window height dimension
     viewHeight = window.innerHeight;
 
-    /* Set the home height to be a minimum of 80% of the window.innerHeight
+    /* Set the home height to be a minimum of 32px shorter than the window.innerHeight
      * There is probably a CSS way to do this (it broke when I switched away
      * from absolute positioning on #home), but user's don't care if
      * the implementation is a hack, so long as it works... */
-    home.style.minHeight = Math.round (0.5 * viewHeight) + 'px';
+    home.style.minHeight = Math.round (viewHeight - 32) + 'px';
+    
+    /* Since we're JS hacking anyway, we'll also vertically center the #home .content
+     * to its area. We subtract the 32px from viewHeight per above. The .more-button-box
+     * spacing is accounted for with the #home .content padding-bottom */
+    var content = home.querySelector ('.content'),
+        contentTop = Math.round ((viewHeight - 32 - content.offsetHeight) * 0.5);
+    contentTop = Math.max (contentTop, 0);
+    content.style.top =  contentTop + 'px';
+
+    /* And then vertically align the more-button to the bottom of the home content with
+     * the 50px padding... (the more-button is a child of content, so we determine the
+     * full height of home and subtract the top of the content. */
+    button = home.querySelector ('.more-button-box');
+    button.style.top = (home.offsetHeight - contentTop - button.offsetHeight) + 'px';
 
     /* Calculate the size of the page so we can resize the footer-padding
      * to fill any bottom part of the page w/ the tile overlay */
@@ -750,9 +766,6 @@ function _onResize (from_resize_event) {
     } else {
         document.getElementById ('footer-padding').style.height = '32px';
     }
-
-    button = home.querySelector ('.more-button-box');
-    button.style.top = (home.offsetHeight - button.offsetHeight) + 'px';
 
     /* Set the window height based on content */
     document.body.style.height = y + 'px';
