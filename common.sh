@@ -80,8 +80,8 @@ function check_unstaged () {
 		echo "Can't go live with uncommitted changes in $(basename ${PWD})"
 		git diff-files --name-status -r --ignore-submodules
 		[ "$(basename ${PWD})" = "wiki" ] && {
-			echo "If lots of files are deleted, its probably the wiki "
-	        echo "was in a partial mklive state. Try:"
+            echo "If lots of files are deleted, its probably the wiki "
+            echo "was in a partial mklive state. Try:"
             echo "  cd wiki ; git checkout ; cd .."
 		}
 		exit 1
@@ -92,7 +92,7 @@ function check_unstaged () {
 		git diff-index --cached --name-status -r --ignore-submodules HEAD
 		echo ""
 		[ "$(basename ${PWD})" = "wiki" ] && {
-			echo "If lots of files are deleted, its probably the wiki "
+            echo "If lots of files are deleted, its probably the wiki "
             echo "was in a partial mklive state. Try:"
             echo "  cd wiki ; git checkout ; cd .."
 		}
