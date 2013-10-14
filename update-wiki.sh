@@ -12,9 +12,10 @@
 # 7. Regenerate all markdown content to HTML
 # 8. Kill Gollum if #6 launched it.
 # 9. Remove all Wiki markdown content from the Live site
-# 10. Commit the changes to the live-* branch
-# 11. Reset local back to master branch for the website and wiki
-# 12. Display message for how to push changes to staging site
+# 10. Add any new files into the live-site
+# 11. Commit the changes to the live-* branch
+# 12. Reset local back to master branch for the website and wiki
+# 13. Display message for how to push changes to staging site
 #
 
 . common.sh
@@ -119,11 +120,14 @@ find wiki \( \
     -exec rm {} \;
 debug_msg "Wiki markdown purged pre live-site commit."
 
-# 10. Commit the changes to the live-* branch
+# 10. Add any new files into the live-site
+git add -A -- wiki/
+
+# 11. Commit the changes to the live-* branch
 git commit -s -a -m "Automatic static version commit for ${branch}"
 debug_msg "Live-site commited to ${branch}"
 
-# 11. Reset local back to master branch for the website and wiki
+# 12. Reset local back to master branch for the website and wiki
 cd wiki
 git clean -f
 git checkout -f
@@ -133,7 +137,7 @@ cd ..
 git checkout master
 git tag -f tag-${branch} 
 
-# 12. Display message for how to push changes to staging site
+# 13. Display message for how to push changes to staging site
 cat << EOF
 
 Changes committed to git as branch ${branch}.
