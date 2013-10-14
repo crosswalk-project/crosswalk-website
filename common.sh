@@ -1,5 +1,14 @@
 #!/bin/bash
 
+function debug_msg () {
+    (( debug )) && {
+        echo -n $*
+        echo " Enter to continue." 
+        read
+    }
+}
+
+
 function generate () {
     file=$1
 	echo -n "Processing wiki/${file/.\//}..."
