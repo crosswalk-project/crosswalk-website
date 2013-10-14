@@ -740,8 +740,8 @@ p {
     top: 0px;
     margin-bottom: -20px;
     width: 100%;
-    background: url(assets/crosswalk-LOGO-med.png) 50% 50% no-repeat;
-    background-size: 150px 15px;
+    background: url(assets/crosswalk-LOGO-small.png) 50% 50% no-repeat;
+    background-size: 143px 15px;
     z-index: 100;
 }
 
@@ -863,10 +863,11 @@ p {
         }
         
         a[href="#home"] {
+            background-image: url(assets/crosswalk-LOGO-tiny.png);
             width: 100px;
             height: 48px;
             min-width: 100px;
-            background-size: 100px auto;
+            background-size: 100px 11px;
         }
     }
     @media (max-width: $small-break) {
