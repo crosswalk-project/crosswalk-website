@@ -115,7 +115,7 @@ find wiki \( \
         -or -path "*/.git/*" \
         -or -name "*.html" \
         -or -path "*/assets/*" \
-    \)
+    \) \
     -exec rm {} \;
 debug_msg "Wiki markdown purged pre live-site commit."
 
