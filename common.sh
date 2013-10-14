@@ -53,7 +53,10 @@ function kill_gollum () {
 function check_perms () {
     echo ''
     echo -n 'Looking for files not writable by :www-data...'
-    found=$(find . -not -group www-data -or \( -not -user www-data -and -not -perm -g=rwX \) | grep -v \.git | wc -l)
+    found=$(find . -not -group www-data -or \( \
+            -not -user www-data \
+            -and -not -perm -g=rwX \
+        \) | grep -v \.git | wc -l)
     (( ${found} )) && {
         echo "${found} found."
         echo ''
