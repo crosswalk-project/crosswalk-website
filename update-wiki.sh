@@ -63,7 +63,6 @@ git checkout ${branch} || {
 }    
 debug_msg "Branch / Checkout to ${branch} complete."
 
-
 # 4. Pull the latest changes from GitHub into the wiki/
 cd wiki
 git pull --all || {
@@ -71,6 +70,7 @@ git pull --all || {
 	cd ${dir}
 	exit -1
 }
+git checkout -f
 debug_msg "Wiki has been pulled from GitHub."
 
 # 5. Remove all *.html from wiki/ not in documentation/ or contribute/
