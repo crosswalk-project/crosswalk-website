@@ -172,7 +172,7 @@ function loadingGraphicStop () {
     });
 }
     
-function generate_wiki_page (contents) {
+function generate_wiki_page (page, contents) {
     var content = document.createElement ('div'),
         wiki_body = document.createElement ('div'),
         div = document.createElement ('div');
@@ -189,12 +189,21 @@ function generate_wiki_page (contents) {
         wiki_body.appendChild (div);
         content.appendChild (wiki_body);
     } else {
-        var last_edit, title;
+        var last_edit, title = null;
         wiki_body = div.querySelector ('#wiki-body .markdown-body');
-        /* If title found in header, move it into the body as an H1 */
-        title = div.querySelector ('#head h1:first-child');
-        if (title) {
-            wiki_body.insertBefore (title, wiki_body.firstChild);
+        
+        /* If title found in header, move it into the body as an H1
+         * BUT only if this isn't Home, which is special cased to always
+         * pull the title from the page content */
+        
+        if (column_name != 'wiki' || !page.match (/home/i)) {
+            title = div.querySelector ('#head h1:first-child');
+            if (title) {
+                /* Strip any path prefix from the title */
+                title.innerHTML = title.innerHTML.replace (
+                    /^.*\/([^\/]*)$/, '$1');
+                wiki_body.insertBefore (title, wiki_body.firstChild);
+            }
         }
         /* Inject title in header if not found */
         if (!title)
@@ -213,7 +222,8 @@ function generate_wiki_page (contents) {
                 wiki_body.insertBefore (title, wiki_body.firstChild);
             }
         }
-        if (title == null) { /* Wiki entry does not start with a header... so add title */
+        /* If wiki entry does not start with a header, add a title */
+        if (title == null) { 
             title = document.createElement ('h1');
             title.textContent = div.querySelector ('#head h1').textContent;
             wiki_body.insertBefore (title, wiki_body.firstChild);
@@ -263,7 +273,7 @@ function generate_wiki_page (contents) {
     return content;
 }
 
-function generate_history_page (contents) {
+function generate_history_page (page, contents) {
     var content = document.createElement ('div'),
         wiki_body = document.createElement ('div'),
         div = document.createElement ('div');
@@ -446,11 +456,11 @@ function content_response (e) {
      * to the user.
      */
     if (column_name == 'wiki' && sub_page == 'history') {
-        content = generate_history_page (e.currentTarget.response ?
+        content = generate_history_page (sub_page, e.currentTarget.response ?
                 e.currentTarget.response :
                 e.currentTarget.responseText);
     } else {
-        content = generate_wiki_page (e.currentTarget.response ?
+        content = generate_wiki_page (sub_page, e.currentTarget.response ?
             e.currentTarget.response :
             e.currentTarget.responseText);
     }
