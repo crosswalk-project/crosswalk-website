@@ -1,4 +1,5 @@
 #!/bin/bash
+declare -i gollum_pid=0
 
 function debug_msg () {
     (( debug )) && {
@@ -7,7 +8,6 @@ function debug_msg () {
         read
     }
 }
-
 
 function generate () {
     file=$1
@@ -27,11 +27,11 @@ function generate () {
 }
     
 function launch_gollum () {
-    gollum=0
+    gollum_pid=0
     test=$(ps -o pid= -C gollum)
-    [ -z ${test} ] && {
+    (( test==0 )) && {
         gollum --base-path wiki ${PWD}/wiki >/dev/null 2>&1 &
-        gollum=$!
+        gollum_pid=$!
         echo -n "Launching gollum."
         x=1
         while (( $x )); do
@@ -45,8 +45,8 @@ function launch_gollum () {
 }
 
 function kill_gollum () {
-    [ ! -z ${gollum} ] && {
-        kill -9 ${gollum}
+    (( gollum_pid )) && {
+        kill -9 ${gollum_pid}
     }
 }
 
