@@ -74,7 +74,7 @@ debug_msg "Wiki has been pulled from GitHub."
 
 # 5. Remove all *.html from wiki/ not in documentation/ or contribute/
 find . -type f -name '*.html' -not \( \
-        -path '*/documentation*/' \
+        -path '*/documentation/*' \
         -or -path '*/contribute/*' \
     \) -and -exec rm -f {} \;
 debug_msg "All Wiki *html content purged."
