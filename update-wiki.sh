@@ -12,7 +12,7 @@
 # 7. Regenerate all markdown content to HTML
 # 8. Kill Gollum if #6 launched it.
 # 9. Remove all Wiki markdown content from the Live site
-# 10. Add any new files into the live-site
+# 10. Add any new files (not in documentation/contribute) into the live-site
 # 11. Commit the changes to the live-* branch
 # 12. Reset local back to master branch for the website and wiki
 # 13. Display message for how to push changes to staging site
@@ -120,8 +120,9 @@ find wiki \( \
     -exec rm {} \;
 debug_msg "Wiki markdown purged pre live-site commit."
 
-# 10. Add any new files into the live-site
-git add -A -- wiki/
+# 10. Add any new files (not in documentation/contribute) into the live-site
+git add -A -- wiki/ | grep -Ev "(documentation)|(contribute)"
+git rm --quiet --cached -- wiki/documentation wiki/contribute
 
 # 11. Commit the changes to the live-* branch
 git commit -s -a -m "Automatic static version commit for ${branch}"
