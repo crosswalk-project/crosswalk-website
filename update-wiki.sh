@@ -101,8 +101,8 @@ find . -type f -not \( \
         -or -name ".htaccess" \
         -or -name "php_errors.log" \
         -or -name "custom.js" \
-    \) \
-    -exec generate.sh {} \;
+    \) |
+    while read file; do generate ${file}; done
 generate "pages.md"
 generate "history.md"
 debug_msg "All Wiki content generated purged."
