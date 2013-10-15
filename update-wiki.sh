@@ -121,8 +121,11 @@ find wiki \( \
 debug_msg "Wiki markdown purged pre live-site commit."
 
 # 10. Add any new files (not in documentation/contribute) into the live-site
-git add -A -- wiki/ | grep -Ev "(documentation)|(contribute)"
-git rm --quiet --cached -- wiki/documentation wiki/contribute
+find wiki -type f -and -not \( \
+        -path "*/contribute/*" \
+        -or -path "*/documentation/*" \
+        -or -path "*/.git/*" \
+    \) -exec git add {} \;
 
 # 11. Commit the changes to the live-* branch
 git commit -s -a -m "Automatic static version commit for ${branch}"
