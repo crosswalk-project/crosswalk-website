@@ -1,30 +1,9 @@
 #!/bin/bash
+. common.sh
+
 debug=0
 
-function check_unstaged () {
-	git diff-files --quiet --ignore-submodules || {
-		echo "Can't go live with uncommitted changes in $(basename ${PWD})"
-		git diff-files --name-status -r --ignore-submodules
-		[ "$(basename ${PWD})" = "wiki" ] && {
-			echo "If lots of files are deleted, its probably the wiki "
-        	        echo "was in a partial mklive state. Try:"
-	                echo "  cd wiki ; git checkout ; cd .."
-		}
-		exit 1
-	}
-
-	git diff-index --cached --quiet HEAD --ignore-submodules || {
-		echo "Can't go live with uncommitted changes in $(basename ${PWD})"
-		git diff-index --cached --name-status -r --ignore-submodules HEAD
-		echo ""
-		[ "$(basename ${PWD})" = "wiki" ] && {
-			echo "If lots of files are deleted, its probably the wiki "
-        	        echo "was in a partial mklive state. Try:"
-	                echo "  cd wiki ; git checkout ; cd .."
-		}
-		exit 1
-	}
-}
+check_perms
 
 #
 # Verify this tree is on the 'master' branch
@@ -37,18 +16,13 @@ git branch | grep -q '\* master' || {
 	exit
 }
 
-#
-# Ensure no unstaged changes in wiki/ or /
-#
+
 [ "$1" != "-f" ] && check_unstaged
 cd wiki
 [ "$1" != "-f" ] && check_unstaged
 cd ..
 
-(( debug )) && {
-echo "Check complete. Enter to continue." 
-read
-}
+debug_msg "Check complete." 
 
 # Make new branch for live-YYYYMMDD
 # -t track upstream (push/pull from github will work)
@@ -65,24 +39,15 @@ git branch -t ${branch}
 git checkout ${branch}
 
 
-(( debug )) && {
-echo "Branch / Checkout to ${branch} complete. Enter to continue." 
-read
-}
+debug_msg "Branch / Checkout to ${branch} complete."
 
 #
 # Nuke all dynamic content and regenerate it
 #
 ./cleanup.sh
-(( debug )) && {
-echo "Cleanup complete. Enter to continue." 
-read
-}
+debug_msg "Cleanup complete."
 ./generate.sh
-(( debug )) && {
-echo "Generate complete. Enter to continue." 
-read
-}
+debug_msg "Generate complete."
 
 #
 # Turn off the PHP script override for the root directory
@@ -114,10 +79,8 @@ git add xwalk.css
 git add markdown.css
 git add menus.js
 
-(( debug )) && {
-echo "git add complete. Enter to continue." 
-read
-}
+debug_msg "git add complete." 
+
 #
 # Remove PHP generating scripts from Live site
 #
@@ -137,27 +100,18 @@ rm *.sh
 find wiki -name '*.md' -exec rm {} \;
 find wiki -name '*.mediawiki' -exec rm {} \;
 find wiki -name '*.org' -exec rm {} \;
-(( debug )) && {
-echo "Markdown content removal complete. Enter to continue." 
-read
-}
+debug_msg "Markdown content removal complete."
 
 git commit -s -a -m "Automatic static version commit for ${branch}"
 
 git checkout master
 git tag tag-${branch}
-(( debug )) && {
-	echo "Site checkout complete. Enter to continue." 
-	read
-}
+debug_msg "Site checkout complete."
 
 cd wiki
 git checkout -f
 git tag tag-${branch}
-(( debug )) && {
-	echo "Wiki checkout complete. Enter to continue." 
-	read
-}
+debug_msg "Wiki checkout complete."
 cd ..
 
 cat << EOF

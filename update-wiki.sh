@@ -22,7 +22,7 @@
 
 dir=${PWD}
 
-debug=1
+debug=0
 
 # 0. Ensure all files are writable by www-data
 check_perms
