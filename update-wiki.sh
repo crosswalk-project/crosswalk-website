@@ -125,6 +125,7 @@ find wiki -type f -and -not \( \
         -path "*/contribute/*" \
         -or -path "*/documentation/*" \
         -or -path "*/.git/*" \
+        -or -path "*/.gitignore/*" \
     \) -exec git add {} \;
 
 # 11. Commit the changes to the live-* branch
