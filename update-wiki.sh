@@ -80,73 +80,49 @@ git checkout ${branch} || {
 debug_msg "Branch / Checkout to ${branch} complete."
 cd wiki
 
-# 5. Remove all *.html from wiki/ not in documentation/ or contribute/
-find . -type f -name '*.html' -not \( \
-        -path '*/documentation/*' \
-        -or -path '*/contribute/*' \
-    \) -and -exec rm -f {} \;
-debug_msg "All Wiki *html content purged."
-
-# 6. Launch Gollum if it isn't running
+# 5. Launch Gollum if it isn't running
 launch_gollum
 
-# 7. Regenerate all markdown content to HTML
-find . -type f -not \( \
-        -path "*/contribute/*" \
-        -or -path "*/documentation/*" \
-        -or -path "*/.git/*" \
-        -or -path "*/assets/*" \
-        -or -name "*.html" \
-        -or -name "*gfm.php" \
-        -or -name ".htaccess" \
-        -or -name "php_errors.log" \
-        -or -name "custom.js" \
-    \) |
-    while read file; do generate ${file}; done
+# 6. For each file edited, if it is a markdown file, 
+#    delete the .html for the file (if it exists) and then 
+#    html for it.
+git diff --name-only tag-${branch} | while read file; do
+    [ -e "${file}.html" ] && rm -f "${file}.html"
+    extension="${file##*.}"
+    case "${extension}" in
+    "md" | "mediawiki" | "org")
+        generate "${file}"
+        git add "${file}".html
+        ;;
+    *)
+        git add "${file}"
+        ;;
+    esac
+done
+
+# Since content was changed, regenerate the pages and history
 generate "pages.md"
 generate "history.md"
-debug_msg "All Wiki content generated purged."
+git add pages.md.html history.md.html
 
 # 8. Kill Gollum if #6 launched it.
 kill_gollum
 
-# 9. Remove all Wiki markdown content from the Live site
-cd ..
-find wiki \( \
-        -name '*.md' \
-        -or -name '*.mediawiki' \
-        -or -name '*.org' \
-    \) -and -not \( \
-        -path "*/contribute/*" \
-        -or -path "*/documentation/*" \
-        -or -path "*/.git/*" \
-        -or -path "*/assets/*" \
-    \) \
-    -exec rm {} \;
-debug_msg "Wiki markdown purged pre live-site commit."
-
-# 10. Add any new files (not in documentation/contribute) into the live-site
-find wiki -type f -and -not \( \
-        -path "*/contribute/*" \
-        -or -path "*/documentation/*" \
-        -or -path "*/.git/*" \
-        -or -path "*/.gitignore" \
-    \) \
-    -exec git add {} \;
-
 # 11. Commit the changes to the live-* branch
 git commit -s -a -m "Automatic static version commit for ${branch}"
+git tag -f tag-${branch}
 debug_msg "Live-site commited to ${branch}"
 
 # 12. Reset local back to master branch for the website and wiki
+cd ..
+git checkout master
+git tag -f tag-${branch} 
+
 cd wiki
 git clean -f
 git checkout -f
-git tag -f tag-${branch}
 cd ..
 
-git checkout master
-git tag -f tag-${branch} 
 
 # 13. Display message for how to push changes to staging site
 cat << EOF
