@@ -520,6 +520,13 @@ function content_response (e) {
             link.addEventListener ('click', subMenuClick);
     });
 
+    /* For all external links, intercept the click and log the event with
+     * GA prior to invoking the request... */
+    Array.prototype.forEach.call (
+        content.querySelectorAll ('a[href^="http"]'), function (link) {
+            link.addEventListener ('click', trackAbandonLink);
+    });
+        
     if (column.hasAttribute ('requested_anchor')) {
         if (anchor_scroll_timer)
             window.clearTimeout (anchor_scroll_timer);
@@ -555,6 +562,23 @@ function subMenuClick (e) {
     }
 }
 
+function trackAbandonLink (e) {
+    var href = e.currentTarget.getAttribute ('href');
+    e.preventDefault ();
+//        target = e.currentTarget.getAttribute ('target');
+    if (ga) {
+        ga ('send', 'event', {
+            'eventCategory': 'wiki-anchor',
+            'eventAction': 'click',
+            'eventLabel': href,
+            'metric0': 0,
+            'hitCallback': function () {
+                window.location.href = href;              
+            }
+        });
+    }
+}    
+    
 function navigateTo (href) {
     var requested_column, requested_page, requested_anchor,
         new_content, content, url, column_changed;
@@ -588,7 +612,24 @@ function navigateTo (href) {
     active_uri = tmp_request;
 
     if (ga) {
+        var from_top_menu = false;
+        /* If this originated from a click event on an anchor,
+         * then walk the parent chain to see if this was from
+         * the top-menu and log that information in the GA 
+         * event */
+        if (window.event && window.event.currentTarget) {
+            var p = window.event.currentTarget;
+            while (p) {
+                if (p.id && p.id == 'top-menu') {
+                    from_top_menu = true;
+                    break;
+                }
+                p = p.parentElement;
+            }
+        }
+        
         ga ('send', {
+            'metric0': from_top_menu,
             'hitType': 'pageview',
             'page': href,
             'title': requested_page
