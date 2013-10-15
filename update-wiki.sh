@@ -5,8 +5,9 @@
 # 0. Ensure all files are writable by www-data
 # 1. Ensure currently on 'master'
 # 2. Ensure there are no local unstaged changes
-# 3. Switch to the latest live-* branch
-# 4. Pull the latest changes from GitHub into the wiki/
+# 3. Pull the latest changes from GitHub into the wiki/
+#    NOTE: If no changes, abort at this point
+# 4. Switch to the latest live-* branch
 # 5. Remove all *.html from wiki/ not in documentation/ or contribute/
 # 6. Launch Gollum if it isn't running
 # 7. Regenerate all markdown content to HTML
@@ -53,17 +54,7 @@ branch=${branch//  remotes\/origin\//}
 echo "Latest live branch: ${branch}"
 debug_msg "Branch status above."
 
-
-# 3. Switch to the latest live-* branch
-echo "Checking out branch: ${branch}"
-git checkout ${branch} || {
-    echo "Checking out ${branch} failed."
-	cd ${dir}
-    exit -1
-}    
-debug_msg "Branch / Checkout to ${branch} complete."
-
-# 4. Pull the latest changes from GitHub into the wiki/
+# 3. Pull the latest changes from GitHub into the wiki/
 cd wiki
 git pull --all || {
 	echo "Updating wiki/ latest from GitHub failed. Exiting."
@@ -71,7 +62,23 @@ git pull --all || {
 	exit -1
 }
 git checkout -f
+git diff --quiet --exit-code tag-${branch} && {
+    echo "No changes to Wiki since ${branch}"
+	cd ${dir}
+    exit
+}
 debug_msg "Wiki has been pulled from GitHub."
+
+# 4. Switch to the latest live-* branch
+echo "Checking out branch for site: ${branch}"
+cd ..
+git checkout ${branch} || {
+    echo "Checking out ${branch} failed."
+	cd ${dir}
+    exit -1
+}
+debug_msg "Branch / Checkout to ${branch} complete."
+cd wiki
 
 # 5. Remove all *.html from wiki/ not in documentation/ or contribute/
 find . -type f -name '*.html' -not \( \
@@ -88,15 +95,14 @@ find . -type f -not \( \
         -path "*/contribute/*" \
         -or -path "*/documentation/*" \
         -or -path "*/.git/*" \
-        -or -name "*.html" \
         -or -path "*/assets/*" \
-    \) | while read file; do
-	[ "${file}" == "./gfm.php" ] && continue
-	[ "${file}" == "./.htaccess" ] && continue
-	[ "${file}" == "./php_errors.log" ] && continue
-	[ "${file}" == "./custom.js" ] && continue
-    generate "${file}"
-done
+        -or -name "*.html" \
+        -or -name "*gfm.php" \
+        -or -name ".htaccess" \
+        -or -name "php_errors.log" \
+        -or -name "custom.js" \
+    \) \
+    -exec generate.sh {} \;
 generate "pages.md"
 generate "history.md"
 debug_msg "All Wiki content generated purged."
@@ -114,7 +120,6 @@ find wiki \( \
         -path "*/contribute/*" \
         -or -path "*/documentation/*" \
         -or -path "*/.git/*" \
-        -or -name "*.html" \
         -or -path "*/assets/*" \
     \) \
     -exec rm {} \;
@@ -125,8 +130,9 @@ find wiki -type f -and -not \( \
         -path "*/contribute/*" \
         -or -path "*/documentation/*" \
         -or -path "*/.git/*" \
-        -or -path "*/.gitignore/*" \
-    \) -exec git add {} \;
+        -or -path "*/.gitignore" \
+    \) \
+    -exec git add {} \;
 
 # 11. Commit the changes to the live-* branch
 git commit -s -a -m "Automatic static version commit for ${branch}"
