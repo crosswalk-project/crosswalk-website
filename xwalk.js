@@ -802,17 +802,17 @@ function _onResize (from_resize_event) {
     // Cache the window height dimension
     viewHeight = window.innerHeight;
 
-    /* Set the home height to be a minimum of 32px shorter than the window.innerHeight
+    /* Set the home height to be a minimum of 64px shorter than the window.innerHeight
      * There is probably a CSS way to do this (it broke when I switched away
      * from absolute positioning on #home), but user's don't care if
      * the implementation is a hack, so long as it works... */
-    home.style.minHeight = Math.round (viewHeight - 32) + 'px';
+    home.style.minHeight = Math.round (viewHeight - 64) + 'px';
     
     /* Since we're JS hacking anyway, we'll also vertically center the #home .content
-     * to its area. We subtract the 32px from viewHeight per above. The .more-button-box
+     * to its area. We subtract the 64px from viewHeight per above. The .more-button-box
      * spacing is accounted for with the #home .content padding-bottom */
     var content = home.querySelector ('.content'),
-        contentTop = Math.round ((viewHeight - 32 - content.offsetHeight) * 0.5);
+        contentTop = Math.round ((viewHeight - 64 - content.offsetHeight) * 0.5);
     contentTop = Math.max (contentTop, 0);
     content.style.top =  contentTop + 'px';
 
