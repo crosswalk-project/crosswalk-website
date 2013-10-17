@@ -92,13 +92,14 @@ git diff --name-only tag-${branch} | while read file; do
     case "${extension}" in
     "md" | "mediawiki" | "org")
         generate "${file}"
-        git add "${file}".html
+        git --git-dir=../.git --work-tree=.. add "${file}".html
         ;;
     *)
-        git add "${file}"
+        git --git-dir=../.git --work-tree=.. add "${file}"
         ;;
     esac
 done
+debug_msg "Content files added."
 
 # Since content was changed, regenerate the pages and history
 generate "pages.md"
@@ -106,6 +107,7 @@ generate "history.md"
 cd ..
 
 git add wiki/pages.md.html wiki/history.md.html
+debug_msg "Pages and History files added."
 
 # 8. Kill Gollum if #6 launched it.
 kill_gollum
