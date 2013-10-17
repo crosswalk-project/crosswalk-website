@@ -104,21 +104,26 @@ p {
 }
 
 .channel {
+    display: inline-block;
+    font-family: "ClearSans-Medium",helvetica,georgia,sans-serif;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+    text-align: center;
+    text-transform: uppercase;
     text-decoration: none;
-    
-    &.canary {
-        color: hsl(13, 60%, 39%);
-        border-color: hsl(13, 60%, 39%);
-    }
-    
-    &.beta {
-        color: hsl(53, 95%, 61%);
-        border-color: hsl(53, 95%, 61%);
-    }
-    
-    &.stable {
-        color: hsl(97, 60%, 39%);
-        border-color: hsl(97, 60%, 39%)
+
+    padding: 0 4px 1px 4px;
+    border-radius: 4px;
+
+    color: hsl(13, 76%, 57%);
+    background-color: hsl(36, 100%, 88%);
+
+    &:hover {
+        color: hsl(13, 76%, 62%);
+        background-color: hsl(36, 100%, 93%);
     }
 }
 
