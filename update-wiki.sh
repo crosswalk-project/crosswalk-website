@@ -131,11 +131,11 @@ Changes committed to git as branch ${branch}.
 
 Current tree set back to 'master'. Commands to run:
 
-git push --tags origin master
+git push -f --tags origin master
 git push origin ${branch}
 ssh stg-sites.vlan14.01.org "cd /srv/www/stg.crosswalk-project.org/docroot ; sudo su drush -c '../update.sh'"
 cd wiki
-git push --tags origin master
+git push -f --tags origin master
 cd ..
 
 EOF
