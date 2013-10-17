@@ -1,6 +1,12 @@
 #!/bin/bash
 declare -i gollum_pid=0
 
+function die () {
+	echo -n $*
+	echo " Terminating."
+	exit -1
+}
+
 function debug_msg () {
     (( debug )) && {
         echo -n $*

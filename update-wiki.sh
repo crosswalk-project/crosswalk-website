@@ -103,7 +103,9 @@ done
 # Since content was changed, regenerate the pages and history
 generate "pages.md"
 generate "history.md"
-git add pages.md.html history.md.html
+cd ..
+
+git add wiki/pages.md.html wiki/history.md.html
 
 # 8. Kill Gollum if #6 launched it.
 kill_gollum
@@ -114,15 +116,13 @@ git tag -f tag-${branch}
 debug_msg "Live-site commited to ${branch}"
 
 # 12. Reset local back to master branch for the website and wiki
-cd ..
-git checkout master
+git checkout master || die "Checkout failed."
 git tag -f tag-${branch} 
 
 cd wiki
 git clean -f
 git checkout -f
 cd ..
-
 
 # 13. Display message for how to push changes to staging site
 cat << EOF
