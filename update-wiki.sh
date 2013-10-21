@@ -78,10 +78,11 @@ git checkout ${branch} || {
     exit -1
 }
 debug_msg "Branch / Checkout to ${branch} complete."
-cd wiki
 
 # 5. Launch Gollum if it isn't running
 launch_gollum
+
+cd wiki
 
 # 6. For each file edited, if it is a markdown file, 
 #    delete the .html for the file (if it exists) and then 
