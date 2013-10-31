@@ -1,26 +1,5 @@
 <?php
-function file_smart_match ($filepath) {
-    if (file_exists ($filepath))
-        return $filepath;
-    $lower = strtolower (basename ($filepath));
-    $files = glob (dirname ($filepath).'/*');
-    foreach ($files as $f) {
-        if (preg_match (
-            '/(([0-9]*-)?(.*))((\.md)|(\.mediawiki)|(\.org)|(\.php))$/i', 
-                        basename ($f), $matches)) {
-            if (strtolower ($matches[3]) == $lower)
-                return $f;
-        }
-        if (preg_match (
-            '/(([0-9]*-)?(.*))((\.md)|(\.mediawiki)|(\.org)|(\.php))(.html)$/i', 
-                        basename ($f), $matches)) {
-            if (strtolower ($matches[3]) == $lower)
-		if (!file_exists (dirname ($filepath).'/'.$matches[1].$matches[3]))
-	                return $f;
-        }
-    }
-    return false;
-}
+require_once ('../smart-match.inc');
 
 function missing () {
     global $_REQUEST;
@@ -78,42 +57,6 @@ function generatePageList ($path) {
         $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
     }
     return $entries;
-}
-
-if (isset($argv[1]))
-    $_REQUEST['f'] = $argv[1];
-
-$request = isset ($_REQUEST['f']) ? $_REQUEST['f'] : 'Home';
-$md = file_smart_match (dirname (__FILE__).'/'.$request);
-$md = realpath ($md);
-if (preg_match ('/.html$/', $md)) {
-    require ($md);
-    exit;
-}
-
-/*
- * Special case for Pages request which is dynamically built
- * from the list of pages in the main Wiki directory
- */
-if (strtolower ($request) == 'pages' || 
-    strtolower ($request) == 'pages.md') {
-    $pages = generatePageList ('.');
-    $f = fopen ('pages.md.html', 'w');
-    if (!$f) {
-        missing ();
-    }
-    fwrite ($f, '<h1>Crosswalk Wiki Pages</h1>');
-    fwrite ($f, '<ul class="pages-list">');
-    foreach ($pages as $page) {
-        if (strlen (trim ($page['name'])) == 0 ||
-            strlen (trim ($page['file'])) == 0)
-            continue;
-        fwrite ($f, '<li><a href="'.$page['file'].'">'.$page['name'].'</a></li>');
-    }
-    fwrite ($f, '</ul>');
-    fclose ($f);
-    require('pages.md.html');
-    exit;
 }
 
 function generateHistory ($path, $start, $end) {
@@ -188,6 +131,43 @@ function generateHistory ($path, $start, $end) {
     
 }
 
+function ob_callback ($buffer) {
+    global $d;
+    fwrite ($d, $buffer);
+}
+
+
+
+if (isset($argv[1]))
+    $_REQUEST['f'] = $argv[1];
+
+$request = isset ($_REQUEST['f']) ? $_REQUEST['f'] : 'Home';
+
+/*
+ * Special case for Pages request which is dynamically built
+ * from the list of pages in the main Wiki directory
+ */
+if (strtolower ($request) == 'pages' || 
+    strtolower ($request) == 'pages.md') {
+    $pages = generatePageList ('.');
+    $f = fopen ('pages.md.html', 'w');
+    if (!$f) {
+        missing ();
+    }
+    fwrite ($f, '<h1>Crosswalk Wiki Pages</h1>');
+    fwrite ($f, '<ul class="pages-list">');
+    foreach ($pages as $page) {
+        if (strlen (trim ($page['name'])) == 0 ||
+            strlen (trim ($page['file'])) == 0)
+            continue;
+        fwrite ($f, '<li><a href="'.$page['file'].'">'.$page['name'].'</a></li>');
+    }
+    fwrite ($f, '</ul>');
+    fclose ($f);
+    require('pages.md.html');
+    exit;
+}
+
 /*
  * Special case for History request which is dynamically built
  * from the list of pages in the main Wiki directory
@@ -229,13 +209,16 @@ if (strtolower ($request) == 'history' ||
     exit;
 }
 
-if (!preg_match ('#^'.dirname (__FILE__).'/#', $md)) {
-    missing ();
+
+$md = file_smart_match (dirname (__FILE__).'/'.$request);
+$md = realpath ($md);
+if (preg_match ('/.html$/', $md)) {
+    require ($md);
+    exit;
 }
 
-function ob_callback ($buffer) {
-    global $d;
-    fwrite ($d, $buffer);
+if (!preg_match ('#^'.dirname (__FILE__).'/#', $md)) {
+    missing ();
 }
 
 $cache = @stat ($md.'.html');

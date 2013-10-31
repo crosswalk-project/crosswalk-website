@@ -544,6 +544,12 @@ function subMenuClick (e) {
     var href = this.getAttribute ('href');
     e.preventDefault ();
 
+    if (this.nextSibling && this.nextSibling.classList && 
+        this.nextSibling.classList.contains ('menu-sub-pages')) {
+        console.log ('toggling off');
+        this.nextSibling.classList.toggle ('off');
+    }
+    
     navigateTo (href);
 
     /* When navigating to the Home column, we want the relative
@@ -588,8 +594,10 @@ function navigateTo (href) {
     }
 
     /*
-     * Incoming requests are of the forum:
-     * #[COLUMN-NAME](/[PAGE](/[ANCHOR]))
+     * Incoming requests are of the form:
+     * #COLUMN-NAME(/PAGE(/ANCHOR))
+     * or, if a ANCHOR is a sub-page to PAGE, then the form is:
+     * #COLUMN-NAME/PAGE/SUB-PAGE(/ANCHOR)
      *
      * or '.' to load #home
      */
@@ -598,9 +606,29 @@ function navigateTo (href) {
         requested_page = '';
         requested_anchor = '';
     } else {
-        requested_column = href.replace(/^#([^\/]*)(\/[^\/]*(\/[^\/]*)?)?/, '$1')
-        requested_page = href.replace(/^#([^\/]*)(\/([^\/]*)(\/([^\/]*))?)?/, '$3')
-        requested_anchor = href.replace(/^#([^\/]*)(\/([^\/]*)(\/([^\/]*))?)?/, '$5')
+        requested_column = href.replace(/^#(([^\/]*))?.*/, '$2');
+        requested_page = href.replace(/^#([^\/]*\/([^\/]*))?.*/, '$2');
+        requested_anchor = href.replace(/^#([^\/]*\/[^\/]*\/([^\/]*))?.*/, '$2');
+        if (requested_anchor != '') {
+            menus.forEach (function (menu) {
+                if (menu.menu != requested_column.toLowerCase ())
+                    return;
+                menu.items.forEach (function (item) {
+                    if (!('subpages' in item))
+                        return;
+                    if (item.file.toLowerCase () != requested_page.toLowerCase ())
+                        return;
+                    item.subpages.forEach (function (page) {
+                        if (page.file.toLowerCase () != requested_anchor.toLowerCase ())
+                            return;
+                        requested_page += '/' + requested_anchor;
+                        requested_anchor =
+                            href.replace(/^([^\/]*\/[^\/]*\/[^\/]*\/([^\/]*))?.*/, '$2');
+                    });
+                });
+            });
+            
+        }
     }
     tmp_request = '#'+ requested_column + '/' + requested_page + '/' + requested_anchor;
     if (active_uri == tmp_request) {
@@ -727,6 +755,16 @@ function navigateTo (href) {
                                    requested_column + '/' +
                                    requested_page + '"]'), function (el) {
         el.classList.add ('active');
+        /* If this is a subpage item then open the parent menu */
+        if (el.parentElement.tagName.match (/div/i)) {
+            el.parentElement.classList.remove ('off');
+        }
+            
+        if (el.nextSibling && el.nextSibling.classList && 
+            el.nextSibling.classList.contains ('menu-sub-pages')) {
+            el.nextSibling.classList.remove ('off');
+        }
+
     });
     
     if (column_name == 'wiki' && 
@@ -736,6 +774,26 @@ function navigateTo (href) {
             '.sub-menu a[href="#wiki/pages"]').classList.add ('active');
 }
 
+function appendMenu (parent, menu) {
+    var link, href, div;
+    menu.items.forEach (function (item) {
+        link = document.createElement ('a');
+        href = '#' + menu.menu + '/' + item.file;
+        link.href = href.toLowerCase ();
+        link.textContent = item.name;
+        link.addEventListener ('click', subMenuClick);
+        parent.appendChild (link);
+        if ('subpages' in item) {
+            div = document.createElement ('div');
+            div.classList.add ('menu-sub-pages');
+            div.classList.add ('off');
+            appendMenu (div, { menu: menu.menu + '/' + item.file, 
+                              items: item.subpages});
+            parent.appendChild (div);
+        }
+    });
+ }    
+    
 function buildSubMenu () {
     var el, link, href;
 
@@ -743,14 +801,7 @@ function buildSubMenu () {
         el = document.querySelector ('#' + sub_menu.menu + '-column .sub-menu');
         while (el.firstChild)
             el.removeChild (el.firstChild);
-        sub_menu.items.forEach (function (item) {
-            link = document.createElement ('a');
-            href = '#' + sub_menu.menu + '/' + item.file;
-            link.href = href.toLowerCase ();
-            link.textContent = item.name;
-            link.addEventListener ('click', subMenuClick);
-            el.appendChild (link);
-        })
+        appendMenu (el, sub_menu);
     });
 
     /* Connect to the top level menu items... */

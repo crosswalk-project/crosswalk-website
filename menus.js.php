@@ -1,4 +1,6 @@
 <?php
+require_once ('smart-match.inc');
+
 /*
  * Scan 'path' for normal files.
  * For each file, return the filename and the
@@ -6,13 +8,16 @@
  *
  */
 function scan_dir ($path) {
-    $d = @opendir ($path);
+    print 'Scanning '.$path."\n";
     $entries = Array ();
+    $d = @opendir ($path);
     if (!$d)
         return $entries;
+    /* Scan through the directory first looking for files.
+     * Then for each file, look for a sub-directory that matches
+     * the file entry name. If found, scan as a sub-page */
     while (($n = readdir ($d)) !== false) {
-        if ($n == '.' ||
-            $n == '..' ||
+        if (is_dir ($path.'/'.$n) ||
             preg_match ('/\.html$/', $n))
             continue;
         $entry = null;
@@ -42,7 +47,12 @@ function scan_dir ($path) {
         $name = preg_replace ('/\.[^.]*$/', '', $name);
         $entries[$i]['file'] = $name;
         $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
+        $subpages = dir_smart_match ($path.'/'.$entries[$i]['file']);
+        if ($subpages) {
+            $entries[$i]['subpages'] = scan_dir ($path.'/'.$subpages);
+        }
     }
+
     return $entries;
 }
 

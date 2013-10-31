@@ -184,6 +184,20 @@ p {
             background-position: 2px 50%;
             background-repeat: no-repeat;
         }
+                    
+        .menu-sub-pages {
+            @include transition(opacity 0.25s ease-out);
+            padding-left: 0.25ex;
+            border-top: 1px solid darken($sub-nav-bg, 15%);
+            border-left: 1px solid darken($sub-nav-bg, 15%);
+            border-right: 1px solid lighten($sub-nav-bg, 15%);
+            border-bottom: 1px solid lighten($sub-nav-bg, 15%);
+            &.off {
+                opacity: 0;
+                height: 0;
+                pointer-events: none;
+            }
+        }
     }
     
     .sub-content {
