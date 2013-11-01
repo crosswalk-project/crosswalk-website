@@ -7,7 +7,7 @@
 # 2. Ensure there are no local unstaged changes
 # 3. Pull the latest changes from GitHub into the wiki/
 #    NOTE: If no changes, abort at this point
-# 4. Switch to the latest live-* branch
+# 4. Switch to the live-* branch currently in use
 # 5. Remove all *.html from wiki/ not in documentation/ or contribute/
 # 6. Launch Gollum if it isn't running
 # 7. Regenerate all markdown content to HTML
@@ -70,6 +70,8 @@ git diff --quiet --exit-code tag-${branch} && {
 debug_msg "Wiki has been pulled from GitHub."
 
 # 4. Switch to the latest live-* branch
+branch=$(wget -O - https://crosswalk-project.org/REVISION)
+branch=${branch/:*}
 echo "Checking out branch for site: ${branch}"
 cd ..
 git checkout ${branch} || {
