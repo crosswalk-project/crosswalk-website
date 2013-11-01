@@ -8,7 +8,6 @@ require_once ('smart-match.inc');
  *
  */
 function scan_dir ($path) {
-    print 'Scanning '.$path."\n";
     $entries = Array ();
     $d = @opendir ($path);
     if (!$d)
