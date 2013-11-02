@@ -174,7 +174,7 @@ p {
         }
     
         a.active {
-            background: $sub-nav-selected-bg;
+            background-color: $sub-nav-selected-bg;
             color: $sub-nav-selected-fg;
         }
     
@@ -184,7 +184,21 @@ p {
             background-position: 2px 50%;
             background-repeat: no-repeat;
         }
-                    
+
+        .menu-closed {
+            background-image: url(assets/down.png);
+            background-repeat: no-repeat;
+            background-position: 95% 50%;
+            background-size: auto 50%;
+        }
+        
+        .menu-open {
+            background-image: url(assets/up.png);
+            background-repeat: no-repeat;
+            background-position: 95% 50%;
+            background-size: auto 50%;
+        }
+        
         .menu-sub-pages {
             @include transition(opacity 0.25s ease-out);
             padding-left: 0.25ex;
@@ -196,6 +210,7 @@ p {
                 opacity: 0;
                 height: 0;
                 pointer-events: none;
+                border: none;
             }
         }
     }

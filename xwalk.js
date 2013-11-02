@@ -3,9 +3,10 @@ var context = this,
     home, page, footer,
     viewHeight = 0,
     top_menu, column, column_name, xhr = null,
-    slider, active_uri = '',
+    slider, active_uri = '', active_page = '',
     active_target = '', sub_link = '',
-    anchor_scroll_timer = 0, samples_background = null, samples_table = null;
+    anchor_scroll_timer = 0, samples_background = null, samples_table = null,
+    requested_column, requested_page, requested_anchor;
 
 var debug = {
     navigation: false,
@@ -541,13 +542,34 @@ function content_response (e) {
 }
 
 function subMenuClick (e) {
-    var href = this.getAttribute ('href');
+    var href = this.getAttribute ('href'), open;
     e.preventDefault ();
 
+    /* If the item being clicked is an item of a sub-menu, or 
+     * the parent of a sub-menu, then toggle the visibility
+     * of the sub-menu */
     if (this.nextSibling && this.nextSibling.classList && 
         this.nextSibling.classList.contains ('menu-sub-pages')) {
-        console.log ('toggling off');
         this.nextSibling.classList.toggle ('off');
+        if (this.nextSibling.classList.contains ('off')) {
+            open = false;
+            this.classList.add ('menu-closed');
+            this.classList.remove ('menu-open');
+        } else {
+            open = true;
+            this.classList.add ('menu-open');
+            this.classList.remove ('menu-closed');
+        }
+        
+        /* If the current page is not child of this page, then don't change focus
+         * to the item if the item is now closed (just return) */
+        if (!open) {
+            if (href.replace (/#[^\/]*\//, '') != 
+                requested_page.replace(/\/[^\/]*/, '')) {
+                console.log ('Closed ' + requested_page);
+                return;
+            }
+        }
     }
     
     navigateTo (href);
@@ -586,8 +608,7 @@ function trackAbandonLink (e) {
 }    
     
 function navigateTo (href) {
-    var requested_column, requested_page, requested_anchor,
-        new_content, content, url, column_changed;
+    var new_content, content, url, column_changed;
 
     if (debug.navigation) {
         console.log ('Navigate to: ' + href);
@@ -756,13 +777,18 @@ function navigateTo (href) {
                                    requested_page + '"]'), function (el) {
         el.classList.add ('active');
         /* If this is a subpage item then open the parent menu */
-        if (el.parentElement.tagName.match (/div/i)) {
+        if (el.parentElement.tagName.match (/div/i) &&
+            el.parentElement.classList.contains ('menu-sub-pages')) {
             el.parentElement.classList.remove ('off');
+            el.parentElement.previousSibling.classList.remove ('menu-closed');
+            el.parentElement.previousSibling.classList.add ('menu-open');
         }
             
         if (el.nextSibling && el.nextSibling.classList && 
             el.nextSibling.classList.contains ('menu-sub-pages')) {
             el.nextSibling.classList.remove ('off');
+            el.classList.remove ('menu-closed');
+            el.classList.add ('menu-open');
         }
 
     });
@@ -787,6 +813,7 @@ function appendMenu (parent, menu) {
             div = document.createElement ('div');
             div.classList.add ('menu-sub-pages');
             div.classList.add ('off');
+            link.classList.add ('menu-closed');
             appendMenu (div, { menu: menu.menu + '/' + item.file, 
                               items: item.subpages});
             parent.appendChild (div);
