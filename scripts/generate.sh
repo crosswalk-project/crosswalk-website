@@ -1,5 +1,5 @@
 #!/bin/bash
-. common.inc
+. ${PWD}/scripts/common.inc
 
 check_perms
 

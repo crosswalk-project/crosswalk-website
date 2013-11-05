@@ -1,5 +1,5 @@
 #!/bin/bash
-. common.inc
+. ${PWD}/scripts/common.inc
 #
 # 0) Remove all *.log files from '/' recursively
 # 1) Remove all *.html from '/wiki' sub-directory

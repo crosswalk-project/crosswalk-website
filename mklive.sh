@@ -1,7 +1,7 @@
 #!/bin/bash
-. common.sh
+. ${PWD}/scripts/common.inc
 
-debug=0
+debug=${debug:=0}
 
 check_perms
 
@@ -24,6 +24,13 @@ cd ..
 
 debug_msg "Check complete." 
 
+# Make sure that 'wiki' contains a full checkout
+cd wiki
+git checkout -f || { 
+	die "Could not checkout wiki"
+}
+cd ..
+
 # Make new branch for live-YYYYMMDD
 # -t track upstream (push/pull from github will work)
 # -f force -- delete branch if it already exists
@@ -44,9 +51,9 @@ debug_msg "Branch / Checkout to ${branch} complete."
 #
 # Nuke all dynamic content and regenerate it
 #
-./cleanup.sh
+./scripts/cleanup.sh
 debug_msg "Cleanup complete."
-./generate.sh
+./scripts/generate.sh
 debug_msg "Generate complete."
 
 #
