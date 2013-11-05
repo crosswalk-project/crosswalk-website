@@ -544,12 +544,16 @@ function content_response (e) {
 function addEventOffset (e) {
     if ('offsetX' in e)
         return;
-    var el, ofsX = e.layerX, ofsY = e.layerY;
+    var el, ofsX = e.clientX, ofsY = e.clientY;
+    console.log (e);
     el = e.currentTarget;
     while (el) {
         ofsX -= el.offsetLeft;
         ofsY -= el.offsetTop;
+        el = el.offsetParent;
     }
+    console.log (ofsX);
+    console.log (ofsY);
     e.offsetX = ofsX;
     e.offsetY = ofsY;
 }
