@@ -1,4 +1,6 @@
 #!/bin/bash
+. common.inc
+
 today=$(date +%Y%m%d)
 last_week=$((today - 7))
 work_done=0

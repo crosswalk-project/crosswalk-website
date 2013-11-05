@@ -1,11 +1,16 @@
 #!/bin/bash
-declare -i gollum_pid=0
-
 function die () {
-	echo -n $*
-	echo " Terminating."
+	echo -ne $*
+	echo -e "\nTerminating."
 	exit -1
 }
+
+[ "${desc}" = "" ] && [ "$1" = "--desc" ] && {
+    echo "No description provided."
+    exit
+}
+
+declare -i gollum_pid=0
 
 function debug_msg () {
     (( debug )) && {

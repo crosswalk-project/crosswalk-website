@@ -1,4 +1,5 @@
 #!/bin/bash
+. scripts/common.inc
 
 # The update-wiki scripts performs the following tasks:
 #
@@ -18,8 +19,6 @@
 # 12. Reset local back to master branch for the website and wiki
 # 13. Display message for how to push changes to staging site
 #
-
-. common.inc
 
 dir=${PWD}
 
