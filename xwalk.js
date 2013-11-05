@@ -540,17 +540,36 @@ function content_response (e) {
 
     _onResize ();
 }
+    
+function addEventOffset (e) {
+    if ('offsetX' in e)
+        return;
+    var el, ofsX = e.layerX, ofsY = e.layerY;
+    el = e.currentTarget;
+    while (el) {
+        ofsX -= el.offsetLeft;
+        ofsY -= el.offsetTop;
+    }
+    e.offsetX = ofsX;
+    e.offsetY = ofsY;
+}
 
 function subMenuClick (e) {
     var href = this.getAttribute ('href'), open;
     e.preventDefault ();
-
+    addEventOffset (e);
+    
     /* If the item being clicked is an item of a sub-menu, or 
      * the parent of a sub-menu, then toggle the visibility
      * of the sub-menu */
     if (this.nextSibling && this.nextSibling.classList && 
         this.nextSibling.classList.contains ('menu-sub-pages')) {
-        this.nextSibling.classList.toggle ('off');
+
+        if (e.offsetX >= this.offsetWidth - this.offsetHeight)
+            this.nextSibling.classList.toggle ('off');
+        else
+            this.nextSibling.classList.remove ('off');
+            
         if (this.nextSibling.classList.contains ('off')) {
             open = false;
             this.classList.add ('menu-closed');
@@ -560,6 +579,9 @@ function subMenuClick (e) {
             this.classList.add ('menu-open');
             this.classList.remove ('menu-closed');
         }
+
+        if (e.offsetX >= this.offsetWidth - this.offsetHeight)
+            return;
         
         /* If the current page is not child of this page, then don't change focus
          * to the item if the item is now closed (just return) */
