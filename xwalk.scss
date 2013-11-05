@@ -206,6 +206,9 @@ p {
             border-left: 1px solid darken($sub-nav-bg, 15%);
             border-right: 1px solid lighten($sub-nav-bg, 15%);
             border-bottom: 1px solid lighten($sub-nav-bg, 15%);
+            a:last-child {
+                padding-bottom: 6px;
+            }
             &.off {
                 opacity: 0;
                 height: 0;
