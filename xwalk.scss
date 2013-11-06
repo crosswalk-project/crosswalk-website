@@ -127,6 +127,26 @@ p {
     }
 }
 
+.scrollbar {
+    cursor: pointer;
+    position: fixed;
+    width: 0.5ex;
+    margin: 0 2px;
+    background: $sub-nav-bg;
+    opacity: 0.5;
+    z-index: 95; /* Underneath the top-menu */
+    @include transition(opacity 0.25s ease-out);
+
+    .scrollbar-thumb {
+        position: fixed;
+        width: 0.5ex;
+        min-height: 32px;
+        border-radius: 0.5ex;
+        background: $sub-nav-fg;
+        pointer-events: none;
+    }    
+}
+
 #page {
     background: url(assets/tile-chocolate.jpg);
     position: relative;
@@ -134,90 +154,81 @@ p {
     .missing {
         color: red;
     }
-    
-    .sub-menu {
-        background-color: $sub-nav-bg;
-        color: $sub-nav-fg;
-        
-        position: fixed; /* so onScroll can dynamically set top */
-        padding-top: 48px;
-        display: inline-block;
-        width: 200px;
-        min-width: 200px;
-/*
-        @media (max-width: $small-break) {
-            width: 32px;
-            min-width: 32px;
-            &:hover {
-                width: 200px;
-            }
-            z-index: 5;
-        }
-*/
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        height: 100%;
-        
-        a {
-            display: block;
-            text-decoration: none;
-            color: $sub-nav-fg;
-            text-align: left;
-            padding: 4px 20px;
-            line-height: 18px;
-            font-size: 16px;
-        }
-        
-        a:hover {
-            color: $sub-nav-hover-fg;
-        }
-    
-        a.active {
-            background-color: $sub-nav-selected-bg;
-            color: $sub-nav-selected-fg;
-        }
-    
-        a.loading {
-            background-image: url(assets/loading.gif);
-            background-size: 16px 16px;
-            background-position: 2px 50%;
-            background-repeat: no-repeat;
-        }
 
-        .menu-closed {
-            background-image: url(assets/down.png);
-            background-repeat: no-repeat;
-            background-position: 95% 50%;
-            background-size: auto 50%;
-        }
-        
-        .menu-open {
-            background-image: url(assets/up.png);
-            background-repeat: no-repeat;
-            background-position: 95% 50%;
-            background-size: auto 50%;
-        }
-        
-        .menu-sub-pages {
-            @include transition(opacity 0.25s ease-out);
-            padding-left: 0.25ex;
-            border-top: 1px solid darken($sub-nav-bg, 15%);
-            border-left: 1px solid darken($sub-nav-bg, 15%);
-            border-right: 1px solid lighten($sub-nav-bg, 15%);
-            border-bottom: 1px solid lighten($sub-nav-bg, 15%);
-            a:last-child {
-                padding-bottom: 6px;
+    .sub-menu-box {
+        .sub-menu {
+            background-color: $sub-nav-bg;
+            color: $sub-nav-fg;
+            
+            position: fixed; /* so onScroll can dynamically set top */
+            padding-top: 48px;
+            padding-bottom: 48px;
+            display: inline-block;
+            width: 200px;
+            min-width: 200px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            
+            a {
+                display: block;
+                text-decoration: none;
+                color: $sub-nav-fg;
+                text-align: left;
+                padding: 4px 20px;
+                line-height: 18px;
+                font-size: 16px;
             }
-            &.off {
-                opacity: 0;
-                height: 0;
-                pointer-events: none;
-                border: none;
+            
+            a:hover {
+                color: $sub-nav-hover-fg;
+            }
+        
+            a.active {
+                background-color: $sub-nav-selected-bg;
+                color: $sub-nav-selected-fg;
+            }
+        
+            a.loading {
+                background-image: url(assets/loading.gif);
+                background-size: 16px 16px;
+                background-position: 2px 50%;
+                background-repeat: no-repeat;
+            }
+    
+            .menu-closed {
+                background-image: url(assets/down.png);
+                background-repeat: no-repeat;
+                background-position: 95% 50%;
+                background-size: auto 50%;
+            }
+            
+            .menu-open {
+                background-image: url(assets/up.png);
+                background-repeat: no-repeat;
+                background-position: 95% 50%;
+                background-size: auto 50%;
+            }
+            
+            .menu-sub-pages {
+                @include transition(opacity 0.25s ease-out);
+                padding-left: 0.25ex;
+                border-top: 1px solid darken($sub-nav-bg, 15%);
+                border-left: 1px solid darken($sub-nav-bg, 15%);
+                border-right: 1px solid lighten($sub-nav-bg, 15%);
+                border-bottom: 1px solid lighten($sub-nav-bg, 15%);
+                a:last-child {
+                    padding-bottom: 6px;
+                }
+                &.off {
+                    opacity: 0;
+                    height: 0;
+                    pointer-events: none;
+                    border: none;
+                }
             }
         }
     }
-    
     .sub-content {
         position: relative;
         left: 200px;

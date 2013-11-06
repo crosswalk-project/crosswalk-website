@@ -557,17 +557,231 @@ function addEventOffset (e) {
     e.offsetX = ofsX;
     e.offsetY = ofsY;
 }
+    
+(function (namespace) {
+    namespace.attachScrollbar = function (scrollable) {
+        var scroll_bar = scrollable.querySelector ('.scrollbar');
+        if (scroll_bar) {
+            showScrollbar (scroll_bar);
+            return scroll_bar;
+        }
+        
+        scroll_bar = document.createElement ('div');
+        scroll_bar.insertBefore (document.createElement ('div'), null);
+        scroll_bar.firstChild.classList.add ('scrollbar-thumb');
+        scroll_bar.classList.add ('scrollbar');
 
+        scroll_bar.addEventListener ('click', scrollbarClick, false);
+        scroll_bar.addEventListener ('mousedown', scrollbarMouseDown, false);
+        scroll_bar.addEventListener ('mouseout', scrollbarMouseOut, false);
+        scroll_bar.addEventListener ('mouseover', scrollbarMouseOver, false);
+        scroll_bar.addEventListener ('mouseup', scrollbarMouseUp, false);
+        scroll_bar.addEventListener ('selectstart', scrollbarSelectStart, false);
+/*        scrollable.addEventListener ('click', scrollableClick);
+        scrollable.addEventListener ('mouseup', scrollableMouseUp);
+        scrollable.addEventListener ('mouseout', scrollableMouseOut);
+        scrollable.addEventListener ('mouseover', scrollableMouseOver);
+        scrollable.addEventListener ('touchmove', scrollableTouchMove);
+        scrollable.addEventListener ('touchstart', scrollableTouchStart);
+*/
+        scrollable.insertBefore (scroll_bar, scrollable.firstChild);
+
+        showScrollbar (scroll_bar);
+        
+        return scroll_bar;
+    }
+    
+    namespace.detachScrollbar = function (scrollable) {
+        var scroll_bar = scrollable.querySelector ('.scrollbar');
+        if (!scroll_bar)
+            return;
+        scroll_bar.removeEventListener ('click', scrollbarClick);
+        scroll_bar.removeEventListener ('mousedown', scrollbarMouseDown);
+        scroll_bar.removeEventListener ('mouseout', scrollbarMouseOut);
+        scroll_bar.removeEventListener ('mouseover', scrollbarMouseOver);
+        scroll_bar.removeEventListener ('mouseup', scrollbarMouseUp);
+        scroll_bar.removeEventListener ('selectstart', scrollbarSelectStart);
+        scrollable.removeEventListener ('click', scrollableClick);
+        scrollable.removeEventListener ('mouseup', scrollableMouseUp);
+        scrollable.removeEventListener ('mouseout', scrollableMouseOut);
+        scrollable.removeEventListener ('mouseover', scrollableMouseOver);
+        scrollable.removeEventListener ('touchmove', scrollableTouchMove);
+        scrollable.removeEventListener ('touchstart', scrollableTouchStart);
+        scrollable.removeChild (scroll_bar);
+    }
+    
+    function hideScrollbar (scroll_bar) {
+        scroll_bar.removeAttribute ('data-sbt');
+        scroll_bar.style.opacity = 0;
+    }
+        
+    function showScrollbar (scroll_bar) {
+        var scroll_bar_timer = scroll_bar.hasAttribute ('data-sbt') ? 
+            scroll_bar.getAttribute ('data-sbt') : 0;
+        if (scroll_bar_timer)
+            window.clearTimeout (scroll_bar_timer);
+    
+        scroll_bar.style.removeProperty ('opacity');
+        
+        scroll_bar.setAttribute ('data-sbt', 
+                                 window.setTimeout (hideScrollbar, 1000, 
+                                                    scroll_bar));
+    }
+
+    /* Scrollbar Event Handlers */
+    var mouseY = -1;
+
+    function scrollbarClick (e) {
+        console.log ('scrollbarClick');
+        this.setAttribute ('data-sbd', e.clientY);
+        showScrollbar (this);
+        e.preventDefault ();
+    }
+
+    function scrollbarMouseDown (e) {
+        console.log ('scrollbarMouseDown');
+        var scrollable = this.parentElement;
+
+        if (scrollable.offsetHeight <= viewHeight + top_menu.offsetHeight)
+            return;
+
+        var thumb = this.querySelector ('.scrollbar-thumb'),
+            thumb_style = window.getComputedStyle (thumb),
+            thumb_top = parseInt (thumb_style.top),
+            thumb_height = parseInt (thumb_style.height);
+
+        if (mouseY < thumb_top || mouseY > thumb_top + thumb_height) {
+            var perc = e.clientY / this.offsetHeight;
+            console.log ('jump to: ' + Math.round (perc));
+            scrollTo (scrollable, perc * 
+                      (scrollable.offsetHeight - (viewHeight + top_menu.offsetHeight)));
+        }
+        
+        mouseY = e.clientY;
+        this.setAttribute ('data-sbd', e.clientY);
+        showScrollbar (this);
+        e.preventDefault ();
+    }
+
+    function scrollbarMouseOut (e) {
+        e.preventDefault ();
+        console.log ('scrollbarMouseOut');
+        mouseY = -1;
+    }
+    
+    function scrollbarMouseOver (e) {
+        console.log ('scrollbarMouseOver');
+        
+        var sub_menu = this.parentElement;
+        if (!this.hasAttribute ('data-sbd'))
+            return;
+        var start = this.getAttribute ('data-sbd');
+    //    this.style.top = (e.clientY / sub_menu.offsetHeight) + 'px';
+        console.log (e.clientY / sub_menu.offsetHeight);
+        showScrollbar (this);
+        e.preventDefault ();
+    }
+    
+    function scrollbarMouseUp (e) {
+        console.log ('scrollbarMouseUp');
+        this.removeAttribute ('data-sbd');
+        e.preventDefault ();
+        showScrollbar (this);
+    }
+
+    function scrollbarSelectStart (e) {
+        console.log ('scrollbarSelectStart');
+        e.preventDefault ();
+    }
+    
+    /* Scrollable Event Handlers */    
+    function scrollableClick (e) {
+        console.log ('scrollableClick');
+        showScrollbar (this.querySelector ('.scrollbar'));
+    }
+    function scrollableMouseUp (e) {
+        console.log ('scrollableMouseUp');
+        showScrollbar (this.querySelector ('.scrollbar'));
+    }
+    function scrollableMouseOut (e) {
+        console.log ('scrollableMouseOut');
+    }
+    function scrollableMouseOver (e) {
+        console.log ('scrollableMouseOver');
+        showScrollbar (this.querySelector ('.scrollbar'));
+    }
+    function scrollableMouseUp (e) {
+        console.log ('scrollableMouseUp');
+        showScrollbar (this.querySelector ('.scrollbar'));
+    }
+    function scrollableSelectStart (e) {
+        console.log ('scrollableSelectStart');
+        e.preventDefault ();
+    }
+    
+    var touchY = 0;
+    function scrollTo (scrollable, y) {
+        console.log ('scrollTo: ' + y);
+        if (scrollable.offsetHeight <= viewHeight + top_menu.offsetHeight)
+            return;
+        scrollable.style.top = y + 'px';
+        var pos = y / (scrollable.offsetHeight - (viewHeight + top_menu.offsetHeight));
+        console.log ('% ' + pos);
+    }
+    function scrollableTouchMove (e) {
+        console.log ('scrollableTouchMove');
+        e.preventDefault ();
+        if (e.touches.length) {
+            scrollTo (this, parseFloat (window.getComputedStyle (this).top) +
+                (e.touches[0].pageY - touchY));
+            touchY = e.touches[0].pageY;
+        }
+        showScrollbar (this.querySelector ('.scrollbar'));
+    }
+    function scrollableTouchStart (e) {
+        console.log ('scrollableTouchStart');
+        e.preventDefault ();
+        if (e.touches.length)
+            touchY = e.touches[0].pageY;
+        showScrollbar (this.querySelector ('.scrollbar'));
+    }
+}) (window);
+    
+function subMenuResize () {
+    var sub_menu = column.querySelector ('.sub-menu'), scroll_bar;
+    if (!sub_menu) {
+        return;
+    }
+
+    if (sub_menu.offsetHeight > viewHeight - top_menu.offsetHeight) {
+        var scroll_bar = attachScrollbar (sub_menu), margin;
+        
+        margin = Math.ceil (parseFloat (
+            window.getComputedStyle (scroll_bar).marginLeft) * 2);
+        
+        scroll_bar.style.left = sub_menu.offsetLeft + sub_menu.offsetWidth -
+            scroll_bar.offsetWidth - margin + 'px';
+        
+/*        sub_menu.style.height = Math.min (sub_menu.offsetHeight, 
+                                          (viewHeight - top_menu.offsetHeight)) + 'px';*/
+        console.log ('sub_menu parent height: ' + sub_menu.parentElement.offsetHeight);
+        console.log ('sub_menu offsetheight: ' + sub_menu.offsetHeight);
+    } else {
+        detachScrollbar (sub_menu);
+    }
+}
+    
 function subMenuClick (e) {
     var href = this.getAttribute ('href'), open;
     e.preventDefault ();
-    addEventOffset (e);
     
     /* If the item being clicked is an item of a sub-menu, or 
      * the parent of a sub-menu, then toggle the visibility
      * of the sub-menu */
     if (this.nextSibling && this.nextSibling.classList && 
         this.nextSibling.classList.contains ('menu-sub-pages')) {
+
+        addEventOffset (e);
 
         if (e.offsetX >= this.offsetWidth - this.offsetHeight)
             this.nextSibling.classList.toggle ('off');
@@ -584,6 +798,9 @@ function subMenuClick (e) {
             this.classList.remove ('menu-closed');
         }
 
+        subMenuResize ();
+
+        /* If this click is in the open/close button region, return now */
         if (e.offsetX >= this.offsetWidth - this.offsetHeight)
             return;
         
@@ -596,6 +813,7 @@ function subMenuClick (e) {
                 return;
             }
         }
+        
     }
     
     navigateTo (href);
@@ -963,6 +1181,9 @@ function _onResize (from_resize_event) {
         sub_content.style.minHeight = (viewHeight - top_menu.offsetHeight) + 'px';
     }
 
+    /* Determine if we should be showing the sub-page-menu scroll bar */
+    subMenuResize ();
+    
     samples_background.style.top = getAbsolutePos (samples_table, document.getElementById ('samples-overview')).y + 'px';
     samples_background.style.height = samples_table.offsetHeight + 'px';
 
@@ -1090,7 +1311,7 @@ function init () {
 
     buildSubMenu ();
 
-    document.addEventListener ('scroll', onScroll);
+//    document.addEventListener ('scroll', onScroll);
     window.addEventListener ('resize', onResize);
     
     if (history.pushState)
