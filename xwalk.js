@@ -723,10 +723,11 @@ function addEventOffset (e) {
     function scrollableTouchMove (e) {
         e.preventDefault ();
         if (e.touches.length) {
-            scrollTo (this, this.offsetTop + (e.touches[0].pageY - touchY));
+            scrollTo (this, this.firstChild.offsetTop + (e.touches[0].pageY - touchY));
             touchY = e.touches[0].pageY;
         }
     }
+    
     function scrollableTouchStart (e) {
         e.preventDefault ();
         if (e.touches.length)
