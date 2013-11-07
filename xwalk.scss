@@ -127,22 +127,28 @@ p {
     }
 }
 
+.scrollable {
+    position: relative;
+}
+
 .scrollbar {
+    display: inline-block;
     cursor: pointer;
-    position: fixed;
-    width: 0.5ex;
-    margin: 0 2px;
-    background: $sub-nav-bg;
-    opacity: 0.5;
+    position: absolute;
+    width: 7px;
+    background-color: white;
+    opacity: 0.25;
+    height: 100%;
     z-index: 95; /* Underneath the top-menu */
     @include transition(opacity 0.25s ease-out);
 
     .scrollbar-thumb {
-        position: fixed;
+        display: inline-block;
+        position: relative;
         width: 0.5ex;
-        min-height: 32px;
+        min-height: 50px;
         border-radius: 0.5ex;
-        background: $sub-nav-fg;
+        background-color: black;
         pointer-events: none;
     }    
 }
@@ -156,11 +162,17 @@ p {
     }
 
     .sub-menu-box {
+        display: inline-block;
+        position: fixed;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        
         .sub-menu {
+//            position: fixed; /* so onScroll can dynamically set top */
             background-color: $sub-nav-bg;
             color: $sub-nav-fg;
             
-            position: fixed; /* so onScroll can dynamically set top */
             padding-top: 48px;
             padding-bottom: 48px;
             display: inline-block;
@@ -229,6 +241,7 @@ p {
             }
         }
     }
+    
     .sub-content {
         position: relative;
         left: 200px;
