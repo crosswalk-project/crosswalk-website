@@ -34,8 +34,8 @@ function file_smart_match ($filepath) {
 }
 
 function dir_smart_match ($filepath) {
-    if (file_exists ($filepath) && is_dir (dirname ($filepath)))
-        return basename ($filepath);
+    if (file_exists ($filepath) && is_dir ($filepath))
+        return $filepath;
     $lower = strtolower (basename ($filepath));
     $files = glob (dirname ($filepath).'/*');
     foreach ($files as $f) {
