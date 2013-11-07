@@ -46,7 +46,7 @@ function scan_dir ($path) {
         $name = preg_replace ('/\.[^.]*$/', '', $name);
         $entries[$i]['file'] = $name;
         $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
-        $subpages = dir_smart_match ($path.'/'.$entries[$i]['file']);
+        $subpages = basename (dir_smart_match ($path.'/'.$entries[$i]['file']));
         if ($subpages) {
             $entries[$i]['subpages'] = scan_dir ($path.'/'.$subpages);
         }
