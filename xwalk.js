@@ -322,8 +322,8 @@ function generate_history_page (page, contents) {
                 tracked = [], k;
                                     
             while (j < events.length) {
-                event = events[j];
-                event.date = parseInt (event.date) * 1000;
+                e = events[j];
+                e.date = parseInt (e.date) * 1000;
                 
                 /* Events are delivered chronologically, with future events 
                  * (due to timezone) being processed by the first span "Today"
@@ -331,11 +331,11 @@ function generate_history_page (page, contents) {
                  * If this events happened farther back in time than this span 
                  * handles exit the while () loop to process the event under 
                  * the next span */
-                if (event.date <= span.end) {
+                if (e.date <= span.end) {
                     break;
                 }
                 period_index = Math.max (
-                    0, Math.floor ((span.start - event.date) / span.length));
+                    0, Math.floor ((span.start - e.date) / span.length));
                 if (period == null || period_index != last_period_index) {
                     tracked = [];
                     
@@ -344,7 +344,7 @@ function generate_history_page (page, contents) {
                 /* Check if this particular file is already listed as being 
                  * edited in this time period, and if so, so skip it... */
                 for (k = 0; k < tracked.length; k++) {
-                    if (event.file == tracked[k])
+                    if (e.file == tracked[k])
                         break;
                 }
                 
@@ -365,19 +365,19 @@ function generate_history_page (page, contents) {
                             period = span.names[period_index];
                         }
                     } else {
-                        period = new Date(event.date).toDateString ();
+                        period = new Date(e.date).toDateString ();
                     }
                     html += '<h3>' + period + '</h3>';
                     html += '<ul class="history-list">';
                     last_period_index = period_index;
                 }
 
-                html += '<li><a href="' + event.file + '">' + event.name + '</a> ';
-                if (event.end_sha != '') {
+                html += '<li><a href="' + e.file + '">' + e.name + '</a> ';
+                if (e.end_sha != '') {
                     html += '<a target="_blank" href="' + 
                         'https://github.com/crosswalk-project/' + 
-                        'crosswalk-website/wiki/' + event.file + 
-                        '/_compare/' + event.end_sha + '..' + event.start_sha + 
+                        'crosswalk-website/wiki/' + e.file + 
+                        '/_compare/' + e.end_sha + '..' + e.start_sha + 
                         '"">View changes on GitHub</a>';
                 } else {
                     html += '<span>New page</span>';
@@ -385,7 +385,7 @@ function generate_history_page (page, contents) {
 
                 html += '</li>';
                 
-                tracked.push (event.file);
+                tracked.push (e.file);
                 j++;
             }
             
