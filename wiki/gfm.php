@@ -136,12 +136,17 @@ function ob_callback ($buffer) {
     fwrite ($d, $buffer);
 }
 
-
-
 if (isset($argv[1]))
     $_REQUEST['f'] = $argv[1];
 
 $request = isset ($_REQUEST['f']) ? $_REQUEST['f'] : 'Home';
+
+$md = file_smart_match (dirname (__FILE__).'/'.$request);
+$md = realpath ($md);
+if (preg_match ('/.html$/', $md)) {
+    require ($md);
+    exit;
+}
 
 /*
  * Special case for Pages request which is dynamically built
@@ -209,13 +214,6 @@ if (strtolower ($request) == 'history' ||
     exit;
 }
 
-
-$md = file_smart_match (dirname (__FILE__).'/'.$request);
-$md = realpath ($md);
-if (preg_match ('/.html$/', $md)) {
-    require ($md);
-    exit;
-}
 
 if (!preg_match ('#^'.dirname (__FILE__).'/#', $md)) {
     missing ();
