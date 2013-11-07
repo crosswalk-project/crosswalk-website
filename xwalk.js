@@ -264,9 +264,8 @@ function generate_wiki_page (page, contents) {
             column.getAttribute ('referring_page') : 'Internal link',
             tmp = document.createElement ('div');
         tmp.innerHTML = '<h1>Missing Page</h1>' +
-                        'Reffering page: ' +
-                        '<a href="#' + column_name + '/' +
-                        referring_page + '">' +
+                        'Referring page: ' +
+                        '<a href="#' + column_name + '/' + referring_page + '">' +
                         '#' + column_name + '/' + referring_page + '</a><br>';
         wiki_body.insertBefore (tmp, wiki_body.firstChild);
     }
@@ -426,9 +425,8 @@ function content_response (e) {
         if (column.hasAttribute ('referring_page')) {
             var referring_page = column.getAttribute ('referring_page');
             tmp += '<br>' +
-                'Reffering page: ' +
-                '<a href="#' + column_name + '/' +
-                referring_page + '">' +
+                'Referring page: ' +
+                '<a href="#' + column_name + '/' + referring_page + '">' +
                 '#' + column_name + '/' + referring_page + '</a><br>';
         }
 
