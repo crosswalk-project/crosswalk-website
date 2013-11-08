@@ -1042,4 +1042,14 @@ p {
             font-size: 0.8rem;
         }
     }
+    
+    a.primary-link {
+        color: #ed7332;
+        text-decoration: none;
+        padding-bottom: 1px;
+        background-image: url(dash-grapefruit.svg);
+        background-repeat: repeat-x;
+        background-size: 4px 2px;
+        background-position: 0 100%; 
+    }
 }
