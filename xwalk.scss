@@ -25,6 +25,8 @@ $small-break: 480px;
 $medium-break: 960px;
 
 $grapefruit: #ed7332;
+$avacado: #689277;
+$paper: #ffefd8;
 
 $top-menu-fg: #ffefd8;
 $top-menu-bg: hsl(13, 66%, 52%);
@@ -348,6 +350,16 @@ p {
         position: relative;
         padding: 0 0 72px 0;
         height: 100%;
+
+        a:not(.channel) {        
+            color: $paper;
+            text-decoration: none;
+            padding-bottom: 1px;
+            background-image: url(dash-paper.svg);
+            background-repeat: repeat-x;
+            background-size: 4px 2px;
+            background-position: 0 100%;
+        }
     }
     
     .container {
@@ -554,8 +566,15 @@ p {
     .content {
         padding: 0;
     }
-    a {
+
+    #copyright a {
         color: $grapefruit;
+        text-decoration: none;
+        padding-bottom: 2px;
+        background-image: url(dash-grapefruit.svg);
+        background-repeat: repeat-x;
+        background-size: 4px 2px;
+        background-position: 0 100%;
     }
 }
 
