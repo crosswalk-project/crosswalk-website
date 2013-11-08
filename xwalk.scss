@@ -178,8 +178,8 @@ p {
             padding-top: 48px;
             padding-bottom: 48px;
             display: inline-block;
-            width: 200px;
-            min-width: 200px;
+            width: 250px;
+            min-width: 250px;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -246,7 +246,7 @@ p {
     
     .sub-content {
         position: relative;
-        left: 200px;
+        left: 250px;
 /*        
         @media (max-width: $small-break) {
             left: 32px;
@@ -264,7 +264,7 @@ p {
 }
 
 #documentation-column, #contribute-column, #wiki-column {
-    max-width: 900px;
+    max-width: 950px;
     margin: 0 auto;
 }
 
