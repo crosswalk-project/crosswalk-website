@@ -351,14 +351,23 @@ p {
         padding: 0 0 72px 0;
         height: 100%;
 
-        a.version-link {
-            color: $paper;
-            text-decoration: none;
-            padding-bottom: 1px;
-            background-image: url(dash-paper.svg);
-            background-repeat: repeat-x;
-            background-size: 4px 2px;
-            background-position: 0 100%;
+        .releases {
+            text-align: center;
+            margin: -8px auto 8px auto;
+            a.version-link {
+                display: inline-block;
+                color: $paper;
+                text-decoration: none;
+                padding-bottom: 1px;
+                background-image: url(dash-paper.svg);
+                background-repeat: repeat-x;
+                background-size: 4px 2px;
+                background-position: 0 100%;
+            }
+            a.channel {
+                margin-left: 1ex;
+                margin-top: 4px;
+            }
         }
     }
     
