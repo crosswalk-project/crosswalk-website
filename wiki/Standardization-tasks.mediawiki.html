@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Standardization-tasks';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Standardization tasks</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Standardization tasks</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Standardization-tasks"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Standardization-tasks"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-mediawiki-content">
+    <div class="markdown-body">
+      
+<p>We have identified a set of standardization tasks that we need to get started with. We hope to get to a point where we have clear visibility and accountability for contributions from each team/site, assuming responsibility for sub-tasks of Crosswalk.
+</p>
+<p>The page shares its basic structure and boilerplate with <a class="internal present" href="/wiki/Development-tasks">Development tasks</a> for consistency.
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div>Table of Contents</div><ul><ul><li><a href="#Runtime_and_Security_Model_for_Web_Applications">Runtime and Security Model for Web Applications</a><ul><li><a href="#Tasks_high_priority">Tasks (high priority)</a><ul><li><a href="#Application_Lifecycle_and_Events_Kenneth_and_Anssi">Application Lifecycle and Events (Kenneth and Anssi)</a></li><li><a href="#Manifest">Manifest</a></li><li><a href="#Package_Format">Package Format</a></li></ul></li></ul></li></ul></ul></td></tr></table><h2><span class="mw-headline" id="Runtime_and_Security_Model_for_Web_Applications"><a name="Runtime_and_Security_Model_for_Web_Applications" id="Runtime_and_Security_Model_for_Web_Applications">Runtime and Security Model for Web Applications</a></span><a class="anchor" id="Runtime-and-Security-Model-for-Web-Applications" href="#Runtime-and-Security-Model-for-Web-Applications"></a></h2>
+
+
+
+<p>On a high-level, we would like to see the <a href="http://www.w3.org/2012/sysapps/runtime/">Runtime and Security Model for Web Applications</a> (partially obsoleted as of 2013-09) spec to better consider and address non-mobile use cases e.g. desktop web browsers, and web runtimes in desktop context. We believe the current spec is too focused on mobile use cases. For example, parts of the spec (e.g. Application Lifecycle and Events) address issues relevant to web browsers and regular web apps too. We should split these parts out i.e. modularize the currently monolithic specification.
+</p>
+<p>Relevant W3C working groups:
+</p>
+
+
+
+<ul><li>SysApps working group (<a href="http://lists.w3.org/Archives/Public/public-sysapps/">public-sysapps</a>) - Runtime and Security Model, Package Format (incl. Web Manifest extensions for Packaged Apps), SysApps APIs</li><li>WebApps working group (<a href="http://lists.w3.org/Archives/Public/public-webapps/">public-webapps</a>) - Web Manifest</li></ul>
+See also: <a class="internal present" href="/wiki/Runtime-and-Security-Model-for-Web-Applications">comparison with Tizen</a> (NB! the comparison is against the now largely obsoleted version of the SysApps Runtime Model spec)
+
+
+<h3><span class="mw-headline" id="Tasks_high_priority"><a name="Tasks_high_priority" id="Tasks_high_priority">Tasks (high priority)</a></span><a class="anchor" id="Tasks-(high-priority)" href="#Tasks-(high-priority)"></a></h3>
+
+
+
+
+<h4><span class="mw-headline" id="Application_Lifecycle_and_Events_Kenneth_and_Anssi"><a name="Application_Lifecycle_and_Events_Kenneth_and_Anssi" id="Application_Lifecycle_and_Events_Kenneth_and_Anssi">Application Lifecycle and Events (Kenneth and Anssi)</a></span><a class="anchor" id="Application-Lifecycle-and-Events-(Kenneth-and-Anssi)" href="#Application-Lifecycle-and-Events-(Kenneth-and-Anssi)"></a></h4>
+
+
+
+<p>Status: draft spec available
+</p>
+<p><a href="http://anssiko.github.io/runtime/app-lifecycle.html">Application Lifecycle and Events</a> draft is being worked on in the SysApps working group. See the draft for use cases, requirements and the draft spec.
+</p>
+
+<h4><span class="mw-headline" id="Manifest"><a name="Manifest" id="Manifest">Manifest</a></span><a class="anchor" id="Manifest" href="#Manifest"></a></h4>
+
+
+
+<p>Status: exploring
+</p>
+<p>The Web Manifest spec is scope for the WebApps working group, targeted at regular web apps. Extensions specific to Packaged Apps to be specified in the SysApps working group.
+</p>
+<p>The "event page" and Web Manifest integration to be specified. Pointers to relevant discussion on public-webapps for follow-up: <a href="http://lists.w3.org/Archives/Public/public-webapps/2013AprJun/0979.html">event pages/workers synchronous access to its visible tabs</a>, <a href="http://lists.w3.org/Archives/Public/public-webapps/2013AprJun/0946.html">the grouping of a set of pages using an origin plus wildcard matching</a>
+</p>
+
+<h4><span class="mw-headline" id="Package_Format"><a name="Package_Format" id="Package_Format">Package Format</a></span><a class="anchor" id="Package-Format" href="#Package-Format"></a></h4>
+
+
+
+<p>Status: exploring</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Anssi Kostiainen</b>, 2013-10-18 04:47:05</p>
+  <p>
+    <a id="delete-link" href="/wiki/Standardization-tasks" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Standardization-tasks">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

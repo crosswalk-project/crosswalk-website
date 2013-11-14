@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Message-passing-extensions';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Message passing extensions</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Message passing extensions</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Message-passing-extensions"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Message-passing-extensions"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <p><em>NOTE: This document is the original design document for Crosswalk Extensions. We'll release an updated one with the current work on running extensions in an external process.</em></p>
+
+<p>Contact: <a href="mailto:caio.oliveira@intel.com">caio.oliveira@intel.com</a></p>
+
+<h1>Introduction: Why extensions?<a class="anchor" id="Introduction:-Why-extensions?" href="#Introduction:-Why-extensions?"></a></h1>
+
+<p>While HTML5 APIs are growing every year, and covering more and more of the
+functionalities applications use, there are several use cases in which an user
+of Crosswalk, or even Crosswalk itself might need to expose new functionalities:</p>
+
+<ul><li><p>An application that embeds Crosswalk (either as a WebView or the full Crosswalk
+binary) might want to implement certain functionality using native code
+instead of JS, but still use this from the HTML/JS code.</p></li>
+<li><p>A webruntime developed using Crosswalk needs to expose its own specific APIs,
+some examples would be: PhoneGap and Tizen.</p></li>
+<li><p>Crosswalk itself might want to provide some specific APIs that doesn't make
+sense as part of the Web platform (so not suitable to be implemented in
+Blink). One example would be a Native Menu API for webapps running in the
+desktop.</p></li>
+</ul><p>We categorize extensions in two groups: <em>builtin</em> extensions, which are
+deployed as part of Crosswalk itself; and <em>external</em> extensions, to be used by
+applications embedding Crosswalk (either as a WebView or the full Crosswalk
+binary). An important part of <em>external</em> extensions is to figure out the
+API/ABI that the extension code need to follow to be successfully loaded by
+Crosswalk.</p>
+
+<h1>Some assumptions<a class="anchor" id="Some-assumptions" href="#Some-assumptions"></a></h1>
+
+<ul><li><p>We want to use <strong>sandbox</strong> for the renderer process, so we will have to
+exchange messages -- either explicitly or implicitly.</p></li>
+<li><p>Extensions are a critical part of Crosswalk, so we want to <strong>explore that part
+as soon as possible</strong>. By exploring we mean not only developing but also
+using the extensions with Crosswalk when developing applications and
+webruntime(s).</p></li>
+<li><p>Because of the previous point, we want a flexible system so we can evolve
+it.</p></li>
+</ul><h1>Message passing extensions design<a class="anchor" id="Message-passing-extensions-design" href="#Message-passing-extensions-design"></a></h1>
+
+<p>The core idea: expose a message passing API for extensions and allow them to
+provide JavaScript code to encapsulate it when necessary. An extension in the
+system will implement three operations:</p>
+
+<ul><li><p><code>GetJavaScriptAPI()</code>, which returns the JavaScript API be executed in the
+renderer process initialization.</p></li>
+<li><p><code>HandleMessage()</code>, which will process a message from the renderer process.</p></li>
+</ul><p>and will be able to use</p>
+
+<ul><li><code>PostMessage()</code>, which sends a message back to the renderer process.</li>
+</ul><p>This design is flexible enough so we can execute extension code both in the
+Browser Process (we might want to do that for Native Menu builtin extension),
+and in a different extension process -- the ideal case for external
+extensions.</p>
+
+<p>Decision about which extensions will be installed on renderer process JS
+environment, and which extensions will receive messages from renderer process,
+are two ways to enforce permissions.</p>
+
+<p>The typically predicted bottleneck in a system like this with IPC system, but
+there are some ways to improve performance:</p>
+
+<ul><li>Using shared memory for posting really big messages.</li>
+<li>Explore sharing higher level types, like ArrayBuffers.</li>
+</ul><p>Also worth noting that extension itself can optimize by sending less
+messages. While this is valid for all systems, the fact that messages are in
+the control of the extension and it can evaluate code in JavaScript
+environment might enable better optimizations.</p>
+
+<h1>Current implementation overview (2013-06-10)<a class="anchor" id="Current-implementation-overview-(2013-06-10)" href="#Current-implementation-overview-(2013-06-10)"></a></h1>
+
+<p>See <a href="https://github.com/crosswalk-project/crosswalk/tree/extensions/src">https://github.com/crosswalk-project/crosswalk/tree/extensions/src</a> for the code. Extensions are in <code>src/extensions</code>.</p>
+
+<p>We currently implement only builtin extensions that run on the browser
+process. The plan is to cover also external extensions in another process as
+the work progresses.</p>
+
+<h2>Browser process<a class="anchor" id="Browser-process" href="#Browser-process"></a></h2>
+
+<ul><li><p><code>XWalkExtension</code> interface: the messaging interface implemented by
+extensions. We have one example which is the <code>BracketsExtensions</code> that
+implements some of <code>brackets.fs.*</code> functions.</p></li>
+<li><p><code>XWalkExtensionHost</code> object: used by Crosswalk to manage the extensions and
+dispatch its messages. Once extensions are registered with it, notify the
+renderer process about and pass the JavaScript APIs of the extensions to
+renderer process.</p></li>
+<li><p><strong>Changes to XWalk:</strong> <code>XWalkContentBrowserClient</code>, to create the host and
+extensions, then register then.</p></li>
+</ul><h2>Renderer process<a class="anchor" id="Renderer-process" href="#Renderer-process"></a></h2>
+
+<ul><li><p><code>XWalkExtensionRendererController</code> object: keeps track of which extensions
+were registered, as well as its JavaScript APIs (so they can be loaded by
+RenderViews).  It currently also bootstraps a v8::Extension that contains
+the code for xwalk.* functions (see below).</p></li>
+<li><p><code>XWalkExtensionRenderViewHandler</code> object: associated with each RenderView,
+handles the message exchange between JavaScript and the browser process. It
+is also responsible for installing the JavaScript API for each extension.</p></li>
+<li><p><strong>Changes to XWalk:</strong> <code>XWalkContentRendererClient</code>, to create the
+controller and to notify it when a render view was created.</p></li>
+</ul><h2>JavaScript code<a class="anchor" id="JavaScript-code" href="#JavaScript-code"></a></h2>
+
+<ul><li><p><code>xwalk.postMessage(extension, msg)</code> JS function allows the JavaScript to
+send a message to a certain extension.</p></li>
+<li><p><code>xwalk.setMessageListener(extension, callback)</code> JS function allows to register
+a function to listen for messages from extension.</p></li>
+<li><p>In many cases, the idea is that extensions exposes JavaScript APIs that
+encapsulate the message passing.</p></li>
+</ul><h2>How will extension process be implemented?<a class="anchor" id="How-will-extension-process-be-implemented?" href="#How-will-extension-process-be-implemented?"></a></h2>
+
+<p>The idea here is to have Browser Process create a new process for handling
+extensions and acting as man-in-the-middle between the renderer process and
+the extension process. Chromium has machinery for spawning new process that
+we should be able to use.</p>
+
+<p>We don't plan to run that extension process sandboxed, since its goal usually
+is to talk to the system directly in ways we couldn't predict.</p>
+
+<h2>How will external extensions be implemented?<a class="anchor" id="How-will-external-extensions-be-implemented?" href="#How-will-external-extensions-be-implemented?"></a></h2>
+
+<p>External extensions are detailed in its own page, <a href="Extensions">in this wiki page</a>.</p>
+
+<h2>How could synchronous messages be implemented?<a class="anchor" id="How-could-synchronous-messages-be-implemented?" href="#How-could-synchronous-messages-be-implemented?"></a></h2>
+
+<p>We could build upon existing IPC mechanism for synchronous messaging, and add
+a new HandleSyncMessage() operation to the interface. In the ideal scenario we
+should be able to</p>
+
+<p>While this is possible, is not something we are currently
+targetting.</p>
+
+<h1>Brackets implementation<a class="anchor" id="Brackets-implementation" href="#Brackets-implementation"></a></h1>
+
+<p>In the same branch there's a concrete implementation of a Brackets extension
+for some of <code>brackets.fs.*</code> APIs. The extension is in <code>src/brackets</code> is
+divided as such:</p>
+
+<ul><li><p><code>BracketsExtension</code> implements the xwalk extension interface. Right now
+there's a very naive message and callback dispatcher, but enough to show how
+the system works.</p></li>
+<li><p><code>brackets_platform.h</code> and <code>brackets_platform_gtk.cpp</code> are the
+implementations of the functionality with platform specific code. This code
+was mostly reused from the previous prototype of extensions.</p></li>
+<li><p><strong>Changes to Crosswalk:</strong>: in <code>XWalkContentBrowserClient</code> we create and
+register the extension with the <code>XWalkExtensionHost</code>.</p></li>
+</ul><p>As the other features are implemented, the goal it to make that brackets
+extension an external extension.</p>
+
+<p>We are also working in the Native Menu functionality needed by brackets, that
+we want to provide as a builtin <code>xwalk.*</code> extension.</p>
+
+<h1>Characteristics of this approach<a class="anchor" id="Characteristics-of-this-approach" href="#Characteristics-of-this-approach"></a></h1>
+
+<ul><li><p>It <strong>complements</strong> other proposals so far: once we have knowledge and the
+Chrome Extension machinery is decoupled from Chrome Browser, we might be
+able to reuse some of its classes. Once NPRuntime proposal implementation is
+available, we can extend the current extension interface with NPRuntime
+capabilities.</p></li>
+<li><p>It's a very <strong>non-intrusive implementation</strong>, all the code is in a separate
+directory/namespace and there are three entry points in all Crosswalk code. It
+shouldn't cause problems to other on-going efforts.</p></li>
+<li><p>It'll allow us to <strong>build requirements</strong> for the future changes, by showing
+working versions of Brackets, webruntimes and other applications, with their
+extensions early, we can make sure we have the proper testing scenarios for
+future solutions.</p></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-06 09:32:14</p>
+  <p>
+    <a id="delete-link" href="/wiki/Message-passing-extensions" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Message-passing-extensions">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

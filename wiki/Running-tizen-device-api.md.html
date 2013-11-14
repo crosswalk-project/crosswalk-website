@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Running-tizen-device-api';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Running tizen device api</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Running tizen device api</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Running-tizen-device-api"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Running-tizen-device-api"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <p>Currently <a href="https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/index.html">Tizen Device API</a> with Crosswalk works only on Linux. The implementation is under heavy developed, please track <a href="https://github.com/crosswalk-project/tizen-extensions-crosswalk/wiki/APIs">https://github.com/crosswalk-project/tizen-extensions-crosswalk/wiki/APIs</a> for latest status.</p>
+
+<h3>How to Build<a class="anchor" id="How-to-Build" href="#How-to-Build"></a></h3>
+
+<ol><li><p>If you do not have a Crosswalk binary, <strong><a href="Build-Crosswalk">Follow the regular steps to build Crosswalk</a></strong>. The remaining instructions will assume that Crosswalk base directory is <code>~/dev/crosswalk</code>. That directory should contain an src subdirectory, and inside <code>src</code>, there's a <code>xwalk</code> directory. At this point there must be a ~/dev/crosswalk/src/out/Release/xwalk executable</p></li>
+<li><p><code>cd ~/dev</code></p></li>
+<li><p><code>git clone git@github.com:crosswalk-project/tizen-extensions-crosswalk.git</code></p></li>
+<li><p><code>cd tizen-extensions-crosswalk</code></p></li>
+<li><p><code>export GYP_GENERATORS=ninja</code></p></li>
+<li><p>./configure or <code>gyp -D extension_build_type=Release --depth=. tizen-wrt.gyp</code> for Release build. Add <code>-D extension_host_os=desktop</code> for desktop environment.</p></li>
+<li><p>ninja -C out/Default</p></li>
+<li><p>There should be several libtizen_xxx.so under <code>~/dev/tizen-extensions-crosswalk/out/Default</code> file after make runs.</p></li>
+<li><p><code>./run.sh</code> (make sure xwalk in your $PATH)</p></li>
+</ol><h3>BKMs<a class="anchor" id="BKMs" href="#BKMs"></a></h3>
+
+<h4>Remote debugging<a class="anchor" id="Remote-debugging" href="#Remote-debugging"></a></h4>
+
+<ol><li><code>./run.sh --remote-debugging-port=9222</code> then follow <a href="https://github.com/crosswalk-project/crosswalk/wiki/Try-Crosswalk#debug-your-web-app">https://github.com/crosswalk-project/crosswalk/wiki/Try-Crosswalk#debug-your-web-app</a></li>
+</ol>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Running-tizen-device-api" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Running-tizen-device-api">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

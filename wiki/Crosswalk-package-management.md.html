@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Crosswalk-package-management';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Crosswalk package management</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Package Management</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Crosswalk-package-management"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Crosswalk-package-management"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The document will introduce that how the Crosswalk runtime will manage the application package, such as installation, uninstall, launching and so on.</p>
+
+<h2>XPK package supporting<a class="anchor" id="XPK-package-supporting" href="#XPK-package-supporting"></a></h2>
+
+<h3>XPK package format<a class="anchor" id="XPK-package-format" href="#XPK-package-format"></a></h3>
+
+<ul><li>Application package is zip format with a magic header.</li>
+<li>Application package file extension should be "xpk".</li>
+<li>Magic header contains:
+
+<ul><li>Magic string at beginning: <code>CrWk</code></li>
+<li>Public key size</li>
+<li>Signature key size</li>
+<li>Public key value</li>
+<li>Signature key value</li>
+</ul></li>
+<li>The package, the raw zip file, is signed by the private key with RSA algorithm using the SHA-1 hash function, and the Signature key is the result.</li>
+<li>The package is validated by the public key and the Siguature key.</li>
+<li>The package file structure looks like this:</li>
+</ul><table><thead><tr><th>address(byte)</th>
+<th>item</th>
+<th>value/type</th>
+</tr></thead><tbody><tr><td>0~3</td>
+<td>magic string</td>
+<td>"CrWk"/uint8</td>
+</tr><tr><td>4~7</td>
+<td>public key size</td>
+<td>uint32</td>
+</tr><tr><td>8~11</td>
+<td>signature key size</td>
+<td>uint32</td>
+</tr><tr><td>12~12+public key size-1</td>
+<td>public key</td>
+<td>uint8[]</td>
+</tr><tr><td>12+public key size~12+public key size+signaure key size-1</td>
+<td>signature key</td>
+<td>uint8[]</td>
+</tr><tr><td>12+public key size+signaure key size~file end</td>
+<td>zip file</td>
+<td>uint8[]</td>
+</tr></tbody></table><h3>Difference to CRX<a class="anchor" id="Difference-to-CRX" href="#Difference-to-CRX"></a></h3>
+
+<ul><li><p>The XPK package magic string is "CrWk", but "Cr24" in CRX format. This magic string identify the package is a XPK package.</p></li>
+<li><p>The "version number" is invalid in XPK format, but CRX has.</p></li>
+</ul><h3>XPK package generator (Bash shell version)<a class="anchor" id="XPK-package-generator-(Bash-shell-version)" href="#XPK-package-generator-(Bash-shell-version)"></a></h3>
+
+<p>XPK package is very similar as CRX Format, the reference link is: <a href="http://developer.chrome.com/extensions/crx.html">CRX Format</a>, and here is a generator shell adapted from the example:</p>
+
+<div class="highlight"><pre><span class="c">#!/bin/bash -e</span>
+<span class="c">#</span>
+<span class="c"># Purpose: Pack a CrossWalk directory into xpk format</span>
+<span class="c"># Modified from http://developer.chrome.com/extensions/crx.html</span>
+
+<span class="k">if </span><span class="nb">test</span> <span class="nv">$# </span>-ne 2; <span class="k">then</span>
+<span class="k">  </span><span class="nb">echo</span> <span class="s2">"Usage: `basename $0` &lt;unpacked dir&gt; &lt;pem file path&gt;"</span>
+  <span class="nb">exit </span>1
+<span class="k">fi</span>
+
+<span class="nv">dir</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">key</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nv">name</span><span class="o">=</span><span class="k">$(</span>basename <span class="s2">"$dir"</span><span class="k">)</span>
+<span class="nv">xpk</span><span class="o">=</span><span class="s2">"$name.xpk"</span>
+<span class="nv">pub</span><span class="o">=</span><span class="s2">"$name.pub"</span>
+<span class="nv">sig</span><span class="o">=</span><span class="s2">"$name.sig"</span>
+<span class="nv">zip</span><span class="o">=</span><span class="s2">"$name.zip"</span>
+<span class="nb">trap</span> <span class="s1">'rm -f "$pub" "$sig" "$zip"'</span> EXIT
+
+<span class="o">[</span> ! -f <span class="nv">$key</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> openssl genrsa -out <span class="nv">$key</span> 1024
+
+<span class="c"># zip up the xpk dir</span>
+<span class="nv">cwd</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span> -P<span class="k">)</span>
+<span class="o">(</span><span class="nb">cd</span> <span class="s2">"$dir"</span> <span class="o">&amp;&amp;</span> zip -qr -9 -X <span class="s2">"$cwd/$zip"</span> .<span class="o">)</span>
+
+<span class="c"># signature</span>
+openssl sha1 -sha1 -binary -sign <span class="s2">"$key"</span> &lt; <span class="s2">"$zip"</span> &gt; <span class="s2">"$sig"</span>
+
+<span class="c"># public key</span>
+openssl rsa -pubout -outform DER &lt; <span class="s2">"$key"</span> &gt; <span class="s2">"$pub"</span> 2&gt;/dev/null
+
+byte_swap <span class="o">()</span> <span class="o">{</span>
+  <span class="c"># Take "abcdefgh" and return it as "ghefcdab"</span>
+  <span class="nb">echo</span> <span class="s2">"${1:6:2}${1:4:2}${1:2:2}${1:0:2}"</span>
+<span class="o">}</span>
+
+<span class="nv">crmagic_hex</span><span class="o">=</span><span class="s2">"4372 576B"</span> <span class="c"># CrWk</span>
+<span class="nv">pub_len_hex</span><span class="o">=</span><span class="k">$(</span>byte_swap <span class="k">$(</span><span class="nb">printf</span> <span class="s1">'%08x\n'</span> <span class="k">$(</span>ls -l <span class="s2">"$pub"</span> | awk <span class="s1">'{print $5}'</span><span class="k">)))</span>
+<span class="nv">sig_len_hex</span><span class="o">=</span><span class="k">$(</span>byte_swap <span class="k">$(</span><span class="nb">printf</span> <span class="s1">'%08x\n'</span> <span class="k">$(</span>ls -l <span class="s2">"$sig"</span> | awk <span class="s1">'{print $5}'</span><span class="k">)))</span>
+<span class="o">(</span>
+  <span class="nb">echo</span> <span class="s2">"$crmagic_hex $pub_len_hex $sig_len_hex"</span> | xxd -r -p
+  cat <span class="s2">"$pub"</span> <span class="s2">"$sig"</span> <span class="s2">"$zip"</span>
+<span class="o">)</span> &gt; <span class="s2">"$xpk"</span>
+<span class="nb">echo</span> <span class="s2">"Wrote $xpk"</span>
+</pre></div>
+You can save the shell script content into a file, e.g "xpk_generator", then:
+<div class="highlight"><pre><span class="nv">$ </span>chmod u+x xpk_generator
+<span class="nv">$ </span>./xpk_generator xpk_package_directory_path private_key_file
+</pre></div>
+It will generate a xpk file in current directory. If there's no private key file, it'll generate one for this application, and please use the same private key file for this application next time, otherwise, the package will be recognized as a different one.
+
+<h3>XPK package generator (Python version)<a class="anchor" id="XPK-package-generator-(Python-version)" href="#XPK-package-generator-(Python-version)"></a></h3>
+
+<ul><li>There is a new Python version XPK package generation tool named <code>make_xpk.py</code> in <code>xwalk/tools</code> directory, it has the same usage as "xpk_generator" shell script. Like this:
+<div class="highlight"><pre><span class="nv">$ </span>python path_to/xwalk/tools/make_xpk.py xpk_package_directory_path private_key_file
+</pre></div>
+A XPK package will be generated at the present directory.</li>
+<li>The <code>make_xpk.py</code> is required an additional Python plugin <a href="https://www.dlitz.net/software/pycrypto/">Pycrypto</a></li>
+<li>When generating the XPK package, please make sure there's a manifest file, named <code>manifest.json</code>, placed at the package root directory, with this <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-manifest#crosswalk-manifest-format">format</a></li>
+</ul><h2>XPK package management<a class="anchor" id="XPK-package-management" href="#XPK-package-management"></a></h2>
+
+<p>This section will introduce the process and usages that Crosswalk runtime how to manage the xpk package, like install, uninstall.</p>
+
+<h3>Application information storage<a class="anchor" id="Application-information-storage" href="#Application-information-storage"></a></h3>
+
+<p>It is a SQLite database, will save applications' information in it.</p>
+
+<ul><li>The data base file named: <code>applications.db</code>, and placed under CrossWalk data directory, which is <code>$HOME/.config/xwalk</code> in Linux, <code>%LocalAppData%\xwalk</code> in Windows, and <code>/opt/usr/apps/</code> in Tizen Mobile OS.</li>
+<li>The database backend is SQLite, and will save such info in it for each application:
+
+<ul><li>Installed time, it's the time for when the application is installed, it's saved as a double number type.</li>
+<li>Manifest, it will save all the contains of application's manifest file</li>
+<li>Install path, where to place the application resources.</li>
+<li>Key value, the key value is to identify each record in database, the key value is application ID.</li>
+</ul></li>
+</ul><h3>Install<a class="anchor" id="Install" href="#Install"></a></h3>
+
+<ul><li>Start install function when the switch "--install" is enabled in the command line, and with the application package url follow it.
+<div class="highlight"><pre><span class="nv">$ </span>xwalk --install path/to/target.xpk
+</pre></div></li>
+<li>Prepare the XPK package
+
+<ul><li>If the package path is invalid, exit the steps.</li>
+</ul></li>
+<li>Verify the application package
+
+<ul><li>Check the package's magic header, if the magic string is <strong>not</strong> "CrWk", then exit the steps.</li>
+<li>Verify the package with the signature key and public key included in the header by SHA1 algorithm. If it's not match, exit the steps.</li>
+<li>Check if the package with same ID has been installed in the runtime, if yes, exit the steps.</li>
+</ul></li>
+<li>Decompress the package
+
+<ul><li>Unpack the package as a zip file to a temporary directory, if there are some wrong, exit the steps.</li>
+</ul></li>
+<li>Parse and verify the manifest included in the package
+
+<ul><li>Read and parse the manifest file, manifest.json, in the package root directory, if any errors, exit the steps.</li>
+<li>Check each items in the manifest, if any errors, exit the steps.</li>
+</ul></li>
+<li>Save application info
+
+<ul><li>Generate the application id by the public key in the magic header, if any errors, exit the steps.</li>
+<li>Move the unpacked the package into the applications storage dirctory, which is <code>$xwalk_data_path/applications/</code>, and rename the package root directory as application ID. If any errors, exit the steps.</li>
+<li>Save the application info into application information storage.<br /></li>
+</ul></li>
+</ul><h3>Uninstall<a class="anchor" id="Uninstall" href="#Uninstall"></a></h3>
+
+<ul><li>Start the uninstall functionality with the swith "--uninstall" in command line, and using the application ID as its argument. Like this:
+<div class="highlight"><pre><span class="nv">$ </span>xwalk --uninstall application_ID
+</pre></div></li>
+<li>Query the record using application ID in appliation information database, when it's invalid, exit the steps.</li>
+<li>Remove the application information in database, if any errors, exit the steps.</li>
+<li>Remove the application resources.</li>
+</ul><h3>Launch<a class="anchor" id="Launch" href="#Launch"></a></h3>
+
+<ul><li>An application will be launched when using <code>xwalk</code> command with its id followed.
+<div class="highlight"><pre><span class="nv">$ </span>xwalk application_ID
+</pre></div></li>
+<li>Check if the application information is valid in database. If no, exit the steps.</li>
+<li>Read the application's manifest from application information database and parse it. If any errors, exit the steps.</li>
+<li>Check the application resources path saved in database, if the directory is not exist, exit the steps.</li>
+<li>Start to launch an application normally.</li>
+</ul><h3>List installed applications<a class="anchor" id="List-installed-applications" href="#List-installed-applications"></a></h3>
+
+<ul><li>Crosswalk runtime can list all installed applications from command line, like this:
+<div class="highlight"><pre><span class="nv">$ </span>xwalk --list-apps
+<span class="o">[</span>1023/151523:INFO:xwalk_browser_main_parts.cc<span class="o">(</span>272<span class="o">)]</span> Application ID                       Application Name
+<span class="o">[</span>1023/151523:INFO:xwalk_browser_main_parts.cc<span class="o">(</span>273<span class="o">)]</span> -----------------------------------------------------
+<span class="o">[</span>1023/151523:INFO:xwalk_browser_main_parts.cc<span class="o">(</span>276<span class="o">)]</span> cefebchicgfeafgeemhbknlehlaildhj     Numeroo
+<span class="o">[</span>1023/151523:INFO:xwalk_browser_main_parts.cc<span class="o">(</span>276<span class="o">)]</span> jhnafkobpahgnkbhiijoeijbchlfnjeh     Calculator
+<span class="o">[</span>1023/151523:INFO:xwalk_browser_main_parts.cc<span class="o">(</span>276<span class="o">)]</span> oaebeffdeaajdminlhgehcgmahiflini     Memory Match <span class="k">for </span>Older Kids
+<span class="o">[</span>1023/151523:INFO:xwalk_browser_main_parts.cc<span class="o">(</span>277<span class="o">)]</span> -----------------------------------------------------
+</pre></div>
+Applications ID and name will be displayed in standard IO stream.</li>
+</ul><h1>Tips<a class="anchor" id="Tips" href="#Tips"></a></h1>
+
+<ul><li>NOTE: The behavior explained before requires building from trunk, and is expected to ship in next release.</li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Xinchao He</b>, 2013-11-03 17:10:56</p>
+  <p>
+    <a id="delete-link" href="/wiki/Crosswalk-package-management" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Crosswalk-package-management">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

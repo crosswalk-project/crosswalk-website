@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Writing-glib-based-Crosswalk-Extensions';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Writing glib based Crosswalk Extensions</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Writing glib based Crosswalk Extensions</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Writing-glib-based-Crosswalk-Extensions"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Writing-glib-based-Crosswalk-Extensions"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <p>Devoting attention to describing how one would write an extension
+using GLib makes sense for two main reasons, many libraries are
+already glib based (or may be integrated into a glib mainloop, by
+providing a file descriptor for events, for example) and Crosswalk on
+Linux already has a GLib mainloop running for its message loop.</p>
+
+<p>Before going through an example extension, the extension writer
+needs to keep one thing in mind, native code is run in the main
+thread (UI thread) so every care should be taken to avoid
+blocking calls.</p>
+
+<h2>Example<a class="anchor" id="Example" href="#Example"></a></h2>
+
+<p>Below we present a simple example that should demonstrate the main
+concepts of writing a glib based extension.</p>
+
+<p>The first thing that should be noted is the consequence of Crosswalk
+already having a GLib mainloop running, there's no <code>g_main_loop_new()</code>
+nor <code>g_main_loop_run()</code>.</p>
+
+<p>Even that our simple example wouldn't exercise this, as only one
+instance is created, when a instance is destroyed the extension should
+take care to clean up after itself (see <code>instance_destroyed()</code> below),
+so every pending callback and timer is cancelled.</p>
+
+<p>The idea of having a mainloop is having a consistent way to deal with
+events and asynchronous calls, this example is a modified version of
+the <code>echo</code> extension (shown in our
+<a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Writing-a-Crosswalk-Extension">Writing a Crosswalk Extension</a>) that delays the message by 2 seconds, using the GLib function
+<a href="https://developer.gnome.org/glib/stable/glib-The-Main-Event-Loop.html#g-timeout-add-seconds">g_timeout_add_seconds</a>, which should demonstrate how events should be handled.</p>
+
+<p>// Copyright (c) 2013 Intel Corporation. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+#include 
+#include 
+
+#include 
+
+#include "XW_Extension.h"
+
+// Identifies our extension to Crosswalk.
+static XW_Extension xw_extension = 0;
+
+// Interfaces used to communicate with Crosswalk.
+static const XW_CoreInterface* core_interface = NULL;
+static const XW_MessagingInterface* messaging_interface = NULL;
+
+// Represents a message to be sent to the future.
+struct delayed_message {
+  // A message belongs to a Crosswalk Extension instance, we keep this
+  // so the message can be deleted when the instance is destroyed.
+  XW_Instance instance;
+  char* message;
+  // This is the source id of the timeout, so we can cancel it when the
+  // message is no longer valid.
+  guint id;
+};
+
+// Keep the messages waiting for their time to come.
+static GSList* pending_messages;
+
+// Forward declaring these so we can take a look at 'XW_Initialize' right away.
+static void instance_created(XW_Instance instance);
+static void instance_destroyed(XW_Instance instance);
+static void shutdown(XW_Extension extension);
+static void handle_message(XW_Instance instance, const char* message);
+
+// This function is the starting point of the extension, it will be called by
+// Crosswalk, with the 'extension' identifier and a function 'get_interface'
+// that should be used to get the interfaces needed by the extension.
+int32_t XW_Initialize(XW_Extension extension, XW_GetInterface get_interface) {
+  static const char* kAPI =
+      "var echoListener = null;"
+      "extension.setMessageListener(function(msg) {"
+      "  if (echoListener instanceof Function) {"
+      "    echoListener(msg);"
+      "  };"
+      "});"
+      "exports.echo = function(msg, callback) {"
+      "  echoListener = callback;"
+      "  extension.postMessage(msg);"
+      "};";
+
+  xw_extension = extension;
+
+  // The base interface for interacting with Crosswalk.
+  core_interface = get_interface(XW_CORE_INTERFACE);
+
+  // Just the basic stuff, setting our name, and the JavaScript side
+  // of the extension.
+  core_interface-&gt;SetExtensionName(extension, "delayed");
+  core_interface-&gt;SetJavaScriptAPI(extension, kAPI);
+
+  // Callbacks that are called when instances are created/destroyed,
+  // 'instance_destroyed' is the only that deserves some attention. See
+  // below.
+  core_interface-&gt;RegisterInstanceCallbacks(
+      extension, instance_created, instance_destroyed);
+
+  // Unused in our case, but we may want to have some information associated with
+  // the lifetime of the extension, in that case, we need to free that information
+  // during 'shutdown'.
+  core_interface-&gt;RegisterShutdownCallback(extension, shutdown);
+
+  // The messaging handling interface.
+  messaging_interface = get_interface(XW_MESSAGING_INTERFACE);
+
+  // 'handle_message' will take a message, store it, and prepare it to
+  // be sent later.
+  messaging_interface-&gt;Register(extension, handle_message);
+
+  // Nothing wrong happened, we could initialize our extension fine.
+  return XW_OK;
+}
+
+static void instance_created(XW_Instance instance) {
+  printf("Instance %d created!\n", instance);
+}
+
+// Function to be called when a message is no longer needed, removing the
+// message from the list of pending messaged. Used in two cases:
+// 1. the message is sent, so we no longer need it;
+// 2. the instance is destroyed, so we should remove all the messages
+// associated with that instance.
+static void destroy_delayed_message(struct delayed_message* d) {
+  pending_messages = g_slist_remove(pending_messages, d);
+
+  // So the callback doesn't get called for this message.
+  if (d-&gt;id) {
+    g_source_remove(d-&gt;id);
+  }
+
+  // As we copied the message, we need to free it.
+  g_free(d-&gt;message);
+  g_free(d);
+}
+
+// As explained above, removes all the messages associated with the
+// instance from the pending list.
+static void instance_destroyed(XW_Instance instance) {
+  // Starts from the start of the pending messages list.
+  GSList* l = pending_messages;
+
+  printf("Instance %d destroyed!\n", instance);
+
+  // The end is a pointer to NULL.
+  while (l) {
+    // Removing an element from the list invalidates its node, so we keep
+    // a pointer to the next node before removing it from the list.
+    GSList* next = l-&gt;next;
+    struct delayed_message* pending = l-&gt;data;
+
+    // Removing one matching message.
+    if (pending-&gt;instance == instance)
+      destroy_delayed_message(pending);
+
+    // Repeat again for the next element, if it exists.
+    l = next;
+  }
+}
+
+// This will be called when the time comes to deliver the message.
+static gboolean post_delayed_message(gpointer user_data) {
+  struct delayed_message* delayed_message = user_data;
+  XW_Instance instance = delayed_message-&gt;instance;
+  const char* message = delayed_message-&gt;message;
+
+  messaging_interface-&gt;PostMessage(instance, message);
+
+  // The message is no longer needed, we should discard it.
+  destroy_delayed_message(delayed_message);
+
+  // If we returned 'TRUE' this callback would be called again,
+  // as we already delivered our message, we are done.
+  return FALSE;
+}
+
+static void handle_message(XW_Instance instance, const char* message) {
+  // Allocates a new structure to keep our delayed messages, all fields are
+  // initialized to zero.
+  struct delayed_message* delayed_message = g_new0(struct delayed_message, 1);
+
+  delayed_message-&gt;instance = instance;
+
+  // We need to copy the message, because we can not assume that 'message'
+  // (the pointer) will remain valid after this function is called.
+  delayed_message-&gt;message = g_strdup(message);
+
+  // This is the core of the extension, setup a function to be called 2
+  // seconds into the future, we store the id of the timeout so we can
+  // cancel it. We may have used 'g_timeout_add_seconds_full' and pass
+  // 'destroy_delayed_message' and the 'GDestroyNotify' callback.
+  // I will let it as an exercise to the reader to make the necessary
+  // adjustments.
+  delayed_message-&gt;id = g_timeout_add_seconds(2, post_delayed_message,
+                                              delayed_message);
+
+  pending_messages = g_slist_prepend(pending_messages, delayed_message);
+}
+
+static void shutdown(XW_Extension extension) {
+  printf("Shutdown\n");
+}</p>
+
+<p>An simple HTML to verify that our delayed_echo extension indeed
+does what it implies.</p>
+
+<p>
+</p>
+Delayed Echo Example<p>Just to show that it indeed builds and runs, an simple Makefile to
+build it. Just remember to copy <code>XW_Extension.h</code> from the Crosswalk
+repository to the folder containing these files.</p>
+
+<p>CC=gcc
+CFLAGS=-fPIC
+LIBS=$(shell pkg-config --libs --cflags glib-2.0)
+
+libdelayed_echo.so: delayed-echo.c
+	$(CC) $(CFLAGS) $(LIBS) -shared -o $@ $^
+
+clean:
+	@rm libdelayed_echo.so
+
+all: libdelayed_echo.so
+
+.PHONY: clean all</p>
+
+<p>To run it point Crosswalk binary (xwalk) to the delayed extension
+directory, using the <code>--external-extensions-path</code> switch and load the
+<code>echo.html</code> page.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Vinicius Gomes</b>, 2013-10-30 10:41:07</p>
+  <p>
+    <a id="delete-link" href="/wiki/Writing-glib-based-Crosswalk-Extensions" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Writing-glib-based-Crosswalk-Extensions">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

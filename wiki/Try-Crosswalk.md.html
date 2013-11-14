@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Try-Crosswalk';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Try Crosswalk</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Try Crosswalk</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Try-Crosswalk"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Try-Crosswalk"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <p><em>If you are a C/C++ developer and want to develop your own runtime built 
+with Crosswalk, reference <a href="Build-Crosswalk">Crosswalk Build Instructions</a> for instructions on how to build your own 
+binary.</em></p>
+
+<h2>Downloads<a class="anchor" id="Downloads" href="#Downloads"></a></h2>
+
+<p>For official binaries, see <a href="#documentation/downloads">Downloads</a>. If you 
+would like a binary for an operating system not provided, you will need 
+to build Crosswalk yourself.</p>
+
+<p>Once you have the binaries built, you can follow these instructions.</p>
+
+<h3>Install Crosswalk<a class="anchor" id="Install-Crosswalk" href="#Install-Crosswalk"></a></h3>
+
+<h4>On Windows<a class="anchor" id="On-Windows" href="#On-Windows"></a></h4>
+
+<p>On Windows, the zip package contains:</p>
+
+<ul><li>Crosswalk launcher - xwalk.exe (~33M)</li>
+<li>Crosswalk packaged resources - xwalk.pak (~5M)</li>
+<li>Unicode and i18n support library - icudt.dll (~9M)</li>
+<li>EGL/OpenGLES support libraries - libEGL.dll, libGLESv2.dll (~1M)</li>
+<li>Installer creation script (.bat or .sh)</li>
+</ul><p>For a quick 'smoke test', unzip the file into a directory and try to run:</p>
+
+<p><code>xwalk.exe http://www.google.com</code></p>
+
+<p>You should see a native app window that renders the <code>www.google.com</code> page. Reference <a href="Crosswalk-Command-Line-Options">Crosswalk Command Line Options</a> to see which options are provided by this early binary.</p>
+
+<h4>On Linux<a class="anchor" id="On-Linux" href="#On-Linux"></a></h4>
+
+<ol><li><p>Download the binary for your platform from the URL in <a href="#Get Crosswalk">Get Crosswalk</a>.</p></li>
+<li><p>Unpack the zip file.</p></li>
+<li><p>Move to the unzipped directory: <code>cd xwalk-linux</code></p></li>
+<li><p>Smoke test with a known URL, e.g. <code>./xwalk http://google.com/</code></p></li>
+</ol><h4>On Android<a class="anchor" id="On-Android" href="#On-Android"></a></h4>
+
+<p>See <a href="#documentation/getting_started/installing_crosswalk/android">Installing Crosswalk</a>.</p>
+
+<h4>On Tizen<a class="anchor" id="On-Tizen" href="#On-Tizen"></a></h4>
+
+<p>See <a href="#documentation/getting_started/installing_crosswalk/tizen">Installing Crosswalk</a>.</p>
+
+<h3>Package Your Web App<a class="anchor" id="Package-Your-Web-App" href="#Package-Your-Web-App"></a></h3>
+
+<p>Given a web app written in HTML5 and Javascript with an <code>index.html</code> 
+entry page, the Crosswalk tools allows you to package it into a native 
+app installer.</p>
+
+<p>You can also pack a manifest.json file with your application. Reference 
+<a href="wiki/Crosswalk-manifest">Crosswalk manifest</a> to see how to write a manifest file.</p>
+
+<h4>For Windows Installer<a class="anchor" id="For-Windows-Installer" href="#For-Windows-Installer"></a></h4>
+
+<p>The <code>create_windows_installer.bat</code> contained in the Crosswalk binaries is used to package a web app into a native app installer. </p>
+
+<p>A prerequisite for this installer is the Wix toolset. Download the toolset from <a href="http://wixtoolset.org/">http://wixtoolset.org/</a>.</p>
+
+<p>Run <code>create_windows_installer.bat --help</code> for instructions on how to use Wix.
+</p><div class="highlight"><pre><span class="n">usage</span><span class="o">:</span> <span class="n">create_windows_installer</span><span class="o">.</span><span class="na">bat</span> <span class="o">[</span><span class="n">options</span><span class="o">]</span> <span class="o">[</span><span class="n">app_path</span><span class="o">]</span>
+
+<span class="n">The</span> <span class="n">following</span> <span class="n">options</span> <span class="n">are</span> <span class="n">supported</span><span class="o">:</span>
+
+<span class="n">app_path</span>                <span class="n">Path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">Crosswalk</span> <span class="n">application</span><span class="o">.</span> <span class="n">If</span> <span class="n">not</span> <span class="n">specified</span><span class="o">,</span> <span class="n">the</span>
+                          <span class="n">current</span> <span class="n">directory</span> <span class="k">is</span> <span class="n">used</span><span class="o">.</span>
+<span class="o">--</span><span class="n">wix_bin_path</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">&gt;</span>   <span class="n">Path</span> <span class="n">to</span> <span class="n">Wix</span> <span class="n">toolset</span> <span class="n">binaries</span><span class="o">.</span> <span class="n">If</span> <span class="n">not</span> <span class="n">specified</span><span class="o">,</span> <span class="n">the</span>
+                          <span class="n">script</span> <span class="n">will</span> <span class="k">try</span> <span class="n">to</span> <span class="n">find</span> <span class="n">them</span> <span class="n">through</span> <span class="n">PATH</span>
+<span class="o">--</span><span class="n">xwalk_path</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">&gt;</span>     <span class="n">Path</span> <span class="n">to</span> <span class="n">Crosswalk</span> <span class="n">binaries</span><span class="o">.</span> <span class="n">If</span> <span class="n">not</span> <span class="n">specified</span><span class="o">,</span> <span class="n">the</span> <span class="n">script</span>
+                          <span class="n">will</span> <span class="k">try</span> <span class="n">to</span> <span class="n">find</span> <span class="n">them</span> <span class="n">through</span> <span class="n">PATH</span><span class="o">,</span> <span class="n">the</span> <span class="n">app</span> <span class="n">path</span><span class="o">,</span> <span class="n">or</span>
+                          <span class="n">the</span> <span class="n">current</span> <span class="n">directory</span><span class="o">.</span>
+<span class="o">--</span><span class="n">app_name</span><span class="o">=&lt;</span><span class="n">name</span><span class="o">&gt;</span>       <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">application</span><span class="o">.</span> <span class="n">If</span> <span class="n">not</span> <span class="n">specified</span><span class="o">,</span> <span class="n">the</span> <span class="n">name</span>
+                          <span class="n">of</span> <span class="n">the</span> <span class="n">application</span> <span class="n">directory</span> <span class="k">is</span> <span class="n">used</span><span class="o">.</span>
+<span class="o">--</span><span class="n">version</span><span class="o">=&lt;</span><span class="n">version</span><span class="o">&gt;</span>     <span class="n">The</span> <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">application</span><span class="o">,</span> <span class="n">defaults</span> <span class="n">to</span> <span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span>
+<span class="o">--</span><span class="n">app_arguments</span><span class="o">=&lt;</span><span class="n">args</span><span class="o">&gt;</span>  <span class="n">Arguments</span> <span class="n">that</span> <span class="n">will</span> <span class="n">be</span> <span class="n">passed</span> <span class="n">into</span> <span class="n">Crosswalk</span> <span class="n">executable</span><span class="o">.</span>
+                          <span class="n">If</span> <span class="n">not</span> <span class="n">specified</span><span class="o">,</span> <span class="s2">"index.html"</span> <span class="k">is</span> <span class="n">used</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="o">,</span>
+                          <span class="s2">"--allow-file-access-from-files [INSTALLDIR]src/index.html"</span>
+<span class="o">--</span><span class="n">out</span><span class="o">=&lt;</span><span class="n">pathname</span><span class="o">&gt;</span>        <span class="n">File</span> <span class="n">Path</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span> <span class="n">installer</span> <span class="n">file</span><span class="o">,</span> <span class="n">defaults</span> <span class="n">to</span> <span class="n">the</span>
+                          <span class="n">current</span> <span class="n">directory</span> <span class="k">with</span> <span class="o">%</span><span class="n">app_name</span><span class="o">%.</span><span class="n">msi</span> <span class="k">as</span> <span class="n">its</span> <span class="n">name</span><span class="o">.</span>
+<span class="o">--</span><span class="n">publisher</span><span class="o">=&lt;</span><span class="n">name</span><span class="o">&gt;</span>      <span class="n">The</span> <span class="n">manufacturer</span> <span class="n">of</span> <span class="k">this</span> <span class="n">application</span><span class="o">,</span> <span class="n">defaults</span> <span class="n">to</span> <span class="s2">"Me"</span>
+<span class="o">--</span><span class="n">help</span>                  <span class="n">Print</span> <span class="k">this</span> <span class="n">message</span>
+</pre></div>
+
+<h5>Example Usage<a class="anchor" id="Example-Usage" href="#Example-Usage"></a></h5>
+
+<div class="highlight"><pre><span class="n">create_windows_installer</span><span class="p">.</span><span class="n">bat</span> <span class="n">webapps</span><span class="o">-</span><span class="n">scientific</span><span class="o">-</span><span class="n">calculator</span><span class="o">-</span><span class="n">master</span> <span class="o">--</span><span class="n">wix_bin_path</span><span class="o">=</span><span class="s">"C:\Program Files (x86)\WiX Toolset v3.7</span><span class="se">\b</span><span class="s">in"</span> <span class="o">--</span><span class="n">xwalk_path</span><span class="o">=</span><span class="s">"C:\Users\username\Desktop\xwalk paking\xwalk-win32"</span>
+</pre></div>
+
+<h4>For Linux Installer<a class="anchor" id="For-Linux-Installer" href="#For-Linux-Installer"></a></h4>
+
+<p>The <code>create_linux_installer.sh</code> contained is used to create native installer in RPM or DEB package format through <a href="http://asic-linux.com.mx/%7Eizto/checkinstall/">checkinstall</a> utility. You MUST install <code>checkinstall</code> firstly.  Run <code>sudo apt-get install checkinstall</code> on Linux system. </p>
+
+<p>The usage is similar with that on Windows, but without Wix:
+</p><div class="highlight"><pre><span class="n">usage</span><span class="o">:</span> <span class="n">create_linux_installer</span><span class="o">.</span><span class="na">sh</span> <span class="o">[</span><span class="n">options</span><span class="o">]</span> <span class="o">[</span><span class="n">app_path</span><span class="o">]</span>
+
+<span class="n">This</span> <span class="n">script</span> <span class="k">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">standalone</span> <span class="n">installer</span> <span class="k">for</span> <span class="n">web</span> <span class="n">app</span><span class="o">.</span> <span class="n">It</span>
+<span class="n">depends</span> <span class="n">on</span> <span class="n">checkinstall</span> <span class="n">and</span> <span class="n">crosswalk</span> <span class="n">to</span> <span class="kd">function</span> <span class="n">properly</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">following</span> <span class="n">options</span> <span class="n">are</span> <span class="n">supported</span><span class="o">:</span>
+
+     <span class="n">app_path</span>                <span class="n">Path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">web</span> <span class="n">application</span><span class="o">.</span> <span class="n">If</span> <span class="n">not</span> <span class="n">specified</span><span class="o">,</span> <span class="n">the</span>
+                               <span class="n">current</span> <span class="n">directory</span> <span class="k">is</span> <span class="n">used</span><span class="o">.</span>
+     <span class="o">--</span><span class="n">xwalk_path</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">&gt;</span>     <span class="n">Path</span> <span class="n">to</span> <span class="n">Crosswalk</span> <span class="n">binaries</span><span class="o">.</span> <span class="n">If</span> <span class="n">not</span> <span class="n">specified</span><span class="o">,</span> <span class="n">the</span> <span class="n">script</span>
+                               <span class="n">will</span> <span class="k">try</span> <span class="n">to</span> <span class="n">find</span> <span class="n">them</span> <span class="n">through</span> <span class="n">PATH</span><span class="o">,</span> <span class="n">the</span> <span class="n">app</span> <span class="n">path</span><span class="o">,</span> <span class="n">or</span>
+                               <span class="n">the</span> <span class="n">current</span> <span class="n">directory</span><span class="o">.</span>
+     <span class="o">--</span><span class="n">app_name</span><span class="o">=&lt;</span><span class="n">name</span><span class="o">&gt;</span>       <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">application</span><span class="o">.</span> <span class="n">If</span> <span class="n">not</span> <span class="n">specified</span><span class="o">,</span> <span class="n">the</span> <span class="n">name</span>
+                               <span class="n">of</span> <span class="n">the</span> <span class="n">application</span> <span class="n">directory</span> <span class="k">is</span> <span class="n">used</span><span class="o">.</span>
+     <span class="o">--</span><span class="n">version</span><span class="o">=&lt;</span><span class="n">version</span><span class="o">&gt;</span>     <span class="n">The</span> <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">application</span><span class="o">,</span> <span class="n">defaults</span> <span class="n">to</span> <span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span>
+     <span class="o">--</span><span class="n">app_index</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">&gt;</span>      <span class="n">Path</span> <span class="n">of</span> <span class="n">app</span> <span class="n">index</span> <span class="n">file</span><span class="o">,</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">app_path</span><span class="o">.</span> <span class="n">If</span> <span class="n">not</span>
+                               <span class="n">specified</span><span class="o">,</span> <span class="n">index</span><span class="o">.</span><span class="na">html</span> <span class="k">is</span> <span class="n">used</span><span class="o">.</span>
+     <span class="o">--</span><span class="n">out</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">&gt;</span>            <span class="n">Path</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span> <span class="k">package</span> <span class="nn">file</span><span class="o">,</span> <span class="n">defaults</span> <span class="n">to</span>
+                               <span class="sr">/tmp/xwalk_build/</span><span class="o">&lt;</span><span class="n">app_name</span><span class="o">&gt;</span>
+     <span class="o">--</span><span class="n">publisher</span><span class="o">=&lt;</span><span class="n">name</span><span class="o">&gt;</span>      <span class="n">The</span> <span class="n">manufacturer</span> <span class="n">of</span> <span class="k">this</span> <span class="n">application</span><span class="o">,</span> <span class="n">defaults</span> <span class="n">to</span> <span class="n">Me</span>
+     <span class="o">--</span><span class="n">help</span>                  <span class="n">Print</span> <span class="k">this</span> <span class="n">message</span>
+</pre></div>
+
+<h4>For Android APK<a class="anchor" id="For-Android-APK" href="#For-Android-APK"></a></h4>
+
+<p>The Android APK maker is included with the xwalk-android download. It can work on Linux, Windows and Mac OSX. For setting up the environment for Windows, please see the section 'Windows environment setup'.</p>
+
+<p>To package your own web app, unpack the Crosswalk app template tarball. This is located inside the xwalk-android directory:</p>
+
+<pre><code>host$ tar xzvf xwalk_app_template.tar.gz
+host$ cd xwalk_app_template
+</code></pre>
+
+<p>This template contains utilities and dependencies for packaging an application into an APK file, so it can be installed on an Android device.</p>
+
+<p><em>make_apk.py</em> is the key script for packaging a web app as an APK.</p>
+
+<p>Note: For this script to work, you should ensure that the <code>android</code> command from the Android SDK is on your path. It is located in <em>&lt;Android SDK location&gt;/tools/android</em>.</p>
+
+<p>Here is the help information for the <em>make_apk.py</em> script:</p>
+
+<div class="highlight"><pre><span class="n">Usage</span><span class="o">:</span> <span class="n">make_apk</span><span class="o">.</span><span class="na">py</span> <span class="o">[</span><span class="n">options</span><span class="o">]</span>
+
+<span class="n">Options</span><span class="o">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="o">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="k">this</span> <span class="n">help</span> <span class="n">message</span> <span class="n">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">manifest</span><span class="o">=</span><span class="n">MANIFEST</span>   <span class="n">The</span> <span class="n">manifest</span> <span class="n">file</span> <span class="k">with</span> <span class="n">the</span> <span class="n">detail</span> <span class="n">of</span> <span class="n">the</span> <span class="n">app</span><span class="o">.</span><span class="na">Such</span> <span class="k">as</span><span class="o">:</span>
+                        <span class="o">--</span><span class="n">manifest</span><span class="o">=/</span><span class="n">path</span><span class="sr">/to/your/manifest/</span><span class="n">file</span>
+  <span class="o">--</span><span class="kd">package</span><span class="o">=</span><span class="n">PACKAGE</span>     <span class="n">The</span> <span class="k">package</span> <span class="nn">name.</span> <span class="n">Such</span> <span class="k">as</span><span class="o">:</span>
+                        <span class="o">--</span><span class="kd">package</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">YourPackage</span>
+  <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">NAME</span>           <span class="n">The</span> <span class="n">apk</span> <span class="n">name</span><span class="o">.</span> <span class="n">Such</span> <span class="k">as</span><span class="o">:</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">YourApplicationName</span>
+  <span class="o">--</span><span class="n">icon</span><span class="o">=</span><span class="n">ICON</span>           <span class="n">The</span> <span class="n">path</span> <span class="n">of</span> <span class="n">icon</span><span class="o">.</span> <span class="n">Such</span> <span class="k">as</span><span class="o">:</span>
+                        <span class="o">--</span><span class="n">icon</span><span class="o">=/</span><span class="n">path</span><span class="sr">/to/your/customized/i</span><span class="n">con</span>
+  <span class="o">--</span><span class="n">app</span><span class="o">-</span><span class="n">url</span><span class="o">=</span><span class="n">APP_URL</span>     <span class="n">The</span> <span class="n">url</span> <span class="n">of</span> <span class="n">application</span><span class="o">.</span> <span class="n">This</span> <span class="n">flag</span> <span class="n">allows</span> <span class="n">to</span> <span class="k">package</span>
+                        <span class="nn">website</span> <span class="k">as</span> <span class="n">apk</span><span class="o">.</span> <span class="n">Such</span> <span class="k">as</span><span class="o">:</span> <span class="o">--</span><span class="n">app</span><span class="o">-</span>
+                        <span class="n">url</span><span class="o">=</span><span class="n">http</span><span class="o">://</span><span class="n">www</span><span class="o">.</span><span class="na">intel</span><span class="o">.</span><span class="na">com</span>
+  <span class="o">--</span><span class="n">app</span><span class="o">-</span><span class="n">root</span><span class="o">=</span><span class="n">APP_ROOT</span>   <span class="n">The</span> <span class="n">root</span> <span class="n">path</span> <span class="n">of</span> <span class="n">the</span> <span class="n">web</span> <span class="n">app</span><span class="o">.</span> <span class="n">This</span> <span class="n">flag</span> <span class="n">allows</span> <span class="n">to</span>
+                        <span class="k">package</span> <span class="nn">local</span> <span class="n">web</span> <span class="n">app</span> <span class="k">as</span> <span class="n">apk</span><span class="o">.</span> <span class="n">Such</span> <span class="k">as</span><span class="o">:</span> <span class="o">--</span><span class="n">app</span><span class="o">-</span>
+                        <span class="n">root</span><span class="o">=/</span><span class="n">root</span><span class="sr">/path/of/the/web/</span><span class="n">app</span>
+  <span class="o">--</span><span class="n">app</span><span class="o">-</span><span class="n">local</span><span class="o">-</span><span class="n">path</span><span class="o">=</span><span class="n">APP_LOCAL_PATH</span>
+                        <span class="n">The</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">of</span> <span class="n">entry</span> <span class="n">file</span> <span class="n">based</span> <span class="n">on</span> <span class="o">|</span><span class="n">app_root</span><span class="o">|.</span>
+                        <span class="n">This</span> <span class="n">flag</span> <span class="n">should</span> <span class="n">work</span> <span class="k">with</span> <span class="s2">"--app-root"</span> <span class="n">together</span><span class="o">.</span> <span class="n">Such</span>
+                        <span class="k">as</span><span class="o">:</span> <span class="o">--</span><span class="n">app</span><span class="o">-</span><span class="n">local</span><span class="o">-</span><span class="n">path</span><span class="o">=/</span><span class="n">relative</span><span class="sr">/path/of/entry/</span><span class="n">file</span>
+  <span class="o">--</span><span class="n">keystore</span><span class="o">-</span><span class="n">path</span><span class="o">=</span><span class="n">KEYSTORE_PATH</span>
+                        <span class="n">The</span> <span class="n">path</span> <span class="n">of</span> <span class="n">the</span> <span class="n">developer</span> <span class="n">keystore</span><span class="o">.</span> <span class="n">Such</span> <span class="k">as</span><span class="o">:</span>
+                        <span class="o">--</span><span class="n">keystore</span><span class="o">-</span><span class="n">path</span><span class="o">=/</span><span class="n">path</span><span class="sr">/to/your/developer/</span><span class="n">keystore</span>
+  <span class="o">--</span><span class="n">keystore</span><span class="o">-</span><span class="n">alias</span><span class="o">=</span><span class="n">KEYSTORE_ALIAS</span>
+                        <span class="n">The</span> <span class="n">alias</span> <span class="n">name</span> <span class="n">of</span> <span class="n">keystore</span><span class="o">.</span> <span class="n">Such</span> <span class="k">as</span><span class="o">:</span> <span class="o">--</span><span class="n">keystore</span><span class="o">-</span>
+                        <span class="n">alias</span><span class="o">=</span><span class="n">alias_name</span>
+  <span class="o">--</span><span class="n">keystore</span><span class="o">-</span><span class="n">passcode</span><span class="o">=</span><span class="n">KEYSTORE_PASSCODE</span>
+                        <span class="n">The</span> <span class="n">passcode</span> <span class="n">of</span> <span class="n">keystore</span><span class="o">.</span> <span class="n">Such</span> <span class="k">as</span><span class="o">:</span> <span class="o">--</span><span class="n">keystore</span><span class="o">-</span>
+                        <span class="n">passcode</span><span class="o">=</span><span class="n">code</span>
+  <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">debugging</span>
+                        <span class="n">Enable</span> <span class="n">remote</span> <span class="n">debugging</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">f</span><span class="o">,</span> <span class="o">--</span><span class="n">fullscreen</span>      <span class="n">Make</span> <span class="n">application</span> <span class="n">fullscreen</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">extensions</span><span class="o">=</span><span class="n">EXTENSIONS</span>
+                        <span class="n">The</span> <span class="n">path</span> <span class="n">list</span> <span class="k">for</span> <span class="n">external</span> <span class="n">extensions</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">os</span>
+                        <span class="n">separator</span><span class="o">.</span><span class="na">On</span> <span class="n">Linux</span> <span class="n">and</span> <span class="n">Mac</span><span class="o">,</span> <span class="n">the</span> <span class="n">separator</span> <span class="k">is</span> <span class="s2">":"</span><span class="o">.</span> <span class="n">On</span>
+                        <span class="n">Windows</span><span class="o">,</span> <span class="n">it</span> <span class="k">is</span> <span class="s2">";"</span><span class="o">.</span><span class="na">Such</span> <span class="k">as</span><span class="o">:</span>
+                        <span class="o">--</span><span class="n">extensions</span><span class="o">=</span><span class="s2">"/path/to/extension1:/path/to/extension2"</span>
+  <span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">MODE</span>           <span class="n">The</span> <span class="n">packaging</span> <span class="n">mode</span> <span class="n">of</span> <span class="n">the</span> <span class="n">application</span><span class="o">.</span> <span class="s2">"shared"</span> <span class="n">means</span>
+                        <span class="n">the</span> <span class="n">application</span> <span class="n">shares</span> <span class="n">the</span> <span class="n">Xwalk</span> <span class="k">with</span> <span class="n">other</span>
+                        <span class="n">applications</span><span class="o">;</span> <span class="s2">"embedded"</span> <span class="n">means</span> <span class="n">the</span> <span class="n">application</span> <span class="n">owns</span>
+                        <span class="n">XWalk</span> <span class="n">Runtime</span> <span class="n">itself</span><span class="o">.</span> <span class="n">Set</span> <span class="n">the</span> <span class="k">default</span> <span class="n">mode</span> <span class="k">as</span>
+                        <span class="s2">"shared"</span><span class="o">.</span><span class="na">Such</span> <span class="k">as</span><span class="o">:</span> <span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">shared</span>
+  <span class="o">--</span><span class="n">xpk</span><span class="o">=</span><span class="n">XPK</span>             <span class="n">The</span> <span class="n">path</span> <span class="n">of</span> <span class="n">the</span> <span class="n">XPK</span> <span class="n">file</span><span class="o">.</span> <span class="n">Such</span> <span class="k">as</span><span class="o">:</span>
+                        <span class="o">--</span><span class="n">xpk</span><span class="o">=/</span><span class="n">path</span><span class="sr">/to/xpk/</span><span class="n">file</span>
+</pre></div>
+
+<p>To package a local web app: Below is an example of how to package a local web app. We assume that the files for the app are in /home/abc/dist and the main entry point HTML file is /home/abc/dist/src/index.html:</p>
+
+<pre><code>host$ python make_apk.py --package=com.abc.app --name=ABC \
+  --app-root=/home/abc/dist --app-local-path=src/index.html
+</code></pre>
+
+<p>Package a host web app, e.g. a web page on a remote web site. Below is one example to package a host web app:</p>
+
+<pre><code>host$ python make_apk.py --package=com.example.app --name=Test1 \
+  --app-url=http://www.intel.com
+</code></pre>
+
+<p>In both cases, the apk file is output to the same directory as the <em>make_apk.py</em> script, with a filename &lt;name&amp;gt.apk, where &lt;name&gt; is the name you set with the <code>--name</code> flag.</p>
+
+<p>Install the APK on your device:</p>
+
+<pre><code>host$ adb install -r ABC.apk Test1.apk
+</code></pre>
+
+<h5>Windows environment setup<a class="anchor" id="Windows-environment-setup" href="#Windows-environment-setup"></a></h5>
+
+<ol><li><p>Install the Android SDK. Make sure to add “%SDK_PATH%\platform-tools” and “%SDK_PATH%\platform-tools\tools” into the "PATH" environment variable.</p></li>
+<li><p>Update to the latest Android API level.</p></li>
+<li><p>Install python and ant. Add the installed path of python and the bin path of ant are added into the "PATH" environment variable as well.</p></li>
+<li><p>Install Oracle JDK and add the paths of “%JAVA_HOME%/bin” and “%JAVA_HOME%/jre/bin” into "PATH". Make sure 'where java' is the path you've set with Oracle JDK. This is very IMPORTANT. The version 1.6.x is preferred.</p></li>
+</ol><p>Note: The Android APK maker works much slower on Windows than Linux and Mac because it takes a so long time to search executives on Windows.</p>
+
+<h5>Example Usage<a class="anchor" id="Example-Usage" href="#Example-Usage"></a></h5>
+
+<p>TBD</p>
+
+<h3>Debug Your Web App<a class="anchor" id="Debug-Your-Web-App" href="#Debug-Your-Web-App"></a></h3>
+
+<p>Crosswalk also enables remote debugging to a separate instance of a Chrome browser.</p>
+
+<ul><li>Step 1: Install Google's Chrome browser from <a href="http://www.google.com/chrome/%E2%80%8E">www.google.com/chrome/‎</a>,</li>
+<li>Step 2: Launch Crosswalk with remote debugging option <code>xwalk.exe --remote-debugging-port=9222 index.html</code></li>
+<li>Step 3: Open <code>localhost:9222</code> in the Chrome browser, and you will see the inspectable pages in Chrome tab.</li>
+<li>Step 4: Click the inspectable page to open the Web Inspector UI to start debugging.</li>
+</ul><h3>Known Issues<a class="anchor" id="Known-Issues" href="#Known-Issues"></a></h3>
+
+<ul><li>Network proxy set by environment doesn't take effect on Linux. Instead, you have to set the system wide network proxy.</li>
+<li>Cannot play HTML5 video. It is because the ffmpeg library is not included in the Crosswalk binaries. Set Tips#1 for using ffmpeg to play HTML5 video in Crosswalk.</li>
+<li>CSS3D and WebGL can not work on Windows if DirectX End-User Runtime is not installed on your system. Go to <a href="http://www.microsoft.com/en-us/download/details.aspx?id=8109">here</a> to install DirectX End-User Runtime on your system.</li>
+</ul><h3>Tips<a class="anchor" id="Tips" href="#Tips"></a></h3>
+
+<ol><li><p>How to enable multimedia in Crosswalk binary release?</p>
+
+<p>See <a href="Enable-MultiMedia-in-Crosswalk">Enable Multimedia in Crosswalk</a></p></li>
+<li><p>How to debug Javascript code in window.onload?</p>
+
+<p>Launch <code>xwalk.exe</code> with <code>--remote-debugging-port=9222</code>, and open <code>localhost:9222</code> in Chrome browser to start debugging and set breakpoint inside <code>window.onload</code> body, press <code>F5</code> in Chrome to refresh the Web inspector page. As expected, your app will be paused at the breakpoint you set.</p></li>
+<li><p>How to specify the app icon?</p>
+
+<p>You can use <code>--app-icon</code> command line option or use favicon metatag inside <code>&lt;head&gt;</code> tag:
+<code>&lt;head&gt;
+&lt;link rel="icon" href="48x48.png"&gt;
+&lt;/head&gt;</code></p></li>
+</ol>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-11-05 12:49:21</p>
+  <p>
+    <a id="delete-link" href="/wiki/Try-Crosswalk" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Try-Crosswalk">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
