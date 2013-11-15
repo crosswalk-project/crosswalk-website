@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Release-methodology';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Release methodology</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Release Methodology</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Release-methodology"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Release-methodology"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The Crosswalk release cycle is modeled on the <a href="http://techcrunch.com/2011/01/11/google-chrome-release-cycle-slideshow/">Chromium release cycle</a>. Those familiar with the cadence and evolving stability in the various Chromium channels will be familiar with the Crosswalk release cycle.</p>
+
+<p>In general, Crosswalk releases are based on timing, not on functionality--a release is made available based on a scheduled calendar release target instead of a set level of features.</p>
+
+<p>The release schedule follows a six week cascading release methodology as follows: </p>
+
+<ul><li>Development of new features occurs on the master tip of the Crosswalk GIT tree. </li>
+<li>Every six weeks a branch is made on the tip which is then used to stabilize for a Crosswalk release. That branch point starts the beginning of the Beta phase for a given release. </li>
+<li>After six weeks of stabilization and bug fixes, and if the Beta branch passes QA metrics, it is promoted to being the Stable release. </li>
+</ul><p>A new feature landing on the master tip of Crosswalk will take between six and twelve weeks before it can possibly land in a Stable release.</p>
+
+<h2>Beta Branch<a class="anchor" id="Beta-Branch" href="#Beta-Branch"></a></h2>
+
+<p>Once a branch is created for the stabilization process no new features are added to its tree. If a feature has not landed in tip by the beginning of the Beta phase, it will wait until the following Beta release cycle (six weeks) to enter in a stabilization branch. New features may be removed from the Beta branch if they are unstable and can not be fixed in order to meet the Stable release metrics.</p>
+
+<p>This allows a greater stability in the releases, faster accommodation of industry shifts, and a forecastable load on the engineering resources, reducing contributor burn-out.</p>
+
+<h2>Stable Branch<a class="anchor" id="Stable-Branch" href="#Stable-Branch"></a></h2>
+
+<p>The stable branch only sees security and critical bug fixes. Critical bugs include crashes, major resource leaks, and similar broad impacting bugs.</p>
+
+<p>The result of this process is that a “stable” release of Crosswalk does not mean it is functionally complete for a given usage--only that the features and functionality contained in that release are stable, as defined by the Crosswalk validation and quality assurance teams. The quantitative metrics for defining stable are TBD.</p>
+
+<h2>Crosswalk Binaries<a class="anchor" id="Crosswalk-Binaries" href="#Crosswalk-Binaries"></a></h2>
+
+<p>As mentioned previously, Crosswalk development occurs in three areas: master (trunk), beta-branch, and stable-branch. The Crosswalk project provides three classes of binaries: Canary, Beta, and Stable.</p>
+
+<h3>Canary Release<a class="anchor" id="Canary-Release" href="#Canary-Release"></a></h3>
+
+<p>The <strong>Canary release</strong> is generated on a frequent basis (sometimes 
+daily) based 
+on a recent tip of master that passes a full build and automatic basic acceptance test. The Canary build lets developers that are interested in the absolute latest features, and which don’t want to build Crosswalk themselves, an easy option for working with the latest Crosswalk releases.</p>
+
+<h3>Beta Release<a class="anchor" id="Beta-Release" href="#Beta-Release"></a></h3>
+
+<p>The <strong>Beta release</strong> is intended primarily for application developers 
+looking 
+to test their application against any new changes to Crosswalk, or to use new features intended to land in the next Stable cycle. Beta builds are published based on automated basic acceptance tests (ABAT), manual testing results, and functionality changes. There is an expected level of stability with Beta releases, however it is still Beta and may contain significant bugs.</p>
+
+<h3>Stable Release<a class="anchor" id="Stable-Release" href="#Stable-Release"></a></h3>
+
+<p>A <strong>Stable release</strong> is an end-user targeting release. Once a Crosswalk 
+release is promoted to the Stable channel, that release will only see new binaries for critical bugs and security issues.</p>
+
+<h2>Version Numbers<a class="anchor" id="Version-Numbers" href="#Version-Numbers"></a></h2>
+
+<p>The Crosswalk version numbers is a four part decimal number, in the form of A.B.C.D for example: 1.28.52.3</p>
+
+<p>The first number (1 in the above example) represents the Crosswalk major release version. It is updated every six weeks immediately after the master tree is branched for the stabilization cycle.</p>
+
+<p>The second number (28 in the above example) represents the upstream Chromium beta release version that the source is based on.</p>
+
+<p>The third number (52 in the above example) is the build number. It is use a monotonically increasing value updated any time a new release candidate build is generated (every time there is a Canary release)</p>
+
+<p>The fourth number (3) is the patch number applied to the tree each time a release is made on a stabilization branch.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-11 14:14:01</p>
+  <p>
+    <a id="delete-link" href="/wiki/Release-methodology" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Release-methodology">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

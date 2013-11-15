@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Android-WebView';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Android WebView</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Android WebView</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Android-WebView"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Android-WebView"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h3>1. Arch &amp; Components<a class="anchor" id="1.-Arch-&amp;-Components" href="#1.-Arch-&amp;-Components"></a></h3>
+
+<ul><li>Android WebView in AOSP will be based on AwContents which is on top of Content API and Content View</li>
+<li>Different from Content API, it also depends on components originally from chrome browser, now in standalone modules, located in components/, including components of auto_login_parser, navigation_interception, visitedlink_browser, visitedlink_renderer and web_contents_delegate_android. These are useful for pages.</li>
+<li>No renderer process(in-process renderer) so no sandbox mechanism</li>
+<li>Graphics architecture is very different from content shell. It's still ongoing and expected to support software and hardware output.</li>
+</ul><h3>2. API<a class="anchor" id="2.-API" href="#2.-API"></a></h3>
+
+<ul><li>API is somewhat similar to EFL webview. No exposal about internal browser/renderer/gpu processes</li>
+<li>Capabilities to load URL and events or callbacks of page loading</li>
+<li>JavaScript API extension via addJavaScriptInterface. It allows JavaScript call to Java code, but reverse direction is not supported</li>
+<li>Kinds of APIs to provide page change notifications, callbacks for web pages</li>
+</ul><h3>3. Message Loop &amp; Events processing<a class="anchor" id="3.-Message-Loop-&amp;-Events-processing" href="#3.-Message-Loop-&amp;-Events-processing"></a></h3>
+
+<ul><li>Integrate with Android Message handling by leveraging ContentView</li>
+<li>Native code sets timer into Message Loop of Java side</li>
+</ul><h3>4. Graphics<a class="anchor" id="4.-Graphics" href="#4.-Graphics"></a></h3>
+
+<ul><li>The rendering now is hardware acceleration by using chromium compositors.</li>
+<li>The output of compositor support software and hardware surface outputs.</li>
+<li>The architecture of hardware acceleration is different from others like content shell but it's like ChromeOS.  Now it's in early stage, will use UberCompositor for software output.</li>
+</ul><h3>5. WebAPI extension<a class="anchor" id="5.-WebAPI-extension" href="#5.-WebAPI-extension"></a></h3>
+
+<ul><li>The API addJavaScriptInterface is for JavaScript API extension but only for the direction from JavaScript to Java code</li>
+<li>The reverse call direction(Java -&gt; JavaScript) is not supported.</li>
+<li>addJavaScriptInterface is supported via NPObject mechanism which is previously used by NPAPI plugin. It supports out-of-process accessing though it's not needed in WebView now.</li>
+<li>Event notification from Java side seems not supported.</li>
+</ul><h3>6. Details and Coverage of API<a class="anchor" id="6.-Details-and-Coverage-of-API" href="#6.-Details-and-Coverage-of-API"></a></h3>
+
+<ul><li>WebViewClient for page changed notifications</li>
+<li>WebChromeClient for callbacks to participate in rendering logic</li>
+<li>Native Code/JS interaction</li>
+<li>Page loading</li>
+<li>Navigation &amp; History</li>
+<li>Text Search</li>
+<li>Event handling</li>
+<li>Trackball, touch, keyboard</li>
+<li>No support for mouse event</li>
+<li>Settings: Encoding</li>
+<li>Page Info: Title, favicon</li>
+<li>HTTPS/SSL</li>
+<li>Page loading status, scale, redirects, override url, etc.</li>
+</ul><h3>7. Source code<a class="anchor" id="7.-Source-code" href="#7.-Source-code"></a></h3>
+
+<ul><li>src/android_webview
+
+<ul><li>android_webview_java.jar, libwebviewchromium.so and webviewchromium.pak are target of this module.</li>
+</ul></li>
+<li>Google engineers are working on new WebView on top of Chrome-core in Android Open source project.
+
+<ul><li>Official site: <a href="https://android.googlesource.com/platform/frameworks/base.git/+/master/core/java/android/webkit/">https://android.googlesource.com/platform/frameworks/base.git/+/master/core/java/android/webkit/</a></li>
+<li>Mirror: <a href="https://github.com/android/platform_frameworks_base/tree/master/core/java/android/webkit">https://github.com/android/platform_frameworks_base/tree/master/core/java/android/webkit</a> </li>
+</ul></li>
+<li>Third party developers work in progress to implement ChromeView based on android_webview module.
+
+<ul><li>ChromeView has the same APIs to Android Webview.</li>
+<li><a href="https://github.com/pwnall/chromeview-src">https://github.com/pwnall/chromeview-src</a></li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Android-WebView" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Android-WebView">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

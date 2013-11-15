@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Tizen-2.1-WRT-features-and-related-tasks';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Tizen 2.1 WRT features and related tasks</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Tizen 2.1 WRT features and related tasks</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Tizen-2.1-WRT-features-and-related-tasks"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Tizen-2.1-WRT-features-and-related-tasks"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h2>Web Application Package Management<a class="anchor" id="Web-Application-Package-Management" href="#Web-Application-Package-Management"></a></h2>
+
+<p>The web application package management in Tizen includes app installation, uninstallation, update and setting. Tizen WRT installer worked as a backend of Tizen system package manager. The installation could be triggered from Application Store Client or a file explorer, while uninstallation could be triggered from Application Setting menu.  </p>
+
+<p>The application installation tasks including:</p>
+
+<ul><li>different installation source support(.wgt, config.xml path, directory, DRM package)</li>
+<li>parse configuration manifest file(W3C Widget Packaging format based) with Tizen extensions<br /></li>
+<li>source file encryption<br /></li>
+<li>Web API version check, quit installation when minimum version is not satisfied<br /></li>
+<li>check signature and quit the installation when Web API privilege is not matched<br /></li>
+<li>files and database manipulation, VCONF entries creation, SMACK rules creation<br /></li>
+<li>install plugin when a NPAPI plugin is contained<br /></li>
+</ul><p>The application settings include:</p>
+
+<ul><li>basic app info</li>
+<li>clear app data</li>
+<li>security settings, including show security warnings, web notification, web database, location, filesystem</li>
+<li>developer options</li>
+</ul><h2>Web Runtime Features<a class="anchor" id="Web-Runtime-Features" href="#Web-Runtime-Features"></a></h2>
+
+<h3>Web app lifecycle<a class="anchor" id="Web-app-lifecycle" href="#Web-app-lifecycle"></a></h3>
+
+<ul><li>suspend JavaScript execution and rendering(including CSS animations) when app enters invisible state</li>
+<li>resume execution and rendering when app enters visible state</li>
+<li>do not suspend execution when background mode is enabled</li>
+</ul><h3>Web API support<a class="anchor" id="Web-API-support" href="#Web-API-support"></a></h3>
+
+<ul><li>support W3C API and Tizen Device API</li>
+<li>support Tizen Device API in both top-level browsing context and nested browsing context</li>
+<li>external pages are not allowed to access Tizen Device API</li>
+</ul><h3>Other<a class="anchor" id="Other" href="#Other"></a></h3>
+
+<ul><li>support system language change</li>
+<li>purge application memory when system memory is low</li>
+<li>some W3C API(geolocation, storage, notification...) permssion warning</li>
+<li>support multiple browsing contexts in one application</li>
+<li>support <a href="http://www.w3.org/TR/widgets-access/">W3C Widget Access Request Policy</a></li>
+<li>support sms://, mmsto://, mailto:// schemes, launch platform's handler for each scheme with appropriate parameters</li>
+<li>application resource encryption</li>
+<li>custom user agent string</li>
+<li>screen orientation</li>
+<li><a href="https://developer.tizen.org/help/index.jsp?topic=%2Forg.tizen.web.appprogramming%2Fhtml%2Fguide%2Fapp_guide%2Fapplication_service.htm">Application Control</a> support</li>
+</ul><h2>Web Application Security &amp; Privacy<a class="anchor" id="Web-Application-Security-&amp;-Privacy" href="#Web-Application-Security-&amp;-Privacy"></a></h2>
+
+<p>There're several layers for Tizen Web Application Security control.  </p>
+
+<ul><li>The first layer is widget signature, widgets with different signatures or no signature will be regarded as different trust levels.Different trust levels can access different privilege APIs, application with lower trust level can not access privileges require higher level.<br /></li>
+<li>The second layer is <a href="http://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CDQQFjAA&amp;url=http%3A%2F%2Fdownload.tizen.org%2Fmisc%2Fmedia%2Fconference2012%2Fwednesday%2Fseacliff%2F2012-05-09-0945-1025-understanding_the_permission_and_access_control_model_for_tizen_application_sandboxing.pdf&amp;ei=ki97Ud75HKKRiAKQ0oCQBQ&amp;usg=AFQjCNG4jS7FnHkG4QoKyOmbeB5uYwHQnA&amp;sig2=pKZt16O5Cv4BkQJnKhf5QA&amp;bvm=bv.45645796,d.cGE">Access Control Engine</a> layer, OEM can provide a policy configuration file to configure different behaviors when a privilege API is accessed, like deny, permit, blanket prompt, session prompt, one-shot prompt and etc.<br /></li>
+<li>The last layer will be the <a href="http://schaufler-ca.com/">SMACK</a>, it will control the access from the system level, WRT needs create and update SMACK rules according to its access permissions to different APIs.</li>
+</ul><p>Below is the table of API privileges and their minimum signature level:  </p>
+
+<table><thead><tr><th>Privilege</th>
+<th>Privilege level</th>
+</tr></thead><tbody><tr><td><a href="http://tizen.org/privilege/alarm">http://tizen.org/privilege/alarm</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/application.launch">http://tizen.org/privilege/application.launch</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/appmanager.certificate">http://tizen.org/privilege/appmanager.certificate</a></td>
+<td>Partner</td>
+</tr><tr><td><a href="http://tizen.org/privilege/appmanager.kill">http://tizen.org/privilege/appmanager.kill</a></td>
+<td>Partner</td>
+</tr><tr><td><a href="http://tizen.org/privilege/bluetooth.admin">http://tizen.org/privilege/bluetooth.admin</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/bluetooth.gap">http://tizen.org/privilege/bluetooth.gap</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/bluetooth.spp">http://tizen.org/privilege/bluetooth.spp</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/bluetoothmanager">http://tizen.org/privilege/bluetoothmanager</a></td>
+<td>Platform</td>
+</tr><tr><td><a href="http://tizen.org/privilege/bookmark.read">http://tizen.org/privilege/bookmark.read</a></td>
+<td>Platform</td>
+</tr><tr><td><a href="http://tizen.org/privilege/bookmark.write">http://tizen.org/privilege/bookmark.write</a></td>
+<td>Platform</td>
+</tr><tr><td><a href="http://tizen.org/privilege/calendar.read">http://tizen.org/privilege/calendar.read</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/calendar.write">http://tizen.org/privilege/calendar.write</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/callhistory.read">http://tizen.org/privilege/callhistory.read</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/callhistory.write">http://tizen.org/privilege/callhistory.write</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/contact.read">http://tizen.org/privilege/contact.read</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/contact.write">http://tizen.org/privilege/contact.write</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/content.read">http://tizen.org/privilege/content.read</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/content.write">http://tizen.org/privilege/content.write</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/datacontrol.consumer">http://tizen.org/privilege/datacontrol.consumer</a></td>
+<td>Partner</td>
+</tr><tr><td><a href="http://tizen.org/privilege/datasync">http://tizen.org/privilege/datasync</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/download">http://tizen.org/privilege/download</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/filesystem.read">http://tizen.org/privilege/filesystem.read</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/filesystem.write">http://tizen.org/privilege/filesystem.write</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/lockmanager">http://tizen.org/privilege/lockmanager</a></td>
+<td>Platform</td>
+</tr><tr><td><a href="http://tizen.org/privilege/messageport">http://tizen.org/privilege/messageport</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/messaging.read">http://tizen.org/privilege/messaging.read</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/messaging.write">http://tizen.org/privilege/messaging.write</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/networkbearerselection">http://tizen.org/privilege/networkbearerselection</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/nfc.admin">http://tizen.org/privilege/nfc.admin</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/nfc.common">http://tizen.org/privilege/nfc.common</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/nfc.p2p">http://tizen.org/privilege/nfc.p2p</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/nfc.tag">http://tizen.org/privilege/nfc.tag</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/notification">http://tizen.org/privilege/notification</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/package.info">http://tizen.org/privilege/package.info</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/packagemanager.install">http://tizen.org/privilege/packagemanager.install</a></td>
+<td>Platform</td>
+</tr><tr><td><a href="http://tizen.org/privilege/packagemanager.setting">http://tizen.org/privilege/packagemanager.setting</a></td>
+<td>Platform</td>
+</tr><tr><td><a href="http://tizen.org/privilege/power">http://tizen.org/privilege/power</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/push">http://tizen.org/privilege/push</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/secureelement">http://tizen.org/privilege/secureelement</a></td>
+<td>Partner</td>
+</tr><tr><td><a href="http://tizen.org/privilege/setting">http://tizen.org/privilege/setting</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/settingmanager.read">http://tizen.org/privilege/settingmanager.read</a></td>
+<td>Platform</td>
+</tr><tr><td><a href="http://tizen.org/privilege/settingmanager.write">http://tizen.org/privilege/settingmanager.write</a></td>
+<td>Platform</td>
+</tr><tr><td><a href="http://tizen.org/privilege/system">http://tizen.org/privilege/system</a></td>
+<td>Public</td>
+</tr><tr><td><a href="http://tizen.org/privilege/systemmanager">http://tizen.org/privilege/systemmanager</a></td>
+<td>Partner</td>
+</tr></tbody></table><p>WRT also provides privacy permission check at the first launching time when an application requires some sensitive API privileges.  </p>
+
+<p>Below is the map of API privileges to privacy:  </p>
+
+<table><thead><tr><th>Privilege</th>
+<th>Privacy</th>
+</tr></thead><tbody><tr><td><a href="http://tizen.org/privilege/bluetooth.admin">http://tizen.org/privilege/bluetooth.admin</a></td>
+<td><a href="http://tizen.org/privacy/bluetooth">http://tizen.org/privacy/bluetooth</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/bluetooth.gap">http://tizen.org/privilege/bluetooth.gap</a></td>
+<td><a href="http://tizen.org/privacy/bluetooth">http://tizen.org/privacy/bluetooth</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/bluetooth.health">http://tizen.org/privilege/bluetooth.health</a></td>
+<td><a href="http://tizen.org/privacy/bluetooth">http://tizen.org/privacy/bluetooth</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/bluetooth.opp">http://tizen.org/privilege/bluetooth.opp</a></td>
+<td><a href="http://tizen.org/privacy/bluetooth">http://tizen.org/privacy/bluetooth</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/bluetooth.spp">http://tizen.org/privilege/bluetooth.spp</a></td>
+<td><a href="http://tizen.org/privacy/bluetooth">http://tizen.org/privacy/bluetooth</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/bluetoothmanager">http://tizen.org/privilege/bluetoothmanager</a></td>
+<td><a href="http://tizen.org/privacy/bluetooth">http://tizen.org/privacy/bluetooth</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/calendar.read">http://tizen.org/privilege/calendar.read</a></td>
+<td><a href="http://tizen.org/privacy/calendar">http://tizen.org/privacy/calendar</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/calendar.write">http://tizen.org/privilege/calendar.write</a></td>
+<td><a href="http://tizen.org/privacy/calendar">http://tizen.org/privacy/calendar</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/contact.read">http://tizen.org/privilege/contact.read</a></td>
+<td><a href="http://tizen.org/privacy/contact">http://tizen.org/privacy/contact</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/contact.write">http://tizen.org/privilege/contact.write</a></td>
+<td><a href="http://tizen.org/privacy/contact">http://tizen.org/privacy/contact</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/location">http://tizen.org/privilege/location</a></td>
+<td><a href="http://tizen.org/privacy/location">http://tizen.org/privacy/location</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/messaging.read">http://tizen.org/privilege/messaging.read</a></td>
+<td><a href="http://tizen.org/privacy/messaging">http://tizen.org/privacy/messaging</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/messaging.write">http://tizen.org/privilege/messaging.write</a></td>
+<td><a href="http://tizen.org/privacy/messaging">http://tizen.org/privacy/messaging</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/nfc.admin">http://tizen.org/privilege/nfc.admin</a></td>
+<td><a href="http://tizen.org/privacy/nfc">http://tizen.org/privacy/nfc</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/nfc.common">http://tizen.org/privilege/nfc.common</a></td>
+<td><a href="http://tizen.org/privacy/nfc">http://tizen.org/privacy/nfc</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/nfc.p2p">http://tizen.org/privilege/nfc.p2p</a></td>
+<td><a href="http://tizen.org/privacy/nfc">http://tizen.org/privacy/nfc</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/nfc.tag">http://tizen.org/privilege/nfc.tag</a></td>
+<td><a href="http://tizen.org/privacy/nfc">http://tizen.org/privacy/nfc</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/userprofile.read">http://tizen.org/privilege/userprofile.read</a></td>
+<td><a href="http://tizen.org/privacy/contact">http://tizen.org/privacy/contact</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/userprofile.write">http://tizen.org/privilege/userprofile.write</a></td>
+<td><a href="http://tizen.org/privacy/contact">http://tizen.org/privacy/contact</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/account.read">http://tizen.org/privilege/account.read</a></td>
+<td><a href="http://tizen.org/privacy/account">http://tizen.org/privacy/account</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/account.write">http://tizen.org/privilege/account.write</a></td>
+<td><a href="http://tizen.org/privacy/account">http://tizen.org/privacy/account</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/wifi.wifidirect.admin">http://tizen.org/privilege/wifi.wifidirect.admin</a></td>
+<td><a href="http://tizen.org/privacy/wifidirect">http://tizen.org/privacy/wifidirect</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/wifi.wifidirect.read">http://tizen.org/privilege/wifi.wifidirect.read</a></td>
+<td><a href="http://tizen.org/privacy/wifidirect">http://tizen.org/privacy/wifidirect</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/messaging.email">http://tizen.org/privilege/messaging.email</a></td>
+<td><a href="http://tizen.org/privacy/messaging">http://tizen.org/privacy/messaging</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/messaging.mms">http://tizen.org/privilege/messaging.mms</a></td>
+<td><a href="http://tizen.org/privacy/messaging">http://tizen.org/privacy/messaging</a></td>
+</tr><tr><td><a href="http://tizen.org/privilege/messaging.sms">http://tizen.org/privilege/messaging.sms</a></td>
+<td><a href="http://tizen.org/privacy/messaging">http://tizen.org/privacy/messaging</a></td>
+</tr></tbody></table><h2>Web AppWidget<a class="anchor" id="Web-AppWidget" href="#Web-AppWidget"></a></h2>
+
+<p>AppWidget is a small application widget displayed on HOME screen. User can interact with app widget w/o launching the app. One AppWidget consist of one Box and one PD(optional).  </p>
+
+<p>Box features:</p>
+
+<ul><li>provides simple information of an app on Home screen</li>
+<li>can be updated periodically, the period can be configured in config.xml</li>
+<li>can be resized by user</li>
+<li>stop after rendering its contents </li>
+</ul><p>PD(Progressive Disclosure) features:</p>
+
+<ul><li>provides more detailed information and controls its Box</li>
+<li>can be exposed when user flicks down a Box</li>
+<li>is destroyed when user touches other screen area outside of PD</li>
+<li>receive all touch events except two finger zoom</li>
+</ul><p>AppWidget can use the same set of HTML5 and Tizen device APIs as the web application. Box and PD can communicate with each other by using pdWindow, window.opener and Web Messaging API.   </p>
+
+<h2>Chromium, Tizen and Sysapps<a class="anchor" id="Chromium,-Tizen-and-Sysapps" href="#Chromium,-Tizen-and-Sysapps"></a></h2>
+
+<div class="WordSection1"><table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0"><tr><td width="146" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p></td><td width="406" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Tizen2.1</span></font></b></p></td><td width="330" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Chromium</span></font></b></p></td><td width="452" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Sysapps</span></font></b></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Manifest format</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">W3C widget spec with Tizen extensions, XML formatted</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="http://www.w3.org/TR/widgets/">http://www.w3.org/TR/widgets/</a></span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">JSON formatted manifest</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="http://developer.chrome.com/extensions/manifest.html">http://developer.chrome.com/extensions/manifest.html</a></span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">JSON formatted manifesthttp://www.w3.org/2012/sysapps/manifest/</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Package management</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Standalone web app installer worked as system package manager backend. Package format is the same as W3C widget spec, widget will be signed if needed according to: <a href="http://www.w3.org/TR/2013/REC-widgets-digsig-20130418/">http://www.w3.org/TR/2013/REC-widgets-digsig-20130418/</a></span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Installation: API version check, source file encryption, signature check for required APIs</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Update: based on apppid/ID</span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">CRX package format.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="http://developer.chrome.com/extensions/crx.html">http://developer.chrome.com/extensions/crx.html</a></span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Update: autoupdating supported by "update_url" field in manifest</span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">The container of packaged application must be a ZIP file. Package will be signed if needed.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">A minimum outside manifest is needed for installation and update.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Device/extension APIs</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="https://developer.tizen.org/help/index.jsp?topic=%2Forg.tizen.web.device.apireference%2Ftizen%2Ftizen.html">https://developer.tizen.org/help/index.jsp?topic=%2Forg.tizen.web.device.apireference%2Ftizen%2Ftizen.html</a></span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Each different API category has a different plugin library, and most of them are loaded dynamically when needed.</span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="http://developer.chrome.com/extensions/api_index.html">http://developer.chrome.com/extensions/api_index.html</a></span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Implemented in browser process and called by IPC. Many of them are browser oriented.</span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Only draft version</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Phase1: Alarm, Contacts, Messaging, Telephony, Raw Sockets</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Phase2: Bluetooth, Browser, Calendar, Device Capabilities, Idle, Media Storage, Network Interface, Secure Element, System Settings</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="http://www.w3.org/2012/sysapps/">http://www.w3.org/2012/sysapps/</a></span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Permissions</span></font></b></p><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Declare the requested APIs in manifest file as &lt;privilege&gt;.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Signature defines the app's trust level when installation, different<span>  </span>trust level can access different privilege APIs.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">ACE controls API access and user interactive behavior when API access happens.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">SMACK control the underlying file system level access.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Applications can defined their CSP policy in the manifest files.</span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Some declared permissions(not only API) will be prompted to user before installation.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Sandbox. The browser process perform the policy-allowed actions on behalf of the application process.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="http://www.chromium.org/developers/design-documents/sandbox">http://www.chromium.org/developers/design-documents/sandbox</a></span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">A CSP policy must be applied to all packaged apps.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Define all permissions it is going to use in the application manifest.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Only privileged application(marked privileged by a trusted installation origin with its sign) can access some APIs.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">A CSP policy must be applied to privileged app.</span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Privacy</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Some APIs maybe related to user's privacy information. Then when first launch the application will perform permission warning check.</span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">N/A</span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">N/A</span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">App lifecycle</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Suspend JS and rendering when app goes to background.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Resume app when foreground. No JS callback is invented.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Keep running if background-support is enabled.</span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Two events for event page. onLaunch() when event page loaded, onSuspend() when all windows are closed.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Event page will be unloaded after idle for a moment.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Background page could be used for as long existing invisible service.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">No JS or rendering suspend state is defined.</span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">"pause" event will send on Application object before switching its state;</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">"terminate" event will send on Application object before shutting down the app;</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">"resume" event will send on Application object after changing its state;</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">"launch" event will send on Application object after the main browsing context is created but before the "load" and "DOMContentLoaded" events are fired.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Paused application will stop JS and rendering.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">App Control/Intent</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">App control for both web and native applications. Applications can be launched both explicitly or implicitly. </span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Web Intents is removed currently.</span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">System Message can be used to handle this. But the manifest field is not defined yet.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="http://runtime.sysapps.org/#system-messages">http://runtime.sysapps.org/#system-messages</a></span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Multiple windows</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Multiple browsing contexts are supported in within one app. Contexts from the same origin can access the APIs like the main browsing context. The new window will stack on the old ones.</span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">New windows can be created by chrome.app.window.create() API. And JS has full control of a app window through the AppWindow object methods.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Event page can control to only have one open window when application is launched from the launcher.</span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">N/A</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="https://github.com/sysapps/runtime/issues/100">https://github.com/sysapps/runtime/issues/100</a></span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Multiple instance</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Only one instance of an app running. If they want to launch it again the previous one will be brought to foreground.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"> </span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">If an app is used as an intent service, then there may be multiple instances for it. In this case the origin is the same for all running instances. However there's not fine control over this like Android.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="http://developer.android.com/guide/topics/manifest/activity-element.html#lmode">http://developer.android.com/guide/topics/manifest/activity-element.html#lmode</a></span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Only one event page can be exist for an application. </span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">app:// URI scheme is instance based.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><a href="http://app-uri.sysapps.org/">http://app-uri.sysapps.org/</a></span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">The authority is an unique identifier that represents the instance of an application that is making use of the app: URI.</span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Hosted app support</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">&lt;tizen:content/&gt; tag is used to define hosted app entry URL.</span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Less permissions.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">App cache support.</span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Privileged app can only be a packaged application.</span></font></p><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">App cache support.</span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">App widget</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">AppWidget is a small application widget displayed on HOME screen. User can interact with app widget w/o launching the app. One AppWidget consist of one Box and one PD(optional).</span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">N/A</span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">N/A</span></font></p></td></tr><tr><td width="146" valign="top"><p><b><font size="2"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Native Plugin</span></font></b></p></td><td width="406" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">NPAPI plugin is supported for packaged app.</span></font></p></td><td width="330" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">Support NPAPI(deprecating), PPAPI, NaCL.</span></font></p></td><td width="452" valign="top"><p><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US">N/A</span></font></p></td></tr></table><p class="MsoPlainText"><font size="1"><span lang="EN-US" xml:lang="EN-US" xml:lang="EN-US"><p> </p></span></font></p></div>
+
+<h2>Crosswalk Related Tasks<a class="anchor" id="Crosswalk-Related-Tasks" href="#Crosswalk-Related-Tasks"></a></h2>
+
+<p>As Crosswalk will align with <a href="http://runtime.sysapps.org">Runtime and Security Model for Web Applications</a> spec, some existing Tizen WRT features will not valid for Crosswalk, while some others may need to be added or ported for Tizen platform.</p>
+
+<ul><li><a href="wiki/Runtime-and-Security-Model-for-Web-Applications">Runtime model</a> lifecycle support with <a href="https://developer.tizen.org/documentation/application-fundamentals-developer-guide">Tizen application core</a></li>
+<li>Web API binding with native system components</li>
+<li>system package management binding, including binding with pkgmgr, app settings with VCONF, application info registration</li>
+<li>app control and URI schemes support, export app capabilities and call or called by other apps(including native) through AUL</li>
+<li>design how will <a href="wiki/Runtime-and-Security-Model-for-Web-Applications">Security model</a> be working with Chromium Sandbox and Tizen SMACK layer.</li>
+<li>AppWidget support</li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Tizen-2.1-WRT-features-and-related-tasks" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Tizen-2.1-WRT-features-and-related-tasks">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

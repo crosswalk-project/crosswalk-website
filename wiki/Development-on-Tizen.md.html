@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Development-on-Tizen';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Development on Tizen</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Set up your Tizen environment</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Development-on-Tizen"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Development-on-Tizen"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<h2>Setting up Gerrit Access<a class="anchor" id="Setting-up-Gerrit-Access" href="#Setting-up-Gerrit-Access"></a></h2>
+
+<ul><li>When using gbs, gbs download many resources from server. So you need to set up Gerrit Access.</li>
+<li>Follow <a href="https://source.tizen.org/documentation/developer-guide/environment-setup">Setting up Development Environment</a></li>
+<li>If you are Intel guy, follow Intel proxy setting: <a href="https://opensource.intel.com/linux-wiki/Using_git">Using git at intel</a></li>
+</ul><h2>Install development tools<a class="anchor" id="Install-development-tools" href="#Install-development-tools"></a></h2>
+
+<ul><li>On host, you must have gbs and mic.
+
+<ul><li>There are some steps until you can install on Ubuntu by <code>sudo apt-get install gbs mic</code></li>
+</ul></li>
+<li>Until <code>sudo apt-get install gbs mic</code>, follow <a href="https://source.tizen.org/documentation/developer-guide/installing-development-tools">Installing development tools</a></li>
+</ul><h2>Set up gbs environment<a class="anchor" id="Set-up-gbs-environment" href="#Set-up-gbs-environment"></a></h2>
+
+<ul><li>What is gbs?
+
+<ul><li>gbs can bake xwalk rpm.</li>
+<li>When gbs runs, gbs creates chroot environment to build i586 target</li>
+<li>gbs automatically downloads all dependencies from tizen server</li>
+</ul></li>
+<li><p>Make .gbs.conf
+<code>&gt; vi ~/.gbs.conf</code></p>
+
+<ul><li>For example, my .gbs.conf
+<div class="highlight"><pre><span class="k">[general]</span>
+<span class="na">profile</span> <span class="o">=</span> <span class="s">profile.mobile_public</span>
+<span class="na">buildroot</span> <span class="o">=</span> <span class="s">~/GBS-ROOT/</span>
+<span class="na">work_dir</span><span class="o">=</span><span class="s">.</span>
+
+<span class="k">[profile.mobile_public]</span>
+<span class="na">repos</span> <span class="o">=</span> <span class="s">repo.mobile_public_2.1</span>
+
+<span class="k">[repo.mobile_public_2.1]</span>
+<span class="na">url</span> <span class="o">=</span> <span class="s">http://download.tizen.org/releases/2.1/tizen-2.1_20130517.6/</span>
+</pre></div></li>
+</ul></li>
+<li><p>If you are curious what happen, refer to <a href="https://source.tizen.org/documentation/developer-guide/creating-tizen-platform-image-scratch-through-local-build">Creating a Tizen Platform Image from Scratch through Local Build</a></p></li>
+</ul><h1>Build xwalk<a class="anchor" id="Build-xwalk" href="#Build-xwalk"></a></h1>
+
+<h2>Preface<a class="anchor" id="Preface" href="#Preface"></a></h2>
+
+<ul><li>We will work in both HOST and CHROOT.</li>
+<li>I distinguish each as follows:
+
+<ul><li>In HOST <code>&gt; command</code></li>
+<li>In CHROOT <code>$ command</code></li>
+</ul></li>
+</ul><h2>Bake rpm<a class="anchor" id="Bake-rpm" href="#Bake-rpm"></a></h2>
+
+<ul><li>Refer to "Building an RPM package for Tizen" in <a class="internal present" href="/wiki/Build-Crosswalk">Build-Crosswalk</a></li>
+<li>If you bake rpm once, chroot environment is created. You can build xwalk inside chroot! Refer to next section.</li>
+<li>If you change your spec file, we need to bake rpm to renew chroot environment.</li>
+</ul><h2>Build XWalk inside chroot.<a class="anchor" id="Build-XWalk-inside-chroot." href="#Build-XWalk-inside-chroot."></a></h2>
+
+<ul><li>You need to bake rpm once, because gbs creates chroot environment.
+
+<ul><li>If you don't want to run rpm (because it takes a lot of time), refer to Tips section. <a class="internal present" href="/wiki/Development-on-Tizen#tips">Development-on-Tizen#tips</a></li>
+</ul></li>
+<li>If you bake rpm once and you don't change spec file, just build inside chroot. Don't waste time to bake rpm again.</li>
+</ul><h3>Build<a class="anchor" id="Build" href="#Build"></a></h3>
+
+<ul><li>mount your source to chroot
+<div class="highlight"><pre><span class="err">#</span> <span class="nx">make</span> <span class="nx">directory</span> <span class="nx">of</span> <span class="nx">mounting</span> <span class="nx">point</span>
+<span class="o">&gt;</span> <span class="nx">cd</span> <span class="p">/</span><span class="nb">home</span><span class="o">/&lt;</span><span class="nx">yourID</span><span class="o">&gt;/</span><span class="nx">GBS</span><span class="na">-ROOT</span><span class="p">/</span><span class="nb">local</span><span class="p">/</span><span class="nx">BUILD</span><span class="na">-ROOTS</span><span class="p">/</span><span class="nx">scratch.i586.0</span><span class="p">/</span><span class="nb">home</span><span class="p">/</span><span class="nx">abuild</span><span class="o">/</span>
+<span class="o">&gt;</span> <span class="nx">mkdir</span> <span class="nx">workspace</span>
+<span class="o">&gt;</span> <span class="nx">cd</span> <span class="o">-</span>
+<span class="err">#</span> <span class="nx">mount</span> <span class="nx">your</span> <span class="nb">source</span>
+<span class="o">&gt;</span> <span class="nx">sudo</span> <span class="nx">mount</span> <span class="o">--</span><span class="nb">bind</span> <span class="o">&lt;</span><span class="nx">your</span> <span class="nb">source</span> <span class="nb">path</span><span class="o">&gt;</span> <span class="p">/</span><span class="nb">home</span><span class="o">/&lt;</span><span class="nx">yourID</span><span class="o">&gt;/</span><span class="nx">GBS</span><span class="na">-ROOT</span><span class="p">/</span><span class="nb">local</span><span class="p">/</span><span class="nx">BUILD</span><span class="na">-ROOTS</span><span class="p">/</span><span class="nx">scratch.i586.0</span><span class="p">/</span><span class="nb">home</span><span class="p">/</span><span class="nx">abuild</span><span class="p">/</span><span class="nx">workspace</span>
+<span class="err">#</span> <span class="nx">e.g.</span> <span class="o">&lt;</span><span class="nx">your</span> <span class="nb">source</span> <span class="nb">path</span><span class="o">&gt;</span> <span class="nx">is</span> <span class="p">/</span><span class="nb">home</span><span class="o">/&lt;</span><span class="nx">yourID</span><span class="o">&gt;/</span><span class="nx">chromium</span> <span class="k">if</span> <span class="nx">your</span> <span class="nx">xwalk</span> <span class="n">is</span> <span class="k">in</span> <span class="p">/</span><span class="nb">home</span><span class="o">/&lt;</span><span class="nx">yourID</span><span class="o">&gt;/</span><span class="nx">chromium</span><span class="p">/</span><span class="nb">src</span><span class="p">/</span><span class="nx">xwalk</span>
+</pre></div></li>
+<li>manually patch patches
+
+<ul><li>spec includes as follows
+<div class="highlight"><pre><span class="n">in</span> <span class="n">crosswalk</span><span class="p">.</span><span class="n">spec</span>
+<span class="nl">Patch1:</span>         <span class="o">%</span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="o">-</span><span class="mf">1.29</span><span class="o">-</span><span class="k">do</span><span class="o">-</span><span class="n">not</span><span class="o">-</span><span class="n">look</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">gtk2</span><span class="o">-</span><span class="n">when</span><span class="o">-</span><span class="n">using</span><span class="o">-</span><span class="n">aura</span><span class="p">.</span><span class="n">patch</span>
+<span class="nl">Patch2:</span>         <span class="o">%</span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="o">-</span><span class="mf">1.29</span><span class="o">-</span><span class="n">look</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">pvr</span><span class="o">-</span><span class="n">libGLESv2</span><span class="p">.</span><span class="n">so</span><span class="p">.</span><span class="n">patch</span>
+<span class="nl">Patch3:</span>         <span class="o">%</span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="o">-</span><span class="mf">1.29</span><span class="o">-</span><span class="n">revert</span><span class="o">-</span><span class="n">nss</span><span class="o">-</span><span class="n">commits</span><span class="p">.</span><span class="n">patch</span>
+</pre></div></li>
+<li>patch manually
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">cd</span> <span class="p">[</span><span class="n">your</span> <span class="n">source</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">patch</span> <span class="o">-</span><span class="n">p1</span> <span class="o">&lt;</span><span class="n">xwalk</span> <span class="n">dir</span><span class="o">&gt;/</span><span class="n">package</span><span class="o">/%</span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="o">-</span><span class="mf">1.29</span><span class="o">-</span><span class="k">do</span><span class="o">-</span><span class="n">not</span><span class="o">-</span><span class="n">look</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">gtk2</span><span class="o">-</span><span class="n">when</span><span class="o">-</span><span class="n">using</span><span class="o">-</span><span class="n">aura</span><span class="p">.</span><span class="n">patch</span>
+<span class="cp"># do all patches (some patch need -p2, not -p1)</span>
+</pre></div></li>
+</ul></li>
+<li>go inside chroot
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">sudo</span> <span class="nx">gbs</span> <span class="nx">chroot</span> <span class="p">/</span><span class="nb">home</span><span class="o">/&lt;</span><span class="nx">yourID</span><span class="o">&gt;/</span><span class="nx">GBS</span><span class="na">-ROOT</span><span class="p">/</span><span class="nb">local</span><span class="p">/</span><span class="nx">BUILD</span><span class="na">-ROOTS</span><span class="p">/</span><span class="nx">scratch.i586.0</span>
+<span class="err">$</span> <span class="nx">cd</span> <span class="err">~</span><span class="p">/</span><span class="nx">workspace</span>   <span class="err">#</span> <span class="nx">this</span> <span class="nx">is</span> <span class="nx">your</span> <span class="nx">mounting</span> <span class="nx">point</span>
+</pre></div></li>
+<li>gyp
+
+<ul><li>your spec file includes as follows
+<div class="highlight"><pre><span class="n">in</span> <span class="n">crosswalk</span><span class="p">.</span><span class="n">spec</span>
+<span class="n">export</span> <span class="n">GYP_GENERATORS</span><span class="o">=</span><span class="err">'</span><span class="n">make</span><span class="err">'</span>
+<span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">xwalk</span><span class="o">/</span><span class="n">gyp_xwalk</span> <span class="n">src</span><span class="o">/</span><span class="n">xwalk</span><span class="o">/</span><span class="n">xwalk</span><span class="p">.</span><span class="n">gyp</span> \
+<span class="o">-</span><span class="n">Ddisable_nacl</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Dpython_ver</span><span class="o">=</span><span class="mf">2.7</span> \
+<span class="o">-</span><span class="n">Duse_aura</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_cups</span><span class="o">=</span><span class="mi">0</span> \
+<span class="o">-</span><span class="n">Duse_gconf</span><span class="o">=</span><span class="mi">0</span> \
+<span class="o">-</span><span class="n">Duse_kerberos</span><span class="o">=</span><span class="mi">0</span> \
+<span class="o">-</span><span class="n">Duse_system_bzip2</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_system_icu</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_system_libexif</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_system_libxml</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_system_nspr</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Denable_xi21_mt</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Dtizen_mobile</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_openssl</span><span class="o">=</span><span class="mi">1</span>
+</pre></div></li>
+<li>you can do it in chroot. Note you need -Dtarget_arch=ia32 in addition.
+<div class="highlight"><pre><span class="err">$</span> <span class="n">export</span> <span class="n">GYP_GENERATORS</span><span class="o">=</span><span class="err">'</span><span class="n">make</span><span class="err">'</span>
+<span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">xwalk</span><span class="o">/</span><span class="n">gyp_xwalk</span> <span class="n">src</span><span class="o">/</span><span class="n">xwalk</span><span class="o">/</span><span class="n">xwalk</span><span class="p">.</span><span class="n">gyp</span> \
+<span class="o">-</span><span class="n">Ddisable_nacl</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Dpython_ver</span><span class="o">=</span><span class="mf">2.7</span> \
+<span class="o">-</span><span class="n">Duse_aura</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_cups</span><span class="o">=</span><span class="mi">0</span> \
+<span class="o">-</span><span class="n">Duse_gconf</span><span class="o">=</span><span class="mi">0</span> \
+<span class="o">-</span><span class="n">Duse_kerberos</span><span class="o">=</span><span class="mi">0</span> \
+<span class="o">-</span><span class="n">Duse_system_bzip2</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_system_icu</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_system_libexif</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_system_libxml</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_system_nspr</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Denable_xi21_mt</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Dtizen_mobile</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Duse_openssl</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">Dtarget_arch</span><span class="o">=</span><span class="n">ia32</span>
+</pre></div></li>
+</ul></li>
+<li>Build it!
+<div class="highlight"><pre><span class="err">$</span> <span class="n">make</span> <span class="o">-</span><span class="n">j6</span> <span class="o">-</span><span class="n">C</span> <span class="n">src</span> <span class="n">BUILDTYPE</span><span class="o">=</span><span class="n">Release</span> <span class="n">xwalk</span>
+</pre></div></li>
+</ul><h3>Deploy<a class="anchor" id="Deploy" href="#Deploy"></a></h3>
+
+<ul><li>Copy binary into device
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">sdb</span> <span class="n">root</span> <span class="n">on</span>
+<span class="o">&gt;</span> <span class="n">sdb</span> <span class="n">push</span> <span class="n">out</span><span class="o">/</span><span class="n">Release</span><span class="o">/</span><span class="n">xwalk</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">xwalk</span><span class="o">/</span><span class="n">xwalk</span>
+</pre></div></li>
+<li>You can run xwalk on device using <code>sdb shell</code>. Refer to following section.</li>
+</ul><h2>Run<a class="anchor" id="Run" href="#Run"></a></h2>
+
+<ul><li>Refer to <a href="#documentation/getting_started/installing_crosswalk/tizen">Installing Crosswalk</a></li>
+</ul><h2>Debug<a class="anchor" id="Debug" href="#Debug"></a></h2>
+
+<ul><li>Refer to <a class="internal present" href="/wiki/Remote-debugging-xwalk-on-Tizen-2.1">Remote-debugging-xwalk-on-Tizen-2.1</a></li>
+</ul><h1>Tips<a class="anchor" id="Tips" href="#Tips"></a></h1>
+
+<h2>install dependent packages without running gbs fully.<a class="anchor" id="install-dependent-packages-without-running-gbs-fully." href="#install-dependent-packages-without-running-gbs-fully."></a></h2>
+
+<ul><li>You can update your chroot using dummy project that has the same spec file.
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">mkdir</span> <span class="n">gbsdummy</span>
+<span class="o">&gt;</span> <span class="n">cd</span> <span class="n">gbsdummy</span>
+<span class="o">&gt;</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="p">[</span><span class="n">xwalk</span> <span class="n">dir</span><span class="p">]</span><span class="o">/</span><span class="n">packaging</span> <span class="p">.</span><span class="o">/</span>
+<span class="o">&gt;</span> <span class="n">git</span> <span class="n">init</span>
+<span class="o">&gt;</span> <span class="n">git</span> <span class="n">add</span> <span class="o">*</span>
+<span class="o">&gt;</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">m</span> <span class="n">init</span>
+<span class="o">&gt;</span> <span class="n">gbs</span> <span class="n">build</span> <span class="o">-</span><span class="n">A</span> <span class="n">i586</span>
+</pre></div></li>
+<li>above command fails but your chroot is updated. \o/</li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-11-05 12:49:21</p>
+  <p>
+    <a id="delete-link" href="/wiki/Development-on-Tizen" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Development-on-Tizen">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
