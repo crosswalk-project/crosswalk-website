@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Crosswalk-testing-framework';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Crosswalk testing framework</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Crosswalk Testing Framework</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Crosswalk-testing-framework"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Crosswalk-testing-framework"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Since Crosswalk is designed to be built upon content layer, besides the test suites written in content layer, it is important for Crosswalk to setup its own testing framework besides the existing tests written in content module.</p>
+
+<h2>Existing tests in content<a class="anchor" id="Existing-tests-in-content" href="#Existing-tests-in-content"></a></h2>
+
+<p>All content tests can be found in src/content/content_tests.gypi file.</p>
+
+<ul><li>content_unittests </li>
+<li>content_browsertests</li>
+<li>video_decode_accelerator_unittest (For Windows, ChromeOS)</li>
+<li>h264_parser_unittest (For ChromeOS, Linux)</li>
+</ul><p>We can make use of these tests for Crosswalk as possible to make sure nothing is broken once code change in content layer, and we might still need to build content_shell executable binary to run these tests.</p>
+
+<h2>Tests in Crosswalk<a class="anchor" id="Tests-in-Crosswalk" href="#Tests-in-Crosswalk"></a></h2>
+
+<p>In Chromium, several kinds of testing are provided from Chrome, see <a href="https://sites.google.com/a/chromium.org/dev/developers/testing">Chromium Testing and Infrastructure</a>.</p>
+
+<p>For Crosswalk, to ensure the code quality, at least 2 kinds of testing should be developed along with the process of feature development and bug fixing.</p>
+
+<h3>Unit Test<a class="anchor" id="Unit-Test" href="#Unit-Test"></a></h3>
+
+<p>Unit test is intended to test whether a function works as expected. The unit test writing is based on gtest framework. Use TEST_F to add test case into testing framework. See <a href="https://code.google.com/p/googletest/">here</a> for more information about gtest.</p>
+
+<h3>Browser Test<a class="anchor" id="Browser-Test" href="#Browser-Test"></a></h3>
+
+<p>Browser test is another special unit test which is considered as Crosswalk integration test. It requires all test cases MUST run in the browser process, which means the browser environment and context must have been setup and bring up a browser window to load a given URL. For example, you can query the title and URL of web contents loaded in the browser window. </p>
+
+<p>Similarly with Chromium does, we also define <code>InProcessBrowserTest</code> derived from <code>content::BrowserTestBase</code> to help set up the browser testing environment and use <code>IN_PROC_BROWSER_TEST</code> to define browser test case. See <code>content/public/test/browser_test.h</code> and <code>content/public/test/browser_test_base.h</code> for <code>IN_RPOC_BROWSER_TEST</code> macro definition and <code>BrowserTestBase</code> class.</p>
+
+<p>To use <code>InProcessBrowserTest</code> do the following:</p>
+
+<ul><li>Use the macro <code>IN_PROC_BROWSER_TEST_F</code> to define your test.</li>
+<li>Your test method is invoked on the UI thread. If you need to block until state changes you'll need to run the message loop from your test method.</li>
+<li>If you subclass and override SetUp, be sure and invoke <code>InProcessBrowserTest::SetUp</code>. (But see also <code>SetUpOnMainThread</code>, <code>SetUpInProcessBrowserTestFixture</code> and other related hook methods for a cleaner alternative).</li>
+</ul><h2>Tests in Android port<a class="anchor" id="Tests-in-Android-port" href="#Tests-in-Android-port"></a></h2>
+
+<p>The instrumentation tests for Android port has been enabled for runtime core but not for app wrapper(will be supported soon). To understand the background of this kind of tests, please refer to <a href="http://developer.android.com/tools/testing/testing_android.html">Testing Android</a>. Below is the instruction on how to run instrumentation tests for crosswalk runtime core:</p>
+
+<ul><li>Set up the environment for Android build for IA. It's always needed when running instrumentation tests.
+<div class="highlight"><pre>  <span class="p">.</span> <span class="n">xwalk</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">envsetup</span><span class="p">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">arch</span><span class="o">=</span><span class="n">x86</span>
+</pre></div></li>
+<li>Build the testing APK for runtime core and install it to the target Android device.
+<div class="highlight"><pre>  <span class="n">ninja</span> <span class="o">-</span><span class="n">C</span> <span class="n">out</span><span class="o">/</span><span class="n">Release</span> <span class="n">xwalk_core_test_apk</span>
+  <span class="n">build</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">adb_install_apk</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">release</span> <span class="o">--</span><span class="n">apk</span> <span class="n">XWalkCoreShell</span><span class="p">.</span><span class="n">apk</span>
+</pre></div></li>
+<li>Run all testing cases
+<div class="highlight"><pre>  <span class="n">python</span> <span class="n">build</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">test_runner</span><span class="p">.</span><span class="n">py</span> <span class="n">instrumentation</span> <span class="o">--</span><span class="n">release</span> <span class="o">--</span><span class="n">test</span><span class="o">-</span><span class="n">apk</span><span class="o">=</span><span class="n">XWalkCoreTest</span> <span class="o">--</span><span class="n">test_data</span> <span class="n">xwalkview</span><span class="o">:</span><span class="n">xwalk</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">device_files</span><span class="o">/</span>  <span class="o">--</span><span class="n">verbose</span> <span class="o">-</span><span class="n">I</span>
+</pre></div></li>
+</ul><h2>Code Reviewing and Trybots<a class="anchor" id="Code-Reviewing-and-Trybots" href="#Code-Reviewing-and-Trybots"></a></h2>
+
+<p>Crosswalk's developer is required to add test for any non-trivial code change. A effective and collaborate testing for your code is always a good practice when uploading a patch to trunk. Generally, a reviewer might reject a patch without testing code.</p>
+
+<p>The trybots will run the tests firstly before checking in a patch into trunk. The patch is allowed to be checked in only if all tests are passed (Green).</p>
+
+<h2>References<a class="anchor" id="References" href="#References"></a></h2>
+
+<ol><li> <a href="https://sites.google.com/a/chromium.org/dev/developers/testing">Chromium Testing Infrastructure</a></li>
+<li> <a href="https://sites.google.com/a/chromium.org/dev/developers/testing/browser-tests">Browser Tests</a></li>
+<li> <a href="https://code.google.com/p/googletest/">Google test framework</a></li>
+</ol>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Zhu, Yongsheng</b>, 2013-10-24 22:58:25</p>
+  <p>
+    <a id="delete-link" href="/wiki/Crosswalk-testing-framework" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Crosswalk-testing-framework">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

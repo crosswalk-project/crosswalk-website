@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Contribute-a-patch-in-Blink-Chromium';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Contribute a patch in Blink Chromium</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Contribute a patch in Blink Chromium</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Contribute-a-patch-in-Blink-Chromium"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Contribute-a-patch-in-Blink-Chromium"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <ul><li>Create a local branch with your change : <code>git checkout -b "FooBar"</code>.</li>
+<li>Commit your change making sure you're following the commit template</li>
+<li>Use <code>git cl upload</code> to create a new review issue and upload the diff, this means that the current git branch will be used to track the issue you've just created.</li>
+</ul><p><strong>WARNING : At this time the patch is not published which means that it's not up to review. No reviewers are CC and it's not published on the blink-reviews mailing list</strong></p>
+
+<ul><li>Throw to the EWS with <code>git cl try</code>. This works only for the committers at the moment.</li>
+<li>Make sure it's green, then in the UI of codereview you can click on "Publish and mail comments" which will publish your patch for review. You can add reviewers and leave an empty comment.</li>
+<li>Wait the lgtm to either land if you are committer or tick the cq.</li>
+</ul><h2>Tips and tricks :<a class="anchor" id="Tips-and-tricks-:" href="#Tips-and-tricks-:"></a></h2>
+
+<ul><li> Do not publish right away unless it's trivial, always wait the EWS to be green. You can upload as many patchsets as you want without publishing so you can get EWS green and you will not spam the reviewers in the meantime. This is a great improvement over WebKit.</li>
+</ul><p>Note: Currently the EWS are using a Last Known Good Revision and might be outdated... thus they are not 100% trustworthy. </p>
+
+<ul><li><p>Do not work your changes on master otherwise the master branch will be tracked with the issue you will create as soon as you upload. You can "untrack" the master (or any branch) by editing .git/config and remove the rietvield association for the given branch.</p></li>
+<li><p>If you apply a patch manually (other than git cl patch) in a custom local branch and you want to tell git cl to associate this branch with a given rietveld (codereview) issue you can type : <code>git cl issue XXXXXX</code>, or <code>git cl issue 0</code> to reset the counter (it will asign one automatically when uploading)</p></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-06 09:50:56</p>
+  <p>
+    <a id="delete-link" href="/wiki/Contribute-a-patch-in-Blink-Chromium" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Contribute-a-patch-in-Blink-Chromium">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

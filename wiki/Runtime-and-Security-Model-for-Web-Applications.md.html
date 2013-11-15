@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Runtime-and-Security-Model-for-Web-Applications';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Runtime and Security Model for Web Applications</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Runtime and Security Model for Web Applications</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Runtime-and-Security-Model-for-Web-Applications"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Runtime-and-Security-Model-for-Web-Applications"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h2>Introduction<a class="anchor" id="Introduction" href="#Introduction"></a></h2>
+
+<ol><li><a href="http://runtime.sysapps.org/">The Latest Version</a></li>
+<li><a href="http://manifest.sysapps.org/">The standalone manifest spec</a></li>
+<li><a href="https://github.com/sysapps/runtime">github repo</a></li>
+<li><a href="http://www.w3.org/2012/sysapps/">System Applications Working Group</a></li>
+<li><a href="http://www.w3.org/2013/04/09-sysapps-minutes.html">Meeting minutes of the first F2F meeting was held 9-11 April 2013 in Madrid and hosted by Telefonica</a></li>
+</ol><h2>The API<a class="anchor" id="The-API" href="#The-API"></a></h2>
+
+<ul><li>ApplicationRegistry
+
+<ul><li>DOMRequest install (DOMString manifestUrl, [Optional] Object parameters); <strong>(Permission check)</strong></li>
+<li>DOMRequest getSelf ();</li>
+<li>DOMRequest getInstalled ();</li>
+<li>DOMRequest checkInstalled (DOMString manifestURL);</li>
+<li>attribute ApplicationManagement? management;</li>
+</ul></li>
+<li>Application
+
+<ul><li>readonly attribute DOMString origin;</li>
+<li>readonly attribute Object manifest;</li>
+<li>readonly attribute DOMString installOrigin;</li>
+<li>readonly attribute unsigned long installTime;</li>
+<li>readonly attribute Object parameters;</li>
+<li>DOMRequest launch (); <strong>(Permission check)</strong></li>
+<li>DOMRequest uninstall (); <strong>(Permission check)</strong></li>
+<li>readonly attribute DOMString updateState;</li>
+<li>readonly attribute unsigned long downloadSize;</li>
+<li>DownloadRequest? downloadUpdate ();</li>
+<li>readonly attribute DOMString state;;</li>
+<li>void hide ();</li>
+<li>void exit ();</li>
+<li>attribute EventHandler onlaunch;</li>
+<li>attribute EventHandler onpause;</li>
+<li>attribute EventHandler onresume;</li>
+<li>attribute EventHandler onterminate;</li>
+</ul></li>
+<li>ApplicationManagement <strong>(webapps-manage Allow access to the navigator.apps.management API to manage installed webapps.)</strong>
+
+<ul><li>DOMRequest getAll ();</li>
+<li>DOMRequest applyUpdate (Application application);</li>
+<li>attribute EventHandler oninstall;</li>
+<li>attribute EventHandler onuninstall;</li>
+</ul></li>
+</ul><h2>Comparation of config.xml and application manifest<a class="anchor" id="Comparation-of-config.xml-and-application-manifest" href="#Comparation-of-config.xml-and-application-manifest"></a></h2>
+
+<table><thead><tr><th></th>
+<th>config.xml</th>
+<th>manifest</th>
+</tr></thead><tbody><tr><td>Configformat</td>
+<td>xml</td>
+<td>JSON</td>
+</tr><tr><td>Package format</td>
+<td>zip</td>
+<td>zip</td>
+</tr><tr><td>Zip contents</td>
+<td>Fixed format(file name,folder name, locales..)</td>
+<td>Only manifest</td>
+</tr><tr><td>Application life cycle</td>
+<td><code>N/A</code></td>
+<td>3 status: running, paused, terminated</td>
+</tr><tr><td>Supporting devices</td>
+<td>Tizen,PhoneGap,BB,..</td>
+<td><code>N/A</code></td>
+</tr><tr><td>Security Model</td>
+<td>'feature'</td>
+<td>'required_features'</td>
+</tr></tbody></table><h2>Comparation of Tizen web runtime and W3C runtime<a class="anchor" id="Comparation-of-Tizen-web-runtime-and-W3C-runtime" href="#Comparation-of-Tizen-web-runtime-and-W3C-runtime"></a></h2>
+
+<p>Actually, Tizen web runtime could be looked as w3c widget + DeviceAPI/Application, since we've already compared widget and manifest, so let's go through the difference between DeviceAPI/Application and W3C runtime.</p>
+
+<table><thead><tr><th></th>
+<th>Tizen DeviceAPI/Application</th>
+<th>W3C runtime</th>
+</tr></thead><tbody><tr><td>Application Status</td>
+<td>Visible,hidden,terminated</td>
+<td>running, paused, terminated</td>
+</tr><tr><td>Call back</td>
+<td><code>N/A</code></td>
+<td>onpause/onresume/onterminate/onlaunch</td>
+</tr><tr><td>Background</td>
+<td>hidden but running</td>
+<td><code>N/A</code></td>
+</tr><tr><td>Install/Uninstall</td>
+<td><code>N/A</code></td>
+<td>ApplicationRegistry/ApplicationManagement</td>
+</tr><tr><td>Install/Uninstall call back</td>
+<td>oninstalled/onuninstalled</td>
+<td>oninstall/onuninstall</td>
+</tr><tr><td>Able to update an existing application</td>
+<td><code>no</code></td>
+<td><code>yes</code></td>
+</tr><tr><td>Able to enum all installed applications</td>
+<td><code>no</code></td>
+<td><code>yes</code></td>
+</tr><tr><td>Able to find specific application</td>
+<td><code>yes</code></td>
+<td><code>yes</code></td>
+</tr><tr><td>Able to launch another application</td>
+<td><code>yes</code></td>
+<td><code>yes</code></td>
+</tr><tr><td>Launch parameter</td>
+<td><code>yes</code></td>
+<td><code>N/A</code></td>
+</tr><tr><td>Launch callback</td>
+<td><code>yes</code></td>
+<td><code>yes</code></td>
+</tr><tr><td>Extension point</td>
+<td>Tizen</td>
+<td>Navigator</td>
+</tr></tbody></table><h2>Mozilla's Open Web App Manifest<a class="anchor" id="Mozilla's-Open-Web-App-Manifest" href="#Mozilla's-Open-Web-App-Manifest"></a></h2>
+
+<ul><li><a href="https://marketplace.firefox.com/developers/docs/manifests">https://marketplace.firefox.com/developers/docs/manifests</a></li>
+</ul><h2>Updates - Apr/19/2013<a class="anchor" id="Updates---Apr/19/2013" href="#Updates---Apr/19/2013"></a></h2>
+
+<ul><li>First Public Working Draft 21 March 2013</li>
+<li>Prefer JSON over XML, and consequently prefer runtime manifest over widget config.xml.</li>
+<li>There will be a transition from widget to packaged app and therefore there will be a tool to convert xml to JSON.</li>
+<li>Active members agreed this transition: Mozilla,Samsung,Intel,RIM (Blackberry)...</li>
+<li>Currently widget Spec is used by: Tizen, BlackBerry, Cordova, etc..</li>
+<li>Agreed that there should be a spec about mappings between widgets xml and runtime manifest</li>
+</ul><h2>Updates - Apr/22/2013<a class="anchor" id="Updates---Apr/22/2013" href="#Updates---Apr/22/2013"></a></h2>
+
+<ul><li>There has been a lot argument surrounding the new URI scheme -  app://</li>
+<li>The URI:app is going to the FPWD.</li>
+<li>The application manifest is going to be splitted into another specification whereas the reduced one will not.
+
+<ul><li><a href="http://manifest.sysapps.org/">The new manifest spec</a></li>
+<li><a href="https://github.com/sysapps/manifest">github location</a></li>
+</ul></li>
+</ul><h2>Updates - Apr/27/2013<a class="anchor" id="Updates---Apr/27/2013" href="#Updates---Apr/27/2013"></a></h2>
+
+<ul><li>Initiated the collaboration between sysapps group and webapps group to replace xml with JSON.
+
+<ul><li>Discussing how to split the tasks, manifest, extensions, etc...</li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Runtime-and-Security-Model-for-Web-Applications" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Runtime-and-Security-Model-for-Web-Applications">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

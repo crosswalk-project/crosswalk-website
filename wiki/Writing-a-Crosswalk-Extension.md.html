@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Writing-a-Crosswalk-Extension';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Writing a Crosswalk Extension</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Introduction</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Writing-a-Crosswalk-Extension"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Writing-a-Crosswalk-Extension"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Extensions in Crosswalk gives application developers an interface to
+the world outside the Web Runtime.</p>
+
+<p>They're implemented using a shared object with a very simple interface
+that allows message passing to and from JavaScript code.</p>
+
+<h2>Implementing an Extension<a class="anchor" id="Implementing-an-Extension" href="#Implementing-an-Extension"></a></h2>
+
+<p>The <a href="https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h">XW_Extension.h</a> header should be used to define the
+structures used by the extension system. One recommended practice is copying this header into
+your project.</p>
+
+<p>The only symbol that should be exported is the function <code>int32_t
+XW_Initialize(XW_Extension extension, XW_GetInterface
+get_interface)</code>. Be sure to use <code>extern "C"</code> when defining this
+function to avoid name mangling if using a C++ compiler. This function
+should be implemented and exported in the shared object. It should
+return <code>XW_OK</code> if it could be correctly initialized.  Its parameters:</p>
+
+<ul><li><code>extension</code> is the identifier for this extension, i.e. from now on
+the extension will be referenced as this.</li>
+<li><code>get_interface</code> is a function with signature <code>const void*
+XW_GetInterface(const char* interface_name)</code> used for accessing the
+interfaces provided for integrating native code with the Crosswalk
+runtime. For each defined <code>interface_name</code> it will return a pointer to a structure with functions that the extension can call.
+The interfaces provided are described bellow.</li>
+</ul><h3>Core Interface<a class="anchor" id="Core-Interface" href="#Core-Interface"></a></h3>
+
+<p>*<code>interface_name</code>*: <code>XW_CORE_INTERFACE</code></p>
+
+<p>A <code>struct XW_CoreInterface</code> with the following fields:</p>
+
+<ul><li><code>SetExtensionName</code> a function that sets name of the extension
+identified by <code>extension</code> to <code>name</code>. This is mandatory. It should
+only be called during the <code>XW_Initialize</code> call.</li>
+<li><code>SetJavaScriptAPI</code> exports the JavaScript shim that will be
+available to all page contexts. The JavaScript code <code>api</code> will be
+associated with <code>extension</code>. More details on <a href="https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h">XW_Extension.h</a>
+header. Only valid to be called during <code>XW_Initialize()</code>.</li>
+<li><code>RegisterInstanceCallbacks</code> informs the Crosswalk runtime of
+functions that should be called when new instances of the extension
+are created or destroyed. Instances have the same lifetime of the
+web content. This should only be called during <code>XW_Initialize()</code></li>
+<li><code>RegisterShutdownCallback</code> registers a callback that will be called
+when the extension will be unloaded. This function should be called
+only during <code>XW_Initialize()</code>.</li>
+<li><code>SetInstanceData</code> and <code>GetInstanceData</code> are convenience functions
+that allow for arbitrary data to be associated with each instance,
+and for that data to be retrieved. These functions may be called at
+any time during the life of an instance.</li>
+</ul><h3>Messaging Interface<a class="anchor" id="Messaging-Interface" href="#Messaging-Interface"></a></h3>
+
+<p>*<code>interface_name</code>*: <code>XW_MESSAGING_INTERFACE</code></p>
+
+<p>A <code>struct XW_MessagingInterface</code> with the following fields:</p>
+
+<ul><li><code>Register</code> when called, this function tells Crosswalk which function
+should be called in event of a message from the JavaScript side.</li>
+<li><code>PostMessage</code> sends a message to the web content, associated with
+the <code>instance</code>. More details on the <a href="https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h">XW_Extension.h</a> header.</li>
+</ul><h3>Sync Messaging Interface [experimental]<a class="anchor" id="Sync-Messaging-Interface-[experimental]" href="#Sync-Messaging-Interface-[experimental]"></a></h3>
+
+<p>Defined in the <a href="https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension_SyncMessage.h">XW_Extension_SyncMessage.h</a> header. This interface is
+marked as internal and no guarantee will be made for its compatibility
+with future versions.</p>
+
+<p>*<code>interface_name</code>*: <code>XW_INTERNAL_SYNC_MESSAGING_INTERFACE</code></p>
+
+<p>A <code>struct XW_Internal_SyncMessagingInterface</code> with the following fields:</p>
+
+<ul><li><code>Register</code> when called, this function tells Crosswalk which function
+should be called in event of a synchronous message from the
+JavaScript side.</li>
+<li><code>SetSyncReply</code> responds a synchronous (blocking) message from
+JavaScript side, the renderer process will be blocked until this
+function is called.</li>
+</ul><h3>Versioning information<a class="anchor" id="Versioning-information" href="#Versioning-information"></a></h3>
+
+<p>The interface names and structures explained here, have a versioning
+suffix in their names, but extension writers are recommended to use
+the unversioned macros to get the desired interfaces.</p>
+
+<h2>Loading the Extensions<a class="anchor" id="Loading-the-Extensions" href="#Loading-the-Extensions"></a></h2>
+
+<p>Be sure to build the extension using each platform's standard naming
+scheme. If an extension answers for <code>foo</code>, then:</p>
+
+<ul><li>Under Linux, it should be named <code>libfoo.so</code>.</li>
+<li>Under MacOS, it should be named <code>foo.dylib</code>.</li>
+<li>Under Windows, it should be named <code>foo.dll</code>.</li>
+</ul><p>All files that match these naming scheme found in the directory
+pointed to by the <code>--external-extensions-path</code> Crosswalk argument will
+be loaded. Libraries will only be considered to be included in the
+extension subsystem if:</p>
+
+<ul><li>The shared object loads and links (as it might link to external
+libraries which might not exist in the user's machine).</li>
+<li>The extension initialization function exists and returns XW_OK.</li>
+</ul><h1>Example<a class="anchor" id="Example" href="#Example"></a></h1>
+
+<p>To show how this works in practice, this is an example from the Crosswalk tests, to
+demostrate how these concepts apply. This extension is called <a href="https://github.com/crosswalk-project/crosswalk/blob/master/extensions/test/echo_extension.c">echo_extension.c</a>. As it
+is implied by its name all it does is echo the incoming message as a reply.</p>
+
+<div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include "xwalk/extensions/public/XW_Extension.h"</span>
+<span class="cp">#include "xwalk/extensions/public/XW_Extension_SyncMessage.h"</span>
+</pre></div>
+
+<p>Usually one external extension will have a copy of these headers on its sources.</p>
+
+<div class="highlight"><pre><span class="n">XW_Extension</span> <span class="n">g_extension</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">XW_CoreInterface</span><span class="o">*</span> <span class="n">g_core</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">XW_MessagingInterface</span><span class="o">*</span> <span class="n">g_messaging</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">XW_Internal_SyncMessagingInterface</span><span class="o">*</span> <span class="n">g_sync_messaging</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</pre></div>
+
+<p>Just some global variables to keep some state.</p>
+
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">instance_created</span><span class="p">(</span><span class="n">XW_Instance</span> <span class="n">instance</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Instance %d created!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">instance</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">instance_destroyed</span><span class="p">(</span><span class="n">XW_Instance</span> <span class="n">instance</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Instance %d destroyed!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">instance</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>So we can be notified when an instance is created (or destroyed).</p>
+
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">handle_message</span><span class="p">(</span><span class="n">XW_Instance</span> <span class="n">instance</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">g_messaging</span><span class="o">-&gt;</span><span class="n">PostMessage</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">handle_sync_message</span><span class="p">(</span><span class="n">XW_Instance</span> <span class="n">instance</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">g_sync_messaging</span><span class="o">-&gt;</span><span class="n">SetSyncReply</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">shutdown</span><span class="p">(</span><span class="n">XW_Extension</span> <span class="n">extension</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Shutdown</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Most of the logic of the extension will be here, in these functions above.</p>
+
+<div class="highlight"><pre><span class="kt">int32_t</span> <span class="nf">XW_Initialize</span><span class="p">(</span><span class="n">XW_Extension</span> <span class="n">extension</span><span class="p">,</span> <span class="n">XW_GetInterface</span> <span class="n">get_interface</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">kAPI</span> <span class="o">=</span>
+      <span class="s">"var echoListener = null;"</span>
+      <span class="s">"extension.setMessageListener(function(msg) {"</span>
+      <span class="s">"  if (echoListener instanceof Function) {"</span>
+      <span class="s">"    echoListener(msg);"</span>
+      <span class="s">"  };"</span>
+      <span class="s">"});"</span>
+      <span class="s">"exports.echo = function(msg, callback) {"</span>
+      <span class="s">"  echoListener = callback;"</span>
+      <span class="s">"  extension.postMessage(msg);"</span>
+      <span class="s">"};"</span>
+      <span class="s">"exports.syncEcho = function(msg) {"</span>
+      <span class="s">"  return extension.internal.sendSyncMessage(msg);"</span>
+      <span class="s">"};"</span><span class="p">;</span>
+
+  <span class="n">g_extension</span> <span class="o">=</span> <span class="n">extension</span><span class="p">;</span>
+  <span class="n">g_core</span> <span class="o">=</span> <span class="n">get_interface</span><span class="p">(</span><span class="n">XW_CORE_INTERFACE</span><span class="p">);</span>
+  <span class="n">g_core</span><span class="o">-&gt;</span><span class="n">SetExtensionName</span><span class="p">(</span><span class="n">extension</span><span class="p">,</span> <span class="s">"echo"</span><span class="p">);</span>
+  <span class="n">g_core</span><span class="o">-&gt;</span><span class="n">SetJavaScriptAPI</span><span class="p">(</span><span class="n">extension</span><span class="p">,</span> <span class="n">kAPI</span><span class="p">);</span>
+  <span class="n">g_core</span><span class="o">-&gt;</span><span class="n">RegisterInstanceCallbacks</span><span class="p">(</span>
+      <span class="n">extension</span><span class="p">,</span> <span class="n">instance_created</span><span class="p">,</span> <span class="n">instance_destroyed</span><span class="p">);</span>
+  <span class="n">g_core</span><span class="o">-&gt;</span><span class="n">RegisterShutdownCallback</span><span class="p">(</span><span class="n">extension</span><span class="p">,</span> <span class="n">shutdown</span><span class="p">);</span>
+
+  <span class="n">g_messaging</span> <span class="o">=</span> <span class="n">get_interface</span><span class="p">(</span><span class="n">XW_MESSAGING_INTERFACE</span><span class="p">);</span>
+  <span class="n">g_messaging</span><span class="o">-&gt;</span><span class="n">Register</span><span class="p">(</span><span class="n">extension</span><span class="p">,</span> <span class="n">handle_message</span><span class="p">);</span>
+
+  <span class="n">g_sync_messaging</span> <span class="o">=</span> <span class="n">get_interface</span><span class="p">(</span><span class="n">XW_INTERNAL_SYNC_MESSAGING_INTERFACE</span><span class="p">);</span>
+  <span class="n">g_sync_messaging</span><span class="o">-&gt;</span><span class="n">Register</span><span class="p">(</span><span class="n">extension</span><span class="p">,</span> <span class="n">handle_sync_message</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">XW_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Now we can see how these structures and interface names, are meant to be use together.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Vinicius Gomes</b>, 2013-09-20 12:21:51</p>
+  <p>
+    <a id="delete-link" href="/wiki/Writing-a-Crosswalk-Extension" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Writing-a-Crosswalk-Extension">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
