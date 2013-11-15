@@ -105,7 +105,17 @@ p {
     color: red;
 }
 
-.channel {
+#wiki-content .release>table {
+    width: 100%;
+    tr:nth-child(2)>td:last-child {
+        font-weight: bold;
+    }
+    td:first-child {
+        width: 24ex;
+    }
+}
+
+#wiki-content .channel, .channel {
     display: inline-block;
     font-family: "ClearSans-Medium",helvetica,georgia,sans-serif;
     font-size: 0.8rem;
