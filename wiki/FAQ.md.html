@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'FAQ';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>FAQ</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>FAQ</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/FAQ"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/FAQ"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h2>Is this a runtime like Java or Visual Basic?<a class="anchor" id="Is-this-a-runtime-like-Java-or-Visual-Basic?" href="#Is-this-a-runtime-like-Java-or-Visual-Basic?"></a></h2>
+
+<p>No, because Crosswalk is based on W3C standards: HTML5, CSS and JavaScript.  Unlike the languages supported by earlier runtimes, W3C standards are implemented in multiple forms, by multiple companies, in both open source and commercial forms.  A broad range of open source as well as commercial tools and projects support the developer.  When you use a Crosswalk application runtime, you are participating in a growing ecosystem.</p>
+
+<h2>If my apps need W3C standards, why shouldn't I target a browser?<a class="anchor" id="If-my-apps-need-W3C-standards,-why-shouldn't-I-target-a-browser?" href="#If-my-apps-need-W3C-standards,-why-shouldn't-I-target-a-browser?"></a></h2>
+
+<p>Browsers do a great job of supporting W3C standards, but they are not allowed to support the APIs from the Systems Applications Working Group. This is because these APIs access platform features which, if known to a web site and combined with other data known to the browser, would allow violations of the consumer's privacy. Because Crosswalk applications have a different security model, where the consumer is able to choose which permissions an application is given, system application APIs <strong>can</strong> be supported. This in turn makes applications possible with Crosswalk which are not possible on the open web.</p>
+
+<h2>How is Crosswalk different from other runtimes for HTML5?<a class="anchor" id="How-is-Crosswalk-different-from-other-runtimes-for-HTML5?" href="#How-is-Crosswalk-different-from-other-runtimes-for-HTML5?"></a></h2>
+
+<p>The Crosswalk Project supports multiple operating systems (see <a href="OS-support-of-Crosswalk">OS Support</a>). Support is planned for <a href="http://www.w3.org/2012/sysapps/">SysApp</a> APIs. Extra support is included for applications aimed at mobile devices, e.g., orientation lock and viewport interaction. And you can extend Crosswalk with your own APIs.</p>
+
+<p>A platform owner who provides a Crosswalk runtime can control runtime updates for a suite of applications without having to embed the runtime in each one. In addition, the platform owner may include APIs that are unique to their platform as part of the runtime.</p>
+
+<p>A developer with a suite of apps could decide to offer a specific version of a Crosswalk runtime, shared among all the apps in the suite.</p>
+
+<h2>How is Crosswalk different from CEF or QtWebKit?<a class="anchor" id="How-is-Crosswalk-different-from-CEF-or-QtWebKit?" href="#How-is-Crosswalk-different-from-CEF-or-QtWebKit?"></a></h2>
+
+<p>Crosswalk is based on the same upstream code as CEF - Chromium and Blink.  QtWebKit is based on the WebKit project.  Blink is a fork of WebKit.  </p>
+
+<p>CEF and QtWebKit are intended to be used by a native-savvy programmer who makes a native call to one or the other of these native libraries, passing in HTML5/CSS/JS as code to be executed by CEF or QtWebKit. By contrast, the Crosswalk model interposes a packaging tool between the binary of the runtime and an application, written in HTML5/CSS/JS which can be run as-is on the Crosswalk runtime.  The tool creates a native application based on the combination of web code + Crosswalk.</p>
+
+<p>A CEF or QtWebKit user can execute arbitrary native code in their program along with HTML5/CSS/JS.  The Crosswalk user has two native code options: Native Client (also supported by CEF) and the Crosswalk extension mechanism.  Both native options in Crosswalk preserve the boundaries of the runtime.</p>
+
+<p>CEF and QtWebKit are sometimes thought of as "bring-your-own" replacements for a platform's own webview component.  There is nothing to prevent a savvy developer from doing that based on Crosswalk code, too, but we haven't done it.  If you think we should, let us know, and why you think so.</p>
+
+<h2>Why use Blink vs. the higher-level Chromium Embedded Framework as a basis for Crosswalk?<a class="anchor" id="Why-use-Blink-vs.-the-higher-level-Chromium-Embedded-Framework-as-a-basis-for-Crosswalk?" href="#Why-use-Blink-vs.-the-higher-level-Chromium-Embedded-Framework-as-a-basis-for-Crosswalk?"></a></h2>
+
+<p>CEF 1.0 has proven to be quite popular, but is being <a href="http://www.magpcss.org/ceforum/viewtopic.php?f=10&amp;t=10647&amp;sid=510426ccd8a9650f72ba416d7b51de06">phased out</a> in favor of the larger CEF 3.0.  Since we want a consistent implementation in the Crosswalk project, we had to pick a level in the Chromium architecture that could accommodate both use cases.  By starting with Blink and building up, rather starting with CEF 3.0 and removing pieces, we think we'll end up with a tighter, more consistent result.  </p>
+
+<h2>Isn't the Crosswalk Project just going to mean more fragmentation of the web?<a class="anchor" id="Isn't-the-Crosswalk-Project-just-going-to-mean-more-fragmentation-of-the-web?" href="#Isn't-the-Crosswalk-Project-just-going-to-mean-more-fragmentation-of-the-web?"></a></h2>
+
+<p>No, because:</p>
+
+<ul><li>The Crosswalk Project isn't aimed at the web at all: it's aimed at applications that happen to be written in HTML5, CSS and JS.</li>
+<li>Applications using a Crosswalk runtime know about the environment they are built for.  Minor differences between runtime implementations (e.g. a sensor available on one platform but not on another) are easily accommodated by developers.</li>
+<li>We don't intend to fork Blink, the underlying rendering engine for Chromium.</li>
+<li>We are going to rebase regularly to new versions of Blink.</li>
+<li>If a change makes sense for generic Chromium, we will submit it upstream.</li>
+</ul><h2>When will there be Crosswalk products?<a class="anchor" id="When-will-there-be-Crosswalk-products?" href="#When-will-there-be-Crosswalk-products?"></a></h2>
+
+<p>Anyone can take the code at any point and build a product. We're going to indicate relative stability at each milestone in the <a href="High-level-roadmap">roadmap</a>.  It's up to the community to offer commercial products.  So, please don't ask us when/if any particular product will use what we're building.  Even if we know we can't say.</p>
+
+<h2>When should I use Chrome's new packaged apps vs. a Crosswalk Runtime?<a class="anchor" id="When-should-I-use-Chrome's-new-packaged-apps-vs.-a-Crosswalk-Runtime?" href="#When-should-I-use-Chrome's-new-packaged-apps-vs.-a-Crosswalk-Runtime?"></a></h2>
+
+<p>With Chrome packaged apps, you get access to the Chrome app store and the capabilities Chrome offers.  With the Crosswalk project, you have different possibilities:</p>
+
+<ul><li>If you are building a platform, you can include a Crosswalk Application Runtime as a service for your own catalog of applications.</li>
+<li>A developer can package an application with a Crosswalk Application runtime so that the app and runtime are never revised without developer permission.</li>
+</ul><p>Of course, because Crosswalk is based on Blink and Chromium, a developer could publish a standard HTML5 app for both Crosswalk and Chrome.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/FAQ" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/FAQ">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

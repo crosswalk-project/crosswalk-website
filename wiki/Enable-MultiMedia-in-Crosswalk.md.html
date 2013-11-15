@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Enable-MultiMedia-in-Crosswalk';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Enable MultiMedia in Crosswalk</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Enable MultiMedia in Crosswalk</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Enable-MultiMedia-in-Crosswalk"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Enable-MultiMedia-in-Crosswalk"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h3>Codec support in Crosswalk<a class="anchor" id="Codec-support-in-Crosswalk" href="#Codec-support-in-Crosswalk"></a></h3>
+
+<p>The Crosswalk binary includes free codecs (<em>ffmpegsumo.dll</em> for Windows and <em>libffmpegsumo.so</em> for Linux). This enables HTML5 multimedia features (&lt;video&gt; and &lt;audio&gt; elements) to work by default.</p>
+
+<p>The codecs included are:</p>
+
+<ul><li>Vorbis audio codec</li>
+<li>Theora video codec</li>
+<li>VP8 video codec</li>
+<li>PCM</li>
+</ul><p>While free codecs are included with Crosswalk binary downloads, the instructions below explain how to download compiled versions of the free codecs manually, if desired.</p>
+
+<p>We also provide instructions for developers who want to build the free codecs manually.</p>
+
+<p>Finally, a developer can enable proprietary codecs in a Crosswalk build. When an xwalk binary with these codecs is started, the end user must accept the EULAs for those third-party codecs to use them. Instructions on how to create such a build are given below.</p>
+
+<h3>Downloading free codecs<a class="anchor" id="Downloading-free-codecs" href="#Downloading-free-codecs"></a></h3>
+
+<p>Follow the steps below to get the codecs for a Crosswalk binary release:</p>
+
+<ol><li>Download the appropriate upstream Chromium build. For example, for the current Crosswalk release, fetch <a href="https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/196631/chrome-win32.zip">chrome-win32.zip</a> for Windows or <a href="https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux/196631/chrome-linux.zip">chrome-linux.zip</a> for Linux.</li>
+<li>Unzip and copy the <em>ffmpegsumo.dll</em> or <em>libffmpegsumo.so</em> file to the directory which contains the <em>xwalk</em> executable.</li>
+<li>Relaunch <em>xwalk</em> and multimedia will work.</li>
+</ol><h3>Building free codecs<a class="anchor" id="Building-free-codecs" href="#Building-free-codecs"></a></h3>
+
+<p>Developers can also build the codecs for themselves. Please refer to <a href="Build-Crosswalk">Crosswalk Build Instruction</a> for instructions. After building, the <em>ffmpegsumo.dll</em> or <em>libffmpegsumo.so</em> with open source codecs will be found in the build output directory.</p>
+
+<h3>Enabling proprietary codecs<a class="anchor" id="Enabling-proprietary-codecs" href="#Enabling-proprietary-codecs"></a></h3>
+
+<p>Examples of proprietary codecs include:</p>
+
+<ul><li>MP3 audio codec</li>
+<li>AAC audio codec</li>
+<li>H.264 video codec</li>
+</ul><p>To build Crosswalk with these codecs, a developer must run the build with the "must accept a EULA" switch turned on:</p>
+
+<pre><code>$ xwalk/gyp_xwalk -Dmediacodecs_EULA=1
+</code></pre>
+
+<p>Then build Crosswalk. The <em>ffmpegsumo.dll</em> or <em>libffmpegsumo.so</em> in the build output directory will contain the proprietary codecs.</p>
+
+<p>Refer to <a href="Build-Crosswalk">Crosswalk Build Instruction</a> for more details.</p>
+
+<p>Also please note you might need to take legal advice to determine and resolve potential licensing issues if you want to include these codecs in a build.</p>
+
+<h3>References<a class="anchor" id="References" href="#References"></a></h3>
+
+<p>For more details, please refer to <a href="http://www.chromium.org/audio-video">Chromium Audio/Video</a>.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-06 09:32:14</p>
+  <p>
+    <a id="delete-link" href="/wiki/Enable-MultiMedia-in-Crosswalk" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Enable-MultiMedia-in-Crosswalk">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

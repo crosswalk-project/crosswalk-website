@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'High-Level-Architecture';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>High Level Architecture</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>High Level Architecture</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/High-Level-Architecture"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/High-Level-Architecture"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h2>Architecture Diagram<a class="anchor" id="Architecture-Diagram" href="#Architecture-Diagram"></a></h2>
+
+<p>The below diagram shows the high-level architecture of Crosswalk and its developer offerings.</p>
+
+<p><img src="https://raw.github.com/crosswalk-project/crosswalk/master/wiki/images/architecture_crosswalk.png?login=darktears&amp;token=ee4699fc47b4a52a0e0de023ee830c59" alt="Diagram" /></p>
+
+<h2>Developer Offering<a class="anchor" id="Developer-Offering" href="#Developer-Offering"></a></h2>
+
+<p><strong>Application Runtime</strong> : Provides the runtime for executing a packaged or hosted Web Applications. These are traditional web applications combined with a manifest file which indicates that a web application can be installed on the end-user’s device. Some traditional web facing API will be disabled in this mode, just like with Chrome.</p>
+
+<h2>Building Blocks<a class="anchor" id="Building-Blocks" href="#Building-Blocks"></a></h2>
+
+<p><strong>Web API Extensions</strong> : All additional Web APIs that we're exposing to the user. They don't have a place in Chromium (non standard) and need to be separated from others. For example Tizen APIs will be outside Chromium and supported for compatibility reasons.</p>
+
+<p><strong>Chromium Content Module</strong> : This is the content module of Chromium which will be used as a basis for building our deployment models.</p>
+
+<p><strong>Chromium Browser Components</strong> : We expect to use some modules of Chromium in addition to the content module. While we do not want to embed the entire Chrome Browser we want to reuse the pieces that makes sense. For example when something is missing in Content but already implemented in the browser and not modularised we should modularised this piece to avoid code duplication.</p>
+
+<p><strong>Chromium App Components</strong> : This is the components useful for Crosswalk but not part of the Content Module, they sit in a separate directory in Chromium and are self contained features.</p>
+
+<p>For Chromium Browser Components and Chromium App Components, as today not all the features we need are self contained so we will need to contribute in Chromium upstream to make sure we help modularising what is needed.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/High-Level-Architecture" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/High-Level-Architecture">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
