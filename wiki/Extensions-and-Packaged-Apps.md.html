@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Extensions-and-Packaged-Apps';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Extensions and Packaged Apps</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Extensions and Packaged Apps</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Extensions-and-Packaged-Apps"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Extensions-and-Packaged-Apps"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <ul><li><p>Chromium Extensions are usually small programs written in JavaScript that can change the behavior of a website or the browser itself. Examples are ad blockers and a "new email indicator" on the browser toolbar that flashes when a new email arrives.</p></li>
+<li><p>Packaged Apps are programs written using web technologies, but they are as capable as a native app. A Packaged App might have access or not to the underlying operating system via special APIs, depending on the permissions requested on the manifest. Chromium is able to run Packaged Apps in the background or as standalone programs in a way that makes it hard for the end user to make a distinction between native apps and web apps.</p></li>
+<li><p>Chromium Extensions API are the APIs exposed to both Extensions and Packaged Apps. The APIs available for each category are different since Packaged Apps and Extensions aim for different goals, but some APIs might intersect. The APIs exposed to <a href="http://developer.chrome.com/extensions/api_index.html">Chromium Extensions</a> will allow the extension to customize the browser UI and websites while the APIs exposed to <a href="http://developer.chrome.com/apps/api_index.html">Packaged Apps</a> expose system functionality like filesystem and USB.</p></li>
+</ul><h2>Security aspects<a class="anchor" id="Security-aspects" href="#Security-aspects"></a></h2>
+
+<p>Chromium has a pretty robust <a href="http://www.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-185.pdf">security model</a> for Extensions with an extra layer of process isolation compared to Packaged Apps. It makes sense since Extensions will usually work on top of untrusted content: you probably want your ad block extension to block ads from every website you are accessing, which might include the undergrounds of the Internet.</p>
+
+<p>On both cases, it follows the pattern we have seen all around Chromium: least privilege. No platform access happens on the process running the App/Extension with some enforcement from the OS. Everything is delegated to a trusted process, known as the "browser" process, which is the same process that display the contents on  the screen.</p>
+
+<p>So when an app queries for the number of CPUs by invoking "chrome.experimental.systemInfo.cpu.get()", a message is sent to the trusted process that reads the contents of /proc/cpuinfo on Linux and sends back the reply. The "browser" process acts like a broker/gatekeeper and wont allow any API access other than what was agreed on the app manifest. Any attempt from the app of circumventing these policies, like trying to exploit  a bug on Blink/V8 and calling open(2) directly on /proc/cpuinfo will result in the termination of the process (on Linux at least).</p>
+
+<h2>Extensions API<a class="anchor" id="Extensions-API" href="#Extensions-API"></a></h2>
+
+<p>All the API exposed to the Packaged Apps and Extensions are implemented on the Chromium side, using Chromiums own bindings generators. The bindings are completely agnostic of Blink and V8. Implementing a <a href="http://www.chromium.org/developers/design-documents/extensions/proposed-changes/creating-new-apis">new API</a> is pretty straightforward and the majority of the code is generated, including the messages between the sandboxed process running the app and the trusted process accessing the platform. IDL is used as input for the generators.</p>
+
+<p>It is important to highlight that these bindings are not exactly "native" bindings like we have when implementing a new API on Blink. What I could conclude so far is there is a code shim in charge of registering the APIs and serializing data to the trusted process using JSON + JSON Schema for validation.</p>
+
+<p>For synchronous APIs, a JavaScript shim might be needed to emulate the synchronous behavior since synchronous calls are not supported.</p>
+
+<h2>webview tag<a class="anchor" id="webview-tag" href="#webview-tag"></a></h2>
+
+<p>Part of the Extensions API, the <a href="http://developer.chrome.com/apps/app_external.html">webview tag</a> behave likes an iframe, although unlike an iframe, its contents lives in a separated process. It could be used for implementing a browser, but it is currently very
+limited.</p>
+
+<h2>Extensions system and Crosswalk<a class="anchor" id="Extensions-system-and-Crosswalk" href="#Extensions-system-and-Crosswalk"></a></h2>
+
+<p>I see the Extensions system as the natural way of implementing the vast majority of our APIs, in special system APIs. The few that might require access to graphics context and realtime data, should be implemented directly on Blink.</p>
+
+<p>The fact that most of the work is done by generators that are proved to work, will leave us less room for mistakes and speed up the development process. Intel has contributed 2 APIs to Chromium upstream, which means we have in-house expertise already for the task.</p>
+
+<p>Unfortunately the extension system is bound to Chrome (the browser). There are <a href="http://www.chromium.org/developers/design-documents/making-chrome-independent-of-extensions">plans to make it modular</a> and we should help this plan to materialize. For Crosswalk, it would be good if the Extension system could be modular enough that the content_shell is able load a Packaged App by specifying its path. </p>
+
+<p>We also need self registering extensions: currently Chrome is aware of what extensions are implemented. New extensions can only be added in build time. In order to make it less intrusive to implement a new extension, the extensions should register themselves like plugins. </p>
+
+<p>Improving the webview tag can also be an area of interest for Crosswalk. A browser could be developed using Crosswalk and the browser itself would be a webapp.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Extensions-and-Packaged-Apps" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Extensions-and-Packaged-Apps">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

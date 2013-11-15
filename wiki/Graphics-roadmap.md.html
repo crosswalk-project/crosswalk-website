@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Graphics-roadmap';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Graphics roadmap</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Graphics roadmap</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Graphics-roadmap"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Graphics-roadmap"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <p>This document explains what's going on Chromium Graphics, and what are we doing and what's our goal.</p>
+
+<h1>Crosswalk roadmap<a class="anchor" id="Crosswalk-roadmap" href="#Crosswalk-roadmap"></a></h1>
+
+<h2>Main areas<a class="anchor" id="Main-areas" href="#Main-areas"></a></h2>
+
+<p>In collaboration with Web platform team and Visualization team</p>
+
+<h3>Impl-side painting<a class="anchor" id="Impl-side-painting" href="#Impl-side-painting"></a></h3>
+
+<ul><li><p>Dongseong and Mikhail have looked into impl-side painting.</p>
+
+<ul><li>We try to turn on it on Tizen, and check whether it has issues.</li>
+<li>Eager to contribute to Scrolling performance issue that is the biggest blocker of impl-side painting on linux aura. : crbug.com/231915</li>
+</ul></li>
+<li><p>Chromium will turn on Impl-side painting on CrOS in M32 (Nov 4th, 2013).</p>
+
+<ul><li>see <a href="crbug.com/178317">crbug.com/178317</a>, <a href="http://www.chromium.org/developers/calendar">http://www.chromium.org/developers/calendar</a></li>
+<li>Scrolling performance is the biggest blocker of it. I want to contribute on it. <a href="crbug.com/231915">crbug.com/231915</a></li>
+</ul></li>
+</ul><h3>Ubercompositor<a class="anchor" id="Ubercompositor" href="#Ubercompositor"></a></h3>
+
+<ul><li>Chromium will turn on Ubercompositor on Android in M33~34 (Dec 16th, 2013 ~ Feb 17th, 2014).
+
+<ul><li><a href="crbug.com/208551">crbug.com/208551</a></li>
+<li>Now we don't have any specific plan, but will try to turn on it on Linux aura and fix bugs.</li>
+</ul></li>
+<li>Samsung recently provided numbers on battery savings on using the Ubercompositor (one compositor for compositing UI components of the browser as well as browser content) and report around 10% savings.
+
+<ul><li><a href="https://groups.google.com/a/chromium.org/forum/#!topic/graphics-dev/uQRh5hvEOmo">reference</a></li>
+</ul></li>
+</ul><h3>Linux aura content_shell improvement<a class="anchor" id="Linux-aura-content_shell-improvement" href="#Linux-aura-content_shell-improvement"></a></h3>
+
+<ul><li>We have several issues related to linux aura on Tizen. 
+
+<ul><li>pinch zoom hang-up <a href="https://crosswalk-project.org/jira/browse/XWALK-111">XWALK-111</a>, BadDrawable bug <a href="https://crosswalk-project.org/jira/browse/XWALK-12">XWALK-12</a>.</li>
+</ul></li>
+<li>Upstream aura content_shell is not well maintained. aura content_shell is important to Crosswalk Tizen. We will improve it.</li>
+</ul><h3>Zero-copy texture<a class="anchor" id="Zero-copy-texture" href="#Zero-copy-texture"></a></h3>
+
+<ul><li>Chromium Android works in progress. See map-image switcher</li>
+<li><a href="https://groups.google.com/a/chromium.org/forum/?fromgroups#!topic/graphics-dev/LFqMLipr2ok">relevant discussion</a></li>
+</ul><h1>References<a class="anchor" id="References" href="#References"></a></h1>
+
+<h2>more roadmap in Intel<a class="anchor" id="more-roadmap-in-Intel" href="#more-roadmap-in-Intel"></a></h2>
+
+<ul><li><a href="https://docs.google.com/a/intel.com/document/d/1yVCLQO7CaH5qW14fjPADhwFUMONMw1Y3yPIN9h-Xb64/edit#heading=h.r7tvqxgsb10w">Chromium Graphics Infrastructure by Intel</a></li>
+<li><a href="https://opensource.intel.com/linux-wiki/chromium-graphics">Chromium Graphics Road Map by Visualization team</a></li>
+</ul><h2>more roadmap in Chromium<a class="anchor" id="more-roadmap-in-Chromium" href="#more-roadmap-in-Chromium"></a></h2>
+
+<ul><li><a href="http://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/gpu-architecture-roadmap">GPU architecture roadmap by Chromium-dev</a></li>
+</ul><h2>Work in progress<a class="anchor" id="Work-in-progress" href="#Work-in-progress"></a></h2>
+
+<ul><li><a href="https://docs.google.com/a/intel.com/document/d/16beTnE-ovImtDgNZElo7PR0VzNyz3zGuJFiGf1TMTiE/edit">The Future Design of Blink Compositing Updates</a></li>
+<li><a href="https://docs.google.com/a/intel.com/document/d/1ziMZtS5Hf8azogi2VjSE6XPaMwivZSyXAIIp0GgInNA/edit#">Ubercompositor</a></li>
+<li><a href="https://docs.google.com/a/intel.com/document/d/1YcEU09zkVvg86C05MbLjeKFLIG1p693Fl1gwol4wT5c/edit#">OutputSurface for ModeSwitching in CC</a></li>
+<li><a href="https://docs.google.com/a/intel.com/document/d/1RxbffpK_GxPtZscXgIEN0N9ZT7IC8BObnbx9ynw92qg/edit">Surfaces</a></li>
+<li><a href="https://docs.google.com/a/intel.com/document/d/1WqxdSB1jnwZZv8crH-TfNLEwl_yYHNI91B2fkBAXMgo/edit#heading=h.55grm19hlikl">Brainstorming Compositor CPU Cost Reduction</a></li>
+<li>Scheduler Overhaul
+
+<ul><li><a href="https://docs.google.com/a/intel.com/document/d/1LUFA8MDpJcDHE0_L2EHvrcwqOMJhzl5dqb0AlBSqHOY/edit#">Phase 1</a></li>
+<li><a href="https://docs.google.com/document/d/1VJf2busac85FRQYXhn8hdc-x4yp77JUroTrY-_sj5Ck/edit">Phase 2</a></li>
+</ul></li>
+<li><a href="https://docs.google.com/a/intel.com/document/d/1HmS0YQtWg2ToY67fE8A33PJUyPSwGUwUCLMk_zjK7ik/edit">ZilCh (Zero Input Latency Chrome)</a></li>
+<li><a href="https://docs.google.com/document/d/16822du6DLKDZ1vQVNWI3gDVYoSqCSezgEmWZ0arvkP8/edit?pli=1">Improved vsync scheduling for Chrome on Android</a></li>
+</ul><h2>Done<a class="anchor" id="Done" href="#Done"></a></h2>
+
+<ul><li><a href="http://dev.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome">GPU Accelerated Compositing in Chrome</a></li>
+<li><a href="http://dev.chromium.org/developers/design-documents/compositor-thread-architecture">Compositor Thread Architecture</a></li>
+<li><a href="http://www.chromium.org/developers/design-documents/impl-side-painting">Multithreaded Rasterization</a></li>
+<li><a href="http://www.chromium.org/developers/design-documents/chromium-graphics">Chromium Graphics</a></li>
+</ul><h1>People<a class="anchor" id="People" href="#People"></a></h1>
+
+<h2>PM<a class="anchor" id="PM" href="#PM"></a></h2>
+
+<h2>Developer<a class="anchor" id="Developer" href="#Developer"></a></h2>
+
+<h3>WRT team<a class="anchor" id="WRT-team" href="#WRT-team"></a></h3>
+
+<ul><li>Mikhail <a href="https://github.com/pozdnyakov">@pozdnyakov</a></li>
+<li>DS <a href="https://github.com/ds-hwang">@ds-hwang</a>
+
+<ul><li><a href="https://github.com/ds-hwang/wiki/wiki">DS's informal wiki about chromium graphics</a></li>
+</ul></li>
+</ul><h3>Visualization team<a class="anchor" id="Visualization-team" href="#Visualization-team"></a></h3>
+
+<ul><li>Kalyan <a href="https://github.com/kalyankondapally">@kalyankondapally</a></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Dongseong Hwang</b>, 2013-11-12 01:55:28</p>
+  <p>
+    <a id="delete-link" href="/wiki/Graphics-roadmap" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Graphics-roadmap">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
