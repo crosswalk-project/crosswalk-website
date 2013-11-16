@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Comparison-of-Sysapps-and-Chromium-Extension';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Comparison of Sysapps and Chromium Extension</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Comparison of Sysapps and Chromium Extension</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Comparison-of-Sysapps-and-Chromium-Extension"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Comparison-of-Sysapps-and-Chromium-Extension"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-org-content">
+    <div class="markdown-body">
+      <h1>Introduction<a class="anchor" id="Introduction" href="#Introduction"></a></h1>
+<p>System Applications specification is to define a runtime environment, security model, and associated APIs for building Web applications with comparable capabilities to native applications. The purpose of this document is to summarize the major differences between Chromium extension and Sysapps core specs, and give some ideas of how to implement Sysapps on Chromium.</p>
+<p>The Sysapps specs are all in draft status now, and need a long time discussion to complete, so this wiki will be continuous update.</p>
+<h1>Differences between Chromium Extension and Sysapps<a class="anchor" id="Differences-between-Chromium-Extension-and-Sysapps" href="#Differences-between-Chromium-Extension-and-Sysapps"></a></h1>
+<p>Below are the differences of manifest between Chromium Extension and Sysapps spec:</p>
+<table><tr><th>modules</th><th>item</th><th>Chromium</th><th>Sysapps</th></tr><tr><td>manifest file</td><td>manifest version</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>developer</td><td>N/A</td><td>Yes</td></tr><tr><td></td><td>appcache path</td><td>offline_enabled</td><td>Yes</td></tr><tr><td></td><td>locales</td><td>N/A</td><td>Yes</td></tr><tr><td></td><td>release notes</td><td>N/A</td><td>Yes</td></tr><tr><td></td><td>browser action</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>page action</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>theme</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>app</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>background</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>content scripts</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>CSP</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>file browser handlers</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>id</td><td>Key</td><td>N/A</td></tr><tr><td></td><td>update url</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>sandbox</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>incognito</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>minimum version</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>nacl modules</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>plugins</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>options page</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>omnibox</td><td>Yes</td><td>N/A</td></tr><tr><td>package structure</td><td>package format</td><td>zip (magic header)</td><td>zip</td></tr><tr><td></td><td>Magic Header</td><td>Yes</td><td>N/A</td></tr><tr><td></td><td>signed package</td><td>Yes</td><td>Yes, hosted app</td></tr><tr><td></td><td>signed manifest</td><td>N/A</td><td>Yes, packaged app</td></tr><tr><td></td><td>locales</td><td>Yes</td><td>N/A</td></tr><tr><td>security</td><td>privileged application</td><td>No</td><td>trusted origin</td></tr><tr><td></td><td>CSP</td><td>Yes</td><td>Fixed rule</td></tr><tr><td></td><td>sandbox</td><td>Yes</td><td>N/A</td></tr><tr><td>URI</td><td>URI</td><td>package id</td><td>instance id</td></tr><tr><td>System Messages</td><td>System Messages API</td><td>N/A</td><td>Yes</td>
+    <p>Generally, sysapps is much easier than the extension module in Chromium, so implement the parser of sysapps based on Chromium is possible.</p>
+  </tr></table><h1>Ideas for implementation of Sysapps<a class="anchor" id="Ideas-for-implementation-of-Sysapps" href="#Ideas-for-implementation-of-Sysapps"></a></h1>
+<p>Will list the sysapps required feature and some ideas.</p>
+<h2>Package and Manifest<a class="anchor" id="Package-and-Manifest" href="#Package-and-Manifest"></a></h2>
+<p>Which support unpacking and parsing the package file, storing/getting the application information. In this module, although the package and manifest are different between Chromium and Sysapps, but the implementation can also follow what Chromium does, and align with the spec with a little changes.</p>
+<ul><li>Application package file type support (zip), and also the signed package check.</li>
+  <li>Manifest file parsing</li>
+  <li>Offline appcache resource loading, it will try to download the appcache manifest and store the resource files are listed in it.</li>
+  <li>Application information saving and querying, suggest to use database instead of a preference file. In Chromium, all application information is saved in a preference file, which is JSON format, but I don’t think it’s enough for Crosswalk, because in run-time usage model, this file should be read when being written, and it might cause some mistake because of the wrong JSON format and incomplete information.</li>
+</ul><h2>Runtime model<a class="anchor" id="Runtime-model" href="#Runtime-model"></a></h2>
+<p>Which support managing the application’s life cycle, it contains a group of APIs, which can control the applications installed in the run-time, and also include the extenstion URI scheme.</p>
+<ul><li>The app:// URI supporting, in sysapps, the URI contains the id of application’s instance id, but in Chromium, it’s extension’s id, the sysapps’ URI support multi-instance for one application, but seems that Chromium doesn’t.</li>
+  <li>Localization mechanism of Sysapps, it very different from Chromium’s.</li>
+  <li>Application life-cycle is different, sysapps have running, paused and terminated status.</li>
+  <li>Support multi instance for one application model, in some case, like mobile usage model, multi instance for one application is needed, such as a text edit service need to provide different instance for each customers, otherwise, the edit content will not be restored when switching between those applications are editing. This feature are under discussion in the working group.
+    <ul><li>The ApplicationRegistry, Application and ApplicationManagement APIs, which are described in Sysapp spec.</li>
+    </ul></li>
+</ul><h2>Security<a class="anchor" id="Security" href="#Security"></a></h2>
+<p>Which contains CSP, resource loading, APIs access checking.</p>
+<ul><li>For API access permission control, need to figure out the APIs access required in manifest file, but in sysapps, for some special APIs (like  ApplicationManagemen), need an additional check, and it can only be accessed by special applications, such as install API, only specific application can use it. So it’s need some additional check to control such kinds of special APIs, maybe a special signature of application is needed.
+    <ul><li>Privileged applications supporting, an application is said to be a privileged application if the origin installing the application is trusted by the UA and the origin installing the application considers the application to be trustworthy.</li>
+      <li>Plugins are also needed to do permission check when access.</li>
+    </ul></li>
+</ul><h2>Plugins<a class="anchor" id="Plugins" href="#Plugins"></a></h2>
+<p>Which provide many APIs for applications that can be used in application context.</p>
+<ul><li>Plugin framework (based on Chromium/Blink or Extension APIs way are all okay), in which any one can easily add a new API. But a signification check is needed, and only the plugins which pass the validation can be loaded.</li>
+  <li>Loading on demand, which will save memory consumption in mobile usage model.</li>
+</ul><h2>System Messages<a class="anchor" id="System-Messages" href="#System-Messages"></a></h2>
+<p>System Messages are events sent by the system to an application which has registered for it before. Those events are different from DOM events in the sense that they are always originated by the system and that if the targeted application is not currently running, it will be started. In addition, unhandled messages will stay in a queue. Chromium doesn’t have this mechanism.</p>
+<h1>Sysapps core specifications<a class="anchor" id="Sysapps-core-specifications" href="#Sysapps-core-specifications"></a></h1>
+<p>The sysapps WG contains these specifications:</p>
+<ul><li><a href="http://www.w3.org/2012/sysapps/runtime/">Runtime &amp; Security Model</a>
+    <p>This document specifies two classes of Web application: hosted Web applications and packaged applications, and also define application package format, core APIs and security model.</p>
+  </li>
+  <li><a href="http://www.w3.org/2012/sysapps/manifest/">App Manifest</a>
+    <p>An application manifest is a JSON document that describes various aspects of web application. Some of these aspects are presentational, while others aspects have security implications.</p>
+  </li>
+  <li><a href="http://www.w3.org/2012/sysapps/app-uri/">App URI</a>
+    <p>This specification defines the app: URI scheme and rules for dereferencing an app: URI, which can be used to address resources inside a package (e.g., a packaged application).</p>
+  </li>
+  <li><a href="http://www.w3.org/2012/sysapps/">System Applications Working Group</a>
+    <p>The mission of the System Applications Working Group is to define a runtime environment, security model, and associated APIs for building Web applications with comparable capabilities to native applications. You can find more Sysapps specifications in this group.</p>
+  </li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Comparison-of-Sysapps-and-Chromium-Extension" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Comparison-of-Sysapps-and-Chromium-Extension">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

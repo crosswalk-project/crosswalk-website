@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Web-API-Extension-Comparison';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Web API Extension Comparison</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Web API Extension Comparison</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Web-API-Extension-Comparison"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Web-API-Extension-Comparison"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h3>WebKitGtk<a class="anchor" id="WebKitGtk" href="#WebKitGtk"></a></h3>
+
+<p>WebAPI extension in WebKitGtk is straightforward: Create a JavaScript object by using JavaScriptCore API and bind it to a frame's JavaScript context.</p>
+
+<p><strong>Reference:</strong></p>
+
+<ul><li><a href="http://webkitgtk.org/reference/webkitgtk/stable/WebKitWebFrame.html#webkit-web-frame-get-global-context">http://webkitgtk.org/reference/webkitgtk/stable/WebKitWebFrame.html#webkit-web-frame-get-global-context</a></li>
+<li><a href="http://webkitgtk.org/reference/webkitgtk/stable/webkitgtk-webkitwebview.html#WebKitWebView-window-object-cleared">http://webkitgtk.org/reference/webkitgtk/stable/webkitgtk-webkitwebview.html#WebKitWebView-window-object-cleared</a></li>
+</ul><p><strong>Example:</strong></p>
+
+<ul><li><a href="http://rvr.typepad.com/wind/2011/10/webkit-extending-javascript-1.html">http://rvr.typepad.com/wind/2011/10/webkit-extending-javascript-1.html</a></li>
+</ul><h3>QtWebkit<a class="anchor" id="QtWebkit" href="#QtWebkit"></a></h3>
+
+<p>QtWebKit bridge is a mechanism that extends WebKit's JavaScript environment to access native objects that are represented as QObjects. It takes advantage of the QObject introspection, a part of the Object Model, which makes it easy to integrate with the dynamic JavaScript environment, for example QObject properties map directly to JavaScript properties.</p>
+
+<p><strong>Reference:</strong></p>
+
+<ul><li><a href="http://qt-project.org/doc/qt-4.8/qtwebkit-bridge.html">http://qt-project.org/doc/qt-4.8/qtwebkit-bridge.html</a></li>
+</ul><h3>Android Webview<a class="anchor" id="Android-Webview" href="#Android-Webview"></a></h3>
+
+<p>Android Webview has a method called "addJavaScriptInterface" to inject an object into JavaScript context of main frame. Actually, Android Webview is just a Java wrapper of WebCore.  It has the same mechanism with QtWebKit except in Java language through JNI. </p>
+
+<p>See <a href="Android-WebView">here</a> for more details.</p>
+
+<p><strong>Reference:</strong></p>
+
+<ul><li><a href="http://developer.android.com/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object">http://developer.android.com/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object</a>, java.lang.String)</li>
+</ul><p><strong>Example:</strong></p>
+
+<ul><li><a href="http://developer.android.com/guide/webapps/webview.html#BindingJavaScript">http://developer.android.com/guide/webapps/webview.html#BindingJavaScript</a></li>
+</ul><h3>CEF3<a class="anchor" id="CEF3" href="#CEF3"></a></h3>
+
+<p>CEF3 provides comprehensive and convenient APIs to interactive with JavaScript engine. Because CEF3 is based on chromium, it uses Google V8 JavaScript engine instead of JavaScriptCore. CEF3 has wrapper classes for V8 C++ APIs to help to manipulate JavaScript object in C++. But CEF3 has no introspection mechanism like QtWebKit.</p>
+
+<p><strong>Reference:</strong></p>
+
+<ul><li><a href="https://code.google.com/p/chromiumembedded/wiki/JavaScriptIntegration">https://code.google.com/p/chromiumembedded/wiki/JavaScriptIntegration</a></li>
+</ul><h3>Chromium Extension API<a class="anchor" id="Chromium-Extension-API" href="#Chromium-Extension-API"></a></h3>
+
+<p>Chrome Extension API is the only one support multi-process architecture. It allow renderer process to run inside chromium sandbox. Operations which need privilege can be delegated by browser process. This procedure is transparent to developers. But Chrome Extension API in higher layer than content API and very complex.</p>
+
+<p>See <a href="Overview-of-Chrome-Extension-API-Infrastructure">here</a> for more technical details.</p>
+
+<h3>Thoughts about Crosswalk<a class="anchor" id="Thoughts-about-Crosswalk" href="#Thoughts-about-Crosswalk"></a></h3>
+
+<p><a href="Deployment-Models#webview-embedded">Crosswalk WebView model</a> needs support a mechanism for 3rd-party developers to extend WebAPI.</p>
+
+<p><strong>Renderer has full privilege.</strong></p>
+
+<p>This scenario is similar as CEF3, WebAPI extension can be implemented directly in renderer process. Crosswalk should provide WebIDL compiler which can generate V8 binding stubs from IDL files. </p>
+
+<p><strong>Renderer runs in chromium sandbox.</strong></p>
+
+<p>In this scenario, WebIDL compiler has to generate 2 sets of stub files. One for renderer side, to collect parameters and call browser side through RPC. Another part do real works in browser side, response the RPC invocations and send back result. This mechanism is somewhat like Chrome Extension API.</p>
+
+<hr /><h2>Pluggable extension mechanism<a class="anchor" id="Pluggable-extension-mechanism" href="#Pluggable-extension-mechanism"></a></h2>
+
+<p>Support pluggable WebAPI extension is not a goal for Crosswalk currently. Just list here FYI.</p>
+
+<h3>NPAPI<a class="anchor" id="NPAPI" href="#NPAPI"></a></h3>
+
+<p>NPAPI supports npruntime interface to extend WebAPI. NPAPI plugin runs in dedicated, full privilege process,  renderer can run inside chromium sandbox. To write WebAPI based on raw NPAPI/npruntime interface is complicated. But fortunately, we had written a framework called <a href="https://github.com/crosswalk-project/WebAPIManager">WebAPIManager</a> to simplify the procedure. Currently support both Linux and Windows platform.</p>
+
+<p>The biggest concern about this approach is that Google think NPAPI is obsolete, and disable NPAPI support in content API layer.</p>
+
+<h3>PPAPI<a class="anchor" id="PPAPI" href="#PPAPI"></a></h3>
+
+<p>Limitations:</p>
+
+<ul><li>PPAPI is mostly used to serve for NaCl, not JavaScript. A PPAPI plugin can only communicated with JavaScript code through the PostMessage interface. This is awkward for Web developers and lacks synchronize support.</li>
+<li>PPAPI is running inside sandbox. Privileged operations have to be delegated by UI process. Currently there is no plugin framework for the delegates.</li>
+<li>PPAPI interface is not stable, Google may change it in the future since it is the only user currently.</li>
+</ul><h3>NaCl<a class="anchor" id="NaCl" href="#NaCl"></a></h3>
+
+<p>This approach has all limitations of PPAPI plugin based, and plus extreme complexity.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Web-API-Extension-Comparison" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Web-API-Extension-Comparison">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Presentation-api-manual';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Presentation api manual</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Presentation api manual</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Presentation-api-manual"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Presentation-api-manual"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <p>Presentation API allows web app to stream web contents (aka. presentation) to the secondary display
+connected to system via Miracast wireless display, HDMI port or Airplay. See
+W3C spec draft at <a href="http://webscreens.github.io/presentation-api/">http://webscreens.github.io/presentation-api/</a>.</p>
+
+<p>Currently, Presentation API on Crosswalk is only for Android 4.2+ with Miracast
+compatible wireless display.</p>
+
+<ul><li><a href="Presentation-api-manual#navigatorpresentationrequestshow-method">navigator.presentation.requestShow Method</a></li>
+<li><a href="Presentation-api-manual#navigatorpresentationdisplayavailable-property">navigator.presentation.displayAvailable Property</a></li>
+<li><a href="Presentation-api-manual#navigatorpresentationdisplayavailablechange-event">navigator.presentation.displayavailablechange Event</a></li>
+</ul><h3>Sample Code<a class="anchor" id="Sample-Code" href="#Sample-Code"></a></h3>
+
+<p>The controller page is used to open another page on the secondary page:
+</p><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+
+var presentationWindow = null;
+
+function onsuccess(w) {
+  presentationWindow = w;
+  w.postMessage("hello", "*");
+}
+
+function onerror(error) {
+  console.log("failed to request show: " + error.name);
+}
+
+function showPresentation() {
+  if (!navigator.presentation.displayAvailable) {
+    alert("No available display is found.");
+    return;
+  }
+
+  navigator.presentation.addEventListener("displayavailablechange", function() {
+    if (!navigator.presentation.displayAvailable)
+      presentationWindow = null;
+  });
+  navigator.presentation.requestShow("content.html", onsuccess, onerror);
+}
+
+window.addEventListener("message", function(event) {
+  var msg = event.data;
+  if (msg == "close me" <span class="err">&amp;&amp;</span> presentationWindow !== null) {
+    presentationWindow.close();
+    presentationWindow = null;
+  }
+}, false);
+
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">onclick=</span><span class="s">"showPresentation();"</span><span class="nt">&gt;&lt;/input&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+<p>The content page will be showed on the secondary display:
+</p><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+window.addEventListener("message", function(event) {
+  var msg = event.data;
+  console.log("Receive message for its opener: " + msg);
+  event.source.postMessage("close me", "*");
+}, false);
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+<h3>JavaScript API Manual<a class="anchor" id="JavaScript-API-Manual" href="#JavaScript-API-Manual"></a></h3>
+
+<ul><li><h5>navigator.presentation.requestShow Method<a class="anchor" id="navigator.presentation.requestShow-Method" href="#navigator.presentation.requestShow-Method"></a></h5>
+
+<p><code>requestShow</code> is intended to request show a HTML page specified by <code>url</code> on the secondary display from the current browsing context. When the page is loaded successfully, the successCallback will be invoked with the 'window' object of the HTML page opened. The page navigation follows the legacy behavior of <code>window.open()</code> and thus allows navigating to URLs that are not at the same origin as the browsing
+context of the incumbent script.</p>
+
+<p>The communication between the opener window and presentation window follows <a href="http://www.w3.org/TR/webmessaging/">HTML5 web messaging</a>. You can call <code>postMessage</code> to post a message and listen <code>onmessage</code> to handle the message from other side. </p>
+
+<p>If one of the following conditions is satisfied, <code>requestShow</code> will fail and the
+<code>errorCallback</code> gets called with an <code>DOMError</code>:</p>
+
+<ul><li>No available secondary display found (**NotFoundError**)</li>
+<li>A presentation is already showed on secondary display (**InvalidAccessError**)</li>
+<li>The platform doesn't support Miracast protocol (**NotSupportedError**)</li>
+</ul></li>
+</ul><blockquote>
+<p><strong>Note</strong>: Since there is no straightforward interaction on the secondary display. When designing the contents showed on the secondary display, the following things should be taken into considerations:</p>
+
+<ul><li>UI layout for big screen.</li>
+<li>Avoid popup JavaScript dialog, e.g. alert and confirm dialog.</li>
+</ul></blockquote>
+
+<ul><li><h5>navigator.presentation.displayAvailable Property<a class="anchor" id="navigator.presentation.displayAvailable-Property" href="#navigator.presentation.displayAvailable-Property"></a></h5>
+
+<p>Indicates if there is at least an available secondary display for presentation show. When the display used for showing presentation is disappeared, </p>
+
+<ul><li>If there is still another secondary display, the content will be switched to it automatically.</li>
+<li>If there is no secondary display, the content will be disposed.</li>
+</ul></li>
+<li><h5>navigator.presentation.displayavailablechange Event<a class="anchor" id="navigator.presentation.displayavailablechange-Event" href="#navigator.presentation.displayavailablechange-Event"></a></h5>
+
+<p>When the first secondary display is arrived and last secondary display is removed, <code>displayavailablechange</code> event will be triggered, and the property of 'navigator.presentation.displayAvailable' is set to true/false.</p>
+
+<p>The presentation browsing context is closed if the secondary display becomes unavailable, so
+that the app has no need to close it by 'window.close'.</p></li>
+</ul><h3>Demos<a class="anchor" id="Demos" href="#Demos"></a></h3>
+
+<ul><li>Image Gallery</li>
+<li>HexGL</li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Hongbo Min</b>, 2013-11-13 21:20:29</p>
+  <p>
+    <a id="delete-link" href="/wiki/Presentation-api-manual" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Presentation-api-manual">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

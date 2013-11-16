@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'editing-the-wiki';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>editing the wiki</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>editing the wiki</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/editing-the-wiki"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/editing-the-wiki"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h2>Logistics<a class="anchor" id="Logistics" href="#Logistics"></a></h2>
+
+<p>The <a href="http://crosswalk-project.org/#wiki">Crosswalk wiki</a> is 
+attached to the 
+<a href="http://github.com/crosswalk-project/crosswalk-website">crosswalk-website</a> 
+project and accessible via the 
+<a href="http://github.com/crosswalk-project/crosswalk-website.wiki.git">crosswalk-website.wiki.git</a> 
+repository.</p>
+
+<p>To edit content you need to have commit access to the crosswalk-website project.</p>
+
+<p>The Crossalk Wiki is inteneded to be viewed through the 
+<a href="http://crosswalk-project.org/#wiki">http://crosswalk-project.org/#wiki</a> site, and not through the GitHub Wiki 
+viewer. As such, some links may not work when viewing the wiki via 
+GitHub.</p>
+
+<p>The wiki content hosted under the <strong>contribute/</strong> directory populates the <a href="#contribute">Contribute</a> portion of the 
+Crosswalk website. Similarly, the <strong>documentation/</strong> directory populates <a href="#documentation">Documentation</a>.</p>
+
+<h3>Wiki and Website references in content<a class="anchor" id="Wiki-and-Website-references-in-content" href="#Wiki-and-Website-references-in-content"></a></h3>
+
+<p>Direct links to the Crosswalk website pages should be entered as follows: #SECTION/PAGE/ANCHOR</p>
+
+<h4>SECTION<a class="anchor" id="SECTION" href="#SECTION"></a></h4>
+
+<p>The section is either <a href="#wiki">#wiki</a>, <a href="#documentation">#documentation</a>, or <a href="#contribute">#contribute</a>.</p>
+
+<h4>PAGE<a class="anchor" id="PAGE" href="#PAGE"></a></h4>
+
+<p>The page is the wiki page itself, for example "editing-the-wiki" (for this page). The syntax to reference this page, 
+since it is presented in the wiki portion of the website, is: <a href="#wiki/editing-the-wiki">#wiki/editing-the-wiki</a>.</p>
+
+<h4>ANCHOR<a class="anchor" id="ANCHOR" href="#ANCHOR"></a></h4>
+
+<p>If you want to link to a particular section of a page, you can provide one final path element--the anchor name. To 
+link straight to this section the syntax is: <a href="#wiki/editing-the-wiki/ANCHOR">#wiki/editing-the-wiki/ANCHOR</a>.</p>
+
+<p>NOTE: The ANCHOR syntax is not recognized by Gollum or the GitHub wiki system itself--it is coded into the 
+<a href="http://crosswalk-project.org">http://crosswalk-project.org</a> website itself.</p>
+
+<h2>Workflow<a class="anchor" id="Workflow" href="#Workflow"></a></h2>
+
+<p>The most efficient workflow for editing content is to do so with a local install of Gollum running in a local instance of the website.</p>
+
+<ol><li>Edit the content locally using the live preview editor provided by Gollum's web interface.</li>
+<li>Saving changes locally via Gollum. </li>
+<li>Verify your content looks correct when rendered in the local instance of the website. </li>
+<li>Push your changes to crosswalk-website.wiki.git</li>
+<li>The next content update cycle on the Crosswalk website will automatically pull in your content. </li>
+</ol><h2>Editing on GitHub<a class="anchor" id="Editing-on-GitHub" href="#Editing-on-GitHub"></a></h2>
+
+<p>If you just need to get in and make a quick edit, feel free to do so using the <a href="http://github.com/crosswalk-project/crosswalk-website/wiki">GitHub Crosswalk wiki 
+interface</a>. Be warned that GitHub flattens the directory 
+structure, so editing of sub-pages (documentation and contribute sections) can be tricky and isn't recommended. Pages 
+in the root structure of the site (wiki/*) are fine to edit.</p>
+
+<p>Your content won't show up on the live website until the next content update is pulled to the live pages. The 
+publishing schedule for this is still TBD based on the frequency of content updates and quality of those edits.</p>
+
+<h2>Local Wiki in your own editor<a class="anchor" id="Local-Wiki-in-your-own-editor" href="#Local-Wiki-in-your-own-editor"></a></h2>
+
+<p>If you want to edit the Wiki content locally using your own editor, the steps are pretty quick:
+</p><div class="highlight"><pre>git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git
+<span class="nb">cd </span>crosswalk-website.wiki
+<span class="c"># Edit your content</span>
+git commit -s -a
+git push
+</pre></div>
+You can then go to <a href="http://github.com/crosswalk-project/crosswalk-website/wiki">http://github.com/crosswalk-project/crosswalk-website/wiki</a> to see your changes.
+
+<h2>Local Wiki in a Local Website<a class="anchor" id="Local-Wiki-in-a-Local-Website" href="#Local-Wiki-in-a-Local-Website"></a></h2>
+
+<p>The detailed steps for installing the Crosswalk website and Gollum are documented in the <a href="https://github.com/crosswalk-project/crosswalk-website/blob/master/README.md">Crosswalk website README.md</a>. </p>
+
+<p>For those that just want to copy commands to their console, the quick steps on an Ubuntu system are as follows:
+</p><div class="highlight"><pre><span class="c"># Install Ruby &gt;=1.9.1</span>
+sudo apt-get install ruby1.9.3 rubygems1.9
+
+<span class="c"># Select gem1.9.1</span>
+sudo update-alternatives --config gem
+
+<span class="c"># Select ruby1.9.1</span>
+sudo update-alternatives --config ruby
+
+<span class="c"># Install Gollum and the various markup parsers</span>
+sudo gem install gollum redcarpet org-ruby wikicloth
+
+<span class="c"># Install the SASS compiler (with source map support)</span>
+sudo gem install sass -v <span class="s2">"&gt;=3.3.0alpha"</span> --pre
+
+<span class="c"># Change to the root path of your web server installation path</span>
+<span class="nb">cd</span> /var/www
+
+<span class="c"># Clone the Crosswalk site</span>
+git clone git@github.com:crosswalk-project/crosswalk-website
+
+<span class="c"># Clone the Crosswalk website wiki</span>
+<span class="nb">cd </span>crosswalk-website/wiki
+git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git --bare .git
+sed -i -e <span class="s1">'s/bare = true/bare = false/'</span> .git/config
+git checkout
+<span class="nb">cd</span> ..
+
+<span class="c"># Change the permissions of all the files checked out so the web-server software can edit it</span>
+sudo chown :www-data /var/www/crosswalk-website -R
+sudo chmod g+rwX /var/www/crosswalk-website -R
+
+<span class="c"># Launch Gollum pointing to where you just cloned the wiki</span>
+gollum --base-path wiki --live-preview /var/www/crosswalk-website/wiki &amp;
+
+<span class="c"># Launch a browser pointing to the website</span>
+xdg-open http://localhost/crosswalk-website/#wiki
+
+<span class="c"># Launch a browser pointing to the Wiki content</span>
+xdg-open http://localhost:4567
+</pre></div>
+And you're good to go. You can edit your content in the tab pointing to the Gollum server (port 4567) and after you click the Save icon for any content, you can change over to your localhost/crosswalk-website tab and hit refresh to see the new content.
+
+<p>For the above to all work, you also need to have Apache2 installed, with PHP enabled. In your Apache2 installation you 
+must disable MultiViews and enable FollowSymLinks in your site configuration (typically /etc/apache2/sites-enabled/000-default).</p>
+
+<p>Once you're done editing content, you can push your Wiki changes back to GitHub:</p>
+
+<div class="highlight"><pre><span class="nb">cd</span> /var/www/crosswalk-website/wiki
+git push origin master
+</pre></div>
+You can verify your content is correct by viewing the pages at <a href="http://github.com/crosswalk-project/crosswalk-website/wiki">http://github.com/crosswalk-project/crosswalk-website/wiki</a>.
+
+<p>Content will be merged to the live website during the next release/update cycle of Crosswalk. If you have ssh access to push changes 
+to the staging servers, you can use the update-wiki.sh script:
+</p><div class="highlight"><pre>./update-wiki.sh
+</pre></div>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-10-15 10:39:21</p>
+  <p>
+    <a id="delete-link" href="/wiki/editing-the-wiki" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/editing-the-wiki">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
