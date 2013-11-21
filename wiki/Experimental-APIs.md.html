@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Experimental-APIs';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Experimental APIs</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Experimental APIs</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Experimental-APIs"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Experimental-APIs"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <p>This page describes the current JS Experimental APIs. These APIs are accessible through <code>xwalk.experimental</code>.</p>
+
+<p><strong>IMPORTANT:</strong> We hold no compromise with the experimental APIs. They can be modified/updated/removed at any time. They can also be promoted to the stable API set when ready (becoming accessible through <code>xwalk</code> directly).</p>
+
+<h3>xwalk.experimental.dialog<a class="anchor" id="xwalk.experimental.dialog" href="#xwalk.experimental.dialog"></a></h3>
+
+<h4>showOpenDialog<a class="anchor" id="showOpenDialog" href="#showOpenDialog"></a></h4>
+
+<p>Displays a native Open File or Open Directory dialog. Its prototype is <code>showOpenDialog = function (allowMultipleSelection, chooseDirectory, title, initialPath, fileTypes, callback)</code>, where:</p>
+
+<ul><li>allowMultipleSelection - If true then multiple files/directories can be selected.</li>
+<li>chooseDirectory - If true then only directories can be selected.</li>
+<li>title - Title of the open dialog.</li>
+<li>initialPath - Initial path to display in the dialog. NULL or "" for current path.</li>
+<li>fileTypes - Array of strings specifying the selectable file extensions.</li>
+<li>callback = function(error, selection) - Async callback. Selection is an array of the names of the selected files.</li>
+</ul><h4>showSaveDialog<a class="anchor" id="showSaveDialog" href="#showSaveDialog"></a></h4>
+
+<p>Displays a native Open File or Open Directory dialog. Its prototype is <code>showSaveDialog = function (title, initialPath, proposedNewFilename, callback)</code>, where:</p>
+
+<ul><li>title - Title of the Save As dialog.</li>
+<li>initialPath - Initial path to display in the dialog. NULL or "" for current path.</li>
+<li>proposedNewFilename - Filename proposal to be used for saving the file.</li>
+<li>callback = function(error, absoluteFilePath) - Async callback. Absolutefilepath is the absolute path to the saved file.</li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Experimental-APIs" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Experimental-APIs">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
