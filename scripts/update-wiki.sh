@@ -1,5 +1,5 @@
-#!/bin/bash
-. scripts/common.inc
+desc="Pull latest wiki, apply to latest live-* branch"
+function run () {
 
 # The update-wiki scripts performs the following tasks:
 #
@@ -145,3 +145,4 @@ cd ..
 EOF
 
 cd ${dir}
+}

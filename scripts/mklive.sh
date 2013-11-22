@@ -1,6 +1,5 @@
-#!/bin/bash
-. ${PWD}/scripts/common.inc
-
+desc="Generate live version of website"
+function run () {
 debug=${debug:=0}
 
 check_perms
@@ -135,3 +134,4 @@ git push --tags origin master
 cd ..
 
 EOF
+}

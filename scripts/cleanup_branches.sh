@@ -1,6 +1,5 @@
-#!/bin/bash
-. common.inc
-
+desc="Remove all live-* branches older than one week (local and on GitHub)"
+function run () {
 today=$(date +%Y%m%d)
 last_week=$((today - 7))
 work_done=0
@@ -20,4 +19,5 @@ Branches have been purged. Commands to run:
 git gc
 git push --all
 EOF
+}
 }
