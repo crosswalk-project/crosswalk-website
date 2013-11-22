@@ -87,7 +87,7 @@ function check_perms () {
         echo ''
         echo 'Please correct and try again.'
         echo 'Correct via:'
-        echo 'chown :www-data . -R ; chmod g+rwX . -R'
+        echo '  site.sh perms'
         echo ''
         exit 1
     }
