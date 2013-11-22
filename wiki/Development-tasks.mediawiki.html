@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Development-tasks';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Development tasks</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Development tasks</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Development-tasks"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Development-tasks"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-mediawiki-content">
+    <div class="markdown-body">
+      
+<p>Aligned with the <a class="internal absent" href="/wiki/High-level-roadmap">roadmap</a>, we have identified a list of considerations and development tasks that we need to get started with. We hope to get to a point where we have clear visibility and accountability for contributions from each team/site, assuming responsibility for sub-tasks of Crosswalk.
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div>Table of Contents</div><ul><ul><li><a href="#Framework_for_embedding_Chromium__CEF_Replacement">Framework for embedding Chromium / CEF Replacement</a><ul><li><a href="#Tasks">Tasks</a></li></ul></li><li><a href="#Launcher__StubRunner">Launcher / Stub-Runner</a><ul><li><a href="#Tasks-2">Tasks</a></li></ul></li><li><a href="#Continuous_Integration__Testing">Continuous Integration &amp; Testing</a><ul><li><a href="#Tasks-3">Tasks</a></li></ul></li><li><a href="#Enable_FileSystem_sufficient_for_Adobe_Brackets">Enable FileSystem sufficient for Adobe Brackets</a><ul><li><a href="#Tasks-4">Tasks</a></li></ul></li><li><a href="#Wayland_platform_on_Chromium">Wayland platform on Chromium</a></li><li><a href="#Demonstrate_Intels_interest_in_Contributing_to_ChromiumBlink">Demonstrate Intel's interest in Contributing to Chromium/Blink</a><ul><li><a href="#Tasks-5">Tasks</a></li></ul></li></ul></ul></td></tr></table><h2><span class="mw-headline" id="Framework_for_embedding_Chromium__CEF_Replacement"><a name="Framework_for_embedding_Chromium__CEF_Replacement" id="Framework_for_embedding_Chromium__CEF_Replacement">Framework for embedding Chromium / CEF Replacement</a></span><a class="anchor" id="Framework-for-embedding-Chromium-/-CEF-Replacement" href="#Framework-for-embedding-Chromium-/-CEF-Replacement"></a></h2>
+
+
+
+
+
+
+
+
+<ul><li>Needs to be better than CEF, see <a class="internal absent" href="/wiki/Issues-with-CEF3">Issues with CEF3</a></li><li>With Multiplatform in mind, see <a class="internal absent" href="/wiki/Platform-Support">Platform Support</a></li><li>Based on Chromium's Content API</li><li>Keep Chromium's multiprocess and sandboxing architecture intact</li></ul><h3><span class="mw-headline" id="Tasks"><a name="Tasks" id="Tasks">Tasks</a></span><a class="anchor" id="Tasks" href="#Tasks"></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+<ul><li>Learn about Content API (Mikhail, Alexander Sh., Thiago, Dominik, Sudarsana, Caio, Leandro), see <a class="internal absent" href="/wiki/Issues-with-Content-API">Issues with Content API</a></li><li>Investigate ways to do API extensions (Thiago, Hongbo, Halton), see <a class="internal present" href="/wiki/Web-API-Extension-Comparison">Web API extension investigation</a></li><li>Investigate <a href="http://www.chromium.org/developers/design-documents/browser-components" target="_blank">Chromium Browser Components</a> (Thiago, Dominik)</li><li>Identify what's wrong with CEF, refine <a class="internal absent" href="/wiki/Issues-with-CEF3">Issues with CEF</a> (Hongbo, Caio, Leandro)</li><li>Investigate how <a class="internal present" href="/wiki/Android-WebView">Android WebView</a> builds on top of Content API(Yongsheng)</li><li>Collect ideas &amp; design an initial API for an embedded Chromium based on Chromium's Content API</li><li>Investigate building Chromium as a library, or in general build an external project against Chromium in a hassle-free way (Raphael?)</li></ul><h2><span class="mw-headline" id="Launcher__StubRunner"><a name="Launcher__StubRunner" id="Launcher__StubRunner">Launcher / Stub-Runner</a></span><a class="anchor" id="Launcher-/-Stub-Runner" href="#Launcher-/-Stub-Runner"></a></h2>
+
+
+
+
+
+
+
+
+
+<ul><li>Depends on Chromium Embedder</li><li>Runs a WebApp based on the above embedding framework</li><li>Should eventually comply with SysApps WG WebApps specification</li><li>Multiplatform in mind, first: Linux &amp; Win (later involve Adobe for Mac)</li><li>Uses suitable OS-specific installation approaches (Correct packaging and dependency modeling for Linux, Windows-Installer/MSI like behavior for Windows)</li></ul><h3><span class="mw-headline" id="Tasks-2"><a name="Tasks-2" id="Tasks-2">Tasks</a></span><a class="anchor" id="Tasks" href="#Tasks"></a></h3>
+
+
+
+
+
+
+
+
+<ul><li>Prototype simple launcher (not exposing any APIs, bringing up webview with no UI-decorations based on<ol><li>Chromium's raw Content API and/or: <a class="internal absent" href="/wiki/Crosswalk-Prototype-Based-on-Content-API">The prototype</a></li><li>CEF3 <a class="internal absent" href="/wiki/Crosswalk-Prototype-Based-on-CEF3">CEF3 prototype</a></li></ol></li><li>Run a simple test page in it, not depending on any APIs, e.g. something from <a href="https://01.org/html5webapps/.">https://01.org/html5webapps/.</a></li></ul><h2><span class="mw-headline" id="Continuous_Integration__Testing"><a name="Continuous_Integration__Testing" id="Continuous_Integration__Testing">Continuous Integration &amp; Testing</a></span><a class="anchor" id="Continuous-Integration-&amp;-Testing" href="#Continuous-Integration-&amp;-Testing"></a></h2>
+
+
+<p>Using the prototype launcher as a starting point, set up buildbot &amp; testing infrastructure that builds and runs unit tests on the stub launcher.
+</p>
+
+<h3><span class="mw-headline" id="Tasks-3"><a name="Tasks-3" id="Tasks-3">Tasks</a></span><a class="anchor" id="Tasks" href="#Tasks"></a></h3>
+
+
+
+
+
+
+
+<ul><li>Setup Crosswalk testing framework, like browser_tests and unit_tests in chrome (Hongbo), see <a class="internal present" href="/wiki/Crosswalk-testing-framework">Crosswalk Testing Framework</a></li><li>Take build recipes (gyp, makefiles, whatever) from prototype launcher and feed them to a buildbot-like continuous integration tool</li><li>Display a dashboard with information on testing status</li></ul><h2><span class="mw-headline" id="Enable_FileSystem_sufficient_for_Adobe_Brackets"><a name="Enable_FileSystem_sufficient_for_Adobe_Brackets" id="Enable_FileSystem_sufficient_for_Adobe_Brackets">Enable FileSystem sufficient for Adobe Brackets</a></span><a class="anchor" id="Enable-FileSystem-sufficient-for-Adobe-Brackets" href="#Enable-FileSystem-sufficient-for-Adobe-Brackets"></a></h2>
+
+
+<p>An initial user story for Crosswalk would be to run Adobe Brackets. (Caio) <a class="internal present" href="/wiki/Brackets">Brackets</a>
+</p>
+
+<h3><span class="mw-headline" id="Tasks-4"><a name="Tasks-4" id="Tasks-4">Tasks</a></span><a class="anchor" id="Tasks" href="#Tasks"></a></h3>
+
+
+
+
+
+
+
+<ul><li>Find out what kind of FS access Brackets needs</li><li>Find out other requirements for Brackets and how to realize them with our embedding framework</li><li>Implement modifications to our Embedder/Chromium to enable such access</li></ul><h2><span class="mw-headline" id="Wayland_platform_on_Chromium"><a name="Wayland_platform_on_Chromium" id="Wayland_platform_on_Chromium">Wayland platform on Chromium</a></span><a class="anchor" id="Wayland-platform-on-Chromium" href="#Wayland-platform-on-Chromium"></a></h2>
+
+
+
+
+
+
+
+<ul><li>Please refer to <a class="internal present" href="/wiki/Wayland-Port">Wayland Port</a></li><li><a class="internal present" href="/wiki/Wayland-Port#tasks">Tasks</a> should be coordinated with Tiago Vignatti.</li></ul><h2><span class="mw-headline" id="Demonstrate_Intels_interest_in_Contributing_to_ChromiumBlink"><a name="Demonstrate_Intels_interest_in_Contributing_to_ChromiumBlink" id="Demonstrate_Intels_interest_in_Contributing_to_ChromiumBlink">Demonstrate Intel's interest in Contributing to Chromium/Blink</a></span><a class="anchor" id="Demonstrate-Intel's-interest-in-Contributing-to-Chromium/Blink" href="#Demonstrate-Intel's-interest-in-Contributing-to-Chromium/Blink"></a></h2>
+
+
+<p>One of our objectives is to demonstrate interest in contributing, and getting involved with Chromium and Blink.
+</p>
+
+<h3><span class="mw-headline" id="Tasks-5"><a name="Tasks-5" id="Tasks-5">Tasks</a></span><a class="anchor" id="Tasks" href="#Tasks"></a></h3>
+
+
+
+
+
+
+
+<ul><li>Identify contribution areas, examples:<ul><li>Removing #ifdef's effort</li><li>Viewport</li><li>...</li></ul></li><li>Contact, get to know Chromium stakeholders &amp; OWNERs</li><li>Submit patches to demonstrate contribution interest</li></ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Development-tasks" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Development-tasks">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

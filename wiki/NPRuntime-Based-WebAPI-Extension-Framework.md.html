@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'NPRuntime-Based-WebAPI-Extension-Framework';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>NPRuntime Based WebAPI Extension Framework</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>NPRuntime Based WebAPI Extension Framework</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/NPRuntime-Based-WebAPI-Extension-Framework"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/NPRuntime-Based-WebAPI-Extension-Framework"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h3>Why not Chrome extension API<a class="anchor" id="Why-not-Chrome-extension-API" href="#Why-not-Chrome-extension-API"></a></h3>
+
+<p>Firstly, from the Javascript developers perspective, the APIs defined in IDL are <a href="http://www.chromium.org/developers/design-documents/extensions/how-the-extension-system-works/api-pattern-design-doc">stateless functions</a> rather than object oriented, and all APIs must be asynchronous. Another concern is about the <a href="http://www.chromium.org/developers/design-documents/extensions/proposed-changes/creating-new-apis">developing model</a>. The implementation of chrome extension API has to be built-in chromium code tree. In embedded way, most developers just want to link their extension code with Crosswalk libraries. Chrome extension API has too many dependencies, for example, a lot of header files of chromium involved in the filesystem API implementation. This is the biggest issue, and it's even worse if we need pluggable API framework (like Tizen). We need a cleared interface between Crosswalk and developers.</p>
+
+<h3>NPRuntime as an interface<a class="anchor" id="NPRuntime-as-an-interface" href="#NPRuntime-as-an-interface"></a></h3>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Gecko_Plugin_API_Reference/Scripting_plugins">NPRuntime</a> was originally designed as a scripting extension for NPAPI plugin. From Javascript engine's view point, It's actually an C interface of how to present and interact with Javascript object. We can reuse this interface as our WebAPI extension API. And the implementation should not depend on NPAPI plugin, there is no plugin element or plugin instance involved.</p>
+
+<h3>Chromium's implementation<a class="anchor" id="Chromium's-implementation" href="#Chromium's-implementation"></a></h3>
+
+<p>In chromium, npruntime is implemented in <a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/bindings/v8/">V8 binding</a>, so it doesn't depend on NPAPI. The <a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/npapi/bindings/npruntime.h">interface definition</a> has little dependency with NPAPI, and we will get rid of it. Chromium internally use npruntime to do DOM automation test. Moreover, the chrome Android WebView support addJavascriptInterface() method also through npruntime in native layer.</p>
+
+<h3>High-level API<a class="anchor" id="High-level-API" href="#High-level-API"></a></h3>
+
+<p>Npruntime will be used as the primitive API. It has no other dependency. And also, It has a language neutral ABI because It's C based. This is a benefit for pluggable WebAPI framework. We can provide high-level C++ API through wrapper classes, for example <a href="https://code.google.com/p/chromium/codesearch#chromium/src/webkit/renderer/cpp_bound_class.h">CppBoundClass</a> in chromium. I personally prefer pure C++ template wrapper which only depend on STL or <a href="http://www.boost.org/">Boost C++ library</a>.</p>
+
+<h3>Multi-process and Sandbox support<a class="anchor" id="Multi-process-and-Sandbox-support" href="#Multi-process-and-Sandbox-support"></a></h3>
+
+<p>Npruntime will also be the interface between processes. Fortunately, chromium already has <a href="http://www.chromium.org/developers/design-documents/plugin-architecture">out-of-plugin architecture</a>. We will reuse the <a href="https://code.google.com/p/chromium/codesearch#chromium/src/content/child/plugin_messages.h&amp;l=330">npobject messages</a> and <a href="https://code.google.com/p/chromium/codesearch#chromium/src/content/child/npobject_proxy.h">proxy</a>/<a href="https://code.google.com/p/chromium/codesearch#chromium/src/content/child/npobject_stub.h">stub</a> parts to support multi-process mode, this allow renderer process to be sandboxed. A dedicated WebAPI channel will be created. Only npobject related messages will be sent and received in this channel, all NPAPI plugin stuff will be eliminated. All these change should not impact the original NPAPI plugin logic.</p>
+
+<h3>Pluggable WebAPI<a class="anchor" id="Pluggable-WebAPI" href="#Pluggable-WebAPI"></a></h3>
+
+<p>Crosswalk for Tizen WebRuntime needs pluggable WebAPI framework to support Tizen WebAPI. This means WebAPI can be implemented in shared libraries and loaded dynamically, somewhat like plugin. So we need to define a binary interface for this case. Fortunately, we already have a project called <a href="https://github.com/crosswalk-project/WebAPIManager">WebAPIManager</a> to do such things based on NPAPI plugin. Ideas and implementation can be borrowed from WebAPIManager.</p>
+
+<h3>Out-of-process WebAPI<a class="anchor" id="Out-of-process-WebAPI" href="#Out-of-process-WebAPI"></a></h3>
+
+<p>In Crosswalk runtime mode, we need to support out-of-process WebAPI. Like NPAPI plugin, actual logic of WebAPI run in a dedicated process. The process model may be singleton, per API or per WebView process. The PluginHost of chromium can be a good reference.</p>
+
+<h3>Permission control<a class="anchor" id="Permission-control" href="#Permission-control"></a></h3>
+
+<p>TODO: We had a design for permission control in WebAPIManager project. Refer this <a href="https://tizen.jf.intel.com/index.php?title=WebRuntime/NPAPIManager/PermissionDesign">wiki page</a>. But need to rework for Crosswalk.</p>
+
+<h3>Limitations<a class="anchor" id="Limitations" href="#Limitations"></a></h3>
+
+<ol><li>In multi-process mode, IPC leads performance penalty, especially when transmit large data.</li>
+<li>NPObject messages are synchronous, bad API design or implementation may cause renderer hang.</li>
+</ol>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/NPRuntime-Based-WebAPI-Extension-Framework" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/NPRuntime-Based-WebAPI-Extension-Framework">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

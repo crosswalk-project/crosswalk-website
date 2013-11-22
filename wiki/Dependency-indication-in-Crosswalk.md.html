@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Dependency-indication-in-Crosswalk';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Dependency indication in Crosswalk</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>About</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Dependency-indication-in-Crosswalk"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Dependency-indication-in-Crosswalk"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Since we will maintain downstream chromium/blink for Crosswalk, may be more other repos in future. It’s necessary to provide a mechanism to indicate the dependency in crosswalk’s main project repo.</p>
+
+<h1>Objective<a class="anchor" id="Objective" href="#Objective"></a></h1>
+
+<ul><li>The dependency should be accurate as the downstream repo evolving. A bad example of this is to say that Crosswalk dev branch is depends on chromium-crosswalk lkgr branch. The lkgr branch will be changing overtime, and it will be hard to get the specified source tree back to some history point.</li>
+<li>The indication should come with a solution to check out the whole source tree easily. It will be very helpful for both developer and build infrastructure.</li>
+<li>Crosswalk should only maintain its real dependency (the downstream repos we forked) instead of copy the whole dependency from chromium.</li>
+</ul><h1>Solution in chromium<a class="anchor" id="Solution-in-chromium" href="#Solution-in-chromium"></a></h1>
+
+<ul><li>Chromium has <em>DEPS</em> file in its major project which contains all dependencies of third party repos.</li>
+<li>The dependency is expressed by svn revision or git commit hash id.</li>
+<li>Chromium uses gclient tool to fetch and sync code.</li>
+<li>For versioned checkout, chromium provides the <em>DEPS</em> for specified version individually at <a href="http://src.chromium.org/svn/releases/">http://src.chromium.org/svn/releases/</a> . It’s a snapshot of all the repos’s (including chromium itself) svn revision.</li>
+</ul><h1>For Crosswalk<a class="anchor" id="For-Crosswalk" href="#For-Crosswalk"></a></h1>
+
+<h2>Solution:<a class="anchor" id="Solution:" href="#Solution:"></a></h2>
+
+<p>Add two deps file into Crosswalk repo, <em>DEPS</em> and <em>DEPS.crosswalk</em>. <br /><em>DEPS</em> is like:
+</p><div class="highlight"><pre><span class="nt">vars</span> <span class="o">=</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nt">deps</span> <span class="o">=</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nt">hooks</span> <span class="o">=</span> <span class="cp">[</span>
+  <span class="p">{</span>
+    <span class="err">#</span> <span class="nx">Fetch</span> <span class="nx">Crosswalk</span> <span class="nx">dependencies.</span>
+    <span class="s2">"pattern"</span><span class="p">:</span> <span class="s2">"."</span><span class="p">,</span>
+    <span class="s2">"action"</span><span class="p">:</span> <span class="err">[</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"src/crosswalk/tools/fetch_deps.py"</span><span class="p">,</span> <span class="s2">"-v"</span><span class="cp">]</span><span class="o">,</span>
+  <span class="err">}</span><span class="o">,</span>
+  <span class="p">{</span>
+    <span class="err">#</span> <span class="n">A</span> <span class="n">change</span> <span class="n">to</span> <span class="n">a</span> <span class="o">.</span><span class="n">gyp</span><span class="o">,</span> <span class="o">.</span><span class="n">gypi</span><span class="o">,</span> <span class="n">or</span> <span class="n">to</span> <span class="n">GYP</span> <span class="n">itself</span> <span class="n">should</span> <span class="n">run</span> <span class="n">the</span> <span class="n">generator</span><span class="o">.</span>
+    <span class="s2">"pattern"</span><span class="o">:</span> <span class="s2">"."</span><span class="o">,</span>
+    <span class="s2">"action"</span><span class="o">:</span> <span class="cp">[</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"src/crosswalk/gyp_crosswalk"</span><span class="cp">]</span><span class="o">,</span>
+  <span class="p">}</span>
+<span class="o">]</span>
+</pre></div>
+<em>DEPS.crosswalk</em> is like:
+<div class="highlight"><pre><span class="n">chromium_version</span> <span class="o">=</span> <span class="err">'</span><span class="n">Trunk</span><span class="err">'</span>
+<span class="n">chromium_crosswalk_point</span> <span class="o">=</span> <span class="err">'</span><span class="mi">45</span><span class="n">a733d6ac45650d9ddc019ade3c7dbd3b91a816</span><span class="err">'</span>
+<span class="n">deps_crosswalk</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="err">'</span><span class="n">src</span><span class="err">'</span><span class="o">:</span> <span class="err">'</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//github.com/crosswalk-project/chromium-crosswalk.git@%s' % chromium_crosswalk_point,</span>
+  <span class="err">'</span><span class="n">src</span><span class="o">/</span><span class="n">third_party</span><span class="o">/</span><span class="n">WebKit</span><span class="o">/</span><span class="n">Tools</span><span class="o">/</span><span class="n">DumpRenderTree</span><span class="err">'</span><span class="o">:</span> <span class="n">None</span>
+<span class="p">}</span>
+</pre></div>
+<em>DEPS.crosswalk</em> is the one that keeps all Crosswalk’s dependency information. There will be a python script in Crosswalk which will take this <em>DEPS.crosswalk</em> as input and generate a new <em>.gclient-crosswalk</em> file for chromium. Then the python script will invoke gclient sync upon it. The <em>.gclient-crosswalk</em> file will be like:
+<div class="highlight"><pre><span class="n">solutions</span> <span class="o">=</span> <span class="p">[{</span>
+  <span class="err">'</span><span class="n">url</span><span class="err">'</span><span class="o">:</span> <span class="err">'</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//github.com/crosswalk-project/chromium-crosswalk.git@45a733d6ac45650d9ddc019ade3c7dbd3b91a816',</span>
+  <span class="err">'</span><span class="n">name</span><span class="err">'</span><span class="o">:</span> <span class="err">'</span><span class="n">src</span><span class="err">'</span><span class="p">,</span>
+  <span class="err">'</span><span class="n">deps_file</span><span class="err">'</span><span class="o">:</span> <span class="err">'</span><span class="p">.</span><span class="n">DEPS</span><span class="p">.</span><span class="n">git</span><span class="err">'</span><span class="p">,</span>
+  <span class="err">'</span><span class="n">custom_deps</span><span class="err">'</span><span class="o">:</span> <span class="p">{</span>
+    <span class="err">'</span><span class="n">src</span><span class="o">/</span><span class="n">third_party</span><span class="o">/</span><span class="n">WebKit</span><span class="o">/</span><span class="n">Tools</span><span class="o">/</span><span class="n">DumpRenderTree</span><span class="err">'</span><span class="o">:</span> <span class="n">None</span>
+  <span class="p">}</span>
+<span class="p">}]</span>
+</pre></div>
+
+<p>And we put the execution of the <em>fetch_deps.py</em> as a hook in Crosswalk's DEPS file. Which means if we run gclient sync on the Crosswalk project, it will do: <br /></p>
+
+<ul><li>Checkout Crosswalk</li>
+<li>Run Crosswalk gclient hooks
+
+<ul><li>Invoke <em>fetch_deps.py</em>
+
+<ul><li>Setup git repo in <em>src/</em>.
+
+<ul><li><em>git init</em> in src/</li>
+<li><em>git remote add</em> in src/</li>
+<li><em>git fetch</em> in src/</li>
+<li><em>git checkout</em> in src/</li>
+</ul></li>
+<li>Generate <em>.gclient-crosswalk</em>.</li>
+<li>Invoke <em>gclient sync –gclient-file=.gclient-crosswalk</em>
+
+<ul><li>Checkout chromium and its dependencies, which some of them are overwritten if it’s also defined in DEPS.crosswalk</li>
+<li>Run chromium gclient hooks</li>
+</ul></li>
+</ul></li>
+<li>Do gyp crosswalk</li>
+</ul></li>
+</ul><p>For versioned checkout, Crosswalk can do the same thing as chromium. Provide a snapshot that combines the <em>DEPS</em> in chromium and the <em>DEPS.crosswalk</em> in Crosswalk.</p>
+
+<h2>Based on the solution:<a class="anchor" id="Based-on-the-solution:" href="#Based-on-the-solution:"></a></h2>
+
+<ul><li>The dependencies is indicated clearly to support bisect.</li>
+<li>Easy to checkout source tree.
+
+<ul><li>Gclient config + gclient sync for trunk/version/any history point checkout.</li>
+</ul></li>
+<li>Integration with our downstream rebase work.
+
+<ul><li>Do rebase first. After conflict resolve/build/test/etc, prepare the branch in downstream chromium.</li>
+<li>Send a pull request to Crosswalk to update <em>DEPS.crosswalk</em>, maybe some code together to adapt upstream change.</li>
+</ul></li>
+<li>Integration with cross project development.
+
+<ul><li>Developer will first send pull request for chromium/blink part of code.</li>
+<li>After chromium part got merged, send a pull request to Crosswalk to update <em>DEPS.crosswalk</em> as well as the Crosswalk part of code.</li>
+</ul></li>
+</ul><h2>Compare with CEF3<a class="anchor" id="Compare-with-CEF3" href="#Compare-with-CEF3"></a></h2>
+
+<ul><li>The idea is very similar
+
+<ul><li>CEF3 uses a text file to indicate the chromium revision it depends on</li>
+</ul></li>
+<li>The implementation are different:
+
+<ul><li>CEF3 use automate.py instead of gclient system for itself, but it do invoke gclient sync for chromium anyway.</li>
+<li>CEF3 chooses to maintain patches instead of downstream fork, so no custom deps at all.</li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Dependency-indication-in-Crosswalk" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Dependency-indication-in-Crosswalk">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

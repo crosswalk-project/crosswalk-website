@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Android-debugging';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Android debugging</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Android debugging</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Android-debugging"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Android-debugging"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h2>Build XWalk Android Core with full debug support<a class="anchor" id="Build-XWalk-Android-Core-with-full-debug-support" href="#Build-XWalk-Android-Core-with-full-debug-support"></a></h2>
+
+<div class="highlight"><pre><span class="p">.</span> <span class="n">xwalk</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">envsetup</span><span class="p">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">arch</span><span class="o">=</span><span class="n">x86</span>
+<span class="n">xwalk_android_gyp</span> <span class="o">-</span><span class="n">Dandroid_full_debug</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">ninja</span> <span class="o">-</span><span class="n">C</span> <span class="n">out</span><span class="o">/</span><span class="n">Debug</span> <span class="n">xwalk_core_shell_apk</span>
+</pre></div>
+
+<h2>Install App<a class="anchor" id="Install-App" href="#Install-App"></a></h2>
+
+<div class="highlight"><pre><span class="n">adb</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">out</span><span class="o">/</span><span class="n">Debug</span><span class="o">/</span><span class="n">apks</span><span class="o">/</span><span class="n">XWalkCoreShell</span><span class="p">.</span><span class="n">apk</span>
+</pre></div>
+
+<h2>Test<a class="anchor" id="Test" href="#Test"></a></h2>
+
+<div class="highlight"><pre><span class="cp"># Build and install test suite</span>
+<span class="n">ninja</span> <span class="o">-</span><span class="n">C</span> <span class="n">out</span><span class="o">/</span><span class="n">Debug</span> <span class="n">xwalk_core_shell_apk</span> <span class="n">xwalk_core_test_apk</span>
+<span class="n">adb</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">out</span><span class="o">/</span><span class="n">Debug</span><span class="o">/</span><span class="n">apks</span><span class="o">/</span><span class="n">XWalkCoreTest</span><span class="p">.</span><span class="n">apk</span>
+
+<span class="cp"># Set up environment</span>
+<span class="n">export</span> <span class="n">XWALK_OS_ANDROID</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">.</span> <span class="n">xwalk</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">envsetup</span><span class="p">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">arch</span><span class="o">=</span><span class="n">x86</span> 
+
+<span class="cp"># Run test</span>
+<span class="n">build</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">run_instrumentation_tests</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">test</span><span class="o">-</span><span class="n">apk</span> <span class="n">XWalkCoreTest</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">f</span> <span class="n">testExtensionEcho</span>
+</pre></div>
+
+<h2>Debug Native Code with "adb_gdb*"<a class="anchor" id="Debug-Native-Code-with-%22adb_gdb*%22" href="#Debug-Native-Code-with-%22adb_gdb*%22"></a></h2>
+
+<ul><li>On Device, launch the App</li>
+<li>On Host machine, to debug the browser process, use:
+<div class="highlight"><pre><span class="n">adb_gdb_xwalk_core_shell</span> <span class="o">--</span><span class="n">verbose</span>
+</pre></div></li>
+<li>[Deprecated] To debug the renderer process, use:
+<div class="highlight"><pre><span class="n">adb_gdb_xwalk_core_shell</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">sandboxed</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+</pre></div></li>
+<li>If you wan't to debug the startup process
+<div class="highlight"><pre><span class="cp">#Edit a file named 'xwview-shell-command-line' with content:</span>
+<span class="n">Xwalk</span> <span class="o">--</span><span class="n">wait</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">debugger</span>
+<span class="cp">#Then push it to device</span>
+<span class="n">adb</span> <span class="n">push</span> <span class="n">xwview</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">line</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">xwview</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">line</span>
+<span class="cp">#Then launch the application and use adb_gdb_xwalk_core_shell to debug</span>
+</pre></div></li>
+</ul><h2>Debug Java code with Eclipse<a class="anchor" id="Debug-Java-code-with-Eclipse" href="#Debug-Java-code-with-Eclipse"></a></h2>
+
+<ul><li>Import the project into Eclipse workspace:
+<div class="highlight"><pre><span class="n">New</span> <span class="o">-&gt;</span> <span class="n">Android</span> <span class="o">-&gt;</span> <span class="n">Android</span> <span class="n">Project</span> <span class="n">from</span> <span class="n">Existing</span> <span class="n">Code</span> <span class="o">-&gt;</span> <span class="n">point</span> <span class="n">to</span> <span class="n">XwalkCore</span> <span class="n">project</span> <span class="n">root</span><span class="p">(</span><span class="n">src</span><span class="o">/</span><span class="n">xwalk</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">core_shell</span><span class="p">)</span>
+</pre></div></li>
+<li>Add third party dependencies to project
+<div class="highlight"><pre><span class="n">add</span> <span class="n">Java</span> <span class="n">code</span> <span class="n">of</span> <span class="n">xwalk</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">ui</span><span class="p">...</span> <span class="n">to</span> <span class="n">project</span>
+</pre></div></li>
+<li>Launch application to debug, you can use command line to control debug the startup
+<div class="highlight"><pre><span class="cp">#In xwview-shell-command-line, write content as follow and push it to device</span>
+<span class="n">XWalk</span> <span class="o">--</span><span class="n">wait</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">java</span><span class="o">-</span><span class="n">debugger</span>
+</pre></div></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-06 09:32:14</p>
+  <p>
+    <a id="delete-link" href="/wiki/Android-debugging" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Android-debugging">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'contribute/Contributing-Code';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>contribute/Contributing Code</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Contributing Code</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/contribute/Contributing-Code"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/contribute/Contributing-Code"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>This page outlines the process for contributing code to Crosswalk. For information on obtaining the source and building Crosswalk, see the <a href="#contribute/building_crosswalk">Building Crosswalk</a> page.</p>
+
+<h2>Overview<a class="anchor" id="Overview" href="#Overview"></a></h2>
+
+<p>Below are the recommended steps. Later sections of this page explain each step in more detail.</p>
+
+<ul><li>Choose or create a bug report to work on.</li>
+<li>Develop your changes.</li>
+<li>Make sure your changes meet the code style guidelines. The check-style script may be of help.</li>
+<li>Run the unit tests.</li>
+<li>Add any new files to your working directory.</li>
+<li>Prepare your commit message.</li>
+<li>Submit your patch for review using the Github pull request system.</li>
+<li>Make any changes recommended by the reviewer.</li>
+<li>Once reviewed, the patch will be landed for you.</li>
+<li>Please watch for any regressions it may have caused (hopefully none)!</li>
+</ul><p>More detail about these steps is below.</p>
+
+<h2>Choose a bug report<a class="anchor" id="Choose-a-bug-report" href="#Choose-a-bug-report"></a></h2>
+
+<p>The github issue tracker is the central point of communication for contributions to Crosswalk. Nearly every contribution corresponds to a bug report there.</p>
+
+<p>Choose a bug report to work on. You can also create a new report. Be sure to search the database before creating new reports to avoid duplication.</p>
+
+<p>If your change may be controversial, you may want to check in advance with the crosswalk-dev mailing list.</p>
+
+<h2>Develop your changes<a class="anchor" id="Develop-your-changes" href="#Develop-your-changes"></a></h2>
+
+<p>In addition, make sure that any new source code and script files you introduce contain license text at the beginning of the file. If you are the author of a new file, preferred license text to include can be found in the LICENSE file or any existing file. You need to add yourself to the AUTHORS file the first time you make a patch.</p>
+
+<h2>Code Style Guidelines<a class="anchor" id="Code-Style-Guidelines" href="#Code-Style-Guidelines"></a></h2>
+
+<p>Patches must comply with the code style guidelines. Your patch will be automatically checked for style compliance when you upload it to the bug tracker.</p>
+
+<h3>Code Style Guide for Android<a class="anchor" id="Code-Style-Guide-for-Android" href="#Code-Style-Guide-for-Android"></a></h3>
+
+<ul><li><a href="Coding-Style-of-XWalk-for-Android">Crosswalk coding style for Android</a></li>
+</ul><h2>Regression tests<a class="anchor" id="Regression-tests" href="#Regression-tests"></a></h2>
+
+<p>A buildbot infrastructure will be available soon. Those buildbots will run the unit tests and the browser tests. You are responsible to keep 
+the tree green. If the tree is red because one of your patch, it may be that your commit will be reverted if the other contributors can't reach 
+you or can't fix themselves the problem.</p>
+
+<h2>Respond to reviewers<a class="anchor" id="Respond-to-reviewers" href="#Respond-to-reviewers"></a></h2>
+
+<p>A Crosswalk reviewer must approve your patch before Crosswalk can accept it into the source control repository. A reviewer will typically either approve your patch (by responding with an LGTM in the pull request) or request revisions to your patch. In rare cases a patch may be permanently rejected, meaning that the reviewer believes the feature should never be committed to the tree. The review process can consist of multiple iterations between you and the reviewer as you submit revised patches.</p>
+
+<h2>Obtaining Commit Privileges<a class="anchor" id="Obtaining-Commit-Privileges" href="#Obtaining-Commit-Privileges"></a></h2>
+
+<p>By default contributors do not have push rights to Crosswalk repositories. After contributing few patches (~5-10) you may ask an OWNER to nominate you for push access. This privilege is granted with some expectation of responsibility: committers are people who care about the Crosswalk project and want to help them meet their goals. A committer is not just someone who can make changes, but someone who has demonstrated his or her ability to collaborate with the team, get the most knowledgeable people to review code, contribute high-quality code, and follow through to fix issues (in code or tests).</p>
+
+<h2>Obtaining Review Privileges<a class="anchor" id="Obtaining-Review-Privileges" href="#Obtaining-Review-Privileges"></a></h2>
+
+<p>Our <a href="#contribute/Reviewer_Policy">Reviewer policy</a> provides details on obtaining review privileges.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Alexis Menard</b>, 2013-11-18 11:56:31</p>
+  <p>
+    <a id="delete-link" href="/wiki/contribute/Contributing-Code" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/contribute/Contributing-Code">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Creating-bootstrap-application-installers';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Creating bootstrap application installers</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Creating bootstrap application installers</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Creating-bootstrap-application-installers"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Creating-bootstrap-application-installers"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <p>This tool is for developers who need to distribute their applications along with Crosswalk runtime in an all-in-one  installer.</p>
+
+<h2>How to install:<a class="anchor" id="How-to-install:" href="#How-to-install:"></a></h2>
+
+<p>Download all the files in the following URL put them into a folder:</p>
+
+<p><a href="https://github.com/crosswalk-project/crosswalk/tree/master/tools/packaging/bootstrapped">https://github.com/crosswalk-project/crosswalk/tree/master/tools/packaging/bootstrapped</a></p>
+
+<h2>How to use:<a class="anchor" id="How-to-use:" href="#How-to-use:"></a></h2>
+
+<p>For Windows, run "create_windows_installer.bat --help" to see the usage of the tool.<br />
+For Linux, run "./create_linux_installer.sh --help" to see the usage of the tool.</p>
+
+<h3>Notes:<a class="anchor" id="Notes:" href="#Notes:"></a></h3>
+
+<p>On Windows, if you specify --app_arguments, you'd better specify the full path of your app's startup page. For example:</p>
+
+<pre><code>--app_arguments="--allow-file-access-from-files [INSTALLDIR]src/index.html" 
+</code></pre>
+
+<p><br />
+[INSTALLDIR] will be replaced with the actually installed dir of your application.</p>
+
+<h3>Examples:<a class="anchor" id="Examples:" href="#Examples:"></a></h3>
+
+<pre><code>create_windows_installer.bat webapps-scientific-calculator-master --wix_bin_path="C:\Program Files (x86)\WiX Toolset v3.7\bin" --xwalk_path="C:\Users\zchen42\Desktop\xwalk paking\xwalk-win32"
+</code></pre>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-09-01 21:04:08</p>
+  <p>
+    <a id="delete-link" href="/wiki/Creating-bootstrap-application-installers" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Creating-bootstrap-application-installers">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
