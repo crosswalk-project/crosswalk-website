@@ -19,7 +19,23 @@ function get_local_live_name () {
 
 function get_remote_live_name () {
     local branch
-	branch=$(wget -qO - https://crosswalk-project.org/REVISION)
+    local revision
+    local url
+    if [[ "$1" = "--previous" ]]; then
+        revision=PRIOR-REVISION
+        shift
+    else
+        revision=REVISION
+    fi
+    case "$1" in
+    staging)
+        url=https://stg.crosswalk-project.org
+        ;;
+    *)
+        url=https://crosswalk-project.org
+        ;;
+    esac
+    branch=$(wget -qO - ${url}/${revision})
     branch=${branch/:*/}
     echo $branch
 }
