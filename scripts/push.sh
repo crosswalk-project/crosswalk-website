@@ -99,9 +99,11 @@ function push () {
     case $target in
     live)
         url=sites1.vlan14.01.org
+        path=/srv/www/crosswalk-project.org/docroot
         ;;
     staging)
         url=stg-sites.vlan14.01.org
+        path=/srv/www/stg.crosswalk-project.org/docroot
         ;;
     esac
 
@@ -123,10 +125,10 @@ This will perform the following:
   1. Push ${shortsha} to:
      ${git}
      
-  2. Connect to ${target} server (${url}).
-  
-  3. On ${target} server, it will do a git pull or git fetch sequence to obtain
-     ${shortsha} and update the working tree.
+  2. Connect to ${target} server (${url}) and run:
+     a. git pull / git fetch
+     b. git clean -f
+     c. Update REVISION and PRIOR-REVISION
      
 EOF
 
@@ -137,8 +139,6 @@ NOTE: No changes detected (identical SHA). Perhaps you need to run
   
 EOF
     fi
-    
-
 
     while true; do
         echo -n "Proceed? [(Y)es|(n)o|(s)how diff] "
@@ -159,7 +159,7 @@ EOF
     printf "Connecting to ${url} to update to %-.29s...\n" ${rev}
     # SSH to the target machine and execute the bash sequence implemented
     # in the function 'remote', passing in the branch name to switch to.
-    { declare -f remote ; echo "remote $rev" ; } | ssh -T ${url}
+    { declare -f remote ; echo "remote ${path} ${rev}" ; } | ssh -T ${url}
 }
 
 #
@@ -184,11 +184,11 @@ function remote () {
         else
             echo "Running: git fetch origin ${name}:${name}"
             ${dry_run} git fetch origin ${name}:${name} || return
-            echo "Running: git checkout -f --track origin/${name}"
-            ${dry_run} git checkout -f --track origin/${name} || {
-                echo "Running: git reset --hard ${current/*:} && git clean -f"
-                git reset --hard ${current/*:} &&
-                git clean -f
+            echo "Running: git checkout -f ${name}"
+            ${dry_run} git checkout -f ${name} || {
+                echo -e "\nError running checkout! Resetting to ${current/*:}\n\n"
+                echo -e "Running: git reset --hard ${current/*:} && git clean -f\n"
+                git reset --hard ${current/*:}
                 exit
             }
         fi
@@ -200,7 +200,9 @@ function remote () {
         echo "Updated to ${branch}"
     }
 
-    cd /srv/www/stg.crosswalk-project.org/docroot || return
+    path=$1
+    shift
+    cd "${path}" || return
     { declare -f drush_routine ; echo drush_routine $* ; } | sudo su drush -
 }
 
@@ -232,6 +234,16 @@ function run () {
             rev=$1
         fi
     fi 
+
+    url=$(git remote show -n origin | sed -ne 's,^.*Push.*URL: \(.*\)$,\1,p')
+    branch=$(branchname ${rev})
+    echo -en "\nChecking for ${branch} at ${url}..."
+    git remote show origin | grep -q ${branch} || {
+        echo "not found."
+        echo "Running: git push -u origin ${branch}:${branch}..."
+        git push -u origin 
+    }
+    echo ""
 
     push "set" $target $rev $current
 }

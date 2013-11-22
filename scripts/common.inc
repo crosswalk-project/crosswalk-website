@@ -16,8 +16,7 @@ function get_local_live_name () {
     
 function get_local_live_info () {
     local branch
-    branch=$(git branch -a | grep remotes.*live | sort -r | head -n 1)
-    branch=${branch//  remotes\/origin\//}
+    branch=$(git branch -a | sed -ne 's,.*[ /]\(live-.*\),\1,p' | sort -ur | head -n 1)
     echo $branch:$(branchsha $branch)
 }
 
