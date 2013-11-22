@@ -10,6 +10,20 @@ function die () {
     exit
 }
 
+function get_local_live_name () {
+    local branch
+    branch=$(git branch -a | grep remotes.*live | sort -r | head -n 1)
+    branch=${branch//  remotes\/origin\//}
+    echo $branch
+}
+
+function get_remote_live_name () {
+    local branch
+	branch=$(wget -qO - https://crosswalk-project.org/REVISION)
+    branch=${branch/:*/}
+    echo $branch
+}
+
 declare -i gollum_pid=0
 
 function debug_msg () {

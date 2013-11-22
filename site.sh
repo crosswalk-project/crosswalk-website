@@ -52,20 +52,33 @@ exit
 }
 
 function execute_script () {
-    cmd=$1
-    unset -f run
-    . "${dir}/${cmd}.sh"
-    run $*
+    local site_script=$1
+    local site_cmd=$2
+    shift 2
+    unset -f ${site_cmd}
+    . "${dir}/${site_script}.sh"
+    ${site_cmd} $*
     exit
 }
 
-[ "$1" = "" ] && usage
+# If --help was passed, then show the sub-command usage
+if [[ "$1" = "--help" ]]; then
+    cmd="usage"
+    shift
+else
+    cmd="run"
+fi
+
+if [[ "$1" = "" ]]; then
+    usage
+fi
+
 i=${#names}
 for (( j=0; j<i; j++ )); do
     if [[ "${names[$j]}" = "$1" ]]; then
         if [[ ${valid[$j]} == 1 ]]; then
             shift
-            execute_script "${names[$j]}" $*
+            execute_script "${names[$j]}" $cmd $*
         fi
         exit
     fi
