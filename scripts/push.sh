@@ -85,11 +85,26 @@ EOF
     push "revert" ${target} ${previous} ${active}
 }
 
+
+# Prompt the user with information about what will be pushed to where,
+# and then optionally push it.
+#
 function push () {
     mode=$1
     target=$2
     rev=$3
     current=$4
+    git=$(git remote show -n origin | sed -ne 's,^.*Push.*URL: \(.*\)$,\1,p')
+    shortsha=${rev/%???????????????????????????}
+    case $target in
+    live)
+        url=sites1.vlan14.01.org
+        ;;
+    staging)
+        url=stg-sites.vlan14.01.org
+        ;;
+    esac
+
     cat << EOF
 
 About to ${mode} ${target} server:
@@ -101,12 +116,33 @@ EOF
         $(branchname ${current}) $(branchname ${rev})
     printf "  %-20.20s... => %-20.20s...\n" \
         $(branchsha ${current}) $(branchsha ${rev})
-    echo ""
+    cat << EOF
     
+This will perform the following:
+
+  1. Push ${shortsha} to:
+     ${git}
+     
+  2. Connect to ${target} server (${url}).
+  
+  3. On ${target} server, it will do a git pull or git fetch sequence to obtain
+     ${shortsha} and update the working tree.
+     
+EOF
+
+    if [[ "$(branchsha ${rev})" == "$(branchsha ${current})" ]]; then
+        echo -e "NOTE: No changes detected (identical SHA).\n"
+    fi
+    
+
+
     while true; do
-        echo -n "Proceed? [Yn] "
+        echo -n "Proceed? [(Y)es|(n)o|(s)how diff] "
         read answer
         case $answer in
+        S|s)
+            git diff $(branchsha ${current})..$(branchsha ${rev})
+            ;;
         ""|Y|y)
             break
             ;;
@@ -115,20 +151,19 @@ EOF
             ;;
         esac
     done
-
-    case $target in
-    live)
-        url=sites1.vlan14.01.org
-        ;;
-    staging)
-        url=stg-sites.vlan14.01.org
-        ;;
-    esac
+    
+    printf "Connecting to ${url} to update to %-.29s...\n" ${rev}
     # SSH to the target machine and execute the bash sequence implemented
     # in the function 'remote', passing in the branch name to switch to.
     { declare -f remote ; echo "remote $rev" ; } | ssh -T ${url}
 }
 
+#
+# remote 
+# Executes on the remote server; not called locally
+# Takes a single argument in the form BRANCH:SHA where BRANCH is
+# in the live-* syntax
+#
 function remote () {
     local dry_run=echo
     
@@ -138,12 +173,19 @@ function remote () {
     cd /srv/www/stg.crosswalk-project.org/docroot || return
     sudo su drush -
     current=$(cat REVISION)
-    ${dry_run} git fetch origin ${branch} || return
-    ${dry_run} git checkout -f --track origin/${branch} || {
-        git reset --hard ${current/*:} &&
-        git clean -f
-        exit
-    }
+    # If the current branch name is the same as the new branch name,
+    # do a git pull. Otherwise fetch the requested branch (and all 
+    # necessary objects) and check it out.
+    if [[ "${current/:*}" == "${name}" ]]; then
+        ${dry_run} git pull ${name}:${name} || return
+    else
+        ${dry_run} git fetch origin ${name}:${name} || return
+        ${dry_run} git checkout -f --track origin/${name} || {
+            git reset --hard ${current/*:} &&
+            git clean -f
+            exit
+        }
+    fi
     ${dry_run} git clean -f
     #echo $current > PRIOR-REVISION
     #echo $branch > REVISION
