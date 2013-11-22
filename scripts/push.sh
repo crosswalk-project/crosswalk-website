@@ -131,7 +131,11 @@ This will perform the following:
 EOF
 
     if [[ "$(branchsha ${rev})" == "$(branchsha ${current})" ]]; then
-        echo -e "NOTE: No changes detected (identical SHA).\n"
+        cat << EOF
+NOTE: No changes detected (identical SHA). Perhaps you need to run 
+      "site.sh mklive" first to generate a new live image.
+  
+EOF
     fi
     
 
@@ -165,31 +169,39 @@ EOF
 # in the live-* syntax
 #
 function remote () {
-    local dry_run=echo
-    
-    local branch=$1
-    name=${branch/:*}
-    sha=${branch/*:}
+    function drush_routine () {
+        branch=$1
+        name=${branch/:*}
+        sha=${branch/*:}
+        dry_run=
+        current=$(cat REVISION)
+        # If the current branch name is the same as the new branch name,
+        # do a git pull. Otherwise fetch the requested branch (and all 
+        # necessary objects) and check it out.
+        if [[ "${current/:*}" == "${name}" ]]; then
+            echo "Running: git pull ${name}:${name}"
+            ${dry_run} git pull origin ${name}:${name} || return
+        else
+            echo "Running: git fetch origin ${name}:${name}"
+            ${dry_run} git fetch origin ${name}:${name} || return
+            echo "Running: git checkout -f --track origin/${name}"
+            ${dry_run} git checkout -f --track origin/${name} || {
+                echo "Running: git reset --hard ${current/*:} && git clean -f"
+                git reset --hard ${current/*:} &&
+                git clean -f
+                exit
+            }
+        fi
+        echo "Running: git clean -f"
+        ${dry_run} git clean -f
+        echo "Creating PRIOR-REVISION and REVISION"
+        echo $current > PRIOR-REVISION
+        echo $branch > REVISION
+        echo "Updated to ${branch}"
+    }
+
     cd /srv/www/stg.crosswalk-project.org/docroot || return
-    sudo su drush -
-    current=$(cat REVISION)
-    # If the current branch name is the same as the new branch name,
-    # do a git pull. Otherwise fetch the requested branch (and all 
-    # necessary objects) and check it out.
-    if [[ "${current/:*}" == "${name}" ]]; then
-        ${dry_run} git pull ${name}:${name} || return
-    else
-        ${dry_run} git fetch origin ${name}:${name} || return
-        ${dry_run} git checkout -f --track origin/${name} || {
-            git reset --hard ${current/*:} &&
-            git clean -f
-            exit
-        }
-    fi
-    ${dry_run} git clean -f
-    #echo $current > PRIOR-REVISION
-    #echo $branch > REVISION
-    exit
+    { declare -f drush_routine ; echo drush_routine $* ; } | sudo su drush -
 }
 
 # usage: site.sh push [live | <source>]
