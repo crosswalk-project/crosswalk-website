@@ -43,15 +43,14 @@ function run () {
     git branch -t ${branch}
     git checkout ${branch}
     
-    
     debug_msg "Branch / Checkout to ${branch} complete."
     
     #
     # Nuke all dynamic content and regenerate it
     #
-    ./scripts/cleanup.sh
+    ./site.sh cleanup
     debug_msg "Cleanup complete."
-    ./scripts/generate.sh
+    ./site.sh generate
     debug_msg "Generate complete."
     
     #
