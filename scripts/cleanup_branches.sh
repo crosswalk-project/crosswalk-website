@@ -1,4 +1,13 @@
-desc="Remove all live-* branches older than one week."
+function usage () {
+cat << EOF
+usage: site.sh cleanup_branches [-n]
+
+   -n   Dry run. Do not change anything locally or remote.
+
+EOF
+}
+
+
 function run () {
     declare current
     declare dry_run=
@@ -28,8 +37,8 @@ function run () {
                     continue
                 fi
                 work_done=1
-                ${dry_run} git push origin :${branch_name}
-                ${dry_run} git branch -D ${branch_name}
+                ${dry_run} git --git-dir=$i/.git --work-tree=$i push origin :${branch_name}
+                ${dry_run} git --git-dir=$i/.git --work-tree=$i branch -D ${branch_name}
             fi
         done
         # Remove remaining locals
@@ -44,31 +53,33 @@ function run () {
                     continue
                 fi
                 work_done=1
-                ${dry_run} git push origin :${branch_name}
-                ${dry_run} git branch -D ${branch_name}
+                ${dry_run} git --git-dir=$i/.git --work-tree=$i push origin :${branch_name}
+                ${dry_run} git --git-dir=$i/.git --work-tree=$i branch -D ${branch_name}
             fi
         done
         
         # Remove old tags
         git --git-dir=$i/.git --work-tree=$i tag | 
-            grep "tag-.*live" | while read branch; do
-            branch_name=${branch}
-            branch_date=${branch/*tag-live-}
-            branch_date=${branch_date//.*}
-            if (( branch_date <= last_week )); then
-                if [[ "$branch_name" == "$current" ]]; then
-                    echo "Skipping current live branch (${current})"
+            grep "tag-.*live" | while read tag; do
+            tag_name=${tag}
+            tag_date=${tag/*tag-live-}
+            tag_date=${tag_date//.*}
+            if (( tag_date <= last_week )); then
+                if [[ "$tag_name" == "$current" ]]; then
+                    echo "Skipping current live tag (${current})"
                     continue
                 fi
-                work_done=1
-                ${dry_run} git tag -d ${branch_name}
+                ${dry_run} git --git-dir=$i/.git --work-tree=$i push origin :refs/tags/${tag_name}
+                ${dry_run} git --git-dir=$i/.git --work-tree=$i tag -d ${tag_name}
             fi
         done
     done
-    (( work_done )) && {
-        ${dry_run} git remote prune origin
+
+    ${dry_run} git remote prune origin
 cat << EOF
-Branches have been purged.
+Branches and tags have been purged. Consider running:
+
+  git gc [-n]  Cleanup unnecessary files and optimize local repo
+  
 EOF
-    }
 }
