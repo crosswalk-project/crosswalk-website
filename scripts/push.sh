@@ -62,11 +62,16 @@ function revert () {
         return
         ;;
     esac
-    
-    echo -n "Fetching previous active branch name from ${target} server..." >&2
-    branch=$(get_remote_live_name --previous $target)
+
+    echo -n "Fetching active branch name from ${target} server..." >&2
+    active=$(get_remote_live_info --previous $target)
     echo ""
-    if [[ ! "${branch}" =~ live-* ]]; then
+
+    echo -n "Fetching previous branch name from ${target} server..." >&2
+    previous=$(get_remote_live_info --previous $target)
+    echo ""
+
+    if [[ ! "${previous}" =~ live-* ]]; then
         cat << EOF >&2
 
 Error: Prior branch file not found on server:
@@ -76,26 +81,28 @@ Error: Prior branch file not found on server:
 EOF
         exit 1
     fi
-    echo "About to set ${target} server back to ${branch}."
-    while true; do
-        echo -n "Proceed? [Yn] "
-        read answer
-        case $answer in
-        ""|Y|y)
-            break
-            ;;
-        N|n)
-            return
-            ;;
-        esac
-    done
+    
+    push "revert" ${target} ${previous} ${active}
 }
 
 function push () {
-    target=$1
-    rev=$2
-    current=$3
-    echo "About to set ${target} server to ${rev} from ${current}."
+    mode=$1
+    target=$2
+    rev=$3
+    current=$4
+    cat << EOF
+
+About to ${mode} ${target} server:
+
+EOF
+    printf "  %-20.20s       %-20.20s\n" \
+        "Current version" "New version"
+    printf "  %-20.20s    => %-20.20s\n" \
+        $(branchname ${current}) $(branchname ${rev})
+    printf "  %-20.20s... => %-20.20s...\n" \
+        $(branchsha ${current}) $(branchsha ${rev})
+    echo ""
+    
     while true; do
         echo -n "Proceed? [Yn] "
         read answer
@@ -123,40 +130,24 @@ function push () {
 }
 
 function remote () {
-    echo "Running remote: " $*
-    return
-    cd /usr/share/
-#!/bin/bash
-active=$(git branch | grep "^\*.*")
-active=${active/\* }
-echo "Current branch: ${active}"
-sha=$(git show --oneline ${active} | head -n 1)
-sha=${sha// *}
-
-git checkout master
-git pull --all || {
-        echo "Pulling from tip failed. Reverting to active branch: ${active}"
-        git checkout ${active} -f
-        exit 1
-}
-
-branch=$(git branch -a | grep remotes.*live | sort -r | head -n 1)
-branch=${branch//  remotes\/origin\//}
-echo "New branch: ${branch}"
-
-# Verify the correct branch will be used
-if git show-ref --verify --quiet refs/heads/${branch}; then
-        git branch -D ${branch}
-fi
-
-git checkout --track origin/${branch} || {
-        echo "Checkout failed. Reverting to old branch."
-        git reset --hard ${sha}
-        echo "This error path is not complete; please manually check the tree."
+    local dry_run=echo
+    
+    local branch=$1
+    name=${branch/:*}
+    sha=${branch/*:}
+    cd /srv/www/stg.crosswalk-project.org/docroot || return
+    sudo su drush -
+    current=$(cat REVISION)
+    ${dry_run} git fetch origin ${branch} || return
+    ${dry_run} git checkout -f --track origin/${branch} || {
+        git reset --hard ${current/*:} &&
+        git clean -f
         exit
-}
-git clean -f
-echo "${branch}:$(git show --pretty=format:%H ${branch} | head -n 1)" > REVISION
+    }
+    ${dry_run} git clean -f
+    #echo $current > PRIOR-REVISION
+    #echo $branch > REVISION
+    exit
 }
 
 # usage: site.sh push [live | <source>]
@@ -169,26 +160,24 @@ function run () {
     fi
 
     echo -n "Fetching staging branch name from stg.crosswalk-project.org..." >&2
-    staging=$(get_remote_live_name staging)
+    staging=$(get_remote_live_info staging)
     echo ""
 
     if [[ "$1" == "live" ]]; then
         target="live"
         echo -n "Fetching live branch name from crosswalk-project.org..." >&2
-        current=$(get_remote_live_name)
+        current=$(get_remote_live_info)
         echo ""
         rev=${staging}
     else
         target="staging"
         current=${staging}
         if [[ "$1" == "" ]]; then
-            rev=$(get_local_live_name)
+            rev=$(get_local_live_info)
         else
             rev=$1
         fi
     fi 
 
-    push $target $rev $current
-
-EOF
+    push "set" $target $rev $current
 }

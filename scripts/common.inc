@@ -11,13 +11,36 @@ function die () {
 }
 
 function get_local_live_name () {
+    branchname $(get_local_live_info $*)
+}
+    
+function get_local_live_info () {
     local branch
     branch=$(git branch -a | grep remotes.*live | sort -r | head -n 1)
     branch=${branch//  remotes\/origin\//}
-    echo $branch
+    echo $branch:$(branchsha $branch)
+}
+
+function branchsha () {
+    local sha=$1
+    sha=${sha/*:/}
+    if [[ "$sha" == "$1" ]]; then
+        git log -1 --pretty=format:%H $1
+    else
+        echo $sha
+    fi
+}
+
+function branchname () {
+    local branch=$1
+    echo ${branch/:*/}
 }
 
 function get_remote_live_name () {
+    branchname $(get_remote_live_info $*)
+}
+    
+function get_remote_live_info () {
     local branch
     local revision
     local url
@@ -36,7 +59,6 @@ function get_remote_live_name () {
         ;;
     esac
     branch=$(wget -qO - ${url}/${revision})
-    branch=${branch/:*/}
     echo $branch
 }
 
