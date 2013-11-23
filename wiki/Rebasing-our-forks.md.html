@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Rebasing-our-forks';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Rebasing our forks</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Rebasing our forks</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Rebasing-our-forks"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Rebasing-our-forks"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <p>As described in our <a href="Release-methodology">Release Methodology</a> page, Crosswalk follows a release process similar to Chromium's. Part of our <a href="Rebasing-Strategy">Rebasing Strategy</a> involves rebasing our forks of the Blink and Chromium repositories on top of a certain upstream release.</p>
+
+<p>This article shows how perform these rebases and what pitfalls to look out for, as well as how to update Crosswalk itself once the forks have been rebased.</p>
+
+<h2>Before you begin<a class="anchor" id="Before-you-begin" href="#Before-you-begin"></a></h2>
+
+<p>Some skills are essential in order to rebase the code without losing half of your hair or running away in despair.</p>
+
+<p>First of all, you <em>must</em> be familiar with Chromium's release process (which is what we have based our own relase methodology on). Particularly important things to know include:</p>
+
+<ul><li><a href="https://src.chromium.org/viewvc/chrome/">ViewVC</a> and how to use it.</li>
+<li>Chromium's SVN repository organization: development happens in trunk (<code>/trunk/src</code>), trunk gets branched and branches have numbers (<code>/branches/&lt;NUMBER&gt;/src</code>), certain branches are chosen for releases (<code>/releases/&lt;RELEASE NUMBER&gt;</code>).</li>
+<li><code>DEPS</code> and <code>DEPS.git</code> are <em>not</em> updated in a branch after it is created from trunk.</li>
+<li><code>DEPS</code> in a release <em>is</em> updated. However, releases do not have a <code>DEPS.git</code>.</li>
+<li>Analogously, <a href="https://src.chromium.org/viewvc/blink/">Blink's</a> development happens in trunk (<code>/trunk</code>) and a branch is created with the same number as the Chromium one when the latter is branched (<code>/branches/chromium/&lt;NUMBER&gt;</code>), except that Chromium branches such as <em>1234_55</em> do not have a corresponding branch in Blink; all commits to <em>1234</em>, <em>1234_56</em>, <em>1234_678</em> etc in Chromium go to the same branch <em>1234</em> in Blink.</li>
+</ul><p>You also need to be familiar with <a href="https://omahaproxy.appspot.com/">OmahaProxy</a>. Understand which row you are supposed to choose and what the columns mean. If you are rebasing Crosswalk's dependencies for a new cycle (ie. you are working on what Crosswalk's <code>master</code> branch is going to be based on), you should check the <strong>linux-beta</strong> row in OmahaProxy. Likewise, if you are simply maintaining Crosswalk's stable branch and are thus updating from one Chromium release to another in the <em>same</em> milestone, use the <strong>linux-stable</strong> row.</p>
+
+<p>As for columns, we are particularly interested in <em>true branch</em> and <em>branch revision</em>.</p>
+
+<ul><li><em>true branch</em> is the branch number from which a certain release (row in the table) was cut.</li>
+<li><em>branch revision</em> is the actual SVN commit number in the <em>true branch</em> corresponding to a certain release (more than one release can come from the same branch, they just use different <em>branch revisions</em>).</li>
+</ul><p>Finally, spend some time getting to know git better. Do not follow the instructions below blindly. Specifically, make sure you know how <a href="http://git-scm.com/book/en/Git-Internals-Git-References">references</a> and <a href="http://git-scm.com/book/en/Git-Internals-The-Refspec">refspecs</a> work.</p>
+
+<h2>Branch names in blink-crosswalk and chromium-crosswalk<a class="anchor" id="Branch-names-in-blink-crosswalk-and-chromium-crosswalk" href="#Branch-names-in-blink-crosswalk-and-chromium-crosswalk"></a></h2>
+
+<p>When creating new branches or updating existing ones, it is important to pay attention to Crosswalk's branch naming conventions for the forks. They apply to both blink-crosswalk and chromium-crosswalk.</p>
+
+<p>The most basic distinction is between the <code>master_*</code> and <code>upstream_*</code> branches:</p>
+
+<ul><li><code>master</code>, as usual in a git-based workflow, is the current development branch and the one everyone works on at the moment.</li>
+<li>When rebasing to track a different release, the previous <code>master</code> branch should be backed up and preserved as <code>master_history_&lt;release_number&gt;</code>. For example, <code>master_history_28_0_1500_36</code> corresponds to all the commits we made to chromium-crosswalk (or blink-crosswalk) while we were tracking Chromium's 28.0.1500.36 release.</li>
+<li>An <code>upstream_&lt;release_number&gt;</code> branch contains a pristine copy of an upstream Chromium (or Blink) branch; for example, <code>upstream_28_0_1500_36</code> contains all upstream Chromium commits that were made up to the 28.0.1500.36 release. It is equivalent to a Chromium branch in chromium.org.</li>
+</ul><p>In other words, <code>master_history_&lt;release_number&gt;</code> simply contains a certain number of commits made by Crosswalk contributors on top of an <code>upstream_&lt;release_number&gt;</code> branch.</p>
+
+<p>At least for now, we do not keep <code>lkgr</code> branches.</p>
+
+<h2>Rebasing blink-crosswalk<a class="anchor" id="Rebasing-blink-crosswalk" href="#Rebasing-blink-crosswalk"></a></h2>
+
+<p>Let's start with the dependency deepest down the stack we have: Blink. Most of the time, rebasing Blink should be trivial: not only are fork-specific commits discouraged in general, but Blink normally serves Crosswalk's purposes just fine without requiring any changes from our part.</p>
+
+<ol><li><p>Fork blink-crosswalk.</p>
+
+<p>In case this was not obvious, make sure you have your own fork of the blink-crosswalk both for experimenting and also for submitting pull requests and exercising the bots. Do <strong>NOT</strong> push your changes directly to <code>crosswalk-project/blink-crosswalk.git</code> directly without testing and talking to people first!</p>
+
+<p>Also, do not forget to add your remote to your checkout if you have not done so yet:
+cd third_party/WebKit
+git remote add my-fork git@github.com:myusername/blink-crosswalk.git</p></li>
+<li><p>Back up the existing <code>master</code> branch.</p>
+
+<p>As mentioned above, since the <code>master</code> branch is going to have its history changed, it must be backed up into a history branch first. For example, if we are currently tracking Chromium release 28.0.1500.36, a branch called <code>master_history_28_0_1500_36</code> must be created.
+git branch master_history_28_0_1500_36 master</p></li>
+<li><p>Determine the new Blink branch and revision that are going to be used.</p>
+
+<p>Let us assume we are working on Crosswalk's development branch (<code>master</code>). We look at the proper row (linux-beta) in OmahaProxy, and determine its version number is <strong>30.0.1599.66</strong>. Moving right, we see that the <em>true branch</em> column shows the branch number is <strong>1599_59</strong>. This means the Subversion branch in Blink's repository is <code>branches/chromium/1599</code> (not 1599_59, as explained above), which can also be accessed with <a href="http://src.chromium.org/viewvc/blink/branches/chromium/1599/">ViewVC</a>.</p>
+
+<p>As mentioned above, the <code>DEPS</code> and <code>DEPS.git</code> files are not updated in the Subversion branches. You need to check the correct Subversion revision for Blink and Chromium in the <em><em>release</em></em> <code>DEPS</code> file (ie. <a href="http://src.chromium.org/viewvc/chrome/releases/31.0.1650.12/DEPS?pathrev=226911">/releases/31.0.1650.12/DEPS</a>). In this file, we can see the following snippet:
+</p><div class="highlight"><pre><span class="c"># ...</span>
+<span class="s">'src/third_party/WebKit'</span><span class="p">:</span>
+  <span class="n">Var</span><span class="p">(</span><span class="s">"webkit_trunk"</span><span class="p">)[:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s">'/branches/chromium/1650@158834'</span><span class="p">,</span>
+<span class="c"># ...</span>
+</pre></div>
+
+<p>This means Blink needs to be at SVN revision <strong>158834</strong>.</p></li>
+<li><p>Fetch the new Blink branch and create a new <code>upstream</code> branch.</p>
+
+<p>This use of <code>git fetch</code> is a bit unusual, and it assumes your <code>origin</code> remote points to a read-write checkout of blink-crosswalk, such as <code>git@github.com:myusername/blink-crosswalk.git</code>.
+git fetch https://chromium.googlesource.com/chromium/blink.git branch-heads/chromium/1599:refs/heads/upstream_30_0_1599_66
+A new local branch called <code>upstream_30_0_1599_66</code> should now exist and be visible if you call <code>git branch</code>.</p>
+
+<p>As the same branch can be used for more than one release, the commit at the tip of the branch might not be the one corresponding to the release we want. Use <code>git log</code> or <code>git svn find-rev</code> to determine the SHA1 hash corresponding to the Subversion revision determined in the previous section (158213), and then reset to it:
+git checkout upstream_30_0_1599_66
+git reset --hard </p></li>
+<li><p>Rebase existing fork-specific changes in <code>master</code> on top of the new <code>upstream</code> branch.</p>
+
+<ol><li>In the trivial case, we have no fork-specific commits on top of the upstream ones (yay). This means both <code>master</code> (and <code>master_history_28_0_1500_36</code>) point to the same commit as <code>upstream_28_0_1500_36</code>). Updating <code>master</code> should be very simple: just make it point to the same change as the new <code>upstream</code> branch.
+git checkout master
+git reset --hard upstream_30_0_1599_66</li>
+<li><p>If we do have commits on top of the upstream ones, we need to check which of them are still relevant and re-apply those which are.</p>
+
+<p>This process involves some manual work. Use <code>git log</code> and any other tools at your disposal to study the Crosswalk-specific commits we have. In some cases, their commit messages say "this commit will not be needed once we rebase", or "this commit is only necessary until release XX.YY". Take note of them, because they will probably not be needed anymore. After that, use <code>git rebase -i</code> to rebase our commits on top of the new branch. It will try to add a lot of previous Chromium commits as well, so you need to remove a handful of lines (anything before the first Crosswalk-specific commit belongs to the previous Chromium branch and must be removed) and check which commits should actually be added.</p>
+
+<p>Note that there some manual effort is required here: there are likely going to be a lot of conflicts, so you need to check the commits, remove some and adjust some others. Also note that the automatic merge commits from GitHub will be lost.
+git checkout master
+git rebase -i upstream_30_0_1599_66 # Choose the right commits, resolve conflicts.</p></li>
+</ol></li>
+<li><p>Push your new branches to your fork.</p>
+
+<p>Your new commits will have to be tested with Crosswalk (and Chromium) later, so you need to push them to your fork first.
+git push my-fork master_history_28_0_1500_36
+git push my-fork upstream_30_0_1599_66
+git push -f my-fork master</p></li>
+</ol><h2>Rebasing chromium-crosswalk<a class="anchor" id="Rebasing-chromium-crosswalk" href="#Rebasing-chromium-crosswalk"></a></h2>
+
+<p>The rebasing process for chromium-crosswalk is very similar to the one for blink-crosswalk. The differences are in some branch names upstream and in the fact that it is much more likely that we have commits on top of the upstream ones than for blink-crosswalk.</p>
+
+<p>The parts of the process that are similar to blink-crosswalk have shorter descriptions here. Please refer to the blink-crosswalk section for more detailed explanations of each step. It's not possible to emphasize enough how important it is not to follow the steps blindly, so read up and understand what is going on first.</p>
+
+<ol><li><p>Fork chromium-crosswalk.</p>
+
+<p>Once again, fork the repository if you haven't done it yet, and <strong>DO NOT</strong> push your changes directly to <code>crosswalk-project/chromium-crosswalk.git</code> directly without testing and talking to people first!</p>
+
+<p>And, if you haven't done so, add your remote to your checkout:
+git remote add my-fork git@github.com:myusername/chromium-crosswalk.git</p></li>
+<li><p>Back up the existing <code>master</code> branch.</p>
+
+<p>Assuming we are currently tracking Chromium release 28.0.1500.36:
+git branch master_history_28_0_1500_36 master</p></li>
+<li><p>Determine the new Chromium branch and revision that are going to be used.</p>
+
+<p>Assuming we are tracking <strong>linux-beta</strong> and it is now at release <strong>30.0.1599.66</strong>: the <em>true branch</em> column in OmahaProxy says the branch number is <strong>1599_59</strong>, so the Subversion branch in Chromium's repository is <code>branches/1599_66</code>.</p>
+
+<p>Contrary to Blink, there is no need to check the <code>DEPS</code> file in the release branch; if you still want to, the <code>'src'</code> section in <code>releases/30.0.1599.66/DEPS</code> should point to the same revision as <em>true branch</em> in OmahaProxy, <strong>226662</strong>:
+</p><div class="highlight"><pre><span class="c"># ...</span>
+<span class="s">'src'</span><span class="p">:</span>
+  <span class="s">'/branches/1650/src@226662'</span><span class="p">,</span>
+<span class="c"># ...</span>
+</pre></div></li>
+<li><p>Fetch the new Chromium branch and create a new <code>upstream</code> branch.</p>
+
+<p>git fetch https://chromium.googlesource.com/chromium/src.git branch-heads/1599:refs/heads/upstream_30_0_1599_66</p>
+
+<p>Verify the new branch <code>upstream_30_0_1599_66</code> has been created by running <code>git branch</code>.</p>
+
+<p>As the same branch can be used for more than one release, the commit at the tip of the branch might not be the one corresponding to the release we want. Use <code>git log</code> or <code>git svn find-rev</code> to determine the SHA1 hash corresponding to the Subversion revision determined in the previous section (226662), and then reset to it:
+git checkout upstream_30_0_1599_66
+git reset --hard </p></li>
+<li><p>Rebase existing fork-specific changes in <code>master</code> on top of the new <code>upstream</code> branch.</p>
+
+<ol><li>In the trivial case (ie. we have no commits on top of upstream):
+git checkout master
+git reset --hard upstream_30_0_1599_66</li>
+<li>If we do have commits of our own, use <code>git log</code> to check if some of the commit messages say certain commits can be safely removed when moving to a newer Chromium release, then rebase:
+git checkout master
+git rebase -i upstream_30_0_1599_66 # Choose the right commits, resolve conflicts.</li>
+</ol></li>
+<li><p>Push your new branches to your fork.</p>
+
+<p>git push my-fork master_history_28_0_1500_36
+git push my-fork upstream_30_0_1599_66
+git push -f my-fork master</p></li>
+</ol><h2>Updating Crosswalk itself<a class="anchor" id="Updating-Crosswalk-itself" href="#Updating-Crosswalk-itself"></a></h2>
+
+<p>Now that the forks themselves have been updated, we need to work on the Crosswalk part of the rebase. It can be divided in two parts: first, smoke-test your fork changes by building content shell, then update Crosswalk's code since some of the Chromium (and maybe V8) features it uses have changed (this is very much likely if you are tracking a new milestone, whereas stable updated should be fairly painless in this regard).</p>
+
+<ol><li><p>Update version numbers in Crosswalk.</p>
+
+<p>Quick recap: Crosswalk follows a <code>MAJOR.MINOR.BUILD.PATCH</code> versioning scheme. See our <a href="Release-methodology">Release Methodology</a> page for an explanation of each of those numbers.</p>
+
+<p>For development branch rebases, we need to bump the <code>MAJOR</code> and <code>MINOR</code> numbers: <code>MAJOR</code> needs to be increased by 1, while <code>MINOR</code> is the major number of the new Chromium release we are going to track. For example, if Crosswalk's current version is <strong>1.28.52.3</strong> and we are now tracking Chromium 30.0.1599.66, the new Crosswalk version number should be <strong>2.30.0.0</strong>.</p>
+
+<p>For new releases in the stabilization branch, only the <code>PATCH</code> number is updated, as we are always tracking the same Chromium milestone. For example, if Crosswalk's current version is <strong>1.28.52.3</strong> and we are updating our Chromium from 28.0.1500.36 to 28.0.1500.72, the new version will be <strong>1.28.52.4</strong>.</p>
+
+<p>These version numbers need to be updated in the following files:</p>
+
+<ul><li><code>VERSION</code></li>
+<li><code>packaging/crosswalk.spec</code></li>
+</ul></li>
+<li><p>Update <code>DEPS.xwalk</code>.</p>
+
+<p>This should not require many explanations: it is the file used to generate <code>.gclient-xwalk</code> and determines where we fetch Blink and Chromium from and at what revision.</p>
+
+<p>First of all, check if there are entries there that could be removed (for example, there could be an entry saying "Delete the dependency below once we track Chromium &gt;M30"), and remove them.</p>
+
+<p>After that, update <code>chromium_version</code>, <code>chromium_crosswalk_point</code> and <code>blink_crosswalk_pint</code> to the new upstream Chromium version, the new chromium-crosswalk SHA1 hash and the new blink-crosswalk SHA1 hash, respectively.</p>
+
+<p>Last, update the blink-crosswalk and chromium-crosswalk lines in the <code>deps_xwalk</code> dictionary to point to <strong>your fork</strong>, since you have not pushed your new branches and changes to <code>crosswalk-project</code>'s repositories yet. Doing so is also useful to let others fetch the changes from your fork and help updating Crosswalk's code if necessary.</p></li>
+<li><p>Smoke-test the fork updates.</p>
+
+<p>The first way to verify your rebases went well and nothing is broken is to build Chromium's content shell. You should already be familiar with content shell, so let's go directly to the commands:</p>
+
+<p>gclient sync -v
+# gclient should now checkout a new 30.0.1599.66 directory and
+# then fetch new versions of a lot of third-party dependencies.
+
+cd /path/to/chromium-crosswalk
+python build/gyp_chromium
+ninja -C out/Debug content_shell</p>
+
+<p>There is nothing too special above, you just need to tell <code>gclient</code> to fetch the new dependencies, build content shell and then run it to verify everything is working. The exact way you build the <code>content_shell</code> target (with <code>ninja</code> or with <code>make</code> etc) is irrelevant. Building in debug mode is recommended in order to build assertions and other parts of the code ignored in a release build.</p></li>
+<li><p>Try building Crosswalk and its tests.</p>
+
+<p>Once you are sure content shell is OK, it is time to verify Crosswalk itself. Start by trying to build xwalk and its tests, then running them.</p>
+
+<p>cd /path/to/chromium-crosswalk
+python xwalk/gyp_xwalk # Optional arguments etc etc.
+ninja -C out/Debug xwalk
+ninja -C out/Debug xwalk_unittest
+ninja -C out/Debug xwalk_browsertest
+./out/Debug/xwalk_unittest
+./out/Debug/xwalk_browsertest</p>
+
+<p>Again, the exact command line arguments are not described above, and can be found in other pages. The important part is that you must build Crosswalk and test it. Try doing that with as many platforms as you can, such as Android and Tizen as well.</p>
+
+<p>If you are working on a stable branch, the whole process should not have unexpected bumps.</p>
+
+<p>On the other hand, if this is a rebase on top of a new Chromium milestone for Crosswalk's development branch, it is very likely that Crosswalk will fail to build. This is the time to start adapting Crosswalk's source code to the changes in Chromium itself. You can also <code>git commit</code> your current changes, push them to a branch in your Crosswalk fork and ask for more people to chime in and help, as Chromium's code can change a lot between releases at times.</p>
+
+<p>Rinse and repeat until everything builds, all tests pass and Crosswalk seems to be working.</p></li>
+</ol><h2>For development rebases: update the QA infrastructure<a class="anchor" id="For-development-rebases:-update-the-QA-infrastructure" href="#For-development-rebases:-update-the-QA-infrastructure"></a></h2>
+
+<p><em>This is an annoying step that we are trying to get rid of. It is required only for Crosswalk's development branch because the build/try bots do not build the stable branch at the moment.</em></p>
+
+<p>By now it should be fairly clear that the rebases have been done correctly and Crosswalk is also working as expected, but if you are rebasing to track a different Chromium milestone (ie. you are working on Crosswalk's development branch) the QA infrastructure needs to be updated as well.</p>
+
+<p>First, the build and try bot masters need to be shut down before you push your blink-crosswalk and chromium-crosswalk changes to the crosswalk-project repositories, otherwise there is a risk that the bots will try to build each new commit individually. You need to either ask people who have access to the build/try bots infrastructure (such as Shiliu Wang, Halton Huo, Raphael Kubo da Costa and Alexis Menard) or get access to the necessary infrastructure and do it yourself.</p>
+
+<p>Once that is done, push your new branches:
+# Assuming origin points to git@github.com:crosswalk-project/{blink,chromium}-crosswalk.git
+cd /path/to/chromium-crosswalk/third_party/WebKit
+git push origin upstream_30_0_1599_66
+git push -f origin master
+
+cd /path/to/chromium-crosswalk
+git push origin upstream_30_0_1599_66
+git push -f origin master</p>
+
+<p>Next, clone the private <code>build-infrastructure.git</code> repository or ask someone to update <code>XWALK_CHROMIUM_VERSION</code> in <code>masters/master.tryserver.wrt/master.cfg</code> and <code>masters/master.wrt/master.cfg</code> there.</p>
+
+<p>After that, restart the build and try bot masters. If the new commits to blink-crosswalk and chromium-crosswalk are not picked up automatically by the build bots, force-build the content bots.</p>
+
+<h2>Push your changes<a class="anchor" id="Push-your-changes" href="#Push-your-changes"></a></h2>
+
+<p>Once everything is working, you can push your blink-crosswalk and chromium-crosswalk changes to crosswalk-project if you haven't done so yet.</p>
+
+<p># Assuming origin points to git@github.com:crosswalk-project/{blink,chromium}-crosswalk.git
+cd /path/to/chromium-crosswalk/third_party/WebKit
+git push origin master_history_28_0_1500_36
+git push origin upstream_30_0_1599_66
+git push -f origin master
+
+cd /path/to/chromium-crosswalk
+git push origin master_history_28_0_1500_36
+git push origin upstream_30_0_1599_66
+git push -f origin master</p>
+
+<p>This should not break anything for Crosswalk users, as the SHA1 hashes referenced in the Crosswalk repository are still present in the forks.</p>
+
+<p>Finally, create a <strong>single commit</strong> in Crosswalk that updates version numbers, adjusts the code and changes <code>DEPS.xwalk</code> and send a pull request. Don't forget to <strong>update</strong> <code>DEPS.xwalk</code> so it tracks the correct blink-crosswalk and chromium-crosswalk (<a href="mailto:git@github.com">git@github.com</a>:crosswalk-project/{blink,chromium}-crosswalk.git) back again.</p>
+
+<p>The try bots will then test it and, if everything goes well, Crosswalk will be updated for everyone to enjoy.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Halton Huo</b>, 2013-11-07 07:04:59</p>
+  <p>
+    <a id="delete-link" href="/wiki/Rebasing-our-forks" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Rebasing-our-forks">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

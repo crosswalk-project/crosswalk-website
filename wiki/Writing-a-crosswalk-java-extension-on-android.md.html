@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Writing-a-crosswalk-java-extension-on-android';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Writing a crosswalk java extension on android</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Writing a crosswalk java extension on android</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Writing-a-crosswalk-java-extension-on-android"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Writing-a-crosswalk-java-extension-on-android"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h2>Implement an external extension for Crosswalk on Android<a class="anchor" id="Implement-an-external-extension-for-Crosswalk-on-Android" href="#Implement-an-external-extension-for-Crosswalk-on-Android"></a></h2>
+
+<ul><li>Write the JavaScript stub code same as the native extension system, saved as a .js file.</li>
+<li>Create a new class inherited from the class XWalkExtensionClient implements the methods used by JavaScript and compile and package it as a jar file.
+<div class="highlight"><pre><span class="n">class</span> <span class="n">MyExtension</span> <span class="n">extends</span> <span class="n">XWalkExtensionClient</span> <span class="p">{</span>
+  <span class="n">public</span> <span class="n">MyExtension</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">String</span> <span class="n">jsApi</span><span class="p">,</span> <span class="n">XWalkExtensionContextClient</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="n">public</span> <span class="kt">void</span> <span class="n">onMessage</span><span class="p">(</span><span class="kt">int</span> <span class="n">instanceId</span><span class="p">,</span> <span class="n">String</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="n">public</span> <span class="n">String</span> <span class="n">onSyncMessage</span><span class="p">(</span><span class="kt">int</span> <span class="n">instanceId</span><span class="p">,</span> <span class="n">String</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div></li>
+<li>Configure the extension in a json format which should be packaged in android asset, like:
+<div class="highlight"><pre>  <span class="p">{</span>
+     <span class="s">"name"</span><span class="o">:</span>  <span class="s">"mandatory property - the extension name."</span><span class="p">,</span>
+     <span class="s">"class"</span><span class="o">:</span> <span class="s">"mandatory property - the Java class name."</span><span class="p">,</span>
+     <span class="s">"jsapi"</span><span class="o">:</span> <span class="s">"mandatory property - the file name of JavaScript stub code."</span><span class="p">,</span>
+     <span class="s">"permissions"</span><span class="o">:</span> <span class="s">"optional property - Android permissions used in this extension, like CAMERA. Its value is a list."</span>
+   <span class="p">}</span>
+</pre></div>
+See details about [Android permissions]. 
+(<a href="http://developer.android.com/reference/android/Manifest.permission.html">http://developer.android.com/reference/android/Manifest.permission.html</a>).</li>
+<li>So for each extension, put three files '*.jar, *.js and *.json' into one directory. Note that the name of these 3 files should be the same as the name of the directory.</li>
+<li>Package them with the option '--extensions=/path/to/extension' of make_apk.py. </li>
+<li>The packaging tool supports to package multiple extensions for one web app. For each extension, follow the first 4 steps and package them by adding all paths in the option '--extensions' with the path separator. For example, --extensions='/path/to/extension1:/path/to/extension2' on Linux and Mac.</li>
+</ul><h2>Example<a class="anchor" id="Example" href="#Example"></a></h2>
+
+<ul><li>Write the stub code in JavaScript, called myextension.js.
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">echoListener</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="nx">extension</span><span class="p">.</span><span class="nx">setMessageListener</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">echoListener</span> <span class="k">instanceof</span> <span class="nb">Function</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">echoListener</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+<span class="c1">// Export API 'echo'.</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">echo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">echoListener</span> <span class="o">=</span> <span class="nx">callback</span><span class="p">;</span>
+  <span class="nx">extension</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="c1">// Export API 'echoSync'.</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">echoSync</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">extension</span><span class="p">.</span><span class="nx">internal</span><span class="p">.</span><span class="nx">sendSyncMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div></li>
+<li>Implementing the inherited Java class, called MyExtension.java. Compile and package it as 'myextension.jar'. It needs 'android.jar' from Android SDK and 'xwalk_app_runtime_client_java.jar' from xwalk_app_template.tar.gz. So add them in your classpath when doing Java compilation.
+<div class="highlight"><pre><span class="n">package</span> <span class="n">com</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">extension</span><span class="p">;</span>
+
+<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">xwalk</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">runtime</span><span class="p">.</span><span class="n">extension</span><span class="p">.</span><span class="n">XWalkExtensionClient</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">xwalk</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">runtime</span><span class="p">.</span><span class="n">extension</span><span class="p">.</span><span class="n">XWalkExtensionContextClient</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="n">class</span> <span class="n">MyExtension</span> <span class="n">extends</span> <span class="n">XWalkExtensionClient</span> <span class="p">{</span>
+    <span class="n">final</span> <span class="n">private</span> <span class="n">XWalkExtensionContextClient</span> <span class="n">mExtensionContext</span><span class="p">;</span>
+    <span class="c1">// Don't change the parameters in Constructor because XWalk needs to call this constructor.</span>
+    <span class="n">public</span> <span class="nf">MyExtension</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">String</span> <span class="n">JsApiContent</span><span class="p">,</span> <span class="n">XWalkExtensionContextClient</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">JsApiContent</span><span class="p">,</span> <span class="n">context</span><span class="p">);</span>
+        <span class="n">mExtensionContext</span> <span class="o">=</span> <span class="n">context</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="err">@</span><span class="n">Override</span>
+    <span class="n">public</span> <span class="kt">void</span> <span class="n">onMessage</span><span class="p">(</span><span class="kt">int</span> <span class="n">instanceId</span><span class="p">,</span> <span class="n">String</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">postMessage</span><span class="p">(</span><span class="n">instanceId</span><span class="p">,</span> <span class="s">"From java:"</span> <span class="o">+</span> <span class="n">message</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="err">@</span><span class="n">Override</span>
+    <span class="n">public</span> <span class="n">String</span> <span class="n">onSyncMessage</span><span class="p">(</span><span class="kt">int</span> <span class="n">instanceId</span><span class="p">,</span> <span class="n">String</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"From java sync:"</span> <span class="o">+</span> <span class="n">message</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div></li>
+<li>Configure the extension in myextension.json so that Crosswalk can load the above files.
+<div class="highlight"><pre><span class="p">{</span>
+  <span class="s">"name"</span><span class="o">:</span>    <span class="s">"echo"</span><span class="p">,</span>               <span class="c1">// The name of external extension.</span>
+  <span class="s">"class"</span><span class="o">:</span>   <span class="s">"com.example.extension.MyExtension"</span><span class="p">,</span>   <span class="c1">// The name of the class that implements the extension.</span>
+  <span class="s">"jsapi"</span><span class="o">:</span>   <span class="s">"myextension.js"</span>             <span class="c1">// The path of the JavaScript code stub file.</span>
+<span class="p">}</span>
+</pre></div></li>
+<li>Call the web APIs in the web app. Not needed for developing an extension for Crosswalk on Android. Just for reference.
+<div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;title&gt;&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+try {
+  var d = new Date().toString();
+  // The first 'echo' is the extension name defined in myextension.json.
+  echo.echo(d, function(msg) {
+    document.write(msg + "<span class="nt">&lt;br&gt;</span>");
+    var expected = "From java:" + d;
+    if (msg === expected) {
+      document.write("Async echo <span class="nt">&lt;font</span> <span class="na">color=</span><span class="s">green</span><span class="nt">&gt;</span>passed<span class="nt">&lt;/font&gt;</span>.");
+      document.title = "Pass";
+    } else {
+      document.write("Async echo <span class="nt">&lt;font</span> <span class="na">color=</span><span class="s">red</span><span class="nt">&gt;</span>failed<span class="nt">&lt;/font&gt;</span>.");
+      document.title = "Fail";
+    }
+  });
+} catch(e) {
+  console.log(e);
+  document.title = "Fail";
+}
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div></li>
+<li>Include the extension and package its files by Crosswalk packaging tool.
+
+<ul><li>Put three files in one directory called 'myextension'.
+<div class="highlight"><pre><span class="n">myextension</span><span class="o">/</span>
+  <span class="n">myextension</span><span class="p">.</span><span class="n">js</span>
+  <span class="n">myextension</span><span class="p">.</span><span class="n">json</span>
+  <span class="n">myextension</span><span class="p">.</span><span class="n">jar</span>
+</pre></div></li>
+<li>Specify the extension directory when using 'make_apk.py'.
+<div class="highlight"><pre><span class="n">python</span> <span class="n">make_apk</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">TestExtension</span> <span class="o">--</span><span class="n">package</span><span class="o">=</span><span class="n">org</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">testextension</span> <span class="o">--</span><span class="n">extensions</span><span class="o">=</span><span class="s">"/path/to/myextension/"</span> <span class="p">...</span>
+</pre></div></li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Zhu, Yongsheng</b>, 2013-11-21 23:37:01</p>
+  <p>
+    <a id="delete-link" href="/wiki/Writing-a-crosswalk-java-extension-on-android" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Writing-a-crosswalk-java-extension-on-android">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
