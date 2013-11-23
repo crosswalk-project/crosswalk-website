@@ -21,6 +21,7 @@ https://developers.google.com/chrome-developer-tools/docs/css-preprocessors
  */
 @import 'bourbon/bourbon';
 
+$tiny-break: 440px;
 $small-break: 480px;
 $medium-break: 960px;
 
@@ -61,9 +62,10 @@ body {
         font-size: 1.2rem;
         line-height: 1.5rem;
     }
+    
     margin: 0;
     padding: 0;
-    min-width: 380px;
+    min-width: 320px;
     font-family: "ClearSans-Regular",helvetica,georgia,sans-serif;
     overflow-y: scroll;
 }
@@ -89,6 +91,9 @@ h1 {
     font-family: "ClearSans-Bold",helvetica,georgia,sans-serif;
     margin: 40px 0;
     font-size: 1.6rem;
+    @media (max-width: $tiny-break) {
+        font-size: 1.2rem;
+    }
     text-transform: uppercase;
 }
 
@@ -299,7 +304,7 @@ p {
 }
 
 #error {
-    min-width: 408px;
+    min-width: 320px;
     background-color: #ef7332;
     .logo {
         padding-top: 5em;
@@ -332,7 +337,7 @@ p {
 }
 
 #home {
-    min-width: 408px;
+    min-width: 320px;
     background-color: #ed7332;
     @include background(linear-gradient(to top, #e76840 0%, #f49541 65%, #ed7332 100%));
     .logo {
@@ -351,6 +356,13 @@ p {
         .logo {
             background-size: 400px auto;
             height: round(51px*400px/477px);
+        }
+    }
+    
+    @media (max-width: $tiny-break) {
+        .logo {
+            background-size: 320px auto;
+            height: round(51px*320px/477px);
         }
     }
     
@@ -434,6 +446,12 @@ p {
         margin: 3px;
         @media (max-width: $medium-break) {
             width: 240px;
+            display: block;
+            margin: 3px auto;
+        }
+        @media (max-width: $tiny-break) {
+            font-size: 0.8rem;
+            width: 120px;
             display: block;
             margin: 3px auto;
         }
@@ -559,24 +577,6 @@ p {
 
 
 
-#samples-overview .divider {
-    border-color: #bcba70;
-    background-color: #8eb08f;
-    .right-corner {
-        border-left-color: #8eb08f;
-    }
-    .left-corner {
-        border-right-color: #8eb08f;
-    }
-}
-
-#samples-overview .content {
-    padding-bottom: 48px;
-    h1 {
-        margin: 0 0 16px 0;
-    }
-}
-
 #footer {
     .divider {
         border-color: #6c5245;
@@ -605,7 +605,7 @@ p {
 #overview {
     background-color: #3e2220;
     @include background(radial-gradient(circle at 50% 50%, #532824 0%, #3e2220 300px, #2f191e 100%));
-    min-width: 408px;
+    min-width: 320px;
     
     h1 {
         line-height: 1.1em;
@@ -641,6 +641,12 @@ p {
     border: 2px solid hsl(34, 92%, 85%);
     text-align: left;
     min-width: 194px;
+
+    @media (max-width: $tiny-break) {
+        font-size: 0.8rem;
+        min-width: 104px;
+    }
+
     a {
         display: inline-block;
         border-radius: 3px;
@@ -665,12 +671,30 @@ p {
     background-color: #55523e;
     @include background(linear-gradient(to bottom, #354b3d 0%, #55523e 80%));
     padding-top: 40px;
-    min-width: 408px;
+    min-width: 320px;
     padding-bottom: 64px;
 
     .content {
         text-align: center;
         max-width: 800px;
+    }
+
+    .divider {
+        border-color: #bcba70;
+        background-color: #8eb08f;
+        .right-corner {
+            border-left-color: #8eb08f;
+        }
+        .left-corner {
+            border-right-color: #8eb08f;
+        }
+    }
+
+    .content {
+        padding-bottom: 48px;
+        h1 {
+            margin: 0 0 16px 0;
+        }
     }
 
     /* JS is used to size and position the crossing-tile */
@@ -816,7 +840,7 @@ p {
     width: 100%;
     font-family: "ClearSans-Regular",helvetica,georgia,sans-serif;
     font-size: 1.1em;
-    min-width: 408px;
+    min-width: 320px;
 }
 
 #footer .background {
@@ -825,7 +849,7 @@ p {
 
 #footer-padding {
     width: 100%;
-    min-width: 408px;
+    min-width: 320px;
     display: inline-block;
     position: relative;
     background: #1c1305;
@@ -871,7 +895,7 @@ p {
     opacity: 0.9;
     width: 100%;
     min-height: 64px;
-    min-width: 408px;
+    min-width: 308px;
     top: -64px;
     border-bottom: 3px solid $top-menu-border;
     z-index: 100;
@@ -952,7 +976,7 @@ p {
         min-height: 48px;
         top: -48px;
 
-         &>div{
+        &>div{
             padding-right: 8px;
         }
         
@@ -976,6 +1000,30 @@ p {
             min-width: 30px;
             background-image: url(assets/crosswalk-LOGO-Wmark-small.png);
             background-size: 30px auto;
+        }
+    }
+    @media (max-width: $tiny-break) {
+        min-height: 32px;
+        top: -32px;
+
+        &>div{
+            padding-right: 6px;
+        }
+        
+        a {
+            &.menu-item {
+                padding: 0 4px;
+            }
+            height: 32px;
+            line-height: 32px;
+        }
+        
+        a[href="#home"] {
+            width: 20px;
+            height: 32px;
+            min-width: 20px;
+            background-image: url(assets/crosswalk-LOGO-Wmark-small.png);
+            background-size: 20px auto;
         }
     }
 }
