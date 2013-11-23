@@ -241,7 +241,7 @@ function run () {
     git remote show origin | grep -q ${branch} || {
         echo "not found."
         echo "Running: git push -u origin ${branch}:${branch}..."
-        git push -u origin 
+        git push -u origin ${branch}:${branch}
     }
     echo ""
 

@@ -122,14 +122,27 @@ cat << EOF
 
 Changes committed to git as branch ${branch}.
 
-Current tree set back to 'master'. Commands to run:
+Current tree set back to 'master'. Steps to take:
 
-git push --tags origin master
-git push origin ${branch}
-ssh stg-sites.vlan14.01.org "cd /srv/www/stg.crosswalk-project.org/docroot ; sudo su drush -c '../update.sh'"
-cd wiki
-git push --tags origin master
-cd ..
+  1. Push ${branch} to staging server:
+  
+     ./site.sh push
+  
+  2. Test the site by going to https://stg.crosswalk-project.org
+     2.1 Visit each category section. Make sure they work.
+         https://stg.crosswalk-project.org/#documentation
+         https://stg.crosswalk-project.org/#contribute
+         https://stg.crosswalk-project.org/#wiki
+     2.2 Check the Wiki History and verify the newest changes exist
+         https://stg.crosswalk-project.org/#wiki/history
+  
+  3. Resize your browser window down to a width of 320 and up to 
+     full screen. Ensure responsize design still functions.
 
+  4. After you are confident that the site is good, push the site 
+     to the live server:
+     
+    ./site.sh push live
+    
 EOF
 }
