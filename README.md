@@ -24,38 +24,12 @@ If you encounter a red web page, this means the scss to css compilation
 failed. If you were just editing xwalk.scss, you can look in the file xwalk.msg to view the Sass compiler output.
 
 When appropriate changes have been made, commit the changes locally on the master branch.
-To stage and test the content for the live vesrion, run the mklive.sh script:
+To stage and test the content for the live vesrion, run the mklive script:
 ```
-./mklive.sh
+./site.sh mklive
 ```
 At the completion of the above script, a new branch will have been created based on
-the current date in the form "live-YYYYMMdd". To test the new content:
-```
-branch=$(git branch | grep live | sort -r | head -n 1)
-branch=${branch// }
-echo ${branch}
-git archive --format=tar --prefix=${branch}/ ${branch} | (cd /var/www ; tar xf -)
-```
-This will create the path /var/www/${branch}, for example:
-
-/var/www/live-20130904
-
-When you are satisfied with the results, push all of the changes back to GitHub:
-```
-git push origin master
-git push origin ${branch}
-```
-And then log into the crosswalk-project.org server, change to the site docroot, and run:
-```
-git pull --all
-branch=$(git branch -a | grep remotes.*live | sort -r | head -n 1)
-branch=${branch//  remotes\/origin\//}
-echo ${branch}
-# Verify the correct branch will be used
-git branch -D ${branch}
-git checkout --track origin/${branch}
-git clean -f
-```
+the current date in the form "live-YYYYMMdd".
 
 ### Live Website
 The live version consists of static content, pre-generated and
@@ -66,7 +40,7 @@ http://crosswalk-project.org.
 #### Quick Steps
 To create a local copy of the live website:
 ```
-git clone git@github.com:crosswalk-project/crosswalk-website.git -b live
+git clone git@github.com:crosswalk-project/crosswalk-website.git
 ```
 The above will checkout the entire website, including the cached
 Wiki content, and excluding binary downloads.
@@ -218,34 +192,10 @@ sass files should be verified to be correct prior to committing to git!
 
 #### Development scripts
 
+See site.sh:
 ```
-./cleanup.sh
-./generate.sh
+./site.sh
 ```
-
-The first deletes all old generated content. The second generates
-new cached copies of all dynamic content. If gollum isn't running,
-the generate script will attempt to launch it.
-
-To update the Wiki content:
-```
-cd wiki
-git checkout
-```
-
-After running the generate script, testing should be done locally
-to ensure the site is functional. Once testing is complete, a
-live version can be built:
-
-```
-git checkout live
-./mklive.sh
-```
-
-That script will update the current working tree to the state
-the live site will be in, including caching all dynamic
-content, removing the source files that generate the dynamic
-content, and removing the dynamic scripts.
 
 ## Website Design
 The Crosswalk website consists of the styles (CSS), the main page
