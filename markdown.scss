@@ -352,8 +352,9 @@ template.css from gollum
     }
     .markdown-body code,
     .markdown-body tt {
-      margin: 0 2px;
-      padding: 0 5px;
+//      margin: 0 2px;
+      padding: 2px 6px;
+      font-size: 14px;
       white-space: nowrap;
       border: 1px solid #ddd;
       background-color: #f8f8f8;
@@ -370,7 +371,7 @@ template.css from gollum
     .markdown-body pre {
       background-color: #f8f8f8;
       border: 1px solid #ccc;
-      font-size: 13px;
+      font-size: 12px;
       line-height: 19px;
       overflow: auto;
       padding: 6px 10px;
