@@ -695,7 +695,7 @@ function addEventOffset (e) {
     
     var touchY = 0;
     function calculateScrollbar (scrollable) {
-        var perc, y, d, scroll_bar, h;
+        var perc, y, d, scroll_bar, h, scroll_bar_thumb;
         d = scrollable.firstChild.offsetHeight - scrollable.offsetHeight;
         if (d <= 0)
             return;
