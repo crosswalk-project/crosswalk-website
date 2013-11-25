@@ -239,19 +239,16 @@ function generate_wiki_page (page, contents) {
                 last_edit.textContent = '';
             }
 
-            var github_link = div.querySelector ('a.action-edit-page');
-            if (github_link) {
-                /* GitHub URL syntax for starting the editing; GitHub flattens
-                 * the wiki structure, so no path structure (vs. Gollum which
-                 * does support a directory structure) */
-                github_link.href = 
-                    'http://github.com/crosswalk-project/crosswalk-website/wiki/' + 
-                    github_link.getAttribute ('href').replace (/^.*\//, '');
-                github_link.textContent = 'GitHub';
-                github_link.target = '_blank';
-                github_link.className = '';
-                last_edit.appendChild (github_link);
-            }
+            var github_link = document.createElement ('a');
+            /* GitHub URL syntax for starting the editing; GitHub flattens
+             * the wiki structure, so no path structure (vs. Gollum which
+             * does support a directory structure) */
+            github_link.href = 
+                'http://github.com/crosswalk-project/crosswalk-website/wiki/' + requested_page;
+            github_link.textContent = 'GitHub';
+            github_link.target = '_blank';
+            github_link.className = '';
+            last_edit.appendChild (github_link);
 
             last_edit.innerHTML = last_edit.innerHTML.replace (
                 /Last edited/, 'Content last edited');
