@@ -1,3 +1,5 @@
+"use strict";
+
 (function () {
 var context = this,
     home, page, footer,
@@ -285,7 +287,7 @@ function generate_history_page (page, contents) {
     wiki_body.appendChild (div);
     content.appendChild (wiki_body);
     
-    try {
+    try {    
         var html, events, spans, i, j, time,
             date = new Date (),
             now = Date.now ();
@@ -319,7 +321,7 @@ function generate_history_page (page, contents) {
         j = 0;
         spans.forEach (function (span) {
             var period = null, period_index = 0, last_period_index = 0, 
-                tracked = [], k;
+                tracked = [], k, e;
                                     
             while (j < events.length) {
                 e = events[j];
@@ -397,11 +399,9 @@ function generate_history_page (page, contents) {
         });
 
         div.innerHTML = html;
-
     } catch (e) {
         div.textContent = 'Error parsing Wiki History';
     }
-    
     return content;
 }    
     
@@ -464,7 +464,7 @@ function content_response (e) {
             e.currentTarget.responseText);
     }
                                         
-    div = column.querySelector ('.sub-content');
+    var div = column.querySelector ('.sub-content');
     /* If this was a delayed load, it may have finished after a switch
      * to the #home column, in which case there is no sub-content field */
     if (!div) {
@@ -887,7 +887,7 @@ function navigateTo (href) {
             
         }
     }
-    tmp_request = '#'+ requested_column + '/' + requested_page + '/' + requested_anchor;
+    var tmp_request = '#'+ requested_column + '/' + requested_page + '/' + requested_anchor;
     if (active_uri == tmp_request) {
         if (debug.navigation) {
             console.log ('Requested active URI: ' + active_uri);
@@ -1187,7 +1187,7 @@ function onResize () {
     _onResize (true);
 }
 
-var scroll_target = 0, scroll_start = 0, scroll_start_pos = 0;
+var scroll_target = 0, scroll_start = 0, scroll_start_pos = 0, scroll_delta = 0;
 function smoothScroll () {
     if (!scroll_start)
         return;
@@ -1252,7 +1252,7 @@ function scrollTo (e) {
 
     scroll_start = Date.now ();
     scroll_start_pos = scroll;
-    y = getAbsolutePos (el).y;
+    var y = getAbsolutePos (el).y;
     if (y != 0)
         y -= top_menu.offsetHeight;
     scroll_delta = y - scroll_start_pos;
