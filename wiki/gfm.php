@@ -214,6 +214,16 @@ if (strtolower ($request) == 'history' ||
     exit;
 }
 
+/* If this is a simple wiki/ request (not in a sub-directory), redirect to GitHub */
+if (preg_match ('#^[^/]*$#', $request)) {
+    $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/wiki/'.$request, 'r');
+    if (!$f) {
+        missing ();
+    }
+    fpassthru ($f);
+    fclose ($f);
+    exit;
+}
 
 if (!preg_match ('#^'.dirname (__FILE__).'/#', $md)) {
     missing ();
