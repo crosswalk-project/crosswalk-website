@@ -2,6 +2,9 @@ desc="Generate live version of website"
 function run () {
     debug=${debug:=0}
     
+    WIKI_GIT="--git-dir=wiki/.git --work-tree=wiki/"
+    git ${WIKI_GIT} fetch --all || die "wiki fetch failed"
+    git ${WIKI_GIT} checkout -f master || die "wiki checkout failed"
     check_perms
     
     #
@@ -16,7 +19,6 @@ function run () {
     }
     
     [ "$1" != "-f" ] && check_unstaged
-    
     debug_msg "Check complete." 
     
     # Make new branch for live-YYYYMMDD

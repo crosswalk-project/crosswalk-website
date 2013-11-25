@@ -113,6 +113,7 @@ function kill_gollum () {
 }
 
 function check_perms () {
+    return 0
     echo ''
     echo -n 'Looking for files not writable by :www-data...'
     found=$(find . -not -group www-data -or \( \
@@ -129,6 +130,7 @@ function check_perms () {
         exit 1
     }
     echo 'none found. OK.'
+    return 0
 }
 
 function update_git () {
