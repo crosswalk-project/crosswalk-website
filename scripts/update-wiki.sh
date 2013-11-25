@@ -96,11 +96,12 @@ git ${WIKI_GIT} diff --quiet --exit-code tag-${target} && {
     exit
 }
 debug_msg "Wiki has been pulled from GitHub."
+echo ${PWD}
 
 # 4. Switch to the latest live-* branch
 echo "Checking out branch for site: ${target}"
 
-git checkout ${target} || {
+git checkout -f ${target} || {
     echo "Checking out ${target} failed."
     exit -1
 }

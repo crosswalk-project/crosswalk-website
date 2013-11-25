@@ -57,7 +57,7 @@ function get_remote_live_info () {
         url=https://crosswalk-project.org
         ;;
     esac
-    branch=$(wget -qO - ${url}/${revision})
+    branch=$(wget --no-check-certificate -qO - ${url}/${revision})
     echo $branch
 }
 
