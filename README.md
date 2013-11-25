@@ -1,16 +1,36 @@
-## Introduction
+# Website Design
+The Crosswalk website consists of the styles (CSS), the main page
+(index.html), and the functional logic (xwalk.js) that executes to
+adapt the DOM as necessary when the user is navigating the site.
+
+There are four main parts of the website. The top landing page,
+end user documentation, co-traveller contribute documentation, and
+the wiki.
+
+The content for the documentation and contribute sections is hosted 
+in the crosswalk-docs project on GitHub. See that project's
+README for information on how to edit that content:
+
+https://github.com/crosswalk-project/crosswalk-website/blob/master/README.md
+
+Wiki content is a live view from:
+
+https://github.com/crosswalk-project/crosswalk-website/wiki
+
+# Workflow
 There are two versions of this website. The development version
 and the live version.
 
-### Workflow
-Changes are made to source files (scss, js, and html) in a Development version of the site. The following content is generated dynamically:
+Changes are made to source files (scss, js, and html) in a development 
+version of the site. The following content is generated dynamically:
 
 ```
-Generated File      Source
-xwalk.css           xwalk.scss
-markdown.css        markdown.scss
-menus.js            dynamic based on contents of wiki/{documentation,contribute}
-wiki/*.html         *.md, *.mediawiki, *.org
+Generated File       Source
+xwalk.css            xwalk.scss
+markdown.css         markdown.scss
+menus.js             dynamic based on contents of wiki/documentation/contribute
+documentation/*.html *.md, *.mediawiki, *.org
+contribute/*.html    *.md, *.mediawiki, *.org
 ```
 
 The generated files are updated as needed by the PHP scripts when
@@ -18,10 +38,9 @@ running in a Development version of the site. If you can change xwalk.scss and
 reload the page, when xwalk.css is requested the script xwalk.css.php will determine
 if a new version of the source file exists.
 
-**Never edit the Generated files directly.**
-
 If you encounter a red web page, this means the scss to css compilation
-failed. If you were just editing xwalk.scss, you can look in the file xwalk.msg to view the Sass compiler output.
+failed. If you were just editing xwalk.scss, you can look in the file xwalk.msg to 
+view the Sass compiler output.
 
 When appropriate changes have been made, commit the changes locally on the master branch.
 To stage and test the content for the live vesrion, run the mklive script:
@@ -31,13 +50,13 @@ To stage and test the content for the live vesrion, run the mklive script:
 At the completion of the above script, a new branch will have been created based on
 the current date in the form "live-YYYYMMdd".
 
-### Live Website
+## Live Website
 The live version consists of static content, pre-generated and
 unchanging. This version has minimal server requrements, needing
 only PHP and the rewrite module. This is the version hosted on
 http://crosswalk-project.org.
 
-#### Quick Steps
+### Quick Steps
 To create a local copy of the live website:
 ```
 git clone git@github.com:crosswalk-project/crosswalk-website.git
@@ -45,7 +64,7 @@ git clone git@github.com:crosswalk-project/crosswalk-website.git
 The above will checkout the entire website, including the cached
 Wiki content, and excluding binary downloads.
 
-#### Details
+### Details
 The live version lives in the 'live' branch. Running the live
 version requires the rewrite module in Apache2. This is used
 in the wiki subsystem to map requested URLs through a PHP
@@ -62,7 +81,7 @@ The rest of the content is served from static files that were
 generated as part of the development cycle as described in the Workflow
 section.
 
-### Development Website
+## Development Website
 
 The development version automatically generates new versions
 of various files (*.css, menus.js, and the wiki/*.html content)
@@ -79,12 +98,12 @@ git checkout
 cd ..
 ```
 
-#### Requirements
+### Requirements
 Running the development version of the site has several additional
 software dependencies, located toward the end of this file under
 Development Site Software Dependencies.
 
-##### APACHE2 AND PHP
+#### APACHE2 AND PHP
 
 Apache2 configured with PHP and the following:
   -MultiViews: it breaks the usage of php to create HTML from markup
@@ -97,7 +116,7 @@ sudo a2enmod rewrite
 sudo service apache2 restart
 ```
 
-##### GOLLUM AND THE WIKI
+#### GOLLUM AND THE WIKI
 
 The wiki subsystem uses gollum internally to create cached pages.
 The website itself does not contain the Crosswalk wiki content.
@@ -165,7 +184,7 @@ git pull
 git checkout -f
 ```
 
-### CSS and SASS
+## CSS and SASS
 
 sass and bourbon are used for the CSS. If a css file is requested and
 there is an updated sass version available, the php script in the site
@@ -190,24 +209,9 @@ NOTE:
 sass files should be verified to be correct prior to committing to git!
 
 
-#### Development scripts
+### Development scripts
 
 See site.sh:
 ```
 ./site.sh
 ```
-
-## Website Design
-The Crosswalk website consists of the styles (CSS), the main page
-(index.html), and the functional logic (xwalk.js) that executes to
-adapt the DOM as necessary when the user is navigating the site.
-
-The content is all of the information presented in the three
-sub-pages:
-
-* Documentation
-* Contribute
-* Wiki
-
-...
-
