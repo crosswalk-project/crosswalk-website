@@ -279,6 +279,4 @@ if (filesize ($md.'.html') == 0) {
     missing ();
 }
 
-touch ($md.'.html', $source['mtime']);
-
 require ($md.'.html');
