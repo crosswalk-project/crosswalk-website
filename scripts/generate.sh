@@ -13,9 +13,6 @@ function run () {
             ${dry_run} generate "${file}"
         done
     done
-    
-	${dry_run}generate "pages.md"
-	${dry_run}generate "history.md"
 
 	for i in menus.js xwalk.css markdown.css; do
 		${dry_run}php $i.php > /dev/null
@@ -24,4 +21,6 @@ function run () {
 	[ ! -z ${gollum} ] && {
 		kill -9 ${gollum}
 	}
+    
+    ./site.sh update-wiki
 }

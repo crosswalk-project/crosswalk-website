@@ -32,14 +32,10 @@ function run () {
 #    NOTE: If no changes, abort at this point
 # 4. Switch to the live-* branch currently in use
 # 5. Remove all *.html from wiki/ not in documentation/ or contribute/
-# 6. Launch Gollum if it isn't running
-# 7. Regenerate all markdown content to HTML
-# 8. Kill Gollum if #6 launched it.
-# 9. Remove all Wiki markdown content from the Live site
-# 10. Add any new files (not in documentation/contribute) into the live-site
-# 11. Commit the changes to the live-* branch
-# 12. Reset local back to master branch for the website and wiki
-# 13. Display message for how to push changes to staging site
+# 6. Generate the menu files
+# 7. Commit the changes to the live-* branch
+# 8. Reset local back to master branch for the website and wiki
+# 9. Display message for how to push changes to staging site
 #
 case "$1" in
     ""|live)
@@ -95,12 +91,12 @@ branch=${branch//  remotes\/origin\//}
 echo "Latest live branch: ${branch}"
 debug_msg "Branch status above."
 
-# 3. Pull the latest changes from GitHub into the wiki/
-git ${WIKI_GIT} pull --all || {
+# 3. Fetch the latest changes from GitHub into the wiki/
+git ${WIKI_GIT} fetch --all || {
 	echo "Updating wiki/ latest from GitHub failed. Exiting."
 	exit -1
 }
-git ${WIKI_GIT} checkout -f
+
 git ${WIKI_GIT} diff --quiet --exit-code tag-${branch} && {
     echo "No changes to Wiki since ${branch}"
     exit
@@ -118,61 +114,48 @@ git checkout ${branch} || {
 }
 debug_msg "Branch / Checkout to ${branch} complete."
 
-# 5. Launch Gollum if it isn't running
-launch_gollum
-
-cd wiki && {
-    # 6. For each file edited, if it is a markdown file, 
-    #    delete the .html for the file (if it exists) and then 
-    #    html for it.
-    git diff --name-only tag-${branch} | while read file; do
-        [ -e "${file}.html" ] && rm -f "${file}.html"
-        extension="${file##*.}"
-        case "${extension}" in
-        "md" | "mediawiki" | "org")
-            generate "${file}"
-            git --git-dir=../.git --work-tree=.. add "${file}".html
-            ;;
-        *)
-            git --git-dir=../.git --work-tree=.. add "${file}"
-            ;;
-        esac
-    done
-    debug_msg "Content files added."
-    
-    # Since content was changed, regenerate the pages and history
-    generate "pages.md"
-    generate "history.md"
-    cd ..
-}
+# 6. Regenerate the pages and history
+generate "wiki/pages.md"
+generate "wiki/history.md"
     
 git add wiki/pages.md.html wiki/history.md.html
 debug_msg "Pages and History files added."
 
-# 8. Kill Gollum if #6 launched it.
-kill_gollum
-
-# 11. Commit the changes to the live-* branch
+# 7. Commit the changes to the live-* branch
 git commit -s -a -m "Automatic static version commit for ${branch}"
 debug_msg "Live-site commited to ${branch}"
 
-# 12. Reset local back to master branch for the website and wiki
+# 8. Reset local back to master branch for the website and wiki
 git checkout master || die "Checkout failed."
 
-git ${WIKI_GIT} clean -f
-git ${WIKI_GIT} checkout -f
-git ${WIKI_GIT} tag -f tag-${branch}
+git ${WIKI_GIT} tag -f tag-${branch} master
 
 # 13. Display message for how to push changes to staging site
 cat << EOF
 
 Changes committed to git as branch ${branch}.
 
-Current tree set back to 'master'. Commands to run:
+Current tree set back to 'master'. Steps to take:
 
-git push origin ${branch}
-git ${WIKI_GIT} push origin tag-${branch}
-ssh stg-sites.vlan14.01.org "cd /srv/www/stg.crosswalk-project.org/docroot ; sudo su drush -c '../update.sh'"
+  1. Push ${branch} to staging server:
+  
+     ./site.sh push ${branch}
+  
+  2. Test the site by going to https://stg.crosswalk-project.org
+     2.1 Visit each category section. Make sure they work.
+         https://stg.crosswalk-project.org/#documentation
+         https://stg.crosswalk-project.org/#contribute
+         https://stg.crosswalk-project.org/#wiki
+     2.2 Check the Wiki History and verify the newest changes exist
+         https://stg.crosswalk-project.org/#wiki/history
+  
+  3. Resize your browser window down to a width of 320 and up to 
+     full screen. Ensure responsize design still functions.
+
+  4. After you are confident that the site is good, push the version
+     from the Staging server to the Live server:
+     
+    ./site.sh push live
 
 EOF
 }

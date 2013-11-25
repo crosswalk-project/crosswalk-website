@@ -139,8 +139,8 @@ Current tree set back to 'master'. Steps to take:
   3. Resize your browser window down to a width of 320 and up to 
      full screen. Ensure responsize design still functions.
 
-  4. After you are confident that the site is good, push the site 
-     to the live server:
+  4. After you are confident that the site is good, push the version
+     from the Staging server to the Live server:
      
     ./site.sh push live
     
