@@ -2,11 +2,6 @@ desc="Generate live version of website"
 function run () {
     debug=${debug:=0}
     
-    WIKI_GIT="--git-dir=wiki/.git --work-tree=wiki/"
-    git ${WIKI_GIT} fetch --all || die "wiki fetch failed"
-    git ${WIKI_GIT} checkout -f master || die "wiki checkout failed"
-    check_perms
-    
     #
     # Verify this tree is on the 'master' branch
     #
@@ -20,7 +15,15 @@ function run () {
     
     [ "$1" != "-f" ] && check_unstaged
     debug_msg "Check complete." 
+
+
+    WIKI_GIT="--git-dir=wiki/.git --work-tree=wiki/"
+    git ${WIKI_GIT} fetch --all || die "wiki fetch failed"
+    git ${WIKI_GIT} checkout -f master || die "wiki checkout failed"
+    check_perms
+    debug_msg "Wiki checked out"
     
+
     # Make new branch for live-YYYYMMDD
     # -t track upstream (push/pull from github will work)
     # -f force -- delete branch if it already exists
