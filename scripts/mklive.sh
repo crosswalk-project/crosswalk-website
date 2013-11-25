@@ -50,6 +50,7 @@ function run () {
     #
     ./site.sh cleanup
     debug_msg "Cleanup complete."
+    
     ./site.sh generate
     debug_msg "Generate complete."
     
@@ -66,10 +67,7 @@ function run () {
     # Modify .gitignore to track/manage the generated content
     # from under the wiki/ path
     #
-    sed -i -e 's:^wiki/\*\.html:#wiki/*.html:' \
-           -e 's:^wiki/assets:#wiki/assets:' \
-           -e 's:^wiki/documentation:#wiki/documentation:' \
-           -e 's:^wiki/contribute:#wiki/contribute:' .gitignore
+    sed -i -e 's:^wiki/\*\.html:#wiki/*.html:' .gitignore
     for i in xwalk.css markdown.css menus.js; do
         sed -i -e s:^${i}:#${i}: .gitignore
     done
@@ -78,6 +76,8 @@ function run () {
     # Adding generated Wiki content to the Live site
     #
     find wiki -name '*html' -exec git add {} \;
+    find documentation -name '*html' -exec git add {} \;
+    find contribute -name '*html' -exec git add {} \;
     find wiki/assets -exec git add {} \;
     git add xwalk.css
     git add markdown.css
@@ -101,9 +101,9 @@ function run () {
     #
     # Remove all Wiki markdown content from Live site
     #
-    find wiki -name '*.md' -exec rm {} \;
-    find wiki -name '*.mediawiki' -exec rm {} \;
-    find wiki -name '*.org' -exec rm {} \;
+    find . -name '*.md' -exec rm {} \;
+    find . -name '*.mediawiki' -exec rm {} \;
+    find . -name '*.org' -exec rm {} \;
     debug_msg "Markdown content removal complete."
     
     git commit -s -a -m "Automatic static version commit for ${branch}"
@@ -113,8 +113,7 @@ function run () {
     debug_msg "Site checkout complete."
     
     cd wiki
-    git checkout -f
-    git tag tag-${branch}
+    git tag tag-${branch} master
     debug_msg "Wiki checkout complete."
     cd ..
     

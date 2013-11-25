@@ -14,13 +14,14 @@ function run () {
         done
     done
 
+    [ ! -z ${gollum} ] && {
+		kill -9 ${gollum}
+	}
+    
 	for i in menus.js xwalk.css markdown.css; do
 		${dry_run}php $i.php > /dev/null
 	done
 
-	[ ! -z ${gollum} ] && {
-		kill -9 ${gollum}
-	}
-    
-    ./site.sh update-wiki
+    generate "wiki/pages.md"
+    generate "wiki/history.md"
 }
