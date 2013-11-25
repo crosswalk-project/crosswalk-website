@@ -73,7 +73,7 @@ function debug_msg () {
 
 function generate () {
     file=$1
-	echo -n "Processing wiki/${file/.\//}..."
+	echo -n "Processing ${file/.\//}..."
 	php gfm.php ${file/.\//} > /dev/null
 	echo "done."
 	html=${file/.\//}.html
@@ -92,7 +92,7 @@ function launch_gollum () {
     gollum_pid=0
     test=$(ps -o pid= -C gollum)
     (( test==0 )) && {
-        gollum --base-path wiki ${PWD}/wiki >/dev/null 2>&1 &
+        gollum ${PWD} >/dev/null 2>&1 &
         gollum_pid=$!
         echo -n "Launching gollum."
         x=1

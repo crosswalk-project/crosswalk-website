@@ -64,7 +64,7 @@ function generateHistory ($path, $start, $end) {
         '--since='.$end.' --until='.$start.' '.
         '--name-only '.
         '--no-merges '.
-        '--pretty=format:">>> %s|%an|%ct|%H"';
+        '--pretty=format:">>> %s|%an|%ct|%H" origin';
     $f = @popen ($cmd, 'r');
     $history = Array ();
     $tracking = Array ();
@@ -214,9 +214,11 @@ if (strtolower ($request) == 'history' ||
     exit;
 }
 
+$q = fopen ('blah.log', 'w+');
+fwrite ($q, $request."\n");
 /* If this is a simple wiki/ request (not in a sub-directory), redirect to GitHub */
-if (preg_match ('#^[^/]*$#', $request)) {
-    $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/wiki/'.$request, 'r');
+if (preg_match ('#^wiki/#', $request)) {
+    $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request, 'r');
     if (!$f) {
         missing ();
     }

@@ -111,6 +111,26 @@ DirectoryIndex index.html
 #  RewriteCond %{REQUEST_URI} !=/favicon.ico
 #  RewriteRule ^ index.php [L]
 
+# Automatically map foo => foo.*.html
+MultiViewsMatch Any
+
+# The rewrites below take into account possible
+# mod_userdir expantion by rewriting the URL to be
+# based on the absolute path %{REQUEST_URI}
+#
+# The ../ request is because REQUEST_URI will 
+# include the full filepath, including filename; the
+# .. strips that
+#
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^(.*)$ %{REQUEST_URI}/../gfm.php?f=$1 [L,NS]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)gfm.php gfm.php [L,QSA]
+
   # Rules to correctly serve gzip compressed CSS and JS files.
   # Requires both mod_rewrite and mod_headers to be enabled.
   <IfModule mod_headers.c>

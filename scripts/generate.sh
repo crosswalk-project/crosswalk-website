@@ -1,28 +1,24 @@
 desc="Generate all content"
 function run () {
-
+    dry_run=
 	check_perms
 
 	launch_gollum
 
-	cd wiki
-	find . -type f \
-        -path "./*/*" -and \
-        -not -path "./.git/*" -and \
-        -not -name "*.html" -and \
-        -not -path '*/assets/*' | while read file; do
-		[ "${file}" == "./gfm.php" ] && continue
-		[ "${file}" == "./.htaccess" ] && continue
-		[ "${file}" == "./php_errors.log" ] && continue
-		[ "${file}" == "./custom.js" ] && continue
-	    generate "${file}"
-	done
-	generate "pages.md"
-	generate "history.md"
-	cd ..
+    for dir in documentation contribute; do
+        find ${dir} -type f \
+            -path "*.md" -or \
+            -path "*.mediawiki" -or \
+            -path "*.org" | while read file; do
+            ${dry_run} generate "${file}"
+        done
+    done
+    
+	${dry_run}generate "pages.md"
+	${dry_run}generate "history.md"
 
 	for i in menus.js xwalk.css markdown.css; do
-		php $i.php > /dev/null
+		${dry_run}php $i.php > /dev/null
 	done
 
 	[ ! -z ${gollum} ] && {

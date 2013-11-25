@@ -11,7 +11,7 @@ var context = this,
     requested_column, requested_page, requested_anchor;
 
 var debug = {
-    navigation: false,
+    navigation: true,
     history: false,
     scroll: false
 };
@@ -194,6 +194,11 @@ function generate_wiki_page (page, contents) {
     } else {
         var last_edit, title = null;
         wiki_body = div.querySelector ('#wiki-body .markdown-body');
+        if (!wiki_body) {
+            /* Graaarck! No Wiki content returned... */
+            wiki_body = document.createElement ('div');
+            wiki_body.innerText = 'Site down';
+        }
         
         /* If title found in header, move it into the body as an H1
          * BUT only if this isn't Home, which is special cased to always
@@ -507,8 +512,6 @@ function content_response (e) {
                     link.href = '#' + column_name + '/' + sub_page + '/' +
                         href.replace (/#/, '');
                 }
-            } else if (!href.match (/^wiki/)) {
-                link.href = '#wiki/' + href;
             } else {
                 link.href = '#' + href;
             }
@@ -979,9 +982,6 @@ function navigateTo (href) {
         loadingGraphicStart ();
         column.setAttribute ('loading_page', requested_page);
         url = column_name + '/' + requested_page;
-        if (column_name != 'wiki') {
-            url = 'wiki/' + url;
-        }
         xhr.open ('GET', url);
         if (debug.navigation) {
             console.log ('Fetching: ' + url);
