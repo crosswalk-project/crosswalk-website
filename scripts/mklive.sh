@@ -16,18 +16,8 @@ function run () {
     }
     
     [ "$1" != "-f" ] && check_unstaged
-    cd wiki
-    [ "$1" != "-f" ] && check_unstaged
-    cd ..
     
     debug_msg "Check complete." 
-    
-    # Make sure that 'wiki' contains a full checkout
-    cd wiki
-    git checkout -f || { 
-        die "Could not checkout wiki"
-    }
-    cd ..
     
     # Make new branch for live-YYYYMMDD
     # -t track upstream (push/pull from github will work)
@@ -94,6 +84,7 @@ function run () {
         done
     done
     [ -e menus.js.php ] && rm menus.js.php
+
     #
     # Remove bash scripts from the Live site
     rm *.sh
@@ -109,13 +100,11 @@ function run () {
     git commit -s -a -m "Automatic static version commit for ${branch}"
     
     git checkout master
-    git tag tag-${branch}
-    debug_msg "Site checkout complete."
-    
-    cd wiki
     git tag tag-${branch} master
-    debug_msg "Wiki checkout complete."
-    cd ..
+    debug_msg "Site checkout and tag complete."
+    
+    git --git-dir=wiki/.git tag tag-${branch} master
+    debug_msg "Wiki tag complete."
     
 cat << EOF
 
