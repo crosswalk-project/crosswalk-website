@@ -1,4 +1,5 @@
 desc="Pull latest wiki, apply to current live-* branch on server"
+
 function usage () {
 cat << EOF
   usage: site.sh update-wiki [<commit>|staging|live|latest]
@@ -19,7 +20,6 @@ cat << EOF
   
 EOF
 }
-
 
 function run () {
 
@@ -55,8 +55,6 @@ case "$1" in
         target="$1"
         ;;
 esac
-echo "Using ${target} as target."
-return
 
 debug=${debug:=0}
 
@@ -76,9 +74,6 @@ git branch | grep -q '\* master' || {
 
 # 2. Ensure there are no local unstaged changes
 [ "$1" != "-f" ] && check_unstaged
-cd wiki
-[ "$1" != "-f" ] && check_unstaged
-cd ..
 
 active=$(git branch | grep "^\*.*")
 active=${active/\* }

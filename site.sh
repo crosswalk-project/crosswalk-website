@@ -73,13 +73,14 @@ if [[ "$1" = "" ]]; then
     usage
 fi
 
-i=${#names}
-for (( j=0; j<i; j++ )); do
+j=0
+while [[ "${names[$j]}" != "" ]]; do
     if [[ "${names[$j]}" = "$1" ]]; then
-        if [[ ${valid[$j]} == 1 ]]; then
+        if [[ "${valid[$j]}" == "1" ]]; then
             shift
             execute_script "${names[$j]}" $cmd $*
         fi
         exit
     fi
+    j=$((j+1))
 done

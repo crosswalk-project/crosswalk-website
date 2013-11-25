@@ -1,4 +1,5 @@
 desc="Show difference between local and live server"
+
 function usage () {
     echo "site site-diff [<commit>] [--] [<path>...]"
 }
