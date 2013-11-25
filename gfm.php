@@ -256,7 +256,7 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
     } else {
         $request = preg_replace ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/', 
                                  '', $request);
-        $f = @fopen ('http://localhost:4567/wiki/'.$request, 'r');
+        $f = @fopen ('http://localhost:4567/'.$request, 'r');
         if (!$f) {
             missing ();
         }

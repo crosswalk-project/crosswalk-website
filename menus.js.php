@@ -72,8 +72,8 @@ $menus = @stat ('menus.js');
 if (!$menus)
     $rebuild = true;
 if (!$rebuild) {
-    $documentation = @stat ('wiki/documentation');
-    $contribute = @stat ('wiki/contribute');
+    $documentation = @stat ('documentation');
+    $contribute = @stat ('contribute');
     $rebuild = (($documentation && $documentation['mtime'] > $menus['mtime']) ||
                 ($contribute && $contribute['mtime'] > $menus['mtime']) ||
                 ($php['mtime'] > $menus['mtime']));
@@ -81,9 +81,9 @@ if (!$rebuild) {
 if ($rebuild) {
     $json = Array ();
     $json[] = Array ('menu' => 'documentation', 
-                     'items' => scan_dir ('wiki/documentation'));
+                     'items' => scan_dir ('documentation'));
     $json[] = Array ('menu' => 'contribute', 
-                     'items' => scan_dir ('wiki/contribute'));
+                     'items' => scan_dir ('contribute'));
     $json[] = Array ('menu' => 'wiki',
                      'items' => Array (Array ('name' => 'Home', 'file' => 'Home' ),
                                        Array ('name' => 'Pages', 'file' => 'Pages' ),
