@@ -18,6 +18,10 @@ function run () {
     [ "$1" != "-f" ] && check_unstaged
     
     debug_msg "Check complete." 
+
+    WIKI_GIT="--git-dir=wiki/.git --work-tree=wiki/"
+    git ${WIKI_GIT} fetch --all
+    git ${WIKI_GIT} checkout -f master
     
     # Make new branch for live-YYYYMMDD
     # -t track upstream (push/pull from github will work)
