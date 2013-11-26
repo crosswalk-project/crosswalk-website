@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/wiki/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/wiki/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '/wiki';
+      var pageFullPath = 'Home';
+  </script>
+  <script type="text/javascript" src="/wiki/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/wiki/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>Home</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Home</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/wiki/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/wiki/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/wiki/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/wiki/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/wiki/edit/Home"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/wiki/history/Home"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h2>Crosswalk Developer Wiki<a class="anchor" id="Crosswalk-Developer-Wiki" href="#Crosswalk-Developer-Wiki"></a></h2>
+
+<p>Welcome to the Crosswalk developer's wiki.</p>
+
+<p>Here you will find developer notes and information related to the Crosswalk project. The information on this portion 
+of the website is subject to change. Information that many people reference on a frequent basis is periodically pruned 
+out of the wiki and planted in the higher level documentation under either <a href="#documentation">Documentation</a> or 
+<a href="#contribute">Contribute</a>.</p>
+
+<h2>For Application Developers<a class="anchor" id="For-Application-Developers" href="#For-Application-Developers"></a></h2>
+
+<ul><li><a href="wiki/Try-Crosswalk">Try Crosswalk</a></li>
+<li><a href="wiki/Crosswalk-Command-Line-Options">Crosswalk Command Line Options</a></li>
+<li><a href="wiki/Experimental-APIs">Experimental JS APIs</a></li>
+<li><a href="wiki/Crosswalk-Extensions">Crosswalk Extensions</a></li>
+<li><a href="wiki/Remote-Debugging-on-Android">Remote Debugging on Android</a></li>
+<li><a href="wiki/Crosswalk-1-release-notes">Crosswalk 1 release notes</a></li>
+<li><a href="wiki/intent-to-implement">Intent to Implement</a></li>
+<li><a href="wiki/presentation-api-manual">Presentation API Documentation</a></li>
+</ul><p>If you any question on how to use Crosswalk you can ask on IRC. On freenode.net, we hang out on the #crosswalk channel.</p>
+
+<h2>For Developers<a class="anchor" id="For-Developers" href="#For-Developers"></a></h2>
+
+<ul><li><a href="wiki/Build-Crosswalk">Build Crosswalk</a></li>
+<li><a href="#contribute/contributing-code">Contributing Code</a></li>
+<li><a href="wiki/Rebasing-Strategy">Rebasing Strategy</a></li>
+<li><a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev">Development Mailing List (only about development of Crosswalk itself)</a></li>
+<li><a href="#contribute/reviewer_policy">Crosswalk Reviewer Policy</a></li>
+<li><a href="wiki/Development-Tasks">Development Tasks</a></li>
+<li><a href="wiki/Standardization-Tasks">Standardization Tasks</a></li>
+<li><a class="internal present" href="/wiki/Crosswalk-on-Android">Crosswalk on Android</a></li>
+<li><a class="internal present" href="/wiki/Development-on-Tizen">Development on Tizen</a></li>
+<li><a href="wiki/Remote-debugging-xwalk-on-Tizen-2.1">Remote debugging xwalk on Tizen 2.1</a></li>
+<li><a class="internal present" href="/wiki/Graphics-roadmap">Graphics Roadmap</a></li>
+<li><a class="internal present" href="/wiki/Rebasing-our-forks">Rebasing our forks</a></li>
+</ul><h2>Crosswalk's infrastructure<a class="anchor" id="Crosswalk's-infrastructure" href="#Crosswalk's-infrastructure"></a></h2>
+
+<ul><li><a href="wiki/Crosswalk-testing-framework">Testing Framework</a> </li>
+<li><a href="https://github.com/crosswalk-project/crosswalk-website/blob/master/README.md">Website</a></li>
+<li><a href="wiki/Editing-the-Wiki">Editing the Wiki</a></li>
+</ul><h2>Working with Blink and Chromium<a class="anchor" id="Working-with-Blink-and-Chromium" href="#Working-with-Blink-and-Chromium"></a></h2>
+
+<ul><li><a href="wiki/Chromium-Checkout">How to checkout Chromium/Blink for Development</a></li>
+<li><a href="wiki/Contribute-a-patch-in-Blink-Chromium">How to contribute a patch in Chromium/Blink</a></li>
+<li><a href="wiki/Tips-and-Tricks-for-Chromium-Committers">Tips and Tricks for Chromium Committers</a></li>
+</ul><h2>Other resources<a class="anchor" id="Other-resources" href="#Other-resources"></a></h2>
+
+<ul><li><a href="http://peter.sh/experiments/chromium-command-line-switches/">Chromium command line switches</a> (external link) some are especially useful for developers (e.g. <code>--allow-file-access-from-files</code>)</li>
+<li><a href="wiki/Android-WebView">Android WebView</a></li>
+<li><a href="wiki/Tizen-2.1-WRT-features-and-related-tasks">Tizen 2.1 Features and Tasks</a></li>
+<li><a class="internal present" href="/wiki/Tizen-integration">Tizen Integration</a></li>
+<li><a href="wiki/Android-Debugging">Android Debugging</a></li>
+<li><a href="wiki/Linux-Debugging">Linux Debugging</a></li>
+<li><a href="wiki/Web-API-Extension-Policy">Web API Extension Policy</a></li>
+<li><a href="wiki/Working-with-Github-Issue-Tracker">Working with Github Issue Tracker</a></li>
+</ul><h2>Privacy Policy<a class="anchor" id="Privacy-Policy" href="#Privacy-Policy"></a></h2>
+
+<ul><li><a href="wiki/Privacy-Policy">Privacy Policy</a></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Jesus Sanchez-Palencia</b>, 2013-11-13 03:22:12</p>
+  <p>
+    <a id="delete-link" href="/wiki/Home" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/wiki/rename/Home">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
