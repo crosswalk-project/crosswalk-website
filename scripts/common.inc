@@ -23,11 +23,12 @@ function get_local_live_info () {
 function branchsha () {
     local sha=$1
     sha=${sha/*:/}
-    if [[ "$sha" == "$1" ]]; then
-        git log -1 --pretty=format:%H origin/$1
-    else
-        echo $sha
+    if [[ "$sha" == "$1" ]] || [[ "$sha" == "" ]] ; then
+        sha=$(git log -1 --pretty=format:%H origin/${1/:*/})
     fi
+    echo $sha
+    [ "${sha}" != "" ]
+    return
 }
 
 function branchname () {

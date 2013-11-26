@@ -107,17 +107,23 @@ function push () {
         ;;
     esac
 
+    current_name=$(branchname ${current})
+    current_sha=$(branchsha ${current}) || die "Could not find ${current_name}"
+    new_name=$(branchname ${rev})
+    new_sha=$(branchsha ${rev}) || die "Could not find ${new_name}"
+    if [[ "${new_sha}" == "" ]]; then
+        echo "SHA not found for ${new_name}"
+        exit 1
+    fi
+
     cat << EOF
 
 About to ${mode} ${target} server:
 
 EOF
-    printf "  %-20.20s       %-20.20s\n" \
-        "Current version" "New version"
-    printf "  %-20.20s    => %-20.20s\n" \
-        $(branchname ${current}) $(branchname ${rev})
-    printf "  %-20.20s... => %-20.20s...\n" \
-        $(branchsha ${current}) $(branchsha ${rev})
+    printf "  %-20.20s       %-20.20s\n"    "Current version" "New version"
+    printf "  %-20.20s    => %-20.20s\n"    ${current_name}   ${new_name}
+    printf "  %-20.20s... => %-20.20s...\n" ${current_sha} ${new_sha}
     cat << EOF
     
 This will perform the following:
@@ -132,7 +138,7 @@ This will perform the following:
      
 EOF
 
-    if [[ "$(branchsha ${rev})" == "$(branchsha ${current})" ]]; then
+    if [[ "${new_sha}" == "${current_sha}" ]]; then
         cat << EOF
 NOTE: No changes detected (identical SHA). Perhaps you need to run 
       "site.sh mklive" first to generate a new live image.
@@ -145,7 +151,7 @@ EOF
         read answer
         case $answer in
         S|s)
-            git diff $(branchsha ${current})..$(branchsha ${rev})
+            git diff --exit-code ${current_sha}..${new_sha} && echo "No differences."
             ;;
         ""|Y|y)
             break
@@ -217,13 +223,13 @@ function run () {
 
     echo -n "Fetching staging branch name from stg.crosswalk-project.org..." >&2
     staging=$(get_remote_live_info staging)
-    echo ""
+    echo "done"
 
     if [[ "$1" == "live" ]]; then
         target="live"
         echo -n "Fetching live branch name from crosswalk-project.org..." >&2
         current=$(get_remote_live_info)
-        echo ""
+        echo "done."
         rev=${staging}
     else
         target="staging"
@@ -237,13 +243,13 @@ function run () {
 
     url=$(git remote show -n origin | sed -ne 's,^.*Push.*URL: \(.*\)$,\1,p')
     branch=$(branchname ${rev})
-    echo -en "\nChecking for ${branch} at ${url}..."
+    echo -en "Checking for ${branch} at ${url}..."
     git remote show origin | grep -q ${branch} || {
         echo "not found."
         echo "Running: git push -u origin ${branch}:${branch}..."
         git push -u origin ${branch}:${branch}
     }
-    echo ""
+    echo "done."
 
     push "set" $target $rev $current
 }

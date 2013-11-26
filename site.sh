@@ -79,6 +79,11 @@ while [[ "${names[$j]}" != "" ]]; do
     if [[ "${names[$j]}" = "$1" ]]; then
         if [[ "${valid[$j]}" == "1" ]]; then
             shift
+            for v in $@; do
+                if [[ "$v" == "--help" ]]; then
+                    cmd="usage"
+                fi
+            done
             execute_script "${names[$j]}" $cmd $*
         else
             echo "$1 is an invalid script."
