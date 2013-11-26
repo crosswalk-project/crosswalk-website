@@ -504,9 +504,6 @@ function content_response (e) {
             if (href.match (/^.*:\/\//))
                 return;
 
-            /* Remove any prefix / and convert to lower case */
-            //href = href.replace (/^\//, '').toLowerCase ();
-            
             /* If the URL starts with #, then check if it is a valid column request.
              *
              * GitHub reformats '#documentation/.*' to '#wiki-documentation/.*'
@@ -524,14 +521,22 @@ function content_response (e) {
                 if (document.querySelector ('.column[id="'+c+'-column"]')) {
                     link.href = href.replace(/^#wiki-/, '#');
                 } else {
+                    /* Local anchor to current page */
                     link.href = '#' + column_name + '/' + sub_page + '/' +
                         href.replace (/#/, '');
                 }
             } else {
-                /* GitHub provides relative paths to all wiki pages, with no prefix. 
-                 * The wiki pages on crosswalk-project expect the #wiki/ column prefix.
-                 * Add the #wiki/ prefix here. */
-                link.href = '#wiki/' + href;
+                /* The wiki pages on crosswalk-project expect the #wiki/ column prefix.
+                 *
+                 * GitHub sometimes provides the wiki/ prefix, and sometimes not. 
+                 *
+                 * If it isn't there, we add it (well, technically we strip it if there,
+                 * then add it back in...) 
+                 *
+                 * In addition, if the URL has hash element in it, convert it to 
+                 * a path separator (xwalk.js will convert the last directory element
+                 * back into an anchor reference while loading) */
+                link.href = '#wiki/' + href.replace (/#/, '/').replace (/^wiki\//, '');
             }
             
             link.addEventListener ('click', subMenuClick);
