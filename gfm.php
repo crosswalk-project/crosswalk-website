@@ -214,11 +214,28 @@ if (strtolower ($request) == 'wiki/history' ||
     exit;
 }
 
-$q = fopen ('blah.log', 'w+');
-fwrite ($q, $request."\n");
 /* If this is a simple wiki/ request (not in a sub-directory), redirect to GitHub */
 if (preg_match ('#^wiki/#', $request)) {
-    $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request, 'r');
+    /* Support a proxy; put the proxy URI in the file proxy.config, eg:
+    tcp://proxy.server.com:3128
+    */
+    $proxy = @fopen ('proxy.config', 'r');
+    if ($proxy) {
+        $opts = stream_context_create (
+            Array (
+                'http' => Array (
+                    'proxy' => fgets ($proxy),
+                    'request_fulluri' => true
+                )
+            )
+        );
+        fclose ($proxy);
+    } else {
+        $opts = null;
+    }
+    
+    $f = fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request, 
+                 'r', false, $opts);
     if (!$f) {
         missing ();
     }
