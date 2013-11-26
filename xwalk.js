@@ -492,30 +492,48 @@ function content_response (e) {
         content.querySelectorAll ('a:not([href^="http"])'), function (link) {
             if (!link.hasAttribute ('href'))
                 return;
-            /* Remove any prefix / and convert to lower case */
-            href = link.getAttribute ('href').replace (/^\//, '').toLowerCase ();
             
-            /* Discard any URLs with a protocol:// prefix (for example irc://) */
+            href = link.getAttribute ('href');
+            
+
+            /* If the path is a fully qualified path to the main website, 
+             * remove the domain */
+            href = href.replace (/^https?:\/\/(.*\.)?crosswalk-project\.org\//, '').toLowerCase ();
+            
+            /* Discard if href still contains a protocol:// prefix (for example irc://) */
             if (href.match (/^.*:\/\//))
                 return;
+
+            /* Remove any prefix / and convert to lower case */
+            //href = href.replace (/^\//, '').toLowerCase ();
             
             /* If the URL starts with #, then check if it is a valid column request.
              *
-             * If not, assume it is a local anchor to the current page (eg., a
-             * header tag in a wiki page)
+             * GitHub reformats '#documentation/.*' to '#wiki-documentation/.*'
+             * We remove the 'wiki-' portion. Some URLs may make it through as
+             * '#documentation/.*', so we also check for that (and do nothing if
+             * it matches a column name)
+             * 
+             * If neither of the above is true, assume it is a local anchor to 
+             * the current page (eg., a header tag in a wiki page)
              */
             if (href.match (/^#/)) {
-                c = href.replace(/^#([^\/]*).*$/, '$1');
+                /* If the URL starts with #wiki-{COLUMN} or #{COLUMN}
+                 * then use it (stripping "wiki-" if it was there) */
+                c = href.replace(/^#(wiki-)?([^\/]*).*$/, '$2');
                 if (document.querySelector ('.column[id="'+c+'-column"]')) {
-                    link.href = href;
+                    link.href = href.replace(/^#wiki-/, '#');
                 } else {
                     link.href = '#' + column_name + '/' + sub_page + '/' +
                         href.replace (/#/, '');
                 }
             } else {
-                link.href = '#' + href;
+                /* GitHub provides relative paths to all wiki pages, with no prefix. 
+                 * The wiki pages on crosswalk-project expect the #wiki/ column prefix.
+                 * Add the #wiki/ prefix here. */
+                link.href = '#wiki/' + href;
             }
-
+            
             link.addEventListener ('click', subMenuClick);
     });
 
@@ -1233,7 +1251,14 @@ function scrollTo (e) {
          * Since this sub-component of scrollTo () isn't called very frequently,
          * we'll just do our own DOM search... */
         e = e.toLowerCase ();
-        Array.prototype.forEach.call (document.querySelectorAll ('*[id]'),
+        Array.prototype.forEach.call (document.querySelectorAll ('a[name]'),
+                                      function (item) {
+            if (el != null)
+                return;
+            if (item.name.toLowerCase () == e)
+                el = item;
+        });
+        if (!el) Array.prototype.forEach.call (document.querySelectorAll ('*[id]'),
                                       function (item) {
             if (el != null)
                 return;
