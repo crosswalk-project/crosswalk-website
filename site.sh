@@ -1,5 +1,6 @@
 #!/bin/bash
 desc="Site management script"
+app=$0
 cmd=$0
 if [[ ! -e "$cmd" && "$cmd" =~ .*\/.* ]]; then
     cmd=$(which "$cmd")
@@ -35,7 +36,7 @@ done
 
 function usage () {
 cat << EOF
-usage: site.sh [--help] 
+usage: $app [--help] 
                <command> [<args>]
 
 EOF
@@ -79,8 +80,16 @@ while [[ "${names[$j]}" != "" ]]; do
         if [[ "${valid[$j]}" == "1" ]]; then
             shift
             execute_script "${names[$j]}" $cmd $*
+        else
+            echo "$1 is an invalid script."
         fi
         exit
     fi
     j=$((j+1))
 done
+
+cat << EOF
+$app: '$1' is not a site command. See '$app --help'.
+
+EOF
+exit
