@@ -24,7 +24,7 @@ function branchsha () {
     local sha=$1
     sha=${sha/*:/}
     if [[ "$sha" == "$1" ]]; then
-        git log -1 --pretty=format:%H $1
+        git log -1 --pretty=format:%H origin/$1
     else
         echo $sha
     fi
