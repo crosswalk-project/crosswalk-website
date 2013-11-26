@@ -63,6 +63,8 @@ function run () {
     # from under the wiki/ path
     #
     sed -i -e 's:^wiki/\*\.html:#wiki/*.html:' .gitignore
+    sed -i -e 's:^\(documentation\/.*\):#\1:g' .gitignore
+    sed -i -e 's:^\(contribute\/.*\):#\1:g' .gitignore
     for i in xwalk.css markdown.css menus.js; do
         sed -i -e s:^${i}:#${i}: .gitignore
     done
@@ -70,13 +72,14 @@ function run () {
     #
     # Adding generated Wiki content to the Live site
     #
-    find wiki -name '*html' -exec git add {} \;
     find documentation -name '*html' -exec git add {} \;
     find contribute -name '*html' -exec git add {} \;
-    find wiki/assets -exec git add {} \;
+    #find wiki/assets -exec git add {} \;
     git add xwalk.css
     git add markdown.css
     git add menus.js
+    git add wiki/pages.md.html
+    git add wiki/history.md.html
     
     debug_msg "git add complete." 
     
