@@ -25,11 +25,11 @@ function generatePageList ($path) {
         return;
     
     while (($n = readdir ($d)) !== false) {
-        if (is_dir ($path.'/'.$n) || 
+        if (is_dir ($path.$n) || 
             preg_match ('/\.(html|php|htaccess|js|log|git)$/', $n))
             continue;
         $entry = null;
-        $f = fopen ($path.'/'.$n, 'r');
+        $f = fopen ($path.$n, 'r');
         while (!feof ($f)) {
             $l = trim (fgets ($f));
             if (preg_match ('/^.*data-name=[\'"]([^"\']*)["\']/', $l, $matches)) {
@@ -42,7 +42,7 @@ function generatePageList ($path) {
         if (!$entry) {
             $entry = Array ('wiki' => $n,
                             'name' => make_name (
-                                pathinfo ($path.'/'.$n, PATHINFO_FILENAME)));
+                                pathinfo ($path.$n, PATHINFO_FILENAME)));
         }
         if ($entry != null) {
             $entries [] = $entry;
@@ -53,7 +53,7 @@ function generatePageList ($path) {
     for ($i = 0; $i < count ($entries); $i++) {
         $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
         $name = preg_replace ('/\.[^.]*$/', '', $name);
-        $entries[$i]['file'] = $name;
+        $entries[$i]['file'] = $path.$name;
         $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
     }
     return $entries;
@@ -98,7 +98,7 @@ function generateHistory ($path, $start, $end) {
                 } else {
                     $event = Array (
                         'orig' => $file,
-                        'file' => preg_replace ('/\.[^.]*$/', '', $file),
+                        'file' => $path.preg_replace ('/\.[^.]*$/', '', $file),
                         'name' => make_name (preg_replace ('/\.[^.]*$/', '', $file)),
 //                        'subject' => $parts[0],
 //                        'author' => $parts[1],
@@ -154,7 +154,7 @@ if (preg_match ('/.html$/', $md)) {
  */
 if (strtolower ($request) == 'wiki/pages' || 
     strtolower ($request) == 'wiki/pages.md') {
-    $pages = generatePageList ('wiki');
+    $pages = generatePageList ('wiki/');
     $f = fopen ('wiki/pages.md.html', 'w');
     if (!$f) {
         missing ();
