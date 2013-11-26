@@ -60,11 +60,11 @@ function generatePageList ($path) {
 }
 
 function generateHistory ($path, $start, $end) {
-    $cmd = 'git --git-dir='.$path.' log '.
+    $cmd = 'git --git-dir='.$path.'.git log '.
         '--since='.$end.' --until='.$start.' '.
         '--name-only '.
         '--no-merges '.
-        '--pretty=format:">>> %s|%an|%ct|%H" origin';
+        '--pretty=format:">>> %s|%an|%ct|%H"';
     $f = @popen ($cmd, 'r');
     $history = Array ();
     $tracking = Array ();
@@ -88,7 +88,7 @@ function generateHistory ($path, $start, $end) {
              * + this file exists on the file system
              * + this file is a recognized markdown type
              */
-            if (!preg_match ('/\//', $file) && file_exists ($file) &&
+            if (!preg_match ('/\//', $file) && file_exists ($path.$file) &&
                 preg_match ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/', $file)) {
                 
                 $parts = explode ('|', preg_replace ('/^>>> /', '', $line));
@@ -119,7 +119,7 @@ function generateHistory ($path, $start, $end) {
         if ($history[$i]['end_sha'] != '')
             continue;
         
-        $cmd = 'git --git-dir='.$path.' log -n 1 --pretty=format:"%H" '.
+        $cmd = 'git --git-dir='.$path.'.git log -n 1 --pretty=format:"%H" '.
                      $history[$i]['start_sha'].'^ -- '.
                      '"'.$history[$i]['orig'].'"';
         $f = @popen ($cmd, 'r');
@@ -152,10 +152,10 @@ if (preg_match ('/.html$/', $md)) {
  * Special case for Pages request which is dynamically built
  * from the list of pages in the main Wiki directory
  */
-if (strtolower ($request) == 'pages' || 
-    strtolower ($request) == 'pages.md') {
-    $pages = generatePageList ('.');
-    $f = fopen ('pages.md.html', 'w');
+if (strtolower ($request) == 'wiki/pages' || 
+    strtolower ($request) == 'wiki/pages.md') {
+    $pages = generatePageList ('wiki');
+    $f = fopen ('wiki/pages.md.html', 'w');
     if (!$f) {
         missing ();
     }
@@ -169,7 +169,7 @@ if (strtolower ($request) == 'pages' ||
     }
     fwrite ($f, '</ul>');
     fclose ($f);
-    require('pages.md.html');
+    require('wiki/pages.md.html');
     exit;
 }
 
@@ -177,8 +177,8 @@ if (strtolower ($request) == 'pages' ||
  * Special case for History request which is dynamically built
  * from the list of pages in the main Wiki directory
  */
-if (strtolower ($request) == 'history' || 
-    strtolower ($request) == 'history.md') {
+if (strtolower ($request) == 'wiki/history' || 
+    strtolower ($request) == 'wiki/history.md') {
     
     $spans = Array ('days' => Array ('show_date' => 1,
                                      'start' => 0, 
@@ -194,7 +194,7 @@ if (strtolower ($request) == 'history' ||
     
     foreach ($spans as $key => $value) {
         for ($i = $value['start']; $i <= $value['end']; $i++) {
-            $history = generateHistory ('.git', $i.'.'.$key, ($i+1).'.'.$key);
+            $history = generateHistory ('wiki/', $i.'.'.$key, ($i+1).'.'.$key);
             if (count ($history) == 0)
                 continue;
             foreach ($history as $event) {
@@ -203,14 +203,14 @@ if (strtolower ($request) == 'history' ||
         }
     }
 
-    $f = fopen ('history.md.html', 'w');
+    $f = fopen ('wiki/history.md.html', 'w');
     if (!$f) {
         missing ();
     }
     fwrite ($f, json_encode ($events));
     fclose ($f);
     
-    require('history.md.html');
+    require('wiki/history.md.html');
     exit;
 }
 
