@@ -1,5 +1,5 @@
 <?php
-require_once ('../smart-match.inc');
+require_once ('smart-match.inc');
 
 function missing () {
     global $_REQUEST;
