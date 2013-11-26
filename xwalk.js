@@ -494,15 +494,15 @@ function content_response (e) {
                 return;
             
             href = link.getAttribute ('href');
-            
 
-            /* If the path is a fully qualified path to the main website, 
-             * remove the domain */
-            href = href.replace (/^https?:\/\/(.*\.)?crosswalk-project\.org\//, '').toLowerCase ();
-            
-            /* Discard if href still contains a protocol:// prefix (for example irc://) */
+            /* Discard if href contains a protocol:// prefix (for example irc://) */
             if (href.match (/^.*:\/\//))
                 return;
+
+            /* Link types people are using in the Wiki is documented at:
+             *
+             * https://crosswalk-project.org/#wiki/wiki-link-samples
+             */
 
             /* If the URL starts with #, then check if it is a valid column request.
              *
@@ -528,15 +528,17 @@ function content_response (e) {
             } else {
                 /* The wiki pages on crosswalk-project expect the #wiki/ column prefix.
                  *
-                 * GitHub sometimes provides the wiki/ prefix, and sometimes not. 
+                 * GitHub:
+                 * Sometimes provides a wiki/ prefix to URLs.
+                 * Sometimes it prefixes pages with 'crosswalk-project/crosswalk-wiki/wiki'
                  *
-                 * If it isn't there, we add it (well, technically we strip it if there,
-                 * then add it back in...) 
-                 *
-                 * In addition, if the URL has hash element in it, convert it to 
-                 * a path separator (xwalk.js will convert the last directory element
-                 * back into an anchor reference while loading) */
-                link.href = '#wiki/' + href.replace (/#/, '/').replace (/^wiki\//, '');
+                 * The following corrects for the above, and also converts any
+                 * local anchor references into a path separator (xwalk.js will 
+                 * convert the last directory element back into an anchor reference 
+                 * in subMenuClick) */
+                link.href = '#wiki/' + href.replace (/^\/crosswalk-project\/crosswalk-website\/wiki\//, '').
+                        replace (/#/, '/').
+                        replace (/^wiki\//, '');
             }
             
             link.addEventListener ('click', subMenuClick);
