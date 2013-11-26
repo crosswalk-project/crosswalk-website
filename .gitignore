@@ -3,7 +3,7 @@ wiki/.htaccess
 wiki/*.md
 wiki/*.mediawiki
 wiki/*.org
-wiki/*.html
+#wiki/*.html
 wiki/documentation
 wiki/contribute
 wiki/.git
@@ -11,7 +11,7 @@ wiki/php_errors.log
 wiki/assets
 *.msg
 *.map
-xwalk.css
-markdown.css
-menus.js
+#xwalk.css
+#markdown.css
+#menus.js
 *.log
