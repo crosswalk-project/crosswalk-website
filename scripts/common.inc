@@ -82,6 +82,9 @@ function debug_msg () {
 
 function generate () {
     file=$1
+    if [[ ! -d "$(dirname ${file})" ]]; then
+        mkdir -p "$(dirname ${file})" || die "Could not mkdir '$(dirname ${file})'"
+    fi
 	echo -n "Processing ${file/.\//}..."
 	php gfm.php ${file/.\//} > /dev/null
 	echo "done."
