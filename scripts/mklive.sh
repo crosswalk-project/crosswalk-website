@@ -58,7 +58,7 @@ function run () {
     #
     # Modify .gitignore to track/manage all generated content
     #
-    sed -i -e 's:^\(wiki/\\)*\.html$:#\1.html:g' .gitignore
+    sed -i -e 's:^\(.*\)\.html$:#\1.html:g' .gitignore
     for i in xwalk.css markdown.css menus.js; do
         sed -i -e s:^${i}:#${i}: .gitignore
     done
