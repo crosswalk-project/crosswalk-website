@@ -46,7 +46,8 @@ function generatePageList ($path) {
 }
 
 function generateHistory ($path, $start, $end) {
-    $cmd = 'git --git-dir='.$path.'.git log '.
+    $wiki_git = '--git-dir='.$path.'.git --work-tree='.$path;
+    $cmd = 'git '.$wiki_git.' log '.
         '--since='.$end.' --until='.$start.' '.
         '--name-only '.
         '--no-merges '.
@@ -71,11 +72,25 @@ function generateHistory ($path, $start, $end) {
             $file = $skip;
             /* Only add if:
              * + this file does not contain a path (/)
-             * + this file exists on the file system
              * + this file is a recognized markdown type
              */
-            if (!preg_match ('/\//', $file) && file_exists ($path.$file) &&
+            if (!preg_match ('/\//', $file) &&
                 preg_match ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/', $file)) {
+                
+                /* If this file is not currently in the tip of GIT, then skip it */
+                $status = 'git '.$wiki_git.' ls-files "'.$file.'"';
+                $p = @popen ($status, 'r');
+                $match = false;
+                while (!feof ($p)) {
+                    $match = strlen (trim (fgets ($p))) != 0;
+                    if ($match) 
+                        break;
+                }
+                pclose ($p);
+                if (!$match) {
+                    $skip = trim (fgets ($f));
+                    continue;
+                }
                 
                 $parts = explode ('|', preg_replace ('/^>>> /', '', $line));
 
@@ -193,7 +208,11 @@ if (strtolower ($request) == 'wiki/history' ||
     if (!$f) {
         missing ();
     }
-    fwrite ($f, json_encode ($events, JSON_PRETTY_PRINT));
+    
+    if (!defined('JSON_PRETTY_PRINT'))
+        fwrite ($f, json_encode ($events));
+    else
+        fwrite ($f, json_encode ($events, JSON_PRETTY_PRINT));
     fclose ($f);
     
     require('wiki/history.md.html');
