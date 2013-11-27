@@ -159,15 +159,16 @@ if (strtolower ($request) == 'wiki/pages' ||
     if (!$f) {
         missing ();
     }
-    fwrite ($f, '<h1>Crosswalk Wiki Pages</h1>');
-    fwrite ($f, '<ul class="pages-list">');
+    fwrite ($f, '<h1>Crosswalk Wiki Pages</h1>'."\n");
+    fwrite ($f, '<ul class="pages-list">'."\n");
     foreach ($pages as $page) {
         if (strlen (trim ($page['name'])) == 0 ||
             strlen (trim ($page['file'])) == 0)
             continue;
-        fwrite ($f, '<li><a href="'.$page['file'].'">'.$page['name'].'</a></li>');
+        fwrite ($f, '<li><a href="'.$page['file'].'">'.$page['name'].'</a></li>'."\n");
     }
-    fwrite ($f, '</ul>');
+    fwrite ($f, '</ul>."\n"');
+    fwrite ($f, "\n");
     fclose ($f);
     require('wiki/pages.md.html');
     exit;
@@ -207,7 +208,7 @@ if (strtolower ($request) == 'wiki/history' ||
     if (!$f) {
         missing ();
     }
-    fwrite ($f, json_encode ($events));
+    fwrite ($f, json_encode ($events, JSON_PRETTY_PRINT));
     fclose ($f);
     
     require('wiki/history.md.html');

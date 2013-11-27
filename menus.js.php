@@ -93,7 +93,7 @@ if ($rebuild) {
 	print 'Unable to open menus.js for writing.'."\n";
         exit -1;
     }
-    fwrite ($f, 'var menus = '.json_encode ($json).';');
+    fwrite ($f, 'var menus = '.json_encode ($json, JSON_PRETTY_PRINT).';');
     fclose ($f);
     @chmod ('menus.js', 0644);
 }
