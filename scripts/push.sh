@@ -190,13 +190,14 @@ function remote () {
         # do a git pull. Otherwise fetch the requested branch (and all 
         # necessary objects) and check it out.
         if [[ "${current/:*}" == "${name}" ]]; then
-            echo "Running: git pull ${name}:${name}"
-            ${dry_run} git pull origin ${name}:${name} || return
+            echo -n "Running: git pull ${name}:${name}..."
+            ${dry_run} git pull -q origin ${name}:${name} || die "\n'git pull' failed."
         else
-            echo "Running: git fetch origin ${name}:${name}"
-            ${dry_run} git fetch origin ${name}:${name} || return
-            echo "Running: git checkout -f ${name}"
-            ${dry_run} git checkout -f ${name} || {
+            echo -n "Running: git fetch origin ${name}:${name}..."
+            ${dry_run} git fetch -q origin ${name}:${name} || die "\n'git fetch' failed."
+            echo "done."
+            echo -n "Running: git checkout -f ${name}"
+            ${dry_run} git checkout -q -f ${name} || {
                 echo -e "\nError running checkout! Resetting to ${current/*:}\n\n"
                 echo -e "Running: git reset --hard ${current/*:} && git clean -f\n"
                 git reset --hard ${current/*:}
