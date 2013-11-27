@@ -230,12 +230,12 @@ if (preg_match ('#^wiki/#', $request)) {
             )
         );
         fclose ($proxy);
+        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request, 
+                     'r', false, $opts);
     } else {
-        $opts = null;
+        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request, 
+                     'r');
     }
-    
-    $f = fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request, 
-                 'r', false, $opts);
     if (!$f) {
         missing ();
     }
