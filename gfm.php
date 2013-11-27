@@ -19,16 +19,17 @@ function sort_entries ($a, $b) {
 }
 
 function generatePageList ($path) {
-    $wiki_git="--git-dir=".$path.".git --work-tree=".$path;
-    $cmd = "git ".$wiki_git." ls-tree -r HEAD";
+    $wiki_git = '--git-dir='.$path.'.git';
+    $cmd = 'git '.$wiki_git.' ls-tree -r HEAD';
     $p = popen ($cmd, 'r');
     while (!feof ($p)) {
         $line = fgets ($p);
-        if (!preg_match ('/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/', $line, $matches))
+        if (!preg_match ('/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/', 
+                         $line, $matches))
             continue;
         $file = $matches[2];
         $sha = $matches[1];
-        if (is_dir ($path.$file) || preg_match ('/\.(html|php|htaccess|js|log|git)$/', $file))
+        if (preg_match ('/\.(html|php|htaccess|js|log|git)$/', $file))
             continue;
         $entries [] = Array ('wiki' => $file,
                              'name' => make_name (
@@ -46,7 +47,7 @@ function generatePageList ($path) {
 }
 
 function generateHistory ($path, $start, $end) {
-    $wiki_git = '--git-dir='.$path.'.git --work-tree='.$path;
+    $wiki_git = '--git-dir='.$path.'.git';
     $cmd = 'git '.$wiki_git.' log '.
         '--since='.$end.' --until='.$start.' '.
         '--name-only '.
@@ -155,7 +156,7 @@ if (preg_match ('/.html$/', $md)) {
  */
 if (strtolower ($request) == 'wiki/pages' || 
     strtolower ($request) == 'wiki/pages.md') {
-    $pages = generatePageList ('wiki/');
+    $pages = generatePageList ('wiki');
     $f = fopen ('wiki/pages.md.html', 'w');
     if (!$f) {
         missing ();
@@ -195,7 +196,7 @@ if (strtolower ($request) == 'wiki/history' ||
     
     foreach ($spans as $key => $value) {
         for ($i = $value['start']; $i <= $value['end']; $i++) {
-            $history = generateHistory ('wiki/', $i.'.'.$key, ($i+1).'.'.$key);
+            $history = generateHistory ('wiki', $i.'.'.$key, ($i+1).'.'.$key);
             if (count ($history) == 0)
                 continue;
             foreach ($history as $event) {
