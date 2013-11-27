@@ -52,6 +52,7 @@ function run () {
     work_done=0
     for i in .git wiki.git; do
         echo "Examining $i"
+        
         # Remove remotes
         git --git-dir=$i remote show origin -n | while read branch rest; do
             if [[ "${branch}" =~ ^Local.* ]]; then
@@ -61,28 +62,13 @@ function run () {
                 process_branch $i remote ${current} ${branch} ${last_week}
             fi
         done
+        
         # Remove locals
         git --git-dir=$i branch | while read branch; do
             if [[ ! "${branch}" =~ live-.* ]]; then
                 continue
             fi
             process_branch $i local ${current} ${branch} ${last_week}
-        done
-        
-        # Remove old tags
-        git --git-dir=$i tag | 
-            grep "tag-.*live" | while read tag; do
-            tag_name=${tag}
-            tag_date=${tag/*tag-live-}
-            tag_date=${tag_date//.*}
-            if (( tag_date <= last_week )); then
-                if [[ "$tag_name" == "$current" ]]; then
-                    echo "Skipping current live tag (${current})"
-                    continue
-                fi
-                ${dry_run} git --git-dir=$i push origin :refs/tags/${tag_name}
-                ${dry_run} git --git-dir=$i tag -d ${tag_name}
-            fi
         done
         
         ${dry_run} git --git-dir=$i remote prune origin

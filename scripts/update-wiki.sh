@@ -118,8 +118,6 @@ function run () {
     # 8. Reset local back to master branch for the website and wiki
     git checkout master || die "Checkout failed."
     
-    git ${WIKI_GIT} tag -f tag-${branch} master
-    
     # 13. Display message for how to push changes to staging site
     cat << EOF
 

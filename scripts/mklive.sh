@@ -101,11 +101,7 @@ function run () {
     git commit -s -a -m "Automatic static version commit for ${branch}"
     
     git checkout master
-    git tag tag-${branch} master
     debug_msg "Site checkout and tag complete."
-    
-    git ${WIKI_GIT} tag tag-${branch} master
-    debug_msg "Wiki tag complete."
     
 cat << EOF
 
