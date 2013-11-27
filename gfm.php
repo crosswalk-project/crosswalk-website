@@ -78,9 +78,9 @@ function generateHistory ($path, $start, $end) {
              */
             if (!preg_match ('/\//', $file) &&
                 preg_match ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/', $file)) {
-                
+
                 /* If this file is not currently in the tip of GIT, then skip it */
-                $status = 'git '.$wiki_git.' ls-files "'.$file.'"';
+                $status = 'git '.$wiki_git.' ls-tree -r HEAD --name-only "'.$file.'"';
                 $p = @popen ($status, 'r');
                 $match = false;
                 while (!feof ($p)) {
@@ -157,6 +157,8 @@ if (preg_match ('/.html$/', $md)) {
  */
 if (strtolower ($request) == 'wiki/pages' || 
     strtolower ($request) == 'wiki/pages.md') {
+    if (!is_dir ('wiki'))
+        @mkdir ('wiki');
     $pages = generatePageList ('wiki');
     $f = fopen ('wiki/pages.md.html', 'w');
     if (!$f) {
@@ -182,6 +184,8 @@ if (strtolower ($request) == 'wiki/pages' ||
  */
 if (strtolower ($request) == 'wiki/history' || 
     strtolower ($request) == 'wiki/history.md') {
+    if (!is_dir ('wiki'))
+        @mkdir ('wiki');
     
     $spans = Array ('days' => Array ('show_date' => 1,
                                      'start' => 0, 
