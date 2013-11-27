@@ -61,7 +61,7 @@ function run () {
             ;;
     esac
     
-    WIKI_GIT="--git-dir=wiki/.git --work-tree=wiki/"
+    WIKI_GIT="--git-dir=wiki.git"
     
     # 1. Ensure currently on 'master'
     git branch | grep -q '\* master' || {
@@ -87,7 +87,7 @@ function run () {
     # 3. Fetch the latest changes from GitHub into the wiki/
     echo "Fetching origin for Wiki..."
     git ${WIKI_GIT} fetch --all || {
-        echo "Updating wiki/ latest from GitHub failed. Exiting."
+        echo "Updating wiki.git latest from GitHub failed. Exiting."
         exit -1
     }
     
@@ -96,11 +96,9 @@ function run () {
         exit
     }
     debug_msg "Wiki has been pulled from GitHub."
-    echo ${PWD}
     
     # 4. Switch to the latest live-* branch
     echo "Checking out branch for site: ${target}"
-    
     git checkout -f ${target} || {
         echo "Checking out ${target} failed."
         exit -1
@@ -110,7 +108,6 @@ function run () {
     # 6. Regenerate the pages and history
     generate "wiki/pages.md"
     generate "wiki/history.md"
-        
     git add wiki/pages.md.html wiki/history.md.html
     debug_msg "Pages and History files added."
     

@@ -153,13 +153,8 @@ function update_git () {
 
 function check_unstaged () {
     git diff --quiet --ignore-submodules --exit-code || {
-		echo "Can't go live with uncommitted changes in $(basename ${PWD})"
+		echo "Can't go live with uncommitted changes in ${dir}"
 		git diff --name-status --ignore-submodules
-		[ "$(basename ${PWD})" = "wiki" ] && {
-            echo "If lots of files are deleted, its probably the wiki "
-            echo "was in a partial mklive state. Try:"
-            echo "  cd wiki ; git checkout ; cd .."
-		}
 		exit 1
 	}
 }

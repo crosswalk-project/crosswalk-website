@@ -91,10 +91,7 @@ version:
 ```
 git clone git@github.com:crosswalk-project/crosswalk-website
 cd crosswalk-website
-cd wiki
-git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git --bare .git
-sed -i -e 's/bare = true/bare = false/' .git/config
-git checkout
+git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git --bare wiki.git
 cd ..
 ```
 
@@ -128,10 +125,7 @@ sub-directory, as follows:
 
 ```
 cd crosswalk-website
-cd wiki
-git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git --bare .git
-sed -i -e 's/bare = true/bare = false/' .git/config
-git checkout
+git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git --bare wiki.git
 ```
 
 NOTE:

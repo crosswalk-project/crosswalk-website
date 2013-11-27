@@ -16,11 +16,9 @@ function run () {
     [ "$1" != "-f" ] && check_unstaged
     debug_msg "Check complete." 
 
-    WIKI_GIT="--git-dir=wiki/.git --work-tree=wiki/"
+    WIKI_GIT="--git-dir=wiki.git"
     git ${WIKI_GIT} fetch --all || die "wiki fetch failed"
-    git ${WIKI_GIT} checkout -f -B master origin/master || die "wiki checkout failed"
-    check_perms
-    debug_msg "Wiki checked out"
+    debug_msg "Latest wiki fetched."
     
 
     # Make new branch for live-YYYYMMDD
@@ -58,12 +56,9 @@ function run () {
         .htaccess
     
     #
-    # Modify .gitignore to track/manage the generated content
-    # from under the wiki/ path
+    # Modify .gitignore to track/manage all generated content
     #
-    sed -i -e 's:^wiki/\*\.html:#wiki/*.html:' .gitignore
-    sed -i -e 's:^\(documentation\/.*\):#\1:g' .gitignore
-    sed -i -e 's:^\(contribute\/.*\):#\1:g' .gitignore
+    sed -i -e 's:^\(wiki/\\)*\.html$:#\1.html:g' .gitignore
     for i in xwalk.css markdown.css menus.js; do
         sed -i -e s:^${i}:#${i}: .gitignore
     done
@@ -73,7 +68,6 @@ function run () {
     #
     find documentation -name '*html' -exec git add {} \;
     find contribute -name '*html' -exec git add {} \;
-    #find wiki/assets -exec git add {} \;
     git add xwalk.css
     git add markdown.css
     git add menus.js
@@ -110,7 +104,7 @@ function run () {
     git tag tag-${branch} master
     debug_msg "Site checkout and tag complete."
     
-    git --git-dir=wiki/.git tag tag-${branch} master
+    git ${WIKI_GIT} tag tag-${branch} master
     debug_msg "Wiki tag complete."
     
 cat << EOF
