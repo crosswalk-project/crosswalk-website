@@ -36,95 +36,95 @@ EOF
 # 9. Display message for how to push changes to staging site
 #
 function run () {
-
-debug=${debug:=0}
-
-# 0. Ensure all files are writable by www-data
-check_perms
-
-case "$1" in
-    ""|live)
-        echo -n "Fetching active branch name from crosswalk-project.org..." >&2
-        target=$(get_remote_live_name)
-        echo "${target}" >&2
-        ;;
-    staging)
-        echo -n "Fetching active branch name from stg.crosswalk-project.org..." >&2
-        target=$(get_remote_live_name staging)
-        echo "${target}" >&2
-        ;;
-    latest)
-        target=$(get_local_live_name)
-        ;;
-    *)
-        target="$1"
-        ;;
-esac
-
-WIKI_GIT="--git-dir=wiki/.git --work-tree=wiki/"
-
-# 1. Ensure currently on 'master'
-git branch | grep -q '\* master' || {
-	echo ""
-	echo "./site.sh mklive can only be run in the 'master' branch."
-	echo "git checkout master"
-	echo ""
-	exit
-}
-
-# 2. Ensure there are no local unstaged changes
-[ "$1" != "-f" ] && check_unstaged
-
-active=$(git branch | grep "^\*.*")
-active=${active/\* }
-echo "Current branch: ${active}"
-sha=$(git show --oneline ${active} | head -n 1)
-sha=${sha// *}
-
-echo "Target branch: ${target}"
-debug_msg "Branch status above."
-
-# 3. Fetch the latest changes from GitHub into the wiki/
-echo "Fetching origin for Wiki..."
-git ${WIKI_GIT} fetch --all || {
-	echo "Updating wiki/ latest from GitHub failed. Exiting."
-	exit -1
-}
-
-git ${WIKI_GIT} diff --quiet --exit-code tag-${target} && {
-    echo "No changes to Wiki since ${target}"
-    exit
-}
-debug_msg "Wiki has been pulled from GitHub."
-echo ${PWD}
-
-# 4. Switch to the latest live-* branch
-echo "Checking out branch for site: ${target}"
-
-git checkout -f ${target} || {
-    echo "Checking out ${target} failed."
-    exit -1
-}
-debug_msg "Branch / Checkout to ${target} complete."
-
-# 6. Regenerate the pages and history
-generate "wiki/pages.md"
-generate "wiki/history.md"
     
-git add wiki/pages.md.html wiki/history.md.html
-debug_msg "Pages and History files added."
-
-# 7. Commit the changes to the live-* branch
-git commit -s -a -m "Automatic content update for ${target}"
-debug_msg "Live-site commited to ${target}"
-
-# 8. Reset local back to master branch for the website and wiki
-git checkout master || die "Checkout failed."
-
-git ${WIKI_GIT} tag -f tag-${branch} master
-
-# 13. Display message for how to push changes to staging site
-cat << EOF
+    debug=${debug:=0}
+    
+    # 0. Ensure all files are writable by www-data
+    check_perms
+    
+    case "$1" in
+        ""|live)
+            echo -n "Fetching active branch name from crosswalk-project.org..." >&2
+            target=$(get_remote_live_name)
+            echo "${target}" >&2
+            ;;
+        staging)
+            echo -n "Fetching active branch name from stg.crosswalk-project.org..." >&2
+            target=$(get_remote_live_name staging)
+            echo "${target}" >&2
+            ;;
+        latest)
+            target=$(get_local_live_name)
+            ;;
+        *)
+            target="$1"
+            ;;
+    esac
+    
+    WIKI_GIT="--git-dir=wiki/.git --work-tree=wiki/"
+    
+    # 1. Ensure currently on 'master'
+    git branch | grep -q '\* master' || {
+        echo ""
+        echo "./site.sh mklive can only be run in the 'master' branch."
+        echo "git checkout master"
+        echo ""
+        exit
+    }
+    
+    # 2. Ensure there are no local unstaged changes
+    [ "$1" != "-f" ] && check_unstaged
+    
+    active=$(git branch | grep "^\*.*")
+    active=${active/\* }
+    echo "Current branch: ${active}"
+    sha=$(git show --oneline ${active} | head -n 1)
+    sha=${sha// *}
+    
+    echo "Target branch: ${target}"
+    debug_msg "Branch status above."
+    
+    # 3. Fetch the latest changes from GitHub into the wiki/
+    echo "Fetching origin for Wiki..."
+    git ${WIKI_GIT} fetch --all || {
+        echo "Updating wiki/ latest from GitHub failed. Exiting."
+        exit -1
+    }
+    
+    git ${WIKI_GIT} diff --quiet --exit-code tag-${target} && {
+        echo "No changes to Wiki since ${target}"
+        exit
+    }
+    debug_msg "Wiki has been pulled from GitHub."
+    echo ${PWD}
+    
+    # 4. Switch to the latest live-* branch
+    echo "Checking out branch for site: ${target}"
+    
+    git checkout -f ${target} || {
+        echo "Checking out ${target} failed."
+        exit -1
+    }
+    debug_msg "Branch / Checkout to ${target} complete."
+    
+    # 6. Regenerate the pages and history
+    generate "wiki/pages.md"
+    generate "wiki/history.md"
+        
+    git add wiki/pages.md.html wiki/history.md.html
+    debug_msg "Pages and History files added."
+    
+    # 7. Commit the changes to the live-* branch
+    git commit -s -a -m "Automatic content update for ${target}"
+    debug_msg "Live-site commited to ${target}"
+    
+    # 8. Reset local back to master branch for the website and wiki
+    git checkout master || die "Checkout failed."
+    
+    git ${WIKI_GIT} tag -f tag-${branch} master
+    
+    # 13. Display message for how to push changes to staging site
+    cat << EOF
 
 Changes committed to git as branch ${target}.
 
