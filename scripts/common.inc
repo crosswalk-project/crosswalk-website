@@ -17,14 +17,22 @@ function get_local_live_name () {
 function get_local_live_info () {
     local branch
     branch=$(git branch -a | sed -ne 's,.*[ /]\(live-.*\),\1,p' | sort -ur | head -n 1)
-    echo $branch:$(branchsha $branch)
+    info=${branch}:$(branchsha ${branch})
+    echo $info
+    [ "${info/*:/}" != "" ]
+    return
 }
 
 function branchsha () {
     local sha=$1
     sha=${sha/*:/}
     if [[ "$sha" == "$1" ]] || [[ "$sha" == "" ]] ; then
-        sha=$(git log -1 --pretty=format:%H origin/${1/:*/})
+        branch=${1/:*/}
+        # Obtain the SHA for ${branch} from either remote (if available) or
+        # local
+        git show-ref --verify --quiet refs/remotes/origin/${branch} &&
+            sha=$(git log -1 --pretty=format:%H origin/${1/:*/}) ||
+            sha=$(git log -1 --pretty=format:%H ${1/:*/})
     fi
     echo $sha
     [ "${sha}" != "" ]

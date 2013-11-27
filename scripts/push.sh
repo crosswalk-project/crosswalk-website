@@ -147,11 +147,16 @@ EOF
     fi
 
     while true; do
-        echo -n "Proceed? [(Y)es|(n)o|(s)how diff] "
+        echo -n "Proceed? [(Y)es|(n)o|(s)how diff|(l)og] "
         read answer
         case $answer in
         S|s)
-            git diff --exit-code ${current_sha}..${new_sha} && echo "No differences."
+            { git diff --exit-code ${current_sha}..${new_sha} && 
+                echo "No differences." ; } | less
+            ;;
+        L|l)
+            { git log --exit-code ${current_sha}..${new_sha} && 
+                echo "No differences." ; } | less
             ;;
         ""|Y|y)
             break
@@ -235,13 +240,15 @@ function run () {
         target="staging"
         current=${staging}
         if [[ "$1" == "" ]]; then
-            rev=$(get_local_live_info)
+            rev=$(get_local_live_info) || 
+                die "Unable to determine local info for ${rev/:*/}"
         else
             rev=$1
         fi
     fi 
 
     url=$(git remote show -n origin | sed -ne 's,^.*Push.*URL: \(.*\)$,\1,p')
+    
     branch=$(branchname ${rev})
     echo -en "Checking for ${branch} at ${url}..."
     git remote show origin | grep -q ${branch} || {
