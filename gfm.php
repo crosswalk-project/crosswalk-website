@@ -33,14 +33,14 @@ function generatePageList ($path) {
             continue;
         $entries [] = Array ('wiki' => $file,
                              'name' => make_name (
-                                 pathinfo ($path.$file, PATHINFO_FILENAME)));
+                                 pathinfo ($path.'/'.$file, PATHINFO_FILENAME)));
     }
     pclose ($p);
     usort ($entries, "sort_entries");
     for ($i = 0; $i < count ($entries); $i++) {
         $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
         $name = preg_replace ('/\.[^.]*$/', '', $name);
-        $entries[$i]['file'] = $path.$name;
+        $entries[$i]['file'] = $path.'/'.$name;
         $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
     }
     return $entries;
@@ -100,7 +100,7 @@ function generateHistory ($path, $start, $end) {
                 } else {
                     $event = Array (
                         'orig' => $file,
-                        'file' => $path.preg_replace ('/\.[^.]*$/', '', $file),
+                        'file' => $path.'/'.preg_replace ('/\.[^.]*$/', '', $file),
                         'name' => make_name (preg_replace ('/\.[^.]*$/', '', $file)),
 //                        'subject' => $parts[0],
 //                        'author' => $parts[1],
