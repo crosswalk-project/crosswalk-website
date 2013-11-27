@@ -11,7 +11,7 @@ var context = this,
     requested_column, requested_page, requested_anchor;
 
 var debug = {
-    navigation: true,
+    navigation: false,
     history: false,
     scroll: false
 };
@@ -380,7 +380,7 @@ function generate_history_page (page, contents) {
                 if (e.end_sha != '') {
                     html += '<a target="_blank" href="' + 
                         'https://github.com/crosswalk-project/' + 
-                        'crosswalk-website/wiki/' + e.file + 
+                        'crosswalk-website/' + e.file + 
                         '/_compare/' + e.end_sha + '..' + e.start_sha + 
                         '"">View changes on GitHub</a>';
                 } else {
