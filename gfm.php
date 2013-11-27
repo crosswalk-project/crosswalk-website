@@ -19,36 +19,22 @@ function sort_entries ($a, $b) {
 }
 
 function generatePageList ($path) {
-    $d = @opendir ($path);
-    $entries = Array ();
-    if (!$d)
-        return;
-    
-    while (($n = readdir ($d)) !== false) {
-        if (is_dir ($path.$n) || 
-            preg_match ('/\.(html|php|htaccess|js|log|git)$/', $n))
+    $wiki_git="--git-dir=".$path.".git --work-tree=".$path;
+    $cmd = "git ".$wiki_git." ls-tree -r HEAD";
+    $p = popen ($cmd, 'r');
+    while (!feof ($p)) {
+        $line = fgets ($p);
+        if (!preg_match ('/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/', $line, $matches))
             continue;
-        $entry = null;
-        $f = fopen ($path.$n, 'r');
-        while (!feof ($f)) {
-            $l = trim (fgets ($f));
-            if (preg_match ('/^.*data-name=[\'"]([^"\']*)["\']/', $l, $matches)) {
-                $entry = Array ('wiki' => $n, 'name' => $matches[1]);
-                break;
-            }
-        }
-        fclose ($f);
-        /* A title wasn't found with the above preg_match, so use the filename */
-        if (!$entry) {
-            $entry = Array ('wiki' => $n,
-                            'name' => make_name (
-                                pathinfo ($path.$n, PATHINFO_FILENAME)));
-        }
-        if ($entry != null) {
-            $entries [] = $entry;
-        }
+        $file = $matches[2];
+        $sha = $matches[1];
+        if (is_dir ($path.$file) || preg_match ('/\.(html|php|htaccess|js|log|git)$/', $file))
+            continue;
+        $entries [] = Array ('wiki' => $file,
+                             'name' => make_name (
+                                 pathinfo ($path.$file, PATHINFO_FILENAME)));
     }
-    closedir ($d);
+    pclose ($p);
     usort ($entries, "sort_entries");
     for ($i = 0; $i < count ($entries); $i++) {
         $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
