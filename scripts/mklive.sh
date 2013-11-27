@@ -16,10 +16,9 @@ function run () {
     [ "$1" != "-f" ] && check_unstaged
     debug_msg "Check complete." 
 
-
     WIKI_GIT="--git-dir=wiki/.git --work-tree=wiki/"
     git ${WIKI_GIT} fetch --all || die "wiki fetch failed"
-    git ${WIKI_GIT} checkout -f master || die "wiki checkout failed"
+    git ${WIKI_GIT} checkout -f -B master origin/master || die "wiki checkout failed"
     check_perms
     debug_msg "Wiki checked out"
     
