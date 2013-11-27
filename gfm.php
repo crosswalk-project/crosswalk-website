@@ -29,7 +29,8 @@ function generatePageList ($path) {
             continue;
         $file = $matches[2];
         $sha = $matches[1];
-        if (preg_match ('/\.(html|php|htaccess|js|log|git)$/', $file))
+        if (preg_match ('/\.(html|php|htaccess|js|log|git)$/', $file) ||
+            preg_match ('/^assets\/.*/', $file))
             continue;
         $entries [] = Array ('wiki' => $file,
                              'name' => make_name (
