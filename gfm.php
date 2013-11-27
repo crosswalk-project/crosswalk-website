@@ -167,8 +167,7 @@ if (strtolower ($request) == 'wiki/pages' ||
             continue;
         fwrite ($f, '<li><a href="'.$page['file'].'">'.$page['name'].'</a></li>'."\n");
     }
-    fwrite ($f, '</ul>."\n"');
-    fwrite ($f, "\n");
+    fwrite ($f, '</ul>'."\n\n");
     fclose ($f);
     require('wiki/pages.md.html');
     exit;
