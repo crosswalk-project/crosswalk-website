@@ -16,11 +16,6 @@ function run () {
     [ "$1" != "-f" ] && check_unstaged
     debug_msg "Check complete." 
 
-    WIKI_GIT="--git-dir=wiki.git"
-    git ${WIKI_GIT} fetch --all || die "wiki fetch failed"
-    debug_msg "Latest wiki fetched."
-    
-
     # Make new branch for live-YYYYMMDD
     # -t track upstream (push/pull from github will work)
     # -f force -- delete branch if it already exists
@@ -64,15 +59,13 @@ function run () {
     done
     
     #
-    # Adding generated Wiki content to the Live site
+    # Adding generated content to the Live site
     #
     find documentation -name '*html' -exec git add {} \;
     find contribute -name '*html' -exec git add {} \;
     git add xwalk.css
     git add markdown.css
     git add menus.js
-    git add wiki/pages.md.html
-    git add wiki/history.md.html
     
     debug_msg "git add complete." 
     
@@ -91,7 +84,7 @@ function run () {
     rm *.sh
     
     #
-    # Remove all Wiki markdown content from Live site
+    # Remove all markdown content from Live site
     #
     find . -name '*.md' -exec rm {} \;
     find . -name '*.mediawiki' -exec rm {} \;
