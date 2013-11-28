@@ -215,6 +215,10 @@ function remote () {
     path=$1
     shift
     cd "${path}" || return
+    url=${path/\/srv\/www\/}
+    url=${path/\/docroot*}
+    wget -qO - https://${url}/regen.php
+    
     { declare -f drush_routine ; echo drush_routine $* ; } | sudo su drush -
 }
 
