@@ -1,4 +1,15 @@
 <?php
+/*
+ * make sure you populate wiki.git via:
+
+   git clone --bare https://github.com/crosswalk-project/crosswalk-website.wiki.git wiki.git
+
+ * And then:
+
+   chown wwwrun: wiki.git -R
+
+ *
+ */
 /* Extract the POST data */
 $post = '';
 if (isset ($_POST['payload'])) {
@@ -18,19 +29,11 @@ if ($now['sec'] - $mtime < 10)
     exit;
 
 $ret = 0;
-@system('git --git-dir=wiki.git fetch -q --all >/dev/null 2>&1', $ret);
+@system ('git --git-dir=wiki.git fetch -q origin master:master', $ret);
 if ($ret) {
     print "git fetch failed";
     exit;
 }
-@system('php gfm.php wiki/pages.md.html 2>&1 >/dev/null', $ret);
-if ($ret) {
-    print "Generation of pages.md.html";
-    exit;
-}
-@system('php gfm.php wiki/history.md.html 2>&1 >/dev/null', $ret);
-if ($ret) {
-    print "Generation of history.md.html failed";
-    exit;
-}
-touch ('github-regen');
+@system('php gfm.php wiki/pages.md >&1 >/dev/null');
+@system('php gfm.php wiki/history.md 2>&1 >/dev/null');
+@touch ('github-regen');
