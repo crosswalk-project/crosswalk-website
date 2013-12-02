@@ -25,6 +25,9 @@ Execute the following command to gclient auto-generate `.gclient` file.
     gclient config --name=src/xwalk \
                    git://github.com/crosswalk-project/crosswalk.git
 
+NOTE: You can replace git:// with ssh://git@ if you want to use your 
+GitHub credentials when checking out the code.
+
 At the same level of `.gclient` file, execute
 
     gclient sync
@@ -68,10 +71,6 @@ We use `gyp` to generate Crosswalk projects, go to `src` directory, execute
     export GYP_GENERATORS='ninja'
     python xwalk/gyp_xwalk
 
-**NOTE**: it is possible also to enable [Aura UI framework](http://www.chromium.org/developers/design-documents/aura) for Tizen 3.0 build; in that case execute:
-
-    python xwalk/gyp_xwalk -Duse_aura=1 -Duse_gconf=0 -Duse_xi2_mt=2
-
 at this point you have built the projects with gyp and are ready for the actual compilation. To build the launcher now execute:
 
     ninja -C out/Release xwalk
@@ -82,7 +81,13 @@ Optionally, to build the tests, execute:
     ninja -C out/Release xwalk_browsertest
 
 ### Build Instructions for Android
-First of all, set up the Android build environment. If you are targeting ARM, pass `arm` instead of `x86` below:
+Install the dependency of building crosswalk on Ubuntu machine
+
+    sudo ./build/install-build-deps-android.sh
+
+First of all, set up the Android build environment. If you are targeting 
+ARM, pass `arm` instead of `x86` below:
+
 
     . xwalk/build/android/envsetup.sh --target-arch=x86
 
@@ -90,8 +95,11 @@ Generate Crosswalk projects, execute
 
      export GYP_GENERATORS='ninja'
      xwalk_android_gyp
+     ./xwalk/gyp_xwalk
 
-To build xwalk core and runtime shell(for developer testing purpose), execute:
+To build xwalk core and runtime shell(for developer testing purpose, not 
+used by public), execute:
+
 
     ninja -C out/Release xwalk_core_shell_apk xwalk_runtime_shell_apk
 
@@ -102,6 +110,14 @@ To build xwalk runtime library APK, execute:
 To build a sample web app APK, execute:
    
     ninja -C out/Release xwalk_app_template_apk
+
+Run test runtime shell
+```
+adb install -r out/Release/apks/XWalkRuntimeLib.apk 
+adb install -r out/Release/apks/XWalkRuntimeClientShell.apk
+adb shell am start -n 
+org.xwalk.runtime.client.shell/org.xwalk.runtime.client.shell.XWalkRuntimeClientShellActivity
+```
 
 ### Build Instructions for Tizen
 If you are unfamiliar with the RPM packaging process on Tizen, be sure to take a look at the [GBS documentation](https://source.tizen.org/documentation/reference/git-build-system) in Tizen's website.
