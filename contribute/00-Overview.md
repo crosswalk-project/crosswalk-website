@@ -17,5 +17,9 @@ or hop on IRC and ask what people could use help on.
 
 Be sure to follow the [contribution guidelines](#contribute/contributing-code) as you develop your changes.
 
+## Testing
+Everything related to test scope, test execution plan, and running tests 
+can be found on the [Crosswalk Testing Home](#wiki/crosswalk-testing-home).
+
 ## Questions?
 Jump on IRC and chat with other developers; they hang out on Freenode in the #crosswalk channel. Details in the [Community](#documentation/community) page.
