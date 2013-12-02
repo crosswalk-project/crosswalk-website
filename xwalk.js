@@ -478,7 +478,10 @@ function content_response (e) {
     div.appendChild (content);
 
     /*
-     * Wiki link rewriting magic... the Gollum system returns links
+     * Wiki link rewriting magic... 
+     * 
+     * 1) Pass ONE
+     * the Gollum system returns links
      * relative to the paths inside of GitHub and Gollum. Some of
      * those links have been hand code by Wiki editors.
      *
@@ -543,6 +546,22 @@ function content_response (e) {
             
             link.addEventListener ('click', subMenuClick);
     });
+
+    /*
+     * 2) Pass TWO
+     * Rewrite IMG src links to be relative to wiki/ instead
+     * of relative to / (only for wiki content)
+     *
+     */
+    if (column_name == 'wiki') {
+        Array.prototype.forEach.call (
+            content.querySelectorAll ('img:not([src^="http"])'), function (img) {
+                var src = img.getAttribute ('src');
+                if (src.match (/^assets/))
+                    src = 'wiki/' + src;
+                img.src = src;
+        });
+    }
 
     /* For all external links, intercept the click and log the event with
      * GA prior to invoking the request... */
