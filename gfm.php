@@ -1,4 +1,9 @@
 <?php
+if (PHP_SAPI !== 'cli') {
+    /* CLI supports allow_url_fopen */
+    @fpassthru (@popen ('php '.__FILE__.' '.$_REQUEST['f'], 'r'));
+    exit;
+}
 require_once ('smart-match.inc');
 
 function missing () {
