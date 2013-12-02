@@ -8,65 +8,52 @@ end user documentation, co-traveller contribute documentation, and
 the wiki.
 
 The content for the documentation and contribute sections is hosted 
-in the crosswalk-docs project on GitHub. See that project's
-README for information on how to edit that content:
+in the crosswalk-website project under the contribute/ and documentation/
+directories.
 
-https://github.com/crosswalk-project/crosswalk-website/blob/master/README.md
-
-Wiki content is a live view from:
+The wiki content on the website is a live view from:
 
 https://github.com/crosswalk-project/crosswalk-website/wiki
 
+The history and page list for the wiki are generated dynamically whenever
+a commit is made to the wiki (via a GitHub webhook to the Gollum event)
+
 # Workflow
-There are two versions of this website. The development version
-and the live version.
+The general work flow is as follows:
 
-Changes are made to source files (scss, js, and html) in a development 
-version of the site. The following content is generated dynamically:
+1. Develop on local machine
+2. Create a live snapshot: `./site.sh mklive`
+3. Push to latest 'live snapshot' to the staging server via `./site.sh push`
+4. Push the stating version to the live server via `./site.sh push live`
+ 
+Step #2 compiles all dynamic content to static versions; scss is converted to css and the markdown content in documentation/ and contribute/ are converted to html.
+
+When the live snapshot is created, it is placed onto a branch with the name "live-YYYYMMdd".
+
+# Initializing the server
+To host the Crosswalk website, you need to perform the following on the server:
 
 ```
-Generated File       Source
-xwalk.css            xwalk.scss
-markdown.css         markdown.scss
-menus.js             dynamic based on contents of wiki/documentation/contribute
-documentation/*.html *.md, *.mediawiki, *.org
-contribute/*.html    *.md, *.mediawiki, *.org
+# Initialize the site content into `docroot`
+git clone https://github.com/crosswalk-project/crosswalk-website.git docroot
+cd docroot
+git clone --bare https://github.com/crosswalk-project/crosswalk-website.wiki.git wiki.git
+sudo chown wwwrun: wiki.git -R
+sudo chown wwwrun: wiki -R
+# Switch to the latest live branch
+. scripts/common.inc
+branch=$(get_remote_live_info)
+echo ${branch} > REVISION
+git checkout -f ${branch}
 ```
 
-The generated files are updated as needed by the PHP scripts when
-running in a Development version of the site. If you can change xwalk.scss and
-reload the page, when xwalk.css is requested the script xwalk.css.php will determine
-if a new version of the source file exists.
+At this point, the site is now initialized and set to the latest live branch. The scripts/ directory is not part of the live version of the site--once you checkout ${branch}, you won't be able to run any of the scripts on the live site.
 
-If you encounter a red web page, this means the scss to css compilation
-failed. If you were just editing xwalk.scss, you can look in the file xwalk.msg to 
-view the Sass compiler output.
+NOTE: `wwwrun` is the user that Apache runs under (since it needs to be able to modify those two 
+directories when the wiki content is updated on GitHub.)
 
-When appropriate changes have been made, commit the changes locally on the master branch.
-To stage and test the content for the live vesrion, run the mklive script:
-```
-./site.sh mklive
-```
-At the completion of the above script, a new branch will have been created based on
-the current date in the form "live-YYYYMMdd".
-
-## Live Website
-The live version consists of static content, pre-generated and
-unchanging. This version has minimal server requrements, needing
-only PHP and the rewrite module. This is the version hosted on
-http://crosswalk-project.org.
-
-### Quick Steps
-To create a local copy of the live website:
-```
-git clone git@github.com:crosswalk-project/crosswalk-website.git
-```
-The above will checkout the entire website, including the cached
-Wiki content, and excluding binary downloads.
-
-### Details
-The live version lives in the 'live' branch. Running the live
-version requires the rewrite module in Apache2. This is used
+# Server Requirements: Live Website
+Running the live version requires the rewrite module in Apache2. This is used
 in the wiki subsystem to map requested URLs through a PHP
 script which will then perform smart matching of leaf names.
 
@@ -81,26 +68,17 @@ The rest of the content is served from static files that were
 generated as part of the development cycle as described in the Workflow
 section.
 
-## Development Website
+# Server Requirements: Development Website
 
 The development version automatically generates new versions
-of various files (*.css, menus.js, and the wiki/*.html content)
-as those content items are updated. To set up a local development
-version:
+of various files (*.css, menus.js, and the {documentation,contribute}/*.html) and requires local infrastructure to process the markdown content.
 
-```
-git clone git@github.com:crosswalk-project/crosswalk-website
-cd crosswalk-website
-git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git --bare wiki.git
-cd ..
-```
-
-### Requirements
+## Requirements
 Running the development version of the site has several additional
 software dependencies, located toward the end of this file under
 Development Site Software Dependencies.
 
-#### APACHE2 AND PHP
+### APACHE2 AND PHP
 
 Apache2 configured with PHP and the following:
   -MultiViews: it breaks the usage of php to create HTML from markup
@@ -113,20 +91,9 @@ sudo a2enmod rewrite
 sudo service apache2 restart
 ```
 
-#### GOLLUM AND THE WIKI
+### GOLLUM
 
-The wiki subsystem uses gollum internally to create cached pages.
-The website itself does not contain the Crosswalk wiki content.
-That content is managed as the wiki associated with the
-crosswalk-website project.
-
-The website is designed to have the wiki checked out in the wiki/
-sub-directory, as follows:
-
-```
-cd crosswalk-website
-git clone git@github.com:crosswalk-project/crosswalk-website.wiki.git --bare wiki.git
-```
+The content in documentation and contribute uses gollum to create cached pages.
 
 NOTE:
 gollum requires ruby >= 1.9.2 (gollum requires nokogiri which requires
@@ -159,24 +126,16 @@ file is newer than the cached file.
 Gollum should be launched with the following option:
 
 ```
-gollum --base-path wiki --live-preview ${DOCROOT}/wiki >/dev/null 2>&1 &
+gollum --base-path wiki --live-preview ${DOCROOT} >/dev/null 2>&1 &
 ```
 
-It is expected that the path above is immediately below the main site
-root and that the wiki directory contains the .git/ tree from the GitHub
-hosted gollum site where the wiki is edited.
+${DOCROOT} should be the root of your local install, for example /var/www/crosswalk-website.
 
 By providing the --live-preview option you can use a live editor to edit
 the documentation content locally by navigating to http://localhost:4567/.
 
 In addition, the git tree must be checked out. When new content is ready
 to be used, the following can be executed:
-
-```
-cd ${DOCROOT}/wiki
-git pull
-git checkout -f
-```
 
 ## CSS and SASS
 
