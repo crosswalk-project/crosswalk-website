@@ -99,13 +99,15 @@ function push () {
     case $target in
     live)
         url=sites1.vlan14.01.org
-        path=/srv/www/crosswalk-project.org/docroot
+        site=crosswalk-project.org
         ;;
     staging)
         url=stg-sites.vlan14.01.org
-        path=/srv/www/stg.crosswalk-project.org/docroot
+        site=stg.crosswalk-project.org
         ;;
     esac
+
+    path=/srv/www/${site}/docroot
 
     current_name=$(branchname ${current})
     current_sha=$(branchsha ${current}) || die "Could not find ${current_name}"
@@ -171,6 +173,15 @@ EOF
     # SSH to the target machine and execute the bash sequence implemented
     # in the function 'remote', passing in the branch name to switch to.
     { declare -f remote ; echo "remote ${path} ${rev}" ; } | ssh -T ${url}
+    
+    echo -n "Triggering History and Page regeneration..."
+    echo ${site}
+    wget -qO - https://${site}/regen.php
+    if [ ! -e wiki/pages.md.html ] || [ ! -e wiki/history.md.html ]; then
+        echo "FAILED!"
+    else
+        echo "done"
+    fi
 }
 
 #
@@ -203,6 +214,7 @@ function remote () {
                 git reset --hard ${current/*:}
                 exit
             }
+            echo "done."
         fi
         echo "Running: git clean -f"
         ${dry_run} git clean -f
@@ -215,10 +227,6 @@ function remote () {
     path=$1
     shift
     cd "${path}" || return
-    url=${path/\/srv\/www\/}
-    url=${path/\/docroot*}
-    wget -qO - https://${url}/regen.php
-    
     { declare -f drush_routine ; echo drush_routine $* ; } | sudo su drush -
 }
 
