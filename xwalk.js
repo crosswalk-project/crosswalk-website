@@ -407,6 +407,26 @@ function generate_history_page (page, contents) {
     return content;
 }    
     
+function replace_version_string (str) {
+    var re, version;
+    Object.getOwnPropertyNames (versions).forEach (function (channel) {
+        Object.getOwnPropertyNames (versions[channel]).forEach (function (platform) {
+            Object.getOwnPropertyNames (versions[channel][platform]).forEach (
+                function (arch) {
+                    version = versions[channel][platform][arch];
+                    re = new RegExp ('([^!])\\${XWALK-'+channel+'-'+
+                                     platform+'-'+arch+'}', 'mig');
+                    str = str.replace (re, '$1' + version);
+                    
+                    re = new RegExp ('!(\\${XWALK-'+channel+'-'+
+                                     platform+'-'+arch+'})', 'mig');
+                    str = str.replace (re, '$1');
+                });
+            });
+        });
+    return str;
+}
+    
 function content_response (e) {
     if (xhr.readyState != XMLHttpRequest.DONE) {
         console.log (xhr.status);
@@ -448,6 +468,12 @@ function content_response (e) {
         sub_page = column.hasAttribute ('loading_page') ?
             column.getAttribute ('loading_page') : 'Home';
 
+    var response = e.currentTarget.response ?
+                e.currentTarget.response :
+                e.currentTarget.responseText;
+    
+    response = replace_version_string (response);
+    
     /* The Wiki History is a dynamically generated JSON list of page edits
      * clustered chronologically. However the content on the server may not
      * be updated every day, which would result in stale time indicators.
@@ -457,13 +483,9 @@ function content_response (e) {
      * to the user.
      */
     if (column_name == 'wiki' && sub_page == 'history') {
-        content = generate_history_page (sub_page, e.currentTarget.response ?
-                e.currentTarget.response :
-                e.currentTarget.responseText);
+        content = generate_history_page (sub_page, response);
     } else {
-        content = generate_wiki_page (sub_page, e.currentTarget.response ?
-            e.currentTarget.response :
-            e.currentTarget.responseText);
+        content = generate_wiki_page (sub_page, response);
     }
                                         
     var div = column.querySelector ('.sub-content');
@@ -1326,6 +1348,10 @@ function scrollTo (e) {
 function init () {
     var name, href, use_default = true;
 
+    /* First start out by replacing all version instances with the correct version 
+     * numbers */
+    document.body.innerHTML = replace_version_string (document.body.innerHTML);
+    
     /* To keep the home-column from flashing away on IE8 prior to the "You need to upgrade"
      * page being shown, we start with the home-column hidden and only show it in
      * the DOMContentLoaded event handler */

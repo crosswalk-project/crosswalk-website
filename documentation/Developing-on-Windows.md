@@ -139,9 +139,9 @@ Now you can download the Crosswalk for Android package, decompress that package,
 connected Android devices using **adb** command. You can do this in the Git Bash session by running:
 ```bash
 cd ${USERPROFILE}
-curl https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-1.29.4.7.zip -o crosswalk-1.29.4.7.zip
-unzip crosswalk-1.29.4.7.zip
-adb install -r ${USERPROFILE}/crosswalk-1.29.4.7/apks/XWalkRuntimeLib.apk 
+curl https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}.zip -o crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
+unzip crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
+adb install -r ${USERPROFILE}/crosswalk-${XWALK-STABLE-ANDROID-X86}/apks/XWalkRuntimeLib.apk 
 ```
 **NOTE:** Passing **-r** will re-install the Crosswalk runtime (if you already have a version installed on your device.)
 
@@ -157,7 +157,7 @@ Android application hosting the WebGL sample. You can do this in the Git Bash se
 ```bash
 curl https://download.01.org/crosswalk/releases/crosswalk-samples-0.1.tgz -o crosswalk-samples-0.1.tgz
 tar xvf crosswalk-samples-0.1.tgz
-cd crosswalk-1.29.4.7
+cd crosswalk-${XWALK-STABLE-ANDROID-X86}
 tar xvf xwalk_app_template.tgz
 cd xwalk_app_template
 python make_apk.py --package=com.sample.webgl --name=WebGL --app-root=../../samples/webgl --app-local-path=index.html

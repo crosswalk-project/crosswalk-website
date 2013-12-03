@@ -7,15 +7,15 @@ You will need to install the Android SDK, including [adb](http://developer.andro
 1. Install the [Android SDK](http://developer.android.com/sdk/index.html).
 1. Download the Crosswalk binary for Android from the URL in [Downloads](#documentation/downloads/files).
 ```sh
-wget https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-1.29.4.7.zip
+wget https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
 ```
 1. Decompress the Crosswalk binary to access the various Android packages that can be installed:
 ```sh
-unzip crosswalk-1.29.4.7.zip
+unzip crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
 ```
 1. Install the XWalkRuntimeLib package:
 ```sh
-adb install crosswalk-1.29.4.7/apks/XWalkRuntimeLib.apk
+adb install crosswalk-${XWALK-STABLE-ANDROID-X86}/apks/XWalkRuntimeLib.apk
 ```
 On successful completion, you should see the final string *Success* displayed.
 
@@ -37,8 +37,8 @@ You can use the Tizen emulator as a target for running and developing Crosswalk 
 1. Install the [Tizen SDK](http://developer.tizen.org/downloads/tizen-sdk).
 1. Download the Crosswalk binary for Tizen from the URL in [Downloads](#documentation/downloads/files).
 ```sh
-wget https://download.01.org/crosswalk/releases/tizen/stable/crosswalk-1.29.4.7-0.i586.rpm
-wget https://download.01.org/crosswalk/releases/tizen/stable/crosswalk-emulator-support-1.29.4.7-0.i586.rpm
+wget https://download.01.org/crosswalk/releases/tizen/stable/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm
+wget https://download.01.org/crosswalk/releases/tizen/stable/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm
 wget https://download.01.org/crosswalk/releases/tizen/canary/tizen-extensions-crosswalk-0.11-0.i586.rpm
 ```
 1. With the Tizen emulator started or a Tizen device connected to the computer, log into the device as root by default:
@@ -47,21 +47,21 @@ sdb root on
 ```
 1. Push the RPMs to the device:
 ```sh
-sdb push crosswalk-1.29.4.7.rpm /tmp
+sdb push crosswalk-${XWALK-STABLE-TIZEN-X86}.rpm /tmp
 sdb push tizen-extensions-crosswalk-0.11-0.i586.rpm /tmp
 ```
 1. Install the RPMs on the device:
 ```sh
 sdb shell
 # While in the shell on the Tizen device
-rpm -i /tmp/crosswalk-1.29.4.7-0.i586.rpm
+rpm -i /tmp/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm
 rpm -i /tmp/tizen-extensions-crosswalk-0.11-0.i586.rpm
 ```
 1. Additionally, if installing Crosswalk on the Tizen Emulator, you need to install an additional package:
 ```sh
-sdb push crosswalk-emulator-support-1.29.4.7.rpm /tmp
+sdb push crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}.rpm /tmp
 sdb shell
-rpm -i /tmp/crosswalk-emulator-support-1.29.4.7-0.i586.rpm
+rpm -i /tmp/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm
 ```
 Please note that installing this package on an actual device can cause performance problems.
 1. While still in the shell, you can launch xwalk: 
