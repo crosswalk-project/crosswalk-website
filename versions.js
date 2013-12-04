@@ -9,7 +9,7 @@
  *
  * To see which pages from the main site are using this replacement:
  
-    grep -ricE '[^!]\${xwalk-[^-]+-[^-]+-[^-]+}' * | grep -v '0$'
+    grep -ricE '[^!]\\[^-]+-[^-]+-[^-]+' * | grep -v '0$'
    
  *
  * Script injection occurs in xwalk.js replace_version_string
@@ -37,13 +37,13 @@
  *
  */
 var versions = {
-    stable: {
+    stable: { 
         android: {
             x86: "1.29.4.7", 
             arm: "0.0.0.0"
         },
         tizen: {
-            x86: "1.29.4.7", 
+            x86: "1.29.4.7",
             arm: "0.0.0.0"
         },
     },
