@@ -107,9 +107,9 @@ function run () {
         esac
     done
     
-    channel="$1"
-    platform="$2"
-    arch="$3"
+    channel="${1,,}"
+    platform="${2,,}"
+    arch="${3,,}"
     version="$4"
     
     if [[ "${channel}" == "" || 
@@ -117,6 +117,39 @@ function run () {
           "${arch}" == "" || 
           "${version}" == "" ]]; then
         usage
+        false
+        return
+    fi
+    
+    case ${channel} in
+    "beta"|"stable")
+        ;;
+    *)
+        echo "Unrecognized channel: ${channel}"
+        false
+        return
+    esac
+
+    case ${arch} in
+    "arm"|"x86")
+        ;;
+    *)
+        echo "Unrecognized architecture: ${arch}"
+        false
+        return
+    esac
+
+    case ${platform} in
+    "windows"|"linux"|"android"|"tizen"|"osx")
+        ;;
+    *)
+        echo "Unrecognized platform: ${platform}"
+        false
+        return
+    esac
+
+    if ! [[ "$version" =~ ^([0-9]+\.){3}[0-9]+$ ]]; then
+        echo "Invalid version syntax: ${version}"
         false
         return
     fi
@@ -190,7 +223,7 @@ EOF
         }
         
         git commit -s -m \
-            "Automatic commit with bump of ${channel} to ${version} for ${platform}-${arch}" \
+            "Bumped ${platform}-${arch^^} ${channel^^} to ${version}." \
             -- versions.js
     }
 
@@ -200,11 +233,11 @@ EOF
     git checkout master -- versions.js
     echo "Committing to versions.js to ${live}..."
     git commit -s -m \
-        "Automatic commit with bump of ${channel} to ${version} for ${platform}-${arch}" \
+        "Bumped ${platform}-${arch^^} ${channel^^} to ${version}." \
         -- versions.js
     echo "Restoring GIT tree to original state"
     git checkout master
-    git stash apply
+    (( $stash )) && git stash apply
     
 return
 
