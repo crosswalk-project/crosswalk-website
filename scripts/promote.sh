@@ -1,17 +1,17 @@
 #  This script will perform the following:
 #  
 #  1. Determine the version of the website active on the live server (eg. live-20131202)
-#  2. Checkout that channel locally to tmp-live-20131202
-#  3. Commit that change to live-20131202
-#  4. Push that branch to GitHub
-#  5. Optionally activate the branch on the staging server via
+#  2. stash any current changes to master
+#  3. update the versions.js file
+#  4. commit that change to master
+#  5. checkout the live branch
+#  6. apply the versions.js file to the live branch
+#  7. commit that change to the live branch
+#  8. push the live branch to GitHub
+#  9. Optionally activate the branch on the staging server via
 #     
 #    site.sh push live-20131202
 #    
-#  6. Remove tmp-live-20131202
-#  7. Change versions.js in the active tree
-#  8. Commit the versions.js change in the active branch
-#
 #  At this point, the staging server should be tested to ensure the version update
 #  works as appropriate. Once satisfied, run:
 #    
@@ -238,19 +238,22 @@ EOF
     echo "Restoring GIT tree to original state"
     git checkout master
     (( $stash )) && git stash apply
-    
-return
 
-    url=$(git remote show -n origin | sed -ne 's,^.*Push.*URL: \(.*\)$,\1,p')
+    echo "Pushing ${live} to GitHub..."
+    git push origin ${live}:${live} || die "Push to server failed."
     
-    branch=$(branchname ${rev})
-    echo -en "Checking for ${branch} at ${url}..."
-    git remote show origin | grep -q ${branch} || {
-        echo "not found."
-        echo "Running: git push -u origin ${branch}:${branch}..."
-        git push -u origin ${branch}:${branch}
-    }
-    echo "done."
-
-    push "set" $target $rev $current
+    while true; do 
+        echo -n "Push ${live} to staging server? [Yn] "
+        read answer
+        case $answer in
+        ""|Y|y)
+            ${cmd} push ${live}
+            return
+            ;;
+        N|n)
+            false
+            return
+            ;;
+        esac
+    done
 }
