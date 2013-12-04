@@ -181,15 +181,13 @@ EOF
         return
     }
 
-    echo -n "Fetching staging branch name from stg.crosswalk-project.org..." >&2
+    echo -n "Fetching active branch name from crosswalk-project.org..." >&2
     live=$(get_remote_live_name live)
     echo "done"
 
-    git show-ref --verify --quiet refs/heads/${live} || {
-        echo -n "Fetching ${live} from GitHub..."
-        git fetch origin ${live}:${live} || die "Failed."
-        echo "done"
-    }
+    echo -n "Fetching ${live} from GitHub..."
+    git fetch origin ${live}:${live} || die "Failed."
+    echo "done"
 
     git diff --quiet --ignore-submodules --exit-code || {
         git stash
