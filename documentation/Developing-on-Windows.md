@@ -30,14 +30,14 @@ Then select Run Git from the Windows Command Prompt:
 
 Once installed, you will want to add various directories to your PATH when you enter the Git Bash session. To do this, open 
 notepad, paste the following, and save it as **%USERPROFILE%\\.bashrc**:
-```bash
+<pre>
 export PATH=${PATH}:${USERPROFILE}/android/sdk/platform-tools
 export PATH=${PATH}:${USERPROFILE}/android/sdk/tools
 export PATH=${PATH}:${USERPROFILE}/Python27
 export PATH="C:/Program\ Files/Java/jdk1.7.0_40/jre/bin":${PATH}
 export PATH="C:/Program\ Files/Java/jdk1.7.0_40/bin":${PATH}
 export PATH=${PATH}:${USERPROFILE}/apache-ant-1.9.2/bin 
-```
+</pre>
 
 **NOTE:** If you already have the Android SDK, Python27, Apache ANT, or the JDK installed on your system, adjust the above path 
 variables appropriately for your system configuration.
@@ -55,18 +55,18 @@ You can now open a Git Bash session by going to your Start Menu and typing in **
 1. Android's **platform-tools** and **tools** directories were added to the Git Bash session's PATH file while installing the Git SCM tools.
 
 1. Run the SDK Manager. You can do this in the Git Bash session by running:
-```bash
+<pre>
 cd ${USERPROFILE}/android
 "SDK Manager.exe"
-```
+</pre>
 1. Within the SDK Manager you need to install:
-```
+</pre>
 [ ] Android 4.3 (API 18)
     [x] Intel x86 Atom System Image
 ...
 [ ] Extras
     [x] Intel x86 Emulator Accelerator (HAXM)
-```
+</pre>
 
 ### OPTIONAL: Emulator Setup
 If you do not have an x86 based Android device, you can use the hardware accelerated execution manager (HAXM) to provide 
@@ -74,40 +74,40 @@ an emulated Android device on your host computer.
 
 1. Install HAXM. The Android SDK Manager will download the HAXM installer, however it does not install it. You can do this in the 
 Git Bash session by running:
-```bash
+<pre>
 cd ${USERPROFILE}/android/sdk/extras/Hardware_Accelerated_Execution_Manager
 IntelHaxm.exe
-```
+</pre>
 **NOTE:** The path may change where it places the IntelHaxm installation program. To find this in the Git Bash session by running::
-```bash
+<pre>
 cd ${USERPROFILE}/android
 find . -iname intelhaxm.exe
-```
+</pre>
 
 1. Create a new emulator image using the AVD Manager.  You can do this in the Git Bash session by running:
-```bash
+<pre>
 cd ${USERPROFILE}/android
 sdk/"AVD Manager.exe"
-```
+</pre>
 
 For these instructions, we call the image Tablet. Select **Intel Atom (x86)** for CPU/ABI and **Use Host GPU**:
 
 <img src='wiki/assets/emulator.png'><br>
 
 1. Launch the emulator. You can do this in the Git Bash session by running:
-```bash
+<pre>
 emulator -avd Tablet
-```
+</pre>
 
 1. Once the emulator has loaded, you can use the adb comment to connect to the emulator.  You can do this in the Git Bash session by running:
-```bash
+<pre>
 adb devices
-```
+</pre>
 Which should output something similar to the following:
-```
+</pre>
 List of devices attached
 emulator-5554   device
-```
+</pre>
 
 ## Install Python
 Install Python 2.7.x (don't install 3.x as some of the scripts do not support newer 3.x syntax)
@@ -127,22 +127,22 @@ The JDK's  **jre/bin** and **bin** directories were added to the Git Bash sessio
 We will install ant within the Git Bash shell using the following commands, which will download the binary distribution and 
 decompress it to ${USERPROFILE}, and add it to the PATH.  You can do this in the Git Bash session by running:
 
-```bash
+<pre>
 curl http://apache.spinellicreations.com//ant/binaries/apache-ant-1.9.2-bin.zip -o apache-ant-1.9.2-bin.zip
 unzip apache-ant-1.9.2-bin -x '*/manual/*'
-```
+</pre>
 
 The Apache ANT **bin** directory was added to the Git Bash session's PATH file while installing the Git SCM tools.
 
 ## Install the Crosswalk for Android packages
 Now you can download the Crosswalk for Android package, decompress that package, and install it onto a 
 connected Android devices using **adb** command. You can do this in the Git Bash session by running:
-```bash
+<pre>
 cd ${USERPROFILE}
 curl https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}.zip -o crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
 unzip crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
 adb install -r ${USERPROFILE}/crosswalk-${XWALK-STABLE-ANDROID-X86}/apks/XWalkRuntimeLib.apk 
-```
+</pre>
 **NOTE:** Passing **-r** will re-install the Crosswalk runtime (if you already have a version installed on your device.)
 
 At this point, if you go to your Android system settings, you should see XWalkRuntimeLib listed in the set of installed applications.
@@ -154,18 +154,18 @@ You are now ready to build a Crosswalk application!
 
 Download the **crosswalk-samples** source package, decompress it, and then build a Crosswalk enabled 
 Android application hosting the WebGL sample. You can do this in the Git Bash session by running:
-```bash
+<pre>
 curl https://download.01.org/crosswalk/releases/crosswalk-samples-0.1.tgz -o crosswalk-samples-0.1.tgz
 tar xvf crosswalk-samples-0.1.tgz
 cd crosswalk-${XWALK-STABLE-ANDROID-X86}
 tar xvf xwalk_app_template.tgz
 cd xwalk_app_template
 python make_apk.py --package=com.sample.webgl --name=WebGL --app-root=../../samples/webgl --app-local-path=index.html
-```
+</pre>
 You can install the WebGL sample on your device using **adb install**. You can do this in the Git Bash session by running:
-```bash
+<pre>
 adb install WebGL.apk
-```
+</pre>
 
 The WebGL sample will now be in your application listing:
 
