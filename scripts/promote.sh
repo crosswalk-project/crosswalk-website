@@ -1,3 +1,25 @@
+#  This script will perform the following:
+#  
+#  1. Determine the version of the website active on the live server (eg. live-20131202)
+#  2. Checkout that channel locally to tmp-live-20131202
+#  3. Commit that change to live-20131202
+#  4. Push that branch to GitHub
+#  5. Optionally activate the branch on the staging server via
+#     
+#    site.sh push live-20131202
+#    
+#  6. Remove tmp-live-20131202
+#  7. Change versions.js in the active tree
+#  8. Commit the versions.js change in the active branch
+#
+#  At this point, the staging server should be tested to ensure the version update
+#  works as appropriate. Once satisfied, run:
+#    
+#    site.sh push live
+#    
+#  To push the version from the staging server to the live server.
+
+
 desc="Promote a release version for a given channel"
 
 declare channel=""
@@ -14,28 +36,22 @@ usage: site.sh promote <channel> <platform> <architecture> <version>
   platform is one of 'tizen' or 'android'
   arch is either 'x86' or 'arm'
   version is of the form A.B.C.D
+ 
+Example:
+  ${cmd} promote stable android x86 2.31.27.0
+  ${cmd} push
   
-  This script will perform the following:
+  Visit https://stg.crosswalk-project.org and verify the site lists
+  the correct version on the main page.
   
-  1. Determine the version of the website active on the live server (eg. live-20131202)
-  2. Checkout that channel locally to tmp-live-20131202
-  3. Commit that change to live-20131202
-  4. Push that branch to GitHub
-  5. Optionally activate the branch on the staging server via
-     
-    site.sh push live-20131202
-    
-  6. Remove tmp-live-20131202
-  7. Change versions.js in the active tree
-  8. Commit the versions.js change in the active branch
-
-  At this point, the staging server should be tested to ensure the version update
-  works as appropriate. Once satisfied, run:
-    
-    site.sh push live
-    
-  To push the version from the staging server to the live server.
-
+  You should also verify the links on the download page:
+  
+    https://stg.crosswalk-project.org/#documentation/downloads
+  
+  Once verified:
+  
+  ${cmd} push live
+  
 EOF
 }
 
@@ -140,11 +156,14 @@ function run () {
         case "$1" in
         "--manual-edit")
             skip_update=1
+            shift
+            ;;
         "-n")
             dry_run="echo "
             shift
             ;;
         *)
+            echo "error: unknown switch '${1}'"
             usage
             false
             return
