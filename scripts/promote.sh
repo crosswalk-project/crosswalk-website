@@ -179,6 +179,11 @@ function run () {
     live=$(get_remote_live_name live)
     echo "done"
 
+    git show-ref --verify --quiet refs/heads/${live} || {
+        echo -n "Fetching ${live} from GitHub..."
+        git fetch origin ${live}:${live} || die "Failed."
+        echo "done"
+    }
     command="new"
 
     if [[ -e "tmp-${live}" ]]; then
@@ -202,7 +207,7 @@ function run () {
 
     if [[ "${command}" == "new" ]]; then
         mkdir "tmp-${live}"
-        git ${STAGE_GIT} checkout -f
+        git ${STAGE_GIT} checkout -f -- .
     fi
 
     update_version_string ${command} \
