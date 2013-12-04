@@ -1,4 +1,11 @@
 desc="Promote a release version for a given channel"
+
+declare channel=""
+declare platform=""
+declare arch=""
+declare version=""
+declare STAGE_GIT=""
+
 function usage () {
 cat << EOF
 usage: site.sh promote <channel> <platform> <architecture> <version>
@@ -12,15 +19,15 @@ usage: site.sh promote <channel> <platform> <architecture> <version>
   
   1. Determine the version of the website active on the live server (eg. live-20131202)
   2. Checkout that channel locally to tmp-live-20131202
-  4. Commit that change to live-20131202
-  5. Push that branch to GitHub
-  6. Optionally activate the branch on the staging server via
+  3. Commit that change to live-20131202
+  4. Push that branch to GitHub
+  5. Optionally activate the branch on the staging server via
      
     site.sh push live-20131202
     
-  7. Remove tmp-live-20131202
-  8. Change versions.js in the active tree
-  9. Commit the versions.js change in the active branch
+  6. Remove tmp-live-20131202
+  7. Change versions.js in the active tree
+  8. Commit the versions.js change in the active branch
 
   At this point, the staging server should be tested to ensure the version update
   works as appropriate. Once satisfied, run:
@@ -35,9 +42,9 @@ EOF
 function query_diff () {
     branch="$1"
     file="$2"
-    
+
     while true; do 
-        git --git-dir=.git --work-tree=$(dirname $file) \
+        git ${STAGE_GIT} \
             diff --exit-code ${branch} -- $(basename ${file}) &&
             echo "No diferences."
         echo -n "Is the above diff correct? [Yn] "
@@ -61,17 +68,17 @@ EOF
             ;;
         esac
     done
+    
+    git ${STAGE_GIT} commit \
+        -s -m "Automatic commit with bump of ${channel} to ${version} for ${platform}-${arch}" -- \
+        $(basename ${file})
 }    
 
 function update_version_string () {
     command="$1"
     shift
-    channel="$1"
-    platform="$2"
-    arch="$3"
-    version="$4"
-    branch="$5"
-    file="$6"
+    branch="$1"
+    file="$2"
     
     if [[ "${command}" == "continue" ]]; then
         query_diff ${branch} ${file}
@@ -199,7 +206,7 @@ function run () {
     fi
 
     update_version_string ${command} \
-        $channel $platform $arch $version ${live} tmp-${live}/versions.js ||
+        ${live} tmp-${live}/versions.js ||
         die "Unable to set versions.js appropriately."
 
     return
