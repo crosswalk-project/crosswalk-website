@@ -414,12 +414,12 @@ function replace_version_string (str) {
             Object.getOwnPropertyNames (versions[channel][platform]).forEach (
                 function (arch) {
                     version = versions[channel][platform][arch];
-                    re = new RegExp ('([^!])\\${XWALK-'+channel+'-'+
-                                     platform+'-'+arch+'}', 'mig');
+                    re = new RegExp ('([^!])\\$({|%7b)XWALK-'+channel+'-'+
+                                     platform+'-'+arch+'(}|%7d)', 'mig');
                     str = str.replace (re, '$1' + version);
                     
-                    re = new RegExp ('!(\\${XWALK-'+channel+'-'+
-                                     platform+'-'+arch+'})', 'mig');
+                    re = new RegExp ('!(\\$({|%7b)XWALK-'+channel+'-'+
+                                     platform+'-'+arch+'(}|%7d))', 'mig');
                     str = str.replace (re, '$1');
                 });
             });
