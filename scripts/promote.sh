@@ -59,8 +59,6 @@ Exiting. You will need to manually edit 'versions.js'. When done, re-run:
 
     ${cmd} promote --manual-edit
     
-And anser Yes to 'Use current version?' prompt.
-
 EOF
             false
             return
@@ -83,7 +81,7 @@ function update_version_string () {
  *
  * To see which pages from the main site are using this replacement:
  
-    grep -ricE '[^!]\\${xwalk-[^-]+-[^-]+-[^-]+}' * | grep -v '0\$'
+    grep -ricE '[^!]\\\\${xwalk-[^-]+-[^-]+-[^-]+}' * | grep -v '0\$'
    
  *
  * Script injection occurs in xwalk.js replace_version_string
@@ -138,12 +136,22 @@ EOF
 
 # usage: site.sh promote <channel> <platform> <architecture> <version>
 function run () {
-    if [[ "$1" == "-n" ]]; then
-        dry_run="echo "
-        shift
-    else
-        dry_run=""
-    fi
+    while [[ "$1" =~ -* ]]; do
+        case "$1" in
+        "--manual-edit")
+            skip_update=1
+        "-n")
+            dry_run="echo "
+            shift
+            ;;
+        *)
+            usage
+            false
+            return
+            ;;
+        esac
+    done
+    
     channel="$1"
     platform="$2"
     arch="$3"
@@ -168,22 +176,42 @@ function run () {
         echo "done"
     }
 
-    ${dry_run} git stash
+    git diff --quiet --exit-code -- versions.js && {
+        cat << EOF
+versions.js has not been committed. Run:
 
-    update_version_string ||
-        die "Unable to set versions.js appropriately."
-
-    query_diff HEAD -- versions.js || {
-        git diff HEAD -- versions.js | patch -p1 -R || 
-            die "Unable to reset to previous state. 'git stash' still active."
-        git stash pop || die "git pop failed"
+    git commit -s -m 'Updated versions.js' -- versions.js
+    
+to commit the file.
+EOF
         false
         return
     }
-    
-    git commit -s -m \
-        "Automatic commit with bump of ${channel} to ${version} for ${platform}-${arch}" \
-        -- versions.js
+
+    ${dry_run} git stash && stash=1
+
+    (( $skip_update )) && {
+        echo "Using versions.js from master."
+    } || {
+        update_version_string ||
+            die "Unable to set versions.js appropriately."
+
+        query_diff HEAD -- versions.js || {
+            git diff HEAD -- versions.js | patch -p1 -R || 
+                die "Unable to reset to previous state. 'git stash' still active."
+            (( $stash )) && {
+                echo -n "Restoring working directory..."
+                git stash pop --quiet || die "git pop failed"
+                echo "done"
+            }
+            false
+            return
+        }
+        
+        git commit -s -m \
+            "Automatic commit with bump of ${channel} to ${version} for ${platform}-${arch}" \
+            -- versions.js
+    }
 
     echo "Switching to ${live}..."
     git checkout ${live}
