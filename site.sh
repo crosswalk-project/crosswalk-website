@@ -64,10 +64,10 @@ function execute_script () {
 
 # If --help was passed, then show the sub-command usage
 if [[ "$1" = "--help" ]]; then
-    cmd="usage"
+    mode="usage"
     shift
 else
-    cmd="run"
+    mode="run"
 fi
 
 if [[ "$1" = "" ]]; then
@@ -81,10 +81,10 @@ while [[ "${names[$j]}" != "" ]]; do
             shift
             for v in $@; do
                 if [[ "$v" == "--help" ]]; then
-                    cmd="usage"
+                    mode="usage"
                 fi
             done
-            execute_script "${names[$j]}" $cmd $*
+            execute_script "${names[$j]}" $mode $*
         else
             echo "$1 is an invalid script."
         fi
