@@ -24,8 +24,8 @@ There are several pieces of content that are generated during the site developme
 * menus.js <= generated from menus.js.php
 * wiki/pages.md.html <= generated from regen.php via gfm.php
 * wiki/history.md.html <= generated from regen.php via gfm.php
-* contribute/*.html <= generated from the markdown files in contribute/*.md via gfm.php
-* documentation/*.html <= generated from the markdown files in contribute/*.md via gfm.php
+* contribute/\*.html <= generated from the markdown files in contribute/*.md via gfm.php
+* documentation/\*.html <= generated from the markdown files in contribute/*.md via gfm.php
 
 If running in development mode, all of the above are regenerated when the source changes (via .htaccess and gfm.php)
 
