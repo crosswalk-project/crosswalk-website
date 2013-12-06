@@ -126,7 +126,7 @@ file is newer than the cached file.
 Gollum should be launched with the following option:
 
 ```
-gollum --base-path wiki --live-preview ${DOCROOT} >/dev/null 2>&1 &
+gollum --live-preview ${DOCROOT} >/dev/null 2>&1 &
 ```
 
 ${DOCROOT} should be the root of your local install, for example /var/www/crosswalk-website.
