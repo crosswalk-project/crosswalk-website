@@ -3,9 +3,9 @@ The Crosswalk website consists of the following functional areas:
 
 1. [Main landing page](https://crosswalk-project.org). Mostly static content. Some Javascript is used to compensate for style areas that were difficult to code in a pure CSS model. Javascript is also used for dynamically changing the version strings in the top overview section.
 2. [Documentation](https://crosswalk-project.org/#documentation) and [Contribute](https://crosswalk-project.org/#contribute). Statically generated from content checked into the crosswalk-website.git project. The menu content on the left is generated via xwalk.js when the page is loaded, based on the content of menus.js. The content in the contribute/ and documentation/ directories are cached .html files generated from the markdown sources. This occurs during the 'site.sh mklive' script execution described later.
-3. [Wiki](https://crosswalk-project.org/#wiki). This content is a dynamic proxy to the Wiki content hosted in the [crosswalk-website.wiki.git](https://github.com/crosswalk-project/crosswalk-website.wiki.git) on GitHub. Whenever a commit is made, the Gollum Event Webhook on GitHub invokes the regen.php page which recreates the content viewed in the Pages and History pages of the Wiki.
+3. [Wiki](https://crosswalk-project.org/#wiki). This content is a dynamic proxy to the Wiki content hosted in the [crosswalk-website.wiki.git](https://github.com/crosswalk-project/crosswalk-website.wiki.git) on GitHub. Whenever a commit is made, the Gollum Event Webhook on GitHub invokes the regen.php page which recreates the content viewed in the Pages and History pages of the Wiki. Fetches of actual Wiki content are proxied on the server to GitHub via php (XHR on the client is blocked due to Access-Control-Allow-Origin; currently the server doesn't cache the fetched content--it should).
 
-There is very little dynamically generated content on the live server. The wiki content is served via a php fetch from GitHub (XHR is blocked due to Access-Control-Allow-Origin; currently the server doesn't cache the fetched content--it should)
+The wiki content is served to the client in the format output by the GitHub wiki system (Gollum.) The client side javascript (See xwalk.js content_response and generate_wiki_page) creates a DOM element with the content from the wiki, pulls out the wiki DOM item, performs some URL rewrites, and then injects the resulting content into the Crosswalk website page.
 
 There are several pieces of content that are generated during the site development. These include:
 
@@ -18,6 +18,8 @@ There are several pieces of content that are generated during the site developme
 * contribute/*.html <= generated from the markdown files in contribute/*.md via gfm.php
 * documentation/*.html <= generated from the markdown files in contribute/*.md via gfm.php
 
+If running in development mode, all of the above are regenerated when the source changes (via .htaccess and gfm.php)
+
 # Workflow
 The general work flow is as follows:
 
@@ -27,11 +29,12 @@ The general work flow is as follows:
 4. Test the results on the staging server
 4. Push the staging version to the live server via the script: `./site.sh push live`
 
-If you are running a local web server, all of the content listed in the 'Cached dynamic content' list will be dynamically generated when changes are detected. When you execute the mklive script, all of that content is regenerated as part of the site snapshot creation. See './site.sh --help mklive'
+If you are running a local web server, all of the content listed in the 'Cached dynamic content' list will be dynamically generated when changes are detected. 
 
+When you execute the mklive script, all of that content is regenerated as part of the site snapshot creation. See './site.sh --help mklive'
 
-# Initializing the server
-To host the Crosswalk website, you need to perform the following on the server:
+# Populating the server with the crosswalk-website
+To host the Crosswalk website, the following needs to be done on the server:
 
 ```
 # Initialize the site content into `docroot`
@@ -49,8 +52,7 @@ git checkout -f ${branch}
 
 At this point, the site is now initialized and set to the latest live branch. The scripts/ directory is not part of the live version of the site--once you checkout ${branch}, you won't be able to run any of the scripts on the live site.
 
-NOTE: `wwwrun` is the user that Apache runs under (since it needs to be able to modify those two 
-directories when the wiki content is updated on GitHub.)
+The chown lines are necessary as wiki.git and wiki are written to via regen.php, which executes as the user wwwrun.
 
 # Server Requirements: Live Website
 Running the live version requires the rewrite module in Apache2. This is used
