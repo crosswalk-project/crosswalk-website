@@ -1,4 +1,46 @@
 desc="Generate live version of website"
+function usage () {
+cat << EOF
+usage: site.sh mklive
+
+  Generates a live version of the website, regenerating all dynamic
+  content into its compiled / processed forms.
+  
+  Creates a branch in the form of live-YYMMDD[.REV], for example:
+  
+    live-20131207
+    live-20131207.1
+    ...
+    
+  The script performs the following steps:
+  
+  1. Ensure you are on the 'master' branch
+  2. Verify there are no unstaged files (should be changed to use 
+     git-stash)
+  3. Create and switch to the new branch. On live branch:
+  3.1. Purge all generated dynamic content (analagous of a 
+       'make clean')
+  3.2. Regenerate all generated dynamic content
+  3.3. Rewrite the .htaccess file to turn off the development mode 
+       rewrite rules
+  3.4. modify the .gitignore file to only track files appropriate 
+       for the live website
+  3.5. Add dynamic content to GIT
+  3.6. Purge all the source content from GIT
+  3.7. commit the live snapshot
+  4. Switch back to master.
+  
+  At this point, the new live-YYMMDD branch contains an exact copy
+  of what would be pushed to the website. Given a branch name 
+  live-YYMMDD, you can create a local archive of that version via:
+
+  git archive --format=tar.gz --prefix=live-YYMMDD/ \
+    -o live-YYMMDD.tar.gz live-YYMMDD
+
+EOF
+}
+
+
 function run () {
     debug=${debug:=0}
     
