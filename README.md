@@ -7,9 +7,18 @@ The Crosswalk website consists of the following functional areas:
 
 The wiki content is served to the client in the format output by the GitHub wiki system (Gollum.) The client side javascript (See xwalk.js content_response and generate_wiki_page) creates a DOM element with the content from the wiki, pulls out the wiki DOM item, performs some URL rewrites, and then injects the resulting content into the Crosswalk website page.
 
-There are several pieces of content that are generated during the site development. These include:
+# Workflow
+The general work flow is as follows:
+
+1. Develop on local machine
+2. Create a 'live snapshot' via the script: `./site.sh mklive`
+3. Push latest 'live snapshot' to the staging server via the script: `./site.sh push`
+4. Test the results on the staging server
+4. Push the staging version to the live server via the script: `./site.sh push live`
 
 ## Cached dynamic content
+There are several pieces of content that are generated during the site development. These include:
+
 * xwalk.css <= generated from xwalk.scss
 * markdown.css <= generated from markdown.scss
 * menus.js <= generated from menus.js.php
@@ -20,20 +29,9 @@ There are several pieces of content that are generated during the site developme
 
 If running in development mode, all of the above are regenerated when the source changes (via .htaccess and gfm.php)
 
-# Workflow
-The general work flow is as follows:
-
-1. Develop on local machine
-2. Create a 'live snapshot' via the script: `./site.sh mklive`
-3. Push latest 'live snapshot' to the staging server via the script: `./site.sh push`
-4. Test the results on the staging server
-4. Push the staging version to the live server via the script: `./site.sh push live`
-
-If you are running a local web server, all of the content listed in the 'Cached dynamic content' list will be dynamically generated when changes are detected. 
-
 When you execute the mklive script, all of that content is regenerated as part of the site snapshot creation. See './site.sh --help mklive'
 
-# Populating the server with the crosswalk-website
+# Initializing the server with the crosswalk-website
 To host the Crosswalk website, the following needs to be done on the server:
 
 ```
