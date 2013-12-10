@@ -10,7 +10,7 @@ The wiki content is served to the client in the format output by the GitHub wiki
 # Workflow
 The general work flow is as follows:
 
-1. Develop on local machine
+1. Develop on local machine (see [Server Requirements: Development Website](#server-requirements-development-website))
 2. Create a 'live snapshot' via the script: `./site.sh mklive`
 3. Push latest 'live snapshot' to the staging server via the script: `./site.sh push`
 4. Test the results on the staging server
