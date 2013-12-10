@@ -347,9 +347,9 @@ function generate_history_page (page, contents) {
 
 
         j = 0;
+        var tracked = [];
         spans.forEach (function (span) {
-            var period = null, period_index = 0, last_period_index = 0, 
-                tracked = [], k, e;
+            var period = null, period_index = 0, last_period_index = 0, k, e;
                                     
             while (j < events.length) {
                 e = events[j];
@@ -364,6 +364,7 @@ function generate_history_page (page, contents) {
                 if (e.date <= span.end) {
                     break;
                 }
+
                 period_index = Math.max (
                     0, Math.floor ((span.start - e.date) / span.length));
 
