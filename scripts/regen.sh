@@ -31,7 +31,7 @@ function run () {
     WIKI_GIT="--git-dir=wiki.git"
     url=$(git remote show -n origin | sed -ne 's,^.*Push.*URL: \(.*\)$,\1,p')
     echo -n "Fetching latest changes from $url..."
-    git ${WIKI_GIT} fetch -q --all || 
+    git ${WIKI_GIT} fetch -q origin master:master || 
         die "\nUpdating wiki.git latest from GitHub failed. Exiting."
     echo "done."
 
