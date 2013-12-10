@@ -338,9 +338,9 @@ function generate_history_page (page, contents) {
                 end: now - (60 * 60 * 24 * 7) * 4 * 1000,
                 names: new Array ('Last week', ' weeks ago') 
             }, { /* months */
-                length: 60 * 60 * 24 * 30 * 1000, /* 60s * 60m * 24h * 30d = ~1 month */
-                start: now - (60 * 60 * 24 * 7) * 4 * 1000 * date.getDate (),
-                end: now - (60 * 60 * 24) * 30 * 12 * 1000,
+                length: 60 * 60 * 24 * 7 * 4 * 1000, /* 60s * 60m * 24h * 7d * 4w = ~1 month */
+                start: now - (60 * 60 * 24 ) * date.getDate () * 1000,
+                end: now - (60 * 60 * 24 * 7 * 4 * 12) * 1000,
                 names: new Array ('Last month', ' months ago')
             }
         );
@@ -366,13 +366,9 @@ function generate_history_page (page, contents) {
                 }
                 period_index = Math.max (
                     0, Math.floor ((span.start - e.date) / span.length));
-                if (period == null || period_index != last_period_index) {
-                    tracked = [];
-                    
-                }
-                
+
                 /* Check if this particular file is already listed as being 
-                 * edited in this time period, and if so, so skip it... */
+                 * edited, and if so, so skip it... */
                 for (k = 0; k < tracked.length; k++) {
                     if (e.file == tracked[k])
                         break;
@@ -384,7 +380,6 @@ function generate_history_page (page, contents) {
                 }
                 
                 if (period == null || period_index != last_period_index) {
-                    /* Reset the tracked list */
                     if (period != null)
                         html += '</ul>';
                     if (span.names) {
@@ -422,8 +417,6 @@ function generate_history_page (page, contents) {
             if (period != null) {
                 html += '</ul>';
             }
-            
-            
         });
 
         div.innerHTML = html;
