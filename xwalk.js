@@ -140,21 +140,47 @@ function activateColumn (name) {
 
 var pending = 0;
 function loadingGraphicStart () {
-    var indicator = false;
+    var indicator = null;
     if (pending++ != 0)
         return;
+
+    /* IF there is a sub-menu displayed then see if the wiki column
+     * is active. If it is, determine the wiki sub-page requested.
+     * If not a specific wiki topic (home, history, or pages), then activate
+     * the 'pages'.
+     *
+     * If not in the wiki column then search for any anchor that matches
+     * the requested page. */
+    var sub_menu = column.querySelector ('.sub-menu');
+    if (sub_menu) {
+        if (column_name == 'wiki') {
+            if (active_target.match (/^#wiki(\/home)?$/)) {
+                indicator = sub_menu.querySelector ('#page a[href="#wiki/home"]');
+            } else if (active_target.match (/^#wiki\/history$/)) {
+                indicator = sub_menu.querySelector ('#page a[href="#wiki/history"]');
+            } else {
+                indicator = sub_menu.querySelector ('#page a[href="#wiki/pages"]');
+            }
+            indicator.classList.add ('loading');
+        }
+
+        if (indicator == null) {
+        /* Add the loading class to all menu anchors that directly reference this exact target */
+            Array.prototype.forEach.call (
+                sub_menu.querySelectorAll ('#page a[href="' + active_target + '"]'),
+                function (el) {
+                    console.log ('matched: ' + el.getAttribute ('href'));
+                    el.classList.add ('loading');
+                    indicator = el;
+                }
+            );
+        }
     
-    /* Add the loading class to all anchors that directly reference this exact target */
-    Array.prototype.forEach.call (
-        document.querySelectorAll ('#page a[href^="' + active_target + '"]'),
-        function (el) {
-            el.classList.add ('loading');
-            indicator = true;
-    });
-    
+    }
+
     /* If no on-page indicators are showing the loading indicator, then add
      * the indicator to the top-menu item that will host the active_target */
-    if (!indicator) {
+    if (indicator == null) {
         Array.prototype.forEach.call (
             document.querySelectorAll (
                 '#top-menu a[href^="' + 
