@@ -16,6 +16,8 @@ The general work flow is as follows:
 4. Test the results on the staging server
 4. Push the staging version to the live server via the script: `./site.sh push live`
 
+NOTE: You can determine the version of the website that is active by fetching the file [REVISION](https://crosswalk-project.org/REVISION). The part before the colon is the branch name, the part after the colon is the commit-id. This file is queried by several of the functions defined in scripts/common.inc.
+
 ## Cached dynamic content
 There are several pieces of content that are generated during the site development. These include:
 
