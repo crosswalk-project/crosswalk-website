@@ -1,14 +1,16 @@
 <?php
-if (PHP_SAPI !== 'cli') {
-    /* CLI supports allow_url_fopen */
-    @fpassthru (@popen ('php '.__FILE__.' '.$_REQUEST['f'], 'r'));
-    exit;
-}
 require_once ('smart-match.inc');
 
-function missing () {
-    global $_REQUEST;
-    print "Missing wiki leaf: <span class='missing'>".$_REQUEST['f']."</span>";
+$file = 'Home';
+if (isset($_REQUEST) && array_key_exists('f', $_REQUEST)) {
+  $file = $_REQUEST['f'];
+}
+else if (PHP_SAPI === 'cli') {
+  $file = $argv[1];
+}
+
+function missing ($f) {
+    print "Missing wiki leaf: <span class='missing'>".$f."</span>";
     exit;
 }
 
@@ -27,10 +29,10 @@ function generatePageList ($path) {
     $wiki_git = '--git-dir='.$path.'.git';
     $cmd = 'git '.$wiki_git.' ls-tree -r HEAD';
     $p = popen ($cmd, 'r');
+    $regex = '/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/';
     while (!feof ($p)) {
         $line = fgets ($p);
-        if (!preg_match ('/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/',
-                         $line, $matches))
+        if (!preg_match ($regex, $line, $matches))
             continue;
         $file = $matches[2];
         $sha = $matches[1];
@@ -55,10 +57,10 @@ function generatePageList ($path) {
 function generateHistory ($path, $start, $end) {
     $wiki_git = '--git-dir='.$path.'.git';
     $cmd = 'git '.$wiki_git.' log '.
-        '--since='.$end.' --until='.$start.' '.
-        '--name-only '.
-        '--no-merges '.
-        '--pretty=format:">>> %s|%an|%ct|%H"';
+           '--since='.$end.' --until='.$start.' '.
+           '--name-only '.
+           '--no-merges '.
+           '--pretty=format:">>> %s|%an|%ct|%H"';
     $f = @popen ($cmd, 'r');
     $history = Array ();
     $tracking = Array ();
@@ -108,8 +110,6 @@ function generateHistory ($path, $start, $end) {
                         'orig' => $file,
                         'file' => $path.'/'.preg_replace ('/\.[^.]*$/', '', $file),
                         'name' => make_name (preg_replace ('/\.[^.]*$/', '', $file)),
-//                        'subject' => $parts[0],
-//                        'author' => $parts[1],
                         'date' => preg_replace ('/-[^-]*$/', '', $parts[2]),
                         'start_sha' => $parts[3],
                         'end_sha' => ''
@@ -128,8 +128,8 @@ function generateHistory ($path, $start, $end) {
             continue;
 
         $cmd = 'git --git-dir='.$path.'.git log -n 1 --pretty=format:"%H" '.
-                     $history[$i]['start_sha'].'^ -- '.
-                     '"'.$history[$i]['orig'].'"';
+               $history[$i]['start_sha'].'^ -- '.
+               '"'.$history[$i]['orig'].'"';
         $f = @popen ($cmd, 'r');
         $history[$i]['end_sha'] = trim (fgets ($f));
         pclose ($f);
@@ -144,13 +144,9 @@ function ob_callback ($buffer) {
     fwrite ($d, $buffer);
 }
 
-if (isset($argv[1]))
-    $_REQUEST['f'] = $argv[1];
-
-$request = isset ($_REQUEST['f']) ? $_REQUEST['f'] : 'Home';
-
-$md = file_smart_match (dirname (__FILE__).'/'.$request);
+$md = file_smart_match (dirname (__FILE__).'/'.$file);
 $md = realpath ($md);
+
 if (preg_match ('/.html$/', $md)) {
     require ($md);
     exit;
@@ -160,12 +156,12 @@ if (preg_match ('/.html$/', $md)) {
  * Special case for Pages request which is dynamically built
  * from the list of pages in the main Wiki directory
  */
-if (strtolower ($request) == 'wiki/pages' ||
-    strtolower ($request) == 'wiki/pages.md') {
+if (strtolower ($file) == 'wiki/pages' ||
+    strtolower ($file) == 'wiki/pages.md') {
     $pages = generatePageList ('wiki');
     $f = fopen ('wiki/pages.md.html', 'w');
     if (!$f) {
-        missing ();
+        missing ($f);
     }
     fwrite ($f, '<h1>Crosswalk Wiki Pages</h1>'."\n");
     fwrite ($f, '<ul class="pages-list">'."\n");
@@ -185,8 +181,8 @@ if (strtolower ($request) == 'wiki/pages' ||
  * Special case for History request which is dynamically built
  * from the list of pages in the main Wiki directory
  */
-if (strtolower ($request) == 'wiki/history' ||
-    strtolower ($request) == 'wiki/history.md') {
+if (strtolower ($file) == 'wiki/history' ||
+    strtolower ($file) == 'wiki/history.md') {
     $spans = Array ('days' => Array ('show_date' => 1,
                                      'start' => 0,
                                      'end' => 6),
@@ -212,7 +208,7 @@ if (strtolower ($request) == 'wiki/history' ||
 
     $f = fopen ('wiki/history.md.html', 'w');
     if (!$f) {
-        missing ();
+        missing ($f);
     }
 
     if (!defined('JSON_PRETTY_PRINT'))
@@ -226,7 +222,7 @@ if (strtolower ($request) == 'wiki/history' ||
 }
 
 /* If this is a simple wiki/ request (not in a sub-directory), redirect to GitHub */
-if (preg_match ('#^wiki/#', $request)) {
+if (preg_match ('#^wiki/#', $file)) {
     /* Support a proxy; put the proxy URI in the file proxy.config, eg:
     tcp://proxy.server.com:3128
     */
@@ -241,14 +237,14 @@ if (preg_match ('#^wiki/#', $request)) {
             )
         );
         fclose ($proxy);
-        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request,
+        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$file,
                      'r', false, $opts);
     } else {
-        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request,
+        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$file,
                      'r');
     }
     if (!$f) {
-        missing ();
+        missing ($f);
     }
     fpassthru ($f);
     fclose ($f);
@@ -256,40 +252,40 @@ if (preg_match ('#^wiki/#', $request)) {
 }
 
 if (!preg_match ('#^'.dirname (__FILE__).'/#', $md)) {
-    missing ();
+    missing (__FILE__);
 }
 
 $cache = @stat ($md.'.html');
 $source = @stat ($md);
 
 if (!$cache || $source['mtime'] > $cache['mtime']) {
-    $request = preg_replace ('#^'.dirname (__FILE__).'/#', '', $md);
+    $file = preg_replace ('#^'.dirname (__FILE__).'/#', '', $md);
 
     $d = @fopen ($md.'.html', 'w');
     if (!$d) {
-        print 'Unable to create file. Check that the server has access '.
-            'to this directory.'."\n";
+        print " !!!! Unable to create file $md.html. Check that the server " .
+              "has access to the directory.\n";
         exit;
     }
 
-    if (preg_match ('/\.php$/', $request)) {
+    if (preg_match ('/\.php$/', $file)) {
         /* ob_callback uses $d to write the buffer to */
         ob_start ("ob_callback");
-	print '<div id="wiki-content">';
-	print '<div class="markdown-body">';
-        require ($request);
-	print '</div>';
-	print '</div>';
+        print '<div id="wiki-content">';
+        print '<div class="markdown-body">';
+        require ($file);
+        print '</div>';
+        print '</div>';
         ob_end_flush ();
     } else {
-        $request = preg_replace ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/',
-                                 '', $request);
-        $f = @fopen ('http://localhost:4567/'.$request, 'r');
+        $file = preg_replace ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/',
+                                 '', $file);
+        $f = @fopen ('http://localhost:4567/'.$file, 'r');
         if (!$f) {
-            missing ();
+            missing ($f);
         }
         while ($f && !feof ($f)) {
-	    $line = fgets ($f);
+            $line = fgets ($f);
             fwrite ($d, $line);
             /* Sometimes the connection doesn't close after the </html>, so
              * watch for it, and if we see it, close the read. */
