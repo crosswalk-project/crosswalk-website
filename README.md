@@ -1,4 +1,18 @@
-# Website Design
+# Introduction
+
+This repository contains the source code for the
+[Crosswalk website](http://crosswalk-project.org/). The live website
+is generated from this code.
+
+Any bugs for the website should be logged on the
+[Crosswalk Jira](https://crosswalk-project.org/jira/), under the
+[*Website*](https://crosswalk-project.org/jira/browse/XWALK/component/10203)
+component.
+
+Pull requests for the website should be submitted via
+[github](https://github.com/crosswalk-project/crosswalk-website/pulls).
+
+# Website design
 
 The Crosswalk website consists of the following functional areas:
 
@@ -7,37 +21,41 @@ static content. Some Javascript is used to compensate for style
 areas that were difficult to code in a pure CSS model. Javascript
 is also used for dynamically changing the version strings in the top
 overview section.
+
 2.  [Documentation](https://crosswalk-project.org/#documentation)
 and [Contribute](https://crosswalk-project.org/#contribute). Statically
 generated from content checked into the crosswalk-website.git project.
-The menu content on the left is generated via xwalk.js when the page
+These sections are hand-picked selections from the wiki which are
+particularly useful or frequently viewed.
+
+    The menu content on the left is generated via xwalk.js when the page
 is loaded, based on the content of menus.js. The content in the
 contribute/ and documentation/ directories are cached .html files
 generated from the markdown sources. This occurs during the
 `site.sh mklive` script execution described later.
+
 3.  [Wiki](https://crosswalk-project.org/#wiki). This content is a
 dynamic proxy to the Wiki content hosted in the
 [crosswalk-website.wiki.git](https://github.com/crosswalk-project/crosswalk-website.wiki.git)
-on GitHub. Whenever a commit is made, the Gollum Event Webhook on
-GitHub invokes the regen.php page which recreates the content viewed
-in the Pages and History pages of the Wiki. Fetches of actual Wiki
-content are proxied on the server to GitHub via php (XHR on the client
-is blocked due to Access-Control-Allow-Origin; currently the server
-doesn't cache the fetched content - it should).
+on GitHub. Whenever a commit is made to the wiki, the Gollum Event Webhook on
+GitHub invokes the regen.php page on the live site; this in turn recreates
+the content viewed in the Pages and History pages of the Wiki.
 
+    Fetches of actual Wiki content are proxied on the server to GitHub
+via php (XHR on the client is blocked due to Access-Control-Allow-Origin;
+currently the server doesn't cache the fetched content - it should).
 The wiki content is served to the client in the format output by the
-GitHub wiki system (Gollum.) The client side javascript (See xwalk.js
+GitHub wiki system (Gollum). The client-side javascript (See xwalk.js
 content_response and generate_wiki_page) creates a DOM element with
-the content from the wiki, pulls out the wiki DOM item, performs some
+the content from the wiki, pulls out the wiki DOM element, performs some
 URL rewrites, and then injects the resulting content into the Crosswalk
-website page.
+website page being displayed in the browser.
 
 # Workflow
 
 The general work flow is as follows:
 
-1.  Develop on local machine (see
-[Server Requirements: Development Website](#server-requirements-development-website))
+1.  Develop on local machine (see [HACKING.md](HACKING.md))
 2.  Create a 'live snapshot' via the script: `./site.sh mklive`
 3.  Push latest 'live snapshot' to the staging server via the script:
 `./site.sh push`
@@ -70,17 +88,20 @@ If running in development mode, all of the above are regenerated when
 the source changes (via .htaccess and gfm.php).
 
 When you execute the mklive script, all of that content is regenerated
-as part of the site snapshot creation. See './site.sh --help mklive'.
+as part of the site snapshot creation. See `./site.sh --help mklive`.
 
 # Initializing the server with the crosswalk-website
 
 To host the Crosswalk website, the following needs to be done on the server:
 
-    # Initialize the site content into `docroot`
+    # Initialize the site content into the docroot directory
     git clone https://github.com/crosswalk-project/crosswalk-website.git docroot
     cd docroot
-    mkdir wiki
+
+    # make a clone of the wiki content
     git clone --bare https://github.com/crosswalk-project/crosswalk-website.wiki.git wiki.git
+
+    # make the wiki directories owned by Apache
     sudo chown -R wwwrun wiki.git
     sudo chown -R wwwrun wiki
 
@@ -95,13 +116,13 @@ live branch. The `scripts/` directory is not part of the live version
 of the site - once you checkout `${branch}`, you won't be able to run
 any of the scripts on the live site.
 
-The chown lines are necessary as wiki.git and wiki are written to
-via regen.php, which executes as the Apache user (`wwwrun` on Ubuntu).
-If you are using a different Apache server (e.g. XAMPP), change
-`wwwrun` to whatever user Apache runs as on your system (e.g. `nobody`
-in the case of XAMPP).
+The chown command is necessary as regen.php writes to wiki.git and wiki,
+which also executes as the Apache user. On Ubuntu this user is `wwwrun`,
+but if you're using a different operating system, or a different Apache
+distribution, the user may be someone else; for example, XAMPP uses
+`nobody` as the user.
 
-# Server Requirements: Live Website
+# Server requirements for the live website
 
 Running the live version requires the rewrite module in Apache2.
 This is used in the wiki subsystem to map requested URLs through
@@ -114,96 +135,3 @@ Enable the rewrite module via:
 
 The rest of the content is served from static files that were generated
 as part of the development cycle as described in the Workflow section.
-
-# Server Requirements: Development Website
-
-The development version automatically generates new versions of
-various files (*.css, menus.js, and the {documentation,contribute}/*.html)
-and requires local infrastructure to process the markdown content.
-
-## Requirements
-
-Running the development version of the site has several additional
-software dependencies.
-
-### APACHE2 AND PHP
-
-Apache2 configured with PHP and the following:
-
-*   -MultiViews: turn it off as it breaks creating HTML from markup via PHP
-*   +FollowSymLinks: required for mod_rewrite
-
-To enable the rewrite module:
-
-    sudo a2enmod rewrite
-    sudo service apache2 restart
-
-### GOLLUM
-
-The content in documentation and contribute uses gollum to create
-cached pages.
-
-NOTE:
-
-gollum requires ruby >= 1.9.2 (gollum requires nokogiri which requires
-ruby >= 1.9.2). On older Ubuntu systems, you may need to install a recent
-version of ruby explicitly:
-
-    sudo apt-get install ruby1.9.3 rubygems1.9
-    sudo update-alternatives --config gem
-    sudo update-alternatives --config ruby
-
-Now we can install gollum. Any markup used in the files hosted in
-gollum must be installed. Currently the Crosswalk wiki has content
-in three different markup flavours:
-
-*   MediaWiki (*.mediawiki)
-*   GitHub Markdown (*.md)
-*   Org Mode (*.org)
-
-To install gollum, plus support for the wiki content formats:
-
-    sudo gem install gollum redcarpet org-ruby wikicloth
-
-To generate the cached HTML files, gollum needs to be running. When a
-wiki page is requested, a php script will perform a local connection
-to gollum on port 4567 requesting that markdown file be processed.
-The returned HTML is then cached. New requests are only made if the
-markdown file is newer than the cached file.
-
-Gollum should be launched with the following option:
-
-    gollum --live-preview ${DOCROOT} >/dev/null 2>&1 &
-
-${DOCROOT} should be the root of your local install, for example
-/var/www/crosswalk-website.
-
-By providing the --live-preview option you can use a live editor to
-edit the documentation content locally by navigating to
-http://localhost:4567/.
-
-## CSS and SASS
-
-sass and bourbon are used for the CSS. If a css file is requested and
-there is an updated sass version available, the php script in the site
-root will load the sass and cache it to the css file, which is then
-returned to the caller. This is similar to running 'sass --watch'
-without having to have sass running all the time (it's first-access-on-demand).
-
-In addition to generating the CSS from the scss file, source maps are
-generated. This requires sass >= 3.3.0. You can install that version via:
-
-    sudo gem install sass -v ">=3.3.0alpha' --pre
-    sudo gem install bourbon
-
-If you do not have a version greater than 3.3.0 installed, source maps
-will not be generated.
-
-NOTE:
-sass files should be verified to be correct prior to committing to git!
-
-### Development scripts
-
-See site.sh:
-
-    ./site.sh
