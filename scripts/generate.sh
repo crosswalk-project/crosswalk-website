@@ -17,7 +17,7 @@ function run () {
     [ ! -z ${gollum} ] && {
 		kill -9 ${gollum}
 	}
-    
+
 	for i in menus.js xwalk.css markdown.css; do
 		${dry_run}php $i.php > /dev/null
 	done

@@ -166,10 +166,20 @@ will not be generated.
 NOTE:
 sass files should be verified to be correct prior to committing to git!
 
-Note that the sass script has to be available to whatever user gollum
-is running as. It's easiest to run gollum as your normal user to
-simplify this, rather than trying to run it under sudo or as the
-Apache user.
+Note that the sass script has to be available to whichever user Apache
+is running as. If the path to this script is not readily accessible,
+it can be set explicitly in the Apache configuration for the site
+via an environment variable by adding these lines to
+`/opt/lampp/etc/crosswalk-website.conf`:
+
+    <IfModule mod_env.c>
+      SetEnv SASS /usr/local/bin/sass
+    </IfModule>
+
+The `site.conf` file contains these lines by default, commented out.
+
+The `generate.css.php` script will look for this environment variable
+at runtime; if it is not set, the default command `sass` is used.
 
 ## Prepare the project directory
 
