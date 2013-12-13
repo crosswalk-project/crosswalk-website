@@ -121,14 +121,27 @@ markdown file is newer than the cached file.
 
 Gollum should be launched with the following option:
 
-    gollum --live-preview ${DOCROOT} >/dev/null 2>&1 &
+    gollum ${DOCROOT} >/dev/null 2>&1 &
 
 ${DOCROOT} should be the root of your local install, for example
 /var/www/crosswalk-website.
 
-By providing the --live-preview option you can use a live editor to
-edit the content in "documentation" locally by navigating to
-http://localhost:4567/.
+#### Editing content through gollum
+
+You can edit content through gollum directly by running it with this
+command:
+
+    gollum --ref ${BRANCH} --live-preview ${DOCROOT}
+
+By providing the --live-preview option you can use an editor to
+edit the content in "documentation" and "contribute" by navigating
+to http://localhost:4567/.
+
+${BRANCH} sets the branch of the website you want to make edits on. This
+is important if you are editing the site's content in a development
+branch (do not edit the content on a *live...* branch!). If you do
+not set a branch, all edits will be committed to master, even if you
+have a different branch checked out (which can be confusing).
 
 ### sass and bourbon
 
