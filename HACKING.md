@@ -7,9 +7,28 @@ secure or optimised in any way.
 
 I recommend using Linux to work on the crosswalk-website project.
 
+## Important note: developer mode scuppered by generated content
+
+If you use any of the site scripts to pre-generate content for the site
+(e.g. `./site.sh generate`), then try to look at the site in a browser,
+you may experience errors, such as stylesheets not loading (the whole
+site has a red background).
+
+This is because the server will attempt to generate content dynamically,
+and when it is unable to do so (because a pre-generated file produced
+by one of the site scripts already exists), it will fail and return an error.
+
+For this reason, if you intend to test in a browser, ensure that you clean
+the project before you start:
+
+    ./site.sh cleanup
+
+This removes all the generated CSS, JS, HTML etc. files and gives you
+a clean base to start from.
+
 ## Install required software
 
-In developer mode, the website automatically generates various files
+In developer mode, the website automatically generates numerous files
 (*.css, menus.js, and the {documentation,contribute}/*.html) and processes
 files in various markup languages (markdown etc.) on the fly.
 
