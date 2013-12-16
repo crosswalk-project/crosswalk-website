@@ -46,11 +46,14 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [Touch Events] (https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html) - Handle touch events programmatically.
 
 # Experimental APIs
-In addition to the standard APIs, Crosswalk provides additional APIs to further support building a native application experience using web platform technologies.
+In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.
+
+* [Presentation API] (http://webscreens.github.io/presentation-api/) - Access external displays from within web applications. For more information see the [Presentation API developer documentation] (https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual). Introduced in [Crosswalk 3.32.49.0] (https://download.01.org/crosswalk/releases/).
+
+<!--
 
 This section is where those APIs will be listed and documented. Until the build system is hooked in to auto generate the API pages, you can view the source for the <a href='https://github.com/crosswalk-project/crosswalk/tree/master/experimental'>experimental Crosswalk APIs</a>.
 
-<!--
 The APIs linked above are exposed under the **xwalk** namespace. For example, the <a href='https://github.com/crosswalk-project/crosswalk/blob/master/jsapi/runtime.idl'>xwalk.runtime</a> API exposes the function **getAPIVersion**. This can be used as follows:
 
 ```javascript
