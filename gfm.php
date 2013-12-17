@@ -13,9 +13,9 @@ function missing () {
 }
 
 function make_name ($name) {
-    return preg_replace ('/_+/', ' ', 
-           preg_replace ('/-+/', ' ', 
-           preg_replace ('/^[0-9]*[-_]/', '', 
+    return preg_replace ('/_+/', ' ',
+           preg_replace ('/-+/', ' ',
+           preg_replace ('/^[0-9]*[-_]/', '',
            $name)));
 }
 
@@ -29,7 +29,7 @@ function generatePageList ($path) {
     $p = popen ($cmd, 'r');
     while (!feof ($p)) {
         $line = fgets ($p);
-        if (!preg_match ('/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/', 
+        if (!preg_match ('/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/',
                          $line, $matches))
             continue;
         $file = $matches[2];
@@ -74,7 +74,7 @@ function generateHistory ($path, $start, $end) {
 
         $files = Array ();
         $event = null;
-        
+
         while ($skip != '') {
             $file = $skip;
             /* Only add if:
@@ -90,7 +90,7 @@ function generateHistory ($path, $start, $end) {
                 $match = false;
                 while (!feof ($p)) {
                     $match = strlen (trim (fgets ($p))) != 0;
-                    if ($match) 
+                    if ($match)
                         break;
                 }
                 pclose ($p);
@@ -98,7 +98,7 @@ function generateHistory ($path, $start, $end) {
                     $skip = trim (fgets ($f));
                     continue;
                 }
-                
+
                 $parts = explode ('|', preg_replace ('/^>>> /', '', $line));
 
                 if (($key = array_search ($file, $tracking)) !== false) {
@@ -122,11 +122,11 @@ function generateHistory ($path, $start, $end) {
         }
     }
     pclose ($f);
-    
+
     for ($i = 0; $i < count ($history); $i++) {
         if ($history[$i]['end_sha'] != '')
             continue;
-        
+
         $cmd = 'git --git-dir='.$path.'.git log -n 1 --pretty=format:"%H" '.
                      $history[$i]['start_sha'].'^ -- '.
                      '"'.$history[$i]['orig'].'"';
@@ -134,9 +134,9 @@ function generateHistory ($path, $start, $end) {
         $history[$i]['end_sha'] = trim (fgets ($f));
         pclose ($f);
     }
-    
+
     return $history;
-    
+
 }
 
 function ob_callback ($buffer) {
@@ -160,10 +160,8 @@ if (preg_match ('/.html$/', $md)) {
  * Special case for Pages request which is dynamically built
  * from the list of pages in the main Wiki directory
  */
-if (strtolower ($request) == 'wiki/pages' || 
+if (strtolower ($request) == 'wiki/pages' ||
     strtolower ($request) == 'wiki/pages.md') {
-    if (!is_dir ('wiki'))
-        @mkdir ('wiki');
     $pages = generatePageList ('wiki');
     $f = fopen ('wiki/pages.md.html', 'w');
     if (!$f) {
@@ -187,23 +185,20 @@ if (strtolower ($request) == 'wiki/pages' ||
  * Special case for History request which is dynamically built
  * from the list of pages in the main Wiki directory
  */
-if (strtolower ($request) == 'wiki/history' || 
+if (strtolower ($request) == 'wiki/history' ||
     strtolower ($request) == 'wiki/history.md') {
-    if (!is_dir ('wiki'))
-        @mkdir ('wiki');
-    
     $spans = Array ('days' => Array ('show_date' => 1,
-                                     'start' => 0, 
+                                     'start' => 0,
                                      'end' => 6),
-                    //'today', 'yesterday', ' days ago')), 
+                    //'today', 'yesterday', ' days ago')),
                     'weeks' => Array ('show_date' => 0,
-                                      'start' => 1, 
+                                      'start' => 1,
                                       'end' => 3),
                     'months' => Array ('show_date' => 0,
-                                       'start' => 1, 
+                                       'start' => 1,
                                        'end' => 12));
     $events = Array ();
-    
+
     foreach ($spans as $key => $value) {
         for ($i = $value['start']; $i <= $value['end']; $i++) {
             $history = generateHistory ('wiki', $i.'.'.$key, ($i+1).'.'.$key);
@@ -219,13 +214,13 @@ if (strtolower ($request) == 'wiki/history' ||
     if (!$f) {
         missing ();
     }
-    
+
     if (!defined('JSON_PRETTY_PRINT'))
         fwrite ($f, json_encode ($events));
     else
         fwrite ($f, json_encode ($events, JSON_PRETTY_PRINT));
     fclose ($f);
-    
+
     require('wiki/history.md.html');
     exit;
 }
@@ -246,10 +241,10 @@ if (preg_match ('#^wiki/#', $request)) {
             )
         );
         fclose ($proxy);
-        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request, 
+        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request,
                      'r', false, $opts);
     } else {
-        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request, 
+        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$request,
                      'r');
     }
     if (!$f) {
@@ -287,7 +282,7 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
 	print '</div>';
         ob_end_flush ();
     } else {
-        $request = preg_replace ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/', 
+        $request = preg_replace ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/',
                                  '', $request);
         $f = @fopen ('http://localhost:4567/'.$request, 'r');
         if (!$f) {
@@ -296,7 +291,7 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
         while ($f && !feof ($f)) {
 	    $line = fgets ($f);
             fwrite ($d, $line);
-            /* Sometimes the connection doesn't close after the </html>, so 
+            /* Sometimes the connection doesn't close after the </html>, so
              * watch for it, and if we see it, close the read. */
             if (preg_match ('/<\/html>/', $line))
                 break;
