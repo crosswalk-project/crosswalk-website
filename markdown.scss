@@ -1,7 +1,7 @@
 /*
  * NOTE: gollum.css is generated dynamically from gollum.scss via
  *       gollum.css.php
- * 
+ *
  * If there is a conversion problem, this file will be prefixed
  * with a note that it is a stale version and that the current
  * scss is failing to parse.
@@ -16,7 +16,7 @@
  * maps by following the insructions here:
 
 https://developers.google.com/chrome-developer-tools/docs/css-preprocessors
- 
+
  *
  */
 
@@ -26,31 +26,31 @@ template.css from gollum
 */
 #wiki-content {
     margin: 32px;
-    
+
     /* margin & padding reset*/
     * {
       margin: 0;
       padding: 0;
     }
-    
+
     img {
       border: 0;
     }
-    
+
     a {
       color: #4183C4;
       text-decoration: none;
     }
-    
+
     a.absent {
       color: #c00;
     }
-    
+
     .markdown-body a[id].wiki-toc-anchor  {
       color: inherit;
       text-decoration: none;
     }
-    
+
     .markdown-body {
       font-size: 15px;
       line-height: 1.6;
@@ -352,11 +352,8 @@ template.css from gollum
     }
     .markdown-body code,
     .markdown-body tt {
-//      margin: 0 2px;
       padding: 2px 6px;
       font-size: 14px;
-      white-space: nowrap;
-      border: 1px solid #ddd;
       background-color: #f8f8f8;
       border-radius: 3px;
     }
