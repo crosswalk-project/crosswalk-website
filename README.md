@@ -12,6 +12,11 @@ component.
 Pull requests for the website should be submitted via
 [github](https://github.com/crosswalk-project/crosswalk-website/pulls).
 
+Note that this document gives an overview of the site and explains how
+to setup and release for staging and live servers. If you need to edit
+the content of the site, the [HACKING](HACKING.md) file explains how
+to set the site up locally.
+
 # Website design
 
 The Crosswalk website consists of the following functional areas:
@@ -43,25 +48,29 @@ the content viewed in the Pages and History pages of the Wiki.
 
     Fetches of actual Wiki content are proxied on the server to GitHub
 via php (XHR on the client is blocked due to Access-Control-Allow-Origin;
-currently the server doesn't cache the fetched content - it should).
+currently PHP doesn't cache the fetched content - it should).
 The wiki content is served to the client in the format output by the
-GitHub wiki system (Gollum). The client-side javascript (See xwalk.js
-content_response and generate_wiki_page) creates a DOM element with
-the content from the wiki, pulls out the wiki DOM element, performs some
+GitHub wiki system (Gollum). The client-side javascript (see xwalk.js
+content_response and generate_wiki_page) creates pages using
+content from the wiki: it pulls out the wiki DOM element, performs some
 URL rewrites, and then injects the resulting content into the Crosswalk
-website page being displayed in the browser.
+website page requested by the browser.
 
 # Workflow
 
-The general work flow is as follows:
+The general work flow for releasing a new version of the
+Crosswalk website is as follows:
 
-1.  Develop on local machine (see [HACKING.md](HACKING.md))
-2.  Create a 'live snapshot' via the script: `./site.sh mklive`
+1.  Develop on a local machine (see [HACKING.md](HACKING.md))
+2.  Create a 'live snapshot' via the command `./site.sh mklive`
 3.  Push latest 'live snapshot' to the staging server via the script:
 `./site.sh push`
-4.  Test the results on the staging server
-5.  Push the staging version to the live server via the script:
+4.  Test the results on the staging server at http://stg.crosswalk-project.org/
+5.  Push the staging version to the live server via the command
 `./site.sh push live`
+
+To push to the staging or live servers, you will need to be given access
+by the Crosswalk infrastructure team.
 
 NOTE: You can determine the version of the website that is active by
 fetching the file [REVISION](https://crosswalk-project.org/REVISION).
@@ -84,13 +93,38 @@ contribute/*.md via gfm.php
 *   documentation/\*.html <= generated from the markdown files in
 contribute/*.md via gfm.php
 
-If running in development mode, all of the above are regenerated when
-the source changes (via .htaccess and gfm.php).
+On your local development server, all of the above are regenerated
+dynamically when any source file changes (via .htaccess and gfm.php).
 
-When you execute the mklive script, all of that content is regenerated
-as part of the site snapshot creation. See `./site.sh --help mklive`.
+On the staging and live servers, no content is generated on the fly:
+the mklive script generates a one-off snapshot from the source files
+(*.md, *.scss etc.). This snapshot is then pushed to the server as static
+HTML/CSS/JS. See `./site.sh --help mklive` for details.
 
-# Initializing the server with the crosswalk-website
+# Setting up a server for crosswalk-website
+
+**This is a list of one time setup instructions for hosting crosswalk-website.
+These steps have already been carried out on the live and production
+servers, and do not have to be repeated to make a new release of the site.
+However, they are provided for reference in case the setup needs to be
+done again on a different server, or if the existing setup needs to be
+modified or debugged.**
+
+## Server software requirements
+
+Running the live version requires the rewrite module in Apache2.
+This is used in the wiki subsystem to map requested URLs through
+a PHP script which will then perform smart matching of leaf names.
+
+Enable the rewrite module via:
+
+    sudo a2enmod rewrite
+    sudo service apache2 restart
+
+The rest of the content is served from static files that are generated
+as part of the development cycle, described in the Workflow section (above).
+
+## Server configuration
 
 To host the Crosswalk website, the following needs to be done on the server:
 
@@ -121,17 +155,3 @@ which also executes as the Apache user. On Ubuntu this user is `wwwrun`,
 but if you're using a different operating system, or a different Apache
 distribution, the user may be someone else; for example, XAMPP uses
 `nobody` as the user.
-
-# Server requirements for the live website
-
-Running the live version requires the rewrite module in Apache2.
-This is used in the wiki subsystem to map requested URLs through
-a PHP script which will then perform smart matching of leaf names.
-
-Enable the rewrite module via:
-
-    sudo a2enmod rewrite
-    sudo service apache2 restart
-
-The rest of the content is served from static files that were generated
-as part of the development cycle as described in the Workflow section.
