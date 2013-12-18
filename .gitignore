@@ -2,7 +2,7 @@ documentation/*.html
 documentation/*/*.html
 contribute/*.html
 contribute/*/*.html
-wiki/
+wiki/*.html
 wiki.git
 *.msg
 *.map
