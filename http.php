@@ -15,25 +15,21 @@ class HttpClient {
     }
 
     function get_url ($url) {
-        if ($this->proxy) {
-            $opts = stream_context_create (
-                Array (
-                    'http' => Array (
-                        'proxy' => $this->proxy,
-                        'request_fulluri' => true
-                    )
-                )
-            );
+        $ch = curl_init();
+        curl_setopt ($ch, CURLOPT_URL, $url);
+        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, true);
 
-            $f = @fopen ($url, 'r', false, $opts);
-        } else {
-            $f = @fopen ($url, 'r');
+        if ($this->proxy) {
+          curl_setopt ($ch, CURLOPT_HTTPPROXYTUNNEL, true);
+          curl_setopt ($ch, CURLOPT_PROXY, $this->proxy);
         }
-        if (!$f) {
-            missing ($f);
-        }
-        fpassthru ($f);
-        fclose ($f);
+
+        $result = curl_exec ($ch);
+        curl_close ($ch);
+        echo $result;
     }
 }
 ?>
