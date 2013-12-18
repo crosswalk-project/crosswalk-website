@@ -7,8 +7,11 @@ class HttpClient {
     // tcp://proxy.server.com:3128
     function HttpClient ($proxy_config_location) {
         $file = @fopen ($proxy_config_location, 'r');
-        $this->proxy = fgets ($file);
-        fclose ($file);
+
+        if ($file) {
+            $this->proxy = fgets ($file);
+            fclose ($file);
+        }
     }
 
     function get_url ($url) {
