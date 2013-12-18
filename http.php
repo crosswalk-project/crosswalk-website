@@ -1,27 +1,36 @@
 <?php
-function get_url ($url) {
-    /* Support a proxy; put the proxy URI in the file proxy.config, eg:
-    tcp://proxy.server.com:3128
-    */
-    $proxy = @fopen ('proxy.config', 'r');
-    if ($proxy) {
-        $opts = stream_context_create (
-            Array (
-                'http' => Array (
-                    'proxy' => fgets ($proxy),
-                    'request_fulluri' => true
+class HttpClient {
+    var $proxy;
+
+    // $proxy_config_location: location of the file containing
+    // proxy configuration; it should contain a single line, e.g.
+    // tcp://proxy.server.com:3128
+    function HttpClient ($proxy_config_location) {
+        $file = @fopen ($proxy_config_location, 'r');
+        $this->proxy = fgets ($file);
+        fclose ($file);
+    }
+
+    function get_url ($url) {
+        if ($this->proxy) {
+            $opts = stream_context_create (
+                Array (
+                    'http' => Array (
+                        'proxy' => $this->proxy,
+                        'request_fulluri' => true
+                    )
                 )
-            )
-        );
-        fclose ($proxy);
-        $f = @fopen ($url, 'r', false, $opts);
-    } else {
-        $f = @fopen ($url, 'r');
+            );
+
+            $f = @fopen ($url, 'r', false, $opts);
+        } else {
+            $f = @fopen ($url, 'r');
+        }
+        if (!$f) {
+            missing ($f);
+        }
+        fpassthru ($f);
+        fclose ($f);
     }
-    if (!$f) {
-        missing ($f);
-    }
-    fpassthru ($f);
-    fclose ($f);
 }
 ?>

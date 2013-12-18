@@ -2,6 +2,10 @@
 require_once ('smart-match.inc');
 require_once ('http.php');
 
+// create an HTTP client with the proxy configuration file 'proxy.config';
+// if this file is not available, no proxy is used
+$client = new HttpClient ('proxy.config');
+
 $file = 'Home';
 if (isset($_REQUEST) && array_key_exists('f', $_REQUEST)) {
   $file = $_REQUEST['f'];
@@ -223,7 +227,7 @@ if (strtolower ($file) == 'wiki/history' ||
 
 /* If this is a simple wiki/ request (not in a sub-directory), redirect to GitHub */
 if (preg_match ('#^wiki/#', $file)) {
-    get_url ('https://github.com/crosswalk-project/crosswalk-website/'.$file);
+    $client->get_url ('https://github.com/crosswalk-project/crosswalk-website/'.$file);
     exit;
 }
 
@@ -256,7 +260,7 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
     } else {
         $file = preg_replace ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/',
                                  '', $file);
-        $f = get_url ('http://localhost:4567/'.$file);
+        $f = $client->get_url ('http://localhost:4567/'.$file);
         while ($f && !feof ($f)) {
             $line = fgets ($f);
             fwrite ($d, $line);
