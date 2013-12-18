@@ -1,5 +1,6 @@
 <?php
 require_once ('smart-match.inc');
+require_once ('http.php');
 
 $file = 'Home';
 if (isset($_REQUEST) && array_key_exists('f', $_REQUEST)) {
@@ -223,31 +224,7 @@ if (strtolower ($file) == 'wiki/history' ||
 
 /* If this is a simple wiki/ request (not in a sub-directory), redirect to GitHub */
 if (preg_match ('#^wiki/#', $file)) {
-    /* Support a proxy; put the proxy URI in the file proxy.config, eg:
-    tcp://proxy.server.com:3128
-    */
-    $proxy = @fopen ('proxy.config', 'r');
-    if ($proxy) {
-        $opts = stream_context_create (
-            Array (
-                'http' => Array (
-                    'proxy' => fgets ($proxy),
-                    'request_fulluri' => true
-                )
-            )
-        );
-        fclose ($proxy);
-        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$file,
-                     'r', false, $opts);
-    } else {
-        $f = @fopen ('https://github.com/crosswalk-project/crosswalk-website/'.$file,
-                     'r');
-    }
-    if (!$f) {
-        missing ($f);
-    }
-    fpassthru ($f);
-    fclose ($f);
+    get_url ('https://github.com/crosswalk-project/crosswalk-website/'.$file);
     exit;
 }
 
@@ -280,10 +257,7 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
     } else {
         $file = preg_replace ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/',
                                  '', $file);
-        $f = @fopen ('http://localhost:4567/'.$file, 'r');
-        if (!$f) {
-            missing ($f);
-        }
+        $f = get_url ('http://localhost:4567/'.$file);
         while ($f && !feof ($f)) {
             $line = fgets ($f);
             fwrite ($d, $line);
