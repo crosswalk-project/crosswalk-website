@@ -56,6 +56,39 @@ content from the wiki: it pulls out the wiki DOM element, performs some
 URL rewrites, and then injects the resulting content into the Crosswalk
 website page requested by the browser.
 
+# Content management for crosswalk-project.org
+
+## Managing documentation for different Crosswalk versions
+
+The content on crosswalk-project.org relates to the current stable release
+of Crosswalk.
+
+Documentation for previous versions stays on the wiki.
+
+## Editing wiki content
+
+The content under the `#wiki/` path on crosswalk-project.org is maintained
+in the crosswalk-website wiki. This can either be edited via
+[github](https://github.com/crosswalk-project/crosswalk-website/wiki) or
+by cloning the wiki github repo (the latter is required if you want to
+add images).
+
+See https://crosswalk-project.org/#wiki/Editing-the-Wiki for instructions.
+
+## Editing non-wiki content
+
+Other content on crosswalk-project.org is managed through this
+project (crosswalk-website). The process for editing this content is
+as follows:
+
+*   [Fork the crosswalk-website repo](https://help.github.com/articles/fork-a-repo).
+
+*   Make your edits (see [HACKING.md](HACKING.md)).
+
+*   [Make a pull request via github](https://help.github.com/articles/using-pull-requests)
+asking for your changes to be merged into the master branch of the
+crosswalk-website repo.
+
 # Workflow
 
 The general work flow for releasing a new version of the
