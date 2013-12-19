@@ -13,7 +13,7 @@ function die () {
 function get_local_live_name () {
     branchname $(get_local_live_info $*)
 }
-    
+
 function get_local_live_info () {
     local branch
     branch=$(git branch -a | sed -ne 's,.*[ /]\(live-.*\),\1,p' | sort -ur | head -n 1)
@@ -47,7 +47,7 @@ function branchname () {
 function get_remote_live_name () {
     branchname $(get_remote_live_info $*)
 }
-    
+
 function get_remote_live_info () {
     local branch
     local revision
@@ -70,12 +70,10 @@ function get_remote_live_info () {
     echo $branch
 }
 
-declare -i gollum_pid=0
-
 function debug_msg () {
     (( debug )) && {
         echo -n $*
-        echo " Enter to continue." 
+        echo " Enter to continue."
         read
     }
 }
@@ -99,29 +97,39 @@ function generate () {
 		exit 1
 	}
 }
-    
+
 function launch_gollum () {
-    gollum_pid=0
-    test=$(ps -o pid= -C gollum)
-    (( test==0 )) && {
-        gollum ${PWD} >/dev/null 2>&1 &
-        gollum_pid=$!
-        echo -n "Launching gollum."
-        x=1
-        while (( $x )); do
-            echo -n "."
-            sleep 0.5
-            netstat -na 2>&1 | grep -q ":4567 "
-            x=$?
-        done
-        echo ""
-    }
+    gollum_pid=$(ps -o pid= -C gollum)
+
+    if [[ $gollum_pid -eq 0 ]] ; then
+      # get the currently checked-out branch to set --ref
+      branch=`git rev-parse --abbrev-ref HEAD`
+
+      gollum --ref ${branch} --live-preview ${PWD} >/dev/null 2>&1 &
+      gollum_pid=$(ps -o pid= -C gollum)
+      echo -n "Launching gollum with pid $gollum_pid"
+      x=1
+      while (( $x )); do
+          echo -n "."
+          sleep 0.5
+          netstat -na 2>&1 | grep -q ":4567 "
+          x=$?
+      done
+      echo
+      echo "Live preview at http://localhost:4567/fileview"
+    else
+      echo "gollum is already running"
+    fi
 }
 
 function kill_gollum () {
-    (( gollum_pid )) && {
-        kill -9 ${gollum_pid}
-    }
+    gollum_pid=$(ps -o pid= -C gollum)
+    if [[ ! $gollum_pid -eq 0 ]] ; then
+      echo "killing gollum process $gollum_pid"
+      kill -9 ${gollum_pid}
+    else
+      echo "gollum is not running"
+    fi
 }
 
 function check_perms () {
