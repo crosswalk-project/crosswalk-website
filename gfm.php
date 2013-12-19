@@ -19,7 +19,7 @@ else if (PHP_SAPI === 'cli') {
 }
 
 function missing ($f) {
-    print "Missing wiki leaf: <span class='missing'>".$f."</span>";
+    print "Missing HTML file: <span class='missing'>".$f."</span>";
     exit;
 }
 
@@ -265,21 +265,16 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
     } else {
         $file = preg_replace ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/',
                                  '', $file);
-        $f = $client->get_url ('http://localhost:4567/'.$file);
-        while ($f && !feof ($f)) {
-            $line = fgets ($f);
-            fwrite ($d, $line);
-            /* Sometimes the connection doesn't close after the </html>, so
-             * watch for it, and if we see it, close the read. */
-            if (preg_match ('/<\/html>/', $line))
-                break;
-        }
+
+        // use the non-caching HTTP client to fetch content from the
+        // gollum server for every request
+        print $base_client->get_url ('http://localhost:4567/'.$file);
     }
 }
 
 if (filesize ($md.'.html') == 0) {
     unlink ($md.'.html');
-    missing ();
+    missing ($md.'.html');
 }
 
 require ($md.'.html');
