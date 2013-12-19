@@ -268,7 +268,11 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
 
         // use the non-caching HTTP client to fetch content from the
         // gollum server for every request
-        print $base_client->get_url ('http://localhost:4567/'.$file);
+        $content = $base_client->get_url ('http://localhost:4567/'.$file);
+        print $content;
+        fwrite ($d, $content);
+        fflush ($d);
+        fclose ($d);
     }
 }
 
