@@ -5,6 +5,7 @@ require_once ('http.php');
 // create an HTTP client with the proxy configuration file 'proxy.config';
 // if this file is not available, no proxy is used
 $client = new HttpClient ('proxy.config');
+#$client = new CachingHttpClient (5 * 60, 'wiki', $basic_client);
 
 $file = 'Home';
 if (isset($_REQUEST) && array_key_exists('f', $_REQUEST)) {
@@ -226,7 +227,7 @@ if (strtolower ($file) == 'wiki/history' ||
 
 /* If this is a simple wiki/ request (not in a sub-directory), redirect to GitHub */
 if (preg_match ('#^wiki/#', $file)) {
-    $client->get_url ('https://github.com/crosswalk-project/crosswalk-website/'.$file);
+    echo $client->get_url ('https://github.com/crosswalk-project/crosswalk-website/'.$file);
     exit;
 }
 
@@ -268,10 +269,7 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
             if (preg_match ('/<\/html>/', $line))
                 break;
         }
-        fclose ($f);
     }
-
-    fclose ($d);
 }
 
 if (filesize ($md.'.html') == 0) {
