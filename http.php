@@ -91,6 +91,13 @@ class CachingHttpClient {
                     flock ($file, LOCK_UN);
                     fclose ($file);
                 }
+                else if (!$file) {
+                    $msg = 'could not write to cache file ' . $path .
+                           'for url ' . $url . '; check that the server ' .
+                           'has access to the parent directory';
+
+                    error_log ($msg);
+                }
             }
         }
 
