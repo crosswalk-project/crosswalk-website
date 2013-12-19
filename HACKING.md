@@ -133,15 +133,26 @@ command:
 
     gollum --ref ${BRANCH} --live-preview ${DOCROOT}
 
-By providing the --live-preview option you can use an editor to
+Providing the --live-preview option means you can use a browser to
 edit the content in "documentation" and "contribute" by navigating
-to http://localhost:4567/.
+to http://localhost:4567/fileview. This will show you a tree of the
+files available to edit.
 
-${BRANCH} sets the branch of the website you want to make edits on. This
-is important if you are editing the site's content in a development
-branch (do not edit the content on a *live...* branch!). If you do
+${BRANCH} in the above command is important, as it sets the branch
+of the website you want to make edits on. This is crucial if you are
+editing the site's content in a development branch (NB do not edit
+the content on an auto-generated *live...* branch!). If you do
 not set a branch, all edits will be committed to master, even if you
 have a different branch checked out (which can be confusing).
+
+The common.inc script provides some convenience functions for launching
+and killing gollum, which you can use instead if you prefer:
+
+    . ./scripts/common.inc
+    launch_gollum
+    kill_gollum
+
+These will set ${BRANCH} and ${DOCROOT} for you.
 
 ### sass and bourbon
 
