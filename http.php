@@ -38,23 +38,63 @@ class HttpClient {
 class CachingHttpClient {
     function CachingHttpClient ($cache_time_secs, $cache_dir, $http_client) {
         $this->cache_time_secs = $cache_time_secs;
-        $this->cache_dir = $cache_dir;
+
+        $cache_dir = rtrim ($cache_dir, DIRECTORY_SEPARATOR);
+        $this->cache_dir = $cache_dir . DIRECTORY_SEPARATOR;
+
         $this->http_client = $http_client;
     }
 
     function get_url ($url) {
-        $key = sha1 ($url);
-        $path = $this->cache_dir . DIRECTORY_SEPARATOR . $key . '.html';
+        $caching_on = ($this->cache_time_secs > 0);
+        $needs_fetch = true;
+        $path = null;
+        $content = null;
 
-        if (file_exists ($path)) {
-            $content = file_get_contents ($path);
-            return $content;
+        // only check the file if the cache is turned on
+        if ($caching_on) {
+            $key = sha1 ($url);
+            $path = $this->cache_dir . $key . '.html';
+
+            $mtime = @filemtime ($path);
+
+            if ($mtime && ($mtime > (time() - $this->cache_time_secs))) {
+                // try to get a shared lock on the cached file;
+                // this should not be possible if the cache file is being
+                // written to
+                $file = @fopen ($path, 'c+');
+                $filesize = filesize ($path);
+
+                if (($filesize > 0) && flock ($file, LOCK_SH)) {
+                    $content = fread ($file, $filesize);
+                    $needs_fetch = false;
+                }
+            }
         }
-        else {
+
+        // $needs_fetch is true if the cached file is invalid or
+        // caching is off altogether
+        if ($needs_fetch) {
             $content = $this->http_client->get_url ($url);
-            file_put_contents ($path, $content);
-            return $content;
+
+            // write to cache file only if caching is turned on,
+            // which implies that $path is set
+            if ($caching_on) {
+                $file = @fopen ($path, 'c');
+
+                // try to get an exclusive lock; this fails if
+                // the cached file is already being written to
+                if ($file && flock ($file, LOCK_EX | LOCK_NB)) {
+                    ftruncate ($file, 0);
+                    fwrite ($file, $content);
+                    fflush ($file);
+                    flock ($file, LOCK_UN);
+                    fclose ($file);
+                }
+            }
         }
+
+        return $content;
     }
 }
 ?>

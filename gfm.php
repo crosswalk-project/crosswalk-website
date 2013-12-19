@@ -4,8 +4,11 @@ require_once ('http.php');
 
 // create an HTTP client with the proxy configuration file 'proxy.config';
 // if this file is not available, no proxy is used
-$client = new HttpClient ('proxy.config');
-#$client = new CachingHttpClient (5 * 60, 'wiki', $basic_client);
+$base_client = new HttpClient ('proxy.config');
+
+// caching http client
+$cache_time_secs = 5 * 60; // 5 minutes; set to 0 to disable cache
+$client = new CachingHttpClient ($cache_time_secs, 'wiki', $base_client);
 
 $file = 'Home';
 if (isset($_REQUEST) && array_key_exists('f', $_REQUEST)) {
