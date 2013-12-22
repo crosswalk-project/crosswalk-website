@@ -39,7 +39,7 @@
 var versions = {
     stable: { 
         android: {
-            x86: "1.29.4.7", 
+            x86: "2.31.27.5", 
             arm: "0.0.0.0"
         },
         tizen: {
