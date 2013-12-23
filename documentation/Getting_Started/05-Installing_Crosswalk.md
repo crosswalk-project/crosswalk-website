@@ -7,11 +7,11 @@ You will need to install the Android SDK, including [adb](http://developer.andro
 1. Install the [Android SDK](http://developer.android.com/sdk/index.html).
 1. Download the Crosswalk binary for Android from the URL in [Downloads](#documentation/downloads/files).
 <pre>
-wget https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
+wget https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
 </pre>
 1. Decompress the Crosswalk binary to access the various Android packages that can be installed:
 <pre>
-unzip crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
+unzip crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
 </pre>
 1. Install the XWalkRuntimeLib package:
 <pre>

@@ -138,8 +138,8 @@ The Apache ant **bin** directory was added to the bash session's PATH variable w
 Now you can download the Crosswalk for Android package, decompress that package, and install the Crosswalk runtime library on a connected Android device using **adb**. You can do this in the bash session by running:
 <pre>
 cd ${USERPROFILE}
-curl https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}.zip -o crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
-unzip crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
+curl https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip -o crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
+unzip crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
 adb install -r ${USERPROFILE}/crosswalk-${XWALK-STABLE-ANDROID-X86}/apks/XWalkRuntimeLib.apk
 </pre>
 
