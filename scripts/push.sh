@@ -271,5 +271,29 @@ function run () {
     }
     echo "done."
 
-    push "set" $target $rev $current
+    push "set" $target $rev $current && {
+        if [[ "$target" == "staging" ]]; then
+            cat << EOF
+  
+  ${branch} has been pushed to staging server. Steps to take:
+
+  1. Test the site by going to https://stg.crosswalk-project.org
+     1.1 Visit each category section. Make sure they work.
+         https://stg.crosswalk-project.org/#documentation
+         https://stg.crosswalk-project.org/#contribute
+         https://stg.crosswalk-project.org/#wiki
+     1.2 Check the Wiki History and verify the newest changes exist
+         https://stg.crosswalk-project.org/#wiki/history
+  
+  2. Resize your browser window down to a width of 320 and up to 
+     full screen. Ensure responsize design still functions.
+
+  3. After you are confident that the site is good, push the version
+     from the Staging server to the Live server:
+     
+    ./site.sh push live
+
+EOF
+        fi
+    }
 }
