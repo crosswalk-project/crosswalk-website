@@ -5,7 +5,7 @@ Follow the steps for [Packaging on
 Android](#documentation/getting_started/building_an_application/packaging-for-android). 
 Once you have your APK, install it to your target device:
 ```sh
-adb install -r ABC.apk
+adb install -r [FooBar.apk | FooBar_arm.apk | FooBar_x86.apk]
 ```
 The application will now appear in your application list and can be 
 launched by clicking on its icon.
