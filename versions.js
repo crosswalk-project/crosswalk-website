@@ -49,7 +49,7 @@ var versions = {
     },
     beta: {
         android: {
-            x86: "2.31.27.0", 
+            x86: "3.32.53.1", 
             arm: "0.0.0.0"
         },
         tizen: {
