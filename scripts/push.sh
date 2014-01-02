@@ -216,12 +216,23 @@ function remote () {
             }
             echo "done."
         fi
+        head=$(git log -1 --pretty=format:%H ${name})
+	if [[ "${head}" != "${sha}" ]]; then
+		echo -e "Resetting tree to ${sha} from ${head}"
+		${dry_run} git reset --hard "${sha}" || {
+	                echo -e "\nError running git reset! Resetting to ${current/*:}\n\n"
+        	        echo -e "Running: git reset --hard ${current/*:} && git clean -f\n"
+                	git reset --hard ${current/*:}
+	                exit
+		}
+		echo "done"
+	fi
         echo "Running: git clean -f"
         ${dry_run} git clean -f
         echo "Creating PRIOR-REVISION and REVISION"
         echo $current > PRIOR-REVISION
-        echo $branch > REVISION
-        echo "Updated to ${branch}"
+        echo ${name}:${sha} > REVISION
+        echo "Updated to ${name}:${sha}"
     }
 
     path=$1
