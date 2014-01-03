@@ -144,6 +144,10 @@ EOF
         cat << EOF
 NOTE: No changes detected (identical SHA). Perhaps you need to run 
       "site.sh mklive" first to generate a new live image.
+
+      If you have made local changes to the active branch, you will
+      need to push them to GitHub prior to running this script (local
+      git branch heads are ignored)
   
 EOF
     fi

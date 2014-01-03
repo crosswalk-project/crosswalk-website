@@ -1,7 +1,7 @@
 # Building a Crosswalk Application
 An application package is a compressed archive containing all of your application resources and a manifest file.
 
-There are several sample applications which can be used as a seed for your project. These are described in [Building an Application](#documentation/getting_started/building_an_application). The steps described below can be used to package those applications and deploy them into an Android or Tizen device.
+There are several sample applications which can be used as a seed for your project. These are listed on the [Samples](#documentation/samples) page. The steps described below can be used to package those applications and deploy them into an Android or Tizen device.
 
 ### Manifest File
 The following is a minimal example for a manifest file, which should be named manifest.json and reside in your application's top level directory:
