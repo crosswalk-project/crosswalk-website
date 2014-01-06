@@ -243,7 +243,14 @@ function remote () {
     shift
 
     cd "${path}" || return
+
+    # crosswalk-project.git contains wiki/ which needs to be owned
+    # by wwwrun:www in order for the Apache process to be able to write 
+    # to it (eg., gfm.php and regen.php) However the update process
+    # requires that directory to be writeable by drush:users
+    [ -d wiki ] && sudo chown drush:users wiki
     { declare -f drush_routine ; echo drush_routine $* ; } | sudo su drush -
+    [ -d wiki ] && sudo chown wwwrun:www wiki
 }
 
 # usage: site.sh push [live | <source>]
