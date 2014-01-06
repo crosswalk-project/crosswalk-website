@@ -241,6 +241,7 @@ function remote () {
 
     path=$1
     shift
+
     cd "${path}" || return
     { declare -f drush_routine ; echo drush_routine $* ; } | sudo su drush -
 }
@@ -258,6 +259,8 @@ function run () {
     staging=$(get_remote_live_info staging)
     echo "done"
 
+    [[ "${staging}" =~ live-.*:.* ]] || die 'REVISION on staging server is invalid'
+
     if [[ "$1" == "live" ]]; then
         target="live"
         echo -n "Fetching live branch name from crosswalk-project.org..." >&2
@@ -271,9 +274,27 @@ function run () {
             rev=$(get_local_live_info) || 
                 die "Unable to determine local info for ${rev/:*/}"
         else
-            rev=$1
+            if [[ "${1}" =~ live-.*:.* ]]; then
+                rev=$1
+            else        
+                rev=$1:$(git log -1 --pretty=format:%H ${1})
+            fi
         fi
-    fi 
+    fi
+
+    [[ "${rev}" =~ live-.*:.* ]] || {
+        cat << EOF
+ERROR: Revision '${rev}' is no in correct form. Expected:
+
+  live-YYYYMMDD[.VER]:SHA-1
+
+Likely caused by manual edit of remote REVISION file or invalid command line.
+
+Aborting. Please correct and re-run.
+
+EOF
+        return
+    }
 
     url=$(git remote show -n origin | sed -ne 's,^.*Push.*URL: \(.*\)$,\1,p')
     
