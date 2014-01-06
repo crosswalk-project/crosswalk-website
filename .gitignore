@@ -2,7 +2,10 @@ documentation/*.html
 documentation/*/*.html
 contribute/*.html
 contribute/*/*.html
-wiki/*.html
+# The only file that should be in wiki/ is the README placeholder
+# all else is dynamically generated via gfm.php
+wiki/*
+!wiki/README
 wiki.git
 *.msg
 *.map
