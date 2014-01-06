@@ -13,7 +13,7 @@ wget https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${X
 <pre>
 unzip crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
 </pre>
-1. Install the XWalkRuntimeLib package:
+1. Install the XWalkRuntimeLib package (This step is only necessary for the shared mode. See [what are the shared and embedded modes](#wiki/Crosswalk-on-Android/packaging-modes):
 <pre>
 adb install crosswalk-${XWALK-STABLE-ANDROID-X86}/apks/XWalkRuntimeLib.apk
 </pre>

@@ -22,10 +22,10 @@ For more details on the manifest file, see the [Crosswalk Manifest](#wiki/Crossw
 ## The Application Structure
 A typical application structure contains the manifest.json file in the root directory. The main entry point to the application is then referenced from that manifest file. In most applications this file is in the root directory as well.
 ```
-/home/abc/dist/src/manifest.json
-/home/abc/dist/src/index.html
-/home/abc/dist/src/application.js
-/home/abc/dist/src/assets/images.jpg
+/home/foobar/dist/manifest.json
+/home/foobar/dist/index.html
+/home/foobar/dist/application.js
+/home/foobar/dist/assets/images.jpg
 ```
 ## Packaging for Android
 The Android APK maker is included with the crosswalk-android binaries available in [Downloads](#documentation/downloads).
@@ -36,20 +36,32 @@ tar xzvf xwalk_app_template.tar.gz
 cd xwalk_app_template
 ```
 The xwalk_app_template contains utilities and dependencies for packaging an application into an APK file, so it can be installed on an Android device.
+Since Crosswalk-3, it introduces a new packaging mode - embedded mode. Such that a version of Crosswalk can be bundled with each web application without depending on XWalkRuntimeLib.
 
 **Note**: For this script to work, you should ensure that the android command from the Android SDK is on your path. It is located in <Android SDK location>/tools/android.
 
-Below is an example of how to package a local web app. We assume that the files for the app are in /home/abc/dist and the main entry point HTML file is /home/abc/dist/src/index.html:
+For Crosswalk-3 and later:
 
+Below you will find an example on how to package a web app. We assume that the files for the app are in /home/foobar/dist and the main entry point HTML file is /home/foobar/dist/index.html:
 ```sh
-python make_apk.py --package=com.abc.app --name=ABC \
-  --app-root=/home/abc/dist --app-local-path=src/index.html
-```  
-
+python make_apk.py --package=com.foo.bar --name=FooBar \
+  --app-root=/home/foobar/dist --app-local-path=index.html \
+    --mode=[embedded | shared]
+```
 The apk file is output to the same directory as the make_apk.py script, with a filename <name&gt.apk, where <name> is the name you set with the --name flag.
+For embedded mode, the APK 'FooBar_[arm | x86].apk' is written to the same directory. The APKs are architecture dependent, meaning that packaged with an *arm.apk suffix works on ARM devices, and packaged with an *x86.apk suffix works on Intel based devices.
+For shared mode, the APK 'FooBar.apk' is output and architecture independent.
 
-For information on installing and running the application on Android, 
-see 
+For Crosswalk-1 and Crosswalk-2:
+Only the shared mode is supported. Below is an example of how to package a local web app. We assume that the files for the app are in /home/foobar/dist and the main entry point HTML file is /home/foobar/dist/index.html:
+```sh
+python make_apk.py --package=com.foo.bar --name=FooBar \
+  --app-root=/home/foobar/dist --app-local-path=index.html
+```
+Same as above shared mode, the APK 'FooBar.apk' is output and architecture independent.
+
+For information on installing and running the application on Android,
+see
  [Running on 
 Android](#documentation/getting_started/running_an_application/running-on-android).
 
