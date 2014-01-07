@@ -6,7 +6,8 @@
 // $start: git time specifier (e.g. "1.days")
 // $end: git time specifier (e.g. "2.days")
 function generate_history ($start, $end) {
-    $wiki_git = '--git-dir=wiki.git';
+    $path = 'wiki';
+    $wiki_git = '--git-dir='.$path.'.git';
     $cmd = 'git '.$wiki_git.' log '.
            '--since='.$end.' --until='.$start.' '.
            '--name-only '.
@@ -60,7 +61,7 @@ function generate_history ($start, $end) {
                 } else {
                     $event = Array (
                         'orig' => $file,
-                        'file' => 'wiki/'.preg_replace ('/\.[^.]*$/', '', $file),
+                        'file' => $path.'/'.preg_replace ('/\.[^.]*$/', '', $file),
                         'name' => make_name (preg_replace ('/\.[^.]*$/', '', $file)),
                         'date' => preg_replace ('/-[^-]*$/', '', $parts[2]),
                         'start_sha' => $parts[3],
@@ -79,7 +80,7 @@ function generate_history ($start, $end) {
         if ($history[$i]['end_sha'] != '')
             continue;
 
-        $cmd = 'git --git-dir=wiki.git log -n 1 --pretty=format:"%H" '.
+        $cmd = 'git --git-dir='.$path.'.git log -n 1 --pretty=format:"%H" '.
                $history[$i]['start_sha'].'^ -- '.
                '"'. escapeshellarg ($history[$i]['orig']) .'"';
         $f = @popen ($cmd, 'r');
