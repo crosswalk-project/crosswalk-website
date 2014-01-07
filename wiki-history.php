@@ -1,4 +1,6 @@
 <?php
+require_once ('strings.php');
+
 // functions for generating the wiki history page in wiki/history.md.html;
 // note that this is actually a JSON file which is converted into
 // HTML once fetched via JavaScript... (see xwalk.js)

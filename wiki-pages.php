@@ -1,5 +1,11 @@
 <?php
+require_once ('strings.php');
+
 // functions for generating wiki page list HTML in wiki/pages.md.html
+
+function sort_entries ($a, $b) {
+    return strcasecmp ($a['wiki'], $b['wiki']);
+}
 
 function generate_page_list () {
     $path = 'wiki';
@@ -16,16 +22,16 @@ function generate_page_list () {
         if (preg_match ('/\.(html|php|htaccess|js|log|git)$/', $file) ||
             preg_match ('/^assets\/.*/', $file))
             continue;
+        $normalised_name = make_name (pathinfo ($file, PATHINFO_FILENAME));
         $entries [] = Array ('wiki' => $file,
-                             'name' => make_name (
-                                 pathinfo ('wiki/'.$file, PATHINFO_FILENAME)));
+                             'name' => $normalised_name);
     }
     pclose ($p);
     usort ($entries, "sort_entries");
     for ($i = 0; $i < count ($entries); $i++) {
         $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
         $name = preg_replace ('/\.[^.]*$/', '', $name);
-        $entries[$i]['file'] = '/'.$path.$name;
+        $entries[$i]['file'] = $path.'/'.$name;
         $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
     }
     return $entries;
