@@ -2,7 +2,8 @@
 // functions for generating wiki page list HTML in wiki/pages.md.html
 
 function generate_page_list () {
-    $wiki_git = '--git-dir=wiki.git';
+    $path = 'wiki';
+    $wiki_git = '--git-dir='.$path.'.git';
     $cmd = 'git '.$wiki_git.' ls-tree -r HEAD';
     $p = popen ($cmd, 'r');
     $regex = '/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/';
@@ -24,7 +25,7 @@ function generate_page_list () {
     for ($i = 0; $i < count ($entries); $i++) {
         $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
         $name = preg_replace ('/\.[^.]*$/', '', $name);
-        $entries[$i]['file'] = '/wiki'.$name;
+        $entries[$i]['file'] = '/'.$path.$name;
         $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
     }
     return $entries;
@@ -32,7 +33,7 @@ function generate_page_list () {
 
 // returns 1 if HTML created successfully, 0 otherwise
 function wiki_pages () {
-    $pages = generate_page_list ('wiki');
+    $pages = generate_page_list ();
     $f = fopen ('wiki/pages.md.html', 'w');
     if (!$f) {
         return 0;
