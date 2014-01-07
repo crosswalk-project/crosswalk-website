@@ -1,5 +1,11 @@
 <?php
+require_once ('strings.php');
+
 // functions for generating wiki page list HTML in wiki/pages.md.html
+
+function sort_entries ($a, $b) {
+    return strcasecmp ($a['wiki'], $b['wiki']);
+}
 
 function generate_page_list () {
     $path = 'wiki';

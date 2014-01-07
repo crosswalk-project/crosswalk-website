@@ -1,4 +1,6 @@
 <?php
+require_once ('wiki-pages.php');
+require_once ('wiki-history.php');
 /*
  * make sure you populate wiki.git via:
 
@@ -34,6 +36,7 @@ if ($ret) {
     print "git fetch failed";
     exit;
 }
-@system('php gfm.php wiki/pages.md >&1 >/dev/null');
-@system('php gfm.php wiki/history.md 2>&1 >/dev/null');
+
+wiki_pages ();
+wiki_history ();
 @touch ('github-regen');
