@@ -1,5 +1,6 @@
 <?php
 require_once ('smart-match.inc');
+require_once ('wiki-pages.php');
 require_once ('wiki-history.php');
 require_once ('http.php');
 
@@ -35,35 +36,6 @@ function sort_entries ($a, $b) {
     return strcasecmp ($a['wiki'], $b['wiki']);
 }
 
-function generatePageList ($path) {
-    $wiki_git = '--git-dir='.$path.'.git';
-    $cmd = 'git '.$wiki_git.' ls-tree -r HEAD';
-    $p = popen ($cmd, 'r');
-    $regex = '/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/';
-    while (!feof ($p)) {
-        $line = fgets ($p);
-        if (!preg_match ($regex, $line, $matches))
-            continue;
-        $file = $matches[2];
-        $sha = $matches[1];
-        if (preg_match ('/\.(html|php|htaccess|js|log|git)$/', $file) ||
-            preg_match ('/^assets\/.*/', $file))
-            continue;
-        $entries [] = Array ('wiki' => $file,
-                             'name' => make_name (
-                                 pathinfo ($path.'/'.$file, PATHINFO_FILENAME)));
-    }
-    pclose ($p);
-    usort ($entries, "sort_entries");
-    for ($i = 0; $i < count ($entries); $i++) {
-        $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
-        $name = preg_replace ('/\.[^.]*$/', '', $name);
-        $entries[$i]['file'] = $path.'/'.$name;
-        $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
-    }
-    return $entries;
-}
-
 function ob_callback ($buffer) {
     global $d;
     fwrite ($d, $buffer);
@@ -82,22 +54,16 @@ if (preg_match ('/(\.html)|(\.php)$/', $md)) {
  */
 if (strtolower ($file) == 'wiki/pages' ||
     strtolower ($file) == 'wiki/pages.md') {
-    $pages = generatePageList ('wiki');
-    $f = fopen ('wiki/pages.md.html', 'w');
-    if (!$f) {
-        missing ($f);
+
+    $success = wiki_pages ();
+
+    if ($success) {
+        require('wiki/pages.md.html');
     }
-    fwrite ($f, '<h1>Crosswalk Wiki Pages</h1>'."\n");
-    fwrite ($f, '<ul class="pages-list">'."\n");
-    foreach ($pages as $page) {
-        if (strlen (trim ($page['name'])) == 0 ||
-            strlen (trim ($page['file'])) == 0)
-            continue;
-        fwrite ($f, '<li><a href="'.$page['file'].'">'.$page['name'].'</a></li>'."\n");
+    else {
+        print 'could not create wiki/pages.md.html page';
     }
-    fwrite ($f, '</ul>'."\n\n");
-    fclose ($f);
-    require('wiki/pages.md.html');
+
     exit;
 }
 
