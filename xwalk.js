@@ -431,6 +431,7 @@ function generate_history_page (page, contents) {
 
         div.innerHTML = html;
     } catch (e) {
+        console.error(e);
         div.textContent = 'Error parsing Wiki History';
     }
     return content;

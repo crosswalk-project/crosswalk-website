@@ -1,5 +1,7 @@
 <?php
 require_once ('smart-match.inc');
+require_once ('wiki-pages.php');
+require_once ('wiki-history.php');
 require_once ('http.php');
 
 // create an HTTP client with the proxy configuration file 'proxy.config';
@@ -34,119 +36,6 @@ function sort_entries ($a, $b) {
     return strcasecmp ($a['wiki'], $b['wiki']);
 }
 
-function generatePageList ($path) {
-    $wiki_git = '--git-dir='.$path.'.git';
-    $cmd = 'git '.$wiki_git.' ls-tree -r HEAD';
-    $p = popen ($cmd, 'r');
-    $regex = '/^[^ ]+ blob[ ]+([^[:space:]]+)[[:space:]]+(.*)$/';
-    while (!feof ($p)) {
-        $line = fgets ($p);
-        if (!preg_match ($regex, $line, $matches))
-            continue;
-        $file = $matches[2];
-        $sha = $matches[1];
-        if (preg_match ('/\.(html|php|htaccess|js|log|git)$/', $file) ||
-            preg_match ('/^assets\/.*/', $file))
-            continue;
-        $entries [] = Array ('wiki' => $file,
-                             'name' => make_name (
-                                 pathinfo ($path.'/'.$file, PATHINFO_FILENAME)));
-    }
-    pclose ($p);
-    usort ($entries, "sort_entries");
-    for ($i = 0; $i < count ($entries); $i++) {
-        $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
-        $name = preg_replace ('/\.[^.]*$/', '', $name);
-        $entries[$i]['file'] = $path.'/'.$name;
-        $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
-    }
-    return $entries;
-}
-
-function generateHistory ($path, $start, $end) {
-    $wiki_git = '--git-dir='.$path.'.git';
-    $cmd = 'git '.$wiki_git.' log '.
-           '--since='.$end.' --until='.$start.' '.
-           '--name-only '.
-           '--no-merges '.
-           '--pretty=format:">>> %s|%an|%ct|%H"';
-    $f = @popen ($cmd, 'r');
-    $history = Array ();
-    $tracking = Array ();
-
-    while (!feof ($f)) {
-        $line = trim (fgets ($f));
-        $skip = trim (fgets ($f));
-        /* Skip log entries that don't contain a file list */
-        while (preg_match ('/^>>> /', $skip)) {
-            $line = $skip;
-            $skip = trim (fgets ($f));
-        }
-
-        $files = Array ();
-        $event = null;
-
-        while ($skip != '') {
-            $file = $skip;
-            /* Only add if:
-             * + this file does not contain a path (/)
-             * + this file is a recognized markdown type
-             */
-            if (!preg_match ('/\//', $file) &&
-                preg_match ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/', $file)) {
-
-                /* If this file is not currently in the tip of GIT, then skip it */
-                $status = 'git '.$wiki_git.' ls-tree -r HEAD --name-only '.escapeshellarg ($file);
-                $p = @popen ($status, 'r');
-                $match = false;
-                while (!feof ($p)) {
-                    $match = strlen (trim (fgets ($p))) != 0;
-                    if ($match)
-                        break;
-                }
-                pclose ($p);
-                if (!$match) {
-                    $skip = trim (fgets ($f));
-                    continue;
-                }
-
-                $parts = explode ('|', preg_replace ('/^>>> /', '', $line));
-
-                if (($key = array_search ($file, $tracking)) !== false) {
-                    $history [$key]['end_sha'] = $parts[3];
-                } else {
-                    $event = Array (
-                        'orig' => $file,
-                        'file' => $path.'/'.preg_replace ('/\.[^.]*$/', '', $file),
-                        'name' => make_name (preg_replace ('/\.[^.]*$/', '', $file)),
-                        'date' => preg_replace ('/-[^-]*$/', '', $parts[2]),
-                        'start_sha' => $parts[3],
-                        'end_sha' => ''
-                    );
-                    $tracking [] = $file;
-                    $history [] = $event;
-                }
-            }
-            $skip = trim (fgets ($f));
-        }
-    }
-    pclose ($f);
-
-    for ($i = 0; $i < count ($history); $i++) {
-        if ($history[$i]['end_sha'] != '')
-            continue;
-
-        $cmd = 'git --git-dir='.$path.'.git log -n 1 --pretty=format:"%H" '.
-               $history[$i]['start_sha'].'^ -- '.escapeshellarg ($history[$i]['orig']);
-        $f = @popen ($cmd, 'r');
-        $history[$i]['end_sha'] = trim (fgets ($f));
-        pclose ($f);
-    }
-
-    return $history;
-
-}
-
 function ob_callback ($buffer) {
     global $d;
     fwrite ($d, $buffer);
@@ -165,22 +54,16 @@ if (preg_match ('/(\.html)|(\.php)$/', $md)) {
  */
 if (strtolower ($file) == 'wiki/pages' ||
     strtolower ($file) == 'wiki/pages.md') {
-    $pages = generatePageList ('wiki');
-    $f = fopen ('wiki/pages.md.html', 'w');
-    if (!$f) {
-        missing ($f);
+
+    $success = wiki_pages ();
+
+    if ($success) {
+        require('wiki/pages.md.html');
     }
-    fwrite ($f, '<h1>Crosswalk Wiki Pages</h1>'."\n");
-    fwrite ($f, '<ul class="pages-list">'."\n");
-    foreach ($pages as $page) {
-        if (strlen (trim ($page['name'])) == 0 ||
-            strlen (trim ($page['file'])) == 0)
-            continue;
-        fwrite ($f, '<li><a href="'.$page['file'].'">'.$page['name'].'</a></li>'."\n");
+    else {
+        print 'could not create wiki/pages.md.html page';
     }
-    fwrite ($f, '</ul>'."\n\n");
-    fclose ($f);
-    require('wiki/pages.md.html');
+
     exit;
 }
 
@@ -190,41 +73,16 @@ if (strtolower ($file) == 'wiki/pages' ||
  */
 if (strtolower ($file) == 'wiki/history' ||
     strtolower ($file) == 'wiki/history.md') {
-    $spans = Array ('days' => Array ('show_date' => 1,
-                                     'start' => 0,
-                                     'end' => 6),
-                    //'today', 'yesterday', ' days ago')),
-                    'weeks' => Array ('show_date' => 0,
-                                      'start' => 1,
-                                      'end' => 3),
-                    'months' => Array ('show_date' => 0,
-                                       'start' => 1,
-                                       'end' => 12));
-    $events = Array ();
 
-    foreach ($spans as $key => $value) {
-        for ($i = $value['start']; $i <= $value['end']; $i++) {
-            $history = generateHistory ('wiki', $i.'.'.$key, ($i+1).'.'.$key);
-            if (count ($history) == 0)
-                continue;
-            foreach ($history as $event) {
-                $events [] = $event;
-            }
-        }
+    // generate the wiki history HTML page
+    $success = wiki_history ();
+
+    if ($success) {
+        require('wiki/history.md.html');
     }
-
-    $f = fopen ('wiki/history.md.html', 'w');
-    if (!$f) {
-        missing ($f);
+    else {
+        print 'could not create wiki/history.md.html page';
     }
-
-    if (!defined('JSON_PRETTY_PRINT'))
-        fwrite ($f, json_encode ($events));
-    else
-        fwrite ($f, json_encode ($events, JSON_PRETTY_PRINT));
-    fclose ($f);
-
-    require('wiki/history.md.html');
     exit;
 }
 
