@@ -157,6 +157,14 @@ Enable the rewrite module via:
 The rest of the content is served from static files that are generated
 as part of the development cycle, described in the Workflow section (above).
 
+In addition, you will need to enable the cURL extension for PHP. This is
+used by the gfm.php script to perform HTTP requests for pages from the
+Crosswalk wiki. Enable it by editing the `php.ini` file for the PHP
+installation and adding this line (there should be several other
+`extension` lines in `php.ini` already, so add it after those):
+
+    extension=php_curl.dll
+
 ## Server configuration
 
 To host the Crosswalk website, the following needs to be done on the server:
