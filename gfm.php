@@ -25,17 +25,6 @@ function missing ($f) {
     exit;
 }
 
-function make_name ($name) {
-    return preg_replace ('/_+/', ' ',
-           preg_replace ('/-+/', ' ',
-           preg_replace ('/^[0-9]*[-_]/', '',
-           $name)));
-}
-
-function sort_entries ($a, $b) {
-    return strcasecmp ($a['wiki'], $b['wiki']);
-}
-
 function ob_callback ($buffer) {
     global $d;
     fwrite ($d, $buffer);
