@@ -1,5 +1,7 @@
 <?php
-// functions for generating the wiki history page in wiki/history.md.html
+// functions for generating the wiki history page in wiki/history.md.html;
+// note that this is actually a JSON file which is converted into
+// HTML once fetched via JavaScript... (see xwalk.js)
 
 // $start: git time specifier (e.g. "1.days")
 // $end: git time specifier (e.g. "2.days")
@@ -58,7 +60,7 @@ function generate_history ($start, $end) {
                 } else {
                     $event = Array (
                         'orig' => $file,
-                        'file' => $path.'/'.preg_replace ('/\.[^.]*$/', '', $file),
+                        'file' => 'wiki/'.preg_replace ('/\.[^.]*$/', '', $file),
                         'name' => make_name (preg_replace ('/\.[^.]*$/', '', $file)),
                         'date' => preg_replace ('/-[^-]*$/', '', $parts[2]),
                         'start_sha' => $parts[3],
@@ -77,7 +79,7 @@ function generate_history ($start, $end) {
         if ($history[$i]['end_sha'] != '')
             continue;
 
-        $cmd = 'git --git-dir='.$path.'.git log -n 1 --pretty=format:"%H" '.
+        $cmd = 'git --git-dir=wiki.git log -n 1 --pretty=format:"%H" '.
                $history[$i]['start_sha'].'^ -- '.
                '"'. escapeshellarg ($history[$i]['orig']) .'"';
         $f = @popen ($cmd, 'r');
