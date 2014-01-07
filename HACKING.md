@@ -67,6 +67,13 @@ uncommented (they should all be already, by default):
 
 XAMPP has MultiViews disabled by default.
 
+You also need to modify the PHP configuration (usually in `php.ini`)
+to enable the cURL extension:
+
+    extension=php_curl.dll
+
+This is on by default in XAMPP.
+
 #### Put PHP on your path
 
 The `./site.sh` script and its friends rely on php being on your path
