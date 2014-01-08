@@ -1,24 +1,21 @@
-# Getting Started
-This site is designed to help you get up and running with Crosswalk as quickly as possible.
+# Getting started with Crosswalk
 
-## Step 1 - Download Crosswalk
-The Crosswalk project currently provides binaries for Android and Tizen. Go to the [Downloads](#documentation/downloads) page, pick your operating system, and download.
+This tutorial is designed to help you get up and running with Crosswalk as quickly as possible.
 
-## Step 2 - Install Crosswalk on your device
-You can run Crosswalk either directly on a device supporting your selected operating system, or in one of the emulators provided by those operating system SDKs. 
+This tutorial covers:
 
-You can find steps for installing Crosswalk onto the device or into the emulator on the [Installing Crosswalk](#documentation/getting_started/installing_crosswalk) page.
+*   How to set up the tools needed to deploy Crosswalk applications, on Linux or Windows.
+*   How to build and run simple HTML5 applications using stable releases of Crosswalk. The versions used for this tutorial are:
+    *   Crosswalk Android for x86, version ${XWALK-STABLE-ANDROID-X86}
+    *   Crosswalk Tizen for x86, version ${XWALK-STABLE-TIZEN-X86}
 
-## Step 3 - Package your application
-Crosswalk applications are made up of your HTML5 files and a manifest 
-file. When deploying your application, you would package those files 
-into a single archive. During development you can skip that step. The 
-steps for packaging your application are found on the [Building an 
-application](#documentation/getting_started/Building_an_Application) 
-page.
+This tutorial doesn't cover:
 
-## Step 4 - Running your application
-The steps for pushing your application to the target device and 
-launching Crosswalk with your application are covered on the [Running an 
-Application](#documentation/getting_started/Running_an_Application) 
-page.
+*   How to write HTML5 applications. We use the simplest possible HTML5 application for this tutorial, so we can focus on the packaging and deployment aspects of Crosswalk.
+*   How to use Crosswalk-specific APIs. The code in the tutorial should run perfectly well on any modern web browser, as well as on Crosswalk.
+*   How to write [Crosswalk extensions](#wiki/Crosswalk-Extensions). This will be covered in other tutorials.
+*   How to compile Crosswalk itself. This is covered in the [Contribute](#contribute) section.
+
+You will need to be comfortable using a command line to follow this tutorial.
+
+By the end of the tutorial, you should understand the workflow for creating Crosswalk applications from your own HTML5 projects.
