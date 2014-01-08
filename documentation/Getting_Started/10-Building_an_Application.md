@@ -66,9 +66,23 @@ see
 Android](#documentation/getting_started/running_an_application/running-on-android).
 
 ## Packaging for Tizen
-There is currently no application packager for Tizen. To run your 
-application in the Tizen environment, you can launch xwalk manually, 
-directing it to load your application via the command line. See the 
-steps in
- [Running on 
+To run Crosswalk packages on Tizen, web applications should be packaged using the XPK
+package format. To package your own web application, you should save the
+[xpk_generator](#wiki/crosswalk-package-management/xpk-package-generator-bash-shell-version)
+script to a local file, then call it like this:
+```sh
+xpk_generator /home/foobar/dist myapp.pem
+```
+Then, an XPK package named ```dist.xpk``` should be created under the ```/home/foobar```
+directory.
+
+Note that the 'myapp.pem' (or whatever file name you chose) file is the XPK
+package identity. It's generated the first time you created the web app XPK
+package, and should use the same 'myapp.pem' file when packaging this web
+app, otherwise the XPK package is treated as a new app.
+
+To run your application in the Tizen environment, you can either launch xwalk manually,
+directing it to load your application via the command line; or launch an
+installed XPK package from the Tizen Home Screen. See the steps in
+[Running on 
 Tizen](#documentation/getting_started/running_an_application/running-on-tizen).
