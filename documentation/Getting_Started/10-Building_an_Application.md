@@ -40,25 +40,64 @@ Since Crosswalk-3, it introduces a new packaging mode - embedded mode. Such that
 
 **Note**: For this script to work, you should ensure that the android command from the Android SDK is on your path. It is located in <Android SDK location>/tools/android.
 
+The xwalk_app_template supports three kinds of web application source:
+* **[Crosswalk Manifest](#wiki/Crosswalk-manifest)**.
+* **[XPK package](#wiki/Crosswalk-package-management)**.
+* **Command line options**. For example, '--app-url' for website, '--app-root' and '--app-local-path' for local web application.
+
+**Note**: The manifest source and XPK source are preferred.
+
+### Packaging from manifest source
+This feature is supported for Crosswalk-2 and later.
+Below is an example of how to package a web app. We assume that the files for the app are in /home/foobar/dist and the manifest file is /home/foobar/dist/manifest.json:
+
 For Crosswalk-3 and later:
 
-Below you will find an example on how to package a web app. We assume that the files for the app are in /home/foobar/dist and the main entry point HTML file is /home/foobar/dist/index.html:
+Both shared and embedded modes are supported.
+```sh
+python make_apk.py --manifest=/home/foobar/dist/manifest.json
+  --mode=[embedded | shared]
+```
+For embedded mode, the APK 'FooBar_[arm | x86].apk' is written to the directory where you run the command. The APKs are architecture dependent, meaning that an APK with an *arm.apk suffix works on ARM devices, and an APK with an *x86.apk suffix works on x86 devices.
+For shared mode, the APK 'FooBar.apk' is generated. This APK will work on both ARM and x86 devices (providing the shared runtime library is also installed).
+
+For Crosswalk-2:
+
+Only shared mode is supported.
+```sh
+python make_apk.py --manifest=/home/foobar/dist/manifest.json
+```
+The architecture-independent APK 'FooBar.apk' is generated.
+
+### Packaging from XPK source
+This feature is supported for Crosswalk-3 and later.
+Below is an example of how to package a web app. We assume that the files for the app are archived in FooBar.xpk, which is located at /home/foobar/FooBar.xpk:
+```sh
+python make_apk.py --xpk=/home/foobar/FooBar.xpk \
+  --mode=[embedded | shared]
+```
+For embedded mode, the APK 'FooBar_[arm | x86].apk' is generated. For shared mode, the APK 'FooBar.apk' is generated.
+
+### Packaging from command line options
+For Crosswalk-3 and later:
+
+Below you will find an example of how to package a local web app. We assume that the files for the app are in /home/foobar/dist and the main entry point HTML file is /home/foobar/dist/index.html:
 ```sh
 python make_apk.py --package=com.foo.bar --name=FooBar \
   --app-root=/home/foobar/dist --app-local-path=index.html \
     --mode=[embedded | shared]
 ```
 The apk file is output to the same directory as the make_apk.py script, with a filename <name&gt.apk, where <name> is the name you set with the --name flag.
-For embedded mode, the APK 'FooBar_[arm | x86].apk' is written to the same directory. The APKs are architecture dependent, meaning that packaged with an *arm.apk suffix works on ARM devices, and packaged with an *x86.apk suffix works on Intel based devices.
-For shared mode, the APK 'FooBar.apk' is output and architecture independent.
+For embedded mode, the APK 'FooBar_[arm | x86].apk' is generated. For shared mode, the APK 'FooBar.apk' is generated.
 
 For Crosswalk-1 and Crosswalk-2:
-Only the shared mode is supported. Below is an example of how to package a local web app. We assume that the files for the app are in /home/foobar/dist and the main entry point HTML file is /home/foobar/dist/index.html:
+
+Only shared mode is supported. Below is an example of how to package a local web app. We assume that the files for the app are in /home/foobar/dist and the main entry point HTML file is /home/foobar/dist/index.html:
 ```sh
 python make_apk.py --package=com.foo.bar --name=FooBar \
   --app-root=/home/foobar/dist --app-local-path=index.html
 ```
-Same as above shared mode, the APK 'FooBar.apk' is output and architecture independent.
+The architecture-independent APK 'FooBar.apk' is generated.
 
 For information on installing and running the application on Android,
 see
