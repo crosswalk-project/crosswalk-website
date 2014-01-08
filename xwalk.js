@@ -175,7 +175,7 @@ function loadingGraphicStart () {
                 }
             );
         }
-    
+
     }
 
     /* If no on-page indicators are showing the loading indicator, then add
@@ -183,7 +183,7 @@ function loadingGraphicStart () {
     if (indicator == null) {
         Array.prototype.forEach.call (
             document.querySelectorAll (
-                '#top-menu a[href^="' + 
+                '#top-menu a[href^="' +
                 active_target.replace(/^(#[^\/]*).*$/, '$1') + '"]'),
             function (el) {
                 el.classList.add ('loading');
@@ -200,15 +200,15 @@ function loadingGraphicStop () {
             el.classList.remove ('loading');
     });
 }
-    
+
 function generate_wiki_page (page, contents) {
     var content = document.createElement ('div'),
         wiki_body = document.createElement ('div'),
         div = document.createElement ('div');
-    
+
     div.innerHTML = contents;
     content = div.querySelector ('#wiki-content');
-    
+
     if (!content) {
         content = document.createElement ('div');
         content.id = 'wiki-content';
@@ -225,11 +225,11 @@ function generate_wiki_page (page, contents) {
             wiki_body = document.createElement ('div');
             wiki_body.innerText = 'Site down';
         }
-        
+
         /* If title found in header, move it into the body as an H1
          * BUT only if this isn't Home, which is special cased to always
          * pull the title from the page content */
-        
+
         if (column_name != 'wiki' || !page.match (/home/i)) {
             title = div.querySelector ('#head h1:first-child');
             if (title) {
@@ -257,7 +257,7 @@ function generate_wiki_page (page, contents) {
             }
         }
         /* If wiki entry does not start with a header, add a title */
-        if (title == null) { 
+        if (title == null) {
             title = document.createElement ('h1');
             title.textContent = div.querySelector ('#head h1').textContent;
             wiki_body.insertBefore (title, wiki_body.firstChild);
@@ -274,7 +274,7 @@ function generate_wiki_page (page, contents) {
             /* GitHub URL syntax for starting the editing; GitHub flattens
              * the wiki structure, so no path structure (vs. Gollum which
              * does support a directory structure) */
-            github_link.href = 
+            github_link.href =
                 'http://github.com/crosswalk-project/crosswalk-website/wiki/' + requested_page;
             github_link.textContent = 'GitHub';
             github_link.target = '_blank';
@@ -286,7 +286,7 @@ function generate_wiki_page (page, contents) {
             content.appendChild (last_edit);
         }
     }
-    
+
     /* If the content contains the 'missing' class then the Wiki
      * request hit a 404 */
     if (content.querySelector ('.missing')) {
@@ -311,32 +311,32 @@ function generate_history_page (page, contents) {
     content.id = 'wiki-content';
     wiki_body.id = 'wiki-body';
     div.classList.add ('markdown-body');
-    
+
     wiki_body.appendChild (div);
     content.appendChild (wiki_body);
-    
-    try {    
+
+    try {
         var html, events, spans, i, j, time,
             date = new Date (),
             now = Date.now ();
-        
+
         now += (60 * 60 * 24 * 1000) - now % (60 * 60 * 24 * 1000); // Set to 12:00am tonight
-        
+
         events = JSON.parse (contents);
-        
+
         html = '<h1>Crosswalk Wiki History</h1>';
-        
+
         spans = new Array (
             { /* days */
                 length: 60 * 60 * 24 * 1000, /* 60s * 60m * 24h = 1 day */
                 start: now,
                 end: now - (60 * 60 * 24) * date.getDay () * 1000,
-                names: null 
+                names: null
             }, { /* weeks */
                 length: 60 * 60 * 24 * 7 * 1000, /* 60s * 60m * 24h * 7d = 1 week */
                 start: now - (60 * 60 * 24) * date.getDay () * 1000,
                 end: now - (60 * 60 * 24 * 7) * 4 * 1000,
-                names: new Array ('Last week', ' weeks ago') 
+                names: new Array ('Last week', ' weeks ago')
             }, { /* months */
                 length: 60 * 60 * 24 * 7 * 4 * 1000, /* 60s * 60m * 24h * 7d * 4w = ~1 month */
                 start: now - (60 * 60 * 24 ) * date.getDate () * 1000,
@@ -350,16 +350,16 @@ function generate_history_page (page, contents) {
         var tracked = [];
         spans.forEach (function (span) {
             var period = null, period_index = 0, last_period_index = 0, k, e;
-                                    
+
             while (j < events.length) {
                 e = events[j];
                 e.date = parseInt (e.date) * 1000;
-                
-                /* Events are delivered chronologically, with future events 
+
+                /* Events are delivered chronologically, with future events
                  * (due to timezone) being processed by the first span "Today"
-                 * 
-                 * If this events happened farther back in time than this span 
-                 * handles exit the while () loop to process the event under 
+                 *
+                 * If this events happened farther back in time than this span
+                 * handles exit the while () loop to process the event under
                  * the next span */
                 if (e.date <= span.end) {
                     break;
@@ -368,24 +368,24 @@ function generate_history_page (page, contents) {
                 period_index = Math.max (
                     0, Math.floor ((span.start - e.date) / span.length));
 
-                /* Check if this particular file is already listed as being 
+                /* Check if this particular file is already listed as being
                  * edited, and if so, so skip it... */
                 for (k = 0; k < tracked.length; k++) {
                     if (e.file == tracked[k])
                         break;
                 }
-                
+
                 if (k != tracked.length) {
                     j++;
                     continue;
                 }
-                
+
                 if (period == null || period_index != last_period_index) {
                     if (period != null)
                         html += '</ul>';
                     if (span.names) {
                         if (period_index >= span.names.length - 1) {
-                            period = '' + (period_index + 1) + 
+                            period = '' + (period_index + 1) +
                                 span.names[span.names.length - 1];
                         } else {
                             period = span.names[period_index];
@@ -400,21 +400,21 @@ function generate_history_page (page, contents) {
 
                 html += '<li><a href="' + e.file + '">' + e.name + '</a> ';
                 if (e.end_sha != '') {
-                    html += '<a target="_blank" href="' + 
-                        'https://github.com/crosswalk-project/' + 
-                        'crosswalk-website/' + e.file + 
-                        '/_compare/' + e.end_sha + '..' + e.start_sha + 
+                    html += '<a target="_blank" href="' +
+                        'https://github.com/crosswalk-project/' +
+                        'crosswalk-website/' + e.file +
+                        '/_compare/' + e.end_sha + '..' + e.start_sha +
                         '"">View changes on GitHub</a>';
                 } else {
                     html += '<span>New page</span>';
                 }
 
                 html += '</li>';
-                
+
                 tracked.push (e.file);
                 j++;
             }
-            
+
             if (period != null) {
                 html += '</ul>';
             }
@@ -422,11 +422,12 @@ function generate_history_page (page, contents) {
 
         div.innerHTML = html;
     } catch (e) {
+        console.error(e);
         div.textContent = 'Error parsing Wiki History';
     }
     return content;
-}    
-    
+}
+
 function replace_version_string (str) {
     var re, version;
     Object.getOwnPropertyNames (versions).forEach (function (channel) {
@@ -437,7 +438,7 @@ function replace_version_string (str) {
                     re = new RegExp ('([^!])\\$({|%7b)XWALK-'+channel+'-'+
                                      platform+'-'+arch+'(}|%7d)', 'mig');
                     str = str.replace (re, '$1' + version);
-                    
+
                     re = new RegExp ('!(\\$({|%7b)XWALK-'+channel+'-'+
                                      platform+'-'+arch+'(}|%7d))', 'mig');
                     str = str.replace (re, '$1');
@@ -446,7 +447,7 @@ function replace_version_string (str) {
         });
     return str;
 }
-    
+
 function content_response (e) {
     if (xhr.readyState != XMLHttpRequest.DONE) {
         console.log (xhr.status);
@@ -458,12 +459,12 @@ function content_response (e) {
     /* Replace the currently visible content with the newly received
      * content */
     activateColumn (column_name);
-    
+
     if (xhr.status != 200) {
         var tmp = '<div id="wiki-content"><div id="wiki-body">' +
             '<div class="markdown-body"><h1>Unable to fetch content</h1>' +
             'Reason: <span class="error">' + xhr.status + ' ' + xhr.statusText + '</span>';
-           
+
         if (column.hasAttribute ('referring_page')) {
             var referring_page = column.getAttribute ('referring_page');
             tmp += '<br>' +
@@ -491,13 +492,13 @@ function content_response (e) {
     var response = e.currentTarget.response ?
                 e.currentTarget.response :
                 e.currentTarget.responseText;
-    
+
     response = replace_version_string (response);
-    
+
     /* The Wiki History is a dynamically generated JSON list of page edits
      * clustered chronologically. However the content on the server may not
      * be updated every day, which would result in stale time indicators.
-     * 
+     *
      * So, the server returns the collected/clustered JSON data, and the
      * client then post-filteres it into "current" time periods for display
      * to the user.
@@ -507,7 +508,7 @@ function content_response (e) {
     } else {
         content = generate_wiki_page (sub_page, response);
     }
-                                        
+
     var div = column.querySelector ('.sub-content');
     /* If this was a delayed load, it may have finished after a switch
      * to the #home column, in which case there is no sub-content field */
@@ -520,8 +521,8 @@ function content_response (e) {
     div.appendChild (content);
 
     /*
-     * Wiki link rewriting magic... 
-     * 
+     * Wiki link rewriting magic...
+     *
      * 1) Pass ONE
      * the Gollum system returns links
      * relative to the paths inside of GitHub and Gollum. Some of
@@ -537,7 +538,7 @@ function content_response (e) {
         content.querySelectorAll ('a:not([href^="http"])'), function (link) {
             if (!link.hasAttribute ('href'))
                 return;
-            
+
             href = link.getAttribute ('href');
 
             /* Discard if href contains a protocol:// prefix (for example irc://) */
@@ -555,8 +556,8 @@ function content_response (e) {
              * We remove the 'wiki-' portion. Some URLs may make it through as
              * '#documentation/.*', so we also check for that (and do nothing if
              * it matches a column name)
-             * 
-             * If neither of the above is true, assume it is a local anchor to 
+             *
+             * If neither of the above is true, assume it is a local anchor to
              * the current page (eg., a header tag in a wiki page)
              */
             if (href.match (/^#/)) {
@@ -578,14 +579,14 @@ function content_response (e) {
                  * Sometimes it prefixes pages with 'crosswalk-project/crosswalk-wiki/wiki'
                  *
                  * The following corrects for the above, and also converts any
-                 * local anchor references into a path separator (xwalk.js will 
-                 * convert the last directory element back into an anchor reference 
+                 * local anchor references into a path separator (xwalk.js will
+                 * convert the last directory element back into an anchor reference
                  * in subMenuClick) */
                 link.href = '#wiki/' + href.replace (/^\/crosswalk-project\/crosswalk-website\/wiki\//, '').
                         replace (/#/, '/').
                         replace (/^wiki\//, '');
             }
-            
+
             link.addEventListener ('click', subMenuClick);
     });
 
@@ -611,7 +612,7 @@ function content_response (e) {
         content.querySelectorAll ('a[href^="http"]'), function (link) {
             link.addEventListener ('click', trackAbandonLink);
     });
-        
+
     if (column.hasAttribute ('requested_anchor')) {
         if (anchor_scroll_timer)
             window.clearTimeout (anchor_scroll_timer);
@@ -624,7 +625,7 @@ function content_response (e) {
 
     _onResize ();
 }
-    
+
 function addEventOffset (e) {
     if ('offsetX' in e)
         return;
@@ -638,7 +639,7 @@ function addEventOffset (e) {
     e.offsetX = ofsX;
     e.offsetY = ofsY;
 }
-    
+
 (function (namespace) {
     namespace.attachScrollbar = function (scrollable) {
         var scroll_bar = scrollable.querySelector ('.scrollbar');
@@ -646,7 +647,7 @@ function addEventOffset (e) {
             calculateScrollbar (scrollable);
             return scroll_bar;
         }
-        
+
         scroll_bar = document.createElement ('div');
         scroll_bar.insertBefore (document.createElement ('div'), null);
         scroll_bar.firstChild.classList.add ('scrollbar-thumb');
@@ -656,19 +657,19 @@ function addEventOffset (e) {
         scroll_bar.addEventListener ('click', scrollbarClick, true);
         scroll_bar.addEventListener ('mousedown', scrollbarMouseDown, true);
         scroll_bar.addEventListener ('selectstart', scrollbarSelectStart, true);
-        
+
         scrollable.addEventListener ('wheel', scrollableWheel, true);
         scrollable.addEventListener ('mousewheel', scrollableWheel, true);
         scrollable.addEventListener ('touchmove', scrollableTouchMove, true);
         scrollable.addEventListener ('touchstart', scrollableTouchStart, true);
 
         scrollable.firstChild.classList.add ('scrollable');
-        
+
         calculateScrollbar (scrollable);
-    
+
         return scroll_bar;
     }
-    
+
     namespace.detachScrollbar = function (scrollable) {
         var scroll_bar = scrollable.querySelector ('.scrollbar');
         if (!scroll_bar)
@@ -676,7 +677,7 @@ function addEventOffset (e) {
         scroll_bar.removeEventListener ('click', scrollbarClick);
         scroll_bar.removeEventListener ('mousedown', scrollbarMouseDown);
         scroll_bar.removeEventListener ('selectstart', scrollbarSelectStart);
-        
+
         scrollable.removeEventListener ('wheel', scrollableWheel);
         scrollable.removeEventListener ('mousewheel', scrollableWheel);
         scrollable.removeEventListener ('touchmove', scrollableTouchMove);
@@ -686,7 +687,7 @@ function addEventOffset (e) {
 
         scroll_bar.parentElement.removeChild (scroll_bar);
     }
-    
+
     /* Scrollbar Event Handlers */
     var mouseElement = null;
 
@@ -695,29 +696,29 @@ function addEventOffset (e) {
             return;
         y = ((e.wheelDeltaY || -e.deltaY) < 0) ? -1 : +1;
         scrollTo (this, this.firstChild.offsetTop + (y * this.offsetHeight * 0.2));
-        
+
         e.preventDefault ();
         e.stopPropagation ();
         e.stopImmediatePropagation ();
         e.cancelBubble = true;
         return false;
     }
-    
+
     function scrollbarClick (e) {
         e.preventDefault ();
     }
-    
+
     var start_pos = 0;
-    
+
     function scrollbarMouseMove (e) {
         if (mouseElement) {
-            var perc, el = mouseElement, 
+            var perc, el = mouseElement,
                 scrollable = el.parentElement,
                 scroll = window.scrollY || window.pageYOffset, y;
-            
+
             y = e.pageY - scroll - start_pos;
-            
-            /* Determine mouse Y position relative to the scrollable 
+
+            /* Determine mouse Y position relative to the scrollable
              * area */
             do {
                 y -= el.offsetTop;
@@ -727,11 +728,11 @@ function addEventOffset (e) {
                 scrollable.querySelector ('.scrollbar .scrollbar-thumb').offsetHeight);
             y = scrollable.offsetHeight - scrollable.firstChild.offsetHeight;
             y *= perc;
-    
+
             scrollTo (scrollable, y);
         }
     }
-    
+
     function scrollbarMouseDown (e) {
         mouseElement = this;
         window.addEventListener ('mousemove', scrollbarMouseMove, false);
@@ -746,28 +747,28 @@ function addEventOffset (e) {
         y = e.offsetY + this.offsetTop;
         if (y < thumb.offsetTop || y > thumb.offsetTop + thumb.offsetHeight) {
             var perc;
-            
+
             perc = y / this.offsetHeight;
             y = scrollable.offsetHeight - scrollable.firstChild.offsetHeight;
             y *= perc;
             scrollTo (scrollable, y);
         }
-        
+
         start_pos = e.offsetY - thumb.offsetTop;
-        
+
         e.preventDefault ();
         e.stopPropagation ();
         e.stopImmediatePropagation ();
         e.cancelBubble = true;
         return false;
     }
-    
+
     function scrollbarMouseUp (e) {
         window.removeEventListener ('mousemove', scrollbarMouseMove);
         window.removeEventListener ('mouseup', scrollbarMouseUp);
 
         mouseElement = null;
-        
+
         e.preventDefault ();
     }
 
@@ -778,7 +779,7 @@ function addEventOffset (e) {
         e.cancelBubble = true;
         return false;
     }
-    
+
     var touchY = 0;
     function calculateScrollbar (scrollable) {
         var perc, y, d, scroll_bar, h, scroll_bar_thumb;
@@ -787,14 +788,14 @@ function addEventOffset (e) {
             return;
         y = -scrollable.firstChild.offsetTop;
         scroll_bar_thumb = scrollable.querySelector ('.scrollbar').firstChild;
-        h = scrollable.offsetHeight * 
+        h = scrollable.offsetHeight *
             scrollable.offsetHeight / scrollable.firstChild.offsetHeight;
         y = (scrollable.offsetHeight - scroll_bar_thumb.offsetHeight) * y / d;
 
         scroll_bar_thumb.style.height = h + 'px';
         scroll_bar_thumb.style.top = y + 'px';
     }
-    
+
     function scrollTo (scrollable, y) {
         if (y > 0)
             y = 0;
@@ -803,7 +804,7 @@ function addEventOffset (e) {
         scrollable.firstChild.style.top = y + 'px';
         calculateScrollbar (scrollable);
     }
-    
+
     function scrollableTouchMove (e) {
         e.preventDefault ();
         if (e.touches.length) {
@@ -811,14 +812,14 @@ function addEventOffset (e) {
             touchY = e.touches[0].pageY;
         }
     }
-    
+
     function scrollableTouchStart (e) {
         e.preventDefault ();
         if (e.touches.length)
             touchY = e.touches[0].pageY;
     }
 }) (window);
-    
+
 function subMenuResize () {
     var scroll = window.scrollY || window.pageYOffset;
     var sub_menu = column.querySelector ('.sub-menu'), scroll_bar;
@@ -826,37 +827,37 @@ function subMenuResize () {
         return;
     }
 
-    /* Size of the sub_menu is the distance from the bottom of the top_menu 
+    /* Size of the sub_menu is the distance from the bottom of the top_menu
      * to the top of the footer, which may be scrolled up */
     var y = Math.min (footer.offsetTop - scroll, viewHeight) -
         top_menu.offsetHeight;
 
-    /* Size the sub-menu container to the maximum sized amount */    
+    /* Size the sub-menu container to the maximum sized amount */
     sub_menu.parentElement.style.height = y + 'px';
-                                              
+
     /* If the container is smaller than the sub-menu, attach a scrollbar
      * to the sub-menu */
     if (sub_menu.offsetHeight > sub_menu.parentElement.clientHeight) {
         var scroll_bar = attachScrollbar (sub_menu.parentElement), margin;
-        
+
         margin = Math.ceil (parseFloat (
             window.getComputedStyle (scroll_bar).marginLeft) * 2);
-        
-        scroll_bar.style.left = sub_menu.offsetWidth - 
+
+        scroll_bar.style.left = sub_menu.offsetWidth -
             scroll_bar.offsetWidth - margin + 'px';
     } else {
         detachScrollbar (sub_menu.parentElement);
     }
 }
-    
+
 function subMenuClick (e) {
     var href = this.getAttribute ('href'), open;
     e.preventDefault ();
-    
-    /* If the item being clicked is an item of a sub-menu, or 
+
+    /* If the item being clicked is an item of a sub-menu, or
      * the parent of a sub-menu, then toggle the visibility
      * of the sub-menu */
-    if (this.nextSibling && this.nextSibling.classList && 
+    if (this.nextSibling && this.nextSibling.classList &&
         this.nextSibling.classList.contains ('menu-sub-pages')) {
 
         addEventOffset (e);
@@ -865,7 +866,7 @@ function subMenuClick (e) {
             this.nextSibling.classList.toggle ('off');
         else
             this.nextSibling.classList.remove ('off');
-            
+
         if (this.nextSibling.classList.contains ('off')) {
             open = false;
             this.classList.add ('menu-closed');
@@ -881,19 +882,19 @@ function subMenuClick (e) {
         /* If this click is in the open/close button region, return now */
         if (e.offsetX >= this.offsetWidth - this.offsetHeight)
             return;
-        
+
         /* If the current page is not child of this page, then don't change focus
          * to the item if the item is now closed (just return) */
         if (!open) {
-            if (href.replace (/#[^\/]*\//, '') != 
+            if (href.replace (/#[^\/]*\//, '') !=
                 requested_page.replace(/\/[^\/]*/, '')) {
                 console.log ('Closed ' + requested_page);
                 return;
             }
         }
-        
+
     }
-    
+
     navigateTo (href);
 
     /* When navigating to the Home column, we want the relative
@@ -923,12 +924,12 @@ function trackAbandonLink (e) {
             'eventLabel': href,
             'metric0': 0,
             'hitCallback': function () {
-                window.location.href = href;              
+                window.location.href = href;
             }
         });
     }
-}    
-    
+}
+
 function navigateTo (href) {
     var new_content, content, url, column_changed;
 
@@ -970,7 +971,7 @@ function navigateTo (href) {
                     });
                 });
             });
-            
+
         }
     }
     var tmp_request = '#'+ requested_column + '/' + requested_page + '/' + requested_anchor;
@@ -986,7 +987,7 @@ function navigateTo (href) {
         var from_top_menu = false;
         /* If this originated from a click event on an anchor,
          * then walk the parent chain to see if this was from
-         * the top-menu and log that information in the GA 
+         * the top-menu and log that information in the GA
          * event */
         if (window.event && window.event.currentTarget) {
             var p = window.event.currentTarget;
@@ -998,7 +999,7 @@ function navigateTo (href) {
                 p = p.parentElement;
             }
         }
-        
+
         ga ('send', {
             'metric0': from_top_menu,
             'hitType': 'pageview',
@@ -1102,8 +1103,8 @@ function navigateTo (href) {
             el.parentElement.previousSibling.classList.remove ('menu-closed');
             el.parentElement.previousSibling.classList.add ('menu-open');
         }
-            
-        if (el.nextSibling && el.nextSibling.classList && 
+
+        if (el.nextSibling && el.nextSibling.classList &&
             el.nextSibling.classList.contains ('menu-sub-pages')) {
             el.nextSibling.classList.remove ('off');
             el.classList.remove ('menu-closed');
@@ -1111,9 +1112,9 @@ function navigateTo (href) {
         }
 
     });
-    
-    if (column_name == 'wiki' && 
-        requested_page != 'home' && 
+
+    if (column_name == 'wiki' &&
+        requested_page != 'home' &&
         requested_page != 'history')
         document.querySelector (
             '.sub-menu a[href="#wiki/pages"]').classList.add ('active');
@@ -1133,13 +1134,13 @@ function appendMenu (parent, menu) {
             div.classList.add ('menu-sub-pages');
             div.classList.add ('off');
             link.classList.add ('menu-closed');
-            appendMenu (div, { menu: menu.menu + '/' + item.file, 
+            appendMenu (div, { menu: menu.menu + '/' + item.file,
                               items: item.subpages});
             parent.appendChild (div);
         }
     });
- }    
-    
+ }
+
 function buildSubMenu () {
     var el, link, href;
 
@@ -1175,8 +1176,8 @@ function buildSubMenu () {
 
 function onScroll () {
     var scroll = window.scrollY || window.pageYOffset, sub_menu;
-    
-    /* sub-menu may need to resize due to the footer scrolling onto the 
+
+    /* sub-menu may need to resize due to the footer scrolling onto the
      * screen */
     subMenuResize ();
 
@@ -1204,7 +1205,7 @@ function _onResize (from_resize_event) {
      * from absolute positioning on #home), but user's don't care if
      * the implementation is a hack, so long as it works... */
     home.style.minHeight = Math.round (viewHeight - 64) + 'px';
-    
+
     /* Since we're JS hacking anyway, we'll also vertically center the #home .content
      * to its area. We subtract the 64px from viewHeight per above. The .more-button-box
      * spacing is accounted for with the #home .content padding-bottom */
@@ -1257,7 +1258,7 @@ function _onResize (from_resize_event) {
 
     /* Determine if we should be showing the sub-page-menu scroll bar */
     subMenuResize ();
-    
+
     samples_background.style.top = getAbsolutePos (samples_table, document.getElementById ('samples-overview')).y + 'px';
     samples_background.style.height = samples_table.offsetHeight + 'px';
 
@@ -1368,15 +1369,15 @@ function scrollTo (e) {
 function init () {
     var name, href, use_default = true;
 
-    /* First start out by replacing all version instances with the correct version 
+    /* First start out by replacing all version instances with the correct version
      * numbers */
     document.body.innerHTML = replace_version_string (document.body.innerHTML);
-    
+
     /* To keep the home-column from flashing away on IE8 prior to the "You need to upgrade"
      * page being shown, we start with the home-column hidden and only show it in
      * the DOMContentLoaded event handler */
     document.getElementById ('home-column').classList.remove ('hidden');
-    
+
     top_menu = document.getElementById ('top-menu');
     home = document.getElementById ('home');
     page = document.getElementById ('page');
@@ -1399,7 +1400,7 @@ function init () {
 
     document.addEventListener ('scroll', onScroll);
     window.addEventListener ('resize', onResize);
-    
+
     if (history.pushState)
         window.addEventListener ('popstate', onPopState);
 
