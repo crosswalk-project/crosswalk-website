@@ -203,14 +203,14 @@ The crosswalk-project.org website needs to be set up in tandem with a
 [github hook](http://developer.github.com/v3/repos/hooks/) to ensure that
 any changes to the wiki are immediately reflected on the website.
 The hook should invoke the `regen.php` script for any `gollum` events
-triggered by changes to the [crosswalk-website project's
+triggered by changes to the [crosswalk project's
 wiki](https://github.com/crosswalk-project/crosswalk-website/wiki).
 
 However, this hook has to be manually added to the github project for
-crosswalk-website: the built-in web hooks available via github
+crosswalk: the built-in web hooks available via github
 <em>Settings</em> cannot be set up to respond to gollum wiki events.
 
-### Adding the hook to the crosswalk-website project
+### Adding the hook to the crosswalk github project
 
 The JSON data to required for configuring the hook looks like this:
 
@@ -231,9 +231,9 @@ tool; for example, if the JSON file was called `config.json` and you
 were posting it as the `foo` user via `curl`, you would do:
 
     curl -k -u foo -d @config.json \
-      https://api.github.com/repos/crosswalk-project/crosswalk-website/hooks
+      https://api.github.com/repos/crosswalk-project/crosswalk/hooks
 
 You should get a response from the API which indicates whether the
 request was successful. From now on, any time the wiki for
-crosswalk-website changes, the script at http://crosswalk-project.org/regen.php
+crosswalk changes, the script at http://crosswalk-project.org/regen.php
 will be invoked with details of the pages which changed.
