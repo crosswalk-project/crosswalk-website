@@ -163,7 +163,7 @@ Crosswalk wiki. Enable it by editing the `php.ini` file for the PHP
 installation and adding this line (there should be several other
 `extension` lines in `php.ini` already, so add it after those):
 
-    extension=php_curl.dll
+    extension=php_curl.so
 
 ## Server configuration
 
