@@ -1,7 +1,7 @@
 <?php
 if (PHP_SAPI !== 'cli') {
     /* CLI supports allow_url_fopen */
-    @fpassthru (@popen ('php '.__FILE__.' '.$_REQUEST['f'], 'r'));
+    @fpassthru (@popen ('php '.__FILE__.' '.escapeshellarg ($_REQUEST['f']), 'r'));
     exit;
 }
 require_once ('smart-match.inc');
@@ -85,7 +85,7 @@ function generateHistory ($path, $start, $end) {
                 preg_match ('/((\.md)|(\.mediawiki)|(\.org)|(\.php))$/', $file)) {
 
                 /* If this file is not currently in the tip of GIT, then skip it */
-                $status = 'git '.$wiki_git.' ls-tree -r HEAD --name-only "'.$file.'"';
+                $status = 'git '.$wiki_git.' ls-tree -r HEAD --name-only '.escapeshellarg ($file);
                 $p = @popen ($status, 'r');
                 $match = false;
                 while (!feof ($p)) {
@@ -128,8 +128,7 @@ function generateHistory ($path, $start, $end) {
             continue;
 
         $cmd = 'git --git-dir='.$path.'.git log -n 1 --pretty=format:"%H" '.
-                     $history[$i]['start_sha'].'^ -- '.
-                     '"'.$history[$i]['orig'].'"';
+                     $history[$i]['start_sha'].'^ -- '.escapeshellarg ($history[$i]['orig']);
         $f = @popen ($cmd, 'r');
         $history[$i]['end_sha'] = trim (fgets ($f));
         pclose ($f);
