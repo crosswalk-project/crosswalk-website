@@ -5,16 +5,51 @@ class HttpClient {
     // $proxy_config_location: location of the file containing
     // proxy configuration; it should contain a single line, e.g.
     // tcp://proxy.server.com:3128
-    function HttpClient ($proxy_config_location) {
+    //
+    // $url_opener: the implementation used to open URLs; one of
+    // 'curl', 'fopen', or 'shell';
+    // 'curl' uses the cURL extension, which must be switched
+    // on in php.ini;
+    // 'fopen' uses fopen, which needs allow_fopen_url to be "on"
+    // in php.ini;
+    // 'shell' invokes php with the http-cli.php script, which will
+    // do an fopen from command line PHP (which is not restricted
+    // by the allow_fopen_url setting in php.ini); NB this requires
+    // the php binary to be on the PATH for the user under which the
+    // script is invoked (e.g. the Apache user if using a 'shell'
+    // HttpClient instance from inside a PHP script on a website)
+    //
+    // if not set, 'curl' is tried, then 'fopen', and finally 'shell' if
+    // the other two are not available
+    function HttpClient ($proxy_config_location, $url_opener = null) {
         $file = @fopen ($proxy_config_location, 'r');
 
         if ($file) {
             $this->proxy = fgets ($file);
             @fclose ($file);
         }
+
+        // use cURL, fopen or php in the shell
+        $this->url_opener = $url_opener;
+
+        if (!$this->url_opener) {
+            // use cURL if available
+            if (extension_loaded ('curl')) {
+                $this->url_opener = 'curl';
+            }
+            // use fopen, if allowed by php.ini
+            else if (ini_get ('allow_fopen_url')) {
+                $this->url_opener = 'fopen';
+            }
+            // fallback to shelling out to php as a last resort
+            else {
+                $this->url_opener = 'shell';
+            }
+        }
     }
 
-    function get_url ($url) {
+    // cURL
+    private function get_url_curl ($url) {
         $ch = curl_init();
 
         curl_setopt ($ch, CURLOPT_URL, $url);
@@ -29,12 +64,92 @@ class HttpClient {
         }
 
         $result = curl_exec ($ch);
+
+        if (!$result) {
+            throw new Exception ("could not open URL $url");
+        }
+
         curl_close ($ch);
 
         return $result;
     }
+
+    // fopen
+    private function get_url_fopen ($url) {
+        if ($this->proxy) {
+            $opts = stream_context_create (
+                Array (
+                    'http' => Array (
+                        'proxy' => $this->proxy,
+                        'request_fulluri' => true
+                    )
+                )
+            );
+
+            $handle = fopen ($url, 'r', $opts);
+        }
+        else {
+            $handle = fopen ($url, 'r');
+        }
+
+        if (!$handle) {
+            throw new Exception ("could not open URL $url");
+        }
+
+        $result = '';
+
+        while (!feof ($handle)) {
+            $result .= fgets ($handle);
+        }
+
+        @fclose ($handle);
+
+        return $result;
+    }
+
+    // shell: fopen invoked from php cli (!)
+    // only necessary where allow_fopen_url is off and cURL is
+    // not installed;
+    // NB this also needs the php binary to be on the PATH for the
+    // user PHP is running as
+    function get_url_shell ($url) {
+        $output = Array ();
+
+        // TODO make the location of php binary configurable
+        @exec ("php ./http-cli.php $url", $output, $retval);
+
+        if ($retval !== 0) {
+            throw new Exception ("could not open URL $url");
+        }
+        else {
+            return implode ('', $output);
+        }
+    }
+
+    // get the content of a URL using cURL if available, or falling back
+    // to fopen if not, or shell as a last resort;
+    // throws an exception if the URL cannot be opened or if the
+    // $this->url_opener is bad
+    function get_url ($url) {
+        if ($this->url_opener === 'curl') {
+            return $this->get_url_curl ($url);
+        }
+        else if ($this->url_opener === 'fopen') {
+            return $this->get_url_fopen ($url);
+        }
+        else if ($this->url_opener === 'shell') {
+            return $this->get_url_shell ($url);
+        }
+        else {
+            throw new Exception("I don't know how to open URLs with ".
+                                $this->url_opener);
+        }
+    }
 }
 
+// decorate an HttpClient so that it caches pages it fetches
+// for $cache_time_secs seconds in $cache_dir; note that this
+// sha1 hashes the fetched URL to produce the cache key
 class CachingHttpClient {
     function CachingHttpClient ($cache_time_secs, $cache_dir, $http_client) {
         $this->cache_time_secs = $cache_time_secs;
