@@ -77,7 +77,12 @@ if (strtolower ($file) == 'wiki/history' ||
 
 /* If this is a simple wiki/ request (not in a sub-directory), redirect to GitHub */
 if (preg_match ('#^wiki/#', $file)) {
-    print $client->get_url ('https://github.com/crosswalk-project/crosswalk-website/'.$file);
+    try {
+        print $client->get_url ('https://github.com/crosswalk-project/crosswalk-website/'.$file);
+    }
+    catch (Exception $e) {
+        print 'Error: ' . $e->getMessage();
+    }
     exit;
 }
 
@@ -113,10 +118,16 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
 
         // use the non-caching HTTP client to fetch content from the
         // gollum server for every request
-        $content = $base_client->get_url ('http://localhost:4567/'.$file);
-        print $content;
-        fwrite ($d, $content);
-        fflush ($d);
+        try {
+            $content = $base_client->get_url ('http://localhost:4567/'.$file);
+            print $content;
+            fwrite ($d, $content);
+            fflush ($d);
+        }
+        catch (Exception $e) {
+            print $e->getMessage();
+        }
+
         fclose ($d);
     }
 }
