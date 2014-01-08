@@ -6,7 +6,7 @@ require_once ('http.php');
 
 // create an HTTP client with the proxy configuration file 'proxy.config';
 // if this file is not available, no proxy is used
-$base_client = new HttpClient ('proxy.config');
+$base_client = new HttpClient ('proxy.config', 'fopen');
 
 // caching http client, used for wiki page fetches
 $cache_time_secs = 5 * 60; // 5 minutes; set to 0 to disable cache

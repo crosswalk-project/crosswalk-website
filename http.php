@@ -86,7 +86,8 @@ class HttpClient {
                 )
             );
 
-            $handle = fopen ($url, 'r', $opts);
+echo "'".$url."'\n";
+            $handle = fopen ($url, 'r', false, $opts);
         }
         else {
             $handle = fopen ($url, 'r');
