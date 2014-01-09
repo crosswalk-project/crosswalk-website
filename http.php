@@ -25,7 +25,7 @@ class HttpClient {
         $file = @fopen ($proxy_config_location, 'r');
 
         if ($file) {
-            $this->proxy = fgets ($file);
+            $this->proxy = trim (fgets ($file));
             @fclose ($file);
         }
 
@@ -86,7 +86,10 @@ class HttpClient {
                 )
             );
 
-            $handle = fopen ($url, 'r', $opts);
+            // see http://php.net/manual/en/function.fopen.php
+            $use_include_path = 0;
+
+            $handle = fopen ($url, 'r', $use_include_path, $opts);
         }
         else {
             $handle = fopen ($url, 'r');
