@@ -1,6 +1,6 @@
 # Standard APIs
 
-The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 1.29.4.2 - Beta Build (release 1)] (wiki/Crosswalk-1-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only).
+The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2 - Beta Build (release 3)] (wiki/Crosswalk-3-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only).
 
 ## Runtime & Packaging
 * [app: URI] (http://www.w3.org/2012/sysapps/app-uri/)<sup><a href="#t">[t]</a></sup> - Address resources inside a packaged application.
@@ -16,8 +16,10 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [CSS Transforms] (http://www.w3.org/TR/css3-transforms/) - Change the position of content in 3D space without disrupting the normal flow using CSS.
 * [CSS Transitions] (http://www.w3.org/TR/css3-transitions/) - Enables property changes in CSS values over a duration of time.
 * [HTML Canvas 2D Context] (http://www.w3.org/TR/2dcontext/) - An API for 2D immediate mode graphics.
+* [HTML5 Audio/Video] (http://www.w3.org/TR/html5/) - Audio and Video support without plugins.
 * [Media Queries Level 3] (http://w3c-test.org/csswg/mediaqueries3/) - CSS media features for adapting the same content to different output devices and screens.
 * [Scalable Vector Graphics (SVG) 1.1] (http://www.w3.org/TR/SVG11/) - An XML markup language for 2D vector graphics.
+* [WebRTC] (http://www.w3.org/TR/webrtc/)<sup id="a">[a]</sup> - Peer to peer sharing of video and audio streams.
 
 ## Networking & Storage
 * [File API] (http://dev.w3.org/2006/webapi/FileAPI/) - Asynchronously read the contents of files or raw data buffers stored on the client.
@@ -33,7 +35,7 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 
 ## Performance & Optimization
 * [Navigation Timing] (http://www.w3.org/TR/navigation-timing/) - Access timing information related to navigation and elements.
-* [Page Visibility] (http://www.w3.org/TR/page-visibility/) - Programmatically determine the visibility state of the web application.
+* [Page Visibility] (http://www.w3.org/TR/page-visibility/)<sup><a href="#a">[a]</a></sup>  - Programmatically determine the visibility state of the web application.
 * [Resource Timing] (http://www.w3.org/TR/resource-timing/) - Access timing information related to HTML elements.
 * [Selectors Level 1] (http://www.w3.org/TR/selectors-api/) and [Level 2] (http://www.w3.org/TR/selectors-api2/) - Retrieve elements from the DOM using CSS selectors.
 * [Typed Array 1.0] (http://www.khronos.org/registry/typedarray/specs/latest/) - Data types for raw binary data for performance critical tasks.
@@ -44,11 +46,15 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [HTML5 Date and Time state of input element] (http://www.w3.org/TR/html5/forms.html#date-and-time-state-(type=datetime))<sup><a href="#a">[a]</a></sup> - Picker controls for date and time input types.
 *  [HTML5 Telephone, Email and URL state of input element] (http://www.w3.org/TR/html5/forms.html#telephone-state-(type=tel))<sup><a href="#a">[a]</a></sup> - Picker controls for telephone, email and URL input types.
 * [Touch Events] (https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html) - Handle touch events programmatically.
+* [Device Orintation Events] (http://www.w3.org/TR/orientation-event/) - DOM events that provide information about the physical orientation and motion of the device.
+* [Media Capture and Streams] (http://www.w3.org/TR/mediacapture-streams/)<sup><a href="#a">[a]</a></sup> - Provides access to local media streams including video (camera) and audio (microphone). 
 
 # Experimental APIs
 In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.
 
 * [Presentation API] (http://webscreens.github.io/presentation-api/) - Access external displays from within web applications. For more information see the [Presentation API developer documentation] (https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual). Introduced in [Crosswalk 3.32.49.0] (https://download.01.org/crosswalk/releases/).
+* [Device Capabilities] (http://www.w3.org/2012/sysapps/device-capabilities/) - Retrieve information about the underlaying system.
+* [Raw Sockets] (http://www.w3.org/TR/raw-sockets/) - Raw TCP and UDP sockets for client and server sides.
 
 <!--
 
