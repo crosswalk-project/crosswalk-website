@@ -42,7 +42,7 @@ function generate_history ($start, $end) {
 
                 /* If this file is not currently in the tip of GIT, then skip it */
                 $status = 'git '.$wiki_git.' ls-tree -r HEAD --name-only "'.
-                          escapeshellarg ($file) .'"';
+                          $file .'"';
                 $p = @popen ($status, 'r');
                 $match = false;
                 while (!feof ($p)) {
@@ -84,7 +84,7 @@ function generate_history ($start, $end) {
 
         $cmd = 'git --git-dir='.$path.'.git log -n 1 --pretty=format:"%H" '.
                $history[$i]['start_sha'].'^ -- '.
-               '"'. escapeshellarg ($history[$i]['orig']) .'"';
+               '"'. $history[$i]['orig'] .'"';
         $f = @popen ($cmd, 'r');
         $history[$i]['end_sha'] = trim (fgets ($f));
         pclose ($f);
