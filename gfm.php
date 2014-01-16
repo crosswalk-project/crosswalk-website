@@ -48,7 +48,7 @@ if (strtolower ($file) == 'wiki/pages' ||
     $success = wiki_pages ();
 
     if ($success) {
-        require('wiki/pages.md.html');
+        require ('wiki/pages.md.html');
     }
     else {
         print 'could not create wiki/pages.md.html page';
@@ -68,7 +68,7 @@ if (strtolower ($file) == 'wiki/history' ||
     $success = wiki_history ();
 
     if ($success) {
-        require('wiki/history.md.html');
+        require ('wiki/history.md.html');
     }
     else {
         print 'could not create wiki/history.md.html page';
