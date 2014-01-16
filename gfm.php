@@ -17,7 +17,7 @@ if (isset($_REQUEST) && array_key_exists('f', $_REQUEST)) {
   $file = $_REQUEST['f'];
 }
 else if (PHP_SAPI === 'cli') {
-  $file = escapeshellarg ($argv[1]);
+  $file = $argv[1];
 }
 
 function missing ($f) {
