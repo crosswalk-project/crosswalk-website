@@ -150,7 +150,7 @@ $request = isset ($_REQUEST['f']) ? $_REQUEST['f'] : 'Home';
 
 $md = file_smart_match (dirname (__FILE__).'/'.$request);
 $md = realpath ($md);
-if (preg_match ('/.html$/', $md)) {
+if (preg_match ('/(\.html)|(\.php)$/', $md)) {
     require ($md);
     exit;
 }
