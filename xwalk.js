@@ -831,7 +831,6 @@ function addEventOffset (e) {
     }
 
     function scrollableTouchStart (e) {
-        e.preventDefault ();
         if (e.touches.length)
             touchY = e.touches[0].pageY;
     }
