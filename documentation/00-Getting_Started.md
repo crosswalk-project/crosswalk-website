@@ -2,7 +2,7 @@
 This site is designed to help you get up and running with Crosswalk as quickly as possible.
 
 ## Step 1 - Download Crosswalk
-The Crosswalk project currently provides binaries for Android and Tizen. Go to the [Downloads](#documentation/Downloads) page, pick your operating system, and download.
+The Crosswalk project currently provides binaries for Android and Tizen. Go to the [Downloads](#documentation/downloads) page, pick your operating system, and download.
 
 ## Step 2 - Install Crosswalk on your device
 You can run Crosswalk either directly on a device supporting your selected operating system, or in one of the emulators provided by those operating system SDKs. 
