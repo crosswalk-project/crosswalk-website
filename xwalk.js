@@ -535,7 +535,11 @@ function content_response (e) {
     while (div.firstChild)
         div.removeChild (div.firstChild);
 
+    var scriptlets = content.getElementsByTagName ('script');
     div.appendChild (content);
+    Array.prototype.forEach.call (scriptlets, function (script) {
+        eval (script.innerHTML);
+    });
 
     /*
      * Wiki link rewriting magic...
