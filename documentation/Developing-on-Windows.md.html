@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Developing on Windows';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Developing on Windows</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Building Crosswalk-enabled Android applications</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Developing-on-Windows"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Developing-on-Windows"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>This tutorial goes over the steps for setting up a Windows host environment to build Crosswalk-enabled Android applications.</p>
+
+<p>It will walk you through the following:</p>
+
+<ul><li><strong><a href="#Installing-the-git-SCM-tools">Installing the git SCM tools</a></strong> - provides a command shell plus utilities like unzip, tar, and gzip.</li>
+<li><strong><a href="#Installing-the-Android-SDK">Installing the Android SDK</a></strong> - necessary for building Android applications. Also provides a hardware accelerated Android
+emulator.</li>
+<li><strong><a href="#Installing-Python-2.7">Installing Python 2.7</a></strong> - necessary to build Crosswalk-enabled Android applications.</li>
+<li><strong><a href="#Installing-the-Oracle-JDK">Installing the Oracle JDK</a></strong> - necessary for building Android applications.</li>
+<li><strong><a href="#Installing-Apache-ant">Installing Apache ant</a></strong> - necessary to build Crosswalk-enabled Android applications.</li>
+<li><strong><a href="#Downloading-a-Crosswalk-for-Android-package">Downloading a Crosswalk for Android package</a></strong></li>
+<li><strong><a href="#Building-a-Crosswalk-enabled-Android-application">Building a Crosswalk-enabled Android application</a></strong></li>
+</ul><h2>Installing the git SCM tools<a class="anchor" id="Installing-the-git-SCM-tools" href="#Installing-the-git-SCM-tools"></a></h2>
+
+<p>Bash is provided as part of the git download for Windows. In addition to bash, git for Windows also provides tar, unzip, and gzip, which are used in later steps.</p>
+
+<p>Download and install git for Windows from the git-scm website:
+<a href="http://git-scm.com/download/win" target="_blank"></a><a href="http://git-scm.com/download/win">http://git-scm.com/download/win</a></p>
+
+<p>While installing git-scm, select the following options:</p>
+
+<p><img src="wiki/assets/integrate.png" /><br /></p>
+
+<p>Then select Run Git from the Windows Command Prompt:</p>
+
+<p><img src="wiki/assets/path.png" /><br /></p>
+
+<p>Once installed, you will want to add various directories to your PATH when you enter the Git Bash session. To do this, open notepad, paste the following, and save it as <strong>%USERPROFILE%\.bashrc</strong>:</p>
+
+<pre>
+export PATH=${PATH}:${USERPROFILE}/android/sdk/platform-tools
+export PATH=${PATH}:${USERPROFILE}/android/sdk/tools
+export PATH=${PATH}:${USERPROFILE}/Python27
+export PATH="C:/Program\ Files/Java/jdk1.7.0_40/jre/bin":${PATH}
+export PATH="C:/Program\ Files/Java/jdk1.7.0_40/bin":${PATH}
+export PATH=${PATH}:${USERPROFILE}/apache-ant-1.9.2/bin
+</pre>
+
+<p><strong>NOTE:</strong> If you already have the Android SDK, Python27, Apache ANT, or the JDK installed on your system, adjust the above path variables appropriately for your system configuration.</p>
+
+<h3>Launching a Git Bash session<a class="anchor" id="Launching-a-Git-Bash-session" href="#Launching-a-Git-Bash-session"></a></h3>
+
+<p>You can now open a Git Bash session by going to your Start Menu and typing in <strong>Git Bash</strong>. Select Git Bash:</p>
+
+<p><img src="wiki/assets/launch.png" /><br /></p>
+
+<h2>Installing the Android SDK<a class="anchor" id="Installing-the-Android-SDK" href="#Installing-the-Android-SDK"></a></h2>
+
+<ol><li>Download Android SDK:
+<a href="http://developer.android.com/sdk/index.html#download" target="_blank"></a><a href="http://developer.android.com/sdk/index.html#download">http://developer.android.com/sdk/index.html#download</a></li>
+<li>Extract the contents into %USERPROFILE%\android</li>
+<li><p>Android's <strong>platform-tools</strong> and <strong>tools</strong> directories were added to the Git Bash session's PATH variable while installing git for Windows.</p></li>
+<li><p>Run the SDK Manager. You can do this in the bash session by running:</p>
+
+<pre>
+cd ${USERPROFILE}/android
+"SDK Manager.exe"
+</pre></li>
+<li><p>Within the SDK Manager you need to install:
+
+[ ] Android 4.3 (API 18)
+[x] Intel x86 Atom System Image
+...
+[ ] Extras
+[x] Intel x86 Emulator Accelerator (HAXM)
+</p></li>
+</ol><h3>OPTIONAL: Emulator Setup<a class="anchor" id="OPTIONAL:-Emulator-Setup" href="#OPTIONAL:-Emulator-Setup"></a></h3>
+
+<p>If you do not have an x86 based Android device, you can use the hardware accelerated execution manager (HAXM) to provide an emulated Android device on your host computer.</p>
+
+<ol><li><p>Install HAXM. The Android SDK Manager will download the HAXM installer, however it does not install it. You can do this in the bash session by running:</p>
+
+<pre>
+cd ${USERPROFILE}/android/sdk/extras/Hardware_Accelerated_Execution_Manager
+IntelHaxm.exe
+</pre>
+
+<p><strong>NOTE:</strong> The path may change where it places the IntelHaxm installation program. Find this in the bash session by running:</p>
+
+<pre>
+cd ${USERPROFILE}/android
+find . -iname intelhaxm.exe
+</pre></li>
+<li><p>Create a new emulator image using the AVD Manager.  You can do this in the bash session by running:</p>
+
+<pre>
+cd ${USERPROFILE}/android
+sdk/"AVD Manager.exe"
+</pre></li>
+</ol><p>For these instructions, we call the image <em>Tablet</em>. Select <strong>Intel Atom (x86)</strong> for CPU/ABI and <strong>Use Host GPU</strong>:</p>
+
+<p><img src="wiki/assets/emulator.png" /><br /></p>
+
+<ol><li><p>Launch the emulator. You can do this in the bash session by running:</p>
+
+<pre>
+emulator -avd Tablet
+</pre></li>
+<li><p>Once the emulator has loaded, you can use adb to connect to the emulator by running the following in your bash session:</p>
+
+<pre>
+adb devices
+</pre>
+
+<p>This should output something similar to the following:
+
+List of devices attached
+emulator-5554   device
+</p></li>
+</ol><h2>Installing Python 2.7<a class="anchor" id="Installing-Python-2.7" href="#Installing-Python-2.7"></a></h2>
+
+<p>Install Python 2.7.x (don't install 3.x as some of the scripts do not support the newer 3.x syntax). You can get it from <a href="http://www.python.org/getit">http://www.python.org/getit</a>.</p>
+
+<p>This tutorial assumes Python is installed into the default location <strong>C:\Python27\</strong>.</p>
+
+<h2>Installing the Oracle JDK<a class="anchor" id="Installing-the-Oracle-JDK" href="#Installing-the-Oracle-JDK"></a></h2>
+
+<p>Download the Oracle JDK from
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html"></a><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
+
+<p>Make a note of the path where you install the JDK. If you accept the defaults, it will install to <strong>C:\Program Files\Java\jdk1.7.0_40</strong>.</p>
+
+<p>The JDK's  <strong>jre/bin</strong> and <strong>bin</strong> directories were added to the bash session's PATH variable while installing git for Windows.</p>
+
+<h2>Installing Apache ant<a class="anchor" id="Installing-Apache-ant" href="#Installing-Apache-ant"></a></h2>
+
+<p>Install ant using the following commands in your bash session:</p>
+
+<pre>
+curl http://apache.spinellicreations.com//ant/binaries/apache-ant-1.9.2-bin.zip -o apache-ant-1.9.2-bin.zip
+unzip apache-ant-1.9.2-bin -x '*/manual/*'
+</pre>
+
+<p>These commands download the binary distribution and decompress it to ${USERPROFILE}.</p>
+
+<p>The Apache ant <strong>bin</strong> directory was added to the bash session's PATH variable while installing git for Windows.</p>
+
+<h2>Downloading a Crosswalk for Android package<a class="anchor" id="Downloading-a-Crosswalk-for-Android-package" href="#Downloading-a-Crosswalk-for-Android-package"></a></h2>
+
+<p>Now you can download the Crosswalk for Android package, decompress that package, and install the Crosswalk runtime library on a connected Android device using <strong>adb</strong>. You can do this in the bash session by running:</p>
+
+<pre>
+cd ${USERPROFILE}
+curl https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip -o crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
+unzip crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
+adb install -r ${USERPROFILE}/crosswalk-${XWALK-STABLE-ANDROID-X86}/apks/XWalkRuntimeLib.apk
+</pre>
+
+<p><strong>NOTE:</strong> Passing <strong>-r</strong> will re-install the Crosswalk runtime (if you already have a version installed on your device).</p>
+
+<p>At this point, if you go to your Android system settings, you should see <em>XWalkRuntimeLib</em> listed in the set of installed applications.</p>
+
+<p><img src="wiki/assets/android-settings.png" /><br /></p>
+
+<h2>Building a Crosswalk-enabled Android application<a class="anchor" id="Building-a-Crosswalk-enabled-Android-application" href="#Building-a-Crosswalk-enabled-Android-application"></a></h2>
+
+<p>You are now ready to build a Crosswalk application!</p>
+
+<p>Download the <strong>crosswalk-samples</strong> source package, decompress it, and then build a Crosswalk enabled
+Android application hosting the WebGL sample. You can do this in the Git Bash session by running:</p>
+
+<pre>
+curl https://download.01.org/crosswalk/releases/crosswalk-samples-0.1.tgz -o crosswalk-samples-0.1.tgz
+tar xvf crosswalk-samples-0.1.tgz
+cd crosswalk-${XWALK-STABLE-ANDROID-X86}
+tar xvf xwalk_app_template.tgz
+cd xwalk_app_template
+python make_apk.py --package=com.sample.webgl --name=WebGL --app-root=../../samples/webgl --app-local-path=index.html
+</pre>
+
+<p>You can install the WebGL sample on your device using <strong>adb install</strong>. You can do this in the Git Bash session by running:</p>
+
+<pre>
+adb install WebGL.apk
+</pre>
+
+<p>The WebGL sample will now be in your application listing:</p>
+
+<p><img src="wiki/assets/android-apps.png" /><br /></p>
+
+<p>After launching WebGL, you should see the following application:</p>
+
+<p><img src="wiki/assets/android-webgl.png" /><br /></p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-12-23 00:23:15</p>
+  <p>
+    <a id="delete-link" href="/documentation/Developing-on-Windows" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Developing-on-Windows">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
