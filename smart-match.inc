@@ -23,7 +23,7 @@ function file_smart_match ($filepath) {
          * converted to .html already. Return it IFF the original markdown
          * does not exist, OR if it is a pure PHP file */
         if (preg_match (
-                '/(([0-9]*-)?(.*))((\.md)|(\.mediawiki)|(\.org)|(\.php))?((\.html)|(\.php))$/i',
+                '/(([0-9]*-)?(.*))((\.md)|(\.mediawiki)|(\.org))((\.html)|(\.php))$/i',
                 basename ($f), $matches)) {
             if (strtolower ($matches[3]) == $lower &&
                     !file_exists (dirname ($filepath).'/'.$matches[1].$matches[3]))
