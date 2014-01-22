@@ -52,7 +52,7 @@ body {
     background: red;
     color: red;
 }
-<?
+<?php
     exit;
 }
 
@@ -144,3 +144,4 @@ touch ($basename.'.css', $scss['mtime']);
 touch ($basename.'.css.map', $scss['mtime']);
 
 success ();
+?>
