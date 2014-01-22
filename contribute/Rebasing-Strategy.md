@@ -43,13 +43,6 @@ Fixes in our custom patches in Chromium will always be backported in the current
 
 Bug fixes and security fixes aimed for a Crosswalk release but inside Chromium or Blink will be landed upstream and we will wait Google to backport them in the stable channel we’re tracking.
 
-## QA activities
-Up until July and the first release it’s safe for the QA to focus on trunk and provide feedback about it.
-
-When we will create the first 1.0 release branch of Crosswalk, QA should focus on the release branch to make sure the quality is good while doing a soft testing on trunk.
-
-In the future ideally we want to make sure QA is focusing more on upcoming release branches.
-
 ## What goes inside chromium-crosswalk?
 We try to aim upstream as first. If this option is not possible then chromium-crosswalk is the place to land the patch. It will be carefully reviewed and will land there. We need to remember that any patch in there as a high cost of maintenance.
 
