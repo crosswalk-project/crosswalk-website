@@ -538,7 +538,7 @@ function content_response (e) {
     var scriptlets = content.getElementsByTagName ('script');
     div.appendChild (content);
     Array.prototype.forEach.call (scriptlets, function (script) {
-        eval (script.innerHTML);
+        eval.call (window, script.innerHTML);
     });
 
     /*
