@@ -48,68 +48,115 @@ In both cases, a work-around is to run the `adb` server as root:
 
 To test your application on Android platforms you don't own, the next best option is to use an emulated device. These can be installed via the Android SDK.
 
-1.  Start the Android SDK Manager. If you set it up as detailed in [Install the Android SDK](#Install-the-Android-SDK), you can invoke this as follows:
+<ol>
 
-    *   On Linux, from a bash shell:
+<li>
+  <p>Start the Android SDK Manager. If you set it up as detailed in <a href="#Install-the-Android-SDK">Install the Android SDK</a>, you can invoke this as follows:</p>
 
-            $ android
+  <ul>
+    <li>
+      <p>On Linux, from a bash shell:
 
-    *   On Windows, from a cmd shell (if you try to do this from bash it can fail silently due to Windows' security measures):
+      ```
+      $ android
+      ```
+    </li>
 
-            > %HOMEPATH%\xwalk-tools\android-sdk\"SDK Manager.exe"
+    <li>On Windows, from a <code>cmd</code> shell (if you try to do this from bash it can fail silently due to Windows' security measures):
 
-2.  In the SDK Manager window, check the following boxes in the list:
+    ```
+    > %HOMEPATH%\xwalk-tools\android-sdk\"SDK Manager.exe"
+    ```
+    </li>
+  </ul>
+</li>
 
-        [ ] Android 4.3 (API 18)
-            [x] Intel x86 Atom System Image
+<li>
+  <p>In the SDK Manager window, check the following boxes in the list:</p>
 
-    If you want to test with other Android API versions, install the corresponding x86 system images.
+  ```
+  [ ] Android 4.3 (API 18)
+      [x] Intel x86 Atom System Image
+  ```
 
-3.  On Windows **only**, download HAXM as well using the SDK Manager:
+  <p>If you want to test with other Android API versions, install the corresponding x86 system images.</p>
+</li>
 
-        [ ] Extras
-            [x] Intel x86 Emulator Accelerator (HAXM)
+<li>
+  <p>On Windows <strong>only</strong>, download HAXM as well using the SDK Manager:</p>
 
-    This provides better graphics performance for emulated x86 devices running on Windows.
+  ```
+  [ ] Extras
+    [x] Intel x86 Emulator Accelerator (HAXM)
+  ```
 
-    Note that the SDK Manager downloads HAXM, but does not install it. To install it, first find the installer by running this command in a bash shell:
+  <p>This provides better graphics performance for emulated x86 devices running on Windows.</p>
 
-        $ find ~/android-sdk/ -iname *haxm*
+  <p>Note that the SDK Manager downloads HAXM, but does not install it. To install it, first find the installer by running this command in a bash shell:</p>
 
-    This should output the path to the HAXM .exe file. For example, my file was:
+  ```
+  $ find ~/android-sdk/ -iname *haxm*
+  ```
 
-        /c/Users/elliot/android-sdk/sdk/extras/intel/Hardware_Accelerated_Execution_Manager/IntelHaxm.exe
+  <p>This should output the path to the HAXM <code>.exe</code> file. For example:</p>
 
-    Then, using Windows Explorer, navigate to the folder above the `IntelHaxm.exe` executable, right click on that `.exe` file, and select *Open* to run the installer. Answer *Yes* to any security prompts and accept the default installation settings.
+  ```
+  /c/Users/elliot/android-sdk/sdk/extras/intel/Hardware_Accelerated_Execution_Manager/IntelHaxm.exe
+  ```
 
-4.  Once your selected packages are installed, set up an emulator image by running the AVD Manager:
+  <p>Then, using Windows Explorer, navigate to the folder above the <code>IntelHaxm.exe</code> executable, right click on that <code>.exe</code> file, and select <em>Open</em> to run the installer. Answer <em>Yes</em> to any security prompts and accept the default installation settings.</p>
+</li>
 
-    *   On Linux, from a bash shell:
+<li>
+  <p>Once your selected packages are installed, set up an emulator image by running the AVD Manager:</p>
 
-            $ android avd
+  <ul>
+    <li>On Linux, from a bash shell:
 
-    *   On Windows, from a cmd shell:
+    ```
+    $ android avd
+    ```
+    </li>
 
-            > %HOMEPATH%\xwalk-tools\android-sdk\sdk\tools\android.bat avd
+    <li>On Windows, from a cmd shell:
 
-    Create a new image called **Tablet**.
+    ```
+    > %HOMEPATH%\xwalk-tools\android-sdk\sdk\tools\android.bat avd
+    ```
+    </li>
+  </ul>
+</li>
 
-    Select the following options:
+<li>
+  <p>Create a new image called <strong>Tablet</strong> and select the following options:</p>
 
-    *   *Target*: **Android 4.3**
-    *   *CPU/ABI*: **Intel Atom (x86)** (if you only downloaded an x86 image, this will be selected automatically)
-    *   **Use Host GPU** (check the box)
+  <ul>
+    <li><em>Target</em>: <strong>Android 4.3</strong></li>
+    <li><em>CPU/ABI</em>: <strong>Intel Atom (x86)</strong> (if you only downloaded an x86 image, this will be selected automatically)</li>
+    <li><strong>Use Host GPU</strong> (check the box)</li>
+  </ul>
 
-    The configuration should look something like this:
+  <p>The configuration should look something like this:</p>
 
-    <img src='assets/emulator.png'>
+  <p><img src='assets/emulator.png'></p>
+</li>
 
-5.  Launch the new emulator image from a bash shell (this works on both Linux and Windows):
+<li>
+  <p>Launch the new emulator image from a bash shell (this works on both Linux and Windows):</p>
 
-        $ emulator -avd Tablet
+  ```
+  $ emulator -avd Tablet
+  ```
 
-You should be able to connect to any running images using adb, as for a hardware device:
+  <p>You should be able to connect to any running images using adb, as for a hardware device:</p>
 
-    $ adb devices
-    List of devices attached
-    emulator-5554	device
+  ```
+  $ adb devices
+  List of devices attached
+  emulator-5554	device
+  ```
+</li>
+
+</ol>
+
+The emulated Android device is now setup and ready to be used as a deployment target.
