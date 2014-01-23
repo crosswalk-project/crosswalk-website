@@ -1,21 +1,23 @@
-# Building an application
+# Building a Crosswalk application
 
 Crosswalk is a runtime for HTML5 applications. This means that any existing HTML5 applications should run on Crosswalk, providing they already run in a modern browser (Chrome, Firefox, Safari).
 
-However, because Crosswalk applications are intended to integrate well with the target environment, they require an additional file, `manifest.json`, containing metadata for that purpose. The manifest can be used to specify icons to use at different resolutions, set an app description, adjust [content security policy settings](http://developer.chrome.com/extensions/contentSecurityPolicy.html), and otherwise configure how the app integrates with the target environment.
+For the purposes of this tutorial, we use the simplest possible Crosswalk application: one HTML file.
 
-For the purposes of this tutorial, we use the simplest possible Crosswalk application.
+However, because Crosswalk applications are intended to integrate well with the target environment, they require an additional file, `manifest.json`, containing metadata for that purpose. The manifest can be used to specify icons to use at different resolutions, set an app description, adjust [content security policy settings](http://developer.chrome.com/extensions/contentSecurityPolicy.html), and otherwise configure how the app integrates with the target environment.
 
 First, create a directory called `xwalk-simple` for the project:
 
     $ mkdir ~/xwalk-simple/
     $ cd ~/xwalk-simple/
 
-Next, copy the default Crosswalk icon to the directory, to serve as the application icon:
+Next, you need to copy an icon file to that directory, to serve as the application icon. You can use this image:
 
-    $ cp <path to xwalk android>/xwalk_app_template/app_src/res/drawable-hdpi/crosswalk.png ./icon.png
+<img src="assets/icon.png">
 
-(If you have your own favourite icon you would prefer to use instead, copy that to the `~/xwalk-simple` directory.)
+To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the `~/xwalk-simple` directory as `icon.png`.
+
+(If you have your own favourite icon, copy that to the `~/xwalk-simple` directory instead. It should be 128 pixels square.)
 
 Then create two text files inside `~/xwalk-simple/` (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):
 
@@ -52,7 +54,7 @@ Then create two text files inside `~/xwalk-simple/` (create them using any text 
             }
           },
           "icons": {
-            "96": "icon.png"
+            "128": "icon.png"
           }
         }
 
