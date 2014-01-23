@@ -102,7 +102,7 @@ To test your application on Android platforms you don't own, the next best optio
 
     The configuration should look something like this:
 
-    <img src='wiki/assets/emulator.png'>
+    <img src='assets/emulator.png'>
 
 5.  Launch the new emulator image from a bash shell (this works on both Linux and Windows):
 

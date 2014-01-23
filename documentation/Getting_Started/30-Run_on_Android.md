@@ -22,4 +22,4 @@ Once you have downloaded and unpacked Crosswalk Android, create an `apk` file fo
 
 If the installation is successful, your application should now be on the Android target. Find its icon in the application list and open it. Here it is running on a ZTE Geek phone:
 
-<img src="wiki/assets/xwalk-simple-on-android.png">
+<img src="assets/xwalk-simple-on-android.png">

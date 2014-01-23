@@ -62,7 +62,7 @@ The steps for installing the dev tools are:
 5.  Configure your environment.
 6.  Check your environment.
 
-On both host platforms, a bash shell is used as the main installation environment. This is readily available on Linux (look for *Terminal* in the list of applications); or can be installed easily on Windows (see [installing utilities on Windows](/#documentation/Getting-started/Host-setup/Installing-utilities)).
+On both host platforms, a bash shell is used as the main installation environment. This is readily available on Linux (look for *Terminal* in the list of applications); or can be installed easily on Windows <a href="#documentation/getting_started/host_setup/Installing-utilities">installing utilities on Windows</a>).
 
 ### bash and cmd
 
@@ -76,7 +76,7 @@ To start a Windows console, do the following:
 
 This will open a console window:
 
-<img src="wiki/assets/windows-console.png">
+<img src="assets/windows-console.png">
 
 Throughout this tutorial, when a `cmd` console is in use, it is denoted with a `>` prompt. A bash shell is denoted with a `$` prompt. In cases where either bash or cmd will do, no prompt is shown.
 
@@ -97,15 +97,15 @@ Download and install git for Windows from the git-scm website:
 
 While installing git, select the following options:
 
-<img src='wiki/assets/integrate.png'>
+<img src='assets/integrate.png'>
 
 Then select *Run Git from the Windows command prompt*:
 
-<img src='wiki/assets/path.png'>
+<img src='assets/path.png'>
 
 You can now open a Git Bash session by going to your Start Menu and typing **Git Bash** to find the command:
 
-<img src='wiki/assets/launch.png'>
+<img src='assets/launch.png'>
 
 Select *Git Bash* to open a console window running the bash shell.
 
