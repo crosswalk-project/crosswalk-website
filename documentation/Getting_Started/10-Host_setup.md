@@ -2,6 +2,13 @@
 
 The **host** is the computer where you are writing your code. It is typically not the same computer as the one where Crosswalk is running (the **target**).
 
+You will need to install two groups of tools:
+
+1.  <a href="#documentation/getting_started/host_setup/Installing-the-dev-tools">Development tools</a> for your chosen platform.
+2.  <a href="#documentation/getting_started/host_setup/Installing-target-specific-tools">Target-specific tools</a> for each target platform you want to deploy to.</p>
+
+## Deciding what you need on the host
+
 What you need to set up on the host depends on two things:
 
 <ol>
@@ -9,9 +16,7 @@ What you need to set up on the host depends on two things:
   <li>
     <p><em>Host platform</em></p>
 
-    <p>This is the operating system you're using for development. You will need the <a href="#documentation/getting_started/host_setup/Installing-the-dev-tools">core dev tools</a> for your chosen platform.</p>
-
-    <p>Your choice of host platform depends on the targets you wish to deploy to:</p>
+    <p>This is the operating system you're using for development. Your choice of host platform depends on the targets you wish to deploy to:</p>
 
     <ul>
 
@@ -19,7 +24,7 @@ What you need to set up on the host depends on two things:
 
       <em>For Crosswalk Android</em>, Linux and Windows are officially supported as host platforms. However, it may be possible to build Crosswalk apps on other platforms which support the Android SDK and Python (e.g. Mac).</li>
 
-      <li><p><em>For Crosswalk Tizen</em>, you need a platform which can run the <a href="https://developer.tizen.org/documentation/articles/smart-development-bridge"><code>sdb</code></a> tool. <code>sdb</code> is officially supported on platforms where the <a href="https://developer.tizen.org/downloads/tizen-sdk">Tizen SDK</a> is available, i.e. Ubuntu Linux, Windows, and Mac OS X.</p>
+      <li><p><em>For Crosswalk Tizen</em>, you need a platform which can run the <a href="https://developer.tizen.org/documentation/articles/smart-development-bridge" target="_blank"><code>sdb</code></a> tool. <code>sdb</code> is officially supported on platforms where the <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">Tizen SDK</a> is available, i.e. Ubuntu Linux, Windows, and Mac OS X.</p>
 
       <p>However, <code>sdb</code> is the only tool you really need from the Tizen SDK for Crosswalk development, and is relatively simple to build from source. So other platforms may be used with a little effort.</p>
 
@@ -35,32 +40,25 @@ What you need to set up on the host depends on two things:
 
   <p>These are the devices or emulators you want to develop for and deploy to. Android and Tizen, on both ARM and x86 architectures, are the supported targets. These can be either real devices (e.g. phones, tablets) or emulated ones.</p>
 
-  <p>You will need to install <a href="#documentation/getting_started/host_setup/Installing-target-specific-tools">target-specific tools</a> for each target platform.</p>
-
   </li>
 
 </ol>
 
-## Installing the dev tools
+## Installing the development tools
 
 The instructions below explain how to set up the required dev tools on the following host platforms:
 
-*   Ubuntu Linux 12.10, 64bit (if you are using a different flavour of Linux, the package names may vary slightly); Ubuntu is used as this is the only Linux flavour officially supported by the Tizen SDK
-*   Windows Enterprise 7, 64bit
+*   Ubuntu Linux 12.10, 64 bit (if you are using a different flavour of Linux, the package names may vary slightly); Ubuntu is used as this is the only Linux flavour officially supported by the Tizen SDK.
+*   Windows Enterprise 7, 64 bit.
 
 The steps for installing the dev tools are:
 
-1.  Install utilities (curl, unzip, tar, gzip; used to install other tools):
-    *   [Linux]
-    *   [Windows]
-2.  Create a directory for other dev tools.
-3.  Install Python 2.7 (**note that you need version 2.7.* of Python, as the Crosswalk scripts are not compatible with Python 3**):
-    *   [Linux]
-    *   [Windows]
-3.  Install the Oracle Java Development Kit (JDK). **Note: It is important that you use the Oracle JDK, rather than the OpenJDK, as Ant may not work correctly with the latter.**
-4.  Install Apache Ant.
-5.  Configure your environment.
-6.  Check your environment.
+1.  [Install utilities](#documentation/getting_started/host_setup/Installing-utilities) (curl, unzip, tar, gzip; used to install other tools)
+2.  [Install Python 2.7](#documentation/getting_started/host_setup/Installing-Python-2.7) (**note that you need version 2.7.* of Python, as the Crosswalk scripts are not compatible with Python 3**).
+3.  [Install the Oracle Java Development Kit (JDK)](#documentation/getting_started/host_setup/Installing-the-Oracle-JDK). **Note: It is important that you use the Oracle JDK, rather than the OpenJDK, as Ant may not work correctly with the latter.**
+4.  [Install Ant](#documentation/getting_started/host_setup/Installing-Ant).
+5.  [Configure your environment](#documentation/getting_started/host_setup/Configuring-your-environment).
+6.  [Verify your environment](#documentation/getting_started/host_setup/Verifying-your-environment).
 
 On both host platforms, a bash shell is used as the main installation environment. This is readily available on Linux (look for *Terminal* in the list of applications); or can be installed easily on Windows <a href="#documentation/getting_started/host_setup/Installing-utilities">installing utilities on Windows</a>).
 
@@ -109,13 +107,6 @@ You can now open a Git Bash session by going to your Start Menu and typing **Git
 
 Select *Git Bash* to open a console window running the bash shell.
 
-### Creating a directory for dev tools
-
-From a bash shell:
-
-    $ mkdir ~/xwalk-tools
-    $ cd ~/xwalk-tools
-
 ### Installing Python 2.7
 
 #### Linux
@@ -142,7 +133,7 @@ The Oracle JDK has to be downloaded manually (you must accept a licence agreemen
 
 2.  Accept the licence agreement.
 
-3.  In the section headed *Java SE Development Kit*, choose the appropriate archive file for your platform. Save it to your `~/xwalk-tools` directory.
+3.  In the section headed *Java SE Development Kit*, choose the appropriate archive file for your platform. Save it to your home directory.
 
 4.  Once downloaded:
 
@@ -150,12 +141,14 @@ The Oracle JDK has to be downloaded manually (you must accept a licence agreemen
 
     <li>On Linux, unpack the tarball and symlink it:
 
-        $ cd ~/xwalk-tools/
-        $ tar zxvf <jdk file>.tar.gz
-        $ ln -s <jdk directory> jdk7
+    ```
+    $ cd ~
+    $ tar zxvf <jdk file>.tar.gz
+    $ ln -s ~/<jdk directory> ~/jdk7
+    ```
     </li>
 
-    <li>On Windows, run the Java `.exe` installer, and set `C:\jdk7` as the installation directory.</li>
+    <li>On Windows, run the Java <code>.exe</code> installer, and set <code>C:\jdk7</code> as the installation directory.</li>
 
     </ul>
 
@@ -163,7 +156,7 @@ The Oracle JDK has to be downloaded manually (you must accept a licence agreemen
 
 The instructions are the same for Linux and Windows. From a bash shell:
 
-    $ cd ~/xwalk-tools
+    $ cd ~
     $ curl http://www.apache.org/dist/ant/binaries/apache-ant-1.9.3-bin.zip \
         -o ant.zip
     $ unzip ant.zip
@@ -175,7 +168,7 @@ The next step is to set up your environment so that binaries and scripts which w
     # note that we prepend the new paths to the
     # PATH variable to ensure that we use scripts and binaries
     # from our newly-installed packages
-    export PATH=~/xwalk-tools/apache-ant-1.9.3/bin:$PATH
+    export PATH=~/apache-ant-1.9.3/bin:$PATH
 
     # on Windows, you need to add the Python install directory
     # and the JDK bin directory
@@ -184,7 +177,7 @@ The next step is to set up your environment so that binaries and scripts which w
 
     # on Linux, you just need the JDK bin directory as Python is
     # installed globally
-    export PATH=~/xwalk-tools/jdk7/bin:$PATH
+    export PATH=~/jdk7/bin:$PATH
 
 You should also set the `JAVA_HOME` environment variable to the path of the JDK installation (ant uses this to choose the java binary to invoke) by adding another line to `.bashrc`:
 
@@ -194,7 +187,7 @@ You should also set the `JAVA_HOME` environment variable to the path of the JDK 
     # OR
 
     # Linux
-    export JAVA_HOME=~/xwalk-tools/jdk7/
+    export JAVA_HOME=~/jdk7/
 
 To activate these changes in your current bash shell:
 
@@ -229,7 +222,7 @@ then it may be that gcj is still set as the default `java` for your host.
 
 To fix this, you can append an alias to the bottom of your `~/.bashrc` file to ensure that the correct java binary is being used:
 
-    alias java="~/xwalk-tools/jdk7/bin/java"
+    alias java="~/jdk7/bin/java"
 
 ### ant unable to locate tools.jar
 
@@ -286,7 +279,7 @@ These tools are only required if you intend to deploy Crosswalk applications to 
         [ ] Android 4.3 (API 18)
           [x] SDK Platform
 
-    Note that if you are using a device with a version of Android later than 4.3, you should install the platform tools, build tools and SDK platform for that version too.
+    Note that if you are using devices with versions of Android later than 4.3, you should install the platform tools, build tools and SDK platform for those versions too.
 
 5.  Add the SDK directories to your `PATH` by appending these lines to `~/.bashrc`:
 
@@ -312,11 +305,11 @@ These tools are only required if you intend to deploy Crosswalk applications to 
 
 #### Downloading the Crosswalk Android app template
 
-The Crosswalk Android distribution contains an application template which can be used as a wrapper for an HTML5 application. It also includes a script which will convert a wrapped HTML5 application into an installable Android package (`.apk` file).
+The Crosswalk Android distribution contains an application template which can be used as a wrapper for an HTML5 application. It also includes a script which will convert a wrapped HTML5 application into an installable Android `apk` file.
 
 To get Crosswalk Android for x86, run these commands in a bash shell:
 
-    $ cd ~/xwalk-tools/
+    $ cd ~
 
     # the `-k` option prevents curl from failing due to SSL
     # certificate verification errors.
@@ -329,11 +322,11 @@ To get Crosswalk Android for x86, run these commands in a bash shell:
     $ tar zxf crosswalk-${XWALK-STABLE-ANDROID-X86}-x86/xwalk_app_template.tar.gz \
       -C crosswalk-${XWALK-STABLE-ANDROID-X86}-x86
 
-You should now have a `~/xwalk-tools/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86` directory with an `xwalk_app_template` directory inside it.
+You should now have a `~/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86` directory with an `xwalk_app_template` directory inside it.
 
 ### Optional: installing tools for Tizen targets
 
-If you intend to deploy Crosswalk applications to Tizen targets, you only need to install the Tizen SDK: there are no Crosswalk packaging tools for Tizen yet. Though, as a consequence, a Crosswalk runtime for Tizen must be manually installed on each target instead (see [Setting up Tizen targets](/#documentation/Setting-up-Tizen-targets)).
+If you intend to deploy Crosswalk applications to Tizen targets, you only need to install the Tizen SDK: there are no Crosswalk packaging tools for Tizen yet. Though, as a consequence, a Crosswalk runtime for Tizen must be manually installed on each target instead (see [Tizen target setup](#documentation/getting_started/tizen_target_setup)).
 
 <ol>
 
@@ -342,7 +335,7 @@ If you intend to deploy Crosswalk applications to Tizen targets, you only need t
   <li>
     <p>[Follow the instructions](https://developer.tizen.org/downloads/sdk/installing-tizen-sdk) to install it. If you have a physical Tizen device, you don't need to select any of the optional components.</p>
 
-    <p>However, if you intend to use an emulated Tizen image, you may want to install those components now. See [Setting up Tizen targets](/#documentation/Tizen-target-setup) for details.</p>
+    <p>However, if you intend to use an emulated Tizen image, you may want to install those components now. See <a href="#documentation/getting_started/tizen_target_setup">Tizen target setup</a> for details.</p>
   </li>
 
   <li>
