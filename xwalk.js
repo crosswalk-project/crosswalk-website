@@ -40,7 +40,7 @@ function onPopState (e) {
     var href;
 
     if (debug.history) {
-        console.log ('popstate: ' + history.state);
+        console.log ('popstate: ' + JSON.stringify(e.state));
     }
     sub_link = '';
     if (!e.state || !e.state.href) {
@@ -48,8 +48,17 @@ function onPopState (e) {
         if (!href.match (/^#/))
             href = '';
 
-        if (document.querySelector ('.column[id^="'+
-                                    href.replace (/^#([^\/]*).*$/, '$1')+'"]')) {
+        var columnSelector = '.column[id^="'+
+                             href.replace (/^#([^\/]*).*$/, '$1')+'"]';
+
+        var column = document.querySelector (columnSelector);
+
+        if (debug.navigation) {
+            console.log('trying to match column selector: ' + columnSelector);
+            console.log('column found? ' + (column ? 'yes' : 'no'));
+        }
+
+        if (column) {
             navigateTo (href);
         } else {
             activateColumn ('home');
@@ -132,8 +141,8 @@ function activateColumn (name) {
     page.appendChild (column);
 
     column.classList.remove ('hidden');
-    column.style.position.left = '0px';
-    column.style.position.top = top_menu.offsetHeight + 'px';
+    column.style.left = '0px';
+    column.style.top = top_menu.offsetHeight + 'px';
 
     _onResize ();
 }
@@ -169,7 +178,7 @@ function loadingGraphicStart () {
             Array.prototype.forEach.call (
                 sub_menu.querySelectorAll ('#page a[href="' + active_target + '"]'),
                 function (el) {
-                    console.log ('matched: ' + el.getAttribute ('href'));
+                    console.log ('adding loading mask to: ' + el.getAttribute ('href'));
                     el.classList.add ('loading');
                     indicator = el;
                 }
@@ -954,6 +963,7 @@ function navigateTo (href) {
     var new_content, content, url, column_changed;
 
     if (debug.navigation) {
+        console.log ('******* STARTING navigateTo');
         console.log ('Navigate to: ' + href);
     }
 
@@ -1028,12 +1038,6 @@ function navigateTo (href) {
         });
     }
 
-    if (debug.navigation) {
-        console.log ('Column: ' + requested_column);
-        console.log ('Page: ' + requested_page);
-        console.log ('Anchor: ' + requested_anchor);
-    }
-
     /* The "Loading..." animation is a class added to any <a> with an href
      * that begins with the 'active_target' string.
      */
@@ -1047,6 +1051,15 @@ function navigateTo (href) {
     }
 
     column_changed = requested_column != column_name;
+
+    if (debug.navigation) {
+        console.log ('Current column: ' + column_name);
+        console.log ('Requested column: ' + requested_column);
+        console.log ('Column changed?: ' + column_changed);
+        console.log ('Page changed?: ' + (active_page !== requested_page));
+        console.log ('Page: ' + requested_page);
+        console.log ('Anchor: ' + requested_anchor);
+    }
 
     /* If no column has been activated yet (initial page load) then
      * turn this column active now (vs. waiting for the XHR to
@@ -1074,7 +1087,11 @@ function navigateTo (href) {
         }
     }
 
-    if (column_changed || active_page != requested_page) {
+    if (column_changed || active_page !== requested_page) {
+        if (debug.navigation) {
+            console.log('column or page changed');
+        }
+
         if (active_page != '')
             column.setAttribute ('referring_page', active_page);
         else
@@ -1084,17 +1101,33 @@ function navigateTo (href) {
         else
             column.setAttribute ('requested_anchor', requested_anchor);
 
-        xhr = new XMLHttpRequest;
+        xhr = new XMLHttpRequest ();
         xhr.onload = content_response;
         loadingGraphicStart ();
         column.setAttribute ('loading_page', requested_page);
+
         url = column_name + '/' + requested_page;
-        xhr.open ('GET', url);
+
         if (debug.navigation) {
-            console.log ('Fetching: ' + url);
+            console.log('going to get new content from URL: ' + url);
         }
+
+        xhr.open ('GET', url);
+
+        if (debug.navigation) {
+            console.log ('opened xmlhttprequest at ' + url);
+        }
+
         xhr.send ();
+
+        if (debug.navigation) {
+            console.log ('xmlhttprequest sent to ' + url);
+        }
     } else {
+        if (debug.navigation) {
+            console.log ('neither page or column changed; just scrollin');
+        }
+
         if (requested_anchor != '') {
             if (anchor_scroll_timer)
                 window.clearTimeout (anchor_scroll_timer);
