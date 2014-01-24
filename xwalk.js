@@ -141,8 +141,8 @@ function activateColumn (name) {
     page.appendChild (column);
 
     column.classList.remove ('hidden');
-    column.style.position.left = '0px';
-    column.style.position.top = top_menu.offsetHeight + 'px';
+    column.style.left = '0px';
+    column.style.top = top_menu.offsetHeight + 'px';
 
     _onResize ();
 }
