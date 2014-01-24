@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'contribute/Rebasing Strategy';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>contribute/Rebasing Strategy</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>contribute/Rebasing Strategy</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/contribute/Rebasing-Strategy"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/contribute/Rebasing-Strategy"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      <h2>Overall strategy<a class="anchor" id="Overall-strategy" href="#Overall-strategy"></a></h2>
+
+<p>Crosswalk will adopt the same process as Chromium. A DEPS file will be used to point to the right branch and revision in the Crosswalk 
+downstream repo (aka fork) of Chromium (<a href="https://github.com/crosswalk-project/chromium-crosswalk">https://github.com/crosswalk-project/chromium-crosswalk</a>).</p>
+
+<p>Before the first public release, chromium-crosswalk will always track the beta channel of Chromium. It is the responsibility of the Crosswalk team to update chromium-crosswalk to reflect the updates of the beta channel in chromium. The site <a href="http://omahaproxy.appspot.com/">http://omahaproxy.appspot.com/</a> is a good pointer to track the correct revisions.</p>
+
+<p>The update will happen every week and every six weeks a major version will hit the beta channel which will be the time a potential rebase work will happen as we need to rebase our patches on top of Chromium.</p>
+
+<p>Every DEPS major roll (the 6 weeks one) will be announced on the dev mailing list so that people will be aware of the upcoming changes. How often Crosswalk will be released is yet to be determined; right now we aim towards a 1.0 release.</p>
+
+<h2>Releasing Crosswalk<a class="anchor" id="Releasing-Crosswalk" href="#Releasing-Crosswalk"></a></h2>
+
+<ul><li>Branch the Crosswalk source code into a release branch inside the Crosswalk repository (e.g. v1.0)</li>
+<li>Make sure that the DEPS file in that newly created Crosswalk branch stay attach to the same major version that was used in trunk and wait the beta channel used up until branching time to be promoted stable. Trunk can then move freely forward and rebase/update on a new major revision.</li>
+<li>Roll the QA work in that branch; bug fixing and testing.</li>
+</ul><h2>Rebasing process<a class="anchor" id="Rebasing-process" href="#Rebasing-process"></a></h2>
+
+<p>When Crosswalk trunk branches for release, chromium-crosswalk does the same.
+Every week for trunk, we should:</p>
+
+<ul><li>Branch current chromium-crosswalk trunk to a unique named branch. This new created branch will not evolve anymore, it's just for history recovery since rebase will force-update trunk.</li>
+<li>Do rebase for chromium-crosswalk trunk branch. Rebase it to latest upstream beta and force update chromium-crosswalk trunk branch.</li>
+<li>Update DEPS in Crosswalk trunk to integrate the new rebased chromium.</li>
+</ul><p>A major upgrade every six weeks, and patch update for others. Chromium is versioned major.minor.build.patch</p>
+
+<p>Every week for release, we should:</p>
+
+<ul><li>Branch current chromium-crosswalk release to a unique named branch. Similar to what we need to do for trunk.</li>
+<li>Do rebase for chromium-crosswalk release branch. Rebase it to latest upstream branch and force update chromium-crosswalk release branch. (upstream branch means for example, rebase from 28.0.1500.50 to 28.0.1500.80)</li>
+<li>Update DEPS in Crosswalk release branch to integrate the new rebased chromium.</li>
+</ul><h2>Release Criteria<a class="anchor" id="Release-Criteria" href="#Release-Criteria"></a></h2>
+
+<p>After the branching no new features will be added in release branches, only bug fixes and security fixes will go in both in Crosswalk and chromium-crosswalk. This will reduce potential regressions.</p>
+
+<p>A few days after branching we will release as-is the branch as part of the beta offer even with major bugs opened so we can get early feedback.</p>
+
+<p>Final releases will happen only if no major bugs are open on that given release branch.</p>
+
+<h2>Updating releases<a class="anchor" id="Updating-releases" href="#Updating-releases"></a></h2>
+
+<p>It is the responsibility of the Crosswalk team and the release management to update each stable branches of chromium-crosswalk tracked by Crosswalk releases so that old Crosswalk releases receive security and bug fixes from upstream chromium.</p>
+
+<p>Fixes in Crosswalk will be landed in trunk always and backported in appropriate release branches.</p>
+
+<p>Fixes in our custom patches in Chromium will always be backported in the current “trunk” (the tracked beta channel) and backported to appropriate release branches.</p>
+
+<p>Bug fixes and security fixes aimed for a Crosswalk release but inside Chromium or Blink will be landed upstream and we will wait Google to backport them in the stable channel we’re tracking.</p>
+
+<h2>QA activities<a class="anchor" id="QA-activities" href="#QA-activities"></a></h2>
+
+<p>Up until July and the first release it’s safe for the QA to focus on trunk and provide feedback about it.</p>
+
+<p>When we will create the first 1.0 release branch of Crosswalk, QA should focus on the release branch to make sure the quality is good while doing a soft testing on trunk.</p>
+
+<p>In the future ideally we want to make sure QA is focusing more on upcoming release branches.</p>
+
+<h2>What goes inside chromium-crosswalk?<a class="anchor" id="What-goes-inside-chromium-crosswalk?" href="#What-goes-inside-chromium-crosswalk?"></a></h2>
+
+<p>We try to aim upstream as first. If this option is not possible then chromium-crosswalk is the place to land the patch. It will be carefully reviewed and will land there. We need to remember that any patch in there as a high cost of maintenance.</p>
+
+<h2>What to do if we are blocked on new features in Chromium or Blink?<a class="anchor" id="What-to-do-if-we-are-blocked-on-new-features-in-Chromium-or-Blink?" href="#What-to-do-if-we-are-blocked-on-new-features-in-Chromium-or-Blink?"></a></h2>
+
+<p>In really rare cases our work depends on something we landed upstream in Chromium or Blink and that is required to move forward in Crosswalk without paying the high cost of maintaining changes in chromium-crosswalk. In the meantime we will allow crosswalk-trunk to track another channel than beta.</p>
+
+<p>This should be communicated to the mailing list and agreed with the community.</p>
+
+<h2>Resources<a class="anchor" id="Resources" href="#Resources"></a></h2>
+
+<p>Before the first release, it will be fine to rely on two persons for updating chromium-crosswalk and rolling the DEPS inside Crosswalk repository. This is a few hours work for one engineer once a week. They can alternate.</p>
+
+<p>After the first release we that it will start to be a dedicated role for a person. Managing the releases branches, backporting, and roll should be done by a given person dedicated doing so.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-11-25 22:19:13</p>
+  <p>
+    <a id="delete-link" href="/contribute/Rebasing-Strategy" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/contribute/Rebasing-Strategy">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
