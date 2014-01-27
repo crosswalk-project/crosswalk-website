@@ -99,34 +99,58 @@ function generate () {
 }
 
 function launch_gollum () {
+    # check for netstat
+    which netstat > /dev/null 2>&1
+    missing_netstat=$?
+
+    if [[ $missing_netstat -eq 1 ]] ; then
+       echo "ERROR: no netstat command found"
+       return
+    fi
+
     gollum_pid=$(ps -o pid= -C gollum)
 
     if [[ $gollum_pid -eq 0 ]] ; then
       # get the currently checked-out branch to set --ref
       branch=`git rev-parse --abbrev-ref HEAD`
 
-      gollum --ref ${branch} --live-preview ${PWD} >/dev/null 2>&1 &
-      gollum_pid=$(ps -o pid= -C gollum)
-      echo -n "Launching gollum with pid $gollum_pid"
-      x=1
-      while (( $x )); do
+      gollum --ref ${branch} --live-preview ${PWD} > /dev/null 2>&1 &
+
+      echo -n "Launching gollum"
+
+      not_running=1
+      while (( $not_running )); do
           echo -n "."
           sleep 0.5
           netstat -na 2>&1 | grep -q ":4567 "
-          x=$?
+          not_running=$?
       done
+
+      gollum_pid=$(ps -o pid= -C gollum)
+
       echo
-      echo "Live preview at http://localhost:4567/fileview"
+      echo "Launched gollum with pid $gollum_pid"
     else
-      echo "gollum is already running"
+      echo "could not launch gollum as it is already running"
     fi
+
+    echo "Live preview at http://localhost:4567/fileview"
 }
 
 function kill_gollum () {
     gollum_pid=$(ps -o pid= -C gollum)
     if [[ ! $gollum_pid -eq 0 ]] ; then
-      echo "killing gollum process $gollum_pid"
+      echo -n "killing gollum process $gollum_pid"
       kill -9 ${gollum_pid}
+
+      while [[ ! $gollum_pid -eq 0 ]] ; do
+          echo -n "."
+          sleep 0.5
+          gollum_pid=$(ps -o pid= -C gollum)
+      done
+
+      echo
+      echo "gollum killed"
     else
       echo "gollum is not running"
     fi
