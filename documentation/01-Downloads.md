@@ -11,9 +11,9 @@ The Crosswalk project provides binaries for multiple operating systems and platf
 <tr><td>Android x86</td><td><a href='https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip'>crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip</a></td>
 <td><a href='#documentation/getting_started/installing_crosswalk/android'>Installation</a></td>
 <td class="nowrap"><a href='#wiki/Crosswalk-${XWALK-STABLE-ANDROID-X86-MAJOR}-release-notes'>Crosswalk-${XWALK-STABLE-ANDROID-X86-MAJOR}</a></td></tr>
-<tr><td>Tizen x86</td><td><a href='https://download.01.org/crosswalk/releases/tizen/stable/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm'>crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm</a></td><td><a href='#documentation/getting_started/installing_crosswalk/tizen'>Installation</a></td>
+<tr><td>Tizen x86</td><td><a href='https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm'>crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm</a></td><td><a href='#documentation/getting_started/installing_crosswalk/tizen'>Installation</a></td>
 <td class="nowrap"><a href='#wiki/Crosswalk-${XWALK-STABLE-TIZEN-X86-MAJOR}-release-notes'>Crosswalk-${XWALK-STABLE-TIZEN-X86-MAJOR}</a></td></tr>
-<tr><td>Tizen x86 Emulator</td><td><a href='https://download.01.org/crosswalk/releases/tizen/stable/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm'>crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm</a></td><td><a href='#documentation/getting_started/installing_crosswalk/tizen'>Installation</a></td>
+<tr><td>Tizen x86 Emulator</td><td><a href='https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm'>crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm</a></td><td><a href='#documentation/getting_started/installing_crosswalk/tizen'>Installation</a></td>
 <td class="nowrap"><a href='#wiki/Crosswalk-${XWALK-STABLE-TIZEN-X86-MAJOR}-release-notes'>Crosswalk-${XWALK-STABLE-TIZEN-X86-MAJOR}</a></td></tr></tbody>
 </table>
 
