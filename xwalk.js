@@ -944,9 +944,7 @@ function subMenuClick (e) {
 
 function trackAbandonLink (e) {
     var href = e.currentTarget.getAttribute ('href');
-    e.preventDefault ();
-//        target = e.currentTarget.getAttribute ('target');
-    if (ga) {
+    if (ga && ga.hasOwnProperty ('loaded') && ga.loaded === true) {
         ga ('send', 'event', {
             'eventCategory': 'wiki-anchor',
             'eventAction': 'click',
@@ -956,6 +954,7 @@ function trackAbandonLink (e) {
                 window.location.href = href;
             }
         });
+        e.preventDefault ();
     }
 }
 
