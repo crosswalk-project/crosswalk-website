@@ -400,7 +400,7 @@
 
     function createRow(channel, branch, sha, version, chromium_version, chromium_sha, blink_sha) {
         insertOSRow("android-x86", channel, branch, sha, version, chromium_version, chromium_sha, blink_sha);
-        insertOSRow("tizen", channel, branch, sha, version, chromium_version, chromium_sha, blink_sha);
+        insertOSRow("tizen-mobile", channel, branch, sha, version, chromium_version, chromium_sha, blink_sha);
     }
     function insertOSRow(OS, channel, branch, sha, version, chromium_version, chromium_sha, blink_sha) {
         var table = document.getElementById("rows");
