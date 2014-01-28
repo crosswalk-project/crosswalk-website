@@ -22,4 +22,7 @@ The Crosswalk project provides binaries for multiple operating systems and platf
 A Stable release is an end-user targeting release. Once a Crosswalk release is promoted to the Stable channel, that release will only see new binaries for critical bugs and security issues.
 
 Information on the [Release Channels](#wiki/Release-methodology).
+
+The [Channel Viewer](#contribute/channels-viewer) shows detailed information about the available release channels.
+
 Description of [Crosswalk version numbers](#wiki/release-methodology/version-numbers).
