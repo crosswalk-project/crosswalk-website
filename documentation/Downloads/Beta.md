@@ -19,4 +19,9 @@
 The Beta release is intended primarily for application developers looking to test their application against any new changes to Crosswalk, or to use new features intended to land in the next Stable cycle. Beta builds are published based on automated basic acceptance tests (ABAT), manual testing results, and functionality changes. There is an expected level of stability with Beta releases, however it is still Beta and may contain significant bugs.
 
 Additional information on the [Release Channels](#wiki/Release-methodology).
+
+The [Channel Viewer](#contribute/channels-viewer) shows detailed information about the available release channels.
+
 Description of [Crosswalk version numbers](#wiki/release-methodology/version-numbers).
+
+
