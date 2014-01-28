@@ -6,18 +6,27 @@ usage: site.sh mklive
   Generates a live version of the website, regenerating all dynamic
   content into its compiled / processed forms.
 
-  Creates a branch in the form of live-YYMMDD[.REV], for example:
+  Creates a branch in the form of live-YYMMDD[.REV] (if you're on master),
+  for example:
 
     live-20131207
     live-20131207.1
     ...
 
+  If run on a non-master branch, the name has the form:
+
+    test-live-20131207
+
+  test- branches can only be pushed to staging: the script prevents
+  them from being pushed from staging to live.
+
   The script performs the following steps:
 
-  1. Check whether you are on the 'master' branch
+  1. Check whether you are on the 'master' branch; if not, you will
+     be making a test-live- branch rather than a live- one
   2. Verify there are no unstaged files (should be changed to use
      git-stash)
-  3. Create and switch to the new branch. On live branch:
+  3. Create and switch to the new branch. On (test-)live branch:
   3.1. Purge all generated dynamic content (analagous of a
        'make clean')
   3.2. Regenerate all generated dynamic content
@@ -30,7 +39,7 @@ usage: site.sh mklive
   3.7. commit the live snapshot
   4. Switch back to original branch.
 
-  At this point, the new live-YYMMDD branch contains an exact copy
+  At this point, the new (test-)live-YYMMDD branch contains an exact copy
   of what would be pushed to the website. Given a branch name
   live-YYMMDD, you can create a local archive of that version via:
 
