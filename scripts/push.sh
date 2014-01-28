@@ -267,9 +267,8 @@ function run () {
 
     echo -n "Fetching staging branch name from stg.crosswalk-project.org..." >&2
     staging=$(get_remote_live_info staging)
+    [[ "${staging}" =~ live-.*:.* ]] || die 'REVISION on staging server is invalid'
     echo "done"
-
-    [[ "${staging}" =~ ^live-.*:.* ]] || die 'REVISION on staging server is invalid'
 
     if [[ "$1" == "live" ]]; then
         target="live"
@@ -303,7 +302,8 @@ ERROR: Revision '${rev}' is not in the correct form. Expected:
 
   live-YYYYMMDD[.VER]:SHA-1
 
-Likely caused by manual edit of remote REVISION file or invalid command line.
+Likely caused by manual edit of remote REVISION file, invalid command line,
+or presence of a testing branch on staging ('test-live-YYYYMMDD[.VER]:SHA-1').
 
 Aborting. Please correct and re-run.
 

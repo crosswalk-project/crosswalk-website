@@ -14,9 +14,10 @@ function get_local_live_name () {
     branchname $(get_local_live_info $*)
 }
 
+# find all test-live-xxxxxxxx or live-xxxxxxxx branches locally
 function get_local_live_info () {
     local branch
-    branch=$(git branch -a | sed -ne 's,.*[ /]\(live-.*\),\1,p' | sort -ur | head -n 1)
+    branch=$(git branch | sed -ne 's%\(live-[0-9]\{8\}$\)%\1%p' | sort -ur | head -n 1)
     info=${branch}:$(branchsha ${branch})
     echo $info
     [ "${info/*:/}" != "" ]
