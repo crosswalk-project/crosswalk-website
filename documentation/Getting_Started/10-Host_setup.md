@@ -330,7 +330,7 @@ If you intend to deploy Crosswalk applications to Tizen targets, you only need t
 
 <ol>
 
-  <li>Download the Tizen SDK for your platform from <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">https://developer.tizen.org/downloads/tizen-sdk</a>.</li>
+  <li>Download the Tizen SDK for your platform from <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">https://developer.tizen.org/downloads/tizen-sdk</a>. **Note that if you intend to deploy applications to an emulated Tizen device, you must use version 2.2.0 of the Tizen SDK: see <a href="https://developer.tizen.org/downloads/sdk/advanced-configuration">the advanced configuration instructions</a> for details of how to change versions.**</li>
 
   <li>
     <p>[Follow the instructions](https://developer.tizen.org/downloads/sdk/installing-tizen-sdk) to install it. If you have a physical Tizen device, you don't need to select any of the optional components.</p>
@@ -339,7 +339,6 @@ If you intend to deploy Crosswalk applications to Tizen targets, you only need t
   </li>
 
   <li>
-
     <p>Once installed, you need to ensure that the <code>sdb</code> tool is on your <code>PATH</code>.</p>
 
     <p>On Linux, using a bash shell:</p>

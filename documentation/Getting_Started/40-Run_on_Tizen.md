@@ -26,6 +26,6 @@ To run the application on a Tizen target, there is no need to package it: you ca
 
     The `--use-gl` flag ensures that WebGL is enabled (via Mesa).
 
-The application should have started on the target. Here it is running on an emulated Tizen 2.2 tablet, on Windows:
+The application should have started on the target. Here it is running on an emulated Tizen 2.2.0 tablet, on Windows:
 
 TODO - can't show this at the moment due to xwalk being broken on emulated Tizen 2.2 - https://crosswalk-project.org/jira/browse/XWALK-614
