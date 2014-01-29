@@ -5,18 +5,27 @@ There are several sample applications which can be used as a seed for your proje
 
 ### Manifest File
 The following is a minimal example for a manifest file, which should be named manifest.json and reside in your application's top level directory:
+
 ```
 {
   "name": "Sample App",
-  "manifest_version": 1,
   "version": "1.3.5.2",
   "app": {
     "launch":{
       "local_path": "index.html"
     }
+  },
+
+  "icons": {
+    "128": "icon.png"
   }
 }
 ```
+
+Note that the icons field is currently **required** if you intend to package your application for Android using the make_apk.py script. If you are only deploying to Tizen, it is optional.
+
+At a minimum, the `icons` property should reference a 128 pixel square graphic to use as the icon for the application.
+
 For more details on the manifest file, see the [Crosswalk Manifest](#wiki/Crosswalk-manifest) entry in the [Wiki](#wiki) section.
 
 ## The Application Structure
@@ -101,7 +110,7 @@ The architecture-independent APK 'FooBar.apk' is generated.
 
 For information on installing and running the application on Android,
 see
- [Running on 
+ [Running on
 Android](#documentation/getting_started/running_an_application/running-on-android).
 
 ## Packaging for Tizen
@@ -123,5 +132,5 @@ app, otherwise the XPK package is treated as a new app.
 To run your application in the Tizen environment, you can either launch xwalk manually,
 directing it to load your application via the command line; or launch an
 installed XPK package from the Tizen Home Screen. See the steps in
-[Running on 
+[Running on
 Tizen](#documentation/getting_started/running_an_application/running-on-tizen).
