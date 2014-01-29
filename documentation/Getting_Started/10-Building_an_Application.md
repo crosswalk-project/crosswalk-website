@@ -28,6 +28,23 @@ At a minimum, the `icons` property should reference a 128 pixel square graphic t
 
 For more details on the manifest file, see the [Crosswalk Manifest](#wiki/Crosswalk-manifest) entry in the [Wiki](#wiki) section.
 
+**Note**: If you package application for Android with Crosswalk-3, please add "icons" key in the manifest file:
+```
+{
+  "name": "Sample App",
+  "manifest_version": 1,
+  "version": "1.3.5.2",
+  "app": {
+    "launch":{
+      "local_path": "index.html"
+    }
+  }
+  "icons": {
+    "128": "icon128.png"
+  }
+}
+```
+
 ## The Application Structure
 A typical application structure contains the manifest.json file in the root directory. The main entry point to the application is then referenced from that manifest file. In most applications this file is in the root directory as well.
 ```
@@ -57,10 +74,8 @@ The xwalk_app_template supports three kinds of web application source:
 **Note**: The manifest source and XPK source are preferred.
 
 ### Packaging from manifest source
-This feature is supported for Crosswalk-2 and later.
+This feature is supported for Crosswalk-3 and later.
 Below is an example of how to package a web app. We assume that the files for the app are in /home/foobar/dist and the manifest file is /home/foobar/dist/manifest.json:
-
-For Crosswalk-3 and later:
 
 Both shared and embedded modes are supported.
 ```sh
@@ -70,14 +85,6 @@ python make_apk.py --manifest=/home/foobar/dist/manifest.json
 For embedded mode, the APK 'FooBar_[arm | x86].apk' is written to the directory where you run the command. The APKs are architecture dependent, meaning that an APK with an *arm.apk suffix works on ARM devices, and an APK with an *x86.apk suffix works on x86 devices.
 For shared mode, the APK 'FooBar.apk' is generated. This APK will work on both ARM and x86 devices (providing the shared runtime library is also installed).
 
-For Crosswalk-2:
-
-Only shared mode is supported.
-```sh
-python make_apk.py --manifest=/home/foobar/dist/manifest.json
-```
-The architecture-independent APK 'FooBar.apk' is generated.
-
 ### Packaging from XPK source
 This feature is supported for Crosswalk-3 and later.
 Below is an example of how to package a web app. We assume that the files for the app are archived in FooBar.xpk, which is located at /home/foobar/FooBar.xpk:
@@ -86,6 +93,8 @@ python make_apk.py --xpk=/home/foobar/FooBar.xpk \
   --mode=[embedded | shared]
 ```
 For embedded mode, the APK 'FooBar_[arm | x86].apk' is generated. For shared mode, the APK 'FooBar.apk' is generated.
+
+**Note**: The packaging tool depends on the third party library [pycrypto](https://pypi.python.org/pypi/pycrypto) for this feature. Please install it first.
 
 ### Packaging from command line options
 For Crosswalk-3 and later:
@@ -98,6 +107,7 @@ python make_apk.py --package=com.foo.bar --name=FooBar \
 ```
 The apk file is output to the same directory as the make_apk.py script, with a filename <name&gt.apk, where <name> is the name you set with the --name flag.
 For embedded mode, the APK 'FooBar_[arm | x86].apk' is generated. For shared mode, the APK 'FooBar.apk' is generated.
+
 
 For Crosswalk-1 and Crosswalk-2:
 
