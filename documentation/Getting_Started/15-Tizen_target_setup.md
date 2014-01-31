@@ -28,7 +28,7 @@ To test your application on Tizen, use an emulated x86 device. This can be insta
     <li>On Linux, from a bash shell, run the Tizen `.bin` file you originally downloaded, e.g.:
 
     ```
-    $ ./tizen-sdk-ubuntu64-v2.2.71.bin
+    $ ./tizen-sdk-ubuntu64-v2.2.32.bin
     ```
     </li>
   </ul>
@@ -100,7 +100,7 @@ Once the manager has loaded, ensure that the drop-down menu in the top-left of t
   <p>The final step is to install the Crosswalk Tizen runtime on the VM. This can be done by using <code>sdb</code> to get a root shell on the VM (either use bash or cmd):</p>
 
   ```
-  # on the host machine, from a bash shell
+  # on the host machine, from a shell
   sdb root on
 
   Switched to 'root' account mode
