@@ -45,8 +45,9 @@ function onPopState (e) {
     sub_link = '';
     if (!e.state || !e.state.href) {
         href = window.location.href.replace(/^.*#/, '#').toLowerCase ();
-        if (!href.match (/^#/))
+        if (!href.match (/^#/)) {
             href = '';
+        }
 
         var columnSelector = '.column[id^="'+
                              href.replace (/^#([^\/]*).*$/, '$1')+'"]';
@@ -178,7 +179,9 @@ function loadingGraphicStart () {
             Array.prototype.forEach.call (
                 sub_menu.querySelectorAll ('#page a[href="' + active_target + '"]'),
                 function (el) {
-                    console.log ('adding loading mask to: ' + el.getAttribute ('href'));
+                    if (debug.navigation) {
+                        console.log ('adding loading mask to: ' + el.getAttribute ('href'));
+                    }
                     el.classList.add ('loading');
                     indicator = el;
                 }
@@ -477,7 +480,9 @@ function replace_version_string (str) {
 
 function content_response (e) {
     if (xhr.readyState != XMLHttpRequest.DONE) {
-        console.log (xhr.status);
+        if (debug.navigation) {
+            console.log (xhr.status);
+        }
         return;
     }
 
@@ -918,7 +923,9 @@ function subMenuClick (e) {
         if (!open) {
             if (href.replace (/#[^\/]*\//, '') !=
                 requested_page.replace(/\/[^\/]*/, '')) {
-                console.log ('Closed ' + requested_page);
+                if (debug.navigation) {
+                    console.log ('Closed ' + requested_page);
+                }
                 return;
             }
         }
@@ -1045,7 +1052,9 @@ function navigateTo (href) {
 
     if (xhr != null) {
         loadingGraphicStop ();
-        console.log ('Aborting active XHR request.');
+        if (debug.navigation) {
+            console.log ('Aborting active XHR request.');
+        }
         xhr.abort ();
         xhr = null;
     }
@@ -1387,7 +1396,7 @@ function scrollTo (e) {
             if (item.id.toLowerCase () == e)
                 el = item;
         });
-        if (!el) {
+        if (!el && debug.scroll) {
             console.log ('Requested anchor not found: ' + e);
         }
     } else {
