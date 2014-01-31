@@ -545,8 +545,8 @@ function content_response (e) {
     while (div.firstChild)
         div.removeChild (div.firstChild);
 
-    var scriptlets = content.getElementsByTagName ('script');
     div.appendChild (content);
+    var scriptlets = content.getElementsByTagName ('script');
     Array.prototype.forEach.call (scriptlets, function (script) {
         eval.call (window, script.innerHTML);
     });
