@@ -45,7 +45,7 @@ var versions = {
         tizen: {
             x86: "3.32.53.4",
             arm: "0.0.0.0"
-        },
+        }
     },
     beta: {
         android: {
@@ -55,6 +55,6 @@ var versions = {
         tizen: {
             x86: "4.32.76.1",
             arm: "0.0.0.0"
-        },
+        }
     }
 };
