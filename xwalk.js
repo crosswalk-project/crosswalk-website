@@ -16,6 +16,20 @@ var debug = {
     scroll: false
 };
 
+// from https://weblogs.java.net/blog/driscoll/archive/2009/09/08/eval-javascript-global-context
+var globalEval = function (src) {
+    // on IE
+    if (window.execScript) {
+        window.execScript (src);
+        return;
+    }
+
+    var fn = function () {
+        window.eval.call (window, src);
+    };
+    fn();
+};
+
 window.requestAnimationFrame = (function () {
     return window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -550,11 +564,24 @@ function content_response (e) {
     while (div.firstChild)
         div.removeChild (div.firstChild);
 
+    // pull all the script tags out of the content first
+    var scriptContents = [];
+    var scripts = content.getElementsByTagName ('script');
+    var script;
+    for (var i = 0; i < scripts.length; i += 1) {
+        script = scripts[i];
+        scriptContents.push (script.text);
+        script.parentNode.removeChild (script);
+    }
+
+    // append the remaining content
     div.appendChild (content);
-    var scriptlets = content.getElementsByTagName ('script');
-    Array.prototype.forEach.call (scriptlets, function (script) {
-        eval.call (window, script.innerHTML);
-    });
+
+    // append a new script element for each script text retrieved
+    // from the content, and execute in global context
+    while (scriptContents.length) {
+        globalEval (scriptContents.shift ());
+    }
 
     /*
      * Wiki link rewriting magic...
