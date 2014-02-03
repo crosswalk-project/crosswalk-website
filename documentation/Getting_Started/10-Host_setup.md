@@ -60,11 +60,11 @@ The steps for installing the dev tools are:
 5.  [Configure your environment](#documentation/getting_started/host_setup/Configuring-your-environment).
 6.  [Verify your environment](#documentation/getting_started/host_setup/Verifying-your-environment).
 
-On both host platforms, a bash shell is used as the main installation environment. This is readily available on Linux (look for *Terminal* in the list of applications); or can be installed easily on Windows <a href="#documentation/getting_started/host_setup/Installing-utilities">installing utilities on Windows</a>).
+On both host platforms, a bash shell is used as the main installation environment. This is readily available on Linux (look for *Terminal* in the list of applications); or can be <a href="#documentation/getting_started/host_setup/Installing-utilities">installed easily on Windows</a>.
 
 ### bash and cmd
 
-Some of the tools used do not behave well when invoked from a bash shell on Windows. In these cases, a Windows `cmd` console is used instead.
+Note: Some of the tools do not behave well when invoked from a bash shell on Windows. In these cases, a Windows `cmd` console is used instead.
 
 To start a Windows console, do the following:
 
@@ -330,10 +330,10 @@ If you intend to deploy Crosswalk applications to Tizen targets, you only need t
 
 <ol>
 
-  <li>Download the Tizen SDK for your platform from <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">https://developer.tizen.org/downloads/tizen-sdk</a>. **Note that if you intend to deploy applications to an emulated Tizen device, you must use version 2.2.0 of the Tizen SDK: see <a href="https://developer.tizen.org/downloads/sdk/advanced-configuration">the advanced configuration instructions</a> for details of how to change versions.**</li>
+  <li>Download the Tizen SDK for your platform from <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">https://developer.tizen.org/downloads/tizen-sdk</a>. <strong>Note that if you intend to deploy applications to an emulated Tizen device, you must use version 2.2.0 of the Tizen SDK: see <a href="https://developer.tizen.org/downloads/sdk/advanced-configuration">the advanced configuration instructions</a> for details of how to change versions.</strong></li>
 
   <li>
-    <p>[Follow the instructions](https://developer.tizen.org/downloads/sdk/installing-tizen-sdk) to install it. If you have a physical Tizen device, you don't need to select any of the optional components.</p>
+    <p><a href="https://developer.tizen.org/downloads/sdk/installing-tizen-sdk">Follow the instructions</a> to install it. If you have a physical Tizen device, you don't need to select any of the optional components.</p>
 
     <p>However, if you intend to use an emulated Tizen image, you may want to install those components now. See <a href="#documentation/getting_started/tizen_target_setup">Tizen target setup</a> for details.</p>
   </li>

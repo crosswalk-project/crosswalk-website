@@ -34,24 +34,26 @@ or detected with insufficient permissions:
 In both cases, a work-around is to run the `adb` server as root:
 
     # kill any existing server instances
-    $ sudo ~/android-sdk/platform-tools/adb kill-server
+    $ sudo <path to android sdk>/platform-tools/adb kill-server
 
     # start the adb server as root
-    $ sudo ~/android-sdk/platform-tools/adb start-server
+    $ sudo <path to android sdk>/platform-tools/adb start-server
 
     # check for devices (non-root user should be ok now)
     $ adb devices
     List of devices attached
     HT23KW103989	device
 
+Note that, on Windows, `<path to android sdk>` should include the `/sdk/` directory.
+
 ## Android emulator
 
-To test your application on Android platforms you don't own, the next best option is to use an emulated device. These can be installed via the Android SDK.
+To test your application on Android platforms you don't own, the next best option is to use emulated devices. You can install these via the Android SDK.
 
 <ol>
 
 <li>
-  <p>Start the Android SDK Manager. If you set it up as detailed in <a href="#Install-the-Android-SDK">Install the Android SDK</a>, you can invoke this as follows:</p>
+  <p>Start the Android SDK Manager. If you installed it as detailed in <a href="#Install-the-Android-SDK">Install the Android SDK</a>, you can invoke the SDK Manager as follows:</p>
 
   <ul>
     <li>
@@ -72,7 +74,7 @@ To test your application on Android platforms you don't own, the next best optio
 </li>
 
 <li>
-  <p>In the SDK Manager window, check the following boxes in the list:</p>
+  <p>In the SDK Manager window, check the following box in the list:</p>
 
   ```
   [ ] Android 4.3 (API 18)
@@ -83,7 +85,7 @@ To test your application on Android platforms you don't own, the next best optio
 </li>
 
 <li>
-  <p>On Windows <strong>only</strong>, download HAXM as well using the SDK Manager:</p>
+  <p>On Windows <strong>only</strong>, use the SDK Manager to download HAXM as well:</p>
 
   ```
   [ ] Extras

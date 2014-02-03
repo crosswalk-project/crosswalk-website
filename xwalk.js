@@ -461,10 +461,12 @@ function replace_version_string (str) {
             Object.getOwnPropertyNames (versions[channel][platform]).forEach (
                 function (arch) {
                     version = versions[channel][platform][arch];
+
                     /* Replace ${XWALK-channel-platform-arch} with the version
                     * number, unless prefixed by ! */
                     re = new RegExp ('([^!])\\$({|%7b)XWALK-'+channel+'-'+
                                      platform+'-'+arch+'(}|%7d)', 'mig');
+
                     str = str.replace (re, '$1' + version);
 
                     /* If !${XWALK-channel-platform-arch} is present, strip

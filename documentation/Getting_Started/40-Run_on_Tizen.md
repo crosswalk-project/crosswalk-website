@@ -16,6 +16,8 @@ To run the application on a Tizen target, there is no need to package it: you ca
 
         sdb shell "mkdir /home/developer/xwalk-simple"
 
+    Then push the app to the emulated device.
+
     On Linux:
 
         $ sdb push ~/xwalk-simple /home/developer/xwalk-simple/
@@ -28,7 +30,7 @@ To run the application on a Tizen target, there is no need to package it: you ca
 
         sdb shell "xwalk --use-gl=osmesa /home/developer/xwalk-simple"
 
-    The `--use-gl` flag ensures that WebGL is enabled (via Mesa).
+    The `--use-gl` option ensures that WebGL is enabled (via Mesa).
 
 The application should have started on the target. Here it is running on an emulated Tizen 2.2.0 tablet, on Windows:
 
