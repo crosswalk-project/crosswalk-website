@@ -56,14 +56,44 @@
                 <div class='divider'><div class="right-corner"></div><div class="left-corner"></div></div>
                 <div class='background tile-overlay'></div>
                 <div id='overview-content' class='content'>
-                        <h1>The Crosswalk Architecture</h1>
-                        <div id='illustration'></div>
-                        <p>Crosswalk provides an HTML5 application runtime built using various other open source projects.</p>
-<p>Crosswalk extends the features available on the web platform today with new capabilities for applications written using web technologies. This includes the introduction of an application Runtime Model, an implementation of the W3C SysApps Working Group APIs, and a JavaScript Extension Framework which allows application vendors to add additional native capabilities (if necessary.)</p>                    
-                        <p>At the heart of Crosswalk is the Blink rendering and layout engine. This provides the same HTML5 features and capabilities expected in the modern web ecosystem.</p>
-                        <p>Building on Blink, Crosswalk uses the Chromium Content module to provide a multi-process architecture. The Chromium Content module is designed for security and performance. In addition to interacting with Blink, the
-                    Content Module manages the Graphics Subsystem. The Graphics Subsystem provides 2D rendering services and Web GL.
-                </p>
+                    <h1>Crosswalk Architecture</h1>
+
+                    <div id='illustration'></div>
+
+                    <p>Crosswalk is an HTML5 application runtime which
+                    builds on open source foundations. It extends today's
+                    web platform today with new capabilities, empowering
+                    applications written using web technologies.</p>
+
+                    <p>By using Crosswalk, an application developer can:</p>
+
+                    <ul>
+                        <li>Access the latest approved and emerging web
+                        standards.</li>
+
+                        <li>Control the entire quality cycle of a project by
+                        bundling a known run-time version with their
+                        application.</li>
+
+                        <li>Add custom extensions to an application to take
+                        advantage of platform features not yet exposed by
+                        Crosswalk.</li>
+
+                        <li>Use hardware-accelerated WebGL (if available on the
+                        platform).</li>
+                    </ul>
+
+                    <p>At the heart of Crosswalk is the Blink
+                    rendering and layout engine. This provides the
+                    same HTML5 features and capabilities you would
+                    expect to find in any modern web brower.</p>
+
+                    <p>Building on Blink, Crosswalk uses the Chromium
+                    Content module to provide a multi-process
+                    architecture, designed for security and performance.
+                    In addition, the Content Module manages the
+                    Graphics Subsystem, which provides 2D rendering and
+                    WebGL.</p>
                 </div>
             </div>
 
@@ -84,14 +114,14 @@
                             <div class='community-button'><a href='#documentation/Community/irc-channel'>IRC Channel</a></div>
                             <div class='community-button'><a href='#wiki'>Wiki</a></div>
                             <div class='community-button'><a href='http://github.com/crosswalk-project/crosswalk'>Source</a></div>
-                            <div class='community-button'><a href='https://crosswalk-project.org/jira'>Issue Tracking</a></div><!--div class='community-button'><a href='#documentation/Graphics'>Graphics</a></div-->          
+                            <div class='community-button'><a href='https://crosswalk-project.org/jira'>Issue Tracking</a></div><!--div class='community-button'><a href='#documentation/Graphics'>Graphics</a></div-->
                             </td></tr></tbody>
                 </table>
                 </div>
             </div>
             </div>
         </div> <!-- end of #page -->
-        
+
         <div id='error-column' class='column hidden'>
             <div id='error' class='section'>
                 <div class='background' id='sunburst'></div>
