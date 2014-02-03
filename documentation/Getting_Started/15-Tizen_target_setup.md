@@ -8,7 +8,7 @@ Crosswalk is available for Tizen version 2.1 or higher.
 
 ## Tizen device
 
-At the time of writing (January 2014), there are no Tizen devices on the market, so your only option is to use an emulated Tizen device.
+At the time of writing (February 2014), there are no Tizen devices on the market, so your only option is to use an emulated Tizen device.
 
 ## Tizen emulator
 
@@ -18,11 +18,13 @@ To test your application on Tizen, use an emulated x86 device. This can be insta
 
 <li>Start the Tizen SDK Install Manager:
   <ul>
-    <li>On Windows, from a cmd shell (you'll need a different path if you didn't install it to a `tizen-sdk` directory inside your home directory):
+    <li>On Windows, from a cmd shell:
 
     ```
     > %HOMEPATH%\tizen-sdk\install-manager\inst-manager.exe
     ```
+
+    You will need to adjust the path if you installed the Tizen SDK outside your home directory.
     </li>
 
     <li>On Linux, from a bash shell, run the Tizen `.bin` file you originally downloaded, e.g.:
@@ -34,7 +36,7 @@ To test your application on Tizen, use an emulated x86 device. This can be insta
   </ul>
 </li>
 
-<li>Select <em>Install or update the Tizen SDK</em> and then the <em>Next</em> button.</li>
+<li>Select <em>Install or update the Tizen SDK</em>, then select the <em>Next</em> button.</li>
 
 <li>
   <p>Select the Tizen system image and emulator from the list of components available:</p>
@@ -99,7 +101,7 @@ Once the manager has loaded, ensure that the drop-down menu in the top-left of t
 <li>
   <p>The final step is to install the Crosswalk Tizen runtime on the VM. This can be done by using <code>sdb</code> to get a root shell on the VM (either use bash or cmd):</p>
 
-  ```
+  <pre>
   # on the host machine, from a shell
   sdb root on
 
@@ -116,7 +118,7 @@ Once the manager has loaded, ensure that the drop-down menu in the top-left of t
   sh-4.1# curl https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk.rpm
   sh-4.1# curl https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk-emulator.rpm
   sh-4.1# rpm -ih tz*.rpm
-  ```
+  </pre>
 </li>
 
 <li><p>Still in the shell on the VM, test that crosswalk has installed and is working:</p>
