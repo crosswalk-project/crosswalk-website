@@ -4,12 +4,23 @@
 <thead style='font-weight:bold'><tr><td>Platform</td><td>Latest Version</td>
 <td>Release notes</td></tr></thead>
 <tbody>
-<tr><td>Android x86</td><td><a href='https://download.01.org/crosswalk/releases/android-x86/beta/crosswalk-${XWALK-BETA-ANDROID-X86}-x86.zip'>crosswalk-${XWALK-BETA-ANDROID-X86}-x86.zip</a></td>
-<td class="nowrap"><a href='#wiki/Crosswalk-${XWALK-BETA-ANDROID-X86-MAJOR}-release-notes'>Crosswalk-${XWALK-BETA-ANDROID-X86-MAJOR}</a></td></tr>
-<tr><td>Tizen x86</td><td><a href='https://download.01.org/crosswalk/releases/tizen-mobile/beta/crosswalk-${XWALK-BETA-TIZEN-X86}-0.i586.rpm'>crosswalk-${XWALK-BETA-TIZEN-X86}-0.i586.rpm</a></td><td><a href='#documentation/getting_started/installing_crosswalk/tizen'>Installation</td>
-<td class="nowrap"><a href='#wiki/Crosswalk-${XWALK-BETA-TIZEN-X86-MAJOR}-release-notes'>Crosswalk-${XWALK-BETA-TIZEN-X86-MAJOR}</a></td></tr>
-<tr><td>Tizen x86 Emulator</td><td><a href='https://download.01.org/crosswalk/releases/tizen-mobile/beta/crosswalk-emulator-support-${XWALK-BETA-TIZEN-X86}-0.i586.rpm'>crosswalk-emulator-support-${XWALK-BETA-TIZEN-X86}-0.i586.rpm</a></td><td><a href='#documentation/getting_started/installing_crosswalk/tizen'>Installation</td>
-<td class="nowrap"><a href='#wiki/Crosswalk-${XWALK-BETA-TIZEN-X86-MAJOR}-release-notes'>Crosswalk-${XWALK-BETA-TIZEN-X86-MAJOR}</a></td></tr>
+
+<tr>
+<td>Android x86</td><td><a href='https://download.01.org/crosswalk/releases/android-x86/beta/crosswalk-${XWALK-BETA-ANDROID-X86}-x86.zip'>crosswalk-${XWALK-BETA-ANDROID-X86}-x86.zip</a></td>
+<td class="nowrap"><a href='#wiki/Crosswalk-${XWALK-BETA-ANDROID-X86-MAJOR}-release-notes'>Crosswalk-${XWALK-BETA-ANDROID-X86-MAJOR}</a></td>
+</tr>
+
+<tr>
+<td>Tizen x86</td><td><a href='https://download.01.org/crosswalk/releases/tizen-mobile/beta/crosswalk-${XWALK-BETA-TIZEN-X86}-0.i586.rpm'>crosswalk-${XWALK-BETA-TIZEN-X86}-0.i586.rpm</a></td>
+<td class="nowrap"><a href='#wiki/Crosswalk-${XWALK-BETA-TIZEN-X86-MAJOR}-release-notes'>Crosswalk-${XWALK-BETA-TIZEN-X86-MAJOR}</a></td>
+</tr>
+
+<tr>
+<td>Tizen x86 Emulator</td>
+<td><a href='https://download.01.org/crosswalk/releases/tizen-mobile/beta/crosswalk-emulator-support-${XWALK-BETA-TIZEN-X86}-0.i586.rpm'>crosswalk-emulator-support-${XWALK-BETA-TIZEN-X86}-0.i586.rpm</a></td>
+<td class="nowrap"><a href='#wiki/Crosswalk-${XWALK-BETA-TIZEN-X86-MAJOR}-release-notes'>Crosswalk-${XWALK-BETA-TIZEN-X86-MAJOR}</a></td>
+</tr>
+
 </tbody>
 </table>
 
