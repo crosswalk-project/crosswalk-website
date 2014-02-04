@@ -43,7 +43,8 @@ if ($payload) {
             // different actions right now, and don't really want to
             // create the same HTTP client in multiple places;
             // so this is a quick workaround
-            $key = sha1 ($page->html_url);
+            $normalised_url = strtolower (urldecode ($page->html_url));
+            $key = sha1 ($normalised_url);
             $page_cached = 'wiki' . DIRECTORY_SEPARATOR . $key . '.html';
             @unlink ($page_cached);
         }

@@ -171,7 +171,7 @@ class CachingHttpClient {
 
         // only check the file if the cache is turned on
         if ($caching_on) {
-            $key = sha1 ($url);
+            $key = sha1 (strtolower (urldecode ($url)));
             $path = $this->cache_dir . $key . '.html';
 
             $mtime = @filemtime ($path);
