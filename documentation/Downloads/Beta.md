@@ -1,4 +1,7 @@
 # Beta Release
+
+For instructions on how to use these downloads, see the [Getting started](#documentation/getting_started) pages.
+
 <!-- See versions.js for how the ${XWALK-*} variable is replaced -->
 <table width=100%>
 <thead style='font-weight:bold'><tr><td>Platform</td><td>Latest Version</td>
@@ -25,8 +28,6 @@
 </table>
 
 [More releases...](https://download.01.org/crosswalk/releases/)
-
-For instructions on how to use these downloads, see the [Getting started](#documentation/getting_started) pages.
 
 The Beta release is intended primarily for application developers looking to test their application against any new changes to Crosswalk, or to use new features intended to land in the next Stable cycle. Beta builds are published based on automated basic acceptance tests (ABAT), manual testing results, and functionality changes. There is an expected level of stability with Beta releases, however it is still Beta and may contain significant bugs.
 

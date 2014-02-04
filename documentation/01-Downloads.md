@@ -1,8 +1,11 @@
 # Downloads
 
-The Crosswalk project provides binaries for multiple operating systems and platforms. For instructions on how to use these downloads, see the [Getting started](#documentation/getting_started) pages.
+The Crosswalk project provides binaries for multiple operating systems and platforms.
 
 ## Stable Release
+
+For instructions on how to use these downloads, see the [Getting started](#documentation/getting_started) pages.
+
 <!-- See versions.js for how the ${XWALK-*} variable is replaced -->
 <table width=100%>
 <thead style='font-weight:bold'><tr><td>Platform</td><td>Latest Version</td>
