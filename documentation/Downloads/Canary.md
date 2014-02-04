@@ -1,5 +1,5 @@
 # Canary Release
-Everyday the build systems attempt to generate a new Canary for each platform and architecture. Canaries are available for the following:
+Every day, the build systems attempt to generate a new Canary release for each platform and architecture. Canaries are available for the following platforms:
 
 <center>
 <a class='primary-link' href='https://download.01.org/crosswalk/releases/android-x86/canary'>Android x86</a>&nbsp;&middot;&nbsp;<a class='primary-link' href='https://download.01.org/crosswalk/releases/android-arm/canary'>Android ARM</a>&nbsp;&middot;&nbsp;<a class='primary-link' href='https://download.01.org/crosswalk/releases/tizen-mobile/canary'>Tizen x86</a>
