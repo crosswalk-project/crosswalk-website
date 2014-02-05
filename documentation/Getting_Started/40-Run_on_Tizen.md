@@ -34,6 +34,6 @@ To run the application on a Tizen target, there is no need to package it: you ca
 
 The application should have started on the target. Here it is running on an emulated Tizen 2.2.0 tablet, on Windows:
 
-<img src="assets/xwalk-simple-on-android.png">
+<img src="assets/xwalk-simple-on-tizen.png">
 
 (NB the text is small because the emulated screen size is 720x1280px.)
