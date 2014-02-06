@@ -48,20 +48,30 @@ class HttpClient {
         }
     }
 
-    // cURL
-    private function get_url_curl ($url) {
+    // set common config for cURL requests
+    private function init_curl ($url, $headers) {
         $ch = curl_init();
 
+        array_push ($headers, 'User-Agent: Crosswalk-website-townxelliot');
+
         curl_setopt ($ch, CURLOPT_URL, $url);
-        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt ($ch, CURLOPT_HTTPHEADER, $headers);
 
         if ($this->proxy) {
           curl_setopt ($ch, CURLOPT_HTTPPROXYTUNNEL, true);
           curl_setopt ($ch, CURLOPT_PROXY, $this->proxy);
         }
+
+        return $ch;
+    }
+
+    // cURL
+    private function get_url_curl ($url) {
+        $ch = $this->init_curl ($url, array ());
 
         $result = curl_exec ($ch);
 
@@ -131,7 +141,7 @@ class HttpClient {
 
     // get the content of a URL using cURL if available, or falling back
     // to fopen if not, or shell as a last resort;
-    // throws an exception if the URL cannot be opened or if the
+    // throws an exception if the URL cannot be opened or if
     // $this->url_opener is bad
     function get_url ($url) {
         if ($this->url_opener === 'curl') {
@@ -144,8 +154,8 @@ class HttpClient {
             return $this->get_url_shell ($url);
         }
         else {
-            throw new Exception("I don't know how to open URLs with ".
-                                $this->url_opener);
+            throw new Exception ("I don't know how to open URLs with ".
+                                 $this->url_opener);
         }
     }
 }
