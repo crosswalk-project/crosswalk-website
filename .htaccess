@@ -50,7 +50,7 @@ DirectoryIndex index.html
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
-  # If a requested file has a php version, serve the php version 
+  # If a requested file has a php version, serve the php version
   # instead which will update and serve a cached version as necessary.
   RewriteCond %{REQUEST_FILENAME}.php -f
   RewriteRule ^[^/]*(.*)$ %{REQUEST_URI}$1.php [L]
@@ -61,7 +61,7 @@ DirectoryIndex index.html
   RewriteRule ^ - [E=protossl]
   RewriteCond %{HTTPS} on
   RewriteRule ^ - [E=protossl:s]
-  
+
   # Block access to "hidden" directories whose names begin with a period. This
   # includes directories used by version control systems such as Subversion or
   # Git to store control files. Files whose names begin with a period, as well
@@ -118,7 +118,7 @@ MultiViewsMatch Any
 # mod_userdir expantion by rewriting the URL to be
 # based on the absolute path %{REQUEST_URI}
 #
-# The ../ request is because REQUEST_URI will 
+# The ../ request is because REQUEST_URI will
 # include the full filepath, including filename; the
 # .. strips that
 #
