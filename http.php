@@ -21,35 +21,17 @@ class HttpClient {
     //
     // if not set, 'curl' is tried, then 'fopen', and finally 'shell' if
     // the other two are not available
-    function HttpClient ($proxy_config_location, $url_opener = null) {
+    function HttpClient ($proxy_config_location) {
         $file = @fopen ($proxy_config_location, 'r');
 
         if ($file) {
             $this->proxy = trim (fgets ($file));
             @fclose ($file);
         }
-
-        // use cURL, fopen or php in the shell
-        $this->url_opener = $url_opener;
-
-        if (!$this->url_opener) {
-            // use cURL if available
-            if (extension_loaded ('curl')) {
-                $this->url_opener = 'curl';
-            }
-            // use fopen, if allowed by php.ini
-            else if (ini_get ('allow_fopen_url')) {
-                $this->url_opener = 'fopen';
-            }
-            // fallback to shelling out to php as a last resort
-            else {
-                $this->url_opener = 'shell';
-            }
-        }
     }
 
-    // set common config for cURL requests
-    private function init_curl ($url, $headers) {
+    // get an initialised cURL request
+    function init_curl ($url, $headers) {
         $ch = curl_init();
 
         array_push ($headers, 'User-Agent: Crosswalk-website-townxelliot');
@@ -69,8 +51,8 @@ class HttpClient {
         return $ch;
     }
 
-    // cURL
-    private function get_url_curl ($url) {
+    // fetch the URL $url and return the response body
+    function get_url ($url) {
         $ch = $this->init_curl ($url, array ());
 
         $result = curl_exec ($ch);
@@ -82,81 +64,6 @@ class HttpClient {
         curl_close ($ch);
 
         return $result;
-    }
-
-    // fopen
-    private function get_url_fopen ($url) {
-        if ($this->proxy) {
-            $opts = stream_context_create (
-                Array (
-                    'http' => Array (
-                        'proxy' => $this->proxy,
-                        'request_fulluri' => true
-                    )
-                )
-            );
-
-            // see http://php.net/manual/en/function.fopen.php
-            $use_include_path = 0;
-
-            $handle = fopen ($url, 'r', $use_include_path, $opts);
-        }
-        else {
-            $handle = fopen ($url, 'r');
-        }
-
-        if (!$handle) {
-            throw new Exception ("could not open URL $url");
-        }
-
-        $result = '';
-
-        while (!feof ($handle)) {
-            $result .= fgets ($handle);
-        }
-
-        @fclose ($handle);
-
-        return $result;
-    }
-
-    // shell: fopen invoked from php cli (!)
-    // only necessary where allow_fopen_url is off and cURL is
-    // not installed;
-    // NB this also needs the php binary to be on the PATH for the
-    // user PHP is running as
-    function get_url_shell ($url) {
-        $output = Array ();
-
-        // TODO make the location of php binary configurable
-        @exec ("php ./http-cli.php $url", $output, $retval);
-
-        if ($retval !== 0) {
-            throw new Exception ("could not open URL $url");
-        }
-        else {
-            return implode ('', $output);
-        }
-    }
-
-    // get the content of a URL using cURL if available, or falling back
-    // to fopen if not, or shell as a last resort;
-    // throws an exception if the URL cannot be opened or if
-    // $this->url_opener is bad
-    function get_url ($url) {
-        if ($this->url_opener === 'curl') {
-            return $this->get_url_curl ($url);
-        }
-        else if ($this->url_opener === 'fopen') {
-            return $this->get_url_fopen ($url);
-        }
-        else if ($this->url_opener === 'shell') {
-            return $this->get_url_shell ($url);
-        }
-        else {
-            throw new Exception ("I don't know how to open URLs with ".
-                                 $this->url_opener);
-        }
     }
 }
 
