@@ -176,9 +176,7 @@ if ($rawConfig) {
 $github = new Github ($clientID, $clientSecret);
 $contentType = 'application/json';
 
-// default message if none of the below match
-$data = 'Invalid query: please use ?branch=X&item=Y, or ?branch=X&fetch=deps, or ' .
-        '?branch=X&fetch=version, or no querystring to fetch branches';
+$data = null;
 
 if (isset($_GET['branch'])) {
   if (isset($_GET['item'])) {
@@ -198,6 +196,15 @@ else {
 
 if ($contentType === 'application/json') {
   $data = json_encode ($data);
+}
+
+if (!$data) {
+  // default message if none of the above match
+  $data = 'Invalid query: please use ?branch=X&item=Y, or ?branch=X&fetch=deps, or ' .
+          '?branch=X&fetch=version, or no querystring to fetch branches';
+  $contentType = 'text/plain';
+
+  // set a "bad request" status code
 }
 
 header ('Content-Type: ' . $contentType);
