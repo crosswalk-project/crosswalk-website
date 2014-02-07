@@ -5,8 +5,10 @@ function nameSort ($a, $b) {
   return strcmp ($a->ref, $b->ref);
 }
 
-// github access to get channels for channel viewer and downloads page
+// proxy github access to get channels for channel viewer and downloads page
 class Github {
+  private static $CHANNELS = array ('stable', 'beta', 'canary');
+
   function Github ($clientID, $clientSecret) {
     $this->httpClient = new HttpClient ('proxy.config');
 
@@ -18,14 +20,90 @@ class Github {
     );
   }
 
-  private function appendQstring ($url) {
+  // $extraVars: extra key/value pairs to include in the querystring
+  private function appendQstring ($url, $extraVars = array ()) {
+    $query = array_merge ($this->query, $extraVars);
+
     $cleaned = array ();
 
-    foreach ($this->query as $key => $value) {
+    foreach ($query as $key => $value) {
       $cleaned[] = urlencode ($key) . '=' . urlencode ($value);
     }
 
-    return $url .= '?' . join ('&', $cleaned);
+    if (!preg_match ('/\?/', $url)) {
+      $url .= '?';
+    }
+
+    return $url .= join ('&', $cleaned);
+  }
+
+  // fetch the raw content (Base64 decoded) of the specified $item
+  // from $branch
+  function getContent ($branch, $item) {
+    $url = $this->repoUrl . '/contents/' . $item;
+    $url = $this->appendQstring ($url, array ('ref' => $branch));
+
+    $response = $this->httpClient->get_url ($url);
+
+    $data = json_decode( $response['body']);
+    $content = base64_decode ($data->content);
+
+    return $content;
+  }
+
+  // fetch DEPS.xwalk for a specified branch;
+  // the part of the original file we want looks like this:
+  /*
+  chromium_version = '32.0.1700.102'
+  chromium_crosswalk_point = '2071e32149e7911bc378a20ef5a5363f382d6999'
+  blink_crosswalk_point = 'b00d5cd307239b282e959838c1ed4d239c80ad90'
+  */
+  // we want the full Chromium version, plus the first 8 characters
+  // of the shas for chromium_crosswalk_point and
+  // blink_crosswalk_point
+  function getDeps ($branch) {
+    $content = $this->getContent ($branch, 'DEPS.xwalk');
+
+    $matches = array ();
+
+    preg_match ("/chromium_version = '(.+)'\n/", $content, $matches);
+    $chromiumVersion = $matches[1];
+
+    preg_match ("/chromium_crosswalk_point = '(.+)'\n/", $content, $matches);
+    $chromiumSha = substr ($matches[1], 0, 8);
+
+    preg_match ("/blink_crosswalk_point = '(.+)'\n/", $content, $matches);
+    $blinkSha = substr ($matches[1], 0, 8);
+
+    return array (
+      'branch' => $branch,
+      'chromiumVersion' => $chromiumVersion,
+      'chromiumSha' => $chromiumSha,
+      'blinkSha' => $blinkSha
+    );
+  }
+
+  // fetch VERSION for a specified branch;
+  // the original VERSION file looks like this:
+  /*
+  MAJOR=5
+  MINOR=32
+  BUILD=85
+  PATCH=0
+  */
+  // we convert it into a MAJOR.MINOR.BUILD.PATCH string
+  function getVersion ($branch) {
+    $content = $this->getContent ($branch, 'VERSION');
+
+    // convert to a version number
+    $content = preg_replace ('/^.+?=/m', '', $content);
+    $content = str_replace ("\n", '.', $content);
+    $content = preg_replace ("/\.$/", '', $content);
+
+    return array (
+      'branch' => $branch,
+      'version' => $content
+    );
   }
 
   // get branches; the branches map to channels as follows:
@@ -40,7 +118,9 @@ class Github {
 
     $url = $this->repoUrl . '/git/refs/heads';
     $url = $this->appendQstring ($url);
-    $result = json_decode ($this->httpClient->get_url ($url));
+
+    $response = $this->httpClient->get_url ($url);
+    $result = json_decode ($response['body']);
 
     // filter result so we just have the crosswalk-* branches
     $crosswalkBranches = array ();
@@ -66,16 +146,14 @@ class Github {
     $branches = array_merge ($crosswalkBranches, $branches);
 
     // now we get the branch, channel and <branch>.object.sha property
-    // for master and the two most recent branches
+    // for master and the two most recent branches as our output
     $data = array ();
 
     // the $branches array is in the same order as the $channels array,
     // so we can just add a channel for each ref
-    $channels = array ('stable', 'beta', 'canary');
-
     foreach ($branches as $index => $branch) {
       $data[] = array (
-        'channel' => $channels[$index],
+        'channel' => self::$CHANNELS[$index],
         'branch' => str_replace ('refs/heads/', '', $branch->ref),
         'sha' => substr ($branch->object->sha, 0, 8)
       );
@@ -96,11 +174,32 @@ if ($rawConfig) {
 }
 
 $github = new Github ($clientID, $clientSecret);
+$contentType = 'application/json';
 
-$data = $github->getBranches ();
+// default message if none of the below match
+$data = 'Invalid query: please use ?branch=X&item=Y, or ?branch=X&fetch=deps, or ' .
+        '?branch=X&fetch=version, or no querystring to fetch branches';
 
-// set JSON header
-header ('Content-Type: application/json');
+if (isset($_GET['branch'])) {
+  if (isset($_GET['item'])) {
+    $data = $github->getContent ($_GET['branch'], $_GET['item']);
+    $contentType = 'text/plain';
+  }
+  else if (isset($_GET['fetch']) && $_GET['fetch'] === 'deps') {
+    $data = $github->getDeps ($_GET['branch']);
+  }
+  else if (isset($_GET['fetch']) && $_GET['fetch'] === 'version') {
+    $data = $github->getVersion ($_GET['branch']);
+  }
+}
+else {
+  $data = $github->getBranches ();
+}
 
-print json_encode ($data);
+if ($contentType === 'application/json') {
+  $data = json_encode ($data);
+}
+
+header ('Content-Type: ' . $contentType);
+print $data;
 ?>

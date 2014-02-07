@@ -51,9 +51,12 @@ class HttpClient {
         return $ch;
     }
 
-    // fetch the URL $url and return the response body
-    function get_url ($url) {
-        $ch = $this->init_curl ($url, array ());
+    // fetch the URL $url and return a result object;
+    // headers is an array of raw headers, e.g.
+    // array ('Content-Type: application/json')
+    // array (body => <response body>, 'status' => <status_code>)
+    function get_url ($url, $headers = array ()) {
+        $ch = $this->init_curl ($url, $headers);
 
         $result = curl_exec ($ch);
 
@@ -61,9 +64,14 @@ class HttpClient {
             throw new Exception ("could not open URL $url");
         }
 
+        $responseInfo = curl_getinfo ($ch);
+
         curl_close ($ch);
 
-        return $result;
+        return array (
+          'body' => $result,
+          'status' => $responseInfo['http_code']
+        );
     }
 }
 
@@ -80,10 +88,13 @@ class CachingHttpClient {
         $this->http_client = $http_client;
     }
 
-    function get_url ($url) {
+    function get_url ($url, $headers = array ()) {
         $caching_on = ($this->cache_time_secs > 0);
         $needs_fetch = true;
         $path = null;
+
+        // to build up the response object
+        $status = 200;
         $content = null;
 
         // only check the file if the cache is turned on
@@ -110,7 +121,10 @@ class CachingHttpClient {
         // $needs_fetch is true if the cached file is invalid or
         // caching is off altogether
         if ($needs_fetch) {
-            $content = $this->http_client->get_url ($url);
+            $result = $this->http_client->get_url ($url, $headers);
+
+            $content = $result['body'];
+            $status = $result['status'];
 
             // write to cache file only if caching is turned on,
             // which implies that $path is set
@@ -136,7 +150,10 @@ class CachingHttpClient {
             }
         }
 
-        return $content;
+        return array (
+          'body' => $content,
+          'status' => $status
+        );
     }
 }
 ?>
