@@ -1,7 +1,7 @@
 /*
  * NOTE: xwalk.css is generated dynamically from xwalk.scss via
  *       xwalk.css.php
- * 
+ *
  * If there is a conversion problem, this file will be prefixed
  * with a note that it is a stale version and that the current
  * scss is failing to parse.
@@ -16,7 +16,7 @@
  * maps by following the insructions here:
 
 https://developers.google.com/chrome-developer-tools/docs/css-preprocessors
- 
+
  *
  */
 @import 'bourbon/bourbon';
@@ -51,7 +51,7 @@ $doc-last-edit-divider: hsl(38, 58%, 80%);
 
 body {
     background-color: $grapefruit;
-    
+
 //    font-size: 17px;
     line-height: 1.4rem;
     @media screen and (max-width: 80ex) {
@@ -62,7 +62,7 @@ body {
         font-size: 1.2rem;
         line-height: 1.5rem;
     }
-    
+
     margin: 0;
     padding: 0;
     min-width: 320px;
@@ -167,13 +167,13 @@ p {
         border-radius: 0.5ex;
         background-color: black;
         pointer-events: none;
-    }    
+    }
 }
 
 #page {
     background: url(assets/tile-chocolate.jpg);
     position: relative;
-    
+
     .missing {
         color: red;
     }
@@ -184,12 +184,12 @@ p {
         overflow: hidden;
         padding: 0;
         margin: 0;
-        
+
         .sub-menu {
 //            position: fixed; /* so onScroll can dynamically set top */
             background-color: $sub-nav-bg;
             color: $sub-nav-fg;
-            
+
             padding-top: 48px;
             padding-bottom: 48px;
             display: inline-block;
@@ -198,7 +198,7 @@ p {
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
-            
+
             a {
                 display: block;
                 text-decoration: none;
@@ -208,37 +208,37 @@ p {
                 line-height: 18px;
                 font-size: 16px;
             }
-            
+
             a:hover {
                 color: $sub-nav-hover-fg;
             }
-        
+
             a.active {
                 background-color: $sub-nav-selected-bg;
                 color: $sub-nav-selected-fg;
             }
-        
+
             a.loading {
                 background-image: url(assets/loading.gif);
                 background-size: 16px 16px;
                 background-position: 2px 50%;
                 background-repeat: no-repeat;
             }
-    
+
             .menu-closed {
                 background-image: url(assets/down.png);
                 background-repeat: no-repeat;
                 background-position: 95% 50%;
                 background-size: auto 50%;
             }
-            
+
             .menu-open {
                 background-image: url(assets/up.png);
                 background-repeat: no-repeat;
                 background-position: 95% 50%;
                 background-size: auto 50%;
             }
-            
+
             .menu-sub-pages {
                 @include transition(opacity 0.25s ease-out);
                 padding-left: 0.25ex;
@@ -258,11 +258,11 @@ p {
             }
         }
     }
-    
+
     .sub-content {
         position: relative;
         left: 250px;
-/*        
+/*
         @media (max-width: $small-break) {
             left: 32px;
         }
@@ -288,7 +288,7 @@ p {
     height: auto;
     min-height: 320px;
     background: $sub-nav-bg;
-    
+
     /* padding-top: height (top-menu); <-- calculated in js */
 }
 
@@ -296,7 +296,7 @@ p {
     p {
         margin: 0 16px;
     }
-    
+
     h1 {
         margin-left: 16px;
         margin-right: 16px;
@@ -324,7 +324,7 @@ p {
             height: round(51px*400px/477px);
         }
     }
-    
+
     .content {
         white-space: normal;
         margin: 32px 0;
@@ -358,14 +358,14 @@ p {
             height: round(51px*400px/477px);
         }
     }
-    
+
     @media (max-width: $tiny-break) {
         .logo {
             background-size: 320px auto;
             height: round(51px*320px/477px);
         }
     }
-    
+
     .content {
         white-space: normal;
         color: #fff4e5;
@@ -392,11 +392,11 @@ p {
             }
         }
     }
-    
+
     .container {
         width: 100%;
     }
-    
+
     .container:before {
         content: '';
         display: inline-block;
@@ -404,7 +404,7 @@ p {
         width: 0px;
         vertical-align: middle;
     }
-    
+
     .more-button-box {
         position: absolute;
         height: 58px;
@@ -426,7 +426,7 @@ p {
             }
         }
     }
-    
+
     #sunburst.background {
         @include background(radial-gradient(circle at 50% 115%, white 0%, white 9%, rgba(252, 217, 89, 0.8) 17%, rgba(246, 137, 55, 0) 45%));
     }
@@ -436,7 +436,7 @@ p {
     #big-circle.background {
        @include background(radial-gradient(farthest-side circle at 40% 115%, rgba(222, 97, 62, 0.2) 0%, rgba(222, 97, 62, 0.3) 90%, rgba(0, 0, 0, 0) 90%));
     }
-    
+
     .button {
         font-family: "ClearSans-Medium",helvetica,georgia,sans-serif;
         height: 40px;
@@ -478,7 +478,7 @@ p {
         margin-top: 18px;
         width: 100%;
     }
-    
+
     #download-button {
         background-color: hsl(35, 100%, 89%);
         border-color: hsl(141, 17%, 49%);
@@ -487,7 +487,7 @@ p {
             color: hsl(35, 100%, 89%);
         }
     }
-    
+
     #download-button:hover {
         background-color: hsl(35, 100%, 94%);
         border-color: hsl(141, 17%, 54%);
@@ -496,7 +496,7 @@ p {
             color: hsl(35, 100%, 94%);
         }
     }
-    
+
     #documentation-button {
         background-color: hsl(35, 100%, 89%);
         border-color: hsl(13, 76%, 57%);
@@ -513,7 +513,7 @@ p {
             color: hsl(35, 100%, 94%);
         }
     }
-    
+
     #contribute-button {
         background-color: hsl(13, 76%, 57%);
         border-color: hsl(36, 100%, 88%);
@@ -531,7 +531,7 @@ p {
         }
     }
 }
-    
+
 .divider {
     border-top: 2px solid;
     text-align: center;
@@ -598,7 +598,7 @@ p {
 }
 
 .tile-overlay {
-    @include background(url(assets/bg-tile.png));    
+    @include background(url(assets/bg-tile.png));
 }
 
 
@@ -606,7 +606,7 @@ p {
     background-color: #3e2220;
     @include background(radial-gradient(circle at 50% 50%, #532824 0%, #3e2220 300px, #2f191e 100%));
     min-width: 320px;
-    
+
     h1 {
         line-height: 1.1em;
     }
@@ -621,7 +621,7 @@ p {
         color: #fcfcfc;
         width: auto;
     }
-    
+
     #illustration {
         background: url(assets/architecture_crosswalk.png) 0% 50% no-repeat;
         background-size: 100% 100%;
@@ -710,7 +710,7 @@ p {
         border-width: 2px 0;
         padding: 16px 0;
     }
-    
+
     table {
         border: 0;
         margin: auto;
@@ -812,7 +812,7 @@ p {
     cursor: pointer;
     opacity: 0.8;
 }
-    
+
 .sample:hover {
     opacity: 1;
 }
@@ -910,13 +910,13 @@ p {
         top: 0px;
         @include transition(top 0.25s ease-out);
     }
-    
+
     @include transition(opacity 0.125s ease-out, top 0.125s ease-out);
 
     &.hide-delay {
          @include transition(opacity 0.125s ease-out 0.75s, top 0.125s ease-out 0.75s);
     }
-    
+
     .slider {
         left: 0px;
         position: absolute;
@@ -932,7 +932,7 @@ p {
             @include transition(left 0.2s ease-out, width 0.2s ease-out);
         }
     }
-    
+
     a {
         display: inline-block;
         height: 64px;
@@ -961,7 +961,7 @@ p {
         left: 0px;
         min-width: 200px;
     }
-    
+
     a.loading {
         background-image: url(assets/loading.gif);
         background-size: 16px 16px;
@@ -971,7 +971,7 @@ p {
         height: 53px;
     }
 
-    
+
     @media (max-width: $medium-break) {
         min-height: 48px;
         top: -48px;
@@ -979,12 +979,12 @@ p {
         &>div{
             padding-right: 8px;
         }
-        
+
         a {
             height: 48px;
             line-height: 48px;
         }
-        
+
         a[href="#home"] {
             background-image: url(assets/crosswalk-LOGO-tiny.png);
             width: 100px;
@@ -1009,7 +1009,7 @@ p {
         &>div{
             padding-right: 6px;
         }
-        
+
         a {
             &.menu-item {
                 padding: 0 4px;
@@ -1017,7 +1017,7 @@ p {
             height: 32px;
             line-height: 32px;
         }
-        
+
         a[href="#home"] {
             width: 20px;
             height: 32px;
@@ -1073,26 +1073,26 @@ p {
         vertical-align: top;
         float: left;
     }
-    
+
     #last-edit {
         border-top: 1px solid $doc-last-edit-divider;
         margin-top: 3rem;
         margin-bottom: -3rem;
         color: $doc-last-edit-fg;
         font-size: 0.8rem;
-        
+
         a {
             color: $doc-last-edit-fg;
             float: right;
         }
     }
-    
+
     .markdown-body h3 {
         font-weight: bold;
         font-size: 15px;
         color: black;
     }
-    
+
     ul.history-list {
         padding-left: 1.75ex;
         li {
@@ -1113,7 +1113,7 @@ p {
             font-size: 0.8rem;
         }
     }
-    
+
     a.primary-link {
         color: #ed7332;
         text-decoration: none;
@@ -1121,6 +1121,35 @@ p {
         background-image: url(dash-grapefruit.svg);
         background-repeat: repeat-x;
         background-size: 4px 2px;
-        background-position: 0 100%; 
+        background-position: 0 100%;
     }
+}
+
+.downloads-table {
+    width: 100%;
+}
+
+/* center channel column headings on downloads page */
+.downloads-table tr:first-child th {
+    text-align: center !important;
+}
+
+/* force first column of downloads table to not wrap its content */
+.downloads-table tr:first-child th:first-child {
+    width: 35%;
+}
+
+/* center channel/platform cells on downloads page */
+.downloads-table td {
+    text-align: center !important;
+}
+
+/* last row greyed out on downloads table */
+.downloads-table .release-notes-row {
+    border-top: 4px solid #dbd4ce !important;
+}
+
+/* no bold on "release notes" text on downloads table */
+.downloads-table .release-notes-heading {
+    font-weight: normal !important;
 }

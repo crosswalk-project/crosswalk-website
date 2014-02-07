@@ -150,7 +150,10 @@ template.css from gollum
       margin-bottom: 15px;
     }
     .markdown-body li {
-      margin: 0px;
+      margin: 15px 0px;
+    }
+    .markdown-body li li {
+      margin: 5px 0px;
     }
     .markdown-body hr {
       background: transparent url(../images/dirty-shade.png) repeat-x 0 0;
