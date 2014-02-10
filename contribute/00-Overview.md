@@ -15,7 +15,7 @@ Now you just need to pick something to focus working on. You can look
 through the [Issues](https://crosswalk-project.org/jira),
 or hop on IRC and ask what people could use help on.
 
-Be sure to follow the [contribution guidelines](#contribute/contributing-code) as you develop your changes. By submitting your contributions to Intel, you agree that your contributions are licensed to Intel under the terms of the [BSD 3 Clause license](http://opensource.org/licenses/BSD-3-Clause). If you do not agree to these licensing terms, please do not submit your contributions to Intel.
+Be sure to follow the [contribution guidelines](#contribute/contributing-code) as you develop your changes. By submitting your contributions to the Crosswalk Project, you agree that your contributions are licensed to Intel under the terms of the [BSD 3 Clause license](http://opensource.org/licenses/BSD-3-Clause). If you do not agree to these licensing terms, please do not submit your contributions to the Crosswalk Project.
 
 ## Testing
 Everything related to test scope, test execution plan, and running tests
