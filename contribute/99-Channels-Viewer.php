@@ -21,30 +21,6 @@
         </tbody>
     </table>
     <script>
-    // simple templating function
-    function tpl(str, data) {
-      return str.replace(/\{([^\}]+)\}/g, function (sub, prop) {
-        return data[prop];
-      });
-    }
-
-    // async GET for JSON responses only
-    var asyncJsonGet = function (path, cb) {
-      var xhr = new XMLHttpRequest();
-
-      xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status === 200) {
-          cb(null, JSON.parse(this.responseText));
-        }
-        else if (this.status >= 400) {
-          cb(new Error('request for ' + path + ' failed; status was ' + this.status));
-        }
-      }
-
-      xhr.open('GET', path, true);
-      xhr.send();
-    };
-
     var showError = function (err) {
         var columns = document.getElementById("columns");
         columns.style.display = "none";
