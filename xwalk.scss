@@ -1144,12 +1144,12 @@ p {
     text-align: center !important;
 }
 
-/* last row greyed out on downloads table */
+/* last row thick top border downloads table */
 .downloads-table .release-notes-row {
     border-top: 4px solid #dbd4ce !important;
 }
 
-/* no bold on "release notes" text on downloads table */
+/* no bold on "release notes" heading on downloads table */
 .downloads-table .release-notes-heading {
     font-weight: normal !important;
 }
