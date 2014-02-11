@@ -1,4 +1,17 @@
 <?php
+// proxy github access to get channels for channel viewer and downloads page
+//
+// this expects a site-config.json file in the root directory in the format:
+/*
+{
+  "GITHUB_CLIENT_ID": "",
+  "GITHUB_CLIENT_SECRET": ""
+}
+*/
+// copy and rename site-config.json.template, and fill in values
+// based on a github registration for the application;
+// without this, this proxy will still work, but will be rate-limited
+
 require ('./cache.php');
 require ('./http.php');
 
@@ -6,7 +19,6 @@ function nameSort ($a, $b) {
   return strcmp ($a->ref, $b->ref);
 }
 
-// proxy github access to get channels for channel viewer and downloads page
 class Github {
   private static $CHANNELS = array ('stable', 'beta', 'canary');
 
@@ -17,10 +29,15 @@ class Github {
 
     $this->repoUrl = 'https://api.github.com/repos/crosswalk-project/crosswalk';
 
-    $this->query = array (
-      'client_id' => $clientID,
-      'client_secret' => $clientSecret
-    );
+    if ($clientID && $clientSecret) {
+        $this->query = array (
+          'client_id' => $clientID,
+          'client_secret' => $clientSecret
+        );
+    }
+    else {
+        $this->query = array ();
+    }
   }
 
   // $extraVars: extra key/value pairs to include in the querystring
@@ -30,14 +47,23 @@ class Github {
     $cleaned = array ();
 
     foreach ($query as $key => $value) {
-      $cleaned[] = urlencode ($key) . '=' . urlencode ($value);
+        $cleaned[] = urlencode ($key) . '=' . urlencode ($value);
     }
 
-    if (!preg_match ('/\?/', $url)) {
-      $url .= '?';
-    }
+    if (sizeof ($cleaned) > 0) {
+        if (!preg_match ('/\?/', $url)) {
+            $url .= '?';
+        }
 
-    return $url .= join ('&', $cleaned);
+        else if (preg_match ('/&/', $url)) {
+            $url .= '&';
+        }
+
+        return $url .= join ('&', $cleaned);
+    }
+    else {
+        return $url;
+    }
   }
 
   // fetch the raw content (Base64 decoded) of the specified $item
