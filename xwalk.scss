@@ -1153,3 +1153,9 @@ p {
 .downloads-table .release-notes-heading {
     font-weight: normal !important;
 }
+
+[data-role="download-cell"][data-loading="true"] {
+    background-image: url(assets/loading.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
