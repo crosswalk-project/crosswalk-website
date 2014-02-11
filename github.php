@@ -1,4 +1,5 @@
 <?php
+require ('./cache.php');
 require ('./http.php');
 
 function nameSort ($a, $b) {
@@ -10,7 +11,9 @@ class Github {
   private static $CHANNELS = array ('stable', 'beta', 'canary');
 
   function Github ($clientID, $clientSecret) {
-    $this->httpClient = new HttpClient ('proxy.config');
+    $baseHttpClient = new HttpClient ('proxy.config');
+    $cache = new Cache (0, 'cache', '.json');
+    $this->httpClient = new LastModifiedHttpClient ($baseHttpClient, $cache);
 
     $this->repoUrl = 'https://api.github.com/repos/crosswalk-project/crosswalk';
 
