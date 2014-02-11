@@ -42,6 +42,7 @@ class HttpClient {
         curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt ($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt ($ch, CURLINFO_HEADER_OUT, true);
 
         if ($this->proxy) {
           curl_setopt ($ch, CURLOPT_HTTPPROXYTUNNEL, true);
@@ -54,22 +55,26 @@ class HttpClient {
     // fetch the URL $url and return a result object;
     // headers is an array of raw headers, e.g.
     // array ('Content-Type: application/json')
-    // array (body => <response body>, 'status' => <status_code>)
+    // array (body => <response body>, 'status' => <status_code>);
+    // any response which returns a 400+ status code is considered an
+    // exception
     function get_url ($url, $headers = array ()) {
         $ch = $this->init_curl ($url, $headers);
 
         $result = curl_exec ($ch);
 
-        if (!$result) {
-            throw new Exception ("could not open URL $url");
-        }
-
         $responseInfo = curl_getinfo ($ch);
+
+        if ($responseInfo['http_code'] >= 400) {
+            $json = json_encode ($responseInfo);
+            throw new Exception ("could not open URL $url; response info: $json");
+        }
 
         curl_close ($ch);
 
         return array (
           'body' => $result,
+          'from_local_cache' => false,
           'status' => $responseInfo['http_code']
         );
     }
@@ -82,86 +87,98 @@ class HttpClient {
 // current request receives a 304 response, the already-cached
 // response is used instead
 class LastModifiedHttpClient {
-
-}
-
-// decorate an HttpClient so that it caches pages it fetches
-// for $cache_time_secs seconds in $cache_dir; note that this
-// sha1 hashes the fetched URL to produce the cache key
-class CachingHttpClient {
-    function CachingHttpClient ($cache_time_secs, $cache_dir, $http_client) {
-        $this->cache_time_secs = $cache_time_secs;
-
-        $cache_dir = rtrim ($cache_dir, DIRECTORY_SEPARATOR);
-        $this->cache_dir = $cache_dir . DIRECTORY_SEPARATOR;
-
+    function LastModifiedHttpClient ($http_client, $cache) {
         $this->http_client = $http_client;
+
+        // ensure that the $cache never automatically invalidates
+        // any of its files
+        $this->cache = $cache;
+        $this->cache->cache_time_secs = 0;
     }
 
     function get_url ($url, $headers = array ()) {
-        $caching_on = ($this->cache_time_secs > 0);
         $needs_fetch = true;
-        $path = null;
+
+        $status = 200;
+        $content = null;
+        $from_local_cache = false;
+
+        // get the last modified time of the existing cached file
+        $key = $this->cache->generate_key ($url);
+        $last_modified = $this->cache->last_modified ($key);
+
+        // add an "If-Modified-Since" header, formatted like
+        // "Sat, 29 Oct 1994 19:43:31 GMT"
+        $formatted_date = date (DateTime::RFC1123, $last_modified);
+        $headers[] = "If-Modified-Since: $formatted_date";
+
+        // fetch the remote page
+        $response = $this->http_client->get_url ($url, $headers);
+
+        // if the response is 304 (Not Modified), return the cached copy
+        if ($response['status'] === 304) {
+            $content = $this->cache->read ($key);
+            $from_local_cache = ($content !== false);
+        }
+
+        // if status !== 304, or we can't read from the local cache, fetch
+        // again and write content to cache
+        if (!$from_local_cache) {
+            $content = $response['body'];
+            $this->cache->write ($key, $content);
+        }
+
+        return array (
+            'status' => $status,
+            'from_local_cache' => $from_local_cache,
+            'body' => $content
+        );
+    }
+}
+
+// decorate an HttpClient so that it caches pages it fetches
+// in $cache
+class CachingHttpClient {
+    function CachingHttpClient ($http_client, $cache) {
+        $this->http_client = $http_client;
+        $this->cache = $cache;
+    }
+
+    private function get_key ($url) {
+        return $this->cache->generate_key ($url);
+    }
+
+    function get_url ($url, $headers = array ()) {
+        $needs_fetch = true;
 
         // to build up the response object
         $status = 200;
         $content = null;
 
         // only check the file if the cache is turned on
-        if ($caching_on) {
-            $key = sha1 (strtolower (urldecode ($url)));
-            $path = $this->cache_dir . $key . '.html';
+        $key = $this->get_key ($url);
 
-            $mtime = @filemtime ($path);
+        if ($this->cache->is_fresh ($key)) {
+            $content = $this->cache->read ($key);
 
-            if ($mtime && ($mtime > (time() - $this->cache_time_secs))) {
-                // try to get a shared lock on the cached file;
-                // this should not be possible if the cache file is being
-                // written to
-                $file = @fopen ($path, 'c+');
-                $filesize = filesize ($path);
-
-                if (($filesize > 0) && flock ($file, LOCK_SH)) {
-                    $content = fread ($file, $filesize);
-                    $needs_fetch = false;
-                }
-            }
+            // we will need to fetch if the cache read failed
+            $needs_fetch = ($content === false);
         }
 
-        // $needs_fetch is true if the cached file is invalid or
-        // caching is off altogether
+        // $needs_fetch is true if the cached file is invalid or stale
         if ($needs_fetch) {
             $result = $this->http_client->get_url ($url, $headers);
 
             $content = $result['body'];
             $status = $result['status'];
 
-            // write to cache file only if caching is turned on,
-            // which implies that $path is set
-            if ($caching_on) {
-                $file = @fopen ($path, 'c');
-
-                // try to get an exclusive lock; this fails if
-                // the cached file is already being written to
-                if ($file && flock ($file, LOCK_EX | LOCK_NB)) {
-                    ftruncate ($file, 0);
-                    fwrite ($file, $content);
-                    fflush ($file);
-                    flock ($file, LOCK_UN);
-                    fclose ($file);
-                }
-                else if (!$file) {
-                    $msg = 'could not write to cache file ' . $path .
-                           'for url ' . $url . '; check that the server ' .
-                           'has access to the parent directory';
-
-                    error_log ($msg);
-                }
-            }
+            $key = $this->get_key ($url);
+            $this->cache->write ($key, $content);
         }
 
         return array (
           'body' => $content,
+          'from_local_cache' => !$needs_fetch,
           'status' => $status
         );
     }
