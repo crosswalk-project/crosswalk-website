@@ -7,6 +7,7 @@ function run () {
 	find documentation -name '*.html' -exec rm -f {} \;
 	find contribute -name '*.html' -exec rm -f {} \;
 	find wiki -name '*.html' -exec rm -f {} \;
+	find cache -name '*.json' -exec rm -f {} \;
 	for i in xwalk markdown; do
 		rm -f $i.css $i.css.map $i.msg
 	done
