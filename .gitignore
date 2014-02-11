@@ -14,5 +14,5 @@ xwalk.css
 markdown.css
 menus.js
 github-regen
-site-config.json
+site-config.php
 cache/*.json
