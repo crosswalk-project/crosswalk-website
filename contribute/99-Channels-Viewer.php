@@ -62,15 +62,7 @@
     // insert one row in the table for a particular OS
     var insertOSRow = function (OS, channel, branch, sha, version,
     chromium_version, chromium_sha, blink_sha) {
-        var download_url = 'https://download.01.org/crosswalk/releases/' +
-                           OS + "/" + channel + "/crosswalk-" + version;
-
-        if (OS === "android-x86") {
-            download_url += "-x86.zip";
-        }
-        else {
-            download_url += "-0.i586.rpm";
-        }
+        var download_url = getXwalkDownloadUrl(OS, channel, version);
 
         var chromium_commit_url = 'https://github.com/crosswalk-project/' +
                                   'chromium-crosswalk/commit/' + chromium_sha;
