@@ -75,6 +75,16 @@ class HttpClient {
     }
 }
 
+// specialised client which keeps a record of when it fetches each URL;
+// on subsequent requests for the same URL, an "If-Modified-Since"
+// header is sent with the request, set from the timestamp on the
+// file (written to the cache from the last successful request); if the
+// current request receives a 304 response, the already-cached
+// response is used instead
+class LastModifiedHttpClient {
+
+}
+
 // decorate an HttpClient so that it caches pages it fetches
 // for $cache_time_secs seconds in $cache_dir; note that this
 // sha1 hashes the fetched URL to produce the cache key
