@@ -14,7 +14,7 @@ $SITE_CONFIG = array (
 // based on a github registration for the application;
 // without this, this proxy will still work, but will be rate-limited
 
-include ('./site-config.php');
+@include ('./site-config.php');
 require ('./cache.php');
 require ('./http.php');
 
