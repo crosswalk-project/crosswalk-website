@@ -109,7 +109,7 @@ class Cache {
         }
         else if (!$file) {
             $msg = 'could not write to cache file ' . $path .
-                   'for key ' . $key . '; check that the server ' .
+                   'for key ' . $key . ' - check that the server ' .
                    'has access to the parent directory';
 
             throw new Exception ($msg);

@@ -125,7 +125,13 @@ class LastModifiedHttpClient {
         // again and write content to cache
         if (!$from_local_cache) {
             $content = $response['body'];
-            $this->cache->write ($key, $content);
+
+            try {
+                $this->cache->write ($key, $content);
+            }
+            catch (Exception $e) {
+                error_log ($e);
+            }
         }
 
         return array (
