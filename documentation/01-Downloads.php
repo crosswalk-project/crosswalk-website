@@ -51,9 +51,7 @@
     <td data-role="download-cell" data-loading="true">
     <a data-role="download-link" data-channel="beta" data-os="tizen-mobile"></a>
     </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="tizen-mobile"></a>
-    </td>
+    <td>-</td>
     </tr>
 
     <tr>
@@ -64,8 +62,15 @@
     <td data-role="download-cell" data-loading="true">
     <a data-role="download-link" data-channel="beta" data-os="tizen-emulator"></a>
     </td>
+    <td>-</td>
+    </tr>
+
+    <tr>
+    <th>Tizen 3.0 Mobile (x86)</th>
+    <td>-</td>
+    <td>-</td>
     <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="tizen-emulator"></a>
+    <a data-role="download-link" data-channel="canary" data-os="tizen-mobile"></a>
     </td>
     </tr>
 
