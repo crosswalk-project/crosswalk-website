@@ -33,13 +33,20 @@ For more information about the release channels, see [the *Release channels* sec
 <th>Tizen 2.x Mobile (x86)</th>
 <td><a href="https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm">${XWALK-STABLE-TIZEN-X86}</a></td>
 <td><a href="https://download.01.org/crosswalk/releases/tizen-mobile/beta/crosswalk-${XWALK-BETA-TIZEN-X86}-0.i586.rpm">${XWALK-BETA-TIZEN-X86}</a></td>
-<td><a href="https://download.01.org/crosswalk/releases/tizen-mobile/canary/">downloads</a></td>
+<td>-</td>
 </tr>
 
 <tr>
 <th>Tizen 2.x Emulator (x86)</th>
 <td><a href="https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm">${XWALK-STABLE-TIZEN-X86}</a></td>
 <td><a href="https://download.01.org/crosswalk/releases/tizen-mobile/beta/crosswalk-emulator-support-${XWALK-BETA-TIZEN-X86}-0.i586.rpm">${XWALK-BETA-TIZEN-X86}</a></td>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Tizen 3.0 Mobile (x86)</th>
+<td>-</td>
+<td>-</td>
 <td><a href="https://download.01.org/crosswalk/releases/tizen-mobile/canary/">downloads</a></td>
 </tr>
 
