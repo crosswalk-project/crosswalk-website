@@ -170,20 +170,22 @@ installation and adding this line (there should be several other
 To host the Crosswalk website, the following needs to be done on the server:
 
     # Initialize the site content into the docroot directory
-    git clone https://github.com/crosswalk-project/crosswalk-website.git docroot
+    sudo git clone https://github.com/crosswalk-project/crosswalk-website.git docroot
     cd docroot
 
     # make a clone of the wiki content
-    git clone --bare https://github.com/crosswalk-project/crosswalk-website.wiki.git wiki.git
+    sudo git clone --bare https://github.com/crosswalk-project/crosswalk-website.wiki.git wiki.git
 
-    # make the wiki and cache directories owned by Apache
-    sudo chown -R wwwrun:www wiki.git
-    sudo chown -R wwwrun:www wiki
-    sudo chown -R wwwrun:www cache
+    # everything should be owned by drush:users...
+    sudo chown -R drush:users * .git*
+
+    # ...except htaccess, and wiki and cache directories
+    # (which Apache needs to write to)
+    sudo chown -R wwwrun:www .htaccess wiki.git wiki cache
 
     # create a configuration file with github credentials (see below)
     sudo cp site-config.php.template site-config.php
-    vi site-config.php
+    sudo vim site-config.php
 
     # Switch to the latest live branch
     . scripts/common.inc
