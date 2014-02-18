@@ -21,205 +21,172 @@ class HttpClient {
     //
     // if not set, 'curl' is tried, then 'fopen', and finally 'shell' if
     // the other two are not available
-    function HttpClient ($proxy_config_location, $url_opener = null) {
+    function HttpClient ($proxy_config_location) {
         $file = @fopen ($proxy_config_location, 'r');
 
         if ($file) {
             $this->proxy = trim (fgets ($file));
             @fclose ($file);
         }
-
-        // use cURL, fopen or php in the shell
-        $this->url_opener = $url_opener;
-
-        if (!$this->url_opener) {
-            // use cURL if available
-            if (extension_loaded ('curl')) {
-                $this->url_opener = 'curl';
-            }
-            // use fopen, if allowed by php.ini
-            else if (ini_get ('allow_fopen_url')) {
-                $this->url_opener = 'fopen';
-            }
-            // fallback to shelling out to php as a last resort
-            else {
-                $this->url_opener = 'shell';
-            }
-        }
     }
 
-    // cURL
-    private function get_url_curl ($url) {
+    // get an initialised cURL request
+    function init_curl ($url, $headers) {
         $ch = curl_init();
 
+        array_push ($headers, 'User-Agent: Crosswalk-website-townxelliot');
+
         curl_setopt ($ch, CURLOPT_URL, $url);
-        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt ($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt ($ch, CURLINFO_HEADER_OUT, true);
 
         if ($this->proxy) {
           curl_setopt ($ch, CURLOPT_HTTPPROXYTUNNEL, true);
           curl_setopt ($ch, CURLOPT_PROXY, $this->proxy);
         }
 
+        return $ch;
+    }
+
+    // fetch the URL $url and return a result object;
+    // headers is an array of raw headers, e.g.
+    // array ('Content-Type: application/json')
+    // array (body => <response body>, 'status' => <status_code>);
+    // any response which returns a 400+ status code is considered an
+    // exception
+    function get_url ($url, $headers = array ()) {
+        $ch = $this->init_curl ($url, $headers);
+
         $result = curl_exec ($ch);
 
-        if (!$result) {
-            throw new Exception ("could not open URL $url");
+        $responseInfo = curl_getinfo ($ch);
+
+        if ($responseInfo['http_code'] >= 400) {
+            $json = json_encode ($responseInfo);
+            throw new Exception ("could not open URL $url; response info: $json");
         }
 
         curl_close ($ch);
 
-        return $result;
+        return array (
+          'body' => $result,
+          'from_local_cache' => false,
+          'status' => $responseInfo['http_code']
+        );
+    }
+}
+
+// specialised client which keeps a record of when it fetches each URL;
+// on subsequent requests for the same URL, an "If-Modified-Since"
+// header is sent with the request, set from the timestamp on the
+// file (written to the cache from the last successful request); if the
+// current request receives a 304 response, the already-cached
+// response is used instead
+class LastModifiedHttpClient {
+    function LastModifiedHttpClient ($http_client, $cache) {
+        $this->http_client = $http_client;
+
+        // ensure that the $cache never automatically invalidates
+        // any of its files
+        $this->cache = $cache;
+        $this->cache->cache_time_secs = 0;
     }
 
-    // fopen
-    private function get_url_fopen ($url) {
-        if ($this->proxy) {
-            $opts = stream_context_create (
-                Array (
-                    'http' => Array (
-                        'proxy' => $this->proxy,
-                        'request_fulluri' => true
-                    )
-                )
-            );
+    function get_url ($url, $headers = array ()) {
+        $needs_fetch = true;
 
-            // see http://php.net/manual/en/function.fopen.php
-            $use_include_path = 0;
+        $status = 200;
+        $content = null;
+        $from_local_cache = false;
 
-            $handle = fopen ($url, 'r', $use_include_path, $opts);
-        }
-        else {
-            $handle = fopen ($url, 'r');
-        }
+        // get the last modified time of the existing cached file
+        $key = $this->cache->generate_key ($url);
+        $last_modified = $this->cache->last_modified ($key);
 
-        if (!$handle) {
-            throw new Exception ("could not open URL $url");
-        }
+        // add an "If-Modified-Since" header, formatted like
+        // "Sat, 29 Oct 1994 19:43:31 GMT"
+        $formatted_date = date (DateTime::RFC1123, $last_modified);
+        $headers[] = "If-Modified-Since: $formatted_date";
 
-        $result = '';
+        // fetch the remote page
+        $response = $this->http_client->get_url ($url, $headers);
 
-        while (!feof ($handle)) {
-            $result .= fgets ($handle);
+        // if the response is 304 (Not Modified), return the cached copy
+        if ($response['status'] === 304) {
+            $content = $this->cache->read ($key);
+            $from_local_cache = ($content !== false);
         }
 
-        @fclose ($handle);
+        // if status !== 304, or we can't read from the local cache, fetch
+        // again and write content to cache
+        if (!$from_local_cache) {
+            $content = $response['body'];
 
-        return $result;
-    }
+            try {
+                $this->cache->write ($key, $content);
+            }
+            catch (Exception $e) {
+                error_log ($e);
+            }
+        }
 
-    // shell: fopen invoked from php cli (!)
-    // only necessary where allow_fopen_url is off and cURL is
-    // not installed;
-    // NB this also needs the php binary to be on the PATH for the
-    // user PHP is running as
-    function get_url_shell ($url) {
-        $output = Array ();
-
-        // TODO make the location of php binary configurable
-        @exec ("php ./http-cli.php $url", $output, $retval);
-
-        if ($retval !== 0) {
-            throw new Exception ("could not open URL $url");
-        }
-        else {
-            return implode ('', $output);
-        }
-    }
-
-    // get the content of a URL using cURL if available, or falling back
-    // to fopen if not, or shell as a last resort;
-    // throws an exception if the URL cannot be opened or if the
-    // $this->url_opener is bad
-    function get_url ($url) {
-        if ($this->url_opener === 'curl') {
-            return $this->get_url_curl ($url);
-        }
-        else if ($this->url_opener === 'fopen') {
-            return $this->get_url_fopen ($url);
-        }
-        else if ($this->url_opener === 'shell') {
-            return $this->get_url_shell ($url);
-        }
-        else {
-            throw new Exception("I don't know how to open URLs with ".
-                                $this->url_opener);
-        }
+        return array (
+            'status' => $status,
+            'from_local_cache' => $from_local_cache,
+            'body' => $content
+        );
     }
 }
 
 // decorate an HttpClient so that it caches pages it fetches
-// for $cache_time_secs seconds in $cache_dir; note that this
-// sha1 hashes the fetched URL to produce the cache key
+// in $cache
 class CachingHttpClient {
-    function CachingHttpClient ($cache_time_secs, $cache_dir, $http_client) {
-        $this->cache_time_secs = $cache_time_secs;
-
-        $cache_dir = rtrim ($cache_dir, DIRECTORY_SEPARATOR);
-        $this->cache_dir = $cache_dir . DIRECTORY_SEPARATOR;
-
+    function CachingHttpClient ($http_client, $cache) {
         $this->http_client = $http_client;
+        $this->cache = $cache;
     }
 
-    function get_url ($url) {
-        $caching_on = ($this->cache_time_secs > 0);
+    private function get_key ($url) {
+        return $this->cache->generate_key ($url);
+    }
+
+    function get_url ($url, $headers = array ()) {
         $needs_fetch = true;
-        $path = null;
+
+        // to build up the response object
+        $status = 200;
         $content = null;
 
         // only check the file if the cache is turned on
-        if ($caching_on) {
-            $key = sha1 (strtolower (urldecode ($url)));
-            $path = $this->cache_dir . $key . '.html';
+        $key = $this->get_key ($url);
 
-            $mtime = @filemtime ($path);
+        if ($this->cache->is_fresh ($key)) {
+            $content = $this->cache->read ($key);
 
-            if ($mtime && ($mtime > (time() - $this->cache_time_secs))) {
-                // try to get a shared lock on the cached file;
-                // this should not be possible if the cache file is being
-                // written to
-                $file = @fopen ($path, 'c+');
-                $filesize = filesize ($path);
-
-                if (($filesize > 0) && flock ($file, LOCK_SH)) {
-                    $content = fread ($file, $filesize);
-                    $needs_fetch = false;
-                }
-            }
+            // we will need to fetch if the cache read failed
+            $needs_fetch = ($content === false);
         }
 
-        // $needs_fetch is true if the cached file is invalid or
-        // caching is off altogether
+        // $needs_fetch is true if the cached file is invalid or stale
         if ($needs_fetch) {
-            $content = $this->http_client->get_url ($url);
+            $result = $this->http_client->get_url ($url, $headers);
 
-            // write to cache file only if caching is turned on,
-            // which implies that $path is set
-            if ($caching_on) {
-                $file = @fopen ($path, 'c');
+            $content = $result['body'];
+            $status = $result['status'];
 
-                // try to get an exclusive lock; this fails if
-                // the cached file is already being written to
-                if ($file && flock ($file, LOCK_EX | LOCK_NB)) {
-                    ftruncate ($file, 0);
-                    fwrite ($file, $content);
-                    fflush ($file);
-                    flock ($file, LOCK_UN);
-                    fclose ($file);
-                }
-                else if (!$file) {
-                    $msg = 'could not write to cache file ' . $path .
-                           'for url ' . $url . '; check that the server ' .
-                           'has access to the parent directory';
-
-                    error_log ($msg);
-                }
-            }
+            $key = $this->get_key ($url);
+            $this->cache->write ($key, $content);
         }
 
-        return $content;
+        return array (
+          'body' => $content,
+          'from_local_cache' => !$needs_fetch,
+          'status' => $status
+        );
     }
 }
 ?>

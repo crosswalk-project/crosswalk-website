@@ -170,15 +170,22 @@ installation and adding this line (there should be several other
 To host the Crosswalk website, the following needs to be done on the server:
 
     # Initialize the site content into the docroot directory
-    git clone https://github.com/crosswalk-project/crosswalk-website.git docroot
+    sudo git clone https://github.com/crosswalk-project/crosswalk-website.git docroot
     cd docroot
 
     # make a clone of the wiki content
-    git clone --bare https://github.com/crosswalk-project/crosswalk-website.wiki.git wiki.git
+    sudo git clone --bare https://github.com/crosswalk-project/crosswalk-website.wiki.git wiki.git
 
-    # make the wiki directories owned by Apache
-    sudo chown -R wwwrun wiki.git
-    sudo chown -R wwwrun wiki
+    # everything should be owned by drush:users...
+    sudo chown -R drush:users * .git*
+
+    # ...except htaccess, and wiki and cache directories
+    # (which Apache needs to write to)
+    sudo chown -R wwwrun:www .htaccess wiki.git wiki cache
+
+    # create a configuration file with github credentials (see below)
+    sudo cp site-config.php.template site-config.php
+    sudo vim site-config.php
 
     # Switch to the latest live branch
     . scripts/common.inc
@@ -196,6 +203,20 @@ which also executes as the Apache user. On Ubuntu this user is `wwwrun`,
 but if you're using a different operating system, or a different Apache
 distribution, the user may be someone else; for example, XAMPP uses
 `nobody` as the user.
+
+## Site configuration
+
+The `site-config.php` file should be created on the server in the root
+directory, using the `site-config.php.template` file as the template.
+
+`site-config.php` requires credentials for accessing the github API
+(see the `github.php` script for how the github API proxy is implemented).
+The proxy is used by the Downloads and Channels Viewer pages, to
+populate the Crosswalk version numbers, download URLs, commit SHAs etc.
+
+The credentials required are a **Client ID** and **Client Secret**,
+which can be created by [registering a new application against a github
+account](https://github.com/settings/applications/new).
 
 ## github configuration for wiki
 

@@ -3,14 +3,19 @@ require_once ('smart-match.inc');
 require_once ('wiki-pages.php');
 require_once ('wiki-history.php');
 require_once ('http.php');
+require_once ('cache.php');
 
 // create an HTTP client with the proxy configuration file 'proxy.config';
 // if this file is not available, no proxy is used
 $base_client = new HttpClient ('proxy.config');
 
+// cache implementation
+$cache_time_secs = 5 * 60; // 5 minutes
+$cache_dir = 'wiki';
+$cache = new Cache ($cache_time_secs, $cache_dir);
+
 // caching http client, used for wiki page fetches
-$cache_time_secs = 5 * 60; // 5 minutes; set to 0 to disable cache
-$client = new CachingHttpClient ($cache_time_secs, 'wiki', $base_client);
+$client = new CachingHttpClient ($base_client, $cache);
 
 $file = 'Home';
 if (isset($_REQUEST) && array_key_exists('f', $_REQUEST)) {
@@ -78,7 +83,9 @@ if (strtolower ($file) == 'wiki/history' ||
 /* If this is a simple wiki/ request (not in a sub-directory), redirect to GitHub */
 if (preg_match ('#^wiki/#', $file)) {
     try {
-        print $client->get_url ('https://github.com/crosswalk-project/crosswalk-website/'.$file);
+        $url = 'https://github.com/crosswalk-project/crosswalk-website/'.$file;
+        $result = $client->get_url ($url);
+        print $result['body'];
     }
     catch (Exception $e) {
         print 'Error: ' . $e->getMessage();
@@ -119,9 +126,9 @@ if (!$cache || $source['mtime'] > $cache['mtime']) {
         // use the non-caching HTTP client to fetch content from the
         // gollum server for every request
         try {
-            $content = $base_client->get_url ('http://localhost:4567/'.$file);
-            print $content;
-            fwrite ($d, $content);
+            $result = $base_client->get_url ('http://localhost:4567/'.$file);
+            print $result['body'];
+            fwrite ($d, $result['body']);
             fflush ($d);
         }
         catch (Exception $e) {
