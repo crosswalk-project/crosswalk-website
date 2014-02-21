@@ -179,7 +179,7 @@
 
           // set the URL and text for the download link
           link.setAttribute('href', url);
-          link.innerText = response.version;
+          link.innerHTML = response.version;
 
           // fill in any of the release notes links which apply
           // for the downloaded version
@@ -189,7 +189,7 @@
               if (rnLink.getAttribute('data-channel') === channel) {
                   var majorVersion = getXwalkMajorVersion(response.version);
                   rnLink.setAttribute('href', getReleaseNotesUrl(majorVersion));
-                  rnLink.innerText = 'Crosswalk-' + majorVersion;
+                  rnLink.innerHTML = 'Crosswalk-' + majorVersion;
 
                   // if the parent node has data-loading="true", remove it
                   // to turn off the spinner
