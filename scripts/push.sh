@@ -252,8 +252,10 @@ function remote () {
     # to it (eg., gfm.php and regen.php) However the update process
     # requires that directory to be writeable by drush:users
     [ -d wiki ] && sudo chown -R drush:users wiki
+    [ -d cache ] && sudo chown -R drush:users cache
     { declare -f drush_routine ; echo drush_routine $* ; } | sudo su drush -
     [ -d wiki ] && sudo chown -R wwwrun:www wiki
+    [ -d cache ] && sudo chown -R wwwrun:www cache
 }
 
 # usage: site.sh push [live | <source>]
