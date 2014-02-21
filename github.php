@@ -207,7 +207,7 @@ class Github {
         $response = $this->checkResponse($response);
 
         if ($response['status'] !== 200) {
-            return $validation;
+            return $response;
         }
         else {
             // filter result so we just have the crosswalk-* branches
