@@ -37,7 +37,9 @@
     <tr>
     <th>Android (ARM)</th>
     <td>-</td>
-    <td>-</td>
+    <td data-role="download-cell" data-loading="true">
+    <a data-role="download-link" data-channel="beta" data-os="android-arm"></a>
+    </td>
     <td data-role="download-cell" data-loading="true">
     <a data-role="download-link" data-channel="canary" data-os="android-arm"></a>
     </td>
