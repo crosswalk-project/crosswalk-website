@@ -12,13 +12,19 @@ function tpl(str, data) {
 // cb: function with signature cb(error, responseText)
 function asyncJsonGet(path, cb) {
     var xhr = new XMLHttpRequest();
+    xhr.timeout = 15000;
+
+    xhr.ontimeout = function () {
+        cb(new Error('request timed out for path ' + path));
+    }
 
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status === 200) {
             cb(null, JSON.parse(this.responseText));
         }
         else if (this.status >= 400) {
-            cb(new Error('request for ' + path + ' failed; status was ' + this.status));
+            cb(new Error('request for ' + path + ' failed; status was ' +
+                         this.status));
         }
     }
 

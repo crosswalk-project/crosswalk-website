@@ -69,6 +69,23 @@ class Github {
       }
     }
 
+    // reject a response with an empty body, regardless of its
+    // status code
+    private function checkResponse ($response) {
+        // empty response body
+        if (preg_match('/^\s*$/m', $response['body'])) {
+            return array (
+                'status' => 500,
+                'body' => 'response body was empty; status code was ' .
+                          $response['status'],
+                'contentType' => 'text/plain'
+            );
+        }
+        else {
+            return $response;
+        }
+    }
+
     // fetch the raw content (Base64 decoded) of the specified $item
     // from $branch
     function getContent ($branch, $item) {
@@ -76,11 +93,21 @@ class Github {
         $url = $this->appendQstring ($url, array ('ref' => $branch));
 
         $response = $this->httpClient->get_url ($url);
+        $response = $this->checkResponse($response);
 
-        $data = json_decode( $response['body']);
-        $content = base64_decode ($data->content);
+        if ($response['status'] !== 200) {
+            return $response;
+        }
+        else {
+            $data = json_decode( $response['body']);
+            $content = base64_decode ($data->content);
 
-        return $content;
+            return array (
+                'status' => 200,
+                'body' => $content,
+                'content-type' => 'text/plain'
+            );
+        }
     }
 
     // fetch DEPS.xwalk for a specified branch;
@@ -94,7 +121,14 @@ class Github {
     // of the shas for chromium_crosswalk_point and
     // blink_crosswalk_point
     function getDeps ($branch) {
-        $content = $this->getContent ($branch, 'DEPS.xwalk');
+        $response = $this->getContent ($branch, 'DEPS.xwalk');
+
+        // if an error occurred, return it immediately
+        if ($response['status'] !== 200) {
+            return $response;
+        }
+
+        $content = $response['body'];
 
         $matches = array ();
 
@@ -108,10 +142,14 @@ class Github {
         $blinkSha = substr ($matches[1], 0, 8);
 
         return array (
-            'branch' => $branch,
-            'chromiumVersion' => $chromiumVersion,
-            'chromiumSha' => $chromiumSha,
-            'blinkSha' => $blinkSha
+            'status' => 200,
+            'body' => json_encode (array (
+                'branch' => $branch,
+                'chromiumVersion' => $chromiumVersion,
+                'chromiumSha' => $chromiumSha,
+                'blinkSha' => $blinkSha
+            )),
+            'contentType' => 'application/json'
         );
     }
 
@@ -125,7 +163,15 @@ class Github {
     */
     // we convert it into a MAJOR.MINOR.BUILD.PATCH string
     function getVersion ($branch) {
-        $content = $this->getContent ($branch, 'VERSION');
+        $response = $this->getContent ($branch, 'VERSION');
+
+        // if an error occurred, return it immediately
+        // if an error occurred, return it immediately
+        if ($response['status'] !== 200) {
+            return $response;
+        }
+
+        $content = $response['body'];
 
         // convert to a version number
         $content = preg_replace ('/^.+?=/m', '', $content);
@@ -133,8 +179,12 @@ class Github {
         $content = preg_replace ("/\.$/", '', $content);
 
         return array (
-            'branch' => $branch,
-            'version' => $content
+            'status' => 200,
+            'body' => json_encode (array (
+                'branch' => $branch,
+                'version' => $content
+            )),
+            'contentType' => 'application/json'
         );
     }
 
@@ -152,46 +202,59 @@ class Github {
         $url = $this->appendQstring ($url);
 
         $response = $this->httpClient->get_url ($url);
-        $result = json_decode ($response['body']);
 
-        // filter result so we just have the crosswalk-* branches
-        $crosswalkBranches = array ();
+        // check for empty body
+        $response = $this->checkResponse($response);
 
-        foreach ($result as $branch) {
-            // include any crosswalk-N branches for sorting
-            if (preg_match ('/crosswalk-/', $branch->ref)) {
-                $crosswalkBranches[] = $branch;
-            }
-            // always keep master
-            else if (preg_match ('/master/', $branch->ref)) {
-                $branches[] = $branch;
-            }
+        if ($response['status'] !== 200) {
+            return $validation;
         }
+        else {
+            // filter result so we just have the crosswalk-* branches
+            $crosswalkBranches = array ();
 
-        // sort them so they're in numerical order
-        usort ($crosswalkBranches, 'nameSort');
+            $result = json_decode ($response['body']);
 
-        // get the last two elements
-        $crosswalkBranches = array_slice ($crosswalkBranches, -2);
+            foreach ($result as $branch) {
+                // include any crosswalk-N branches for sorting
+                if (preg_match ('/crosswalk-/', $branch->ref)) {
+                    $crosswalkBranches[] = $branch;
+                }
+                // always keep master
+                else if (preg_match ('/master/', $branch->ref)) {
+                    $branches[] = $branch;
+                }
+            }
 
-        // add these to the branches we're interested in
-        $branches = array_merge ($crosswalkBranches, $branches);
+            // sort them so they're in numerical order
+            usort ($crosswalkBranches, 'nameSort');
 
-        // now we get the branch, channel and <branch>.object.sha property
-        // for master and the two most recent branches as our output
-        $data = array ();
+            // get the last two elements
+            $crosswalkBranches = array_slice ($crosswalkBranches, -2);
 
-        // the $branches array is in the same order as the $channels array,
-        // so we can just add a channel for each ref
-        foreach ($branches as $index => $branch) {
-          $data[] = array (
-              'channel' => self::$CHANNELS[$index],
-              'branch' => str_replace ('refs/heads/', '', $branch->ref),
-              'sha' => substr ($branch->object->sha, 0, 8)
-          );
+            // add these to the branches we're interested in
+            $branches = array_merge ($crosswalkBranches, $branches);
+
+            // now we get the branch, channel and <branch>.object.sha property
+            // for master and the two most recent branches as our output
+            $data = array ();
+
+            // the $branches array is in the same order as the $channels array,
+            // so we can just add a channel for each ref
+            foreach ($branches as $index => $branch) {
+              $data[] = array (
+                  'channel' => self::$CHANNELS[$index],
+                  'branch' => str_replace ('refs/heads/', '', $branch->ref),
+                  'sha' => substr ($branch->object->sha, 0, 8)
+              );
+            }
+
+            return array (
+                'status' => 200,
+                'body' => json_encode ($data),
+                'contentType' => 'application/json'
+            );
         }
-
-        return $data;
     }
 }
 
@@ -204,39 +267,40 @@ if (isset($SITE_CONFIG)) {
 }
 
 $github = new Github ($clientID, $clientSecret);
-$contentType = 'application/json';
+$response = null;
 
-$data = null;
-
-if (isset($_GET['branch'])) {
-    if (isset($_GET['item'])) {
-        $data = $github->getContent ($_GET['branch'], $_GET['item']);
-        $contentType = 'text/plain';
+try {
+    if (isset($_GET['branch'])) {
+        if (isset($_GET['item'])) {
+            $response = $github->getContent ($_GET['branch'], $_GET['item']);
+        }
+        else if (isset($_GET['fetch']) && $_GET['fetch'] === 'deps') {
+            $response = $github->getDeps ($_GET['branch']);
+        }
+        else if (isset($_GET['fetch']) && $_GET['fetch'] === 'version') {
+            $response = $github->getVersion ($_GET['branch']);
+        }
     }
-    else if (isset($_GET['fetch']) && $_GET['fetch'] === 'deps') {
-        $data = $github->getDeps ($_GET['branch']);
-    }
-    else if (isset($_GET['fetch']) && $_GET['fetch'] === 'version') {
-        $data = $github->getVersion ($_GET['branch']);
+    else {
+        $response = $github->getBranches ();
     }
 }
-else {
-    $data = $github->getBranches ();
+catch (Exception $e) {
+    error_log (print_r ($e, true));
 }
 
-if ($contentType === 'application/json') {
-    $data = json_encode ($data);
-}
-
-if (!$data) {
+if (!$response) {
     // default message if none of the above match
-    $data = 'Invalid query: please use ?branch=X&item=Y, or ?branch=X&fetch=deps, or ' .
-            '?branch=X&fetch=version, or no querystring to fetch branches';
-    $contentType = 'text/plain';
-
-    // TODO set a "bad request" status code
+    $response = array (
+        'body' => 'Invalid query: please use ?branch=X&item=Y, or ' .
+                  '?branch=X&fetch=deps, or ?branch=X&fetch=version, ' .
+                  'or no querystring to fetch branches',
+        'status' => 400, // bad request
+        'contentType' => 'text/plain'
+    );
 }
 
-header ('Content-Type: ' . $contentType);
-print $data;
+header(' ', true, $response['status']);
+header ('Content-Type: ' . $response['contentType']);
+print $response['body'];
 ?>

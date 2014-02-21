@@ -99,7 +99,7 @@ class LastModifiedHttpClient {
     function get_url ($url, $headers = array ()) {
         $needs_fetch = true;
 
-        $status = 200;
+        $status = 0;
         $content = null;
         $from_local_cache = false;
 
@@ -115,21 +115,32 @@ class LastModifiedHttpClient {
         // fetch the remote page
         $response = $this->http_client->get_url ($url, $headers);
 
-        // if the response is 304 (Not Modified), return the cached copy
+        // if the response is 304 (Not Modified), return the cached copy;
+        // NB this will return a 200 status to the caller
         if ($response['status'] === 304) {
+            $status = 200;
             $content = $this->cache->read ($key);
+
+            // set $from_local_cache to true, providing we could read
+            // $content from the cache
             $from_local_cache = ($content !== false);
         }
-
-        // if status !== 304, or we can't read from the local cache, fetch
-        // again and write content to cache
-        if (!$from_local_cache) {
+        else {
+            // set the status and body to whatever the server returned in
+            // its response
+            $status = $response['status'];
             $content = $response['body'];
+        }
 
+        // if status === 200 and we didn't read from the local cache,
+        // write (good) content to cache
+        if (!$from_local_cache && $status === 200) {
             try {
                 $this->cache->write ($key, $content);
             }
             catch (Exception $e) {
+                // NB we still return the response, as
+                // it's only writing to the cache which failed
                 error_log ($e);
             }
         }

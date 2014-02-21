@@ -173,11 +173,17 @@
       var os = link.getAttribute('data-os');
 
       return function (err, response) {
-          // get the URL for the download
-          var url = getXwalkDownloadUrl(os, channel, response.version);
-
           // remove the spinner
           cell.setAttribute('data-loading', 'false');
+
+          if (err) {
+              link.innerHTML = 'github error';
+              console.error(err);
+              return;
+          }
+
+          // get the URL for the download
+          var url = getXwalkDownloadUrl(os, channel, response.version);
 
           // set the URL and text for the download link
           link.setAttribute('href', url);
@@ -205,8 +211,19 @@
 
     // get the current branches
     asyncJsonGet('./github.php', function (err, branches) {
+        var j;
+
+        // clear spinners on release note links on error
+        if (err) {
+            for (j = 0; j < releaseNotesLinks.length; j += 1) {
+                var rnLink = releaseNotesLinks.item(j);
+                rnLink.innerHTML = 'github error';
+                rnLink.parentNode.setAttribute('data-loading', 'false');
+            }
+        }
+
         // populate download links
-        for (var j = 0; j < dlCells.length; j += 1) {
+        for (j = 0; j < dlCells.length; j += 1) {
             var cell = dlCells.item(j);
             var link = cell.querySelector('a[data-role="download-link"]');
 
@@ -215,23 +232,31 @@
             if (!link) {
                 continue;
             }
-
-            var channel = link.getAttribute('data-channel');
-
-            // get the branch for the channel
-            var branch;
-            for (var i = 0; i < branches.length; i += 1) {
-                if (branches[i].channel === channel) {
-                    branch = branches[i].branch;
-                    break;
-                }
+            // if branches could not be retrieved, fill all cells with
+            // an error message
+            else if (err) {
+                link.innerHTML = 'github error';
+                cell.setAttribute('data-loading', 'false');
             }
+            // branches retrieved OK
+            else {
+                var channel = link.getAttribute('data-channel');
 
-            // get the version for the branch; we pass a callback
-            // to the async JSON download, which fills the link text
-            // and URL when the JSON is returned
-            var path = './github.php?fetch=version&branch=' + branch;
-            asyncJsonGet(path, makeCb(cell, link, channel));
+                // get the branch for the channel
+                var branch;
+                for (var i = 0; i < branches.length; i += 1) {
+                    if (branches[i].channel === channel) {
+                        branch = branches[i].branch;
+                        break;
+                    }
+                }
+
+                // get the version for the branch; we pass a callback
+                // to the async JSON download, which fills the link text
+                // and URL when the JSON is returned
+                var path = './github.php?fetch=version&branch=' + branch;
+                asyncJsonGet(path, makeCb(cell, link, channel));
+            }
         }
     });
     </script>
