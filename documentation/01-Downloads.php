@@ -23,46 +23,46 @@
 
     <tr>
     <th>Android (x86)</th>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="stable" data-os="android-x86"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="stable" data-os="android" data-arch="x86"></a>
+    </td>
+    <td>
+    <a data-role="static-download-link" data-channel="beta" data-os="android" data-arch="x86"></a>
     </td>
     <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="beta" data-os="android-x86"></a>
-    </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="android-x86"></a>
+    <a data-role="download-link" data-channel="canary" data-os="android" data-arch="x86"></a>
     </td>
     </tr>
 
     <tr>
     <th>Android (ARM)</th>
     <td>-</td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="beta" data-os="android-arm"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="beta" data-os="android" data-arch="arm"></a>
     </td>
     <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="android-arm"></a>
+    <a data-role="download-link" data-channel="canary" data-os="android" data-arch="arm"></a>
     </td>
     </tr>
 
     <tr>
     <th>Tizen 2.x Mobile (x86)</th>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="stable" data-os="tizen-mobile"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="stable" data-os="tizen-mobile" data-arch="x86"></a>
     </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="beta" data-os="tizen-mobile"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="beta" data-os="tizen-mobile" data-arch="x86"></a>
     </td>
     <td>-</td>
     </tr>
 
     <tr>
     <th>Tizen 2.x Emulator (x86)</th>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="stable" data-os="tizen-emulator"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="stable" data-os="tizen-emulator" data-arch="x86"></a>
     </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="beta" data-os="tizen-emulator"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="beta" data-os="tizen-emulator" data-arch="x86"></a>
     </td>
     <td>-</td>
     </tr>
@@ -72,7 +72,7 @@
     <td>-</td>
     <td>-</td>
     <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="tizen-mobile"></a>
+    <a data-role="download-link" data-channel="canary" data-os="tizen-mobile" data-arch="x86"></a>
     </td>
     </tr>
 
@@ -81,7 +81,7 @@
     <td>-</td>
     <td>-</td>
     <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="tizen-ivi"></a>
+    <a data-role="download-link" data-channel="canary" data-os="tizen-ivi" data-arch="x86"></a>
     </td>
     </tr>
 
@@ -153,109 +153,121 @@
     version numbers page</a> describes how Crosswalk versions are assigned.</p>
 
     <script>
-    // populate the download links and release notes links in the table
-    var sel = 'td[data-role="download-cell"]'
-    var dlCells = document.querySelectorAll(sel);
+    // populate the static download links from versions.js
+    var sel = 'a[data-role="static-download-link"]';
+    var staticLinks = document.querySelectorAll(sel);
+    var link, os, arch, channel, versionsOs, url, version;
+    for (var i = 0; i < staticLinks.length; i++) {
+      link = staticLinks.item(i);
+      os = link.getAttribute('data-os');
+      arch = link.getAttribute('data-arch');
+      channel = link.getAttribute('data-channel');
 
-    // these are release note links; to avoid making unnecessary calls
-    // to github, we populate these when we retrieve the versions for
-    // the stable and beta channels
-    sel = 'a[data-role="release-notes-link"]';
-    var releaseNotesLinks = document.querySelectorAll(sel);
-
-    // make a callback to populate a download link once the version has
-    // been retrieved; note that (for the sake of efficiency) we also
-    // check through the release note links and populate those at the
-    // same time, if the channel of the release note link matches the
-    // channel download link we are populating (to avoid an extra fetch
-    // from the github API)
-    var makeCb = function (cell, link, channel) {
-      var os = link.getAttribute('data-os');
-
-      return function (err, response) {
-          // remove the spinner
-          cell.setAttribute('data-loading', 'false');
-
-          if (err) {
-              link.innerHTML = 'github error';
-              console.error(err);
-              return;
-          }
-
-          // get the URL for the download
-          var url = getXwalkDownloadUrl(os, channel, response.version);
-
-          // set the URL and text for the download link
-          link.setAttribute('href', url);
-          link.innerHTML = response.version;
-
-          // fill in any of the release notes links which apply
-          // for the downloaded version
-          for (var j = 0; j < releaseNotesLinks.length; j += 1) {
-              var rnLink = releaseNotesLinks.item(j);
-
-              if (rnLink.getAttribute('data-channel') === channel) {
-                  var majorVersion = getXwalkMajorVersion(response.version);
-                  rnLink.setAttribute('href', getReleaseNotesUrl(majorVersion));
-                  rnLink.innerHTML = 'Crosswalk-' + majorVersion;
-
-                  // if the parent node has data-loading="true", remove it
-                  // to turn off the spinner
-                  if (rnLink.parentNode.getAttribute('data-loading') === 'true') {
-                      rnLink.parentNode.setAttribute('data-loading', 'false');
-                  }
-              }
-          }
+      // versions.js only knows about 'tizen', not 'tizen-mobile'
+      // and 'tizen-ivi' and 'tizen-emulator'...
+      versionsOs = os;
+      if (/tizen/.test(os)) {
+          versionsOs = 'tizen';
       }
+
+      version = versions[channel][versionsOs][arch];
+
+      url = getXwalkDownloadUrl(os, arch, channel, version);
+      link.setAttribute('href', url);
+      link.innerHTML = version;
+    }
+
+    // populate any download links and release notes links after
+    // fetching version info for a channel/branch
+    var populateLinks = function (channel, branch) {
+        var sel;
+
+        // download links for this channel
+        sel = 'a[data-role="download-link"][data-channel="' + channel + '"]';
+        var dlLinks = document.querySelectorAll(sel);
+
+        // release notes links for this channel
+        sel = 'a[data-role="release-notes-link"][data-channel="' + channel + '"]';
+        var rnLinks = document.querySelectorAll(sel);
+
+        var clearAllSpinners = function () {
+            for (var i = 0; i < dlLinks.length; i++) {
+                dlLinks.item(i).parentNode.setAttribute('data-loading', false);
+            }
+
+            for (i = 0; i < rnLinks.length; i++) {
+                rnLinks.item(i).parentNode.setAttribute('data-loading', false);
+            }
+        };
+
+        var githubError = function () {
+            for (var i = 0; i < dlLinks.length; i++) {
+                dlLinks.item(i).parentNode.innerHTML = 'github error';
+            }
+
+            for (i = 0; i < rnLinks.length; i++) {
+                rnLinks.item(i).parentNode.innerHTML = 'github error';
+            }
+        };
+
+        // get version for this branch
+        var path = './github.php?fetch=version&branch=' + branch;
+        asyncJsonGet(path, function (err, response) {
+            if (err) {
+                clearAllSpinners();
+                githubError();
+                return;
+            }
+
+            var i, link, url, text;
+            var version = response.version;
+            var majorVersion = getXwalkMajorVersion(version);
+
+            // populate download links
+            for (i = 0; i < dlLinks.length; i++) {
+                link = dlLinks.item(i);
+                link.innerHTML = version;
+                link.href = getXwalkDownloadUrl(
+                    link.getAttribute('data-os'),
+                    link.getAttribute('data-arch'),
+                    channel,
+                    version
+                );
+            }
+
+            // populate release notes links
+            for (i = 0; i < rnLinks.length; i++) {
+                link = rnLinks.item(i);
+                link.innerHTML = 'Crosswalk-' + majorVersion;
+                link.href = getReleaseNotesUrl(majorVersion);
+            }
+
+            clearAllSpinners();
+        });
     };
 
-    // get the current branches
+    // get the branches; for each, populate the links corresponding
+    // to the channel for that branch
     asyncJsonGet('./github.php', function (err, branches) {
-        var j;
-
-        // clear spinners on release note links on error
+        // on error, clear all the loading spinners for the whole table
         if (err) {
-            for (j = 0; j < releaseNotesLinks.length; j += 1) {
-                var rnLink = releaseNotesLinks.item(j);
-                rnLink.innerHTML = 'github error';
-                rnLink.parentNode.setAttribute('data-loading', 'false');
+            var spinnerElts = document.querySelectorAll('[data-loading="true"]');
+            var elt;
+            for (var i = 0; i < spinnerElts.length; i++) {
+                elt = spinnerElts.item(i);
+                elt.setAttribute('data-loading', 'false');
+                elt.innerHTML = 'github error';
             }
         }
-
-        // populate download links
-        for (j = 0; j < dlCells.length; j += 1) {
-            var cell = dlCells.item(j);
-            var link = cell.querySelector('a[data-role="download-link"]');
-
-            // if this cell has no download link, ignore it
-            // (it's a release notes cell)
-            if (!link) {
-                continue;
-            }
-            // if branches could not be retrieved, fill all cells with
-            // an error message
-            else if (err) {
-                link.innerHTML = 'github error';
-                cell.setAttribute('data-loading', 'false');
-            }
-            // branches retrieved OK
-            else {
-                var channel = link.getAttribute('data-channel');
-
-                // get the branch for the channel
-                var branch;
-                for (var i = 0; i < branches.length; i += 1) {
-                    if (branches[i].channel === channel) {
-                        branch = branches[i].branch;
-                        break;
-                    }
-                }
-
-                // get the version for the branch; we pass a callback
-                // to the async JSON download, which fills the link text
-                // and URL when the JSON is returned
-                var path = './github.php?fetch=version&branch=' + branch;
-                asyncJsonGet(path, makeCb(cell, link, channel));
+        else {
+            // iterate the branches; for each branch/channel, fetch the version
+            // and populate any corresponding download links and release
+            // note links
+            var channel, branch;
+            for (var i = 0; i < branches.length; i++) {
+                channel = branches[i].channel;
+                branch = branches[i].branch;
+                populateLinks(channel, branch);
             }
         }
     });

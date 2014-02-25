@@ -37,8 +37,10 @@ function asyncJsonGet(path, cb) {
 // channel: 'stable', 'beta', 'canary'
 // OS: 'android-x86', 'android-arm', 'tizen-mobile', 'tizen-ivi',
 // 'tizen-emulator'
-// version: e.g. "4.32.25.1"
-function getXwalkDownloadUrl(OS, channel, version) {
+// version: e.g. "4.32.25.1";
+// version is optional; if omitted, the URL points to the parent folder
+// rather than a specific download file
+function getXwalkDownloadUrl(OS, arch, channel, version) {
     var file_prefix = "crosswalk-";
 
     // tizen emulator downloads are in the same directory as the
@@ -48,20 +50,31 @@ function getXwalkDownloadUrl(OS, channel, version) {
         file_prefix += "emulator-support-";
     }
 
-    var download_url = 'https://download.01.org/crosswalk/releases/' +
-                       OS + "/" + channel + "/" + file_prefix + version;
+    var download_url = 'https://download.01.org/crosswalk/releases/' + OS;
 
-    if (OS === "android-x86") {
-        download_url += "-x86.zip";
+    if (OS === "android") {
+        download_url += "-" + arch
     }
-    else if (OS === "android-arm") {
-        download_url += "-arm.zip";
-    }
-    else if (OS === "tizen-ivi") {
-        download_url += "-0.i686.rpm";
-    }
-    else {
-        download_url += "-0.i586.rpm";
+
+    download_url += "/" + channel + "/";
+
+    if (version) {
+        download_url += file_prefix + version;
+
+        if (OS === "android" && arch === "x86") {
+            download_url += "-x86.zip";
+        }
+        else if (OS === "android" && arch === "arm") {
+            download_url += "-arm.zip";
+        }
+        // as of tizen-mobile 5.32.88.0, suffix changed to 686
+        else if (OS === "tizen-ivi" || (OS === "tizen-mobile" && channel === "canary")) {
+            download_url += "-0.i686.rpm";
+        }
+        // older tizen-mobile
+        else {
+            download_url += "-0.i586.rpm";
+        }
     }
 
     return download_url;

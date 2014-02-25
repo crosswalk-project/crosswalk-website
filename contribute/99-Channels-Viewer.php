@@ -60,9 +60,9 @@
       'target="_blank">{blink_sha}</a></td>';
 
     // insert one row in the table for a particular OS
-    var insertOSRow = function (OS, channel, branch, sha, version,
+    var insertOSRow = function (OS, arch, channel, branch, sha, version,
     chromium_version, chromium_sha, blink_sha) {
-        var download_url = getXwalkDownloadUrl(OS, channel, version);
+        var download_url = getXwalkDownloadUrl(OS, arch, channel);
 
         var chromium_commit_url = 'https://github.com/crosswalk-project/' +
                                   'chromium-crosswalk/commit/' + chromium_sha;
@@ -102,8 +102,8 @@
     };
 
     var createRows = function (channel, branch, sha, version, chromium_version, chromium_sha, blink_sha) {
-        insertOSRow("android-x86", channel, branch, sha, version, chromium_version, chromium_sha, blink_sha);
-        insertOSRow("tizen-mobile", channel, branch, sha, version, chromium_version, chromium_sha, blink_sha);
+        insertOSRow("android", "x86", channel, branch, sha, version, chromium_version, chromium_sha, blink_sha);
+        insertOSRow("tizen-mobile", "x86", channel, branch, sha, version, chromium_version, chromium_sha, blink_sha);
     };
 
     // do ajax requests to the github proxy on this server to
