@@ -279,6 +279,21 @@ These tools are only required if you intend to deploy Crosswalk applications to 
         [ ] Android 4.3 (API 18)
           [x] SDK Platform
 
+    On the command line run the following commands to install:
+        
+        # Android SDK Platform-tools 19.0.1
+        $ android update sdk -u -a --filter 3
+        
+        # Android SDK Build tools 18.0.1
+        $ android update sdk -u -a --filter 9
+        
+        # Android 4.3 (API 18) SDK Platform
+        $ android update sdk -u -a --filter 13
+        
+        You can list all available packages using the command:
+        
+        $ android list sdk --all
+          
     Note that if you are using devices with versions of Android later than 4.3, you should install the platform tools, build tools and SDK platform for those versions too.
 
 5.  Add the SDK directories to your `PATH` by appending these lines to `~/.bashrc`:
