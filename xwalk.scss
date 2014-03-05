@@ -887,7 +887,6 @@ p {
 
 #top-menu {
     display: inline-block;
-    text-align: right;
     position: fixed;
     background: $top-menu-bg;
     color: $top-menu-fg;
@@ -903,6 +902,10 @@ p {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
     &>div{
         padding-right: 100px;
+    }
+
+    .top-menu-right {
+        text-align: right;
     }
 
     .menu-item {
