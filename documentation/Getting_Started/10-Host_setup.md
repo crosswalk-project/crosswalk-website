@@ -54,7 +54,7 @@ The instructions below explain how to set up the required dev tools on the follo
 The steps for installing the dev tools are:
 
 1.  [Install utilities](#documentation/getting_started/host_setup/Installing-utilities) (curl, unzip, tar, gzip; used to install other tools)
-2.  [Install Python 2.7](#documentation/getting_started/host_setup/Installing-Python-2.7) (**note that you need version 2.7.* of Python, as the Crosswalk scripts are not compatible with Python 3**).
+2.  [Install Python](#documentation/getting_started/host_setup/Installing-Python).
 3.  [Install the Oracle Java Development Kit (JDK)](#documentation/getting_started/host_setup/Installing-the-Oracle-JDK). **Note: It is important that you use the Oracle JDK, rather than the OpenJDK, as Ant may not work correctly with the latter.**
 4.  [Install Ant](#documentation/getting_started/host_setup/Installing-Ant).
 5.  [Configure your environment](#documentation/getting_started/host_setup/Configuring-your-environment).
@@ -107,7 +107,7 @@ You can now open a Git Bash session by going to your Start Menu and typing **Git
 
 Select *Git Bash* to open a console window running the bash shell.
 
-### Installing Python 2.7
+### Installing Python
 
 #### Linux
 
@@ -119,9 +119,9 @@ This installs Python globally, so any user can run it.
 
 #### Windows
 
-Install Python 2.7.x. You can get it from http://www.python.org/getit. Look for the latest 2.7.x release for Windows, and choose an "MSI installer" for your architecture (32 or 64 bit).
+Get Python from http://www.python.org/getit, choosing an "MSI installer" for your architecture (32 or 64 bit).
 
-When the installer starts, choose *Install for all users* and set **C:\Python27** as the installation location. You will need to manually add the Python directory to your path for it to be available in the bash shell (see [Configuring your environment](#Configuring-your-environment)).
+When the installer starts, choose *Install for all users* and set **C:\Python** as the installation location. You will need to manually add the Python directory to your path for it to be available in the bash shell (see [Configuring your environment](#Configuring-your-environment)).
 
 ### Installing the Oracle JDK
 
@@ -173,7 +173,7 @@ The next step is to set up your environment so that binaries and scripts which w
     # on Windows, you need to add the Python install directory
     # and the JDK bin directory
     export PATH=/c/jdk7/bin:$PATH
-    export PATH=/c/Python27/:$PATH
+    export PATH=/c/Python/:$PATH
 
     # on Linux, you just need the JDK bin directory as Python is
     # installed globally
