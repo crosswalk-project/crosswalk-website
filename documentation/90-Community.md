@@ -4,6 +4,9 @@ Crosswalk is an open source project. All of our communication, source files, and
 ## Mailing lists
 You can join the Crosswalk developer and user mailing lists on the [Crosswalk MailMan](http://lists.crosswalk-project.org) page.
 
+*   The [crosswalk-help](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-help) list is intended for application developers who want to use Crosswalk as a web application runtime.
+*   The [crosswalk-dev](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev) and [crosswalk-autotest](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-autotest) lists are for developers working on the Crosswalk core.
+
 ## IRC Channel
 Connect to the [Freenode IRC Network](irc://freenode.net) and join us on the [#crosswalk](irc://irc.freenode.net/crosswalk) channel.
 
