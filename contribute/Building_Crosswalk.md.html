@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'contribute/Building_Crosswalk';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>contribute/Building_Crosswalk</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Building Crosswalk</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/contribute/Building_Crosswalk"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/contribute/Building_Crosswalk"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<h2>Environment<a class="anchor" id="Environment" href="#Environment"></a></h2>
+
+<p>Please setup the build environment by following the instructions in Chromium's wiki:</p>
+
+<ul><li><a href="http://www.chromium.org/developers/how-tos/build-instructions-windows#TOC-Build-environment">Setting up the environment for Windows</a>.</li>
+<li><a href="http://code.google.com/p/chromium/wiki/LinuxBuildInstructionsPrerequisites">Setting up the environment for Linux</a>.</li>
+<li><a href="http://code.google.com/p/chromium/wiki/AndroidBuildInstructions#Install_prerequisites">Setting up the environment for Android</a>.</li>
+</ul><h2>Get the code<a class="anchor" id="Get-the-code" href="#Get-the-code"></a></h2>
+
+<h3>Before starting: Android<a class="anchor" id="Before-starting:-Android" href="#Before-starting:-Android"></a></h3>
+
+<p>If you are building Crosswalk for Android, you should first set the <code>XWALK_OS_ANDROID</code> environment variable:</p>
+
+<pre><code>export XWALK_OS_ANDROID=1
+</code></pre>
+
+<h3>Run <code>gclient</code><a class="anchor" id="Run-gclient" href="#Run-gclient"></a></h3>
+
+<p>Crosswalk uses <code>gclient</code> to manage the code and dependencies. To get <code>gclient</code> tool, you should install <a href="http://www.chromium.org/developers/how-tos/install-depot-tools">depot_tools</a>.</p>
+
+<p>First, you need to create a source directory:</p>
+
+<pre><code>mkdir ~/git/crosswalk
+cd ~/git/crosswalk
+</code></pre>
+
+<p>Execute the following command to gclient auto-generate <code>.gclient</code> file.</p>
+
+<pre><code>gclient config --name=src/xwalk \
+               git://github.com/crosswalk-project/crosswalk.git
+</code></pre>
+
+<p>NOTE: You can replace git:// with ssh://git@ if you want to use your 
+GitHub credentials when checking out the code.</p>
+
+<p>At the same level of <code>.gclient</code> file, execute</p>
+
+<pre><code>gclient sync
+</code></pre>
+
+<p>to fetch all codes.</p>
+
+<h3>Tracking a different Crosswalk branch<a class="anchor" id="Tracking-a-different-Crosswalk-branch" href="#Tracking-a-different-Crosswalk-branch"></a></h3>
+
+<p>If you want to track a Crosswalk branch other than <code>master</code> (a beta or stable branch, for example), there are two different approaches you can use.</p>
+
+<h4>From scratch<a class="anchor" id="From-scratch" href="#From-scratch"></a></h4>
+
+<p>In case you have not cloned Crosswalk's source code yet, just pass a different URL to the <code>gclient config</code> call above. To track the <em>crosswalk-2</em> branch, for example:</p>
+
+<pre><code>gclient config --name=src/xwalk \
+               git://github.com/crosswalk-project/crosswalk.git@origin/crosswalk-2
+</code></pre>
+
+<h4>Changing an existing checkout<a class="anchor" id="Changing-an-existing-checkout" href="#Changing-an-existing-checkout"></a></h4>
+
+<p>If you have already cloned Crosswalk and want to change the branch being tracked, you need to check out a new git branch and then edit your <code>.gclient</code> file.</p>
+
+<p>For example, let us assume you want to track the <em>crosswalk-2</em> branch. First of all, check out a new branch in your Crosswalk repository:</p>
+
+<pre><code>cd /path/to/src/xwalk
+git checkout -b crosswalk-2 origin/crosswalk-2
+</code></pre>
+
+<p>Next, edit your <code>.gclient</code> file (generated above) and change the <code>url</code> entry. It should look like this:</p>
+
+<div class="highlight"><pre><span class="c"># ...</span>
+<span class="s">"url"</span><span class="p">:</span> <span class="s">"git://github.com/crosswalk-project/crosswalk.git@origin/crosswalk-2"</span><span class="p">,</span>
+<span class="c"># ...</span>
+</pre></div>
+
+<p>After that, just sync your code again:</p>
+
+<pre><code>gclient sync
+</code></pre>
+
+<h2>Build Instructions<a class="anchor" id="Build-Instructions" href="#Build-Instructions"></a></h2>
+
+<p><code>ninja</code> is the recommended by build for building Crosswalk in most platforms. Its <a href="http://code.google.com/p/chromium/wiki/NinjaBuild">website</a> contains more usage instructions.</p>
+
+<p>We use <code>gyp</code> to generate Crosswalk projects, go to <code>src</code> directory, execute</p>
+
+<pre><code>export GYP_GENERATORS='ninja'
+python xwalk/gyp_xwalk
+</code></pre>
+
+<p>at this point you have built the projects with gyp and are ready for the actual compilation. To build the launcher now execute:</p>
+
+<pre><code>ninja -C out/Release xwalk
+</code></pre>
+
+<p>Optionally, to build the tests, execute:</p>
+
+<pre><code>ninja -C out/Release xwalk_unittest
+ninja -C out/Release xwalk_browsertest
+</code></pre>
+
+<h3>Build Instructions for Android<a class="anchor" id="Build-Instructions-for-Android" href="#Build-Instructions-for-Android"></a></h3>
+
+<p>Install the dependency of building crosswalk on Ubuntu machine</p>
+
+<pre><code>sudo ./build/install-build-deps-android.sh
+</code></pre>
+
+<p>First of all, set up the Android build environment. If you are targeting 
+ARM, pass <code>arm</code> instead of <code>x86</code> below:</p>
+
+<pre><code>. xwalk/build/android/envsetup.sh --target-arch=x86
+</code></pre>
+
+<p>Generate Crosswalk projects, execute</p>
+
+<pre><code> export GYP_GENERATORS='ninja'
+ xwalk_android_gyp
+ ./xwalk/gyp_xwalk
+</code></pre>
+
+<p>To build xwalk core and runtime shell(for developer testing purpose, not 
+used by public), execute:</p>
+
+<pre><code>ninja -C out/Release xwalk_core_shell_apk xwalk_runtime_shell_apk
+</code></pre>
+
+<p>To build xwalk runtime library APK, execute:</p>
+
+<pre><code>ninja -C out/Release xwalk_runtime_lib_apk
+</code></pre>
+
+<p>To build a sample web app APK, execute:</p>
+
+<pre><code>ninja -C out/Release xwalk_app_template_apk
+</code></pre>
+
+<p>Run test runtime shell
+</p><div class="highlight"><pre><span class="n">adb</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">out</span><span class="o">/</span><span class="n">Release</span><span class="o">/</span><span class="n">apks</span><span class="o">/</span><span class="n">XWalkRuntimeLib</span><span class="p">.</span><span class="n">apk</span> 
+<span class="n">adb</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">out</span><span class="o">/</span><span class="n">Release</span><span class="o">/</span><span class="n">apks</span><span class="o">/</span><span class="n">XWalkRuntimeClientShell</span><span class="p">.</span><span class="n">apk</span>
+<span class="n">adb</span> <span class="n">shell</span> <span class="n">am</span> <span class="n">start</span> <span class="o">-</span><span class="n">n</span> 
+<span class="n">org</span><span class="p">.</span><span class="n">xwalk</span><span class="p">.</span><span class="n">runtime</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">shell</span><span class="o">/</span><span class="n">org</span><span class="p">.</span><span class="n">xwalk</span><span class="p">.</span><span class="n">runtime</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">shell</span><span class="p">.</span><span class="n">XWalkRuntimeClientShellActivity</span>
+</pre></div>
+
+<h3>Build Instructions for Tizen<a class="anchor" id="Build-Instructions-for-Tizen" href="#Build-Instructions-for-Tizen"></a></h3>
+
+<p>If you are unfamiliar with the RPM packaging process on Tizen, be sure to take a look at the <a href="https://source.tizen.org/documentation/reference/git-build-system">GBS documentation</a> in Tizen's website.</p>
+
+<p>Crosswalk's layout is a bit unusual, as it actually contains several independent git and Subversion repositories in the same directory tree. We employ some tricks to make it work with GBS, but it should all be transparent to users -- the only actual caveat is that GBS will build <em>everything</em> that is in your source tree regardless of whether it has been committed or not; that is, it always acts as if the <code>--include-all</code> parameter has been passed to <code>gbs build</code>.</p>
+
+<p>That said, building an RPM for Tizen (after properly setting up your Tizen repositories) should be a matter of calling <code>gbs build</code>:</p>
+
+<pre><code>cd /path/to/src/xwalk
+gbs build -A i586
+</code></pre>
+
+<p>By default, the generated RPM files should be in <code>~/GBS-ROOT/local/repos/&lt;repository name&gt;/i586/RPMS</code>.</p>
+
+<h4>Incremental builds<a class="anchor" id="Incremental-builds" href="#Incremental-builds"></a></h4>
+
+<p>By default, each time you call <code>gbs build</code> the Tizen build directory will be erased and the build will start from scratch. To avoid that, you can set a different build directory in the Tizen chroot, outside <code>/home/abuild/rpmbuild</code>:</p>
+
+<pre><code>gbs build -A i586 --define 'BUILDDIR_NAME /tmp/crosswalk-builddir'
+</code></pre>
+
+<h4>Troubleshooting<a class="anchor" id="Troubleshooting" href="#Troubleshooting"></a></h4>
+
+<ul><li>The directory you use as the GBS root must be an actual directory: symbolic links can cause problems.</li>
+<li>The GBS root directory must be on the same partition as your root directory (<code>/</code>).</li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>James Ketrenos</b>, 2013-12-02 22:19:51</p>
+  <p>
+    <a id="delete-link" href="/contribute/Building_Crosswalk" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/contribute/Building_Crosswalk">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
