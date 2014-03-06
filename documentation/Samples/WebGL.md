@@ -3,7 +3,8 @@
 Ah, the power of WebGL. This sample provides a quick example of integrating ThreeJS into a Crosswalk application.
 
 Follow the steps on [Running an Application](#documentation/getting_started/running_an_application), using ***webgl*** as the source path for either Android or Tizen.
-### WebGL on Android
+
+## WebGL on Android
 Following the steps from the [Packaging for 
 Android](#documentation/getting_started/building_an_application/packaging-for-android), 
 you build the WebGL.APK as follows:
