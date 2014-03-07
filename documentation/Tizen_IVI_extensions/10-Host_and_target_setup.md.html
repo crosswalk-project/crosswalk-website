@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Tizen_IVI_extensions/10 Host_and_target_setup';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Tizen_IVI_extensions/10 Host_and_target_setup</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Host and target setup for extensions</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Tizen_IVI_extensions/10-Host_and_target_setup"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Tizen_IVI_extensions/10-Host_and_target_setup"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>In this section, we set up the host computer for Crosswalk Tizen development: enabling IVI support in the Tizen SDK on your host, creating a Tizen IVI target, and installing Crosswalk on it.</p>
+
+<p>The host should first be <a href="#documentation/getting_started/host_setup">set up for Crosswalk development</a>; in particular, you need to install the Tizen SDK. Then there are a couple of additional steps to enable you to compile native code for Tizen, described below.</p>
+
+<p><strong>Note:</strong> these steps are only necessary if you are writing Crosswalk Tizen extensions: they are not required if you are writing Crosswalk Android extensions, or just using Crosswalk as a runtime for a web app.</p>
+
+<h2>Install a Tizen IVI image<a class="anchor" id="Install-a-Tizen-IVI-image" href="#Install-a-Tizen-IVI-image"></a></h2>
+
+<p>First, get hold of a Tizen IVI emulator image (there are no physical Tizen IVI devices at present). To do this:</p>
+
+<ol><li><p><a href="#documentation/getting_started/host_setup/Optional:-installing-tools-for-Tizen-targets">Install the Tizen SDK</a>.</p></li>
+<li><p>Follow <a href="#documentation/getting_started/tizen_target_setup/Tizen-emulator">these instructions</a> to set up the Tizen SDK emulator. Then start the Tizen SDK Install Manager.</p></li>
+<li><p>Use the Install Manager to set up the Tizen SDK for the "latest" channel, which contains the IVI image. You need to do this because the IVI image is not part of the stable SDK (as of 2014-03-03).</p>
+
+<p>To do this, open the Install Manager, then click the <em>Advanced</em> button. Follow the instructions at <a href="https://wiki.tizen.org/wiki/Tizen_IVI_SDK">https://wiki.tizen.org/wiki/Tizen_IVI_SDK</a> to enable the "latest" channel.</p>
+
+<p>Select <em>OK</em> to go back to the main Install Manager screen.</p></li>
+<li><p>Once configured, select <em>Next</em> to go to the component selection screen. Select the components you need:</p>
+
+<pre><code>[ ] Native App Development
+  [x] Toolchain
+  [x] Native IDE
+  [x] Command Line tools
+    [x] Toolchain
+    [x] Native IDE Core Resources
+    [x] Native Rootstrap
+[x] Common Tools
+  [x] x86 Emulator
+[ ] Platforms
+  [x] IVI 3.0
+    [x] x86 Platform Image
+    [x] Web IDE Core Resources for IVI profile
+</code></pre>
+
+<p>Even if you don't intend to use the Web IDE, the Emulator Manager will not run correctly without the <em>Web IDE Core Resources for IVI profile</em> component.</p></li>
+</ol><h2>Create a Tizen IVI virtual machine (VM)<a class="anchor" id="Create-a-Tizen-IVI-virtual-machine-(VM)" href="#Create-a-Tizen-IVI-virtual-machine-(VM)"></a></h2>
+
+<p>You can now create the VM:</p>
+
+<ol><li><p>Open the Tizen Emulator Manager. <a href="#documentation/getting_started/tizen_target_setup/Tizen-emulator">These instructions</a> explain how to do this.</p></li>
+<li><p>In the <em>ivi-3.0</em> tab, select <em>Add New</em> to create a new VM.</p></li>
+<li><p>In the <em>Detail</em> panel (on the right), set <em>Name</em> to <strong>tizen-IVI</strong> and <em>Base Image</em> to <strong>emulimg-3.0.x86</strong>. Accept the defaults for the remaining fields and click on <em>Confirm</em>.</p>
+
+<p>The result should look like this:</p>
+
+<p><img src="assets/tizen-emulator-manager-tizen-ivi.png" alt="Tizen emulator manager for Tizen IVI" /></p></li>
+<li><p>Start the Tizen IVI VM using the blue "play" button. It can take a while to start, so don't be alarmed if nothing seems to be happening.</p></li>
+<li><p>From a command line, you can check whether the VM has booted with this command:</p>
+
+<pre><code>sdb devices
+</code></pre>
+
+<p>If the VM is ready, you should get output like this:</p>
+
+<pre><code>List of devices attached
+emulator-26101          device          tizen-IVI
+</code></pre>
+
+<p>If it isn't ready, you will see:</p>
+
+<pre><code>error msg: target not found
+</code></pre></li>
+</ol><h2>Install Crosswalk<a class="anchor" id="Install-Crosswalk" href="#Install-Crosswalk"></a></h2>
+
+<p>You can now install Crosswalk on the target VM:</p>
+
+<ol><li><p>Once the target VM is ready, get a root shell on it with:</p>
+
+<pre><code>sdb root on
+Switched to `root` account mode
+
+sdb shell
+</code></pre>
+
+<p>The shell prompt should be <code>#</code> if you are root. If it isn't, exit, ensure that root mode is on, then try to get a root shell again.</p></li>
+<li><p>From the shell on the target, download the Crosswalk package:</p>
+
+<pre><code>curl -O https://download.01.org/crosswalk/releases/tizen-ivi/canary/crosswalk-5.32.87.0-0.i586.rpm
+</code></pre>
+
+<p>And install it:</p>
+
+<pre><code>rpm -ih crosswalk-5.32.87.0-0.i586.rpm
+</code></pre>
+
+<p>I suggest you use Crosswalk for Tizen, version 5.32.87.0: this will install successfully on a Tizen IVI VM. The other version I tried (5.34.94.0) wouldn't install. (Note that this is to be expected, as Crosswalk for Tizen IVI is still considered unstable, and some versions may not work.)</p></li>
+<li><p>Check the installation is working by switching to the <code>app</code> user. This user has the correct configuration to be able to run Crosswalk on the target:</p>
+
+<pre><code># still as the root user
+su - app
+</code></pre>
+
+<p>Then test that Crosswalk can run:</p>
+
+<pre><code>xwalk
+</code></pre>
+
+<p>You should see some messages about <a href="https://github.com/01org/ozone-wayland">Ozone</a>, e.g.:</p>
+
+<pre><code>[0306/093443:INFO:desktop_factory_wayland.cc(12)] Ozone: DesktopFactoryWayland
+[0306/093443:INFO:desktop_factory_wayland.cc(12)] Ozone: DesktopFactoryWayland
+</code></pre>
+
+<p>These indicate that Crosswalk is running correctly on the target.</p></li>
+</ol><h2>Configure the Tizen SDK CLI tools<a class="anchor" id="Configure-the-Tizen-SDK-CLI-tools" href="#Configure-the-Tizen-SDK-CLI-tools"></a></h2>
+
+<p>The Tizen SDK includes a set of command line tools for building and packaging Tizen native apps. You can use these tools to build an extension for Crosswalk. Make sure these tools are on your path by editing your <code>~/.bashrc</code> file (Windows or Linux):</p>
+
+<pre><code>export PATH=&lt;TIZEN_SDK_HOME&gt;tools/mingw/bin:$PATH
+</code></pre>
+
+<h2>Checkout Crosswalk source code<a class="anchor" id="Checkout-Crosswalk-source-code" href="#Checkout-Crosswalk-source-code"></a></h2>
+
+<p>You will need a copy of the Crosswalk source, to enable you to compile against the Crosswalk headers.</p>
+
+<p>Checkout the Crosswalk github repo on the host machine (the machine where you intend to compile your extension):</p>
+
+<pre><code>git clone https://github.com/crosswalk-project/crosswalk ~/crosswalk-source/xwalk
+</code></pre>
+
+<p>It's important that you clone the code to a directory called <code>xwalk</code>, as this is the path the compiler will be looking on for headers/libraries.</p>
+
+<h2>Create project directories<a class="anchor" id="Create-project-directories" href="#Create-project-directories"></a></h2>
+
+<p>The project name is <strong>simple</strong>. Set up the directories for the project from a command line as follows:</p>
+
+<pre><code>mkdir simple
+cd simple
+
+# directory for the HTML5 web app
+mkdir app
+
+# directory for the Crosswalk extension
+mkdir extension
+</code></pre>
+
+<p>Now the preparation is complete, you can start building the application and associated extension.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-03-07 11:21:28</p>
+  <p>
+    <a id="delete-link" href="/documentation/Tizen_IVI_extensions/10-Host_and_target_setup" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Tizen_IVI_extensions/10-Host_and_target_setup">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
