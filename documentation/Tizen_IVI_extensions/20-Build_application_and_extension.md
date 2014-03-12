@@ -83,7 +83,7 @@ When the application runs, the extension's API is invoked asynchronously and syn
 
 ## Create the Crosswalk extension
 
-The code consists of three parts:
+The extension consists of three parts:
 
 1.  A JavaScript file. This defines the API which web applications can invoke.
 
