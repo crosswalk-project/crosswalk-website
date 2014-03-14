@@ -135,7 +135,7 @@ For example, consider the following program:
     var callback2 = function (response) {
       console.log(response + ' cruel world');
     };
-
+I couldn't see a rootstrap for Tizen IVI, so I used the mobile one, which works for this case.
     // invocation 1
     echo.echoAsync('hello', callback1);
 
@@ -320,9 +320,13 @@ The C compiler is part of the Tizen SDK. The compiler for x86 architecture is:
 
     <tizen SDK>/tools/i386-linux-gnueabi-gcc-4.5/bin/i386-linux-gnueabi-gcc-4.5.4.exe
 
+If you are using a later revision of the SDK, you may find that the compiler is in a different directory and has a different name, reflecting the `gcc` version (e.g. `gcc` may be at version 4.8 rather than 4.5).
+
 The Tizen SDK also provides a *rootstrap*, which contains headers and libraries for compiling your code against. For code you intend to run on the emulator, the rootstrap is located at:
 
     <tizen SDK>/platforms/mobile-3.0/rootstraps/mobile-3.0-emulator.native
+
+**Note:** This rootstrap is for Tizen mobile, rather than Tizen IVI. This is because there is no dedicated Tizen IVI rootstrap as yet. In future, when a dedicated Tizen IVI rootstrap *is* available, you should use that instead of the mobile one. However, for the time being, the libraries in the mobile rootstrap are representative of what you can expect on a Tizen IVI target, and are acceptable for compiling the C code below to run on such a target.
 
 You can use a small `makefile` to invoke the compiler and generate the header file for the JavaScript API. The make file will also contain some conditional code, so that if the `TIZEN_SDK` environment variable is set, the Tizen SDK compiler and rootstrap will be used for compilation.
 
