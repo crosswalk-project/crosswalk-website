@@ -9,7 +9,7 @@ Extensions are suitable for a number of use cases:
 *   You have some intellectual property in your application which you would prefer to not to distribute in an easily-readable JavaScript library.
 *   You want to optimise parts of your application but have reached the limits of what you can do with JavaScript.
 
-Crosswalk extensions for Tizen can be implemented in C or C++ and can link with external libraries, potentially allowing you to make use of any of the [native Tizen APIs](https://developer.tizen.org/documentation/native-api-reference), as well as other third party libraries.
+Crosswalk extensions for Tizen can be implemented in C or C++ and can link with external libraries, potentially allowing you to make use of any of the Tizen Core APIs, as well as other third party libraries.
 
 In addition, extensions are a safe way to add native capabilities to Crosswalk: each runs in its own process on Tizen, so it won't directly affect the stability of the runtime.
 
