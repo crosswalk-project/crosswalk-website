@@ -6,9 +6,23 @@ The host should first be [set up for Crosswalk development](#documentation/getti
 
 **Note:** these steps are only necessary if you are writing Crosswalk Tizen extensions: they are not required if you are writing Crosswalk Android extensions, or just using Crosswalk as a runtime for a web app.
 
-## Install a Tizen IVI image
+## Set up a Tizen IVI target
 
-First, get hold of a Tizen IVI emulator image (there are no physical Tizen IVI devices at present). To do this:
+There are several ways to run Tizen IVI for development purposes:
+
+1.  [Run a Tizen IVI image under VMWare](https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware).
+
+2.  [Use a physical device and install Tizen IVI on it](https://wiki.tizen.org/wiki/IVI/IVI_Platforms).
+
+3.  Run a Tizen IVI image using the Tizen SDK Emulator Manager.
+
+**Note:** If you use VMWare or a physical device, some of the instructions below may not be applicable, as you will be using `ssh` to copy files to and run a shell on the target, rather than `sdb`. You also have to take care over the permissions of files you copy and set SMACK labels, as [explained on the Tizen wiki](https://wiki.tizen.org/wiki/IVI/MediaPlayer#Copying_media_to_your_device_.2F_SMACK).
+
+Using the Tizen SDK Emulator Manager is the preferred approach, covered in the following sections.
+
+### Install a Tizen IVI image with the SDK
+
+First, get hold of a Tizen IVI emulator image. To do this:
 
 1.  [Install the Tizen SDK](#documentation/getting_started/host_setup/Optional:-installing-tools-for-Tizen-targets).
 
@@ -38,7 +52,7 @@ First, get hold of a Tizen IVI emulator image (there are no physical Tizen IVI d
 
     Even if you don't intend to use the Web IDE, the Emulator Manager will not run correctly without the *Web IDE Core Resources for IVI profile* component.
 
-## Create a Tizen IVI virtual machine (VM)
+### Create a Tizen IVI virtual machine (VM)
 
 You can now create the VM:
 
@@ -69,9 +83,9 @@ You can now create the VM:
 
 ## Install Crosswalk
 
-You can now install Crosswalk on the target VM:
+Once you have a target ready, you can install Crosswalk on it:
 
-1.  Once the target VM is ready, get a root shell on it with:
+1.  Get a root shell on it with:
 
         sdb root on
         Switched to `root` account mode

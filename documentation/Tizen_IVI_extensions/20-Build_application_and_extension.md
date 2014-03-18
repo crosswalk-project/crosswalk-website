@@ -300,7 +300,20 @@ Create a file `extension/echo-extension.c` with this content:
 
 Some notes on the code:
 
-*   The only mandatory public function is `XW_Initialize()`, where the work is done to configure the extension.
+*   The [xwalk/extensions/public/XW_Extension.h](https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h) header is used to define the structures used by the extension system.
+
+*   The only symbol that should be exported is the function:
+
+        int32_t XW_Initialize(XW_Extension extension, XW_GetInterface get_interface)
+
+    Its parameters are:
+
+    *   `extension`: The identifier for this extension. This identifier will be used for the extension
+    *   `get_interface`: A function with signature `const void* XW_GetInterface(const char* interface_name)` used for accessing the interfaces provided for integrating native code with the Crosswalk runtime. For each `interface_name`, it returns a pointer to a structure with functions that the extension can call.
+
+    This function should be implemented and exported in the shared object; and it should return `XW_OK` when the extension is correctly initialized.
+
+    Be sure to use `extern "C"` when defining this function to avoid name mangling if using a C++ compiler (we're not in this tutorial).
 
 *   `SetExtensionName()` sets the public name for the JavaScript API which will be available to your web application.
 
@@ -314,15 +327,53 @@ Some notes on the code:
 
 *   Both the sync (`XW_Internal_SyncMessagingInterface->SetSyncReply()`) and async (`XW_MessagingInterface->PostMessage()`) functions for returning a response "preserve their inputs", so you can free any pointers you pass to those functions once you've invoked them.
 
+#### More details on the C interfaces
+
+*   Core interface: `XW_CORE_INTERFACE`
+
+    This interface is defined in the [XW_Extension.h](https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h) header file.
+
+    It is a `struct XW_CoreInterface` with the following fields:
+
+    *   `SetExtensionName()` sets name of the extension (identified by `extension`) to `name`. This is mandatory. It should only be called during `XW_Initialize()`.
+    *   `SetJavaScriptAPI()` exports the JavaScript shim that will be available to all page contexts. The JavaScript code `api` will be associated with `extension`. It should only be called during `XW_Initialize()`.
+    * `RegisterInstanceCallbacks()` informs the Crosswalk runtime of functions that should be called when new instances of the extension are created or destroyed. Instances have the same lifetime of the web content. This should only be called during `XW_Initialize()`
+    * `RegisterShutdownCallback()` registers a callback that will be called when the extension is unloaded. This function should only be called during `XW_Initialize()`.
+    * `SetInstanceData()` and `GetInstanceData()` are convenience functions that allow for arbitrary data to be associated with each instance, and for that data to be retrieved. These functions may be called at any time during the lifecycle of an instance.
+
+*   Messaging interface: `XW_MESSAGING_INTERFACE`
+
+    This interface is defined in the [XW_Extension.h](https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h) header file.
+
+    It is a `struct XW_MessagingInterface` with the following fields:
+
+    *   `Register()`: when called, this function tells Crosswalk which function should be called in event of a message from the JavaScript side.
+    *   `PostMessage()` sends a message to the web content associated with the `instance`.
+
+*   Sync messaging interface (experimental): `XW_INTERNAL_SYNC_MESSAGING_INTERFACE`
+
+    This interface is defined in the [XW_Extension_SyncMessage.h](https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension_SyncMessage.h) header file. It is marked as internal, and no guarantee will be made for its compatibility with future Crosswalk versions.
+
+    It is a `struct XW_Internal_SyncMessagingInterface` with the following fields:
+
+    *   `Register()`: this function tells Crosswalk which function should be called in event of a synchronous message from the JavaScript side.
+    *   `SetSyncReply()` responds to a synchronous (blocking) message from the JavaScript side. The renderer process will be blocked until this function is called.
+
+The interface names and structures described above have a versioning suffix in their names. However, extension writers should use the unversioned macros to get the desired interfaces.
+
 ## Build the extension
 
 The C compiler is part of the Tizen SDK. The compiler for x86 architecture is:
 
     <tizen SDK>/tools/i386-linux-gnueabi-gcc-4.5/bin/i386-linux-gnueabi-gcc-4.5.4.exe
 
+If you are using a later revision of the SDK, you may find that the compiler is in a different directory and has a different name, reflecting the `gcc` version (e.g. `gcc` may be at version 4.8 rather than 4.5).
+
 The Tizen SDK also provides a *rootstrap*, which contains headers and libraries for compiling your code against. For code you intend to run on the emulator, the rootstrap is located at:
 
     <tizen SDK>/platforms/mobile-3.0/rootstraps/mobile-3.0-emulator.native
+
+**Note:** This rootstrap is for Tizen mobile, rather than Tizen IVI. This is because there is no dedicated Tizen IVI rootstrap as yet. In future, when a dedicated Tizen IVI rootstrap *is* available, you should use that instead of the mobile one. However, for the time being, the libraries in the mobile rootstrap are representative of what you can expect on a Tizen IVI target, and are acceptable for compiling the C code below to run on such a target.
 
 You can use a small `makefile` to invoke the compiler and generate the header file for the JavaScript API. The make file will also contain some conditional code, so that if the `TIZEN_SDK` environment variable is set, the Tizen SDK compiler and rootstrap will be used for compilation.
 
