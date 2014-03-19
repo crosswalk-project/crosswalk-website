@@ -1,23 +1,24 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<meta name="MobileOptimized" content="width" />
-	<meta name="HandheldFriendly" content="true" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-        <link type="image/x-icon" rel="icon" href="assets/favicon.ico">
-        <link type="image/x-icon" rel="shortcut icon" href="assets/favicon.ico">
-        <link rel="stylesheet" href="font.css">
-        <link rel="stylesheet" href="markdown.css">
-        <link rel="stylesheet" href="xwalk.css">
-        <title>Crosswalk</title>
-        <!-- polyfill for classList for IE9 -->
-        <script src="classList.min.js"></script>
-        <script src="menus.js"></script>
-        <script src="xwalk.js"></script>
-        <script src="utils.js"></script>
-        <script src="versions.js"></script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <meta name="description" content="Crosswalk is a web runtime for ambitious HTML5 applications. It provides all the features of a modern browser, combined with deep device integration and an API for adding native extensions.">
+      <meta name="MobileOptimized" content="width">
+      <meta name="HandheldFriendly" content="true">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link type="image/x-icon" rel="icon" href="assets/favicon.ico">
+      <link type="image/x-icon" rel="shortcut icon" href="assets/favicon.ico">
+      <link rel="stylesheet" href="font.css">
+      <link rel="stylesheet" href="markdown.css">
+      <link rel="stylesheet" href="xwalk.css">
+      <title>Crosswalk</title>
+      <!-- polyfill for classList for IE9 -->
+      <script src="classList.min.js"></script>
+      <script src="menus.js"></script>
+      <script src="xwalk.js"></script>
+      <script src="utils.js"></script>
+      <script src="versions.js"></script>
     </head>
     <body>
         <div id='top-menu'><div>
@@ -26,7 +27,7 @@
                 <a href='#home'></a>
             </div>
             <div class="top-menu-right">
-                <a class='menu-item' href='#documentation/Getting_Started'>Documentation</a>
+                <a class='menu-item' href='#documentation/About'>Documentation</a>
                 <a class='menu-item' href='#contribute/Overview'>Contribute</a>
                 <a class='menu-item' href='#wiki'>Wiki</a>
             </div>
@@ -43,14 +44,16 @@
                     <p>Latest releases</p>
                     <div class='releases'>
                         <a href='#documentation/downloads' class='version-link'>${XWALK-STABLE-ANDROID-X86}</a>
-                        <a class='stable channel' href='#documentation/downloads'>Stable</a><br>
+                        <a class='stable home-link' href='#documentation/downloads'>Stable</a><br>
                         <a href='#documentation/downloads/beta' class='version-link'>${XWALK-BETA-ANDROID-X86}</a>
-                        <a class='beta channel' href='#documentation/downloads'>Beta</a>
+                        <a class='beta home-link' href='#documentation/downloads'>Beta</a>
                     </div>
-                    <p style='text-align: left'>Many HTML5 applications need more than just a browser&ndash;they need all the features of a native application. Crosswalk is a portable runtime for applications written in HTML5, CSS and JavaScript.</p>
+                    <p style='text-align: left;'>Many HTML5 applications need more than just a browser &ndash; they need all the features of a native application.</p>
+
+                    <p style='text-align: left;'>Crosswalk is a web runtime for ambitious HTML5 applications. It provides all the features of a modern browser, combined with deep device integration and an API for adding native extensions. <a href="#documentation/about" class="home-link">Read more</a></p>
                     <div id='button-box'>
                         <div id='download-button' class='button'><a href='#documentation/downloads'>DOWNLOAD</a></div>
-                        <div id='documentation-button' class='button'><a href='#documentation/getting_started'>DOCUMENTATION</a></div>
+                        <div id='documentation-button' class='button'><a href='#documentation/about'>DOCUMENTATION</a></div>
                         <div id='contribute-button' class='button'><a href='#contribute/overview'>CONTRIBUTE</a></div>
                     </div>
                     <div class='more-button-box'><a href='#overview-content'></a></div>
@@ -58,44 +61,24 @@
             </div>
 
             <div id='overview' class='section'>
-                <div class='divider'><div class="right-corner"></div><div class="left-corner"></div></div>
-                <div class='background tile-overlay'></div>
-                <div id='overview-content' class='content'>
-                    <h1>Crosswalk Architecture</h1>
+              <div class='divider'><div class="right-corner"></div>
+              <div class="left-corner"></div></div>
+              <div class='background tile-overlay'></div>
+              <div id='overview-content' class='content'>
+                <h1>Crosswalk architecture</h1>
 
-                    <div id='illustration'></div>
+                <img src="assets/architecture_crosswalk.png" id="arch-diagram">
 
-                    <p>Crosswalk is an HTML5 application runtime which
-                    builds on open source foundations. It extends today's
-                    web platform with new capabilities, empowering
-                    applications written using web technologies.</p>
+                <p>At the heart of Crosswalk is the Blink rendering and
+                layout engine. This provides the same HTML5 features
+                and capabilities you would expect to find in most modern
+                web browsers.</p>
 
-                    <p>By using Crosswalk, an application developer can:</p>
-
-                    <ul>
-                        <li>Access the latest recommended and emerging web
-                        standards.</li>
-
-                        <li>Control the upgrade cycle of an application by
-                        distributing it with its own runtime.</li>
-
-                        <li>Add custom extensions to an application to take
-                        advantage of platform features not exposed by
-                        Crosswalk.</li>
-
-                        <li>Use hardware-accelerated WebGL (if available on the
-                        platform).</li>
-                    </ul>
-
-                    <p>At the heart of Crosswalk is the Blink
-                    rendering and layout engine. This provides the
-                    same HTML5 features and capabilities you would
-                    expect to find in any modern web brower.</p>
-
-                    <p>Building on Blink, Crosswalk uses the Chromium
-                    Content module to provide a multi-process
-                    architecture, designed for security and performance.</p>
-                </div>
+                <p>Building on Blink, Crosswalk uses Chromium features
+                to provide a multi-process architecture, designed for
+                security and performance, as well as state-of-the-art
+                performance and graphics.</p>
+              </div>
             </div>
 
             <div id='samples-overview' class='section'>
