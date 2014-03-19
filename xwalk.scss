@@ -621,16 +621,11 @@ p {
         color: #fcfcfc;
         width: auto;
     }
+}
 
-    #illustration {
-        background: url(assets/architecture_crosswalk.png) 0% 50% no-repeat;
-        background-size: 100% 100%;
-        display: inline-block;
-        width: 100%;
-        height: 0;
-        padding-bottom: percentage(313/564);
-        margin-bottom: 20px;
-    }
+#arch-diagram {
+    background-color: #3e2220;
+    padding: 10px;
 }
 
 .community-button {
