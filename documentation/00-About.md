@@ -17,13 +17,3 @@ By using Crosswalk, an application developer can:
 *   Add custom extensions to an application, to leverage platform features not exposed by Crosswalk or the standardized web platform.
 
 Crosswalk is open source, released under a [BSD licence](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE). The project was founded by Intel's Open Source Technology Center.
-
-## Architecture
-
-At the heart of Crosswalk is the Blink rendering and layout engine. This provides the same HTML5 features and capabilities you would expect to find in any modern web browser.
-
-Building on Blink, Crosswalk uses Chromium features to provide a multi-process architecture, designed for security and performance, as well as state-of-the-art performance and graphics.
-
-Crosswalk's architecture is organised as follows:
-
-<img src="assets/architecture_crosswalk.png" id="arch-diagram">
