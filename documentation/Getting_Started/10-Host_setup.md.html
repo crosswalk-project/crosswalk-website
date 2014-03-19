@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/10 Host_setup';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/10 Host_setup</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Host setup</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/10-Host_setup"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/10-Host_setup"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The <strong>host</strong> is the computer where you are writing your code. It is typically not the same computer as the one where Crosswalk is running (the <strong>target</strong>).</p>
+
+<p>You will need to install two groups of tools:</p>
+
+<ol><li> <a href="#documentation/getting_started/host_setup/Installing-the-dev-tools">Development tools</a> for your chosen platform.</li>
+<li> <a href="#documentation/getting_started/host_setup/Installing-target-specific-tools">Target-specific tools</a> for each target platform you want to deploy to.</li>
+</ol><h2>Deciding what you need on the host<a class="anchor" id="Deciding-what-you-need-on-the-host" href="#Deciding-what-you-need-on-the-host"></a></h2>
+
+<p>What you need to set up on the host depends on two things:</p>
+
+<ol><li>
+    <p><em>Host platform</em></p>
+
+    <p>This is the operating system you're using for development. Your choice of host platform depends on the targets you wish to deploy to:</p>
+
+    <ul><li>
+
+      <em>For Crosswalk Android</em>, Linux and Windows are officially supported as host platforms. However, it may be possible to build Crosswalk apps on other platforms which support the Android SDK and Python (e.g. Mac).</li>
+
+      <li><p><em>For Crosswalk Tizen</em>, you need a platform which can run the <a href="https://developer.tizen.org/documentation/articles/smart-development-bridge" target="_blank"><code>sdb</code></a> tool. <code>sdb</code> is officially supported on platforms where the <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">Tizen SDK</a> is available, i.e. Ubuntu Linux, Windows, and Mac OS X.</p>
+
+      <p>However, <code>sdb</code> is the only tool you really need from the Tizen SDK for Crosswalk development, and is relatively simple to build from source. So other platforms may be used with a little effort.</p>
+
+      <p>Note that (at the moment) you have to manually install and run Crosswalk applications on Tizen, as there are no stable packaging tools.</p>
+      </li>
+
+    </ul></li>
+
+  <li>
+
+  <p><em>Target platforms</em></p>
+
+  <p>These are the devices or emulators you want to develop for and deploy to. Android and Tizen, on both ARM and x86 architectures, are the supported targets. These can be either real devices (e.g. phones, tablets) or emulated ones.</p>
+
+  </li>
+
+</ol><h2>Installing the development tools<a class="anchor" id="Installing-the-development-tools" href="#Installing-the-development-tools"></a></h2>
+
+<p>The instructions below explain how to set up the required dev tools on the following host platforms:</p>
+
+<ul><li>  Ubuntu Linux 12.10, 64 bit (if you are using a different flavour of Linux, the package names may vary slightly); Ubuntu is used as this is the only Linux flavour officially supported by the Tizen SDK.</li>
+<li>  Windows Enterprise 7, 64 bit.</li>
+</ul><p>The steps for installing the dev tools are:</p>
+
+<ol><li> <a href="#documentation/getting_started/host_setup/Installing-utilities">Install utilities</a> (curl, unzip, tar, gzip; used to install other tools)</li>
+<li> <a href="#documentation/getting_started/host_setup/Installing-Python">Install Python</a>.</li>
+<li> <a href="#documentation/getting_started/host_setup/Installing-the-Oracle-JDK">Install the Oracle Java Development Kit (JDK)</a>. <strong>Note: It is important that you use the Oracle JDK, rather than the OpenJDK, as Ant may not work correctly with the latter.</strong></li>
+<li> <a href="#documentation/getting_started/host_setup/Installing-Ant">Install Ant</a>.</li>
+<li> <a href="#documentation/getting_started/host_setup/Configuring-your-environment">Configure your environment</a>.</li>
+<li> <a href="#documentation/getting_started/host_setup/Verifying-your-environment">Verify your environment</a>.</li>
+</ol><p>On both host platforms, a bash shell is used as the main installation environment. This is readily available on Linux (look for <em>Terminal</em> in the list of applications); or can be <a href="#documentation/getting_started/host_setup/Installing-utilities">installed easily on Windows</a>.</p>
+
+<h3>bash and cmd<a class="anchor" id="bash-and-cmd" href="#bash-and-cmd"></a></h3>
+
+<p>Note: Some of the tools do not behave well when invoked from a bash shell on Windows. In these cases, a Windows <code>cmd</code> console is used instead.</p>
+
+<p>To start a Windows console, do the following:</p>
+
+<ol><li> Open the Windows menu.</li>
+<li> In the text entry at the bottom of the menu ("Search programs and files"), type the letters <code>cmd</code>.</li>
+<li> Press <em>Return</em>.</li>
+</ol><p>This will open a console window:</p>
+
+<p><img src="assets/windows-console.png" /></p>
+
+<p>Throughout this tutorial, when a <code>cmd</code> console is in use, it is denoted with a <code>&gt;</code> prompt. A bash shell is denoted with a <code>$</code> prompt. In cases where either bash or cmd will do, no prompt is shown.</p>
+
+<h3>Installing utilities<a class="anchor" id="Installing-utilities" href="#Installing-utilities"></a></h3>
+
+<h4>Linux<a class="anchor" id="Linux" href="#Linux"></a></h4>
+
+<p>The utilities can be installed from a bash shell with this command on Ubuntu:</p>
+
+<pre><code>$ sudo apt-get install curl unzip tar
+</code></pre>
+
+<h4>Windows<a class="anchor" id="Windows" href="#Windows"></a></h4>
+
+<p>Bash is provided as part of the git download for Windows. In addition to bash, git for Windows also provides curl, tar, unzip, and gzip, which are used in later steps.</p>
+
+<p>Download and install git for Windows from the git-scm website:
+<a href="http://git-scm.com/download/win" target="_blank"></a><a href="http://git-scm.com/download/win">http://git-scm.com/download/win</a></p>
+
+<p>While installing git, select the following options:</p>
+
+<p><img src="assets/integrate.png" /></p>
+
+<p>Then select <em>Run Git from the Windows command prompt</em>:</p>
+
+<p><img src="assets/path.png" /></p>
+
+<p>You can now open a Git Bash session by going to your Start Menu and typing <strong>Git Bash</strong> to find the command:</p>
+
+<p><img src="assets/launch.png" /></p>
+
+<p>Select <em>Git Bash</em> to open a console window running the bash shell.</p>
+
+<h3>Installing Python<a class="anchor" id="Installing-Python" href="#Installing-Python"></a></h3>
+
+<h4>Linux<a class="anchor" id="Linux" href="#Linux"></a></h4>
+
+<p>This can be installed via your package manager. For example, on Ubuntu:</p>
+
+<pre><code>$ sudo apt-get install python
+</code></pre>
+
+<p>This installs Python globally, so any user can run it.</p>
+
+<h4>Windows<a class="anchor" id="Windows" href="#Windows"></a></h4>
+
+<p>Get Python from <a href="http://www.python.org/getit">http://www.python.org/getit</a>, choosing an "MSI installer" for your architecture (32 or 64 bit).</p>
+
+<p>When the installer starts, choose <em>Install for all users</em> and set <strong>C:\Python</strong> as the installation location. You will need to manually add the Python directory to your path for it to be available in the bash shell (see <a href="#Configuring-your-environment">Configuring your environment</a>).</p>
+
+<h3>Installing the Oracle JDK<a class="anchor" id="Installing-the-Oracle-JDK" href="#Installing-the-Oracle-JDK"></a></h3>
+
+<p>The Oracle JDK has to be downloaded manually (you must accept a licence agreement):</p>
+
+<ol><li><p>Go to the Oracle Java 7 SE JDK download page in a browser:</p>
+
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html</a></p></li>
+<li><p>Accept the licence agreement.</p></li>
+<li><p>In the section headed <em>Java SE Development Kit</em>, choose the appropriate archive file for your platform. Save it to your home directory.</p></li>
+<li><p>Once downloaded:</p>
+
+<ul><li>On Linux, unpack the tarball and symlink it:
+
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~
+<span class="nv">$ </span>tar zxvf &lt;jdk file&gt;.tar.gz
+<span class="nv">$ </span>ln -s ~/&lt;jdk directory&gt; ~/jdk7
+</pre></div>
+</li>
+
+<li>On Windows, run the Java <code>.exe</code> installer, and set <code>C:\jdk7</code> as the installation directory.</li>
+
+</ul></li>
+</ol><h3>Installing Ant<a class="anchor" id="Installing-Ant" href="#Installing-Ant"></a></h3>
+
+<p>The instructions are the same for Linux and Windows. From a bash shell:</p>
+
+<pre><code>$ cd ~
+$ curl http://www.apache.org/dist/ant/binaries/apache-ant-1.9.3-bin.zip \
+    -o ant.zip
+$ unzip ant.zip
+</code></pre>
+
+<h3>Configuring your environment<a class="anchor" id="Configuring-your-environment" href="#Configuring-your-environment"></a></h3>
+
+<p>The next step is to set up your environment so that binaries and scripts which were installed manually (ant, JDK, Python on Windows) are on your <code>PATH</code>. The easiest way to do this is to edit your <code>~/.bashrc</code> file, adding these lines at the end (create the file if it doesn't exist):</p>
+
+<pre><code># note that we prepend the new paths to the
+# PATH variable to ensure that we use scripts and binaries
+# from our newly-installed packages
+export PATH=~/apache-ant-1.9.3/bin:$PATH
+
+# on Windows, you need to add the Python install directory
+# and the JDK bin directory
+export PATH=/c/jdk7/bin:$PATH
+export PATH=/c/Python/:$PATH
+
+# on Linux, you just need the JDK bin directory as Python is
+# installed globally
+export PATH=~/jdk7/bin:$PATH
+</code></pre>
+
+<p>You should also set the <code>JAVA_HOME</code> environment variable to the path of the JDK installation (ant uses this to choose the java binary to invoke) by adding another line to <code>.bashrc</code>:</p>
+
+<pre><code># Windows
+export JAVA_HOME=/c/jdk7
+
+# OR
+
+# Linux
+export JAVA_HOME=~/jdk7/
+</code></pre>
+
+<p>To activate these changes in your current bash shell:</p>
+
+<pre><code>$ source ~/.bashrc
+</code></pre>
+
+<p>When you start a bash shell in future, your <code>.bashrc</code> file will automatically be used to set <code>PATH</code> and <code>JAVA_HOME</code>.</p>
+
+<h3>Verifying your environment<a class="anchor" id="Verifying-your-environment" href="#Verifying-your-environment"></a></h3>
+
+<p>Check that you have installed the tools properly by trying these commands from a bash shell:</p>
+
+<pre><code>$ java -version
+java version "1.7.0_45"
+Java(TM) SE Runtime Environment (build 1.7.0_45-b18)
+Java HotSpot(TM) 64-Bit Server VM (build 24.45-b08, mixed mode)
+
+$ ant -version
+Apache Ant(TM) version 1.9.3 compiled on December 23 2013
+
+$ python --version
+Python 2.7.6
+</code></pre>
+
+<h3>Avoiding GNU gcj on Linux<a class="anchor" id="Avoiding-GNU-gcj-on-Linux" href="#Avoiding-GNU-gcj-on-Linux"></a></h3>
+
+<p>If you are on Linux and your version of java returns something like this:</p>
+
+<pre><code>$ java -version
+java version "1.5.0"
+gij (GNU libgcj) version 4.6.3
+</code></pre>
+
+<p>then it may be that gcj is still set as the default <code>java</code> for your host.</p>
+
+<p>To fix this, you can append an alias to the bottom of your <code>~/.bashrc</code> file to ensure that the correct java binary is being used:</p>
+
+<pre><code>alias java="~/jdk7/bin/java"
+</code></pre>
+
+<h3>ant unable to locate tools.jar<a class="anchor" id="ant-unable-to-locate-tools.jar" href="#ant-unable-to-locate-tools.jar"></a></h3>
+
+<p>When you run ant, if you see something like this:</p>
+
+<pre><code>Unable to locate tools.jar.
+Expected to find it in c:\Program Files (x86)\Java\jre7\lib\tools.jar
+</code></pre>
+
+<p>it may mean that ant is using a Java Runtime Environment (JRE) version of Java, rather than the full JDK. This can be resolved by setting an alias for java in your <code>.bashrc</code> file, pointing at your JDK install:</p>
+
+<pre><code>alias java="/c/jdk7/bin/java"
+</code></pre>
+
+<h2>Installing target-specific tools<a class="anchor" id="Installing-target-specific-tools" href="#Installing-target-specific-tools"></a></h2>
+
+<p>These are optional tools, installed on the host to support the targets you intend to deploy to:</p>
+
+<ul><li><p><strong>Android targets</strong></p>
+
+<p>To deploy to Android targets, you need:</p>
+
+<ul><li>  <em>Crosswalk for Android:</em> This includes utilities for generating Crosswalk Android packages for installation on Android targets.</li>
+<li>  <em>Android SDK:</em> This includes generic tools for creating Android packages, as well as the <code>adb</code> tool, for installing those packages on Android targets.</li>
+</ul></li>
+<li><p><strong>Tizen targets</strong></p>
+
+<p>To deploy to Tizen targets, you need:</p>
+
+<ul><li>  <em>Tizen SDK:</em> This includes the <a href="https://developer.tizen.org/documentation/articles/smart-development-bridge"><code>sdb</code></a> tool for communicating with Tizen targets, which enables you to install the Crosswalk runtime on a target and run Tizen applications from the shell.</li>
+</ul></li>
+</ul><h3>Optional: installing tools for Android targets<a class="anchor" id="Optional:-installing-tools-for-Android-targets" href="#Optional:-installing-tools-for-Android-targets"></a></h3>
+
+<p>These tools are only required if you intend to deploy Crosswalk applications to Android targets.</p>
+
+<h4>Installing the Android SDK<a class="anchor" id="Installing-the-Android-SDK" href="#Installing-the-Android-SDK"></a></h4>
+
+<ol><li> Download the Android SDK from <a href="http://developer.android.com/sdk/index.html" target="_blank"></a><a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a></li>
+<li> Extract the file into <code>~/android-sdk</code>.</li>
+<li><p>Run the <em>SDK Manager</em>. You can do this from a bash shell as follows:</p>
+
+<pre><code># on Windows
+$ cd ~/android-sdk
+$ "SDK Manager.exe"
+
+# on Linux
+$ cd ~/android-sdk/tools
+$ ./android
+</code></pre></li>
+<li><p>In the SDK Manager window, select the following items from the list:</p>
+
+<pre><code>[ ] Tools
+  [x] Android SDK Platform-tools 19.0.1
+  [x] Android SDK Build tools 18.0.1
+[ ] Android 4.3 (API 18)
+  [x] SDK Platform
+</code></pre>
+
+<p>Note that if you are using devices with versions of Android later than 4.3, you should install the platform tools, build tools and SDK platform for those versions too.</p></li>
+<li><p>Add the SDK directories to your <code>PATH</code> by appending these lines to <code>~/.bashrc</code>:</p>
+
+<pre><code># Windows
+export PATH=~/android-sdk:$PATH
+export PATH=~/android-sdk/sdk/tools:$PATH
+export PATH=~/android-sdk/sdk/platform-tools:$PATH
+
+# Linux
+export PATH=~/android-sdk:$PATH
+export PATH=~/android-sdk/tools:$PATH
+export PATH=~/android-sdk/platform-tools:$PATH
+</code></pre>
+
+<p>Read in <code>~/.bashrc</code> for your changes to take in the current shell:</p>
+
+<pre><code>$ source ~/.bashrc
+</code></pre></li>
+<li><p>Test the installation:</p>
+
+<pre><code>$ adb help
+Android Debug Bridge version 1.0.31
+...
+</code></pre></li>
+</ol><h4>Downloading the Crosswalk Android app template<a class="anchor" id="Downloading-the-Crosswalk-Android-app-template" href="#Downloading-the-Crosswalk-Android-app-template"></a></h4>
+
+<p>The Crosswalk Android distribution contains an application template which can be used as a wrapper for an HTML5 application. It also includes a script which will convert a wrapped HTML5 application into an installable Android <code>apk</code> file.</p>
+
+<p>To get Crosswalk Android for x86, run these commands in a bash shell:</p>
+
+<pre><code>$ cd ~
+
+# the `-k` option prevents curl from failing due to SSL
+# certificate verification errors.
+$ curl -k https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip -o crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
+
+# unzip the Crosswalk Android archive
+$ unzip crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
+
+# unpack the xwalk app template archive inside it
+$ tar zxf crosswalk-${XWALK-STABLE-ANDROID-X86}-x86/xwalk_app_template.tar.gz \
+  -C crosswalk-${XWALK-STABLE-ANDROID-X86}-x86
+</code></pre>
+
+<p>You should now have a <code>~/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86</code> directory with an <code>xwalk_app_template</code> directory inside it.</p>
+
+<h3>Optional: installing tools for Tizen targets<a class="anchor" id="Optional:-installing-tools-for-Tizen-targets" href="#Optional:-installing-tools-for-Tizen-targets"></a></h3>
+
+<p>If you intend to deploy Crosswalk applications to Tizen targets, you only need to install the Tizen SDK: there are no Crosswalk packaging tools for Tizen yet. Though, as a consequence, a Crosswalk runtime for Tizen must be manually installed on each target instead (see <a href="#documentation/getting_started/tizen_target_setup">Tizen target setup</a>).</p>
+
+<ol><li>Download the Tizen SDK for your platform from <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">https://developer.tizen.org/downloads/tizen-sdk</a>. <strong>Note that if you intend to deploy applications to an emulated Tizen device, you must use version 2.2.0 of the Tizen SDK: see <a href="https://developer.tizen.org/downloads/sdk/advanced-configuration">the advanced configuration instructions</a> for details of how to change versions.</strong></li>
+
+  <li>
+    <p><a href="https://developer.tizen.org/downloads/sdk/installing-tizen-sdk">Follow the instructions</a> to install it. If you have a physical Tizen device, you don't need to select any of the optional components.</p>
+
+    <p>However, if you intend to use an emulated Tizen image, you may want to install those components now. See <a href="#documentation/getting_started/tizen_target_setup">Tizen target setup</a> for details.</p>
+  </li>
+
+  <li>
+    <p>Once installed, you need to ensure that the <code>sdb</code> tool is on your <code>PATH</code>.</p>
+
+    <p>On Linux, using a bash shell:</p>
+
+    <ul><li>Add this line to <code>~/.bashrc</code>:
+
+      <div class="highlight"><pre><span class="cp"># assuming the Tizen SDK is installed in ~/tizen-sdk</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=~/</span><span class="n">tizen</span><span class="o">-</span><span class="n">sdk</span><span class="o">/</span><span class="n">tools</span><span class="o">/:</span><span class="err">$</span><span class="n">PATH</span>
+</pre></div>
+
+      </li><li>Read <code>~/.bashrc</code> to update your <code>PATH</code>:
+
+      <div class="highlight"><pre><span class="n">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">bashrc</span>
+</pre></div>
+
+      </li>
+
+      <li>Test <code>sdb</code>:
+
+      <div class="highlight"><pre><span class="nv">$ </span>sdb
+Smart Development Bridge version 2.0.2
+...
+</pre></div>
+
+      </li>
+
+    </ul><p>On Windows, from a <code>cmd</code> prompt:</p>
+
+    <ul><li>Add the <code>tools</code> directory (containing <code>sdb</code>) to your Windows path using this command:
+
+      <div class="highlight"><pre><span class="o">&gt;</span> <span class="n">setx</span> <span class="n">path</span> <span class="s">"%path%;c:</span><span class="se">\t</span><span class="s">izen-sdk</span><span class="se">\t</span><span class="s">ools"</span>
+</pre></div>
+      </li>
+
+
+      <li>Test <code>sdb</code>:
+
+      <div class="highlight"><pre><span class="o">&gt;</span> <span class="n">sdb</span>
+<span class="n">Smart</span> <span class="n">Development</span> <span class="n">Bridge</span> <span class="n">version</span> <span class="mf">2.0.2</span>
+<span class="p">...</span>
+</pre></div>
+      </li>
+
+    </ul></li>
+
+</ol>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-03-06 10:49:30</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/10-Host_setup" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/10-Host_setup">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
