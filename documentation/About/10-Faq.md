@@ -12,11 +12,11 @@ If you are a developer working with web technologies, Crosswalk enables you to d
 
 ### How big is the Crosswalk runtime, and how will it affect my application's size?
 
-To give a rough idea, the HTML/JS/CSS for [one of the project's test applications](https://github.com/crosswalk-project/crosswalk-apk-generator/tree/master/test/functional/demo-app) takes up 4Mb of disk space.
+To give a rough idea, the HTML/JS/CSS for [one of the project's test applications](https://github.com/crosswalk-project/crosswalk-apk-generator/tree/master/test/functional/demo-app) takes up 3.9Mb of disk space.
 
-Once this application is packaged with its own Crosswalk (x86 Android) runtime, the apk file size is 24Mb.
+Once this application is packaged with its own Crosswalk (x86 Android) runtime, the apk file size is 21.2Mb.
 
-Unpacked, the files take up 63Mb of disk space, 59Mb of which is occupied by the Crosswalk runtime and its supporting files.
+Unpacked, the files take up 49.8Mb of disk space, 45.9Mb of which is occupied by the Crosswalk runtime and its supporting files.
 
 ### Can one Crosswalk installation be shared between multiple applications?
 
