@@ -118,7 +118,13 @@ has content in three different markup flavours:
 
 To install gollum, plus support for these wiki content formats:
 
-    sudo gem install gollum redcarpet org-ruby wikicloth
+    sudo gem install gollum -v 2.5.2
+    sudo gem install redcarpet org-ruby wikicloth
+
+gollum version 2.5.2 is used as newer versions of gollum produce different
+HTML output from the same markdown file. In some cases, this causes the
+output HTML to be poorly or incorrectly formatted (it seems especially
+to affect nested lists which contain pre-formatted code sections).
 
 To generate the cached HTML files, gollum needs to be running. When a
 wiki page is requested, a php script will perform a local connection
