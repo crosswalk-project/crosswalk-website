@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/print.css" media="print">
+  
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'contribute/Contributing Code';
+      var uploadDest   = '';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>contribute/Contributing Code</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Contributing Code</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/contribute/Contributing-Code"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton jaws">
+    <li class="minibutton"><a href="/history/contribute/Contributing-Code"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>This page outlines the process for contributing code to Crosswalk. For information on obtaining the source and building Crosswalk, see <a href="#contribute/building_crosswalk">Building Crosswalk</a>.</p>
+
+<h2>Overview<a class="anchor" id="Overview" href="#Overview"></a></h2>
+
+<p>These are the recommended steps for contributing code to Crosswalk:</p>
+
+<ul><li>Choose or create a bug report to work on.</li>
+<li>Develop your changes.</li>
+<li>Make sure your changes meet the code style guidelines. The check-style script may be of help.</li>
+<li>Run the unit tests.</li>
+<li>Add any new files to your working directory.</li>
+<li>Prepare your commit message.</li>
+<li>Submit your patch for review using the Github pull request system.</li>
+<li>Make any changes recommended by the reviewer.</li>
+<li>Once reviewed, the patch will be landed for you.</li>
+<li>Please watch for any regressions it may have caused (hopefully none)!</li>
+</ul><p>More detail about some of these steps is below.</p>
+
+<h2>Choose a bug report<a class="anchor" id="Choose-a-bug-report" href="#Choose-a-bug-report"></a></h2>
+
+<p>The <a href="https://crosswalk-project.org/jira/">Jira issue tracker</a> is the central point of communication for contributions to Crosswalk. Nearly every contribution corresponds to an issue there.</p>
+
+<p>Choose an issue to work on, or create a new one if no suitable issue exists. To avoid duplication, be sure to search the database before creating new issues.</p>
+
+<p>If your change is possibly controversial, you may want to ask for advice on how to proceed, by using the <a href="#contribute/overview">crosswalk-dev mailing list or #crosswalk IRC channel</a>.</p>
+
+<h2>Develop your changes<a class="anchor" id="Develop-your-changes" href="#Develop-your-changes"></a></h2>
+
+<p>Make sure that any new source code you introduce contains the appropriate license text at the beginning of the file. If you are the author of a new file, the preferred license text to include can be found in the LICENSE file or any existing file.</p>
+
+<p>You should also add your name to the AUTHORS file the first time you make a patch.</p>
+
+<h2>Code style guidelines<a class="anchor" id="Code-style-guidelines" href="#Code-style-guidelines"></a></h2>
+
+<p>Patches must comply with the code style guidelines. Your patch will be automatically checked for style compliance when you upload it to the bug tracker.</p>
+
+<h3>Code style guide for Android<a class="anchor" id="Code-style-guide-for-Android" href="#Code-style-guide-for-Android"></a></h3>
+
+<ul><li><a href="Coding-Style-of-XWalk-for-Android">Crosswalk coding style for Android</a></li>
+</ul><h2>Commit message guidelines<a class="anchor" id="Commit-message-guidelines" href="#Commit-message-guidelines"></a></h2>
+
+<p>Your commits and/or pull requests should reference the <em>ID</em> of the issue you are working on. The ID is the <strong>XWALK-N</strong> identifier at the end of the URL for the issue: for example, for <a href="https://crosswalk-project.org/jira/browse/XWALK-898">https://crosswalk-project.org/jira/browse/XWALK-898</a>, the ID is <strong>XWALK-898</strong>.</p>
+
+<p>You can use issue IDs in commit messages and pull requests in the following ways:</p>
+
+<ul><li><p>To refer to an issue from a pull request (PR), include the issue ID in the PR's description. This will result in a mention of the PR in the corresponding Crosswalk Jira issue.</p>
+
+<p>For example, if you were working on issue XWALK-898, you could reference the issue in a commit message like this:</p>
+
+<pre><code>Append "-tests" to package name, as per XWALK-898.
+</code></pre>
+
+<p>Only opening and closing a pull request (with an issue ID in the description) will result in a comment being added to Jira. Updating a pull request will <em>not</em> update related Jira issues.</p></li>
+<li><p>To close a related Jira issue, add a line with the format <strong>BUG=XWALK-N</strong> to a PR description (NB this is case sensitive). Doing this will resolve the corresponding issue in Jira when the PR is merged. Using the issue URL (<strong>BUG=https://path/to/issue/XWALK-N</strong>) is also acceptable.</p>
+
+<p>For example, if your PR closes issue XWALK-898, you could include this in the PR description:</p>
+
+<pre><code>BUG=XWALK-898
+</code></pre>
+
+<p>or this:</p>
+
+<pre><code>BUG=https://crosswalk-project.org/jira/browse/XWALK-898
+</code></pre>
+
+<p>If a PR doesn't completely fix an issue, do not use the "BUG=" prefix, but do mention the issue ID. Only use "BUG=" when the PR fixes the issue.</p>
+
+<p>If a PR fixes multiple issues, reference them on separate lines of the description, starting each with "BUG=".</p></li>
+</ul><p>Note that although the prefix is "BUG=", this mechanism applies to features and tasks as well.</p>
+
+<h2>Regression tests<a class="anchor" id="Regression-tests" href="#Regression-tests"></a></h2>
+
+<p>A buildbot infrastructure will be available soon. Those buildbots will run the unit tests and the browser tests.</p>
+
+<p>You are responsible for keeping the tree green. If the tree is red because of your patch, it may be that your commit will be reverted if the other contributors can't reach you or can't fix the problem themselves.</p>
+
+<h2>Respond to reviewers<a class="anchor" id="Respond-to-reviewers" href="#Respond-to-reviewers"></a></h2>
+
+<p>A Crosswalk reviewer must approve your patch before Crosswalk can accept it into the source control repository. A reviewer will either approve your patch by responding with "LGTM" (Looks Good To Me) in the pull request, or request revisions to your patch. In rare cases, a patch may be permanently rejected, meaning that the reviewer believes the feature should never be committed to the tree. The review process can consist of multiple iterations between you and the reviewer as you submit revised patches.</p>
+
+<h2>Obtaining commit privileges<a class="anchor" id="Obtaining-commit-privileges" href="#Obtaining-commit-privileges"></a></h2>
+
+<p>By default, contributors do not have push rights to Crosswalk repositories. After contributing a few patches (~5-10) you may ask an OWNER to nominate you for push access. This privilege is granted with some expectation of responsibility: committers are people who care about the Crosswalk project and want to help it meet its goals. A committer is not just someone who can make changes, but someone who has demonstrated his or her ability to collaborate with the team, get the most knowledgeable people to review code, contribute high-quality code, and follow through to fix issues (in code or tests).</p>
+
+<h2>Obtaining review privileges<a class="anchor" id="Obtaining-review-privileges" href="#Obtaining-review-privileges"></a></h2>
+
+<p>Our <a href="#contribute/Reviewer_Policy">Reviewer policy</a> provides details on obtaining review privileges.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-03-24 14:47:47</p>
+  <p>
+    <a id="delete-link" href="/contribute/Contributing-Code" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/contribute/Contributing-Code">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
