@@ -313,7 +313,7 @@ To get Crosswalk Android for x86, run these commands in a bash shell:
 
     # the `-k` option prevents curl from failing due to SSL
     # certificate verification errors.
-    $ curl -k https://download.01.org/crosswalk/releases/android-x86/stable/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip -o crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
+    $ curl -k https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-X86}/x86/crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip -o crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
 
     # unzip the Crosswalk Android archive
     $ unzip crosswalk-${XWALK-STABLE-ANDROID-X86}-x86.zip
