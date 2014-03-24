@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/print.css" media="print">
+  
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/15 Tizen_target_setup';
+      var uploadDest   = '';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/15 Tizen_target_setup</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Tizen target setup</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/15-Tizen_target_setup"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton jaws">
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/15-Tizen_target_setup"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>To run Crosswalk applications on Tizen, you must install the Crosswalk runtime on each target. (Unlike Crosswalk for Android, it is currently not possible to bundle the Crosswalk runtime with the application for deployment to Tizen.)</p>
+
+<p>Tizen extensions for Crosswalk are also available, which enable you to make use of <a href="https://developer.tizen.org/documentation/dev-guide/2.2.1?redirect=https%3A//developer.tizen.org/dev-guide/2.2.1/org.tizen.web.appprogramming/html/api_reference/api_reference.htm">Tizen APIs</a> in applications running in Crosswalk on Tizen. We don't need them for this tutorial, so we won't cover them here.</p>
+
+<p>Crosswalk is available for Tizen version 2.1 or higher.</p>
+
+<h2>Tizen device<a class="anchor" id="Tizen-device" href="#Tizen-device"></a></h2>
+
+<p>At the time of writing (February 2014), there are no Tizen devices on the market, so your only option is to use an emulated Tizen device.</p>
+
+<h2>Tizen emulator<a class="anchor" id="Tizen-emulator" href="#Tizen-emulator"></a></h2>
+
+<p>To test your application on Tizen, use an emulated x86 device. This can be installed via the Tizen SDK install manager:</p>
+
+<ol><li>Start the Tizen SDK Install Manager:
+  <ul><li>On Windows, from a cmd shell:
+
+    <pre class="highlight"><span class="err">&amp;gt; %HOMEPATH%\tizen-sdk\install-manager\inst-manager.exe</span></pre>
+
+    You will need to adjust the path if you installed the Tizen SDK outside your home directory.
+    </li>
+
+    <li>On Linux, from a bash shell, run the Tizen `.bin` file you originally downloaded, e.g.:
+
+    <pre class="highlight"><span class="err">$ ./tizen-sdk-ubuntu64-v2.2.32.bin</span></pre>
+    </li>
+  </ul></li>
+
+<li>Select <em>Install or update the Tizen SDK</em>, then select the <em>Next</em> button.</li>
+
+<li>
+  <p>Select the Tizen system image and emulator from the list of components available:</p>
+
+  <pre class="highlight"><span class="err">[ ] Common Tools
+  [x] Emulator
+
+[ ] Platforms
+  [ ] Tizen 2.2
+    [x] Platform Image</span></pre>
+
+  <p>Then select <em>Install</em>.</p>
+</li>
+
+</ol><p>Once the download is complete, you can create a Tizen virtual machine (VM) - an emulated Tizen device:</p>
+
+<ol><li>
+  <p>Start the Tizen Emulator Manager.</p>
+
+  <ul><li>On Windows, from a cmd shell:
+
+    <pre class="highlight"><span class="err">&amp;gt; %HOMEPATH%\tizen-sdk\tools\emulator\bin\emulator-manager.exe</span></pre>
+    </li>
+
+    <li>On Linux, from a bash shell:
+
+    <pre class="highlight"><span class="err">$ ~/tizen-sdk/tools/emulator/bin/emulator-manager</span></pre>
+    </li>
+  </ul></li>
+
+<li>
+Once the manager has loaded, ensure that the drop-down menu in the top-left of the window has <strong>x86-standard</strong> selected; then select <em>Create New VM</em>.
+</li>
+
+<li>
+  <p>Set the name to <strong>Tablet</strong> and ensure that <em>Base Image</em> is set to <strong>emulimg-2.2.x86</strong>. Accept the defaults for the other settings and select <em>Confirm</em> to create the VM.</p>
+
+  <p>The result should look like this:</p>
+
+  <p><img src="assets/tizen-emulator-manager.png" /></p>
+</li>
+
+<li>
+  <p>To run the image, stay in the Tizen Emulator Manager and click the play button for the VM (see above). The emulator should now run your VM:</p>
+
+  <p><img src="assets/tizen-emulated-running.png" /></p>
+</li>
+
+<li>
+  <p>The final step is to install the Crosswalk Tizen runtime on the VM. This can be done by using <code>sdb</code> to get a root shell on the VM (either use bash or cmd):</p>
+
+  <pre>
+  # on the host machine, from a shell
+  sdb root on
+
+  Switched to 'root' account mode
+
+  # get a root shell on the VM
+  sdb shell
+  sh-4.1#
+
+  # now we're on the VM (note that your prompt may
+  # be slightly different from "sh-4.1#")
+
+  # download and install the Crosswalk Tizen and Tizen emulator rpms
+  sh-4.1# curl https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk.rpm
+  sh-4.1# curl https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk-emulator.rpm
+  sh-4.1# rpm -ih tz*.rpm
+  </pre>
+</li>
+
+<li><p>Still in the shell on the VM, test that crosswalk has installed and is working:</p>
+
+  <pre class="highlight"><span class="err">sh-4.1# xwalk</span></pre>
+
+</li>
+
+</ol><p>The VM is now set up and ready to use as a Tizen deployment target.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-02-03 18:24:55</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/15-Tizen_target_setup" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/15-Tizen_target_setup">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
