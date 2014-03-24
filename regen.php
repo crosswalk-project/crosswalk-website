@@ -58,7 +58,7 @@ if ($now['sec'] - $mtime < 10)
     exit;
 
 $ret = 0;
-@system ('git --git-dir=wiki.git fetch -q origin master:master', $ret);
+@system ('git -c http.sslVerify=false --git-dir=wiki.git fetch origin master', $ret);
 if ($ret) {
     print "git fetch failed";
     exit;

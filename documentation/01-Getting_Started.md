@@ -11,7 +11,7 @@ This tutorial will get you up and running with Crosswalk as quickly as possible.
     *   [Crosswalk Android for x86, version ${XWALK-STABLE-ANDROID-X86}](#documentation/getting_started/run_on_android)
     *   [Crosswalk Tizen for x86, version ${XWALK-STABLE-TIZEN-X86}](#documentation/getting_started/run_on_tizen)
 
-You will need to be comfortable using a command line to follow these steps.
+You will need to be comfortable using a command line to follow these steps. If you prefer to use a graphical integrated development environment (IDE), the free **Intel XDK** provides an alternative way to package applications with Crosswalk. See the [Intel XDK website](http://xdk-software.intel.com/) for more details.
 
 **By the end of the tutorial**, you should understand the workflow for creating Crosswalk applications from your own HTML5 projects.
 
