@@ -51,7 +51,7 @@ Note that though the tutorial focuses on Tizen IVI, the extension also works on 
 **The tutorial contains the following steps:**
 
 1.  [Set up your host development environment](#documentation/tizen_ivi_extensions/host_and_target_setup).
-2.  [Write a small web application and Crosswalk Tizen extension](#documentation/tizen_ivi_extensions/build_application_and_extension).
+2.  [Write a small web application and Crosswalk Tizen extension](#documentation/tizen_ivi_extensions/build_an_application).
 3.  [Run the application and extension using the Tizen emulator](#documentation/tizen_ivi_extensions/run_on_tizen_emulator).
 
 **By the end of this tutorial**, you will understand the basics of writing a C extension for Crosswalk running on Tizen IVI.
