@@ -101,7 +101,7 @@
     <p>* - note that release notes are only produced for stable and beta
     versions.</p>
 
-    <p><a href="https://download.01.org/crosswalk/releases/">More downloads...</a></p>
+    <p><a href="https://download.01.org/crosswalk/releases/crosswalk/">More downloads...</a></p>
 
     <h2>Release channels</h2>
 

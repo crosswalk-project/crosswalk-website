@@ -52,7 +52,7 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 # Experimental APIs
 In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.
 
-* [Presentation API] (http://webscreens.github.io/presentation-api/) - Access external displays from within web applications. For more information see the [Presentation API developer documentation] (https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual). Introduced in [Crosswalk 3.32.49.0] (https://download.01.org/crosswalk/releases/).
+* [Presentation API] (http://webscreens.github.io/presentation-api/) - Access external displays from within web applications. For more information see the [Presentation API developer documentation] (https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual). Introduced in [Crosswalk 3.32.49.0] (https://download.01.org/crosswalk/releases/crosswalk/).
 * [Device Capabilities] (http://www.w3.org/2012/sysapps/device-capabilities/) - Retrieve information about the underlaying system.
 * [Raw Sockets] (http://www.w3.org/TR/raw-sockets/) - Raw TCP and UDP sockets for client and server sides.
 

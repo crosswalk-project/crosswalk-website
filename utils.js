@@ -50,31 +50,27 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
         file_prefix += "emulator-support-";
     }
 
-    var download_url = 'https://download.01.org/crosswalk/releases/' + OS;
+    var download_url = 'https://download.01.org/crosswalk/releases/crosswalk/'
+                     + OS + '/' + channel + '/' + version + '/';
 
-    if (OS === "android") {
-        download_url += "-" + arch
+    // android: crosswalk-beta >= 5.34.104.1 and crosswalk-canary >= 6.34.106.0
+    // will be architecture-independent, so once we move to those we need to
+    // remove |arch| from here and the checks below.
+    download_url += (OS === "android" ? arch + '/' : '') + file_prefix + version;
+
+    if (OS === "android" && arch === "x86") {
+        download_url += "-x86.zip";
     }
-
-    download_url += "/" + channel + "/";
-
-    if (version) {
-        download_url += file_prefix + version;
-
-        if (OS === "android" && arch === "x86") {
-            download_url += "-x86.zip";
-        }
-        else if (OS === "android" && arch === "arm") {
-            download_url += "-arm.zip";
-        }
-        // as of tizen-mobile 5.32.88.0, suffix changed to 686
-        else if (OS === "tizen-ivi" || (OS === "tizen-mobile" && channel === "canary")) {
-            download_url += "-0.i686.rpm";
-        }
-        // older tizen-mobile
-        else {
-            download_url += "-0.i586.rpm";
-        }
+    else if (OS === "android" && arch === "arm") {
+        download_url += "-arm.zip";
+    }
+    // as of tizen-mobile 5.32.88.0, suffix changed to 686
+    else if (OS === "tizen-ivi" || (OS === "tizen-mobile" && channel === "canary")) {
+        download_url += "-0.i686.rpm";
+    }
+    // older tizen-mobile
+    else {
+        download_url += "-0.i586.rpm";
     }
 
     return download_url;

@@ -96,7 +96,7 @@ Once you have a target ready, you can install Crosswalk on it:
 
 2.  From the shell on the target, download the Crosswalk package:
 
-        curl -O https://download.01.org/crosswalk/releases/tizen-ivi/canary/crosswalk-5.32.87.0-0.i586.rpm
+        curl -O https://download.01.org/crosswalk/releases/crosswalk/tizen-ivi/canary/5.32.87.0/crosswalk-5.32.87.0-0.i586.rpm
 
     And install it:
 

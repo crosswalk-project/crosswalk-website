@@ -115,8 +115,8 @@ Once the manager has loaded, ensure that the drop-down menu in the top-left of t
   # be slightly different from "sh-4.1#")
 
   # download and install the Crosswalk Tizen and Tizen emulator rpms
-  sh-4.1# curl https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk.rpm
-  sh-4.1# curl https://download.01.org/crosswalk/releases/tizen-mobile/stable/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk-emulator.rpm
+  sh-4.1# curl https://download.01.org/crosswalk/releases/crosswalk/tizen-mobile/stable/${XWALK-STABLE-TIZEN-X86}/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk.rpm
+  sh-4.1# curl https://download.01.org/crosswalk/releases/crosswalk/tizen-mobile/stable/${XWALK-STABLE-TIZEN-X86}/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk-emulator.rpm
   sh-4.1# rpm -ih tz*.rpm
   </pre>
 </li>
