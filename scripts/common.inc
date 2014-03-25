@@ -109,7 +109,7 @@ function launch_gollum () {
        return
     fi
 
-    gollum_pid=$(ps -o pid= -C gollum)
+    gollum_pid=$(pgrep -f gollum)
 
     if [[ $gollum_pid -eq 0 ]] ; then
       # get the currently checked-out branch to set --ref
@@ -139,7 +139,7 @@ function launch_gollum () {
 }
 
 function kill_gollum () {
-    gollum_pid=$(ps -o pid= -C gollum)
+    gollum_pid=$(pgrep -f gollum)
     if [[ ! $gollum_pid -eq 0 ]] ; then
       echo -n "killing gollum process $gollum_pid"
       kill -9 ${gollum_pid}
