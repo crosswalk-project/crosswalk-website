@@ -8,7 +8,8 @@ var context = this,
     slider, active_uri = '', active_page = '',
     active_target = '', sub_link = '',
     anchor_scroll_timer = 0, samples_background = null, samples_table = null,
-    requested_column, requested_page, requested_anchor;
+    requested_column, requested_page, requested_anchor,
+    subMenuCloseOnClick = false;
 
 var debug = {
     navigation: false,
@@ -959,7 +960,12 @@ function subMenuClick (e) {
                 return;
             }
         }
+    }
 
+    // if the submenuCloseOnClick is set, we are in the collapsed
+    // view of the page; so the click should close the menu
+    if (subMenuCloseOnClick) {
+        closeSubMenu();
     }
 
     navigateTo (href);
@@ -1234,10 +1240,14 @@ function appendMenu (parent, menu) {
  }
 
 function buildSubMenu () {
-    var el, link, href;
+    var el, column, link, href;
 
     menus.forEach (function (sub_menu) {
-        el = document.querySelector ('#' + sub_menu.menu + '-column .sub-menu');
+        column = document.querySelector ('#' + sub_menu.menu + '-column');
+
+        // add the menu for the column
+        el = column.querySelector ('.sub-menu');
+
         while (el.firstChild)
             el.removeChild (el.firstChild);
         appendMenu (el, sub_menu);
@@ -1348,9 +1358,15 @@ function _onResize (from_resize_event) {
 
         // if the width of the screen > 600px, we are displaying the
         // menu and content alongside each other; so reduce the sub content
-        // width by the width of the menu
+        // width by the width of the menu; we also remove any
+        // data-menu-state attribute to ensure the submenu is visible
         if (window.innerWidth > 600) {
             width -= sub_menu_box.offsetWidth;
+            closeSubMenu();
+            subMenuCloseOnClick = false;
+        }
+        else {
+            subMenuCloseOnClick = true;
         }
 
         sub_content.style.width = width + 'px';
@@ -1467,6 +1483,32 @@ function scrollTo (e) {
     requestAnimationFrame (smoothScroll);
 }
 
+function getSubMenu () {
+    return document.querySelector ('#page .sub-menu-box');
+}
+
+function isSubMenuOpen (submenu) {
+    return (submenu || getSubMenu()).getAttribute ('data-menu-state') === 'open';
+}
+
+function openSubMenu (submenu) {
+    (submenu || getSubMenu()).setAttribute ('data-menu-state', 'open');
+}
+
+function closeSubMenu (submenu) {
+    (submenu || getSubMenu()).removeAttribute ('data-menu-state');
+}
+
+function toggleSubMenu () {
+    var submenu = getSubMenu();
+    if (isSubMenuOpen (submenu)) {
+        closeSubMenu (submenu);
+    }
+    else {
+        openSubMenu (submenu);
+    }
+}
+
 function init () {
     var name, href, use_default = true;
 
@@ -1498,6 +1540,10 @@ function init () {
     });
 
     buildSubMenu ();
+
+    // when the menu button is clicked, open the sub menu if it's closed
+    var subMenuButton = document.querySelector ('.sub-menu-button')
+    subMenuButton.addEventListener ('click' , toggleSubMenu);
 
     document.addEventListener ('scroll', onScroll);
     window.addEventListener ('resize', onResize);

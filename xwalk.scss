@@ -187,11 +187,7 @@ p {
         height: 100%;
         max-width: 220px;
         min-width: 200px;
-
-        @media (max-width: $small-break) {
-            display: none;
-            z-index: 50;
-        }
+        z-index: 50;
 
         @media (max-width: $tiny-break) {
           top: 36px;
@@ -1174,6 +1170,29 @@ p {
   margin-top: 0.5em;
 }
 
+<<<<<<< HEAD
 #channels-viewer-table td {
   text-align: center !important;
+=======
+.sub-menu-box {
+  @media (max-width: $small-break) {
+      display: none !important;
+  }
+}
+
+.sub-menu-box[data-menu-state="open"] {
+  @media (max-width: $small-break) {
+      display: block !important;
+  }
+}
+
+.sub-menu-button-container {
+    position: fixed;
+    display: none;
+
+    @media (max-width: $small-break) {
+        display: block;
+        z-index: 50;
+    }
+>>>>>>> Get menu collapse working when screen <= 600px
 }
