@@ -121,7 +121,8 @@ function activateColumn (name) {
             hide_delay_timeout = 0;
             top_menu.classList.remove ('hide-delay');
         }
-        page.style.paddingTop = top_menu.offsetHeight + 'px';
+
+        page.style['padding-top'] = top_menu.offsetHeight + 'px';
     }
 
     if (name != 'home') {
@@ -1288,12 +1289,15 @@ function _onResize (from_resize_event) {
     var y = 0, z_index = 10, button,
         scroll = window.scrollY || window.pageYOffset, item;
 
+    // ensure the top of the page is aligned with the bottom of the top menu bar
+    page.style['padding-top'] = top_menu.offsetHeight + 'px';
+
     // Cache the window height dimension
     viewHeight = window.innerHeight;
 
     /* Set the home height to be a minimum of 64px shorter than the window.innerHeight
      * There is probably a CSS way to do this (it broke when I switched away
-     * from absolute positioning on #home), but user's don't care if
+     * from absolute positioning on #home), but users don't care if
      * the implementation is a hack, so long as it works... */
     home.style.minHeight = Math.round (viewHeight - 64) + 'px';
 
@@ -1303,7 +1307,6 @@ function _onResize (from_resize_event) {
     var content = home.querySelector ('.content'),
         contentTop = Math.round ((viewHeight - 64 - content.offsetHeight) * 0.5);
     contentTop = Math.max (contentTop, 0);
-    content.style.top =  contentTop + 'px';
 
     /* And then vertically align the more-button to the bottom of the home content with
      * the 50px padding... (the more-button is a child of content, so we determine the
@@ -1339,11 +1342,18 @@ function _onResize (from_resize_event) {
      * here based on the column width minus the sub-menu width */
     var sub_menu_box = column.querySelector ('.sub-menu-box');
     if (sub_menu_box) {
-        var width = sub_menu_box.parentElement.offsetWidth - sub_menu_box.offsetWidth,
+        var width = sub_menu_box.parentElement.offsetWidth,
             height = sub_menu_box.parentElement.clientHeight,
             sub_content = column.querySelector ('.sub-content');
+
+        // if the width of the screen > 600px, we are displaying the
+        // menu and content alongside each other; so reduce the sub content
+        // width by the width of the menu
+        if (window.innerWidth > 600) {
+            width -= sub_menu_box.offsetWidth;
+        }
+
         sub_content.style.width = width + 'px';
-//        sub_content.style.minHeight = height + 'px';
         sub_content.style.minHeight = (viewHeight - top_menu.offsetHeight) + 'px';
     }
 

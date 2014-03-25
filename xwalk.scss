@@ -22,7 +22,7 @@ https://developers.google.com/chrome-developer-tools/docs/css-preprocessors
 @import 'bourbon/bourbon';
 
 $tiny-break: 440px;
-$small-break: 480px;
+$small-break: 600px;
 $medium-break: 960px;
 
 $grapefruit: #ed7332;
@@ -184,6 +184,18 @@ p {
         overflow: hidden;
         padding: 0;
         margin: 0;
+        height: 100%;
+        max-width: 220px;
+        min-width: 200px;
+
+        @media (max-width: $small-break) {
+            display: none;
+            z-index: 50;
+        }
+
+        @media (max-width: $tiny-break) {
+          top: 36px;
+        }
 
         .sub-menu {
 //            position: fixed; /* so onScroll can dynamically set top */
@@ -192,6 +204,7 @@ p {
 
             padding-top: 48px;
             padding-bottom: 48px;
+
             display: inline-block;
             width: 220px;
             min-width: 220px;
@@ -262,11 +275,11 @@ p {
     .sub-content {
         position: relative;
         left: 220px;
-/*
+
         @media (max-width: $small-break) {
-            left: 32px;
+            left: 0px;
         }
-*/
+
         vertical-align: top;
         display: inline-block;
         background: $doc-body-bg;
