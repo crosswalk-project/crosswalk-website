@@ -1,7 +1,7 @@
-documentation/*.html
-documentation/*/*.html
-contribute/*.html
-contribute/*/*.html
+#documentation/*.html
+#documentation/*/*.html
+#contribute/*.html
+#contribute/*/*.html
 # The only file that should be in wiki/ is the README placeholder
 # all else is dynamically generated via gfm.php
 wiki/*
@@ -10,9 +10,9 @@ wiki.git
 *.msg
 *.map
 *.log
-xwalk.css
-markdown.css
-menus.js
+#xwalk.css
+#markdown.css
+#menus.js
 github-regen
 site-config.php
 cache/*.json
