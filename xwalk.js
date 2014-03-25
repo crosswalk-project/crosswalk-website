@@ -759,7 +759,7 @@ function addEventOffset (e) {
     function scrollableWheel (e) {
         if (!this.firstChild.classList.contains ('scrollable'))
             return;
-        y = ((e.wheelDeltaY || -e.deltaY) < 0) ? -1 : +1;
+        var y = ((e.wheelDeltaY || -e.deltaY) < 0) ? -1 : +1;
         scrollTo (this, this.firstChild.offsetTop + (y * this.offsetHeight * 0.2));
 
         e.preventDefault ();
