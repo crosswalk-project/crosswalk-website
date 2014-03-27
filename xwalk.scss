@@ -1196,3 +1196,15 @@ p {
     }
 >>>>>>> Get menu collapse working when screen <= 600px
 }
+
+.sub-menu-button-container[data-hide="true"] {
+    display: none !important;
+}
+
+.sub-menu-button {
+  width: 26px;
+  height: 26px;
+  margin-left: 2px;
+  background-color: #dbd4ce;
+  border: thin dashed #ccc;
+}
