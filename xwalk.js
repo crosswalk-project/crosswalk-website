@@ -104,6 +104,8 @@ function activateColumn (name) {
     column = tmp;
     column_name = name;
 
+    var menuButton = document.querySelector ('.sub-menu-button-container');
+
     if (column.id == 'home-column') {
         if (hide_delay_timeout) {
             window.clearTimeout (hide_delay_timeout);
@@ -116,6 +118,9 @@ function activateColumn (name) {
         }, 1000);
 
         page.style.removeProperty ('padding-top');
+
+        // hide the menu button always
+        menuButton.setAttribute ('data-hide', 'true');
     } else {
         if (hide_delay_timeout) {
             window.clearTimeout (hide_delay_timeout);
@@ -124,6 +129,9 @@ function activateColumn (name) {
         }
 
         page.style['padding-top'] = top_menu.offsetHeight + 'px';
+
+        // show the menu button if width is small enough
+        menuButton.setAttribute ('data-hide', 'false');
     }
 
     if (name != 'home') {
@@ -1488,19 +1496,39 @@ function getSubMenu () {
 }
 
 function isSubMenuOpen (submenu) {
-    return (submenu || getSubMenu()).getAttribute ('data-menu-state') === 'open';
+    submenu = submenu || getSubMenu();
+
+    if (!submenu) {
+        return false;
+    }
+    else {
+        return submenu.getAttribute ('data-menu-state') === 'open';
+    }
 }
 
 function openSubMenu (submenu) {
-    (submenu || getSubMenu()).setAttribute ('data-menu-state', 'open');
+    submenu = submenu || getSubMenu();
+
+    if (submenu) {
+        submenu.setAttribute ('data-menu-state', 'open');
+    }
 }
 
 function closeSubMenu (submenu) {
-    (submenu || getSubMenu()).removeAttribute ('data-menu-state');
+    submenu = submenu || getSubMenu();
+
+    if (submenu) {
+        submenu.removeAttribute ('data-menu-state');
+    }
 }
 
 function toggleSubMenu () {
     var submenu = getSubMenu();
+
+    if (!submenu) {
+        return;
+    }
+
     if (isSubMenuOpen (submenu)) {
         closeSubMenu (submenu);
     }
