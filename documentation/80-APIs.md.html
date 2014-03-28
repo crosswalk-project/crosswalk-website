@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/80 APIs';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/80 APIs</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Standard APIs</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/80-APIs"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/80-APIs"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The following standard APIs are supported by Crosswalk on both Android and Tizen since <a href="wiki/Crosswalk-3-release-notes">Crosswalk 3.32.53.2 - Beta Build (release 3)</a>, unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only).</p>
+
+<h2>Runtime &amp; Packaging<a class="anchor" id="Runtime-&amp;-Packaging" href="#Runtime-&amp;-Packaging"></a></h2>
+
+<ul><li><a href="http://www.w3.org/2012/sysapps/app-uri/">app: URI</a><sup><a href="#t">[t]</a></sup> - Address resources inside a packaged application.</li>
+</ul><h2>Multimedia &amp; Graphics<a class="anchor" id="Multimedia-&amp;-Graphics" href="#Multimedia-&amp;-Graphics"></a></h2>
+
+<ul><li><a href="http://www.w3.org/TR/css3-animations/">CSS Animations</a> - Animate CSS properties over time using keyframes.</li>
+<li><a href="http://www.w3.org/TR/css3-background/">CSS Backgrounds and Borders Level 3</a> - CSS features for borders and backgrounds.</li>
+<li><a href="http://www.w3.org/TR/css3-color/">CSS Color Module Level 3</a> - CSS features for color values and properties.</li>
+<li><a href="http://www.w3.org/TR/css3-flexbox/">CSS Flexible Box Layout </a> - A CSS box model for user interface design.</li>
+<li><a href="http://www.w3.org/TR/css3-webfonts/">CSS Fonts Level 3</a> - Font properties and dynamic font resource loading.</li>
+<li><a href="http://www.w3.org/TR/css3-multicol/">CSS Multi-column Layout</a> - Multi-column layouts with CSS.</li>
+<li><a href="http://www.w3.org/TR/css-text-decor-3/">CSS Text Decoration Level 3</a> - Text decoration CSS features.</li>
+<li><a href="http://www.w3.org/TR/css3-transforms/">CSS Transforms</a> - Change the position of content in 3D space without disrupting the normal flow using CSS.</li>
+<li><a href="http://www.w3.org/TR/css3-transitions/">CSS Transitions</a> - Enables property changes in CSS values over a duration of time.</li>
+<li><a href="http://www.w3.org/TR/2dcontext/">HTML Canvas 2D Context</a> - An API for 2D immediate mode graphics.</li>
+<li><a href="http://www.w3.org/TR/html5/">HTML5 Audio/Video</a> - Audio and Video support without plugins.</li>
+<li><a href="http://w3c-test.org/csswg/mediaqueries3/">Media Queries Level 3</a> - CSS media features for adapting the same content to different output devices and screens.</li>
+<li><a href="http://www.w3.org/TR/SVG11/">Scalable Vector Graphics (SVG) 1.1</a> - An XML markup language for 2D vector graphics.</li>
+<li><a href="http://www.w3.org/TR/webrtc/">WebRTC</a><sup id="a">[a]</sup> - Peer to peer sharing of video and audio streams.</li>
+</ul><h2>Networking &amp; Storage<a class="anchor" id="Networking-&amp;-Storage" href="#Networking-&amp;-Storage"></a></h2>
+
+<ul><li><a href="http://dev.w3.org/2006/webapi/FileAPI/">File API</a> - Asynchronously read the contents of files or raw data buffers stored on the client.</li>
+<li><a href="http://dev.w3.org/2009/dap/file-system/file-dir-sys.html">File API: Directories and System</a> - Expose a sandboxed filesystem on the client.</li>
+<li><a href="http://dev.w3.org/2009/dap/file-system/file-writer.html">File API: Writer</a> - Write files to a sandboxed sandboxed filesystem on the client.</li>
+<li><a href="http://www.w3.org/TR/webmessaging/">HTML5 Web Messaging</a> - A mechanism for communicating between browsing contexts.</li>
+<li><a href="https://dvcs.w3.org/hg/IndexedDB/raw-file/default/Overview.html">Indexed DB</a> - An asynchronous client-side storage API for fast access to large amounts of structured data.</li>
+<li><a href="http://www.w3.org/html/wg/drafts/html/CR/browsers.html#browser-state">Online State</a> - Online and offline events for the network state. </li>
+<li><a href="http://www.w3.org/TR/webdatabase/">Web SQL</a> - Store data in databases on the client using a variant of SQL.</li>
+<li><a href="http://www.w3.org/TR/websockets/">Web Sockets</a> - A low overhead bi-directional communication with web servers over a persistent TCP connection.</li>
+<li><a href="http://www.w3.org/TR/webstorage/">Web Storage</a> - A simple synchronous client-side storage API for storing name-value pairs.</li>
+<li><a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest</a> - Transfer data between a client and a server programmatically over HTTP.</li>
+</ul><h2>Performance &amp; Optimization<a class="anchor" id="Performance-&amp;-Optimization" href="#Performance-&amp;-Optimization"></a></h2>
+
+<ul><li><a href="http://www.w3.org/TR/navigation-timing/">Navigation Timing</a> - Access timing information related to navigation and elements.</li>
+<li><a href="http://www.w3.org/TR/page-visibility/">Page Visibility</a><sup><a href="#a">[a]</a></sup>  - Programmatically determine the visibility state of the web application.</li>
+<li><a href="http://www.w3.org/TR/resource-timing/">Resource Timing</a> - Access timing information related to HTML elements.</li>
+<li><a href="http://www.w3.org/TR/selectors-api/">Selectors Level 1</a> and <a href="http://www.w3.org/TR/selectors-api2/">Level 2</a> - Retrieve elements from the DOM using CSS selectors.</li>
+<li><a href="http://www.khronos.org/registry/typedarray/specs/latest/">Typed Array 1.0</a> - Data types for raw binary data for performance critical tasks.</li>
+<li><a href="http://www.w3.org/TR/workers/">Web Workers</a> - Run scripts in parallel to the main page.</li>
+</ul><h2>Device &amp; Hardware<a class="anchor" id="Device-&amp;-Hardware" href="#Device-&amp;-Hardware"></a></h2>
+
+<ul><li><a href="http://fullscreen.spec.whatwg.org/">Fullscreen</a> - Programmatically instruct an element on the page to be presented in full screen mode.</li>
+<li><a href="http://www.w3.org/TR/html5/forms.html#date-and-time-state-(type=datetime">HTML5 Date and Time state of input element</a>)<sup><a href="#a">[a]</a></sup> - Picker controls for date and time input types.</li>
+<li> <a href="http://www.w3.org/TR/html5/forms.html#telephone-state-(type=tel">HTML5 Telephone, Email and URL state of input element</a>)<sup><a href="#a">[a]</a></sup> - Picker controls for telephone, email and URL input types.</li>
+<li><a href="https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html">Touch Events</a> - Handle touch events programmatically.</li>
+<li><a href="http://www.w3.org/TR/orientation-event/">Device Orintation Events</a> - DOM events that provide information about the physical orientation and motion of the device.</li>
+<li><a href="http://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a><sup><a href="#a">[a]</a></sup> - Provides access to local media streams including video (camera) and audio (microphone). </li>
+</ul><h1>Experimental APIs<a class="anchor" id="Experimental-APIs" href="#Experimental-APIs"></a></h1>
+
+<p>In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.</p>
+
+<ul><li><a href="http://webscreens.github.io/presentation-api/">Presentation API</a> - Access external displays from within web applications. For more information see the <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual">Presentation API developer documentation</a>. Introduced in <a href="https://download.01.org/crosswalk/releases/crosswalk/">Crosswalk 3.32.49.0</a>.</li>
+<li><a href="http://www.w3.org/2012/sysapps/device-capabilities/">Device Capabilities</a> - Retrieve information about the underlaying system.</li>
+<li><a href="http://www.w3.org/TR/raw-sockets/">Raw Sockets</a> - Raw TCP and UDP sockets for client and server sides.</li>
+</ul><h1>Tizen Extension APIs<a class="anchor" id="Tizen-Extension-APIs" href="#Tizen-Extension-APIs"></a></h1>
+
+<p>In addition to the experimental Crosswalk APIs, the Crosswalk developers have created 
+a Crosswalk extension for Tizen users which provides many of the Tizen 
+APIs. You can find information on those APIs in <a href="https://github.com/crosswalk-project/tizen-extensions-crosswalk/wiki/APIs">Tizen Extension APIs</a> list.</p>
+
+<p><small>Some content in the Standard APIs section of this page has been adapted from <a href="http://www.chromestatus.com/">chromestatus.com</a>, © 2013 The Chromium Authors, used under <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 license</a></small></p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Raphael Kubo da Costa</b>, 2014-03-24 19:44:01</p>
+  <p>
+    <a id="delete-link" href="/documentation/80-APIs" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/80-APIs">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
