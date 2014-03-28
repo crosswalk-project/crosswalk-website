@@ -32,22 +32,40 @@ function asyncJsonGet(path, cb) {
     xhr.send();
 }
 
+// compare version with basis, returning true if version >= basis;
+// version needs the format P.Q.R.S
+function isLaterOrEqualVersion(basis, version) {
+  var basisParts = basis.split('.');
+  var versionParts = version.split('.');
+
+  var ok = true;
+
+  for (var i = 0; i < basisParts.length; i++) {
+    if (versionParts[i] < basisParts[i]) {
+      ok = false;
+      break;
+    }
+    else if (versionParts[i] > basisParts[i]) {
+      break;
+    }
+  }
+
+  return ok;
+}
+
 // get the download URL for a Crosswalk OS/channel/version
-// (see for how they're organised);
 // channel: 'stable', 'beta', 'canary'
 // OS: 'android-x86', 'android-arm', 'tizen-mobile', 'tizen-ivi',
 // 'tizen-emulator'
-// version: e.g. "4.32.25.1";
-// version is optional; if omitted, the URL points to the parent folder
-// rather than a specific download file
+// version: e.g. '4.32.25.1'
 function getXwalkDownloadUrl(OS, arch, channel, version) {
-    var file_prefix = "crosswalk-";
+    var file_prefix = 'crosswalk-';
 
     // tizen emulator downloads are in the same directory as the
     // tizen-mobile ones...
-    if (OS === "tizen-emulator") {
-        OS = "tizen-mobile";
-        file_prefix += "emulator-support-";
+    if (OS === 'tizen-emulator') {
+        OS = 'tizen-mobile';
+        file_prefix += 'emulator-support-';
     }
 
     var download_url = 'https://download.01.org/crosswalk/releases/crosswalk/'
@@ -56,21 +74,39 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
     // android: crosswalk-beta >= 5.34.104.1 and crosswalk-canary >= 6.34.106.0
     // will be architecture-independent, so once we move to those we need to
     // remove |arch| from here and the checks below.
-    download_url += (OS === "android" ? arch + '/' : '') + file_prefix + version;
+    var androidBetaArchIndependent = (OS === 'android' &&
+                                      channel === 'beta' &&
+                                      isLaterOrEqualVersion('5.34.104.1', version));
 
-    if (OS === "android" && arch === "x86") {
-        download_url += "-x86.zip";
+    var androidCanaryArchIndependent = (OS === 'android' &&
+                                        channel === 'canary' &&
+                                        isLaterOrEqualVersion('6.34.106.0', version));
+
+    if (OS === 'android' && !(androidBetaArchIndependent || androidCanaryArchIndependent)) {
+      download_url += arch + '/';
     }
-    else if (OS === "android" && arch === "arm") {
-        download_url += "-arm.zip";
+
+    download_url += file_prefix + version;
+
+    if (OS === 'android') {
+      if (androidBetaArchIndependent || androidCanaryArchIndependent) {
+        download_url += '.zip';
+      }
+      else if (arch === 'x86') {
+        download_url += '-x86.zip';
+      }
+      else if (arch === 'arm') {
+        download_url += '-arm.zip';
+      }
     }
     // as of tizen-mobile 5.32.88.0, suffix changed to 686
-    else if (OS === "tizen-ivi" || (OS === "tizen-mobile" && channel === "canary")) {
-        download_url += "-0.i686.rpm";
+    else if (OS === 'tizen-ivi' ||
+             (OS === 'tizen-mobile' && isLaterOrEqualVersion('5.32.88.0', version))) {
+        download_url += '-0.i686.rpm';
     }
     // older tizen-mobile
     else {
-        download_url += "-0.i586.rpm";
+        download_url += '-0.i586.rpm';
     }
 
     return download_url;
@@ -95,5 +131,5 @@ function getXwalkMajorVersion(version) {
 // NB this assumes that release notes are given a consistent name
 // "Crosswalk N release notes"
 function getReleaseNotesUrl(majorVersion) {
-    return "#wiki/Crosswalk-" + majorVersion + "-release-notes";
+    return '#wiki/Crosswalk-' + majorVersion + '-release-notes';
 }
