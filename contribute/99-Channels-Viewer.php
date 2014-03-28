@@ -2,7 +2,7 @@
 <html>
 <head>
 </head>
-    <h1> Crosswalk Channels Viewer</h1>
+    <h1>Crosswalk Channels Viewer</h1>
     <table id="table" style="font-size:11px; width: 100%;">
         <thead id="columns" style="display:none">
             <tr>
@@ -44,9 +44,8 @@
       '<td><a href="{crosswalk_commit_url}" ' +
       'target="_blank">{sha}</a></td>' +
 
-      // version with download link
-      '<td><a target="_blank" href="{download_url}">' +
-      '{version}</a></td>' +
+      // version
+      '<td>{version}</td>' +
 
       // chromium version
       '<td>{chromium_version}</td>' +
@@ -62,8 +61,6 @@
     // insert one row in the table for a particular OS
     var insertOSRow = function (OS, arch, channel, branch, sha, version,
     chromium_version, chromium_sha, blink_sha) {
-        var download_url = getXwalkDownloadUrl(OS, arch, channel, version);
-
         var chromium_commit_url = 'https://github.com/crosswalk-project/' +
                                   'chromium-crosswalk/commit/' + chromium_sha;
         var crosswalk_commit_url = 'https://github.com/crosswalk-project/' +
@@ -76,11 +73,10 @@
             channel: channel,
             branch: branch,
             sha: sha,
-            version: version,
             chromium_version: chromium_version,
             chromium_sha: chromium_sha,
             blink_sha: blink_sha,
-            download_url: download_url,
+            version: version,
             chromium_commit_url: chromium_commit_url,
             crosswalk_commit_url: crosswalk_commit_url,
             blink_commit_url: blink_commit_url
