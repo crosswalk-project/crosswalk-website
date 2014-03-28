@@ -1528,6 +1528,14 @@ function closeSubMenu (submenu) {
     }
 }
 
+function closeSubMenuIfOpen (submenu) {
+    submenu = submenu || getSubMenu();
+
+    if (submenu && isSubMenuOpen(submenu)) {
+        closeSubMenu(submenu);
+    }
+}
+
 function toggleSubMenu () {
     var submenu = getSubMenu();
 
@@ -1578,6 +1586,14 @@ function init () {
     // when the menu button is clicked, open the sub menu if it's closed
     var subMenuButton = document.querySelector ('.sub-menu-button')
     subMenuButton.addEventListener ('click' , toggleSubMenu);
+
+    // if the submenu is open, any click on something which
+    // isn't a link closes it
+    document.addEventListener('click', function (e) {
+        if (e.target.tagName.toLowerCase() !== 'a') {
+            closeSubMenuIfOpen();
+        }
+    }, true);
 
     document.addEventListener ('scroll', onScroll);
     window.addEventListener ('resize', onResize);
