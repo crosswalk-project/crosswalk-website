@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Tizen_IVI_extensions/20 Build_application_and_extension';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Tizen_IVI_extensions/20 Build_application_and_extension</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Build application and extension</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Tizen_IVI_extensions/20-Build_application_and_extension"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Tizen_IVI_extensions/20-Build_application_and_extension"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>In this section, you will create the web application (HTML5/JavaScript) and its associated Tizen extension (written in C).</p>
+
+<p>Although we are creating the application and the extension alongside each other, they are actually two separate pieces: one extension can be used to support multiple applications if desired.</p>
+
+<p>The application itself can also be split into two: the application "proper", containing the HTML, JavaScript, CSS, and other assets; and the metadata describing the application and how it should be installed on the system.</p>
+
+<p>The diagram below shows how these pieces interact:</p>
+
+<p><img src="assets/crosswalk-extension-layout.png" alt="Structure of a Crosswalk application with extension" /></p>
+
+<p>In the sections below, we create the metadata, the application, and the extension.</p>
+
+<h2>Create the metadata<a class="anchor" id="Create-the-metadata" href="#Create-the-metadata"></a></h2>
+
+<p>The application metadata consists of platform-specific files which aren't properly part of the application. They are really supporting files, which are used to integrate the application with the environment. Examples might be platform-specific configuration files and icons for different screen resolutions.</p>
+
+<p>A manifest file for an application provides Crosswalk with metadata about that application: for example, which HTML file to load as the entry point, which icon to use for the application, and which permissions the application needs.</p>
+
+<p>For now, this file can be very simple. Create <code>app/manifest.json</code> with this content:</p>
+
+<pre><code>{
+  "name": "simple_extension",
+  "description": "simple extension example",
+  "version": "1.0.0",
+  "app": {
+    "launch":{
+      "local_path": "index.html"
+    }
+  }
+}
+</code></pre>
+
+<p>For more information about what the manifest can contain, see <a href="#wiki/Crosswalk-manifest">Crosswalk manifest</a>.</p>
+
+<h2>Create the web application<a class="anchor" id="Create-the-web-application" href="#Create-the-web-application"></a></h2>
+
+<p>This is a standalone HTML5 application which uses the Crosswalk extension. It consists of a single HTML file, <code>index.html</code>, in the <code>app</code> directory. This file also contains the JavaScript to invoke the Crosswalk extension.</p>
+
+<p>Create this file as <code>app/index.html</code>:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Crosswalk extensions demo&lt;/title&gt;
+&lt;meta name="viewport" content="width=device-width"&gt;
+&lt;style&gt;
+body {
+  font-size: 2em;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;This uses the echo extension defined in
+echo-extension.c (compiled to libecho.so) to
+extend Crosswalk.&lt;/p&gt;
+
+&lt;div id="out"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+var div = document.getElementById('out');
+
+var p1 = document.createElement('p');
+var p2 = document.createElement('p');
+
+// async call to extension
+echo.echoAsync('hello async echo', function (result) {
+  p1.innerText = result;
+  div.appendChild(p1);
+});
+
+// sync call to extension
+p2.innerText = echo.echoSync('hello sync echo');
+div.appendChild(p2);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Note that the <code>echo</code> extension is available globally to the application: there's no need to include a script to make use of it.</p>
+
+<p>When the application runs, the extension's API is invoked asynchronously and synchronously (<code>echo.echoAsync()</code> and <code>echoSync()</code>). The returned responses (with the "You said: " prefixes added) are used to set the text of two paragraph (<code>p</code>) elements.</p>
+
+<h2>Create the Crosswalk extension<a class="anchor" id="Create-the-Crosswalk-extension" href="#Create-the-Crosswalk-extension"></a></h2>
+
+<p>The extension consists of three parts:</p>
+
+<ol><li><p>A JavaScript file. This defines the API which web applications can invoke.</p></li>
+<li><p>A C header file containing a "stringified" version of the JavaScript file. This is used to set the JavaScript API for the extension. This file is generated at build-time, before the C library is compiled.</p></li>
+<li><p>The C file which implements the native side of the extension. This is compiled into a shared library file <code>libecho.so</code>.</p>
+
+<p>Note that the name is very important: it should begin with a "lib" prefix. Crosswalk will not load the extension correctly if it is called anything else.</p></li>
+</ol><h3>JavaScript bridge API to the C extension<a class="anchor" id="JavaScript-bridge-API-to-the-C-extension" href="#JavaScript-bridge-API-to-the-C-extension"></a></h3>
+
+<p>This file wires the C interface to JavaScript and provides the bridge between the HTML5 application and the C code.</p>
+
+<p>Note that it's not essential to maintain the JavaScript in a separate file: you can just add the JavaScript API inline to your C code. However, for purposes of maintainability, it makes sense to maintain the JavaScript API in its own file.</p>
+
+<p>Add a file at <code>extension/api.js</code> with this content:</p>
+
+<pre><code>var echoListener = null;
+
+extension.setMessageListener(function(msg) {
+  if (echoListener instanceof Function) {
+    echoListener(msg);
+  };
+});
+
+exports.echoAsync = function (msg, callback) {
+  echoListener = callback;
+  extension.postMessage(msg);
+};
+
+exports.echoSync = function (msg) {
+  return extension.internal.sendSyncMessage(msg);
+};
+</code></pre>
+
+<p>This JavaScript file is converted into a C header file at build-time; that header file is then referenced from the extension code. This is the simplest way to incorporate the JavaScript code into the C extension. See <a href="#documentation/tizen_ivi_extensions/build_application_and_extension/C-header-file-for-the-JavaScript-API">this section</a> for details of how the conversion happens.</p>
+
+<h4>A note on the JavaScript API<a class="anchor" id="A-note-on-the-JavaScript-API" href="#A-note-on-the-JavaScript-API"></a></h4>
+
+<p>Note that the asynchronous part of this API is <em>not suitable</em> for a real production environment.</p>
+
+<p>At the moment, when you invoke the <code>echoAsync()</code> method, you set a single global message listener: a function which waits for the next response to be returned by the C part of the extension. However, this approach would not work correctly if the processing which occurred in the extension took some time, and the <code>echoAsync()</code> method were invoked during that processing time.</p>
+
+<p>For example, consider the following program:</p>
+
+<pre><code>var callback1 = function (response) {
+  console.log(response + ' world');
+};
+
+var callback2 = function (response) {
+  console.log(response + ' cruel world');
+};
+
+// invocation 1
+echo.echoAsync('hello', callback1);
+
+// invocation 2
+echo.echoAsync('goodbye', callback2);
+</code></pre>
+
+<p>When invocation 1 occurs, the message listener is set to <code>callback1</code>. If the extension takes several seconds to respond, invocation 2 may have already happened before invocation 1 completes; and invocation 2 sets the message listener to <code>callback2</code> (there is only one listener for all responses). Consequently, when invocation 1 does eventually return, its handler (<code>callback1</code>) has been overwritten; so the responses for both invocation 1 and invocation 2 will be (incorrectly) handled by <code>callback2</code>.</p>
+
+<p>In practice, this means that you would see this on the console:</p>
+
+<pre><code>hello cruel world
+goodbye cruel world
+</code></pre>
+
+<p>instead of the anticipated:</p>
+
+<pre><code>hello world
+goodbye cruel world
+</code></pre>
+
+<p>The solution is to pass a token from the JavaScript API to the C code, then return that token as part of the response from the C code. The JavaScript API would maintain a mapping from tokens to callbacks, so when responses are returned (containing a token), the correct handler can be looked up and invoked. A typical way to implement this would be to JSON-encode messages between the JavaScript and C parts of the extension, and include a token in each message. However, this process is too complex for the scope of this tutorial.</p>
+
+<p>If you're interested in seeing a real world example of how this would be implemented, the <a href="https://github.com/crosswalk-project/tizen-extensions-crosswalk">Crosswalk Tizen extensions</a> are a good place to start, e.g. <a href="https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/application/application_api.js">the application API JavaScript file</a>.</p>
+
+<h3>C header file for the JavaScript API<a class="anchor" id="C-header-file-for-the-JavaScript-API" href="#C-header-file-for-the-JavaScript-API"></a></h3>
+
+<p>The header file, <code>extension/echo-extension.h</code>, is a generated file which looks like this:</p>
+
+<pre><code>static const char* kSource_echo_api = "var echoListener = null;"
+""
+"extension.setMessageListener(function(msg) {"
+"  if (echoListener instanceof Function) {"
+"    echoListener(msg);"
+"  };"
+"});"
+""
+"exports.echoAsync = function (msg, callback) {"
+"  echoListener = callback;"
+"  extension.postMessage(msg);"
+"};"
+""
+"exports.echoSync = function (msg) {"
+"  return extension.internal.sendSyncMessage(msg);"
+"};"
+;
+</code></pre>
+
+<p>By including this header file in a C file, you can access the <code>kSource_echo_api</code> constant, which defines the JavaScript API for the extension.</p>
+
+<p>Note that this mirrors the JavaScript file created we created earlier, but is generated by a script (in the root directory of the project). Create a file called <code>js2c.sh</code> in the root of the <strong>simple</strong> project, with this content:</p>
+
+<pre><code>#!/bin/sh
+JS=$1
+COUT=$2
+
+if [ ! $JS -o ! $COUT ] ; then
+  echo "Usage $0 &lt;js api file&gt; &lt;output c header file&gt;"
+  exit 1
+fi
+
+echo -n "static const char* kSource_echo_api = " &gt; $COUT
+
+cat $JS | awk -F\n '{print "\"" $_ "\""}' | \
+  tr -d $'\r' &gt;&gt; $COUT
+
+echo ";" &gt;&gt; $COUT
+</code></pre>
+
+<p>You should make the script executable once you've created it with:</p>
+
+<pre><code>chmod +x js2c.sh
+</code></pre>
+
+<p>Invoke it like this:</p>
+
+<pre><code>./js2c.sh &lt;.js file&gt; &lt;output .h file&gt;
+</code></pre>
+
+<p>While the script can be invoked manually for testing, the aim is to incorporate it into an automated build later.</p>
+
+<h3>C program code<a class="anchor" id="C-program-code" href="#C-program-code"></a></h3>
+
+<p>This implements the Crosswalk extension API and has access to the full Tizen native API. For the purposes of this tutorial, the C code simply prefixes a message string with "You said: " and returns it.</p>
+
+<p>Create a file <code>extension/echo-extension.c</code> with this content:</p>
+
+<pre><code>// echo extension for Crosswalk Tizen
+// adapted from
+// https://github.com/crosswalk-project/crosswalk/blob/master/extensions/test/echo_extension.c
+// Copyright (c) 2013 Intel Corporation. All rights reserved.
+// Use of this source code is governed by a BSD-style license
+// that can be found in the LICENSE file.
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include "xwalk/extensions/public/XW_Extension.h"
+#include "xwalk/extensions/public/XW_Extension_SyncMessage.h"
+
+// load kSource_echo_api string to set JavaScript API;
+// echo-extension.h is generated by the makefile at build time
+#include "echo-extension.h"
+
+static const char* echo_ext_response_prefix = "You said: ";
+
+static XW_Extension g_extension = 0;
+static const XW_CoreInterface* g_core = NULL;
+static const XW_MessagingInterface* g_messaging = NULL;
+static const XW_Internal_SyncMessagingInterface* g_sync_messaging = NULL;
+
+static void instance_created(XW_Instance instance) {
+  printf("Instance %d created!\n", instance);
+}
+
+static void instance_destroyed(XW_Instance instance) {
+  printf("Instance %d destroyed!\n", instance);
+}
+
+// add a "You said: " prefix to message
+static char* build_response(const char* message) {
+  int length = strlen(echo_ext_response_prefix) +
+               strlen(message);
+  char* response = malloc(length);
+  strcpy(response, echo_ext_response_prefix);
+  strcat(response, message);
+  return response;
+}
+
+static void handle_message(XW_Instance instance, const char* message) {
+  char* response = build_response(message);
+  g_messaging-&gt;PostMessage(instance, response);
+  free(response);
+}
+
+static void handle_sync_message(XW_Instance instance, const char* message) {
+  char* response = build_response(message);
+  g_sync_messaging-&gt;SetSyncReply(instance, response);
+  free(response);
+}
+
+static void shutdown(XW_Extension extension) {
+  printf("Shutdown\n");
+}
+
+// this is the only function which needs to be public
+int32_t XW_Initialize(XW_Extension extension, XW_GetInterface get_interface) {
+  // set up the extension
+  g_extension = extension;
+  g_core = get_interface(XW_CORE_INTERFACE);
+  g_core-&gt;SetExtensionName(extension, "echo");
+
+  // kSource_echo_api comes from the echo-extension.h
+  // header file
+  g_core-&gt;SetJavaScriptAPI(extension, kSource_echo_api);
+
+  g_core-&gt;RegisterInstanceCallbacks(
+    extension, instance_created, instance_destroyed);
+  g_core-&gt;RegisterShutdownCallback(extension, shutdown);
+
+  g_messaging = get_interface(XW_MESSAGING_INTERFACE);
+  g_messaging-&gt;Register(extension, handle_message);
+
+  g_sync_messaging = get_interface(XW_INTERNAL_SYNC_MESSAGING_INTERFACE);
+  g_sync_messaging-&gt;Register(extension, handle_sync_message);
+
+  return XW_OK;
+}
+</code></pre>
+
+<p>Some notes on the code:</p>
+
+<ul><li><p>The <a href="https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h">xwalk/extensions/public/XW_Extension.h</a> header is used to define the structures used by the extension system.</p></li>
+<li><p>The only symbol that should be exported is the function:</p>
+
+<pre><code>int32_t XW_Initialize(XW_Extension extension, XW_GetInterface get_interface)
+</code></pre>
+
+<p>Its parameters are:</p>
+
+<ul><li>  <code>extension</code>: The identifier for this extension. This identifier will be used for the extension</li>
+<li>  <code>get_interface</code>: A function with signature <code>const void* XW_GetInterface(const char* interface_name)</code> used for accessing the interfaces provided for integrating native code with the Crosswalk runtime. For each <code>interface_name</code>, it returns a pointer to a structure with functions that the extension can call.</li>
+</ul><p>This function should be implemented and exported in the shared object; and it should return <code>XW_OK</code> when the extension is correctly initialized.</p>
+
+<p>Be sure to use <code>extern "C"</code> when defining this function to avoid name mangling if using a C++ compiler (we're not in this tutorial).</p></li>
+<li><p><code>SetExtensionName()</code> sets the public name for the JavaScript API which will be available to your web application.</p></li>
+<li><p><code>SetJavaScriptAPI()</code> takes a JavaScript string to be presented as the API. The name you set with <code>SetExtensionName()</code> should match the one you use in the JavaScript API string. In the case of this extension, the API string is loaded from a header file which is generated by the build.</p></li>
+<li><p>This example provides synchronous and asynchronous versions of the same handler. But an extension doesn't have to handle both synchronous and asynchronous messages: it can handle only one type if desired.</p>
+
+<p>You should use asynchronous messaging where the processing performed by the C extension is likely to take some time (i.e. more than a few milliseconds; usually, this means anything involving disk or network access). Where the C code will return quickly (perhaps tens of milliseconds), synchronous messaging is safe enough.</p>
+
+<p>However, in most cases, the safest approach is to provide an asynchronous API. The synchronous alternative is shown here for the sake of completeness.</p></li>
+<li><p>Both the sync (<code>XW_Internal_SyncMessagingInterface-&gt;SetSyncReply()</code>) and async (<code>XW_MessagingInterface-&gt;PostMessage()</code>) functions for returning a response "preserve their inputs", so you can free any pointers you pass to those functions once you've invoked them.</p></li>
+</ul><h4>More details on the C interfaces<a class="anchor" id="More-details-on-the-C-interfaces" href="#More-details-on-the-C-interfaces"></a></h4>
+
+<ul><li><p>Core interface: <code>XW_CORE_INTERFACE</code></p>
+
+<p>This interface is defined in the <a href="https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h">XW_Extension.h</a> header file.</p>
+
+<p>It is a <code>struct XW_CoreInterface</code> with the following fields:</p>
+
+<ul><li>  <code>SetExtensionName()</code> sets name of the extension (identified by <code>extension</code>) to <code>name</code>. This is mandatory. It should only be called during <code>XW_Initialize()</code>.</li>
+<li>  <code>SetJavaScriptAPI()</code> exports the JavaScript shim that will be available to all page contexts. The JavaScript code <code>api</code> will be associated with <code>extension</code>. It should only be called during <code>XW_Initialize()</code>.</li>
+<li><code>RegisterInstanceCallbacks()</code> informs the Crosswalk runtime of functions that should be called when new instances of the extension are created or destroyed. Instances have the same lifetime of the web content. This should only be called during <code>XW_Initialize()</code></li>
+<li><code>RegisterShutdownCallback()</code> registers a callback that will be called when the extension is unloaded. This function should only be called during <code>XW_Initialize()</code>.</li>
+<li><code>SetInstanceData()</code> and <code>GetInstanceData()</code> are convenience functions that allow for arbitrary data to be associated with each instance, and for that data to be retrieved. These functions may be called at any time during the lifecycle of an instance.</li>
+</ul></li>
+<li><p>Messaging interface: <code>XW_MESSAGING_INTERFACE</code></p>
+
+<p>This interface is defined in the <a href="https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h">XW_Extension.h</a> header file.</p>
+
+<p>It is a <code>struct XW_MessagingInterface</code> with the following fields:</p>
+
+<ul><li>  <code>Register()</code>: when called, this function tells Crosswalk which function should be called in event of a message from the JavaScript side.</li>
+<li>  <code>PostMessage()</code> sends a message to the web content associated with the <code>instance</code>.</li>
+</ul></li>
+<li><p>Sync messaging interface (experimental): <code>XW_INTERNAL_SYNC_MESSAGING_INTERFACE</code></p>
+
+<p>This interface is defined in the <a href="https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension_SyncMessage.h">XW_Extension_SyncMessage.h</a> header file. It is marked as internal, and no guarantee will be made for its compatibility with future Crosswalk versions.</p>
+
+<p>It is a <code>struct XW_Internal_SyncMessagingInterface</code> with the following fields:</p>
+
+<ul><li>  <code>Register()</code>: this function tells Crosswalk which function should be called in event of a synchronous message from the JavaScript side.</li>
+<li>  <code>SetSyncReply()</code> responds to a synchronous (blocking) message from the JavaScript side. The renderer process will be blocked until this function is called.</li>
+</ul></li>
+</ul><p>The interface names and structures described above have a versioning suffix in their names. However, extension writers should use the unversioned macros to get the desired interfaces.</p>
+
+<h2>Build the extension<a class="anchor" id="Build-the-extension" href="#Build-the-extension"></a></h2>
+
+<p>The C compiler is part of the Tizen SDK. The compiler for x86 architecture is:</p>
+
+<pre><code>&lt;tizen SDK&gt;/tools/i386-linux-gnueabi-gcc-4.5/bin/i386-linux-gnueabi-gcc-4.5.4.exe
+</code></pre>
+
+<p>If you are using a later revision of the SDK, you may find that the compiler is in a different directory and has a different name, reflecting the <code>gcc</code> version (e.g. <code>gcc</code> may be at version 4.8 rather than 4.5).</p>
+
+<p>The Tizen SDK also provides a <em>rootstrap</em>, which contains headers and libraries for compiling your code against. For code you intend to run on the emulator, the rootstrap is located at:</p>
+
+<pre><code>&lt;tizen SDK&gt;/platforms/mobile-3.0/rootstraps/mobile-3.0-emulator.native
+</code></pre>
+
+<p><strong>Note:</strong> This rootstrap is for Tizen mobile, rather than Tizen IVI. This is because there is no dedicated Tizen IVI rootstrap as yet. In future, when a dedicated Tizen IVI rootstrap <em>is</em> available, you should use that instead of the mobile one. However, for the time being, the libraries in the mobile rootstrap are representative of what you can expect on a Tizen IVI target, and are acceptable for compiling the C code below to run on such a target.</p>
+
+<p>You can use a small <code>makefile</code> to invoke the compiler and generate the header file for the JavaScript API. The make file will also contain some conditional code, so that if the <code>TIZEN_SDK</code> environment variable is set, the Tizen SDK compiler and rootstrap will be used for compilation.</p>
+
+<p>In the project directory, add a file called <code>makefile</code> with this content:</p>
+
+<pre><code>ifneq ($(strip $(TIZEN_SDK)),)
+    CC=$(TIZEN_SDK)/tools/i386-linux-gnueabi-gcc-4.5/bin/i386-linux-gnueabi-gcc-4.5.4.exe
+    SYSROOT_FLAGS=--sysroot $(TIZEN_SDK)/platforms/mobile-3.0/rootstraps/mobile-3.0-emulator.native
+endif
+
+ECHO_CFLAGS=$(CFLAGS) -fPIC -Wall
+
+all: libecho.so
+    cp -a app/* build/app/
+
+echo-extension.h:
+    ./js2c.sh extension/api.js extension/echo-extension.h
+
+libecho.so: prepare echo-extension.h
+    $(CC) $(ECHO_CFLAGS) -shared -o build/extension/libecho.so
+      $(SYSROOT_FLAGS) -I$(XWALK_HEADERS) extension/echo-extension.c
+
+prepare: check
+    mkdir -p build/app
+    mkdir -p build/extension
+
+check:
+ifeq ($(strip $(XWALK_HEADERS)),)
+    echo "XWALK_HEADERS must be set"
+    exit 1
+endif
+
+clean:
+    rm -Rf build
+
+.PHONY: all prepare check clean
+</code></pre>
+
+<p>(As with all makefiles, indent using tabs, rather than spaces.)</p>
+
+<p>The <code>--sysroot</code> option is set so that the libraries and headers used as the ones included with the Tizen SDK, rather than the host's.</p>
+
+<p>The Tizen SDK provides <code>make</code> in <code>&lt;tizen-sdk&gt;/tools/mingw/bin/make.exe</code>. You added this to your <code>PATH</code> variable at the start of this tutorial. So you can now invoke the above <code>makefile</code> from your <strong>simple</strong> project directory. In a bash shell, run:</p>
+
+<pre><code>TIZEN_SDK=/path/to/tizen-sdk XWALK_HEADERS=/path/to/crosswalk-source make
+</code></pre>
+
+<p><code>/path/to/tizen-sdk</code> should point at the root directory of your Tizen SDK installation (e.g. <code>~/tizen-sdk</code> if you use the default location).</p>
+
+<p><code>/path/to/crosswalk-source</code> should point at the directory <em>above</em> the Crosswalk source code; the Crosswalk source code itself should be in a directory called <code>xwalk</code>.</p>
+
+<p>Once the build completes, the output directory <code>build/</code> should contain two folders: <code>app</code> and <code>extension</code>. <code>app</code> contains the web application and its manifest; <code>extension</code> contains the compiled extension library (<code>libecho.so</code>).</p>
+
+<p>Also note that you can use you host's compiler, providing you compile for the correct architecture (Tizen IVI emulator images are 32 bit). For example, on a 64 bit host, you would do:</p>
+
+<pre><code>CFLAGS=-m32 XWALK_HEADERS=/path/to/crosswalk-source make
+</code></pre>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-03-14 12:10:24</p>
+  <p>
+    <a id="delete-link" href="/documentation/Tizen_IVI_extensions/20-Build_application_and_extension" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Tizen_IVI_extensions/20-Build_application_and_extension">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
