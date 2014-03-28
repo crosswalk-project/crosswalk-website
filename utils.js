@@ -133,3 +133,36 @@ function getXwalkMajorVersion(version) {
 function getReleaseNotesUrl(majorVersion) {
     return '#wiki/Crosswalk-' + majorVersion + '-release-notes';
 }
+
+// create a static download link based on data in versions.js;
+// link needs these attributes set:
+// data-os, data-arch, data-channel
+function populateStaticLink(link) {
+  os = link.getAttribute('data-os');
+  arch = link.getAttribute('data-arch');
+  channel = link.getAttribute('data-channel');
+
+  // versions.js only knows about 'tizen', not 'tizen-mobile'
+  // and 'tizen-ivi' and 'tizen-emulator'...
+  versionsOs = os;
+  if (/tizen/.test(os)) {
+      versionsOs = 'tizen';
+  }
+
+  version = versions[channel][versionsOs][arch];
+
+  url = getXwalkDownloadUrl(os, arch, channel, version);
+  link.setAttribute('href', url);
+  link.innerHTML = version;
+}
+
+// populate the static download links (i.e. <a> elements
+// with data-role="static-download-link") from data in versions.js
+function populateStaticLinks() {
+  var sel = 'a[data-role="static-download-link"]';
+  var staticLinks = document.querySelectorAll(sel);
+  var link, os, arch, channel, versionsOs, url, version;
+  for (var i = 0; i < staticLinks.length; i++) {
+    populateStaticLink(staticLinks.item(i));
+  }
+}

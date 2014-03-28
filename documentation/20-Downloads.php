@@ -85,23 +85,19 @@
     </td>
     </tr>
 
-    <tr class="downloads-row release-notes-row">
-    <th class="release-notes-heading">Release notes</th>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="release-notes-link" data-channel="stable"></a>
-    </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="release-notes-link" data-channel="beta"></a>
-    </td>
-    <td>*</td>
-    </tr>
-
     </table>
 
-    <p>* - note that release notes are only produced for stable and beta
-    versions.</p>
-
     <p><a href="https://download.01.org/crosswalk/releases/crosswalk/">More downloads...</a></p>
+
+    <h2>Release notes</h2>
+
+    <ul>
+    <li><a href="#wiki/Crosswalk-4-release-notes">Crosswalk-4</a></li>
+    <li><a href="#wiki/Crosswalk-5-release-notes">Crosswalk-5</a></li>
+    </ul>
+
+    <p>Note that release notes are only produced for stable and beta
+    versions.</p>
 
     <h2>Release channels</h2>
 
@@ -153,60 +149,24 @@
     version numbers page</a> describes how Crosswalk versions are assigned.</p>
 
     <script>
-    // populate the static download links from versions.js
-    var sel = 'a[data-role="static-download-link"]';
-    var staticLinks = document.querySelectorAll(sel);
-    var link, os, arch, channel, versionsOs, url, version;
-    for (var i = 0; i < staticLinks.length; i++) {
-      link = staticLinks.item(i);
-      os = link.getAttribute('data-os');
-      arch = link.getAttribute('data-arch');
-      channel = link.getAttribute('data-channel');
-
-      // versions.js only knows about 'tizen', not 'tizen-mobile'
-      // and 'tizen-ivi' and 'tizen-emulator'...
-      versionsOs = os;
-      if (/tizen/.test(os)) {
-          versionsOs = 'tizen';
-      }
-
-      version = versions[channel][versionsOs][arch];
-
-      url = getXwalkDownloadUrl(os, arch, channel, version);
-      link.setAttribute('href', url);
-      link.innerHTML = version;
-    }
+    populateStaticLinks();
 
     // populate any download links and release notes links after
     // fetching version info for a channel/branch
     var populateLinks = function (channel, branch) {
-        var sel;
-
         // download links for this channel
-        sel = 'a[data-role="download-link"][data-channel="' + channel + '"]';
+        var sel = 'a[data-role="download-link"][data-channel="' + channel + '"]';
         var dlLinks = document.querySelectorAll(sel);
-
-        // release notes links for this channel
-        sel = 'a[data-role="release-notes-link"][data-channel="' + channel + '"]';
-        var rnLinks = document.querySelectorAll(sel);
 
         var clearAllSpinners = function () {
             for (var i = 0; i < dlLinks.length; i++) {
                 dlLinks.item(i).parentNode.setAttribute('data-loading', false);
-            }
-
-            for (i = 0; i < rnLinks.length; i++) {
-                rnLinks.item(i).parentNode.setAttribute('data-loading', false);
             }
         };
 
         var githubError = function () {
             for (var i = 0; i < dlLinks.length; i++) {
                 dlLinks.item(i).parentNode.innerHTML = 'github error';
-            }
-
-            for (i = 0; i < rnLinks.length; i++) {
-                rnLinks.item(i).parentNode.innerHTML = 'github error';
             }
         };
 
@@ -233,13 +193,6 @@
                     channel,
                     version
                 );
-            }
-
-            // populate release notes links
-            for (i = 0; i < rnLinks.length; i++) {
-                link = rnLinks.item(i);
-                link.innerHTML = 'Crosswalk-' + majorVersion;
-                link.href = getReleaseNotesUrl(majorVersion);
             }
 
             clearAllSpinners();
