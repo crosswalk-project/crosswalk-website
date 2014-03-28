@@ -1213,6 +1213,10 @@ p {
 .sub-menu-button {
   width: 32px;
   height: 32px;
+  background-image: url(assets/menu-button.png);
+  background-position: 50% 50%;
+  background-size: 100%;
+  background-repeat: none;
   background-color: #dbd4ce;
-  border: thin dashed #ccc;
+  border: thin solid #ccc;
 }
