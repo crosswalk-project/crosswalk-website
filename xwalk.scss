@@ -1183,6 +1183,15 @@ p {
 .sub-menu-box[data-menu-state="open"] {
   @media (max-width: $small-break) {
       display: block !important;
+      width: 225px !important;
+      max-width: 225px !important;
+      min-width: 225px !important;
+  }
+}
+
+.sub-menu {
+  @media (max-width: $small-break) {
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -1202,9 +1211,8 @@ p {
 }
 
 .sub-menu-button {
-  width: 26px;
-  height: 26px;
-  margin-left: 2px;
+  width: 32px;
+  height: 32px;
   background-color: #dbd4ce;
   border: thin dashed #ccc;
 }
