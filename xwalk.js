@@ -118,6 +118,7 @@ function activateColumn (name) {
         }, 1000);
 
         page.style.removeProperty ('padding-top');
+        page.style.removeProperty ('paddingTop');
 
         // hide the menu button always
         menuButton.setAttribute ('data-hide', 'true');
@@ -129,6 +130,9 @@ function activateColumn (name) {
         }
 
         page.style['padding-top'] = top_menu.offsetHeight + 'px';
+
+        // why, firefox, why?
+        page.style.paddingTop = top_menu.offsetHeight + 'px';
 
         // show the menu button if width is small enough
         menuButton.setAttribute ('data-hide', 'false');
@@ -1309,6 +1313,7 @@ function _onResize (from_resize_event) {
 
     // ensure the top of the page is aligned with the bottom of the top menu bar
     page.style['padding-top'] = top_menu.offsetHeight + 'px';
+    page.style.paddingTop = top_menu.offsetHeight + 'px';
 
     // Cache the window height dimension
     viewHeight = window.innerHeight;
@@ -1325,6 +1330,7 @@ function _onResize (from_resize_event) {
     var content = home.querySelector ('.content'),
         contentTop = Math.round ((viewHeight - 64 - content.offsetHeight) * 0.5);
     contentTop = Math.max (contentTop, 0);
+    content.style.top =  contentTop + 'px';
 
     /* And then vertically align the more-button to the bottom of the home content with
      * the 50px padding... (the more-button is a child of content, so we determine the

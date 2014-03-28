@@ -1198,13 +1198,20 @@ p {
 .sub-menu-button-container {
     position: fixed;
     display: none;
+    top: 64px;
 
     @media (max-width: $small-break) {
         display: block;
         z-index: 50;
+        top: 48px;
+    }
+
+    @media (max-width: $tiny-break) {
+        top: 32px;
     }
 }
 
+// the top properties here are the same as the height of top-menu
 .sub-menu-button-container[data-hide="true"] {
     display: none !important;
 }
