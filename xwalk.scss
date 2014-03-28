@@ -1170,10 +1170,10 @@ p {
   margin-top: 0.5em;
 }
 
-<<<<<<< HEAD
 #channels-viewer-table td {
   text-align: center !important;
-=======
+}
+
 .sub-menu-box {
   @media (max-width: $small-break) {
       display: none !important;
@@ -1203,7 +1203,6 @@ p {
         display: block;
         z-index: 50;
     }
->>>>>>> Get menu collapse working when screen <= 600px
 }
 
 .sub-menu-button-container[data-hide="true"] {
