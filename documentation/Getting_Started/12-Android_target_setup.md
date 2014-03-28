@@ -53,7 +53,7 @@ To test your application on Android platforms you don't own, the next best optio
 <ol>
 
 <li>
-  <p>Start the Android SDK Manager. If you installed it as detailed in <a href="#Install-the-Android-SDK">Install the Android SDK</a>, you can invoke the SDK Manager as follows:</p>
+  <p>Start the Android SDK Manager. If you installed it as detailed in <a href="#documentation/getting_started/host_setup/Optional:-installing-tools-for-Android-targets">Install the Android SDK</a>, you can invoke the SDK Manager as follows:</p>
 
   <ul>
     <li>
