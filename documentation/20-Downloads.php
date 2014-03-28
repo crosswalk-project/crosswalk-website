@@ -50,9 +50,7 @@
     <td>
     <a data-role="static-download-link" data-channel="stable" data-os="tizen-mobile" data-arch="x86"></a>
     </td>
-    <td>
-    <a data-role="static-download-link" data-channel="beta" data-os="tizen-mobile" data-arch="x86"></a>
-    </td>
+    <td>-</td>
     <td>-</td>
     </tr>
 
@@ -61,9 +59,7 @@
     <td>
     <a data-role="static-download-link" data-channel="stable" data-os="tizen-emulator" data-arch="x86"></a>
     </td>
-    <td>
-    <a data-role="static-download-link" data-channel="beta" data-os="tizen-emulator" data-arch="x86"></a>
-    </td>
+    <td>-</td>
     <td>-</td>
     </tr>
 
