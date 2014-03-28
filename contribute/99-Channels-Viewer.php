@@ -2,18 +2,19 @@
 <html>
 <head>
 </head>
+  <body>
     <h1>Crosswalk Channels Viewer</h1>
-    <table id="table" style="font-size:11px; width: 100%;">
+    <table id="channels-viewer-table" style="font-size:11px; width: 100%;">
         <thead id="columns" style="display:none">
             <tr>
-                <td style="padding:0; text-align:center;"> OS </td>
-                <td style="padding:0; text-align:center;"> Channel </td>
-                <td style="padding:0; text-align:center;"> Git Branch </td>
-                <td style="padding:0; text-align:center;"> Latest Commit </td>
-                <td style="padding:0; text-align:center;"> Version </td>
-                <td style="padding:0; text-align:center;"> Chromium Version </td>
-                <td style="padding:0; text-align:center;"> Chromium Crosswalk SHA </td>
-                <td style="padding:0; text-align:center;"> Blink Crosswalk SHA </td>
+                <td>OS</td>
+                <td>Channel</td>
+                <td>Git Branch</td>
+                <td>Latest Commit</td>
+                <td>Version</td>
+                <td>Chromium Version</td>
+                <td>Chromium Crosswalk SHA</td>
+                <td>Blink Crosswalk SHA</td>
             </tr>
         </thead>
         <tbody id="rows">
@@ -158,4 +159,5 @@
         }
     });
     </script>
+  </body>
 </html>
