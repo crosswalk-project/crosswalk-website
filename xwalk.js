@@ -8,7 +8,8 @@ var context = this,
     slider, active_uri = '', active_page = '',
     active_target = '', sub_link = '',
     anchor_scroll_timer = 0, samples_background = null, samples_table = null,
-    requested_column, requested_page, requested_anchor;
+    requested_column, requested_page, requested_anchor,
+    subMenuCloseOnClick = false;
 
 var debug = {
     navigation: false,
@@ -103,6 +104,8 @@ function activateColumn (name) {
     column = tmp;
     column_name = name;
 
+    var menuButton = document.querySelector ('.sub-menu-button-container');
+
     if (column.id == 'home-column') {
         if (hide_delay_timeout) {
             window.clearTimeout (hide_delay_timeout);
@@ -115,13 +118,24 @@ function activateColumn (name) {
         }, 1000);
 
         page.style.removeProperty ('padding-top');
+        page.style.removeProperty ('paddingTop');
+
+        // hide the menu button always
+        menuButton.setAttribute ('data-hide', 'true');
     } else {
         if (hide_delay_timeout) {
             window.clearTimeout (hide_delay_timeout);
             hide_delay_timeout = 0;
             top_menu.classList.remove ('hide-delay');
         }
+
+        page.style['padding-top'] = top_menu.offsetHeight + 'px';
+
+        // why, firefox, why?
         page.style.paddingTop = top_menu.offsetHeight + 'px';
+
+        // show the menu button if width is small enough
+        menuButton.setAttribute ('data-hide', 'false');
     }
 
     if (name != 'home') {
@@ -759,7 +773,7 @@ function addEventOffset (e) {
     function scrollableWheel (e) {
         if (!this.firstChild.classList.contains ('scrollable'))
             return;
-        y = ((e.wheelDeltaY || -e.deltaY) < 0) ? -1 : +1;
+        var y = ((e.wheelDeltaY || -e.deltaY) < 0) ? -1 : +1;
         scrollTo (this, this.firstChild.offsetTop + (y * this.offsetHeight * 0.2));
 
         e.preventDefault ();
@@ -958,7 +972,12 @@ function subMenuClick (e) {
                 return;
             }
         }
+    }
 
+    // if the submenuCloseOnClick is set, we are in the collapsed
+    // view of the page; so the click should close the menu
+    if (subMenuCloseOnClick) {
+        closeSubMenu();
     }
 
     navigateTo (href);
@@ -1233,10 +1252,14 @@ function appendMenu (parent, menu) {
  }
 
 function buildSubMenu () {
-    var el, link, href;
+    var el, column, link, href;
 
     menus.forEach (function (sub_menu) {
-        el = document.querySelector ('#' + sub_menu.menu + '-column .sub-menu');
+        column = document.querySelector ('#' + sub_menu.menu + '-column');
+
+        // add the menu for the column
+        el = column.querySelector ('.sub-menu');
+
         while (el.firstChild)
             el.removeChild (el.firstChild);
         appendMenu (el, sub_menu);
@@ -1288,12 +1311,16 @@ function _onResize (from_resize_event) {
     var y = 0, z_index = 10, button,
         scroll = window.scrollY || window.pageYOffset, item;
 
+    // ensure the top of the page is aligned with the bottom of the top menu bar
+    page.style['padding-top'] = top_menu.offsetHeight + 'px';
+    page.style.paddingTop = top_menu.offsetHeight + 'px';
+
     // Cache the window height dimension
     viewHeight = window.innerHeight;
 
     /* Set the home height to be a minimum of 64px shorter than the window.innerHeight
      * There is probably a CSS way to do this (it broke when I switched away
-     * from absolute positioning on #home), but user's don't care if
+     * from absolute positioning on #home), but users don't care if
      * the implementation is a hack, so long as it works... */
     home.style.minHeight = Math.round (viewHeight - 64) + 'px';
 
@@ -1339,11 +1366,24 @@ function _onResize (from_resize_event) {
      * here based on the column width minus the sub-menu width */
     var sub_menu_box = column.querySelector ('.sub-menu-box');
     if (sub_menu_box) {
-        var width = sub_menu_box.parentElement.offsetWidth - sub_menu_box.offsetWidth,
+        var width = sub_menu_box.parentElement.offsetWidth,
             height = sub_menu_box.parentElement.clientHeight,
             sub_content = column.querySelector ('.sub-content');
+
+        // if the width of the screen > 600px, we are displaying the
+        // menu and content alongside each other; so reduce the sub content
+        // width by the width of the menu; we also remove any
+        // data-menu-state attribute to ensure the submenu is visible
+        if (window.innerWidth > 600) {
+            width -= sub_menu_box.offsetWidth;
+            closeSubMenu();
+            subMenuCloseOnClick = false;
+        }
+        else {
+            subMenuCloseOnClick = true;
+        }
+
         sub_content.style.width = width + 'px';
-//        sub_content.style.minHeight = height + 'px';
         sub_content.style.minHeight = (viewHeight - top_menu.offsetHeight) + 'px';
     }
 
@@ -1457,6 +1497,60 @@ function scrollTo (e) {
     requestAnimationFrame (smoothScroll);
 }
 
+function getSubMenu () {
+    return document.querySelector ('#page .sub-menu-box');
+}
+
+function isSubMenuOpen (submenu) {
+    submenu = submenu || getSubMenu();
+
+    if (!submenu) {
+        return false;
+    }
+    else {
+        return submenu.getAttribute ('data-menu-state') === 'open';
+    }
+}
+
+function openSubMenu (submenu) {
+    submenu = submenu || getSubMenu();
+
+    if (submenu) {
+        submenu.setAttribute ('data-menu-state', 'open');
+    }
+}
+
+function closeSubMenu (submenu) {
+    submenu = submenu || getSubMenu();
+
+    if (submenu) {
+        submenu.removeAttribute ('data-menu-state');
+    }
+}
+
+function closeSubMenuIfOpen (submenu) {
+    submenu = submenu || getSubMenu();
+
+    if (submenu && isSubMenuOpen(submenu)) {
+        closeSubMenu(submenu);
+    }
+}
+
+function toggleSubMenu () {
+    var submenu = getSubMenu();
+
+    if (!submenu) {
+        return;
+    }
+
+    if (isSubMenuOpen (submenu)) {
+        closeSubMenu (submenu);
+    }
+    else {
+        openSubMenu (submenu);
+    }
+}
+
 function init () {
     var name, href, use_default = true;
 
@@ -1488,6 +1582,18 @@ function init () {
     });
 
     buildSubMenu ();
+
+    // when the menu button is clicked, open the sub menu if it's closed
+    var subMenuButton = document.querySelector ('.sub-menu-button')
+    subMenuButton.addEventListener ('click' , toggleSubMenu);
+
+    // if the submenu is open, any click on something which
+    // isn't a link closes it
+    document.addEventListener('click', function (e) {
+        if (e.target.tagName.toLowerCase() !== 'a') {
+            closeSubMenuIfOpen();
+        }
+    }, true);
 
     document.addEventListener ('scroll', onScroll);
     window.addEventListener ('resize', onResize);

@@ -22,7 +22,7 @@ https://developers.google.com/chrome-developer-tools/docs/css-preprocessors
 @import 'bourbon/bourbon';
 
 $tiny-break: 440px;
-$small-break: 480px;
+$small-break: 600px;
 $medium-break: 960px;
 
 $grapefruit: #ed7332;
@@ -184,6 +184,14 @@ p {
         overflow: hidden;
         padding: 0;
         margin: 0;
+        height: 100%;
+        max-width: 220px;
+        min-width: 200px;
+        z-index: 50;
+
+        @media (max-width: $tiny-break) {
+          top: 36px;
+        }
 
         .sub-menu {
 //            position: fixed; /* so onScroll can dynamically set top */
@@ -192,9 +200,10 @@ p {
 
             padding-top: 48px;
             padding-bottom: 48px;
+
             display: inline-block;
-            width: 250px;
-            min-width: 250px;
+            width: 220px;
+            min-width: 220px;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -261,12 +270,12 @@ p {
 
     .sub-content {
         position: relative;
-        left: 250px;
-/*
+        left: 220px;
+
         @media (max-width: $small-break) {
-            left: 32px;
+            left: 0px;
         }
-*/
+
         vertical-align: top;
         display: inline-block;
         background: $doc-body-bg;
@@ -1163,4 +1172,57 @@ p {
 
 #channels-viewer-table td {
   text-align: center !important;
+}
+
+.sub-menu-box {
+  @media (max-width: $small-break) {
+      display: none !important;
+  }
+}
+
+.sub-menu-box[data-menu-state="open"] {
+  @media (max-width: $small-break) {
+      display: block !important;
+      width: 225px !important;
+      max-width: 225px !important;
+      min-width: 225px !important;
+  }
+}
+
+.sub-menu {
+  @media (max-width: $small-break) {
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.sub-menu-button-container {
+    position: fixed;
+    display: none;
+    top: 64px;
+
+    @media (max-width: $small-break) {
+        display: block;
+        z-index: 50;
+        top: 48px;
+    }
+
+    @media (max-width: $tiny-break) {
+        top: 32px;
+    }
+}
+
+// the top properties here are the same as the height of top-menu
+.sub-menu-button-container[data-hide="true"] {
+    display: none !important;
+}
+
+.sub-menu-button {
+  width: 32px;
+  height: 32px;
+  background-image: url(assets/menu-button.png);
+  background-position: 50% 50%;
+  background-size: 100%;
+  background-repeat: none;
+  background-color: #dbd4ce;
+  border: thin solid #ccc;
 }

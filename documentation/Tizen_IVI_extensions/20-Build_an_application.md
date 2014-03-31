@@ -1,4 +1,4 @@
-# Build application and extension
+# Build an application and extension
 
 In this section, you will create the web application (HTML5/JavaScript) and its associated Tizen extension (written in C).
 
@@ -118,7 +118,7 @@ Add a file at `extension/api.js` with this content:
       return extension.internal.sendSyncMessage(msg);
     };
 
-This JavaScript file is converted into a C header file at build-time; that header file is then referenced from the extension code. This is the simplest way to incorporate the JavaScript code into the C extension. See [this section](#documentation/tizen_ivi_extensions/build_application_and_extension/C-header-file-for-the-JavaScript-API) for details of how the conversion happens.
+This JavaScript file is converted into a C header file at build-time; that header file is then referenced from the extension code. This is the simplest way to incorporate the JavaScript code into the C extension. See [this section](#documentation/tizen_ivi_extensions/build_an_application/C-header-file-for-the-JavaScript-API) for details of how the conversion happens.
 
 #### A note on the JavaScript API
 

@@ -14,7 +14,7 @@ You have now built the extension and application, and are at the point where you
 
 4.  Go to the root directory of the **simple** project on the host machine.
 
-    Make sure you've run the build for the project, so the `build` directory is populated (see [the previous section](#documentation/tizen_ivi_extensions/build_application_and_extension)).
+    Make sure you've run the build for the project, so the `build` directory is populated (see [the previous section](#documentation/tizen_ivi_extensions/build_an_application)).
 
 5.  Push the build directory of the project from the host to the target:
 
