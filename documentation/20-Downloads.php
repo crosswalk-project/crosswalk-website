@@ -36,7 +36,9 @@
 
     <tr>
     <th>Android (ARM)</th>
-    <td>-</td>
+    <td>
+    <a data-role="static-download-link" data-channel="stable" data-os="android" data-arch="arm"></a>
+    </td>
     <td>
     <a data-role="static-download-link" data-channel="beta" data-os="android" data-arch="arm"></a>
     </td>
