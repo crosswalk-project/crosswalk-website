@@ -2,16 +2,26 @@
 
 This tutorial will get you up and running with Crosswalk as quickly as possible.
 
+Note that the tutorial uses the latest stable versions of Crosswalk: newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).
+
 **This tutorial explains how to:**
 
-1.  [Set up the tools needed to deploy Crosswalk applications](#documentation/getting_started/host_setup). This covers using both Linux and Windows as development hosts.
-2.  Set up [Android](#documentation/getting_started/android_target_setup) and [Tizen](#documentation/getting_started/tizen_target_setup) devices (physical or emulated) so you can deploy Crosswalk applications to them.
+1.  Set up the *host*: the machine where you will be developing the application.
+    *   [Windows host](#documentation/getting_started/Windows_host_setup)
+    *   [Linux host](#documentation/getting_started/Linux_host_setup)
+
+    Note that it may be possible to develop for Crosswalk on other platforms, but only Windows and Linux are officially supported.
+2.  Set up *targets*: machines which will run the Crosswalk application, either physical or virtual.
+    * [Android target](#documentation/getting_started/android_target_setup)
+    * [Tizen target](#documentation/getting_started/tizen_target_setup)
 3.  [Build a very simple HTML5 application](#documentation/getting_started/build_an_application).
-4.  Run that application using stable releases of Crosswalk. The versions used for this tutorial are:
-    *   [Crosswalk Android for x86, version ${XWALK-STABLE-ANDROID-X86}](#documentation/getting_started/run_on_android)
-    *   [Crosswalk Tizen for x86, version ${XWALK-STABLE-TIZEN-X86}](#documentation/getting_started/run_on_tizen)
+4.  Run that application using stable releases of Crosswalk:
+    *   [Run on Crosswalk Android for x86, version ${XWALK-STABLE-ANDROID-X86}](#documentation/getting_started/run_on_android)
+    *   [Run on Crosswalk Tizen for x86, version ${XWALK-STABLE-TIZEN-X86}](#documentation/getting_started/run_on_tizen)
 
 You will need to be comfortable using a command line to follow these steps. If you prefer to use a graphical integrated development environment (IDE), the free **Intel XDK** provides an alternative way to package applications with Crosswalk. See the [Intel XDK website](http://xdk-software.intel.com/) for more details.
+
+Throughout this tutorial, commands you should run in a shell are prefixed with a `>` character. On Windows, you can use the standard Windows console; on Linux, you can use a bash shell.
 
 **By the end of the tutorial**, you should understand the workflow for creating Crosswalk applications from your own HTML5 projects.
 
