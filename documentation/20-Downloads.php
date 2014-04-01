@@ -12,6 +12,10 @@
     <p>For more information about the release channels, see
     <a href="#Release-channels">the <em>Release channels</em> section</a>.</p>
 
+    <p>For more about the meaning of the version numbers, see the
+    <a href="#wiki/release-methodology/version-numbers">Release methodology</a>
+    page.</p>
+
     <table class="downloads-table">
 
     <tr>
