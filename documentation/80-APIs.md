@@ -42,12 +42,13 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [Web Workers] (http://www.w3.org/TR/workers/) - Run scripts in parallel to the main page.
 
 ## Device & Hardware
+* [Device Orientation Events] (http://www.w3.org/TR/orientation-event/) - DOM events which provide information about the physical orientation and motion of the device.
 * [Fullscreen] (http://fullscreen.spec.whatwg.org/) - Programmatically instruct an element on the page to be presented in full screen mode.
 * <a href="http://www.w3.org/TR/html5/forms.html#date-and-time-state-(type=datetime)">HTML5 Date and Time state for input element</a><sup><a href="#a">[a]</a></sup> - Picker controls for date and time input types.
 *  <a href="http://www.w3.org/TR/html5/forms.html#telephone-state-(type=tel)">HTML5 Telephone, Email and URL state for input element</a><sup><a href="#a">[a]</a></sup> - Picker controls for telephone, email and URL input types.
-* [Touch Events] (https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html) - Handle touch events programmatically.
-* [Device Orientation Events] (http://www.w3.org/TR/orientation-event/) - DOM events which provide information about the physical orientation and motion of the device.
 * [Media Capture and Streams] (http://www.w3.org/TR/mediacapture-streams/)<sup><a href="#a">[a]</a></sup> - Provides access to local media streams including video (camera) and audio (microphone).
+* [Screen Orientation](http://www.w3.org/TR/screen-orientation/) - Enables screen orientation locking and provides access to screen orientation data and events.
+* [Touch Events] (https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html) - Handle touch events programmatically.
 
 # Experimental APIs
 
