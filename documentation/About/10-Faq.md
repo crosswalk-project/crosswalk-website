@@ -66,7 +66,9 @@ For more details, see [this explanation of how Crosswalk relates to Chromium](ht
 
 Crosswalk officially supports [Android](http://www.android.com/) (version 4.0 and above), [Tizen Mobile](https://www.tizen.org/) (Tizen version 2) and [Tizen IVI](https://wiki.tizen.org/wiki/IVI) (Tizen version 3). Pre-built packages are available from https://download.01.org/ for each of these platforms. See the [downloads page](https://crosswalk-project.org/#documentation/downloads) for details.
 
-Crosswalk can also be built to run on Windows, Mac OS X and Linux, though no official packages are produced for those platforms.
+Crosswalk builds for Windows, Mac OS and Linux are available: see https://build.crosswalk-project.org/waterfall. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.
+
+Also note that we don't have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or simnilar). Again, if you are interested in working on this, please feel free to contact us.
 
 Crosswalk does not support iOS.
 
