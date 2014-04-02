@@ -8,8 +8,8 @@ is based on
 [this Mandelbrot animation project](https://github.com/PeterJensen/mandelbrot)
 by Intel's Peter Jensen and Ningxin Hu.
 
-The steps for setting up Crosswalk for Android and Crosswalk for Tizen
-are explained in detail in the [Getting started](#documentation/getting_started)
+The steps for setting up an environment for Crosswalk are explained
+in detail in the [Getting started](#documentation/getting_started)
 tutorial.
 
 ## SIMD on Android
