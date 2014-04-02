@@ -8,12 +8,14 @@ To use the samples, download the sample archive, then unpack it from the command
 tar xvf crosswalk-samples-0.1.tar.gz
 ```
 
-This will create a `crosswalk-samples-0.1` directory with three project sub-directories:
+This will create a `crosswalk-samples-0.1` directory with several project sub-directories:
 
 * `hello_world` &ndash; A minimal example.
 
-* `webgl` &ndash; An example of how to use WebGL in Crosswalk via [three.js](http://threejs.org/).
+* `simd` &ndash; An example of using Crosswalk's native support for [SIMD](https://github.com/johnmccutchan/ecmascript_simd).
 
 * `tizen_apis` &ndash; A sample application using the Tizen APIs.
+
+* `webgl` &ndash; An example of how to use WebGL in Crosswalk via [three.js](http://threejs.org/).
 
 For information on each of the samples, follow the links in the menu.
