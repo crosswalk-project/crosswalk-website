@@ -6,58 +6,61 @@ For the purposes of this tutorial, we use the simplest possible Crosswalk applic
 
 However, because Crosswalk applications are intended to integrate well with the target environment, they require an additional file, `manifest.json`, containing metadata for that purpose. The manifest can be used to specify icons to use at different resolutions, set an app description, adjust [content security policy settings](http://developer.chrome.com/extensions/contentSecurityPolicy.html), and otherwise configure how the app integrates with the target environment.
 
-First, create a directory called `xwalk-simple` for the project:
+## A simple application
 
-    $ mkdir ~/xwalk-simple/
-    $ cd ~/xwalk-simple/
+1.  First, create a directory called `xwalk-simple` for the project:
 
-Next, you need to copy an icon file to that directory, to serve as the application icon. You can use this image:
+        > mkdir xwalk-simple/
+        > cd xwalk-simple/
 
-<img src="assets/icon.png">
+2.  Next, copy an icon file to that directory, to serve as the application icon. You can use this image:
 
-To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the `~/xwalk-simple` directory as `icon.png`.
+    <img src="assets/icon.png">
 
-(If you have your own favourite icon, copy that to the `~/xwalk-simple` directory instead. It should be 128 pixels square.)
+    To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the `xwalk-simple` directory as `icon.png`.
 
-Then create two text files inside `~/xwalk-simple/` (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):
+    (If you have your own favourite icon, copy that to the `xwalk-simple` directory instead. It should be 128 pixels square.)
 
-1.  `index.html`
+3.  Create two text files inside `xwalk-simple` (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):
 
-    This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.
+    1.  `index.html`
 
-    The content should be:
+        This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.
 
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta charset="utf-8">
-            <title>simple</title>
-          </head>
-          <body>
-            <p>hello world</p>
-          </body>
-        </html>
+        The content should be:
 
-2.  `manifest.json`
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <meta name="viewport"
+                      content="width=device-width, initial-scale=1.0">
+                <meta charset="utf-8">
+                <title>simple</title>
+              </head>
+              <body>
+                <p>hello world</p>
+              </body>
+            </html>
 
-    This contains the application metadata (see above).
+    2.  `manifest.json`
 
-    The content should be:
+        This contains the application metadata (see above).
 
-        {
-          "name": "simple",
-          "version": "0.0.0.1",
-          "app": {
-            "launch":{
-              "local_path": "index.html"
+        The content should be:
+
+            {
+              "name": "simple",
+              "version": "0.0.0.1",
+              "app": {
+                "launch":{
+                  "local_path": "index.html"
+                }
+              },
+              "icons": {
+                "128": "icon.png"
+              }
             }
-          },
-          "icons": {
-            "128": "icon.png"
-          }
-        }
 
-    See [the Crosswalk wiki page about the manifest](#wiki/Crosswalk-manifest) for more information.
+        See [the Crosswalk wiki page about the manifest](#wiki/Crosswalk-manifest) for more information.
 
 Once you've done this, you're ready to run the application on a target.

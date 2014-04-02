@@ -8,9 +8,9 @@ Any version of Android from 4.0 or higher should work.
 
 To deploy a Crosswalk application to an Android device, you need a working connection between it and your host computer. The simplest way is to connect them together via a USB cable.
 
-To test whether the device has been detected, run the following command from a bash shell:
+To test whether the device has been detected, run the following command from a shell:
 
-    $ adb devices
+    > adb devices
     List of devices attached
     Medfield532DC30E	device
 
@@ -20,12 +20,12 @@ If the list of devices attached is empty, you may need to change the developer o
 
 In some cases, running `adb` as a non-root user on Linux may result in your devices not being detected:
 
-    $ adb devices
+    > adb devices
     List of devices attached
 
 or detected with insufficient permissions:
 
-    $ adb devices
+    > adb devices
     List of devices attached
     ????????????	no permissions
 
@@ -34,17 +34,15 @@ or detected with insufficient permissions:
 In both cases, a work-around is to run the `adb` server as root:
 
     # kill any existing server instances
-    $ sudo <path to android sdk>/platform-tools/adb kill-server
+    > sudo <path to Android SDK>/platform-tools/adb kill-server
 
     # start the adb server as root
-    $ sudo <path to android sdk>/platform-tools/adb start-server
+    > sudo <path to Android SDK>/platform-tools/adb start-server
 
     # check for devices (non-root user should be ok now)
-    $ adb devices
+    > adb devices
     List of devices attached
     HT23KW103989	device
-
-Note that, on Windows, `<path to android sdk>` should include the `/sdk/` directory.
 
 ## Android emulator
 
@@ -53,80 +51,39 @@ To test your application on Android platforms you don't own, the next best optio
 <ol>
 
 <li>
-  <p>Start the Android SDK Manager. If you installed it as detailed in <a href="#documentation/getting_started/host_setup/Optional:-installing-tools-for-Android-targets">Install the Android SDK</a>, you can invoke the SDK Manager as follows:</p>
-
-  <ul>
-    <li>
-      <p>On Linux, from a bash shell:
-
-      ```
-      $ android
-      ```
-    </li>
-
-    <li>On Windows, from a <code>cmd</code> shell (if you try to do this from bash it can fail silently due to Windows' security measures):
-
-    ```
-    > %HOMEPATH%\xwalk-tools\android-sdk\"SDK Manager.exe"
-    ```
-    </li>
-  </ul>
+  <p>Start the Android SDK Manager via the `android` command on Linux or by running `SDK Manager.exe` on Windows.</p>
 </li>
 
 <li>
   <p>In the SDK Manager window, check the following box in the list:</p>
 
-  ```
-  [ ] Android 4.3 (API 18)
-      [x] Intel x86 Atom System Image
-  ```
+<pre>
+[ ] Android 4.3 (API 18)
+    [x] Intel x86 Atom System Image
+</pre>
 
   <p>If you want to test with other Android API versions, install the corresponding x86 system images.</p>
 </li>
 
 <li>
-  <p>On Windows <strong>only</strong>, use the SDK Manager to download HAXM as well:</p>
+  <p>On <strong>Windows only</strong>, use the SDK Manager to download HAXM as well:</p>
 
-  ```
-  [ ] Extras
-    [x] Intel x86 Emulator Accelerator (HAXM)
-  ```
+<pre>
+[ ] Extras
+  [x] Intel x86 Emulator Accelerator (HAXM)
+</pre>
 
   <p>This provides better graphics performance for emulated x86 devices running on Windows.</p>
 
-  <p>Note that the SDK Manager downloads HAXM, but does not install it. To install it, first find the installer by running this command in a bash shell:</p>
-
-  ```
-  $ find ~/android-sdk/ -iname *haxm*
-  ```
-
-  <p>This should output the path to the HAXM <code>.exe</code> file. For example:</p>
-
-  ```
-  /c/Users/elliot/android-sdk/sdk/extras/intel/Hardware_Accelerated_Execution_Manager/IntelHaxm.exe
-  ```
-
-  <p>Then, using Windows Explorer, navigate to the folder above the <code>IntelHaxm.exe</code> executable, right click on that <code>.exe</code> file, and select <em>Open</em> to run the installer. Answer <em>Yes</em> to any security prompts and accept the default installation settings.</p>
+  <p>Note that the SDK Manager downloads HAXM, but does not install it, so you need to find and install it yourself. The file you need is called `IntelHaxm.exe`.</p>
 </li>
 
 <li>
-  <p>Once your selected packages are installed, set up an emulator image by running the AVD Manager:</p>
+  <p>After the selected packages are installed, set up an emulator image by running the AVD Manager:</p>
 
-  <ul>
-    <li>On Linux, from a bash shell:
-
-    ```
-    $ android avd
-    ```
-    </li>
-
-    <li>On Windows, from a cmd shell:
-
-    ```
-    > %HOMEPATH%\xwalk-tools\android-sdk\sdk\tools\android.bat avd
-    ```
-    </li>
-  </ul>
+<pre>
+> android avd
+</pre>
 </li>
 
 <li>
@@ -144,19 +101,19 @@ To test your application on Android platforms you don't own, the next best optio
 </li>
 
 <li>
-  <p>Launch the new emulator image from a bash shell (this works on both Linux and Windows):</p>
+  <p>Launch the new emulator image from a shell:</p>
 
-  ```
-  $ emulator -avd Tablet
-  ```
+<pre>
+> emulator -avd Tablet
+</pre>
 
   <p>You should be able to connect to any running images using adb, as for a hardware device:</p>
 
-  ```
-  $ adb devices
-  List of devices attached
-  emulator-5554	device
-  ```
+<pre>
+$ adb devices
+List of devices attached
+emulator-5554	device
+</pre>
 </li>
 
 </ol>
