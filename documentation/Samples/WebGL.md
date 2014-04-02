@@ -4,8 +4,8 @@
 
 Ah, the power of WebGL. This sample provides a quick example of integrating ThreeJS into a Crosswalk application.
 
-The steps for setting up Crosswalk for Android and Crosswalk for Tizen
-are explained in detail in the [Getting started](#documentation/getting_started)
+The steps for setting up an environment for Crosswalk are explained
+in detail in the [Getting started](#documentation/getting_started)
 tutorial.
 
 ## WebGL on Android

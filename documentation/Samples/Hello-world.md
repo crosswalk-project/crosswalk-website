@@ -4,8 +4,8 @@
 
 The smallest of applications -- Hello, World! This sample provides a manifest.json and a minimal set of HTML files to start an application from the ground up.
 
-The steps for setting up Crosswalk for Android and Crosswalk for Tizen
-are explained in detail in the [Getting started](#documentation/getting_started)
+The steps for setting up an environment for Crosswalk are explained
+in detail in the [Getting started](#documentation/getting_started)
 tutorial.
 
 ## Hello World on Android
