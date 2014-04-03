@@ -13,6 +13,9 @@ since version 5.34.104.0. You will need a version of Crosswalk with
 that version or later to be able to run this demo; and you will need
 a device with an Intel x86 chipset (emulated or physical).**
 
+This application is part of the
+[Crosswalk samples download](https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz).
+
 The steps for setting up an environment for Crosswalk are explained
 in detail in the [Getting started](#documentation/getting_started)
 tutorial.
