@@ -95,12 +95,6 @@ To get Crosswalk Android for x86:
 
 2.  Unzip it. You should now have a `C:\${XWALK-STABLE-ANDROID-X86}-x86` directory.
 
-3.  `cd ${XWALK-STABLE-ANDROID-X86}-x86`
-
-4.  You should see an `xwalk_app_template.tar.gz` file. Unpack it with WinZip or similar.
-
-You should now have a `crosswalk-${XWALK-STABLE-ANDROID-X86}-x86\xwalk_app_template` directory.
-
 ### Verify your environment
 
 Check that you have installed the tools properly by running these commands:
