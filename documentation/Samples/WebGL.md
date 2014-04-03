@@ -4,6 +4,9 @@
 
 Ah, the power of WebGL. This sample provides a quick example of integrating ThreeJS into a Crosswalk application.
 
+This application is part of the
+[Crosswalk samples download](https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz).
+
 The steps for setting up an environment for Crosswalk are explained
 in detail in the [Getting started](#documentation/getting_started)
 tutorial.
