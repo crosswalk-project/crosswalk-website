@@ -6,17 +6,23 @@ Once you have downloaded and unpacked Crosswalk Android, create an `apk` file fo
 
 1.  Go to the unpacked Crosswalk Android directory:
 
-        > cd ${XWALK-STABLE-ANDROID-X86}-x86
+        > cd ${XWALK-STABLE-ANDROID-X86}
 
 2.  Run the `make_apk.py` script with Python as follows:
 
         > python make_apk.py --manifest=xwalk-simple/manifest.json
 
-    This will package the application defined in the specified `manifest.json` file and produce an apk file from it. The apk file will end up in the directory where you ran the script. The file will have the name set in the manifest, with any filesystem-sensitive characters removed and an architecture identifier ("x86" or "arm") appended. For our example, the output file is `simple_x86.apk`.
+    This will package the application defined in the specified `manifest.json` file and produce two apk files from it, one for x86 architecture and one for ARM. The apk files will end up in the directory where you ran the script. Each file is given the name set in the manifest, with any filesystem-sensitive characters removed and an architecture identifier ("x86" or "arm") appended. For our example, the output files are `simple_x86.apk` and `simple_arm.apk`.
 
-3.  Install the application on the target:
+3.  Install the application on the target.
+
+    If installing on an x86 device:
 
         > adb install -r simple_x86.apk
+
+    If installing on an ARM device:
+
+        > adb install -r simple_arm.apk
 
     The `-r` flag stands for "reinstall". It is not required for the first installation, but useful for subsequent reinstalls of the same package.
 

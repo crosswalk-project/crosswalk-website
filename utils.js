@@ -72,8 +72,13 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
                      + OS + '/' + channel + '/' + version + '/';
 
     // android: crosswalk-beta >= 5.34.104.1 and crosswalk-canary >= 6.34.106.0
+    // and crosswalk-stable >= 4.32.76.6
     // will be architecture-independent, so once we move to those we need to
     // remove |arch| from here and the checks below.
+    var androidStableArchIndependent = (OS === 'android' &&
+                                        channel === 'stable' &&
+                                        isLaterOrEqualVersion('4.32.76.6', version));
+
     var androidBetaArchIndependent = (OS === 'android' &&
                                       channel === 'beta' &&
                                       isLaterOrEqualVersion('5.34.104.1', version));
@@ -82,14 +87,15 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
                                         channel === 'canary' &&
                                         isLaterOrEqualVersion('6.34.106.0', version));
 
-    if (OS === 'android' && !(androidBetaArchIndependent || androidCanaryArchIndependent)) {
+    if (OS === 'android' &&
+        !(androidBetaArchIndependent || androidCanaryArchIndependent || androidStableArchIndependent)) {
       download_url += arch + '/';
     }
 
     download_url += file_prefix + version;
 
     if (OS === 'android') {
-      if (androidBetaArchIndependent || androidCanaryArchIndependent) {
+      if (androidBetaArchIndependent || androidCanaryArchIndependent || androidStableArchIndependent) {
         download_url += '.zip';
       }
       else if (arch === 'x86') {
