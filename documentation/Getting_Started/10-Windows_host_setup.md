@@ -21,7 +21,7 @@ These steps will enable you to develop Crosswalk applications to run on Android:
 
 ### Install Python
 
-Get Python from http://www.python.org/getit, choosing an "MSI installer" for your architecture (32 or 64 bit).
+Get Python from http://www.python.org/downloads/, choosing an "MSI installer" for your architecture (32 or 64 bit).
 
 When the installer starts, choose *Install for all users* and set **C:\python** as the installation location. You will need to manually add the Python directory to your path for it to be available in the bash shell (see [Configure your environment](#Configure-your-environment)).
 
