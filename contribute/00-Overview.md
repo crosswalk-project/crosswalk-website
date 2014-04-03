@@ -18,7 +18,12 @@ or hop on IRC and ask what people could use help on.
 Be sure to follow the [contribution guidelines](#contribute/contributing-code) as you develop your changes. By submitting your contributions to the Crosswalk Project, you agree that your contributions are licensed to Intel under the terms of the [BSD 3 Clause license](http://opensource.org/licenses/BSD-3-Clause). If you do not agree to these licensing terms, please do not submit your contributions to the Crosswalk Project.
 
 ## Testing
-Everything related to test scope, test execution plan, and running tests
+
+For a quick overview of the overall test results for Crosswalk
+binaries, see
+[Crosswalk test result indicators](https://crosswalk-project.org/#wiki/Crosswalk-test-result-indicators).
+
+Full details of everything related to test scope, test execution plan, and running tests
 can be found on the [Crosswalk Testing Home](#wiki/crosswalk-testing-home).
 
 ## Questions?
