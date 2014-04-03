@@ -4,10 +4,9 @@ The Crosswalk Android download contains a Python script which can be used to mak
 
 Once you have downloaded and unpacked Crosswalk Android, create an `apk` file for your application as follows:
 
-1.  Go to the `xwalk_app_template` directory inside the unpacked Crosswalk Android directory:
+1.  Go to the unpacked Crosswalk Android directory:
 
         > cd ${XWALK-STABLE-ANDROID-X86}-x86
-        > cd xwalk_app_template
 
 2.  Run the `make_apk.py` script with Python as follows:
 
