@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'contribute/00 Overview';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>contribute/00 Overview</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Contributing to Crosswalk</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/contribute/00-Overview"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/contribute/00-Overview"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Crosswalk is an open source project. Source code is hosted on
+<a href="http://github.com/crosswalk-project">GitHub</a>. Bugs, features, and issues
+are tracked using <a href="https://crosswalk-project.org/jira">JIRA</a>.</p>
+
+<h2>Building<a class="anchor" id="Building" href="#Building"></a></h2>
+
+<p>The first step to contributing to Crosswalk is to get a build environment configured and operational. The <a href="#contribute/building_crosswalk">Building Crosswalk</a> page provides that information. In addition to the binaries Crosswalk provides for the supported operating systems, the build infrastructure can generate projects for additional platforms.</p>
+
+<h2>Debugging<a class="anchor" id="Debugging" href="#Debugging"></a></h2>
+
+<p>Once you have a build environment, familiarize yourself with the debugging process. There are steps describing that
+process in the <a href="#wiki/home/for-developers">Crosswalk Developer's wiki</a> page.</p>
+
+<h2>Contributing<a class="anchor" id="Contributing" href="#Contributing"></a></h2>
+
+<p>Now you just need to pick something to focus working on. You can look
+through the <a href="https://crosswalk-project.org/jira">Issues</a>,
+or hop on IRC and ask what people could use help on.</p>
+
+<p>Be sure to follow the <a href="#contribute/contributing-code">contribution guidelines</a> as you develop your changes. By submitting your contributions to the Crosswalk Project, you agree that your contributions are licensed to Intel under the terms of the <a href="http://opensource.org/licenses/BSD-3-Clause">BSD 3 Clause license</a>. If you do not agree to these licensing terms, please do not submit your contributions to the Crosswalk Project.</p>
+
+<h2>Testing<a class="anchor" id="Testing" href="#Testing"></a></h2>
+
+<p>For a quick overview of the overall test results for Crosswalk
+binaries, see
+<a href="https://crosswalk-project.org/#wiki/Crosswalk-test-result-indicators">Crosswalk test result indicators</a>.</p>
+
+<p>Full details of everything related to test scope, test execution plan, and running tests
+can be found on the <a href="#wiki/crosswalk-testing-home">Crosswalk Testing Home</a>.</p>
+
+<h2>Questions?<a class="anchor" id="Questions?" href="#Questions?"></a></h2>
+
+<p>Jump on IRC and chat with other developers; they hang out on Freenode in the #crosswalk channel. Details in the <a href="#documentation/community">Community</a> page.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-03 14:23:42</p>
+  <p>
+    <a id="delete-link" href="/contribute/00-Overview" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/contribute/00-Overview">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
