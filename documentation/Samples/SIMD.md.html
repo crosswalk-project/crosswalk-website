@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Samples/SIMD';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Samples/SIMD</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>SIMD sample</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Samples/SIMD"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Samples/SIMD"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p><img class="sample-thumb" src="assets/sampapp-icon-simd.png" /></p>
+
+<p>This sample provides shows how to use <a href="https://github.com/johnmccutchan/ecmascript_simd">SIMD</a>
+in a Crosswalk application; in this case, to draw an image of a Mandelbrot set.
+The code is based on
+<a href="https://github.com/PeterJensen/mandelbrot">this Mandelbrot animation project</a>
+by Intel's Peter Jensen and Ningxin Hu.</p>
+
+<p><strong>Note that Crosswalk has native support for SIMD on x86 architecture
+since version 5.34.104.0. You will need a version of Crosswalk with
+that version or later to be able to run this demo; and you will need
+a device with an Intel x86 chipset (emulated or physical).</strong></p>
+
+<p>This application is part of the
+<a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz">Crosswalk samples download</a>.</p>
+
+<p>The steps for setting up an environment for Crosswalk are explained
+in detail in the <a href="#documentation/getting_started">Getting started</a>
+tutorial.</p>
+
+<h2>SIMD on Android<a class="anchor" id="SIMD-on-Android" href="#SIMD-on-Android"></a></h2>
+
+<p>Once you've set up the Crosswalk Android packaging dependencies,
+follow the steps in <a href="#documentation/getting_started/run_on_android">Run on Android</a>
+to install and run the SIMD sample on Android.</p>
+
+<p>The quick version is that you can build the SIMD apk with:</p>
+
+<div class="highlight"><pre>&gt; <span class="nb">cd</span> &lt;xwalk_app_template directory&gt;
+&gt; python make_apk.py --manifest<span class="o">=</span>&lt;path to crosswalk-samples&gt;/simd/manifest.json
+</pre></div>
+
+<p><code>&lt;xwalk_app_template directory&gt;</code> refers to the directory where you
+downloaded and unpacked Crosswalk Android.</p>
+
+<p>Then install the apk file on Android:</p>
+
+<div class="highlight"><pre>&gt; adb install simd*.apk
+</pre></div>
+
+<h2>SIMD on Tizen<a class="anchor" id="SIMD-on-Tizen" href="#SIMD-on-Tizen"></a></h2>
+
+<p>Follow the steps in
+<a href="#documentation/getting_started/run_on_tizen">Run on Tizen</a>
+to install and run the SIMD sample on Tizen.</p>
+
+<p>Or here's the quick version:</p>
+
+<div class="highlight"><pre>sdb push &lt;path to crosswalk-samples&gt;/simd /home/developer/simd
+sdb shell <span class="s2">"xwalk /home/developer/simd/"</span>
+</pre></div>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-03 14:07:13</p>
+  <p>
+    <a id="delete-link" href="/documentation/Samples/SIMD" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Samples/SIMD">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
