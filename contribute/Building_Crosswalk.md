@@ -250,35 +250,9 @@ By default, the generated RPM files end up in
 
 The steps for installing a Tizen rpm on a device are covered in
 [Tizen target setup](#documentation/getting_started/tizen_target_setup).
+
 Running an application on Tizen is covered in
 [Run on Tizen](#documentation/getting_started/run_on_tizen).
-
-Here's a quick summary of the steps:
-
-1.  Push the generated rpm file to the Tizen device (physical or
-emulated):
-
-        sdb push <rpm file path> /home/developer
-
-2.  Install the generated rpm file on the device:
-
-        sdb root on
-        sdb shell
-
-        # ...on the device...
-        sh-4.1# rpm -ih /home/developer/<rpm file name>
-
-3.  Push a web application to the device (this assumes that the application
-in the directory `app/` has a suitable `manifest.json` file):
-
-        sdb push app/ /home/developer
-
-    You can use one of the [Crosswalk samples](#documentation/samples)
-    if you don't have an application to test with.
-
-4.  Run the application on the device:
-
-        sdb shell "xwalk /home/developer/app/"
 
 ### Incremental builds
 
