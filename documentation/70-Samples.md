@@ -1,6 +1,6 @@
 # Samples
 
-We have packaged three simple applications to get you up and running with Crosswalk. These applications are <a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz">available as a download</a>. The source code is <a href="https://github.com/crosswalk-project/crosswalk-samples/" target="_blank">on github</a> (MIT licence).
+We have packaged some simple applications to get you up and running with Crosswalk. These applications are <a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz">available as a download</a>. The source code is <a href="https://github.com/crosswalk-project/crosswalk-samples/" target="_blank">on github</a> (MIT licence).
 
 To use the samples, download the sample archive, then unpack it from the command line:
 
