@@ -1,25 +1,50 @@
-# WebGL Sample
+# WebGL sample
+
 <img class='sample-thumb' src='assets/sampapp-icon-webgl.png'>
+
 Ah, the power of WebGL. This sample provides a quick example of integrating ThreeJS into a Crosswalk application.
 
-Follow the steps on [Running an Application](#documentation/getting_started/running_an_application), using ***webgl*** as the source path for either Android or Tizen.
+This application is part of the
+[Crosswalk samples download](https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz).
+
+The steps for setting up an environment for Crosswalk are explained
+in detail in the [Getting started](#documentation/getting_started)
+tutorial.
 
 ## WebGL on Android
-Following the steps from the [Packaging for 
-Android](#documentation/getting_started/building_an_application/packaging-for-android), 
-you build the WebGL.APK as follows:
+
+Once you've set up the Crosswalk Android packaging dependencies,
+follow the steps in [Run on Android](#documentation/getting_started/run_on_android)
+to install and run the WebGL sample on Android.
+
+The quick version is that you can build the WebGL apk with:
+
 ```sh
-python make_apk.py --package=com.sample.webgl --name=WebGL \
-      --app-root=samples/webgl --app-local-path=index.html
+> cd <xwalk_app_template directory>
+> python make_apk.py --manifest=<path to crosswalk-samples>/webgl/manifest.json
 ```
-Then install the APK on Android:
+
+`<xwalk_app_template directory>` refers to the directory where you
+downloaded and unpacked Crosswalk Android.
+
+Then install the apk file on Android:
+
 ```sh
-adb install WebGL.apk
+> adb install WebGL*.apk
 ```
 
 ## WebGL on Tizen
-Following the steps from the [Running on Tizen](#documentation/getting_started/running_an_application/running-on-tizen), you can install and run the WebGL sample as follows:
+
+Follow the steps in
+[Run on Tizen](#documentation/getting_started/run_on_tizen)
+to install and run the WebGL sample on Tizen.
+
+Or here's the quick version:
+
 ```sh
-sdb push samples/webgl /home/developer/webgl
-sdb shell "xwalk --usegl=osmesa /home/developer/webgl/index.html"
+sdb push <path to crosswalk-samples>/webgl /home/developer/webgl
+sdb shell "xwalk --usegl=osmesa /home/developer/webgl/"
 ```
+
+Note that you pass the `--usegl=osmesa` option to enable WebGL on
+Tizen Crosswalk.
