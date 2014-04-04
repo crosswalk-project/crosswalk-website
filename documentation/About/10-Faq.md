@@ -68,7 +68,7 @@ Crosswalk officially supports [Android](http://www.android.com/) (version 4.0 an
 
 Crosswalk builds for Windows, Mac OS and Linux are available: see https://build.crosswalk-project.org/waterfall. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.
 
-Also note that we don't have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or simnilar). Again, if you are interested in working on this, please feel free to contact us.
+Also note that we don't have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or similar). Again, if you are interested in working on this, please feel free to contact us.
 
 Crosswalk does not support iOS.
 
