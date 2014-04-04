@@ -52,8 +52,8 @@ DirectoryIndex index.html
 
   # If a requested file has a php version, serve the php version
   # instead which will update and serve a cached version as necessary.
-  RewriteCond %{REQUEST_FILENAME}.php -f
-  RewriteRule ^[^/]*(.*)$ %{REQUEST_URI}$1.php [L]
+#  RewriteCond %{REQUEST_FILENAME}.php -f
+#  RewriteRule ^[^/]*(.*)$ %{REQUEST_URI}$1.php [L]
 
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
   # if you enable "www." stripping or enforcement, in order to ensure that
