@@ -26,7 +26,7 @@
     </tr>
 
     <tr>
-    <th>Android (x86)</th>
+    <th>Android</th>
     <td>
     <a data-role="static-download-link" data-channel="stable" data-os="android" data-arch="x86"></a>
     </td>
@@ -35,19 +35,6 @@
     </td>
     <td data-role="download-cell" data-loading="true">
     <a data-role="download-link" data-channel="canary" data-os="android" data-arch="x86"></a>
-    </td>
-    </tr>
-
-    <tr>
-    <th>Android (ARM)</th>
-    <td>
-    <a data-role="static-download-link" data-channel="stable" data-os="android" data-arch="arm"></a>
-    </td>
-    <td>
-    <a data-role="static-download-link" data-channel="beta" data-os="android" data-arch="arm"></a>
-    </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="android" data-arch="arm"></a>
     </td>
     </tr>
 

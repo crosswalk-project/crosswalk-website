@@ -101,11 +101,11 @@ Note that we prepend the new paths to the `PATH` variable to ensure that we use 
 
 The Crosswalk Android distribution contains an application template which can be used as a wrapper for an HTML5 application. It also includes a script which will convert a wrapped HTML5 application into an installable Android `apk` file.
 
-To get Crosswalk Android for x86:
+To get Crosswalk Android:
 
-1.  Download the version you want from http://crosswalk-project.org/#documentation/downloads. We suggest that you use the stable Android x86 version (${XWALK-STABLE-ANDROID-X86}).
+1.  Download the version you want from the [Downloads page](#documentation/downloads). We suggest that you use the stable Android version (${XWALK-STABLE-ANDROID-X86}).
 
-2.  Unzip it. You should now have a `${XWALK-STABLE-ANDROID-X86}-x86` directory.
+2.  Unzip it. You should now have a `crosswalk-${XWALK-STABLE-ANDROID-X86}` directory.
 
 ### Verify your environment
 

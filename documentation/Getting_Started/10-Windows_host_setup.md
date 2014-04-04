@@ -91,9 +91,9 @@ The Crosswalk Android distribution contains an application template which can be
 
 To get Crosswalk Android for x86:
 
-1.  Download the version you want from http://crosswalk-project.org/#documentation/downloads. We suggest that you use the stable Android x86 version (${XWALK-STABLE-ANDROID-X86}).
+1.  Download the version you want from the [Downloads page](#documentation/downloads). We suggest that you use the stable Android version (${XWALK-STABLE-ANDROID-X86}).
 
-2.  Unzip it. You should now have a `C:\${XWALK-STABLE-ANDROID-X86}-x86` directory.
+2.  Unzip it. You should now have a `crosswalk-${XWALK-STABLE-ANDROID-X86}` directory.
 
 ### Verify your environment
 
