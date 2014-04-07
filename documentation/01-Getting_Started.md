@@ -2,7 +2,9 @@
 
 This tutorial will get you up and running with Crosswalk as quickly as possible.
 
-Note that the tutorial uses the latest stable versions of Crosswalk: newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).
+Note that the tutorial uses the latest stable version of Crosswalk for Android: newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).
+
+For Tizen, a [canary](#documentation/downloads/Release-channels) version is used (there are no stable or beta downloads for Tizen).
 
 **This tutorial explains how to:**
 
@@ -17,11 +19,11 @@ Note that the tutorial uses the latest stable versions of Crosswalk: newer versi
 3.  [Build a very simple HTML5 application](#documentation/getting_started/build_an_application).
 4.  Run that application using stable releases of Crosswalk:
     *   [Run on Crosswalk Android, version ${XWALK-STABLE-ANDROID-X86}](#documentation/getting_started/run_on_android)
-    *   [Run on Crosswalk Tizen for x86, version ${XWALK-STABLE-TIZEN-X86}](#documentation/getting_started/run_on_tizen)
+    *   [Run on Crosswalk Tizen for x86, canary version](#documentation/getting_started/run_on_tizen)
 5.  For Android only:
     *   [Deploy the application to an Android app store](#documentation/getting_started/deploy_to_android_store)
 
-You will need to be comfortable using a command line to follow these steps. If you prefer to use a graphical integrated development environment (IDE), the free **Intel XDK** provides an alternative way to package applications with Crosswalk. See the [Intel XDK website](http://xdk-software.intel.com/) for more details.
+You will need to be comfortable using a command line to follow these steps. If you prefer to use a graphical integrated development environment (IDE), the free **Intel XDK** provides an alternative way to package applications for Crosswalk Android. See the [Intel XDK website](http://xdk-software.intel.com/) for more details.
 
 Throughout this tutorial, commands you should run in a shell are prefixed with a `>` character. On Windows, you can use the standard Windows console; on Linux, you can use a bash shell.
 

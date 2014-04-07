@@ -103,7 +103,20 @@ Once the manager has loaded, ensure that the drop-down menu in the top-left of t
 </li>
 
 <li>
-  <p>The final step is to install the Crosswalk Tizen runtime on the VM. This can be done by using <code>sdb</code> to get a root shell on the VM:</p>
+  <p>Download a Crosswalk Tizen 3.0 Mobile (x86) (canary) rpm file from <a href="#documentation/downloads">the Downloads page</a>.</p>
+</li>
+
+<li>
+  <p>Copy the rpm to the <code>/home/developer/</code> directory on the Tizen target:</p>
+
+<pre>
+# on the host machine
+> sdb push crosswalk*.rpm /home/developer/
+</pre>
+</li>
+
+<li>
+  <p>The final step is to install the Crosswalk Tizen rpm on the VM. This can be done by using <code>sdb</code> to get a root shell on the VM:</p>
 
 <pre>
 # on the host machine
@@ -118,10 +131,8 @@ sh-4.1#
 # now we're on the VM (note that your prompt may
 # be slightly different from "sh-4.1#")
 
-# download and install the Crosswalk Tizen and Tizen emulator rpms
-sh-4.1# curl https://download.01.org/crosswalk/releases/crosswalk/tizen-mobile/stable/${XWALK-STABLE-TIZEN-X86}/crosswalk-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk.rpm
-sh-4.1# curl https://download.01.org/crosswalk/releases/crosswalk/tizen-mobile/stable/${XWALK-STABLE-TIZEN-X86}/crosswalk-emulator-support-${XWALK-STABLE-TIZEN-X86}-0.i586.rpm -o tz-xwalk-emulator.rpm
-sh-4.1# rpm -ih tz*.rpm
+# install the Crosswalk Tizen rpm
+sh-4.1# rpm -ih /home/developer/crosswalk*.rpm
 </pre>
 </li>
 
