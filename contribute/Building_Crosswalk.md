@@ -162,14 +162,30 @@ If you don't have any HTML applications to test, the
 
 3.  Set up the Android build environment.
 
+    Crossswalk <= 5 :
+
         . xwalk/build/android/envsetup.sh --target-arch=x86
 
     If you are targeting ARM, pass `--target-arch=arm` instead of `--target-arch=x86`.
 
+    Crosswalk > 5 :
+
+        . xwalk/build/android/envsetup.sh
+
 4.  To generate the Crosswalk projects, execute:
 
         export GYP_GENERATORS='ninja'
-        xwalk_android_gyp
+        
+        Crosswalk <= 5 :
+        
+            xwalk_android_gyp
+        
+        Crosswalk > 5 :
+            
+            xwalk_android_gyp -Dtarget_arch=ia32
+        
+        If you are targeting ARM, pass `-Dtarget_arch=arm` instead of `-Dtarget_arch=ia32`.
+        
         ./xwalk/gyp_xwalk
 
 5.  To build xwalk core and runtime shell (for developer testing purposes, not
