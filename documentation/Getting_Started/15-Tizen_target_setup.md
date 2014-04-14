@@ -18,11 +18,15 @@ However, if you acquire one of the supported hardware platforms for Tizen IVI, y
 
 ## Tizen emulator
 
-There are two ways to run Tizen IVI for development purposes:
+There are several ways to run Tizen IVI for development purposes:
 
-1.  Run a Tizen IVI image under VMware.
+1.  [Run a Tizen IVI image under VMWare](https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware).
 
-2.  Run a Tizen IVI image using the Tizen SDK Emulator Manager.
+2.  [Use a physical device and install Tizen IVI on it](https://wiki.tizen.org/wiki/IVI/IVI_Platforms).
+
+3.  [Run a Tizen IVI image from a hard drive (e.g. USB stick) on Intel-based hardware](https://wiki.tizen.org/wiki/IVI/IVI_Installation).
+
+4.  [Run a Tizen IVI image using the Tizen SDK Emulator Manager](https://wiki.tizen.org/wiki/Tizen_IVI_SDK).
 
 The preferred approach, covered in the sections below, is to set up a Tizen IVI image under VMware.
 
