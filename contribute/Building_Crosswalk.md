@@ -2,7 +2,7 @@
 
 ## Environment
 
-1.  Please setup your build environment by following the instructions
+1.  Please set up your build environment by following the instructions
 on the Chromium wiki:
 
     <ul>
@@ -249,7 +249,7 @@ By default, the generated RPM files end up in
 ### Testing a Tizen build
 
 The steps for installing a Tizen rpm on a device are covered in
-[Tizen target setup](#documentation/getting_started/tizen_target_setup).
+[Tizen target set up](#documentation/getting_started/tizen_target_setup).
 
 Running an application on Tizen is covered in
 [Run on Tizen](#documentation/getting_started/run_on_tizen).
