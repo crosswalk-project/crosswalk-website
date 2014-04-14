@@ -1,149 +1,136 @@
 # Tizen target setup
 
-To run Crosswalk applications on Tizen, you must install the Crosswalk runtime on each target. (Unlike Crosswalk for Android, it is currently not possible to bundle the Crosswalk runtime with the application for deployment to Tizen.)
+To run Crosswalk applications on Tizen, you need to install the Crosswalk runtime on each target. (Unlike Crosswalk for Android, it is currently not possible to bundle the Crosswalk runtime with the application for deployment to Tizen.)
 
-Tizen extensions for Crosswalk are also available, which enable you to make use of [Tizen APIs](https://developer.tizen.org/documentation/dev-guide/2.2.1?redirect=https%3A//developer.tizen.org/dev-guide/2.2.1/org.tizen.web.appprogramming/html/api_reference/api_reference.htm) in applications running in Crosswalk on Tizen. We don't need them for this tutorial, so we won't cover them here.
+You can use either a physical Tizen device or an emulated one (virtual machine) as a target. The instructions below cover both, but mainly concentrate on using a Tizen IVI virtual machine.
 
 Crosswalk is available for Tizen version 2.1 or higher.
+
+Tizen extensions for Crosswalk are also available, which enable you to make use of [Tizen APIs](https://developer.tizen.org/documentation/dev-guide/2.2.1?redirect=https%3A//developer.tizen.org/dev-guide/2.2.1/org.tizen.web.appprogramming/html/api_reference/api_reference.htm) in applications running in Crosswalk on Tizen. We don't need them for this tutorial, so we won't cover them here.
 
 In the instructions below, `<path to Tizen SDK>` refers to the path to the root directory of your Tizen SDK installation.
 
 ## Tizen device
 
-At the time of writing (April 2014), there are no Tizen devices on the market, so your only option is to use an emulated Tizen device.
+At the time of writing (April 2014), there are no off-the-shelf Tizen devices on the market.
+
+However, if you acquire one of the supported hardware platforms for Tizen IVI, you can [install Tizen IVI on it](https://wiki.tizen.org/wiki/IVI/IVI_Platforms) and use it for testing. Once you've set it up, follow the [Install Crosswalk](#Install-Crosswalk) instructions below to install Crosswalk on the device.
 
 ## Tizen emulator
 
-To test your application on Tizen, use an emulated x86 device. This can be installed via the Tizen SDK install manager:
+There are two ways to run Tizen IVI for development purposes:
 
-<ol>
+1.  Run a Tizen IVI image under VMware.
 
-<li>Start the Tizen SDK Install Manager:
-  <ul>
-    <li>
-      <p>On Windows:</p>
+2.  Run a Tizen IVI image using the Tizen SDK Emulator Manager.
 
-<pre>
-> cd <path to Tizen SDK>
-> .\install-manager\inst-manager.exe
-</pre>
-    </li>
+The preferred approach, covered in the sections below, is to set up a Tizen IVI image under VMware.
 
-    <li>
-      <p>On Linux, run the Tizen `.bin` file you originally downloaded, e.g.:</p>
+**Note:** If you use the Tizen SDK Emulator manager or a physical device, some of the instructions below may not be applicable, as you will be using `sdb` to copy files to and run a shell on the target, rather than `ssh`.
 
-<pre>
-> ./tizen-sdk-ubuntu64-v2.2.32.bin
-</pre>
-    </li>
-  </ul>
-</li>
+### Set up a Tizen IVI virtual machine with VMware
 
-<li>Select <em>Install or update the Tizen SDK</em>, then select the <em>Next</em> button.</li>
+After you have set up your host machine with the VMware player ([Windows](#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen), [Linux](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen)), you can create a virtual Tizen IVI machine.
 
-<li>
-  <p>Select the Tizen system image and emulator from the list of components available:</p>
+To do this, follow [these instructions on the Tizen wiki](https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware).
 
-<pre>
-[ ] Common Tools
-  [x] Emulator
+Here's a summary of the steps for Fedora 20, using the `tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2` daily build file (available from the [daily builds page](http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/)). The steps for Windows are similar, though you will need to use [install git SCM](#documentation/getting_started/Windows_host_setup) to get access to the `curl` and `bunzip2` commands.
 
-[ ] Platforms
-  [ ] Tizen 2.2
-    [x] Platform Image
-</pre>
+1.  Download, unpack and convert the Tizen IVI image:
 
-  <p>Then select <em>Install</em>.</p>
-</li>
+    > curl -O http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2
 
-</ol>
+    > bunzip2 tizen_*_ivi-release-mbr-i586-sdb.raw.bz2
 
-<p>Once the download is complete, you can create a Tizen virtual machine (VM) - an emulated Tizen device:</p>
+    > qemu-img convert -f raw -O vmdk \
+        tizen_20140410.5_ivi-release-mbr-i586-sdb.raw tizen-ivi-pre-3.0.vmdk
 
-<ol>
+2.  Start the VMware player, either from the command line (`vmplayer`) or menu.
 
-<li>
-  <p>Start the Tizen Emulator Manager.</p>
+3.  Select *Create a New Virtual Machine*.
 
-  <ul>
-    <li>On Windows:
+4.  Select **I will install the operating system later**, then *Next*.
 
-<pre>
-> cd <path to Tizen SDK>
-> .\tools\emulator\bin\emulator-manager.exe
-</pre>
-    </li>
+5.  For the *Guest operating system*, check **Linux** then select **Fedora** from the drop-down. Select *Next*.
 
-    <li>On Linux:
+6.  Set the *Name* to **Tizen-IVI**. Either accept the default location or choose a new one. I used `~/.vmware/Tizen-IVI` as the location for my VM.
 
-<pre>
-> cd <path to Tizen SDK>
-> ./tools/emulator/bin/emulator-manager
-</pre>
-    </li>
-  </ul>
-</li>
+7.  In the *Disk Size* screen, set *Maximum disk size* to **1Gb** and check *Store virtual disk as a single file* (these settings don't matter too much, as we're going to delete this virtual disk later anyway).
 
-<li>
-Once the manager has loaded, ensure that the drop-down menu in the top-left of the window has <strong>x86-standard</strong> selected; then select <em>Create New VM</em>.
-</li>
+8.  Select *Next* then *Customize hardware*.
 
-<li>
-  <p>Set the name to <strong>Tablet</strong> and ensure that <em>Base Image</em> is set to <strong>emulimg-2.2.x86</strong>. Accept the defaults for the other settings and select <em>Confirm</em> to create the VM.</p>
+9.  In the *Virtual Machine Settings*, ensure that the following are configured correctly:
 
-  <p>The result should look like this:</p>
+    *   Remove *New CD/DVD*
+    *   Remove *Printer*
+    *   *Display* > *Accelerate 3D graphics*: **on**
 
-  <p><img src="assets/tizen-emulator-manager.png"></p>
-</li>
+    You can remove items by selecting them then clicking the *-* button at the bottom of the screen.
 
-<li>
-  <p>To run the image, stay in the Tizen Emulator Manager and click the play button for the VM (see above). The emulator should now run your VM:</p>
+10. Now the VM is set up, configure it by right-clicking on it and selecting *Virtual Machine Settings*.
 
-  <p><img src="assets/tizen-emulated-running.png"></p>
-</li>
+11. Remove the *Hard disk*.
 
-<li>
-  <p>Download a Crosswalk Tizen 3.0 Mobile (x86) (canary) rpm file from <a href="#documentation/downloads">the Downloads page</a>.</p>
-</li>
+12. Add a new hard disk by clicking on *+*, selecting *Hard disk*, and then *Next*.
 
-<li>
-  <p>Copy the rpm to the <code>/home/developer/</code> directory on the Tizen target:</p>
+13. Choose **IDE** for the *Hard Disk Type* and click *Next*.
 
-<pre>
-# on the host machine
-> sdb push crosswalk*.rpm /home/developer/
-</pre>
-</li>
+14. Select **Use an existing virtual disk** then *Next*.
 
-<li>
-  <p>The final step is to install the Crosswalk Tizen rpm on the VM. This can be done by using <code>sdb</code> to get a root shell on the VM:</p>
+15. *Browse* to the `tizen-ivi-pre-3.0.vmdk` disk image you created earlier then click *Finish*. If you're prompted to change the format, click *Keep existing format*.
 
-<pre>
-# on the host machine
-> sdb root on
+16. *Save* your changes and close VMware player.
 
-Switched to 'root' account mode
+17. If you are using Intel integrated graphics, you need to force VMware player to use 3D acceleration. Append a line to the `.vmx` file associated with this VM:
 
-# get a root shell on the VM
-> sdb shell
-sh-4.1#
+        echo 'mks.gl.allowBlacklistedDrivers = "TRUE"' >> ~/.vmware/Tizen-IVI/Tizen-IVI.vmx
 
-# now we're on the VM (note that your prompt may
-# be slightly different from "sh-4.1#")
+18. OpenVMware player again, and start the configured VM from the front screen by right-clicking on its name (**Tizen-IVI**) and selecting *Play Virtual Machine*.
 
-# install the Crosswalk Tizen rpm
-sh-4.1# rpm -ih /home/developer/crosswalk*.rpm
-</pre>
-</li>
+19. The first time the virtual machine boots, you will be prompted to download the VMware Tools for Linux. Accept the prompts and follow the instructions to download and install them.
 
-<li><p>Still in the shell on the VM, test that crosswalk has installed and is working:</p>
+20. Eventually, you should see the Tizen IVI image boot:
 
-<pre>
-sh-4.1# xwalk
-</pre>
+    <img src="assets/tizen-ivi-vmware.png">
 
-</li>
+#### VMware tips/reminders
 
-</ol>
+*   Ctrl+Alt releases input capturing in the VM, giving you back the mouse and keyboard.
+*   My preference is to use bridged networking between the VM and the host, as this simplifies using ssh (for me at least).
 
-<p>The VM is now set up and ready to use as a Tizen deployment target.</p>
+## Install Crosswalk
+
+Once you have a running Tizen IVI virtual machine ready as a target, you can install Crosswalk on it. The instructions below assume that the target machine can be reached from the host machine over the network (to create the examples, I used bridged networking on the VM).
+
+1.  Get a root shell on the VM with:
+
+        ssh root@<ip address>
+
+    When you prompted to accept the host key, do so.
+
+    The default Tizen IVI password for root is **tizen**.
+
+    The shell prompt should be `root:~>` if you logged in successfully.
+
+2.  From the shell on the target, download the Crosswalk package:
+
+        curl -O https://download.01.org/crosswalk/releases/crosswalk/tizen-ivi/canary/6.35.119.0/crosswalk-6.35.119.0-0.i686.rpm
+
+    The URL above is for the rpm I tested most recently, but you can try a newer one if you wish. However, bear in mind that these files are canaries, and will not necessarily work or be stable; the version referenced above is known to work.
+
+3.    Install it:
+
+        rpm -ih crosswalk-6.35.119.0-0.i686.rpm
+
+4.  Check the installation is working by switching to the `app` user. This user has the correct configuration to be able to run Crosswalk on the target:
+
+        su - app
+
+    Then test the status of the Crosswalk service:
+
+        app:~> systemctl --user status xwalk.service
+        xwalk.service - Crosswalk
+        Loaded: loaded (/usr/lib/systemd/user/xwalk.service; static)
+        Active: inactive (dead)
+
+The [Run on Tizen](#documentation/getting_started/run_on_tizen) section explains how to run an application with Crosswalk.
