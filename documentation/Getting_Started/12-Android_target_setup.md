@@ -118,4 +118,4 @@ emulator-5554	device
 
 </ol>
 
-The emulated Android device is now setup and ready to be used as a deployment target.
+The emulated Android device is now set up and ready to be used as a deployment target.

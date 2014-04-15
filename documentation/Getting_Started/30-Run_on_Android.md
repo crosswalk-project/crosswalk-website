@@ -1,6 +1,6 @@
 # Running a Crosswalk app on Android
 
-The Crosswalk Android download contains a Python script which can be used to make a self-contained package (`.apk` file) from an HTML5 application. See the host setup instructions ([Windows](#documentation/getting_started/Windows_host_setup/Download-the-Crosswalk-Android-app-template) / [Linux](#documentation/getting_started/Linux_host_setup/Download-the-Crosswalk-Android-app-template)) for details.
+The Crosswalk Android download contains a Python script which can be used to make a self-contained package (`.apk` file) from an HTML5 application. See the host set up instructions ([Windows](#documentation/getting_started/Windows_host_setup/Download-the-Crosswalk-Android-app-template) / [Linux](#documentation/getting_started/Linux_host_setup/Download-the-Crosswalk-Android-app-template)) for details.
 
 Once you have downloaded and unpacked Crosswalk Android, create an `apk` file for your application as follows:
 

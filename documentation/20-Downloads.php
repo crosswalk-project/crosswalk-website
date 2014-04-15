@@ -39,24 +39,6 @@
     </tr>
 
     <tr>
-    <th>Tizen 2.x Mobile (x86)</th>
-    <td>
-    <a data-role="static-download-link" data-channel="stable" data-os="tizen-mobile" data-arch="x86"></a>
-    </td>
-    <td>-</td>
-    <td>-</td>
-    </tr>
-
-    <tr>
-    <th>Tizen 2.x Emulator (x86)</th>
-    <td>
-    <a data-role="static-download-link" data-channel="stable" data-os="tizen-emulator" data-arch="x86"></a>
-    </td>
-    <td>-</td>
-    <td>-</td>
-    </tr>
-
-    <tr>
     <th>Tizen 3.0 Mobile (x86)</th>
     <td>-</td>
     <td>-</td>
