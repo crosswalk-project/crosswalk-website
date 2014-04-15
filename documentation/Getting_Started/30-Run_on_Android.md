@@ -52,6 +52,8 @@ Each of these modes has its own pros and cons:
 
     The advantage is that one Crosswalk runtime library can support multiple shared mode applications: valuable if you are using Crosswalk to deploy multiple applications on the same Crosswalk version, as it reduces the size of each application apk.
 
+    Another advantage is that you can upgrade the runtime for multiple applications by upgrading one shared Crosswalk runtime package. By contrast, in embedded mode, upgrading the runtime requires you to upgrade each application at the same time: so moving to a newer runtime for multiple applications means upgrading each of those applications separately.
+
     The disadvantage is that you must distribute apks both for your web applications and for the Crosswalk runtime.
 
 To make a shared mode apk, pass the `--mode=shared` option to the `make_apk.py` script, for example:
