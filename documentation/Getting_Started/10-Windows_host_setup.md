@@ -89,7 +89,7 @@ The next step is to set up your environment so that binaries and scripts which w
 
 The Crosswalk Android distribution contains an application template which can be used as a wrapper for an HTML5 application. It also includes a script which will convert a wrapped HTML5 application into an installable Android `apk` file.
 
-To get Crosswalk Android for x86:
+To get Crosswalk Android:
 
 1.  Download the version you want from the [Downloads page](#documentation/downloads). We suggest that you use the stable Android version (${XWALK-STABLE-ANDROID-X86}).
 
