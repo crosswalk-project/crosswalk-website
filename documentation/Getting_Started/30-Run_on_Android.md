@@ -56,7 +56,10 @@ Each of these modes has its own pros and cons:
 
 To make a shared mode apk, pass the `--mode=shared` option to the `make_apk.py` script, for example:
 
-    > python make_apk.py --mode=shared --manifest=xwalk-simple/manifest.json
+    > python make_apk.py --mode=shared --package=com.intel.xwalk-simple \
+        --manifest=xwalk-simple/manifest.json
+
+Note that the `--package` option is mandatory and should be set to the Java package name for your application.
 
 To deploy a shared mode application, you will need to install architecture-specific runtime apks on the target. These can be found in the Crosswalk Android downloads area, under the `arm/` and `x86/` directories. For example, the apks for the latest stable versions are in these files:
 
