@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/30 Run_on_Android';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/30 Run_on_Android</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Running a Crosswalk app on Android</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/30-Run_on_Android"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/30-Run_on_Android"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The Crosswalk Android download contains a Python script which can be used to make a self-contained package (<code>.apk</code> file) from an HTML5 application. See the host setup instructions (<a href="#documentation/getting_started/Windows_host_setup/Download-the-Crosswalk-Android-app-template">Windows</a> / <a href="#documentation/getting_started/Linux_host_setup/Download-the-Crosswalk-Android-app-template">Linux</a>) for details.</p>
+
+<p>Once you have downloaded and unpacked Crosswalk Android, create the <code>apk</code> packages for your application as follows:</p>
+
+<ol><li><p>Go to the unpacked Crosswalk Android directory:</p>
+
+<pre><code>&gt; cd ${XWALK-STABLE-ANDROID-X86}
+</code></pre></li>
+<li><p>Run the <code>make_apk.py</code> script with Python as follows:</p>
+
+<pre><code>&gt; python make_apk.py --manifest=xwalk-simple/manifest.json
+</code></pre>
+
+<p>This will package the application defined in the specified <code>manifest.json</code> file and produce two apk files from it, one for x86 architecture and one for ARM. The apk files will end up in the directory where you ran the script. Each file is given the name set in the manifest, with any filesystem-sensitive characters removed and an architecture identifier ("x86" or "arm") appended. For our example, the output files are <code>simple_x86.apk</code> and <code>simple_arm.apk</code>.</p></li>
+<li><p>Install the application on the target.</p>
+
+<p>If installing on an x86 device:</p>
+
+<pre><code>&gt; adb install -r simple_x86.apk
+</code></pre>
+
+<p>If installing on an ARM device:</p>
+
+<pre><code>&gt; adb install -r simple_arm.apk
+</code></pre>
+
+<p>The <code>-r</code> flag stands for "reinstall". It is not required for the first installation, but useful for subsequent reinstalls of the same package.</p></li>
+</ol><p>If the installation is successful, your application should now be on the Android target. Find its icon in the application list and open it. Here it is running on a ZTE Geek phone:</p>
+
+<p><img src="assets/xwalk-simple-on-android.png" /></p>
+
+<h2>Shared mode<a class="anchor" id="Shared-mode" href="#Shared-mode"></a></h2>
+
+<p>Above, we packaged the application using the default <em>embedded</em> mode (the Crosswalk runtime is bundled with the application). This creates two apk files, one for Intel architecture devices, and a second for ARM devices.</p>
+
+<p>However, it is also possible to package an application in <em>shared</em> mode. In this mode, the apk is architecture-independent; but a separate Crosswalk runtime also has to be installed on the target to run the application.</p>
+
+<p>Each of these modes has its own pros and cons:</p>
+
+<ul><li><p><em>Embedded</em></p>
+
+<p>In embedded mode packaging, each web app is bundled with the full Crosswalk runtime. Since the Crosswalk runtime needs an architecture-dependent native library, two Android apks need to be generated for embedded mode: one for targets with Intel architecture (x86) and another for ARM targets. The <code>make_apk.py</code> script used in this tutorial generates a package for each architecture by default, as explained above.</p>
+
+<p>The advantage is that you can keep a tight dependency between Crosswalk and the application, so you can ensure that the correct Crosswalk version is used. (In shared mode, you would have to ensure that the user had the correct runtime version available.)</p>
+
+<p>The disadvantage is that the generated apk is significantly larger, as it contains the whole Crosswalk runtime inside it.</p></li>
+<li><p><em>Shared</em></p>
+
+<p>In shared mode packaging, each web app is bundled with a thin layer of Java code which is architecture-independent. This produces a much smaller apk file. However, to run this shared mode application, a separate, architecture-dependent Crosswalk runtime also has to be installed on the target. Again, one runtime is required for each architecture (one for x86, one for ARM); but, unlike embedded mode, multiple applications can share this single runtime.</p>
+
+<p>The advantage is that one Crosswalk runtime library can support multiple shared mode applications: valuable if you are using Crosswalk to deploy multiple applications on the same Crosswalk version, as it reduces the size of each application apk.</p>
+
+<p>Another advantage is that you can upgrade the runtime for multiple applications by upgrading one shared Crosswalk runtime package. By contrast, in embedded mode, upgrading the runtime requires you to upgrade each application at the same time: so moving to a newer runtime for multiple applications means upgrading each of those applications separately.</p>
+
+<p>The disadvantage is that you must distribute apks both for your web applications and for the Crosswalk runtime.</p></li>
+</ul><p>To make a shared mode apk, pass the <code>--mode=shared</code> option to the <code>make_apk.py</code> script, for example:</p>
+
+<pre><code>&gt; python make_apk.py --mode=shared --package=com.intel.xwalk-simple \
+    --manifest=xwalk-simple/manifest.json
+</code></pre>
+
+<p>Note that the <code>--package</code> option is mandatory and should be set to the Java package name for your application.</p>
+
+<p>To deploy a shared mode application, you will need to install architecture-specific runtime apks on the target. These can be found in the Crosswalk Android downloads area, under the <code>arm/</code> and <code>x86/</code> directories. For example, the apks for the latest stable versions are in these files:</p>
+
+<ul><li>  <a href="https://download.01.org/crosswalk/releases/crosswalk/android/stable/$%7BXWALK-STABLE-ANDROID-ARM%7D/arm/crosswalk-apks-$%7BXWALK-STABLE-ANDROID-ARM%7D-arm.zip">ARM</a></li>
+<li>  <a href="https://download.01.org/crosswalk/releases/crosswalk/android/stable/$%7BXWALK-STABLE-ANDROID-X86%7D/x86/crosswalk-apks-$%7BXWALK-STABLE-ANDROID-X86%7D-x86.zip">Intel (x86)</a></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-15 17:39:23</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/30-Run_on_Android" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/30-Run_on_Android">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
