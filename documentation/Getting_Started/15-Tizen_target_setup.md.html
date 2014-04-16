@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/15 Tizen_target_setup';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/15 Tizen_target_setup</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Tizen target setup</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/15-Tizen_target_setup"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/15-Tizen_target_setup"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>To run Crosswalk applications on Tizen, you need to install the Crosswalk runtime on each target. (Unlike Crosswalk for Android, it is currently not possible to bundle the Crosswalk runtime with the application for deployment to Tizen.)</p>
+
+<p>You can use either a physical Tizen device or an emulated one (virtual machine) as a target. The instructions below cover both, but mainly concentrate on using a Tizen IVI virtual machine.</p>
+
+<p>Crosswalk is available for Tizen version 2.1 or higher.</p>
+
+<p>Tizen extensions for Crosswalk are also available, which enable you to make use of <a href="https://developer.tizen.org/documentation/dev-guide/2.2.1?redirect=https%3A//developer.tizen.org/dev-guide/2.2.1/org.tizen.web.appprogramming/html/api_reference/api_reference.htm">Tizen APIs</a> in applications running in Crosswalk on Tizen. We don't need them for this tutorial, so we won't cover them here.</p>
+
+<p>In the instructions below, <code>&lt;path to Tizen SDK&gt;</code> refers to the path to the root directory of your Tizen SDK installation.</p>
+
+<h2>Tizen device<a class="anchor" id="Tizen-device" href="#Tizen-device"></a></h2>
+
+<p>At the time of writing (April 2014), there are no off-the-shelf Tizen devices on the market.</p>
+
+<p>However, if you acquire one of the supported hardware platforms for Tizen IVI, you can <a href="https://wiki.tizen.org/wiki/IVI/IVI_Platforms">install Tizen IVI on it</a> and use it for testing. Once you've set it up, follow the <a href="#Install-Crosswalk">Install Crosswalk</a> instructions below to install Crosswalk on the device.</p>
+
+<h2>Tizen virtual machine<a class="anchor" id="Tizen-virtual-machine" href="#Tizen-virtual-machine"></a></h2>
+
+<p>There are several ways to run Tizen IVI for development purposes:</p>
+
+<ol><li> <a href="https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware">Run a Tizen IVI image under VMWare</a>.</li>
+<li> <a href="https://wiki.tizen.org/wiki/IVI/IVI_Platforms">Use a physical device and install Tizen IVI on it</a>.</li>
+<li> <a href="https://wiki.tizen.org/wiki/IVI/IVI_Installation">Run a Tizen IVI image from a hard drive (e.g. USB stick) on Intel-based hardware</a>.</li>
+<li> <a href="https://wiki.tizen.org/wiki/Tizen_IVI_SDK">Run a Tizen IVI image using the Tizen SDK Emulator Manager</a>.</li>
+</ol><p>The preferred approach, covered in the sections below, is to set up a Tizen IVI image under VMware.</p>
+
+<p><strong>Note:</strong> If you use the Tizen SDK Emulator manager or a physical device, some of the instructions below may not be applicable, as you will be using <code>sdb</code> to copy files to and run a shell on the target, rather than <code>ssh</code>.</p>
+
+<h3>Set up a Tizen IVI virtual machine with VMware<a class="anchor" id="Set-up-a-Tizen-IVI-virtual-machine-with-VMware" href="#Set-up-a-Tizen-IVI-virtual-machine-with-VMware"></a></h3>
+
+<p>After you have set up your host machine with the VMware Player or Workstation (<a href="#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen">Windows</a>, <a href="#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen">Linux</a>), you can create a virtual Tizen IVI machine.</p>
+
+<p>To do this, follow <a href="https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware">these instructions on the Tizen wiki</a>.</p>
+
+<p>Here's a summary of the steps for Fedora 20, using VMware Workstation and the <code>tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2</code> daily build (available from the <a href="http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/">daily builds page</a>). The steps for Windows are similar, though you will need to use <a href="#documentation/getting_started/Windows_host_setup">install git SCM</a> to get the <code>curl</code> and <code>bunzip2</code> commands.</p>
+
+<ol><li><p>Download, unpack and convert the Tizen IVI image:</p>
+
+<blockquote>
+<p>curl -O <a href="http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2">http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2</a></p>
+
+<p>bunzip2 tizen_*_ivi-release-mbr-i586-sdb.raw.bz2</p>
+
+<p>qemu-img convert -f raw -O vmdk \
+    tizen_20140410.5_ivi-release-mbr-i586-sdb.raw tizen-ivi-pre-3.0.vmdk</p>
+</blockquote></li>
+<li><p>Start VMware Workstation.</p></li>
+<li><p>Select <em>File</em> &gt; <em>New Virtual Machine</em>.</p></li>
+<li><p>Select <em>Custom (advanced)</em>, then <em>Next</em>.</p></li>
+<li><p>Accept the defaults for <em>Virtual Machine Hardware Compatibility</em>, then <em>Next</em>.</p></li>
+<li><p>Select <strong>I will install the operating system later</strong>, then <em>Next</em>.</p></li>
+<li><p>For the <em>Guest operating system</em>, check <strong>Linux</strong> then select <strong>Fedora</strong> from the drop-down. Select <em>Next</em>.</p></li>
+<li><p>Set the <em>Name</em> to <strong>Tizen-IVI</strong>. Either accept the default location or choose a new one. I used <code>~/.vmware/Tizen-IVI</code> as the location for my VM.</p></li>
+<li><p>Accept the defaults for <em>Processors</em> and <em>Memory</em> (select <em>Next</em> for both).</p></li>
+<li><p>Select <strong>Use bridged networking</strong>. This makes the virtual machine try to get an IP address from the local network when booted. If you know what you're doing, feel free to choose a different type of networking.</p></li>
+<li><p>Accept the defaults for <em>I/O Controller Types</em> by selecting <em>Next</em>.</p></li>
+<li><p>For <em>Virtual Disk Type</em>, choose <strong>IDE</strong>, then select <em>Next</em>.</p></li>
+<li><p>Under <em>Disk</em>, select <strong>Use an existing virtual disk</strong> then <em>Next</em>.</p></li>
+<li><p><em>Browse</em> to the <code>tizen-ivi-pre-3.0.vmdk</code> disk image you created earlier, <em>Open</em> it, then click <em>Finish</em>. If you're prompted to change the format, click <em>Keep existing format</em>.</p></li>
+<li><p>Select <em>Next</em> then <em>Customize hardware</em>.</p></li>
+<li><p>In the <em>Virtual Machine Settings</em>, ensure that the following are configured correctly:</p>
+
+<ul><li>Remove <em>New CD/DVD</em></li>
+<li>Remove <em>Printer</em></li>
+<li><em>Display</em> &gt; <em>Accelerate 3D graphics</em>: <strong>on</strong></li>
+</ul><p>You can remove items by selecting them then clicking the <em>-</em> button at the bottom of the screen.</p></li>
+<li><p>Select <em>Finish</em> then <em>Close</em> to save your changes.</p></li>
+<li><p>Close VMware Workstation, so the configuration for the VM is saved to disk. This is so we can make a manual adjustment to the configuration in the next step.</p></li>
+<li><p>If you are using Intel integrated graphics, you need to force VMware to use 3D acceleration. Append a line to the <code>.vmx</code> file associated with this VM:</p>
+
+<pre><code>echo 'mks.gl.allowBlacklistedDrivers = "TRUE"' &gt;&gt; ~/.vmware/Tizen-IVI/Tizen-IVI.vmx
+</code></pre></li>
+<li><p>OpenVMware Workstation again, and start the configured VM from the front screen by right-clicking on its name (<strong>Tizen-IVI</strong>) and selecting <em>Play Virtual Machine</em>.</p></li>
+<li><p>The first time the virtual machine boots, you will be prompted to download the VMware Tools for Linux. Don't install these for now.</p></li>
+<li><p>Eventually, you should see the Tizen IVI image boot:</p>
+
+<p><img src="assets/tizen-ivi-vmware.png" /></p></li>
+</ol><h4>VMware tips/reminders<a class="anchor" id="VMware-tips/reminders" href="#VMware-tips/reminders"></a></h4>
+
+<ul><li>  Ctrl+Alt releases input capturing in the VM, giving you back the mouse and keyboard.</li>
+<li>  My preference is to use bridged networking between the VM and the host, as this simplifies using ssh (for me at least).</li>
+</ul><h2>Install Crosswalk<a class="anchor" id="Install-Crosswalk" href="#Install-Crosswalk"></a></h2>
+
+<p>Once you have a running Tizen IVI virtual machine ready as a target, you can install Crosswalk on it. The instructions below assume that the target machine can be reached from the host machine over the network (to create the examples, I used bridged networking on the VM).</p>
+
+<ol><li><p>Get a root shell on the VM with:</p>
+
+<pre><code>ssh root@&lt;ip address&gt;
+</code></pre>
+
+<p>When prompted to accept the host key, do so.</p>
+
+<p>The default Tizen IVI password for root is <strong>tizen</strong>.</p>
+
+<p>The shell prompt should be <code>root:~&gt;</code> if you logged in successfully.</p></li>
+<li><p>From the shell on the target, download the Crosswalk package:</p>
+
+<pre><code>root:~&gt; curl -O https://download.01.org/crosswalk/releases/crosswalk/tizen-ivi/canary/6.35.119.0/crosswalk-6.35.119.0-0.i686.rpm
+</code></pre>
+
+<p>The URL above is for the rpm I tested most recently, but you can try a newer one if you wish. However, bear in mind that these files are canaries, and will not necessarily work or be stable; the version referenced above is known to work.</p></li>
+<li><p>Install it:</p>
+
+<pre><code>root:~&gt; rpm -ih crosswalk-6.35.119.0-0.i686.rpm
+</code></pre></li>
+<li><p>Check the installation is working by switching to the <code>app</code> user. This user has the correct configuration to be able to run Crosswalk on the target:</p>
+
+<pre><code>root:~&gt; su - app
+</code></pre>
+
+<p>Then test the status of the Crosswalk service:</p>
+
+<pre><code>app:~&gt; systemctl --user status xwalk.service
+xwalk.service - Crosswalk
+Loaded: loaded (/usr/lib/systemd/user/xwalk.service; static)
+Active: inactive (dead)
+</code></pre></li>
+</ol><p>The <a href="#documentation/getting_started/run_on_tizen">Run on Tizen</a> section explains how to run an application with Crosswalk.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-16 14:48:55</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/15-Tizen_target_setup" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/15-Tizen_target_setup">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
