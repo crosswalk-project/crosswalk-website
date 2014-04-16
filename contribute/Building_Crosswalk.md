@@ -166,7 +166,7 @@ If you don't have any HTML applications to test, the
 
         ./xwalk/build/android/envsetup.sh
 
-    Or, for Crossswalk <= 5:
+    Or, if you are using Crossswalk <= 5:
 
         ./xwalk/build/android/envsetup.sh --target-arch=x86
 
