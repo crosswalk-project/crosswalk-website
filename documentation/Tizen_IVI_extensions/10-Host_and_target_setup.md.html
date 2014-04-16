@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Tizen_IVI_extensions/10 Host_and_target_setup';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Tizen_IVI_extensions/10 Host_and_target_setup</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Host and target setup</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Tizen_IVI_extensions/10-Host_and_target_setup"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Tizen_IVI_extensions/10-Host_and_target_setup"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>In this section, we outline how to prepare for developing Tizen Crosswalk extensions. The steps are:</p>
+
+<ul><li>  Set up a <em>host</em> computer for Crosswalk Tizen development.</li>
+<li>  Create a <em>target</em> Tizen IVI virtual machine and install Crosswalk on it.</li>
+</ul><p><strong>Note:</strong> These steps are only necessary if you are writing Crosswalk Tizen extensions: they are not required if you are writing Crosswalk Android extensions, or just using Crosswalk as a runtime for a web app.</p>
+
+<h1>Host setup<a class="anchor" id="Host-setup" href="#Host-setup"></a></h1>
+
+<p>First follow the instructions for your host platform:</p>
+
+<ul><li>  <a href="#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen">Windows</a></li>
+<li>  <a href="#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen">Linux</a></li>
+</ul><p>Then follow the steps below to install the extra pieces needed for developing Crosswalk extensions.</p>
+
+<h2>Install gbs<a class="anchor" id="Install-gbs" href="#Install-gbs"></a></h2>
+
+<p>The recommended command-line build environment for Tizen is the <a href="https://source.tizen.org/documentation/reference/git-build-system">git build system (gbs)</a>. You should set this up for your host by following <a href="https://source.tizen.org/documentation/developer-guide/installing-development-tools">these instructions</a>.</p>
+
+<h3>Set up gbs profile<a class="anchor" id="Set-up-gbs-profile" href="#Set-up-gbs-profile"></a></h3>
+
+<p>To build projects, <code>gbs</code> needs a configuration file for the Tizen IVI version you are using. Example configuration files for different Tizen IVI versions are available on <a href="https://wiki.tizen.org/wiki/IVI/GBS_configuration_files_Tizen_IVI">this page</a>.</p>
+
+<p>The Tizen IVI version used to write this tutorial was <a href="http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2">this daily build</a>. The gbs config file for working with this version looks like this:</p>
+
+<pre><code>[general]
+profile = profile.3.0
+
+[obs.tizen]
+url = https://api.tizen.org
+
+[repo.tizen-3.0]
+url = http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/tizen_20140410.5/repos/ivi/ia32/packages/
+
+[profile.3.0]
+obs = obs.tizen
+repos = repo.tizen-3.0
+</code></pre>
+
+<p>Adjust the URL to suit the version of Tizen IVI you are using. Then save this content to a file called <code>~/.gbs.conf</code>.</p>
+
+<h1>Target setup<a class="anchor" id="Target-setup" href="#Target-setup"></a></h1>
+
+<p>For the purposes of this tutorial, we'll use an Tizen IVI virtual machine, running under VMware.</p>
+
+<p>Instructions for setting up this type of target are on the <a href="#documentation/getting_started/tizen_target_setup">Tizen target set up page</a>. Ensure that you follow all the steps, so that the virtual machine is set up with Crosswalk installed on it.</p>
+
+<p>You are now ready to start developing the extension.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-16 13:42:58</p>
+  <p>
+    <a id="delete-link" href="/documentation/Tizen_IVI_extensions/10-Host_and_target_setup" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Tizen_IVI_extensions/10-Host_and_target_setup">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
