@@ -1,8 +1,8 @@
 # Running a Crosswalk app on Tizen
 
-On Tizen, Crosswalk runs as a background service, only becoming active when needed (i.e. when a user session activates it). In technical turns, Crosswalk effectively runs as a daemon, exposing a D-Bus interface for managing applications.
+On Tizen, Crosswalk runs as a background service, only becoming active when needed (i.e. when a user session activates it). In technical terms, Crosswalk effectively runs as a daemon, exposing a D-Bus interface for managing applications.
 
-To run an application on a Tizen target, first ensure you have [set up your host for Tizen] and [set up a Tizen target]. In the instructions below, we assume you are using a Tizen IVI target running under VMware, and consequently use `ssh` to push files to and get a shell on the target.
+To run an application on a Tizen target, first ensure you have set up your host for Tizen ([Windows](#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen), [Linux](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen)) and [set up a Tizen target](#documentation/getting_started/Tizen_target_setup). In the instructions below, we assume you are using a Tizen IVI target running under VMware, and consequently use `ssh` to push files to, and get a shell on, the target.
 
 Next, follow these steps to get the application running:
 
@@ -15,11 +15,13 @@ These steps are explained in detail below.
 
 ## Create a Tizen package
 
-A Tizen package file is a zip file with some "magic" and an `.xpk` suffix. It will contain all of the files relating to your application (HTML, CSS, JavaScript, assets), as well as any metadata (`manifest.json`, icons etc.). See [the wiki](#wiki/Crosswalk-package-management) for detailed information about the format.
+A Tizen package file is a zip file with some "magic" (a special file header specific to Crosswalk) and an `.xpk` suffix. It will contain all of the files relating to your application (HTML, CSS, JavaScript, assets), as well as any metadata (`manifest.json`, icons etc.). See [the wiki](#wiki/Crosswalk-package-management) for detailed information about the format.
 
-To create a zip package, you will need to have a `bash` shell and the `openssl` binary installed. On Linux, these are usually available by default. On Windows, you will need to [install git SCM](#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen).
+To create a zip package, you will need a `bash` shell and the `zip` and `openssl` binaries installed. On Linux, these are usually available by default. On Windows, you will need to [install git SCM](#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen).
 
-Then follow these steps to create the package:
+Then follow the steps below to create the package.
+
+### Add the make_xpk script
 
 1.  Copy the following script into a file called `make_xpk.sh`:
 
@@ -71,11 +73,15 @@ Then follow these steps to create the package:
 
         > chmod +x make_xpk.sh
 
-3.  To create xpk packages, you will need a private key file. Use `openssl` to generate this for you:
+### Create the xpk file
+
+1.  To create xpk packages, you will need a private key file. Use `openssl` to generate this for you:
 
         > openssl genrsa -out mykey.pem 1024
 
-4.  Call the shell script, passing it the path to the directory containing your application and your key file:
+    Note that this is a private key file, and it should not be distributed with your application.
+
+2.  Call the shell script, passing it the path to the directory containing your application and your key file:
 
         > ./make_xpk.sh xwalk-simple/ mykey.pem
 
@@ -93,46 +99,17 @@ Then follow these steps to create the package:
 
 ## Install the application package
 
-1.  Get a root shell on the device:
+Use a terminal on the emulated device to run the following steps:
 
-        > ssh root@<ip address>
+1.  Open a terminal on the target as the `app` user. You can do this using the small console icon in the top-left of the screen.
 
-    The password is **tizen**.
-
-2.  Prepare the environment for a non-privileged user. Rather than install and run the application as root, we will apply some manual steps so the non-privileged **app** user can do it. As root on the target, do:
-
-        root:~> mkdir /run/user/app/dbus/
-        root:~> chown -R app /run/user/app/
-
-3.  Still on the target, change to the non-privileged **app** user:
-
-        root:~> su - app
-        app:~> whoami
-        app
-
-    Note that the prompt for the **app** user may differ between devices/Tizen versions.
-
-4.  Set the **app** user's `XDG_RUNTIME_DIR` and `DBUS_SESSION_BUS_ADDRESS` variables:
-
-        app:~> export XDG_RUNTIME_DIR=/run/user/5000
-        app:~> export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket
-
-5.  Start Crosswalk as a service:
+2.  Start Crosswalk as a service:
 
         app:~> xwalk --run-as-service
 
-6.  Now open another shell on the Tizen target:
+3.  Open another terminal on the Tizen target. This is the session we're going to use to install the package.
 
-        # on the host
-        > ssh root@<ip address>
-
-        # on the target, in the new shell
-        root:~> su - app
-        app:~> export XDG_RUNTIME_DIR=/run/user/5000
-
-    This is the session we're going to use to install the package.
-
-7.  From this second shell, install the `xwalk-simple.xpk` package using the `xwalkctl` command (still as the app user):
+4.  From this second shell, install the `xwalk-simple.xpk` package using the `xwalkctl` command (still as the app user):
 
         app:~> xwalkctl --install /home/app/xwalk-simple.xpk
 
@@ -167,13 +144,13 @@ Then follow these steps to create the package:
 
 ## Run the application
 
-To start the application, you need to know the ID assigned to the application when it was installed.
+To start the application, you need to know the ID assigned to the application when it was installed. If you can't remember it, you can list the installed applications with:
 
-Pass this ID to the `xwalk-launcher` command, in the same shell you used to install the application (see above):
+    app:~> xwalkctl
 
-    app:~> xwalk-launcher -f dogabgfklbjobjkfdbokaedngjeepepj
+Pass the ID to the `xwalk-launcher` command, in the same shell you used to install the application:
 
-(The `-f` option instructs Crosswalk to run the application in fullscreen mode.)
+    app:~> xwalk-launcher dogabgfklbjobjkfdbokaedngjeepepj
 
 The application should now start on the target. Here it is running on an emulated Tizen IVI device, on Fedora Linux:
 

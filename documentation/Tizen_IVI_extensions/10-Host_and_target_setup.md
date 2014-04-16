@@ -1,72 +1,50 @@
 # Host and target setup
 
-In this section, we set up the host computer for Crosswalk Tizen development and create a Tizen target (emulated Tizen IVI device).
+In this section, we outline how to prepare for developing Tizen Crosswalk extensions. The steps are:
+
+*   Set up a *host* computer for Crosswalk Tizen development.
+*   Create a *target* Tizen IVI virtual machine and install Crosswalk on it.
 
 **Note:** These steps are only necessary if you are writing Crosswalk Tizen extensions: they are not required if you are writing Crosswalk Android extensions, or just using Crosswalk as a runtime for a web app.
 
 # Host setup
 
-The host should first be set up for Crosswalk development by following these steps:
+First follow the instructions for your host platform:
 
 *   [Windows](#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen)
 *   [Linux](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen)
 
-Once this is done, you will also need to install and configure the Tizen SDK, as explained below.
+Then follow the steps below to install the extra pieces needed for developing Crosswalk extensions.
 
-## Set up the Tizen SDK
+## Install gbs
 
-These steps will enable you to compile Crosswalk extensions to run on Tizen:
+The recommended command-line build environment for Tizen is the [git build system (gbs)](https://source.tizen.org/documentation/reference/git-build-system). You should set this up for your host by following [these instructions](https://source.tizen.org/documentation/developer-guide/installing-development-tools).
 
-<ol>
+### Set up gbs profile
 
-  <li>Download the Tizen SDK for your platform from <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">https://developer.tizen.org/downloads/tizen-sdk</a>.</li>
+To build projects, `gbs` needs a configuration file for the Tizen IVI version you are using. Example configuration files for different Tizen IVI versions are available on [this page](https://wiki.tizen.org/wiki/IVI/GBS_configuration_files_Tizen_IVI).
 
-  <li>
-    <p><a href="https://developer.tizen.org/downloads/sdk/installing-tizen-sdk">Follow the instructions</a> to install it.</p>
-  </li>
+The Tizen IVI version used to write this tutorial was [this daily build](http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2). The gbs config file for working with this version looks like this:
 
-  <li>
-    <p>The Tizen SDK includes a set of command line tools for building and packaging Tizen native apps. You can use these tools to build an extension for Crosswalk. Make sure these tools are on your path, e.g. if using bash you can edit your `~/.bashrc` file:</p>
+    [general]
+    profile = profile.3.0
 
-<pre>
-export PATH=<path to Tizen SDK>/tools:$PATH
-</pre>
+    [obs.tizen]
+    url = https://api.tizen.org
 
-    <p>Then, to make the setting take effect:</p>
+    [repo.tizen-3.0]
+    url = http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/tizen_20140410.5/repos/ivi/ia32/packages/
 
-    <pre>source ~/.bashrc</pre>
-  </li>
-</ol>
+    [profile.3.0]
+    obs = obs.tizen
+    repos = repo.tizen-3.0
 
-## Checkout Crosswalk source code
-
-You will need a copy of the Crosswalk source, to enable you to compile against the Crosswalk headers.
-
-Checkout the Crosswalk github repo on the host machine (the machine where you intend to compile your extension):
-
-    git clone https://github.com/crosswalk-project/crosswalk ~/crosswalk-source/xwalk
-
-It's important that you clone the code to a directory called `xwalk`, as this is the path the compiler will be looking on for headers/libraries.
-
-## Create project directories
-
-The project name is **simple**. Set up the directories for the project from a command line as follows:
-
-    mkdir simple
-    cd simple
-
-    # directory for the HTML5 web app
-    mkdir app
-
-    # directory for the Crosswalk extension
-    mkdir extension
-
-Now the preparation is complete, you can start building the application and associated extension.
+Adjust the URL to suit the version of Tizen IVI you are using. Then save this content to a file called `~/.gbs.conf`.
 
 # Target setup
 
-For the purposes of this tutorial, we'll use an emulated Tizen IVI device, running under VMware.
+For the purposes of this tutorial, we'll use an Tizen IVI virtual machine, running under VMware.
 
-Instructions for setting up this type of target are on the [Tizen target set up page](#documentation/getting_started/tizen_target_setup).
+Instructions for setting up this type of target are on the [Tizen target set up page](#documentation/getting_started/tizen_target_setup). Ensure that you follow all the steps, so that the virtual machine is set up with Crosswalk installed on it.
 
-Once you've got a working Tizen IVI virtual machine, you are ready to start developing the extension.
+You are now ready to start developing the extension.
