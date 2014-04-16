@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/40 Run_on_Tizen';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/40 Run_on_Tizen</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Running a Crosswalk app on Tizen</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/40-Run_on_Tizen"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/40-Run_on_Tizen"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>On Tizen, Crosswalk runs as a background service, only becoming active when needed (i.e. when a user session activates it). In technical terms, Crosswalk effectively runs as a daemon, exposing a D-Bus interface for managing applications.</p>
+
+<p>To run an application on a Tizen target, first ensure you have set up your host for Tizen (<a href="#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen">Windows</a>, <a href="#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen">Linux</a>) and <a href="#documentation/getting_started/Tizen_target_setup">set up a Tizen target</a>. In the instructions below, we assume you are using a Tizen IVI target running under VMware, and consequently use <code>ssh</code> to push files to, and get a shell on, the target.</p>
+
+<p>Next, follow these steps to get the application running:</p>
+
+<ol><li> <a href="#Create-a-Tizen-package">Create a Tizen package</a> (<code>.xpk</code> file) from the application code.</li>
+<li> <a href="#Push-the-package-to-the-device">Push the package to the device</a>.</li>
+<li> <a href="#Install-the-application-package">Install the application package</a>.</li>
+<li> <a href="#Run-the-application">Run the application</a>.</li>
+</ol><p>These steps are explained in detail below.</p>
+
+<h2>Create a Tizen package<a class="anchor" id="Create-a-Tizen-package" href="#Create-a-Tizen-package"></a></h2>
+
+<p>A Tizen package file is a zip file with some "magic" (a special file header specific to Crosswalk) and an <code>.xpk</code> suffix. It will contain all of the files relating to your application (HTML, CSS, JavaScript, assets), as well as any metadata (<code>manifest.json</code>, icons etc.). See <a href="#wiki/Crosswalk-package-management">the wiki</a> for detailed information about the format.</p>
+
+<p>To create a zip package, you will need a <code>bash</code> shell and the <code>zip</code> and <code>openssl</code> binaries installed. On Linux, these are usually available by default. On Windows, you will need to <a href="#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen">install git SCM</a>.</p>
+
+<p>Then follow the steps below to create the package.</p>
+
+<h3>Add the make_xpk script<a class="anchor" id="Add-the-make_xpk-script" href="#Add-the-make_xpk-script"></a></h3>
+
+<ol><li><p>Copy the following script into a file called <code>make_xpk.sh</code>:</p>
+
+<pre><code>#!/bin/bash -e
+#
+# Purpose: Pack a CrossWalk directory into xpk format
+# Modified from http://developer.chrome.com/extensions/crx.html
+if test $# -ne 2; then
+  echo "Usage: `basename $0` &lt;unpacked dir&gt; &lt;pem file path&gt;"
+  exit 1
+fi
+
+dir=$1
+key=$2
+name=$(basename "$dir")
+xpk="$name.xpk"
+pub="$name.pub"
+sig="$name.sig"
+zip="$name.zip"
+trap 'rm -f "$pub" "$sig" "$zip"' EXIT
+
+[ ! -f $key ] &amp;&amp; openssl genrsa -out $key 1024
+
+# zip up the xpk dir
+cwd=$(pwd -P)
+(cd "$dir" &amp;&amp; zip -qr -9 -X "$cwd/$zip" .)
+
+# signature
+openssl sha1 -sha1 -binary -sign "$key" &lt; "$zip" &gt; "$sig"
+
+# public key
+openssl rsa -pubout -outform DER &lt; "$key" &gt; "$pub" 2&gt;/dev/null
+
+byte_swap () {
+  # Take "abcdefgh" and return it as "ghefcdab"
+  echo "${1:6:2}${1:4:2}${1:2:2}${1:0:2}"
+}
+
+crmagic_hex="4372 576B" # CrWk
+pub_len_hex=$(byte_swap $(printf '%08x\n' $(ls -l "$pub" | awk '{print $5}')))
+sig_len_hex=$(byte_swap $(printf '%08x\n' $(ls -l "$sig" | awk '{print $5}')))
+(
+  echo "$crmagic_hex $pub_len_hex $sig_len_hex" | xxd -r -p
+  cat "$pub" "$sig" "$zip"
+) &gt; "$xpk"
+echo "Wrote $xpk"
+</code></pre></li>
+<li><p>Make the script executable:</p>
+
+<pre><code>&gt; chmod +x make_xpk.sh
+</code></pre></li>
+</ol><h3>Create the xpk file<a class="anchor" id="Create-the-xpk-file" href="#Create-the-xpk-file"></a></h3>
+
+<ol><li><p>To create xpk packages, you will need a private key file. Use <code>openssl</code> to generate this for you:</p>
+
+<pre><code>&gt; openssl genrsa -out mykey.pem 1024
+</code></pre>
+
+<p>Note that this is a private key file, and it should not be distributed with your application.</p></li>
+<li><p>Call the shell script, passing it the path to the directory containing your application and your key file:</p>
+
+<pre><code>&gt; ./make_xpk.sh xwalk-simple/ mykey.pem
+</code></pre>
+
+<p>This will produce a file named <code>xwalk-simple.xpk</code> in the directory where you ran the script.</p></li>
+</ol><h2>Push the package to the device<a class="anchor" id="Push-the-package-to-the-device" href="#Push-the-package-to-the-device"></a></h2>
+
+<ol><li><p>Prepare the device (either connect it to the host or start it with VMware player/the emulator).</p></li>
+<li><p>Use <code>scp</code> to push the package to the device:</p>
+
+<pre><code>&gt; scp xwalk-simple.xpk root@&lt;ip address&gt;:/home/app/
+</code></pre>
+
+<p>Note that we're using the <strong>app</strong> account's home directory on the target, as we'll install and run the application using this account.</p></li>
+</ol><h2>Install the application package<a class="anchor" id="Install-the-application-package" href="#Install-the-application-package"></a></h2>
+
+<p>Use a terminal on the emulated device to run the following steps:</p>
+
+<ol><li><p>Open a terminal on the target as the <code>app</code> user. You can do this using the small console icon in the top-left of the screen.</p></li>
+<li><p>Start Crosswalk as a service:</p>
+
+<pre><code>app:~&gt; xwalk --run-as-service
+</code></pre></li>
+<li><p>Open another terminal on the Tizen target. This is the session we're going to use to install the package.</p></li>
+<li><p>From this second shell, install the <code>xwalk-simple.xpk</code> package using the <code>xwalkctl</code> command (still as the app user):</p>
+
+<pre><code>app:~&gt; xwalkctl --install /home/app/xwalk-simple.xpk
+</code></pre>
+
+<p>The path to the xpk file must be absolute, otherwise the installer won't work.</p>
+
+<p>The output from this command will look something like this:</p>
+
+<pre><code>Application installed/updated with path '/installed1/dogabgfklbjobjkfdbokaedngjeepepj'
+</code></pre>
+
+<p>The long string at the end of the installation path (<em>dogabgfklbjobjkfdbokaedngjeepepj</em> here) is the <strong>application ID</strong>. This is important, as you'll need it to launch the application in the next step.</p>
+
+<p>In the shell where you started <code>xwalk --run-as-service</code>, you should also see output like this:</p>
+
+<pre><code>[0411/041919:WARNING:exported_object.cc(211)] Unknown method: message_type: MESSAGE_METHOD_CALL
+destination: :1.2
+path: /installed1
+interface: org.freedesktop.DBus.Properties
+member: GetAll
+sender: :1.3
+signature: s
+serial: 12
+
+string "org.crosswalkproject.Installed.Manager1"
+
+[0411/041920:WARNING:service_package_installer.cc(129)] 'icon' not included in manifest
+[0411/041920:INFO:service_package_installer.cc(108)] Converting manifest.json into dogabgfklbjobjkfdbokaedngjeepepj.xml for installation. [DONE]
+[0411/041922:INFO:application_service.cc(297)] Application be installed in: /home/app/.config/xwalk-service/applications/dogabgfklbjobjkfdbokaedngjeep
+epj
+[0411/041922:INFO:application_service.cc(298)] Installed application with id: dogabgfklbjobjkfdbokaedngjeepepj successfully.
+</code></pre>
+
+<p>This confirms that the package has been installed successfully.</p></li>
+</ol><h2>Run the application<a class="anchor" id="Run-the-application" href="#Run-the-application"></a></h2>
+
+<p>To start the application, you need to know the ID assigned to the application when it was installed. If you can't remember it, you can list the installed applications with:</p>
+
+<pre><code>app:~&gt; xwalkctl
+</code></pre>
+
+<p>Pass the ID to the <code>xwalk-launcher</code> command, in the same shell you used to install the application:</p>
+
+<pre><code>app:~&gt; xwalk-launcher dogabgfklbjobjkfdbokaedngjeepepj
+</code></pre>
+
+<p>The application should now start on the target. Here it is running on an emulated Tizen IVI device, on Fedora Linux:</p>
+
+<p><img src="assets/xwalk-simple-on-tizen-ivi.png" /></p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-16 13:42:58</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/40-Run_on_Tizen" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/40-Run_on_Tizen">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
