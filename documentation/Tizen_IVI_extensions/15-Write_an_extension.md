@@ -1,97 +1,55 @@
-# Build an application and extension
+# Write an extension
 
-In this section, you will create the web application (HTML5/JavaScript) and its associated Tizen extension (written in C).
+In this section, you will write, build and package the Crosswalk extension. The extension itself is written in C and built using `make`. For packaging, you'll use the Tizen IVI `gbs` tool, which can build an [rpm file](http://rpm.org/) for a make-enabled project (rpm is the packaging format used by Tizen IVI).
 
-Although we are creating the application and the extension alongside each other, they are actually two separate pieces: one extension can be used to support multiple applications if desired.
-
-The application itself can also be split into two: the application "proper", containing the HTML, JavaScript, CSS, and other assets; and the metadata describing the application and how it should be installed on the system.
-
-The diagram below shows how these pieces interact:
-
-![Structure of a Crosswalk application with extension](assets/crosswalk-extension-layout.png)
-
-In the sections below, we create the metadata, the application, and the extension.
-
-## Create the metadata
-
-The application metadata consists of platform-specific files which aren't properly part of the application. They are really supporting files, which are used to integrate the application with the environment. Examples might be platform-specific configuration files and icons for different screen resolutions.
-
-A manifest file for an application provides Crosswalk with metadata about that application: for example, which HTML file to load as the entry point, which icon to use for the application, and which permissions the application needs.
-
-For now, this file can be very simple. Create `app/manifest.json` with this content:
-
-    {
-      "name": "simple_extension",
-      "description": "simple extension example",
-      "version": "1.0.0",
-      "app": {
-        "launch":{
-          "local_path": "index.html"
-        }
-      }
-    }
-
-For more information about what the manifest can contain, see [Crosswalk manifest](#wiki/Crosswalk-manifest).
-
-## Create the web application
-
-This is a standalone HTML5 application which uses the Crosswalk extension. It consists of a single HTML file, `index.html`, in the `app` directory. This file also contains the JavaScript to invoke the Crosswalk extension.
-
-Create this file as `app/index.html`:
-
-    <!DOCTYPE html>
-    <html>
-    <head>
-    <title>Crosswalk extensions demo</title>
-    <meta name="viewport" content="width=device-width">
-    <style>
-    body {
-      font-size: 2em;
-    }
-    </style>
-    </head>
-    <body>
-
-    <p>This uses the echo extension defined in
-    echo-extension.c (compiled to libecho.so) to
-    extend Crosswalk.</p>
-
-    <div id="out"></div>
-
-    <script>
-    var div = document.getElementById('out');
-
-    var p1 = document.createElement('p');
-    var p2 = document.createElement('p');
-
-    // async call to extension
-    echo.echoAsync('hello async echo', function (result) {
-      p1.innerText = result;
-      div.appendChild(p1);
-    });
-
-    // sync call to extension
-    p2.innerText = echo.echoSync('hello sync echo');
-    div.appendChild(p2);
-    </script>
-    </body>
-    </html>
-
-Note that the `echo` extension is available globally to the application: there's no need to include a script to make use of it.
-
-When the application runs, the extension's API is invoked asynchronously and synchronously (`echo.echoAsync()` and `echoSync()`). The returned responses (with the "You said: " prefixes added) are used to set the text of two paragraph (`p`) elements.
-
-## Create the Crosswalk extension
+Although you are creating the extension and the application alongside each other in this tutorial, they are actually two separate pieces: one extension can be used to support multiple applications if desired.
 
 The extension consists of three parts:
 
 1.  A JavaScript file. This defines the API which web applications can invoke.
 
-2.  A C header file containing a "stringified" version of the JavaScript file. This is used to set the JavaScript API for the extension. This file is generated at build-time, before the C library is compiled.
+2.  A C header file containing a "stringified" version of the JavaScript file. This is used to define the JavaScript API for the extension inside the C program. This file is generated at build-time, before the C library is compiled.
 
-3.  The C file which implements the native side of the extension. This is compiled into a shared library file `libecho.so`.
+3.  The C file which implements the native side of the extension.
 
-    Note that the name is very important: it should begin with a "lib" prefix. Crosswalk will not load the extension correctly if it is called anything else.
+You also need some supporting files to build and package the extension.
+
+Before starting, make sure you have already followed the steps in [Host and target setup](#documentation/Tizen_IVI_extensions/Host_and_target_setup).
+
+## Create project files and directories
+
+The first step is to set up the basic project directories and include the Crosswalk headers (for compiling the code).
+
+Put the extension in an `echo-extension` directory with these commands:
+
+    > mkdir echo-extension
+    > cd echo-extension
+
+    # directory for the Crosswalk extension source
+    > mkdir extension
+
+    # directory for the packaging specification file
+    > mkdir packaging
+
+    # directory for Crosswalk headers
+    > mkdir common
+
+    # initialise the directory as a git repository (see below)
+    > git init .
+
+Because you'll be using gbs to build the rpm file for your extension, you need to make your project into a git repository (gbs won't work on plain directories).
+
+### Include Crosswalk headers
+
+You will need a copy of the Crosswalk headers, to compile your extension against:
+
+1.  Checkout the Crosswalk github repo on the host machine (the machine where you intend to compile your extension):
+
+        git clone https://github.com/crosswalk-project/crosswalk ~/crosswalk-source
+
+2.  Copy the Crosswalk headers for extensions into the `common` directory in your project:
+
+        cp ~/crosswalk-source/src/xwalk/extensions/public/*.h echo-extension/common/
 
 ### JavaScript bridge API to the C extension
 
@@ -182,7 +140,7 @@ The header file, `extension/echo-extension.h`, is a generated file which looks l
 
 By including this header file in a C file, you can access the `kSource_echo_api` constant, which defines the JavaScript API for the extension.
 
-Note that this mirrors the JavaScript file created we created earlier, but is generated by a script (in the root directory of the project). Create a file called `js2c.sh` in the root of the **simple** project, with this content:
+Note that this mirrors the JavaScript file created you created earlier, but is generated by a script (in the root directory of the project). Create a file called `js2c.sh` in the root of the **echo-extension** project, with this content:
 
     #!/bin/sh
     JS=$1
@@ -226,8 +184,8 @@ Create a file `extension/echo-extension.c` with this content:
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
-    #include "xwalk/extensions/public/XW_Extension.h"
-    #include "xwalk/extensions/public/XW_Extension_SyncMessage.h"
+    #include "XW_Extension.h"
+    #include "XW_Extension_SyncMessage.h"
 
     // load kSource_echo_api string to set JavaScript API;
     // echo-extension.h is generated by the makefile at build time
@@ -300,7 +258,7 @@ Create a file `extension/echo-extension.c` with this content:
 
 Some notes on the code:
 
-*   The [xwalk/extensions/public/XW_Extension.h](https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h) header is used to define the structures used by the extension system.
+*   The [XW_Extension.h](https://github.com/crosswalk-project/crosswalk/blob/master/extensions/public/XW_Extension.h) header is used to define the structures used by the extension system.
 
 *   The only symbol that should be exported is the function:
 
@@ -313,7 +271,7 @@ Some notes on the code:
 
     This function should be implemented and exported in the shared object; and it should return `XW_OK` when the extension is correctly initialized.
 
-    Be sure to use `extern "C"` when defining this function to avoid name mangling if using a C++ compiler (we're not in this tutorial).
+    Be sure to use `extern "C"` when defining this function to avoid name mangling if using a C++ compiler (you're not in this tutorial).
 
 *   `SetExtensionName()` sets the public name for the JavaScript API which will be available to your web application.
 
@@ -357,74 +315,99 @@ Some notes on the code:
     It is a `struct XW_Internal_SyncMessagingInterface` with the following fields:
 
     *   `Register()`: this function tells Crosswalk which function should be called in event of a synchronous message from the JavaScript side.
-    *   `SetSyncReply()` responds to a synchronous (blocking) message from the JavaScript side. The renderer process will be blocked until this function is called.
+    *   `SetSyncReply()` responds to a synchronous (blocking) message from the JavaScript side. The renderer process will be blocked until this function is called.rc/xwalk/extensions/public/*.h
 
 The interface names and structures described above have a versioning suffix in their names. However, extension writers should use the unversioned macros to get the desired interfaces.
 
-## Build the extension
+## Add build infrastructure
 
-The C compiler is part of the Tizen SDK. The compiler for x86 architecture is:
+The build infrastructure enables generating an installable rpm package for your extension. This `.rpm` file can then be installed to the Tizen IVI target using the `rpm` package manager tool.
 
-    <tizen SDK>/tools/i386-linux-gnueabi-gcc-4.5/bin/i386-linux-gnueabi-gcc-4.5.4.exe
+The files you need to add are:
 
-If you are using a later revision of the SDK, you may find that the compiler is in a different directory and has a different name, reflecting the `gcc` version (e.g. `gcc` may be at version 4.8 rather than 4.5).
+1.  A `Makefile`. This is used to build the C program and output a shared library file `libecho.so`.
 
-The Tizen SDK also provides a *rootstrap*, which contains headers and libraries for compiling your code against. For code you intend to run on the emulator, the rootstrap is located at:
+    Note that the name is very important: it should begin with a "lib" prefix. Crosswalk will not load the extension correctly if it is called anything else.
 
-    <tizen SDK>/platforms/mobile-3.0/rootstraps/mobile-3.0-emulator.native
+2.  An rpm spec file, `packaging/echo-extension.spec`. This file defines how the extension should be packaged and installed on the Tizen system.
 
-**Note:** This rootstrap is for Tizen mobile, rather than Tizen IVI. This is because there is no dedicated Tizen IVI rootstrap as yet. In future, when a dedicated Tizen IVI rootstrap *is* available, you should use that instead of the mobile one. However, for the time being, the libraries in the mobile rootstrap are representative of what you can expect on a Tizen IVI target, and are acceptable for compiling the C code below to run on such a target.
+### Makefile
 
-You can use a small `makefile` to invoke the compiler and generate the header file for the JavaScript API. The make file will also contain some conditional code, so that if the `TIZEN_SDK` environment variable is set, the Tizen SDK compiler and rootstrap will be used for compilation.
-
-In the project directory, add a file called `makefile` with this content:
-
-    ifneq ($(strip $(TIZEN_SDK)),)
-	    CC=$(TIZEN_SDK)/tools/i386-linux-gnueabi-gcc-4.5/bin/i386-linux-gnueabi-gcc-4.5.4.exe
-	    SYSROOT_FLAGS=--sysroot $(TIZEN_SDK)/platforms/mobile-3.0/rootstraps/mobile-3.0-emulator.native
-    endif
+You can use a `Makefile` to invoke the compiler and generate the header file for the JavaScript API. In the project directory, add a file called `Makefile` with this content:
 
     ECHO_CFLAGS=$(CFLAGS) -fPIC -Wall
 
     all: libecho.so
-	    cp -a app/* build/app/
 
     echo-extension.h:
 	    ./js2c.sh extension/api.js extension/echo-extension.h
 
     libecho.so: prepare echo-extension.h
-	    $(CC) $(ECHO_CFLAGS) -shared -o build/extension/libecho.so
-	      $(SYSROOT_FLAGS) -I$(XWALK_HEADERS) extension/echo-extension.c
+	    $(CC) $(ECHO_CFLAGS) -shared -o build/libecho.so \
+	      $(SYSROOT_FLAGS) -Icommon extension/echo-extension.c
 
-    prepare: check
-	    mkdir -p build/app
-	    mkdir -p build/extension
+    prepare:
+	    mkdir -p build
 
-    check:
-    ifeq ($(strip $(XWALK_HEADERS)),)
-	    echo "XWALK_HEADERS must be set"
-	    exit 1
-    endif
+    install: libecho.so
+	    install -D build/libecho.so \
+	      $(DESTDIR)/$(PREFIX)/lib/tizen-extensions-crosswalk/libecho.so
 
     clean:
 	    rm -Rf build
 
-    .PHONY: all prepare check clean
+    .PHONY: all prepare clean
 
-(As with all makefiles, indent using tabs, rather than spaces.)
+(As with all Makefiles, indent using tabs, rather than spaces.)
 
-The `--sysroot` option is set so that the libraries and headers used as the ones included with the Tizen SDK, rather than the host's.
+### RPM spec file
 
-The Tizen SDK provides `make` in `<tizen-sdk>/tools/mingw/bin/make.exe`. You added this to your `PATH` variable at the start of this tutorial. So you can now invoke the above `makefile` from your **simple** project directory. In a bash shell, run:
+Crosswalk Tizen extensions should be packaged as rpm files. The structure and content of this rpm file is defined in an rpm `.spec` file. `gbs` uses this spec file to compile the extension against the Tizen IVI librarires; then generates an rpm compatible with a Tizen IVI target.
 
-    TIZEN_SDK=/path/to/tizen-sdk XWALK_HEADERS=/path/to/crosswalk-source make
+Create the spec file in `packaging/echo-extension.spec`, with this content:
 
-`/path/to/tizen-sdk` should point at the root directory of your Tizen SDK installation (e.g. `~/tizen-sdk` if you use the default location).
+    Name:     echo-extension
+    Version:  0.1
+    Release:  1
+    Summary:  Example Crosswalk Tizen extension
+    Group:    System/Libraries
 
-`/path/to/crosswalk-source` should point at the directory *above* the Crosswalk source code; the Crosswalk source code itself should be in a directory called `xwalk`.
+    License:	BSD-3-Clause
+    URL:      https://crosswalk-project.org/
+    Source0:  %{name}-%{version}.tar.gz
 
-Once the build completes, the output directory `build/` should contain two folders: `app` and `extension`. `app` contains the web application and its manifest; `extension` contains the compiled extension library (`libecho.so`).
+    Requires: crosswalk
 
-Also note that you can use you host's compiler, providing you compile for the correct architecture (Tizen IVI emulator images are 32 bit). For example, on a 64 bit host, you would do:
+    %description
+    Example Crosswalk Tizen extension which echoes any messages sent to it.
 
-    CFLAGS=-m32 XWALK_HEADERS=/path/to/crosswalk-source make
+    %prep
+    %setup -q
+
+    %build
+    make
+
+    %install
+    make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
+
+    %files
+    %{_prefix}/lib/tizen-extensions-crosswalk/libecho.so
+
+Placing this file in the `packaging/` directory is important, as this is where `gbs` will expect to find a spec file for a project it's building.
+
+The rpm spec file format is a complicated beast, and out of scope for this tutorial. If you want to learn more about it, see the [RPM website](http://rpm.org).
+
+## Run the build
+
+Before running your build with `gbs`, make sure all your changes are committed to the local git repository:
+
+    git add -A
+    git commit -m "Initial import"
+
+To build the project using `gbs`, do:
+
+    gbs -c ~/.gbs.conf build -A i586
+
+Note that you're using the gbs configuration file in your home directory, so you're working with the correct Tizen IVI buildroot. It's also important that you set the architecture correctly with the `-A` option: the Tizen IVI images provided from the download site have `i586` architecture.
+
+During the build, `gbs` will download the appropriate Tizen IVI packages, then compile and package your extension. The output `.rpm` files should end up in `/home/ell/GBS-ROOT/local/repos/tizen3.0/i586/RPMS` (unless you changed the gbs root location).
