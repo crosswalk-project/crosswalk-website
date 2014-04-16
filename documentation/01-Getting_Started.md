@@ -18,6 +18,8 @@ Note that the tutorial uses the latest stable versions of Crosswalk: newer versi
 4.  Run that application using stable releases of Crosswalk:
     *   [Run on Crosswalk Android, version ${XWALK-STABLE-ANDROID-X86}](#documentation/getting_started/run_on_android)
     *   [Run on Crosswalk Tizen for x86, version ${XWALK-STABLE-TIZEN-X86}](#documentation/getting_started/run_on_tizen)
+5.  For Android only:
+    *   [Deploy the application to an Android app store](#documentation/getting_started/deploy_to_android_store)
 
 You will need to be comfortable using a command line to follow these steps. If you prefer to use a graphical integrated development environment (IDE), the free **Intel XDK** provides an alternative way to package applications with Crosswalk. See the [Intel XDK website](http://xdk-software.intel.com/) for more details.
 
