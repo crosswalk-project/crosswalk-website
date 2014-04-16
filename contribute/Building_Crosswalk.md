@@ -162,42 +162,44 @@ If you don't have any HTML applications to test, the
 
 3.  Set up the Android build environment.
 
-    Crossswalk <= 5 :
+    For Crosswalk > 5:
 
-        . xwalk/build/android/envsetup.sh --target-arch=x86
+        ./xwalk/build/android/envsetup.sh
 
-    If you are targeting ARM, pass `--target-arch=arm` instead of `--target-arch=x86`.
+    Or, for Crossswalk <= 5:
 
-    Crosswalk > 5 :
+        ./xwalk/build/android/envsetup.sh --target-arch=x86
 
-        . xwalk/build/android/envsetup.sh
+    If you are targeting ARM, pass `--target-arch=arm` instead of
+    `--target-arch=x86`.
 
-4.  To generate the Crosswalk projects, execute:
+4.  Configure your setup to generate the Crosswalk projects.
+
+    First execute:
 
         export GYP_GENERATORS='ninja'
-        
-        Crosswalk <= 5 :
-        
-            xwalk_android_gyp
-        
-        Crosswalk > 5 :
-            
-            xwalk_android_gyp -Dtarget_arch=ia32
-        
-        If you are targeting ARM, pass `-Dtarget_arch=arm` instead of `-Dtarget_arch=ia32`.
-        
-        ./xwalk/gyp_xwalk
 
-5.  To build xwalk core and runtime shell (for developer testing purposes, not
-for end users), execute:
+    Then, if you are using Crosswalk > 5:
+
+        xwalk_android_gyp -Dtarget_arch=ia32
+        # use -Dtarget_arch=arm to target ARM
+
+    Or if you are using Crosswalk <= 5:
+
+        xwalk_android_gyp
+
+5.  To build xwalk core and runtime shell (for developer testing purposes,
+not for end users), execute:
 
         ninja -C out/Release xwalk_core_shell_apk xwalk_runtime_shell_apk
 
-    To build the xwalk runtime library apk, execute:
+    To build the xwalk runtime library apk (which can act as the runtime
+    for applications built in shared mode), execute:
 
         ninja -C out/Release xwalk_runtime_lib_apk
 
-    To build a sample web app apk, execute:
+    To build a sample web app apk (for quick install/test on a target),
+    execute:
 
         ninja -C out/Release xwalk_app_template_apk
 
