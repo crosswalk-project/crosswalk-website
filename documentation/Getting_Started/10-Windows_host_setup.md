@@ -134,8 +134,8 @@ In this tutorial, you're going to use an emulated Tizen IVI image, running under
 
     A version of QEMU for Windows is available from http://qemu.weilnetz.de/. Use this at your own risk.
 
-3.  **VMware player**, to create and run the virtual machine. The free version can be downloaded from [the VMware website](https://my.vmware.com/web/vmware/free). However, if you are using the player for commercial purposes, you will [need a licence](http://store.vmware.com/buyplayerplus).
+3.  **VMware Player** or **VMware Workstation**, to create and run the virtual machine. The free version of Player can be downloaded from [the VMware website](https://my.vmware.com/web/vmware/free). However, if you are using Player for commercial purposes, you will [need a licence](http://store.vmware.com/buyplayerplus).
 
-    If you need help with installing VMware player, see [this page on the VMware website](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053973).
+    If you need help with installing VMware products, see [this page on the VMware website](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053973).
 
 Now the host is setup, you can prepare your targets.

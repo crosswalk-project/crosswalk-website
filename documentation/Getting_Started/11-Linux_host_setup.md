@@ -154,16 +154,8 @@ In this tutorial, you're going to use an emulated Tizen IVI image, running under
 
         sudo yum install kernel-headers
 
-5.  **VMware player**, to create and run the virtual machine. The free version can be downloaded from [the VMware website](https://my.vmware.com/web/vmware/free). However, if you are using the player for commercial purposes, you will [need a licence](http://store.vmware.com/buyplayerplus).
+5.  **VMware Player** or **VMware Workstation**, to create and run the virtual machine. The free version of Player can be downloaded from [the VMware website](https://my.vmware.com/web/vmware/free). However, if you are using Player for commercial purposes, you will [need a licence](http://store.vmware.com/buyplayerplus).
 
-    Once you have a VMware `.bundle` file for your architecture, install it with:
-
-        sudo sh VMware-Player-6.0.1-1379776.x86_64.bundle
-
-    Follow the installer's prompts.
-
-    Note that I could only get VMware player to compile and install on Fedora 20 by following [this blog post](http://ping8888.com/2013/12/13/vmware-modules-kernel-3-13/), but you may have more luck if you have a different Linux distro and/or older kernel.
-
-    If you need help with installing VMware player, see [this page on the VMware website](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053973).
+    If you need help with installing VMware products, see [this page on the VMware website](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053973).
 
 Now the host is setup, you can prepare your targets.

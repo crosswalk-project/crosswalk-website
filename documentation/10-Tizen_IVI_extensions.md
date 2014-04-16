@@ -1,6 +1,6 @@
 # Writing extensions for Tizen IVI on x86
 
-Extensions can be used to extend the capabilities of Crosswalk, enabling applications to make full use of platform features via native code.
+Extensions enhance the capabilities of Crosswalk, enabling applications to make full use of platform features via native code.
 
 Extensions are suitable for a number of use cases:
 
@@ -26,7 +26,7 @@ The extension accepts an input and returns that input prefixed with "You said: "
       // response == 'You said: hello'
     });
 
-The native part of extension is implemented in C. It is trivial and could easily be implemented using pure JavaScript. However, the aim is to reduce the complexity of the extension so you can focus on code structure and workflow.
+The native part of extension is implemented in C. Note that it is trivial and could easily be implemented using pure JavaScript. However, the aim is to reduce the complexity of the extension to focus on code structure and workflow.
 
 The C code which corresponds to the JavaScript API above looks like this:
 
@@ -44,14 +44,19 @@ The C code which corresponds to the JavaScript API above looks like this:
       free(response);
     }
 
-As far as tooling goes, you'll use the Tizen SDK command line tools to compile the extension, and simple text editors to write the code. It is possible to use the Tizen SDK IDE to build Tizen applications; but using command line tools and a text editor exposes the internals of the extension more clearly.
+The diagram below shows how the application and the extension interact:
 
-Note that though the tutorial focuses on Tizen IVI, the extension also works on Tizen mobile 3.0 (x86).
+![Structure of a Crosswalk application with extension](assets/crosswalk-extension-layout.png)
 
 **The tutorial contains the following steps:**
 
 1.  [Set up your host development environment](#documentation/tizen_ivi_extensions/host_and_target_setup).
-2.  [Write a small web application and Crosswalk Tizen extension](#documentation/tizen_ivi_extensions/build_an_application).
+2.  [Write a Tizen Crosswalk extension](#documentation/tizen_ivi_extensions/write_an_extension).
+2.  [Write a web application](#documentation/tizen_ivi_extensions/write_a_web_application).
 3.  [Run the application and extension using the Tizen emulator](#documentation/tizen_ivi_extensions/run_on_tizen_emulator).
+
+As far as tooling goes, you'll use command line tools to compile the extension, and simple text editors to write the code. It is possible to use the Tizen SDK IDE to build Tizen applications; but using command line tools and a text editor exposes the internals of the extension more clearly.
+
+Note that the tutorial focuses on Tizen IVI. The tutorial uses Linux as a build environment, as the tool for creating native Tizen packages (`gbs`) is not compatible with Windows.
 
 **By the end of this tutorial**, you will understand the basics of writing a C extension for Crosswalk running on Tizen IVI.
