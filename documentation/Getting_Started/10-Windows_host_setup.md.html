@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/10 Windows_host_setup';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/10 Windows_host_setup</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Windows host setup</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/10-Windows_host_setup"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/10-Windows_host_setup"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>You need different tools depending on which target platforms you want to deploy your application to:</p>
+
+<ul><li>  Deploy to Android: follow <a href="#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Android">Installation for Crosswalk Android</a>.</li>
+<li>  Deploy to Tizen: follow <a href="#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen">Installation for Crosswalk Tizen</a>.</li>
+</ul><p>These instructions have been tested on Windows 7 Enterprise, 64 bit.</p>
+
+<h2>Installation for Crosswalk Android<a class="anchor" id="Installation-for-Crosswalk-Android" href="#Installation-for-Crosswalk-Android"></a></h2>
+
+<p>These steps will enable you to develop Crosswalk applications to run on Android:</p>
+
+<ol><li> <a href="#documentation/getting_started/windows_host_setup/Install-Python">Install Python</a>.</li>
+<li> <a href="#documentation/getting_started/windows_host_setup/Install-the-Oracle-JDK">Install the Oracle Java Development Kit (JDK)</a>.</li>
+<li> <a href="#documentation/getting_started/windows_host_setup/Install-Ant">Install Ant</a>.</li>
+<li> <a href="#documentation/getting_started/windows_host_setup/Configure-the-tools">Configure the tools</a>.</li>
+<li> <a href="#documentation/getting_started/windows_host_setup/Install-the-Android-SDK">Install the Android SDK</a>.</li>
+<li> <a href="#documentation/getting_started/windows_host_setup/Download-the-Crosswalk-Android-app-template">Download the Crosswalk Android app template</a>.</li>
+<li> <a href="#documentation/getting_started/windows_host_setup/Verify-your-environment">Verify your environment</a>.</li>
+</ol><h3>Install Python<a class="anchor" id="Install-Python" href="#Install-Python"></a></h3>
+
+<p>Get Python from <a href="http://www.python.org/downloads/">http://www.python.org/downloads/</a>, choosing an "MSI installer" for your architecture (32 or 64 bit).</p>
+
+<p>When the installer starts, choose <em>Install for all users</em> and set <strong>C:\python</strong> as the installation location. You will need to manually add the Python directory to your path for it to be available in the bash shell (see <a href="#Configure-your-environment">Configure your environment</a>).</p>
+
+<h3>Install the Oracle JDK<a class="anchor" id="Install-the-Oracle-JDK" href="#Install-the-Oracle-JDK"></a></h3>
+
+<p>The Oracle JDK has to be downloaded manually (you must accept a licence agreement):</p>
+
+<ol><li><p>Go to the Oracle Java JDK download page in a browser:</p>
+
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/">http://www.oracle.com/technetwork/java/javase/downloads/</a></p>
+
+<p>Choose the Java version to download (Java 7 is known to work).</p></li>
+<li><p>Choose a JDK download and accept the licence agreement.</p></li>
+<li><p>Once downloaded, run the Java <code>.exe</code> installer, and set <code>C:\jdk</code> as the installation directory.</p></li>
+</ol><h3>Install Ant<a class="anchor" id="Install-Ant" href="#Install-Ant"></a></h3>
+
+<ol><li><p>Download Ant from: <a href="http://www.apache.org/dist/ant/binaries/">http://www.apache.org/dist/ant/binaries/</a></p>
+
+<p>Version 1.9.3 is known to work.</p></li>
+<li><p>Unzip it (using WinZip or similar) to your <code>C:</code> drive.</p></li>
+<li><p>Rename the unzipped directory to <code>ant</code>.</p></li>
+</ol><p>Your Ant installation should now be in <code>C:\ant</code>.</p>
+
+<h3>Configure the tools<a class="anchor" id="Configure-the-tools" href="#Configure-the-tools"></a></h3>
+
+<p>The next step is to set up your environment so that binaries and scripts which were installed manually (ant, JDK, Python) are on your <code>PATH</code>.</p>
+
+<pre><code>&gt; setx path "%path%;c:\python;c:\ant\bin;c:\jdk\bin"
+</code></pre>
+
+<h3>Install the Android SDK<a class="anchor" id="Install-the-Android-SDK" href="#Install-the-Android-SDK"></a></h3>
+
+<ol><li><p>Download the Android SDK from <a href="http://developer.android.com/sdk/index.html" target="_blank"></a><a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a>.</p></li>
+<li><p>Extract the files from the archive.</p></li>
+<li><p>Add the Android SDK directories to your <code>PATH</code>:</p>
+
+<pre><code>&gt; setx path "%path%;&lt;path to Android SDK&gt;"
+&gt; setx path "%path%;&lt;path to Android SDK&gt;\sdk\tools
+&gt; setx path "%path%;&lt;path to Android SDK&gt;\sdk\platform-tools"
+</code></pre>
+
+<p>The <code>tools</code> and <code>platform-tools</code> directories may be in slightly different locations, depending on how you installed the SDK. Amend the above paths appropriately.</p></li>
+<li><p>Run the <em>SDK Manager</em>:</p>
+
+<pre><code>&gt; "SDK Manager.exe"
+</code></pre></li>
+<li><p>In the SDK Manager window, select the following items from the list:</p>
+
+<pre><code>[ ] Tools
+  [x] Android SDK Platform-tools 19.0.1
+  [x] Android SDK Build tools 18.0.1
+[ ] Android 4.3 (API 18)
+  [x] SDK Platform
+</code></pre>
+
+<p>Note that if you are using devices with versions of Android later than 4.3, you should install the platform tools, build tools and SDK platform for those versions too.</p></li>
+</ol><h3>Download the Crosswalk Android app template<a class="anchor" id="Download-the-Crosswalk-Android-app-template" href="#Download-the-Crosswalk-Android-app-template"></a></h3>
+
+<p>The Crosswalk Android distribution contains an application template which can be used as a wrapper for an HTML5 application. It also includes a script which will convert a wrapped HTML5 application into an installable Android <code>apk</code> file.</p>
+
+<p>To get Crosswalk Android:</p>
+
+<ol><li><p>Download the version you want from the <a href="#documentation/downloads">Downloads page</a>. We suggest that you use the stable Android version (${XWALK-STABLE-ANDROID-X86}).</p></li>
+<li><p>Unzip it. You should now have a <code>crosswalk-${XWALK-STABLE-ANDROID-X86}</code> directory.</p></li>
+</ol><h3>Verify your environment<a class="anchor" id="Verify-your-environment" href="#Verify-your-environment"></a></h3>
+
+<p>Check that you have installed the tools properly by running these commands:</p>
+
+<pre><code>&gt; java -version
+java version "1.7.0_45"
+Java(TM) SE Runtime Environment (build 1.7.0_45-b18)
+Java HotSpot(TM) 64-Bit Server VM (build 24.45-b08, mixed mode)
+
+&gt; ant -version
+Apache Ant(TM) version 1.9.3 compiled on December 23 2013
+
+&gt; python --version
+Python 2.7.6
+
+&gt; adb help
+Android Debug Bridge version 1.0.31
+</code></pre>
+
+<h2>Installation for Crosswalk Tizen<a class="anchor" id="Installation-for-Crosswalk-Tizen" href="#Installation-for-Crosswalk-Tizen"></a></h2>
+
+<p>These steps will enable you to develop Crosswalk applications to run on Tizen:</p>
+
+<ol><li>Download the Tizen SDK for your platform from <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">https://developer.tizen.org/downloads/tizen-sdk</a>. <strong>Note that if you intend to deploy applications to an emulated Tizen device, you must use version 2.2.0 of the Tizen SDK: see <a href="https://developer.tizen.org/downloads/sdk/advanced-configuration">the advanced configuration instructions</a> for details of how to change versions.</strong></li>
+
+  <li>
+    <p><a href="https://developer.tizen.org/downloads/sdk/installing-tizen-sdk">Follow the instructions</a> to install it.</p>
+
+    <p>If you have a physical Tizen device, you don't need to select any of the optional components. However, if you intend to use an emulated Tizen image, you may want to install those components now. See <a href="#documentation/getting_started/tizen_target_setup">Tizen target setup</a> for details.</p>
+  </li>
+
+  <li>
+    <p>Once installed, ensure that the <code>sdb</code> tool is on your <code>PATH</code>:</p>
+
+    <pre>&gt; setx path "%path%;\tools"</pre>
+  </li>
+
+  <li>
+    <p>Test <code>sdb</code>:</p>
+
+<pre>
+&gt; sdb
+Smart Development Bridge version 2.0.2
+</pre>
+  </li>
+
+</ol>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-15 08:42:51</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/10-Windows_host_setup" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/10-Windows_host_setup">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
