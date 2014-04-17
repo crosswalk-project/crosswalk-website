@@ -2,11 +2,12 @@
 
 <img class='sample-thumb' src='assets/sampapp-icon-simd.png'>
 
-This sample provides shows how to use [SIMD](https://github.com/johnmccutchan/ecmascript_simd)
-in a Crosswalk application; in this case, to draw an image of a Mandelbrot set.
-The code is based on
-[this Mandelbrot animation project](https://github.com/PeterJensen/mandelbrot)
-by Intel's Peter Jensen and Ningxin Hu.
+This sample shows how to use [SIMD](https://github.com/johnmccutchan/ecmascript_simd)
+in a Crosswalk application. In this sample, a Mandelbrot set
+is animated at different zoom levels.
+
+The code is based on the Mandelbrot animation demo developed by Intel's
+Peter Jensen and Ningxin Hu.
 
 **Note that Crosswalk has native support for SIMD on x86 architecture
 since version 5.34.104.0. You will need a version of Crosswalk with
