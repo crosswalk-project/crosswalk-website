@@ -5,7 +5,7 @@ You need different tools depending on which target platforms you want to deploy 
 *   Deploy to Android: follow [Installation for Crosswalk Android](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Android).
 *   Deploy to Tizen: follow [Installation for Crosswalk Tizen](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen).
 
-These instructions have been tested on Ubuntu Linux 12.10, 64 bit.
+These instructions have been tested on Fedora Linux 20, 64 bit.
 
 ## Installation for Crosswalk Android
 
@@ -21,9 +21,9 @@ These steps will enable you to develop Crosswalk applications to run on Android:
 
 ### Install Python
 
-Python can usually be installed using your system's package manager. For example, on Ubuntu:
+Python can usually be installed using your system's package manager. For example, on Fedora:
 
-    sudo apt-get install python
+    sudo yum install python
 
 ### Install the Oracle JDK
 
@@ -127,37 +127,35 @@ Check that you have installed the tools properly by running these commands:
 
 ## Installation for Crosswalk Tizen
 
-These steps will enable you to develop Crosswalk applications to run on Tizen:
+In this tutorial, you're going to use an emulated Tizen IVI image, running under VMware. To be able to create this image and access it, you need to install a few packages on the host machine:
 
-<ol>
+1.  **Graphics drivers for VMware:** these ensure decent graphics performance for the virtual machine:
 
-  <li>Download the Tizen SDK for your platform from <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">https://developer.tizen.org/downloads/tizen-sdk</a>. <strong>Note that if you intend to deploy applications to an emulated Tizen device, you must use version 2.2.0 of the Tizen SDK: see <a href="https://developer.tizen.org/downloads/sdk/advanced-configuration">the advanced configuration instructions</a> for details of how to change versions.</strong></li>
+        sudo yum install xorg-x11-drv-vmware
 
-  <li>
-    <p><a href="https://developer.tizen.org/downloads/sdk/installing-tizen-sdk">Follow the instructions</a> to install it.</p>
+2.  **bash:** the script for generating Tizen packages runs under a bash shell. Usually, bash is installed by default, but just in case it's not:
 
-    <p>If you have a physical Tizen device, you don't need to select any of the optional components. However, if you intend to use an emulated Tizen image, you may want to install those components now. See <a href="#documentation/getting_started/tizen_target_setup">Tizen target setup</a> for details.</p>
-  </li>
+        sudo yum install bash
 
-  <li>
-    <p>Once installed, ensure that the <code>sdb</code> tool is on your <code>PATH</code> by editing `~/.bashrc`:</p>
+3.  Packages containing utilities:
 
-<pre>
-export PATH=<path to Tizen SDK>/tools:$PATH
-</pre>
+    <ul>
+    <li><strong>openssh:</strong> this is so you can use the <code>ssh</code> command to push files to, and log in to, the virtual machine./li>
+    <li><strong>openssl:</strong> this provides the <code>openssl</code> command used to create a key for signing your Tizen packages.</li>
+    <li><strong>bzip2:</strong> to unpack the Tizen IVI disk image.</li>
+    <li><strong>qemu-img:</strong> this is used to convert a Tizen IVI disk image into a format suitable for use with VMware.</li>
+    </ul>
 
-    <p>Then, to make the setting take:</p>
+    You can usually install all of these with your package manager. For example, on Fedora
 
-    <pre>> source ~/.bashrc</pre>
-  </li>
+        sudo yum install openssh openssl bzip2 qemu-img
 
-  <li>
-    <p>Test <code>sdb</code>:</p>
+4.  **Kernel headers:** these are required so that VMware player can compile the Linux kernel modules which enable it to run:
 
-<pre>
-> sdb
-Smart Development Bridge version 2.0.2
-</pre>
-  </li>
+        sudo yum install kernel-headers
 
-</ol>
+5.  **VMware Player** or **VMware Workstation**, to create and run the virtual machine. The free version of Player can be downloaded from [the VMware website](https://my.vmware.com/web/vmware/free). However, if you are using Player for commercial purposes, you will [need a licence](http://store.vmware.com/buyplayerplus).
+
+    If you need help with installing VMware products, see [this page on the VMware website](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053973).
+
+Now the host is setup, you can prepare your targets.

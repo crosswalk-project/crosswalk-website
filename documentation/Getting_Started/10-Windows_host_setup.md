@@ -115,31 +115,27 @@ Check that you have installed the tools properly by running these commands:
 
 ## Installation for Crosswalk Tizen
 
-These steps will enable you to develop Crosswalk applications to run on Tizen:
+In this tutorial, you're going to use an emulated Tizen IVI image, running under VMware. To be able to create this image and access it, you need to install a few packages on the host machine:
 
-<ol>
+1. **Utilities**, available as part of the [git SCM tools for Windows](http://git-scm.com/download/win).
 
-  <li>Download the Tizen SDK for your platform from <a href="https://developer.tizen.org/downloads/tizen-sdk" target="_blank">https://developer.tizen.org/downloads/tizen-sdk</a>. <strong>Note that if you intend to deploy applications to an emulated Tizen device, you must use version 2.2.0 of the Tizen SDK: see <a href="https://developer.tizen.org/downloads/sdk/advanced-configuration">the advanced configuration instructions</a> for details of how to change versions.</strong></li>
+    <ul>
+    <li><code>bash</code>: this is required to run the script for generating Tizen packages.</li>
+    <li><code>ssh</code>: this command is used to push files to, and log in to, the virtual machine.</li>
+    <li><code>openssl</code>: the command used to create a key for signing your Tizen packages.</li>
+    <li><code>bunzip2</code>: the command to unpack the Tizen IVI disk image.</li>
+    </ul>
 
-  <li>
-    <p><a href="https://developer.tizen.org/downloads/sdk/installing-tizen-sdk">Follow the instructions</a> to install it.</p>
+    Download a git SCM tools `.exe` for your architecture and install it.
 
-    <p>If you have a physical Tizen device, you don't need to select any of the optional components. However, if you intend to use an emulated Tizen image, you may want to install those components now. See <a href="#documentation/getting_started/tizen_target_setup">Tizen target setup</a> for details.</p>
-  </li>
+    Once installed, you should have a *Git Bash* entry in the Windows menu, which will bring up a `bash` shell.
 
-  <li>
-    <p>Once installed, ensure that the <code>sdb</code> tool is on your <code>PATH</code>:</p>
+2.  **QEMU:** you need the <code>qemu-img</code> tool to convert a Tizen IVI disk image into a format suitable for use with VMware.
 
-    <pre>> setx path "%path%;<path to Tizen SDK>\tools"</pre>
-  </li>
+    A version of QEMU for Windows is available from http://qemu.weilnetz.de/. Use this at your own risk.
 
-  <li>
-    <p>Test <code>sdb</code>:</p>
+3.  **VMware Player** or **VMware Workstation**, to create and run the virtual machine. The free version of Player can be downloaded from [the VMware website](https://my.vmware.com/web/vmware/free). However, if you are using Player for commercial purposes, you will [need a licence](http://store.vmware.com/buyplayerplus).
 
-<pre>
-> sdb
-Smart Development Bridge version 2.0.2
-</pre>
-  </li>
+    If you need help with installing VMware products, see [this page on the VMware website](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053973).
 
-</ol>
+Now the host is setup, you can prepare your targets.
