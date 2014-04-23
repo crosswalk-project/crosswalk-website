@@ -385,7 +385,7 @@ Create the spec file in `packaging/echo-extension.spec`, with this content:
     %setup -q
 
     %build
-    make
+    make %{?_smp_mflags}
 
     %install
     make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
@@ -396,6 +396,8 @@ Create the spec file in `packaging/echo-extension.spec`, with this content:
 Placing this file in the `packaging/` directory is important, as this is where `gbs` will expect to find a spec file for a project it's building.
 
 The rpm spec file format is a complicated beast, and out of scope for this tutorial. If you want to learn more about it, see the [RPM website](http://rpm.org).
+
+You should also be aware of the [Tizen packaging guidelines](https://wiki.tizen.org/wiki/Packaging/Guidelines), which explain best practices for writing spec files for Tizen packages.
 
 ## Run the build
 
