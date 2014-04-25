@@ -109,9 +109,9 @@ Note that the `echo` extension is available globally to the application: there's
 
 When the application runs, the extension's API is invoked asynchronously and synchronously (`echo.echoAsync()` and `echoSync()`). The returned responses (with the "You said: " prefixes added) are used to set the text of two paragraph (`p`) elements.
 
-## Run on Tizen
+## Create the package
 
-Now that you have the web application, follow the steps in [Run on Tizen](#documentation/getting_started/Run_on_Tizen) to create the Tizen package (`.xpk` file), install it on the device, and run the application.
+Now that you have the web application, follow the steps in [Run on Tizen](#documentation/getting_started/Run_on_Tizen) to create the Tizen package (`.xpk` file).
 
 The steps are summarised below:
 
@@ -125,27 +125,6 @@ The steps are summarised below:
 
         > ./make_xpk.sh app/ ~/mykey.pem
 
-    Note that you are just including the `app` directory in the `.xpk` file, not the whole project directory (`simple-extension-app`).
+    Note that you are just including the `app` directory in the `.xpk` file, not the whole project directory (i.e. not the whole of `simple-extension-app`).
 
-4.  Push the generated `app.xpk` file to the Tizen target:
-
-        > scp app.xpk root@<ip address>:/home/app/
-
-    The password is **tizen**.
-
-5.  Start the Crosswalk service on the Tizen target:
-
-        # inside an app user console on the target
-        app:~> xwalk --run-as-service
-
-6.  Install the `.xpk` file using `xwalkctl`:
-
-        # in a second app user console on the target
-        app:~> xwalkctl --install /home/app/app.xpk
-
-    Make a note of the application ID.
-
-7.  Run the application:
-
-        # in the second app user console on the target
-        app:~> xwalk-launcher <application ID>
+    The output from this command is an `app.xpk` file in the project directory. The [next section](#documentation/tizen_ivi_extensions/run_on_tizen_vm) explains how to install and run it.
