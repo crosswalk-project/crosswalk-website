@@ -39,12 +39,13 @@ Here's a summary of the steps for Fedora 20, using VMware Workstation and the `t
 
 1.  Download, unpack and convert the Tizen IVI image:
 
-    > curl -O http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2
+        > curl -O http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2
 
-    > bunzip2 tizen_*_ivi-release-mbr-i586-sdb.raw.bz2
+        > bunzip2 tizen_*_ivi-release-mbr-i586-sdb.raw.bz2
 
-    > qemu-img convert -f raw -O vmdk \
-        tizen_20140410.5_ivi-release-mbr-i586-sdb.raw tizen-ivi-pre-3.0.vmdk
+        > qemu-img convert -f raw -O vmdk \
+            tizen_20140410.5_ivi-release-mbr-i586-sdb.raw \
+            tizen-ivi-pre-3.0.vmdk
 
 2.  Start VMware Workstation.
 
