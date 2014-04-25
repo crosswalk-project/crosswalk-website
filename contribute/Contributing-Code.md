@@ -5,6 +5,7 @@ This page outlines the process for contributing code to Crosswalk. For informati
 These are the recommended steps for contributing code to Crosswalk:
 
 * Choose or create a bug report to work on.
+* Declare your "intent to implement".
 * Develop your changes.
 * Make sure your changes meet the code style guidelines. The check-style script may be of help.
 * Run the unit tests.
@@ -17,15 +18,63 @@ These are the recommended steps for contributing code to Crosswalk:
 
 More detail about some of these steps is below.
 
+### Terminology
+
+*   **PR:**
+
+    Pull request - a request (made via github) for your code to be incorporated into the main Crosswalk code base.
+
+*   **LGTM:**
+
+    "Looks Good To Me" - an abbreviation used to confirm that a pull request, intent to implement (see below) etc. is approved by a member of the project.
+
 ## Choose a bug report
 
 The [Jira issue tracker](https://crosswalk-project.org/jira/) is the central point of communication for contributions to Crosswalk. Nearly every contribution corresponds to an issue there.
 
 Choose an issue to work on, or create a new one if no suitable issue exists. To avoid duplication, be sure to search the database before creating new issues.
 
-If your change is possibly controversial, you may want to ask for advice on how to proceed, by using the [crosswalk-dev mailing list or #crosswalk IRC channel](#contribute/overview).
+You should note the ID of the issue you work on, so you can include it in your "intent to implement", if you need to declare one (see below). The ID is the **XWALK-N** identifier at the end of the URL for the issue: for example, for https://crosswalk-project.org/jira/browse/XWALK-898, the ID is **XWALK-898**.
+
+## Declare your "intent to implement"
+
+In an attempt to improve the efficiency of code reviews, we are taking a page from the Blink project and adopting the practice of "intent to implement". The idea is to let owners and other developers know what a developer (or development team) plans to implement, and when and how they intend to do it. This gives the community a chance to comment on early design choices, avoiding the cost of undoing or redoing work when an implementation is already too far ahead.
+
+An intent to implement is required for new features, non-trivial refactoring, or for implementations which are likely to be controversial. If you're not sure whether your implementation falls into one of these categories, ask for advice about how to proceed by using the [crosswalk-dev mailing list or #crosswalk IRC channel](#contribute/community).
+
+To declare an "intent to implement", a developer should send a mail to the [crosswalk-dev mailing list](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev) following the outline below.
+
+**Subject** (brief summary):
+
+<pre>
+Intent to Implement &lt;summary of intent&gt;
+</pre>
+
+**Body** (more detail about what is to be implemented):
+
+<pre>
+Description:
+&lt;what this implementation is about, what it does,
+why it's needed&gt;
+
+Affected component: &lt;affected Crosswalk component&gt;
+
+Related feature: &lt;Jira issue ID&gt;
+
+Target release: &lt;Crosswalk version number&gt;
+
+Implementation details:
+&lt;depending on the complexity, this can be a a one-liner,
+short discussion, or a link to a design document
+(e.g. Google Docs); however, we prefer that the discussion
+is started before extensive design is done&gt;
+</pre>
+
+The plan should be approved ("LGTM") by the [relevant owner(s)](https://crosswalk-project.org/#contribute/reviewer_policy/The-OWNERS-files) before substantial work is carried out.
 
 ## Develop your changes
+
+After your "intent to implement" has been approved, you can begin working on your changes.
 
 Make sure that any new source code you introduce contains the appropriate license text at the beginning of the file. If you are the author of a new file, the preferred license text to include can be found in the LICENSE file or any existing file.
 
@@ -40,17 +89,15 @@ Patches must comply with the code style guidelines. Your patch will be automatic
 
 ## Commit message guidelines
 
-Your commits and/or pull requests should reference the *ID* of the issue you are working on. The ID is the **XWALK-N** identifier at the end of the URL for the issue: for example, for https://crosswalk-project.org/jira/browse/XWALK-898, the ID is **XWALK-898**.
+Your commits and/or PRs should reference the ID of the issue you are working on. You can use issue IDs in commit messages and PRs in the following ways:
 
-You can use issue IDs in commit messages and pull requests in the following ways:
-
-*   To refer to an issue from a pull request (PR), include the issue ID in the PR's description. This will result in a mention of the PR in the corresponding Crosswalk Jira issue.
+*   To refer to an issue from a PR, include the issue ID in the PR's description. This will result in a mention of the PR in the corresponding Crosswalk Jira issue.
 
     For example, if you were working on issue XWALK-898, you could reference the issue in a commit message like this:
 
         Append "-tests" to package name, as per XWALK-898.
 
-    Only opening and closing a pull request (with an issue ID in the description) will result in a comment being added to Jira. Updating a pull request will *not* update related Jira issues.
+    Only opening and closing a PR (with an issue ID in the description) will result in a comment being added to Jira. Updating a PR will *not* update related Jira issues.
 
 *   To close a related Jira issue, add a line with the format **BUG=XWALK-N** to a PR description (NB this is case sensitive). Doing this will resolve the corresponding issue in Jira when the PR is merged. Using the issue URL (**BUG=https://path/to/issue/XWALK-N**) is also acceptable.
 
@@ -76,7 +123,7 @@ You are responsible for keeping the tree green. If the tree is red because of yo
 
 ## Respond to reviewers
 
-A Crosswalk reviewer must approve your patch before Crosswalk can accept it into the source control repository. A reviewer will either approve your patch by responding with "LGTM" (Looks Good To Me) in the pull request, or request revisions to your patch. In rare cases, a patch may be permanently rejected, meaning that the reviewer believes the feature should never be committed to the tree. The review process can consist of multiple iterations between you and the reviewer as you submit revised patches.
+A Crosswalk reviewer must approve your patch before Crosswalk can accept it into the source control repository. A reviewer will either approve your patch by responding with "LGTM" in the pull request, or request revisions to your patch. In rare cases, a patch may be permanently rejected, meaning that the reviewer believes the feature should never be committed to the tree. The review process can consist of multiple iterations between you and the reviewer as you submit revised patches.
 
 ## Obtaining commit privileges
 
