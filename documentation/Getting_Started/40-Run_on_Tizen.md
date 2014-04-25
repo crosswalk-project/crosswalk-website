@@ -77,7 +77,7 @@ Then follow the steps below to create the package.
 
 1.  To create xpk packages, you will need a private key file. Use `openssl` to generate this for you:
 
-        > openssl genrsa -out mykey.pem 1024
+        > openssl genrsa -out ~/mykey.pem 1024
 
     Note that this is a private key file, and it should not be distributed with your application.
 
@@ -89,7 +89,7 @@ Then follow the steps below to create the package.
 
 ## Push the package to the device
 
-1.  Prepare the device (either connect it to the host or start it with VMware player/the emulator).
+1.  Prepare the target (either connect it to the host or start it with VMware player/the emulator).
 
 2.  Use `scp` to push the package to the device:
 
@@ -101,13 +101,13 @@ Then follow the steps below to create the package.
 
 Use a terminal on the emulated device to run the following steps:
 
-1.  Open a terminal on the target as the `app` user. You can do this using the small console icon in the top-left of the screen.
+1.  Open a shell on the target as the `app` user. You can do this using the small console icon in the top-left of the screen.
 
 2.  Start Crosswalk as a service:
 
         app:~> xwalk --run-as-service
 
-3.  Open another terminal on the Tizen target. This is the session we're going to use to install the package.
+3.  Open another shell on the Tizen target. This is the session we're going to use to install the package.
 
 4.  From this second shell, install the `xwalk-simple.xpk` package using the `xwalkctl` command (still as the app user):
 
@@ -141,6 +141,10 @@ Use a terminal on the emulated device to run the following steps:
         [0411/041922:INFO:application_service.cc(298)] Installed application with id: dogabgfklbjobjkfdbokaedngjeepepj successfully.
 
     This confirms that the package has been installed successfully.
+
+If you need to uninstall the application, you can do this with:
+
+    xwalkctl --uninstall <application ID>
 
 ## Run the application
 
