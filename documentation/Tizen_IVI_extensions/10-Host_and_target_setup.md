@@ -9,10 +9,7 @@ In this section, we outline how to prepare for developing Tizen Crosswalk extens
 
 # Host setup
 
-First follow the instructions for your host platform:
-
-*   [Windows](#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen)
-*   [Linux](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen)
+First follow the [instructions for setting up a Linux host](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen).
 
 Then follow the steps below to install the extra pieces needed for developing Crosswalk extensions.
 

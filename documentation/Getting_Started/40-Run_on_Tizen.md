@@ -77,7 +77,7 @@ Then follow the steps below to create the package.
 
 1.  To create xpk packages, you will need a private key file. Use `openssl` to generate this for you:
 
-        > openssl genrsa -out mykey.pem 1024
+        > openssl genrsa -out ~/mykey.pem 1024
 
     Note that this is a private key file, and it should not be distributed with your application.
 
@@ -89,7 +89,7 @@ Then follow the steps below to create the package.
 
 ## Push the package to the device
 
-1.  Prepare the device (either connect it to the host or start it with VMware player/the emulator).
+1.  Prepare the target (either connect it to the host or start it with VMware player/the emulator).
 
 2.  Use `scp` to push the package to the device:
 
@@ -101,15 +101,9 @@ Then follow the steps below to create the package.
 
 Use a terminal on the emulated device to run the following steps:
 
-1.  Open a terminal on the target as the `app` user. You can do this using the small console icon in the top-left of the screen.
+1.  Open a shell on the target as the `app` user. You can do this using the small console icon in the top-left of the screen.
 
-2.  Start Crosswalk as a service:
-
-        app:~> xwalk --run-as-service
-
-3.  Open another terminal on the Tizen target. This is the session we're going to use to install the package.
-
-4.  From this second shell, install the `xwalk-simple.xpk` package using the `xwalkctl` command (still as the app user):
+2.  Install the `xwalk-simple.xpk` package using the `xwalkctl` command (still as the app user):
 
         app:~> xwalkctl --install /home/app/xwalk-simple.xpk
 
@@ -121,26 +115,9 @@ Use a terminal on the emulated device to run the following steps:
 
     The long string at the end of the installation path (*dogabgfklbjobjkfdbokaedngjeepepj* here) is the **application ID**. This is important, as you'll need it to launch the application in the next step.
 
-    In the shell where you started `xwalk --run-as-service`, you should also see output like this:
+    If you need to uninstall the application, you can do this with:
 
-        [0411/041919:WARNING:exported_object.cc(211)] Unknown method: message_type: MESSAGE_METHOD_CALL
-        destination: :1.2
-        path: /installed1
-        interface: org.freedesktop.DBus.Properties
-        member: GetAll
-        sender: :1.3
-        signature: s
-        serial: 12
-
-        string "org.crosswalkproject.Installed.Manager1"
-
-        [0411/041920:WARNING:service_package_installer.cc(129)] 'icon' not included in manifest
-        [0411/041920:INFO:service_package_installer.cc(108)] Converting manifest.json into dogabgfklbjobjkfdbokaedngjeepepj.xml for installation. [DONE]
-        [0411/041922:INFO:application_service.cc(297)] Application be installed in: /home/app/.config/xwalk-service/applications/dogabgfklbjobjkfdbokaedngjeep
-        epj
-        [0411/041922:INFO:application_service.cc(298)] Installed application with id: dogabgfklbjobjkfdbokaedngjeepepj successfully.
-
-    This confirms that the package has been installed successfully.
+        xwalkctl --uninstall <application ID>
 
 ## Run the application
 

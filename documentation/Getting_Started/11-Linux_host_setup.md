@@ -5,7 +5,7 @@ You need different tools depending on which target platforms you want to deploy 
 *   Deploy to Android: follow [Installation for Crosswalk Android](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Android).
 *   Deploy to Tizen: follow [Installation for Crosswalk Tizen](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen).
 
-These instructions have been tested on Fedora Linux 20, 64 bit.
+These instructions have been tested on Fedora Linux 20, 64 bit. If you are using a different platform, you may need to modify them to suit your environment (e.g. use `apt-get` instead of `yum` if using Ubuntu, change package names where they differ from Fedora's package names).
 
 ## Installation for Crosswalk Android
 
@@ -129,15 +129,11 @@ Check that you have installed the tools properly by running these commands:
 
 In this tutorial, you're going to use an emulated Tizen IVI image, running under VMware. To be able to create this image and access it, you need to install a few packages on the host machine:
 
-1.  **Graphics drivers for VMware:** these ensure decent graphics performance for the virtual machine:
-
-        sudo yum install xorg-x11-drv-vmware
-
-2.  **bash:** the script for generating Tizen packages runs under a bash shell. Usually, bash is installed by default, but just in case it's not:
+1.  **bash:** the script for generating Tizen packages runs under a bash shell. Usually, bash is installed by default, but just in case it's not:
 
         sudo yum install bash
 
-3.  Packages containing utilities:
+2.  Packages containing utilities:
 
     <ul>
     <li><strong>openssh:</strong> this is so you can use the <code>ssh</code> command to push files to, and log in to, the virtual machine./li>
@@ -150,11 +146,11 @@ In this tutorial, you're going to use an emulated Tizen IVI image, running under
 
         sudo yum install openssh openssl bzip2 qemu-img
 
-4.  **Kernel headers:** these are required so that VMware player can compile the Linux kernel modules which enable it to run:
+3.  **Kernel headers:** these are required so that VMware can compile the Linux kernel modules which enable it to run:
 
         sudo yum install kernel-headers
 
-5.  **VMware Player** or **VMware Workstation**, to create and run the virtual machine. The free version of Player can be downloaded from [the VMware website](https://my.vmware.com/web/vmware/free). However, if you are using Player for commercial purposes, you will [need a licence](http://store.vmware.com/buyplayerplus).
+4.  **VMware Player** or **VMware Workstation**, to create and run the virtual machine. The free version of Player can be downloaded from [the VMware website](https://my.vmware.com/web/vmware/free). However, if you are using Player for commercial purposes, you will [need a licence](http://store.vmware.com/buyplayerplus).
 
     If you need help with installing VMware products, see [this page on the VMware website](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053973).
 
