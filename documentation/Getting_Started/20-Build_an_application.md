@@ -17,9 +17,9 @@ However, because Crosswalk applications are intended to integrate well with the 
 
     <img src="assets/icon.png">
 
-    To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the `xwalk-simple` directory as `icon.png`.
+    To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the `xwalk-simple` directory as `icon.png`. (Note that this image is from the Crosswalk source code and is [BSD licensed](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE).)
 
-    (If you have your own favourite icon, copy that to the `xwalk-simple` directory instead. It should be 128 pixels square.)
+    If you have your own favourite icon, copy that to the `xwalk-simple` directory instead. It should be 128 pixels square.
 
 3.  Create two text files inside `xwalk-simple` (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):
 
