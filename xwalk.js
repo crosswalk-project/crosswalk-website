@@ -252,14 +252,15 @@ function generate_wiki_page (page, contents) {
     if (!content) {
         content = document.createElement ('div');
         content.id = 'wiki-content';
-        wiki_body = document.createElement ('div');
-        wiki_body.id = 'wiki-body';
+        var new_wiki_body = document.createElement ('div');
+        new_wiki_body.id = 'wiki-body';
         div.classList.add ('markdown-body');
-        wiki_body.appendChild (div);
-        content.appendChild (wiki_body);
+        new_wiki_body.appendChild (div);
+        content.appendChild (new_wiki_body);
     } else {
         var last_edit, title = null;
         wiki_body = div.querySelector ('#wiki-body .markdown-body');
+
         if (!wiki_body) {
             /* Graaarck! No Wiki content returned... */
             wiki_body = document.createElement ('div');
@@ -299,16 +300,30 @@ function generate_wiki_page (page, contents) {
         /* If wiki entry does not start with a header, add a title */
         if (title == null) {
             title = document.createElement ('h1');
-            title.textContent = div.querySelector ('#head h1').textContent;
+            title.textContent = div.querySelector ('h1.gh-header-title').textContent;
             wiki_body.insertBefore (title, wiki_body.firstChild);
         }
         /* Inject Last Edit in footer */
-        last_edit = div.querySelector ('#last-edit');
+        last_edit = div.querySelector ('.gh-header-meta');
         if (last_edit && column_name == 'wiki') {
             /* If the only edit was the initial import from 2013-09-01 21:04:08, don't show it.. */
             if (last_edit.textContent.search (/2013-09-01 21:04:08/) != -1) {
                 last_edit.textContent = '';
             }
+
+            // fix the author link URL
+            var author_link = last_edit.querySelector('.author');
+            if (author_link) {
+              author_link.target = '_blank';
+              var author_name = author_link.getAttribute('href');
+              if (author_name) {
+                var real_link = 'https://github.com' + author_name;
+                author_link.href = real_link;
+              }
+            }
+
+            var github_link_wrapper = document.createElement('span');
+            github_link_wrapper.setAttribute('class', 'github-meta-link');
 
             var github_link = document.createElement ('a');
             /* GitHub URL syntax for starting the editing; GitHub flattens
@@ -316,14 +331,30 @@ function generate_wiki_page (page, contents) {
              * does support a directory structure) */
             github_link.href =
                 'http://github.com/crosswalk-project/crosswalk-website/wiki/' + requested_page;
-            github_link.textContent = 'GitHub';
+            github_link.textContent = 'source';
             github_link.target = '_blank';
             github_link.className = '';
-            last_edit.appendChild (github_link);
 
-            last_edit.innerHTML = last_edit.innerHTML.replace (
-                /Last edited/, 'Content last edited');
+            // fix the history link URL
+            var history_link = last_edit.querySelector('.history');
+            if (history_link) {
+              real_link = github_link.href + '/_history';
+              history_link.href = real_link;
+              history_link.target = '_blank';
+            }
+
+            // add to the content
+            github_link_wrapper.appendChild(github_link);
+            last_edit.appendChild (github_link_wrapper);
             content.appendChild (last_edit);
+        }
+
+        // remove the elements we don't want on the page
+        // to fix https://crosswalk-project.org/jira/browse/XWALK-1612
+        var right_bar = content.querySelector('#wiki-rightbar');
+
+        if (right_bar) {
+          right_bar.remove();
         }
     }
 
