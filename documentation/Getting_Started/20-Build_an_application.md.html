@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/20 Build_an_application';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/20 Build_an_application</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Building a Crosswalk application</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/20-Build_an_application"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/20-Build_an_application"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Crosswalk is a runtime for HTML5 applications. This means that any existing HTML5 applications should run on Crosswalk, providing they already run in a modern browser (Chrome, Firefox, Safari).</p>
+
+<p>For the purposes of this tutorial, we use the simplest possible Crosswalk application: one HTML file.</p>
+
+<p>However, because Crosswalk applications are intended to integrate well with the target environment, they require an additional file, <code>manifest.json</code>, containing metadata for that purpose. The manifest can be used to specify icons to use at different resolutions, set an app description, adjust <a href="http://developer.chrome.com/extensions/contentSecurityPolicy.html">content security policy settings</a>, and otherwise configure how the app integrates with the target environment.</p>
+
+<h2>A simple application<a class="anchor" id="A-simple-application" href="#A-simple-application"></a></h2>
+
+<ol><li><p>First, create a directory called <code>xwalk-simple</code> for the project:</p>
+
+<pre><code>&gt; mkdir xwalk-simple/
+&gt; cd xwalk-simple/
+</code></pre></li>
+<li><p>Next, copy an icon file to that directory, to serve as the application icon. You can use this image:</p>
+
+<p><img src="assets/icon.png" /></p>
+
+<p>To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the <code>xwalk-simple</code> directory as <code>icon.png</code>. (Note that this image is from the Crosswalk source code and is <a href="https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE">BSD licensed</a>.)</p>
+
+<p>If you have your own favourite icon, copy that to the <code>xwalk-simple</code> directory instead. It should be 128 pixels square.</p></li>
+<li><p>Create two text files inside <code>xwalk-simple</code> (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):</p>
+
+<ol><li><p><code>index.html</code></p>
+
+<p>This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.</p>
+
+<p>The content should be:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta name="viewport"
+          content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;simple&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;hello world&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></li>
+<li><p><code>manifest.json</code></p>
+
+<p>This contains the application metadata (see above).</p>
+
+<p>The content should be:</p>
+
+<pre><code>{
+  "name": "simple",
+  "version": "0.0.0.1",
+  "app": {
+    "launch":{
+      "local_path": "index.html"
+    }
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}
+</code></pre>
+
+<p>See <a href="#wiki/Crosswalk-manifest">the Crosswalk wiki page about the manifest</a> for more information.</p></li>
+</ol></li>
+</ol><p>Once you've done this, you're ready to run the application on a target.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-29 09:45:25</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/20-Build_an_application" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/20-Build_an_application">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
