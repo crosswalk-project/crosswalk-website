@@ -55,11 +55,13 @@ function isLaterOrEqualVersion(basis, version) {
 
 // get the download URL for a Crosswalk OS/channel/version
 // channel: 'stable', 'beta', 'canary'
-// OS: 'android-x86', 'android-arm', 'tizen-mobile', 'tizen-ivi',
-// 'tizen-emulator'
+// arch: 'arm', 'x86'
+// OS: 'android', 'tizen-mobile', 'tizen-ivi', 'tizen-emulator', 'cordova'
 // version: e.g. '4.32.25.1'
 function getXwalkDownloadUrl(OS, arch, channel, version) {
     var file_prefix = 'crosswalk-';
+
+    var realOS = OS;
 
     // tizen emulator downloads are in the same directory as the
     // tizen-mobile ones...
@@ -67,9 +69,13 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
         OS = 'tizen-mobile';
         file_prefix += 'emulator-support-';
     }
+    else if (OS === 'cordova') {
+      realOS = 'android';
+      file_prefix += 'cordova-';
+    }
 
     var download_url = 'https://download.01.org/crosswalk/releases/crosswalk/'
-                     + OS + '/' + channel + '/' + version + '/';
+                       + realOS + '/' + channel + '/' + version + '/';
 
     // android: crosswalk-beta >= 5.34.104.1 and crosswalk-canary >= 6.34.106.0
     // and crosswalk-stable >= 4.32.76.6
@@ -91,10 +97,13 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
         !(androidBetaArchIndependent || androidCanaryArchIndependent || androidStableArchIndependent)) {
       download_url += arch + '/';
     }
+    else if (OS === 'cordova') {
+      download_url += arch + '/';
+    }
 
     download_url += file_prefix + version;
 
-    if (OS === 'android') {
+    if (OS === 'android' || OS === 'cordova') {
       if (androidBetaArchIndependent || androidCanaryArchIndependent || androidStableArchIndependent) {
         download_url += '.zip';
       }
