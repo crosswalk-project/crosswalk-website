@@ -1,4 +1,4 @@
-# Standard APIs
+# Web APIs
 
 The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2] (wiki/Crosswalk-3-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only, <sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later).
 
