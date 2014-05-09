@@ -718,9 +718,9 @@ function content_response (e) {
 
     /* For all external links, intercept the click and log the event with
      * GA prior to invoking the request... */
-    Array.prototype.forEach.call (
-        content.querySelectorAll ('a[href^="http"]'), function (link) {
-            link.addEventListener ('click', trackAbandonLink);
+    var links = content.querySelectorAll ('a[href^="http"]');
+    Array.prototype.forEach.call (links, function (link) {
+        link.addEventListener ('click', trackAbandonLink);
     });
 
     if (column.hasAttribute ('requested_anchor')) {
@@ -1030,18 +1030,15 @@ function subMenuClick (e) {
 }
 
 function trackAbandonLink (e) {
+    var target = e.currentTarget.getAttribute ('target');
     var href = e.currentTarget.getAttribute ('href');
     if (ga && ga.hasOwnProperty ('loaded') && ga.loaded === true) {
         ga ('send', 'event', {
             'eventCategory': 'wiki-anchor',
             'eventAction': 'click',
             'eventLabel': href,
-            'metric0': 0,
-            'hitCallback': function () {
-                window.location.href = href;
-            }
+            'metric0': 0
         });
-        e.preventDefault ();
     }
 }
 
