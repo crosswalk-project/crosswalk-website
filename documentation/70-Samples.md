@@ -1,21 +1,23 @@
 # Samples
 
-We have packaged some simple applications to get you up and running with Crosswalk. These applications are <a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz">available as a download</a>. The source code is <a href="https://github.com/crosswalk-project/crosswalk-samples/" target="_blank">on github</a> (MIT licence).
+We have packaged some simple applications to get you up and running with Crosswalk. These applications are <a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.3.tar.gz">available as a download</a>. The source code is <a href="https://github.com/crosswalk-project/crosswalk-samples/" target="_blank">on github</a> (MIT licence).
 
 To use the samples, download the sample archive, then unpack it from the command line:
 
 ```sh
-tar xvf crosswalk-samples-0.2.tar.gz
+tar xvf crosswalk-samples-0.3.tar.gz
 ```
 
-This will create a `crosswalk-samples-0.2` directory with several project sub-directories:
+This will create a `crosswalk-samples-0.3` directory with several project sub-directories:
 
-* `hello_world` &ndash; A minimal example.
+*   `extensions-android` &ndash; A simple audio file player for Android which uses a Crosswalk extension. The [Android extensions tutorial](#documentation/android_extensions) explains how this was developed. See [this README](https://github.com/crosswalk-project/crosswalk-samples/blob/master/extensions-android/README.md) for build instructions.
 
-* `simd` &ndash; An example of using Crosswalk's native support for [SIMD](https://github.com/johnmccutchan/ecmascript_simd).
+*   `hello_world` &ndash; A minimal example.
 
-* `tizen_apis` &ndash; A sample application using the Tizen APIs.
+*   `simd-mandelbrot` &ndash; An example of using Crosswalk's native support for [SIMD](https://github.com/johnmccutchan/ecmascript_simd).
 
-* `webgl` &ndash; An example of how to use WebGL in Crosswalk via [three.js](http://threejs.org/).
+*   `tizen_apis` &ndash; A sample application using the Tizen APIs.
 
-For information on each of the samples, follow the links in the menu.
+*   `webgl` &ndash; An example of how to use WebGL in Crosswalk via [three.js](http://threejs.org/).
+
+For more information about the samples, follow the links in the menu.
