@@ -18,6 +18,7 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [HTML Canvas 2D Context] (http://www.w3.org/TR/2dcontext/) - An API for 2D immediate mode graphics.
 * [HTML5 Audio/Video] (http://www.w3.org/TR/html5/) - Audio and Video support without plugins.
 * [Media Queries Level 3] (http://w3c-test.org/csswg/mediaqueries3/) - CSS media features for adapting the same content to different output devices and screens.
+* [Responsive Images] (http://picture.responsiveimages.org/)<sup><a href="#v">[5.34.104.5]</a></sup> - Control which image resource is presented to a user, based on media query and/or image format support.
 * [Scalable Vector Graphics (SVG) 1.1] (http://www.w3.org/TR/SVG11/) - An XML markup language for 2D vector graphics.
 * [WebRTC](http://www.w3.org/TR/webrtc/)<sup><a href="#a">[a]</a></sup> - Peer to peer sharing of video and audio streams.
 
@@ -49,12 +50,14 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [Media Capture and Streams] (http://www.w3.org/TR/mediacapture-streams/)<sup><a href="#a">[a]</a></sup> - Provides access to local media streams including video (camera) and audio (microphone).
 * [Screen Orientation](http://www.w3.org/TR/screen-orientation/) - Enables screen orientation locking and provides access to screen orientation data and events.
 * [Touch Events] (https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html) - Handle touch events programmatically.
+* [Vibration] (http://www.w3.org/TR/vibration/)<sup><a href="#v">[5.34.104.5]</a></sup> - Programmatically control a device's vibration mechanism.
 
 # Experimental APIs
 
 In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.
 
 * [Device Capabilities] (http://www.w3.org/2012/sysapps/device-capabilities/) - Retrieve information about the underlaying system.
+* [Launch Screen] (https://crosswalk-project.org/#wiki/Launch-Screen)<sup><a href="#v">[6.35.131.4]</a></sup> - Display a static user interface on application launch and hide it when the application is ready.
 * [Presentation API] (http://webscreens.github.io/presentation-api/) - Access external displays from within web applications. For more information see the [Presentation API developer documentation] (https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual).
 * [Raw Sockets] (http://www.w3.org/TR/raw-sockets/) - Raw TCP and UDP sockets for client and server sides.
 * [SIMD](https://github.com/johnmccutchan/ecmascript_simd)<sup><a href="#v">[5.34.104.0]</a></sup> - Data types and operations for access to the Single Instruction Multiple Data (SIMD) instruction sets available on common CPU architectures, such as SSE (IA32/X64) and NEON (ARMv7). **Note that the implementation to generate NEON instructions is not done.**
