@@ -62,7 +62,7 @@ try {
   }
 
   $ret = 0;
-  system ('git -c http.sslVerify=false --git-dir=wiki.git fetch origin master', $ret);
+  system ('git -c http.sslVerify=false --git-dir=wiki.git fetch -q origin master:master', $ret);
   if ($ret) {
     print 'git fetch failed';
     exit;
