@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Tizen_IVI_extensions/20 Write_a_web_application';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Tizen_IVI_extensions/20 Write_a_web_application</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Write a web application</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Tizen_IVI_extensions/20-Write_a_web_application"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Tizen_IVI_extensions/20-Write_a_web_application"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>In this section, you will create the web application (HTML5/JavaScript).</p>
+
+<p>The application can be split into two pieces: the application "proper", containing the HTML, JavaScript, CSS, and other assets; and the metadata describing the application and how it should be installed on the system.</p>
+
+<p>You will also add some supporting files for packaging the extension into a Tizen package (<code>rpm</code> file).</p>
+
+<p>Before starting, make sure you have already followed the steps in <a href="#documentation/Tizen_IVI_extensions/Host_and_target_setup">Host and target setup</a>.</p>
+
+<p>In the sections below, you'll create the metadata and the application; then add the build infrastructure.</p>
+
+<h2>Create project files and directories<a class="anchor" id="Create-project-files-and-directories" href="#Create-project-files-and-directories"></a></h2>
+
+<p>The first step is to set up the basic project structure inside a <code>simple-extension-app</code> directory:</p>
+
+<pre><code>&gt; mkdir simple-extension-app
+&gt; cd simple-extension-app
+
+# directory for web application files + metadata
+&gt; mkdir app
+
+# directory for the packaging specification file
+&gt; mkdir packaging
+
+# initialise the directory as a git repository (see below)
+&gt; git init .
+</code></pre>
+
+<p>Because you'll be using gbs to build the rpm file for your extension, you need to make your project into a git repository (gbs won't work on plain directories).</p>
+
+<h3>Add an icon<a class="anchor" id="Add-an-icon" href="#Add-an-icon"></a></h3>
+
+<p>Copy an icon file to the <code>simple-extension-app/app</code> directory, to serve as the application icon (128px square).</p>
+
+<p>You can use this image if you don't have a suitable one of your own:</p>
+
+<p><img src="assets/icon.png" /></p>
+
+<p>To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser); save it as <code>icon.png</code>.</p>
+
+<h3>Create the manifest<a class="anchor" id="Create-the-manifest" href="#Create-the-manifest"></a></h3>
+
+<p>The application metadata consists of platform-specific files which aren't properly part of the application. They are really supporting files, which are used to integrate the application with the environment. Examples might be platform-specific configuration files and icons for different screen resolutions.</p>
+
+<p>A manifest file for an application provides Crosswalk with metadata about that application: for example, which HTML file to load as the entry point, which icon to use for the application, and which permissions the application needs.</p>
+
+<p>For now, this file can be very simple. Create <code>app/manifest.json</code> with this content:</p>
+
+<pre><code>{
+  "name": "simple_extension_app",
+  "description": "simple extension app (demo)",
+  "version": "1.0.0",
+  "app": {
+    "launch":{
+      "local_path": "index.html"
+    }
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}
+</code></pre>
+
+<p>For more information about what the manifest can contain, see <a href="#wiki/Crosswalk-manifest">Crosswalk manifest</a>.</p>
+
+<h3>Create the web application<a class="anchor" id="Create-the-web-application" href="#Create-the-web-application"></a></h3>
+
+<p>This is a standalone HTML5 application which uses the Crosswalk extension. It consists of a single HTML file, <code>index.html</code>, in the <code>app</code> directory. This file also contains the JavaScript to invoke the Crosswalk extension.</p>
+
+<p>Create this file as <code>app/index.html</code>:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;simple extension app&lt;/title&gt;
+&lt;meta name="viewport" content="width=device-width"&gt;
+&lt;style&gt;
+body {
+  font-size: 2em;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;This uses the echo extension defined to
+extend Crosswalk.&lt;/p&gt;
+
+&lt;div id="out"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+var div = document.getElementById('out');
+
+var p1 = document.createElement('p');
+var p2 = document.createElement('p');
+
+// async call to extension
+echo.echoAsync('hello async echo', function (result) {
+  p1.innerText = result;
+  div.appendChild(p1);
+});
+
+// sync call to extension
+p2.innerText = echo.echoSync('hello sync echo');
+div.appendChild(p2);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Note that the <code>echo</code> extension is available globally to the application: there's no need to include a script to make use of it.</p>
+
+<p>When the application runs, the extension's API is invoked asynchronously and synchronously (<code>echo.echoAsync()</code> and <code>echoSync()</code>). The returned responses (with the "You said: " prefixes added) are used to set the text of two paragraph (<code>p</code>) elements.</p>
+
+<h2>Create the package<a class="anchor" id="Create-the-package" href="#Create-the-package"></a></h2>
+
+<p>Now that you have the web application, follow the steps in <a href="#documentation/getting_started/Run_on_Tizen">Run on Tizen</a> to create the Tizen package (<code>.xpk</code> file).</p>
+
+<p>The steps are summarised below:</p>
+
+<ol><li><p>Add the <code>make_xpk.sh</code> script to the project. See <a href="#documentation/getting_started/Run_on_Tizen/Create-the-xpk-file">Create the xpk file</a> for the content of the script and how to create it.</p></li>
+<li><p>Create a private key for signing packages:</p>
+
+<pre><code>&gt; openssl genrsa -out ~/mykey.pem 1024
+</code></pre></li>
+<li><p>Create the <code>.xpk</code> file:</p>
+
+<pre><code>&gt; ./make_xpk.sh app/ ~/mykey.pem
+</code></pre>
+
+<p>Note that you are just including the <code>app</code> directory in the <code>.xpk</code> file, not the whole project directory (i.e. not the whole of <code>simple-extension-app</code>).</p>
+
+<p>The output from this command is an <code>app.xpk</code> file in the project directory. The <a href="#documentation/tizen_ivi_extensions/run_on_tizen_vm">next section</a> explains how to install and run it.</p></li>
+</ol>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-25 11:49:14</p>
+  <p>
+    <a id="delete-link" href="/documentation/Tizen_IVI_extensions/20-Write_a_web_application" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Tizen_IVI_extensions/20-Write_a_web_application">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
