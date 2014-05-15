@@ -354,7 +354,7 @@ function generate_wiki_page (page, contents) {
         var right_bar = content.querySelector('#wiki-rightbar');
 
         if (right_bar) {
-          right_bar.remove();
+          right_bar.parentNode.removeChild(right_bar);
         }
     }
 
