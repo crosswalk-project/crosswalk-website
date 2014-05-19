@@ -555,8 +555,11 @@ function content_response (e) {
 
     if (xhr.status != 200) {
         var tmp = '<div id="wiki-content"><div id="wiki-body">' +
-            '<div class="markdown-body"><h1>Unable to fetch content</h1>' +
-            'Reason: <span class="error">' + xhr.status + ' ' + xhr.statusText + '</span>';
+            '<div class="markdown-body">' +
+            '<h1>Unable to fetch page</h1>' +
+            '<p><strong>Reason:</strong> <span class="error">' +
+            xhr.status + ' ' + xhr.statusText + '</span></p>' +
+            '<p><strong>Response body:</strong></p><p>' + xhr.responseText + '</p>';
 
         if (column.hasAttribute ('referring_page')) {
             var referring_page = column.getAttribute ('referring_page');
