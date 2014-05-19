@@ -26,7 +26,12 @@ else if (PHP_SAPI === 'cli') {
 }
 
 function missing ($f) {
-    print "Missing HTML file: <span class='missing'>".$f."</span>";
+    header('HTTP/1.0 404 Not found');
+    print '<p>The page you requested is not available: <span class="missing">'
+          . $f .
+          '</span></p>' .
+          '<p>Please report this to the site administrators, stating ' .
+          'the URL of the missing page.</p>';
     exit;
 }
 
@@ -94,7 +99,7 @@ if (preg_match ('#^wiki/#', $file)) {
 }
 
 if (!preg_match ('#^'.dirname (__FILE__).'/#', $md)) {
-    missing (__FILE__);
+    missing ($file);
 }
 
 $cache = @stat ($md.'.html');
