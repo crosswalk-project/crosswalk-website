@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Cordova/20 Add_plugins';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Cordova/20 Add_plugins</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Adding Cordova plugins</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Cordova/20-Add_plugins"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Cordova/20-Add_plugins"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Cordova's web APIs are packaged as <strong>plugins</strong>, optional add-ons for the Cordova runtime. Each plugin you add provides extra functionality and/or additional web API methods for the Cordova-wrapped web application. For example, the <a href="http://plugins.cordova.io/#/package/org.apache.cordova.device-motion">Cordova Device Motion Plugin</a> plugin adds the following JavaScript methods for working with accelerometer data:</p>
+
+<ul><li>  navigator.accelerometer.getCurrentAcceleration</li>
+<li>  navigator.accelerometer.watchAcceleration</li>
+<li>  navigator.accelerometer.clearWatch</li>
+</ul><p>The <a href="http://plugins.cordova.io/">Cordova Plugin Registry</a> lists many of the available plugins (including all of the official ones) and where to get them.</p>
+
+<h2>Cordova plugins and Crosswalk<a class="anchor" id="Cordova-plugins-and-Crosswalk" href="#Cordova-plugins-and-Crosswalk"></a></h2>
+
+<p>Cordova Crosswalk for Android can also be extended with Cordova plugins. However, the plugin version you need depends on the Crosswalk version you are using. The <a href="#wiki/Crosswalk-Cordova-for-Android:-plugin-compatibility-lists">plugins compatibility list</a> shows which Cordova plugin versions are supported by which version of Crosswalk Cordova for Android.</p>
+
+<p>It's also worth noting that some functionality provided by Cordova plugins already has an equivalent in Crosswalk (for example, geolocation data). In cases where you are only using Crosswalk for the webview (e.g. you're only deploying to Android), you could use such Crosswalk native APIs, rather than those provided by Cordova plugins.</p>
+
+<h2>Adding a plugin to a project<a class="anchor" id="Adding-a-plugin-to-a-project" href="#Adding-a-plugin-to-a-project"></a></h2>
+
+<p><strong>If you aren't set up for Crosswalk Cordova development, see the <a href="#documentation/cordova/develop_an_application/set_up_the_host">host setup instructions</a>. You can also follow those instructions to create a Crosswalk Cordova HelloWorld project. Plugins are added to a HelloWorld sample application in the instructions below, but the same steps will work for any Crosswalk Cordova application.</strong></p>
+
+<p>In addition to the standard Crosswalk Cordova pre-requisites, you will also need to install <a href="http://nodejs.org">node.js</a> for your platform.</p>
+
+<p>The Cordova tool for installing plugins is <code>plugman</code>. Install it by running:</p>
+
+<pre><code>$ npm install -g plugman
+</code></pre>
+
+<p>Once installed, add a plugin to your Crosswalk Cordova project as follows:</p>
+
+<ol><li><p>Go to the top-level project directory:</p>
+
+<pre><code>cd HelloWorld
+</code></pre></li>
+<li><p>Find the URL for the plugin you want to install, by looking it up in the appropriate <a href="#wiki/Crosswalk-Cordova-for-Android:-plugin-compatibility-lists">plugins compatibility list</a>. For example, if you've using version 5 of Crosswalk, the <a href="#wiki/Plugins-list-@-3.3.0-supported-by-crosswalk-cordova-android">compatible plugins for Cordova 3.3.0 list</a> is the one you need.</p>
+
+<p>For example, to install the accelerometer plugin for Cordova 3.3.0, the URL you need is: <a href="https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4">https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4</a>.</p></li>
+<li><p>Add the plugin to the project:</p>
+
+<p>$ plugman install --platform android --project . \
+    --plugin <a href="https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4">https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4</a></p>
+
+<p>Please refer to <a href="http://cordova.apache.org/docs/en/3.3.0/plugin_ref_plugman.md.html">Using Plugman to Manage Plugins</a> for more details about the <code>plugman</code> command line options.</p></li>
+<li><p>Use the plugin in the application. As a simple example, you could modify the HelloWorld project to use the plugin as follows:</p>
+
+<p>In <code>assets/www/index.html</code>, modify the <code>&lt;div class="app"&gt;</code> element, adding some paragraphs to display the x, y and z accelerometer coordinates:</p>
+
+<pre><code>&lt;div class="app"&gt;
+    &lt;h1&gt;Apache Cordova&lt;/h1&gt;
+    &lt;div id="deviceready" class="blink"&gt;
+        &lt;p class="event listening"&gt;Connecting to Device&lt;/p&gt;
+        &lt;p class="event received"&gt;Device is Ready&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- display x,y,z accelerometer coordinates --&gt;
+    &lt;p style="color: white;"&gt;x: &lt;span id="x"&gt;0&lt;/span&gt;&lt;/p&gt;
+    &lt;p style="color: white;"&gt;y: &lt;span id="y"&gt;0&lt;/span&gt;&lt;/p&gt;
+    &lt;p style="color: white;"&gt;z: &lt;span id="z"&gt;0&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>In <code>assets/www/js/index.js</code>, modify the <code>onDeviceReady()</code> function to watch the accelerometer:</p>
+
+<pre><code>onDeviceReady: function() {
+  app.receivedEvent('deviceready');
+
+  // listen to accelerometer events every 100ms
+  navigator.accelerometer.watchAcceleration(
+    // success handler
+    function (evt) {
+      document.getElementById('x').innerHTML = evt.x;
+      document.getElementById('y').innerHTML = evt.y;
+      document.getElementById('z').innerHTML = evt.z;
+    },
+
+    // error handler
+    function (e) {
+      alert("accel fail (" + e.name + ": " + e.message + ")");
+    },
+
+    // options: update every 100ms
+    { frequency: 100 }
+  );
+},
+</code></pre></li>
+<li><p>Install and run the application as per usual:</p>
+
+<pre><code>$ cd HelloWorld
+$ ./cordova/run android
+</code></pre>
+
+<p>The result should look like this:</p>
+
+<p><img src="assets/cordova-hello-world-with-accelerometer.png" /></p></li>
+</ol><p>As with standard Cordova, you should still follow the Cordova guidelines for integrating plugins with your application (e.g. <a href="http://cordova.apache.org/docs/en/3.3.0/cordova_events_events.md.html#deviceready">waiting for the "device ready" event before using plugin features</a>).</p>
+
+<h2>Additional external plugins<a class="anchor" id="Additional-external-plugins" href="#Additional-external-plugins"></a></h2>
+
+<p>External plugins (i.e. not part of the main Cordova distribution) can also be used with Crosswalk Cordova for Android:</p>
+
+<ul><li><a href="#wiki/AdMob-Plugin-on-Crosswalk">Use AdMob plugin in Crosswalk</a></li>
+<li><a href="#wiki/IAP-Plugin-on-Crosswalk">Use IAP plugin in Crosswalk </a></li>
+</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-05-20 10:15:58</p>
+  <p>
+    <a id="delete-link" href="/documentation/Cordova/20-Add_plugins" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Cordova/20-Add_plugins">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
