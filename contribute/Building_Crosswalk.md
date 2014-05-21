@@ -164,11 +164,11 @@ If you don't have any HTML applications to test, the
 
     For Crosswalk > 5:
 
-        ./xwalk/build/android/envsetup.sh
+        . ./xwalk/build/android/envsetup.sh
 
     Or, if you are using Crossswalk <= 5:
 
-        ./xwalk/build/android/envsetup.sh --target-arch=x86
+        . ./xwalk/build/android/envsetup.sh --target-arch=x86
 
     If you are targeting ARM, pass `--target-arch=arm` instead of
     `--target-arch=x86`.
