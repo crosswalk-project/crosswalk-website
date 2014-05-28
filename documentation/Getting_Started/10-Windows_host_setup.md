@@ -66,7 +66,7 @@ The next step is to set up your environment so that binaries and scripts which w
 3.  Add the Android SDK directories to your `PATH`:
 
         > setx path "%path%;<path to Android SDK>"
-        > setx path "%path%;<path to Android SDK>\sdk\tools
+        > setx path "%path%;<path to Android SDK>\sdk\tools"
         > setx path "%path%;<path to Android SDK>\sdk\platform-tools"
 
     The `tools` and `platform-tools` directories may be in slightly different locations, depending on how you installed the SDK. Amend the above paths appropriately.
