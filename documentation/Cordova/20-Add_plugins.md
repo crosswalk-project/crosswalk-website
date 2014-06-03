@@ -36,8 +36,8 @@ Once installed, add a plugin to your Crosswalk Cordova project as follows:
 
 3.  Add the plugin to the project:
 
-    $ plugman install --platform android --project . \
-        --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4
+        $ plugman install --platform android --project . \
+            --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4
 
     Please refer to [Using Plugman to Manage Plugins](http://cordova.apache.org/docs/en/3.3.0/plugin_ref_plugman.md.html) for more details about the `plugman` command line options.
 
