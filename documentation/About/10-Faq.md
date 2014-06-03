@@ -32,6 +32,24 @@ Yes. Crosswalk itself can be modified, as the code is open source. We actively e
 
 Alternatively, you can add extra capabilities to Crosswalk through its [extension mechanism](#wiki/Crosswalk-Extensions) without having to modify the core code. This enables an application to access platform features via native code (Java on Android, C/C++ on Tizen) and go beyond the boundaries of the web runtime.
 
+### Why won't WebGL work in Crosswalk on my device?
+
+Chromium has a blacklist of GPUs which are know to cause stability and/or conformance problems when running WebGL. Chromium will disable WebGL if running on a device with one of the GPUs in this list.
+
+Crosswalk uses the same blacklist. Consequently, if Crosswalk is running on a device with a blacklisted GPU, WebGL is disabled by default.
+
+For more information about which GPUs are blacklisted and when, see the [Khronos WebGL wiki](http://www.khronos.org/webgl/wiki/BlacklistsAndWhitelists#Chrome).
+
+A work-around is available if you want to test an application using WebGL on a device with a blacklisted GPU: pass the `--ignore-gpu-blacklist` command-line option to the `xwalk` binary. However, you can't do this directly if Crosswalk is embedded in an application as a native library (for example, using Crosswalk Cordova, the Crosswalk Android packaging tool, or using the embedding API).
+
+In these situations, you can use a custom command-line by adding a file called `xwalk-command-line` to the root directory of your application. The file should contain a single line, representing the `xwalk` command line to run:
+
+    xwalk --ignore-gpu-blacklist
+
+(Other command-line options can be added via the same mechanism.)
+
+Note that enabling WebGL on platforms with blacklisted GPUs could result in the application (or the whole device) freezing or crashing, so it is not recommended for production applications.
+
 ### Who is using Crosswalk?
 
 Crosswalk is still a young project. However, the last couple of months have seen some impressive take-up, with dozens of Crosswalk-based applications (mostly games) making it into app stores.
