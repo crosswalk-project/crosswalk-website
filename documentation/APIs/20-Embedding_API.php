@@ -12,7 +12,7 @@ $sample_url = $base_url . 'reference/org/xwalk/core/XWalkView.html';
 <p>The following resources covering the embedding API are available:</p>
 
 <ul>
-  <li><a href="#wiki/How-to-use-Crosswalk-Embedding-API-on-Android">Getting started with the embedding API</a></li>
+  <li><a href="#documentation/embedding_crosswalk">Getting started with the embedding API</a></li>
   <li><a href="<?php echo $docs_url ?>" target="_blank">Javadocs</a></li>
   <li><a href="<?php echo $sample_url ?>" target="_blank">Sample code</a></li>
   <li><a href="https://github.com/crosswalk-project/crosswalk/tree/master/runtime/android/sample" target="_blank">Sample project</a></li>
