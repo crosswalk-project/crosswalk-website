@@ -201,7 +201,7 @@ Once you have the application working with standard Cordova, you can move on to 
 
     Note the presence of the "Crosswalk/N.N.N.N" string, which indicates the application is using Crosswalk.
 
-#### Multi-architecture packages
+### Multi-architecture packages
 
 One down-side of the current Crosswalk Cordova is that it is not architecture-agnostic: by default, the method for building a Crosswalk Cordova application (above) produces a package for a single architecture.
 
@@ -335,6 +335,14 @@ These steps assume that you created your project using the Cordova command line 
   </li>
 
 </ol>
+
+## Adding plugins to a migrated project
+
+To add plugins to a project you've migrated to Crosswalk, use the standard Cordova `cordova plugin` command. For example, to add the device motion plugin, from the top-level project directory call:
+
+    cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4
+
+This will put the required files in the `platforms/android` directory and register the plugin with the project.
 
 ## Acknowledgements
 
