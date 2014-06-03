@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/15 Cordova';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/15 Cordova</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Cordova</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/15-Cordova"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/15-Cordova"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p><a href="http://cordova.apache.org/">Cordova</a> is a set of device APIs for accessing device capabilities (e.g. file storage, accelerometer) from JavaScript. Browsers typically prevent access to such APIs, as they could introduce serious security risks on the open web. But secure access to those capabilities can be granted to Cordova applications, which are installed directly on a device (Crosswalk uses the same model).</p>
+
+<p>Cordova applications are built as platform-specific packages, with a runtime "wrapper" to load the embedded web application. On Android, the wrapper is based on the <a href="http://developer.android.com/guide/webapps/webview.html">WebView</a>, which loads the web application files (HTML, CSS and JavaScript). Unfortunately, the stock WebView has <a href="https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android">some limitations</a>, one of the most notable being lack of support for WebGL. This means it's not possible to run WebGL applications with Cordova on Android.</p>
+
+<p>Unlike Cordova, Crosswalk doesn't use the Android WebView: its features are more closely aligned with Chrome on Android (as Crosswalk and Chrome share the same ancestor, <a href="http://www.chromium.org/">Chromium</a>). This means that Crosswalk <em>does</em> support WebGL on Android, as well as the wealth of other APIs available in Chrome on Android. In addition, Crosswalk goes beyond Chrome, providing support for cutting edge features such as <a href="#documentation/samples/simd">SIMD</a> (x86 only) and <a href="#wiki/Presentation-api-manual">the Presentation API</a>. But Crosswalk on its own doesn't support the Cordova APIs.</p>
+
+<h2>Crosswalk + Cordova<a class="anchor" id="Crosswalk-+-Cordova" href="#Crosswalk-+-Cordova"></a></h2>
+
+<p>There is a way to get the best of both Crosswalk and Cordova by using <em>Crosswalk Cordova for Android</em>. This provides Cordova's APIs plus additional APIs available in Crosswalk (WebGL, SIMD, Presentation API etc.). The packages available <a href="#documentation/downloads">for download</a> provide tools for creating Cordova Android applications with Crosswalk as the web view. Such applications will work on Android version 4.0 or later.</p>
+
+<p>The intention is for Crosswalk Cordova for Android to be as compatible as possible with <a href="https://github.com/apache/cordova-android">Cordova Android</a>. Consequently, the <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Cordova Android Platform Guide</a> is a good guide to getting started with Crosswalk Cordova for Android. Alternatively, see the <a href="#documentation/cordova/develop_an_application">HelloWorld example</a> for a more Crosswalk-focused overview.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-05-16 10:20:54</p>
+  <p>
+    <a id="delete-link" href="/documentation/15-Cordova" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/15-Cordova">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
