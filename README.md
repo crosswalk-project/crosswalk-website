@@ -18,6 +18,10 @@ Prepared by Chloi Inc. for Troy Allison of Intel.
 - Assessment of competition
 -- SWOT analysis
 
+## Audience
+
+The audience crosswalk will focus on should application developers that use the Crosswalk tool.
+
 ## Opportunities
 
 ## Report
