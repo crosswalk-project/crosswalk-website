@@ -40,15 +40,25 @@ Crosswalk uses the same blacklist. Consequently, if Crosswalk is running on a de
 
 For more information about which GPUs are blacklisted and when, see the [Khronos WebGL wiki](http://www.khronos.org/webgl/wiki/BlacklistsAndWhitelists#Chrome).
 
-A work-around is available if you want to test an application using WebGL on a device with a blacklisted GPU: pass the `--ignore-gpu-blacklist` command-line option to the `xwalk` binary. However, you can't do this directly if Crosswalk is embedded in an application as a native library (for example, using Crosswalk Cordova, the Crosswalk Android packaging tool, or using the embedding API).
+### Can I force Crosswalk to enable WebGL?
 
-In these situations, you can use a custom command-line by adding a file called `xwalk-command-line` to the root directory of your application. The file should contain a single line, representing the `xwalk` command line to run:
+A work-around is available if you want to test an application using WebGL on a device with a [blacklisted GPU](#Why-won't-WebGL-work-in-Crosswalk-on-my-device?): pass the `--ignore-gpu-blacklist` command-line option to the `xwalk` binary. However, you can't do this directly if Crosswalk is embedded in an application as a native library (for example, using Crosswalk Cordova, the Crosswalk Android packaging tool, or using the embedding API).
+
+In these situations, you can use a custom command-line by adding a file called `xwalk-command-line` to the root directory of your application. (NB this only works for Crosswalk 6 and above.) The file should contain a single line, representing the `xwalk` command line to run:
 
     xwalk --ignore-gpu-blacklist
 
 (Other command-line options can be added via the same mechanism.)
 
+Alternatively, you can set a custom command line when building an Android package with the [`make_apk.py` script](#documentation/getting_started/run_on_android):
+
+    make_apk.py --manifest=mygame/manifest.json --xwalk-command-line="--ignore-gpu-blacklist"
+
 Note that enabling WebGL on platforms with blacklisted GPUs could result in the application (or the whole device) freezing or crashing, so it is not recommended for production applications.
+
+### Why is canvas performance poor on my device?
+
+If a device has a [blacklisted GPU](#Why-won't-WebGL-work-in-Crosswalk-on-my-device?), canvas elements are not hardware accelerated. This can result in poor performance. [Forcing Crosswalk to ignore the GPU blacklist](#Can-I-force-Crosswalk-to-enable-WebGL?) can improve performance, but may cause your application to become unstable.
 
 ### Who is using Crosswalk?
 
