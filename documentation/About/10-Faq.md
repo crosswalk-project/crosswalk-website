@@ -52,7 +52,8 @@ In these situations, you can use a custom command-line by adding a file called `
 
 Alternatively, you can set a custom command line when building an Android package with the [`make_apk.py` script](#documentation/getting_started/run_on_android):
 
-    make_apk.py --manifest=mygame/manifest.json --xwalk-command-line="--ignore-gpu-blacklist"
+    make_apk.py --manifest=mygame/manifest.json \
+      --xwalk-command-line="--ignore-gpu-blacklist"
 
 Note that enabling WebGL on platforms with blacklisted GPUs could result in the application (or the whole device) freezing or crashing, so it is not recommended for production applications.
 
