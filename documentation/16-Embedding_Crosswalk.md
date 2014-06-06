@@ -2,18 +2,18 @@
 
 The Crosswalk embedding API enables you to embed the Crosswalk runtime in an Android application. You can then load a web page (or whole web application) into the embedded runtime, similar to how you might with an Android [WebView](http://developer.android.com/guide/webapps/webview.html).
 
-Using the embedding API is only recommended for cases where you have a substantial amount of Java code in your application, but want to write the UI (or parts of the UI) using web technologies. If you just need a runtime wrapper for a web application, there are two simpler options for deploying this to Android with Crosswalk:
+Using the embedding API is only recommended for cases where you have a substantial amount of Java code in your application, but want to write the UI (or parts of the UI) using web technologies. If you just need a runtime wrapper for a web application, there are two simpler options for deploying to Android with Crosswalk:
 
-*   Use the default Crosswalk packaging tools to turn your web application into an Android package.
-*   Use Cordova with Crosswalk: that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.
+*   [Use the default Crosswalk packaging tools](#documentation/getting_started/run_on_android) to generate an Android package for your web application.
+*   [Use Cordova with Crosswalk](#documentation/cordova): that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.
 
-If you do decide to use the embedding API, follow the tutorial below to get familiar with it.
+If you do decide to use the embedding API, follow the instructions below which explain how to use it.
 
 ## Creating an application with the embedding API
 
-In this tutorial, you'll learn how to create an Android application with an embedded Crosswalk webview. You will first embed a toy web application, then move on to embedding a more complex, realistic one.
+In this tutorial, you'll learn how to create an Android application with an embedded Crosswalk webview.
 
-To follow the tutorial, you'll need to be familiar with Android development. Because Android applications are typically developed using [ADT](http://developer.android.com/tools/sdk/eclipse-adt.html), this tutorial also uses that tool; so familiarity with that will be helpful, too.
+To follow the tutorial, you'll need to be familiar with Android development. Because Android applications are typically developed using [ADT](http://developer.android.com/tools/sdk/eclipse-adt.html), this tutorial also uses that tool; so familiarity with that will be useful.
 
 The tutorial steps were tested on Linux (Fedora 20), but should be adaptable to other platforms and operating systems (e.g. Windows).
 
@@ -21,29 +21,27 @@ The tutorial steps were tested on Linux (Fedora 20), but should be adaptable to 
 
 ### Set up the host and target
 
-Before you use the embedding API, ensure that you have set up your host environment for Android development ([Windows](#documentation/getting_started/windows_host_setup), [Linux](#documentation/getting_started/linux_host_setup)).
+Before you use the embedding API, ensure that you have [set up your host environment for Android development](#documentation/getting_started/linux_host_setup).
 
 You will also need to set up an Android target to deploy the application to, as described on the [Android target setup](#documentation/getting_started/android_target_setup) page.
 
-As this tutorial uses ADT, ensure that you have [installed the necessary ADT components](http://developer.android.com/tools/sdk/eclipse-adt.html) to make it available on your host.
+As this tutorial uses ADT, ensure that you have [installed the necessary ADT components](http://developer.android.com/tools/sdk/eclipse-adt.html) for your host.
 
 ### Download the Crosswalk webview bundle
 
-On the host (where you're writing the code), download the Crosswalk webview bundle. This contains the libraries and supporting tools for embedding Crosswalk in an application.
+On the host (the machine you're writing the code), download the Crosswalk webview bundle. This contains the libraries and supporting tools for embedding Crosswalk in an application.
 
-For example, to get the latest beta Crosswalk webview for x86 architecture (the webview is architecture-specific):
+For example, to get the latest beta Crosswalk webview for x86 architecture (at the time of writing, there are no stable releases of the webview):
 
     $ wget https://download.01.org/crosswalk/releases/crosswalk/android/beta/${XWALK-BETA-ANDROID-X86}/x86/crosswalk-cordova-${XWALK-BETA-ANDROID-X86}-x86.zip
 
-(At the time of writing, there are no stable releases of the Crosswalk webview bundle.)
+Note that the webview is architecture specific, so you will need a different package if you are deploying to ARM. See [this page](#documentation/downloads) for a complete list of downloads.
 
 Unzip the downloaded `.zip` file.
 
-See [this page](#documentation/downloads) for a complete list of downloads.
-
 ### Import the Crosswalk webview project into ADT
 
-The next step is to create a project in ADT from the unpacked Crosswalk webview bundle. Your own application projects can then reference this project to build against the Crosswalk embedding API.
+The next step is to create a project in ADT by importing the unpacked Crosswalk webview bundle. Your own application projects can then reference this project to build against the Crosswalk embedding API.
 
 To set up this project:
 
@@ -206,7 +204,7 @@ You should now be able to run your application, as per usual: right click on the
 
 In the previous section, you loaded a remote website into the webview, demonstrating a simple way to "wrap" an Android application around a website. However, you may want to distribute a web application as part of an Android application, rather than host it on a website. In this case, you need to load a local resource into the Crosswalk webview instead.
 
-To include a local web resources, you need to place the web assets inside the Android application and distribute them as part of the application package (`.apk` file).
+To include local web resources, you need to place the web assets inside the Android application and distribute them as part of the application package (`.apk` file).
 
 Follow the steps below to add some web assets and bundle them with your application package:
 
@@ -268,7 +266,7 @@ Follow the steps below to add some web assets and bundle them with your applicat
     <a href="page2.html">Page 2</a>
     ```
 
-    Similarly, any CSS or media files (audio, video) can also be added inside the `assets/` directory and referred to as per usual, e.g.
+    Similarly, any CSS or media files (audio, video) can be added inside the `assets/` directory and referred to as per usual, for example:
 
     ```
     <!--
@@ -328,4 +326,4 @@ To debug your application:
 
 ## Further information
 
-Further resources to assist you in working with the embedding API are listed on the [embedding API docs page](#documentation/apis/embedding_api).
+Further resourcesabout working with the embedding API are listed on the [embedding API docs page](#documentation/apis/embedding_api).
