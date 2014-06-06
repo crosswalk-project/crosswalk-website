@@ -34,7 +34,7 @@
 
     <!-- special case for Android, which had no manifest support in Crosswalk 1 -->
     <p data-crosswalk-versions="1" data-crosswalk-platforms="android">
-      Version 1 of Crosswalk for Android did not support manifests.
+      Version 1 of Crosswalk did not support Android.
     </p>
 
     <ul>
@@ -182,7 +182,7 @@
     </h2>
 
     <p data-crosswalk-versions="1" data-crosswalk-platforms="android">
-      Version 1 of Crosswalk for Android did not support manifests.
+      Version 1 of Crosswalk did not support Android.
     </p>
 
     <!-- TIZEN MANIFEST EXAMPLES -->
