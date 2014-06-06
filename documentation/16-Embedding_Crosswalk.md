@@ -286,68 +286,6 @@ Follow the steps below to add some web assets and bundle them with your applicat
     }
     ```
 
-### Load a whole application (HexGL)
-
-It's simple enough to load an HTML page in the most basic of webviews. However, the Crosswalk embedding API goes beyond that, providing a full-featured webview that is capable of supporting complex modern applications (which just happen to be built with HTML, JavaScript and CSS).
-
-As a demonstration, this section explains how to run a full-fledged HTML5/WebGL game, [HexGL](http://hexgl.bkcore.com/), inside an embedded Crosswalk webview.
-
-Follow these steps to modify your project so it can run HexGL:
-
-1.  Replace the content of the `assets/` directory with the HexGL source code.
-
-    First, find your project on your hard and remove the `assets/` directory.
-
-    Then use `git` to clone HexGL to replace that directory:
-
-        $ git clone https://github.com/BKcore/HexGL.git assets
-
-    If you don't have `git`, you can [download a zip file containing HexGL](https://github.com/BKcore/HexGL/archive/master.zip) instead. Unzip this and rename the resulting folder to "assets", then place it inside your project, replacing the old `assets/` directory.
-
-2.  Next, make the application run in fullscreen with no title bar (a better gaming experience) by editing the project style configuration files.
-
-    Edit `res/values/styles.xml` and change the `<style>` element to:
-
-    ```
-    <style name="AppBaseTheme"
-           parent="android:Theme.NoTitleBar.Fullscreen">
-    ```
-
-    Edit `res/values-v11/styles.xml` and change the `<style>` element to:
-
-    ```
-    <style name="AppBaseTheme"
-           parent="android:Theme.NoTitleBar.Fullscreen">
-    ```
-
-    Edit `res/values-v14/styles.xml` and change the `<style>` element to:
-
-    ```
-    <style name="AppBaseTheme"
-           parent="android:Theme.NoTitleBar.Fullscreen">
-    ```
-
-3.  Finally, force the game to run in landscape orientation. Edit `AndroidManifest.xml` so that the opening tag of the `<activity>` element looks like this:
-
-    ```
-    <activity
-      android:name="org.crosswalkproject.xwalkembed.MainActivity"
-      android:label="@string/app_name"
-      android:screenOrientation="landscape">
-    ```
-
-4.  Run the application again (right click on the project in the *Package Explorer*, then select *Run As* > *Android Application*).
-
-Here's a screenshot of the game running inside an embedded Crosswalk runtime, on an x86 ZTE Geek (quality set to "HIGH"):
-
-<img src="assets/hexgl-embedding-api.png">
-
-### HexGL on platforms with blacklisted GPUs
-
-On some Android devices, you may find that HexGL reports that "WebGL is not supported!". This may be because the [GPU](http://en.wikipedia.org/wiki/Graphics_processing_unit) on the device is blacklisted, and Crosswalk has consequently disabled WebGL.
-
-To test on a device with a blacklisted GPU, see [this workaround in the FAQ](#documentation/about/faq/Why-won't-WebGL-work-in-Crosswalk-on-my-device?). However, be aware that WebGL applications still may not work, even if you ignore the blacklisting.
-
 ### Debugging
 
 To enable debugging of the web application running in an embedded Crosswalk webview, modify the `MainActivity.java` file to look like this:
@@ -391,7 +329,3 @@ To debug your application:
 ## Further information
 
 Further resources to assist you in working with the embedding API are listed on the [embedding API docs page](#documentation/apis/embedding_api).
-
-## Acknowledgements
-
-[HexGL](http://hexgl.bkcore.com/) is maintained by [Thibaut Despoulain](https://github.com/BKcore). It is released under the [Creative Commons Attribution-NonCommercial 3.0 Unported License](http://creativecommons.org/licenses/by-nc/3.0/).
