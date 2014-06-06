@@ -2,7 +2,8 @@
   "app.launch.local_path": {
     "name": "app.launch.local_path",
     "tizen": {
-      "versions": "1+"
+      "versions": "1+",
+      "deprecated": "7+"
     },
     "android": {
       "versions": "2+"
@@ -42,7 +43,7 @@
   },
   "display": {
     "name": "display",
-    "android": {
+    "tizen": {
       "versions": "7+"
     }
   },
