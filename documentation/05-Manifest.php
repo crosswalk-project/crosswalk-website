@@ -127,10 +127,10 @@
 
   <div data-role="manifest-permissions" data-crosswalk-versions="4+"
        data-crosswalk-platforms="android">
-    <h2><a name="manifest-permissions">
+    <h2><a name="manifest-permissions"></a>
       Permissions for <span data-role="crosswalk-version"></span>
       on <span data-role="crosswalk-platform"></span>
-    </a></h2>
+    </h2>
 
     <p>The following values (in bold) can be used in the <strong>permissions</strong> list in the manifest:</p>
 
