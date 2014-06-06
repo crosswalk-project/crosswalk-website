@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/12 Android_target_setup';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/12 Android_target_setup</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Android target setup</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/12-Android_target_setup"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/12-Android_target_setup"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Crosswalk applications will run on either a hardware or emulated Android device.</p>
+
+<p>Any version of Android from 4.0 or higher should work.</p>
+
+<h2>Android device<a class="anchor" id="Android-device" href="#Android-device"></a></h2>
+
+<p>To deploy a Crosswalk application to an Android device, you need a working connection between it and your host computer. The simplest way is to connect them together via a USB cable.</p>
+
+<p>To test whether the device has been detected, run the following command from a shell:</p>
+
+<pre><code>&gt; adb devices
+List of devices attached
+Medfield532DC30E    device
+</code></pre>
+
+<p>If the list of devices attached is empty, you may need to change the developer options on your device to enable USB debugging (<em>Settings</em> &gt; <em>Developer options</em> &gt; turn on <em>USB debugging</em>).</p>
+
+<h3>Fixing device access issues on Linux<a class="anchor" id="Fixing-device-access-issues-on-Linux" href="#Fixing-device-access-issues-on-Linux"></a></h3>
+
+<p>In some cases, running <code>adb</code> as a non-root user on Linux may result in your devices not being detected:</p>
+
+<pre><code>&gt; adb devices
+List of devices attached
+</code></pre>
+
+<p>or detected with insufficient permissions:</p>
+
+<pre><code>&gt; adb devices
+List of devices attached
+????????????    no permissions
+</code></pre>
+
+<p>(The latter seems to happen with older Android 4.0.* versions.)</p>
+
+<p>In both cases, a work-around is to run the <code>adb</code> server as root:</p>
+
+<pre><code># kill any existing server instances
+&gt; sudo &lt;path to Android SDK&gt;/platform-tools/adb kill-server
+
+# start the adb server as root
+&gt; sudo &lt;path to Android SDK&gt;/platform-tools/adb start-server
+
+# check for devices (non-root user should be ok now)
+&gt; adb devices
+List of devices attached
+HT23KW103989    device
+</code></pre>
+
+<h2>Android emulator<a class="anchor" id="Android-emulator" href="#Android-emulator"></a></h2>
+
+<p>To test your application on Android platforms you don't own, the next best option is to use emulated devices. You can install these via the Android SDK.</p>
+
+<ol><li>
+  <p>Start the Android SDK Manager via the `android` command on Linux or by running `SDK Manager.exe` on Windows.</p>
+</li>
+
+<li>
+  <p>In the SDK Manager window, check the following box in the list:</p>
+
+<pre>
+[ ] Android 4.3 (API 18)
+    [x] Intel x86 Atom System Image
+</pre>
+
+  <p>If you want to test with other Android API versions, install the corresponding x86 system images.</p>
+</li>
+
+<li>
+  <p>On <strong>Windows only</strong>, use the SDK Manager to download HAXM as well:</p>
+
+<pre>
+[ ] Extras
+  [x] Intel x86 Emulator Accelerator (HAXM)
+</pre>
+
+  <p>This provides better graphics performance for emulated x86 devices running on Windows.</p>
+
+  <p>Note that the SDK Manager downloads HAXM, but does not install it, so you need to find and install it yourself. The file you need is called `IntelHaxm.exe`.</p>
+</li>
+
+<li>
+  <p>After the selected packages are installed, set up an emulator image by running the AVD Manager:</p>
+
+<pre>
+&gt; android avd
+</pre>
+</li>
+
+<li>
+  <p>Create a new image called <strong>Tablet</strong> and select the following options:</p>
+
+  <ul><li><em>Target</em>: <strong>Android 4.3</strong></li>
+    <li><em>CPU/ABI</em>: <strong>Intel Atom (x86)</strong> (if you only downloaded an x86 image, this will be selected automatically)</li>
+    <li><strong>Use Host GPU</strong> (check the box)</li>
+  </ul><p>The configuration should look something like this:</p>
+
+  <p><img src="assets/emulator.png" /></p>
+</li>
+
+<li>
+  <p>Launch the new emulator image from a shell:</p>
+
+<pre>
+&gt; emulator -avd Tablet
+</pre>
+
+  <p>You should be able to connect to any running images using adb, as for a hardware device:</p>
+
+<pre>
+$ adb devices
+List of devices attached
+emulator-5554   device
+</pre>
+</li>
+
+</ol><p>The emulated Android device is now set up and ready to be used as a deployment target.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-14 10:50:17</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/12-Android_target_setup" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/12-Android_target_setup">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
