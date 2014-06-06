@@ -2,7 +2,7 @@
 
 <p>???preamble about how manifest has changed, what it does???</p>
 
-<p>Note that some of the manifest field descriptions are based on the <a href="http://w3c.github.io/manifest/">W3C Manifest for Web Application draft specification</a>, where they are compatible with that specification. A link is also provided to the appropriate place in the specification where possible. You may want to read the full specification to understand the nuances of how the field is intended to work.</p>
+<p>Note that some of the manifest field descriptions are based on the <a href="http://w3c.github.io/manifest/">W3C Manifest for Web Application draft specification</a>, where they are compatible with it. You may want to read the full specification to understand the nuances of how the field is intended to work.</p>
 
 <div data-role="manifest-description" class="hidden">
   <div data-role="manifest-filter">
@@ -119,7 +119,7 @@
       <li data-field="xwalk_hosts">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines host URL patterns to which the application can make Ajax requests, allowing <a href="https://developer.chrome.com/extensions/xhr">Cross-Origin Ajax requests</a> (using a mechanism similar to Chrome's).</p>
-        <p><a href="#documentation/manifest/xwalk_hosts">Read more...</a></p>
+        <p><a href="#documentation/manifest/network_access">Read more...</a></p>
       </li>
     </ul>
 
