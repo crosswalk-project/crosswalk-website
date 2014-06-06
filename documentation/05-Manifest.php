@@ -2,6 +2,8 @@
 
 <p>???preamble about how manifest has changed, what it does???</p>
 
+<p>Note that some of the manifest field descriptions are based on the <a href="http://w3c.github.io/manifest/">W3C Manifest for Web Application draft specification</a>, where they are compatible with that specification. A link is also provided to the appropriate place in the specification where possible. You may want to read the full specification to understand the nuances of how the field is intended to work.</p>
+
 <div data-role="manifest-description" class="hidden">
   <div data-role="manifest-filter">
     <p>
@@ -38,56 +40,85 @@
     <ul>
       <li data-field="app.launch.local_path">
         <p><strong data-role="field-name"></strong></p>
+        <p>Specifies an HTML file to use as the entry point for running the application.</p>
         <p><a href="#documentation/manifest/entry_points">Read more...</a></p>
       </li>
 
       <li data-field="app.main.scripts">
         <p><strong data-role="field-name"></strong></p>
+        <p>Specifies an array of JavaScript files to load as the application entry point. A main document will be automatically generated as the context for the scripts.</p>
         <p><a href="#documentation/manifest/entry_points">Read more...</a></p>
       </li>
 
       <li data-field="app.main.source">
         <p><strong data-role="field-name"></strong></p>
+        <p>Specifies an HTML file to use as the entry point for running the application. This has the same effect as the <strong>app.launch.local_path</strong> field.</p>
         <p><a href="#documentation/manifest/entry_points">Read more...</a></p>
       </li>
 
       <li data-field="content_security_policy">
         <p><strong data-role="field-name"></strong></p>
+        <p>This represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">CSP</a> policy which should be enforced for the application. CSP is disabled if this field is not set.</p>
         <p><a href="#documentation/manifest/content_security_policy">Read more...</a></p>
       </li>
 
       <li data-field="description">
         <p><strong data-role="field-name"></strong></p>
-        <p><a href="#documentation/manifest/description">Read more...</a></p>
+        <p>Free-form text describing the application.</p>
+      </li>
+
+      <li data-field="display">
+        <p><strong data-role="field-name"></strong></p>
+        <p>The preferred display mode for the application (e.g. "fullscreen", "standalone").</p>
+        <p>
+          <a href="http://w3c.github.io/manifest/#display-member">W3C spec</a> |
+          <a href="#documentation/manifest/display">Read more...</a>
+        </p>
       </li>
 
       <li data-field="icons.128">
         <p><strong data-role="field-name"></strong></p>
+        <p>Graphics files to use for the application icon at different resolutions.</p>
         <p><a href="#documentation/manifest/icons">Read more...</a></p>
       </li>
 
       <li data-field="launch_screen">
         <p><strong data-role="field-name"></strong></p>
+        <p>Defines a static user interface to be shown immediately after the application is launched.</p>
         <p><a href="#documentation/manifest/launch_screen">Read more...</a></p>
       </li>
 
       <li data-field="name">
         <p><strong data-role="field-name"></strong></p>
-        <p><a href="#documentation/manifest/name">Read more...</a></p>
+        <p>The name of the application as it is usually displayed to a user.</p>
+        <p>
+          <a href="http://w3c.github.io/manifest/#name-member">W3C spec</a>
+        </p>
       </li>
 
       <li data-field="permissions">
         <p><strong data-role="field-name"></strong></p>
+        <p>Defines permissions the application needs so it can access platform features. <a href="#manifest-permissions">See below</a> for details of the available permissions.</p>
         <p><a href="#documentation/manifest/permissions">Read more...</a></p>
+      </li>
+
+      <li data-field="start_url">
+        <p><strong data-role="field-name"></strong></p>
+        <p>The URL to load when the user launches the web application.</p>
+        <p>
+          <a href="http://w3c.github.io/manifest/#start_url-member">W3C spec</a> |
+          <a href="#documentation/manifest/entry_points">Read more...</a>
+        </p>
       </li>
 
       <li data-field="version">
         <p><strong data-role="field-name"></strong></p>
-        <p><a href="#documentation/manifest/version">Read more...</a></p>
+        <p>A string containing one to four dot-separated integers identifying the application version; for example: "2", "1.2", "1.3.0", "4.0.0.11". A couple of rules apply to the integers: they must be between 0 and 65535, inclusive; and you can't prefix any non-zero values with "0" (e.g. "01.1" is invalid).</p>
       </li>
 
       <li data-field="xwalk_hosts">
         <p><strong data-role="field-name"></strong></p>
+        <p>Defines host URL patterns to which the application can make Ajax requests, allowing <a href="https://developer.chrome.com/extensions/xhr">Cross-Origin Ajax requests</a> (using a mechanism similar to Chrome's).</p>
         <p><a href="#documentation/manifest/xwalk_hosts">Read more...</a></p>
       </li>
     </ul>
@@ -96,10 +127,52 @@
 
   <div data-role="manifest-permissions" data-crosswalk-versions="4+"
        data-crosswalk-platforms="android">
-    <h2>
+    <h2><a name="manifest-permissions">
       Permissions for <span data-role="crosswalk-version"></span>
       on <span data-role="crosswalk-platform"></span>
-    </h2>
+    </a></h2>
+
+    <p>The following values (in bold) can be used in the <strong>permissions</strong> list in the manifest:</p>
+
+    <ul>
+
+      <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
+        <p><strong>Contacts</strong>: gives permission to use the <em>Contacts Manager</em> API in Crosswalk.</p>
+      </li>
+
+      <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
+        <p><strong>DeviceCapabilities</strong>: gives permission to use the <em>Device Capabilities</em> API in Crosswalk.</p>
+      </li>
+
+      <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
+        <p><strong>Fullscreen</strong>: gives permission to use the <em>Fullscreen</em> API in Crosswalk.</p>
+      </li>
+
+      <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
+        <p><strong>Geolocation</strong>: gives permission to use the <em>Geolocation</em> API in Crosswalk.</p>
+      </li>
+
+      <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
+        <p><strong>Messaging</strong>: gives permission to use the <em>Messaging</em> API in Crosswalk.</p>
+      </li>
+
+      <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
+        <p><strong>Presentation</strong>: gives permission to use the <em>Presentation</em> API in Crosswalk.</p>
+      </li>
+
+      <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
+        <p><strong>RawSockets</strong>: gives permission to use the <em>Raw Sockets</em> API in Crosswalk.</p>
+      </li>
+
+      <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
+        <p><strong>ScreenOrientation</strong>: gives permission to use the <em>ScreenOrientation</em> API in Crosswalk.</p>
+      </li>
+
+      <li data-crosswalk-versions="5+" data-crosswalk-platforms="android">
+        <p><strong>Vibration</strong>: gives permission to use the <em>Vibration</em> API in Crosswalk.</p>
+      </li>
+
+    </ul>
   </div>
 
   <div data-role="manifest-example">
@@ -320,8 +393,13 @@
   },
   "permissions": [
     "Contacts",
+    "DeviceCapabilities",
+    "Fullscreen",
     "Geolocation",
-    "Messaging"
+    "Messaging",
+    "Presentation",
+    "RawSockets",
+    "ScreenOrientation"
   ]
 }
       </pre>
@@ -343,8 +421,14 @@
   },
   "permissions": [
     "Contacts",
+    "DeviceCapabilities",
+    "Fullscreen",
     "Geolocation",
-    "Messaging"
+    "Messaging",
+    "Presentation",
+    "RawSockets",
+    "ScreenOrientation",
+    "Vibration"
   ],
   "launch_screen": {
     "ready_when": "custom",
@@ -376,8 +460,14 @@
   },
   "permissions": [
     "Contacts",
+    "DeviceCapabilities",
+    "Fullscreen",
     "Geolocation",
-    "Messaging"
+    "Messaging",
+    "Presentation",
+    "RawSockets",
+    "ScreenOrientation",
+    "Vibration"
   ],
   "launch_screen": {
     "ready_when": "custom",
@@ -412,8 +502,14 @@
   },
   "permissions": [
     "Contacts",
+    "DeviceCapabilities",
+    "Fullscreen",
     "Geolocation",
-    "Messaging"
+    "Messaging",
+    "Presentation",
+    "RawSockets",
+    "ScreenOrientation",
+    "Vibration"
   ],
   "launch_screen": {
     "ready_when": "custom",
@@ -563,12 +659,12 @@ ManifestDisplay.prototype.filter = function () {
 
       deprecatedAt = this.manifestFields[field][crosswalkPlatform].deprecated;
 
-      // any deprecated fields are in grey and have (deprecated) appended
+      // any deprecated fields are in grey and have " (deprecated)" appended
       if (deprecatedAt && checkVersion(crosswalkVersion, deprecatedAt)) {
         text = '<span style="color:gray;">' + text + ' (deprecated)</span>';
       }
 
-      nameElt = elts[i].querySelector('[data-role="field-name"]')
+      nameElt = elts[i].querySelector('[data-role="field-name"]');
 
       if (nameElt) {
         nameElt.innerHTML = text;
@@ -603,10 +699,10 @@ ManifestDisplay.prototype.filter = function () {
   for (i = 0; i < elts.length; i++) {
     if (checkVersion(crosswalkVersion, elts[i].getAttribute('data-crosswalk-versions')) &&
         checkPlatform(crosswalkPlatform, elts[i].getAttribute('data-crosswalk-platforms'))) {
-      elts[i].style.display = 'block';
+      elts[i].classList.remove('hidden');
     }
     else {
-      elts[i].style.display = 'none';
+      elts[i].classList.add('hidden');
     }
   }
 };
@@ -627,7 +723,7 @@ ManifestDisplay.prototype.selectCrosswalkPlatform = function (platform) {
 
 // MAIN
 // asyncJsonGet() is defined in utils.js
-asyncJsonGet('manifest-fields.json', function (err, manifestFields) {
+asyncJsonGet('documentation/manifest-fields.json', function (err, manifestFields) {
   var manifestDiv = document.querySelector('[data-role="manifest-description"]');
   manifestDiv.classList.remove('hidden');
 
