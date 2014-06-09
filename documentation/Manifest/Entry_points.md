@@ -1,3 +1,5 @@
+# Application entry points
+
 start_url
 
 app.launch.local_path

@@ -1,8 +1,12 @@
 <h1>Crosswalk manifest</h1>
 
-<p>???preamble about how manifest has changed, what it does???</p>
+<p>Crosswalk applications can use an optional <code>manifest.json</code> file which specifies some aspects of how an application should behave and present itself.</p>
 
-<p>Note that some of the manifest field descriptions are based on the <a href="http://w3c.github.io/manifest/">W3C Manifest for Web Application draft specification</a>, where they are compatible with it. You may want to read the full specification to understand the nuances of how the field is intended to work.</p>
+<p>The current Crosswalk manifest implementation is still under heavy development, but the eventual aim is for it to adhere to, influence, and act as a reference implementation of the <a href="http://w3c.github.io/manifest/">W3C Manifest for Web Application specification</a>. Once this is achieved, a Crosswalk application + manifest should behave consistently (within the scope of the specification) across all runtimes which implement it.</p>
+
+<p>See <a href="#documentation/manifest/using_the_manifest">Using the manifest</a> for details of how to use a <code>manifest.json</code> file with a Crosswalk application.</p>
+
+<p>Use the form below to display the valid manifest fields for each Crosswalk version and platform combination.</p>
 
 <div data-role="manifest-description" class="hidden">
   <div data-role="manifest-filter">
@@ -32,6 +36,8 @@
       on <span data-role="crosswalk-platform"></span>
     </h2>
 
+    <p>Note that some of the manifest field descriptions are based on the <a href="http://w3c.github.io/manifest/">W3C Manifest for Web Application draft specification</a>, where they are compatible with it. You may want to read the full specification to understand the nuances of how these fields are intended to work.</p>
+
     <!-- special case for Android, which had no manifest support in Crosswalk 1 -->
     <p data-crosswalk-versions="1" data-crosswalk-platforms="android">
       Version 1 of Crosswalk did not support Android.
@@ -58,7 +64,7 @@
 
       <li data-field="content_security_policy">
         <p><strong data-role="field-name"></strong></p>
-        <p>This represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">CSP</a> policy which should be enforced for the application. CSP is disabled if this field is not set.</p>
+        <p>Represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">content security policy (CSP)</a> which should be enforced for the application. The CSP restricts the locations from which the application can load resources, to help prevent <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-Site Scripting (XSS)</a> and related attacks. CSP is disabled if this field is not set.</p>
         <p><a href="#documentation/manifest/content_security_policy">Read more...</a></p>
       </li>
 
@@ -79,7 +85,7 @@
       <li data-field="icons.128">
         <p><strong data-role="field-name"></strong></p>
         <p>Graphics files to use for the application icon at different resolutions.</p>
-        <p><a href="#documentation/manifest/icons">Read more...</a></p>
+        <p><a href="#documentation/manifest/icons_(custom)">Read more...</a></p>
       </li>
 
       <li data-field="launch_screen">
@@ -90,7 +96,7 @@
 
       <li data-field="name">
         <p><strong data-role="field-name"></strong></p>
-        <p>The name of the application as it is usually displayed to a user.</p>
+        <p>The name of the application as it is displayed to a user.</p>
         <p>
           <a href="http://w3c.github.io/manifest/#name-member">W3C spec</a>
         </p>
@@ -186,17 +192,15 @@
     </p>
 
     <!-- TIZEN MANIFEST EXAMPLES -->
-    <div data-crosswalk-versions="1" data-crosswalk-platforms="tizen">
+    <div data-crosswalk-versions="1-3" data-crosswalk-platforms="tizen">
+      <p>Using <code>app.launch.local_path</code> to specify the entry point:</p>
+
       <pre>
 {
   "name": "app name",
   "description": "a sample description",
   "version": "1.0.0",
   "app": {
-    "main": {
-      "scripts": ["main.js"],
-      "source": "main.html"
-    },
     "launch": {
       "local_path": "index.html"
     }
@@ -206,9 +210,9 @@
   }
 }
       </pre>
-    </div>
 
-    <div data-crosswalk-versions="2" data-crosswalk-platforms="tizen">
+      <p>Using <code>app.main.scripts</code> to specify the entry point:</p>
+
       <pre>
 {
   "name": "app name",
@@ -216,11 +220,25 @@
   "version": "1.0.0",
   "app": {
     "main": {
-      "scripts": ["main.js"],
+      "scripts": ["main.js"]
+    }
+  },
+  "icons": {
+    "128": "icon128.png"
+  }
+}
+      </pre>
+
+      <p>Using <code>app.main.source</code> to specify the entry point:</p>
+
+      <pre>
+{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "app": {
+    "main": {
       "source": "main.html"
-    },
-    "launch": {
-      "local_path": "index.html"
     }
   },
   "icons": {
@@ -230,29 +248,28 @@
       </pre>
     </div>
 
-    <div data-crosswalk-versions="3" data-crosswalk-platforms="tizen">
+    <div data-crosswalk-versions="4-6" data-crosswalk-platforms="tizen">
+      <p>Using <code>app.launch.local_path</code> to specify the entry point:</p>
+
       <pre>
 {
   "name": "app name",
   "description": "a sample description",
   "version": "1.0.0",
   "app": {
-    "main": {
-      "scripts": ["main.js"],
-      "source": "main.html"
-    },
     "launch": {
       "local_path": "index.html"
     }
   },
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
   }
 }
       </pre>
-    </div>
 
-    <div data-crosswalk-versions="4" data-crosswalk-platforms="tizen">
+      <p>Using <code>app.main.scripts</code> to specify the entry point:</p>
+
       <pre>
 {
   "name": "app name",
@@ -260,22 +277,18 @@
   "version": "1.0.0",
   "app": {
     "main": {
-      "scripts": ["main.js"],
-      "source": "main.html"
-    },
-    "launch": {
-      "local_path": "index.html"
+      "scripts": ["main.js"]
     }
   },
-  "content_security_policy": "script-src 'self'",
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
   }
 }
       </pre>
-    </div>
 
-    <div data-crosswalk-versions="5" data-crosswalk-platforms="tizen">
+      <p>Using <code>app.main.source</code> to specify the entry point:</p>
+
       <pre>
 {
   "name": "app name",
@@ -283,37 +296,10 @@
   "version": "1.0.0",
   "app": {
     "main": {
-      "scripts": ["main.js"],
       "source": "main.html"
-    },
-    "launch": {
-      "local_path": "index.html"
     }
   },
-  "content_security_policy": "script-src 'self'",
-  "icons": {
-    "128": "icon128.png"
-  }
-}
-      </pre>
-    </div>
-
-    <div data-crosswalk-versions="6" data-crosswalk-platforms="tizen">
-      <pre>
-{
-  "name": "app name",
-  "description": "a sample description",
-  "version": "1.0.0",
-  "app": {
-    "main": {
-      "scripts": ["main.js"],
-      "source": "main.html"
-    },
-    "launch": {
-      "local_path": "index.html"
-    }
-  },
-  "content_security_policy": "script-src 'self'",
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
   }
@@ -327,12 +313,9 @@
   "name": "app name",
   "description": "a sample description",
   "version": "1.0.0",
-  "app": {
-    "launch": {
-      "local_path": "index.html"
-    }
-  },
-  "content_security_policy": "script-src 'self'",
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
   }
@@ -436,7 +419,7 @@
        "background_color": "#ff0000",
        "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
        "image": "foo.png 1x, foo-2x.png 2x",
-       "image_border": "30px 40px stretch",
+       "image_border": "30px 40px stretch"
      }
   }
 }
@@ -454,7 +437,7 @@
       "local_path": "index.html"
     }
   },
-  "content_security_policy": "script-src 'self'",
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
   },
@@ -475,7 +458,7 @@
        "background_color": "#ff0000",
        "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
        "image": "foo.png 1x, foo-2x.png 2x",
-       "image_border": "30px 40px stretch",
+       "image_border": "30px 40px stretch"
      }
   },
   "xwalk_hosts": [
@@ -496,7 +479,7 @@
       "local_path": "index.html"
     }
   },
-  "content_security_policy": "script-src 'self'",
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
   },
@@ -517,7 +500,7 @@
        "background_color": "#ff0000",
        "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
        "image": "foo.png 1x, foo-2x.png 2x",
-       "image_border": "30px 40px stretch",
+       "image_border": "30px 40px stretch"
      }
   },
   "xwalk_hosts": [
@@ -723,7 +706,7 @@ ManifestDisplay.prototype.selectCrosswalkPlatform = function (platform) {
 
 // MAIN
 // asyncJsonGet() is defined in utils.js
-asyncJsonGet('documentation/manifest-fields.json', function (err, manifestFields) {
+asyncJsonGet('manifest-fields.json', function (err, manifestFields) {
   var manifestDiv = document.querySelector('[data-role="manifest-description"]');
   manifestDiv.classList.remove('hidden');
 
