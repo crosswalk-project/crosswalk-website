@@ -14,9 +14,9 @@ Most developers subject their app to whatever web view is included with the devi
 
 It’s a little like selling a painting without its frame: will it end up in something appropriate? Distracting? Heavy? Will it be mounted on the wall or sit above the mantle? When you are building a hybrid app without a web view, it’s possible you may get to test for some of these issues, but chances are your app will still exist in a less than ideal frame.
 
-This is unavoidable on iOS, but with Android it is actually possible to bundle your own with the app, mitigating this uncertainty.
-
 ## Opportunity
+
+This is unavoidable on iOS, but with Android it is actually possible to bundle your own with the app, mitigating this uncertainty.
 
 This is the problem the Intel Crosswalk helps to solve, but right now most hybrid app developers are unaware bundling a web view with their application is even an option.
 
@@ -26,13 +26,17 @@ Intel has the opportunity to make Crosswalk the de facto standard for embedding 
 
 > How might we communicate the full value of the Intel Crosswalk project to developers and designers building hybrid apps for Android, and increase awareness of the project among app developers and decision-makers in general?
 
-> How might we make embedding a web view and inherit part of building hybrid apps, with Crosswalk as the obvious or only choice?
+With this project, we’ll suggest an answer to what the full value of Crosswalk is, and propose a possible solution to how to communicate this more effectively. 
+
+> How might we make embedding a web view an inherit part of building hybrid apps, with Crosswalk as the obvious or only choice?
+
+Additionally, it appears that Crosswalk is in a similar position as PhoneGap was early on. PhoneGap was actually competing against native platforms, and web developers perception that they needed to switch to writing native code. Similarly, Crosswalk is really competing against a lack of awareness or understanding that bundling a web view is an option, and against the included native web views themselves.
 
 ## Constraints
 
 - Time on research versus implementation
 - Existing technical debt on site
-- Limitations of the product
+- Unforeseen limitations of the product
 - Requirements for setting up the product
 - Portions of the Crosswalk branding
 - Intel branding
@@ -41,9 +45,10 @@ Intel has the opportunity to make Crosswalk the de facto standard for embedding 
 
 ## What does success look like?
 
-- Increase in social subscribers and visitors. Currently, about 10,000 a month that comes to the Crosswalk site. 
-- There are a only few social followers: 96 Twitter followers, about 100 non-Intel people on the email list
-- The would like to have get at least 1,000 Twitter followers, 1,000 email subscribers.
+- Increase in visitors. Currently, about 10,000 a month that comes to the Crosswalk site.
+- Increase from 100 Twitter followers to at least 1,000
+- Increase from 100 email subscribers to at least 1,000
+- A better understood, documented, and ongoing approach for communicating the value of Intel Crosswalk
 
 ## Audience
 
