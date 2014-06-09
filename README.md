@@ -6,25 +6,95 @@ Prepared by Chloi Inc. for Troy Allison of Intel.
 - Kenneth Ormandy, [kenneth@chloi.io](mailto:kenneth@chloi.io)
 - Jorge Pedret, [jorge@chloi.io](mailto:jorge@chloi.io)
 
-## Problem
+## Introduction
 
-> How might we communicate the full value of the Intel Crosswalk project to developers and designers building hybrid apps for Android, and increase awareness of the project among developers in general?
+Intel aims to lead and advocate for HTML5 development by building HTML5 and hybrid app development tools. Hybrid apps allow developers to build cross-platform applications using HTML, CSS, and JavaScript within a web view: essentially, a full-screen browser without any controls. This is generally done through projects like Cordova, Adobe PhoneGap, or the Intel XDK.
 
-## Approaches and preparations
+Most developers subject their app to whatever web view is included with the device. This means, when loading a hybrid app on older versions of Android, the app and developer are subject to all the bugs and quirks that come with it.
 
-- Assessment of current product
--- High-level review of on-boarding and installation experience
--- Review of current process and work
-- Assessment of competition
--- SWOT analysis
+It’s a little like selling a painting without its frame: will it end up in something appropriate? Distracting? Heavy? Will it be mounted on the wall or sit above the mantle? When you are building a hybrid app without a web view, it’s possible you may get to test for some of these issues, but chances are your app will still exist in a less than ideal frame.
+
+This is unavoidable on iOS, but with Android it is actually possible to bundle your own with the app, mitigating this uncertainty.
+
+## Opportunity
+
+This is the problem the Intel Crosswalk helps to solve, but right now most hybrid app developers are unaware bundling a web view with their application is even an option.
+
+Intel has the opportunity to make Crosswalk the de facto standard for embedding a web view into a hybrid application, in the same way that PhoneGap / Cordova is viewed as the standard for building hybrid apps.
+
+## Objectives
+
+> How might we communicate the full value of the Intel Crosswalk project to developers and designers building hybrid apps for Android, and increase awareness of the project among app developers and decision-makers in general?
+
+> How might we make embedding a web view and inherit part of building hybrid apps, with Crosswalk as the obvious or only choice?
+
+## Constraints
+
+- Time on research versus implementation
+- Existing technical debt on site
+- Limitations of the product
+- Requirements for setting up the product
+- Portions of the Crosswalk branding
+- Intel branding
+- Open source nature
+- Maintaining relationships at the expense of promotional opportunities
+
+## What does success look like?
+
+- Increase in social subscribers and visitors. Currently, about 10,000 a month that comes to the Crosswalk site. 
+- There are a only few social followers: 96 Twitter followers, about 100 non-Intel people on the email list
+- The would like to have get at least 1,000 Twitter followers, 1,000 email subscribers.
 
 ## Audience
 
-The audience crosswalk will focus on should application developers that use the Crosswalk tool.
+Crosswalk’s potential audience is already building hybrid apps, potentially with the Intel XDK but also with PhoneGap, Telerik, or Cordova on its own. They are developers experience with HTML, CSS, and JavaScript, but their skill level and workflow while hybrid apps ranges quite dramatically.
 
-## Opportunities
+Almost all of them understand that Cordova uses a web view, but are unaware that embedding their own web view is an option. Many of them would like to support as many devices as possible, but only test using new browsers and the devices they have.
 
-## Report
+These developers might be using Windows, OS X, or Linux to develop apps for Android, and a wide ranging variety of software to actually develop the app.
+
+## Personas
+
+TODO Persona #1
+TODO Persona #2
+TODO Affected Persona
+
+## Competitive analysis
+
+Crosswalk’s competition isn’t other web views like (the gaming one and the canvas/audio one)—these are its peers. Instead, Crosswalk is competing against a lack of awareness with developers, and against the stock Android browser.
+
+The other web views that might initially appear to be its competition are actually its peers. It will likely be positive for the ecosystem in general if these web views are doing well because there will be a greater expectation that embedding your own web view is the norm.
+
+That said, with this project we’d still like Crosswalk to appear as _the_ option for embedding web views.
+
+TODO Specifics
+
+## Plan
+
+### Crosswalk research
+
+- How does Crosswalk appear now?
+- How is their onboard experience?
+- How it their initial experience, esp. through the website?
+- How might the on boarding experience be improved?
+- What appears to stop people from using it right now?
+- What was valuable about it to you, if anything?
+- What dependencies existed for our personal installs?
+- SWOT analysis
+
+### Iterate
+
+Here, we’ll use what we learned as we research to inform our initial ideas about how Crosswalk’s outward appearance should be improved.
+
+### Execution
+
+Based on the research we’ve done, and the concepts we’ve iterated upon, we’ll implement our initial plan. This will likely take place on the Intel Crosswalk website, but will probably also extend to other parts of Crosswalk’s outward appearance and possibly include suggestions for the product itself.
+
+### Deliverables
+
+- Documented research
+- Improvements we make (Execution section)
+- Some documentation from execution phase (Suggestions on how to continue to use the new message to maintain or improve Crosswalk in an ongoing way)
 
 ## Questions
 
