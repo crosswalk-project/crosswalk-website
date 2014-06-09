@@ -326,4 +326,4 @@ To debug your application:
 
 ## Further information
 
-Further resourcesabout working with the embedding API are listed on the [embedding API docs page](#documentation/apis/embedding_api).
+Further resources about working with the embedding API are listed on the [embedding API docs page](#documentation/apis/embedding_api).
