@@ -64,7 +64,7 @@
 
       <li data-field="content_security_policy">
         <p><strong data-role="field-name"></strong></p>
-        <p>Represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">content security policy (CSP)</a> which should be enforced for the application. The CSP restricts the locations from which the application can load resources, to help prevent <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-Site Scripting (XSS)</a> and related attacks. CSP is disabled if this field is not set.</p>
+        <p>Represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">content security policy (CSP)</a> which should be enforced for the application. The CSP restricts the types of locations of resources the application can load, to help prevent <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-Site Scripting (XSS)</a> and related attacks. CSP is disabled if this field is not set.</p>
         <p><a href="#documentation/manifest/content_security_policy">Read more...</a></p>
       </li>
 
