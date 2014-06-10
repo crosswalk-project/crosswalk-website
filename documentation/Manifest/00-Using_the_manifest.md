@@ -4,60 +4,23 @@ This page covers how to use a `manifest.json` file when deploying a Crosswalk ap
 
 1.  [To configure how a Crosswalk application is packaged for Android](#Configure-Android-packaging).
 2.  [To configure how a Crosswalk application launches on Tizen](#Configure-launch-on-Tizen).
-3.  [Load an application into an embedded Crosswalk runtime](#Load-an-application-into-an-embedded-Crosswalk).
+3.  [To load an application into an embedded Crosswalk runtime](#Load-an-application-into-an-embedded-Crosswalk).
 
 ## Configure Android packaging
 
-A Crosswalk manifest file can be used as the basis for generating an Android package for an application. The basics of how to do this are given in [the Getting started tutorial](#documentation/getting_started).
+A Crosswalk manifest file can be used as the basis for generating an Android package for an application. Instructions on how to do this are given in [the Getting started tutorial](#documentation/getting_started).
 
-However, that tutorial only uses a basic manifest, and does not explain in detail how some manifest fields can affect Android packaging. The sections below provide some extra information about this.
+However, that tutorial only uses a basic manifest, and does not explain in detail how some manifest fields can affect Android packaging. The links below provide some extra information about this:
 
-### The `icons` (Crosswalk custom) field
+* `icons`: [effect on Android packaging](#documentation/manifest/icons_\(custom\)/Effect-on-Android-packaging)
 
-*Note: This section only applies to the custom <a href="#documentation/manifest/icons_(custom)"><code>icons</code> field</a>, not to the W3C-compatible `icons` field used in more recent versions of Crosswalk.*
-
-If the <a href="#documentation/manifest/icons_(custom)"><code>icons</code> field</a> contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
-
-|Icon key range...|`make_apk.py` copies the icon file to...|
-|:---------------:|----------------------------------------|
-|1-36             |`res/drawable/ldpi/icon.<suffix>`       |
-|37-72            |`res/drawable/mdpi/icon.<suffix>`       |
-|73-95            |`res/drawable/hdpi/icon.<suffix>`       |
-|96-119           |`res/drawable/xhdpi/icon.<suffix>`      |
-|120-143          |`res/drawable/xxhdpi/icon.<suffix>`     |
-|144-167          |`res/drawable/xxxhdpi/icon.<suffix>`    |
-
-where `<suffix>` is the file suffix (`.png`, `.jpg` etc.) of the original file.
-
-For example, the `icons` field in this manifest:
-
-    {
-      "name": "app name",
-      "description": "a sample description",
-      "version": "1.0.0",
-      "app": {
-        "launch": {
-          "local_path": "index.html"
-        }
-      },
-      "icons": {
-        "16":  "icon16.png",
-        "48":  "icon48.png",
-        "128": "icon128.png"
-      }
-    }
-
-would cause the following resources to be added to the Android application package:
-
-    res/drawable/ldpi/icon.png   (copied from icon16.png)
-    res/drawable/hdpi/icon.png   (copied from icon48.png)
-    res/drawable/xxhdpi/icon.png (copied from icon128.png)
-
-When the application is installed, Android will use the file appropriate for the target's screen resolution as the application icon in the home screen, app list and other relevant locations.
+* `permissions`: [effect on Android packaging](#documentation/manifest/permissions/Effect-on-Android-packaging)
 
 ## Configure launch on Tizen
 
-???
+When you create an xpk package to install with Crosswalk on Tizen, the `manifest.json` file should be included with the other assets in the application, as described in the [Run on Tizen](#documentation/getting_started/run_on_tizen) section of the "Getting started" tutorial.
+
+Once installed, Crosswalk on Tizen will use the field values in `manifest.json` to control how the application is launched: which [entry point](#documentation/manifest/entry_points) is used, whether the application is [displayed in fullscreen mode](#documentation/manifest/display), etc.
 
 ## Load an application into an embedded Crosswalk
 
@@ -67,7 +30,7 @@ However, the API also [exposes methods for loading an application from a manifes
 
 For example, if you decide to change the entry point for your application (e.g. rename `index.html` to `home.html`), you can do this in the manifest without having to change any Java application code. Similarly, if new fields become available for Crosswalk manifests, you can take advantage of those fields in your own manifest without changing any Java code.
 
-To give an idea of how this would work, the [application developed for the embedded API tutorial](#documentation/embedding_crosswalk) can easily be adapted to use a manifest. Follow the tutorial to the end then modify the project as follows:
+To give an idea of how this works, the [application developed for the embedded API tutorial](#documentation/embedding_crosswalk) can easily be adapted to use a manifest. Follow the tutorial to the end then modify the project as follows:
 
 1.  Add a `manifest.json` file to the web root of the application (in the case of the embedding API app in the tutorial, this is the `assets/` directory):
 
