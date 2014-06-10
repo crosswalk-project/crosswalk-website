@@ -46,7 +46,7 @@ Additionally, it appears that Crosswalk is in a similar position as PhoneGap was
 ## What does success look like?
 
 - Increase in visitors. Currently, about 10,000 a month that comes to the Crosswalk site.
-- Increase from 100 Twitter followers to at least 1,000
+- Increase from 165 Twitter followers to at least 1,000
 - Increase from 100 email subscribers to at least 1,000
 - A better understood, documented, and ongoing approach for communicating the value of Intel Crosswalk
 
@@ -97,7 +97,7 @@ Based on the research we’ve done, and the concepts we’ve iterated upon, we�
 
 ### Deliverables
 
-- Documented research
+- Documented research (clarify: not going to be a book like last time, more like our loose notes in the GitHub repo that we are using for our own internal purposes)
 - Improvements we make (Execution section)
 - Some documentation from execution phase (Suggestions on how to continue to use the new message to maintain or improve Crosswalk in an ongoing way)
 
