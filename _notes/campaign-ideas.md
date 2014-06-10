@@ -4,7 +4,7 @@
 Crosswalk
 =========
 
-> Crosswalk is a specialized WebView for building Hybrid mobile applications.
+> Crosswalk is an up-to-date WebView for building hybrid mobile applications.
 
 ## What WebView are you using?
 
@@ -49,7 +49,7 @@ You may also use Crosswalk as a module within your native application.
 
 > Until Crosswalk, my application development was full of compromises due to Android fragmentation
 
-## Crosswalk makes Android fragmentation a moot point
+> Crosswalk makes Android fragmentation a moot point
 
 ## Makes Android web views predictable
 
