@@ -31,6 +31,20 @@
         <option value="tizen">Tizen</option>
       </select>
     </p>
+
+    <p data-crosswalk-versions="1+" data-crosswalk-platforms="android">
+      (applies to applications packaged using
+      <a href="#documentation/getting_started/run_on_android">the Crosswalk Android bundle</a>)
+    </p>
+    <p data-crosswalk-versions="1+" data-crosswalk-platforms="webview">
+      (applies to Android applications using an
+      <a href="#documentation/embedding_crosswalk">embedded Crosswalk</a>)
+    </p>
+    <p data-crosswalk-versions="1+" data-crosswalk-platforms="tizen">
+      (applies to applications running on
+      <a href="#documentation/getting_started/run_on_tizen">Crosswalk
+      on Tizen</a>)
+    </p>
   </div>
 
   <div data-role="manifest-fields">
