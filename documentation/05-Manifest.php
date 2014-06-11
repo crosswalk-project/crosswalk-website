@@ -138,44 +138,46 @@
       on <span data-role="crosswalk-platform"></span>
     </h2>
 
+    <p>See the <a href="#documentation/manifest/permissions">permissions page</a> for details of what this field is for.</p>
+
     <p>The following values (in bold) can be used in the <strong>permissions</strong> list in the manifest:</p>
 
     <ul>
 
       <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
-        <p><strong>Contacts</strong>: gives permission to use the <em>Contacts Manager</em> API in Crosswalk.</p>
+        <p><strong>Contacts</strong>: sets Android permissions which allow use of the <em>Contacts Manager</em> API in Crosswalk.</p>
       </li>
 
       <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
-        <p><strong>DeviceCapabilities</strong>: gives permission to use the <em>Device Capabilities</em> API in Crosswalk.</p>
+        <p><strong>DeviceCapabilities</strong>: sets Android permissions which allow use of the <em>Device Capabilities</em> API in Crosswalk.</p>
       </li>
 
       <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
-        <p><strong>Fullscreen</strong>: gives permission to use the <em>Fullscreen</em> API in Crosswalk.</p>
+        <p><strong>Fullscreen</strong>: sets Android permissions which allow use of the <em>Fullscreen</em> API in Crosswalk.</p>
       </li>
 
       <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
-        <p><strong>Geolocation</strong>: gives permission to use the <em>Geolocation</em> API in Crosswalk.</p>
+        <p><strong>Geolocation</strong>: sets Android permissions which allow use of the <em>Geolocation</em> API in Crosswalk.</p>
       </li>
 
       <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
-        <p><strong>Messaging</strong>: gives permission to use the <em>Messaging</em> API in Crosswalk.</p>
+        <p><strong>Messaging</strong>: sets Android permissions which allow use of the <em>Messaging</em> API in Crosswalk.</p>
       </li>
 
       <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
-        <p><strong>Presentation</strong>: gives permission to use the <em>Presentation</em> API in Crosswalk.</p>
+        <p><strong>Presentation</strong>: sets Android permissions which allow use of the <em>Presentation</em> API in Crosswalk.</p>
       </li>
 
       <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
-        <p><strong>RawSockets</strong>: gives permission to use the <em>Raw Sockets</em> API in Crosswalk.</p>
+        <p><strong>RawSockets</strong>: sets Android permissions which allow use of the <em>Raw Sockets</em> API in Crosswalk.</p>
       </li>
 
       <li data-crosswalk-versions="4+" data-crosswalk-platforms="android">
-        <p><strong>ScreenOrientation</strong>: gives permission to use the <em>ScreenOrientation</em> API in Crosswalk.</p>
+        <p><strong>ScreenOrientation</strong>: sets Android permissions which allow use of the <em>ScreenOrientation</em> API in Crosswalk.</p>
       </li>
 
       <li data-crosswalk-versions="5+" data-crosswalk-platforms="android">
-        <p><strong>Vibration</strong>: gives permission to use the <em>Vibration</em> API in Crosswalk.</p>
+        <p><strong>Vibration</strong>: sets Android permissions which allow use of the <em>Vibration</em> API in Crosswalk.</p>
       </li>
 
     </ul>
