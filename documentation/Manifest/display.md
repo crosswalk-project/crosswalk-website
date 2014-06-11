@@ -1,4 +1,4 @@
-# Display
+# display
 
 The `display` field sets the preferred *display mode* for the application: how much of the available display area is occupied by the application, and whether other elements of the user interface (navigation bars, other toolbars) are visible.
 

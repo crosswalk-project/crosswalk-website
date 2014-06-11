@@ -85,7 +85,7 @@
       <li data-field="icons.128">
         <p><strong data-role="field-name"></strong></p>
         <p>Graphics files to use for the application icon at different resolutions.</p>
-        <p><a href="#documentation/manifest/icons_(custom)">Read more...</a></p>
+        <p><a href="#documentation/manifest/icons_(Crosswalk)">Read more...</a></p>
       </li>
 
       <li data-field="launch_screen">
@@ -125,7 +125,7 @@
       <li data-field="xwalk_hosts">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines host URL patterns to which the application can make Ajax requests, allowing <a href="https://developer.chrome.com/extensions/xhr">Cross-Origin Ajax requests</a> (using a mechanism similar to Chrome's).</p>
-        <p><a href="#documentation/manifest/network_access">Read more...</a></p>
+        <p><a href="#documentation/manifest/xwalk_hosts">Read more...</a></p>
       </li>
     </ul>
 
