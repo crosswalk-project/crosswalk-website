@@ -46,7 +46,7 @@ Example:
 Application readiness state | Preconditions
 --- | ---
 `"first-paint"` | * The first visually non-empty paint has occurred.
-`"user-interactive"` | * The first visually non-empty paint has occurred.<br>*The DOM and CSSOM have been constructed.
+`"user-interactive"` | * The first visually non-empty paint has occurred.<br>* The DOM and CSSOM have been constructed.
 `"complete"` | * The first visually non-empty paint has occurred. <br>* All the resources have been loaded.<br> **WARNING: This may take a long time, as it only triggers after all sub-resources have been downloaded.**
 `"custom"` | * The first visually non-empty paint has occurred. <br>* The ```window.screen.show()``` method was called.
 
