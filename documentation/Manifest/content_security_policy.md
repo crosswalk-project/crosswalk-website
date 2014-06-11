@@ -1,4 +1,4 @@
-# Content security policy
+# content_security_policy
 
 The `content_security_policy` field specifies which types of content can be loaded and executed by the application. If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via `<script>`, `<object>`, `<embed>` and `<applet>` elements).
 
@@ -89,3 +89,7 @@ If you do decide to tighten your application's security and set a content securi
         "content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'"
 
     Inline scripts should now execute.
+
+## Relationship with xwalk_hosts
+
+???
