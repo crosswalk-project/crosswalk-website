@@ -12,7 +12,7 @@ on the Chromium wiki:
     </ul>
 
 2.  You need to install extra pre-requisites if you're building Crosswalk
-for Android, covered in [building Chrome for Android](http://code.google.com/p/chromium/wiki/AndroidBuildInstructions#Install_prerequisites).
+for Android, covered in [building Chrome for Android](http://code.google.com/p/chromium/wiki/AndroidBuildInstructions).
 
     The
     [section below](#contribute/building_crosswalk/Building-Crosswalk-for-Android)
