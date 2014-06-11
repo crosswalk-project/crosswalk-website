@@ -25,6 +25,7 @@
       &nbsp;on&nbsp;
       <select name="crosswalk-platform">
         <option value="android">Android</option>
+        <option value="webview">Android (embedded)</option>
         <option value="tizen">Tizen</option>
       </select>
     </p>
@@ -193,6 +194,10 @@
       Version 1 of Crosswalk did not support Android.
     </p>
 
+    <p data-crosswalk-versions="1-5" data-crosswalk-platforms="webview">
+      Versions 1 to 5 of Crosswalk did not provide an embedding API.
+    </p>
+
     <!-- TIZEN MANIFEST EXAMPLES -->
     <div data-crosswalk-versions="1-3" data-crosswalk-platforms="tizen">
       <p>Using <code>app.launch.local_path</code> to specify the entry point:</p>
@@ -326,25 +331,7 @@
     </div>
 
     <!-- ANDROID MANIFEST EXAMPLES -->
-    <div data-crosswalk-versions="2" data-crosswalk-platforms="android">
-      <pre>
-{
-  "name": "app name",
-  "description": "a sample description",
-  "version": "1.0.0",
-  "app": {
-    "launch": {
-      "local_path": "index.html"
-    }
-  },
-  "icons": {
-    "128": "icon128.png"
-  }
-}
-      </pre>
-    </div>
-
-    <div data-crosswalk-versions="3" data-crosswalk-platforms="android">
+    <div data-crosswalk-versions="2-3" data-crosswalk-platforms="android">
       <pre>
 {
   "name": "app name",
@@ -496,6 +483,35 @@
     "ScreenOrientation",
     "Vibration"
   ],
+  "launch_screen": {
+    "ready_when": "custom",
+    "portrait": {
+       "background_color": "#ff0000",
+       "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
+       "image": "foo.png 1x, foo-2x.png 2x",
+       "image_border": "30px 40px stretch"
+     }
+  },
+  "xwalk_hosts": [
+    "http://*"
+  ]
+}
+      </pre>
+    </div>
+
+    <!-- ANDROID EMBEDDING API EXAMPLE MANIFESTS -->
+    <div data-crosswalk-versions="6+" data-crosswalk-platforms="webview">
+      <pre>
+{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "launch_screen": {
     "ready_when": "custom",
     "portrait": {
