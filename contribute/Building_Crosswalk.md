@@ -12,7 +12,7 @@ on the Chromium wiki:
     </ul>
 
 2.  You need to install extra pre-requisites if you're building Crosswalk
-for Android, covered in [building Chrome for Android](http://code.google.com/p/chromium/wiki/AndroidBuildInstructions#Install_prerequisites).
+for Android, covered in [building Chrome for Android](http://code.google.com/p/chromium/wiki/AndroidBuildInstructions).
 
     The
     [section below](#contribute/building_crosswalk/Building-Crosswalk-for-Android)
@@ -137,6 +137,10 @@ If you don't have any HTML applications to test, the
 
 ## Building Crosswalk for Android
 
+As mentioned before, Crosswalk's build process for Android is heavily based on
+Chrome's process, so make sure you are
+[familiar with it](http://code.google.com/p/chromium/wiki/AndroidBuildInstructions).
+
 1.  Install the dependencies for building Crosswalk for Android:
 
         sudo ./build/install-build-deps-android.sh
@@ -160,6 +164,20 @@ If you don't have any HTML applications to test, the
     available from the
     [Oracle Java download site](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html).
 
+2.  Configure gyp.
+
+    gyp is the build system generator used in Chromium to generate actual build
+    files for Ninja and other systems. It needs a few variables in order to
+    generate build files for Android.
+
+    Have a file called `chromium.gyp_env` in the directory containing your
+    `.gclient` file (so the one above `src/`).
+
+        echo "{ 'GYP_DEFINES': 'OS=android target_arch=ia32', }" > chromium.gyp_env
+
+    If you are building for ARM, use `target_arch=arm` instead of
+    `target_arch=ia32` above.
+
 3.  Set up the Android build environment.
 
     For Crosswalk > 5:
@@ -175,17 +193,7 @@ If you don't have any HTML applications to test, the
 
 4.  Configure your setup to generate the Crosswalk projects.
 
-    First execute:
-
         export GYP_GENERATORS='ninja'
-
-    Then, if you are using Crosswalk > 5:
-
-        xwalk_android_gyp -Dtarget_arch=ia32
-        # use -Dtarget_arch=arm to target ARM
-
-    Or if you are using Crosswalk <= 5:
-
         xwalk_android_gyp
 
 5.  To build xwalk core and runtime shell (for developer testing purposes,
