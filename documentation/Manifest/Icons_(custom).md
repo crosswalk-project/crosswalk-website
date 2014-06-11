@@ -28,7 +28,7 @@ As a minimum, the `"128"` key (for a 128x128 pixel image) should be specified. T
 
 ## Effect on Android packaging
 
-Rather than affecting the Crosswalk runtime on Android directly, the `icons` field ???
+Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](#documentation/getting_started/run_on_android).
 
 If the <a href="#documentation/manifest/icons_(custom)"><code>icons</code> field</a> contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
 
