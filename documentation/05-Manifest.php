@@ -6,12 +6,14 @@
 
 <p>See <a href="#documentation/manifest/using_the_manifest">Using the manifest</a> for details of how to use a <code>manifest.json</code> file with a Crosswalk application.</p>
 
-<p>Use the form below to display the valid manifest fields for each Crosswalk version and platform combination.</p>
+<p>Use the form below to display the valid manifest fields for a Crosswalk version and platform combination.</p>
 
 <div data-role="manifest-description" class="hidden">
   <div data-role="manifest-filter">
     <p>
-      Show information about manifest for&nbsp;
+      <strong>Show information about the manifest for</strong>&nbsp;
+
+      <br>
 
       <select name="crosswalk-version">
         <option value="7">Crosswalk 7</option>
@@ -22,10 +24,10 @@
         <option value="2">Crosswalk 2</option>
         <option value="1">Crosswalk 1</option>
       </select>
-      &nbsp;on&nbsp;
+      &nbsp;<strong>on</strong>&nbsp;
       <select name="crosswalk-platform">
         <option value="android">Android</option>
-        <option value="webview">Android (embedded)</option>
+        <option value="webview">Android (embedding API)</option>
         <option value="tizen">Tizen</option>
       </select>
     </p>
@@ -41,7 +43,11 @@
 
     <!-- special case for Android, which had no manifest support in Crosswalk 1 -->
     <p data-crosswalk-versions="1" data-crosswalk-platforms="android">
-      Version 1 of Crosswalk did not support Android.
+      <strong>Version 1 of Crosswalk did not support Android.</strong>
+    </p>
+
+    <p data-crosswalk-versions="1-5" data-crosswalk-platforms="webview">
+      <strong>Versions 1 to 5 of Crosswalk did not provide an embedding API.</strong>
     </p>
 
     <ul>
@@ -191,11 +197,11 @@
     </h2>
 
     <p data-crosswalk-versions="1" data-crosswalk-platforms="android">
-      Version 1 of Crosswalk did not support Android.
+      <strong>Version 1 of Crosswalk did not support Android.</strong>
     </p>
 
     <p data-crosswalk-versions="1-5" data-crosswalk-platforms="webview">
-      Versions 1 to 5 of Crosswalk did not provide an embedding API.
+      <strong>Versions 1 to 5 of Crosswalk did not provide an embedding API.</strong>
     </p>
 
     <!-- TIZEN MANIFEST EXAMPLES -->

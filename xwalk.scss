@@ -1247,5 +1247,10 @@ p {
 
 [data-role="manifest-filter"] {
   border-top: thin solid #ccc;
-  padding-top: 1em !important;
+  padding: 1em !important;
+  background-color: #ccc;
+}
+
+[data-role="manifest-filter"] p {
+  margin-bottom: 0px !important;
 }
