@@ -1,8 +1,8 @@
 # Permissions
 
-The `permissions` field is a non-standard field which only applies to Android. It is only used to set permissions in the `AndroidManifest.xml` file when packaging an application for Android and otherwise ignored. This is necessary because Android applications cannot request more permissions at runtime: all the permissions required by the application must be granted during installation.
+The `permissions` field is Crosswalk-specific and non-standard. It is used to set permissions in the `AndroidManifest.xml` file when packaging an application for Crosswalk on Android. This is necessary because Android applications cannot request more permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.
 
-**Note:** If you are [loading an application from a manifest with the embedding API](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk), the `permissions` field has no effect. It only affects packaging. If you need specific permissions for your application, you will have to manually specify them in `AndroidManifest.xml`. See the [section below](#Permissions-required-by-API) for guidance on which Android permissions are required by Crosswalk's [web APIs](#documentation/apis/web_apis).
+**Note:** If you are [loading an application from a manifest with the embedding API](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk), you will have to manually specify permissions for Crosswalk in `AndroidManifest.xml`. See the [section below](#Permissions-required-by-API) for guidance on which Android permissions are required by Crosswalk's [web APIs](#documentation/apis/web_apis).
 
 ## Effect on Android packaging
 
