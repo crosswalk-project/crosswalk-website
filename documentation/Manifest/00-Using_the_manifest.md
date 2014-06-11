@@ -16,6 +16,8 @@ However, that tutorial only uses a basic manifest, and does not explain in detai
 
 * `permissions`: [effect on Android packaging](#documentation/manifest/permissions/Effect-on-Android-packaging)
 
+Note that neither of these fields has an effect if it is included in a `manifest.json` file [loaded into an embedded Crosswalk](#Load-an-application-into-an-embedded-Crosswalk).
+
 ## Configure launch on Tizen
 
 When you create an xpk package to install with Crosswalk on Tizen, the `manifest.json` file should be included with the other assets in the application, as described in the [Run on Tizen](#documentation/getting_started/run_on_tizen) section of the "Getting started" tutorial.
@@ -70,3 +72,5 @@ To give an idea of how this works, the [application developed for the embedded A
         }
 
 Now when you run the application, the HTML file specified by the `app.launch.local_path` property in `manifest.json` is being loaded. It's the same `index.html` file as was being loaded previously; but using a manifest has made it easier to  change the application without changing Java code.
+
+Note that some of the fields in `manifest.json` which are used when packaging an application for Android are *not* used when loading a manifest into an embedded Crosswalk. See [this section](#Configure-Android-packaging) for details of these fields.
