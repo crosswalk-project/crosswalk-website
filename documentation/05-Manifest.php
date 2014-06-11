@@ -512,15 +512,6 @@
     }
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",
-  "launch_screen": {
-    "ready_when": "custom",
-    "portrait": {
-       "background_color": "#ff0000",
-       "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
-       "image": "foo.png 1x, foo-2x.png 2x",
-       "image_border": "30px 40px stretch"
-     }
-  },
   "xwalk_hosts": [
     "http://*"
   ]
