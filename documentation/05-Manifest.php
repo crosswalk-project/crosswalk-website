@@ -138,6 +138,18 @@
 
   </div>
 
+  <div data-role="manifest-permissions" data-crosswalk-versions="6+"
+       data-crosswalk-platforms="webview">
+     <h2>Permissions for embedded Crosswalk</h2>
+
+     <p>If you are using the <a href="#documentation/apis/embedding_api">embedding
+     API</a> to embed Crosswalk in your application, you may need to
+     manually set some permissions in the <code>AndroidManifest.xml</code>
+     file. See
+     <a href="#documentation/manifest/permissions/Permissions-required-by-API">this
+     section</a> for more details.</p>
+  </div>
+
   <div data-role="manifest-permissions" data-crosswalk-versions="4+"
        data-crosswalk-platforms="android">
     <h2><a name="manifest-permissions"></a>
