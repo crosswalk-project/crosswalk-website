@@ -45,6 +45,7 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 ## Device & Hardware
 * [Device Orientation Events] (http://www.w3.org/TR/orientation-event/) - DOM events which provide information about the physical orientation and motion of the device.
 * [Fullscreen] (http://fullscreen.spec.whatwg.org/) - Programmatically instruct an element on the page to be presented in full screen mode.
+* [Geolocation] (http://www.w3.org/TR/geolocation-API/) - Access geographical location information associated with the hosting device.
 * <a href="http://www.w3.org/TR/html5/forms.html#date-and-time-state-(type=datetime)">HTML5 Date and Time state for input element</a><sup><a href="#a">[a]</a></sup> - Picker controls for date and time input types.
 *  <a href="http://www.w3.org/TR/html5/forms.html#telephone-state-(type=tel)">HTML5 Telephone, Email and URL state for input element</a><sup><a href="#a">[a]</a></sup> - Picker controls for telephone, email and URL input types.
 * [Media Capture and Streams] (http://www.w3.org/TR/mediacapture-streams/)<sup><a href="#a">[a]</a></sup> - Provides access to local media streams including video (camera) and audio (microphone).
