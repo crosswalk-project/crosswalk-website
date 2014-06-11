@@ -1,4 +1,4 @@
-# Launch screen
+# launch_screen
 
 The launch screen is a static user interface shown immediately after the application is launched. The launch screen will then be hidden at the point when the application's "real" user interface can be constructed: i.e. when the application and any required resources have loaded.
 
