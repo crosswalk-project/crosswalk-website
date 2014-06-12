@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'contribute/Building_Crosswalk';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>contribute/Building_Crosswalk</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Building Crosswalk</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/contribute/Building_Crosswalk"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/contribute/Building_Crosswalk"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<h2>Environment<a class="anchor" id="Environment" href="#Environment"></a></h2>
+
+<ol><li><p>Please set up your build environment by following the instructions
+on the Chromium wiki:</p>
+
+<ul><li><a href="http://www.chromium.org/developers/how-tos/build-instructions-windows">Building on Windows</a></li>
+<li><a href="http://code.google.com/p/chromium/wiki/LinuxBuildInstructionsPrerequisites">Building on Linux</a></li>
+<li><a href="https://code.google.com/p/chromium/wiki/MacBuildInstructions">Building on Mac</a></li>
+</ul></li>
+<li><p>You need to install extra pre-requisites if you're building Crosswalk
+for Android, covered in <a href="http://code.google.com/p/chromium/wiki/AndroidBuildInstructions">building Chrome for Android</a>.</p>
+
+<p>The
+<a href="#contribute/building_crosswalk/Building-Crosswalk-for-Android">section below</a>
+summarises the steps involved.</p></li>
+<li><p><a href="http://www.chromium.org/developers/how-tos/install-depot-tools">depot_tools</a>
+contains the following tools, used to manage and build Crosswalk from
+source:</p>
+
+<ul><li><code>gclient</code> manages code and dependencies.</li>
+<li><code>ninja</code> is the recommended tool for building Crosswalk on most platforms.
+Its <a href="http://code.google.com/p/chromium/wiki/NinjaBuild">website</a>
+contains detailed usage instructions.</li>
+</ul></li>
+</ol><h2>Download the Crosswalk source<a class="anchor" id="Download-the-Crosswalk-source" href="#Download-the-Crosswalk-source"></a></h2>
+
+<h3>Before starting: Android<a class="anchor" id="Before-starting:-Android" href="#Before-starting:-Android"></a></h3>
+
+<p>If you are building Crosswalk for Android, you should first set the
+<code>XWALK_OS_ANDROID</code> environment variable:</p>
+
+<pre><code>export XWALK_OS_ANDROID=1
+</code></pre>
+
+<p>It's essential that you do this, otherwise your checkout will not
+contain the necessary components for the Android build.</p>
+
+<p>If you checkout the source without this setting, you can set it later
+and do <code>gclient sync</code> again to pull in the extra Android-specific
+components.</p>
+
+<h3>Fetch the source<a class="anchor" id="Fetch-the-source" href="#Fetch-the-source"></a></h3>
+
+<ol><li><p>Create a source directory:</p>
+
+<pre><code>cd &lt;home directory&gt;
+mkdir crosswalk-src
+cd crosswalk-src
+</code></pre></li>
+<li><p>Auto-generate gclient's configuration file (<code>.gclient</code>):</p>
+
+<pre><code>gclient config --name=src/xwalk \
+  git://github.com/crosswalk-project/crosswalk.git
+</code></pre>
+
+<p>You can replace <code>git://</code> with <code>ssh://git@</code> to use your
+GitHub credentials when checking out the code.</p></li>
+<li><p>From the same directory containing the <code>.gclient</code> file, fetch the source with:</p>
+
+<pre><code>gclient sync
+</code></pre></li>
+</ol><h3>Tracking a different Crosswalk branch<a class="anchor" id="Tracking-a-different-Crosswalk-branch" href="#Tracking-a-different-Crosswalk-branch"></a></h3>
+
+<p>If you want to track a Crosswalk branch other than <code>master</code>
+(e.g. a beta or stable branch), there are two different approaches you can use,
+described below.</p>
+
+<p><em>Set the branch before the initial checkout</em></p>
+
+<p>If you haven't Crosswalk's source code yet, just pass
+the URL of the branch you want to checkout to the <code>gclient config</code> call.
+For example, to track the <em>crosswalk-2</em> branch:</p>
+
+<pre><code>gclient config --name=src/xwalk \
+  git://github.com/crosswalk-project/crosswalk.git@origin/crosswalk-2
+</code></pre>
+
+<p><em>Change the branch for an existing checkout</em></p>
+
+<p>If you have already cloned Crosswalk and want to change the branch
+being tracked, you need to check out a new git branch and then edit
+your <code>.gclient</code> file.</p>
+
+<p>For example, let's assume you want to track the <em>crosswalk-2</em> branch.
+First of all, check out a new branch in your Crosswalk repository:</p>
+
+<pre><code>cd /path/to/src/xwalk
+git checkout -b crosswalk-2 origin/crosswalk-2
+</code></pre>
+
+<p>Next, edit your <code>.gclient</code> file (generated above) and change the <code>url</code>
+entry. It should look like this:</p>
+
+<div class="highlight"><pre><span class="s">"url"</span><span class="p">:</span> <span class="s">"git://github.com/crosswalk-project/crosswalk.git@origin/crosswalk-2"</span><span class="p">,</span>
+</pre></div>
+
+<p>After that, sync your code again:</p>
+
+<pre><code>gclient sync
+</code></pre>
+
+<h2>Building Crosswalk for desktop<a class="anchor" id="Building-Crosswalk-for-desktop" href="#Building-Crosswalk-for-desktop"></a></h2>
+
+<p>These instructions cover building Crosswalk to run in a desktop
+environment (Windows, Linux, or Mac OS).</p>
+
+<ol><li><p><code>gyp</code> is the tool used to generate Crosswalk projects. These projects
+are then used as the basis for the actual code compilation.</p>
+
+<p>To build the projects, go to the <code>src</code> directory and run:</p>
+
+<pre><code>export GYP_GENERATORS='ninja'
+python xwalk/gyp_xwalk
+</code></pre></li>
+<li><p>At this point you have built the projects with <code>gyp</code> and are ready for
+the actual compilation. To build the Crosswalk launcher (which can
+run a web application):</p>
+
+<pre><code>ninja -C out/Release xwalk
+</code></pre></li>
+</ol><h3>Testing a desktop build<a class="anchor" id="Testing-a-desktop-build" href="#Testing-a-desktop-build"></a></h3>
+
+<p>Once you've built the launcher, the executable you need is at:</p>
+
+<pre><code>~/crosswalk-src/src/out/Release/xwalk
+</code></pre>
+
+<p>You can test it by using it to load an HTML file:</p>
+
+<pre><code>~/crosswalk-src/src/out/Release/xwalk index.html
+</code></pre>
+
+<p>If you don't have any HTML applications to test, the
+<a href="#documentation/samples">Crosswalk samples</a> includes a few you can try.</p>
+
+<h2>Building Crosswalk for Android<a class="anchor" id="Building-Crosswalk-for-Android" href="#Building-Crosswalk-for-Android"></a></h2>
+
+<p>As mentioned before, Crosswalk's build process for Android is heavily based on
+Chrome's process, so make sure you are
+<a href="http://code.google.com/p/chromium/wiki/AndroidBuildInstructions">familiar with it</a>.</p>
+
+<ol><li><p>Install the dependencies for building Crosswalk for Android:</p>
+
+<pre><code>sudo ./build/install-build-deps-android.sh
+</code></pre>
+
+<p>Note that this requires support for <code>apt-get</code> on your system.
+If you are on system without <code>apt-get</code> (like Fedora Linux), the
+following command should install the dependencies:</p>
+
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">git</span> <span class="n">svn</span> <span class="n">gcc</span><span class="o">-</span><span class="n">c</span><span class="o">++</span> <span class="n">nss</span><span class="o">-</span><span class="n">devel</span> <span class="n">cups</span><span class="o">-</span><span class="n">devel</span> \
+<span class="n">gtk2</span><span class="o">-</span><span class="n">devel</span> <span class="n">pulseaudio</span><span class="o">-</span><span class="n">libs</span><span class="o">-</span><span class="n">devel</span> <span class="n">dbus</span><span class="o">-</span><span class="n">devel</span> <span class="n">gconf</span><span class="o">-</span><span class="n">devel</span> \
+<span class="n">gconf</span> <span class="n">GConf2</span><span class="o">-</span><span class="n">devel</span> <span class="n">libgnome</span><span class="o">-</span><span class="n">keyring</span><span class="o">-</span><span class="n">devel</span> <span class="n">libgcrypt</span><span class="o">-</span><span class="n">devel</span> \
+<span class="n">libpciaccess</span><span class="o">-</span><span class="n">devel</span> <span class="n">pciutils</span><span class="o">-</span><span class="n">devel</span> <span class="n">libgudev1</span><span class="o">-</span><span class="n">devel</span> \
+<span class="n">systemd</span><span class="o">-</span><span class="n">devel</span> <span class="n">gperf</span> <span class="n">bison</span> <span class="n">libcap</span><span class="o">-</span><span class="n">devel</span> <span class="n">expat</span><span class="o">-</span><span class="n">devel</span> \
+<span class="n">alsa</span><span class="o">-</span><span class="n">lib</span><span class="o">-</span><span class="n">devel</span> <span class="n">libXtst</span><span class="o">-</span><span class="n">devel</span> <span class="n">lighttpd</span> <span class="n">python</span><span class="o">-</span><span class="n">pexpect</span> \
+<span class="n">xorg</span><span class="o">-</span><span class="n">x11</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">Xvfb</span> <span class="n">xorg</span><span class="o">-</span><span class="n">x11</span><span class="o">-</span><span class="n">utils</span> <span class="n">zlib</span><span class="p">.</span><span class="n">i686</span> \
+<span class="n">libstdc</span><span class="o">++</span><span class="p">.</span><span class="n">i686</span> <span class="n">glibc</span><span class="o">-</span><span class="n">devel</span><span class="p">.</span><span class="n">i686</span> <span class="n">libXScrnSaver</span><span class="o">-</span><span class="n">devel</span>
+</pre></div></li>
+<li><p>Install the Oracle JDK. It is
+available from the
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html">Oracle Java download site</a>.</p></li>
+<li><p>Configure gyp.</p>
+
+<p>gyp is the build system generator used in Chromium to generate actual build
+files for Ninja and other systems. It needs a few variables in order to
+generate build files for Android.</p>
+
+<p>Have a file called <code>chromium.gyp_env</code> in the directory containing your
+<code>.gclient</code> file (so the one above <code>src/</code>).</p>
+
+<pre><code>echo "{ 'GYP_DEFINES': 'OS=android target_arch=ia32', }" &gt; chromium.gyp_env
+</code></pre>
+
+<p>If you are building for ARM, use <code>target_arch=arm</code> instead of
+<code>target_arch=ia32</code> above.</p></li>
+<li><p>Set up the Android build environment.</p>
+
+<p>For Crosswalk &gt; 5:</p>
+
+<pre><code>. ./xwalk/build/android/envsetup.sh
+</code></pre>
+
+<p>Or, if you are using Crossswalk &lt;= 5:</p>
+
+<pre><code>. ./xwalk/build/android/envsetup.sh --target-arch=x86
+</code></pre>
+
+<p>If you are targeting ARM, pass <code>--target-arch=arm</code> instead of
+<code>--target-arch=x86</code>.</p></li>
+<li><p>Configure your setup to generate the Crosswalk projects.</p>
+
+<pre><code>export GYP_GENERATORS='ninja'
+xwalk_android_gyp
+</code></pre></li>
+<li><p>To build xwalk core and runtime shell (for developer testing purposes,
+not for end users), execute:</p>
+
+<pre><code>ninja -C out/Release xwalk_core_shell_apk xwalk_runtime_shell_apk
+</code></pre>
+
+<p>To build the xwalk runtime library apk (which can act as the runtime
+for applications built in shared mode), execute:</p>
+
+<pre><code>ninja -C out/Release xwalk_runtime_lib_apk
+</code></pre>
+
+<p>To build a sample web app apk (for quick install/test on a target),
+execute:</p>
+
+<pre><code>ninja -C out/Release xwalk_app_template_apk
+</code></pre></li>
+</ol><h3>Testing an Android build<a class="anchor" id="Testing-an-Android-build" href="#Testing-an-Android-build"></a></h3>
+
+<p>To test the runtime shell, install the runtime library and shell apks
+on a physical device with:</p>
+
+<pre><code>adb install -r out/Release/apks/XWalkRuntimeLib.apk
+adb install -r out/Release/apks/XWalkRuntimeClientShell.apk
+adb shell am start -n org.xwalk.runtime.client.shell/org.xwalk.runtime.client.shell.XWalkRuntimeClientShellActivity
+</code></pre>
+
+<p>If you don't have an Android device, you can use an Android virtual
+device (AVD) for testing instead. The Crosswalk source actually contains
+enough of the Android SDK to enable you to download, create and run an AVD.</p>
+
+<p>To make an AVD, run the <code>android</code> tool first:</p>
+
+<pre><code>src/third_party/android_tools/sdk/tools/android
+</code></pre>
+
+<p>Then use it to install the <strong>Intel x86 Atom System Image</strong>, and
+create an AVD using that. Make sure you allocate enough
+<em>internal storage</em> and <em>SD card storage</em>: 1000MiB for each is
+known to work.</p>
+
+<h2>Building Crosswalk for Tizen<a class="anchor" id="Building-Crosswalk-for-Tizen" href="#Building-Crosswalk-for-Tizen"></a></h2>
+
+<p>If you are unfamiliar with the RPM packaging process on Tizen, please
+consult the
+<a href="https://source.tizen.org/documentation/reference/git-build-system">GBS documentation</a>.</p>
+
+<p>Crosswalk's layout is a bit unusual, as it actually contains several
+independent git and Subversion repositories in the same directory tree.
+We employ some tricks to make it work with GBS, but it should all be
+transparent to users - the only actual caveat is that GBS will
+build <em>everything</em> that is in your source tree regardless of whether
+it has been committed or not; that is, it always acts as if
+the <code>--include-all</code> parameter has been passed to <code>gbs build</code>.</p>
+
+<p>That said, building an RPM for Tizen (after properly setting up your
+Tizen repositories) should be a matter of calling <code>gbs build</code>:</p>
+
+<pre><code>cd /path/to/src/xwalk
+gbs build -A i586
+</code></pre>
+
+<p>By default, the generated RPM files end up in
+<code>~/GBS-ROOT/local/repos/&lt;repository name&gt;/i586/RPMS</code>.</p>
+
+<h3>Testing a Tizen build<a class="anchor" id="Testing-a-Tizen-build" href="#Testing-a-Tizen-build"></a></h3>
+
+<p>The steps for installing a Tizen rpm on a device are covered in
+<a href="#documentation/getting_started/tizen_target_setup">Tizen target set up</a>.</p>
+
+<p>Running an application on Tizen is covered in
+<a href="#documentation/getting_started/run_on_tizen">Run on Tizen</a>.</p>
+
+<h3>Incremental builds<a class="anchor" id="Incremental-builds" href="#Incremental-builds"></a></h3>
+
+<p>By default, each time you call <code>gbs build</code>, the Tizen build directory
+will be erased and the build will start from scratch. To avoid that,
+you can set a different build directory in the Tizen chroot,
+outside <code>/home/abuild/rpmbuild</code>:</p>
+
+<pre><code>gbs build -A i586 --define 'BUILDDIR_NAME /tmp/crosswalk-builddir'
+</code></pre>
+
+<h3>Troubleshooting<a class="anchor" id="Troubleshooting" href="#Troubleshooting"></a></h3>
+
+<ul><li>The directory you use as the GBS root must be an actual directory:
+symbolic links can cause problems.</li>
+<li>The GBS root directory must be on the same partition as your root
+directory (<code>/</code>).</li>
+</ul><h2>Running the test suites<a class="anchor" id="Running-the-test-suites" href="#Running-the-test-suites"></a></h2>
+
+<p>If you are interested in running Crosswalk's test suites, you can
+build the test suites from the <code>src</code> directory with:</p>
+
+<pre><code>ninja -C out/Release xwalk_unittest
+ninja -C out/Release xwalk_browsertest
+</code></pre>
+
+<p>Then run them with:</p>
+
+<pre><code>./out/Release/xwalk_unitttest
+./out/Release/xwalk_browsertest
+</code></pre>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Raphael Kubo da Costa</b>, 2014-06-11 15:48:22</p>
+  <p>
+    <a id="delete-link" href="/contribute/Building_Crosswalk" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/contribute/Building_Crosswalk">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
