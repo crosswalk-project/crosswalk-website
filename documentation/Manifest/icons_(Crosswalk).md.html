@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Manifest/icons_(Crosswalk)';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Manifest/icons_(Crosswalk)</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>icons (Crosswalk-specific)</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Manifest/icons_%28Crosswalk%29"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Manifest/icons_%28Crosswalk%29"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p><strong>Note:</strong> This section only applies to the custom <a href="#documentation/manifest/icons_(Crosswalk)"><code>icons</code> field</a>, not to the W3C-compatible <code>icons</code> field used in more recent versions of Crosswalk. Also note that this field has no effect when used in a <code>manifest.json</code> file <a href="#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk">loaded into an embedded Crosswalk</a>.</p>
+
+<p>The <code>icons</code> field implementation in the earliest versions of Crosswalk is non-standard and based on the format used in the <a href="https://developer.chrome.com/apps/manifest/icons">manifest for Chromium extensions</a>.</p>
+
+<p>The field is an object whose keys represent the icon's pixel size (width and height are the same); the value for each key is the path to the appropriate image file, relative to the application root. For example, here's a manifest with icons at three different sizes:</p>
+
+<pre><code>{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "icons": {
+    "16":  "icon16.png",
+    "48":  "icon48.png",
+    "128": "icon128.png"
+  }
+}
+</code></pre>
+
+<p>Setting icons for multiple sizes <a href="#documentation/manifest/using_the_manifest/Use-it-to-create-an-Android-package">can affect Android packaging for your application</a>.</p>
+
+<p>As a minimum, the <code>"128"</code> key (for a 128x128 pixel image) should be specified. The preferred file format is PNG, but BMP, GIF, ICO, and JPEG formats may also be used.</p>
+
+<h2>Effect on Android packaging<a class="anchor" id="Effect-on-Android-packaging" href="#Effect-on-Android-packaging"></a></h2>
+
+<p>Rather than affecting the Crosswalk runtime on Android directly, the <code>icons</code> field affects how an application is packaged by <a href="#documentation/getting_started/run_on_android"><code>make_apk.py</code></a>.</p>
+
+<p>If the <a href="#documentation/manifest/icons_(Crosswalk)"><code>icons</code> field</a> contains multiple keys, the <code>make_apk.py</code> script will map the corresponding icon files to <a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a> as follows:</p>
+
+<table><thead><tr><th align="center">Icon key range...</th>
+<th><code>make_apk.py</code> copies the icon file to...</th>
+</tr></thead><tbody><tr><td align="center">1-36</td>
+<td><code>res/drawable/ldpi/icon.&lt;suffix&gt;</code></td>
+</tr><tr><td align="center">37-72</td>
+<td><code>res/drawable/mdpi/icon.&lt;suffix&gt;</code></td>
+</tr><tr><td align="center">73-95</td>
+<td><code>res/drawable/hdpi/icon.&lt;suffix&gt;</code></td>
+</tr><tr><td align="center">96-119</td>
+<td><code>res/drawable/xhdpi/icon.&lt;suffix&gt;</code></td>
+</tr><tr><td align="center">120-143</td>
+<td><code>res/drawable/xxhdpi/icon.&lt;suffix&gt;</code></td>
+</tr><tr><td align="center">144-167</td>
+<td><code>res/drawable/xxxhdpi/icon.&lt;suffix&gt;</code></td>
+</tr></tbody></table><p>where <code>&lt;suffix&gt;</code> is the file suffix (<code>.png</code>, <code>.jpg</code> etc.) of the original file.</p>
+
+<p>For example, the <code>icons</code> field in this manifest:</p>
+
+<pre><code>{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "icons": {
+    "16":  "icon16.png",
+    "48":  "icon48.png",
+    "128": "icon128.png"
+  }
+}
+</code></pre>
+
+<p>would cause the following resources to be added to the Android application package:</p>
+
+<pre><code>res/drawable/ldpi/icon.png   (copied from icon16.png)
+res/drawable/hdpi/icon.png   (copied from icon48.png)
+res/drawable/xxhdpi/icon.png (copied from icon128.png)
+</code></pre>
+
+<p>When the application is installed, Android will use the file appropriate for the target's screen resolution as the application icon in the home screen, app list and other relevant locations.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-06-11 15:37:30</p>
+  <p>
+    <a id="delete-link" href="/documentation/Manifest/icons_%28Crosswalk%29" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Manifest/icons_%28Crosswalk%29">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
