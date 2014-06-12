@@ -56,11 +56,14 @@ function isLaterOrEqualVersion(basis, version) {
 // get the download URL for a Crosswalk OS/channel/version
 // channel: 'stable', 'beta', 'canary'
 // arch: 'arm', 'x86'
-// OS: 'android', 'tizen-mobile', 'tizen-ivi', 'tizen-emulator', 'cordova'
+// OS: 'android', 'tizen-mobile', 'tizen-ivi', 'tizen-emulator', 'cordova',
+// 'android-webview'
 // version: e.g. '4.32.25.1'
 function getXwalkDownloadUrl(OS, arch, channel, version) {
     var file_prefix = 'crosswalk-';
 
+    // the Cordova and webview downloads are actually under the
+    // android/ folder, so realOS tracks which OS folder to link to
     var realOS = OS;
 
     // tizen emulator downloads are in the same directory as the
@@ -69,9 +72,15 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
         OS = 'tizen-mobile';
         file_prefix += 'emulator-support-';
     }
+    // cordova downloads are under android...
     else if (OS === 'cordova') {
       realOS = 'android';
       file_prefix += 'cordova-';
+    }
+    // webview downloads are under android...
+    else if (OS === 'android-webview') {
+      realOS = 'android';
+      file_prefix += 'webview-';
     }
 
     var download_url = 'https://download.01.org/crosswalk/releases/crosswalk/'
@@ -97,13 +106,13 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
         !(androidBetaArchIndependent || androidCanaryArchIndependent || androidStableArchIndependent)) {
       download_url += arch + '/';
     }
-    else if (OS === 'cordova') {
+    else if (OS === 'cordova' || OS === 'android-webview') {
       download_url += arch + '/';
     }
 
     download_url += file_prefix + version;
 
-    if (OS === 'android' || OS === 'cordova') {
+    if (OS === 'android' || OS === 'cordova' || OS === 'android-webview') {
       if (androidBetaArchIndependent || androidCanaryArchIndependent || androidStableArchIndependent) {
         download_url += '.zip';
       }
@@ -172,7 +181,7 @@ function populateStaticLink(link) {
 }
 
 // populate the static download links (i.e. <a> elements
-// with data-role="static-download-link") from data in versions.js
+// with data-role="static-download-link") using data in versions.js
 function populateStaticLinks() {
   var sel = 'a[data-role="static-download-link"]';
   var staticLinks = document.querySelectorAll(sel);
