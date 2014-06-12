@@ -5,10 +5,10 @@
   <body>
     <h1>Issue collector</h1>
 
-    <p>Use this form to provide feedback about the website, or to
-    raise Crosswalk issues.</p>
+    <p>Use the button below to open a form to report Crosswalk-related
+    issues.</p>
 
-    <p><button id="jira-feedback-trigger">Feedback</button></p>
+    <p><button id="jira-feedback-trigger">Report Bugs</button></p>
 
     <script>
     <?php
@@ -21,13 +21,13 @@
     // feedback.js file;
     // the issue collector definition is in
     // https://crosswalk-project.org/jira/secure/ViewCollector!default.jspa?projectKey=XWALK&collectorId=75c5359a
-    echo file_get_contents(dirname(__FILE__) . '/../feedback.js');
+    echo file_get_contents(dirname(__FILE__) . '/feedback.js');
     ?>
 
     // custom Jira feedback trigger; see
     // https://confluence.atlassian.com/display/JIRA/Advanced+Use+of+the+JIRA+Issue+Collector
     window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, {
-      triggerFunction : function (showCollectorDialog) {
+      triggerFunction: function (showCollectorDialog) {
         $('#jira-feedback-trigger').on('click', function (e) {
           e.preventDefault();
           showCollectorDialog();
