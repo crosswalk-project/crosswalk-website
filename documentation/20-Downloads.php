@@ -39,6 +39,28 @@
     </tr>
 
     <tr>
+    <th>Android webview (x86)</th>
+    <td>-</td>
+    <td>
+    <a data-role="static-download-link" data-channel="beta" data-os="android-webview" data-arch="x86"></a>
+    </td>
+    <td data-role="download-cell" data-loading="true">
+    <a data-role="download-link" data-channel="canary" data-os="android-webview" data-arch="x86"></a>
+    </td>
+    </tr>
+
+    <tr>
+    <th>Android webview (ARM)</th>
+    <td>-</td>
+    <td>
+    <a data-role="static-download-link" data-channel="beta" data-os="android-webview" data-arch="arm"></a>
+    </td>
+    <td data-role="download-cell" data-loading="true">
+    <a data-role="download-link" data-channel="canary" data-os="android-webview" data-arch="arm"></a>
+    </td>
+    </tr>
+
+    <tr>
     <th>Cordova Android (x86)</th>
     <td>
     <a data-role="static-download-link" data-channel="stable" data-os="cordova" data-arch="x86"></a>
