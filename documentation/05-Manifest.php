@@ -4,6 +4,8 @@
 
 <p>The current Crosswalk manifest implementation is still under heavy development, but the eventual aim is for it to adhere to, influence, and act as a reference implementation of the <a href="http://w3c.github.io/manifest/">W3C Manifest for Web Application specification</a>. Once this is achieved, a Crosswalk application + manifest should behave consistently (within the scope of the specification) across all runtimes which implement it.</p>
 
+<p>In the meantime, any fields in the Crosswalk manifest which are not part of the W3C Manifest specification are marked with <strong>"(extension)"</strong> below.</p>
+
 <p>See <a href="#documentation/manifest/using_the_manifest">Using the manifest</a> for details of how to use a <code>manifest.json</code> file with a Crosswalk application.</p>
 
 <p>Use the form below to display the valid manifest fields for a Crosswalk version and platform combination.</p>
@@ -65,31 +67,31 @@
     </p>
 
     <ul>
-      <li data-field="app.launch.local_path">
+      <li data-field="app.launch.local_path.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Specifies an HTML file to use as the entry point for running the application.</p>
         <p><a href="#documentation/manifest/entry_points">Read more...</a></p>
       </li>
 
-      <li data-field="app.main.scripts">
+      <li data-field="app.main.scripts.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Specifies an array of JavaScript files to load as the application entry point. A main document will be automatically generated as the context for the scripts.</p>
         <p><a href="#documentation/manifest/entry_points">Read more...</a></p>
       </li>
 
-      <li data-field="app.main.source">
+      <li data-field="app.main.source.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Specifies an HTML file to use as the entry point for running the application. This has the same effect as the <strong>app.launch.local_path</strong> field.</p>
         <p><a href="#documentation/manifest/entry_points">Read more...</a></p>
       </li>
 
-      <li data-field="content_security_policy">
+      <li data-field="content_security_policy.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">content security policy (CSP)</a> which should be enforced for the application. The CSP restricts the types of locations of resources the application can load, to help prevent <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-Site Scripting (XSS)</a> and related attacks. CSP is disabled if this field is not set.</p>
         <p><a href="#documentation/manifest/content_security_policy">Read more...</a></p>
       </li>
 
-      <li data-field="description">
+      <li data-field="description.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Free-form text describing the application.</p>
       </li>
@@ -103,16 +105,21 @@
         </p>
       </li>
 
-      <li data-field="icons.128">
+      <li data-field="icons.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Graphics files to use for the application icon at different resolutions.</p>
         <p><a href="#documentation/manifest/icons_(Crosswalk)">Read more...</a></p>
       </li>
 
-      <li data-field="launch_screen">
+      <li data-field="launch_screen.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines a static user interface to be shown immediately after the application is launched.</p>
         <p><a href="#documentation/manifest/launch_screen">Read more...</a></p>
+      </li>
+
+      <li data-field="name.extension">
+        <p><strong data-role="field-name"></strong></p>
+        <p>The name of the application as it is displayed to a user.</p>
       </li>
 
       <li data-field="name">
@@ -123,7 +130,7 @@
         </p>
       </li>
 
-      <li data-field="permissions">
+      <li data-field="permissions.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines permissions the application needs so it can access platform features. <a href="#manifest-permissions">See below</a> for details of the available permissions.</p>
         <p><a href="#documentation/manifest/permissions">Read more...</a></p>
@@ -138,12 +145,12 @@
         </p>
       </li>
 
-      <li data-field="version">
+      <li data-field="version.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>A string containing one to four dot-separated integers identifying the application version; for example: "2", "1.2", "1.3.0", "4.0.0.11". A couple of rules apply to the integers: they must be between 0 and 65535, inclusive; and you can't prefix any non-zero values with "0" (e.g. "01.1" is invalid).</p>
       </li>
 
-      <li data-field="xwalk_hosts">
+      <li data-field="xwalk_hosts.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines host URL patterns to which the application can make Ajax requests, allowing <a href="https://developer.chrome.com/extensions/xhr">Cross-Origin Ajax requests</a> (using a mechanism similar to Chrome's).</p>
         <p><a href="#documentation/manifest/xwalk_hosts">Read more...</a></p>
