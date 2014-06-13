@@ -3,12 +3,11 @@
 <head>
 </head>
   <body>
-    <h1>Issue collector</h1>
+    <h1>Report bugs</h1>
 
-    <p>Use the button below to open a form to report Crosswalk-related
-    issues.</p>
+    <p>Use the button below to file a bug report for Crosswalk.</p>
 
-    <p><button id="jira-feedback-trigger">Report Bugs</button></p>
+    <p><button id="jira-feedback-trigger">Open bug report form</button></p>
 
     <script>
     <?php
