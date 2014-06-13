@@ -1,6 +1,6 @@
 {
-  "app.launch.local_path": {
-    "name": "app.launch.local_path",
+  "app.launch.local_path.extension": {
+    "name": "app.launch.local_path (extension)",
     "tizen": {
       "versions": "1+",
       "deprecated": "7+"
@@ -12,22 +12,22 @@
       "versions": "6+"
     }
   },
-  "app.main.scripts": {
-    "name": "app.main.scripts",
+  "app.main.scripts.extension": {
+    "name": "app.main.scripts (extension)",
     "tizen": {
       "versions": "1-7",
       "deprecated": "7+"
     }
   },
-  "app.main.source": {
-    "name": "app.main.source",
+  "app.main.source.extension": {
+    "name": "app.main.source (extension)",
     "tizen": {
       "versions": "1-7",
       "deprecated": "7+"
     }
   },
-  "content_security_policy": {
-    "name": "content_security_policy",
+  "content_security_policy.extension": {
+    "name": "content_security_policy (extension)",
     "tizen": {
       "versions": "4+"
     },
@@ -38,8 +38,8 @@
       "versions": "6+"
     }
   },
-  "description": {
-    "name": "description",
+  "description.extension": {
+    "name": "description (extension)",
     "tizen": {
       "versions": "1+"
     },
@@ -56,8 +56,8 @@
       "versions": "7+"
     }
   },
-  "icons.128": {
-    "name": "icons",
+  "icons.extension": {
+    "name": "icons (extension)",
     "tizen": {
       "versions": "1+"
     },
@@ -65,16 +65,16 @@
       "versions": "2+"
     }
   },
-  "launch_screen": {
-    "name": "launch_screen",
+  "launch_screen.extension": {
+    "name": "launch_screen (extension)",
     "android": {
       "versions": "5+"
     }
   },
-  "name": {
-    "name": "name",
+  "name.extension": {
+    "name": "name (extension)",
     "tizen": {
-      "versions": "1+"
+      "versions": "1-6"
     },
     "android": {
       "versions": "2+"
@@ -83,8 +83,14 @@
       "versions": "6+"
     }
   },
-  "permissions": {
-    "name": "permissions",
+  "name": {
+    "name": "name",
+    "tizen": {
+      "versions": "7"
+    }
+  },
+  "permissions.extension": {
+    "name": "permissions (extension)",
     "android": {
       "versions": "4+"
     }
@@ -95,8 +101,8 @@
       "versions": "7+"
     }
   },
-  "version": {
-    "name": "version",
+  "version.extension": {
+    "name": "version (extension)",
     "tizen": {
       "versions": "1+"
     },
@@ -107,8 +113,8 @@
       "versions": "6+"
     }
   },
-  "xwalk_hosts": {
-    "name": "xwalk_hosts",
+  "xwalk_hosts.extension": {
+    "name": "xwalk_hosts (extension)",
     "android": {
       "versions": "6+"
     },

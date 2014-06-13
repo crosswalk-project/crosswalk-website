@@ -12,7 +12,7 @@ A Crosswalk manifest file can be used as the basis for generating an Android pac
 
 However, that tutorial only uses a basic manifest, and does not explain in detail how some manifest fields can affect Android packaging. The links below provide some extra information about this:
 
-* `icons`: [effect on Android packaging](#documentation/manifest/icons_\(Crosswalk\)/Effect-on-Android-packaging)
+* `icons`: [effect on Android packaging](#documentation/manifest/icons_\(extension\)/Effect-on-Android-packaging)
 
 * `permissions`: [effect on Android packaging](#documentation/manifest/permissions/Effect-on-Android-packaging)
 
