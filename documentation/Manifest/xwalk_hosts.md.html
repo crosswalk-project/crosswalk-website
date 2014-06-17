@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Manifest/xwalk_hosts';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Manifest/xwalk_hosts</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>xwalk_hosts</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Manifest/xwalk_hosts"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Manifest/xwalk_hosts"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The <a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest object</a> is used to interact with remote servers over HTTP (an approach commonly known as <a href="http://www.adaptivepath.com/ideas/ajax-new-approach-web-applications/">Ajax</a>). Under normal circumstances, such requests are constrained by the <a href="http://www.w3.org/Security/wiki/Same_Origin_Policy">same-origin policy</a>: resources can only be accessed if they reside on the same origin as the script making the request.</p>
+
+<p>If you've attempted to access resources from your own web application, but they are on a different origin, you may have seen this message:</p>
+
+<pre><code>XMLHttpRequest cannot load http://crosswalk-project.org/. No
+'Access-Control-Allow-Origin' header is present on the requested
+resource. Origin 'file://' is therefore not allowed access.
+</code></pre>
+
+<p>This hints that it is possible to make such requests, providing the server you are accessing returns the right headers. The 'Access-Control-Allow-Origin' header mentioned here is part of the <a href="http://www.w3.org/TR/cors/">cross-origin resource sharing specification</a>. Cross-origin resource sharing enables a client to make requests to a server on a different origin, providing the client and server negotiate via required headers. However, in practice, most web services you are likely to want to access (unless you control them yourself) will not allow cross-origin resource sharing without authentication.</p>
+
+<p>Crosswalk provides a way to get around these restrictions for applications deployed to Android.</p>
+
+<h2>Allowing cross-origin requests<a class="anchor" id="Allowing-cross-origin-requests" href="#Allowing-cross-origin-requests"></a></h2>
+
+<p>Crosswalk provides a manifest field, <code>xwalk_hosts</code>, which enables an application to make cross-origin requests using XMLHttpRequest on Android. This circumvents same-origin constraints, at the same time avoiding the need to use cross-origin resource sharing.</p>
+
+<p>The field takes an array of URL patterns representing hosts which the application should be able to access. The values can be fully qualified host names, like this:</p>
+
+<ul><li>"<a href="http://crosswalk-project.org/">http://crosswalk-project.org/</a>"</li>
+</ul><p>Or patterns with wild-card characters, such as:</p>
+
+<ul><li>"http://*.org/"</li>
+<li>"https://*/"</li>
+</ul><p>For example, this manifest would allow access to the Crosswalk website, or any intel.com sub-domains:</p>
+
+<pre><code>{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "xwalk_hosts": [
+    "http://crosswalk-project.org/",
+    "http://*.intel.com/"
+  ]
+}
+</code></pre>
+
+<p>Once you've specified the domains which can be accessed by the application, <code>XMLHttpRequest</code> objects can send requests to them as per usual:</p>
+
+<pre><code>var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://crosswalk-project.org/", true);
+xhr.onreadystatechange = function () {
+  if (xhr.readyState == 4) {
+    // do something with xhr.responseText
+  }
+}
+xhr.send();
+</code></pre>
+
+<p>Wrappers for Ajax requests which use XMLHttpRequest underneath (such as jQuery's <code>$.ajax()</code>) will also be able to access the domains you specified.</p>
+
+<h2>Relationship with content_security_policy<a class="anchor" id="Relationship-with-content_security_policy" href="#Relationship-with-content_security_policy"></a></h2>
+
+<p>???</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-06-11 15:37:30</p>
+  <p>
+    <a id="delete-link" href="/documentation/Manifest/xwalk_hosts" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Manifest/xwalk_hosts">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
