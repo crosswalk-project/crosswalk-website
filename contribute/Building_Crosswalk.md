@@ -194,10 +194,7 @@ Chrome's process, so make sure you are
 4.  Configure your setup to generate the Crosswalk projects.
 
         export GYP_GENERATORS='ninja'
-        python xwalk/gyp_xwalk -Dtarget-arch=ia32 -DOS=android
-
-    If you are targeting ARM, pass `-Dtarget-arch=arm` instead of
-    `-Dtarget-arch=ia32`.
+        python xwalk/gyp_xwalk
 
 5.  To build xwalk core and runtime shell (for developer testing purposes,
 not for end users), execute:
