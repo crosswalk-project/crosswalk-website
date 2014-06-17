@@ -59,6 +59,12 @@ The next step is to set up your environment so that binaries and scripts which w
 
     export PATH=<path to ant>/bin:<path to JDK>/bin:$PATH
 
+It's also advisable to set the `JAVA_HOME` environment variable, to ensure that Ant uses the expected version of Java (rather than other versions of Java which may be installed on your system). Also in the `~/.bashrc` file, add this line:
+
+    export JAVA_HOME=<path to JDK>
+
+(Note that you should not include the `bin/` directory in the path for `JAVA_HOME`.)
+
 Then refresh your `PATH` variable in the shell:
 
     > source ~/.bashrc
