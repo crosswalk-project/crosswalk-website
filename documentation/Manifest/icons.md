@@ -1,6 +1,6 @@
 # icons
 
-**Note:** This section only applies to the custom <a href="#documentation/manifest/icons"><code>icons</code> field</a>, not to the W3C-compatible `icons` field used. Also note that this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
+**Note:** This section only applies to the custom <a href="#documentation/manifest/icons"><code>icons</code> field</a>, not to the [W3C-compatible `icons` field](http://w3c.github.io/manifest/#icons-member). Also note that this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
 
 The `icons` field implementation in the earliest versions of Crosswalk is non-standard and based on the format used in the [manifest for Chromium extensions](https://developer.chrome.com/apps/manifest/icons).
 
