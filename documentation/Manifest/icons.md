@@ -1,6 +1,6 @@
 # icons (Crosswalk extension)
 
-**Note:** This section only applies to the custom <a href="#documentation/manifest/icons_(extension)"><code>icons</code> field</a>, not to the W3C-compatible `icons` field used in more recent versions of Crosswalk. Also note that this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
+**Note:** This section only applies to the custom <a href="#documentation/manifest/icons"><code>icons</code> field</a>, not to the W3C-compatible `icons` field used in more recent versions of Crosswalk. Also note that this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
 
 The `icons` field implementation in the earliest versions of Crosswalk is non-standard and based on the format used in the [manifest for Chromium extensions](https://developer.chrome.com/apps/manifest/icons).
 
@@ -30,7 +30,7 @@ As a minimum, the `"128"` key (for a 128x128 pixel image) should be specified. T
 
 Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](#documentation/getting_started/run_on_android).
 
-If the <a href="#documentation/manifest/icons_(Crosswalk)"><code>icons</code> field</a> contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
+If the <a href="#documentation/manifest/icons"><code>icons</code> field</a> contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
 
 |Icon key range...|`make_apk.py` copies the icon file to...|
 |:---------------:|----------------------------------------|

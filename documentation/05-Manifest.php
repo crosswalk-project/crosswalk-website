@@ -108,7 +108,7 @@
       <li data-field="icons.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Graphics files to use for the application icon at different resolutions.</p>
-        <p><a href="#documentation/manifest/icons_(Crosswalk)">Read more...</a></p>
+        <p><a href="#documentation/manifest/icons">Read more...</a></p>
       </li>
 
       <li data-field="launch_screen.extension">
