@@ -1,4 +1,4 @@
-# icons (Crosswalk extension)
+# icons
 
 **Note:** This section only applies to the custom <a href="#documentation/manifest/icons"><code>icons</code> field</a>, not to the W3C-compatible `icons` field used in more recent versions of Crosswalk. Also note that this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
 
