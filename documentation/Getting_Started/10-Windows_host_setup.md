@@ -53,9 +53,33 @@ Your Ant installation should now be in `C:\ant`.
 
 ### Configure the tools
 
-The next step is to set up your environment so that binaries and scripts which were installed manually (ant, JDK, Python) are on your `PATH`.
+The next step is to set up your environment so that binaries and scripts which were installed manually (ant, JDK, Python) are on your `Path`.
 
-    > setx path "%path%;c:\python;c:\ant\bin;c:\jdk\bin"
+To set the `Path` variable, search for the "Edit environment variables for your account" option from the Windows start menu. Alternatively, click on the *System* icon in the *Control Panel*; then go to *Advanced system settings* and click the *Environment Variables* button. You should see this dialog box:
+
+![Windows environment variables dialog](assets/windows-env-variables.png)
+
+Edit the `Path` environment variable as follows:
+
+1.  Select the *Path* environment variable (in the top select box, *User variables...*).
+
+2.  Click *Edit*.
+
+3.  Append this to the end of the *Variable value* field:
+
+        ;c:\python;c:\ant\bin;c:\jdk\bin
+
+4.  Click *OK*.
+
+To ensure that Ant is using the correct version of Java (the one you just installed), set the `ANT_HOME` environment variable to the location of the JDK:
+
+1.  Click the *New* button just under the top select box (*User variables...*).
+
+2.  Set *Variable name* to **ANT_HOME**.
+
+3.  Set *Variable value* to **c:\jdk\bin**.
+
+4.  Click *OK*.
 
 ### Install the Android SDK
 
