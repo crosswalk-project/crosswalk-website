@@ -1244,3 +1244,13 @@ p {
   margin-top: 0.8em !important;
   border-top: thin solid #ccc;
 }
+
+[data-role="manifest-filter"] {
+  border-top: thin solid #ccc;
+  padding: 1em !important;
+  background-color: #ccc;
+}
+
+[data-role="manifest-filter"] p {
+  margin-bottom: 0px !important;
+}
