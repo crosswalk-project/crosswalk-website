@@ -1,8 +1,8 @@
-# Amazingly simple App development.
+# Choose a better WebView. Build better Apps, faster.
 
 Intel Crosswalk is a alternate `WebView` for building hybrid mobile applications on Android.
 
-Build better appliations using bleeding-edge HTML5 features such as Web Audio, WebGL, web fonts, [and more](#). Crosswalk is available as a native WebView or can be used with Apache Cordova.
+Build better appliations using bleeding-edge HTML5 features such as Web Audio, WebGL, web fonts, [and more](#). Crosswalk is available noday as a native WebView or can be used with Apache Cordova.
 
 __Get Started__ download
 
@@ -14,7 +14,7 @@ __Get Started__ download
 
 ## What web view are you using?
 
-Over 1.3 million Android device are activated every, each with an slightly different interpretation of the web.
+Stop choosing a fragmented development enivronment. Over 1.3 million Android device are activated every, each with an slightly different interpretation of the web.
 
 It’s impossible to imagine and painful to test how your native hybrid app will render or perform in every situation if you’ve chosen the default Android WebView.
 
