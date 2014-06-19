@@ -28,6 +28,7 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [File API: Writer] (http://dev.w3.org/2009/dap/file-system/file-writer.html) - Write files to a sandboxed sandboxed filesystem on the client.
 * [HTML5 Web Messaging] (http://www.w3.org/TR/webmessaging/) - A mechanism for communicating between browsing contexts.
 * [Indexed DB] (https://dvcs.w3.org/hg/IndexedDB/raw-file/default/Overview.html) - An asynchronous client-side storage API for fast access to large amounts of structured data.
+* [Messaging] (http://www.w3.org/2012/sysapps/messaging/)<sup><a href="#a">[a]</a></sup> - Allows SMS and MMS message sending and receiving.
 * [Online State] (http://www.w3.org/html/wg/drafts/html/CR/browsers.html#browser-state) - Online and offline events for the network state.
 * [Web SQL] (http://www.w3.org/TR/webdatabase/) - Store data in databases on the client using a variant of SQL.
 * [Web Sockets] (http://www.w3.org/TR/websockets/) - A low overhead bi-directional communication with web servers over a persistent TCP connection.
@@ -52,6 +53,9 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [Screen Orientation](http://www.w3.org/TR/screen-orientation/) - Enables screen orientation locking and provides access to screen orientation data and events.
 * [Touch Events] (https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html) - Handle touch events programmatically.
 * [Vibration] (http://www.w3.org/TR/vibration/)<sup><a href="#v">[5.34.104.5]</a></sup> - Programmatically control a device's vibration mechanism.
+
+## Social
+* [Contacts] (http://www.w3.org/2012/sysapps/contacts-manager-api/)<sup><a href="#a">[a]</a></sup> - Enables the management of contact information.
 
 # Experimental APIs
 
