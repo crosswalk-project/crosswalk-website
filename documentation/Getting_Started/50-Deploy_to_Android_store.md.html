@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/50 Deploy_to_Android_store';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/50 Deploy_to_Android_store</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Deploy to an Android app store</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/50-Deploy_to_Android_store"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/50-Deploy_to_Android_store"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>A Crosswalk app for Android can be deployed to an app store after following the previous steps. The deployment mode varies depending on the packaging mode used (embedded or shared).</p>
+
+<p>In this tutorial, you packaged the application using embedded mode. However, it is also possible to <a href="#documentation/getting_started/Run_on_Android/Shared-mode">package an application using shared mode</a>.</p>
+
+<p>Methods for deploying both types of package to an app store are briefly outlined below.</p>
+
+<h2>Deploying an embedded mode Crosswalk app<a class="anchor" id="Deploying-an-embedded-mode-Crosswalk-app" href="#Deploying-an-embedded-mode-Crosswalk-app"></a></h2>
+
+<p>To ensure that a Crosswalk app runs on as many Android devices as possible, developers are advised to upload both embedded packages to the app store. In practice, this means that a developer should do the following for each web app packaged in embedded mode:</p>
+
+<ul><li>  Upload an x86-based Crosswalk app apk to app store.</li>
+<li>  Upload an ARM-based Crosswalk app apk to app store.</li>
+</ul><p>Google Play store already supports multiple apks for each app: see <a href="http://developer.android.com/google/play/publishing/multiple-apks.html">this article</a> for details.</p>
+
+<h2>Deploying a shared mode Crosswalk app<a class="anchor" id="Deploying-a-shared-mode-Crosswalk-app" href="#Deploying-a-shared-mode-Crosswalk-app"></a></h2>
+
+<p>For each web app packaged in shared mode, developers are advised to:</p>
+
+<ul><li>  Upload the Crosswalk runtime apk for Intel architecture to app store. This only needs to be done once for all applications sharing the runtime.</li>
+<li>  Upload the Crosswalk runtime apk for ARM architecture to app store.  This only needs to be done once for all applications sharing the runtime.</li>
+<li>  Upload the apk for each Crosswalk app to app store. Each of these will use the shared architecture-specific runtime apk.</li>
+</ul><p>Google Play store already supports multiple apks for a single "app" (here, the Crosswalk runtime counts as an "app" which is used to run your actual, <em>real</em> web apps): see <a href="http://developer.android.com/google/play/publishing/multiple-apks.html">this article</a> for details.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-14 12:11:47</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/50-Deploy_to_Android_store" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/50-Deploy_to_Android_store">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
