@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Manifest/display';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Manifest/display</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>display</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Manifest/display"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Manifest/display"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The <code>display</code> field sets the preferred <em>display mode</em> for the application: how much of the available display area is occupied by the application, and whether other elements of the user interface (navigation bars, other toolbars) are visible.</p>
+
+<p>At the moment, the following display modes are available:</p>
+
+<ul><li><p><code>"fullscreen"</code></p>
+
+<p>In this mode, the application is displayed so that it fills the entire area of the screen, with none of the runtime's UI elements ("chrome") visible.</p>
+
+<p>Note that specifying the "fullscreen" display mode is distinct from using the <a href="http://fullscreen.spec.whatwg.org/">fullscreen API</a> within an application: in the former case, you are instructing the runtime to display the application so that it fills the display area; in the latter case, an application can request that one of its UI elements be allowed to fill the display area.</p></li>
+<li><p><code>"standalone"</code> (the default)</p>
+
+<p>In this mode, the application displays in the same manner as a native application. The standard UI elements from the context (e.g. the device's status bar) remain visible.</p></li>
+</ul><p>See the <a href="http://w3c.github.io/manifest/#display-member">W3C spec</a> for full details.</p>
+
+<h2>Examples<a class="anchor" id="Examples" href="#Examples"></a></h2>
+
+<p>To give an idea of how this field setting affects the application's appearance, here are some screenshots of the "hello world" application in each mode on a Tizen IVI virtual machine.</p>
+
+<p><strong>Fullscreen:</strong></p>
+
+<p><img src="assets/crosswalk-manifest-tizen-fullscreen.png" alt="Application in fullscreen display mode on Tizen IVI" title="Fullscreen" /></p>
+
+<p><strong>Standalone (note the device's toolbar):</strong></p>
+
+<p><img src="assets/crosswalk-manifest-tizen-standalone.png" alt="Application in standalone display mode on Tizen IVI" title="Standalone" /></p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-06-11 15:37:30</p>
+  <p>
+    <a id="delete-link" href="/documentation/Manifest/display" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Manifest/display">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
