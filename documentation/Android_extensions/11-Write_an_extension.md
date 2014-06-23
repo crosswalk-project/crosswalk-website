@@ -279,12 +279,23 @@ At build time, `make_apk.py` will combine this JSON file with configuration file
 
 Create `js/xwalk-audiofs-extension.js` with this content:
 
-    // returns an array of file objects on the device in format:
-    // [{title: ..., artist: ..., path: ...}, ...];
-    // the path property is a playable URI if inserted into an <audio> element
-    // as the src attribute
+    /*
+    AudioFs extension
 
-    // provides a unique ID for each call to the extension
+    exports listFiles() and listFilesAsync(),
+    which return or resolve to (respectively) a response object:
+
+       {
+         id: "<call id>",
+         success: true | false,
+         files: []
+       }
+
+    files is an array of file objects on the device in format:
+    [{title: ..., artist: ..., path: ...}, ...]
+    */
+
+    // provides a unique ID for each async call to the extension
     var counter = 0;
 
     // map from a request ID to a callback for the response
@@ -574,7 +585,7 @@ This is a fairly standard Ant buildfile for a small project. The default task is
 4.  Compiles the extension Java source in the `src/` directory, placing the output `.class` files into the `build/` directory.
 5.  Unpacks the Gson jar file into the `build/` directory. This is so it can be included in the extension jar file. Note that `android.jar` is not included as part of the extension.
 6.  Creates a jar file in `xwalk-audiofs-extension/` containing the extension `.class` files and the content unpacked from the Gson jar file.
-7.  Copies the extension JSON configuration `xwalk-audiofs-extension.json` and the JavaScript API definition `js/xwalk-audiofs-extension.js` into the `xwalk-audiofs-extension/` directory.
+7.  Copies the extension JSON configuration `xwalk-audiofs-extension.json` and the JavaScript API definition `js/xwalk-audiofs-extension.js` into the `xwalkwebrtc-1741-audiofs-extension/` directory.
 
 The final output of this task, the `xwalk-audiofs-extension/` directory, contains an extension with the correct layout to be included in a Crosswalk `.apk` file, i.e.
 
