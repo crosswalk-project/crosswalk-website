@@ -1,6 +1,6 @@
 # Web APIs
 
-The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2] (wiki/Crosswalk-3-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only, <sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later).
+The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2] (wiki/Crosswalk-3-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only, <sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later, <sup id="vp">[X.X.X.X; x86|ARM]</sup> = this version or later for the specified architecture).
 
 ## Runtime & Packaging
 * [app: URI] (http://www.w3.org/2012/sysapps/app-uri/)<sup><a href="#t">[t]</a></sup> - Address resources inside a packaged application.
