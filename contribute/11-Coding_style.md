@@ -1,19 +1,19 @@
 # Crosswalk coding style
 
-In general, we follow the Chromium coding style: http://www.chromium.org/developers/coding-style.
+As a general rule, we follow the Chromium coding style: http://www.chromium.org/developers/coding-style.
 
 For quick reference, here are some key rules:
 
- * *Never* use tabs for indentation; use spaces instead.
- * *Don't* leave spaces at the end of a line.
- * *Don't* leave blank lines at the end of a file.
+ * *Never* use tabs for indentation; use spaces instead. The number of spaces per indentation level depends on the programming language: see the links below for details.
+ * Remove trailing spaces from every line.
+ * Remove any blank lines at the end of a file.
  * Be careful with license headers: if you copy or modify a file from somewhere else, ensure that the licence header remains intact.
 
 ## Coding Style for C++
 
 For C++ code, we follow the [Google C++ Style Guide](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml).
 
-Note that C++11 can be used in Crosswalk extensions for Tizen.
+Note that C++11 can and should be used in Crosswalk extensions for Tizen.
 
 ## Coding Style for Java
 
