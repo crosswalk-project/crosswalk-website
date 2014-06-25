@@ -6,7 +6,7 @@ The application you'll build in the tutorial demonstrates a very simple "echo" e
 
 This tutorial **doesn't** cover best practices for web development. For example, it avoids [grunt](http://gruntjs.com/) and [bower](http://bower.io/) and doesn't use any third party front-end libraries, for simplicity's sake. Instead, it focuses on helping you explore the pieces of a hybrid Crosswalk application and how they fit together.
 
-You'll need to be familiar with Java development tools like [Ant](http://ant.apache.org/) and [Ivy](http://ant.apache.org/projects/ivy.html).
+This tutorial uses [Ant](http://ant.apache.org/) and [Ivy](http://ant.apache.org/projects/ivy.html) to build the extension. Alternatively, other Java tools, such as [gradle](http://www.gradle.org/), could be used.
 
 **By the end of the tutorial**, you will be able to develop your own Java extensions for Crosswalk applications on Android.
 
