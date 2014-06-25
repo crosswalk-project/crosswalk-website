@@ -9,17 +9,15 @@ You will also need to [set up an Android target](#documentation/getting_started/
 * x86 ZTE Geek phone with Android 4.2.2
 * ARM HTC OneX with Android 4.0.4
 
-Finally, you'll need at least one audio file on the Android device, in a standard storage location (it should show up and play in the default music player on the device). More than one audio file would be ideal.
-
 ## Project outline
 
 For the purposes of the tutorial, the extension and the application are developed within a single top-level project directory. Here is an outline of the structure:
 
     # top-level project directory
-    xwalk-player-project/
+    xwalk-echo-project/
 
-      # directory for the Java audio filesystem extension
-      xwalk-audiofs-extension-src/
+      # directory for the extension
+      xwalk-echo-extension-src/
         build/
           ...temporary build artefacts...
         java/
@@ -30,14 +28,14 @@ For the purposes of the tutorial, the extension and the application are develope
           ...third party jar files (installed via Ivy)...
         tools/
           ...jar files to assist with the build...
-        xwalk-audiofs-extension/
+        xwalk-echo-extension/
           ...temporary output directory for the extension...
         build.xml                     # Ant build file
         ivy.xml                       # Ivy configuration for Ant
-        xwalk-audiofs-extension.json  # extension configuration
+        xwalk-echo-extension.json     # extension configuration
 
       # directory for the web application
-      xwalk-player/
+      xwalk-echo-app/
         assets/
           ...images, stylesheets etc...
         js/
@@ -55,4 +53,4 @@ For the purposes of the tutorial, it's assumed that you have a directory for you
     cd ~/<my projects directory>
 
     # set up top-level directory for the xwalk-player project
-    mkdir xwalk-player-project
+    mkdir xwalk-echo-project
