@@ -1,17 +1,6 @@
 <api>
 <package name="org.xwalk.core"
 >
-<class name="JavascriptInterface"
- extends="java.lang.Object"
- abstract="true"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<implements name="java.lang.annotation.Annotation">
-</implements>
-</class>
 <interface name="XWalkJavascriptResult"
  abstract="true"
  static="false"
@@ -56,15 +45,23 @@
 </method>
 </interface>
 <class name="XWalkNavigationHistory"
- extends="java.lang.Object"
+ extends="XWalkNavigationHistoryInternal"
  abstract="false"
  static="false"
  final="true"
  deprecated="not deprecated"
  visibility="public"
 >
-<implements name="java.io.Serializable">
-</implements>
+<constructor name="XWalkNavigationHistory"
+ type="org.xwalk.core.XWalkNavigationHistory"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="internal" type="XWalkNavigationHistoryInternal">
+</parameter>
+</constructor>
 <method name="canGoBack"
  return="boolean"
  abstract="false"
@@ -207,13 +204,23 @@
 </method>
 </class>
 <class name="XWalkNavigationItem"
- extends="java.lang.Object"
+ extends="XWalkNavigationItemInternal"
  abstract="false"
  static="false"
  final="true"
  deprecated="not deprecated"
  visibility="public"
 >
+<constructor name="XWalkNavigationItem"
+ type="org.xwalk.core.XWalkNavigationItem"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="internal" type="XWalkNavigationItemInternal">
+</parameter>
+</constructor>
 <method name="getOriginalUrl"
  return="java.lang.String"
  abstract="false"
@@ -249,7 +256,7 @@
 </method>
 </class>
 <class name="XWalkPreferences"
- extends="java.lang.Object"
+ extends="XWalkPreferencesInternal"
  abstract="false"
  static="false"
  final="true"
@@ -296,6 +303,17 @@
 <exception name="RuntimeException" type="java.lang.RuntimeException">
 </exception>
 </method>
+<field name="ANIMATABLE_XWALK_VIEW"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;animatable-xwalk-view&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
 <field name="REMOTE_DEBUGGING"
  type="java.lang.String"
  transient="false"
@@ -309,7 +327,7 @@
 </field>
 </class>
 <class name="XWalkResourceClient"
- extends="java.lang.Object"
+ extends="XWalkResourceClientInternal"
  abstract="false"
  static="false"
  final="false"
@@ -336,7 +354,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="org.xwalk.core.XWalkView">
+<parameter name="view" type="XWalkViewInternal">
 </parameter>
 <parameter name="url" type="java.lang.String">
 </parameter>
@@ -351,7 +369,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="org.xwalk.core.XWalkView">
+<parameter name="view" type="XWalkViewInternal">
 </parameter>
 <parameter name="url" type="java.lang.String">
 </parameter>
@@ -366,7 +384,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="org.xwalk.core.XWalkView">
+<parameter name="view" type="XWalkViewInternal">
 </parameter>
 <parameter name="progressInPercent" type="int">
 </parameter>
@@ -381,7 +399,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="org.xwalk.core.XWalkView">
+<parameter name="view" type="XWalkViewInternal">
 </parameter>
 <parameter name="errorCode" type="int">
 </parameter>
@@ -391,7 +409,22 @@
 </parameter>
 </method>
 <method name="shouldInterceptLoadRequest"
- return="android.webkit.WebResourceResponse"
+ return="WebResourceResponse"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="view" type="XWalkViewInternal">
+</parameter>
+<parameter name="url" type="java.lang.String">
+</parameter>
+</method>
+<method name="shouldInterceptLoadRequest"
+ return="WebResourceResponse"
  abstract="false"
  native="false"
  synchronized="false"
@@ -583,7 +616,7 @@
 </field>
 </class>
 <class name="XWalkUIClient"
- extends="java.lang.Object"
+ extends="XWalkUIClientInternal"
  abstract="false"
  static="false"
  final="false"
@@ -610,7 +643,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="org.xwalk.core.XWalkView">
+<parameter name="view" type="XWalkViewInternal">
 </parameter>
 <parameter name="enterFullscreen" type="boolean">
 </parameter>
@@ -625,7 +658,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="org.xwalk.core.XWalkView">
+<parameter name="view" type="XWalkViewInternal">
 </parameter>
 </method>
 <method name="onJavascriptModalDialog"
@@ -638,9 +671,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="org.xwalk.core.XWalkView">
+<parameter name="view" type="XWalkViewInternal">
 </parameter>
-<parameter name="type" type="org.xwalk.core.XWalkUIClient.JavascriptMessageType">
+<parameter name="typeInternal" type="JavascriptMessageTypeInternal">
 </parameter>
 <parameter name="url" type="java.lang.String">
 </parameter>
@@ -648,7 +681,7 @@
 </parameter>
 <parameter name="defaultValue" type="java.lang.String">
 </parameter>
-<parameter name="result" type="org.xwalk.core.XWalkJavascriptResult">
+<parameter name="result" type="XWalkJavascriptResultInternal">
 </parameter>
 </method>
 <method name="onRequestFocus"
@@ -661,7 +694,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="org.xwalk.core.XWalkView">
+<parameter name="view" type="XWalkViewInternal">
 </parameter>
 </method>
 <method name="onScaleChanged"
@@ -674,7 +707,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="org.xwalk.core.XWalkView">
+<parameter name="view" type="XWalkViewInternal">
 </parameter>
 <parameter name="oldScale" type="float">
 </parameter>
@@ -691,9 +724,28 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<parameter name="view" type="XWalkViewInternal">
+</parameter>
+<parameter name="uploadFile" type="&lt;any&gt;">
+</parameter>
+<parameter name="acceptType" type="java.lang.String">
+</parameter>
+<parameter name="capture" type="java.lang.String">
+</parameter>
+</method>
+<method name="openFileChooser"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 <parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
-<parameter name="uploadFile" type="android.webkit.ValueCallback&lt;android.net.Uri&gt;">
+<parameter name="uploadFile" type="&lt;any&gt;">
 </parameter>
 <parameter name="acceptType" type="java.lang.String">
 </parameter>
@@ -735,7 +787,7 @@
 </method>
 </class>
 <class name="XWalkView"
- extends="android.widget.FrameLayout"
+ extends="XWalkViewInternal"
  abstract="false"
  static="false"
  final="false"
@@ -749,9 +801,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="context" type="android.content.Context">
+<parameter name="context" type="Context">
 </parameter>
-<parameter name="attrs" type="android.util.AttributeSet">
+<parameter name="attrs" type="AttributeSet">
 </parameter>
 </constructor>
 <constructor name="XWalkView"
@@ -761,9 +813,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="context" type="android.content.Context">
+<parameter name="context" type="Context">
 </parameter>
-<parameter name="activity" type="android.app.Activity">
+<parameter name="activity" type="Activity">
 </parameter>
 </constructor>
 <method name="addJavascriptInterface"
@@ -806,7 +858,7 @@
 >
 <parameter name="script" type="java.lang.String">
 </parameter>
-<parameter name="callback" type="android.webkit.ValueCallback&lt;java.lang.String&gt;">
+<parameter name="callback" type="&lt;any&gt;">
 </parameter>
 </method>
 <method name="getAPIVersion"
@@ -941,7 +993,7 @@
 </parameter>
 <parameter name="resultCode" type="int">
 </parameter>
-<parameter name="data" type="android.content.Intent">
+<parameter name="data" type="Intent">
 </parameter>
 </method>
 <method name="onDestroy"
@@ -966,6 +1018,21 @@
  visibility="public"
 >
 </method>
+<method name="onKeyUp"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="keyCode" type="int">
+</parameter>
+<parameter name="event" type="KeyEvent">
+</parameter>
+</method>
 <method name="onNewIntent"
  return="boolean"
  abstract="false"
@@ -976,7 +1043,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="intent" type="android.content.Intent">
+<parameter name="intent" type="Intent">
 </parameter>
 </method>
 <method name="onShow"
@@ -1024,7 +1091,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="inState" type="android.os.Bundle">
+<parameter name="inState" type="Bundle">
 </parameter>
 </method>
 <method name="resumeTimers"
@@ -1048,7 +1115,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="outState" type="android.os.Bundle">
+<parameter name="outState" type="Bundle">
 </parameter>
 </method>
 <method name="setResourceClient"
