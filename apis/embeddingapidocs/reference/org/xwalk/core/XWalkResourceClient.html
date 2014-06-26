@@ -212,11 +212,6 @@
 
 
   
-  
-  
-  
-
-  
    
   
   
@@ -279,11 +274,7 @@ Summary:
 
 
   
-  
-  
-
-  
-    extends XWalkResourceClientInternal<br/>
+    extends Object<br/>
   
   
   
@@ -303,21 +294,11 @@ Summary:
 
     <tr>
          	
-        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
     <tr>
-        
-            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
-         	
-        <td colspan="2" class="jd-inheritance-class-cell">XWalkResourceClientInternal</td>
-    </tr>
-    
-
-    <tr>
-        
-            <td class="jd-inheritance-space">&nbsp;</td>
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
          	
@@ -556,8 +537,11 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkResourceClient.html#onLoadFinished(XWalkViewInternal, java.lang.String)">onLoadFinished</a></span>(XWalkViewInternal view, String url)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkResourceClient.html#onLoadFinished(org.xwalk.core.XWalkView, java.lang.String)">onLoadFinished</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, String url)
         
+        <div class="jd-descrdiv">Notify the client that the XWalkView completes to load the resource
+ specified by the given url.</div>
+  
   </td></tr>
 
 
@@ -572,8 +556,11 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkResourceClient.html#onLoadStarted(XWalkViewInternal, java.lang.String)">onLoadStarted</a></span>(XWalkViewInternal view, String url)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkResourceClient.html#onLoadStarted(org.xwalk.core.XWalkView, java.lang.String)">onLoadStarted</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, String url)
         
+        <div class="jd-descrdiv">Notify the client that the XWalkView will load the resource specified
+ by the given url.</div>
+  
   </td></tr>
 
 
@@ -588,8 +575,10 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkResourceClient.html#onProgressChanged(XWalkViewInternal, int)">onProgressChanged</a></span>(XWalkViewInternal view, int progressInPercent)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkResourceClient.html#onProgressChanged(org.xwalk.core.XWalkView, int)">onProgressChanged</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, int progressInPercent)
         
+        <div class="jd-descrdiv">Notify the client the progress info of loading a specific url.</div>
+  
   </td></tr>
 
 
@@ -604,8 +593,10 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkResourceClient.html#onReceivedLoadError(XWalkViewInternal, int, java.lang.String, java.lang.String)">onReceivedLoadError</a></span>(XWalkViewInternal view, int errorCode, String description, String failingUrl)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkResourceClient.html#onReceivedLoadError(org.xwalk.core.XWalkView, int, java.lang.String, java.lang.String)">onReceivedLoadError</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, int errorCode, String description, String failingUrl)
         
+        <div class="jd-descrdiv">Report an error to the client.</div>
+  
   </td></tr>
 
 
@@ -628,22 +619,6 @@ Summary:
   </td></tr>
 
 
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol">
-            
-            
-            
-            
-            
-            WebResourceResponse
-        </td>
-        <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkResourceClient.html#shouldInterceptLoadRequest(XWalkViewInternal, java.lang.String)">shouldInterceptLoadRequest</a></span>(XWalkViewInternal view, String url)
-        
-  </td></tr>
-
-
 
 </table>
 
@@ -657,8 +632,6 @@ Summary:
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
-
-
 
 
 <tr class="api apilevel-" >
@@ -1599,7 +1572,7 @@ From class
 
 
 
-<a id="onLoadFinished(XWalkViewInternal, java.lang.String)"></a>
+<a id="onLoadFinished(org.xwalk.core.XWalkView, java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1612,7 +1585,7 @@ From class
         void
       </span>
       <span class="sympad">onLoadFinished</span>
-      <span class="normal">(XWalkViewInternal view, String url)</span>
+      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, String url)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1624,13 +1597,28 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Notify the client that the XWalkView completes to load the resource
+ specified by the given url.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>view</th>
+          <td>the owner XWalkView instance.</td>
+        </tr>
+        <tr>
+          <th>url</th>
+          <td>the url for the resource done for loading.
+</td>
+        </tr>
+      </table>
+  </div>
 
     </div>
 </div>
 
 
-<a id="onLoadStarted(XWalkViewInternal, java.lang.String)"></a>
+<a id="onLoadStarted(org.xwalk.core.XWalkView, java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1643,7 +1631,7 @@ From class
         void
       </span>
       <span class="sympad">onLoadStarted</span>
-      <span class="normal">(XWalkViewInternal view, String url)</span>
+      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, String url)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1655,13 +1643,28 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Notify the client that the XWalkView will load the resource specified
+ by the given url.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>view</th>
+          <td>the owner XWalkView instance.</td>
+        </tr>
+        <tr>
+          <th>url</th>
+          <td>the url for the resource to be loaded.
+</td>
+        </tr>
+      </table>
+  </div>
 
     </div>
 </div>
 
 
-<a id="onProgressChanged(XWalkViewInternal, int)"></a>
+<a id="onProgressChanged(org.xwalk.core.XWalkView, int)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1674,7 +1677,7 @@ From class
         void
       </span>
       <span class="sympad">onProgressChanged</span>
-      <span class="normal">(XWalkViewInternal view, int progressInPercent)</span>
+      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, int progressInPercent)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1686,13 +1689,27 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Notify the client the progress info of loading a specific url.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>view</th>
+          <td>the owner XWalkView instance.</td>
+        </tr>
+        <tr>
+          <th>progressInPercent</th>
+          <td>the loading process in percent.
+</td>
+        </tr>
+      </table>
+  </div>
 
     </div>
 </div>
 
 
-<a id="onReceivedLoadError(XWalkViewInternal, int, java.lang.String, java.lang.String)"></a>
+<a id="onReceivedLoadError(org.xwalk.core.XWalkView, int, java.lang.String, java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1705,7 +1722,7 @@ From class
         void
       </span>
       <span class="sympad">onReceivedLoadError</span>
-      <span class="normal">(XWalkViewInternal view, int errorCode, String description, String failingUrl)</span>
+      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, int errorCode, String description, String failingUrl)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1717,7 +1734,29 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Report an error to the client.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>view</th>
+          <td>the owner XWalkView instance.</td>
+        </tr>
+        <tr>
+          <th>errorCode</th>
+          <td>the error id.</td>
+        </tr>
+        <tr>
+          <th>description</th>
+          <td>A String describing the error.</td>
+        </tr>
+        <tr>
+          <th>failingUrl</th>
+          <td>The url that failed to load.
+</td>
+        </tr>
+      </table>
+  </div>
 
     </div>
 </div>
@@ -1775,37 +1814,6 @@ From class
          resource itself.
 </li></ul>
   </div>
-
-    </div>
-</div>
-
-
-<a id="shouldInterceptLoadRequest(XWalkViewInternal, java.lang.String)"></a>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        WebResourceResponse
-      </span>
-      <span class="sympad">shouldInterceptLoadRequest</span>
-      <span class="normal">(XWalkViewInternal view, String url)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
