@@ -115,8 +115,8 @@
     <h2>Release notes</h2>
 
     <ul>
-    <li><a href="#wiki/Crosswalk-5-release-notes">Crosswalk-5</a></li>
     <li><a href="#wiki/Crosswalk-6-release-notes">Crosswalk-6</a></li>
+    <li><a href="#wiki/Crosswalk-7-release-notes">Crosswalk-7</a></li>
     </ul>
 
     <p>Note that release notes are only produced for stable and beta
