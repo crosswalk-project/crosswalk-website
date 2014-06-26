@@ -40,7 +40,9 @@
 
     <tr>
     <th>Android webview (x86)</th>
-    <td>-</td>
+    <td>
+    <a data-role="static-download-link" data-channel="stable" data-os="android-webview" data-arch="x86"></a>
+    </td>
     <td>
     <a data-role="static-download-link" data-channel="beta" data-os="android-webview" data-arch="x86"></a>
     </td>
@@ -51,7 +53,9 @@
 
     <tr>
     <th>Android webview (ARM)</th>
-    <td>-</td>
+    <td>
+    <a data-role="static-download-link" data-channel="stable" data-os="android-webview" data-arch="arm"></a>
+    </td>
     <td>
     <a data-role="static-download-link" data-channel="beta" data-os="android-webview" data-arch="arm"></a>
     </td>
