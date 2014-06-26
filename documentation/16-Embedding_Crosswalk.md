@@ -33,7 +33,7 @@ On the host (the machine you're writing the code), download the Crosswalk webvie
 
 For example, to get the latest beta Crosswalk webview for x86 architecture (at the time of writing, there are no stable releases of the webview):
 
-    $ wget https://download.01.org/crosswalk/releases/crosswalk/android/beta/${XWALK-BETA-ANDROID-X86}/x86/crosswalk-cordova-${XWALK-BETA-ANDROID-X86}-x86.zip
+    $ wget https://download.01.org/crosswalk/releases/crosswalk/android/beta/${XWALK-BETA-ANDROID-X86}/x86/crosswalk-webview-${XWALK-BETA-ANDROID-X86}-x86.zip
 
 Note that the webview is architecture specific, so you will need a different package if you are deploying to ARM. See [this page](#documentation/downloads) for a complete list of downloads.
 
