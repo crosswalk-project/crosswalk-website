@@ -165,11 +165,6 @@
       </ul>
     </li>
               
-    <li><h2>Annotations</h2>
-      <ul>
-          <li class="api apilevel-"><a href="../../../org/xwalk/core/JavascriptInterface.html">JavascriptInterface</a></li>
-      </ul>
-    </li>
               
     <li><h2>Enums</h2>
       <ul>
@@ -215,6 +210,11 @@
 <div id="api-info-block">
 
 
+
+  
+  
+  
+  
 
   
    
@@ -279,7 +279,11 @@ Summary:
 
 
   
-    extends Object<br/>
+  
+  
+
+  
+    extends XWalkUIClientInternal<br/>
   
   
   
@@ -299,11 +303,21 @@ Summary:
 
     <tr>
          	
-        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
     <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="2" class="jd-inheritance-class-cell">XWalkUIClientInternal</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
          	
@@ -442,10 +456,8 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onFullscreenToggled(org.xwalk.core.XWalkView, boolean)">onFullscreenToggled</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, boolean enterFullscreen)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onFullscreenToggled(XWalkViewInternal, boolean)">onFullscreenToggled</a></span>(XWalkViewInternal view, boolean enterFullscreen)
         
-        <div class="jd-descrdiv">Tell the client to toggle fullscreen mode.</div>
-  
   </td></tr>
 
 
@@ -460,10 +472,8 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onJavascriptCloseWindow(org.xwalk.core.XWalkView)">onJavascriptCloseWindow</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onJavascriptCloseWindow(XWalkViewInternal)">onJavascriptCloseWindow</a></span>(XWalkViewInternal view)
         
-        <div class="jd-descrdiv">Notify the client to close the given XWalkView.</div>
-  
   </td></tr>
 
 
@@ -478,10 +488,8 @@ Summary:
             boolean
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onJavascriptModalDialog(org.xwalk.core.XWalkView, org.xwalk.core.XWalkUIClient.JavascriptMessageType, java.lang.String, java.lang.String, java.lang.String, org.xwalk.core.XWalkJavascriptResult)">onJavascriptModalDialog</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, <a href="../../../org/xwalk/core/XWalkUIClient.JavascriptMessageType.html">XWalkUIClient.JavascriptMessageType</a> type, String url, String message, String defaultValue, <a href="../../../org/xwalk/core/XWalkJavascriptResult.html">XWalkJavascriptResult</a> result)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onJavascriptModalDialog(XWalkViewInternal, JavascriptMessageTypeInternal, java.lang.String, java.lang.String, java.lang.String, XWalkJavascriptResultInternal)">onJavascriptModalDialog</a></span>(XWalkViewInternal view, JavascriptMessageTypeInternal typeInternal, String url, String message, String defaultValue, XWalkJavascriptResultInternal result)
         
-        <div class="jd-descrdiv">Tell the client to display a prompt dialog to the user.</div>
-  
   </td></tr>
 
 
@@ -496,10 +504,8 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onRequestFocus(org.xwalk.core.XWalkView)">onRequestFocus</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onRequestFocus(XWalkViewInternal)">onRequestFocus</a></span>(XWalkViewInternal view)
         
-        <div class="jd-descrdiv">Request display and focus for this XWalkView.</div>
-  
   </td></tr>
 
 
@@ -514,10 +520,8 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onScaleChanged(org.xwalk.core.XWalkView, float, float)">onScaleChanged</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, float oldScale, float newScale)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#onScaleChanged(XWalkViewInternal, float, float)">onScaleChanged</a></span>(XWalkViewInternal view, float oldScale, float newScale)
         
-        <div class="jd-descrdiv">Notify the client that the scale applied to the XWalkView has changed.</div>
-  
   </td></tr>
 
 
@@ -532,7 +536,23 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#openFileChooser(org.xwalk.core.XWalkView, android.webkit.ValueCallback<android.net.Uri>, java.lang.String, java.lang.String)">openFileChooser</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, ValueCallback&lt;Uri&gt; uploadFile, String acceptType, String capture)
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#openFileChooser(XWalkViewInternal, <any>, java.lang.String, java.lang.String)">openFileChooser</a></span>(XWalkViewInternal view, <any> uploadFile, String acceptType, String capture)
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">
+            
+            
+            
+            
+            
+            void
+        </td>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../org/xwalk/core/XWalkUIClient.html#openFileChooser(org.xwalk.core.XWalkView, <any>, java.lang.String, java.lang.String)">openFileChooser</a></span>(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, <any> uploadFile, String acceptType, String capture)
         
         <div class="jd-descrdiv">Tell the client to open a file chooser.</div>
   
@@ -552,6 +572,8 @@ Summary:
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
 
 
 <tr class="api apilevel-" >
@@ -845,7 +867,7 @@ From class
 
 
 
-<a id="onFullscreenToggled(org.xwalk.core.XWalkView, boolean)"></a>
+<a id="onFullscreenToggled(XWalkViewInternal, boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -858,7 +880,7 @@ From class
         void
       </span>
       <span class="sympad">onFullscreenToggled</span>
-      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, boolean enterFullscreen)</span>
+      <span class="normal">(XWalkViewInternal view, boolean enterFullscreen)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -870,27 +892,13 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Tell the client to toggle fullscreen mode.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>view</th>
-          <td>the owner XWalkView instance.</td>
-        </tr>
-        <tr>
-          <th>enterFullscreen</th>
-          <td>true if it has entered fullscreen mode.
-</td>
-        </tr>
-      </table>
-  </div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
 
 
-<a id="onJavascriptCloseWindow(org.xwalk.core.XWalkView)"></a>
+<a id="onJavascriptCloseWindow(XWalkViewInternal)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -903,7 +911,7 @@ From class
         void
       </span>
       <span class="sympad">onJavascriptCloseWindow</span>
-      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view)</span>
+      <span class="normal">(XWalkViewInternal view)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -915,23 +923,13 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Notify the client to close the given XWalkView.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>view</th>
-          <td>the owner XWalkView instance.
-</td>
-        </tr>
-      </table>
-  </div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
 
 
-<a id="onJavascriptModalDialog(org.xwalk.core.XWalkView, org.xwalk.core.XWalkUIClient.JavascriptMessageType, java.lang.String, java.lang.String, java.lang.String, org.xwalk.core.XWalkJavascriptResult)"></a>
+<a id="onJavascriptModalDialog(XWalkViewInternal, JavascriptMessageTypeInternal, java.lang.String, java.lang.String, java.lang.String, XWalkJavascriptResultInternal)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -944,7 +942,7 @@ From class
         boolean
       </span>
       <span class="sympad">onJavascriptModalDialog</span>
-      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, <a href="../../../org/xwalk/core/XWalkUIClient.JavascriptMessageType.html">XWalkUIClient.JavascriptMessageType</a> type, String url, String message, String defaultValue, <a href="../../../org/xwalk/core/XWalkJavascriptResult.html">XWalkJavascriptResult</a> result)</span>
+      <span class="normal">(XWalkViewInternal view, JavascriptMessageTypeInternal typeInternal, String url, String message, String defaultValue, XWalkJavascriptResultInternal result)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -956,43 +954,13 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Tell the client to display a prompt dialog to the user.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>view</th>
-          <td>the owner XWalkView instance.</td>
-        </tr>
-        <tr>
-          <th>type</th>
-          <td>the type of JavaScript modal dialog.</td>
-        </tr>
-        <tr>
-          <th>url</th>
-          <td>the url of the web page which wants to show this dialog.</td>
-        </tr>
-        <tr>
-          <th>message</th>
-          <td>the message to be shown.</td>
-        </tr>
-        <tr>
-          <th>defaultValue</th>
-          <td>the default value string. Only valid for Prompt dialog.</td>
-        </tr>
-        <tr>
-          <th>result</th>
-          <td>the callback to handle the result from caller.
-</td>
-        </tr>
-      </table>
-  </div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
 
 
-<a id="onRequestFocus(org.xwalk.core.XWalkView)"></a>
+<a id="onRequestFocus(XWalkViewInternal)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1005,7 +973,7 @@ From class
         void
       </span>
       <span class="sympad">onRequestFocus</span>
-      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view)</span>
+      <span class="normal">(XWalkViewInternal view)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1017,23 +985,13 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Request display and focus for this XWalkView.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>view</th>
-          <td>the owner XWalkView instance.
-</td>
-        </tr>
-      </table>
-  </div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
 
 
-<a id="onScaleChanged(org.xwalk.core.XWalkView, float, float)"></a>
+<a id="onScaleChanged(XWalkViewInternal, float, float)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1046,7 +1004,7 @@ From class
         void
       </span>
       <span class="sympad">onScaleChanged</span>
-      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, float oldScale, float newScale)</span>
+      <span class="normal">(XWalkViewInternal view, float oldScale, float newScale)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1058,31 +1016,13 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Notify the client that the scale applied to the XWalkView has changed.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>view</th>
-          <td>the owner XWalkView instance.</td>
-        </tr>
-        <tr>
-          <th>oldScale</th>
-          <td>the old scale before scaling.</td>
-        </tr>
-        <tr>
-          <th>newScale</th>
-          <td>the current scale factor after scaling.
-</td>
-        </tr>
-      </table>
-  </div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
 
 
-<a id="openFileChooser(org.xwalk.core.XWalkView, android.webkit.ValueCallback<android.net.Uri>, java.lang.String, java.lang.String)"></a>
+<a id="openFileChooser(XWalkViewInternal, <any>, java.lang.String, java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1095,7 +1035,38 @@ From class
         void
       </span>
       <span class="sympad">openFileChooser</span>
-      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, ValueCallback&lt;Uri&gt; uploadFile, String acceptType, String capture)</span>
+      <span class="normal">(XWalkViewInternal view, <any> uploadFile, String acceptType, String capture)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<a id="openFileChooser(org.xwalk.core.XWalkView, <any>, java.lang.String, java.lang.String)"></a>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">openFileChooser</span>
+      <span class="normal">(<a href="../../../org/xwalk/core/XWalkView.html">XWalkView</a> view, <any> uploadFile, String acceptType, String capture)</span>
     </h4>
       <div class="api-level">
         <div>
