@@ -84,8 +84,8 @@ You should also add your name to the AUTHORS file the first time you make a patc
 
 Patches must comply with the code style guidelines. Your patch will be automatically checked for style compliance when you upload it to the bug tracker.
 
-### Code style guide for Android
-* [Crosswalk coding style for Android](Coding-Style-of-XWalk-for-Android)
+See the [Crosswalk coding style](#contribute/coding_style) for details.
+
 
 ## Commit message guidelines
 
