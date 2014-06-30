@@ -71,11 +71,11 @@ Edit the `Path` environment variable as follows:
 
 4.  Click *OK*.
 
-To ensure that Ant is using the correct version of Java (the one you just installed), set the `ANT_HOME` environment variable to the location of the JDK:
+To ensure that Ant is using the correct version of Java (the one you just installed), set the `JAVA_HOME` environment variable to the location of the JDK:
 
 1.  Click the *New* button just under the top select box (*User variables...*).
 
-2.  Set *Variable name* to **ANT_HOME**.
+2.  Set *Variable name* to **JAVA_HOME**.
 
 3.  Set *Variable value* to **c:\jdk\bin**.
 
