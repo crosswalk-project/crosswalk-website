@@ -12,8 +12,13 @@ Crosswalk Cordova for Android needs the following software to be installed on th
 *   Apache Ant (version 1.8.0 or greater)
 *   Python (version 2.6 or greater)
 *   Android SDK (with Android platform version 4.0 or later installed)
+*   [node](http://nodejs.org)
 
-The host setup instructions ([Windows](#documentation/getting_started/windows_host_setup), [Linux](#documentation/getting_started/linux_host_setup)) explain how to install these pre-requisites. Additional instructions for installing the Java JDK, Apache Ant, and the Android SDK can be found in the [Cordova Android Platform Guide](http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide).
+The host setup instructions ([Windows](#documentation/getting_started/windows_host_setup), [Linux](#documentation/getting_started/linux_host_setup)) explain how to install all of these pre-requisites, except node.
+
+To install node, follow the [instructions on the nodejs.org website](http://nodejs.org/download/).
+
+Additional instructions for installing the Java JDK, Apache Ant, and the Android SDK can be found in the [Cordova Android Platform Guide](http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide).
 
 ### Download the crosswalk-cordova-android bundle
 
