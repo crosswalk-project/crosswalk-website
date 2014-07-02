@@ -32,27 +32,18 @@
     // https://confluence.atlassian.com/display/JIRA/Advanced+Use+of+the+JIRA+Issue+Collector
     window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, {
       fieldValues: {
-        description: '# Crosswalk version: <full version number>\n\n' +
-                     '# Environment:\n\n' +
+        description: '*Crosswalk version:* <full version number>\n\n' +
+                     '*Environment:*\n\n' +
                      '<operating system, hardware>\n\n' +
-                     '# Steps to reproduce\n\n' +
+                     '*Steps to reproduce:*\n\n' +
                      '1. <step 1>\n' +
                      '2. <step 2>\n' +
                      '3. <step 3>\n' +
-                     '<more steps>\n\n' +
-                     '# Expected result\n\n' +
+                     '...<more steps>...\n\n' +
+                     '*Expected result:*\n\n' +
                      '<describe expected result>\n\n' +
-                     '# Actual result\n\n' +
+                     '*Actual result:*\n\n' +
                      '<describe actual result>'
-      },
-
-      triggerFunction: function (showCollectorDialog) {
-        $('#jira-feedback-trigger').on('click', function (e) {
-          e.preventDefault();
-          showCollectorDialog();
-        });
-      }
-    });
     </script>
   </body>
 </html>
