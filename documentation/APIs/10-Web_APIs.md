@@ -1,6 +1,6 @@
 # Web APIs
 
-The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2] (wiki/Crosswalk-3-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only, <sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later).
+The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2] (wiki/Crosswalk-3-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only, <sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later, <sup id="va">[X.X.X.X;x86|ARM]</sup> = this version or later for the specified architecture).
 
 ## Runtime & Packaging
 * [app: URI] (http://www.w3.org/2012/sysapps/app-uri/)<sup><a href="#t">[t]</a></sup> - Address resources inside a packaged application.
@@ -20,7 +20,7 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [Media Queries Level 3] (http://w3c-test.org/csswg/mediaqueries3/) - CSS media features for adapting the same content to different output devices and screens.
 * [Responsive Images] (http://picture.responsiveimages.org/)<sup><a href="#v">[5.34.104.5]</a></sup> - Control which image resource is presented to a user, based on media query and/or image format support.
 * [Scalable Vector Graphics (SVG) 1.1] (http://www.w3.org/TR/SVG11/) - An XML markup language for 2D vector graphics.
-* [WebRTC](http://www.w3.org/TR/webrtc/)<sup><a href="#a">[a]</a></sup> - Peer to peer sharing of video and audio streams.
+* [WebRTC](http://www.w3.org/TR/webrtc/)<sup><a href="#a">[a]</a></sup> <sup><a href="#va">[7.36.154.6;x86]</a></sup> - Peer to peer sharing of video and audio streams.
 
 ## Networking & Storage
 * [File API] (http://dev.w3.org/2006/webapi/FileAPI/) - Asynchronously read the contents of files or raw data buffers stored on the client.
