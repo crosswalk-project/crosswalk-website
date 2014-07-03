@@ -53,6 +53,7 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [Screen Orientation](http://www.w3.org/TR/screen-orientation/) - Enables screen orientation locking and provides access to screen orientation data and events.
 * [Touch Events] (https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html) - Handle touch events programmatically.
 * [Vibration] (http://www.w3.org/TR/vibration/)<sup><a href="#v">[5.34.104.5]</a></sup> - Programmatically control a device's vibration mechanism.
+* [Web Notifications] (http://notifications.spec.whatwg.org/)<sup><a href="#v">[5.34.93.0]</a></sup> - Use the device's native notification mechanism (e.g. status bar on Android) to display messages to the user.
 
 ## Social
 * [Contacts] (http://www.w3.org/2012/sysapps/contacts-manager-api/)<sup><a href="#a">[a]</a></sup> - Enables the management of contact information.
