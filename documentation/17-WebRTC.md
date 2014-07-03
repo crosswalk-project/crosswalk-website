@@ -4,7 +4,7 @@ RTC (Real-Time Communications) technology enables video and audio communication 
 
 Recently, WebRTC standards have made RTC more accessible, bringing it to open source and freely-available web runtimes. WebRTC enables developers to build RTC systems using standard web technologies (HTML and JavaScript), without the need for plugins or downloads.
 
-WebRTC APIs are available in Crosswalk 5 or later on ARM; and Crosswalk 7 or later for x86. They are also [widely supported in modern browsers](http://www.webrtc.org/home).
+WebRTC APIs are available in Crosswalk 5 or later on ARM; and Crosswalk 7.36.154.6 or later for x86. They are also [widely supported in modern browsers](http://www.webrtc.org/home).
 
 The WebRTC APIs can be used in a range of situations, such as:
 
