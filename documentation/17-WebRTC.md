@@ -15,6 +15,8 @@ The WebRTC APIs can be used in a range of situations, such as:
 
 In the following tutorial, you'll develop a simple video call client and related server infrastructure using WebRTC.
 
+All of the source code for the tutorial is available as part of the [crosswalk-samples download](https://github.com/crosswalk-project/crosswalk-samples/releases), or on github at https://github.com/crosswalk-project/crosswalk-samples (inside the `webrtc` directory).
+
 ## Introduction to the tutorial
 
 In this tutorial, you will develop two components:
