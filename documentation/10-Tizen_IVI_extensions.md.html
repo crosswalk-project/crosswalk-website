@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/10 Tizen_IVI_extensions';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/10 Tizen_IVI_extensions</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Writing extensions for Tizen IVI on x86</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/10-Tizen_IVI_extensions"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/10-Tizen_IVI_extensions"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Extensions enhance the capabilities of Crosswalk, enabling applications to make full use of platform features via native code.</p>
+
+<p>Extensions are suitable for a number of use cases:</p>
+
+<ul><li>  You need to access a device capability not available via Crosswalk's JavaScript APIs: for example, use a specialised sensor or access part of the filesystem outside the web application's sandbox.</li>
+<li>  You want to integrate existing C/C++ libraries with a web application where no JavaScript equivalents are available.</li>
+<li>  You have some intellectual property in your application which you would prefer to not to distribute in an easily-readable JavaScript library.</li>
+<li>  You want to optimise parts of your application but have reached the limits of what you can do with JavaScript.</li>
+</ul><p>Crosswalk extensions for Tizen can be implemented in C or C++ and can link with external libraries, potentially allowing you to make use of any of the Tizen Core APIs, as well as other third party libraries.</p>
+
+<p>In addition, extensions are a safe way to add native capabilities to Crosswalk: each runs in its own process on Tizen, so it won't directly affect the stability of the runtime.</p>
+
+<h2>Introduction to the tutorial<a class="anchor" id="Introduction-to-the-tutorial" href="#Introduction-to-the-tutorial"></a></h2>
+
+<p>This tutorial explains how to write a simple "echo" extension for Crosswalk running on <a href="https://wiki.tizen.org/wiki/IVI">Tizen IVI</a> (x86 architecture).</p>
+
+<p>The extension accepts an input and returns that input prefixed with "You said: ". It will be used from JavaScript code (in a HTML5 web application) like this:</p>
+
+<pre><code>var response = echo.echoSync('hello');
+// response == 'You said: hello'
+
+echo.echoAsync('hello', function (response) {
+  // response == 'You said: hello'
+});
+</code></pre>
+
+<p>The native part of extension is implemented in C. Note that it is trivial and could easily be implemented using pure JavaScript. However, the aim is to reduce the complexity of the extension to focus on code structure and workflow.</p>
+
+<p>The C code which corresponds to the JavaScript API above looks like this:</p>
+
+<pre><code>// echoSync() handler
+static void handle_sync_message(XW_Instance instance, const char* message) {
+  char* response = build_response(message);
+  g_sync_messaging-&gt;SetSyncReply(instance, response);
+  free(response);
+}
+
+// echoAsync() handler
+static void handle_message(XW_Instance instance, const char* message) {
+  char* response = build_response(message);
+  g_messaging-&gt;PostMessage(instance, response);
+  free(response);
+}
+</code></pre>
+
+<p>The diagram below shows how the application and the extension interact:</p>
+
+<p><img src="assets/crosswalk-extension-layout.png" alt="Structure of a Crosswalk application with extension" /></p>
+
+<p><strong>The tutorial contains the following steps:</strong></p>
+
+<ol><li> <a href="#documentation/tizen_ivi_extensions/host_and_target_setup">Set up your host development environment</a>.</li>
+<li> <a href="#documentation/tizen_ivi_extensions/write_an_extension">Write a Tizen Crosswalk extension</a>.</li>
+<li> <a href="#documentation/tizen_ivi_extensions/write_a_web_application">Write a web application</a>.</li>
+<li> <a href="#documentation/tizen_ivi_extensions/run_on_tizen_emulator">Run the application and extension using the Tizen emulator</a>.</li>
+</ol><p>As far as tooling goes, you'll use command line tools to compile the extension, and simple text editors to write the code. It is possible to use the Tizen SDK IDE to build Tizen applications; but using command line tools and a text editor exposes the internals of the extension more clearly.</p>
+
+<p>Note that the tutorial focuses on Tizen IVI. The tutorial uses Linux as a build environment, as the tool for creating native Tizen packages (<code>gbs</code>) is not compatible with Windows.</p>
+
+<p><strong>By the end of this tutorial</strong>, you will understand the basics of writing a C extension for Crosswalk running on Tizen IVI.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-04-16 14:48:55</p>
+  <p>
+    <a id="delete-link" href="/documentation/10-Tizen_IVI_extensions" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/10-Tizen_IVI_extensions">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
