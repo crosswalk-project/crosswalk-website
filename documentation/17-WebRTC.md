@@ -269,8 +269,8 @@ To add the client code, follow these steps:
           // the ID set for this client
           var callerId = null;
 
-          // PeerJS object, instantiated when this client
-          // connects with its caller ID
+          // PeerJS object, instantiated when this client connects with its
+          // caller ID
           var peer = null;
 
           // the local video stream captured with getUserMedia()
@@ -302,10 +302,10 @@ To add the client code, follow these steps:
             addMessage(makePara(text));
           };
 
-          // get the local video and audio stream and show
-          // a preview in the "LOCAL" video element
-          // successCb: has the signature successCb(stream);
-          // receives the local video stream as an argument
+          // get the local video and audio stream and show preview in the
+          // "LOCAL" video element
+          // successCb: has the signature successCb(stream); receives
+          // the local video stream as an argument
           var getLocalStream = function (successCb) {
             if (localStream && successCb) {
               successCb(localStream);
@@ -328,7 +328,7 @@ To add the client code, follow these steps:
                 },
 
                 function (err) {
-                  logError('Failed to get local stream');
+                  logError('failed to access local camera');
                   logError(err.message);
                 }
               );
@@ -351,20 +351,29 @@ To add the client code, follow these steps:
 
             try {
               // create connection to the ID server
-              peer = new Peer(
-                callerId,
-                {host: SERVER_IP, port: SERVER_PORT}
-              );
+              peer = new Peer(callerId, {host: SERVER_IP, port: SERVER_PORT});
 
-              // get local stream ready for incoming calls
-              getLocalStream();
+              // hack to get around the fact that if a server connection cannot
+              // be established, the peer and its socket property both still have
+              // open === true; instead, listen to the wrapped WebSocket
+              // and show an error if its readyState becomes CLOSED
+              peer.socket._socket.onclose = function () {
+                logError('no connection to server');
+                peer = null;
+              };
+
+              // get local stream ready for incoming calls once the wrapped
+              // WebSocket is open
+              peer.socket._socket.onopen = function () {
+                getLocalStream();
+              };
 
               // handle events representing incoming calls
               peer.on('call', answer);
             }
             catch (e) {
               peer = null;
-              logError('could not reach connection server');
+              logError('error while connecting to server');
             }
           };
 
@@ -376,16 +385,14 @@ To add the client code, follow these steps:
             }
 
             if (!localStream) {
-              logError('could not start call as there is no ' +
-                       'localStream ready');
+              logError('could not start call as there is no local camera');
               return
             }
 
             var recipientId = recipientIdEntry.value;
 
             if (!recipientId) {
-              logError('could not start call as no recipient ID ' +
-                       'is set');
+              logError('could not start call as no recipient ID is set');
               return;
             }
 
@@ -411,8 +418,7 @@ To add the client code, follow these steps:
             }
 
             if (!localStream) {
-              logError('could not answer call as there ' +
-                       'is no localStream ready');
+              logError('could not answer call as there is no localStream ready');
               return;
             }
 
