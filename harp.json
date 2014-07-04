@@ -1,0 +1,8 @@
+{
+  "globals": {
+    "service": {
+      "analytics": "",
+      "prism": false
+    }
+  }
+}
