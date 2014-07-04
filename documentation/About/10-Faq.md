@@ -22,6 +22,27 @@ Unpacked, the files take up 49.8Mb of disk space, 45.9Mb of which is occupied by
 
 Bundling the runtime with the application (aka "embedded mode") is the simplest approach for distribution purposes. But Crosswalk applications *can* share a single Crosswalk runtime library (in "shared mode"); and a package which enables shared mode is part of the Crosswalk for Android distribution. However, you would have to distribute this shared runtime package yourself.
 
+### How can I distribute a Crosswalk Android application across multiple architectures?
+
+The Crosswalk binaries are architecture-specific. This means that you will need an x86-compatible Crosswalk on Android devices with x86 chips; and an ARM-compatible Crosswalk on Android devices with ARM chips.
+
+There are two approaches to building an application which supports both x86 and ARM platforms:
+
+*   Build two separate packages for your application, one for x86 and one for ARM; then upload both to the app stores where you are hosting your application. Prominent stores like Google Play have support for [uploading multiple packages for different platforms](http://developer.android.com/google/play/publishing/multiple-apks.html).
+
+    The [Crosswalk apk generation script](#documentation/getting_started/run_on_android) (`make_apk.py`) generates packages for both architectures to facilitate this way of working.
+
+*   Build one package for your application, but include both the x86 and ARM versions of Crosswalk in it. The down-side of this approach is that it makes the package file very large (c. 40Mb before you add your application code).
+
+    Creating a package this way requires you to copy the Crosswalk shared object files for both architectures into the `lib/` directory of the apk package file. For example, an apk with support for x86 and ARM would contain the following files:
+
+    <pre>
+    lib/armeabi-v7a/libxwalkcore.so
+    lib/x86/libxwalkcore.so
+    </pre>
+
+    How you achieve this depends on your build process. If you need a reference, see [the Cordova migration instructions](#documentation/cordova/migrate_an_application/Multi-architecture-packages), which explain how to do this in the context of Crosswalk Cordova.
+
 ### Can I use Crosswalk to "appify" my website?
 
 Yes. You can wrap a website URL with a Crosswalk runtime so it behaves like an app (fullscreen, no browser chrome, home screen icon etc.).
