@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Android_extensions/31 Run_on_Android';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Android_extensions/31 Run_on_Android</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Run on Android</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Android_extensions/31-Run_on_Android"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Android_extensions/31-Run_on_Android"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Building a Crosswalk Android application with extensions is almost identical to building any other Crosswalk Android application, and uses the same <code>make_apk.py</code> script (see the <a href="#documentation/getting_started/run_on_android"><em>Run on Android</em> documentation</a>). The main difference is that an additional <code>--extensions</code> option is required, to instruct the script where to find extension directories.</p>
+
+<h2>Create the Android packages<a class="anchor" id="Create-the-Android-packages" href="#Create-the-Android-packages"></a></h2>
+
+<p>To make Android packages for your project, do the following:</p>
+
+<ol><li><p>Build the extension, as described <a href="#documentation/android_extensions/write_an_extension/build_the_extension">previously</a>. This will create the <code>xwalk-echo-extension/</code> directory with the extension files inside.</p></li>
+<li><p>After the build, the extension project directory (<code>xwalk-echo-extension-src/</code>) will contain a <code>lib/crosswalk-${XWALK-STABLE-ANDROID-X86}</code> directory, which is an unpacked Crosswalk Android distribution. You can use the scripts in here to build the Android packages.</p>
+
+<p>Ensure you have installed the Android SDK correctly (<a href="#documentation/getting_started/windows_host_setup/Install-the-Android-SDK">Windows</a>, <a href="#documentation/getting_started/linux_host_setup/Install-the-Android-SDK">Linux</a>). Then use these commands to create the packages:</p>
+
+<pre><code># set an environment variable to the location of the project
+$ PROJECT_DIR=~/&lt;my projects directory&gt;/xwalk-echo-project
+
+# enter the unpacked Crosswalk Android directory
+$ cd $PROJECT_DIR/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}
+
+# invoke the package builder
+$ python make_apk.py --enable-remote-debugging --fullscreen \
+    --manifest=$PROJECT_DIR/xwalk-echo-app/manifest.json \
+    --extensions=$PROJECT_DIR/xwalk-echo-extension-src/xwalk-echo-extension/
+</code></pre>
+
+<p>The generated packages are in the <code>~/&lt;my projects directory&gt;/xwalk-echo-project/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}</code> directory, and called <code>xwalk_echo_app_x86.apk</code> and <code>xwalk_echo_app_arm.apk</code>.</p>
+
+<p>Note that if you are using multiple extension directories, you still have a single <code>--extensions</code> option but supply the paths as a comma-delimited string, e.g.</p>
+
+<pre><code>--extensions=myextension1,myextension2
+</code></pre></li>
+</ol><h2>Install a package on a target<a class="anchor" id="Install-a-package-on-a-target" href="#Install-a-package-on-a-target"></a></h2>
+
+<p>Choose the correct package for your Android target's architecture and install it with a command like:</p>
+
+<pre><code>$ adb install -r ~/&lt;my projects directory&gt;/xwalk-echo-project/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}/xwalk_echo_app_x86.apk
+</code></pre>
+
+<p>This command installs the x86 package. For more details about installing Crosswalk packages on Android, see <a href="#documentation/getting_started/run_on_android">this page</a>.</p>
+
+<p>The icon for the application should now be in the application menu on the Android target. Tap the icon to start the application and you should see something like this:</p>
+
+<p><img src="assets/android-extensions-x86.png" alt="Crosswalk Android application with extensions on x86 ZTE Geek" /></p>
+
+<p>(The screenshot above shows the application running on an x86 ZTE Geek.)</p>
+
+<p>The application should display the text "You said: Hello world", which demonstrates that the Java and JavaScript parts of the Crosswalk extension are communicating correctly.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-06-25 11:26:21</p>
+  <p>
+    <a id="delete-link" href="/documentation/Android_extensions/31-Run_on_Android" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Android_extensions/31-Run_on_Android">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
