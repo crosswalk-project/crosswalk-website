@@ -1,13 +1,56 @@
-// Base variables
-// ==============
+// Base sizes
+// ----------
 
 $base-font-size: 1em;
-$base-line-height: 1;
+$base-line-height: 1.4;
+$base-border-radius: 0.125em;
+$base-ratio: $augmented-fourth;
+
+
+// Grid Settings
+// -------------
+
+$visual-grid: true;
+$visual-grid-color: tomato;
+$column: modular-scale($base-line-height * 1em, 4, $base-ratio);
+$gutter: modular-scale($base-line-height * 1em, 1, $base-ratio);
+$grid-columns: 3;
+$max-width: 75em;
+
 
 // Font Stacks
-// ===========
+// -----------
 
 $font-family-sans:      "Clear Sans", "Avenir Next SemiBold", "AvenirNext-SemiBold", "Futura-Medium", Futura, "Futura Std", "Trebuchet MS", Helvetica, Arial, sans-serif;
 $font-family-serif:      Georgia, Times, "Times New Roman", serif;
+$font-family-display:    $font-family-sans;
 $font-family-monospace: "Lucida Sans Typewriter", "Lucida Console", "Lucida Typewriter", "Monaco", monospace;
 $base-font-family:       $font-family-sans;
+
+
+// Breakpoints
+// -----------
+
+$narrow-col: 3;
+$narrow-width: 28em;
+$narrow: new-breakpoint(min-width $narrow-width $narrow-col);
+
+$mid-col: 5;
+$mid-width: 35em;
+$mid: new-breakpoint(min-width $mid-width $mid-col);
+
+$wide-col: 7;
+$wide-width: 40em;
+$wide: new-breakpoint(min-width $wide-width $wide-col);
+
+$huge-col: $wide-col;
+$huge-width: 65em;
+$huge: new-breakpoint(min-width $huge-width $huge-col);
+
+$massive-col: $huge-col;
+$massive-width: 92em;
+$massive: new-breakpoint(min-width $massive-width $massive-col);
+
+
+// Colour Scheme
+// -------------

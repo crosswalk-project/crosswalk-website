@@ -2,3 +2,25 @@ html,
 body {
   font-family: $base-font-family;
 }
+
+// Default list styling with hanging bullets
+//
+// ul, ol             - Restores nested lists
+// nav, footer        - Removes bullets and vertical margins
+//
+// No styleguide reference.
+ul,
+ol,
+li {
+  margin-left: 0;
+  padding-left: 0;
+  ul,
+  ol {
+    margin-left: 2em;
+  }
+  nav &,
+  footer & {
+    margin: 0;
+    list-style-type: none;
+  }
+}

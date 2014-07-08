@@ -3,14 +3,15 @@
 
 @import "vendor/normalize";
 @import "vendor/normalize-opentype";
-@import "vendor/flexboxgrid";
+@import "vendor/bourbon/bourbon";
+@import "vendor/neat/neat";
 
 
 // Variables
 // ---------
 
 @import "variables";
-
+@import "vendor/neat/neat"; // Intentionalfor visual grid, no extra CSS
 
 // SMACSS
 // ------
@@ -20,3 +21,11 @@
 @import "module";
 @import "state";
 @import "theme";
+
+
+// Temp
+// ----
+
+.outline {
+  outline: 1px solid red;
+}

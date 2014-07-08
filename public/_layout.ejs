@@ -37,33 +37,42 @@
 </head>
 
 <body>
-  <nav>
-    <ul>
-      <li><a href="#">Contribute</a></li>
-      <li><a href="#">Documentation</a></li>
-      <li><a href="#">Featured</a></li>
-      <li><a href="#">Get Started</a></li>
-    </ul>
-  </nav>
-  <% if(current.source !== 'index') { %>
-    <%- partial(current.path[current.path.length - 1] + "/_nest") %>
-  <% } else { %>
-    <%- yield %>
-  <% } %>
-  <footer>
-    <img src="http://placehold.it/500x300" alt="" />
-    <input type="email" placeholder="Add your email, learn Android development" />
-    <input type="submit" value="join" />
-    <ul>
-      <li><a href="#">Documentation</a></li>
-      <li><a href="#">Featured</a></li>
-      <li><a href="#">Get Started</a></li>
-    </ul>
-    <ul>
-      <li><a href="#">Contribute</a></li>
-      <li><a href="#">Issue tracking</a></li>
-    </ul>
-  </footer>
+  <div class="container">
+    <div class="row">
+      <div>
+        <img src="http://placehold.it/300x75" alt="Intel Crosswalk" />
+      </div>
+      <div class="">
+        <nav>
+          <ul>
+            <li><a href="#">Contribute</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Featured</a></li>
+            <li><a href="#">Get Started</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <% if(current.source !== 'index') { %>
+      <%- partial(current.path[current.path.length - 1] + "/_nest") %>
+    <% } else { %>
+      <%- yield %>
+    <% } %>
+    <footer class="row">
+      <img src="http://placehold.it/500x300" alt="" />
+      <input type="email" placeholder="Add your email, learn Android development" />
+      <input type="submit" value="join" />
+      <ul>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Featured</a></li>
+        <li><a href="#">Get Started</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Contribute</a></li>
+        <li><a href="#">Issue tracking</a></li>
+      </ul>
+    </footer>
+  </div>
 
   <% if(service.analytics) { %>
     <script type="text/javascript">
