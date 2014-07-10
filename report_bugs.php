@@ -44,6 +44,16 @@
                      '<describe expected result>\n\n' +
                      '*Actual result:*\n\n' +
                      '<describe actual result>'
+        },
+
+        triggerFunction: function (showCollectorDialog) {
+          $('#jira-feedback-trigger').on('click', function (e) {
+            e.preventDefault();
+            showCollectorDialog();
+          });
+        }
+      }
+    );
     </script>
   </body>
 </html>
