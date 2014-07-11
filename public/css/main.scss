@@ -11,7 +11,7 @@
 // ---------
 
 @import "variables";
-@import "vendor/neat/neat"; // Intentionalfor visual grid, no extra CSS
+@import "vendor/neat/neat"; // Intentionally imported twice for visual grid mixin
 
 // SMACSS
 // ------
@@ -21,11 +21,3 @@
 @import "module";
 @import "state";
 @import "theme";
-
-
-// Temp
-// ----
-
-.outline {
-  outline: 1px solid red;
-}
