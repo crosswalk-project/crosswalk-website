@@ -37,28 +37,21 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div>
-        <img src="http://placehold.it/300x75" alt="Intel Crosswalk" />
+  <% if(current.source !== 'index') { %>
+    <!-- <%- partial(current.path[current.path.length - 1] + "/_nest") %> -->
+    <div class="container">
+      <div class="row">
+        <% include _includes/nav.ejs %>
       </div>
-      <div class="">
-        <nav>
-          <ul>
-            <li><a href="#">Contribute</a></li>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">Featured</a></li>
-            <li><a href="#">Get Started</a></li>
-          </ul>
-        </nav>
+      <div class="row">
+        <%- yield %>
       </div>
     </div>
-    <% if(current.source !== 'index') { %>
-      <%- partial(current.path[current.path.length - 1] + "/_nest") %>
-    <% } else { %>
-      <%- yield %>
-    <% } %>
-    <footer class="row">
+  <% } else { %>
+    <%- yield %>
+  <% } %>
+  <footer class="row">
+    <div class="container">
       <img src="http://placehold.it/500x300" alt="" />
       <input type="email" placeholder="Add your email, learn Android development" />
       <input type="submit" value="join" />
@@ -71,9 +64,8 @@
         <li><a href="#">Contribute</a></li>
         <li><a href="#">Issue tracking</a></li>
       </ul>
-    </footer>
-  </div>
-
+    </div>
+  </footer>
   <% if(service.analytics) { %>
     <script type="text/javascript">
       var _gaq = _gaq || [];
