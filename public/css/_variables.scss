@@ -4,7 +4,7 @@
 $base-font-size: 1em;
 $base-line-height: 1.4;
 $base-border-radius: 0.125em;
-$base-ratio: $augmented-fourth;
+$base-ratio: $minor-third;
 
 
 // Grid Settings
@@ -12,8 +12,8 @@ $base-ratio: $augmented-fourth;
 
 $visual-grid: true;
 $visual-grid-color: tomato;
-$column: modular-scale($base-line-height * 1em, 4, $base-ratio);
-$gutter: modular-scale($base-line-height * 1em, 1, $base-ratio);
+$column: modular-scale($base-font-size, 10, $base-ratio);
+$gutter: modular-scale($base-font-size, 1, $base-ratio);
 $grid-columns: 3;
 $max-width: 75em;
 
@@ -31,15 +31,15 @@ $base-font-family:       $font-family-sans;
 // Breakpoints
 // -----------
 
-$narrow-col: 3;
+$narrow-col: 4;
 $narrow-width: 28em;
 $narrow: new-breakpoint(min-width $narrow-width $narrow-col);
 
-$mid-col: 5;
+$mid-col: 6;
 $mid-width: 35em;
 $mid: new-breakpoint(min-width $mid-width $mid-col);
 
-$wide-col: 7;
+$wide-col: 8;
 $wide-width: 40em;
 $wide: new-breakpoint(min-width $wide-width $wide-col);
 
@@ -54,3 +54,24 @@ $massive: new-breakpoint(min-width $massive-width $massive-col);
 
 // Colour Scheme
 // -------------
+
+$color-text: #333;
+$color-background: #FAFAFA;
+
+$color-orange: orange;
+$color-orange-light: lighten($color-orange, 10%);
+$color-orange-lighter: lighten($color-orange, 30%);
+$color-orange-dark: darken($color-orange, 10%);
+$color-orange-darker: darken($color-orange, 30%);
+
+$color-green: green;
+$color-green-light: lighten(green, 10%);
+$color-green-lighter: lighten(green, 30%);
+$color-green-dark: darken(green, 10%);
+$color-green-darker: darken(green, 30%);
+
+$color-gray: #CCC;
+$color-gray-light: lighten($color-gray, 10%);
+$color-gray-lighter: lighten($color-gray, 30%);
+$color-gray-dark: darken($color-gray, 10%);
+$color-gray-darker: darken($color-gray, 30%);

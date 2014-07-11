@@ -5,7 +5,28 @@
 // :focus
 //
 // Styleguide 0.0.0.
+button,
+input[type="submit"],
 .button {
+  font-size: modular-scale($base-font-size, 0, $base-ratio);
+  font-weight: 600;
+  line-height: $base-line-height;
+
+  padding: 1em 3em;
+  display: inline-block;
+
+  background-color: $color-orange;
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 1px 0 $color-orange-dark;
+  border: none;
+  border-radius: $base-border-radius;
+
+  @include appearance(none);
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
 
   &:hover {
 
@@ -16,4 +37,18 @@
   &:focus {
 
   }
+}
+
+// A modifier for smaller buttons.
+//
+// Styleguide 0.0.0.
+.button--small {
+  font-size: modular-scale($base-font-size, -1, $base-ratio);
+}
+
+// A modifier for larger buttons.
+//
+// Styleguide 0.0.0.
+.button--large {
+  font-size: modular-scale($base-font-size, 2, $base-ratio);
 }
