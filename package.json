@@ -1,0 +1,11 @@
+{
+  "name": "crosswalk-website",
+  "homepage": "https://crosswalk-project.org",
+  "private": true,
+  "scripts": {
+    "styleguide": "kss-node public/ public/styleguide --sass css/main.scss"
+  },
+  "devDependencies": {
+    "kss": "^0.3.7"
+  }
+}

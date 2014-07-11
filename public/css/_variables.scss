@@ -1,6 +1,6 @@
 // Base sizes
-// ----------
-
+//
+// No styleguide reference.
 $base-font-size: 1em;
 $base-line-height: 1.4;
 $base-border-radius: 0.125em;
@@ -8,8 +8,8 @@ $base-ratio: $minor-third;
 
 
 // Grid Settings
-// -------------
-
+//
+// No styleguide reference.
 $visual-grid: true;
 $visual-grid-color: tomato;
 $column: modular-scale($base-font-size, 10, $base-ratio);
@@ -19,8 +19,8 @@ $max-width: 75em;
 
 
 // Font Stacks
-// -----------
-
+//
+// No styleguide reference.
 $font-family-sans:      "Clear Sans", "Avenir Next SemiBold", "AvenirNext-SemiBold", "Futura-Medium", Futura, "Futura Std", "Trebuchet MS", Helvetica, Arial, sans-serif;
 $font-family-serif:      Georgia, Times, "Times New Roman", serif;
 $font-family-display:    $font-family-sans;
@@ -29,8 +29,8 @@ $base-font-family:       $font-family-sans;
 
 
 // Breakpoints
-// -----------
-
+//
+// No styleguide reference.
 $narrow-col: 4;
 $narrow-width: 28em;
 $narrow: new-breakpoint(min-width $narrow-width $narrow-col);
@@ -53,8 +53,8 @@ $massive: new-breakpoint(min-width $massive-width $massive-col);
 
 
 // Colour Scheme
-// -------------
-
+//
+// No styleguide reference.
 $color-text: #333;
 $color-background: #FAFAFA;
 

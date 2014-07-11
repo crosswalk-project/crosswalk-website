@@ -8,7 +8,7 @@ body {
 // ul, ol             - Restores nested lists
 // nav, footer        - Removes bullets and vertical margins
 //
-// No styleguide reference.
+// Styleguide 1.0.
 ul,
 ol,
 li {
@@ -23,4 +23,11 @@ li {
     margin: 0;
     list-style-type: none;
   }
+}
+
+// The main wrapper.
+//
+// Styleguide 1.1.
+.main {
+
 }
