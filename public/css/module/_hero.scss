@@ -2,26 +2,41 @@
 //
 // Styleguide 3.4.1.
 .hero {
-  background: green;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  padding-bottom: 4em;
+}
+
+//
+//
+// Styleguide 3.4.2.
+.hero-image {
+  position: absolute;
 }
 
 // The inner wrapper for a hero section.
 //
-// Styleguide 3.4.2.
+// Styleguide 3.4.3.
 .hero-container {
-
+  @include outer-container;
+  @include clearfix;
+  z-index: 1;
+  position: relative;
+  padding: 3em;
+  margin: auto;
 }
 
 // The primary title of a hero section.
 //
-// Styleguide 3.4.3.
+// Styleguide 3.4.4.
 .hero-heading {
 
 }
 
 // A seperator inbetween, or a prefix or suffix to hero sections.
 //
-// Styleguide 3.4.4.
+// Styleguide 3.4.5.
 .hero-seperator {
-
+  background: $color-green-light;
 }
