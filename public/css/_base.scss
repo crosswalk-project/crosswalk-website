@@ -4,6 +4,8 @@
 html,
 body {
   font-family: $base-font-family;
+  background: $color-background;
+  color: $color-text;
 }
 
 // Default list styling with hanging bullets
@@ -35,7 +37,7 @@ img {
   max-width: 100%;
 }
 
-//
+// Monospaced sections
 //
 // Styleguide 1.4.
 code,
@@ -43,4 +45,33 @@ kbd,
 pre,
 samp {
   font-family: $font-family-monospace;
+}
+
+// Basic tables.
+//
+// Styleguide 1.5.
+table {
+  border-collapse: collapse;
+  margin: $base-line-height * 1em 0;
+  table-layout: fixed;
+  width: 100%;
+  vertical-align: middle;
+}
+
+// Basic table headers.
+//
+// Styleguide 1.5.1.
+thead {
+  font-weight: 600;
+  padding: $base-line-height * 1em 0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+//
+//
+// Styleguide 1.5.2.
+td {
+  padding: ($base-line-height / 2) 0;
+  vertical-align: middle;
 }
