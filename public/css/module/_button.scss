@@ -32,14 +32,12 @@ input[type="submit"],
   vertical-align: middle;
   white-space: nowrap;
 
-  &:hover {
-
+  &:hover,
+  &:focus {
+    background: $color-orange-dark;
   }
   &:active {
-
-  }
-  &:focus {
-
+    background: $color-orange-darker;
   }
 }
 
