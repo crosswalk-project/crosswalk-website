@@ -12,6 +12,7 @@ $base-ratio: $minor-third;
 // No styleguide reference.
 $visual-grid: true;
 $visual-grid-color: tomato;
+$visual-grid-index: front;
 $column: modular-scale($base-font-size, 10, $base-ratio);
 $gutter: modular-scale($base-font-size, 1, $base-ratio);
 $grid-columns: 4;
@@ -61,8 +62,8 @@ $color-background: #FAFAFA;
 $color-orange: orange;
 $color-orange-light: lighten($color-orange, 10%);
 $color-orange-lighter: lighten($color-orange, 30%);
-$color-orange-dark: darken($color-orange, 10%);
-$color-orange-darker: darken($color-orange, 30%);
+$color-orange-dark: desaturate(darken($color-orange, 5%), 10%);
+$color-orange-darker: desaturate(darken($color-orange, 15%), 10%);
 
 $color-green: green;
 $color-green-light: lighten(green, 10%);
