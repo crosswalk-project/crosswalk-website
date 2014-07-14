@@ -1,87 +1,79 @@
 <% var base = ''; for (i=0;i<current.path.length-1;i++){ base += '../' } %>
 <!DOCTYPE html>
 <html id="top">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-  <title>Intel Crosswalk</title>
-
-  <script>
-    WebFontConfig = {
-      custom: {
-        families: ['Clear Sans'],
-        urls: ['<%= base %>css/fonts.css']
-      },
-      timeout: 2000
-    };
-
-    (function() {
-      var wf = document.createElement('script');
-      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                '://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js';
-      wf.type = 'text/javascript';
-      wf.async = 'true';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(wf, s);
-    })();
-  </script>
-
-  <link rel="stylesheet" href="<%= base %>css/main.css">
-
-  <!-- {% if page.blog %}
-  <link rel="alternate" type="application/atom+xml" title="simurai" href="http://feeds.feedburner.com/simurai">
-  {% endif %} -->
-</head>
-
-<body>
-  <% if(current.source !== 'index') { %>
-    <!-- <%- partial(current.path[current.path.length - 1] + "/_nest") %> -->
-    <div class="container">
-      <div class="row">
-        <% include _includes/nav.ejs %>
-      </div>
-      <div class="row">
-        <%- yield %>
-      </div>
-    </div>
-  <% } else { %>
-    <%- yield %>
-  <% } %>
-  <footer class="row">
-    <div class="container">
-      <img src="http://placehold.it/500x300" alt="" />
-      <input type="email" placeholder="Add your email, learn Android development" />
-      <input type="submit" value="join" />
-      <ul>
-        <li><a href="#">Documentation</a></li>
-        <li><a href="#">Featured</a></li>
-        <li><a href="#">Get Started</a></li>
-      </ul>
-      <ul>
-        <li><a href="#">Contribute</a></li>
-        <li><a href="#">Issue tracking</a></li>
-      </ul>
-    </div>
-  </footer>
-  <% if(service.analytics) { %>
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', '<%= service.analytics %>']);
-      _gaq.push(['_trackPageview']);
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Intel Crosswalk</title>
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Source Code Pro:n4,n6'],
+          text: 'webviWV'
+        },
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['<%= base %>css/fonts.css']
+        },
+        timeout: 2000
+      };
       (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                  '://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
       })();
     </script>
-  <% } %>
-
-  <% if(service.prism) { %>
-    <script src="<%= base %>js/prism.js"></script>
-  <% } %>
-
-</body>
+    <link rel="stylesheet" href="<%= base %>css/main.css">
+  </head>
+  <body>
+    <% if(current.source !== 'index') { %>
+      <!-- <%- partial(current.path[current.path.length - 1] + "/_nest") %> -->
+      <div class="container">
+        <div class="row">
+          <% include _includes/nav.ejs %>
+        </div>
+        <div class="row">
+          <%- yield %>
+        </div>
+      </div>
+    <% } else { %>
+      <%- yield %>
+    <% } %>
+    <footer class="row">
+      <div class="container">
+        <img src="http://placehold.it/500x300" alt="" />
+        <input type="email" placeholder="Add your email, learn Android development" />
+        <input type="submit" value="join" />
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Featured</a></li>
+          <li><a href="#">Get Started</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">Contribute</a></li>
+          <li><a href="#">Issue tracking</a></li>
+        </ul>
+      </div>
+    </footer>
+    <% if(service.analytics) { %>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '<%= service.analytics %>']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+    <% } %>
+    <% if(service.prism) { %>
+      <script src="<%= base %>js/prism.js"></script>
+    <% } %>
+  </body>
 </html>
