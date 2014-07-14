@@ -1,0 +1,21 @@
+// For sections with light text on dark backgrounds
+//
+// :hvoer  -
+// :focus  -
+// :active -
+// 
+// Styleguide 3.6.1.
+.knockout {
+  background: $color-text;
+  color: $color-background;
+  a,
+  a:visited {
+    &:hover,
+    &:focus {
+
+    }
+    &:active {
+
+    }
+  }
+}
