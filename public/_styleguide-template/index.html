@@ -10,6 +10,28 @@
     <link rel="stylesheet" href="public/kss.css" />
     <link rel="stylesheet" href="public/style.css" />
     <!--[if lt IE 9]><script src="public/html5shiv.js"></script><![endif]-->
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Source Code Pro:n4,n6'],
+          text: 'webviWV'
+        },
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        timeout: 2000
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                  '://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
   </head>
   <body id="kss-node">
     <div class="kss-wrapper">
@@ -57,7 +79,7 @@
             {{/if}}
             <div class="kss-modifier-block">
               <div class="kss-modifier kss-modifier-original">
-                <div class="kss-modifier-example">
+                <div class="kss-modifier-example body">
                   {{modifierMarkup}}
                 </div>
               </div>
@@ -69,7 +91,7 @@
                     {{html description}}
                   </div>
                 </div>
-                <div class="kss-modifier-example">
+                <div class="kss-modifier-example body">
                   {{modifierMarkup}}
                 </div>
               </div>
