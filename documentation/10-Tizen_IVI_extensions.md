@@ -26,7 +26,9 @@ The extension accepts an input and returns that input prefixed with "You said: "
       // response == 'You said: hello'
     });
 
-The native part of extension is implemented in C. Note that it is trivial and could easily be implemented using pure JavaScript. However, the aim is to reduce the complexity of the extension to focus on code structure and workflow.
+The native part of extension is implemented in C or in C++. Note that it is trivial and could easily be implemented using pure JavaScript. However, the aim is to reduce the complexity of the extension to focus on code structure and workflow.
+
+This tutorial covers both C and C++. If you are a developer willing to contribute to the Tizen API crosswalk extensions, you should choose the C++ way.
 
 The C code which corresponds to the JavaScript API above looks like this:
 
@@ -51,12 +53,13 @@ The diagram below shows how the application and the extension interact:
 **The tutorial contains the following steps:**
 
 1.  [Set up your host development environment](#documentation/tizen_ivi_extensions/host_and_target_setup).
-2.  [Write a Tizen Crosswalk extension](#documentation/tizen_ivi_extensions/write_an_extension).
-2.  [Write a web application](#documentation/tizen_ivi_extensions/write_a_web_application).
-3.  [Run the application and extension using the Tizen emulator](#documentation/tizen_ivi_extensions/run_on_tizen_emulator).
+2.  [Write a Tizen Crosswalk extension in C](#documentation/tizen_ivi_extensions/write_an_extension_in_C).
+3.  [Write a Tizen Crosswalk extension in C++](#documentation/tizen_ivi_extensions/write_an_extension_in_C++).
+4.  [Write a web application](#documentation/tizen_ivi_extensions/write_a_web_application).
+5.  [Run the application and extension using the Tizen emulator](#documentation/tizen_ivi_extensions/run_on_tizen_emulator).
 
 As far as tooling goes, you'll use command line tools to compile the extension, and simple text editors to write the code. It is possible to use the Tizen SDK IDE to build Tizen applications; but using command line tools and a text editor exposes the internals of the extension more clearly.
 
-Note that the tutorial focuses on Tizen IVI. The tutorial uses Linux as a build environment, as the tool for creating native Tizen packages (`gbs`) is not compatible with Windows.
+Note that the tutorial focuses on Tizen IVI, but works exactly the same on Tizen Common. The tutorial uses Linux as a build environment, as the tool for creating native Tizen packages (`gbs`) is not compatible with Windows.
 
-**By the end of this tutorial**, you will understand the basics of writing a C extension for Crosswalk running on Tizen IVI.
+**By the end of this tutorial**, you will understand the basics of writing a C or C++ extension for Crosswalk running on Tizen IVI.

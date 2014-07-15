@@ -1,4 +1,4 @@
-# Write an extension
+# Write an extension in C
 
 In this section, you will write, build and package the Crosswalk extension. The extension itself is written in C and built using `make`. For packaging, you'll use the Tizen IVI `gbs` tool, which can build an [rpm file](http://rpm.org/) for a make-enabled project (rpm is the packaging format used by Tizen IVI).
 
