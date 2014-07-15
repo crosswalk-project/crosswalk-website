@@ -46,6 +46,7 @@
 .cards-item {
   margin: 0;
   padding: $base-line-height * 1em;
+  list-style: none;
   background: $color-green-lighter;
 
   @include media($mid) {
