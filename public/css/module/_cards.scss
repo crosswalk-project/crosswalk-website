@@ -1,27 +1,81 @@
-// A container for a list of cards.
+// Cards
 //
-// Styleguide 3.3.1.
+// Cards for housing highlighted blocks of content.
+//
+// Markup:
+// <div class="cards">
+//   <ul class="cards-list">
+//     <li class="cards-item">
+//       <img src="http://placehold.it/100" class="cards-icon" />
+//       <h3 class="cards-heading">Crosswalk for Tizen</h3>
+//       <p>Extension ready, powered by Chromium and Blink</p>
+//     </li>
+//     <li class="cards-item">
+//       <img src="http://placehold.it/100" class="cards-icon" />
+//       <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+//       <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
+//     </li>
+//     <li class="cards-item">
+//       <img src="http://placehold.it/100" class="cards-icon" />
+//       <h3 class="cards-heading">Crosswalk for Android</h3>
+//       <p>Use Crosswalk as your WebView or in-app browser</p>
+//     </li>
+//   </ul>
+// </div>
+//
+// Styleguide 3.3.
 .cards {
 
 }
 
-// An individual card of content.
-//
-// Styleguide 3.3.2.
-.cards-item {
+.cards-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 
+  @include media($mid) {
+    @include display("flex");
+    @include flex-flow("row wrap");
+    @include justify-content("space-around");
+    // @include align-items("baseline");
+    margin-left: -0.5 * $gutter;
+    margin-right: -0.5 * $gutter;
+  }
 }
 
-// An optional icon or image that adds context to the card.
+.cards-item {
+  margin: 0;
+  padding: $base-line-height * 1em;
+  background: $color-green-lighter;
+
+  @include media($mid) {
+    margin-left: 0.5 * $gutter;
+    margin-right: 0.5 * $gutter;
+    @include flex(1);
+  }
+}
+
+// Card icon
+//
+// An optional icon above a card
+//
+// Markup:
+// <li class="cards-item">
+//   <img src="http://placehold.it/100" class="cards-icon" />
+//   <h3 class="card-heading">Crosswalk for Android</h3>
+//   <p>Use Crosswalk as your WebView or in-app browser</p>
+// </li>
 //
 // Styleguide 3.3.3.
 .cards-icon {
-
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 2px solid $color-background;
+  max-width: 50%;
 }
 
-// The title of a card.
-//
-// Styleguide 3.3.4.
 .cards-heading {
-
+  text-align: center;
+  font-weight: 600;
 }
