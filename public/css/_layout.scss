@@ -6,6 +6,8 @@
 // Styleguide 2.1.
 .container {
   @include outer-container();
+  padding-left: $gutter;
+  padding-right: $gutter;
 }
 
 // A class that resets the row within a container.
