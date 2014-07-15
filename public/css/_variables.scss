@@ -65,11 +65,11 @@ $color-orange-lighter: lighten($color-orange, 30%);
 $color-orange-dark: desaturate(darken($color-orange, 5%), 10%);
 $color-orange-darker: desaturate(darken($color-orange, 15%), 10%);
 
-$color-green: green;
-$color-green-light: lighten(green, 10%);
-$color-green-lighter: lighten(green, 30%);
-$color-green-dark: darken(green, 10%);
-$color-green-darker: darken(green, 30%);
+$color-green: #679176;
+$color-green-light: #729f82;
+$color-green-lighter: lighten($color-green, 30%);
+$color-green-dark: #437072;
+$color-green-darker: #344a3c;
 
 $color-gray: #CCC;
 $color-gray-light: lighten($color-gray, 10%);
