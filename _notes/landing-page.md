@@ -1,106 +1,129 @@
-# Choose a better WebView. Build better Apps, faster.
+# Build Hybrid Apps from the Future
 
-Intel Crosswalk is a alternate `WebView` for building hybrid mobile applications on Android.
+Crosswalk is a powerful `WebView` for building hybrid mobile applications on multiple versions of Android.
 
-Build better appliations using bleeding-edge HTML5 features such as Web Audio, WebGL, web fonts, [and more](#). Crosswalk is available noday as a native WebView or can be used with Apache Cordova.
+Build better native and Cordova apps using bleeding-edge HTML5 features: Web Audio, WebGL, web fonts, [and more](#).
 
-__Get Started__ download
+[Get started](#)
 
-- Email list signup
-- Twitter
-- GitHub
+- __Android compatible__
+  Use Crosswalk as your `WebView` or in-app browser
+- __Tizen compatible__
+  Use Crosswalk as your `WebView` or in-app browser
+- __Apache Cordova compatible__
+  Crosswalk includes Cordova / PhoneGap APIs
+- __Build with Google Chromium__
+  Crosswalk is powered by Chromium and Blink
+
+Get started
+
+@xwalk_project on Twitter
+Crosswalk on GitHub
+
+## Make the most of your `WebView`
+
+What’s a WebView? A WebView is like full-screen browser inside a native app where you can run HTML, CSS, and JavaScript. Crosswalk provides predictability on Android.
+
+### By default
+
+When you choose the default WebView, your users could be using the latest version of Android or seeing the web from 2011—or anywhere else inbetween.
+
+### Upgraded with Crosswalk
+
+Include Intel Crosswalk in your app, and all your users will see your app at its best: through a predictable, powerful WebView based on the latest version of Google Chromium.
 
 ***
 
-## What web view are you using?
-
-Stop choosing a fragmented development enivronment. Over 1.3 million Android device are activated every, each with an slightly different interpretation of the web.
-
-It’s impossible to imagine and painful to test how your native hybrid app will render or perform in every situation if you’ve chosen the default Android WebView.
-
-***
-
-## Can’t I just limit support to the latest versions?
-
-> Even when you don’t support older Android versions, fragmentation is a huge drain on resources.
-> Dave Feldman, [source](http://techcrunch.com/2014/04/06/the-fallacy-of-android-first/)
-
-Dropping support for  is one option, but it reduces your app’s reach and doesn’t solve the problem. Significant fragmentation exists event within the latest version of Android—there will still be unpredictability.
-
-***
-
-Amol Kher
-Former Engineer Manager at Netflix said
+Amol Kher, former Engineer Manager at Netflix said:
 
 > The bulk of our user interactions occur on the HTML5 front end. …we see almost around 1,000 different devices streaming Netflix on Android every day.
 
-## Does your `WebView` power reliable apps?
+## Which `WebView` are you choosing?
 
-Chances are, your customers use as many different Android devices as Netflix’s, but see as many different devices as Netflix, but not have the resources or support to test like them.
+Stop choosing a fragmented development enivronment. Over 1.3 million Android device are activated every, each with an slightly different interpretation of the web.
 
-With Crosswalk, your app will render the same across every Android 4.0 device, so you can efficiently develop more predictable and performant apps.
+It’s impossible to imagine and painful to test how your native hybrid app will render or perform in every situation if you’ve chosen the default Android `WebView`.
 
-__[Get started with Cordova](#)__ or [start with Android](#)
+#### Use Crosswalk and build great interfaces
+
+Use new features confidently. Crosswalk supports otherwise unpredictable properties and APIs, whether they are in CSS or JavaScript.
+
+#### Use Device APIs, with or without CordovaWhether your using Cordova or not, the Crosswalk supports the Geolocation API, the File API, the vibraton API and more.
+
+#### Flexbox is ready with Crosswalk
+
+Reliably build responsive user interfaces with Flexbox. Your app will render it properly on any Android 4.0+ device when Crosswalk is included.
+
+### Which WebView are you using?
+
+![Compatibility table for relevant features: Flexbox, WebRTC, WebGL, VibrationAPI, Presentation API](#)
+
+[Get started](#)
 
 ***
 
-Ashley Scirra
-Creator of the Construct 2
-game engine says
-
+Ashley Scirra, Creator of the Construct 2 game engine says:
 > Crosswalk looks like the new, best way to publish HTML5 content to Android.
 
-## Is your `WebView` ready for immersive games?
+##  Put your game face on
 
-[Could use better description text about building games with Crosswalk here]
+HTML5 is ready for games, but is your WebView? Crosswalk gives you the latest possible implementation of HTML5 features that make immersive games possible.#### Build boundry-pushing 2D and 3D games
 
-![Table that shows game-friendly features in Crosswalk, like WebGL and proper web audio]
+#### True support for the Audio APICrosswalk supports exactly what you’d expect from a WebView based on Google Chromium and Blink. Make your in-app browsing experience as good as it can be.
 
-__[Get started with Android](#)__ or [start with Cordova](#)
+### Which WebView are you using?
 
-***
+![WebGL, Web Audio API, WebRTC, Optimized performance through SIMD, `requestAnimationFrame`](#)
 
-> Still need a quote for this section
-
-## Does your `WebView` support CSS3, really?
-
-[Could use better description text about designing user interfaces with Crosswalk here.]
-
-![Table that shows CSS3 and designer-friendly features in Crosswalk, like WOFF]
-
-__[Get started with Android](#)__ or [start with Cordova](#)
+[Get started](#)
 
 ***
 
-## Free and Open Source
+Luke Wroblewski, Founder of LukeW Ideation & Design said:
+> the embedded experience might be the most common way to experience the web on smartphones.
 
-Intel Crosswalk is open source and free to use for commercial and personal projects. Intel is committed to improving HTML5 and Android development, and is working in the open to make this happen.
+#### Give your users the latest version of the web
 
-[Change this section to “no lock-in.”]
+With Crosswalk, your app will render the same across every Android 4.0 device, so you can simultaneously test on less devices and know your apps works in more places.#### Provide a Google Chrome-like in-app browserIn-app browsers are used more than the default Android browser. Give your users the latest version of the web by with Crosswalk as your app’s embedded browser. 
+
+#### Icon fonts, SVG, Flexbox, and more
+
+Crosswalk supports exactly what you’d expect from a WebView based on Google Chromium and Blink. Easily make your users’ browser and experience great.
+
+#### New monitoring APIs
+
+The more browsers that support new performance monitoring APIs, the more accurate your numbers will be. Crosswalk helps increase your sample size.
+
+### Which WebView are you using?
+
+![Predictable layout, CSS feature queries, latest Flexbox, WOFF web fonts, controlled `WebView` updates](#)
+
+[Get started](#)
 
 ***
 
-## Crosswalk for Cordova
+#### Compatible with
 
-- Open Source and free
-- Compatable with Cordova APIs
-- Compatable with the Intel XDK build service
+- __Crosswalk for Tizen__
+  Extension ready, powered by Chromium and Blink
+- __Crosswalk for Apache Cordova__
+  Improve your entire app’s wrapper by upgrading your WebView.
+- __Crosswalk for Android__
+  Use Crosswalk as your WebView or in-app browser
+- __Crosswalk for Chrome__
+  Extension ready, Crosswalk is powered by Chromium and Blink
 
-## Crosswalk for Android 
 
-- Open Source and free
-- Replaces the default WebView
-- Like having Chrome for Android in your app
+### Can I use…? Yes.
+
+Crosswalk provides a predictable, powerful environment so you can build great Android apps.
 
 ***
-
-[Footer]
 
 - Documentation
-- Featured apps
-- GitHub
-
 - Contribute
-- Issue Tracking
+- Issues
+- GitHub
+- Blog
 
-- [Latest tweet]
+_Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved._
