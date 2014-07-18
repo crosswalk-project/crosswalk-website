@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Tizen_IVI_extensions/18 JSON_based_C  _extension';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Tizen_IVI_extensions/18 JSON_based_C  _extension</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Write an extention in C++ (2)</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Tizen_IVI_extensions/18-JSON_based_C--_extension"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Tizen_IVI_extensions/18-JSON_based_C--_extension"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>This a modified version of the <a href="#documentation/Tizen_IVI_extensions/17-Write_an_extension_in_C++.md">tutorial</a> to provide a more robust handling of asynchronous callbacks.
+The mecanism illustrated below is inspired by real production code.</p>
+
+<h2>Modified Javascript File<a class="anchor" id="Modified-Javascript-File" href="#Modified-Javascript-File"></a></h2>
+
+<p>These modifications are transparent to the users of your extension as they don't change the API.</p>
+
+<pre><code>/**
+ * Javascript API file for extension 
+ */
+
+var echoListener = null;
+var _callbacks = {};
+var _next_reply_id = 0;
+
+var getNextReplyId = function() {
+  return _next_reply_id++;
+};
+
+extension.setMessageListener(function(json) {
+  var message = JSON.parse(json);
+  var reply_id = message.reply_id;
+  var msg = message.msg;
+  var callback = _callbacks[reply_id];
+  if (typeof(callback) === 'function') {
+    callback(msg);
+    delete msg.reply_id;
+    delete _callbacks[reply_id];
+  } else {
+    console.log('Invalid reply_id: ' + reply_id);
+  }
+});
+
+exports.echoAsync = function (msg, callback) {
+  var reply_id = getNextReplyId();
+  _callbacks[reply_id] = callback;
+  var resp = {"msg": msg};
+  resp.reply_id = reply_id;
+  extension.postMessage(JSON.stringify(resp));
+};
+
+exports.echoSync = function (msg) {
+  return extension.internal.sendSyncMessage(msg);
+};
+</code></pre>
+
+<p>As you can see, we associate a unique ID to each callback and record it into an object. The ID is passed along the message to the C++ part in a JSON string. The C++ part is expected to bundle the ID back with its response so the event listener can call the right callback.</p>
+
+<p>As the callbacks are fired once, they are removed from the record as soon as they return.</p>
+
+<h2>Modified C++ Instance class<a class="anchor" id="Modified-C++-Instance-class" href="#Modified-C++-Instance-class"></a></h2>
+
+<p>We just modify the implementation (.cc file):</p>
+
+<pre><code>// Copyright (c) 2014 Intel Corporation. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+#include "extension/echo_instance.h"
+#include "common/picojson.h"
+
+EchoInstance::EchoInstance() {
+}
+
+EchoInstance::~EchoInstance() {
+}
+
+void EchoInstance::HandleMessage(const char* message) {
+  picojson::value v;
+  std::string err;
+  picojson::parse(v, message, message + strlen(message), &amp;err);
+  if (!err.empty()) {
+    std::cout &lt;&lt; "Ignoring message.\n";
+    return;
+  }
+  std::string msg = v.get("msg").to_str();
+  double reply_id = v.get("reply_id").get&lt;double&gt;();
+
+  std::string resp = PrepareMessage(msg);
+
+  picojson::object o;
+  o["msg"] = picojson::value(resp);
+  o["reply_id"] = picojson::value(reply_id);
+  picojson::value rv(o);
+  PostMessage(rv.serialize().c_str());
+}
+
+void EchoInstance::HandleSyncMessage(const char* message) {
+  std::string resp = PrepareMessage(message);
+  SendSyncReply(resp.c_str());
+}
+
+std::string EchoInstance::PrepareMessage(std::string msg) const {
+  return "You said: " + msg;
+}
+</code></pre>
+
+<p>See how we used the <code>picojson</code> library to decode and encode the JSON messages. The <code>picojson</code> is already in the <code>common/</code> directory of the tutorial.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Romuald Texier-Marcadé</b>, 2014-07-15 15:47:10</p>
+  <p>
+    <a id="delete-link" href="/documentation/Tizen_IVI_extensions/18-JSON_based_C--_extension" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Tizen_IVI_extensions/18-JSON_based_C--_extension">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>

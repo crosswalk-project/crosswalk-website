@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Tizen_IVI_extensions/17 Write_an_extension_in_C  ';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Tizen_IVI_extensions/17 Write_an_extension_in_C  </title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Write an extension in C++</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Tizen_IVI_extensions/17-Write_an_extension_in_C--"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Tizen_IVI_extensions/17-Write_an_extension_in_C--"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>In this section, you will write, build and package a Crosswalk extension for Tizen. The extension itself is written in C++ and built using <code>make</code>. For packaging, you'll use the Tizen <code>gbs</code> tool, which can build an <a href="http://rpm.org/">rpm file</a> for a make-enabled project (rpm is the packaging format used by Tizen IVI).</p>
+
+<p>Although you are creating the extension and the application alongside each other in this tutorial, they are actually two separate pieces: one extension can be used to support multiple applications if desired.</p>
+
+<p>The extension consists of three parts:</p>
+
+<ol><li><p>A JavaScript file. This defines the API which web applications can invoke. It will be embedded in our extension as a global constant (see below).</p></li>
+<li><p>A C++ class which declares and  sets up the extension.</p></li>
+<li><p>The C++ class which implements the native side of the extension.</p></li>
+</ol><p>You also need some supporting files to build and package the extension.</p>
+
+<p>Before starting, make sure you have already followed the steps in <a href="#documentation/Tizen_IVI_extensions/Host_and_target_setup">Host and target setup</a>.</p>
+
+<h2>Create project files and directories<a class="anchor" id="Create-project-files-and-directories" href="#Create-project-files-and-directories"></a></h2>
+
+<p>The first step is to set up the basic project directories and include the Crosswalk headers and utilities (for compiling the code).</p>
+
+<p>Put the extension in an <code>echo-extension</code> directory with these commands:</p>
+
+<pre><code>&gt; mkdir echo-extension
+&gt; cd echo-extension
+
+# directory for the Crosswalk extension source
+&gt; mkdir extension
+
+# directory for the packaging specification file
+&gt; mkdir packaging
+
+# directory for Crosswalk headers
+&gt; mkdir common
+
+# directory for helper tools
+&gt; mkdir tools
+
+# initialise the directory as a git repository (see below)
+&gt; git init .
+</code></pre>
+
+<p>Because you'll be using gbs to build the rpm file for your extension, you need to make your project into a git repository (gbs won't work on plain directories).</p>
+
+<h3>Include Crosswalk C++ extension headers<a class="anchor" id="Include-Crosswalk-C++-extension-headers" href="#Include-Crosswalk-C++-extension-headers"></a></h3>
+
+<p>You will need a copy of the Crosswalk C++ extension classes, to compile your extension against:</p>
+
+<ol><li><p>Checkout the tizen-extensions-crosswalk github repo on the host machine (the machine where you intend to compile your extension):</p>
+
+<pre><code>git clone https://github.com/crosswalk-project/tizen-extensions-crosswalk.git ~/tizen-extensions-crosswalk
+</code></pre></li>
+<li><p>Copy the Crosswalk headers and classes for extensions and utilities from the <code>common</code> directory into your project:</p>
+
+<pre><code>cp ~/tizen-extensions-crosswalk/common/*.h echo-extension/common/
+cp ~/tizen-extensions-crosswalk/common/*.cc echo-extension/common/
+</code></pre></li>
+<li><p>Copy the API generator tool (see below) into the <code>tools</code> directory in your project:</p>
+
+<pre><code>cp ~/tizen-extensions-crosswalk/tools/generate_api.py echo-extension/tools/
+</code></pre></li>
+</ol><h3>JavaScript bridge API to the C++ extension<a class="anchor" id="JavaScript-bridge-API-to-the-C++-extension" href="#JavaScript-bridge-API-to-the-C++-extension"></a></h3>
+
+<p>This file wires the C++ interface to JavaScript and provides the bridge between the HTML5 application and the C++ code.</p>
+
+<p>Note that it's not essential to maintain the JavaScript in a separate file: you can just add the JavaScript API inline to your C++ code. However, for purposes of maintainability, it makes sense to maintain the JavaScript API in its own file.</p>
+
+<p>Add a file at <code>extension/echo_api.js</code> with this content:</p>
+
+<pre><code>var echoListener = null;
+
+extension.setMessageListener(function(msg) {
+  if (echoListener instanceof Function) {
+    echoListener(msg);
+  };
+});
+
+exports.echoAsync = function (msg, callback) {
+  echoListener = callback;
+  extension.postMessage(msg);
+};
+
+exports.echoSync = function (msg) {
+  return extension.internal.sendSyncMessage(msg);
+};
+</code></pre>
+
+<p>This JavaScript file is converted into a const char array in a C++ file at build-time; that array is then referenced from the extension code. This is the simplest way to incorporate the JavaScript code into the C++ extension.</p>
+
+<h4>A note on the JavaScript API<a class="anchor" id="A-note-on-the-JavaScript-API" href="#A-note-on-the-JavaScript-API"></a></h4>
+
+<p>Note that the asynchronous part of this API is <em>not suitable</em> for a real production environment.</p>
+
+<p>At the moment, when you invoke the <code>echoAsync()</code> method, you set a single global message listener: a function which waits for the next response to be returned by the C++ part of the extension. However, this approach would not work correctly if the processing which occurred in the extension took some time, and the <code>echoAsync()</code> method were invoked during that processing time.</p>
+
+<p>For example, consider the following program:</p>
+
+<pre><code>var callback1 = function (response) {
+  console.log(response + ' world');
+};
+
+var callback2 = function (response) {
+  console.log(response + ' cruel world');
+};
+
+// invocation 1
+echo.echoAsync('hello', callback1);
+
+// invocation 2
+echo.echoAsync('goodbye', callback2);
+</code></pre>
+
+<p>When invocation 1 occurs, the message listener is set to <code>callback1</code>. If the extension takes several seconds to respond, invocation 2 may have already happened before invocation 1 completes; and invocation 2 sets the message listener to <code>callback2</code> (there is only one listener for all responses). Consequently, when invocation 1 does eventually return, its handler (<code>callback1</code>) has been overwritten; so the responses for both invocation 1 and invocation 2 will be (incorrectly) handled by <code>callback2</code>.</p>
+
+<p>In practice, this means that you would see this on the console:</p>
+
+<pre><code>hello cruel world
+goodbye cruel world
+</code></pre>
+
+<p>instead of the anticipated:</p>
+
+<pre><code>hello world
+goodbye cruel world
+</code></pre>
+
+<p>The solution is to pass a token from the JavaScript API to the C++ code, then return that token as part of the response from the C++ code. The JavaScript API would maintain a mapping from tokens to callbacks, so when responses are returned (containing a token), the correct handler can be looked up and invoked. A typical way to implement this would be to JSON-encode messages between the JavaScript and C++ parts of the extension, and include a token in each message. However, this process is too complex for the scope of this tutorial. Look at the <a href="#documentation/Tizen_IVI_extensions/18-JSON_based_C++_extension">more elaborate version</a> of this tutorial extension to see that method in action.</p>
+
+<p>If you're interested in seeing a more  real world example, the <a href="https://github.com/crosswalk-project/tizen-extensions-crosswalk">Crosswalk Tizen extensions</a> are a good place to start, e.g. <a href="https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/application/application_api.js">the application API JavaScript file</a>.</p>
+
+<h3>C++ file for the JavaScript API<a class="anchor" id="C++-file-for-the-JavaScript-API" href="#C++-file-for-the-JavaScript-API"></a></h3>
+
+<p>The C++ file, <code>extension/echo_api.cc</code>, is a generated file which looks like this :</p>
+
+<pre><code>extern const char kSource_echo_api[];
+const char kSource_echo_api[] = { 47, 42, 42, 10, 32, 42, 32, 74, 97, 118, 
+97, 115, 99, 114, 105, 112, 116, 32, 65, 80, 73, 32, 102, 105, 108, 101, 
+   --some lines omitted--
+103, 101, 40, 109, 115, 103, 41, 59, 10, 125, 59, 0 };
+</code></pre>
+
+<p>The numeric values are the ascii codes of the characters representing the javascript string.</p>
+
+<p>By compiling and linking that file, you can access the <code>kSource_echo_api</code> constant, which defines the JavaScript API for the extension.</p>
+
+<p>Note that this mirrors the JavaScript file you created earlier, but is generated by the python script <code>tools/generate_api.py</code>.</p>
+
+<p>Invoke it like this:</p>
+
+<pre><code>python tools/generate_api.py &lt;.js file&gt; &lt;constant name&gt; &lt;output.cc file&gt;
+</code></pre>
+
+<p>While the script can be invoked manually for testing (you will need python installed on your host for that), the aim is to incorporate it into an automated build later.</p>
+
+<h3>C++ program code<a class="anchor" id="C++-program-code" href="#C++-program-code"></a></h3>
+
+<p>This implements the Crosswalk extension API and has access to the full Tizen native API. For the purposes of this tutorial, the C++ code simply prefixes a message string with "You said: " and returns it.</p>
+
+<p>You need to define two classes, a <code>common::Extension</code> child class and a <code>common::Instance</code> child class. The former registers your extension to the crosswalk extension system, the latter implements the actual behavior and the communication with the javascrpt API.</p>
+
+<h4>Extension class<a class="anchor" id="Extension-class" href="#Extension-class"></a></h4>
+
+<p>Create a file <code>extension/echo_extension.h</code> with this content:</p>
+
+<pre><code>// echo extension for Crosswalk Tizen
+// adapted from
+// https://github.com/crosswalk-project/crosswalk/blob/master/extensions/test/echo_extension.c
+// Copyright (c) 2013 Intel Corporation. All rights reserved.
+// Use of this source code is governed by a BSD-style license
+// that can be found in the LICENSE file.
+
+#ifndef ECHO_EXTENSION_H_
+#define ECHO_EXTENSION_H_
+
+#include "common/extension.h"
+
+class EchoExtension : public common::Extension {
+ public:
+  EchoExtension();
+  virtual ~EchoExtension();
+
+ private:
+  // common::Extension implementation.
+  virtual common::Instance* CreateInstance();
+};
+
+#endif  // ECHO_EXTENSION_H_
+</code></pre>
+
+<p>And the concrete implemetation in <code>extension/echo_extension.cc</code>:</p>
+
+<pre><code>#include "extension/echo_extension.h"
+#include "extension/echo_instance.h"
+
+common::Extension* CreateExtension() {
+  return new EchoExtension();
+}
+
+extern const char kSource_echo_api[];
+
+EchoExtension::EchoExtension() {
+  SetExtensionName("echo");
+  SetJavaScriptAPI(kSource_echo_api);
+}
+
+EchoExtension::~EchoExtension() {}
+
+common::Instance* EchoExtension::CreateInstance() {
+  return new EchoInstance();
+}
+</code></pre>
+
+<p>Some notes on the code:</p>
+
+<ul><li><p>The Extension class is used to define the structures used by the extension system. At a minimum, you must implement the virtual methods <code>CreateExtension</code> and <code>CreateInstance</code> from <code>common::Extension</code>, and also declare the name and API of your extension in the constructor with <code>SetExtensionName</code> and <code>SetJavascriptAPI</code>.</p></li>
+<li><p><code>SetExtensionName()</code> sets the public name for the JavaScript API which will be available to your web application.</p></li>
+<li><p><code>SetJavaScriptAPI()</code> takes JavaScript as a string  to be presented as the API. The name you set with <code>SetExtensionName()</code> should match the one you use in the JavaScript API string. In the case of this extension, the API string is loaded from a C++ file which is generated by the build.</p></li>
+<li><p>More methods from the base class <a href="https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/common/extension.h">common::Extension</a> can be overridden:</p>
+
+<ul><li><code>OnShutdown()</code>: called when the extension is unloaded.</li>
+<li><code>OnInstanceCreated()</code> and <code>OnInstanceDestroyed()</code>: called when new instances of the extension are created or destroyed. Instances have the same lifetime than the web content.</li>
+</ul></li>
+</ul><h4>Instance class<a class="anchor" id="Instance-class" href="#Instance-class"></a></h4>
+
+<p>Create a file <code>extension/echo_instance.h</code> with this content:</p>
+
+<pre><code>// echo extension for Crosswalk Tizen
+// adapted from
+// https://github.com/crosswalk-project/crosswalk/blob/master/extensions/test/echo_extension.c
+// Copyright (c) 2013 Intel Corporation. All rights reserved.
+// Use of this source code is governed by a BSD-style license
+// that can be found in the LICENSE file.
+
+#ifndef ECHO_INSTANCE_H_
+#define ECHO_INSTANCE_H_
+
+#include &lt;string&gt;
+
+#include "common/extension.h"
+
+class EchoInstance : public common::Instance {
+ public:
+  EchoInstance();
+  ~EchoInstance();
+
+  // common::Instance implementation
+  void HandleMessage(const char* message);
+  void HandleSyncMessage(const char* message);
+
+ private:
+  std::string PrepareMessage(std::string msg) const;
+};
+
+#endif  // ECHO_INSTANCE_H_
+</code></pre>
+
+<p>And its implementation in <code>extension/echo_instance.cc</code>:</p>
+
+<pre><code>#include "extension/echo_instance.h"
+
+EchoInstance::EchoInstance() {
+}
+
+EchoInstance::~EchoInstance() {
+}
+
+void EchoInstance::HandleMessage(const char* message) {
+  std::string resp = PrepareMessage(message);
+  PostMessage(resp.c_str());
+}
+
+void EchoInstance::HandleSyncMessage(const char* message) {
+  std::string resp = PrepareMessage(message);
+  SendSyncReply(resp.c_str());
+}
+
+std::string EchoInstance::PrepareMessage(std::string msg) const {
+  return "You said: " + msg;
+}
+</code></pre>
+
+<p>Some notes on the code:</p>
+
+<ul><li><p>This example provides synchronous and asynchronous versions of the same handler. But an extension doesn't have to handle both synchronous and asynchronous messages: it can handle only one type if desired.</p></li>
+<li><p>The base class implementation calls the <code>HandleMessage()</code> method for incoming asynchronous calls and the <code>HandleSyncMessage()</code> for synchronous ones.</p>
+
+<p>You should use asynchronous messaging where the processing performed by the C++ extension is likely to take some time (i.e. more than a few milliseconds; usually, this means anything involving disk or network access). Where the C++ code will return quickly (perhaps tens of milliseconds), synchronous messaging is safe enough.</p>
+
+<p>However, in most cases, the safest approach is to provide an asynchronous API. The synchronous alternative is shown here for the sake of completeness.</p></li>
+<li><p>Both the sync (<code>SendSyncReply()</code>) and async (<code>PostMessage()</code>) functions (inherited from <code>common::Instance</code>)  for returning a response "preserve their inputs", so you can free any pointers you pass to those functions once you've invoked them.</p></li>
+<li><p>If you need to make some resources setup in your instance, consider implementing the virtual method <code>Initialize</code> instead of doing your intialization in the constructor.</p></li>
+</ul><h2>Add build infrastructure<a class="anchor" id="Add-build-infrastructure" href="#Add-build-infrastructure"></a></h2>
+
+<p>The build infrastructure enables generating an installable rpm package for your extension. This <code>.rpm</code> file can then be installed to the Tizen IVI target using the <code>rpm</code> package manager tool.</p>
+
+<p>The files you need to add are:</p>
+
+<ol><li><p>A <code>Makefile</code>. This is used to build the C++ program and output a shared library file <code>libecho.so</code>.</p>
+
+<p>Note that the name is very important: it should begin with a "lib" prefix. Crosswalk will not load the extension correctly if it is called anything else.</p></li>
+<li><p>An rpm spec file, <code>packaging/echo-extension.spec</code>. This file defines how the extension should be packaged and installed on the Tizen system.</p></li>
+</ol><h3>Makefile<a class="anchor" id="Makefile" href="#Makefile"></a></h3>
+
+<p>You can use a <code>Makefile</code> to invoke the compiler and generate the header file for the JavaScript API. In the project directory, add a file called <code>Makefile</code> with this content:</p>
+
+<pre><code>ECHO_CFLAGS=$(CFLAGS) -fPIC -Wall
+SOURCES=extension/echo_extension.cc extension/echo_instance.cc extension/echo_api.cc \
+ common/extension.cc
+
+all: libecho.so
+
+echo_api.cc:
+    python tools/generate_api.py extension/echo_api.js kSource_echo_api extension/echo_api.cc
+
+libecho.so: prepare echo_api.cc
+    $(CC) $(ECHO_CFLAGS) -shared -o build/libecho.so \
+     $(SYSROOT_FLAGS) -I./ $(SOURCES)
+
+prepare:
+    mkdir -p build
+
+install: libecho.so
+    install -D build/libecho.so \
+     $(DESTDIR)/$(PREFIX)/lib/tizen-extensions-crosswalk/libecho.so
+
+clean:
+    rm -Rf build
+    rm extension/echo_api.cc
+
+.PHONY: all prepare clean
+</code></pre>
+
+<p>(As with all Makefiles, indent using tabs, rather than spaces.)</p>
+
+<h3>RPM spec file<a class="anchor" id="RPM-spec-file" href="#RPM-spec-file"></a></h3>
+
+<p>Crosswalk Tizen extensions should be packaged as rpm files. The structure and content of this rpm file is defined in an rpm <code>.spec</code> file. <code>gbs</code> uses this spec file to compile the extension against the Tizen IVI librarires; then generates an rpm compatible with a Tizen IVI target.</p>
+
+<p>Create the spec file in <code>packaging/echo-extension.spec</code>, with this content:</p>
+
+<pre><code>Name:     echo-extension
+Version:  0.1
+Release:  1
+Summary:  Example Crosswalk Tizen extension
+Group:    System/Libraries
+
+License:    BSD-3-Clause
+URL:      https://crosswalk-project.org/
+Source0:  %{name}-%{version}.tar.gz
+
+BuildRequires: python
+Requires: crosswalk
+
+%description
+Example Crosswalk Tizen extension which echoes any messages sent to it.
+
+%prep
+%setup -q
+
+%build
+make %{?_smp_mflags}
+
+%install
+make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
+
+%files
+%{_prefix}/lib/tizen-extensions-crosswalk/libecho.so
+</code></pre>
+
+<p>Placing this file in the <code>packaging/</code> directory is important, as this is where <code>gbs</code> will expect to find a spec file for a project it's building.</p>
+
+<p>The rpm spec file format is a complicated beast, and out of scope for this tutorial. If you want to learn more about it, see the <a href="http://rpm.org">RPM website</a>.</p>
+
+<p>You should also be aware of the <a href="https://wiki.tizen.org/wiki/Packaging/Guidelines">Tizen packaging guidelines</a>, which explain best practices for writing spec files for Tizen packages.</p>
+
+<h2>Run the build<a class="anchor" id="Run-the-build" href="#Run-the-build"></a></h2>
+
+<p>Before running your build with <code>gbs</code>, make sure all your changes are committed to the local git repository:</p>
+
+<pre><code>git add -A
+git commit -m "Initial import"
+</code></pre>
+
+<p>To build the project using <code>gbs</code>, do:</p>
+
+<pre><code>gbs -c ~/.gbs.conf build -A i586
+</code></pre>
+
+<p>Note that you're using the gbs configuration file in your home directory, so you're working with the correct Tizen IVI buildroot. It's also important that you set the architecture correctly with the <code>-A</code> option: the Tizen IVI images provided from the download site have <code>i586</code> architecture.</p>
+
+<p>During the build, <code>gbs</code> will download the appropriate Tizen IVI packages, then compile and package your extension. The output <code>.rpm</code> files should end up in <code>/home/ell/GBS-ROOT/local/repos/tizen3.0/i586/RPMS</code> (unless you changed the gbs root location).</p>
+
+<h2>Test<a class="anchor" id="Test" href="#Test"></a></h2>
+
+<p>Here is a sample test application to check your code:</p>
+
+<pre><code>&lt;script&gt;
+
+var callback = function(response) {
+  console.log("Async&gt;&gt;&gt; " + response);
+};
+
+echo.echoAsync('Hello world', callback);
+
+console.log("Sync -- " + echo.echoSync("Hello tizen"));
+
+&lt;/script&gt;
+</code></pre>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Romuald Texier-Marcadé</b>, 2014-07-15 15:47:10</p>
+  <p>
+    <a id="delete-link" href="/documentation/Tizen_IVI_extensions/17-Write_an_extension_in_C--" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Tizen_IVI_extensions/17-Write_an_extension_in_C--">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
