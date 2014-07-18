@@ -109,11 +109,14 @@ Use a terminal on the emulated device to run the following steps:
 
     The path to the xpk file must be absolute, otherwise the installer won't work.
 
-    The output from this command will look something like this:
+    The output from this command will end with something like this:
 
-        Application installed/updated with path '/installed1/dogabgfklbjobjkfdbokaedngjeepepj'
+        [0717/103509:INFO:package_installer.cc(171)] Installed application with id:
+        dogabgfklbjobjkfdbokaedngjeepepj to
+        /home/app/.config/xwalk-service/applications/dogabgfklbjobjkfdbokaedngjeepepj
+        successfully.
 
-    The long string at the end of the installation path (*dogabgfklbjobjkfdbokaedngjeepepj* here) is the **application ID**. This is important, as you'll need it to launch the application in the next step.
+    The long ID string (*dogabgfklbjobjkfdbokaedngjeepepj* here) is the **application ID**. This is important, as you'll need it to launch the application in the next step.
 
     If you need to uninstall the application, you can do this with:
 
