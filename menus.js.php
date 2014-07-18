@@ -44,7 +44,14 @@ function scan_dir ($path) {
     for ($i = 0; $i < count ($entries); $i++) {
         $name = preg_replace ('/^[0-9]*[-_]/', '', $entries[$i]['wiki']);
         $name = preg_replace ('/\.[^.]*$/', '', $name);
-        $entries[$i]['file'] = $name;
+
+        // we have to double-urlencode the file location, as it is
+        // going to pass through an Apache rewrite rule which otherwise
+        // removes any url-encoded characters (don't ask...);
+        // the primary reason for this is to enable special characters in
+        // filenames like '+' for the C++ Tizen IVI tutorial
+        $entries[$i]['file'] = urlencode(urlencode($name));
+
         $entries[$i]['wiki'] = preg_replace ('/\.[^.]*$/', '', $entries[$i]['wiki']);
         $subpages = basename (dir_smart_match ($path.'/'.$entries[$i]['file']));
         if ($subpages) {
@@ -56,9 +63,9 @@ function scan_dir ($path) {
 }
 
 function make_name ($name) {
-    return preg_replace ('/_+/', ' ', 
-           preg_replace ('/-+/', ' ', 
-           preg_replace ('/^[0-9]*[-_]/', '', 
+    return preg_replace ('/_+/', ' ',
+           preg_replace ('/-+/', ' ',
+           preg_replace ('/^[0-9]*[-_]/', '',
            $name)));
 }
 
@@ -80,9 +87,9 @@ if (!$rebuild) {
 }
 if ($rebuild) {
     $json = Array ();
-    $json[] = Array ('menu' => 'documentation', 
+    $json[] = Array ('menu' => 'documentation',
                      'items' => scan_dir ('documentation'));
-    $json[] = Array ('menu' => 'contribute', 
+    $json[] = Array ('menu' => 'contribute',
                      'items' => scan_dir ('contribute'));
     $json[] = Array ('menu' => 'wiki',
                      'items' => Array (Array ('name' => 'Home', 'file' => 'Home' ),
