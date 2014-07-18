@@ -146,10 +146,8 @@ Once you have the application working with standard Cordova, you can move on to 
         $ ant debug
 
         # build the Android apk file
-        $ cd ..
-        $ ant debug
-
-    You can use `ant release` instead of `ant debug` if you are building a package for release.
+        $ cd ../../..
+        $ cordova build android
 
     The `android update` command used above takes a `--target` option, specifying which Android API level you want to target. If you only have one platform versions installed in your Android SDK, this option is not required; but if you have multiple platform versions installed, you need to specify which one to use.
 
@@ -178,6 +176,12 @@ Once you have the application working with standard Cordova, you can move on to 
 
     The `id` lines show the integer or string you need to pass to the `--target` option.
 
+    By default, Cordova will build a debug package for your application. You can build a release version instead using:
+
+        $ cordova build --release android
+
+    Once you've built a release package, you will need to [sign and align it](http://developer.android.com/tools/publishing/app-signing.html) if you intend to install it to an Android device or distribute it via an app store.
+
 6.  The output Android `.apk` files are in the `kitchensink/platforms/android/bin/` directory. You can either install them from there with `adb`:
 
         $ cd kitchensink
@@ -192,7 +196,9 @@ Once you have the application working with standard Cordova, you can move on to 
 
     The application should now be running on the target.
 
-7.  The application should look identical to how it does on standard Cordova. However, you can confirm that it is using Crosswalk by viewing it with the Chrome dev tools: open "chrome://inspect" in a Chrome browser and select the "inspect" link for the *Intel XDK Kitchen Sink* application.
+7.   The application should look identical to how it does on standard Cordova. If you are using a debug build (i.e. you didn't apply the `--release` option), you should also be able to [debug your application using Chrome](#documentation/cordova/develop_an_application/Debug-the-application).
+
+    You can also use the dev tools to confirm your application is using Crosswalk. Open "chrome://inspect" in a Chrome browser and select the "inspect" link for the *Intel XDK Kitchen Sink* application (or for your own application).
 
     In the Chrome dev tools, you should now have a JavaScript console. You can verify that your application is using Crosswalk as its webview by echoing the `navigator.userAgent` property to the console:
 
@@ -335,6 +341,18 @@ These steps assume that you created your project using the Cordova command line 
   </li>
 
 </ol>
+
+### Migrating with Crosswalk 5
+
+The above instructions work for applications built with Cordova 3.3, 3.4 and 3.5. However, if you are using Crosswalk 5, you will need to add some additional permissions for your application, otherwise the package will build and install, but the application won't run.
+
+These additional permissions should be added to your Cordova project's `platforms/android/AndroidManifest.xml` file (immediately before the `<application>` element):
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- ...rest of AndroidManifest.xml...-->
+    <application ...>
 
 ## Adding plugins to a migrated project
 
