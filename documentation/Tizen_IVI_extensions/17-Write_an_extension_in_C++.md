@@ -6,9 +6,9 @@ Although you are creating the extension and the application alongside each other
 
 The extension consists of three parts:
 
-1.  A JavaScript file. This defines the API which web applications can invoke. It will be embedded in our extension as a global constant (see below).
+1.  A JavaScript file. This defines the API which web applications can invoke. It will be embedded in the extension as a global constant (see below).
 
-2.  A C++ class which declares and  sets up the extension.
+2.  A C++ class which declares and sets up the extension.
 
 3.  The C++ class which implements the native side of the extension.
 
@@ -55,7 +55,7 @@ You will need a copy of the Crosswalk C++ extension classes, to compile your ext
         cp ~/tizen-extensions-crosswalk/common/*.h echo-extension/common/
         cp ~/tizen-extensions-crosswalk/common/*.cc echo-extension/common/
 
-3. Copy the API generator tool (see below) into the `tools` directory in your project:
+3.  Copy the API generator tool (see below) into the `tools` directory in your project:
 
         cp ~/tizen-extensions-crosswalk/tools/generate_api.py echo-extension/tools/
 
@@ -122,19 +122,19 @@ instead of the anticipated:
 
 The solution is to pass a token from the JavaScript API to the C++ code, then return that token as part of the response from the C++ code. The JavaScript API would maintain a mapping from tokens to callbacks, so when responses are returned (containing a token), the correct handler can be looked up and invoked. A typical way to implement this would be to JSON-encode messages between the JavaScript and C++ parts of the extension, and include a token in each message. However, this process is too complex for the scope of this tutorial. Look at the [more elaborate version](#documentation/Tizen_IVI_extensions/18-JSON_based_C++_extension) of this tutorial extension to see that method in action.
 
-If you're interested in seeing a more  real world example, the [Crosswalk Tizen extensions](https://github.com/crosswalk-project/tizen-extensions-crosswalk) are a good place to start, e.g. [the application API JavaScript file](https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/application/application_api.js).
+If you're interested in seeing a more realistic example, the [Crosswalk Tizen extensions](https://github.com/crosswalk-project/tizen-extensions-crosswalk) are a good place to start, e.g. [the application API JavaScript file](https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/application/application_api.js).
 
 ### C++ file for the JavaScript API
 
 The C++ file, `extension/echo_api.cc`, is a generated file which looks like this :
 
     extern const char kSource_echo_api[];
-    const char kSource_echo_api[] = { 47, 42, 42, 10, 32, 42, 32, 74, 97, 118, 
-    97, 115, 99, 114, 105, 112, 116, 32, 65, 80, 73, 32, 102, 105, 108, 101, 
+    const char kSource_echo_api[] = { 47, 42, 42, 10, 32, 42, 32, 74, 97, 118,
+    97, 115, 99, 114, 105, 112, 116, 32, 65, 80, 73, 32, 102, 105, 108, 101,
        --some lines omitted--
     103, 101, 40, 109, 115, 103, 41, 59, 10, 125, 59, 0 };
 
-The numeric values are the ascii codes of the characters representing the javascript string.
+The numeric values are the ascii codes of the characters representing the JavaScript string.
 
 By compiling and linking that file, you can access the `kSource_echo_api` constant, which defines the JavaScript API for the extension.
 
@@ -150,7 +150,7 @@ While the script can be invoked manually for testing (you will need python insta
 
 This implements the Crosswalk extension API and has access to the full Tizen native API. For the purposes of this tutorial, the C++ code simply prefixes a message string with "You said: " and returns it.
 
-You need to define two classes, a `common::Extension` child class and a `common::Instance` child class. The former registers your extension to the crosswalk extension system, the latter implements the actual behavior and the communication with the javascrpt API.
+You need to define two classes, a `common::Extension` child class and a `common::Instance` child class. The former registers your extension to the crosswalk extension system; the latter implements the actual behavior and the communication with the javascrpt API.
 
 #### Extension class
 
@@ -180,7 +180,6 @@ Create a file `extension/echo_extension.h` with this content:
 
     #endif  // ECHO_EXTENSION_H_
 
-
 And the concrete implemetation in `extension/echo_extension.cc`:
 
     #include "extension/echo_extension.h"
@@ -203,7 +202,6 @@ And the concrete implemetation in `extension/echo_extension.cc`:
       return new EchoInstance();
     }
 
-
 Some notes on the code:
 
 *   The Extension class is used to define the structures used by the extension system. At a minimum, you must implement the virtual methods `CreateExtension` and `CreateInstance` from `common::Extension`, and also declare the name and API of your extension in the constructor with `SetExtensionName` and `SetJavascriptAPI`.
@@ -215,8 +213,7 @@ Some notes on the code:
 *   More methods from the base class [common::Extension](https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/common/extension.h) can be overridden:
 
     * `OnShutdown()`: called when the extension is unloaded.
-    * `OnInstanceCreated()` and `OnInstanceDestroyed()`: called when new instances of the extension are created or destroyed. Instances have the same lifetime than the web content.
-
+    * `OnInstanceCreated()` and `OnInstanceDestroyed()`: called when new instances of the extension are created or destroyed. Instances have the same lifetime as the web content.
 
 #### Instance class
 
@@ -275,7 +272,6 @@ And its implementation in `extension/echo_instance.cc`:
       return "You said: " + msg;
     }
 
-
 Some notes on the code:
 
 *   This example provides synchronous and asynchronous versions of the same handler. But an extension doesn't have to handle both synchronous and asynchronous messages: it can handle only one type if desired.
@@ -288,8 +284,7 @@ Some notes on the code:
 
 *   Both the sync (`SendSyncReply()`) and async (`PostMessage()`) functions (inherited from `common::Instance`)  for returning a response "preserve their inputs", so you can free any pointers you pass to those functions once you've invoked them.
 
-*   If you need to make some resources setup in your instance, consider implementing the virtual method `Initialize` instead of doing your intialization in the constructor.
-
+*   If you need to set up resources for your instance, consider implementing the virtual method `Initialize` instead of doing intialization in the constructor.
 
 ## Add build infrastructure
 
@@ -332,7 +327,6 @@ You can use a `Makefile` to invoke the compiler and generate the header file for
 	    rm extension/echo_api.cc
 
     .PHONY: all prepare clean
-   
 
 (As with all Makefiles, indent using tabs, rather than spaces.)
 
@@ -396,7 +390,6 @@ During the build, `gbs` will download the appropriate Tizen IVI packages, then c
 Here is a sample test application to check your code:
 
     <script>
-
     var callback = function(response) {
       console.log("Async>>> " + response);
     };
@@ -404,6 +397,4 @@ Here is a sample test application to check your code:
     echo.echoAsync('Hello world', callback);
 
     console.log("Sync -- " + echo.echoSync("Hello tizen"));
-
     </script>
-
