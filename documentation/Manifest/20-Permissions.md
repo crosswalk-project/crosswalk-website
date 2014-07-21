@@ -1,4 +1,4 @@
-# permissions
+# Permissions
 
 The `permissions` field is Crosswalk-specific and non-standard. It is used to set permissions in the `AndroidManifest.xml` file when packaging an application for Crosswalk on Android. This is necessary because Android applications cannot request more permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.
 
