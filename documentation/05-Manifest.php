@@ -89,13 +89,13 @@
       <li data-field="content_security_policy.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">content security policy (CSP)</a> which should be enforced for the application. The CSP restricts the types of locations of resources the application can load, to help prevent <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-Site Scripting (XSS)</a> and related attacks. CSP is disabled if this field is not set.</p>
-        <p><a href="#documentation/manifest/Content_security_policy">Read more...</a></p>
+        <p><a href="#documentation/manifest/content_security_policy">Read more...</a></p>
       </li>
 
       <li data-field="csp.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">content security policy (CSP)</a> which should be enforced for the application. The CSP restricts the types of locations of resources the application can load, to help prevent <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-Site Scripting (XSS)</a> and related attacks. CSP is disabled if this field is not set.</p>
-        <p><a href="#documentation/manifest/Content_security_policy">Read more...</a></p>
+        <p><a href="#documentation/manifest/content_security_policy">Read more...</a></p>
       </li>
 
       <li data-field="description.extension">
@@ -121,7 +121,7 @@
       <li data-field="launch_screen.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines a static user interface to be shown immediately after the application is launched.</p>
-        <p><a href="#documentation/manifest/Launch_screen">Read more...</a></p>
+        <p><a href="#documentation/manifest/launch_screen">Read more...</a></p>
       </li>
 
       <li data-field="name.extension">
@@ -166,7 +166,7 @@
       <li data-field="xwalk_launch_screen.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines a static user interface to be shown immediately after the application is launched.</p>
-        <p><a href="#documentation/manifest/Launch_screen">Read more...</a></p>
+        <p><a href="#documentation/manifest/launch_screen">Read more...</a></p>
       </li>
     </ul>
 
