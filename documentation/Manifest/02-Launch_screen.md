@@ -1,4 +1,4 @@
-# launch_screen
+# Launch screen
 
 The launch screen is a static user interface shown immediately after the application is launched. The launch screen will then be hidden at the point when the application's "real" user interface can be constructed: i.e. when the application and any required resources have loaded.
 
@@ -8,9 +8,11 @@ Because the launch screen allows a user to view application content almost immed
 
 [Interstitial launch screens](https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit).
 
-## Definition of the `launch_screen` property
+## Definition of the manifest property
 
-    "launch_screen": {
+In Crosswalk Android 5-7, the property is `launch_screen`; in Crosswalk Android 8+ it is `xwalk_launch_screen`.
+
+    "launch_screen | xwalk_launch_screen": {
       "ready_when": "first-paint | complete | custom",
       "default|portrait|landscape": {
          "background_color": "#ff0000",
@@ -20,7 +22,7 @@ Because the launch screen allows a user to view application content almost immed
        }
     }
 
-Example:
+Example (Crosswalk Android 5-7):
 
     "launch_screen": {
       "ready_when": "custom",
@@ -32,7 +34,19 @@ Example:
        }
     }
 
-## `launch_screen` members
+Example (Crosswalk Android 8+):
+
+    "launch_screen": {
+      "ready_when": "custom",
+      "portrait": {
+         "background_color": "#ff0000",
+         "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
+         "image": "foo.png 1x, foo-2x.png 2x",
+         "image_border": "30px 40px stretch",
+       }
+    }
+
+## `launch_screen/xwalk_launch_screen` members
 
 |Member | Description|
 |---|---|

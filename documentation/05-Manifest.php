@@ -18,6 +18,7 @@
       <br>
 
       <select name="crosswalk-version">
+        <option value="8">Crosswalk 8</option>
         <option value="7">Crosswalk 7</option>
         <option value="6">Crosswalk 6</option>
         <option value="5">Crosswalk 5</option>
@@ -154,6 +155,12 @@
         <p><strong data-role="field-name"></strong></p>
         <p>Defines host URL patterns to which the application can make Ajax requests, allowing <a href="https://developer.chrome.com/extensions/xhr">Cross-Origin Ajax requests</a> (using a mechanism similar to Chrome's).</p>
         <p><a href="#documentation/manifest/xwalk_hosts">Read more...</a></p>
+      </li>
+
+      <li data-field="xwalk_launch_screen.extension">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Defines a static user interface to be shown immediately after the application is launched.</p>
+        <p><a href="#documentation/manifest/launch_screen">Read more...</a></p>
       </li>
     </ul>
 
@@ -353,7 +360,7 @@
       </pre>
     </div>
 
-    <div data-crosswalk-versions="7" data-crosswalk-platforms="tizen">
+    <div data-crosswalk-versions="7+" data-crosswalk-platforms="tizen">
       <pre>
 {
   "name": "app name",
@@ -523,6 +530,48 @@
     "Vibration"
   ],
   "launch_screen": {
+    "ready_when": "custom",
+    "portrait": {
+       "background_color": "#ff0000",
+       "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
+       "image": "foo.png 1x, foo-2x.png 2x",
+       "image_border": "30px 40px stretch"
+     }
+  },
+  "xwalk_hosts": [
+    "http://*"
+  ]
+}
+      </pre>
+    </div>
+
+    <div data-crosswalk-versions="8" data-crosswalk-platforms="android">
+      <pre>
+{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "icons": {
+    "128": "icon128.png"
+  },
+  "permissions": [
+    "Contacts",
+    "DeviceCapabilities",
+    "Fullscreen",
+    "Geolocation",
+    "Messaging",
+    "Presentation",
+    "RawSockets",
+    "ScreenOrientation",
+    "Vibration"
+  ],
+  "xwalk_launch_screen": {
     "ready_when": "custom",
     "portrait": {
        "background_color": "#ff0000",
