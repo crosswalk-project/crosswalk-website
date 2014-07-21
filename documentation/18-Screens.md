@@ -10,11 +10,11 @@ There are many challenges when developing HTML5 applications for mobile devices.
 
 A number of solutions for such issues have surfaced over the last few years, either as de facto "standards" (e.g. the [`<meta name="viewport">` element](https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html#//apple_ref/doc/uid/TP40008193-SW6)), vendor-specific browser extensions (e.g. [Mozilla's implementation of screen.lockOrientation](https://developer.mozilla.org/en-US/docs/Web/API/Screen.lockOrientation)), or application-specific work-arounds in JavaScript and CSS (e.g. [this rotation hack](https://github.com/01org/webapps-slider-puzzle/blob/master/app/js/main.js)). Recently, work has started on creating formal standards based on these interim solutions. However, many browsers and web views lag behind these standards.
 
-By contrast, one major benefit of Crosswalk is that many of these evolving standards are implemented and available for use *right now*. In this article, I'll describe how to resolve some of the issues listed above using Crosswalk, demonstrating how to optimise a simple side-scrolling HTML5 game for mobile screens.
+By contrast, one major benefit of Crosswalk is that many of these evolving standards are implemented and available for use *right now*. In this article, I'll describe how to resolve some of the issues listed above using Crosswalk by optimising a simple side-scrolling HTML5 game for mobile screens.
 
 ## The game
 
-The game used in this article is a simple side-scrolling dodge game set in space. Throughout the article, I'll demonstrate how to incrementally improve its layout and add features like orientation locking and dynamic canvas sizing.
+The game used in this article is a side-scrolling dodge game set in space. The code is [available on github](https://github.com/crosswalk-project/crosswalk-samples).
 
 The layout of the game looks like this (shown in a Chrome browser on a Linux desktop machine):
 
@@ -179,7 +179,7 @@ If you are interested in following along with the article, rather than just look
     $ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-X86}/crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
     ```
 
-    If you are interested in running the version of the game designed to work with Crosswalk 8, fetch one of the Crosswalk Android bundles from [the download page](#documentation/downloads).
+    If you want to run the version of the game designed to work with Crosswalk 8, fetch one of the Crosswalk Android *canary* bundles from [the download page](#documentation/downloads).
 
 2.  Unzip the bundle, e.g. on Linux:
 
@@ -187,7 +187,7 @@ If you are interested in following along with the article, rather than just look
     $ unzip crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
     ```
 
-3.  Check out the code for the Crosswalk samples ([hosted on github](https://github.com/crosswalk-project/crosswalk-samples)):
+3.  Check out the code for the Crosswalk samples from github:
 
     ```
     git checkout https://github.com/crosswalk-project/crosswalk-samples.git
@@ -220,17 +220,17 @@ If you are interested in following along with the article, rather than just look
 
     For more details about building and running Crosswalk applications on Android, see [the Getting started pages](#documentation/getting_started/run_on_android).
 
-## Problem 1: The game sometimes displays in portrait orientation
+## Issue 1: The game sometimes displays in portrait orientation
 
 If the game is packaged and deployed to a small screen device in its initial state, this is what it looks like:
 
 ![space dodge game in portrait on ZTE Geek](assets/space_dodge_game-zte_geek_portrait.png)
 
-It obvious that it doesn't take up enough of the screen. The first reason for this is that the game is in portrait orientation, when it should be in landscape. By rotating the device (so the game rotates), you can see an immediate improvement:
+It's obvious that it doesn't take up enough of the screen. The reason is that the game is in portrait orientation, when it should be in landscape. By rotating the device (so the game rotates), you can see an immediate improvement:
 
 ![space dodge game in landscape on ZTE Geek](assets/space_dodge_game-zte_geek_landscape.png)
 
-However, the game shouldn't accidentally rotate if the screen orientation changes: it should always display in landscape mode.
+However, the game shouldn't accidentally rotate if the screen orientation changes, as it does at the moment: it should always display in landscape mode.
 
 Crosswalk provides an easy fix for this, as it implements the [Screen Orientation API](http://www.w3.org/TR/screen-orientation/). Among other things, this enables an application to lock itself to a particular orientation at run time.
 
@@ -246,9 +246,9 @@ To use this, add the following code to the main JavaScript entry point for your 
       // ...rest of the application code...
     };
 
-If you run the application now, you'll notice that the game rotates to landscape when it starts. Its appearance is the same as if the physical device is rotated to landscape. An application can also be locked to portrait orientation using this approach (`screen.lockOrientation('portrait')`).
+If you run the application now, you'll notice that the game rotates to landscape when it starts. Its appearance is the same as if the physical device were rotated to landscape. An application can also be locked to portrait orientation using this approach (`screen.lockOrientation('portrait')`).
 
-If you prefer, there are a couple of other ways to force an application's orientation:
+If you prefer, there are a couple of other ways to fix an application's orientation:
 
 *   Use the `orientation` field in the manifest (this only works for Crosswalk 8 or later).
 
@@ -269,7 +269,7 @@ If you prefer, there are a couple of other ways to force an application's orient
     $ python make_apk.py --manifest=/projects/space_dodge_game/manifest.json
     ```
 
-    Then install it on an Android target as described in [the Getting started pages](#documentation/getting_started/run_on_android).
+    Install it on an Android target as described in [the Getting started pages](#documentation/getting_started/run_on_android).
 
     Using the `orientation` field in the manifest has exactly the same effect as using `screen.lockOrientation` in your application code: the application rotates to the requested orientation after the application starts. But `screen.lockOrientation` has the advantage of being supported by other runtimes (e.g. Firefox OS), so may be a better choice if you need your application to work cross-platform.
 
@@ -284,11 +284,13 @@ If you prefer, there are a couple of other ways to force an application's orient
         --orientation=landscape
     ```
 
-    This is really a hack, as it actually modifies the `AndroidManifest.xml` to rotate Crosswalk itself (rather than the application being rotated by Crosswalk). But it's a viable alternative for older versions of Crosswalk which don't support the `orientation` field in the manifest and where you prefer not to use `screen.lockOrientation`.
+    This is really a hack, as it actually modifies the `AndroidManifest.xml` to rotate Crosswalk itself, rather than the application being rotated by Crosswalk. But it's a viable alternative for older versions of Crosswalk which don't support the `orientation` field in the manifest and where you prefer not to use `screen.lockOrientation`.
 
     This also has the same effect as using the `orientation` field, rotating the application after it has started.
 
-## Problem 2: The status bar is distracting
+    The `orientation` manifest field is defined in the [W3C Manifest for web application specification](http://w3c.github.io/manifest/).
+
+## Issue 2: The status bar is distracting
 
 The next issue is that the toolbar is still visible, which is a distraction while playing a game. There are two ways to make the application occupy the whole screen, hiding the status bar (on Android):
 
@@ -325,37 +327,37 @@ Using either the `display` field or the `--fullscreen` option has the same effec
 
 ![space dodge game in fullscreen, landscape orientation](assets/space_dodge_game-zte_geek_fullscreen.png)
 
-You may have heard of the [fullscreen API](https://dvcs.w3.org/hg/fullscreen/raw-file/tip/Overview.html), which enables an application to request that all or part of its user interface occupy the whole device screen. However, the fullscreen API has a different purpose from the approaches covered above: it requires some user activity to trigger the fullscreen request *after* an application is running.
+You may be familiar with the [fullscreen API](https://dvcs.w3.org/hg/fullscreen/raw-file/tip/Overview.html), which enables an application to request that all or part of its user interface occupy the whole device screen. However, the fullscreen API has a different purpose from the approaches covered above: it requires some user activity to trigger the fullscreen request *after* an application is running.
 
-In the case of a Crosswalk application, you can use the fullscreen API, providing the user interacts with the application (e.g. push a button or make a gesture) to trigger the fullscreen request. But it is not possible to *automatically* make the application go fullscreen without user interaction.
+In the case of a Crosswalk application, you can use the fullscreen API, providing the user interacts with the application (e.g. push a button or make a gesture) to trigger the fullscreen request. But it is not possible to *automatically* make the application go fullscreen without user interaction using this API.
 
-## Problem 3: The game doesn't fit the screen
+## Issue 3: The game doesn't fit the screen
 
 The game is now consistently bigger because it's always displayed fullscreen and in landscape orientation. But there's a lot of whitespace around it, and it's not visually appealing. It would be nicer if the game fitted the whole screen.
 
-The area occupied by the application is called its *viewport*. On a mobile device, this is the area under or between any toolbars on the screen (e.g. the status bar on Android) if the application is running in "windowed" mode; or the whole device screen if it is running in "fullscreen" mode. What we're aiming for here is to get the game to fill the whole of the device screen.
+The area occupied by the application is called its *viewport*. On a mobile device, this is the area under or between any toolbars on the screen (e.g. the status bar on Android) if the application is running in "windowed" mode; or the whole device screen if it is running in "fullscreen" mode. What we're aiming for here is "fullscreen" mode, to get the game to fill the whole of the device screen.
 
-Approaches:
+There are a few approaches we could take:
 
 1.  Scale the application to fit the smallest dimension (width or height), keeping aspect ratio and centering it in the viewport. The game has the same number of pixels, but they are scaled to fit into the viewport.
 
-2.  Do the same as above, but instead of scaling, physically change the size of all the game elements. This would make the canvas larger (in pixels) on a large screen and smaller on a small screen. The disadvantage of this approach is that you have to scale the image assets used in the game to ensure that they keep the same proportions: for example, if you have an image which is 40px square on a 400px square game area, then change the game canvas to 600px square, you will have to scale the image to 60px square. The advantage of this approach is that you're not scaling everything, just sprites; but the disadvantage is that it's more complicated to implement, as you have to track the size of the sprites (on screen) in isolation from their actual size (in the graphic file).
+2.  Do the same as above, but instead of scaling, physically change the size of all the game elements. This would make the canvas larger (in pixels) on a large screen and smaller on a small screen. The disadvantage of this approach is that you have to scale the image assets used in the game to ensure that they keep the same proportions: for example, if you have an image which is 40px square on a 400px square game area, then change the game canvas to 600px square, you will have to scale the image to 60px square. The advantage of this approach is that you're not scaling everything, just sprites; but the disadvantage is that it's more complicated to implement, as you have to track the size of the sprites (on screen) in isolation from their actual size (in the file).
 
 3.  Change the dimensions of the game, while keeping the size of the `<canvas>` the same. The area occupied by the game could be made physically larger, and perhaps make the controls larger too, while leaving the `<canvas>` element the same size. The reason for doing this is that the `<canvas>` is sensitive to size changes, as described in the previous bullet point.
 
-For this game, the canvas is already too big for small screens, so the third approach is not really practical. (That approach only works if you know your game is only going to be played on a small range of screens, which can all fit the canvas at the size you specify. Similar to how old PC games knew they would be played on a device with at least a 640x400 pixel screen.)
+For this game, the canvas is already too big for small screens, so the third approach is not really practical. (That approach only works if you know your game is only going to be played on a small range of screens, which can all fit the canvas at the size you specify. Similar to how old PC games were designed to fit devices with at least a 640x400 pixel screen, which was the size of most mid range monitors.)
 
-This leaves approaches 1 and 2, which are covered shortly. However, before getting onto those, the screen size can be standardised by making the application viewport a consistent size.
+This leaves approaches 1 and 2, which are covered shortly. However, before getting onto those, there is a preparatory step which helps with measuring the actual size of the screen, making it more consistent between devices.
 
-### Pre-amble: Make the viewport fit the screen
+### Preparation: Make the viewport fit the screen
 
-When building mobile phones, manufacturers realised that if 90% of websites were shown in a small screen, they would not fit. This is because websites used to be designed primarily for desktop screens; mobile sites were often separate from the main site, with reduced functionality or even written in a [different markup language](http://en.wikipedia.org/wiki/Wireless_Markup_Language). But users wanted to be able to access the "real" website from a phone, rather than a mobile-specific site; and do this without compromising its appearance. Manufacturers resolved this issue by equipping their mobile browsers with a default "zoom out", so that websites intended for desktops would display reasonably well in mobile browsers. Most phone browsers still work this way: for example, the HTC One X I have for testing reports its width as 980px, while its actual physical width is 360px.
+A few years ago, when designing mobile phones, manufacturers realised that if 90% of websites were shown in a small screen, they would not fit. This is because websites used to be designed primarily for desktop screens; mobile sites were often separate from the main site, with reduced functionality or even written in a [different markup language](http://en.wikipedia.org/wiki/Wireless_Markup_Language). But users wanted to be able to access the "real" website from a phone, rather than a mobile-specific site; and they wanted to do this without compromising the site's appearance. Manufacturers resolved this by equipping their mobile browsers with a default "zoom out", to make websites intended for desktops display (reasonably) well in mobile browsers. Most phone browsers still work this way: for example, the HTC One X I have for testing reports its width as 980px, while its actual physical width is 360px.
 
-Around the same time, web developers and designers changed their approach, designing websites which would display differently depending on device capabilities. These techniques are now known as [responsive web design](http://alistapart.com/article/responsive-web-design), and encompass a range of approaches including use of [media queries](http://www.w3.org/TR/css3-mediaqueries/) and [delivering different images to different screens](http://www.w3.org/community/respimg/). Contemporary developers also often follow a [mobile first](http://www.abookapart.com/products/mobile-first) philosophy, ensuring a website is highlighy functional first and foremost on small form factors, with added bells and whistles (typically, more and larger graphics) on bigger form factors.
+Around the same time, web developers and designers changed their approach, designing websites which would display differently depending on device capabilities. These techniques are now known as [responsive web design](http://alistapart.com/article/responsive-web-design), and encompass a range of approaches including use of [media queries](http://www.w3.org/TR/css3-mediaqueries/) and [delivering different images to different screens](http://www.w3.org/community/respimg/). Contemporary developers also often employ a [mobile first](http://www.abookapart.com/products/mobile-first) philosophy, ensuring a website is highlighy functional first and foremost on small form factors, with added bells and whistles (typically, more and larger graphics) on bigger form factors.
 
-Where these two roads meet is at an awkward crossroads: developers are trying hard to provide sites tailored specifically for small screen devices; but small screen devices apply an artificial zoom which make them appear larger than they are. As a result, the mobile version of a site could be bypassed (the site calculates it is being viewed on a desktop browser) and the desktop site end up being delivered to a screen that is too small to display it optimally.
+Where these two roads meet is at an awkward crossroads: developers are trying hard to provide sites tailored specifically for small screen devices; but small screen devices apply an artificial zoom which makes device screens appear larger than they are. As a result, the mobile version of a site could be bypassed (the site calculates that it is being viewed on a desktop browser); and the desktop site end up being delivered to a screen that is too small to display it properly.
 
-A solution was initially developed by [Apple](https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html), taking the form of an ad hoc HTML `<meta>` element named `viewport`. This could be used to ask a mobile browser to change various aspects of its viewport. For example, the page could ask the browser to set the viewport width to the device's real physical width:
+A solution was initially developed by [Apple](https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html), taking the form of an ad hoc HTML `<meta>` element named `viewport`. This could be used to ask a mobile browser to change various aspects of its viewport. For example, the page could ask the browser to set the viewport width to the device's real physical width with:
 
     <meta name="viewport" content="width=device-width">
 
@@ -367,7 +369,7 @@ Other vendors followed suit and added support for this `<meta>` viewport element
 
 By using the `<meta>` viewport element, a developer could now prevent the browser from applying its default zoom to an HTML page. This would in turn mean that a web site or app could get a correct reading for the device's physical screen dimensions, enabling media queries to be applied accurately to select the best CSS for the screen.
 
-The `<meta>` viewport element is *not* a standard: it is not implemented consistently across browsers, and the syntax for declaring its content also varies between browsers. However, there are currently attempts to formalise [viewport rules in a CSS specification](http://dev.w3.org/csswg/css-device-adapt/). For now, the existing syntax works well for Crosswalk, and can be used as a stop-gap.
+The `<meta>` viewport element is *not* a standard: it is not implemented consistently across browsers, and the syntax for declaring its content also varies between browsers. However, there are currently attempts to formalise [viewport rules in a CSS specification](http://dev.w3.org/csswg/css-device-adapt/). For now, though, the existing syntax works well for Crosswalk, and can be used as a stop-gap.
 
 To apply a viewport meta element to the space dodge game in this article, add it to the `<head>` of the `index.html` file. This instructs the browser to use its physical width as the viewport width, without zooming:
 
@@ -398,7 +400,7 @@ In the next sections, I describe two ways to alter the size of the game to fit b
 
 ### Approach 1: Scale the game
 
-The aim here is to scale the whole game (in CSS) so that it retains its aspect ratio but fits in the screen. So the first step is to figure out the optimum position and size for the element which contains the whole game.
+The aim here is to scale the whole game (in CSS) so that it retains its aspect ratio but fits in the screen. The first step is to figure out the optimum position and size for the element which contains the whole game.
 
 Here is the algorithm in pseudo-code:
 
@@ -423,7 +425,7 @@ Here is the algorithm in pseudo-code:
 
 *   Apply the scaling and offsets to the whole game container using [CSS transforms](http://www.w3.org/TR/css-transforms-1/).
 
-With this information, a scale can be applied to the whole container using JavaScript:
+By implementing this pseudo-code in JavaScript, a scale can be applied to the whole container:
 
     var scale = function () {
       var container = document.querySelector('#container');
@@ -458,26 +460,26 @@ With this information, a scale can be applied to the whole container using JavaS
     window.onresize = scale;
     scale();
 
-The `scale()` function implements the pseudo-code at the start of this section. To give an example of the CSS transforms which will be applied, consider the case where the scale is 2.05 and the top and left offsets are 0px and 40px respectively. The resulting CSS transforms would be:
+To give an example of the CSS transforms which will be applied, consider the case where the scale is 2.05 and the top and left offsets are 0px and 40px respectively. The resulting CSS transforms would be:
 
     -webkit-transform-origin: 0 0 0;
     transform-origin: 0 0 0;
     -webkit-transform: scale(2.05, 2.05) translate(40px, 0px);
     transform: scale(2.05, 2.05) translate(40px, 0px);
 
-Setting the transform origin to `top left 0` ensures that the transforms are applied from the top-left corner of the container. The `scale(2.05, 2.05)` function changes the scaling of the container; and the `translate(40px, 0px)` function moves the container to the correct position on screen. Here's the result on a ZTE Geek:
+Setting the transform origin to `top left 0` ensures that the transforms are applied from the top-left corner of the container. The `scale(2.05, 2.05)` function changes the scaling of the container; and the `translate(40px, 0px)` function moves the container to the correct position on screen (40 pixels from the left-hand edge). Here's the result on a ZTE Geek:
 
 ![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, CSS transform](assets/space_dodge_game-zte_geek_scale.png)
 
 Notice how the application is fitted vertically, then centered horizontally.
 
-This approach is good because it is simple. However, because the scaling is applied to the whole application, it can cause some blurring, especially when scaling up. The next section describes a more complex alternative which uses resizing plus selective scaling of game assets.
+This approach is good because it is simple. However, as the scaling is applied to the whole application, it can cause some blurring, especially when scaling up. The next section describes a more complex alternative which uses resizing plus selective scaling of game assets.
 
 ### Approach 2: Resize the game
 
 This approach requires a more extensive reworking of the CSS for the game, as it affects the positioning, size and appearance of every element. It's tempting to ignore this approach, as the scaling approach of the previous section works pretty well. But there's actually good discipline involved in making this alternative approach work.
 
-The first step is to make the container occupy the whole screen. In the olden days, this would have meant measuring the screen, then manually setting the width and height CSS properties of the container (in JavaScript). However, Crosswalk supports a handy CSS feature which means one doesn't have to do this any more: [viewport-percentage lengths](http://dev.w3.org/csswg/css-values/#viewport-relative-lengths). This allows you to specify the dimensions of elements in terms of a percentage of the viewport dimensions. As the application is now fullscreen, the viewport fills the whole screen; so the container can fill 100% of the device's height and width using this CSS rule:
+The first step is to make the container occupy the whole screen. In the olden days, this would have meant measuring the screen, then manually setting the width and height CSS properties of the container (in JavaScript). However, Crosswalk supports a handy CSS feature which means you don't have to do this any more: [viewport-percentage lengths](http://dev.w3.org/csswg/css-values/#viewport-relative-lengths). These allow you to specify the dimensions of elements in terms of a percentage of the viewport dimensions. As the application is now fullscreen, the viewport fills the whole screen; so the container can fill 100% of the device's height and width using this CSS rule:
 
     #container {
       position: relative;
@@ -487,7 +489,7 @@ The first step is to make the container occupy the whole screen. In the olden da
       height: 100vh;
     }
 
-Note the `vw` (viewport width) and `vh` (viewport height) suffixes to the container's width and height settings. Here's what the game looks like on a ZTE Geek with this change to the container sizing:
+Note the `vw` (viewport percentage width) and `vh` (viewport percentage height) suffixes to the container's width and height settings. Here's what the game looks like on a ZTE Geek with this change to the container sizing:
 
 ![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize](assets/space_dodge_game_zte_geek_resize.png)
 
@@ -511,7 +513,7 @@ to:
       margin: 0.5em 0 0 0;
     }
 
-(set the top margin of the "down" button to a fixed amount so it stays close to the "up" button")
+(set the top margin of the "down" button to a fixed amount so it stays close to the "up" button").
 
 I also changed this rule:
 
@@ -535,15 +537,15 @@ to:
       float: left;
     }
 
-(padding changed from `5%` to `0.5em`)
+(padding changed from `5%` to `0.5em`). This fixes the spacing of the controls so that they stay a reasonable distance apart as the screen size changes.
 
-This fixes the spacing of the controls so that they stay a reasonable distance apart as the screen size changes. Here's the result:
+Here's the result:
 
 ![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize, fixed margin](assets/space_dodge_game-zte_geek_resize_2.png)
 
-The buttons now look right, but the canvas is too tall for the screen (remember, its pixel height is set as an attribute on the canvas). This currently means you can move the spaceship off the bottom of the screen. The canvas needs to be resized to fit in the space to the right of the controls, while maintaining its aspect ratio.
+The buttons now look right, but the canvas is too tall for the screen (remember, its pixel height is set as an attribute on the canvas, not in CSS). This currently means you can move the spaceship off the bottom of the screen. The canvas needs to be resized to fit in the space to the right of the controls, while maintaining its aspect ratio.
 
-To do this, I applied the technique from the previous section, where I scaled the whole game to fit the screen. But in this case, I can scale just the canvas to fit into the area to the right of the controls. In addition, the canvas scaling should be done using its width and height attributes, rather than scaling it in CSS. (This is a bit confusing, as the height and width attributes of a canvas are different from the CSS height and width of its `<canvas>` element.)
+To do this, I applied the technique from the previous section, where I scaled the whole game to fit the screen. But in this case, just the canvas is scaled to fit into the area to the right of the controls. In addition, the canvas scaling should be done using its width and height attributes, rather than scaling it in CSS. (This is a bit confusing, as the height and width attributes of a canvas are different from the CSS height and width of its `<canvas>` element.)
 
 First, I added a new parent element for the canvas (the `<div>` with ID `play-area-container` below):
 
@@ -627,7 +629,7 @@ Then I used a variant of the scale algorithm from the previous section to fit th
     window.onresize = fitCanvas;
     fitCanvas();
 
-NB this changes the canvas width and height attributes then positions it, rather than scaling the canvas in CSS.
+Note that this changes the canvas width and height attributes then positions it, rather than scaling the canvas in CSS.
 
 This is the result on a ZTE Geek (canvas size is "shrunk" to 480px by 360px):
 
@@ -635,16 +637,14 @@ This is the result on a ZTE Geek (canvas size is "shrunk" to 480px by 360px):
 
 #### Resize the sprites
 
-One side-effect of changing the canvas size is that the sprites are no longer in the same proportions as they were. Previously, the canvas was 600px wide and 450px high; the sprite for the spaceship is 75px wide by 44px tall, which is 12.5% of the canvas width and 10% of its height. But now the canvas size has changed, with the result that the spaceship is 16% of the width of the canvas and 12% of its height (i.e. it is relatively larger). This makes the game harder, as the asteroids will reach the ship sooner (they haven't got so far to travel). Conversely, on a large screen, the game is too easy: the spaceship takes up less of the canvas and the asteroids are further away.
+One side-effect of changing the canvas size is that the sprites are no longer in the same proportions as they were. Previously, the canvas was 600px wide and 450px high; the sprite for the spaceship is 75px wide by 44px tall, which is 12.5% of the canvas width and 10% of its height. But now the canvas size has changed; and the spaceship is now 16% of the width of the canvas and 12% of its height (i.e. it is relatively larger). This makes the game harder, as the asteroids will reach the ship sooner (they haven't got so far to travel). Conversely, on a large screen, the game is too easy: the spaceship takes up less of the canvas and the asteroids are further away.
 
-The solution is to draw the images onto a larger area of the canvas, so that their dimensions are always in the same ratio to the canvas dimensions.
-
-In the previous code fragment, I laid the foundation for this by recording the canvas scale factor in a variable outside the `fitCanvas()` function:
+The solution is to draw the images onto a larger area of the canvas, so that their dimensions are always in the same ratio to the canvas dimensions. In the previous code fragment, I laid the foundation for this by recording the canvas scale factor in a variable outside the `fitCanvas()` function:
 
     // factor by which to modify canvas width and height
     var scaleCanvas = 1;
 
-After the first call to `fitCanvas()`, this variable is set to the canvas scale factor. To scale the sprites up, I can apply the same factor to the size of the sprites when they are drawn. In the code for the game, the images were previously written to the canvas like this:
+After the first call to `fitCanvas()`, `scaleCanvas` is set to the canvas scale factor. To scale the sprites up, we can apply the same factor to the size of the sprites when they are drawn. In the code for the game, the images were previously written to the canvas like this:
 
     ctx.drawImage(image, x, y, image.width, image.height);
 
@@ -702,9 +702,9 @@ The movement code could then be rewritten as:
     // direction = 1 for down, -1 for up
     var moveY = direction * getImgHeight(shipImg) * timeDelta * 3;
 
-Depending on the game and the environment, it may be possible to cache the width and height calculations. However, you have to be careful with this, ensuring that you invalidate the cached values if `canvasScale` changes. In my code, `fitCanvas()` is called each time the `onresize` event fires on the screen. This happens at least twice on a mobile device, while Crosswalk locks the screen orientation to landscape. For this reason, and to keep things simple, I dynamically get the height and width of the image each time, as this is relatively inexpensive for the two images I'm using.
+Depending on the game and the environment, it may be possible to cache the width and height calculations. However, you have to be careful with this, ensuring that you invalidate the cached values if `canvasScale` changes (for example, if you resize the game when the window size changes). In my code, `fitCanvas()` is called each time the `onresize` event fires on the screen. This happens at least twice on a mobile device, while Crosswalk locks the screen orientation to landscape. For this reason, and to keep things simple, I dynamically get the height and width of the image each time, as this is relatively inexpensive for the two images I'm using.
 
-### Problem 4: Sprites blur on large screens
+## Issue 4: Sprites blur on large screens
 
 Having applied the lessons in the previous section, one other possible issue is the potential for blurring due to scaling. If you take a close look at this image:
 
@@ -712,7 +712,7 @@ Having applied the lessons in the previous section, one other possible issue is 
 
 you may notice that it appears blurry. This image was copied from a screenshot of a large browser window, where the sprite graphic was being scaled up to twice its original size, making it blur.
 
-One solution is to provide a larger graphic which can scale without blurring, and use this graphic when the canvas is scaled up (`scaleCanvas > 1`). The `src` attribute of the ship and asteroid `Image` objects can then be set inside the `fitCanvas()` function, depending on `scaleCanvas`:
+One solution is to provide a larger graphic which can scale with less blurring, and use this graphic when the canvas is scaled up (`scaleCanvas > 1`). The `src` attribute of the ship and asteroid `Image` objects can then be set inside the `fitCanvas()` function, depending on `scaleCanvas`:
 
     // player ship image (to draw onto canvas)
     var ship = new Image();
@@ -775,7 +775,9 @@ Compare the double-sized image when scaled down slightly (on the left) with the 
 
 As you can see here, the large image scaled down is far less blurry than the small image scaled up.
 
-### Problem 5: Showing a launch screen
+Depending on how large the images are, it might make sense to use larger images at all scales. But if you are trying to keep the size of the assets down, using different images for different scales may be a more viable approach.
+
+## Issue 5: We need a launch screen
 
 Applications can sometimes take a while to load, due to network latency and/or sheer size and number of resources. This problem gets worse as the application grows and is especially problematic for games, where there are often a large number of graphical, audio and video assets in use. In such cases, a common technique is to show a screen with introductory images or text while the resources are loading, commonly known as a "loading" or "launch" screen. Frameworks often provide APIs to support this, or developers may add their own code to handle it.
 
@@ -785,7 +787,7 @@ The steps below explain how to add a launch screen to the example game.
 
 1.  First, add a foreground image `fg.png`. This is a simple graphic composed of the name of the game plus the rocket sprite, with a transparent background (I've added a blue background to the graphic here so the white letters show up):
 
-<img style="background-color: blue;" alt="space dodge game launch screen foreground" src="assets/space_dodge_game-launch_screen_fg.png">
+    ![space dodge game launch screen foreground](assets/space_dodge_game-launch_screen_fg.png)
 
     I made the image relatively small (320px by 240px), as it should fit small mobile screens.
 
@@ -837,4 +839,4 @@ Now the application can be packaged as usual with `make_apk.py` and installed on
 
 ## Summary
 
-Satisfactorily fitting an HTML5 application into a mobile screen has been challenging in the past; the advent of new APIs and configuration options is gradually making things easier. Crosswalk is pioneering support for enabling features like CSS flexbox, orientation and display configuration in the manifest, viewport percentage lengths and launch screens, providing a rich runtime environment for all applications, and especially for games.
+Fitting an HTML5 application into a mobile screen has been challenging in the past; the advent of new APIs and configuration options is gradually making things easier. Crosswalk provides pioneering support for such features: viewport management; advanced layout with CSS flexbox and viewport percentage lengths; manifest options for orientation, display and launch screens; plus many others. The result is a rich runtime environment for all applications, especially games.
