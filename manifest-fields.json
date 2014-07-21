@@ -39,6 +39,18 @@
       "versions": "6+"
     }
   },
+  "csp.extension": {
+    "name": "content_security_policy (extension)",
+    "tizen": {
+      "versions": "8+";
+    },
+    "android": {
+      "versions": "8+"
+    },
+    "webview": {
+      "versions": "8+"
+    }
+  },
   "description.extension": {
     "name": "description (extension)",
     "tizen": {

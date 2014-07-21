@@ -89,7 +89,13 @@
       <li data-field="content_security_policy.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">content security policy (CSP)</a> which should be enforced for the application. The CSP restricts the types of locations of resources the application can load, to help prevent <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-Site Scripting (XSS)</a> and related attacks. CSP is disabled if this field is not set.</p>
-        <p><a href="#documentation/manifest/content_security_policy">Read more...</a></p>
+        <p><a href="#documentation/manifest/Content_security_policy">Read more...</a></p>
+      </li>
+
+      <li data-field="csp.extension">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">content security policy (CSP)</a> which should be enforced for the application. The CSP restricts the types of locations of resources the application can load, to help prevent <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-Site Scripting (XSS)</a> and related attacks. CSP is disabled if this field is not set.</p>
+        <p><a href="#documentation/manifest/Content_security_policy">Read more...</a></p>
       </li>
 
       <li data-field="description.extension">
@@ -115,7 +121,7 @@
       <li data-field="launch_screen.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines a static user interface to be shown immediately after the application is launched.</p>
-        <p><a href="#documentation/manifest/launch_screen">Read more...</a></p>
+        <p><a href="#documentation/manifest/Launch_screen">Read more...</a></p>
       </li>
 
       <li data-field="name.extension">
@@ -160,7 +166,7 @@
       <li data-field="xwalk_launch_screen.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines a static user interface to be shown immediately after the application is launched.</p>
-        <p><a href="#documentation/manifest/launch_screen">Read more...</a></p>
+        <p><a href="#documentation/manifest/Launch_screen">Read more...</a></p>
       </li>
     </ul>
 
@@ -360,7 +366,7 @@
       </pre>
     </div>
 
-    <div data-crosswalk-versions="7+" data-crosswalk-platforms="tizen">
+    <div data-crosswalk-versions="7" data-crosswalk-platforms="tizen">
       <pre>
 {
   "name": "app name",
@@ -369,6 +375,22 @@
   "start_url": "index.html",
   "display": "fullscreen",
   "content_security_policy": "script-src 'self'; object-src 'self'",
+  "icons": {
+    "128": "icon128.png"
+  }
+}
+      </pre>
+    </div>
+
+    <div data-crosswalk-versions="8+" data-crosswalk-platforms="tizen">
+      <pre>
+{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "csp": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
   }
@@ -552,7 +574,7 @@
   "description": "a sample description",
   "version": "1.0.0",
   "start_url": "index.html",
-  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "csp": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
   },
@@ -584,7 +606,7 @@
     </div>
 
     <!-- ANDROID EMBEDDING API EXAMPLE MANIFESTS -->
-    <div data-crosswalk-versions="6+" data-crosswalk-platforms="webview">
+    <div data-crosswalk-versions="6-7" data-crosswalk-platforms="webview">
       <pre>
 {
   "name": "app name",
@@ -596,6 +618,25 @@
     }
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",
+  "xwalk_hosts": [
+    "http://*"
+  ]
+}
+      </pre>
+    </div>
+
+    <div data-crosswalk-versions="8+" data-crosswalk-platforms="webview">
+      <pre>
+{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "csp": "script-src 'self'; object-src 'self'",
   "xwalk_hosts": [
     "http://*"
   ]

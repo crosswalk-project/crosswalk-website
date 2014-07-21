@@ -1,14 +1,22 @@
-# content_security_policy
+# Content security policy
 
-The `content_security_policy` field specifies which types of content can be loaded and executed by the application. If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via `<script>`, `<object>`, `<embed>` and `<applet>` elements).
+The content security policy field specifies which types of content can be loaded and executed by the application. If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via `<script>`, `<object>`, `<embed>` and `<applet>` elements).
 
-The suggested default value to provide minimal protection is:
+**In Crosswalk 4-7, this field was called `content_security_policy`. The name was changed to `csp` for Crosswalk 8+.**
+
+The suggested default value to provide minimal protection (Crosswalk 4-7) is:
 
     "content_security_policy": "script-src 'self'; object-src 'self'"
+
+For Crosswalk 8+, the value is the same, but the field name is different:
+
+    "csp": "script-src 'self'; object-src 'self'"
 
 This restricts the application to using only JavaScripts (loaded via `<script>` elements) and objects (loaded via `<object>`, `<embed>`, and `<applet>` elements) from its own origin (i.e. distributed as part of the application, in the case of Crosswalk). It also implicitly applies other constraints, such as preventing the execution of inline scripts, and disabling `eval()` and other unsafe functions (see the next section).
 
 See Google's [Content Security Policy (CSP)](https://developer.chrome.com/extensions/contentSecurityPolicy) page for some examples of the types of policy which can be set; [the full specification](http://www.w3.org/TR/CSP/), albeit for the HTTP headers variant of CSP, is also available.
+
+In the examples below, the long name for the field is used (`content_security_policy`); this should be replaced with `csp` if you are using Crosswalk 8 or later.
 
 ## When to change the content security policy
 
