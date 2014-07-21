@@ -7,42 +7,43 @@
     },
     "android": {
       "versions": "2+",
-      "deprecated": "7+"
+      "deprecated": "8+"
     },
     "webview": {
-      "versions": "6+"
+      "versions": "6+",
+      "deprecated": "8+"
     }
   },
   "app.main.scripts.extension": {
     "name": "app.main.scripts (extension)",
     "tizen": {
-      "versions": "1-7",
+      "versions": "1+",
       "deprecated": "7+"
     }
   },
   "app.main.source.extension": {
     "name": "app.main.source (extension)",
     "tizen": {
-      "versions": "1-7",
+      "versions": "1+",
       "deprecated": "7+"
     }
   },
   "content_security_policy.extension": {
     "name": "content_security_policy (extension)",
     "tizen": {
-      "versions": "4+"
+      "versions": "4-7"
     },
     "android": {
-      "versions": "6+"
+      "versions": "6-7"
     },
     "webview": {
-      "versions": "6+"
+      "versions": "6-7"
     }
   },
   "csp.extension": {
-    "name": "content_security_policy (extension)",
+    "name": "csp (extension)",
     "tizen": {
-      "versions": "8+";
+      "versions": "8+"
     },
     "android": {
       "versions": "8+"
@@ -67,6 +68,9 @@
     "name": "display",
     "tizen": {
       "versions": "7+"
+    },
+    "android": {
+      "versions": "8+"
     }
   },
   "icons.extension": {
@@ -99,7 +103,16 @@
   "name": {
     "name": "name",
     "tizen": {
-      "versions": "7"
+      "versions": "7+"
+    }
+  },
+  "orientation": {
+    "name": "orientation",
+    "tizen": {
+      "versions": "8+"
+    },
+    "android": {
+      "versions": "8+"
     }
   },
   "permissions.extension": {

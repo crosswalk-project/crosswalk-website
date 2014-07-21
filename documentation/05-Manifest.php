@@ -137,6 +137,15 @@
         </p>
       </li>
 
+      <li data-field="orientation">
+        <p><strong data-role="field-name"></strong></p>
+        <p>???TODO</p>
+        <p>
+          <a href="http://w3c.github.io/manifest/#???">W3C spec</a>
+          <a href="#documentation/manifest/orientation">Read more...</a>
+        </p>
+      </li>
+
       <li data-field="permissions.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines permissions the application needs so it can access platform features. <a href="#manifest-permissions">See below</a> for details of the available permissions.</p>
@@ -390,6 +399,7 @@
   "version": "1.0.0",
   "start_url": "index.html",
   "display": "fullscreen",
+  "orientation": "landscape",
   "csp": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
@@ -578,6 +588,8 @@
   "icons": {
     "128": "icon128.png"
   },
+  "display": "fullscreen",
+  "orientation": "landscape",
   "permissions": [
     "Contacts",
     "DeviceCapabilities",
@@ -631,11 +643,9 @@
   "name": "app name",
   "description": "a sample description",
   "version": "1.0.0",
-  "app": {
-    "launch": {
-      "local_path": "index.html"
-    }
-  },
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "orientation": "landscape",
   "csp": "script-src 'self'; object-src 'self'",
   "xwalk_hosts": [
     "http://*"
