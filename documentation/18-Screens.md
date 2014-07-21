@@ -777,13 +777,19 @@ As you can see here, the large image scaled down is far less blurry than the sma
 
 ### Problem 5: Showing a launch screen
 
-???Crosswalk 8 only
+Applications can sometimes take a while to load, due to network latency and/or sheer size and number of resources. This problem gets worse as the application grows and is especially problematic for games, where there are often a large number of graphical, audio and video assets in use. In such cases, a common technique is to show a screen with introductory images or text while the resources are loading, commonly known as a "loading" or "launch" screen. Frameworks often provide APIs to support this, or developers may add their own code to handle it.
 
-1.  First, I added a foreground image `fg.png`. This is a simple graphic composed of the name of the game plus the rocket sprite, with a transparent background (I've used a blue background here so the white letters show up):
+Crosswalk 8 and later provides baked-in support for launch screens, via an `xwalk_launch_screen` in the application manifest. This enables you to set background and foreground images and colours, differentiated according to screen orientation and pixel density if desired, with little or no programming. Full details of its capabilities are on the [launch screen page](#documentation/manifest/launch_screen).
+
+The steps below explain how to add a launch screen to the example game.
+
+1.  First, add a foreground image `fg.png`. This is a simple graphic composed of the name of the game plus the rocket sprite, with a transparent background (I've added a blue background to the graphic here so the white letters show up):
 
 <img style="background-color: blue;" alt="space dodge game launch screen foreground" src="assets/space_dodge_game-launch_screen_fg.png">
 
-2.  To activate the launch screen, I added an `xwalk_launch_screen` field to the `manifest.json` file:
+    I made the image relatively small (320px by 240px), as it should fit small mobile screens.
+
+2.  To activate the launch screen, add an `xwalk_launch_screen` field to the `manifest.json` file:
 
     ```
     {
@@ -802,15 +808,15 @@ As you can see here, the large image scaled down is far less blurry than the sma
     }
     ```
 
-    The `ready_when` property specifies when to stop showing the launch screen. By setting this to `custom`, the launch screen can be closed programmatically once all the assets are loaded. This is the typical mode you would want to use for launch screens in an HTML5 game, as you will often be doing some initialisation work in JavaScript. In the next step, I'll add the code which does this.
+    The `ready_when` property specifies when to stop showing the launch screen. By setting this to `custom`, the launch screen can be closed programmatically once all the assets are loaded. This is the typical mode you would want to use for launch screens in an HTML5 game, as you will often be doing some initialisation work in JavaScript before the game is usable. In the next step, we'll add the code which does this.
 
-    The `landscape` property specifies the background colour and `image` (foreground image) to use for the launch screen when in landscape mode.  Any image paths are relative to `manifest.json`, and the foreground image will be centered on the background.
+    The `landscape` property specifies the background colour and `image` (foreground image) to use for the launch screen when in landscape mode. Any image paths are relative to `manifest.json`, and the foreground image will be centered on the background.
 
-    As the application will always be in landscape orientation (I set `"orientation": "landscape"` in the manifest), there's no need for a `portrait` property. Note that you can use the `default` key to specify the settings for all orientations; and can specify different backgrounds and images for different orientations and screen densities. See [this explanation](#documentation/manifest/launch_screen) for more details about the available launch screen options.
+    As the application will always be in landscape orientation (`"orientation": "landscape"` is set in the manifest), there's no need for a `portrait` property. Note that you may use the `default` key to specify the settings for all orientations; and can specify different backgrounds and images for different orientations and screen densities. See [this explanation](#documentation/manifest/launch_screen) for more details about the available launch screen options.
 
 3.  The final step is to modify the JavaScript to close the launch screen.
 
-    When the `ready_when` property is set to `custom`, you close the launch screen by calling the Crosswalk-specific `window.show()` method. For this game, I added an artificial 5 second timeout before calling the `window.show()` method (otherwise the game loads so quickly that you only see a flash of the launch screen). The code looks like this:
+    When the `ready_when` property is set to `custom`, the launch screen can be closed by calling the Crosswalk-specific `window.show()` method. For this game, I added an artificial 5 second timeout before calling the `window.show()` method (otherwise the game loads so quickly that you only see a flash of the launch screen). The code looks like this:
 
     ```
     setTimeout(function () {
@@ -831,4 +837,4 @@ Now the application can be packaged as usual with `make_apk.py` and installed on
 
 ## Summary
 
-???TODO
+Satisfactorily fitting an HTML5 application into a mobile screen has been challenging in the past; the advent of new APIs and configuration options is gradually making things easier. Crosswalk is pioneering support for enabling features like CSS flexbox, orientation and display configuration in the manifest, viewport percentage lengths and launch screens, providing a rich runtime environment for all applications, and especially for games.
