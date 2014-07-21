@@ -551,11 +551,7 @@
   "name": "app name",
   "description": "a sample description",
   "version": "1.0.0",
-  "app": {
-    "launch": {
-      "local_path": "index.html"
-    }
-  },
+  "start_url": "index.html",
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
