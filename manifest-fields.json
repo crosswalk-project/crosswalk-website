@@ -6,7 +6,8 @@
       "deprecated": "7+"
     },
     "android": {
-      "versions": "2+"
+      "versions": "2+",
+      "deprecated": "7+"
     },
     "webview": {
       "versions": "6+"
@@ -99,6 +100,9 @@
     "name": "start_url",
     "tizen": {
       "versions": "7+"
+    },
+    "android": {
+      "versions": "8+"
     }
   },
   "version.extension": {
