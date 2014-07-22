@@ -318,11 +318,7 @@ The key line is:
 
 `XWalkPreferences.setValue()` sets global preferences for Crosswalk; in this case, you are turning on the debugging flag.
 
-To debug your application:
-
-1.  Start the application as usual on the Android target.
-2.  Open a Chrome/Chromium browser and navigate to the address "chrome://inspect". You should see the debugging window, with your device listed.
-3.  Click on the "inspect" link for the application to get the standard Chrome dev tools, opened at your remote application.
+Now install and run your application as usual. Then, to perform remote debugging, follow [these instructions](#documentation/getting_started/remote_debugging).
 
 ## Further information
 
