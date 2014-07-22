@@ -177,6 +177,12 @@
         <p>Defines a static user interface to be shown immediately after the application is launched.</p>
         <p><a href="#documentation/manifest/launch_screen">Read more...</a></p>
       </li>
+
+      <li data-field="xwalk_permissions.extension">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Defines permissions the application needs so it can access platform features. <a href="#manifest-permissions">See below</a> for details of the available permissions.</p>
+        <p><a href="#documentation/manifest/permissions">Read more...</a></p>
+      </li>
     </ul>
 
   </div>
@@ -202,7 +208,10 @@
 
     <p>See the <a href="#documentation/manifest/permissions">permissions page</a> for details of what this field is for.</p>
 
-    <p>The following values (in bold) can be used in the <strong>permissions</strong> list in the manifest:</p>
+    <p>The following values (in bold) can be used in the
+    <strong data-crosswalk-versions="4-7" data-crosswalk-platforms="android">permissions</strong>
+    <strong data-crosswalk-versions="8+" data-crosswalk-platforms="android">xwalk_permissions</strong>
+    list in the manifest:</p>
 
     <ul>
 
@@ -590,7 +599,7 @@
   },
   "display": "fullscreen",
   "orientation": "landscape",
-  "permissions": [
+  "xwalk_permissions": [
     "Contacts",
     "DeviceCapabilities",
     "Fullscreen",
