@@ -118,7 +118,7 @@
   "permissions.extension": {
     "name": "permissions (extension)",
     "android": {
-      "versions": "4+"
+      "versions": "4-7"
     }
   },
   "start_url": {
@@ -153,6 +153,12 @@
   },
   "xwalk_launch_screen.extension": {
     "name": "xwalk_launch_screen (extension)",
+    "android": {
+      "versions": "8+"
+    }
+  },
+  "xwalk_permissions.extension": {
+    "name": "xwalk_permissions (extension)",
     "android": {
       "versions": "8+"
     }
