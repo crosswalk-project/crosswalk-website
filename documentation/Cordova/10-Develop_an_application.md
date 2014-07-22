@@ -79,7 +79,7 @@ Please refer to [Android Command-line Tools](http://cordova.apache.org/docs/en/3
 
 Remote debugging works as for standard Crosswalk apps.
 
-You need to build your app with the `--debug` option enabled:
+First, you need to build your app with the `--debug` option enabled:
 
     cd HelloWorld
     ./cordova/build --debug
@@ -88,13 +88,7 @@ Then run it as usual:
 
     ./cordova/run
 
-In a Chrome browser, go to "chrome://inspect" in the address bar. This should show a list of attached devices, with your application listed, e.g.
-
-<img src="assets/cordova-debug-in-chrome.png">
-
-(The application available for debugging is highlighted with a red box in the image.) Click on the "inspect" link to open the application for debugging with the Chrome dev tools.
-
-To debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See [this wiki page](#wiki/Remote-debugging-on-android) which shows the mapping between Crosswalk and Chrome versions for debugging.
+You should now be able to follow the instructions on [this page](#documentation/getting_started/remote_debugging) to debug the application.
 
 ## Debug Cordova Crosswalk
 
