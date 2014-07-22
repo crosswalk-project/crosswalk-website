@@ -1,14 +1,14 @@
 # Permissions
 
-The `permissions` field is Crosswalk-specific and non-standard. It is used to set permissions in the `AndroidManifest.xml` file when packaging an application for Crosswalk on Android. This is necessary because Android applications cannot request more permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.
+The `permissions` (Crosswalk 4-7) and `xwalk_permissions` (Crosswalk 8+) fields are Crosswalk-specific and non-standard. They is used to set permissions in the `AndroidManifest.xml` file when packaging an application for Crosswalk on Android. This is necessary because Android applications cannot request permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.
 
 **Note:** If you are [loading an application from a manifest with the embedding API](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk), you will have to manually specify permissions for Crosswalk in `AndroidManifest.xml`. See the [section below](#Permissions-required-by-API) for guidance on which Android permissions are required by Crosswalk's [web APIs](#documentation/apis/web_apis).
 
 ## Effect on Android packaging
 
-The `make_apk.py` script translates the `permissions` field in `manifest.json` into `<android:uses-permission>` elements in `AndroidManifest.xml`.
+The `make_apk.py` script translates the `permissions` or `xwalk_permissions` field in `manifest.json` into `<android:uses-permission>` elements in `AndroidManifest.xml`.
 
-For example, given the following manifest:
+For example, given the following manifest (Crosswalk 8+):
 
     {
       "name": "simple",
@@ -18,7 +18,7 @@ For example, given the following manifest:
           "local_path": "index.html"
         }
       },
-      "permissions": [
+      "xwalk_permissions": [
         "Contacts",
         "Geolocation",
         "Messaging",
@@ -57,7 +57,7 @@ For example, given the following manifest:
     <uses-permission android:name="android.permission.WRITE_SMS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
 
-Note that the `make_apk.py` script always adds a default set of permissions (the first group in the example above). Only the second group of permissions are the ones added because of the presence of the `permissions` field in the manifest. The mappings from permissions in the manifest to Android permissions are shown in the [table in the next section](#Permissions-required-by-API).
+Note that the `make_apk.py` script always adds a default set of permissions (the first group in the example above). Only the second group of permissions are the ones added because of the presence of the `xwalk_permissions` field in the manifest. The mappings from permissions in the manifest to Android permissions are shown in the [table in the next section](#Permissions-required-by-API).
 
 Alternatively, permissions can be specified on the command line and not included in `manifest.json`. For example, the following command line option would have the same effect as the manifest shown:
 
@@ -69,7 +69,7 @@ Note that permission values are not case sensitive (either in the manifest or on
 
 ## Permissions required by API
 
-If you want to use some of Crosswalk's web APIs in an application, you may need to add permissions to `AndroidManifest.xml` to make those APIs accessible. You can either do this via the [packaging script](), or manually (if you are using the embedding API).
+If you want to use some of Crosswalk's web APIs in an application, you may need to add permissions to `AndroidManifest.xml` to make those APIs accessible. You can either do this via the [packaging script](#documentation/getting_started/run_on_android), or manually (if you are using the embedding API).
 
 The table below shows which web APIs require which permissions.
 
