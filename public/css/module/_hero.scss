@@ -1,0 +1,76 @@
+// Hero
+//
+// A prominent header section, usually the main focus of a page.
+//
+// Markup:
+// <header class="hero {$modifiers}">
+//   <div class="hero-container container">
+//     <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
+//     <p>Crosswalk is a powerful <code>WebView</code> for building hybrid mobile applications on multiple versions of Android.</p>
+//     <a href="#" class="button">Get started</a>
+//   </div>
+// </header>
+//
+// .knockout - Inverted hero section
+//
+// Styleguide 3.4.
+.hero {
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  padding-bottom: 4em;
+}
+
+// Hero image
+//
+// A hero section with included imagery
+//
+// Markup:
+// <header class="hero {$modifiers}">
+//   <img class="hero-image" src="/images/crosswalk-landing-banner-1.jpg" />
+//   <div class="hero-container container">
+//     <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
+//     <p>Crosswalk is a powerful <code>WebView</code> for building hybrid mobile applications on multiple versions of Android.</p>
+//     <a href="#" class="button">Get started</a>
+//   </div>
+// </header>
+//
+// .knockout - Inverted hero section
+//
+// Styleguide 3.4.1.
+.hero-image {
+  position: absolute;
+}
+
+// The inner wrapper for a hero section.
+//
+// No styleguide reference.
+.hero-container {
+  @include outer-container;
+  @include clearfix;
+  z-index: 1;
+  position: relative;
+  margin: auto;
+}
+
+// The primary title of a hero section.
+//
+// No styleguide reference.
+.hero-heading {
+
+}
+
+// Hero seperator
+//
+// A seperator inbetween, or a prefix or suffix to hero sections.
+//
+// Markup:
+// <div class="hero-seperator">
+//   <div class="hero-container container">Additional information</div>
+// </div>
+//
+// Styleguide 3.4.2.
+.hero-seperator {
+  background: $color-green-lighter;
+  color: $color-text;
+}

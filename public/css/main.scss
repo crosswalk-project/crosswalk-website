@@ -1,0 +1,52 @@
+// Import dependencies
+// -------------------
+
+@import "vendor/normalize";
+@import "vendor/normalize-opentype";
+@import "vendor/bourbon/bourbon";
+@import "vendor/neat/neat";
+
+
+// Variables
+// ---------
+
+@import "variables";
+@import "vendor/neat/neat"; // Intentionally imported twice for visual grid mixin
+
+// SMACSS
+// ------
+
+// Base
+//
+// Base styling. Essentially, styles extras beyond Normalize.css.
+//
+// Styleguide 1.
+@import "base";
+
+// Layout
+//
+// Application of the grid; defines how Modules are positioned.
+//
+// Styleguide 2.
+@import "layout";
+
+// Modules
+//
+// Reusable components that comprise the majority of the styles.
+//
+// Styleguide 3.
+@import "module";
+
+// State
+//
+// Contextual classes, prefixed with <.is-> or <.js->.
+//
+// Styleguide 4.
+@import "state";
+
+// Theme
+//
+// Intentionally overwriting the base styles for a comprehensive, variant aesthetic.
+//
+// No styleguide reference.
+@import "theme";

@@ -1,0 +1,60 @@
+// Buttons
+//
+// Your average form and link buttons.
+//
+// Markup:
+// <a href="#" class="button {$modifiers}">Get started</a>
+//
+// :focus  - lighten the button when focusing with the keyboard
+// :hover  - lighten the button when hovering with a pointer
+// :active - darken the button once it’s been pressed
+// .button--small - A smaller button
+// .button--large - A larger button
+//
+// Styleguide 3.1.
+button,
+input[type="submit"],
+a.button,
+.button,
+.knockout .button {
+  font-size: modular-scale($base-font-size, 0, $base-ratio);
+  font-weight: 600;
+  line-height: $base-line-height;
+  text-transform: lowercase;
+
+  padding: 1em 3em;
+  display: inline-block;
+
+  background: $color-orange;
+  color: $color-background;
+  text-decoration: none;
+  text-shadow: 0 1px 0 $color-orange-dark;
+  border: none;
+  border-radius: $base-border-radius;
+
+  @include appearance(none);
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background: $color-orange-dark;
+    color: $color-background;
+  }
+  &:active {
+    background: $color-orange-darker;
+    color: $color-background;
+  }
+}
+
+.button--small,
+a.button--small {
+  font-size: modular-scale($base-font-size, -1, $base-ratio);
+}
+
+.button--large,
+a.button--large {
+  font-size: modular-scale($base-font-size, 2, $base-ratio);
+}

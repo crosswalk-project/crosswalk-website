@@ -1,0 +1,52 @@
+// The main container
+//
+// Markup:
+// <div class="container"></div>
+//
+// Styleguide 2.1.
+.container {
+  @include outer-container();
+  padding-left: $gutter;
+  padding-right: $gutter;
+}
+
+// A class that resets the row within a container.
+//
+// Markup:
+// <div class="row"></div>
+//
+// Styleguide 2.2.
+.row,
+.row--lrt {
+  @include row();
+}
+
+// A class that changes the text direction of the row to Right to Left.
+//
+// Markup:
+// <div class="row--rtl"></div>
+//
+// Styleguide 2.2.1.
+.row--rtl {
+  @include row(RTL);
+}
+
+@include media($narrow) {
+
+}
+
+@include media($mid) {
+
+}
+
+@include media($wide) {
+
+}
+
+@include media($huge) {
+
+}
+
+@include media($massive) {
+
+}

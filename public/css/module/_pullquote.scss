@@ -1,0 +1,52 @@
+// Blockquote
+//
+// Stylised blockquotes
+//
+// Markup:
+// <blockquote class="blockquote {$modifiers}">
+//   <footer>
+//     <img src="http://placehold.it/100x100" alt="" />
+//     <strong>Amol Kher</strong>
+//     Former Engineer Manager at Netflix said
+//   </footer>
+//   <p>We see almost around 1,000 different devices streaming Netflix on Android every day.</p>
+// </blockquote>
+//
+// .blockquote--left   - A left-aligned blockquote
+// .blockquote--right  - A left-aligned blockquote
+// .blockquote--center - Another way to use the centre-aligned blockquote
+//
+// Styleguide 3.2.
+.blockquote,
+.blockquote--center {
+  text-align: center;
+  font-size: 1.5rem;
+  @include media($mid) {
+    font-size: 2rem;
+  }
+  @include media($wide) {
+    font-size: 2.5rem;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 1rem;
+    strong {
+
+    }
+    img {
+      border-radius: $base-border-radius;
+      max-width: 3em;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.blockquote--left {
+  text-align: left;
+}
+
+.blockquote--right {
+  text-align: right;
+}
