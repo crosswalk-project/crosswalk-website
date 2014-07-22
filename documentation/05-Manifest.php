@@ -139,9 +139,9 @@
 
       <li data-field="orientation">
         <p><strong data-role="field-name"></strong></p>
-        <p>???TODO</p>
+        <p>Sets the default orientation for the application (e.g. "portrait", "landscape").</p>
         <p>
-          <a href="http://w3c.github.io/manifest/#???">W3C spec</a>
+          <a href="http://w3c.github.io/manifest/#orientation-member">W3C spec</a>
           <a href="#documentation/manifest/orientation">Read more...</a>
         </p>
       </li>
