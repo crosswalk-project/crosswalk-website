@@ -26,7 +26,7 @@ What’s a WebView? A WebView is like full-screen browser inside a native app wh
 
 ### By default
 
-When you choose the default WebView, your users could be using the latest version of Android or seeing the web from 2011—or anywhere else inbetween.
+When you choose the default WebView, your users could be using the latest version of Android or seeing the web from 2011—or anywhere else in between.
 
 ### Upgraded with Crosswalk
 
@@ -40,7 +40,7 @@ Amol Kher, former Engineer Manager at Netflix said:
 
 ## Which `WebView` are you choosing?
 
-Stop choosing a fragmented development enivronment. Over 1.3 million Android device are activated every, each with an slightly different interpretation of the web.
+Stop choosing a fragmented development environment. Over 1.3 million Android device are activated every, each with an slightly different interpretation of the web.
 
 It’s impossible to imagine and painful to test how your native hybrid app will render or perform in every situation if you’ve chosen the default Android `WebView`.
 
@@ -48,7 +48,9 @@ It’s impossible to imagine and painful to test how your native hybrid app will
 
 Use new features confidently. Crosswalk supports otherwise unpredictable properties and APIs, whether they are in CSS or JavaScript.
 
-#### Use Device APIs, with or without CordovaWhether your using Cordova or not, the Crosswalk supports the Geolocation API, the File API, the vibraton API and more.
+#### Use Device APIs, with or without Cordova
+
+Whether your using Cordova or not, the Crosswalk supports the Geolocation API, the File API, the vibration API and more.
 
 #### Flexbox is ready with Crosswalk
 
@@ -67,9 +69,13 @@ Ashley Scirra, Creator of the Construct 2 game engine says:
 
 ##  Put your game face on
 
-HTML5 is ready for games, but is your WebView? Crosswalk gives you the latest possible implementation of HTML5 features that make immersive games possible.#### Build boundry-pushing 2D and 3D games
+HTML5 is ready for games, but is your WebView? Crosswalk gives you the latest possible implementation of HTML5 features that make immersive games possible.
 
-#### True support for the Audio APICrosswalk supports exactly what you’d expect from a WebView based on Google Chromium and Blink. Make your in-app browsing experience as good as it can be.
+#### Build boundary-pushing 2D and 3D games
+
+#### True support for the Audio API
+
+Crosswalk supports exactly what you’d expect from a WebView based on Google Chromium and Blink. Make your in-app browsing experience as good as it can be.
 
 ### Which WebView are you using?
 
@@ -84,7 +90,11 @@ Luke Wroblewski, Founder of LukeW Ideation & Design said:
 
 #### Give your users the latest version of the web
 
-With Crosswalk, your app will render the same across every Android 4.0 device, so you can simultaneously test on less devices and know your apps works in more places.#### Provide a Google Chrome-like in-app browserIn-app browsers are used more than the default Android browser. Give your users the latest version of the web by with Crosswalk as your app’s embedded browser. 
+With Crosswalk, your app will render the same across every Android 4.0 device, so you can simultaneously test on less devices and know your apps works in more places.
+
+#### Provide a Google Chrome-like in-app browser
+
+In-app browsers are used more than the default Android browser. Give your users the latest version of the web by with Crosswalk as your app’s embedded browser. 
 
 #### Icon fonts, SVG, Flexbox, and more
 
