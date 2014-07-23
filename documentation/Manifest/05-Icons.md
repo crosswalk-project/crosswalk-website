@@ -1,8 +1,48 @@
 # Icons
 
-**Note:** This section only applies to the custom <a href="#documentation/manifest/icons"><code>icons</code> field</a>, not to the [W3C-compatible `icons` field](http://w3c.github.io/manifest/#icons-member). Also note that this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
+The `icons` field specifies one or more icon graphics which visually represent the application. For example, the icon may be used by a task switcher, in a notifications area, or in an application list on the device. The image below shows the icon for the *townxelliot media player* being used in the *application list* (left) and *recent apps* (right) contexts on Android:
 
-The `icons` field implementation in the earliest versions of Crosswalk is non-standard and based on the format used in the [manifest for Chromium extensions](https://developer.chrome.com/apps/manifest/icons).
+![Manifest icon used in "application list" and "recent apps" context on Android](assets/manifest-icon-contexts.png)
+
+There are two variants of the `icons` field, depending on which version of Crosswalk you are using:
+
+*   In Crosswalk 8 or later, the `icons` field is compatible with the [`icons` field in the W3C manifest specification](http://w3c.github.io/manifest/#icons-member).
+
+*   In Crosswalk 1-7, the `icons` field is non-standard and based on the format used in the [manifest for Chromium extensions](https://developer.chrome.com/apps/manifest/icons).
+
+Also note that in both cases, this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
+
+## W3C variant (Crosswalk 8)
+
+The field is a list of icon objects, each of which defines a URL for the icon as a minimum (via a `src` attribute). The icon's `type` attribute can be specified, so Crosswalk can determine whether the graphics format of the icon is supported; and the optimal rendering `sizes` and screen pixel `density` for which the icon is intended can also be set.
+
+As an example, here is a simple manifest which specifies two icons, one to be used where a 64x64 pixel icon is needed, and the other when a 128x128 pixel icon is needed and the screen pixel density is 2:
+
+    {
+      "name": "simple_app",
+      "description": "A simple Crosswalk application",
+      "version": "0.0.0.1",
+      "icons": [
+        {
+          "src": "icon_small.png",
+          "type": "image/png",
+          "sizes": "64x64"
+        },
+        {
+          "src": "icon_large.png",
+          "type": "image/png",
+          "sizes": "128x128",
+          "density": "2"
+        }
+      ],
+      "start_url": "index.html",
+      "display": "fullscreen",
+      "orientation": "landscape"
+    }
+
+???density explanation
+
+## Chromium extensions variant (Crosswalk 1-7)
 
 The field is an object whose keys represent the icon's pixel size (width and height are the same); the value for each key is the path to the appropriate image file, relative to the application root. For example, here's a manifest with icons at three different sizes:
 
@@ -22,7 +62,7 @@ The field is an object whose keys represent the icon's pixel size (width and hei
       }
     }
 
-Setting icons for multiple sizes [can affect Android packaging for your application](#documentation/manifest/using_the_manifest/Use-it-to-create-an-Android-package).
+Setting icons for multiple sizes [can affect Android packaging for your application](#documentation/manifest/using_the_manifest/Configure-Android-packaging).
 
 As a minimum, the `"128"` key (for a 128x128 pixel image) should be specified. The preferred file format is PNG, but BMP, GIF, ICO, and JPEG formats may also be used.
 
@@ -67,4 +107,12 @@ would cause the following resources to be added to the Android application packa
     res/drawable/hdpi/icon.png   (copied from icon48.png)
     res/drawable/xxhdpi/icon.png (copied from icon128.png)
 
-When the application is installed, Android will use the file appropriate for the target's screen resolution as the application icon in the home screen, app list and other relevant locations.
+When the application is installed, Android will use the file appropriate for the target's screen resolution as the application icon in the home screen, application list and other relevant locations.
+
+## Acknowledgements
+
+The *townxelliot media player* icon was modified from an original icon created by [wpzoom.com](http://www.wpzoom.com/) under a [CC BY-SA licence](https://creativecommons.org/licenses/by-sa/3.0/). It was sourced from [Find Icons](http://findicons.com/icon/457729/radio?id=457887).
+
+The modified icon is made available here to satisfy the terms of the licence, and is released under the same CC BY-SA licence:
+
+<img alt="Modified radio icon" title="Modified radio icon" src="assets/radio.png">

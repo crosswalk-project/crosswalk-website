@@ -73,13 +73,22 @@
       "versions": "8+"
     }
   },
+  "icons": {
+    "name": "icons",
+    "tizen": {
+      "versions": "8+"
+    },
+    "android": {
+      "versions": "8+"
+    }
+  },
   "icons.extension": {
     "name": "icons (extension)",
     "tizen": {
-      "versions": "1+"
+      "versions": "1-7"
     },
     "android": {
-      "versions": "2+"
+      "versions": "2-7"
     }
   },
   "launch_screen.extension": {
@@ -118,7 +127,8 @@
   "permissions.extension": {
     "name": "permissions (extension)",
     "android": {
-      "versions": "4-7"
+      "versions": "4+",
+      "deprecated": "8+"
     }
   },
   "start_url": {
