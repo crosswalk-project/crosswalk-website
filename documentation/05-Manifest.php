@@ -112,6 +112,15 @@
         </p>
       </li>
 
+      <li data-field="icons">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Graphics files to use for the application icon at different resolutions.</p>
+        <p>
+          <a href="http://w3c.github.io/manifest/#icons-member">W3C spec</a> |
+          <a href="#documentation/manifest/icons">Read more...</a>
+        </p>
+      </li>
+
       <li data-field="icons.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Graphics files to use for the application icon at different resolutions.</p>
