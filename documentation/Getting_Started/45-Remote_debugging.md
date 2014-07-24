@@ -25,8 +25,8 @@ Once these pre-requisites have been met, debug your Crosswalk application as fol
 <p>Enable remote debugging by passing a flag to <code>make_apk.py</code> when building the package. For example:</p>
 
 <pre>
-$ python make_apk.py --manifest=/home/me/myapp/manifest.json \
-  --enable-remote-debugging
+$ python make_apk.py --package=org.crosswalkproject.example \
+  --manifest=/home/me/myapp/manifest.json --enable-remote-debugging
 </pre>
 
 </li>

@@ -31,7 +31,8 @@ For example, given the following manifest:
 
 ...and this `make_apk.py` command line:
 
-    python make_apk.py --manifest=manifest.json
+    python make_apk.py --package=org.crosswalkproject.example \
+      --manifest=manifest.json
 
 ...the following `AndroidManifest.xml` permission elements are generated:
 

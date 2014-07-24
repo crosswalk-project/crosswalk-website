@@ -478,7 +478,8 @@ During the host setup for Android ([Windows](#documentation/getting_started/wind
 
     $ cd crosswalk-${XWALK-STABLE-ANDROID-X86}
 
-    $ python make_apk.py --manifest=xwalk-webrtc/client/manifest.json
+    $ python make_apk.py --package=org.crosswalkproject.example \
+        --manifest=xwalk-webrtc/client/manifest.json
     ...
     An APK for the web application "WebRTC" including the
     Crosswalk Runtime built for x86 was generated successfully,
@@ -546,7 +547,8 @@ If one or both of the client applications isn't working, or you have problems ma
 
 *   To debug the client application running in Crosswalk Android, build the package with the `--enable-remote-debugging` option:
 
-        python make_apk.py --enable-remote-debugging --manifest=...
+        python make_apk.py --package=org.crosswalkproject.example \
+          --enable-remote-debugging --manifest=...
 
     Once the application is launched on the Android target, open Chrome and go to the special "chrome://inspect" address. You should see the Android target listed, along with applications which can be debugged:
 

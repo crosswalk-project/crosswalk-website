@@ -19,7 +19,8 @@ To make Android packages for your project, do the following:
         $ cd $PROJECT_DIR/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}
 
         # invoke the package builder
-        $ python make_apk.py --enable-remote-debugging --fullscreen \
+        $ python make_apk.py --package=org.crosswalkproject.example \
+            --enable-remote-debugging --fullscreen \
             --manifest=$PROJECT_DIR/xwalk-echo-app/manifest.json \
             --extensions=$PROJECT_DIR/xwalk-echo-extension-src/xwalk-echo-extension/
 

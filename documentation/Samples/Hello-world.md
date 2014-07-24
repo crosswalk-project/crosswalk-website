@@ -20,7 +20,8 @@ The quick version is that you can build the Hello World apk with:
 
 ```sh
 > cd <xwalk_app_template directory>
-> python make_apk.py --manifest=<path to crosswalk-samples>/hello_world/manifest.json
+> python make_apk.py --package=org.crosswalkproject.example \
+    --manifest=<path to crosswalk-samples>/hello_world/manifest.json
 ```
 
 `<xwalk_app_template directory>` refers to the directory where you
