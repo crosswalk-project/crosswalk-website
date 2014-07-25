@@ -10,6 +10,16 @@
   padding-right: $gutter;
 }
 
+// Fixes the visual grid based on the container’s padding.
+//
+// No styleguide reference.
+@if $visual-grid == true {
+  body:before {
+    @include calc(width, '100% - #{ $gutter * 2 }');
+    margin: 0 auto;
+  }
+}
+
 // A class that resets the row within a container.
 //
 // Markup:
