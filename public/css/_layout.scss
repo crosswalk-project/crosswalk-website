@@ -16,7 +16,7 @@
 @if $visual-grid == true {
   body:before {
     @include calc(width, '100% - #{ $gutter * 2 }');
-    margin: 0 auto;
+    @include calc(max-width, '#{ $max-width } - #{ $gutter * 2 }');
   }
 }
 
