@@ -8,15 +8,15 @@ There are two variants of the `icons` field, depending on which version of Cross
 
 *   In Crosswalk 8 or later, the `icons` field is compatible with the [`icons` field in the W3C manifest specification](http://w3c.github.io/manifest/#icons-member).
 
-*   In Crosswalk 1-7, the `icons` field is non-standard and based on the format used in the [manifest for Chromium extensions](https://developer.chrome.com/apps/manifest/icons).
+*   In Crosswalk 1-7, the `icons` field is a non-standard extension, based on the format used in the [manifest for Chromium extensions](https://developer.chrome.com/apps/manifest/icons).
 
-Also note that in both cases, this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
+Note that in both cases, this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk on Android](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
 
 ## W3C variant (Crosswalk 8)
 
-The field is a list of icon objects, each of which defines a URL for the icon as a minimum (via a `src` attribute). The icon's `type` attribute can be specified, so Crosswalk can determine whether the graphics format of the icon is supported; and the optimal rendering `sizes` and screen pixel `density` for which the icon is intended can also be set.
+The field is a list of icon objects, each of which defines a URL for the icon as a minimum (via a `src` attribute). The icon's `type` attribute can be specified, describing the graphics format of the icon; and the optimal rendering `sizes` and screen pixel `density` for which the icon is intended can also be set.
 
-As an example, here is a simple manifest which specifies two icons, one to be used where a 64x64 pixel icon is needed, and the other when a 128x128 pixel icon is needed and the screen pixel density is 2:
+As an example, here is a simple Crosswalk manifest which specifies three icons: one to be used when a 64x64 pixel icon is needed; one to be used when a 128x128 pixel icon is needed; and one to be used when a 128x128 pixel icon is needed and the screen pixel density is 2:
 
     {
       "name": "simple_app",
@@ -31,6 +31,11 @@ As an example, here is a simple manifest which specifies two icons, one to be us
         {
           "src": "icon_large.png",
           "type": "image/png",
+          "sizes": "128x128"
+        },
+        {
+          "src": "icon_large_hires.png",
+          "type": "image/png",
           "sizes": "128x128",
           "density": "2"
         }
@@ -40,7 +45,24 @@ As an example, here is a simple manifest which specifies two icons, one to be us
       "orientation": "landscape"
     }
 
-???density explanation
+What's the point of matching against "density"?
+
+???what is density? see screens/screen_measurements.md
+
+Imagine you have an icon which is 128x128 raw pixels. Now you put it on a device with one physical pixel per raw pixel where a 128x128 pixel icon is required. Each raw pixel of the original image occupies one pixel in the icon on the device's screen.
+
+Now imagine a different device with 2 physical pixels per raw pixel, which also requires a 128x128 icon. If the same image file is used to fill that space on the screen, each raw pixel of the image occupies 4 pixels (2x2) on the device screen. The result is a blurred image, as the same single pixel is used to fill 4 pixels on the screen.
+
+To resolve this, you could provide a larger 256x256 raw pixel image for screens with pixel density of 2. Then each pixel on the device screen would correspond to one pixel of the raw image again.
+
+From http://www.whatwg.org/specs/web-apps/current-work/#attr-link-sizes:
+"An icon that is 50 CSS pixels wide intended for displays with a device pixel density of two device pixels per CSS pixel (2x, 192dpi) would have a width of 100 raw pixels."
+
+So the raw size of the image you are providing as an icon is calculated as:
+
+raw image file dimensions = dimensions of required icon in device-independent pixels * device screen pixel density
+
+???TODO
 
 ## Chromium extensions variant (Crosswalk 1-7)
 
