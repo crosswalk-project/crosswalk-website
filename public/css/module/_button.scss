@@ -38,6 +38,13 @@ a.button,
   vertical-align: middle;
   white-space: nowrap;
 
+  width: 100%;
+  text-align: center;
+  @include media($mid) {
+    text-align: inheirt;
+    width: auto;
+  }
+
   &:hover,
   &:focus {
     background: $color-orange-dark;
