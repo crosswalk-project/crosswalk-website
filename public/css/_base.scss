@@ -83,6 +83,7 @@ kbd,
 pre,
 samp {
   font-family: $font-family-monospace;
+  font-weight: inherit;
 }
 
 // Basic tables.
@@ -112,4 +113,116 @@ thead {
 td {
   padding: ($base-line-height / 2) 0;
   vertical-align: middle;
+}
+
+// Headings
+//
+// Styleguide 1.5.3.
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $font-family-display;
+  font-weight: 800; // Maybe move this
+  // line-height: $headings-line-height;
+
+  small {
+    line-height: 1;
+  }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: $line-height-computed;
+  margin-bottom: ($line-height-computed / 2);
+
+  small {
+    font-size: 65%;
+  }
+}
+
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: ($line-height-computed / 2);
+  margin-bottom: ($line-height-computed / 2);
+
+  small {
+    font-size: 75%;
+  }
+}
+
+h1,
+.h1 {
+  font-size: $base-font-size;
+  font-size: floor(modular-scale($base-font-size, 7, $base-ratio));
+  line-height: 1.1;
+  @include media($mid) {
+    font-size: floor(modular-scale($base-font-size, 9, $base-ratio));
+  }
+}
+
+h2,
+.h2 {
+  font-size: $base-font-size;
+  font-size: floor(modular-scale($base-font-size, 5, $base-ratio));
+  text-align: center;
+  @include media($wide) {
+    text-align: left;
+  }
+}
+
+h3,
+.h3 {
+  font-size: $base-font-size;
+  font-size: floor(modular-scale($base-font-size, 3, $base-ratio));
+}
+
+h4,
+.h4 {
+  font-size: $base-font-size;
+  font-size: floor(modular-scale($base-font-size, 1, $base-ratio));
+}
+
+h5,
+h6,
+.h5,
+.h6 {
+  font-size: $base-font-size;
+  font-size: floor(modular-scale($base-font-size, 0, $base-ratio));
+}
+
+p {
+  margin: 0 0 ($line-height-computed / 2);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+// Lead
+//
+// No styleguide reference.
+.lead,
+article > p:first-of-type {
+  @include media($mid) {
+    margin-bottom: $line-height-computed;
+    font-size: floor(($base-font-size * 1.15));
+    line-height: $base-line-height;
+  }
+}
+
+// Addresses
+//
+// No styleguide reference.
+address {
+  font-style: normal;
 }
