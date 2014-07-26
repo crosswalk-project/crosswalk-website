@@ -17,12 +17,12 @@ input[type="submit"],
 a.button,
 .button,
 .knockout .button {
-  font-size: modular-scale($base-font-size, 0, $base-ratio);
+  font-size: modular-scale($base-font-size, 1, $base-ratio);
   font-weight: 600;
   line-height: $base-line-height;
   text-transform: lowercase;
 
-  padding: 1em 3em;
+  padding: modular-scale($base-font-size, 0, $base-ratio) modular-scale($base-font-size, 5, $base-ratio);
   display: inline-block;
 
   background: $color-orange;
