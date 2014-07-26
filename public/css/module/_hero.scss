@@ -18,7 +18,7 @@
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
-  padding-bottom: 4em;
+  background-image: url("/images/crosswalk-landing-banner-1.jpg");
 }
 
 // Hero image
@@ -40,24 +40,30 @@
 // Styleguide 3.4.1.
 .hero-image {
   position: absolute;
+  display: none;
 }
 
 // The inner wrapper for a hero section.
 //
 // No styleguide reference.
 .hero-container {
-  @include outer-container;
-  @include clearfix;
-  z-index: 1;
-  position: relative;
-  margin: auto;
+  // @include outer-container();
+  // @include clearfix;
+  // z-index: 1;
+  // position: relative;
+  // margin: auto;
 }
 
 // The primary title of a hero section.
 //
 // No styleguide reference.
 .hero-heading {
+  text-transform: lowercase;
 
+  // Could be moved to _layout
+  // @include shift(-1);
+  // @include span-columns(4);
+  // outline: 1px solid red;
 }
 
 // Hero seperator
@@ -73,4 +79,15 @@
 .hero-seperator {
   background: $color-green-lighter;
   color: $color-text;
+  padding-top:    modular-scale($base-font-size, 2, $base-ratio);
+  padding-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  ul, ol, li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  @include media($wide) {
+    padding-top:    modular-scale($base-font-size, 4, $base-ratio);
+    padding-bottom: modular-scale($base-font-size, 4, $base-ratio);
+  }
 }

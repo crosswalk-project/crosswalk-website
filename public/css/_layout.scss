@@ -41,6 +41,12 @@
   @include row(RTL);
 }
 
+// A thinner container at larger sizes
+//
+// No styleguide reference.
+.row--narrow {
+}
+
 @include media($narrow) {
 
 }
@@ -50,6 +56,12 @@
 }
 
 @include media($wide) {
+
+  .row--narrow {
+    @include row();
+    @include span-columns(6);
+    @include shift(1);
+  }
 
 }
 
