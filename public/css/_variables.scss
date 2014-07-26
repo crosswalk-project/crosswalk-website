@@ -2,9 +2,10 @@
 //
 // No styleguide reference.
 $base-font-size: 1em;
-$base-line-height: 1.4;
 $base-border-radius: 0.125em;
 $base-ratio: $minor-third;
+$base-line-height: 1.4;
+$line-height-computed: $base-line-height * 1em;
 
 
 // Grid Settings
@@ -37,7 +38,7 @@ $narrow-width: 28em;
 $narrow: new-breakpoint(min-width $narrow-width $narrow-col);
 
 $mid-col: 6;
-$mid-width: 35em;
+$mid-width: 36em;
 $mid: new-breakpoint(min-width $mid-width $mid-col);
 
 $wide-col: 8;
