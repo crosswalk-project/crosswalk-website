@@ -11,6 +11,20 @@ body,
   color: $color-text;
 }
 
+// Text selection
+//
+// Changes background color of selected text.
+//
+// No styleguide reference.
+::-moz-selection {
+  background: $color-orange-lighter;
+}
+::selection {
+  background: $color-orange-lighter;
+  color: inherit; // http://robsterlini.co.uk/journal/opentype-and-selection-dont-mix
+  text-shadow: inherit; // “”
+}
+
 // Anchors
 //
 // :focus  - lighten the link when focusing with the keyboard
