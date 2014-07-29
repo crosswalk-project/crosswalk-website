@@ -1,0 +1,90 @@
+// Blockquote
+//
+// A stylised blockquote, for when you want to cite someone else’s words.
+//
+// Markup:
+// <blockquote class="blockquote {$modifiers}">
+//   <footer>
+//     <img src="http://placehold.it/100x100" alt="" />
+//     <strong>Amol Kher</strong>
+//     Former Engineer Manager at Netflix said
+//   </footer>
+//   <p>We see almost around 1,000 different devices streaming Netflix on Android every day.</p>
+// </blockquote>
+//
+// .blockquote--left   - A left-aligned blockquote
+// .blockquote--right  - A left-aligned blockquote
+// .blockquote--center - Another way to use the centre-aligned blockquote
+//
+// Styleguide 3.2.
+.blockquote,
+.blockquote--center {
+  text-align: center;
+  font-size: 1.5rem;
+  @include media($mid) {
+    font-size: 2rem;
+  }
+  @include media($wide) {
+    font-size: 2.5rem;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 1rem;
+    strong {
+
+    }
+    img {
+      border-radius: $base-border-radius;
+      max-width: 3em;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.blockquote--left {
+  text-align: left;
+}
+
+.blockquote--right {
+  text-align: right;
+}
+
+// Pullquote
+//
+// A stylised pullquote, perfect for highlighting content in your own article.
+// http://miekd.com/articles/pull-quotes-with-html5-and-css
+//
+// Markup:
+// <div class="pullquote {$modifiers}" data-pullquote="The details are not the details. They make the design."></div>
+//
+// .pullquote--left   - Another way to use the centre-aligned pullquote
+// .pullquote--right  - A left-aligned pullquote
+// .pullquote--center - A centre-aligned pullquote
+@include media($wide) {
+  .pullquote[data-pullquote] {
+    &:before {
+      content: attr(data-pullquote);
+      font-size: modular-scale($base-font-size, 2, $base-ratio);
+      font-weight: 600;
+      @include hyphens(auto);
+      overflow: hidden;
+      display: block;
+      float: left;
+      text-align: left;
+      padding-top: $base-line-height * 0.5em;
+      padding-bottom: $base-line-height * 0.5em;
+      padding-right: $gutter/2; // Prevent overlap with ul, ol
+
+      // Could be moved to _layout.scss
+      @include span-columns(3 of 6);
+      @include shift(-1);
+      // width: 40%;
+      // font-size: 1.66rem;
+      // margin-right: 0.5em;
+      // margin-bottom: 0.25em;
+      // color: @color-text-light;
+    }
+  }
+}
