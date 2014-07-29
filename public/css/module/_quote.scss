@@ -17,10 +17,14 @@
 // .blockquote--center - Another way to use the centre-aligned blockquote
 //
 // Styleguide 3.2.
+blockquote,
 .blockquote,
 .blockquote--center {
+  margin-left: 0;
+  margin-right: 0;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  outline: 1px solid red;
   @include media($mid) {
     font-size: 2rem;
   }

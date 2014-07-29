@@ -210,6 +210,12 @@ p {
   margin: 0 0 ($line-height-computed / 2);
 }
 
+// Helpers
+//
+// Move. Could be dropped, or could use these in favour
+// of blockquote--left, etc.
+//
+// No styleguide reference.
 .text-center {
   text-align: center;
 }
