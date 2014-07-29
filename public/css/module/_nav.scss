@@ -1,10 +1,33 @@
-//
+// Nav
 //
 // Styleguide 3.7.1.
 .nav {
 }
 
-//
+.nav-list {
+  display: block;
+
+  // Possibly move to _layout.scss
+  // @include span-columns(2);
+  @include media($mid) {
+    @include span-columns(2);
+  }
+  @include media($wide) {
+    @include span-columns(5);
+  }
+}
+
+.nav-item {
+  display: block;
+
+}
+
+.nav-link {
+  display: block;
+
+}
+
+// Nav logo
 //
 // Styleguide 3.7.2.
 .nav-logo {
@@ -30,36 +53,4 @@
   @include media($huge) {
     @include span-columns(2);
   }
-}
-
-//
-//
-// Styleguide 3.7.3.
-.nav-list {
-  display: block;
-
-  // Possibly move to _layout.scss
-  // @include span-columns(2);
-  @include media($mid) {
-    @include span-columns(2);
-  }
-  @include media($wide) {
-    @include span-columns(5);
-  }
-}
-
-//
-//
-// Styleguide 3.7.4.
-.nav-item {
-  display: block;
-
-}
-
-//
-//
-// Styleguide 3.7.5.
-.nav-link {
-  display: block;
-
 }

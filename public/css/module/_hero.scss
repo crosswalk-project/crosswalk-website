@@ -1,4 +1,4 @@
-// Hero
+// Standard Hero
 //
 // A prominent header section, usually the main focus of a page.
 //
@@ -13,7 +13,7 @@
 //
 // .knockout - Inverted hero section
 //
-// Styleguide 3.4.
+// Styleguide 3.4.1.
 .hero {
   background-repeat: no-repeat;
   background-position: top;
@@ -21,7 +21,7 @@
   background-image: url("/images/crosswalk-landing-banner-1.jpg");
 }
 
-// Hero image
+// Hero with image
 //
 // A hero section with included imagery
 //
@@ -37,7 +37,7 @@
 //
 // .knockout - Inverted hero section
 //
-// Styleguide 3.4.1.
+// Styleguide 3.4.2.
 .hero-image {
   position: absolute;
   display: none;
@@ -75,7 +75,7 @@
 //   <div class="hero-container container">Additional information</div>
 // </div>
 //
-// Styleguide 3.4.2.
+// Styleguide 3.4.3.
 .hero-seperator {
   background: $color-green-lighter;
   color: $color-text;

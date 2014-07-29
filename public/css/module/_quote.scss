@@ -16,7 +16,7 @@
 // .blockquote--right  - A left-aligned blockquote
 // .blockquote--center - Another way to use the centre-aligned blockquote
 //
-// Styleguide 3.2.
+// Styleguide 3.2.1.
 blockquote,
 .blockquote,
 .blockquote--center {
@@ -66,6 +66,8 @@ blockquote,
 // .pullquote--left   - Another way to use the centre-aligned pullquote
 // .pullquote--right  - A left-aligned pullquote
 // .pullquote--center - A centre-aligned pullquote
+//
+// Styleguide 3.2.2.
 @include media($wide) {
   .pullquote[data-pullquote] {
     &:before {

@@ -1,20 +1,39 @@
+// Buttons
+//
+// Styleguide 3.1.
 @import "module/button";
-@import "module/quote";
-@import "module/cards";
-@import "module/hero";
-@import "module/logo";
 
-// The media object.
+// Quotes
+//
+// Styleguide 3.2.
+@import "module/quote";
+
+// Cards
+//
+// Styleguide 3.3.
+@import "module/cards";
+
+// Hero
+//
+// Styleguide 3.4.
+@import "module/hero";
+
+// Media
 //
 // Styleguide 3.5.
 @import "module/media";
 
-// For inverted, light on dark sections.
+// Logo
 //
 // Styleguide 3.6.
-@import "module/knockout";
+@import "module/logo";
 
-// Navigation and logo
+// Knockout
 //
 // Styleguide 3.7.
+@import "module/knockout";
+
+// Navigation
+//
+// Styleguide 3.8.
 @import "module/nav";

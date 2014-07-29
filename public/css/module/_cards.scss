@@ -6,24 +6,21 @@
 // <div class="cards">
 //   <ul class="cards-list">
 //     <li class="cards-item">
-//       <img src="http://placehold.it/100" class="cards-icon" />
 //       <h3 class="cards-heading">Crosswalk for Tizen</h3>
 //       <p>Extension ready, powered by Chromium and Blink</p>
 //     </li>
 //     <li class="cards-item">
-//       <img src="http://placehold.it/100" class="cards-icon" />
 //       <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
 //       <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
 //     </li>
 //     <li class="cards-item">
-//       <img src="http://placehold.it/100" class="cards-icon" />
 //       <h3 class="cards-heading">Crosswalk for Android</h3>
 //       <p>Use Crosswalk as your WebView or in-app browser</p>
 //     </li>
 //   </ul>
 // </div>
 //
-// Styleguide 3.3.
+// Styleguide 3.3.1.
 .cards {
 
 }
@@ -61,13 +58,27 @@
 // An optional icon above a card
 //
 // Markup:
-// <li class="cards-item">
-//   <img src="http://placehold.it/100" class="cards-icon" />
-//   <h3 class="card-heading">Crosswalk for Android</h3>
-//   <p>Use Crosswalk as your WebView or in-app browser</p>
-// </li>
+// <div class="cards">
+//   <ul class="cards-list">
+//     <li class="cards-item">
+//       <img class="cards-icon" src="http://placehold.it/100" alt="" />
+//       <h3 class="cards-heading">Crosswalk for Tizen</h3>
+//       <p>Extension ready, powered by Chromium and Blink</p>
+//     </li>
+//     <li class="cards-item">
+//       <img class="cards-icon" src="http://placehold.it/100" alt="" />
+//       <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+//       <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
+//     </li>
+//     <li class="cards-item">
+//       <img class="cards-icon" src="http://placehold.it/100" alt="" />
+//       <h3 class="cards-heading">Crosswalk for Android</h3>
+//       <p>Use Crosswalk as your WebView or in-app browser</p>
+//     </li>
+//   </ul>
+// </div>
 //
-// Styleguide 3.3.3.
+// Styleguide 3.3.2.
 .cards-icon {
   display: block;
   margin: 0 auto;

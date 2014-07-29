@@ -29,6 +29,11 @@
 .row,
 .row--lrt {
   @include row();
+  @include media($wide) {
+    @include row();
+    @include span-columns(6);
+    @include shift(1);
+  }
 }
 
 // A class that changes the text direction of the row to Right to Left.
@@ -39,30 +44,4 @@
 // Styleguide 2.2.1.
 .row--rtl {
   @include row(RTL);
-}
-
-@include media($narrow) {
-
-}
-
-@include media($mid) {
-
-}
-
-@include media($wide) {
-
-  .row {
-    @include row();
-    @include span-columns(6);
-    @include shift(1);
-  }
-
-}
-
-@include media($huge) {
-
-}
-
-@include media($massive) {
-
 }
