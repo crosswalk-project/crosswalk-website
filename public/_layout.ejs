@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="<%= base %>css/main.css">
   </head>
   <body>
+    <!-- If the current page is an index,
+         leave it alone so we can do custom markup.
+         Otherwise, provide the header and nav. -->
     <% if(current.source !== 'index') { %>
       <!-- <%- partial(current.path[current.path.length - 1] + "/_nest") %> -->
       <div class="container">
