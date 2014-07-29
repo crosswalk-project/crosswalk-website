@@ -23,3 +23,29 @@
     }
   }
 }
+
+// Grayout
+//
+// For sections with regular text on grey backgrounds.
+// Kind of like Bootstrap’s “Well.”
+//
+// :hover  -
+// :active -
+// :focus  -
+//
+// Styleguide 3.7.2.
+.grayout {
+  background-color: $color-gray;
+  a,
+  a:visited,
+  .a-faux {
+    text-shadow: none;
+    &:hover,
+    &:focus {
+
+    }
+    &:active {
+
+    }
+  }
+}
