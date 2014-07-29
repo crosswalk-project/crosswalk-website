@@ -2,20 +2,23 @@
 //
 // Styleguide 3.5.1.
 .media {
-
 }
 
 // Media list
 //
 // Styleguide 3.5.2.
 .media-list {
-
+  margin-left: 0;
 }
+
 
 // Media item
 //
 // Styleguide 3.5.3.
 .media-item {
+  display: block;
+  overflow: hidden;
+  margin-left: 0;
 
 }
 
@@ -27,5 +30,12 @@
 //
 // Styleguide 3.5.5.
 .media-image {
+  float: left;
+  margin-right: $gutter;
+  display: block;
 
+}
+
+.media-header {
+  display: block;
 }
