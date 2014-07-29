@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <% include ../_includes/nav.ejs %>
+  </div>
+  <div class="row">
+
+    <% for (slug in public.blog._data) { %>
+      <% var article = public.blog._data[slug] %>
+
+      <article class="article">
+        <header class="article-header">
+          <h2 class="article-title"><a href="<%= slug %>"><%- article.title %></a></h2>
+          <span class="article-meta"><time datetime="<%- new Date(article.date).toUTCString() %>"><%- article.date %></time></span>
+        </header>
+        <section class="article-excerpt">
+          <p><%-: partial(slug).replace(/<[^>]*>/g, "") | truncate_words: 50 %>&hellip;</p>
+        </section>
+      </article>
+
+    <% } %>
+
+  </div>
+</div>
