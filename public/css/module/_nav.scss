@@ -2,9 +2,6 @@
 //
 // Styleguide 3.7.1.
 .nav {
-
-  // Move to _layout.scss?
-  @include row;
 }
 
 //
@@ -16,6 +13,7 @@
   padding-bottom: modular-scale($base-font-size, 1, $base-ratio);
 
   // Possibly to move to _layout.scss
+  // This is not ideal in the context of .row vs .row--narrow
   @include span-columns(4);
   .logo-image {
     @include span-columns(2);
