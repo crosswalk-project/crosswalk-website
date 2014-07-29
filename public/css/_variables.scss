@@ -1,7 +1,7 @@
 // Base sizes
 //
 // No styleguide reference.
-$base-font-size: 1em;
+$base-font-size: 1.025em;
 $base-border-radius: 0.125em;
 $base-ratio: $minor-third;
 $base-line-height: 1.4;
@@ -17,7 +17,7 @@ $visual-grid-index: front;
 $column: modular-scale($base-font-size, 10, $base-ratio);
 $gutter: modular-scale($base-font-size, 1, $base-ratio);
 $grid-columns: 4;
-$max-width: 75em;
+$max-width: 70em;
 
 
 // Font Stacks
