@@ -38,11 +38,11 @@ $narrow-width: 28em;
 $narrow: new-breakpoint(min-width $narrow-width $narrow-col);
 
 $mid-col: 6;
-$mid-width: 36em;
+$mid-width: 38em;
 $mid: new-breakpoint(min-width $mid-width $mid-col);
 
 $wide-col: 8;
-$wide-width: 40em;
+$wide-width: 45em;
 $wide: new-breakpoint(min-width $wide-width $wide-col);
 
 $huge-col: $wide-col;
