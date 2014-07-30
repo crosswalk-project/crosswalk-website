@@ -32,16 +32,25 @@ blockquote,
   }
 
   footer {
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 15em;
+    @include media($wide) {
+      max-width: 33%;
+    }
     strong {
 
     }
+    // Could be swaped with media obj
     img {
+      float: left;
+      margin-right: $gutter;
       border-radius: $base-border-radius;
       max-width: 3em;
       display: block;
-      margin: 0 auto;
+      // margin: 0 auto;
     }
   }
 }
