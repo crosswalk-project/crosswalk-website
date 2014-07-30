@@ -1,0 +1,29 @@
+// Table
+//
+// No styleguide reference.
+.table--ftcomp {
+  thead {
+    td {
+      padding-bottom: $base-line-height * 1em;
+      &:first-child {
+        text-align: left;
+      }
+      text-align: center;
+    }
+  }
+  tr {
+    border-bottom: 1px solid $color-gray-light;
+  }
+  td {
+    padding: $base-line-height * 0.5em 0;
+    img,
+    svg {
+      width: 25%;
+      max-width: 25%;
+      margin-left: (75%/2);
+      margin-right: (75%/2);
+      display: inline-block;
+      text-align: center;
+    }
+  }
+}
