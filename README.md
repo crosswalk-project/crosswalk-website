@@ -6,6 +6,47 @@ Prepared by Chloi Inc. for Troy Allison of Intel.
 - Kenneth Ormandy, [kenneth@chloi.io](mailto:kenneth@chloi.io)
 - Jorge Pedret, [jorge@chloi.io](mailto:jorge@chloi.io)
 
+## Running locally
+
+This static site for Crosswalk is built using [Harp](http://harpjs.com), the static web server with build-in preprocessing. Harp uses [Node.js](http://nodejs.org), so you will need to install that first. Then, you can use Node.js’s package panager, [npm](http://npmjs.org), to install Harp. Once Node.js is installed, just run the following commands:
+
+```sh
+# Install Harp. You may need to preface this command with `sudo`
+npm install -g harp
+
+# Clone this project from GitHub
+git clone https://github.com/chloi/intel-crosswalk
+
+# Install the project’s dependencies
+npm install
+
+# Serve the project
+harp server
+
+# The project is now available at http://localhost:9000
+```
+
+### Build the Styleguide
+
+This site comes with its markup and CSS modules documented in a Styleguide. It’s comparable to a miniature version of the [documentation for Bootstrap](http://getbootstrap.com/css/), where each module has an example and the accompanying code.
+
+To build the Styleguide, run the following commands:
+
+```sh
+# Install dependencies
+npm install
+
+# Build the Styleguide
+npm run styleguide
+
+# Serve the project
+harp server
+
+# Site and Styleguide now available at http://localhost:9000/styleguide
+```
+
+What follows below are earlier notes while we planned the project.
+
 ## Introduction
 
 Intel aims to lead and advocate for HTML5 development by building HTML5 and hybrid app development tools. Hybrid apps allow developers to build cross-platform applications using HTML, CSS, and JavaScript within a web view: essentially, a full-screen browser without any controls. This is generally done through projects like Cordova, Adobe PhoneGap, or the Intel XDK.
@@ -58,12 +99,6 @@ Almost all of them understand that Cordova uses a web view, but are unaware that
 
 These developers might be using Windows, OS X, or Linux to develop apps for Android, and a wide ranging variety of software to actually develop the app.
 
-## Personas
-
-TODO Persona #1
-TODO Persona #2
-TODO Affected Persona
-
 ## Competitive analysis
 
 Crosswalk’s competition isn’t other web views like (the gaming one and the canvas/audio one)—these are its peers. Instead, Crosswalk is competing against a lack of awareness with developers, and against the stock Android browser.
@@ -71,8 +106,6 @@ Crosswalk’s competition isn’t other web views like (the gaming one and the c
 The other web views that might initially appear to be its competition are actually its peers. It will likely be positive for the ecosystem in general if these web views are doing well because there will be a greater expectation that embedding your own web view is the norm.
 
 That said, with this project we’d still like Crosswalk to appear as _the_ option for embedding web views.
-
-TODO Specifics
 
 ## Plan
 
@@ -85,7 +118,6 @@ TODO Specifics
 - What appears to stop people from using it right now?
 - What was valuable about it to you, if anything?
 - What dependencies existed for our personal installs?
-- SWOT analysis
 
 ### Iterate
 
