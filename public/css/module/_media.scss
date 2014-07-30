@@ -18,7 +18,6 @@
 //
 // Styleguide 3.5.1.
 .media {
-  outline: 1px solid purple;
   .media-description {
     @include media($mid) {
       @include span-columns(5 of 8);
@@ -121,7 +120,6 @@
   float: left;
   margin-right: $gutter;
   display: block;
-  outline: 1px solid purple;
   // @include span-columns(1);
 
   img {
