@@ -67,7 +67,6 @@ blockquote,
 // .pullquote--center - A centre-aligned pullquote
 //
 // Styleguide 3.2.2.
-@include media($wide) {
   .pullquote[data-pullquote] {
     &:before {
       content: attr(data-pullquote);
@@ -75,21 +74,20 @@ blockquote,
       font-weight: 600;
       @include hyphens(auto);
       overflow: hidden;
-      display: block;
       float: left;
       text-align: left;
       padding-top: $base-line-height * 0.5em;
       padding-bottom: $base-line-height * 0.5em;
       padding-right: $gutter/2; // Prevent overlap with ul, ol
 
-      // Could be moved to _layout.scss
-      @include span-columns(3 of 6);
-      @include shift(-1);
-      // width: 40%;
-      // font-size: 1.66rem;
-      // margin-right: 0.5em;
-      // margin-bottom: 0.25em;
-      // color: @color-text-light;
-    }
+      display: none;
+      @include media($wide) {
+        display: block;
+        @include span-columns(3 of 6);
+        @include shift(-1);
+      }
+      @include media($huge) {
+
+      }
   }
 }

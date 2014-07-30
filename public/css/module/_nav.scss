@@ -11,6 +11,8 @@
 }
 
 .nav-list {
+  list-style-type: none;
+  margin-left: 0;
   display: block;
 
   // Possibly move to _layout.scss

@@ -11,7 +11,7 @@ $base-line-height: 1.4;
 //
 // No styleguide reference.
 $visual-grid: true;
-$visual-grid-color: tomato;
+$visual-grid-color: rgba(tomato, 0.5);
 $visual-grid-index: front;
 $column: modular-scale($base-font-size, 10, $base-ratio);
 $gutter: modular-scale($base-font-size, 1, $base-ratio);
