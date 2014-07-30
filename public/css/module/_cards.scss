@@ -42,9 +42,7 @@
 
 .cards-item {
   margin: 0;
-  padding: $base-line-height * 1em;
   list-style: none;
-  background: $color-green-lighter;
 
   .button {
     // max-width: 100%;
@@ -58,6 +56,11 @@
     margin-right: 0.5 * $gutter;
     @include flex(1);
   }
+}
+
+.cards-item--filled {
+  padding: $base-line-height * 1em;
+  background: $color-green-lighter;
 }
 
 // Card icon
