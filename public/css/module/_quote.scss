@@ -24,7 +24,6 @@ blockquote,
   margin-right: 0;
   text-align: center;
   font-size: 1.25rem;
-  outline: 1px solid red;
   @include media($mid) {
     font-size: 2rem;
   }
