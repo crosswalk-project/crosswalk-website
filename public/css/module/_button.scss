@@ -50,6 +50,7 @@ a.button,
   &:focus {
     background: $color-orange-dark;
     color: $color-background;
+    outline: 0;
   }
   &:active {
     background: $color-orange-darker;
