@@ -48,9 +48,15 @@ a:visited,
   text-shadow: 1px 1px 0 #FFF, -1px 1px 0 #FFF;
   color: $color-green;
   @include transition(opacity 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out);
-  &:hover,
+  &:hover {
+    color: darken($color-green-light, 15%);
+  }
   &:focus {
     color: darken($color-green-light, 15%);
+    transition-duration: 0;
+    box-shadow: 0 0 0 1px $color-orange;
+    outline: 0;
+    border-radius: $base-border-radius;
   }
   &:active {
     color: $color-green-dark;
@@ -64,20 +70,21 @@ a:visited,
 // Styleguide 1.3.
 ul,
 ol,
+dl,
 li {
-  margin-left: 2em;
+  margin-left: $gutter;
   padding-left: 0;
-  @include media($mid) {
+  ul,
+  ol,
+  dl {
+    margin-left: $gutter;
+  }
+  @include media($wide) {
     margin-left: 0;
   }
-  ul,
-  ol {
-    margin-left: 2em;
-  }
-  nav &,
-  footer & {
-    margin: 0;
-    list-style-type: none;
+  @include media($huge) {
+    // clear: left;
+    @include shift(1);
   }
 }
 
