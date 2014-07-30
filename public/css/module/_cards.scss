@@ -46,6 +46,13 @@
   list-style: none;
   background: $color-green-lighter;
 
+  .button {
+    // max-width: 100%;
+    width: 100%;
+    padding-left: 0.25 * $gutter;
+    padding-right: 0.25 * $gutter;
+    text-align: center;
+  }
   @include media($mid) {
     margin-left: 0.5 * $gutter;
     margin-right: 0.5 * $gutter;
