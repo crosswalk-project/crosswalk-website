@@ -1,16 +1,14 @@
 # What is Crosswalk and how you can use it with Intel <abbr>XDK</abbr>
 
-Submitted by Greeshma Yellareddy on Mon, 04/07/2014 - 13:14
+[Crosswalk](https://crosswalk-project.org/) is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities.
 
-## What is Crosswalk and why should you use it?
-
-[Crosswalk](https://crosswalk-project.org/) is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities. What this means for Android developers is, you can now deploy your mobile HTML5 application with its own runtime without a dependence on the native `WebView` that is on your customer's device for all Android 4.0+ devices. This means
-
-<div class="pullquote" data-pullquote="features requested by app developers are enabled in Crosswalk and can be used today"></div>
+This means Android developers can now deploy your mobile HTML5 application with its own runtime without a dependence on the native `WebView` that is on your customer's device for all Android 4.0+ devices. This means
 
 - Uniform runtime across all devices and so you don't have to deal with runtime differences on different devices running different versions of the OS. 
 - Control the runtime upgrade cycle
 - Better memory management
+
+## What is Crosswalk and why should you use it?
 
 Using Crosswalk also allows you to use [state-of-the-art W3C* recommended HTML5 APIs](https://crosswalk-project.org/#documentation/apis). Several of the standards-based web features requested by app developers are enabled in Crosswalk and can be used today. Some examples of APIs supported in Crosswalk include:
 
@@ -24,7 +22,11 @@ Using Crosswalk also allows you to use [state-of-the-art W3C* recommended HTML5
 
 ## Using Intel® XDK to build a Crosswalk based Android App
 
-You can use the Intel® XDK to develop, test, debug, profile and build your Crosswalk App. You can either start with creating a new project or play with some of our existing Crosswalk demos like the WebRTC Video, Threejs WebGL or any of the existing Cordova samples to explore using XDK with Crosswalk. There is also a [detailed documentation](http://software.intel.com/en-us/html5/xdkdocs#508153) explaining how to use the different features of the Intel XDK for development of a Crosswalk based Android App.
+You can use the Intel® XDK to develop, test, debug, profile and build your Crosswalk App. You can either start with creating a new project or play with some of our existing Crosswalk demos like the WebRTC Video, Threejs WebGL or any of the existing Cordova samples to explore using XDK with Crosswalk.
+
+<div class="pullquote" data-pullquote="features requested by app developers are enabled in Crosswalk and can be used today"></div>
+
+There is also a [detailed documentation](http://software.intel.com/en-us/html5/xdkdocs#508153) explaining how to use the different features of the Intel XDK for development of a Crosswalk based Android App.
 
 Here are some important points you should keep in mind when using Crosswalk with the Intel XDK:
 
