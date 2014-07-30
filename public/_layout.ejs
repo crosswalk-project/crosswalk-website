@@ -1,4 +1,3 @@
-<% var base = ''; for (i=0;i<current.path.length-1;i++){ base += '../' } %>
 <!DOCTYPE html>
 <html id="top">
   <head>
@@ -14,26 +13,25 @@
         },
         custom: {
           families: ['Clear Sans'],
-          urls: ['<%= base %>css/fonts.css']
+          urls: ['/css/fonts.css']
         },
         timeout: 2000
       };
     </script>
     <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" defer async></script>
-    <link rel="stylesheet" href="<%= base %>css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
     <!-- If the current page is an index,
          leave it alone so we can do custom markup.
          Otherwise, provide the header and nav. -->
     <% if(current.source !== 'index') { %>
-      <!-- <%- partial(current.path[current.path.length - 1] + "/_nest") %> -->
       <div class="container">
         <div class="row">
           <% include _includes/nav.ejs %>
         </div>
         <div class="row">
-          <%- yield %>
+          <%- partial(current.path.reverse()[current.path.length - 1] + "/_nest") %>
         </div>
       </div>
     <% } else { %>
@@ -71,7 +69,7 @@
       </script>
     <% } %>
     <% if(service.prism) { %>
-      <script src="<%= base %>js/prism.js"></script>
+      <script src="/js/prism.js"></script>
     <% } %>
   </body>
 </html>
