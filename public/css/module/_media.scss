@@ -36,8 +36,20 @@
     @include shift(-1);
   }
   .media-image {
+    margin-right: 0;
     @include media($mid) {
+      margin-right: 0;
       @include span-columns(3 of 8);
+    }
+  }
+}
+
+.media--left {
+  .media-image--breakout {
+    margin-right: 0;
+    @include media($mid) {
+      @include span-columns(6 of 8);
+      @include shift(-3);
     }
   }
 }
@@ -45,7 +57,7 @@
 .media--right {
   .media-description {
     @include media($wide) {
-      @include shift(1);
+      @include shift(1 of 8);
     }
   }
 }
