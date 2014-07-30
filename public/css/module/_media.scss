@@ -37,6 +37,7 @@
   }
   .media-image {
     margin-right: 0;
+    @include span-columns(4);
     @include media($mid) {
       margin-right: 0;
       @include span-columns(3 of 8);
@@ -100,6 +101,11 @@
   }
   @include media($wide) {
     // @include span-columns(2 of 6);
+  }
+  a,
+  a:visited,
+  .a-faux {
+    color: $color-text;
   }
 }
 
