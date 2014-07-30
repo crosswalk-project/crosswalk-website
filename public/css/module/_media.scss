@@ -132,7 +132,7 @@
   float: left;
   margin-right: $gutter;
   display: block;
-  // @include span-columns(1);
+  @include span-columns(1 of 4);
 
   img {
     padding: 0;

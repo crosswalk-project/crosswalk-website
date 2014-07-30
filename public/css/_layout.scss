@@ -50,7 +50,4 @@
 // this might be too presumptuous
 .row + .row {
   margin-top: $base-line-height * 2em;
-  @include media($wide) {
-    margin-top: $base-line-height * 4em;
-  }
 }
