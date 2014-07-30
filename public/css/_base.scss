@@ -187,27 +187,32 @@ h6, .h6 {
 h1,
 .h1 {
   font-size: $base-font-size;
-  font-size: modular-scale($base-font-size, 7, $base-ratio);
+  font-size: modular-scale($base-font-size, 5, $base-ratio);
   line-height: 1.1;
-  @include media($mid) {
-    font-size: modular-scale($base-font-size, 9, $base-ratio);
+  @include media($wide) {
+    font-size: modular-scale($base-font-size, 7, $base-ratio);
   }
 }
 
 h2,
 .h2 {
   font-size: $base-font-size;
-  font-size: modular-scale($base-font-size, 5, $base-ratio);
+  font-size: modular-scale($base-font-size, 3, $base-ratio);
+  line-height: 1.1;
   text-align: center;
   @include media($wide) {
+    font-size: modular-scale($base-font-size, 4, $base-ratio);
     text-align: left;
   }
 }
 
 h3,
 .h3 {
-  font-size: $base-font-size;
-  font-size: modular-scale($base-font-size, 3, $base-ratio);
+  font-size: modular-scale($base-font-size, 2, $base-ratio);
+  line-height: 1.1;
+  @include media($wide) {
+    font-size: modular-scale($base-font-size, 2, $base-ratio);
+  }
 }
 
 h4,
@@ -266,4 +271,15 @@ article > p:first-of-type {
 // No styleguide reference.
 address {
   font-style: normal;
+}
+
+// Inputs
+//
+// No styleguide reference.
+textarea,
+#{$all-text-inputs},
+select[multiple=multiple] {
+  &:focus {
+    outline: none;
+  }
 }

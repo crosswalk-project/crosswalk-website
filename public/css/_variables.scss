@@ -1,10 +1,10 @@
 // Base sizes
 //
 // No styleguide reference.
-$base-font-size: 1.025em;
+$base-font-size: 1.125em;
 $base-border-radius: 0.125em;
 $base-ratio: $minor-third;
-$base-line-height: 1.4;
+$base-line-height: 1.45;
 
 
 // Grid Settings
@@ -56,7 +56,7 @@ $massive: new-breakpoint(min-width $massive-width $massive-col);
 // Colour Scheme
 //
 // No styleguide reference.
-$color-text: #333;
+$color-text: #555;
 $color-background: #FAFAFA;
 
 $color-orange: orange;
