@@ -2,13 +2,53 @@
 //
 // Styleguide 3.5.1.
 .media {
+  outline: 1px solid purple;
+}
+
+.media--right {
+  @include span-columns(4);
+  @include media($wide) {
+    @include span-columns(8 of 6);
+    @include shift(-1);
+  }
+  .media-description {
+    // @include span-columns(3 of 4);
+    // @include shift(1);
+    @include media($mid) {
+      @include span-columns(5 of 8);
+    }
+    @include media($wide) {
+      @include shift(1);
+      @include span-columns(4 of 8);
+    }
+  }
+
+  .media-image {
+    // @include span-columns(3);
+    // @include shift(-6);
+    @include media($mid) {
+      @include span-columns(3 of 8);
+    }
+  }
 }
 
 // Media list
 //
 // Styleguide 3.5.2.
 .media-list {
-  margin-left: 0;
+  display: block;
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+  margin-top: $base-line-height * 1em;
+  margin-bottom: $base-line-height * 1em;
+  @include media($mid) {
+    margin-left: 0;
+    margin-right: 0;
+    @include span-columns(4 of 6);
+  }
+  @include media($wide) {
+    // @include span-columns(2 of 6);
+  }
 }
 
 
@@ -19,10 +59,16 @@
   display: block;
   overflow: hidden;
   margin-left: 0;
-
 }
 
 .media-link {
+  display: block;
+  overflow: hidden;
+  padding: $base-line-height*1em $gutter;
+  background-image: none;
+}
+
+.media-heading {
   display: block;
 }
 
@@ -33,9 +79,13 @@
   float: left;
   margin-right: $gutter;
   display: block;
+  outline: 1px solid purple;
+  @include span-columns(1);
 
-}
-
-.media-header {
-  display: block;
+  img {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: auto;
+  }
 }
