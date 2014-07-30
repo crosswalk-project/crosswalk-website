@@ -2,6 +2,12 @@
 //
 // Styleguide 3.7.1.
 .nav {
+  a,
+  a:visited,
+  .a-faux {
+    // text-shadow: none;
+    background-image: none;
+  }
 }
 
 .nav-list {
@@ -31,7 +37,6 @@
 //
 // Styleguide 3.7.2.
 .nav-logo {
-  border: 1px solid red;
   padding-top: modular-scale($base-font-size, 1, $base-ratio);
   padding-bottom: modular-scale($base-font-size, 1, $base-ratio);
 
