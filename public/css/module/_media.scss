@@ -1,38 +1,79 @@
-// Media object
+// Media
+//
+// The media object
+//
+// Markup:
+// <div class="media {$modifiers}">
+//   <div class="media-image">
+//     <img src="http://placehold.it/300" />
+//   </div>
+//   <div class="media-description">
+//     <h2>A lot of content</h2>
+//     <p>Content</p>
+//   </div>
+// </div>
+//
+// .media--left  - Left aligned cutoff
+// .media--right - Right aligned cutoff
 //
 // Styleguide 3.5.1.
 .media {
   outline: 1px solid purple;
+  .media-description {
+    @include media($mid) {
+      @include span-columns(5 of 8);
+    }
+    @include media($wide) {
+      @include span-columns(4 of 8);
+    }
+  }
 }
 
-.media--right {
+.media--right,
+.media--left {
   @include span-columns(4);
   @include media($wide) {
     @include span-columns(8 of 6);
     @include shift(-1);
   }
-  .media-description {
-    // @include span-columns(3 of 4);
-    // @include shift(1);
-    @include media($mid) {
-      @include span-columns(5 of 8);
-    }
-    @include media($wide) {
-      @include shift(1);
-      @include span-columns(4 of 8);
-    }
-  }
-
   .media-image {
-    // @include span-columns(3);
-    // @include shift(-6);
     @include media($mid) {
       @include span-columns(3 of 8);
     }
   }
 }
 
+.media--right {
+  .media-description {
+    @include media($wide) {
+      @include shift(1);
+    }
+  }
+}
+
 // Media list
+//
+// A list of media objects
+//
+// Markup:
+// <div class="media">
+//   <ul class="media-list">
+//     <li class="media-item">
+//       <a class="media-link" href="#">
+//         <img class="media-image" src="http://placehold.it/32" alt="" />
+//         <strong class="media-heading">Apache Cordova compatable</strong>
+//         Crosswalk includes Cordova / PhoneGap APIs
+//       </a>
+//     </li>
+//     <li class="media-item">
+//       <a class="media-link" href="#">
+//         <img class="media-image" src="http://placehold.it/32" alt="" />
+//         <strong class="media-heading">Apache Cordova compatable</strong>
+//         Crosswalk includes Cordova / PhoneGap APIs
+//       </a>
+//     </li>
+//   </ul>
+// </div>
 //
 // Styleguide 3.5.2.
 .media-list {
@@ -51,10 +92,6 @@
   }
 }
 
-
-// Media item
-//
-// Styleguide 3.5.3.
 .media-item {
   display: block;
   overflow: hidden;
@@ -74,13 +111,18 @@
 
 // Media image
 //
-// Styleguide 3.5.5.
+// Markup:
+// <div class="media-image">
+//   <img src="http://placehold.it/500" alt="Your description" />
+// </div>
+//
+// Styleguide 3.5.4.
 .media-image {
   float: left;
   margin-right: $gutter;
   display: block;
   outline: 1px solid purple;
-  @include span-columns(1);
+  // @include span-columns(1);
 
   img {
     padding: 0;
