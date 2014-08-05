@@ -45,6 +45,8 @@ harp server
 # Site and Styleguide now available at http://localhost:9000/styleguide
 ```
 
+![](assets/screenshot-styleguide.png)
+
 What follows below are earlier notes while we planned the project.
 
 ## Introduction
@@ -53,7 +55,7 @@ Intel aims to lead and advocate for HTML5 development by building HTML5 and hybr
 
 Most developers subject their app to whatever web view is included with the device. This means, when loading a hybrid app on older versions of Android, the app and developer are subject to all the bugs and quirks that come with it.
 
-It’s a little like selling a painting without its frame: will it end up in something appropriate? Distracting? Heavy? Will it be mounted on the wall or sit above the mantle? When you are building a hybrid app without a web view, it’s possible you may get to test for some of these issues, but chances are your app will still exist in a less than ideal frame.
+When you are building a hybrid app without a web view, it’s possible you may get to test for some of these issues, but chances are your app will still exist in a less than ideal frame.
 
 ## Opportunity
 
@@ -71,7 +73,9 @@ With this project, we’ll suggest an answer to what the full value of Crosswalk
 
 > How might we make embedding a web view an inherit part of building hybrid apps, with Crosswalk as the obvious or only choice?
 
-Additionally, it appears that Crosswalk is in a similar position as PhoneGap was early on. PhoneGap was actually competing against native platforms, and web developers perception that they needed to switch to writing native code. Similarly, Crosswalk is really competing against a lack of awareness or understanding that bundling a web view is an option, and against the included native web views themselves.
+Additionally, it appears that Crosswalk is in a similar position as PhoneGap was early on. PhoneGap was actually competing against native platforms, and web developers perception that they needed to switch to writing native code.
+
+Similarly, Crosswalk is really competing against a lack of awareness or understanding that bundling a web view is an option, and against the included native web views themselves.
 
 ## Constraints
 
