@@ -1,0 +1,25 @@
+// Hero contianer wraps cards to match mockup
+
+.hero-container {
+  // border: 1px solid blue;
+  .row {
+    // outline: 2px solid red;
+  }
+  .media-list {
+    @include media($wide) {
+      margin-top: -25%;
+      position: absolute;
+
+      // This is just the span-colums mixin made
+      // to work with absolutely-positioning
+      // margin-left: flex-gutter($wide-col * 3);
+      float: right;
+      width: flex-grid(3, $wide-col);
+      // right: 0;
+      // margin-left: 4 * flex-grid(1, $wide-col) + 3 * flex-gutter($wide-col);
+      // &:last-child {
+      //   margin-left: 0;
+      // }
+    }
+  }
+}
