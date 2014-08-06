@@ -34,7 +34,7 @@ As an example, here is a simple Crosswalk manifest which specifies three icons: 
           "sizes": "128x128"
         },
         {
-          "src": "icon_large_hires.png",
+          "src": "icon_large_hd.png",
           "type": "image/png",
           "sizes": "128x128",
           "density": "2"
@@ -45,28 +45,80 @@ As an example, here is a simple Crosswalk manifest which specifies three icons: 
       "orientation": "landscape"
     }
 
-What's the point of matching against "density"?
+The properties for each object in the `icons` array are described below.
 
-???what is density? see screens/screen_measurements.md
+### src
 
-Imagine you have an icon which is 128x128 raw pixels. Now you put it on a device with one physical pixel per raw pixel where a 128x128 pixel icon is required. Each raw pixel of the original image occupies one pixel in the icon on the device's screen.
+The path to the icon file, relative to the manifest.
 
-Now imagine a different device with 2 physical pixels per raw pixel, which also requires a 128x128 icon. If the same image file is used to fill that space on the screen, each raw pixel of the image occupies 4 pixels (2x2) on the device screen. The result is a blurred image, as the same single pixel is used to fill 4 pixels on the screen.
+### type
 
-To resolve this, you could provide a larger 256x256 raw pixel image for screens with pixel density of 2. Then each pixel on the device screen would correspond to one pixel of the raw image again.
+The [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) of the icon.
 
-From http://www.whatwg.org/specs/web-apps/current-work/#attr-link-sizes:
-"An icon that is 50 CSS pixels wide intended for displays with a device pixel density of two device pixels per CSS pixel (2x, 192dpi) would have a width of 100 raw pixels."
+### sizes
 
-So the raw size of the image you are providing as an icon is calculated as:
+The icon sizes for which this image is suitable, as space-separated `<width>x<height>` substrings. For example:
 
-raw image file dimensions = dimensions of required icon in device-independent pixels * device screen pixel density
+*   `"sizes": "128x128"`: this image is suitable for use as a 128x128 pixel icon.
+*   `"sizes": "128x128 256x256"`: this image is suitable for use as a 128x128 or 256x256 pixel icon.
 
-???TODO
+Note that the value for the `sizes` property is *not* the intrinsic size of the image (i.e. the pixel size stored in the image file): it is the set of icon sizes for which this image file is suitable. This means it is possible to have an image file with an intrinsic size smaller or larger than the icon it will serve as.
+
+For example, an image file may be 128x128 pixels in size; but the manifest may state that this image can be used for 128x128 or 256x256 pixel icons. When used as a 256x256 pixel icon, the image file will be scaled up (2x) to fit the required icon size (which may result in some degradation in its appearance).
+
+### density
+
+The `density` property specifies which screen densities an icon should be used for. Coupled with the `sizes` property, it makes it possible to adjust which image file is delivered for a particular icon size at a given screen density.
+
+If you are unfamiliar with the concept of screen density, see the [screen measurements page](#screens/screen_measurements).
+
+The property's value is a float representing the screen density for which the image is suitable, in dots per pixel (dppx). For example:
+
+*   `"density": "2"`: this image is suitable for screens with a density of 2dppx.
+*   `"density": "1.5"`: this image is suitable for screens with a density of 1.5dppx.
+
+If `density` is not set, the default is `1.0`.
+
+To see how this works out in practice, imagine you have an icon which is 128x128 raw pixels. Now you put it on a device with one physical pixel per CSS pixel (1dppx) where a 128x128 pixel icon is required. Each raw pixel of the original image occupies one pixel in the icon on the device's screen.
+
+Now imagine a different device with density of 2dppx, which also requires a 128x128 icon. If the same 128x128 image file is used to fill that space on the screen, each raw pixel of the image occupies 4 pixels (2x2) on the device screen. The result is a blurred image, as the same single pixel is used to fill 4 pixels on the screen.
+
+To resolve this, the [W3C specification](http://www.whatwg.org/specs/web-apps/current-work/#attr-link-sizes) recommends using images with different raw sizes, depending on the desired icon size and screen density. It provides this example:
+
+> "An icon that is 50 CSS pixels wide intended for displays with a device pixel density of two device pixels per CSS pixel (2x, 192dpi) would have a width of 100 raw pixels."
+
+From this, we can derive a formula for working out how big a raw image file should be for a given icon size and density:
+
+> raw image file dimensions = dimensions of required icon in device-independent pixels * device screen pixel density
+
+For our case, we use two image files:
+
+*   `foo.png` with raw size of 128x128 pixels, intended for use as a 128x128 dip icon on screens with density of 1dppx.
+*   `foo_hd.png` with raw size of 256x256 pixels, intended for use as a 128x128 dip icon on screens with density of 2dppx.
+
+And set the `icons` property in the manifest as:
+
+    "icons": [
+      {
+        "src": "foo.png",
+        "type": "image/png",
+        "sizes": "128x128",
+        "density": "1.0"
+      },
+
+      {
+        "src": "foo_hd.png",
+        "type": "image/png",
+        "sizes": "128x128",
+        "density": "2.0"
+      }
+    ]
+
+Note that we don't mention anywhere that `foo_hd.png` is 256x256 raw pixels in size: we just specify that it is suitable for a 128x128 pixel icon on a screen with density of 2dppx.
 
 ## Chromium extensions variant (Crosswalk 1-7)
 
-The field is an object whose keys represent the icon's pixel size (width and height are the same); the value for each key is the path to the appropriate image file, relative to the application root. For example, here's a manifest with icons at three different sizes:
+The `icons` field is an object whose keys represent the icon's pixel size (width and height are the same); the value for each key is the path to the appropriate image file, relative to the manifest. For example, here's a manifest with icons at three different sizes:
 
     {
       "name": "app name",
@@ -91,6 +143,8 @@ As a minimum, the `"128"` key (for a 128x128 pixel image) should be specified. T
 ## Effect on Android packaging
 
 Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](#documentation/getting_started/run_on_android).
+
+### Crosswalk 1-7
 
 If the <a href="#documentation/manifest/icons"><code>icons</code> field</a> contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
 
@@ -130,6 +184,42 @@ would cause the following resources to be added to the Android application packa
     res/drawable/xxhdpi/icon.png (copied from icon128.png)
 
 When the application is installed, Android will use the file appropriate for the target's screen resolution as the application icon in the home screen, application list and other relevant locations.
+
+### Crosswalk 8
+
+Although the `icons` field is more complex, the `make_apk.py` script discards most of the information it contains, instead simplifying its content to match the [format used in Crosswalk 1-7](#Crosswalk-1-7). This makes most sense if illustrated by an example.
+
+Using the example `icons` field setting from above:
+
+    "icons": [
+      {
+        "src": "icon_small.png",
+        "type": "image/png",
+        "sizes": "64x64"
+      },
+      {
+        "src": "icon_large.png",
+        "type": "image/png",
+        "sizes": "128x128"
+      },
+      {
+        "src": "icon_large_hd.png",
+        "type": "image/png",
+        "sizes": "128x128",
+        "density": "2"
+      }
+    ]
+
+`make_apk.py` would parse this to produce this object, equivalent to the one used by Crosswalk 1-7:
+
+    "icons": {
+      "64": "icon_small.png",
+      "128": "icon_large_hd.png"
+    }
+
+The script effectively takes the first part of the `sizes` property and uses this as the key; then sets the value to whatever is in `src`. As can be seen from the above example, this discards the `density` information altogether: the `"128"` key is first set to the value `"icon_large.png"` (as this occurs first in the array); but is then overwritten by `"icon_large_hd.png"`, which occurs later in the icon array.
+
+Once the `icons` object has been parsed and simplified, the [same mapping to Android drawables](#Crosswalk-1-7) is used to write the icon files into the apk file.
 
 ## Acknowledgements
 
