@@ -44,6 +44,8 @@ a.button,
   @include media($mid) {
     text-align: inheirt;
     width: auto;
+    padding-right: modular-scale($base-font-size, 8, $base-ratio);
+    padding-left: modular-scale($base-font-size, 8, $base-ratio)
   }
 
   &:hover,
