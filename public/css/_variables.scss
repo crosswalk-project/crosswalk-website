@@ -11,6 +11,7 @@ $base-line-height: 1.45;
 //
 // No styleguide reference.
 $visual-grid: false;
+// $show_media_queries: true;
 $visual-grid-color: rgba(tomato, 0.5);
 $visual-grid-index: front;
 $column: modular-scale($base-font-size, 10, $base-ratio);
