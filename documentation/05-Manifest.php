@@ -662,8 +662,6 @@
   "description": "a sample description",
   "version": "1.0.0",
   "start_url": "index.html",
-  "display": "fullscreen",
-  "orientation": "landscape",
   "csp": "script-src 'self'; object-src 'self'",
   "xwalk_hosts": [
     "http://*"
