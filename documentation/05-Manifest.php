@@ -603,9 +603,24 @@
   "version": "1.0.0",
   "start_url": "index.html",
   "csp": "script-src 'self'; object-src 'self'",
-  "icons": {
-    "128": "icon128.png"
-  },
+  "icons": [
+    {
+      "src": "icon_small.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "icon_large.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "icon_large_hd.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "density": "2"
+    }
+  ],
   "display": "fullscreen",
   "orientation": "landscape",
   "xwalk_permissions": [
