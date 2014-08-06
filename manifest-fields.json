@@ -101,6 +101,12 @@
     "name": "name",
     "tizen": {
       "versions": "7+"
+    },
+    "android": {
+      "versions": "8+"
+    },
+    "webview": {
+      "versions": "8+"
     }
   },
   "name.extension": {
@@ -109,10 +115,10 @@
       "versions": "1-6"
     },
     "android": {
-      "versions": "2+"
+      "versions": "2-7"
     },
     "webview": {
-      "versions": "6+"
+      "versions": "6-7"
     }
   },
   "orientation": {
@@ -137,6 +143,9 @@
       "versions": "7+"
     },
     "android": {
+      "versions": "8+"
+    },
+    "webview": {
       "versions": "8+"
     }
   },
