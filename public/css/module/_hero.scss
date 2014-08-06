@@ -4,30 +4,60 @@
 //
 // Markup:
 // <header class="hero {$modifiers}">
-//   <div class="hero-container container">
-//     <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
-//     <p>Crosswalk is a powerful <code>WebView</code> for building hybrid mobile applications on multiple versions of Android.</p>
-//     <a href="#" class="button">Get started</a>
+//   <div class="container">
+//     <div class="row hero-content">
+//       <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
+//       <p>Crosswalk is a powerful <code>WebView</code> for building hybrid mobile applications on multiple versions of Android.</p>
+//       <a href="#" class="button">Get started</a>
+//     </div>
 //   </div>
 // </header>
 //
-// .knockout - Inverted hero section
+// .knockout  - Inverted hero section
+// .hero--bg1 - Coffee and game background
 //
 // Styleguide 3.4.1.
 .hero {
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: contain;
+  background-size: fill;
+}
+
+.hero--bg1,
+.knockout.hero--bg1 {
   background-image: url("/images/crosswalk-landing-banner-1.jpg");
+  background-color: #000;
+  background-position: 66% top;
+  @include media($wide) {
+    background-position: center top;
+  }
 }
 
 // Container
 //
 // The inner wrapper for a hero section.
-// Right now this isn’t being used for anything.
+// Allows the content to be moved in relation to the
+// background image.
 //
 // No styleguide reference.
-.hero-container {
+.hero-row {
+  margin-top: 0;
+  margin-bottom: modular-scale($base-font-size, 5, $base-ratio);
+  @include media($mid) {
+    @include shift(0);
+    @include span-columns(4 of 6);
+  }
+  @include media($wide) {
+    @include shift(1 of 8);
+    @include span-columns(5 of 8);
+  }
+  @include media($huge) {
+    @include shift(1);
+    @include span-columns(4 of 8);
+  }
+  .button {
+    margin-top: modular-scale($base-font-size, 2, $base-ratio);
+  }
 }
 
 // Heading
@@ -37,11 +67,17 @@
 // No styleguide reference.
 .hero-heading {
   text-transform: lowercase;
-
-  // Could be moved to _layout
-  // @include shift(-1);
-  // @include span-columns(4);
-  // outline: 1px solid red;
+  margin-top: -2em;
+  display: block;
+  width: 100%;
+  @include span-columns(3);
+  @include media($narrow) {
+    @include span-columns(3);
+  }
+  @include media($mid) {
+    margin-top: 0;
+    font-size: modular-scale($base-font-size, 7, $base-ratio);
+  }
 }
 
 // Hero seperator

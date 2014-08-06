@@ -47,7 +47,7 @@ a:visited,
   background-size: 2px 2px;
   text-shadow: 1px 1px 0 #FFF, -1px 1px 0 #FFF;
   color: $color-green;
-  @include transition(opacity 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out);
+  @include transition(opacity 0.125s ease-in-out, color 0.125s ease-in-out, background-color 0.125s ease-in-out, border-color 0.125s ease-in-out);
   &:hover {
     color: darken($color-green-light, 15%);
   }
@@ -186,7 +186,6 @@ h6, .h6 {
 
 h1,
 .h1 {
-  font-size: $base-font-size;
   font-size: modular-scale($base-font-size, 5, $base-ratio);
   line-height: 1.1;
   @include media($wide) {

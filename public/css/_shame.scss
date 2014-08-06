@@ -1,19 +1,52 @@
-// Hero contianer wraps cards to match mockup
+// Hero wraps cards to match mockup
 
-.hero-container {
-  // border: 1px solid blue;
+
+
+.hero {
   .media-list {
-      z-index: 1;
-      position: relative;
-      @include media($mid) {
-        position: absolute;
-        @include span-columns(4 of 6);
-        @include shift(2 of 6);
-      }
-      @include media($wide) {
-        position: absolute;
-        @include span-columns(3 of 6);
-        @include shift(3 of 6);
-      }
+    z-index: 1;
+    position: relative;
+  }
+  @include media($mid) {
+    .media-list {
+      font-size: modular-scale($base-font-size, -1, $base-ratio);
+      @include span-columns(6 of 6);
+      @include shift(0);
+    }
+    .media-item {
+      @include span-columns(3 of 6);
+      @include omega(2n);
+    }
+  }
+  @include media($wide) {
+    .media-list {
+      @include span-columns(8 of 6);
+      @include shift(-1);
+    }
+  }
+  @include media($huge) {
+    .media-list {
+      position: absolute;
+      bottom: 0;
+      margin-bottom: -33%;
+
+      @include span-columns(3 of 6);
+      @include shift(4 of 6);
+      max-width: modular-scale($base-font-size, 17, $base-ratio);
+    }
+    .media-item {
+      @include span-columns(6 of 6);
+      @include omega(n);
+    }
+  }
+}
+
+
+// Only used in index.ejs right now
+// Need a better way to do custom width after
+// the media-list
+.container-intro {
+  @include media($huge) {
+    @include span-columns(2 of 3);
   }
 }

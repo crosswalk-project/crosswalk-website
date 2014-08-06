@@ -50,6 +50,8 @@
 
 // Row margins,
 // this might be too presumptuous
-.row + .row {
-  margin-top: $base-line-height * 2em;
+main {
+  .row + .row {
+    margin-top: $base-line-height * 2em;
+  }
 }

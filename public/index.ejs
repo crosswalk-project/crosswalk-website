@@ -1,10 +1,10 @@
-<header class="hero knockout">
-  <div class="hero-container container">
+<header class="hero hero--bg1 knockout">
+  <div class="container">
     <div class="row">
       <% include _includes/nav.ejs %>
-    </div>
-    <div class="row">
       <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
+    </div>
+    <div class="row hero-row">
       <p>Crosswalk is a replacement for Android’s default <code>WebView</code>, creating a predictable web runtime for developing powerful, hybrid apps.</p>
       <p>Build native and Cordova / PhoneGap apps with bleeding-edge HTML5 features consistently: Audio API, WebGL, web fonts, <a href="#">and more</a>.</p>
       <a href="#" class="button">Get started</a>
@@ -44,23 +44,10 @@
       </aside>
     </div>
   </div>
-  <div class="hero-seperator">
-    <div class="container">
-      <div class="row">
-        <ul>
-          <li>
-            <a href="https://twitter.com/xwalk_project">@xwalk_project on Twitter</a>
-          </li>
-          <li>
-            <a href="https://github.com/crosswalk-project">Crosswalk on GitHub</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </header>
 <main role="main" class="container">
-  <div class="row cards">
+  <div class="row">
+    <h1 class="container-intro">Make the most of your <code>WebView</code></h1>
     <ul class="cards-list">
       <li class="cards-item">
         <img src="/images/crosswalk-landing-withWithout-1.png" alt="The unpredictability of Android’s default WebView" />
@@ -123,6 +110,7 @@
           <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
           <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
           <a class="button" href="#">Start with Cordova</a>
+
         </li>
         <li class="cards-item cards-item--filled">
           <img src="/images/icons/logo-cordova.svg" alt="Cordova logo" class="cards-icon" />

@@ -135,11 +135,10 @@
 //
 // Styleguide 3.5.4.
 .media-image {
-  float: left;
-  margin-right: $gutter;
-  display: block;
   @include span-columns(1 of 4);
-
+  @include media($wide) {
+    @include span-columns(1 of 5);
+  }
   img {
     padding: 0;
     margin: 0;
