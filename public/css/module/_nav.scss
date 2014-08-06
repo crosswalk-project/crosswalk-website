@@ -5,8 +5,11 @@
   a,
   a:visited,
   .a-faux {
-    // text-shadow: none;
     background-image: none;
+  }
+  @include media($wide) {
+    // Break out of .row at wide size
+    @include span-columns(7 of 6);
   }
 }
 
@@ -14,25 +17,44 @@
   list-style-type: none;
   margin-left: 0;
   display: block;
-
-  // Possibly move to _layout.scss
-  // @include span-columns(2);
+  margin-top: -5em;
+  font-size: modular-scale($base-font-size, -1, $base-ratio);
+  @include span-columns(2);
+  @include shift(2);
   @include media($mid) {
+    margin-top: 0;
+    font-size: modular-scale($base-font-size, 0, $base-ratio);
     @include span-columns(2);
+    text-align: right;
   }
   @include media($wide) {
-    @include span-columns(5);
+    @include shift(0);
+    @include span-columns(5 of 7);
   }
 }
 
 .nav-item {
   display: block;
+  margin-left: 0;
+  @include media($mid) {
+    display: inline-block;
+  }
 
 }
 
 .nav-link {
   display: block;
-
+  padding: modular-scale($base-font-size, -1, $base-ratio) 0;
+  @include media($wide) {
+    display: inline-block;
+    float: left;
+    font-size: modular-scale($base-font-size, -1, $base-ratio);
+    padding: modular-scale($base-font-size, 2, $base-ratio) modular-scale($base-font-size, -4, $base-ratio);
+  }
+  @include media($huge) {
+    font-size: modular-scale($base-font-size, 0, $base-ratio);
+    padding: modular-scale($base-font-size, 0, $base-ratio) modular-scale($base-font-size, 0, $base-ratio);
+  }
 }
 
 // Nav logo
@@ -41,9 +63,6 @@
 .nav-logo {
   padding-top: modular-scale($base-font-size, 1, $base-ratio);
   padding-bottom: modular-scale($base-font-size, 1, $base-ratio);
-
-  // Possibly to move to _layout.scss
-  // This is not ideal in the context of .row vs .row--narrow
   @include span-columns(4);
   .logo-image {
     @include span-columns(2);
@@ -55,9 +74,7 @@
     }
   }
   @include media($wide) {
-    @include span-columns(3);
-  }
-  @include media($huge) {
-    @include span-columns(2);
+    // .nav is 7 columns when wide
+    @include span-columns(2 of 7);
   }
 }

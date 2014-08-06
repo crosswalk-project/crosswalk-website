@@ -28,6 +28,8 @@
 // Styleguide 2.2.
 .row,
 .row--lrt {
+  position: relative;
+  display: block;
   @include row();
   @include media($wide) {
     @include row();
