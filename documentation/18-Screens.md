@@ -12,6 +12,14 @@ A number of solutions for such issues have surfaced over the last few years, eit
 
 By contrast, one major benefit of Crosswalk is that many of these evolving standards are implemented and available for use *right now*. In this article, I'll describe how to resolve some of the issues listed above using Crosswalk by optimising a simple side-scrolling HTML5 game for mobile screens.
 
+## Aside: measuring the screen in HTML5 applications
+
+One major complexity when working with HTML5 and CSS is figuring out how CSS pixels and physical pixels on the screen relate to each other. For the purposes of this article, I've glossed over these issues, as they can mostly be ignored if you aren't too concerned about how consistent a game appearson different devices. However, there are other situations where it is important to understand these nuances; for example, if you want your game to look identical on different devices, you will have to pay attention to screen densities.
+
+To help in these situations, the [screen measurements page](#documentation/screens/screen_measurements) explains the terminology, including units and measurements, which are relevant when dealing with heterogenous screens in detail.
+
+You may also find it useful to refer to [this article](http://www.html5rocks.com/en/tutorials/canvas/hidpi/) about working with the `<canvas>` element on HiDPI (aka retina) displays.
+
 ## The game
 
 The game used in this article is a side-scrolling dodge game set in space. The code is [available on github](https://github.com/crosswalk-project/crosswalk-samples).
