@@ -27,6 +27,15 @@
 
 }
 
+.cards--filled {
+  .cards-item,
+  .card {
+    padding: $base-line-height * 1em;
+    background: $color-green-lighter;
+
+  }
+}
+
 .cards-list {
   padding: 0;
   margin: 0;
@@ -63,12 +72,7 @@
   }
 }
 
-.cards--filled {
-  .cards-item {
-    padding: $base-line-height * 1em;
-    background: $color-green-lighter;
-
-  }
+.card {
 }
 
 // Card icon
