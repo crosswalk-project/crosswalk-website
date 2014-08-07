@@ -1,4 +1,120 @@
-form,
-input {
-  outline: 1px solid red;
+input,
+label,
+select {
+  display: block;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+}
+
+// Label
+//
+// Markup:
+//   <label for="form-androidVersions">Android Version</label>
+//   <input id="form-androidVersions" name="form-androidVersions" type="text" placeholder="Ex. 4.3" />
+//
+// Styleguide 3.11.1.
+label {
+  font-weight: 600;
+  margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+
+  &[required=required]:after {
+    content: "*";
+  }
+}
+
+// Inputs
+//
+// Overall base styling for inputs and textareas
+//
+// No styleguide reference.
+textarea,
+#{$all-text-inputs},
+select[multiple=multiple] {
+  @include box-sizing(border-box);
+  @include transition(border-color);
+  color: $color-text;
+  background-color: #FFF;
+  border-radius: $base-border-radius;
+  border: 1px solid $color-gray-dark;
+  box-shadow: inset 0 0 $base-border-radius rgba($color-text, 0.5);
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  padding: modular-scale($base-font-size, 0, $base-ratio);
+  width: 100%;
+
+  &:hover {
+    border-color: $color-gray-darker;
+  }
+
+  &:focus {
+    border-color: $color-gray-darker;
+    box-shadow: inset 0 0 $base-border-radius rgba($color-text, 0.75);
+    outline: none;
+  }
+}
+
+// Textarea
+//
+// Markup:
+// <textarea>Tell us about your experience with Crosswalk.</textarea>
+//
+// Styleguide 3.11.3.
+textarea {
+  resize: vertical;
+}
+
+// Search Input
+//
+// Markup:
+// <input type="search" placeholder="Search, ex. Cordova…" />
+//
+// Styleguide 3.11.4.
+input[type="search"] {
+  @include appearance(none);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+  margin-right: $gutter;
+}
+
+input[type="file"] {
+  padding-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  width: 100%;
+}
+
+// Select
+//
+// Markup:
+// <select>
+// <option>1</option>
+// <option>2</option>
+// <option>3</option>
+// </select>
+//
+// Styleguide 3.11.1.
+select {
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  max-width: 100%;
+  width: auto;
+}
+
+// Filedset
+//
+// Markup:
+// <form>
+// <fieldset>
+//   <!-- Example -->
+//   <legend>Versions</legend>
+//   <label for="form-androidVersions">Android Version</label>
+//   <input id="form-androidVersions" name="form-androidVersions" type="text" placeholder="Ex. 4.3" />
+// </fieldset>
+// </form>
+//
+// Styleguide 3.11.1.
+fieldset {
+  margin: 0 0 modular-scale($base-font-size, 2, $base-ratio) 0;
+  padding: modular-scale($base-font-size, 2, $base-ratio)
 }
