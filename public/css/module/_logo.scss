@@ -1,7 +1,17 @@
 .logo {
   display: block;
+  background-image: none;
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
 }
 
 .logo-image {
+  width: 100%;
+}
+
+.logo-list {
+
+}
+
+.logs-item {
 
 }

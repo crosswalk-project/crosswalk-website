@@ -72,12 +72,18 @@ ul,
 ol,
 dl,
 li {
-  margin-left: 0;
-  padding-left: 0;
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
 
 article {
+  ul,
+  ol,
+  dl {
+    margin-before: modular-scale($base-font-size, 0, $base-ratio);
+    margin-after: modular-scale($base-font-size, 0, $base-ratio);
+  }
   ul,
   ol,
   dl,

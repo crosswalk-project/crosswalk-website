@@ -33,7 +33,7 @@ select[multiple=multiple] {
   @include box-sizing(border-box);
   @include transition(border-color);
   color: $color-text;
-  background-color: #FFF;
+  background-color: $color-gray-lighter;
   border-radius: $base-border-radius;
   border: 1px solid $color-gray-dark;
   box-shadow: inset 0 0 $base-border-radius rgba($color-text, 0.5);

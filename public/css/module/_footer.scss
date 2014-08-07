@@ -1,7 +1,7 @@
 .footer {
   padding-top: modular-scale($base-font-size, 12, $base-ratio);
   padding-bottom: modular-scale($base-font-size, 5, $base-ratio);
-
-  
-
+  .row {
+    margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+  }
 }
