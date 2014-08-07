@@ -5,16 +5,18 @@
 // Markup:
 // <header class="hero {$modifiers}">
 //   <div class="container">
-//     <div class="row hero-content">
+//     <div class="row">
 //       <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
+//     </div>
+//     <div class="row hero-row">
 //       <p>Crosswalk is a powerful <code>WebView</code> for building hybrid mobile applications on multiple versions of Android.</p>
 //       <a href="#" class="button">Get started</a>
 //     </div>
 //   </div>
 // </header>
 //
-// .knockout  - Inverted hero section
-// .hero--bg1 - Coffee and game background
+// .knockout           - Inverted hero section
+// .hero--bg1.knockout - Coffee and game background
 //
 // Styleguide 3.4.1.
 .hero {
@@ -58,9 +60,6 @@
     @include shift(1);
     @include span-columns(4 of 8);
   }
-  .button {
-    margin-top: modular-scale($base-font-size, 2, $base-ratio);
-  }
 }
 
 // Heading
@@ -94,7 +93,32 @@
 //
 // Markup:
 // <div class="hero-seperator">
-//   <div class="hero-container container">Additional information</div>
+//   <div class="container">
+//     <div class="row">
+//       <aside class="media">
+//         <ul class="media-list">
+//           <li class="media-item">
+//             <a class="media-link" href="#">
+//               <img class="media-image" src="/images/icons/logo-cordova.svg" alt="Apache Cordova logo" />
+//               <p class="media-description">
+//                 <strong class="media-heading">Apache Cordova compatable</strong>
+//                 Crosswalk includes Cordova / PhoneGap APIs
+//               </p>
+//             </a>
+//           </li>
+//           <li class="media-item">
+//             <a class="media-link" href="#">
+//               <img class="media-image" src="/images/icons/logo-cordova.svg" alt="Apache Cordova logo" />
+//               <p class="media-description">
+//                 <strong class="media-heading">Apache Cordova compatable</strong>
+//                 Crosswalk includes Cordova / PhoneGap APIs
+//               </p>
+//             </a>
+//           </li>
+//         </ul>
+//       </aside>
+//     </div>
+//   </div>
 // </div>
 //
 // Styleguide 3.4.3.

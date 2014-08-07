@@ -3,7 +3,7 @@
 // Cards for housing highlighted blocks of content.
 //
 // Markup:
-// <div class="cards">
+// <div class="cards {$modifiers}">
 //   <ul class="cards-list">
 //     <li class="cards-item">
 //       <h3 class="cards-heading">Crosswalk for Tizen</h3>
@@ -19,6 +19,8 @@
 //     </li>
 //   </ul>
 // </div>
+//
+// .cards--filled - Card item with background
 //
 // Styleguide 3.3.1.
 .cards {
@@ -56,11 +58,17 @@
     margin-right: 0.5 * $gutter;
     @include flex(1);
   }
+  @include media($wide) {
+    text-align: center;
+  }
 }
 
-.cards-item--filled {
-  padding: $base-line-height * 1em;
-  background: $color-green-lighter;
+.cards--filled {
+  .cards-item {
+    padding: $base-line-height * 1em;
+    background: $color-green-lighter;
+
+  }
 }
 
 // Card icon
@@ -68,7 +76,7 @@
 // An optional icon above a card
 //
 // Markup:
-// <div class="cards">
+// <div class="cards {$modifiers}">
 //   <ul class="cards-list">
 //     <li class="cards-item">
 //       <img class="cards-icon" src="http://placehold.it/100" alt="" />
@@ -88,13 +96,18 @@
 //   </ul>
 // </div>
 //
+// .cards--filled - Card item with background
+//
 // Styleguide 3.3.2.
 .cards-icon {
   display: block;
   margin: 0 auto;
   border-radius: 50%;
   border: 2px solid $color-background;
-  max-width: 50%;
+  max-width: modular-scale($base-font-size, 10, $base-ratio);
+  @include media($mid) {
+    padding: modular-scale($base-font-size, 0, $base-ratio);
+  }
 }
 
 .cards-heading {

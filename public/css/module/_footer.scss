@@ -1,0 +1,19 @@
+.footer {
+  outline: 1px solid red;
+
+
+  @include media($wide) {
+    small {
+      @include span-columns(3 of 6);
+    }
+    .footer-logos {
+      @include span-columns(3 of 6);
+      list-style-type: none;
+      display: block;
+      .footer-logo {
+        @include span-columns(3 of 6);
+      }
+    }
+  }
+
+}

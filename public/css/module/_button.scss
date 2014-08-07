@@ -69,3 +69,32 @@ a.button--small {
 a.button--large {
   font-size: modular-scale($base-font-size, 2, $base-ratio);
 }
+
+// Button Follower
+//
+// A secondary option to a standard button.
+//
+// Markup:
+// <a href="#" class="button">Get started</a>
+// <a href="#" class="button-follower">Or, join later</a>
+//
+// Styleguide 3.1.2.
+.button-follower {
+  font-size: modular-scale($base-font-size, 0, $base-ratio);
+  font-weight: 400;
+  line-height: $base-line-height;
+  text-transform: lowercase;
+
+  padding-top: modular-scale($base-font-size, 0, $base-ratio);
+  padding-bottom: modular-scale($base-font-size, 0, $base-ratio);
+  padding-left: modular-scale($base-font-size, 2, $base-ratio);
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background: none;
+
+  @include media($mid) {
+    text-align: left;
+    width: auto;
+  }
+}
