@@ -3,7 +3,7 @@ label,
 select {
   display: block;
   font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-size: $base-font-size;  @include transition(opacity 0.125s ease-in-out, color 0.125s ease-in-out, background-color 0.125s ease-in-out, border-color 0.125s ease-in-out);
 }
 
 // Label
@@ -117,4 +117,9 @@ select {
 fieldset {
   margin: 0 0 modular-scale($base-font-size, 2, $base-ratio) 0;
   padding: modular-scale($base-font-size, 2, $base-ratio)
+}
+
+.fieldset-buttonGroup {
+  padding: 0;
+  margin: 0;
 }

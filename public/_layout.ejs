@@ -66,9 +66,11 @@
             </a>
           </div>
           <div class="grid-2-of-3">
-            <form>
-              <input type="email" placeholder="Add your email, learn Android development" />
-              <input type="submit" value="join" />
+            <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
             </form>
           </div>
         </div>
@@ -83,14 +85,13 @@
           <div class="grid-1-of-3">
             <% for (slug in public.blog._data) { %>
               <% var article = public.blog._data[slug] %>
-
-                <h3 class="article-title"><a href="<%= slug %>"><%- article.title %></a></h3>
+                <h5 class="article-title"><a href="<%= slug %>"><%- article.title %></a></h5>
                 <span class="article-meta"><time datetime="<%- new Date(article.date).toUTCString() %>"><%- article.date %></time></span>
-
             <% } %>
           </div>
           <div class="grid-1-of-3">
             <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            <em><a href="#">@xwalk_project</a> on Twitter</a></em>
           </div>
         </div>
         <div class="row">
@@ -101,34 +102,34 @@
             </small>
           </div>
           <div class="grid-1-of-2">
-            <ul class="footer-logos">
+            <ul>
               <li>
-                <a href="#" class="footer-logo">
+                <a href="#" class="grid-1-of-3">
                   <img src="http://placehold.it/300x100">
                 </a>
               </li>
               <li>
-                <a href="#" class="footer-logo">
+                <a href="#" class="grid-1-of-3">
                   <img src="http://placehold.it/300x100">
                 </a>
               </li>
               <li>
-                <a href="#" class="footer-logo">
+                <a href="#" class="grid-1-of-3">
                   <img src="http://placehold.it/300x100">
                 </a>
               </li>
               <li>
-                <a href="#" class="footer-logo">
+                <a href="#" class="grid-1-of-3">
                   <img src="http://placehold.it/300x100">
                 </a>
               </li>
               <li>
-                <a href="#" class="footer-logo">
+                <a href="#" class="grid-1-of-3">
                   <img src="http://placehold.it/300x100">
                 </a>
               </li>
               <li>
-                <a href="#" class="footer-logo">
+                <a href="#" class="grid-1-of-3">
                   <img src="http://placehold.it/300x100">
                 </a>
               </li>
