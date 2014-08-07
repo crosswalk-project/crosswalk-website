@@ -16,6 +16,43 @@
   }
 }
 
+.features--left {
+
+  .features-pointer {
+    width: 100%;
+    &:after {
+      right: auto;
+      left: -35px;
+    }
+  }
+  @include media($mid) {
+    outline: 2px solid purple;
+    .features-wrap {
+      @include span-columns(9);
+      @include shift(-3);
+    }
+    .features-media{
+      @include span-columns(3 of 6);
+    }
+    .features-list {
+      @include span-columns(3 of 6);
+    }
+  }
+  @include media($wide) {
+    .features-wrap {
+      @include span-columns(8);
+      @include shift(0);
+      overflow: visible;
+    }
+    .features-media {
+      @include span-columns(6 of 8);
+      @include shift(-2);
+    }
+    .features-list {
+      @include span-columns(4 of 8);
+      @include shift(0);
+    }
+  }
 }
 
 .features-wrap {
@@ -95,29 +132,6 @@
       top: -16px;
       background: $color-orange;
       border-radius: 50%;
-
-    }
-  }
-}
-
-.features-left {
-  .features-item {
-    em {
-      &:after {
-        right: auto;
-        left: 0;
-      }
-    }
-  }
-}
-
-.features-game {
-  .features-item {
-    &:last-of-type {
-      margin-bottom: 2em;
-    }
-    em {
-      width: calc(100% + 5em);
     }
   }
 }
