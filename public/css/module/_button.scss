@@ -10,6 +10,7 @@
 // :active - darken the button once it’s been pressed
 // .button--small - A smaller button
 // .button--large - A larger button
+// .button--secondary - A less prominent button
 //
 // Styleguide 3.1.1.
 button,
@@ -57,6 +58,17 @@ a.button,
   &:active {
     background: $color-orange-darker;
     color: $color-background;
+  }
+  &.button--secondary {
+    background-color: $color-green;
+    text-shadow: 0 1px 0 $color-green-dark;
+    &:hover,
+    &:focus {
+      background-color: $color-green-dark;
+    }
+    &:active {
+      background-color: $color-green-darker;
+    }
   }
 }
 
