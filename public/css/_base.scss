@@ -72,19 +72,30 @@ ul,
 ol,
 dl,
 li {
-  margin-left: $gutter;
+  margin-left: 0;
   padding-left: 0;
   ul,
   ol,
-  dl {
+  dl,
+  li {
     margin-left: $gutter;
   }
-  @include media($wide) {
-    margin-left: 0;
-  }
-  @include media($huge) {
-    // clear: left;
-    @include shift(1);
+}
+
+article {
+  ul,
+  ol,
+  dl,
+  li {
+    margin-left: $gutter;
+    padding-left: 0;
+    @include media($wide) {
+      margin-left: 0;
+    }
+    @include media($huge) {
+      // clear: left;
+      @include shift(1);
+    }
   }
 }
 
