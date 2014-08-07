@@ -75,7 +75,7 @@ a.button--large {
 // A secondary option to a standard button.
 //
 // Markup:
-// <a href="#" class="button-follower">Or, join later</a>
+// <a href="#" class="button-follower">You can always join later</a>
 //
 // Styleguide 3.1.2.
 .button-follower {
@@ -86,7 +86,6 @@ a.button--large {
 
   padding-top: modular-scale($base-font-size, 0, $base-ratio);
   padding-bottom: modular-scale($base-font-size, 0, $base-ratio);
-  padding-left: modular-scale($base-font-size, 2, $base-ratio);
   display: inline-block;
   width: 100%;
   text-align: center;
@@ -111,5 +110,7 @@ a.button--large {
 //
 // Styleguide 3.1.3.
 .button-group {
-  
+  .button-follower {
+    padding-left: modular-scale($base-font-size, 2, $base-ratio);
+  }
 }
