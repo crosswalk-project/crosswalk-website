@@ -1,6 +1,10 @@
 <nav class="nav">
   <a href="/" class="nav-logo logo">
-    <img src="/images/crosswalk-logo-white.svg" class="logo-image">
+    <% if(current.path.length === 1 && current.source === 'index') { %>
+      <img src="/images/crosswalk-logo-white.svg" class="logo-image">
+    <% } else { %>
+      <img src="/images/crosswalk-logo-black.svg" class="logo-image">
+    <% } %>
   </a>
   <ul class="nav-list">
     <li class="nav-item">
