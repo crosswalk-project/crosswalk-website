@@ -75,7 +75,6 @@ a.button--large {
 // A secondary option to a standard button.
 //
 // Markup:
-// <a href="#" class="button">Get started</a>
 // <a href="#" class="button-follower">Or, join later</a>
 //
 // Styleguide 3.1.2.
@@ -97,4 +96,20 @@ a.button--large {
     text-align: left;
     width: auto;
   }
+}
+
+
+// Button Group
+//
+// Multiple buttons grouped together
+//
+// Markup:
+// <div class="button-group">
+//   <a href="#" class="button">Get started</a>
+//   <a href="#" class="button-follower">Or, join later</a>
+// </div>
+//
+// Styleguide 3.1.3.
+.button-group {
+  
 }

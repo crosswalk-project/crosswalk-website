@@ -25,6 +25,9 @@
   background-size: fill;
   @include media($wide) {
     margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
+    .button-group {
+      margin-top: modular-scale($base-font-size, 4, $base-ratio);
+    }
   }
 }
 
