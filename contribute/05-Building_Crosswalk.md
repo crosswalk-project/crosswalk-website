@@ -150,14 +150,23 @@ Chrome's process, so make sure you are
     following command should install the dependencies:
 
     ```
-    sudo yum install git svn gcc-c++ nss-devel cups-devel \
-    gtk2-devel pulseaudio-libs-devel dbus-devel gconf-devel \
-    gconf GConf2-devel libgnome-keyring-devel libgcrypt-devel \
-    libpciaccess-devel pciutils-devel libgudev1-devel \
-    systemd-devel gperf bison libcap-devel expat-devel \
-    alsa-lib-devel libXtst-devel lighttpd python-pexpect \
-    xorg-x11-server-Xvfb xorg-x11-utils zlib.i686 \
-    libstdc++.i686 glibc-devel.i686 libXScrnSaver-devel
+    sudo yum install alsa-lib-devel alsa-lib-devel.i686 bison \
+    cairo-devel.i686 cups-devel cups-devel.i686 dbus-devel \
+    dbus-devel.i686 elfutils-libelf-devel.i686 elfutils-libelf-devel.x86_64 \
+    expat-devel expat-devel.i686 fontconfig-devel.i686 freetype-devel.i686 \
+    gcc-c++ gconf GConf2-devel GConf2-devel.i686 gconf-devel git \
+    glib2-devel.i686 glibc-devel.i686 gperf gtk2-devel harfbuzz-devel.i686 \
+    krb5-devel.i686 libcap-devel libcap-devel.i686 libcom_err-devel.i686 \
+    libgcrypt-devel libgcrypt-devel.i686 libgnome-keyring-devel \
+    libgpg-error-devel.i686 libgudev1-devel libpciaccess-devel \
+    libstdc++.i686 libX11-devel.i686  libXcomposite-devel.i686 \
+    libXcursor-devel.i686 libXdamage-devel.i686 libXext-devel.i686 \
+    libXfixes-devel.i686 libXi-devel.i686 libXrandr-devel.i686 \
+    libXrender-devel.i686 libXScrnSaver-devel libXtst-devel \
+    libXtst-devel.i686 lighttpd nss-devel nss.i686 pango-devel.i686 \
+    pciutils-devel pciutils-devel.i686 pulseaudio-libs-devel python-pexpect \
+    svn systemd-devel systemd-devel.i686 xorg-x11-server-Xvfb \
+    xorg-x11-utils zlib-devel.i686 zlib.i686
     ```
 
 2.  Install the Oracle JDK. It is
