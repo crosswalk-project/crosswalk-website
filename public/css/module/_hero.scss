@@ -81,6 +81,11 @@
     margin-top: 0;
     font-size: modular-scale($base-font-size, 7, $base-ratio);
   }
+  @include media($huge-width * 1.5) {
+    @include shift(-1 of 6);
+    font-size: modular-scale($base-font-size, 9, $base-ratio);
+    @include span-columns(6 of 6);
+  }
 }
 
 // Hero seperator
@@ -96,6 +101,7 @@
 .hero-seperator {
   background: $color-green-lighter;
   color: $color-text;
+  text-shadow: 0 1px 0 rgba($color-background, 0.5);
   ul, ol, li {
     list-style-type: none;
     padding: 0;
