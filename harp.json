@@ -1,8 +1,20 @@
 {
   "globals": {
+    "title":       "Crosswalk",
+    "description": "Crosswalk is a replacement for Android’s default WebView. Build powerful, reliable apps with new APIs and a predictable runtime.",
+    "tagline":     "Build hybrid apps from the future.",
+    "name":        "Crosswalk",
+    "email":       "",
+    "url":         "http://crosswalk-project.org",
     "service": {
       "analytics": "",
+      "disqus": false,
       "prism": false
+    },
+    "social": {
+      "twitter": "xwalk_project",
+      "github": "crosswalk_project",
+      "irc": "crosswalk"
     }
   }
 }
