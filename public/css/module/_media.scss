@@ -113,13 +113,20 @@
   display: block;
   overflow: hidden;
   margin-left: 0;
+  .media-description {
+    @include span-columns(2 of 3);
+  }
 }
 
 .media-link {
   display: block;
   overflow: hidden;
-  padding: $base-line-height*1em $gutter;
+  padding: modular-scale($base-font-size, 0, $base-ratio) 0;
   background-image: none;
+  @include media($wide) {
+    padding-top: modular-scale($base-font-size, 2, $base-ratio);
+    padding-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  }
 }
 
 .media-heading {
@@ -136,9 +143,6 @@
 // Styleguide 3.5.4.
 .media-image {
   @include span-columns(1 of 4);
-  @include media($wide) {
-    @include span-columns(1 of 5);
-  }
   img {
     padding: 0;
     margin: 0;

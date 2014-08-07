@@ -21,6 +21,9 @@
   background-repeat: no-repeat;
   background-position: center top;
   background-size: fill;
+  @include media($wide) {
+    margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
+  }
 }
 
 .hero--bg1,
@@ -93,15 +96,55 @@
 .hero-seperator {
   background: $color-green-lighter;
   color: $color-text;
-  padding-top:    modular-scale($base-font-size, 2, $base-ratio);
-  padding-bottom: modular-scale($base-font-size, 2, $base-ratio);
   ul, ol, li {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
+  .media-list {
+    z-index: 1;
+    position: relative;
+  }
+  .media-link {
+    display: block;
+    @include media($wide) {
+      opacity: 0.66;
+      img,
+      svg {
+        opacity: 0.66;
+      }
+      &:hover {
+        opacity: 1.0;
+      }
+
+    }
+  }
+  @include media($mid) {
+    .media-list {
+      font-size: modular-scale($base-font-size, -1, $base-ratio);
+      @include span-columns(6 of 6);
+      @include shift(0);
+    }
+    .media-item {
+      @include span-columns(3 of 6);
+      @include omega(2n);
+    }
+  }
   @include media($wide) {
-    padding-top:    modular-scale($base-font-size, 4, $base-ratio);
-    padding-bottom: modular-scale($base-font-size, 4, $base-ratio);
+    .media-list {
+      @include span-columns(6 of 6);
+      @include shift(0);
+    }
+  }
+  @include media($huge) {
+    .media-list {
+      @include span-columns(8 of 6);
+      @include shift(-1 of 6);
+    }
+    .media-item {
+      @include omega-reset(2n, 8);
+      @include span-columns(2 of 8);
+      @include omega(4n);
+    }
   }
 }

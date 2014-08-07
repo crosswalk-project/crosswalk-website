@@ -10,6 +10,27 @@
   padding-right: $gutter;
 }
 
+// Container intro
+//
+// The first heading of the main container
+//
+// Markup:
+// <div class="container">
+//   <div class="container-intro">
+//     <h2>Make the most of your <code>WebView</code></h2>
+//   </div>
+// </div>
+//
+// Styleguide 2.1.1
+.container-intro {
+  @include media($wide) {
+    text-align: center;
+    @include span-columns(4 of 6);
+    @include shift(1);
+    margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
+  }
+}
+
 // Fixes the visual grid based on the container’s padding.
 //
 // No styleguide reference.
