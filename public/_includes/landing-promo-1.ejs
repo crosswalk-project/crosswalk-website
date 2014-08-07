@@ -1,68 +1,66 @@
-<article>
-  <h2>Which <code>WebView</code> are you choosing?</h2>
-
-  <p>Stop choosing a fragmented development environment. Over 1.3 million Android device are activated everyday, each with an slightly different interpretation of the web.</p>
-
-  <div class="features features-webview">
-    <div class="features-wrap">
-      <div class="features-list"><!-- class="media-description" -->
-        <p>It’s impossible to imagine and painful to test how your native hybrid app will render or perform in every situation if you’ve chosen the default Android <code>WebView</code>.</p>
-        <div class="features-item">
-          <h4>Use Crosswalk and build great interfaces</h4>
-          <em></em>
-          <p>Use new features confidently. Crosswalk supports otherwise unpredictable properties and APIs, whether they are in CSS or JavaScript.</p>
-        </div>
-        <div class="features-item">
-          <h4>Use Device APIs, with or without Cordova</h4>
-          <em></em>
-          <p>Whether your using Cordova or not, the Crosswalk supports the Geolocation API, the File API, the vibraton API and more.</p>
-        </div>
-        <div class="features-item">
-          <h4>Use Flexbox today, even on old versions of Android</h4>
-          <em></em>
-          <p>Reliably build responsive user interfaces with Flexbox. Your app will render it properly on any Android 4.0+ device when Crosswalk is included.</p>
-        </div>
-        <table class="table--ftcomp">
-          <thead>
-            <tr>
-              <td>HTML5 feature</td>
-              <td>Android <code>WebView</code></td>
-              <td>Crosswalk WebView</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>WebRTC</td>
-              <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
-              <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
-            </tr>
-            <tr>
-              <td>WebGL</td>
-              <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
-              <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
-            </tr>
-            <tr>
-              <td>Vibration <abbr>API</abbr></td>
-              <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
-              <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
-            </tr>
-            <tr>
-              <td>Presentation <abbr>API</abbr></td>
-              <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
-              <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
-            </tr>
-            <tr>
-              <td><code>WebView</code> updates</td>
-              <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
-              <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
-            </tr>
-          </tbody>
-        </table>
-        <a href="#" class="button">Get started</a>
+<div class="features">
+  <div class="features-intro">
+    <h2>Which <code>WebView</code> are you choosing?</h2>
+    <p>Stop choosing a fragmented development environment. Over 1.3 million Android device are activated everyday, each with an slightly different interpretation of the web.</p>
+  </div>
+  <div class="features-wrap">
+    <div class="features-list"><!-- class="media-description" -->
+      <p>It’s impossible to imagine and painful to test how your native hybrid app will render or perform in every situation if you’ve chosen the default Android <code>WebView</code>.</p>
+      <div class="features-item">
+        <h4 class="features-heading">Use Crosswalk and build great interfaces</h4>
+        <hr class="features-pointer" />
+        <p>Use new features confidently. Crosswalk supports otherwise unpredictable properties and APIs, whether they are in CSS or JavaScript.</p>
       </div>
-      <div class="features-media"><!-- class="media-image" -->
-        <img src="/images/crosswalk-landing-promo-1.png" />
+      <div class="features-item">
+        <h4>Use Device APIs, with or without Cordova</h4>
+        <hr class="features-pointer" />
+        <p>Whether your using Cordova or not, the Crosswalk supports the Geolocation API, the File API, the vibraton API and more.</p>
       </div>
+      <div class="features-item">
+        <h4>Use Flexbox today, even on old versions of Android</h4>
+        <hr class="features-pointer" />
+        <p>Reliably build responsive user interfaces with Flexbox. Your app will render it properly on any Android 4.0+ device when Crosswalk is included.</p>
+      </div>
+      <table class="table--ftcomp">
+        <thead>
+          <tr>
+            <td>HTML5 feature</td>
+            <td>Android <code>WebView</code></td>
+            <td>Crosswalk WebView</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WebRTC</td>
+            <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
+            <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
+          </tr>
+          <tr>
+            <td>WebGL</td>
+            <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
+            <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
+          </tr>
+          <tr>
+            <td>Vibration <abbr>API</abbr></td>
+            <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
+            <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
+          </tr>
+          <tr>
+            <td>Presentation <abbr>API</abbr></td>
+            <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
+            <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
+          </tr>
+          <tr>
+            <td><code>WebView</code> updates</td>
+            <td><%- partial("images/crosswalk-landing-question.xml.ejs") %></td>
+            <td><%- partial("images/crosswalk-landing-check.xml.ejs") %></td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="#" class="button">Get started</a>
+    </div>
+    <div class="features-media"><!-- class="media-image" -->
+      <img src="/images/crosswalk-landing-promo-1.png" />
     </div>
   </div>
-</article>
+</div>

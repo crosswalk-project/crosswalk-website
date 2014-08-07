@@ -1,37 +1,91 @@
+// Features
+//
+// Feature blocks
+//
+// .feature--left - Image-on-left, text-on-right feature
+//
+// Styleguide 3.9.1.
 .features {
   overflow: hidden;
   width: 100%;
+  padding-left: $gutter;
+  padding-right: $gutter;
+  @include span-columns(4);
+  @include media($wide) {
+    overflow: visible;
+  }
+}
+
 }
 
 .features-wrap {
-  width: 9999em;
+  display: block;
+  overflow: hidden;
+  @include span-columns(4);
+  @include media($mid) {
+    @include span-columns(9);
+  }
+  @include media($wide) {
+    @include span-columns(8);
+  }
+}
+
+.features-intro {
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  @include span-columns(4);
+  @include media($wide) {
+    @include span-columns(6);
+    @include shift(1);
+  }
+  @include media($huge) {
+    @include span-columns(6 of 8);
+  }
 }
 
 .features-list {
-  float: left;
-  min-width: 25em;
-  width: 20em;
-  margin-right: 1em;
-  position: relative;
+  @include span-columns(4);
+  @include media($mid) {
+    @include span-columns(3 of 6);
+  }
+  @include media($mid) {
+    @include span-columns(4 of 8);
+  }
+  @include media($huge) {
+    @include span-columns(3 of 8);
+    @include shift(1);
+  }
+
 }
 
 .features-media {
-  float: left;
+  margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+
+  @include span-columns(4);
+  @include media($mid) {
+    @include span-columns(3 of 6);
+  }
+  @include media($wide) {
+    @include span-columns(4 of 8);
+  }
 }
 
 .features-item {
   position: relative;
-  h4 {
-    margin-bottom: 0;
-  }
-  em {
-    display: block;
-    border: none;
-    border-bottom: orange solid 3px;
-    position: relative;
-    width: calc(100% + 2em);
-    height: 0;
-    margin: .5em 0;
+}
+
+.features-heading {
+  margin-bottom: 0;
+}
+
+.features-pointer {
+  display: block;
+  border: none;
+  border-bottom: orange solid 3px;
+  position: relative;
+  width: 100%;
+  height: 0;
+  margin: .5em 0;
+  @include media($narrow) {
     &:after {
       content: "";
       width: 35px;
@@ -39,7 +93,7 @@
       position: absolute;
       right: 0;
       top: -16px;
-      background: orange;
+      background: $color-orange;
       border-radius: 50%;
 
     }

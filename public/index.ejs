@@ -62,89 +62,103 @@
     </div>
   </div>
 </header>
-<main role="main" class="container">
-  <div class="row">
-    <div class="container-intro">
-      <h2>Make the most of your <code>WebView</code></h1>
-      <p>When you choose the default Android WebView, your users could have the latest features or be seeing the web from 2011—or anywhere else inbetween.</p>
+<main role="main" id="main">
+  <div class="container">
+    <div class="row">
+      <div class="container-intro">
+        <h2>Make the most of your <code>WebView</code></h1>
+        <p>When you choose the default Android WebView, your users could have the latest features or be seeing the web from 2011—or anywhere else inbetween.</p>
+      </div>
+      <div class="cards">
+        <ul class="cards-list">
+          <li class="cards-item">
+            <img src="/images/crosswalk-landing-withWithout-2.png" alt="The predictability Crosswalk can provide your Android or Cordova app" />
+            <h3>By default</h3>
+            <!-- <p>What’s a WebView? A WebView is a full-screen browser inside a native app where you can run HTML, CSS, and JavaScript. If you’re using Apache Cordova, it’s the foundation of your app. WebViews are also used as in-app browser and alongside native components.</p> -->
+            <p>When you choose the default Android <code>WebView</code>, your users could have the latest features or be seeing the web from 2011—or anywhere else inbetween.</p>
+          </li>
+          <li class="cards-item">
+            <img src="/images/crosswalk-landing-withWithout-1.png" alt="The unpredictability of Android’s default WebView" />
+            <h3>Upgraded with Crosswalk</h3>
+            <p>Include Intel Crosswalk with your hybrid Android or Cordova / PhoneGap app, and users will consistently see your app at its best: through a predictable, powerful WebView based on the latest version of Google Chromium.</p>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="cards">
-      <ul class="cards-list">
-        <li class="cards-item">
-          <img src="/images/crosswalk-landing-withWithout-2.png" alt="The predictability Crosswalk can provide your Android or Cordova app" />
-          <h3>By default</h3>
-          <!-- <p>What’s a WebView? A WebView is a full-screen browser inside a native app where you can run HTML, CSS, and JavaScript. If you’re using Apache Cordova, it’s the foundation of your app. WebViews are also used as in-app browser and alongside native components.</p> -->
-          <p>When you choose the default Android <code>WebView</code>, your users could have the latest features or be seeing the web from 2011—or anywhere else inbetween.</p>
-        </li>
-        <li class="cards-item">
-          <img src="/images/crosswalk-landing-withWithout-1.png" alt="The unpredictability of Android’s default WebView" />
-          <h3>Upgraded with Crosswalk</h3>
-          <p>Include Intel Crosswalk with your hybrid Android or Cordova / PhoneGap app, and users will consistently see your app at its best: through a predictable, powerful WebView based on the latest version of Google Chromium.</p>
-        </li>
-      </ul>
+    <div class="row">
+      <blockquote class="blockquote">
+        <footer>
+          <img src="http://placehold.it/150" alt="Ashley Scirra’s profile picture" />
+          <strong>Ashley Scirra</strong>
+          Creator of the Construct 2 game engine says
+        </footer>
+        <p>Crosswalk looks like the new, best way to publish HTML5 content to Android.</p>
+      </blockquote>
     </div>
   </div>
-  <div class="row">
-    <blockquote class="blockquote">
-      <footer>
-        <img src="http://placehold.it/150" alt="Ashley Scirra’s profile picture" />
-        <strong>Ashley Scirra</strong>
-        Creator of the Construct 2 game engine says
-      </footer>
-      <p>Crosswalk looks like the new, best way to publish HTML5 content to Android.</p>
-    </blockquote>
-  </div>
-  <div class="row">
-    <% include _includes/landing-promo-1 %>
-  </div>
-  <div class="row">
-    <blockquote class="blockquote">
-      <footer>
-        <img src="http://placehold.it/150" alt="Amol Kher’s profile picture" />
-        <strong>Amol Kher</strong>
-        Former Engineer Manager at Netflix said
-      </footer>
-      <p>The bulk of our user interactions occur on the HTML5 front end. …we see almost around 1,000 different devices streaming Netflix on Android every day.</p>
-    </blockquote>
-  </div>
-  <div class="row">
-    <% include _includes/landing-promo-2 %>
-  </div>
-  <div class="row">
-    <blockquote class="blockquote">
-      <footer>
-        <img src="http://placehold.it/150" alt="Luke W’s profile picture" />
-        <strong>Luke Wroblewski</strong>
-        Founder of LukeW Ideation &amp; Design said
-      </footer>
-      <p>the embedded experience might be the most common way to experience the web on smartphones.</p>
-    </blockquote>
-  </div>
-  <div class="row">
-    <% include _includes/landing-promo-3 %>
-  </div>
-  <div class="row">
-    <h3 class="text-center">Compatible with</h3>
-    <div class="cards cards--filled">
-      <ul class="cards-list">
-        <li class="cards-item">
-          <img class="cards-icon" src="/images/icons/logo-cordova.svg" alt="" />
-          <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
-          <p class="text">Improve your entire app’s wrapper by upgrading your WebView.</p>
-          <a class="button button--secondary" href="#">Start with Android</a>
-        </li>
-        <li class="cards-item">
-          <img src="/images/icons/logo-android.svg" alt="Cordova logo" class="cards-icon" />
-          <h3 class="cards-heading">Crosswalk for Android</h3>
-          <p>Use Crosswalk as your WebView or in-app browser</p>
-          <a class="button button--secondary" href="#">Start with Android</a>
-        </li>
-      </ul>
+  <div class="row row--full">
+    <div class="container container--full">
+      <% include _includes/landing-promo-1 %>
     </div>
-    <div class="container-intro">
-      <h2>Can I use…? Yes.</h2>
-      <p>Crosswalk provides a predictable, powerful environmnet so you can build great Android apps.</p>
-      <a href="#" class="button">Get started</a>
+  </div>
+  <div class="container">
+    <div class="row">
+      <blockquote class="blockquote">
+        <footer>
+          <img src="http://placehold.it/150" alt="Amol Kher’s profile picture" />
+          <strong>Amol Kher</strong>
+          Former Engineer Manager at Netflix said
+        </footer>
+        <p>The bulk of our user interactions occur on the HTML5 front end. …we see almost around 1,000 different devices streaming Netflix on Android every day.</p>
+      </blockquote>
+    </div>
+  </div>
+  <div class="row row--full">
+    <div class="container container--full">
+      <% include _includes/landing-promo-2 %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <blockquote class="blockquote">
+        <footer>
+          <img src="http://placehold.it/150" alt="Luke W’s profile picture" />
+          <strong>Luke Wroblewski</strong>
+          Founder of LukeW Ideation &amp; Design said
+        </footer>
+        <p>the embedded experience might be the most common way to experience the web on smartphones.</p>
+      </blockquote>
+    </div>
+  </div>
+  <div class="row row--full">
+    <div class="container container--full">
+      <% include _includes/landing-promo-3 %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <h3 class="text-center">Compatible with</h3>
+      <div class="cards cards--filled">
+        <ul class="cards-list">
+          <li class="cards-item">
+            <img class="cards-icon" src="/images/icons/logo-cordova.svg" alt="" />
+            <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+            <p class="text">Improve your entire app’s wrapper by upgrading your WebView.</p>
+            <a class="button button--secondary" href="#">Start with Android</a>
+          </li>
+          <li class="cards-item">
+            <img src="/images/icons/logo-android.svg" alt="Cordova logo" class="cards-icon" />
+            <h3 class="cards-heading">Crosswalk for Android</h3>
+            <p>Use Crosswalk as your WebView or in-app browser</p>
+            <a class="button button--secondary" href="#">Start with Android</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container-intro">
+        <h2>Can I use…? Yes.</h2>
+        <p>Crosswalk provides a predictable, powerful environmnet so you can build great Android apps.</p>
+        <a href="#" class="button">Get started</a>
+      </div>
     </div>
   </div>
 </main>

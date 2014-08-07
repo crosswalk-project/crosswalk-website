@@ -8,6 +8,12 @@
   @include outer-container();
   padding-left: $gutter;
   padding-right: $gutter;
+  &.container--full {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 // Container intro
@@ -22,7 +28,7 @@
 //   </div>
 // </div>
 //
-// Styleguide 2.1.1
+// Styleguide 2.1.1.
 .container-intro {
   @include media($wide) {
     text-align: center;
@@ -48,11 +54,15 @@
 // A class that resets the row within a container.
 //
 // Markup:
-// <div class="row"></div>
+// <div class="row {$modifiers}"></div>
+//
+// .row--ltr - Explicitly set the column direction from left to right
+// .row--rtl - Explicitly set the column direction from right to left
+// .row--full - Full width row for breakout sections
 //
 // Styleguide 2.2.
 .row,
-.row--lrt {
+.row--ltr {
   position: relative;
   display: block;
   @include row();
@@ -61,20 +71,27 @@
     @include span-columns(6);
     @include shift(1);
   }
+  &.row--full {
+    @include row();
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    @include media($wide) {
+      @include shift(0);
+      @include span-columns(0);
+    }
+  }
 }
 
-// A class that changes the text direction of the row to Right to Left.
-//
-// Markup:
-// <div class="row--rtl"></div>
-//
-// Styleguide 2.2.1.
 .row--rtl {
   @include row(RTL);
 }
 
-// Row margins,
-// this might be too presumptuous
+// Row margins
+//
+// Adds margins above consecutive rows. (This might be too presumptuous.)
+//
+// No styleguide reference.
 main {
   .row + .row {
     margin-top: $base-line-height * 2em;
@@ -85,7 +102,7 @@ main {
 //
 // Very simple grid classes.
 //
-// Styleguide 2.2.2.
+// Styleguide 2.3.
 
 .grid-1-of-2,
 .grid-1-of-3,
