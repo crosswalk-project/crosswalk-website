@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Getting_Started/45 Remote_debugging';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Getting_Started/45 Remote_debugging</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Remote debugging</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Getting_Started/45-Remote_debugging"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Getting_Started/45-Remote_debugging"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Web applications running under Crosswalk can be debugged remotely using the <a href="https://developer.chrome.com/devtools/index">Chrome dev tools</a>. Depending on the platform, a connection must be established between the host (the machine where you are doing the development) and the target (the machine running the application under Crosswalk). The type of connection depends on the target's operating system, as explained below.</p>
+
+<p>Note that to debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See <a href="#wiki/Remote-debugging-on-android">this wiki page</a> which shows the mapping between Crosswalk and Chrome versions for debugging.</p>
+
+<h2>Android<a class="anchor" id="Android" href="#Android"></a></h2>
+
+<p>On Android, the connection between the host and target is established using <a href="http://developer.android.com/tools/help/adb.html"><code>adb</code></a>. You will need to ensure that you have installed the Android SDK (instructions for <a href="#documentation/getting_started/windows_host_setup/Installation-for-Crosswalk-Android">Windows</a> and <a href="#documentation/getting_started/linux_host_setup/Installation-for-Crosswalk-Android">Linux</a>) so that this tool is available.</p>
+
+<p>You will also need to set up an Android target and install a packaged Crosswalk application on it. See <a href="#documentation/getting_started/android_target_setup">these instructions</a>.</p>
+
+<p>Once these pre-requisites have been met, debug your Crosswalk application as follows:</p>
+
+<ol><li>
+<p>Enable remote debugging of your app. This depends on how you are using Crosswalk:</p>
+
+<ul><li>
+<p><strong>Generating an Android package using <a href="#documentation/getting_started/run_on_android"><code>make_apk.py</code></a></strong></p>
+
+<p>Enable remote debugging by passing a flag to <code>make_apk.py</code> when building the package. For example:</p>
+
+<pre>
+$ python make_apk.py --package=org.crosswalkproject.example \
+  --manifest=/home/me/myapp/manifest.json --enable-remote-debugging
+</pre>
+
+</li>
+
+<li>
+
+<p><strong>Embedding Crosswalk in your application</strong> via the <a href="#documentation/embedding_crosswalk">embedding API</a></p>
+
+<p>Modify your application's main activity to set the remote debugging preference. For example:</p>
+
+<pre>
+XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+</pre>
+
+<p>Then build the application package the usual way (e.g. using Ant or ADT).</p>
+
+<p>Full details are given in the <a href="#documentation/embedding_crosswalk/Debugging">Crosswalk embedding tutorial</a>.</p>
+
+</li>
+
+<li>
+
+<p><strong>Using <a href="#documentation/cordova/migrate_an_application">a Cordova application migrated to Crosswalk</a></strong>
+
+</p><p>When you build a Cordova application which has been migrated to Crosswalk, remote debugging is enabled by default. You shouldn't have to do anything other than the usual build:</p>
+
+<pre>
+cordova build android
+</pre>
+
+<p>Install and run the application as usual, for example:</p>
+
+<pre>
+cordova run android
+</pre>
+
+<p>Remote debugging can be disabled by <a href="http://docs.phonegap.com/en/3.3.0/guide_command-line_index.md.html">passing the <code>--release</code> option to the build</a>.</p>
+</li>
+
+<li>
+<p><strong>Using <a href="#documentation/cordova/develop_an_application">an application created using Crosswalk Cordova</a></strong></p>
+
+<p>Remote debugging is enabled by default when you build an application created with Crosswalk Cordova. For example:</p>
+
+<pre>
+./cordova/build
+</pre>
+
+<p>will build an application with remote debugging turned on.</p>
+
+</li>
+
+</ul></li>
+
+<li>Install and run the application on the target, using your preferred tool (for example, <a href="#documentation/getting_started/run_on_android"><code>adb</code></a>).</li>
+
+<li>
+<p>On the host, open a Chrome browser and go to "chrome://inspect" in the address bar. This should show a list of attached devices, with your application listed, for example:</p>
+
+<img src="assets/crosswalk-debug-in-chrome.png" title="Debugging a Crosswalk application in Chrome" alt="Debugging a Crosswalk application in Chrome" /><p>(The application available for debugging is highlighted with a red box in the image.) Click on the "inspect" link to open the application for debugging with the Chrome dev tools.</p>
+
+<p>For information about using the Chrome dev tools for debugging, see <a href="https://developer.chrome.com/devtools/index">this page</a>.</p>
+</li>
+
+</ol><h3>Troubleshooting<a class="anchor" id="Troubleshooting" href="#Troubleshooting"></a></h3>
+
+<p>You may occasionally find that <code>adb</code> is unable to connect to the device, and remote debugging won't work. You can try unplugging the USB cable between your host and target (if using a USB connection), then reattaching it, which sometimes fixes the issue; or you could try <a href="#documentation/getting_started/android_target_setup/Fixing-device-access-issues-on-Linux">running <code>adb</code> as root</a>.</p>
+
+<h2>Tizen<a class="anchor" id="Tizen" href="#Tizen"></a></h2>
+
+<p>To debug Crosswalk applications on Tizen, the Crosswalk service on the target must be configured to provide a debugging endpoint. You can then access this endpoint from a Chrome browser on the host.</p>
+
+<p>Before you can follow these instructions, you will first need a Tizen target (with Crosswalk installed); and an application installed on that target via <code>xwalkctl</code>. See <a href="#documentation/getting_started">Getting started</a> for details.</p>
+
+<p>Once you have the pre-requisites in place, turn on debugging for the Crosswalk service on the Tizen target as follows:</p>
+
+<ol><li><p>From the host, log on to the Tizen target. For example, if the Tizen target has the IP address 192.168.0.19:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>ssh root@192.168.0.19
+Password:
+Welcome to Tizen
+root:~&gt;
+</pre></div>
+
+<p>(The default password is <strong>tizen</strong>.)</p></li>
+<li><p>On the target, add a <code>--remote-debugging-port=9222</code> option to the <code>ExecStart=</code> line in the Crosswalk service configuration file, <code>/usr/lib/systemd/user/xwalk.service</code>. For example, open the file for editing:</p>
+
+<div class="highlight"><pre><span class="nl">root:</span><span class="o">~&gt;</span> <span class="n">vim</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">xwalk</span><span class="p">.</span><span class="n">service</span>
+</pre></div>
+
+<p>Then edit the <code>ExecStart=</code> line so it looks like this:</p>
+
+<div class="highlight"><pre><span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">xwalk</span><span class="o">/</span><span class="n">xwalk</span> <span class="o">--</span><span class="n">remote</span><span class="o">-</span><span class="n">debugging</span><span class="o">-</span><span class="n">port</span><span class="o">=</span><span class="mi">9222</span> \
+  <span class="o">--</span><span class="n">external</span><span class="o">-</span><span class="n">extensions</span><span class="o">-</span><span class="n">path</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">tizen</span><span class="o">-</span><span class="n">extensions</span><span class="o">-</span><span class="n">crosswalk</span>
+</pre></div></li>
+<li><p>Reboot the Tizen target device.</p></li>
+</ol><p>Once the Crosswalk service is enabled for debugging, debug your applications as follows:</p>
+
+<ol><li><p>Launch a Crosswalk application on the Tizen target using a console. See <a href="#documentation/getting_started/run_on_tizen/Run-the-application">these instructions</a>.</p></li>
+<li><p>Back on the host, open a Chrome browser and open the address "http://&lt;Tizen target IP&gt;:9222". For example, for the IP address 192.168.0.19, the URL to use would be "<a href="http://192.168.0.19:9222">http://192.168.0.19:9222</a>".</p>
+
+<p>A list of all the pages available for debugging should now be displayed in the Chrome browser window:</p>
+
+<p><img src="assets/crosswalk-tizen-remote-debug.png" alt="Crosswalk on Tizen IVI: remote debugging" /></p>
+
+<p>Click on the link for the application you want to debug.</p>
+
+<p>For information about using the Chrome dev tools for debugging, see <a href="https://developer.chrome.com/devtools/index">this page</a>.</p></li>
+</ol>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>jinbang.zhang</b>, 2014-07-24 02:45:07</p>
+  <p>
+    <a id="delete-link" href="/documentation/Getting_Started/45-Remote_debugging" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Getting_Started/45-Remote_debugging">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
