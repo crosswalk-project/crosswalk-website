@@ -1,0 +1,69 @@
+.features {
+  overflow: hidden;
+  width: 100%;
+}
+
+.features-wrap {
+  width: 9999em;
+}
+
+.features-list {
+  float: left;
+  min-width: 25em;
+  width: 20em;
+  margin-right: 1em;
+  position: relative;
+}
+
+.features-media {
+  float: left;
+}
+
+.features-item {
+  position: relative;
+  h4 {
+    margin-bottom: 0;
+  }
+  em {
+    display: block;
+    border: none;
+    border-bottom: orange solid 3px;
+    position: relative;
+    width: calc(100% + 2em);
+    height: 0;
+    margin: .5em 0;
+    &:after {
+      content: "";
+      width: 35px;
+      height: 35px;
+      position: absolute;
+      right: 0;
+      top: -16px;
+      background: orange;
+      border-radius: 50%;
+
+    }
+  }
+}
+
+.features-left {
+  .features-item {
+    em {
+      &:after {
+        right: auto;
+        left: 0;
+      }
+    }
+  }
+}
+
+.features-game {
+  .features-item {
+    &:last-of-type {
+      margin-bottom: 2em;
+    }
+    em {
+      width: calc(100% + 5em);
+    }
+  }
+}
