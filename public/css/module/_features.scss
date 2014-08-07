@@ -26,7 +26,6 @@
     }
   }
   @include media($mid) {
-    outline: 2px solid purple;
     .features-wrap {
       @include span-columns(9);
       @include shift(-3);
