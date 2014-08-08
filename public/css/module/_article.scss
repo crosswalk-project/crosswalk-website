@@ -1,0 +1,43 @@
+.article,
+.article-list {
+  @include media($wide) {
+    @include span-columns(4 of 6);
+  }
+}
+
+.article-list {
+
+}
+
+.article-item {
+
+}
+
+.article-header {
+
+}
+
+.article-title {
+  text-align: left;
+
+}
+
+.article-meta {
+  display: block;
+  font-style: italic;
+  margin-bottom: modular-scale($base-font-size, -2, $base-ratio);
+}
+
+.article-exerpt {
+
+}
+
+.article-hero {
+  margin-top: modular-scale($base-font-size, 0, $base-ratio);
+  margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+  @include media($wide) {
+    @include span-columns(8 of 6);
+    margin-top: modular-scale($base-font-size, 4, $base-ratio);
+    margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
+  }
+}
