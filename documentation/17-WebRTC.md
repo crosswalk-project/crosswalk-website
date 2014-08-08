@@ -484,14 +484,14 @@ During the host setup for Android ([Windows](#documentation/getting_started/wind
     An APK for the web application "WebRTC" including the
     Crosswalk Runtime built for x86 was generated successfully,
     which can be found at
-    /home/me/crosswalk-6.35.131.9/WebRTC_0.0.1_x86.apk.
+    /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_x86.apk.
     An APK for the web application "WebRTC" including the
     Crosswalk Runtime built for arm was generated successfully,
     which can be found at
-    /home/me/crosswalk-6.35.131.9/WebRTC_0.0.1_arm.apk.
+    /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.apk.
 
     # install the package for your target's architecture
-    $ adb install /home/me/crosswalk-6.35.131.9/WebRTC_0.0.1_arm.apk
+    $ adb install /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.apk
 
 Finally, start the application on the target by selecting its icon in the applications list.
 
