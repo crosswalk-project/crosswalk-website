@@ -10,6 +10,10 @@ body,
   background: $color-background;
   color: $color-text;
   font-size: $base-font-size;
+  line-height: $base-line-height;
+  @include media($wide) {
+    font-size: $base-font-size * 1.05;
+  }
 }
 
 // Text selection
@@ -81,6 +85,7 @@ article {
   ul,
   ol,
   dl {
+    padding-left: 0;
     margin-before: modular-scale($base-font-size, 0, $base-ratio);
     margin-after: modular-scale($base-font-size, 0, $base-ratio);
   }
@@ -88,6 +93,7 @@ article {
   ol,
   dl,
   li {
+    list-style-type: disc;
     margin-left: $gutter;
     padding-left: 0;
     @include media($wide) {
