@@ -2,7 +2,7 @@
 
 Web applications running under Crosswalk can be debugged remotely using the [Chrome dev tools](https://developer.chrome.com/devtools/index). Depending on the platform, a connection must be established between the host (the machine where you are doing the development) and the target (the machine running the application under Crosswalk). The type of connection depends on the target's operating system, as explained below.
 
-Note that to debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See [this wiki page](#wiki/Remote-debugging-on-android) which shows the mapping between Crosswalk and Chrome versions for debugging.
+Note that to debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See [this wiki page](#wiki/Remote-debugging-on-android), which shows the mapping between Crosswalk and Chrome versions for debugging.
 
 ## Android
 
@@ -10,7 +10,16 @@ On Android, the connection between the host and target is established using [`ad
 
 You will also need to set up an Android target and install a packaged Crosswalk application on it. See [these instructions](#documentation/getting_started/android_target_setup).
 
-Once these pre-requisites have been met, debug your Crosswalk application as follows:
+Debugging on Android can be enabled in two ways:
+
+1.  [At build time](#Enable-debugging-at-build-time-for-Android).
+2.  [At run time](#Enable-debugging-at-run-time-for-Android).
+
+Both options are described below.
+
+### Enable debugging at build time for Android
+
+Once the [pre-requisites](#Android) have been met, debug your Crosswalk application as follows:
 
 <ol>
 
@@ -90,16 +99,65 @@ cordova run android
 
 <img src="assets/crosswalk-debug-in-chrome.png" title="Debugging a Crosswalk application in Chrome" alt="Debugging a Crosswalk application in Chrome">
 
-<p>(The application available for debugging is highlighted with a red box in the image.) Click on the "inspect" link to open the application for debugging with the Chrome dev tools.</p>
+<p>(The application available for debugging is highlighted with a red box in the image.)</p>
 
-<p>For information about using the Chrome dev tools for debugging, see <a href="https://developer.chrome.com/devtools/index">this page</a>.</p>
+<p>Click on the "inspect" link to open the application for debugging with the Chrome dev tools.</p>
+
 </li>
 
 </ol>
 
+### Enable debugging at run time for Android
+
+If you built your Android package without the debugging feature, you can still turn on the feature at run time by sending it an [intent](http://developer.android.com/guide/components/intents-filters.html). This works for a Crosswalk application built using any of the packaging methods, i.e.
+
+1.  Packaged with `make_apk.py`.
+2.  Using the Crosswalk embedding API.
+3.  Migrated from Cordova.
+4.  Created using Crosswalk Cordova.
+
+Note that the intent will enable remote debugging feature for *all* Crosswalk applications which are running on the target.
+
+First ensure that the [pre-requisites](#Android) have been met. Then follow these steps to enable remote debugging for Crosswalk applications:
+
+1.  Install and run the application(s) on the target, using your preferred tool (for example, [`adb`](#documentation/getting_started/run_on_android)).
+
+2.  From the host, use `adb` to broadcast the remote debugging intent to all Crosswalk applications on the target:
+
+    ```
+    $ adb shell am broadcast -a org.xwalk.intent -e remotedebugging true
+    ```
+
+3.  On the host, open a Chrome browser and go to "chrome://inspect" in the address bar. This should show a list of attached devices, with your application listed, for example:
+
+    ![Debugging a Crosswalk application in Chrome](assets/crosswalk-debug-in-chrome.png)
+
+    (The application available for debugging is highlighted with a red box in the image.)
+
+4.  Click on the "inspect" link to open the application for debugging with the Chrome dev tools.
+
+Note that it is also possible to disable remote debugging using the same intent, with:
+
+    $ adb shell am broadcast -a org.xwalk.intent -e remotedebugging false
+
 ### Troubleshooting
 
-You may occasionally find that `adb` is unable to connect to the device, and remote debugging won't work. You can try unplugging the USB cable between your host and target (if using a USB connection), then reattaching it, which sometimes fixes the issue; or you could try [running `adb` as root](#documentation/getting_started/android_target_setup/Fixing-device-access-issues-on-Linux).
+*   **adb can't connect to the device**
+
+    You may occasionally find that `adb` is unable to connect to the device, and remote debugging won't work. You can try unplugging the USB cable between your host and target (if using a USB connection), then reattaching it, which sometimes fixes the issue; or you could try [running `adb` as root](#documentation/getting_started/android_target_setup/Fixing-device-access-issues-on-Linux).
+
+*   **The application doesn't appear in the chrome://inspect page**
+
+    If the application is not visible in the inspection page, use `adb` to check that remote debugging is enabled for the application:
+
+    ```
+    host$ adb shell
+    shell@android$ cat /proc/net/unix |grep devtools_remote
+    00000000: 00000002 00000000 00010000 0001 01 1102698 @org.crosswalkproject.app_devtools_remote
+    00000000: 00000002 00000000 00010000 0001 01 1092981 @org.xwalk.core.xwview.shell_devtools_remote
+    ```
+
+    If you cannot see any entries ending with `_devtools_remote`, it's likely that remote debugging is not enabled for the application. Follow the steps above to either rebuild the application with remote debugging support, or switch remote debugging on at run time.
 
 ## Tizen
 
@@ -147,4 +205,6 @@ Once the Crosswalk service is enabled for debugging, debug your applications as 
 
     Click on the link for the application you want to debug.
 
-    For information about using the Chrome dev tools for debugging, see [this page](https://developer.chrome.com/devtools/index).
+## Further information
+
+For information about using the Chrome dev tools for debugging, see [this page](https://developer.chrome.com/devtools/index).
