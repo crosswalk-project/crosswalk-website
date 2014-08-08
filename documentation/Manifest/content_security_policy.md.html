@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Manifest/content_security_policy';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Manifest/content_security_policy</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>content_security_policy</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Manifest/content_security_policy"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Manifest/content_security_policy"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The <code>content_security_policy</code> field specifies which types of content can be loaded and executed by the application. If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via <code>&lt;script&gt;</code>, <code>&lt;object&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;applet&gt;</code> elements).</p>
+
+<p>The suggested default value to provide minimal protection is:</p>
+
+<pre><code>"content_security_policy": "script-src 'self'; object-src 'self'"
+</code></pre>
+
+<p>This restricts the application to using only JavaScripts (loaded via <code>&lt;script&gt;</code> elements) and objects (loaded via <code>&lt;object&gt;</code>, <code>&lt;embed&gt;</code>, and <code>&lt;applet&gt;</code> elements) from its own origin (i.e. distributed as part of the application, in the case of Crosswalk). It also implicitly applies other constraints, such as preventing the execution of inline scripts, and disabling <code>eval()</code> and other unsafe functions (see the next section).</p>
+
+<p>See Google's <a href="https://developer.chrome.com/extensions/contentSecurityPolicy">Content Security Policy (CSP)</a> page for some examples of the types of policy which can be set; <a href="http://www.w3.org/TR/CSP/">the full specification</a>, albeit for the HTTP headers variant of CSP, is also available.</p>
+
+<h2>When to change the content security policy<a class="anchor" id="When-to-change-the-content-security-policy" href="#When-to-change-the-content-security-policy"></a></h2>
+
+<p>You only need to change the content security policy settings if you want to tighten your application's security: as stated above, Crosswalk does not enforce content security unless you explicitly set the <code>content_security_policy</code> field.</p>
+
+<p>If you do decide to tighten your application's security and set a content security policy, you may find that the policy is <em>too</em> tight. In this case, you may need to loosen some of its constraints. The list below gives a few examples of setting a content security policy, but loosening it under specific conditions.</p>
+
+<ul><li><p><strong>Enable the application to load scripts from a restricted range of remote hosts</strong></p>
+
+<p>In some cases, you may want to load a remote resource into a Crosswalk application: for example, load a resource from a content delivery network in an HTML page:</p>
+
+<pre><code>&lt;script src="http://cdn.crosswalk-project.org/utils.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>At the same time, you may want to tighten Crosswalk's security to restrict the application to loading scripts <em>only</em> from that domain and from the app. (The default Crosswalk configuration allows loading scripts from any remote host.)</p>
+
+<p>In these cases, you can explicitly specify the CSP, whitelisting resources from the application itself and from known domains:</p>
+
+<pre><code>"content_security_policy": "script-src 'self' https://cdn.crosswalk-project.org/; object-src 'self'"
+</code></pre>
+
+<p>This only allows scripts to be downloaded from the application itself or from <a href="https://cdn.crosswalk-project.org/">https://cdn.crosswalk-project.org/</a>. Note that you can only use arbitrary URLs with the "https://" scheme; or "http://" URLs which refer to "localhost" or "127.0.0.1". The latter may be useful if you have your own server running on the same machine as the application.</p></li>
+<li><p><strong>Enable the use of <code>eval()</code> inside scripts</strong></p>
+
+<p>The following CSP (recommended above as the minimum policy):</p>
+
+<pre><code>"content_security_policy": "script-src 'self'; object-src 'self'"
+</code></pre>
+
+<p>disables the use of "unsafe" JavaScript. This means that any calls to <code>eval()</code> will not be allowed.</p>
+
+<p>In most cases, the recommendation is to avoid <code>eval()</code> <strong>at all costs</strong>, as it can be a vector for Cross-Site Scripting attacks. These can be particularly dangerous in the context of an application which has privileged access to system resources (the way a Crosswalk application does).</p>
+
+<p>However, you may find yourself in a situation where you are trying to use a third party library which depends on <code>eval()</code>; or in a situation where using <code>eval()</code> is the most sensible and pragmatic solution. In these situations, you may decide that it is appropriate to relax the content security policy to allow <code>eval()</code> to be invoked.</p>
+
+<p>You can allow the use of <code>eval()</code> by adding <code>'unsafe-eval'</code> to the CSP, as follows:</p>
+
+<pre><code>"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+</code></pre></li>
+<li><p><strong>Enable inline JavaScript</strong></p>
+
+<p>In some situations, you may want to incorporate inline JavaScript in an HTML file via <code>&lt;script&gt;</code> elements. For example:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;my app&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;div id="content"&gt;&lt;/div&gt;
+
+    &lt;!-- this is the inline script --&gt;
+    &lt;script&gt;
+    document.addEventListener('DOMContentLoaded', function () {
+      var elt = document.querySelector('#content');
+      elt.innerHTML = '&lt;p&gt;Hello world&lt;/p&gt;';
+    });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>This is usually not necessary, as you can often put the script into an external file instead and reference it via the <code>src</code> attribute:</p>
+
+<pre><code>&lt;script src="myscript.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>But there are occasionally cases where you may want to inline a script (e.g. for performance reasons).</p>
+
+<p>If you have inline JavaScript and have specified a <code>content_security_policy</code>, you may find that you get this warning:</p>
+
+<pre><code>Refused to execute inline script because it violates the following
+Content Security Policy directive: "script-src 'self'". Either
+the 'unsafe-inline' keyword, a hash ('sha256-...'), or a
+nonce ('nonce-...') is required to enable inline execution.
+</code></pre>
+
+<p>The quickest solution is to add the <code>'unsafe-inline'</code> keyword:</p>
+
+<pre><code>"content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'"
+</code></pre>
+
+<p>Inline scripts should now execute.</p></li>
+</ul><h2>Relationship with xwalk_hosts<a class="anchor" id="Relationship-with-xwalk_hosts" href="#Relationship-with-xwalk_hosts"></a></h2>
+
+<p>???</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-06-11 15:36:36</p>
+  <p>
+    <a id="delete-link" href="/documentation/Manifest/content_security_policy" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Manifest/content_security_policy">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
