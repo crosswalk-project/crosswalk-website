@@ -6,6 +6,7 @@
     "name":        "Crosswalk",
     "email":       "",
     "url":         "http://crosswalk-project.org",
+    "basicAuth":   "crosswalk:chloi",
     "service": {
       "analytics": "",
       "disqus": false,
