@@ -100,60 +100,43 @@ function generate () {
 }
 
 function launch_gollum () {
-    # check for netstat
-    which netstat > /dev/null 2>&1
-    missing_netstat=$?
+    branch=$(git rev-parse --abbrev-ref HEAD)
 
-    if [[ $missing_netstat -eq 1 ]] ; then
-       echo "ERROR: no netstat command found"
-       return
-    fi
+    # start gollum
+    ruby scripts/gollum.rb $branch
 
-    gollum_pid=$(pgrep -f gollum)
+    # how did it work out?
+    exitcode=$?
 
-    if [[ $gollum_pid -eq 0 ]] ; then
-      # get the currently checked-out branch to set --ref
-      branch=`git rev-parse --abbrev-ref HEAD`
+    if [ "$exitcode" = "0" ] ; then
+        echo -n 'Waiting for gollum to start..'
 
-      gollum --ref ${branch} --live-preview ${PWD} > /dev/null 2>&1 &
+        no_pid_file_ready=1
 
-      echo -n "Launching gollum"
+        while (( $no_pid_file_ready )); do
+            echo -n "."
+            sleep 0.5
 
-      not_running=1
-      while (( $not_running )); do
-          echo -n "."
-          sleep 0.5
-          netstat -na 2>&1 | grep -q ":4567 "
-          not_running=$?
-      done
+            if [ -f /tmp/xwalk-website-gollum.pid ] ; then
+              echo ''
+              gollum_pid=$(cat /tmp/xwalk-website-gollum.pid)
+              no_pid_file_ready=0
+            fi
+        done
 
-      gollum_pid=$(ps -o pid= -C gollum)
-
-      echo
-      echo "Launched gollum with pid $gollum_pid"
+        echo "Launched gollum with pid $gollum_pid"
     else
-      echo "could not launch gollum as it is already running"
+        echo "Could not launch gollum as it is already running"
     fi
-
-    echo "Live preview at http://localhost:4567/fileview"
 }
 
 function kill_gollum () {
-    gollum_pid=$(pgrep -f gollum)
-    if [[ ! $gollum_pid -eq 0 ]] ; then
-      echo -n "killing gollum process $gollum_pid"
-      kill -9 ${gollum_pid}
-
-      while [[ ! $gollum_pid -eq 0 ]] ; do
-          echo -n "."
-          sleep 0.5
-          gollum_pid=$(ps -o pid= -C gollum)
-      done
-
-      echo
-      echo "gollum killed"
+    if [ -f /tmp/xwalk-website-gollum.pid ] ; then
+        gollum_pid=$(cat /tmp/xwalk-website-gollum.pid)
+        kill -9 $gollum_pid
+        rm /tmp/xwalk-website-gollum.pid
     else
-      echo "gollum is not running"
+        echo "Could not kill gollum as it is not running"
     fi
 }
 
