@@ -1,5 +1,3 @@
-# What is Crosswalk and how you can use it with Intel <abbr>XDK</abbr>
-
 [Crosswalk](https://crosswalk-project.org/) is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities.
 
 This means Android developers can now deploy your mobile HTML5 application with its own runtime without a dependence on the native `WebView` that is on your customer's device for all Android 4.0+ devices. This means

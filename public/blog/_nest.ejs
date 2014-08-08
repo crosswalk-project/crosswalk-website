@@ -1,3 +1,8 @@
 <article class="article">
+  <header class="article-header">
+    <h1 class="article-title"><%- title %></h1>
+    <span class="article-meta"><time datetime="<%- new Date(date).toUTCString() %>"><%- date %></time></span>
+  </header>
+  <img class="article-hero" src="http://placehold.it/900x300" alt="Cover image" />
   <%- yield %>
 </article>

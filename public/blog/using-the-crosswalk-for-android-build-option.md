@@ -1,5 +1,3 @@
-# Using the Intel XDK “Crosswalk for Android” Build Option
-
 With the Crosswalk runtime you can create, preview, debug, profile and package Crosswalk applications all from within the Intel XDK, without the need to install any additional software.
 
 This article provides some of the information you need to get started with the Crosswalk runtime. Read [this overview of Crosswalk](http://software.intel.com/en-us/html5/xdkdocs#496374) for more details regarding the Crosswalk runtime and API.
