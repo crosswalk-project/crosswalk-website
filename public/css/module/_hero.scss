@@ -22,7 +22,6 @@
 .hero {
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: fill;
   @include media($wide) {
     margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
     .button-group {
@@ -35,9 +34,11 @@
 .knockout.hero--bg1 {
   background-image: url("/images/crosswalk-landing-banner-1.jpg");
   background-color: #000;
-  background-position: 66% top;
-  @include media($wide) {
-    background-position: center top;
+  background-position: center top;
+  background-size: cover;
+  @include media($huge) {
+    background-position: 75% top;
+    background-size: contain;
   }
 }
 
