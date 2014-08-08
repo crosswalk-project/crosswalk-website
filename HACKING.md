@@ -116,10 +116,15 @@ has content in three different markup flavours:
 *   GitHub Markdown (*.md)
 *   Org Mode (*.org)
 
-To install gollum, plus support for these wiki content formats:
+You will also need the thin web server to generate the static site
+using the `site.sh` script and friends.
+
+To install gollum, plus support for these wiki content formats and
+the static content generator:
 
     sudo gem install gollum -v 2.5.2
     sudo gem install redcarpet org-ruby wikicloth
+    sudo gem install thin
 
 gollum version 2.5.2 is used as newer versions of gollum produce different
 HTML output from the same markdown file. In some cases, this causes the
