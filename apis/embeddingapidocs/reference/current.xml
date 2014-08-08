@@ -45,23 +45,13 @@
 </method>
 </interface>
 <class name="XWalkNavigationHistory"
- extends="XWalkNavigationHistoryInternal"
+ extends="java.lang.Object"
  abstract="false"
  static="false"
  final="true"
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="XWalkNavigationHistory"
- type="org.xwalk.core.XWalkNavigationHistory"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="internal" type="XWalkNavigationHistoryInternal">
-</parameter>
-</constructor>
 <method name="canGoBack"
  return="boolean"
  abstract="false"
@@ -204,23 +194,13 @@
 </method>
 </class>
 <class name="XWalkNavigationItem"
- extends="XWalkNavigationItemInternal"
+ extends="java.lang.Object"
  abstract="false"
  static="false"
  final="true"
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="XWalkNavigationItem"
- type="org.xwalk.core.XWalkNavigationItem"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="internal" type="XWalkNavigationItemInternal">
-</parameter>
-</constructor>
 <method name="getOriginalUrl"
  return="java.lang.String"
  abstract="false"
@@ -256,7 +236,7 @@
 </method>
 </class>
 <class name="XWalkPreferences"
- extends="XWalkPreferencesInternal"
+ extends="java.lang.Object"
  abstract="false"
  static="false"
  final="true"
@@ -327,7 +307,7 @@
 </field>
 </class>
 <class name="XWalkResourceClient"
- extends="XWalkResourceClientInternal"
+ extends="java.lang.Object"
  abstract="false"
  static="false"
  final="false"
@@ -354,7 +334,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="XWalkViewInternal">
+<parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
 <parameter name="url" type="java.lang.String">
 </parameter>
@@ -369,7 +349,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="XWalkViewInternal">
+<parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
 <parameter name="url" type="java.lang.String">
 </parameter>
@@ -384,7 +364,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="XWalkViewInternal">
+<parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
 <parameter name="progressInPercent" type="int">
 </parameter>
@@ -399,28 +379,13 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="XWalkViewInternal">
+<parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
 <parameter name="errorCode" type="int">
 </parameter>
 <parameter name="description" type="java.lang.String">
 </parameter>
 <parameter name="failingUrl" type="java.lang.String">
-</parameter>
-</method>
-<method name="shouldInterceptLoadRequest"
- return="WebResourceResponse"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="view" type="XWalkViewInternal">
-</parameter>
-<parameter name="url" type="java.lang.String">
 </parameter>
 </method>
 <method name="shouldInterceptLoadRequest"
@@ -616,7 +581,7 @@
 </field>
 </class>
 <class name="XWalkUIClient"
- extends="XWalkUIClientInternal"
+ extends="java.lang.Object"
  abstract="false"
  static="false"
  final="false"
@@ -643,7 +608,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="XWalkViewInternal">
+<parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
 <parameter name="enterFullscreen" type="boolean">
 </parameter>
@@ -658,7 +623,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="XWalkViewInternal">
+<parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
 </method>
 <method name="onJavascriptModalDialog"
@@ -671,9 +636,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="XWalkViewInternal">
+<parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
-<parameter name="typeInternal" type="JavascriptMessageTypeInternal">
+<parameter name="type" type="org.xwalk.core.XWalkUIClient.JavascriptMessageType">
 </parameter>
 <parameter name="url" type="java.lang.String">
 </parameter>
@@ -681,7 +646,7 @@
 </parameter>
 <parameter name="defaultValue" type="java.lang.String">
 </parameter>
-<parameter name="result" type="XWalkJavascriptResultInternal">
+<parameter name="result" type="org.xwalk.core.XWalkJavascriptResult">
 </parameter>
 </method>
 <method name="onRequestFocus"
@@ -694,7 +659,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="XWalkViewInternal">
+<parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
 </method>
 <method name="onScaleChanged"
@@ -707,30 +672,11 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="view" type="XWalkViewInternal">
+<parameter name="view" type="org.xwalk.core.XWalkView">
 </parameter>
 <parameter name="oldScale" type="float">
 </parameter>
 <parameter name="newScale" type="float">
-</parameter>
-</method>
-<method name="openFileChooser"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="view" type="XWalkViewInternal">
-</parameter>
-<parameter name="uploadFile" type="&lt;any&gt;">
-</parameter>
-<parameter name="acceptType" type="java.lang.String">
-</parameter>
-<parameter name="capture" type="java.lang.String">
 </parameter>
 </method>
 <method name="openFileChooser"
@@ -787,7 +733,7 @@
 </method>
 </class>
 <class name="XWalkView"
- extends="XWalkViewInternal"
+ extends="android.widget.FrameLayout"
  abstract="false"
  static="false"
  final="false"
