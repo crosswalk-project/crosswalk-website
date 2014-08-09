@@ -93,7 +93,6 @@ article {
   ol,
   dl,
   li {
-    list-style-type: disc;
     margin-left: $gutter;
     padding-left: 0;
     @include media($wide) {
@@ -103,6 +102,9 @@ article {
       // clear: left;
       @include shift(1);
     }
+  }
+  li {
+    list-style-type: disc;
   }
 }
 
@@ -183,8 +185,8 @@ h1, .h1 {
 
 h2, .h2,
 h3, .h3 {
-  margin-top: $base-line-height * 1em;
-  margin-bottom: ($base-line-height * 1em / 2);
+  margin-top: modular-scale($base-line-height, 0, $base-ratio);
+  margin-bottom: modular-scale($base-line-height, -1, $base-ratio);
 
   small {
     font-size: 65%;

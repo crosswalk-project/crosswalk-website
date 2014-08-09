@@ -80,16 +80,14 @@ blockquote,
   .pullquote[data-pullquote] {
     &:before {
       content: attr(data-pullquote);
-      font-size: modular-scale($base-font-size, 2, $base-ratio);
+      font-size: modular-scale($base-font-size, 3, $base-ratio);
       font-weight: 600;
       @include hyphens(auto);
       overflow: hidden;
       float: left;
       text-align: left;
-      padding-top: $base-line-height * 0.5em;
-      padding-bottom: $base-line-height * 0.5em;
+      padding-bottom: $base-line-height * 2;
       padding-right: $gutter/2; // Prevent overlap with ul, ol
-
       display: none;
       @include media($wide) {
         display: block;

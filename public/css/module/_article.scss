@@ -1,7 +1,20 @@
 .article,
 .article-list {
   @include media($wide) {
+    // font-size: modular-scale($base-font-size, 0, $base-ratio);
+    @include span-columns(6 of 6);
+  }
+  @include media($huge) {
     @include span-columns(4 of 6);
+  }
+}
+
+.article {
+  .article-title {
+    margin-top: 0;
+    @include media($huge) {
+      @include span-columns(6 of 5);
+    }
   }
 }
 
@@ -36,8 +49,16 @@
   margin-top: modular-scale($base-font-size, 0, $base-ratio);
   margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
   @include media($wide) {
-    @include span-columns(8 of 6);
+    display: block;
     margin-top: modular-scale($base-font-size, 4, $base-ratio);
     margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
+  }
+  @include media($huge) {
+    min-width: inherit;
+    max-width: inherit;
+
+    @include shift(-1);
+    @include span-columns(6 of 4);
+
   }
 }
