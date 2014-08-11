@@ -6,36 +6,50 @@
       "deprecated": "7+"
     },
     "android": {
-      "versions": "2+"
+      "versions": "2+",
+      "deprecated": "8+"
     },
     "webview": {
-      "versions": "6+"
+      "versions": "6+",
+      "deprecated": "8+"
     }
   },
   "app.main.scripts.extension": {
     "name": "app.main.scripts (extension)",
     "tizen": {
-      "versions": "1-7",
+      "versions": "1+",
       "deprecated": "7+"
     }
   },
   "app.main.source.extension": {
     "name": "app.main.source (extension)",
     "tizen": {
-      "versions": "1-7",
+      "versions": "1+",
       "deprecated": "7+"
     }
   },
   "content_security_policy.extension": {
     "name": "content_security_policy (extension)",
     "tizen": {
-      "versions": "4+"
+      "versions": "4-7"
     },
     "android": {
-      "versions": "6+"
+      "versions": "6-7"
     },
     "webview": {
-      "versions": "6+"
+      "versions": "6-7"
+    }
+  },
+  "csp.extension": {
+    "name": "csp (extension)",
+    "tizen": {
+      "versions": "8+"
+    },
+    "android": {
+      "versions": "8+"
+    },
+    "webview": {
+      "versions": "8+"
     }
   },
   "description.extension": {
@@ -54,21 +68,45 @@
     "name": "display",
     "tizen": {
       "versions": "7+"
+    },
+    "android": {
+      "versions": "8+"
+    }
+  },
+  "icons": {
+    "name": "icons",
+    "tizen": {
+      "versions": "8+"
+    },
+    "android": {
+      "versions": "8+"
     }
   },
   "icons.extension": {
     "name": "icons (extension)",
     "tizen": {
-      "versions": "1+"
+      "versions": "1-7"
     },
     "android": {
-      "versions": "2+"
+      "versions": "2-7"
     }
   },
   "launch_screen.extension": {
     "name": "launch_screen (extension)",
     "android": {
-      "versions": "5+"
+      "versions": "5-7"
+    }
+  },
+  "name": {
+    "name": "name",
+    "tizen": {
+      "versions": "7+"
+    },
+    "android": {
+      "versions": "8+"
+    },
+    "webview": {
+      "versions": "8+"
     }
   },
   "name.extension": {
@@ -77,28 +115,38 @@
       "versions": "1-6"
     },
     "android": {
-      "versions": "2+"
+      "versions": "2-7"
     },
     "webview": {
-      "versions": "6+"
+      "versions": "6-7"
     }
   },
-  "name": {
-    "name": "name",
+  "orientation": {
+    "name": "orientation",
     "tizen": {
-      "versions": "7"
+      "versions": "8+"
+    },
+    "android": {
+      "versions": "8+"
     }
   },
   "permissions.extension": {
     "name": "permissions (extension)",
     "android": {
-      "versions": "4+"
+      "versions": "4+",
+      "deprecated": "8+"
     }
   },
   "start_url": {
     "name": "start_url",
     "tizen": {
       "versions": "7+"
+    },
+    "android": {
+      "versions": "8+"
+    },
+    "webview": {
+      "versions": "8+"
     }
   },
   "version.extension": {
@@ -120,6 +168,18 @@
     },
     "webview": {
       "versions": "6+"
+    }
+  },
+  "xwalk_launch_screen.extension": {
+    "name": "xwalk_launch_screen (extension)",
+    "android": {
+      "versions": "8+"
+    }
+  },
+  "xwalk_permissions.extension": {
+    "name": "xwalk_permissions (extension)",
+    "android": {
+      "versions": "8+"
     }
   }
 }
