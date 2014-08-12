@@ -62,3 +62,28 @@
 
   }
 }
+
+.article-promo {
+  display: block;
+  margin-top: modular-scale($base-font-size, 4, $base-ratio);
+  text-shadow: none;
+  color: $color-text;
+  border: 1px solid $color-gray-dark;
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus {
+    text-shadow: none;
+    color: $color-text;
+  }
+  @include media($wide) {
+    @include span-columns(4 of 6);
+    @include shift(1);
+  }
+  @include media($massive) {
+    margin-top: -1 * modular-scale($base-font-size, 14, $base-ratio);
+    @include span-columns(4 of 6);
+    @include shift(6);
+    padding: modular-scale($base-font-size, 2, $base-ratio);
+  }
+}
