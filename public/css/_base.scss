@@ -86,8 +86,8 @@ article {
   ol,
   dl {
     padding-left: 0;
-    margin-before: modular-scale($base-font-size, 0, $base-ratio);
-    margin-after: modular-scale($base-font-size, 0, $base-ratio);
+    margin-top: modular-scale($base-font-size, 0, $base-ratio);
+    margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
   }
   ul,
   ol,
@@ -159,6 +159,15 @@ td {
   vertical-align: middle;
 }
 
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-style: italic;
+  margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+}
+
 // Headings
 //
 // Styleguide 1.5.3.
@@ -174,8 +183,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  margin-top: $base-line-height * 0.5em;
-  margin-bottom: ($base-line-height * 0.5em / 2);
+  margin-top: modular-scale($base-line-height, -2, $base-ratio);
+  margin-bottom: modular-scale($base-line-height, -2, $base-ratio);
   line-height: 1;
 
   small {
@@ -185,8 +194,8 @@ h1, .h1 {
 
 h2, .h2,
 h3, .h3 {
-  margin-top: modular-scale($base-line-height, 0, $base-ratio);
-  margin-bottom: modular-scale($base-line-height, -1, $base-ratio);
+  margin-top: modular-scale($base-line-height, -4, $base-ratio);
+  margin-bottom: modular-scale($base-line-height, -3, $base-ratio);
 
   small {
     font-size: 65%;
@@ -196,8 +205,8 @@ h3, .h3 {
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: ($base-line-height * 1em / 2);
-  margin-bottom: ($base-line-height * 1em / 2);
+  margin-top: modular-scale($base-line-height, -2, $base-ratio);
+  margin-bottom: modular-scale($base-line-height, -3, $base-ratio);
 
   small {
     font-size: 75%;
@@ -268,21 +277,6 @@ p {
 
 .text-right {
   text-align: right;
-}
-
-
-// Lead
-//
-// Move to article/blog stuff
-//
-// No styleguide reference.
-.lead,
-article > p:first-of-type {
-  @include media($mid) {
-    margin-bottom: $base-line-height * 1em;
-    font-size: modular-scale($base-font-size, 2, $base-ratio);
-    line-height: $base-line-height;
-  }
 }
 
 // Addresses

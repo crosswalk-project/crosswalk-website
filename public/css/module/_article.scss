@@ -18,6 +18,19 @@
   }
 }
 
+// Lead
+//
+// No styleguide reference.
+.lead,
+.article > p:first-of-type {
+  @include media($mid) {
+    margin-bottom: modular-scale($base-font-size, -4, $base-ratio);
+    font-size: modular-scale($base-font-size, 2, $base-ratio);
+    line-height: $base-line-height;
+  }
+}
+
+
 .article-list {
 
 }
@@ -56,7 +69,6 @@
   @include media($huge) {
     min-width: inherit;
     max-width: inherit;
-
     @include shift(-1);
     @include span-columns(6 of 4);
 
