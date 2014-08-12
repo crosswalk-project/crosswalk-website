@@ -28,28 +28,28 @@
   }
 }
 
-// Grayout
+// Well
 //
 // For sections with regular text on grey backgrounds.
-// Kind of like Bootstrap’s “Well.”
+// Like Bootstrap’s “Well.”
 //
 // :hover  -
 // :active -
 // :focus  -
 //
 // Styleguide 3.7.2.
-.grayout {
-  background-color: $color-gray;
+.well {
+  border-radius: $base-border-radius;
+  background: $color-gray-light;
+  border: 1px solid $color-gray-dark;
+  padding: $gutter;
+  margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+  }
   a,
   a:visited,
   .a-faux {
-    text-shadow: none;
-    &:hover,
-    &:focus {
-
-    }
-    &:active {
-
-    }
+    text-shadow: 1px 1px 0 $color-gray-light, -1px 1px 0 $color-gray-light;
   }
 }
