@@ -124,5 +124,8 @@ a.button--large {
 .button-group {
   .button-follower {
     padding-left: modular-scale($base-font-size, 2, $base-ratio);
+    @include media($mid) {
+      font-size: modular-scale($base-font-size, -1, $base-ratio);
+    }
   }
 }
