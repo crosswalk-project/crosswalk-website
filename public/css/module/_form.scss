@@ -151,7 +151,6 @@ fieldset {
   border: 0;
   margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
 
-
   @include media($narrow) {
     #{$all-text-inputs} {
       @include span-columns(3 of 5);
@@ -159,10 +158,14 @@ fieldset {
       margin-right: 0;
       border-radius: $base-border-radius 0 0 $base-border-radius;
       border-right: 0;
+      height: modular-scale($base-font-size, 6, $base-ratio);
+      line-height: 1.5;
     }
     .button,
     button,
     input[type="button"] {
+      height: modular-scale($base-font-size, 6, $base-ratio);
+      line-height: 1;
       @include span-columns(2 of 5);
       border-radius: 0 $base-border-radius $base-border-radius 0;
     }
