@@ -1,7 +1,7 @@
 <article class="article">
   <header class="article-header">
+    <a href="<%= current.source %>"><span class="article-meta"><time datetime="<%- new Date(date).toUTCString() %>"><%- new Date(date).toUTCString() %></time></span></a>
     <h1 class="article-title"><%- title %></h1>
-    <span class="article-meta"><time datetime="<%- new Date(date).toUTCString() %>"><%- date %></time></span>
   </header>
   <% if(typeof hero !== 'undefined') { %>
     <img class="article-hero" src="<%= hero %>" alt="" />
