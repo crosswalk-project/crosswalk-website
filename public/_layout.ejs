@@ -42,7 +42,7 @@
 
   </head>
   <body>
-    <!-- If the current page is an index,
+    <!-- If the current page is an index or in the root,
          leave it alone so we can do custom markup.
          Otherwise, provide the header and nav. -->
     <% if(current.source !== 'index') { %>
@@ -51,7 +51,11 @@
           <% include _includes/nav.ejs %>
         </div>
         <div class="row">
-          <%- partial(current.path.reverse()[current.path.length - 1] + "/_nest") %>
+          <% if(current.path.length === 1) { %>
+            <%- yield %>
+          <% } else { %>
+            <%- partial(current.path.reverse()[current.path.length - 1] + "/_nest") %>
+          <% } %>
         </div>
       </div>
     <% } else { %>
