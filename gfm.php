@@ -30,8 +30,9 @@ function missing ($f) {
     print '<p>The page you requested is not available: <span class="missing">'
           . $f .
           '</span></p>' .
-          '<p>Please report this to the site administrators, stating ' .
-          'the URL of the missing page.</p>';
+          '<p>Please notify the site adminstrators via the ' .
+          '<a href="#documentation/report_bugs">report bugs ' .
+          'page</a>, stating the URL of the missing page.</p>';
     exit;
 }
 
