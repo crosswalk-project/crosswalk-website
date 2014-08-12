@@ -36,7 +36,7 @@
   background-color: #000;
   background-position: center top;
   background-size: cover;
-  @include media($huge) {
+  @include media($massive) {
     background-position: 75% top;
     background-size: contain;
   }
