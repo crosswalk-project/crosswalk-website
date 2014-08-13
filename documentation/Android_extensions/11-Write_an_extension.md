@@ -196,7 +196,7 @@ The properties in the object defined in this file have the following roles:
 
     The strings in the `permissions` array should match the corresponding Android permission; see the [list of Android permissions](http://developer.android.com/reference/android/Manifest.permission.html) for details. For example, if you needed access to the `FLASHLIGHT` and `GET_ACCOUNTS` permissions, your extension configuration file would have a `permissions` property like this:
 
-        "permissions": ["FLASHLIGHT", "GET_ACCOUNTS"]
+        "permissions": ["android.permission.FLASHLIGHT", "android.permission.GET_ACCOUNTS"]
 
 At build time, `make_apk.py` will combine this JSON file with configuration files for other extensions into a single `extensions-config.json` file. This is the file that Crosswalk actually uses to load the extension class and its corresponding JavaScript API.
 
