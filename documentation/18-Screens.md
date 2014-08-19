@@ -826,13 +826,13 @@ The steps below explain how to add a launch screen to the example game.
 
 3.  The final step is to modify the JavaScript to close the launch screen.
 
-    When the `ready_when` property is set to `custom`, the launch screen can be closed by calling the Crosswalk-specific `window.show()` method. For this game, I added an artificial 5 second timeout before calling the `window.show()` method (otherwise the game loads so quickly that you only see a flash of the launch screen). The code looks like this:
+    When the `ready_when` property is set to `custom`, the launch screen can be closed by calling the Crosswalk-specific `window.screen.show()` method. For this game, I added an artificial 5 second timeout before calling the `window.screen.show()` method (otherwise the game loads so quickly that you only see a flash of the launch screen). The code looks like this:
 
     ```
     setTimeout(function () {
-      // check that the screen.show method is available
-      if (screen.show) {
-        screen.show();
+      // check that the window.screen.show method is available
+      if (window.screen.show) {
+        window.screen.show();
       }
 
       gameLoop();
