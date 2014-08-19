@@ -25,12 +25,16 @@ blockquote,
   text-align: center;
   font-size: 1.25rem;
   @include media($mid) {
-    font-size: 2rem;
+    font-size: 1.25rem;
     line-height: 1.25;
   }
   @include media($wide) {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
   }
+  @include media($huge) {
+    font-size: 2rem;
+  }
+
 
   footer {
     text-align: left;
