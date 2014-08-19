@@ -13,13 +13,13 @@ In this section, you will create a Cordova Android application which will be mig
 
 ### Set up the Cordova command line tools
 
-You'll be using the command line version of Cordova to create the project, so you need to install pre-requisites as described in [Cordova command line](http://cordova.apache.org/docs/en/3.4.0/guide_cli_index.md.html).
+You'll be using the command line version of Cordova to create the project, so you need to install pre-requisites as described in [Cordova command line](http://cordova.apache.org/docs/en/3.5.0/guide_cli_index.md.html).
 
 Once you have the pre-requisites, you can install the Cordova command line tools with `npm`:
 
-    $ npm install -g cordova@3.3
+    $ npm install -g cordova@3.5
 
-(You're installing Cordova 3.3.*, as this is the version supported by the current stable Crosswalk.)
+(You're installing Cordova 3.5.*, as this is the version supported by the current stable Crosswalk.)
 
 This installs the tools globally so they are available from any shell.
 
@@ -51,23 +51,23 @@ To create the project for the application:
 
 4.  Add the required plugins for this application by running these commands inside the `kitchensink/` directory:
 
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git#r0.2.5
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file.git#r0.2.5
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file-transfer.git#r0.4.0
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media-capture.git#r0.2.5
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-orientation.git#r0.3.3
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-network-information.git#r0.2.5
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-contacts.git#r0.2.5
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git#r0.2.5
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-battery-status.git#r0.2.5
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-geolocation.git#r0.3.4
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-globalization.git#r0.2.4
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git#r0.2.4
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git#r0.2.6
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git#r0.2.4
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibration.git#r0.3.5
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git#r0.2.5
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-battery-status.git#r0.2.8
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git#r0.2.9
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-contacts.git#r0.2.10
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git#r0.2.9
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.7
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-orientation.git#r0.3.6
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git#r0.2.7
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file.git#r1.1.0
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file-transfer.git#r0.4.3
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-geolocation.git#r0.3.7
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-globalization.git#r0.2.7
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git#r0.4.0
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git#r0.2.10
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media-capture.git#r0.3.0
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-network-information.git#r0.2.8
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git#r0.3.0
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibration.git#r0.3.8
 
     Note that the kitchen sink application uses all the Cordova plugins. Also note that the `cordova` command wraps the `plugman` tool, described in the [Add plugins](#documentation/cordova/add_plugins) page. You can get more details about how plugins are installed from that page.
 
@@ -119,7 +119,11 @@ Once you have the application working with standard Cordova, you can move on to 
 
         $ cp -a <path_to_bundle>/VERSION platforms/android/
 
-5.  <a name="build-project"></a>Build the projects in this order:
+5.  Crosswalk requires an extra permission which is not automatically added by the Cordova application generator. Add this manually be editing `platforms/android/AndroidManifest.xml`, adding this line just after the existing `<uses-permission>` elements:
+
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+6.  <a name="build-project"></a>Build the projects in this order:
 
     <ol>
     <li><strong>xwalk_core_library</strong></li>
@@ -182,7 +186,7 @@ Once you have the application working with standard Cordova, you can move on to 
 
     Once you've built a release package, you will need to [sign and align it](http://developer.android.com/tools/publishing/app-signing.html) if you intend to install it to an Android device or distribute it via an app store.
 
-6.  The output Android `.apk` files are in the `kitchensink/platforms/android/bin/` directory. You can either install them from there with `adb`:
+7.  The output Android `.apk` files are in the `kitchensink/platforms/android/bin/` directory. You can either install them from there with `adb`:
 
         $ cd kitchensink
         $ adb install platforms/android/bin/KitchenSink-debug.apk
@@ -196,16 +200,16 @@ Once you have the application working with standard Cordova, you can move on to 
 
     The application should now be running on the target.
 
-7.   The application should look identical to how it does on standard Cordova. If you are using a debug build (i.e. you didn't apply the `--release` option), you should also be able to [debug your application using Chrome](#documentation/cordova/develop_an_application/Debug-the-application).
+8.   The application should look identical to how it does on standard Cordova. If you are using a debug build (i.e. you didn't apply the `--release` option), you should also be able to [debug your application using Chrome](#documentation/cordova/develop_an_application/Debug-the-application).
 
     You can also use the dev tools to confirm your application is using Crosswalk. Open "chrome://inspect" in a Chrome browser and select the "inspect" link for the *Intel XDK Kitchen Sink* application (or for your own application).
 
     In the Chrome dev tools, you should now have a JavaScript console. You can verify that your application is using Crosswalk as its webview by echoing the `navigator.userAgent` property to the console:
 
         > navigator.userAgent
-        "Mozilla/5.0 (Linux; Android 4.2.2; ZTE V975 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Mobile Crosswalk/5.34.104.5 Mobile Safari/537.36"
+        "Mozilla/5.0 (Linux; Android 4.2.2; ZTE V975 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Mobile Crosswalk/7.36.154.12 Mobile Safari/537.36"
 
-    Note the presence of the "Crosswalk/N.N.N.N" string, which indicates the application is using Crosswalk.
+    Note the presence of the "Crosswalk/N.N.N.N" string, which indicates that the application is using Crosswalk.
 
 ### Multi-architecture packages
 
@@ -344,15 +348,11 @@ These steps assume that you created your project using the Cordova command line 
 
 ### Migrating with Crosswalk 5
 
-The above instructions work for applications built with Cordova 3.3, 3.4 and 3.5. However, if you are using Crosswalk 5, you will need to add some additional permissions for your application, otherwise the package will build and install, but the application won't run.
+The above instructions work for applications built with Cordova 3.3, 3.4 and 3.5. However, if you are using Crosswalk 5, you will need to add an additional permission for your application, otherwise the package will build and install, but the application won't run.
 
-These additional permissions should be added to your Cordova project's `platforms/android/AndroidManifest.xml` file (immediately before the `<application>` element):
+The additional permission should be added to your Cordova project's `platforms/android/AndroidManifest.xml` file, just after any existing `<uses-permission>` elements:
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <!-- ...rest of AndroidManifest.xml...-->
-    <application ...>
 
 ## Adding plugins to a migrated project
 
