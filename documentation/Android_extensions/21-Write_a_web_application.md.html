@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Android_extensions/21 Write_a_web_application';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Android_extensions/21 Write_a_web_application</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Write a web application</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Android_extensions/21-Write_a_web_application"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Android_extensions/21-Write_a_web_application"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The web application for this project is a simple HTML5/CSS/Javascript application, with some additional files to enable it to be used in a Crosswalk package. Full details about adapting web applications for Crosswalk are given <a href="#documentation/getting_started/build_an_application">in the <em>Getting started</em> pages</a>.</p>
+
+<ol><li><p>Create the directories for the web application:</p>
+
+<pre><code>cd ~/&lt;my projects directory&gt;/xwalk-echo-project
+
+# top-level directory for web application
+mkdir xwalk-echo-app
+cd xwalk-echo-app
+
+# directories for application components
+mkdir -p assets js
+</code></pre>
+
+<p>The steps below assume you are adding files to the <code>xwalk-echo-app</code> directory.</p></li>
+<li><p>Add a <code>manifest.json</code> file:</p>
+
+<pre><code>{
+  "name": "xwalk_echo_app",
+  "version": "0.0.0.1",
+  "app": {
+    "launch":{
+      "local_path": "index.html"
+    }
+  },
+  "icons": {
+    "96": "icon.png"
+  }
+}
+</code></pre></li>
+<li><p>Add an icon file <code>icon.png</code>.</p>
+
+<p>The manifest file (above) specifies a 96x96px icon with filename <code>icon.png</code> as the application icon. Crosswalk will use this as the icon for the application in the Android target's application list/home screen etc.</p>
+
+<p>You can either use your own icon (with the right dimensions), or copy the default Crosswalk one by following the instructions on <a href="#documentation/getting_started/build_an_application/A-simple-application">this page</a>.</p></li>
+<li><p>Add the HTML file <code>index.html</code>:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;xwalk-echo-app&lt;/title&gt;
+&lt;link rel="stylesheet" href="assets/base.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header&gt;
+  &lt;h1&gt;xwalk-echo-app&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;script src="js/main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></li>
+<li><p>Add some simple CSS styling in <code>assets/base.css</code>:</p>
+
+<pre><code>body {
+  font-size: 1.5em;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+header {
+  border-bottom: 0.25em solid black;
+}
+</code></pre>
+
+<p>This increases the font sizes and adds some lines and spacing to make the layout slightly more appealing.</p></li>
+<li><p>Add the JavaScript file <code>js/main.js</code>. The code in this file uses the Crosswalk extension to echo a message, then display the reply in a new <code>&lt;p&gt;</code> element:</p>
+
+<pre><code>document.addEventListener('DOMContentLoaded', function () {
+  echo.echoAsync('Hello world').then(
+    function (result) {
+      var p = document.createElement('p');
+      p.innerHTML = result.content;
+      document.body.appendChild(p);
+    }
+  );
+});
+</code></pre>
+
+<p>The listener added to the <code>DOMContentLoaded</code> event is the core piece of code here. This is responsible for calling the extension API by invoking the asynchronous <code>echoAsync()</code> method, and adding handlers which deal with the returned Promise. The <code>content</code> property of the object returned by the extension is used as the text for a new paragraph, which is then appended to the document body.</p></li>
+</ol><p>Now both the web application and the extension are ready, you can create a package and run it on Android.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-06-25 11:26:21</p>
+  <p>
+    <a id="delete-link" href="/documentation/Android_extensions/21-Write_a_web_application" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Android_extensions/21-Write_a_web_application">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
