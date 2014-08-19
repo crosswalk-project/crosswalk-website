@@ -26,4 +26,17 @@
       text-align: center;
     }
   }
+  @include media($mid) {
+    font-size: 0.75em;
+    td {
+      img,
+      svg {
+        width: 1.25em;
+        max-width: 1.25em;
+        margin-left: 50%;
+        margin-right: 50%;
+      }
+
+    }
+  }
 }
