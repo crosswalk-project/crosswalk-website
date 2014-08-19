@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "styleguide": "kss-node public/ public/styleguide --template public/_styleguide-template --sass public/css/styleguide.scss",
-    "dropbox": "harp compile && cp -R www/* ~/Dropbox/harp.io/apps/intel-crosswalk.harp.io/",
+    "dropbox": "harp compile && cp -R www/* ~/Dropbox/harp.io/apps/intel-crosswalk.harp.io/public",
     "deploy": "npm run styleguide && npm run dropbox"
   },
   "devDependencies": {
