@@ -29,6 +29,8 @@ blockquote,
     line-height: 1.25;
   }
   @include media($wide) {
+    margin-top: 1em;
+    margin-bottom: 1.5em;
     font-size: 1.75rem;
   }
   @include media($huge) {
