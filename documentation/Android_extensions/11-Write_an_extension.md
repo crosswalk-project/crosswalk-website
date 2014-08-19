@@ -417,7 +417,11 @@ Once Ant is installed, add a buildfile, `build.xml`, to the top-level directory 
       <property name="lib" value="lib" />
 
       <!-- Crosswalk Android version -->
-      <property name="crosswalk-version" value="5.34.104.5" />
+      <property name="crosswalk-version" value="${XWALK-STABLE-ANDROID-X86}" />
+
+      <!-- URL of Crosswalk Android bundle -->
+      <property name="crosswalk-download-url"
+                value="https://download.01.org/crosswalk/releases/crosswalk/android/stable/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" />
 
       <!-- location of downloaded Crosswalk Android file -->
       <property name="crosswalk-zip" value="${lib}/crosswalk.zip" />
@@ -460,7 +464,7 @@ Once Ant is installed, add a buildfile, `build.xml`, to the top-level directory 
       <target name="download-crosswalk" depends="prepare, check-crosswalk-present"
               unless="crosswalk-zip.present">
         <!-- fetch from the download site -->
-        <get src="https://download.01.org/crosswalk/releases/crosswalk/android/stable/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" dest="${crosswalk-zip}" />
+        <get src="${crosswalk-download-url}" dest="${crosswalk-zip}" />
 
         <!-- unpack to lib/crosswalk-*/ -->
         <unzip src="${crosswalk-zip}" dest="${lib}" />
@@ -502,13 +506,49 @@ Once Ant is installed, add a buildfile, `build.xml`, to the top-level directory 
 
 This is a fairly standard Ant buildfile for a small project. The default task is `dist`, which does the following:
 
-1.  Deletes and recreates the `build/` and `xwalk-echo-extension/` directories.
-2.  Downloads the Gson jar file dependency and puts it in the `lib/` directory (via Ivy).
-3.  Downloads Crosswalk Android (via HTTP) and unpacks it in the `lib/` directory.
-4.  Compiles the extension Java source in the `src/` directory, placing the output `.class` files into the `build/` directory.
-5.  Unpacks the Gson jar file into the `build/` directory. This is so it can be included in the extension jar file.
-6.  Creates a jar file in `xwalk-echo-extension/` containing the extension `.class` files and the content unpacked from the Gson jar file.
-7.  Copies the extension JSON configuration `xwalk-echo-extension.json` and the JavaScript API definition `js/xwalk-echo-extension.js` into the `xwalk-echo-extension/` directory.
+<ol>
+  <li>Deletes and recreates the <code>build/</code> and <code>xwalk-echo-extension/</code> directories.</li>
+
+  <li>Downloads the Gson jar file dependency and puts it in the <code>lib/</code> directory (via Ivy).</li>
+
+  <li>Downloads Crosswalk Android (via HTTP) and unpacks it in the <code>lib/</code> directory. Note that if you want to use the <a href="#documentation/downloads">beta or canary versions of Crosswalk</a>, you will need to modify the <code>crosswalk-version</code> and <code>crosswalk-download-url</code> <code>&lt;property&gt;</code> elements as follows:
+
+    <ul>
+      <li>
+        <p><strong>beta:</strong></p>
+
+        <pre>
+&lt;property name="crosswalk-version" value="${XWALK-BETA-ANDROID-X86}" /&gt;
+
+&lt;property name="crosswalk-download-url"
+          value="https://download.01.org/crosswalk/releases/crosswalk/android/beta/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" /&gt;
+        </pre>
+      </li>
+
+      <li>
+        <p><strong>canary:</strong></p>
+
+        <pre>
+&lt;property name="crosswalk-version" value="...Crosswalk canary version..." /&gt;
+
+&lt;property name="crosswalk-download-url"
+          value="https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" /&gt;
+        </pre>
+      </li>
+    </ul>
+
+    <p>You can find the current canary version by consulting the <a href="#documentation/downloads">downloads page</a>.</p>
+  </li>
+
+  <li>Compiles the extension Java source in the <code>src/</code> directory, placing the output <code>.class</code> files into the <code>build/</code> directory.</li>
+
+  <li>Unpacks the Gson jar file into the <code>build/</code> directory. This is so it can be included in the extension jar file.</li>
+
+  <li>Creates a jar file in <code>xwalk-echo-extension/</code> containing the extension <code>.class</code> files and the content unpacked from the Gson jar file.</li>
+
+  <li>Copies the extension JSON configuration <code>xwalk-echo-extension.json</code> and the JavaScript API definition <code>js/xwalk-echo-extension.js</code> into the <code>xwalk-echo-extension/</code> directory.</li>
+
+</ol>
 
 The final output of this task, the `xwalk-echo-extension/` directory, contains an extension with the correct layout to be included in a Crosswalk `.apk` file, i.e.
 
