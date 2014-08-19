@@ -534,10 +534,10 @@ This is a fairly standard Ant buildfile for a small project. The default task is
 &lt;property name="crosswalk-download-url"
           value="https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" /&gt;
         </pre>
+
+        <p>You can find the current canary version by consulting the <a href="#documentation/downloads">downloads page</a>.</p>
       </li>
     </ul>
-
-    <p>You can find the current canary version by consulting the <a href="#documentation/downloads">downloads page</a>.</p>
   </li>
 
   <li>Compiles the extension Java source in the <code>src/</code> directory, placing the output <code>.class</code> files into the <code>build/</code> directory.</li>
