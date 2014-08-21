@@ -417,8 +417,7 @@
   "version": "1.0.0",
   "start_url": "index.html",
   "display": "fullscreen",
-  "orientation": "landscape",
-  "csp": "script-src 'self'; object-src 'self'",
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": {
     "128": "icon128.png"
   }

@@ -31,7 +31,7 @@
   "content_security_policy.extension": {
     "name": "content_security_policy (extension)",
     "tizen": {
-      "versions": "4-7"
+      "versions": "4+"
     },
     "android": {
       "versions": "6-7"
@@ -42,9 +42,6 @@
   },
   "csp.extension": {
     "name": "csp (extension)",
-    "tizen": {
-      "versions": "8+"
-    },
     "android": {
       "versions": "8+"
     },
@@ -75,9 +72,6 @@
   },
   "icons": {
     "name": "icons",
-    "tizen": {
-      "versions": "8+"
-    },
     "android": {
       "versions": "8+"
     }
@@ -85,7 +79,7 @@
   "icons.extension": {
     "name": "icons (extension)",
     "tizen": {
-      "versions": "1-7"
+      "versions": "1+"
     },
     "android": {
       "versions": "2-7"
@@ -94,7 +88,8 @@
   "launch_screen.extension": {
     "name": "launch_screen (extension)",
     "android": {
-      "versions": "5-7"
+      "versions": "5-8",
+      "deprecated": "8+"
     }
   },
   "name": {
@@ -123,9 +118,6 @@
   },
   "orientation": {
     "name": "orientation",
-    "tizen": {
-      "versions": "8+"
-    },
     "android": {
       "versions": "8+"
     }
