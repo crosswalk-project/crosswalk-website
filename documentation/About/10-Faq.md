@@ -10,13 +10,29 @@ If you are a developer working with web technologies, Crosswalk enables you to d
 2.  Your application won't break in whatever ancient webviews or browsers your audience is using, as you control the runtime and its upgrade cycle.
 3.  You can build applications without worrying so much about runtime differences and quirks: you only have one runtime to deal with.
 
+### Is this a runtime like Java or Visual Basic?
+
+No, because Crosswalk is based on W3C standards: HTML5, CSS and JavaScript. Unlike the languages supported by earlier runtimes, W3C standards are implemented in multiple contexts, by multiple companies, in both open source and commercial forms. A broad range of open source as well as commercial tools and projects support the developer. When you use a Crosswalk application runtime, you are participating in a growing ecosystem.
+
+### If my apps need W3C standards, why not target a browser?
+
+Browsers do a great job of supporting W3C standards, but they are not allowed to support the APIs from the [Systems Applications Working Group](http://www.w3.org/2012/sysapps/). This is because these APIs access platform features which, if known to a web site and combined with other data available to the browser, would allow violations of the user's privacy. Because Crosswalk applications have a different security model, where a user is able to choose which permissions an application is given, system application APIs *can* be supported. This in turn makes it possible for Crosswalk to run applications which are not possible on the open web.
+
+### Isn't the Crosswalk Project just going to mean more fragmentation of the web?
+
+No, because:
+
+* The Crosswalk Project isn't aimed at the web at all: it's aimed at applications that happen to be written in HTML5, CSS and JS.
+* Applications using a Crosswalk runtime know about the environment they are built for. Minor differences between runtime implementations (e.g. a sensor available on one platform but not on another) can be easily managed by developers.
+* We don't intend to fork Blink, the underlying rendering engine for Chromium.
+* We rebase regularly to new versions of Blink.
+* If a change makes sense for generic Chromium, we will submit it upstream.
+
 ### How big is the Crosswalk runtime, and how will it affect my application's size?
 
-To give a rough idea, the HTML/JS/CSS for [one of the project's test applications](https://github.com/crosswalk-project/crosswalk-apk-generator/tree/master/test/functional/demo-app) takes up 3.9Mb of disk space.
+To give a rough idea, the HTML/JS/CSS for [one of the project's sample applications](https://github.com/crosswalk-project/crosswalk-samples/tree/master/hello_world) takes up 24Kb of disk space.
 
-Once this application is packaged with its own Crosswalk (x86 Android) runtime, the apk file size is 21.2Mb.
-
-Unpacked, the files take up 49.8Mb of disk space, 45.9Mb of which is occupied by the Crosswalk runtime and its supporting files.
+Once this application is packaged with its own Crosswalk 8 (x86 Android) runtime, the apk file size is 19.63Mb. Unpacked, the files take up 64.77Mb of disk space.
 
 ### Can one Crosswalk installation be shared between multiple applications?
 
@@ -105,6 +121,21 @@ No. Crosswalk is effectively a modified version of Chromium, the open source bas
 Crosswalk provides access to the [full range of modern web APIs](https://crosswalk-project.org/#documentation/apis/web_apis) supported by Chrome. By contrast, the Android Chrome-based web view [lacks some features](https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android) which are available in Chrome on Android.
 
 On top of this, Crosswalk adds extra features which are *not* available in either Chrome or the Android webview, such as experimental support for [SIMD](https://01.org/blogs/tlcounts/2014/bringing-simd-javascript) and support for the [Presentation API](https://crosswalk-project.org/#wiki/presentation-api-manual).
+
+### Why use Blink vs. the higher-level Chromium Embedded Framework as a basis for Crosswalk?
+
+[CEF 1.0](https://code.google.com/p/chromiumembedded/) has proven to be quite popular, but is being [phased out](http://www.magpcss.org/ceforum/viewtopic.php?f=10&t=10647&sid=510426ccd8a9650f72ba416d7b51de06) in favor of the larger CEF 3.0. Since we want a consistent implementation in the Crosswalk project, we had to pick a level in the Chromium architecture that could accommodate both use cases. By starting with Blink and building up, rather starting with CEF 3.0 and removing pieces, we think we'll end up with a tighter, more consistent result.
+
+### When should I use Chrome's new packaged apps rather than Crosswalk?
+
+With Chrome packaged apps, you get access to the Chrome app store and the capabilities Chrome offers.
+
+With the Crosswalk project, you have different possibilities:
+
+* If you are building a platform, you can include a Crosswalk Application Runtime as a service for your own catalog of applications.
+* A developer can package an application with a Crosswalk Application runtime so that the app and runtime are never revised without developer permission.
+
+Of course, because Crosswalk is based on Blink and Chromium, a developer could publish a standard HTML5 app for both Crosswalk and Chrome.
 
 ### How often is Crosswalk released?
 
