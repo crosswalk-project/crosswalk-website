@@ -18,6 +18,16 @@ No, because Crosswalk is based on W3C standards: HTML5, CSS and JavaScript. Unli
 
 Browsers do a great job of supporting W3C standards, but they are not allowed to support the APIs from the [Systems Applications Working Group](http://www.w3.org/2012/sysapps/). This is because these APIs access platform features which, if known to a web site and combined with other data available to the browser, would allow violations of the user's privacy. Because Crosswalk applications have a different security model, where a user is able to choose which permissions an application is given, system application APIs *can* be supported. This in turn makes it possible for Crosswalk to run applications which are not possible on the open web.
 
+### Isn't the Crosswalk Project just going to mean more fragmentation of the web?
+
+No, because:
+
+* The Crosswalk Project isn't aimed at the web at all: it's aimed at applications that happen to be written in HTML5, CSS and JS.
+* Applications using a Crosswalk runtime know about the environment they are built for. Minor differences between runtime implementations (e.g. a sensor available on one platform but not on another) can be easily managed by developers.
+* We don't intend to fork Blink, the underlying rendering engine for Chromium.
+* We rebase regularly to new versions of Blink.
+* If a change makes sense for generic Chromium, we will submit it upstream.
+
 ### How big is the Crosswalk runtime, and how will it affect my application's size?
 
 To give a rough idea, the HTML/JS/CSS for [one of the project's sample applications](https://github.com/crosswalk-project/crosswalk-samples/tree/master/hello_world) takes up 24Kb of disk space.
@@ -124,7 +134,7 @@ However, unlike CEF and QtWebKit, Crosswalk provides a packaging tool for Androi
 
 ### Why use Blink vs. the higher-level Chromium Embedded Framework as a basis for Crosswalk?
 
-CEF 1.0 has proven to be quite popular, but is being [phased out](http://www.magpcss.org/ceforum/viewtopic.php?f=10&t=10647&sid=510426ccd8a9650f72ba416d7b51de06) in favor of the larger CEF 3.0. Since we want a consistent implementation in the Crosswalk project, we had to pick a level in the Chromium architecture that could accommodate both use cases. By starting with Blink and building up, rather starting with CEF 3.0 and removing pieces, we think we'll end up with a tighter, more consistent result.
+[CEF 1.0](https://code.google.com/p/chromiumembedded/) has proven to be quite popular, but is being [phased out](http://www.magpcss.org/ceforum/viewtopic.php?f=10&t=10647&sid=510426ccd8a9650f72ba416d7b51de06) in favor of the larger CEF 3.0. Since we want a consistent implementation in the Crosswalk project, we had to pick a level in the Chromium architecture that could accommodate both use cases. By starting with Blink and building up, rather starting with CEF 3.0 and removing pieces, we think we'll end up with a tighter, more consistent result.
 
 ### When should I use Chrome's new packaged apps rather than Crosswalk?
 
@@ -136,16 +146,6 @@ With the Crosswalk project, you have different possibilities:
 * A developer can package an application with a Crosswalk Application runtime so that the app and runtime are never revised without developer permission.
 
 Of course, because Crosswalk is based on Blink and Chromium, a developer could publish a standard HTML5 app for both Crosswalk and Chrome.
-
-### Isn't the Crosswalk Project just going to mean more fragmentation of the web?
-
-No, because:
-
-* The Crosswalk Project isn't aimed at the web at all: it's aimed at applications that happen to be written in HTML5, CSS and JS.
-* Applications using a Crosswalk runtime know about the environment they are built for. Minor differences between runtime implementations (e.g. a sensor available on one platform but not on another) can be easily managed by developers.
-* We don't intend to fork Blink, the underlying rendering engine for Chromium.
-* We rebase regularly to new versions of Blink.
-* If a change makes sense for generic Chromium, we will submit it upstream.
 
 ### How often is Crosswalk released?
 
