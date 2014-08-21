@@ -122,16 +122,6 @@ Crosswalk provides access to the [full range of modern web APIs](https://crosswa
 
 On top of this, Crosswalk adds extra features which are *not* available in either Chrome or the Android webview, such as experimental support for [SIMD](https://01.org/blogs/tlcounts/2014/bringing-simd-javascript) and support for the [Presentation API](https://crosswalk-project.org/#wiki/presentation-api-manual).
 
-### How is Crosswalk different from CEF or QtWebKit?
-
-Crosswalk is based on the same upstream code as CEF - Chromium and Blink. Blink is a fork of WebKit. QtWebKit is based on the WebKit project.
-
-CEF and QtWebKit are intended to be used in native applications. A developer can pass HTML5/CSS/JS to their native code for execution by CEF or QtWebKit. Crosswalk can be used in a similar way via its [embedding API](#documentation/embedding_crosswalk).
-
-A CEF or QtWebKit developer can execute arbitrary native code in their program along with HTML5/CSS/JS. A developer can use the Crosswalk extension mechanism to achieve a similar result.
-
-However, unlike CEF and QtWebKit, Crosswalk provides a packaging tool for Android. This can [create a native application from a web application + a Crosswalk runtime](#documentation/getting_started/run_on_android) in a few easy steps.
-
 ### Why use Blink vs. the higher-level Chromium Embedded Framework as a basis for Crosswalk?
 
 [CEF 1.0](https://code.google.com/p/chromiumembedded/) has proven to be quite popular, but is being [phased out](http://www.magpcss.org/ceforum/viewtopic.php?f=10&t=10647&sid=510426ccd8a9650f72ba416d7b51de06) in favor of the larger CEF 3.0. Since we want a consistent implementation in the Crosswalk project, we had to pick a level in the Chromium architecture that could accommodate both use cases. By starting with Blink and building up, rather starting with CEF 3.0 and removing pieces, we think we'll end up with a tighter, more consistent result.
