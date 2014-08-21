@@ -18,6 +18,7 @@
       <br>
 
       <select name="crosswalk-version">
+        <option value="8">Crosswalk 8</option>
         <option value="7">Crosswalk 7</option>
         <option value="6">Crosswalk 6</option>
         <option value="5">Crosswalk 5</option>
@@ -91,6 +92,12 @@
         <p><a href="#documentation/manifest/content_security_policy">Read more...</a></p>
       </li>
 
+      <li data-field="csp.extension">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Represents the <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">content security policy (CSP)</a> which should be enforced for the application. The CSP restricts the types of locations of resources the application can load, to help prevent <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-Site Scripting (XSS)</a> and related attacks. CSP is disabled if this field is not set.</p>
+        <p><a href="#documentation/manifest/content_security_policy">Read more...</a></p>
+      </li>
+
       <li data-field="description.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Free-form text describing the application.</p>
@@ -102,6 +109,15 @@
         <p>
           <a href="http://w3c.github.io/manifest/#display-member">W3C spec</a> |
           <a href="#documentation/manifest/display">Read more...</a>
+        </p>
+      </li>
+
+      <li data-field="icons">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Graphics files to use for the application icon at different resolutions.</p>
+        <p>
+          <a href="http://w3c.github.io/manifest/#icons-member">W3C spec</a> |
+          <a href="#documentation/manifest/icons">Read more...</a>
         </p>
       </li>
 
@@ -130,6 +146,15 @@
         </p>
       </li>
 
+      <li data-field="orientation">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Sets the default orientation for the application (e.g. "portrait", "landscape").</p>
+        <p>
+          <a href="http://w3c.github.io/manifest/#orientation-member">W3C spec</a>
+          <a href="#documentation/manifest/orientation">Read more...</a>
+        </p>
+      </li>
+
       <li data-field="permissions.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines permissions the application needs so it can access platform features. <a href="#manifest-permissions">See below</a> for details of the available permissions.</p>
@@ -154,6 +179,18 @@
         <p><strong data-role="field-name"></strong></p>
         <p>Defines host URL patterns to which the application can make Ajax requests, allowing <a href="https://developer.chrome.com/extensions/xhr">Cross-Origin Ajax requests</a> (using a mechanism similar to Chrome's).</p>
         <p><a href="#documentation/manifest/xwalk_hosts">Read more...</a></p>
+      </li>
+
+      <li data-field="xwalk_launch_screen.extension">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Defines a static user interface to be shown immediately after the application is launched.</p>
+        <p><a href="#documentation/manifest/launch_screen">Read more...</a></p>
+      </li>
+
+      <li data-field="xwalk_permissions.extension">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Defines permissions the application needs so it can access platform features. <a href="#manifest-permissions">See below</a> for details of the available permissions.</p>
+        <p><a href="#documentation/manifest/permissions">Read more...</a></p>
       </li>
     </ul>
 
@@ -180,7 +217,10 @@
 
     <p>See the <a href="#documentation/manifest/permissions">permissions page</a> for details of what this field is for.</p>
 
-    <p>The following values (in bold) can be used in the <strong>permissions</strong> list in the manifest:</p>
+    <p>The following values (in bold) can be used in the
+    <strong data-crosswalk-versions="4-7" data-crosswalk-platforms="android">permissions</strong>
+    <strong data-crosswalk-versions="8+" data-crosswalk-platforms="android">xwalk_permissions</strong>
+    list in the manifest:</p>
 
     <ul>
 
@@ -369,6 +409,22 @@
       </pre>
     </div>
 
+    <div data-crosswalk-versions="8+" data-crosswalk-platforms="tizen">
+      <pre>
+{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "icons": {
+    "128": "icon128.png"
+  }
+}
+      </pre>
+    </div>
+
     <!-- ANDROID MANIFEST EXAMPLES -->
     <div data-crosswalk-versions="2-3" data-crosswalk-platforms="android">
       <pre>
@@ -538,8 +594,63 @@
       </pre>
     </div>
 
+    <div data-crosswalk-versions="8" data-crosswalk-platforms="android">
+      <pre>
+{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "start_url": "index.html",
+  "csp": "script-src 'self'; object-src 'self'",
+  "icons": [
+    {
+      "src": "icon_small.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "icon_large.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "icon_large_hd.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "density": "2"
+    }
+  ],
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "xwalk_permissions": [
+    "Contacts",
+    "DeviceCapabilities",
+    "Fullscreen",
+    "Geolocation",
+    "Messaging",
+    "Presentation",
+    "RawSockets",
+    "ScreenOrientation",
+    "Vibration"
+  ],
+  "xwalk_launch_screen": {
+    "ready_when": "custom",
+    "portrait": {
+       "background_color": "#ff0000",
+       "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
+       "image": "foo.png 1x, foo-2x.png 2x",
+       "image_border": "30px 40px stretch"
+     }
+  },
+  "xwalk_hosts": [
+    "http://*"
+  ]
+}
+      </pre>
+    </div>
+
     <!-- ANDROID EMBEDDING API EXAMPLE MANIFESTS -->
-    <div data-crosswalk-versions="6+" data-crosswalk-platforms="webview">
+    <div data-crosswalk-versions="6-7" data-crosswalk-platforms="webview">
       <pre>
 {
   "name": "app name",
@@ -551,6 +662,21 @@
     }
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",
+  "xwalk_hosts": [
+    "http://*"
+  ]
+}
+      </pre>
+    </div>
+
+    <div data-crosswalk-versions="8+" data-crosswalk-platforms="webview">
+      <pre>
+{
+  "name": "app name",
+  "description": "a sample description",
+  "version": "1.0.0",
+  "start_url": "index.html",
+  "csp": "script-src 'self'; object-src 'self'",
   "xwalk_hosts": [
     "http://*"
   ]
