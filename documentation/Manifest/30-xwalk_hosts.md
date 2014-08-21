@@ -54,7 +54,3 @@ Once you've specified the domains which can be accessed by the application, `XML
     xhr.send();
 
 Wrappers for Ajax requests which use XMLHttpRequest underneath (such as jQuery's `$.ajax()`) will also be able to access the domains you specified.
-
-## Relationship with content_security_policy
-
-???

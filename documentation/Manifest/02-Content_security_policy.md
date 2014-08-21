@@ -97,7 +97,3 @@ If you do decide to tighten your application's security and set a content securi
         "content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'"
 
     Inline scripts should now execute.
-
-## Relationship with xwalk_hosts
-
-???
