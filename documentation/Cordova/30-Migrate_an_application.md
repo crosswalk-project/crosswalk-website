@@ -5,6 +5,8 @@ A project which was built with Cordova can be modified so it uses Crosswalk as t
 *   If you don't have a Cordova application you want to migrate, or would rather experiment with someone else's project, follow the steps in the [Create a Cordova application](#create-a-cordova-application) section to create a test application.
 *   If you already have a Cordova application to migrate, skip to the [Migrate](#migrate) section.
 
+After you have migrated a Cordova application to Crosswalk, you may want to [upgrade the migrated application to a newer version of Crosswalk](#Upgrading-Crosswalk-in-a-migrated-project).
+
 ## Create a Cordova application
 
 In this section, you will create a Cordova Android application which will be migrated to Crosswalk Cordova for Android later in the tutorial.
@@ -119,9 +121,10 @@ Once you have the application working with standard Cordova, you can move on to 
 
         $ cp -a <path_to_bundle>/VERSION platforms/android/
 
-5.  Crosswalk requires an extra permission which is not automatically added by the Cordova application generator. Add this manually be editing `platforms/android/AndroidManifest.xml`, adding this line just after the existing `<uses-permission>` elements:
+5.  Crosswalk requires a couple of extra permissions which are not inserted by the Cordova application generator. Add these manually by editing `platforms/android/AndroidManifest.xml`, adding these lines just before the existing `<application>` element:
 
         <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 6.  <a name="build-project"></a>Build the projects in this order:
 
@@ -211,6 +214,104 @@ Once you have the application working with standard Cordova, you can move on to 
 
     Note the presence of the "Crosswalk/N.N.N.N" string, which indicates that the application is using Crosswalk.
 
+### Migrate using ADT
+
+These steps assume that you created your project using the Cordova command line tools.
+
+**Note:** You should run `cordova build android` from the command line, inside your project root, *at least once* before migrating with ADT. This ensures that your application's `www/` directory is copied to the `platforms/android/` directory and accessible in the Eclipse project. If you fail to do this, you may see the default Cordova sample instead of your application when you choose `Run As > Android Application` (one of the steps below).
+
+<ol>
+  <li>Open ADT. Depending on your environment, you may already have a menu entry to start it; if not, run the <code>eclipse/eclipse</code> command from inside your Android SDK's root directory.</li>
+
+  <li>
+    <p>Import the crosswalk-cordova-android bundle libraries into ADT:</p>
+
+    <ol>
+      <li>In the <em>File</em> menu, choose <em>Import...</em>.</li>
+
+      <li>In the <em>Import</em> dialog box, choose <em>Android</em> then <em>Existing Android Code into Workspace</em>. Click the <em>Next</em> button.</li>
+
+      <li>
+        <p>Set the <em>Root Directory</em> by clicking the <em>Browse</em> button. Browse to the <code>framework/</code> directory inside the crosswalk-cordova-android bundle you unpacked earlier. Under <em>Projects to Import</em>, two projects should be displayed:</p>
+
+        <ol>
+          <li><strong>Cordova</strong></li>
+          <li><strong>xwalk_core_library</strong></li>
+        </ol>
+
+        <p>Click <em>Finish</em> to import both. The projects should now be visible in the <em>Package Explorer</em>.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <p>Import the directory containing your existing Cordova application into ADT.</p>
+
+    <ol>
+
+      <li>Select <em>File</em> > <em>Import...</em>; then <em>Android</em> > <em>Existing Android Code into Workspace</em>. Click <em>Next</em>.</li>
+
+      <li>
+        <p>Click <em>Browse</em> to browse to the root directory of the project you want to import. Under <em>Projects to Import</em>, two projects should be displayed:</p>
+
+        <ol>
+          <li><strong>Your application project</strong>, located in <code>platforms/android/</code>.</li>
+          <li><strong>CordovaLib</strong>, located in <code>platforms/android/CordovaLib</code>.</li>
+        </ol>
+
+        <p>Uncheck the CordovaLib project then click <em>Finish</em> to just import your application project. The project should now be visible in the <em>Package Explorer</em>.</p>
+      </li>
+
+    </ol>
+
+    <p>Note that if you have set up ADT with the web development tools, you can also import the <code>www/</code> directory containing your web application code into ADT (not covered in these steps).</p>
+  </li>
+
+  <li>
+    <p>Configure the app to depend on the libraries in the crosswalk-cordova-android bundle. Right-click on the project name in the <em>Package Explorer</em>; then, in the context menu, choose <em>Properties</em>.</p>
+
+    <p>In the <em>Properties</em> dialog, choose the <em>Android</em> section. Under <em>Library</em>, you'll notice that there is a reference to a <strong>CordovaLib</strong> project with a red cross next to it (the reference is broken because you didn't import the CordovaLib project). Select this reference then click on <em>Remove</em> to remove it.</p>
+  </li>
+
+  <li>
+    <p>Now configure your project to use a reference to the project in the crosswalk-cordova-android bundle. Click <em>Add...</em> to display the <em>Project Selection</em> dialog. First add the <strong>Cordova</strong> project, then the <strong>xwalk_core_library</strong> project.</p>
+
+    <p>The final result should resemble this:</p>
+
+    <img src="assets/cordova-project-refs-adt.png">
+  </li>
+
+  <li>
+    <p>Crosswalk requires a couple of extra permissions which are not inserted by the Cordova application generator. Add these manually by editing <code>AndroidManifest.xml</code> in your project, adding these lines just before the existing <code>&lt;application&gt;</code> element:</p>
+
+    <pre>&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt;</pre>
+    <pre>&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;</pre>
+  </li>
+
+  <li>
+    <p>Build each project in turn, in this order:</p>
+
+      <ol>
+        <li><strong>xwalk_core_library</strong></li>
+        <li><strong>Cordova</strong></li>
+        <li><strong>your application project</strong></li>
+      </ol>
+
+    <p>You may need to turn off the automatic build option (uncheck <em>Project</em> > <em>Build Automatically</em>) so you can build the projects manually and in the correct order.</p>
+
+    <p>If all builds pass, the application was imported and built correctly by ADT, and you are ready to continue development.</p>
+  </li>
+
+  <li>
+    <p>To test the application on a target, right-click on the application project in the <em>Package Explorer</em>. Choose <em>Run As...</em> > <em>Android Application</em>. A list of available targets should be displayed, for example:</p>
+
+    <img src="assets/cordova-adt-target-select.png">
+
+    <p>Select the target you want and click <em>OK</em> (remember the architecture must be aligned with the architecture of the crosswalk-cordova-android bundle). ADT will package the project, install it on the target, and run it.</p>
+  </li>
+
+</ol>
+
 ### Multi-architecture packages
 
 One down-side of the current Crosswalk Cordova is that it is not architecture-agnostic: by default, the method for building a Crosswalk Cordova application (above) produces a package for a single architecture.
@@ -245,115 +346,6 @@ To incorporate the `.so` file for the other architecture, follow these steps:
 
 The only issue with this approach is that the `.apk` file you end up with is quite large (mine was 36Mb). This might be a problem if the app store you're hoping to deploy to has a limit on the size of packages.
 
-### Migrate using ADT
-
-These steps assume that you created your project using the Cordova command line tools.
-
-<ol>
-  <li>Open ADT. Depending on your environment, you may already have a menu entry to start it; if not, run the `eclipse/eclipse` command from inside your Android SDK's root directory.</li>
-
-  <li>
-
-    <p>Import the crosswalk-cordova-android bundle libraries into ADT:</p>
-
-    <ol>
-
-      <li>In the <em>File</em> menu, choose <em>Import...</em>.</li>
-
-      <li>In the <em>Import</em> dialog box, choose <em>Android</em> then <em>Existing Android Code into Workspace</em>. Click the <em>Next</em> button.</li>
-
-      <li>
-
-        <p>Set the <em>Root Directory</em> by clicking the <em>Browse</em> button. Browse to the <code>framework/</code> directory inside the crosswalk-cordova-android bundle you unpacked earlier. Under <em>Projects to Import</em>, two projects should be displayed:</p>
-
-        <ol>
-          <li><strong>Cordova</strong></li>
-          <li><strong>xwalk_core_library</strong></li>
-        </ol>
-
-        <p>Click <em>Finish</em> to import both. The projects should now be visible in the <em>Package Explorer</em>.</p>
-
-      </li>
-
-    </ol>
-
-  </li>
-
-  <li>
-
-    <p>Import the directory containing your existing Cordova application into ADT.</p>
-
-    <ol>
-
-      <li>Select <em>File</em> > <em>Import...</em>; then <em>Android</em> > <em>Existing Android Code into Workspace</em>. Click <em>Next</em>.</li>
-
-      <li>
-
-        <p>Click <em>Browse</em> to browse to the root directory of the project you want to import. Under <em>Projects to Import</em>, two projects should be displayed:</p>
-
-        <ol>
-          <li><strong>Your application project</strong>, located in <code>platforms/android/</code>.</li>
-          <li><strong>CordovaLib</strong>, located in `platforms/android/CordovaLib`.</li>
-        </ol>
-
-        <p>Uncheck the CordovaLib project then click <em>Finish</em> to just import your application project. The project should now be visible in the <em>Package Explorer</em>.</p>
-
-      </li>
-
-    </ol>
-
-    <p>Note that if you have set up ADT with the web development tools, you can also import the `www/` directory containing your web application code into ADT (not covered in these steps).</p>
-
-  </li>
-
-  <li>Configure the app to depend on the libraries in the crosswalk-cordova-android bundle. Right-click on the project name in the <em>Package Explorer</em>; then, in the context menu, choose <em>Properties</em>.</li>
-
-  <li>In the <em>Properties</em> dialog, choose the <em>Android</em> section. Under <em>Library</em>, you'll notice that there is a reference to a <strong>CordovaLib</strong> project with a red cross next to it (the reference is broken because you didn't import the CordovaLib project). Select this reference then click on <em>Remove</em> to remove it.</li>
-
-  <li>
-
-    <p>Now configure your project to use a reference to the CordovaLib project inside the crosswalk-cordova-android bundle. Click <em>Add...</em> to display the <em>Project Selection</em> dialog. First add the <strong>CordovaLib</strong> project, then the <strong>xwalk_core_library</strong> project.</p>
-
-    <p>The final result should resemble this:</p>
-
-    <img src="assets/cordova-project-refs-adt.png">
-
-  </li>
-
-  <li>
-    <p>Build each project in turn, in this order:</p>
-
-      <ol>
-        <li><strong>xwalk_core_library</strong></li>
-        <li><strong>CordovaLib</strong></li>
-        <li><strong>HelloWorld</strong></li>
-      </ol>
-
-    <p>You may need to turn off the automatic build option (uncheck *Project* > *Build Automatically* in Eclipse) so you can build the projects manually and in the correct order.</p>
-
-    <p>If all builds pass, the application was imported and built correctly by ADT, and you are ready to continue development.</p>
-  </li>
-
-  <li>
-
-    <p>To test the application on a target, right-click on the application project in the <em>Package Explorer</em>. Choose <em>Run As...</em> > <em>Android Application</em>. A list of available targets should be displayed, for example:</p>
-
-    <img src="assets/cordova-adt-target-select.png">
-
-    <p>Select the target you want and click <em>OK</em> (remember the architecture must be aligned with the architecture of the crosswalk-cordova-android bundle). ADT will package the project, install it on the target, and run it.</p>
-
-  </li>
-
-</ol>
-
-### Migrating with Crosswalk 5
-
-The above instructions work for applications built with Cordova 3.3, 3.4 and 3.5. However, if you are using Crosswalk 5, you will need to add an additional permission for your application, otherwise the package will build and install, but the application won't run.
-
-The additional permission should be added to your Cordova project's `platforms/android/AndroidManifest.xml` file, just after any existing `<uses-permission>` elements:
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 ## Adding plugins to a migrated project
 
 To add plugins to a project you've migrated to Crosswalk, use the standard Cordova `cordova plugin` command. For example, to add the device motion plugin, from the top-level project directory call:
@@ -361,6 +353,136 @@ To add plugins to a project you've migrated to Crosswalk, use the standard Cordo
     cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4
 
 This will put the required files in the `platforms/android` directory and register the plugin with the project.
+
+## Upgrading Crosswalk in a migrated project
+
+If you have a Cordova application which is already migrated to Crosswalk, but you want to upgrade the version of Crosswalk, follow the instructions below which apply to your environment (command line or ADT).
+
+Note that both sets of instructions require you to first [download and unpack the Crosswalk Cordova bundle](#documentation/cordova/develop_an_application/Download-the-crosswalk-cordova-android-bundle) which you want to upgrade to.
+
+### Upgrade using the command line tools
+
+These instructions assume that you have already [migrated a Cordova application to Crosswalk using the command-line tools](#Migrate-using-command-line-tools).
+
+To migrate a Cordova application to a new version of Crosswalk, you follow almost the same set of steps again (they are just summarised here). However, there is one vital difference, highlighted in bold below.
+
+1.  Enter the project directory:
+
+        $ cd kitchensink
+
+2.  Remove the contents of the `platforms/android/CordovaLib` directory:
+
+        $ rm -Rf platforms/android/CordovaLib/*
+
+3.  Copy the `framework/` directory from the crosswalk-cordova-android bundle (the one you are upgrading to) into the project:
+
+        $ cp -a <path_to_unpacked_bundle>/framework/* \
+            platforms/android/CordovaLib/
+
+4.  Copy the `VERSION` file from the unpacked bundle into the Android platform directory:
+
+        $ cp -a <path_to_bundle>/VERSION platforms/android/
+
+5.  Add the extra permissions to `platforms/android/AndroidManifest.xml` (if they're not there already):
+
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+6.  Build the Crosswalk libraries:
+
+        $ export ANDROID_HOME=$(dirname $(dirname $(which android)))
+        $ cd platforms/android/CordovaLib/
+        $ android update project --subprojects --path . \
+            --target "android-19"
+        $ ant debug
+
+7.  **Remove files generated by Cordova during the previous build:**
+
+        # go to the platforms/android directory
+        $ cd ..
+
+        # remove the files from the previous Cordova build
+        $ rm -Rf ant-gen
+        $ rm -Rf ant-build
+
+    This is the crucial step: you need Cordova to regenerate various libraries and assets which make reference to Crosswalk. However, Cordova assumes that the files in `platforms/android/CordovaLib` don't change, and won't automatically refresh them, which is why you must manually remove them here.
+
+8.  Build the apk and run it:
+
+        $ cd ../..
+        $ cordova run android
+
+### Upgrade using ADT
+
+These instructions assume that you have already [migrated a Cordova application to Crosswalk using ADT](#Migrate-using-ADT). The steps for upgrading are similar to the steps for the original migration, and are summarised here:
+
+<ol>
+  <li>Open ADT.</li>
+
+  <li>
+    <p>Import the crosswalk-cordova-android bundle libraries (the ones you are upgrading to) into ADT:</p>
+
+    <ol>
+      <li>In the <em>File</em> menu, choose <em>Import...</em>.</li>
+
+      <li>In the <em>Import</em> dialog box, choose <em>Android</em> then <em>Existing Android Code into Workspace</em>. Click the <em>Next</em> button.</li>
+
+      <li>
+        <p>Set the <em>Root Directory</em> by clicking the <em>Browse</em> button. Browse to the <code>framework/</code> directory inside the crosswalk-cordova-android bundle (the one you are upgrading to). Under <em>Projects to Import</em>, two projects should be displayed:</p>
+
+        <ol>
+          <li><strong>Cordova</strong></li>
+          <li><strong>xwalk_core_library</strong></li>
+        </ol>
+
+        <p>Rename the projects so that they are distinct from any existing Crosswalk Cordova libraries you have imported by clicking on the entries under <em>New Project Name</em>. For example:</p>
+
+        <img src="assets/cordova-adt-import-and-rename-projects.png">
+
+        <p>In the screenshot above, note that the libraries were renamed to <strong>CrosswalkCordova8</strong> and <strong>xwalk_core_library8</strong>. In the following steps, where these names are used, replace them with whichever names you used when renaming the imported proejcts.</p>
+
+        <p>Click <em>Finish</em> to import both. The projects should now be visible in the <em>Package Explorer</em>.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <p>In your application project, remove the references to the <em>old</em> crosswalk-cordova-android libraries. Right-click on the project name in the <em>Package Explorer</em>; then, in the context menu, choose <em>Properties</em>.</p>
+
+    <p>In the <em>Properties</em> dialog, choose the <em>Android</em> section. Under <em>Library</em>, select the <strong>Cordova</strong> reference then click on <em>Remove</em> to remove it. Do the same for the <em>xwalk_core_library</em> reference.</p>
+  </li>
+
+  <li>
+    <p>Now configure your project to reference the projects in the <em>new</em> crosswalk-cordova-android bundle. Still in the <em>Properties</em> dialog, click <em>Add...</em> to display the <em>Project Selection</em> dialog. First add the <strong>CrosswalkCordova8</strong> project, then the <strong>xwalk_core_library8</strong> project (choose the names you used when importing the projects if different).</p>
+
+    <p>The final result should resemble this:</p>
+
+    <img src="assets/cordova-adt-add-updated-projects.png">
+  </li>
+
+  <li>
+    <p>Clean all the projects in ADT so that you can do a fresh build.</p>
+
+    <p>Open the <em>Project</em> menu, then select <em>Clean...</em>. In the <em>Clean</em> dialog box, make sure that <em>Clean all projects</em> is selected, then click <em>OK</em>.</p>
+  </li>
+
+  <li>
+    <p>Finally, build the projects in turn, in this order:</p>
+
+      <ol>
+        <li><strong>xwalk_core_library8</strong></li>
+        <li><strong>CrosswalkCordova8</strong></li>
+        <li><strong>your application project</strong></li>
+      </ol>
+
+    <p>As before, replace the project names with whichever names you used when importing the libraries from the crosswalk-cordova-android bundle.</p>
+
+    <p>You may need to turn off the automatic build option (uncheck <em>Project</em> > <em>Build Automatically</em>) so you can build the projects manually and in the correct order.</p>
+  </li>
+
+</ol>
+
+<p>To test the application on a target, right-click on the application project in the <em>Package Explorer</em>, then choose <em>Run As...</em> > <em>Android Application</em>.</p>
 
 ## Acknowledgements
 
