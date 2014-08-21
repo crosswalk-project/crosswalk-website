@@ -79,18 +79,26 @@ For more information about which GPUs are blacklisted and when, see the [Khronos
 
 ### Can I force Crosswalk to enable WebGL?
 
-A work-around is available if you want to test an application using WebGL on a device with a [blacklisted GPU](#Why-won't-WebGL-work-in-Crosswalk-on-my-device?): pass the `--ignore-gpu-blacklist` command-line option to the `xwalk` binary. However, you can't do this directly if Crosswalk is embedded in an application as a native library (for example, using Crosswalk Cordova, the Crosswalk Android packaging tool, or using the embedding API).
+A work-around is available if you want to test an application using WebGL on a device with a [blacklisted GPU](#Why-won't-WebGL-work-in-Crosswalk-on-my-device?): pass the `--ignore-gpu-blacklist` command-line option to the `xwalk` binary. But you can't do this directly if Crosswalk is embedded in an application as a native library (for example, using Crosswalk Cordova, the Crosswalk Android packaging tool, or using the embedding API).
 
-In these situations, you can use a custom command-line by adding a file called `xwalk-command-line` to the root directory of your application. (NB this only works for Crosswalk 6 and above.) The file should contain a single line, representing the `xwalk` command line to run:
+However, you can use a custom command-line (Crosswalk 6 or later) by adding a text file called `xwalk-command-line` (no suffix) to the `assets/` directory of your Android `apk` package. This file should contain a single line, representing the `xwalk` command line to run; in this case, the line would be:
 
     xwalk --ignore-gpu-blacklist
 
-(Other command-line options can be added via the same mechanism.)
+(Other command-line options can be added to the file if desired.)
 
-Alternatively, you can set a custom command line when building an Android package with the [`make_apk.py` script](#documentation/getting_started/run_on_android):
+The method for adding this file to your Android package depends on how you are using Crosswalk:
 
+*   If you are **[embedding Crosswalk in an Android application](#documentation/embedding_crosswalk)**, the file should be placed in the `assets/` directory of your project.
+
+*   If you are **[using Crosswalk Cordova](#documentation/cordova)**, the file should be placed in the `platforms/android/assets/` directory of your project.
+
+*   If you are **[building an Android package with the `make_apk.py` script](#documentation/getting_started/run_on_android)**, you can pass an option to create the file inside the output Android package:
+
+    ```
     make_apk.py --manifest=mygame/manifest.json \
       --xwalk-command-line="--ignore-gpu-blacklist"
+    ```
 
 Note that enabling WebGL on platforms with blacklisted GPUs could result in the application (or the whole device) freezing or crashing, so it is not recommended for production applications.
 
