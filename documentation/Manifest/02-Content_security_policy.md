@@ -2,7 +2,7 @@
 
 The content security policy field specifies which types of content can be loaded and executed by the application. If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via `<script>`, `<object>`, `<embed>` and `<applet>` elements).
 
-**In Crosswalk 4-7, this field was called `content_security_policy`. The name was changed to `csp` for Crosswalk 8+.**
+**For Crosswalk 4-7, this field was called `content_security_policy`. The name was changed to `csp` for Crosswalk 8+.**
 
 The suggested default value to provide minimal protection (Crosswalk 4-7) is:
 
