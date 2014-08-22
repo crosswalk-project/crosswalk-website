@@ -22,6 +22,7 @@
 .hero {
   background-repeat: no-repeat;
   background-position: center top;
+  line-height: 1.2;
   @include media($wide) {
     margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
     .button-group {
