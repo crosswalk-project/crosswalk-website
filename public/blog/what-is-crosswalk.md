@@ -12,9 +12,8 @@ Using Crosswalk also allows you to use [state-of-the-art W3C* recommended HTML5
 
 <figure>
 ![](/images/crosswalk-landing-withWithout-1.png)
-<figcaption>
-Crosswalk creates a new context for you to work in—you’re not bound by the restrictions of the device’s default <code>WebView</code>
-</figcaption>
+<figcaption>Crosswalk creates a new context for you to work in—you’re not bound by the restrictions of the device’s default <code>WebView</code>.</figcaption>
+</figure>
 
 Some examples of APIs supported in Crosswalk include:
 

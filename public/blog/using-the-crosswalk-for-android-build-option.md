@@ -26,6 +26,9 @@ If you have an Android 4.x device, it is easiest, and most accurate, to preview 
 - Vibration
 - Device Orientation and Acceleration
 
+<div class="pullquote pullquote--center" data-pullquote="Intel XDK includes an option to package your app with the Crosswalk runtime, ready to submit to an Android store"></div>
+
+
 ## Building a Crosswalk Package
 
 The Intel XDK includes an option to package your app with the Crosswalk runtime, so that it is ready to submit to an Android store. To do this, click the Build tab and select the Crosswalk for Android build target.
