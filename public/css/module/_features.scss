@@ -74,7 +74,7 @@
     @include shift(1);
   }
   @include media($huge) {
-    @include span-columns(6 of 8);
+    @include span-columns(4 of 8);
   }
 }
 
