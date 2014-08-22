@@ -81,6 +81,13 @@
       @include span-columns(0);
     }
   }
+  &.row--narrow {
+    @include media($wide) {
+      @include row();
+      @include shift(2);
+      @include span-columns(4);
+    }
+  }
 }
 
 .row--rtl {
@@ -92,9 +99,12 @@
 // Adds margins above consecutive rows. (This might be too presumptuous.)
 //
 // No styleguide reference.
-main {
-  .row + .row {
-    margin-top: $base-line-height * 2em;
+.main {
+  .row {
+    margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+    @include media($wide) {
+      margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
+    }
   }
 }
 
