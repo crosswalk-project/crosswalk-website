@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <% include ../_includes/nav.ejs %>
+  </div>
+  <div class="row">
+    <nav>
+      <ul>
+        <% for (slug in public.contribute._data) { %>
+          <% var doc = public.contribute._data[slug] %>
+          <li>
+            <a href="<%= slug %>"><%- doc.title %></a>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+</div>
