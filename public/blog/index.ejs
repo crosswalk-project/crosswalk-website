@@ -9,7 +9,10 @@
         <li class="article-item">
           <header class="article-header">
             <h2 class="article-title"><a href="<%= slug %>"><%- article.title %></a></h2>
-            <span class="article-meta"><time datetime="<%- new Date(article.date).toUTCString() %>"><%- new Date(article.date).toUTCString() %></time></span>
+            <span class="article-meta">
+              <time class="article-time js-vagueTime" datetime="<%- new Date(article.date) %>"><%- new Date(article.date).toUTCString() %></time>
+              <% if(article.author) { %> by <span class="article-author"><%= article.author %></span><% } %>
+            </span>
           </header>
           <div class="article-excerpt">
             <p><%-: partial(slug).replace(/<[^>]*>/g, "") | truncate_words: 50 %> <a href="<%= article.slug %>" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>

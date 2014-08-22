@@ -5,9 +5,19 @@
     "author": "Greeshma Yellareddy",
     "hero": "/images/crosswalk-landing-promo-2.png"
   },
+  "crosswalk-101-new-html5-application-runtime": {
+    "title": "Crosswalk 101: The New HTML5 Application Runtime",
+    "date": "2014-05-01T10:00",
+    "author": "Kenneth Christiansen"
+  },
   "using-the-crosswalk-for-android-build-option": {
     "title": "Using the Intel XDK “Crosswalk for Android” Build Option",
     "date": "2014-03-21T10:38",
     "author": "Paul Fischer"
+  },
+  "intel-xdk-develop-once-deploy-everywhere": {
+    "title": "Intel XDK: Develop Once, Deploy Everywhere",
+    "date": "2014-03-03T11:00",
+    "author": "Fredrick Odhiambo"
   }
 }
