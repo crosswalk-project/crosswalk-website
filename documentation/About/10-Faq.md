@@ -2,6 +2,18 @@
 
 If you have any questions that are not answered below, the crosswalk-help mailing list is a good place to ask them. Alternatively, contact us directly via the #crosswalk IRC channel on Freenode. See the [Community page](#documentation/community) for more details.
 
+### Contents
+
+*   [Background to the project](#Background-to-the-project)
+*   [Ways to use Crosswalk](#Ways-to-use-Crosswalk)
+*   [Distributing Crosswalk applications](#Distributing-Crosswalk-applications)
+*   [Canvas and WebGL support](#Canvas-and-WebGL-support)
+*   [The Crosswalk community](#The-Crosswalk-community)
+*   [Commercial aspects](#Commercial-aspects)
+*   [Relationships with other projects](#Relationships-with-other-projects)
+
+## Background to the project
+
 ### What is Crosswalk for?
 
 If you are a developer working with web technologies, Crosswalk enables you to deploy a web application with its own dedicated runtime. This means three things:
@@ -27,6 +39,20 @@ No, because:
 * We don't intend to fork Blink, the underlying rendering engine for Chromium.
 * We rebase regularly to new versions of Blink.
 * If a change makes sense for generic Chromium, we will submit it upstream.
+
+## Ways to use Crosswalk
+
+### Can I use Crosswalk to "appify" my website?
+
+Yes. You can wrap a website URL with a Crosswalk runtime so it behaves like an app (fullscreen, no browser chrome, home screen icon etc.).
+
+### Can I customise Crosswalk?
+
+Yes. Crosswalk itself can be modified, as the code is open source. We actively encourage [contributions](https://crosswalk-project.org/#contribute/overview).
+
+Alternatively, you can add extra capabilities to Crosswalk through its [extension mechanism](#wiki/Crosswalk-Extensions) without having to modify the core code. This enables an application to access platform features via native code (Java on Android, C/C++ on Tizen) and go beyond the boundaries of the web runtime.
+
+## Distributing Crosswalk applications
 
 ### How big is the Crosswalk runtime, and how will it affect my application's size?
 
@@ -59,15 +85,17 @@ There are two approaches to building an application which supports both x86 and 
 
     How you achieve this depends on your build process. If you need a reference, see [the Cordova migration instructions](#documentation/cordova/migrate_an_application/Multi-architecture-packages), which explain how to do this in the context of Crosswalk Cordova.
 
-### Can I use Crosswalk to "appify" my website?
+### Which platforms does Crosswalk support?
 
-Yes. You can wrap a website URL with a Crosswalk runtime so it behaves like an app (fullscreen, no browser chrome, home screen icon etc.).
+Crosswalk officially supports [Android (version 4.0 and above)](http://www.android.com/) and [Tizen 3.0 (Common and IVI profiles)](https://wiki.tizen.org/wiki/IVI). Pre-built packages are available from https://download.01.org/ for both platforms. See the [downloads page](https://crosswalk-project.org/#documentation/downloads) for details.
 
-### Can I customise Crosswalk?
+Crosswalk builds for Windows, Mac OS and Linux are available: see https://build.crosswalk-project.org/waterfall. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.
 
-Yes. Crosswalk itself can be modified, as the code is open source. We actively encourage [contributions](https://crosswalk-project.org/#contribute/overview).
+Also note that we don't have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or similar). Again, if you are interested in working on this, please feel free to contact us.
 
-Alternatively, you can add extra capabilities to Crosswalk through its [extension mechanism](#wiki/Crosswalk-Extensions) without having to modify the core code. This enables an application to access platform features via native code (Java on Android, C/C++ on Tizen) and go beyond the boundaries of the web runtime.
+Crosswalk does not support iOS.
+
+## Canvas and WebGL support
 
 ### Why won't WebGL work in Crosswalk on my device?
 
@@ -106,9 +134,37 @@ Note that enabling WebGL on platforms with blacklisted GPUs could result in the 
 
 If a device has a [blacklisted GPU](#Why-won't-WebGL-work-in-Crosswalk-on-my-device?), canvas elements are not hardware accelerated. This can result in poor performance. [Forcing Crosswalk to ignore the GPU blacklist](#Can-I-force-Crosswalk-to-enable-WebGL?) can improve performance, but may cause your application to become unstable.
 
+## The Crosswalk community
+
 ### Who is using Crosswalk?
 
 Crosswalk is still a young project. However, the last couple of months have seen some impressive take-up, with dozens of Crosswalk-based applications (mostly games) making it into app stores.
+
+### How often is Crosswalk released?
+
+Crosswalk is updated to the latest Chromium once every six weeks. In practice, this means that the longest gap between a feature appearing in Chromium and the same feature appearing in Crosswalk is six weeks.
+
+For more details, see [this explanation of how Crosswalk relates to Chromium](https://crosswalk-project.org/#wiki/Downstream-Chromium).
+
+### Can I get involved?
+
+Yes. We welcome contributions from anyone who would like to make the project better, whether by writing code, filing bugs, or adding documentation. Full details of how to get involved are [on the Crosswalk website](https://crosswalk-project.org/#contribute/overview).
+
+## Commercial aspects
+
+### Do I have to pay for Crosswalk?
+
+No, Crosswalk is an open source project, hosted on [github](https://github.com/crosswalk-project/crosswalk), and licensed under the [BSD licence](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE). It is free to use for any purpose, commercial or otherwise.
+
+### If I'm not paying for Crosswalk, who is?
+
+Crosswalk development is largely sponsored by Intel, but builds on top of [Chromium](http://www.chromium.org/) development.
+
+### Can I get commercial support for Crosswalk?
+
+Not at the moment, but we would love to hear from you if you need it.
+
+## Relationships with other projects
 
 ### How does Crosswalk relate to the Intel XDK?
 
@@ -144,35 +200,3 @@ With the Crosswalk project, you have different possibilities:
 * A developer can package an application with a Crosswalk Application runtime so that the app and runtime are never revised without developer permission.
 
 Of course, because Crosswalk is based on Blink and Chromium, a developer could publish a standard HTML5 app for both Crosswalk and Chrome.
-
-### How often is Crosswalk released?
-
-Crosswalk is updated to the latest Chromium once every six weeks. In practice, this means that the longest gap between a feature appearing in Chromium and the same feature appearing in Crosswalk is six weeks.
-
-For more details, see [this explanation of how Crosswalk relates to Chromium](https://crosswalk-project.org/#wiki/Downstream-Chromium).
-
-### Which platforms does Crosswalk support?
-
-Crosswalk officially supports [Android](http://www.android.com/) (version 4.0 and above), [Tizen Mobile](https://www.tizen.org/) (Tizen version 2) and [Tizen IVI](https://wiki.tizen.org/wiki/IVI) (Tizen version 3). Pre-built packages are available from https://download.01.org/ for each of these platforms. See the [downloads page](https://crosswalk-project.org/#documentation/downloads) for details.
-
-Crosswalk builds for Windows, Mac OS and Linux are available: see https://build.crosswalk-project.org/waterfall. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.
-
-Also note that we don't have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or similar). Again, if you are interested in working on this, please feel free to contact us.
-
-Crosswalk does not support iOS.
-
-### Can I get involved?
-
-Yes. We welcome contributions from anyone who would like to make the project better, whether by writing code, filing bugs, or adding documentation. Full details of how to get involved are [on the Crosswalk website](https://crosswalk-project.org/#contribute/overview).
-
-### Do I have to pay for Crosswalk?
-
-No, Crosswalk is an open source project, hosted on [github](https://github.com/crosswalk-project/crosswalk), and licensed under the [BSD licence](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE). It is free to use for any purpose, commercial or otherwise.
-
-### If I'm not paying for Crosswalk, who is?
-
-Crosswalk development is largely sponsored by Intel, but builds on top of [Chromium](http://www.chromium.org/) development.
-
-### Can I get commercial support for Crosswalk?
-
-Not at the moment, but we would love to hear from you if you need it.
