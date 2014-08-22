@@ -10,11 +10,11 @@ Because the launch screen allows a user to view application content almost immed
 
 ## Definition of the manifest property
 
-In Crosswalk Android 5-7, the property is `launch_screen`; in Crosswalk Android 8+ it is `xwalk_launch_screen`.
+In Crosswalk Android 5-7, the property is `launch_screen`; in Crosswalk Android 8+ it is `xwalk_launch_screen`. It is defined as follows:
 
     "launch_screen | xwalk_launch_screen": {
       "ready_when": "first-paint | complete | custom",
-      "default|portrait|landscape": {
+      "default | portrait | landscape": {
          "background_color": "#ff0000",
          "background_image": "bgfoo.png [1x, bgfoo-2x.png 2x]",
          "image": "foo.png [1x, foo-2x.png 2x]",
@@ -36,7 +36,7 @@ Example (Crosswalk Android 5-7):
 
 Example (Crosswalk Android 8+):
 
-    "launch_screen": {
+    "xwalk_launch_screen": {
       "ready_when": "custom",
       "portrait": {
          "background_color": "#ff0000",
