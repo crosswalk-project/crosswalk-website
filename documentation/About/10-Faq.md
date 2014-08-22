@@ -87,7 +87,7 @@ There are two approaches to building an application which supports both x86 and 
 
 ### Which platforms does Crosswalk support?
 
-Crosswalk officially supports [Android](http://www.android.com/) (version 4.0 and above), [Tizen Mobile](https://www.tizen.org/) (Tizen version 2) and [Tizen IVI](https://wiki.tizen.org/wiki/IVI) (Tizen version 3). Pre-built packages are available from https://download.01.org/ for each of these platforms. See the [downloads page](https://crosswalk-project.org/#documentation/downloads) for details.
+Crosswalk officially supports [Android (version 4.0 and above)](http://www.android.com/) and [Tizen 3.0 (Common and IVI profiles)](https://wiki.tizen.org/wiki/IVI). Pre-built packages are available from https://download.01.org/ for both platforms. See the [downloads page](https://crosswalk-project.org/#documentation/downloads) for details.
 
 Crosswalk builds for Windows, Mac OS and Linux are available: see https://build.crosswalk-project.org/waterfall. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.
 
