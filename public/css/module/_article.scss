@@ -1,3 +1,24 @@
+// List
+//
+// A list of Articles
+//
+// Markup:
+// <ul class="article-list">
+//   <li class="article-item">
+//     <header class="article-header">
+//       <h2 class="article-title"><a href="#">Introducing Cordova Intergration</a></h2>
+//       <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jul 2014 13:14:00 GMT">1 month ago</time></a>
+//     </header>
+//   </li>
+//   <li class="article-item">
+//     <header class="article-header">
+//       <h2 class="article-title"><a href="#">Introducing Android Intergration</a></h2>
+//       <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></a>
+//     </header>
+//   </li>
+// </ul>
+//
+// Styleguide 3.13.1.
 .article,
 .article-list {
   @include media($wide) {
@@ -9,55 +30,93 @@
   }
 }
 
-.article {
-  .article-title {
-    margin-top: 0;
-    @include media($huge) {
-      @include span-columns(6 of 5);
-    }
-  }
-}
-
-// Lead
-//
-// No styleguide reference.
-.lead,
-.article > p:first-of-type {
-  @include media($mid) {
-    margin-bottom: modular-scale($base-font-size, -4, $base-ratio);
-    font-size: modular-scale($base-font-size, 2, $base-ratio);
-    line-height: $base-line-height;
-  }
-}
-
-
-.article-list {
-
-}
-
 .article-item {
-
-}
-
-.article-header {
-
-}
-
-.article-title {
-  text-align: left;
-
+  margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
+  @include media($wide) {
+    margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
+  }
 }
 
 .article-meta {
-  display: block;
+  display: inline-block;
   font-style: italic;
-  margin-bottom: modular-scale($base-font-size, -2, $base-ratio);
+  margin-bottom: 0;
+  margin-left: modular-scale($base-font-size, 0, $base-ratio);
 }
 
-.article-exerpt {
+// Article
+//
+// A generic blog post, documentation, help, etc. article.
+//
+// Markup:
+// <article class="article">
+//     <header class="article-header">
+//       <h2 class="article-title"><a href="#">Introducing Android Intergration</a></h2>
+//       <span class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></span>
+//     </header>
+//   <p>
+//      Crosswalk is a HTML5 runtime, built on open source foundations,
+//      which extends the web platform with new capabilities…
+//   </p>
+// </article>
+.article {
 
 }
 
+// Nav
+//
+// Table of contents for long articles,
+// but moreso for documentation.
+//
+// Markup:
+// <nav class="article-nav">
+//   <a href="#cloning-crosswalk">Cloning Crosswalk</a>
+//   <a href="#installing-dependencies">Installing dependencies</a>
+//   <a href="#running-hello-world">Running “Hello, world”</a>
+// </nav>
+//
+// Styleguide 3.13.2.
+.article-nav {
+  @include span-columns(4 of 4);
+}
+
+// Title
+//
+// No styleguide reference.
+.article-title {
+  margin-top: 0;
+  margin-bottom: modular-scale($base-font-size, -10, $base-ratio);
+  @include media($huge) {
+    @include span-columns(6 of 5);
+  }
+}
+
+// Header
+//
+// The header in article list items and articles themselves.
+//
+// Markup:
+// <header class="article-header">
+//   <h1 class="article-title">Crosswalk for app designers</h1>
+//   <span class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></span>
+// </header>
+//
+// Styleguide 3.13.3.
+.article-header {
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+}
+
+// Hero
+//
+// Optional opening article images.
+//
+// Markup:
+// <header class="article-header">
+//   <h1 class="article-title">Crosswalk for app designers</h1>
+// </header>
+// <img class="article-hero" src="http://placehold.it/1500x300" alt="Example hero image" />
+//
+// Styleguide 3.13.4.
 .article-hero {
   margin-top: modular-scale($base-font-size, 0, $base-ratio);
   margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
@@ -73,6 +132,45 @@
     @include span-columns(6 of 4);
 
   }
+}
+
+
+// Lead
+//
+// Stylized opening paragraphs for articles.
+//
+// Markup:
+// <article class="article">
+//   <p>Crosswalk is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities.</p>
+//   <p>This means Android developers can now deploy your mobile HTML5 application with its own runtime without a dependence on the native WebView that is on your customer's device for all Android 4.0+ devices.</p>
+// </article>
+//
+// Styleguide 3.13.3.
+.lead,
+.article > p:first-of-type {
+  @include media($mid) {
+    margin-bottom: modular-scale($base-font-size, -4, $base-ratio);
+    font-size: modular-scale($base-font-size, 2, $base-ratio);
+    line-height: $base-line-height;
+  }
+}
+
+
+.article-list {
+
+}
+
+.article-header {
+
+}
+
+.article-title {
+  text-align: left;
+
+}
+
+.article-exerpt {
+
 }
 
 .article-promo {
