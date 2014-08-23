@@ -34,6 +34,12 @@ blockquote,
   @include media($huge) {
     font-size: 2rem;
   }
+  p:first-of-type:before {
+    content: open-quote;
+  }
+  p:last-of-type:after {
+    content: close-quote;
+  }
 
 
   footer {
