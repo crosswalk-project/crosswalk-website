@@ -84,6 +84,11 @@
   &.row--narrow {
     @include media($wide) {
       @include row();
+      @include shift(1);
+      @include span-columns(6);
+    }
+    @include media($huge) {
+      @include row();
       @include shift(2);
       @include span-columns(4);
     }
