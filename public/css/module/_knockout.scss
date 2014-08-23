@@ -8,6 +8,9 @@
 //
 // Styleguide 3.7.1.
 .knockout {
+  display: block;
+  overflow: hidden;
+  width: 100%;
   background-color: $color-text;
   color: $color-background;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);

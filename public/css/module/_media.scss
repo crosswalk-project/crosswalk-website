@@ -102,11 +102,6 @@
   @include media($wide) {
     // @include span-columns(2 of 6);
   }
-  a,
-  a:visited,
-  .a-faux {
-    color: $color-text;
-  }
 }
 
 .media-item {

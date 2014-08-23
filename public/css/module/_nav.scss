@@ -19,11 +19,11 @@
   display: block;
   text-align: right;
   font-size: modular-scale($base-font-size, -1, $base-ratio);
-  @include span-columns(2);
   @include media($mid) {
     @include span-columns(4 of 6);
   }
   @include media($wide) {
+    margin-top: modular-scale($base-font-size, -2, $base-ratio);
     font-size: modular-scale($base-font-size, -1, $base-ratio);
     @include shift(0);
     @include span-columns(5 of 7);
@@ -41,6 +41,16 @@
 .nav-link {
   display: block;
   padding: modular-scale($base-font-size, -8, $base-ratio) 0;
+  strong {
+    border: 1px solid;
+    padding: modular-scale($base-font-size, 0, $base-ratio);
+    margin: 0 -1 * modular-scale($base-font-size, 0, $base-ratio);
+    display: inline-block;
+    border-radius: $base-border-radius;
+    @include media($mid) {
+      margin: -1 * modular-scale($base-font-size, 0, $base-ratio) 0;
+    }
+  }
   @include media($mid) {
     display: inline-block;
     float: left;

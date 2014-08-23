@@ -23,20 +23,24 @@
   background-repeat: no-repeat;
   background-position: center top;
   line-height: 1.2;
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
   @include media($wide) {
     margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
     .button-group {
       margin-top: modular-scale($base-font-size, 4, $base-ratio);
+      margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
+
     }
   }
 }
 
 .hero--bg1,
-.knockout.hero--bg1 {
-  background-image: url("/images/crosswalk-landing-banner-1.jpg");
-  background-color: #000;
-  background-position: center top;
+.hero.hero--bg1 {
+  background: #000 url("/images/crosswalk-landing-banner-1.jpg") center top no-repeat;
   background-size: cover;
+  @include media($mid) {
+
+  }
   @include media($massive) {
     background-position: 75% top;
     background-size: contain;
@@ -52,7 +56,7 @@
 // No styleguide reference.
 .hero-row {
   margin-top: 0;
-  margin-bottom: modular-scale($base-font-size, 5, $base-ratio);
+  margin-bottom: 0;
   @include media($mid) {
     @include shift(0);
     @include span-columns(4 of 6);
@@ -64,6 +68,9 @@
   @include media($huge) {
     @include shift(1);
     @include span-columns(4 of 8);
+    p {
+      max-width: 75%;
+    }
   }
 }
 
@@ -77,18 +84,21 @@
   margin-top: -2em;
   display: block;
   width: 100%;
-  @include span-columns(3);
+  font-size: modular-scale($base-font-size, 2, $base-ratio);
+  @include span-columns(4);
   @include media($narrow) {
     @include span-columns(3);
   }
   @include media($mid) {
+    @include span-columns(4 of 6);
     margin-top: 0;
     font-size: modular-scale($base-font-size, 7, $base-ratio);
   }
   @include media($huge-width * 1.5) {
     @include shift(-1 of 6);
-    font-size: modular-scale($base-font-size, 9, $base-ratio);
-    @include span-columns(6 of 6);
+    // font-size: modular-scale($base-font-size, 9, $base-ratio);
+    // @include span-columns(6 of 6);
+    @include span-columns(5 of 6);
   }
 }
 
@@ -128,30 +138,53 @@
 //
 // Styleguide 3.4.3.
 .hero-seperator {
-  background: $color-green-lighter;
-  color: $color-text;
-  text-shadow: 0 1px 0 rgba($color-background, 0.5);
+  // background: $color-green-lighter;
+  // text-shadow: 0 1px 0 rgba($color-background, 0.5);
+  @include background-image(linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%));
+  display: block;
+  width: 100%;
   ul, ol, li {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
+  color: $color-gray-light;
+  a,
+  a:visited,
+  .a-faux {
+    color: $color-gray-light;
+  }
   .media-list {
     z-index: 1;
     position: relative;
   }
+  .media-item {
+    @include span-columns(1 of 4);
+    @include omega(4n);
+    opacity: 0.75;
+    .media-description {
+      display: none;
+    }
+    @include transition(opacity 0.125s ease-in-out);
+    .media-image {
+      display: block;
+      padding: 0 $gutter / 2;
+      width: 100%;
+    }
+    &:hover {
+      opacity: 1.0;
+    }
+  }
   .media-link {
     display: block;
-    @include media($wide) {
-      opacity: 0.66;
-      img,
-      svg {
-        opacity: 0.66;
+    position: realtive;
+  }
+  @include media($narrow) {
+    .media-item {
+      .media-image {
+        padding-left: $gutter;
+        padding-right: $gutter;
       }
-      &:hover {
-        opacity: 1.0;
-      }
-
     }
   }
   @include media($mid) {
@@ -161,8 +194,17 @@
       @include shift(0);
     }
     .media-item {
-      @include span-columns(3 of 6);
-      @include omega(2n);
+      @include span-columns(1.5 of 6);
+      @include omega(4n);
+      .media-image,
+      .media-description {
+        display: block;
+        width: 100%;
+      }
+      .media-image {
+        padding: 0 $gutter * 2;
+        margin-bottom: modular-scale($base-font-size, -2, $base-ratio);
+      }
     }
   }
   @include media($wide) {
@@ -170,16 +212,33 @@
       @include span-columns(6 of 6);
       @include shift(0);
     }
+    .media-item {
+      .media-image,
+      .media-description {
+        display: block;
+        width: 100%;
+      }
+      .media-image {
+        padding: 0 $gutter * 2;
+        margin-bottom: modular-scale($base-font-size, -2, $base-ratio);
+      }
+    }
   }
   @include media($huge) {
     .media-list {
-      @include span-columns(8 of 6);
-      @include shift(-1 of 6);
+      // @include span-columns(8 of 6);
+      // @include shift(-1 of 6);
     }
     .media-item {
-      @include omega-reset(2n, 8);
-      @include span-columns(2 of 8);
-      @include omega(4n);
+      font-size: 0.75em;
+      overflow: visible;
+      .media-image {
+        padding: 0;
+        @include span-columns(1 of 3);
+      }
+      .media-description {
+        @include span-columns(2 of 3);
+      }
     }
   }
 }
