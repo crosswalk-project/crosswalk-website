@@ -1,18 +1,17 @@
 {
   "overview": {
-
+    "title": "Overview"
   },
-  "2": {
-
+  "two": {
+    "title": "Thing 2"
   },
-  "3": {
-
+  "three": {
+    "title": "Thing 3"
   },
-  "4": {
-
+  "four": {
+    "title": "Thing 4"
   },
   "building_crosswalk": {
-    
+    "title": "Building Crosswalk"
   }
-
 }
