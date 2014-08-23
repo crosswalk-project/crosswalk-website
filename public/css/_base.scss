@@ -84,31 +84,6 @@ ul li {
   list-style-type: none;
 }
 
-article {
-  ul,
-  ol,
-  dl {
-    padding-left: 0;
-    margin-top: modular-scale($base-font-size, 0, $base-ratio);
-    margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
-    margin-left: modular-scale($base-font-size, 4, $base-ratio);
-    margin-right: modular-scale($base-font-size, 4, $base-ratio);
-    @include media($wide) {
-      margin-left: modular-scale($base-font-size, 8, $base-ratio);
-      margin-right: modular-scale($base-font-size, 8, $base-ratio);
-    }
-    ul,
-    ol,
-    dl {
-      margin-top: modular-scale($base-font-size, -4, $base-ratio);
-      margin-left: modular-scale($base-font-size, 2, $base-ratio);
-    }
-  }
-  ul li {
-    list-style-type: disc;
-  }
-}
-
 // Media
 //
 // Constrain image max-width by default
@@ -184,7 +159,8 @@ h1, h2, h3, h4, h5, h6,
   // line-height: $headings-line-height;
 
   small {
-    line-height: 1;
+    display: inline-block;
+    line-height: 1.1;
   }
 }
 
@@ -310,4 +286,9 @@ select[multiple=multiple] {
 small {
   line-height: 1;
   @include media($mid)
+}
+
+// Quotation marks
+:lang(en-us) {
+  quotes: '\201C' '\201D' '\2018' '\2019' '\201C' '\201D' '\2018' '\2019';
 }
