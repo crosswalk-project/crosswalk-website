@@ -4,7 +4,6 @@ Prepared by Chloi Inc. for Troy Allison of Intel.
 
 - Brock Whitten, [brock@chloi.io](mailto:brock@chloi.io)
 - Kenneth Ormandy, [kenneth@chloi.io](mailto:kenneth@chloi.io)
-- Jorge Pedret, [jorge@chloi.io](mailto:jorge@chloi.io)
 
 ## Running locally
 
