@@ -34,6 +34,9 @@ blockquote,
   @include media($huge) {
     font-size: 2rem;
   }
+  @include media(min-width $huge-width min-height 40em) {
+    font-size: 2.75rem;
+  }
   p:first-of-type:before {
     content: open-quote;
   }
@@ -53,6 +56,12 @@ blockquote,
       max-width: 33%;
     }
     strong {
+      &:after {
+        content: ", ";
+      }
+      @include media($wide) {
+        display: block;
+      }
 
     }
     // Could be swaped with media obj
@@ -64,6 +73,13 @@ blockquote,
       display: block;
       // margin: 0 auto;
     }
+  }
+}
+
+.blockquote {
+  margin: 0;
+  p:last-of-type {
+    margin: 0;
   }
 }
 
