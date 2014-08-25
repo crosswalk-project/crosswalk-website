@@ -20,6 +20,7 @@
   text-align: right;
   font-size: modular-scale($base-font-size, -1, $base-ratio);
   @include media($mid) {
+    margin-top: modular-scale($base-font-size, -1, $base-ratio);
     @include span-columns(4 of 6);
   }
   @include media($wide) {
