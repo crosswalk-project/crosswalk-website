@@ -106,9 +106,11 @@
 // No styleguide reference.
 .main {
   .row {
-    margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
-    @include media($wide) {
-      margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
+    margin-top:    modular-scale($base-font-size, 2, $base-ratio) / 2;
+    margin-bottom: modular-scale($base-font-size, 2, $base-ratio) / 2;
+    @include media(min-width $wide-width min-height 40em) {
+      margin-top:    modular-scale($base-font-size, 6, $base-ratio) / 2;
+      margin-bottom: modular-scale($base-font-size, 6, $base-ratio) / 2;
     }
   }
 }
