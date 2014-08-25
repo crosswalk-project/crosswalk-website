@@ -85,7 +85,7 @@
   display: block;
   width: 100%;
   font-size: modular-scale($base-font-size, 2, $base-ratio);
-  @include span-columns(4);
+  @include span-columns(3);
   @include media($narrow) {
     @include span-columns(3);
   }
