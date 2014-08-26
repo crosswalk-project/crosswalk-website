@@ -43,6 +43,9 @@ blockquote,
   p:last-of-type:after {
     content: close-quote;
   }
+  p:last-of-type {
+    margin: 0;
+  }
 
 
   footer {
@@ -51,7 +54,7 @@ blockquote,
     margin: 0 auto;
     overflow: hidden;
     max-width: 15em;
-    margin-bottom: modular-scale($base-font-size, 0, $base-line-height);
+    margin-bottom: modular-scale($base-font-size, -2, $base-line-height);
     @include media($wide) {
       max-width: 33%;
     }
@@ -70,16 +73,10 @@ blockquote,
       margin-right: $gutter;
       border-radius: $base-border-radius;
       max-width: 3em;
+      margin-bottom: $base-line-height * 1em;
       display: block;
       // margin: 0 auto;
     }
-  }
-}
-
-.blockquote {
-  margin: 0;
-  p:last-of-type {
-    margin: 0;
   }
 }
 
