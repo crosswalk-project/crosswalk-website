@@ -10,7 +10,7 @@
     "service": {
       "analytics": "",
       "disqus": false,
-      "prism": false
+      "prism": true
     },
     "social": {
       "twitter": "xwalk_project",
