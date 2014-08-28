@@ -663,9 +663,6 @@
     <div data-crosswalk-versions="6-7" data-crosswalk-platforms="webview">
       <pre>
 {
-  "name": "app name",
-  "description": "a sample description",
-  "version": "1.0.0",
   "app": {
     "launch": {
       "local_path": "index.html"
@@ -682,9 +679,6 @@
     <div data-crosswalk-versions="8+" data-crosswalk-platforms="webview">
       <pre>
 {
-  "name": "app name",
-  "xwalk_description": "a sample description",
-  "xwalk_version": "1.0.0",
   "start_url": "index.html",
   "csp": "script-src 'self'; object-src 'self'",
   "xwalk_hosts": [
