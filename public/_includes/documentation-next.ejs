@@ -1,0 +1,47 @@
+<% var subpages = public.documentation[current.path[1]] %>
+
+<!-- This could be a lot more concise -->
+
+<% if(typeof(subpages) === 'object') { %>
+  <% var next = false %>
+  <% for(var slug in subpages._data) { %>
+    <% var item = subpages._data[slug] %>
+    <% if(slug === current.source) { %>
+      <% for(var catMain in public.documentation._data) { %>
+        <% var catIndex = public.documentation._data[catMain] %>
+        <% if(next === true) { %>
+          <h3>What’s next</h3>
+          <a href="/documentation/<%= catMain %>"><%= catIndex.title %></a>
+          <% break %>
+        <% } %>
+        <% if((current.path).indexOf(catMain.toLowerCase()) !== -1) { %>
+          <% var next = true %>
+        <% } %>
+      <% } %>
+      <% var next = true; %>
+    <% } else if(next === false) { %>
+      <a href="<%= slug %>" class="article-promo well">
+        <h4 class="article-promoTitle">What’s next</h4>
+        <p><%= item.title %> <span class="a-faux">Read more…</span></p>
+      </a>
+      <% break %>
+    <% } %>
+  <% } %>
+<% } else { %>
+
+  <% for(var catMain in public.documentation._data) { %>
+    <% var catIndex = public.documentation._data[catMain] %>
+    <% if(next === true) { %>
+      <a href="/documentation/<%= catMain %>" class="article-promo well">
+        <em>Next</em>
+        <h4 class="article-promoTitle"><%= catIndex.title %></h4>
+        <p><span class="a-faux">Read more…</span></p>
+      </a>
+      <% break %>
+    <% } %>
+    <% if((current.path).indexOf(catMain.toLowerCase()) !== -1) { %>
+      <% var next = true %>
+    <% } %>
+  <% } %>
+
+<% } %>
