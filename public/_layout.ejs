@@ -49,13 +49,11 @@
         <div class="row">
           <% include _includes/nav.ejs %>
         </div>
-        <div class="row">
           <% if(current.path.length === 1) { %>
             <%- yield %>
           <% } else { %>
             <%- partial(current.path.reverse()[current.path.length - 1] + "/_nest") %>
           <% } %>
-        </div>
       </div>
     <% } else { %>
       <%- yield %>
