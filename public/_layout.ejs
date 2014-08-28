@@ -85,18 +85,22 @@
             <li><a href="/blog">Blog</a></li>
           </ul>
           <div class="grid-1-of-3">
+            <ul class="article-list">
             <% for (slug in public.blog._data) { %>
               <% var article = public.blog._data[slug] %>
-                <h5 class="article-title"><a href="/blog/<%= slug %>"><%- article.title %></a></h5>
-                <span class="article-meta"><time class="js-vagueTime" datetime="<%- new Date(article.date).toUTCString() %>"><%- article.date %></time></span>
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/<%= slug %>"><%- article.title %></a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="<%- new Date(article.date).toUTCString() %>"><%- article.date %></time></span>
+                </li>
                 <% break %>
             <% } %>
+          </ul>
           </div>
           <div class="grid-1-of-3">
-            <div class="well">
+            <!-- <div class="well">
               <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
-            </div>
-            <span><a href="#">@xwalk_project</a> on Twitter</a></span>
+            </div> -->
+            <a href="http://twitter.com/<%= social.twitter %>">@<%= social.twitter %></a> on Twitter</a>
           </div>
         </div>
         <div class="row">
