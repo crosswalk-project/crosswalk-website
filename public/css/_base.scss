@@ -120,6 +120,41 @@ samp {
   font-weight: inherit;
 }
 
+code {
+  background-color: $color-gray-light;
+  text-shadow: 0 1px 0 $color-background;
+}
+
+// Normally pre code is better
+// but most code blocks on the
+// site have just been written
+// as <pre>
+pre {
+
+  background: $color-text;
+  color: $color-background;
+  padding: modular-scale($base-font-size, -2, $base-ratio);
+  margin: 0;
+  border-radius: $base-border-radius;
+  display: block;
+
+  code {
+    padding: 0;
+    margin: 0;
+    display: block;
+    background-color: transparent;
+    color: $color-background;
+    text-shadow: none;
+    @include media($wide) {
+      @include span-columns(7 of 6);
+    }
+    @include media($huge) {
+      // overflow: visible;
+      @include span-columns(8 of 7);
+    }
+  }
+}
+
 // Basic tables.
 //
 // Styleguide 1.6.
@@ -243,7 +278,8 @@ h6,
   font-size: modular-scale($base-font-size, 0, $base-ratio);
 }
 
-p {
+p,
+pre {
   margin: 0 0 ($base-line-height * 1em / 2);
 }
 
