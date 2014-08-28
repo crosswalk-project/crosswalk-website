@@ -1,0 +1,8 @@
+.cards--filled {
+  margin-top: modular-scale($base-font-size, 4, $base-ratio);
+  margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
+  @include media($mid) {
+    margin-top: modular-scale($base-font-size, 8, $base-ratio);
+    margin-bottom: modular-scale($base-font-size, 8, $base-ratio);
+  }
+}
