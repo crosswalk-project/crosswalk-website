@@ -1,8 +1,8 @@
 <div class="row">
   <nav id="contents" class="article-side nav-toggleContainer">
-    <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle hidden--wide">Table of Contents</a>
-    <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy hidden--wide">Table of Contents</a>
-    <ul class="article-list">
+    <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+    <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+    <ul class="article-list nav-toggleHide">
       <% for(var slug in public.documentation._data) { %>
         <% var article = public.documentation._data[slug] %>
         <li><a href="/documentation/<%= slug.toLowerCase() %>"><%= article.title %></a></li>
