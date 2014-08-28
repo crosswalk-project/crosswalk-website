@@ -3,7 +3,7 @@
 // A list of Articles
 //
 // Markup:
-// <ul class="article-list">
+// <ul class="article-list {$modifiers}">
 //   <li class="article-item">
 //     <header class="article-header">
 //       <h2 class="article-title"><a href="#">Introducing Cordova Intergration</a></h2>
@@ -18,7 +18,10 @@
 //   </li>
 // </ul>
 //
+// .article--narrow - Thinner at mid width
+//
 // Styleguide 3.13.1.
+
 .article,
 .article-list {
   @include media($wide) {
@@ -27,6 +30,48 @@
   }
   @include media($huge) {
     @include span-columns(4 of 6);
+  }
+}
+
+
+.article--withSide {
+  @include media($wide) {
+    border-left: 1px solid $color-gray-light;
+    padding-left: $gutter * 1;
+    margin-left: -$gutter * 1;
+    @include span-columns(5 of 6);
+  }
+  @include media($huge) {
+    padding-left: $gutter * 2;
+    margin-left: -$gutter * 2;
+
+    @include span-columns(5 of 6);
+  }
+  @include media($massive) {
+    .article-promo {
+      margin-top: modular-scale($base-font-size, 4, $base-ratio);
+      @include span-columns(4 of 6);
+      @include shift(1);
+    }
+  }
+}
+
+.article-side {
+  @include span-columns(6 of 6);
+  @include media($wide) {
+    @include span-columns(2 of 6);
+    @include shift(-1 of 6);
+  }
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  .article-list {
+    @include media($wide) {
+      padding: modular-scale($base-font-size, -2, $base-ratio);
+    }
+  }
+  &:target {
+    .article-list {
+      padding: modular-scale($base-font-size, -2, $base-ratio);
+    }
   }
 }
 

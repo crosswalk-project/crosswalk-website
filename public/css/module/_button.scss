@@ -15,8 +15,8 @@
 // Styleguide 3.1.1.
 button,
 input[type="submit"],
-a.button,
 .button,
+.button:visited,
 .knockout .button {
   font-size: modular-scale($base-font-size, 0, $base-ratio);
   font-weight: 600;
@@ -68,6 +68,21 @@ a.button,
     }
     &:active {
       background-color: $color-green-darker;
+    }
+  }
+  &.button--tertiary {
+    background-color: transparent;
+    text-shadow: 0 1px 0 $color-background;
+    border: 1px solid $color-green;
+    color: $color-green;
+    &:hover,
+    &:focus {
+      color: $color-green-dark;
+      border-color: $color-green-dark;
+    }
+    &:active {
+      color: $color-green-darker;
+      border-color: $color-green-darker;
     }
   }
 }
