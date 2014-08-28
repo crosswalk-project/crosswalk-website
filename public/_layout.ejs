@@ -41,10 +41,11 @@
 
   </head>
   <body>
-    <!-- If the current page is an index or in the root,
-         leave it alone so we can do custom markup.
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
          Otherwise, provide the header and nav. -->
-    <% if(current.source !== 'index') { %>
+    <% if(current.source !== 'index' || current.path.length > 2) { %>
       <div class="container">
         <div class="row">
           <% include _includes/nav.ejs %>
