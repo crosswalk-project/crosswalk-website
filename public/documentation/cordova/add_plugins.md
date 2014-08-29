@@ -10,13 +10,13 @@ The [Cordova Plugin Registry](http://plugins.cordova.io/) lists many of the avai
 
 ## Cordova plugins and Crosswalk
 
-Cordova Crosswalk for Android can also be extended with Cordova plugins. However, the plugin version you need depends on the Crosswalk version you are using. The [plugins compatibility list](#wiki/Crosswalk-Cordova-for-Android:-plugin-compatibility-lists) shows which Cordova plugin versions are supported by which version of Crosswalk Cordova for Android.
+Cordova Crosswalk for Android can also be extended with Cordova plugins. However, the plugin version you need depends on the Crosswalk version you are using. The [plugins compatibility list](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Cordova-for-Android:-plugin-compatibility-lists) shows which Cordova plugin versions are supported by which version of Crosswalk Cordova for Android.
 
 It's also worth noting that some functionality provided by Cordova plugins already has an equivalent in Crosswalk (for example, geolocation data). In cases where you are only using Crosswalk for the webview (e.g. you're only deploying to Android), you could use such Crosswalk native APIs, rather than those provided by Cordova plugins.
 
 ## Adding a plugin to a project
 
-**If you aren't set up for Crosswalk Cordova development, see the [host setup instructions](#documentation/cordova/develop_an_application/set_up_the_host). You can also follow those instructions to create a Crosswalk Cordova HelloWorld project. Plugins are added to a HelloWorld sample application in the instructions below, but the same steps will work for any Crosswalk Cordova application.**
+**If you aren't set up for Crosswalk Cordova development, see the [host setup instructions](/documentation/cordova/develop_an_application/set_up_the_host). You can also follow those instructions to create a Crosswalk Cordova HelloWorld project. Plugins are added to a HelloWorld sample application in the instructions below, but the same steps will work for any Crosswalk Cordova application.**
 
 In addition to the standard Crosswalk Cordova pre-requisites, you will also need to install [node.js](http://nodejs.org) for your platform.
 
@@ -30,7 +30,7 @@ Once installed, add a plugin to your Crosswalk Cordova project as follows:
 
         cd HelloWorld
 
-2.  Find the URL for the plugin you want to install, by looking it up in the appropriate [plugins compatibility list](#wiki/Crosswalk-Cordova-for-Android:-plugin-compatibility-lists). For example, if you've using version 5 of Crosswalk, the [compatible plugins for Cordova 3.3.0 list](#wiki/Plugins-list-@-3.3.0-supported-by-crosswalk-cordova-android) is the one you need.
+2.  Find the URL for the plugin you want to install, by looking it up in the appropriate [plugins compatibility list](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Cordova-for-Android:-plugin-compatibility-lists). For example, if you've using version 5 of Crosswalk, the [compatible plugins for Cordova 3.3.0 list](https://github.com/crosswalk-project/crosswalk-website/wiki/Plugins-list-@-3.3.0-supported-by-crosswalk-cordova-android) is the one you need.
 
     For example, to install the accelerometer plugin for Cordova 3.3.0, the URL you need is: https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4.
 
@@ -98,5 +98,5 @@ As with standard Cordova, you should still follow the Cordova guidelines for int
 
 External plugins (i.e. not part of the main Cordova distribution) can also be used with Crosswalk Cordova for Android:
 
-* [Use AdMob plugin in Crosswalk](#wiki/AdMob-Plugin-on-Crosswalk)
-* [Use IAP plugin in Crosswalk ](#wiki/IAP-Plugin-on-Crosswalk)
+* [Use AdMob plugin in Crosswalk](https://github.com/crosswalk-project/crosswalk-website/wiki/AdMob-Plugin-on-Crosswalk)
+* [Use IAP plugin in Crosswalk ](https://github.com/crosswalk-project/crosswalk-website/wiki/IAP-Plugin-on-Crosswalk)

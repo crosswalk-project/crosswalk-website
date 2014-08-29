@@ -39,6 +39,11 @@
     <meta name="twitter:description" content="<%= description %>" />
     <meta name="twitter:site" content="@<%= social.twitter %>" />
 
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
   </head>
   <body>
     <!-- If the current page is an index less than two
@@ -50,11 +55,13 @@
         <div class="row">
           <% include _includes/nav.ejs %>
         </div>
+        <div class="row">
           <% if(current.path.length === 1) { %>
             <%- yield %>
           <% } else { %>
             <%- partial(current.path.reverse()[current.path.length - 1] + "/_nest") %>
           <% } %>
+        </div>
       </div>
     <% } else { %>
       <%- yield %>
@@ -157,7 +164,7 @@
     <script src="/js/vagueTime.js"></script>
     <% if(service.prism) { %>
       <script src="/js/prism.js"></script>
-      <link   async defer href="/css/prism.css" rel="stylesheet"></script>
+      <link async defer href="/css/prism.css" rel="stylesheet"></script>
     <% } %>
   </body>
 </html>

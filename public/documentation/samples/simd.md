@@ -18,13 +18,13 @@ This application is part of the
 [Crosswalk samples download](https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz).
 
 The steps for setting up an environment for Crosswalk are explained
-in detail in the [Getting started](#documentation/getting_started)
+in detail in the [Getting started](/documentation/getting_started)
 tutorial.
 
 ## SIMD on Android
 
 Once you've set up the Crosswalk Android packaging dependencies,
-follow the steps in [Run on Android](#documentation/getting_started/run_on_android)
+follow the steps in [Run on Android](/documentation/getting_started/run_on_android)
 to install and run the SIMD sample on Android.
 
 The quick version is that you can build the SIMD apk with:
@@ -47,7 +47,7 @@ Then install the apk file on Android:
 ## SIMD on Tizen
 
 Follow the steps in
-[Run on Tizen](#documentation/getting_started/run_on_tizen)
+[Run on Tizen](/documentation/getting_started/run_on_tizen)
 to install and run the SIMD sample on Tizen.
 
 Or here's the quick version:

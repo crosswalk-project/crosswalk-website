@@ -14,4 +14,4 @@ Connect to the [Freenode IRC Network](irc://freenode.net) and join us on the [#c
 All of the source code for Crosswalk can be found on the [Crosswalk GitHub project page](http://github.com/crosswalk-project).
 
 ## Contributor Documentation
-We are working on comprehensive documentation to get new contributing developers up and running with Crosswalk. You can find that information in the [Contribute](#contribute/Overview) section of the website.
+We are working on comprehensive documentation to get new contributing developers up and running with Crosswalk. You can find that information in the [Contribute](/contribute/Overview) section of the website.

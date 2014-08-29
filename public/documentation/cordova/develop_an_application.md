@@ -14,7 +14,7 @@ Crosswalk Cordova for Android needs the following software to be installed on th
 *   Android SDK (with Android platform version 4.0 or later installed)
 *   [node](http://nodejs.org)
 
-The host setup instructions ([Windows](#documentation/getting_started/windows_host_setup), [Linux](#documentation/getting_started/linux_host_setup)) explain how to install all of these pre-requisites, except node.
+The host setup instructions ([Windows](/documentation/getting_started/windows_host_setup), [Linux](/documentation/getting_started/linux_host_setup)) explain how to install all of these pre-requisites, except node.
 
 To install node, follow the [instructions on the nodejs.org website](http://nodejs.org/download/).
 
@@ -22,7 +22,7 @@ Additional instructions for installing the Java JDK, Apache Ant, and the Android
 
 ### Download the crosswalk-cordova-android bundle
 
-Once you've installed the pre-requisite software, download the crosswalk-cordova-android bundle from [the downloads page](#documentation/downloads). Ensure that you get the correct bundle for your target architecture.
+Once you've installed the pre-requisite software, download the crosswalk-cordova-android bundle from [the downloads page](/documentation/downloads). Ensure that you get the correct bundle for your target architecture.
 
 For example, to get the stable x86 version:
 
@@ -32,13 +32,13 @@ Or the ARM version:
 
     $ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-CORDOVA-ARM}/arm/crosswalk-cordova-${XWALK-STABLE-CORDOVA-ARM}-arm.zip
 
-If you prefer, you can download Crosswalk Cordova via a browser by following the links on the [Downloads page](#documentation/downloads).
+If you prefer, you can download Crosswalk Cordova via a browser by following the links on the [Downloads page](/documentation/downloads).
 
 Once you've downloaded the zip file, unzip it (WinZip, 7Zip, command line etc.).
 
 ## Set up the target
 
-You will need an Android target to deploy the Cordova application to. You can either use a real Android device or an emulated one. Instructions for both are on the [Android target setup page](#documentation/getting_started/android_target_setup).
+You will need an Android target to deploy the Cordova application to. You can either use a real Android device or an emulated one. Instructions for both are on the [Android target setup page](/documentation/getting_started/android_target_setup).
 
 ## Create a sample application
 
@@ -88,7 +88,7 @@ Then run it as usual:
 
     ./cordova/run
 
-You should now be able to follow the instructions on [this page](#documentation/getting_started/remote_debugging) to debug the application.
+You should now be able to follow the instructions on [this page](/documentation/getting_started/remote_debugging) to debug the application.
 
 ## Debug Cordova Crosswalk
 

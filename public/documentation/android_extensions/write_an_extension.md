@@ -81,7 +81,7 @@ In the following sections, you'll create the Java and JavaScript sides of the ex
     # for third party libs distributed with the project
     mkdir tools
 
-The `build/`, `lib/` and `xwalk-echo-extension/` directories (shown in the [project outline](#documentation/android_extensions/host_and_target_setup/project_outline)) will be created at build time.
+The `build/`, `lib/` and `xwalk-echo-extension/` directories (shown in the [project outline](/documentation/android_extensions/host_and_target_setup/project_outline)) will be created at build time.
 
 Note that the following instructions assume you're in `xwalk-echo-extension-src/` (the top-level directory for the extension project).
 
@@ -404,7 +404,7 @@ Follow the instructions below to install and configure Ivy:
 
 ### Add an Ant buildfile
 
-You should have already installed Ant as described in the *Getting started* instructions ([Windows](#documentation/getting_started/windows_host_setup/Install-Ant), [Linux](#documentation/getting_started/linux_host_setup/Install-Ant)).
+You should have already installed Ant as described in the *Getting started* instructions ([Windows](/documentation/getting_started/windows_host_setup/Install-Ant), [Linux](/documentation/getting_started/linux_host_setup/Install-Ant)).
 
 Once Ant is installed, add a buildfile, `build.xml`, to the top-level directory of your project with this content:
 
@@ -511,7 +511,7 @@ This is a fairly standard Ant buildfile for a small project. The default task is
 
   <li>Downloads the Gson jar file dependency and puts it in the <code>lib/</code> directory (via Ivy).</li>
 
-  <li>Downloads Crosswalk Android (via HTTP) and unpacks it in the <code>lib/</code> directory. Note that if you want to use the <a href="#documentation/downloads">beta or canary versions of Crosswalk</a>, you will need to modify the <code>crosswalk-version</code> and <code>crosswalk-download-url</code> <code>&lt;property&gt;</code> elements as follows:
+  <li>Downloads Crosswalk Android (via HTTP) and unpacks it in the <code>lib/</code> directory. Note that if you want to use the <a href="/documentation/downloads">beta or canary versions of Crosswalk</a>, you will need to modify the <code>crosswalk-version</code> and <code>crosswalk-download-url</code> <code>&lt;property&gt;</code> elements as follows:
 
     <ul>
       <li>
@@ -535,7 +535,7 @@ This is a fairly standard Ant buildfile for a small project. The default task is
           value="https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" /&gt;
         </pre>
 
-        <p>You can find the current canary version by consulting the <a href="#documentation/downloads">downloads page</a>.</p>
+        <p>You can find the current canary version by consulting the <a href="/documentation/downloads">downloads page</a>.</p>
       </li>
     </ul>
   </li>

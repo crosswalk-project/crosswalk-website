@@ -61,6 +61,6 @@ However, because Crosswalk applications are intended to integrate well with the 
               }
             }
 
-        See [the page about the manifest](#documentation/manifest) for more information.
+        See [the page about the manifest](/documentation/manifest) for more information.
 
 Once you've done this, you're ready to run the application on a target.

@@ -10,7 +10,7 @@ There are two variants of the `icons` field, depending on which version of Cross
 
 *   In Crosswalk 1-7, the `icons` field is a non-standard extension, based on the format used in the [manifest for Chromium extensions](https://developer.chrome.com/apps/manifest/icons).
 
-Note that in both cases, this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk on Android](#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
+Note that in both cases, this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk on Android](/documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
 
 ## W3C variant (Crosswalk 8)
 
@@ -136,17 +136,17 @@ The `icons` field is an object whose keys represent the icon's pixel size (width
       }
     }
 
-Setting icons for multiple sizes [can affect Android packaging for your application](#documentation/manifest/using_the_manifest/Configure-Android-packaging).
+Setting icons for multiple sizes [can affect Android packaging for your application](/documentation/manifest/using_the_manifest/Configure-Android-packaging).
 
 As a minimum, the `"128"` key (for a 128x128 pixel image) should be specified. The preferred file format is PNG, but BMP, GIF, ICO, and JPEG formats may also be used.
 
 ## Effect on Android packaging
 
-Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](#documentation/getting_started/run_on_android).
+Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](/documentation/getting_started/run_on_android).
 
 ### Crosswalk 1-7
 
-If the <a href="#documentation/manifest/icons"><code>icons</code> field</a> contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
+If the <a href="/documentation/manifest/icons"><code>icons</code> field</a> contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
 
 |Icon key range...|`make_apk.py` copies the icon file to...|
 |:---------------:|----------------------------------------|

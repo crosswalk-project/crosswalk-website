@@ -1,18 +1,18 @@
-<div class="row">
-  <nav id="contents" class="article-side nav-toggleContainer">
-    <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-    <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-    <ul class="article-list nav-toggleHide">
-      <% for(var slug in public.documentation._data) { %>
-        <% var article = public.documentation._data[slug] %>
-        <li><a href="/documentation/<%= slug.toLowerCase() %>"><%= article.title %></a></li>
-      <% } %>
-    </ul>
-  </nav>
-  <article class="article article--withSide">
-    <%- yield %>
-    <footer class="article-next">
-      <% include ../_includes/documentation-next %>
-    </footer>
-  </article>
-</div>
+<nav id="contents" class="article-side nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    <% for(var slug in public.documentation._data) { %>
+      <% var article = public.documentation._data[slug] %>
+      <li class="nav-item<%= current.path[current.path.length - 2] === slug.toLowerCase() ? ' nav-item--active' : '' %>">
+        <a href="/documentation/<%= slug.toLowerCase() %>"><%= article.title %></a>
+      </li>
+    <% } %>
+  </ul>
+</nav>
+<article class="article article--withSide">
+  <%- yield %>
+  <footer class="article-next">
+    <% include ../_includes/documentation-next %>
+  </footer>
+</article>

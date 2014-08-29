@@ -82,13 +82,13 @@ You could have a host machine to run the server and two Android devices to run t
 
 ### Host setup
 
-The host should first be set up for Crosswalk Android development ([Windows](#documentation/getting_started/windows_host_setup), [Linux](#documentation/getting_started/linux_host_setup)). Pay particular attention to the *Installation for Crosswalk Android* section.
+The host should first be set up for Crosswalk Android development ([Windows](/documentation/getting_started/windows_host_setup), [Linux](/documentation/getting_started/linux_host_setup)). Pay particular attention to the *Installation for Crosswalk Android* section.
 
 You will also need to install [**node**](http://nodejs.org/) to run the server. Providing you use a recent enough version of node, it should also include the **npm** package manager; if not, you will need to install that separately.
 
 ### Target setup
 
-For Android targets, ensure that you [have access via adb](#documentation/getting_started/android_target_setup). No special setup is required beyond that.
+For Android targets, ensure that you [have access via adb](/documentation/getting_started/android_target_setup). No special setup is required beyond that.
 
 If you are using a desktop machine as a target, no special setup is required, other than ensuring that you have a Chrome browser installed.
 
@@ -440,7 +440,7 @@ To add the client code, follow these steps:
 
     Change the IP address to the value output by the PeerJS server when you started it.
 
-7.  Create a minimal [Crosswalk manifest](#documentation/manifest) file, `manifest.json`, with this content:
+7.  Create a minimal [Crosswalk manifest](/documentation/manifest) file, `manifest.json`, with this content:
 
         {
           "name": "WebRTC",
@@ -474,7 +474,7 @@ To run the application on a desktop machine via Chrome, do the following:
 
 ### Run on Android with Crosswalk
 
-During the host setup for Android ([Windows](#documentation/getting_started/windows_host_setup/Download-the-Crosswalk-Android-app-template), [Linux](#documentation/getting_started/linux_host_setup/Download-the-Crosswalk-Android-app-template)), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on [this page](#documentation/getting_started/run_on_android), but here's a summary (tested on Linux):
+During the host setup for Android ([Windows](/documentation/getting_started/windows_host_setup/Download-the-Crosswalk-Android-app-template), [Linux](/documentation/getting_started/linux_host_setup/Download-the-Crosswalk-Android-app-template)), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on [this page](/documentation/getting_started/run_on_android), but here's a summary (tested on Linux):
 
     $ cd crosswalk-${XWALK-STABLE-ANDROID-X86}
 

@@ -1,6 +1,6 @@
 # Frequently-asked questions
 
-If you have any questions that are not answered below, the crosswalk-help mailing list is a good place to ask them. Alternatively, contact us directly via the #crosswalk IRC channel on Freenode. See the [Community page](#documentation/community) for more details.
+If you have any questions that are not answered below, the crosswalk-help mailing list is a good place to ask them. Alternatively, contact us directly via the #crosswalk IRC channel on Freenode. See the [Community page](/documentation/community) for more details.
 
 ### Contents
 
@@ -50,7 +50,7 @@ Yes. You can wrap a website URL with a Crosswalk runtime so it behaves like an a
 
 Yes. Crosswalk itself can be modified, as the code is open source. We actively encourage [contributions](https://crosswalk-project.org/#contribute/overview).
 
-Alternatively, you can add extra capabilities to Crosswalk through its [extension mechanism](#wiki/Crosswalk-Extensions) without having to modify the core code. This enables an application to access platform features via native code (Java on Android, C/C++ on Tizen) and go beyond the boundaries of the web runtime.
+Alternatively, you can add extra capabilities to Crosswalk through its [extension mechanism](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Extensions) without having to modify the core code. This enables an application to access platform features via native code (Java on Android, C/C++ on Tizen) and go beyond the boundaries of the web runtime.
 
 ## Distributing Crosswalk applications
 
@@ -72,7 +72,7 @@ There are two approaches to building an application which supports both x86 and 
 
 *   Build two separate packages for your application, one for x86 and one for ARM; then upload both to the app stores where you are hosting your application. Prominent stores like Google Play have support for [uploading multiple packages for different platforms](http://developer.android.com/google/play/publishing/multiple-apks.html).
 
-    The [Crosswalk apk generation script](#documentation/getting_started/run_on_android) (`make_apk.py`) generates packages for both architectures to facilitate this way of working.
+    The [Crosswalk apk generation script](/documentation/getting_started/run_on_android) (`make_apk.py`) generates packages for both architectures to facilitate this way of working.
 
 *   Build one package for your application, but include both the x86 and ARM versions of Crosswalk in it. The down-side of this approach is that it makes the package file very large (c. 40Mb before you add your application code).
 
@@ -83,7 +83,7 @@ There are two approaches to building an application which supports both x86 and 
     lib/x86/libxwalkcore.so
     </pre>
 
-    How you achieve this depends on your build process. If you need a reference, see [the Cordova migration instructions](#documentation/cordova/migrate_an_application/Multi-architecture-packages), which explain how to do this in the context of Crosswalk Cordova.
+    How you achieve this depends on your build process. If you need a reference, see [the Cordova migration instructions](/documentation/cordova/migrate_an_application/Multi-architecture-packages), which explain how to do this in the context of Crosswalk Cordova.
 
 ### Which platforms does Crosswalk support?
 
@@ -117,11 +117,11 @@ However, you can use a custom command-line (Crosswalk 6 or later) by adding a te
 
 The method for adding this file to your Android package depends on how you are using Crosswalk:
 
-*   If you are **[embedding Crosswalk in an Android application](#documentation/embedding_crosswalk)**, the file should be placed in the `assets/` directory of your project.
+*   If you are **[embedding Crosswalk in an Android application](/documentation/embedding_crosswalk)**, the file should be placed in the `assets/` directory of your project.
 
-*   If you are **[using Crosswalk Cordova](#documentation/cordova)**, the file should be placed in the `platforms/android/assets/` directory of your project.
+*   If you are **[using Crosswalk Cordova](/documentation/cordova)**, the file should be placed in the `platforms/android/assets/` directory of your project.
 
-*   If you are **[building an Android package with the `make_apk.py` script](#documentation/getting_started/run_on_android)**, you can pass an option to create the file inside the output Android package:
+*   If you are **[building an Android package with the `make_apk.py` script](/documentation/getting_started/run_on_android)**, you can pass an option to create the file inside the output Android package:
 
     ```
     make_apk.py --manifest=mygame/manifest.json \

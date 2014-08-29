@@ -1,9 +1,12 @@
 {
+  "": {
+    "title": "Getting Started"
+  },
   "about": {
     "title": "About"
   },
   "getting_started": {
-    "title": "Getting Started"
+    "title": "Getting Started (old)"
   },
   "manifest": {
     "title": "Manifest"
