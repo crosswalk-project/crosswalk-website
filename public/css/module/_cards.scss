@@ -30,9 +30,11 @@
 .cards--filled {
   .cards-item,
   .card {
-    padding: $base-line-height * 1em;
+    padding: modular-scale($base-font-size, 0, $base-ratio);
     background: $color-green-lighter;
-
+    @include media($wide) {
+      padding: modular-scale($base-font-size, 2, $base-ratio);
+    }
   }
 }
 
@@ -109,6 +111,8 @@
   border-radius: 50%;
   border: 2px solid $color-background;
   max-width: modular-scale($base-font-size, 10, $base-ratio);
+  margin-top: -5em;
+  background: $color-background;
   @include media($mid) {
     padding: modular-scale($base-font-size, 0, $base-ratio);
   }
