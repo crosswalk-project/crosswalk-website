@@ -3,15 +3,22 @@
     <% include ../_includes/nav.ejs %>
   </div>
   <div class="row">
-    <nav>
-      <ul>
-        <% for (slug in public.contribute._data) { %>
-          <% var doc = public.contribute._data[slug] %>
-          <li>
-            <a href="<%= slug %>"><%- doc.title %></a>
+    <nav id="contents" class="article-side nav-toggleContainer">
+      <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+      <a href="#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+      <ul class="article-list nav-toggleHide">
+        <% for(var slug in public.contribute._data) { %>
+          <% var article = public.contribute._data[slug] %>
+          <li class="nav-item<%= current.source === slug.toLowerCase() ? ' nav-item--active' : '' %>">
+            <a href="/contribute/<%= slug.toLowerCase() %>"><%= article.title %></a>
           </li>
         <% } %>
       </ul>
     </nav>
+    <article class="article article--withSide">
+      <%- partial("_overview") %>
+      <footer class="article-next">
+      </footer>
+    </article>
   </div>
 </div>
