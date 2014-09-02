@@ -9,7 +9,7 @@ The first step to contributing to Crosswalk is to get a build environment config
 
 ## Debugging
 Once you have a build environment, familiarize yourself with the debugging process. There are steps describing that
-process in the [Crosswalk Developer's wiki](#wiki/home/for-developers) page.
+process in the [Crosswalk Developer's wiki](https://github.com/crosswalk-project/crosswalk-website/wiki/home/for-developers) page.
 
 ## Contributing
 Now you just need to pick something to focus working on. You can look
@@ -25,7 +25,7 @@ binaries, see
 [Crosswalk test result indicators](https://crosswalk-project.org/#wiki/Crosswalk-test-result-indicators).
 
 Full details of everything related to test scope, test execution plan, and running tests
-can be found on the [Crosswalk Testing Home](#wiki/crosswalk-testing-home).
+can be found on the [Crosswalk Testing Home](https://github.com/crosswalk-project/crosswalk-website/wiki/crosswalk-testing-home).
 
 ## Questions?
-Jump on IRC and chat with other developers; they hang out on Freenode in the #crosswalk channel. Details in the [Community](#documentation/community) page.
+Jump on IRC and chat with other developers; they hang out on Freenode in the #crosswalk channel. Details in the [Community](/documentation/community) page.

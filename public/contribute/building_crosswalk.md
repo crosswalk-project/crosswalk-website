@@ -133,7 +133,7 @@ You can test it by using it to load an HTML file:
     ~/crosswalk-src/src/out/Release/xwalk index.html
 
 If you don't have any HTML applications to test, the
-[Crosswalk samples](#documentation/samples) includes a few you can try.
+[Crosswalk samples](/documentation/samples) includes a few you can try.
 
 ## Building Crosswalk for Android
 
@@ -268,10 +268,10 @@ By default, the generated RPM files end up in
 ### Testing a Tizen build
 
 The steps for installing a Tizen rpm on a device are covered in
-[Tizen target set up](#documentation/getting_started/tizen_target_setup).
+[Tizen target set up](/documentation/getting_started/tizen_target_setup).
 
 Running an application on Tizen is covered in
-[Run on Tizen](#documentation/getting_started/run_on_tizen).
+[Run on Tizen](/documentation/getting_started/run_on_tizen).
 
 ### Incremental builds
 
