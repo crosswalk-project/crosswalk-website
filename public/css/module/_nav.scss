@@ -54,8 +54,19 @@
 .nav-item {
   display: block;
   margin-left: 0;
+  margin-bottom: modular-scale($base-font-size, -8, $base-ratio);
   @include media($wide) {
     display: inline-block;
+  }
+}
+
+.nav-item--active {
+  font-weight: 600;
+  > ol,
+  > ul,
+  > dl,
+  > li {
+    font-weight: 400;
   }
 }
 
