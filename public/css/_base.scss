@@ -137,6 +137,12 @@ pre {
   margin: 0;
   border-radius: $base-border-radius;
   display: block;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
   code {
     padding: 0;
@@ -196,6 +202,9 @@ h1, h2, h3, h4, h5, h6,
   small {
     display: inline-block;
     line-height: 1.1;
+  }
+  code {
+    background-color: transparent;
   }
 }
 
