@@ -31,6 +31,7 @@
   }
   code {
     background: transparent;
+    text-shadow: none;
   }
   .button.button--tertiary {
     text-shadow: none;
@@ -60,5 +61,8 @@
   a:visited,
   .a-faux {
     text-shadow: 1px 1px 0 $color-gray-light, -1px 1px 0 $color-gray-light;
+  }
+  .button {
+    text-shadow: inherit;
   }
 }
