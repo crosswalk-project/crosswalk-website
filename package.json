@@ -5,7 +5,8 @@
   "scripts": {
     "styleguide": "kss-node public/ public/styleguide --template public/_styleguide-template --sass public/css/styleguide.scss",
     "dropbox": "harp compile && cp -R www/* ~/Dropbox/harp.io/apps/intel-crosswalk.harp.io/public",
-    "deploy": "npm run styleguide && npm run dropbox"
+    "remove-modules": "rm -rf ~/Dropbox/harp.io/apps/intel-crosswalk.harp.io/public/node_modules",
+    "deploy": "npm run styleguide && npm run dropbox && npm run remove-modules"
   },
   "devDependencies": {
     "kss": "git://github.com/benogle/kss-node"
