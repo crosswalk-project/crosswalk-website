@@ -1,4 +1,4 @@
-// List
+// Article List
 //
 // A list of Articles
 //
@@ -18,10 +18,10 @@
 //   </li>
 // </ul>
 //
-// .article--narrow - Thinner at mid width
+// .article--narrow   - Thinner at mid width
+// .article--withSide - Includes an .article-side module
 //
 // Styleguide 3.13.1.
-
 .article,
 .article-list {
   @include media($wide) {
@@ -56,39 +56,84 @@
   }
 }
 
+// Article Side
+//
+// Secondary navigation for blog posts, documentation, etc.
+// Includes an `.article-list` inside.
+//
+// Markup:
+// <nav class="article-side">
+//   <ul class="article-list">
+//     <li class="article-item">
+//       <a class="article-link" href="#">Main Item Title 1</a>
+//       <ul class="article-list">
+//         <li class="article-item">
+//           <a class="article-link" href="#">Sub Item Title 1</a>
+//         </li>
+//         <li class="article-item nav-item--active">
+//           <a class="article-link" href="#">Sub Item Title 2 (active)</a>
+//         </li>
+//         <li class="article-item">
+//           <a class="article-link" href="#">Sub Item Title 3</a>
+//         </li>
+//       </ul>
+//     </li>
+//     <li class="article-item">
+//       <a class="article-link" href="#">Main Item Title 2</a>
+//       <ul class="article-list">
+//         <li class="article-item">
+//           <a class="article-link" href="#">Sub Item Title 1</a>
+//         </li>
+//         <li class="article-item">
+//           <a class="article-link" href="#">Sub Item Title 2</a>
+//         </li>
+//       </ul>
+//     </li>
+//   </ul>
+// </nav>
+//
+// Styleguide 3.13.2.
 .article-side {
   @include span-columns(6 of 6);
   @include media($wide) {
     @include span-columns(2 of 6);
     @include shift(-1 of 6);
   }
-  // margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
   .article-list {
     margin-bottom: 0;
     padding: 0;
     width: 100%;
-    @include media($wide) {
-      padding: modular-scale($base-font-size, -2, $base-ratio);
-    }
     .article-list {
       width: 100%;
-      border-top: 1px solid $color-gray-light;
       margin-left: 0;
       padding-left: 0;
       margin-bottom: modular-scale($base-font-size, -2, $base-ratio);
       .article-link {
+        border-left: 1px solid $color-gray-light;
         padding: 0;
         width: 100%;
         // padding-left: $gutter;
         display: block;
+        padding-left: modular-scale($base-font-size, 0, $base-ratio);
       }
+      .nav-item--active {
+        .article-link {
+          border-left-color: $color-green;
+        }
+      }
+
+    }
+    @include media($wide) {
+      margin-top: modular-scale($base-font-size, -2, $base-ratio);
+      margin-bottom: modular-scale($base-font-size, -2, $base-ratio);
     }
   }
   &:target {
     .article-list {
-      padding: modular-scale($base-font-size, -2, $base-ratio);
+      padding: modular-scale($base-font-size, -2, $base-ratio) 0;
     }
   }
+
 }
 
 .article-item {
@@ -98,9 +143,6 @@
   @include media($wide) {
     // margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
   }
-  // &.nav-item--active {
-  //   border-right: 2px solid $color-green;
-  // }
 }
 
 .article-link {
@@ -132,13 +174,15 @@
 //      which extends the web platform with new capabilities…
 //   </p>
 // </article>
+//
+// Styleguide 3.13.3.
 .article {
   a {
     // @include word-wrap(break-word);
   }
 }
 
-// Nav
+// Artilce Nav
 //
 // Table of contents for long articles,
 // but moreso for documentation.
@@ -150,15 +194,16 @@
 //   <a href="#running-hello-world">Running “Hello, world”</a>
 // </nav>
 //
-// Styleguide 3.13.2.
+// Styleguide 3.13.4.
 .article-nav {
   @include span-columns(4 of 4);
 }
 
-// Title
+// Artilce Title
 //
 // No styleguide reference.
 .article-title {
+  text-align: left;
   margin-top: 0;
   margin-bottom: modular-scale($base-font-size, -10, $base-ratio);
   @include media($huge) {
@@ -166,7 +211,7 @@
   }
 }
 
-// Header
+// Article Header
 //
 // The header in article list items and articles themselves.
 //
@@ -176,12 +221,12 @@
 //   <span class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></span>
 // </header>
 //
-// Styleguide 3.13.3.
+// Styleguide 3.13.5.
 .article-header {
   margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
 }
 
-// Hero
+// Article Hero
 //
 // Optional opening article images.
 //
@@ -191,7 +236,7 @@
 // </header>
 // <img class="article-hero" src="http://placehold.it/1500x300" alt="Example hero image" />
 //
-// Styleguide 3.13.4.
+// Styleguide 3.13.6.
 .article-hero {
   margin-top: modular-scale($base-font-size, 0, $base-ratio);
   margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
@@ -209,10 +254,9 @@
   }
 }
 
-
-// Lead
+// Article Lead
 //
-// Stylized opening paragraphs for articles.
+// Stylized opening paragraphs for articles. Also available elsewhere via the helper class `.lead`.
 //
 // Markup:
 // <article class="article">
@@ -220,40 +264,50 @@
 //   <p>This means Android developers can now deploy your mobile HTML5 application with its own runtime without a dependence on the native WebView that is on your customer's device for all Android 4.0+ devices.</p>
 // </article>
 //
-// Styleguide 3.13.3.
+// Styleguide 3.13.7.
 .lead,
 .article > p:first-of-type {
   @include media($mid) {
     margin-bottom: modular-scale($base-font-size, -4, $base-ratio);
     font-size: modular-scale($base-font-size, 2, $base-ratio);
-    line-height: $base-line-height;
+    line-height: modular-scale($base-font-size, 1, $base-ratio);
   }
 }
 
-
-.article-list {
-
-}
-
-.article-header {
-
-}
-
-.article-title {
-  text-align: left;
-
-}
-
+// Article Exerpt
+//
+// Exerpts used within article lists.
+//
+// Markup:
+// <div class="article-exerpt">
+//   <p>Crosswalk is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities. <a href="#">Read more…</a>
+// </div>
+//
+// Styleguide 3.13.8.
 .article-exerpt {
 
 }
 
+// Article Promo
+//
+// Callouts at the end of blog posts and documentation sections.
+//
+// Markup:
+// <a href="http://twitter.com/xwalk_project" class="article-promo {$modifiers}">
+//   <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+//   <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+// </a>
+//
+// .well - A Bootstrap-like “Well,” distinguishes the content with alternate styling (usually a grey box)
+//
+// Styleguide 3.13.9.
 .article-promo {
   display: block;
+  background-image: none;
   margin-top: modular-scale($base-font-size, 4, $base-ratio);
   text-shadow: none;
   color: $color-text;
-  border: 1px solid $color-gray-dark;
+  // border: 1px solid $color-gray-dark;
   &:hover,
   &:active,
   &:visited,
@@ -273,11 +327,38 @@
   }
 }
 
-// List items
+// Article Lists
 //
-// Numbered, bullited, and definition lists within articles
+// Numbered, bullited, and definition lists are styled in a more
+// pleasing manner for long form reading within articles
 //
-// No styleguide reference.
+// Markup:
+// <article class="article">
+//   <ul>
+//     <li>Android
+//       <ol>
+//         <li>Hybrid</li>
+//         <li>In-app browser</li>
+//       </ol>
+//     </li>
+//     <li>Cordova</li>
+//     <li>Tizen</li>
+//     <li>Chrome</li>
+//   </ul>
+//   <ol>
+//     <li>Android
+//       <ul>
+//         <li>Hybrid</li>
+//         <li>In-app browser</li>
+//       </ul>
+//     </li>
+//     <li>Cordova</li>
+//     <li>Tizen</li>
+//     <li>Chrome</li>
+//   </ol>
+// </article>
+//
+// Styleguide 3.13.10.
 .article {
   ul,
   ol,
@@ -298,7 +379,10 @@
       margin-left: modular-scale($base-font-size, 2, $base-ratio);
     }
   }
-  ul li {
+  ul > li {
     list-style-type: disc;
+  }
+  ol > li {
+    list-style-type: decimal;
   }
 }

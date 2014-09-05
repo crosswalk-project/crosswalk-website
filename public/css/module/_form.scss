@@ -33,6 +33,7 @@ select[multiple=multiple] {
   @include box-sizing(border-box);
   @include transition(border-color);
   color: $color-text;
+
   background-color: $color-gray-lighter;
   border-radius: $base-border-radius;
   border: 1px solid $color-gray-dark;
@@ -57,7 +58,7 @@ select[multiple=multiple] {
 // Textarea
 //
 // Markup:
-// <textarea>Tell us about your experience with Crosswalk.</textarea>
+// <textarea placeholder="Tell us about your experience with Crosswalk."></textarea>
 //
 // Styleguide 3.11.3.
 textarea {
@@ -74,12 +75,27 @@ input[type="search"] {
   @include appearance(none);
 }
 
+// Checkboxes
+//
+// Markup:
+// <label>Tizen</label>
+// <input type="checkbox" />
+// <label>Android</label>
+// <input type="checkbox" checked="checked" />
+//
+// Styleguide 3.11.5.
 input[type="checkbox"],
 input[type="radio"] {
   display: inline;
   margin-right: $gutter;
 }
 
+// File
+//
+// Markup:
+// <input type="file" />
+//
+// Styleguide 3.11.6.
 input[type="file"] {
   padding-bottom: modular-scale($base-font-size, 2, $base-ratio);
   width: 100%;
@@ -94,7 +110,7 @@ input[type="file"] {
 // <option>3</option>
 // </select>
 //
-// Styleguide 3.11.1.
+// Styleguide 3.11.7.
 select {
   margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
   max-width: 100%;
@@ -106,14 +122,13 @@ select {
 // Markup:
 // <form>
 // <fieldset>
-//   <!-- Example -->
 //   <legend>Versions</legend>
 //   <label for="form-androidVersions">Android Version</label>
 //   <input id="form-androidVersions" name="form-androidVersions" type="text" placeholder="Ex. 4.3" />
 // </fieldset>
 // </form>
 //
-// Styleguide 3.11.1.
+// Styleguide 3.11.8.
 fieldset {
   margin: 0 0 modular-scale($base-font-size, 2, $base-ratio) 0;
   padding: modular-scale($base-font-size, 2, $base-ratio)
@@ -144,7 +159,7 @@ fieldset {
 //   </fieldset>
 // </form>
 //
-// Styleguide 3.11.10.
+// Styleguide 3.11.9.
 .form-buttonGroup {
   padding: 0;
   margin: 0;

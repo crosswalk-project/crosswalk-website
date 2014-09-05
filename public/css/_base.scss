@@ -32,13 +32,13 @@ body,
 
 // Anchors
 //
+// Markup:
+// <a href="#">Intel XDK</a>
+// <a href="#"><p>Example content large target area. <span class="a-faux">Read more…</span></p></a>
+//
 // :focus  - lighten the link when focusing with the keyboard
 // :hover  - lighten the link when hovering with a pointer
 // :active - darken the link once it’s been pressed
-//
-// Markup:
-// <a href="#">Intel XDK</a>
-// <a href="#"><p>Example content <span class="a-faux">Read more…</span></p></a>
 //
 // Styleguide 1.2.
 a,
@@ -69,7 +69,7 @@ a:visited,
 
 // Lists
 //
-// Default list styling with <ul> hanging bullets
+// Default list styling with <ul> hanging bullets and figures
 //
 // Styleguide 1.3.
 ul,
@@ -86,7 +86,7 @@ ul li {
 
 // Media
 //
-// Constrain image max-width by default
+// Constrain images to a max-width by default
 //
 // Styleguide 1.4.
 figure,
@@ -111,6 +111,8 @@ figcaption {
 
 // Monospaced sections
 //
+// Code, keyboard, and preformatted blocks.
+//
 // Styleguide 1.5.
 code,
 kbd,
@@ -125,10 +127,10 @@ code {
   text-shadow: 0 1px 0 $color-background;
 }
 
-// Normally pre code is better
-// but most code blocks on the
-// site have just been written
-// as <pre>
+// Normally <pre><code> … </code></pre>
+// is prefered, but most code blocks in
+// the existing content have just been
+// written as <pre>
 pre {
 
   background: $color-text;
@@ -172,9 +174,6 @@ table {
   vertical-align: middle;
 }
 
-// Basic table headers.
-//
-// Styleguide 1.5.1.
 thead {
   font-weight: 600;
   padding: $base-line-height * 1em 0;
@@ -182,9 +181,6 @@ thead {
   vertical-align: middle;
 }
 
-//
-//
-// Styleguide 1.5.2.
 td {
   padding: ($base-line-height / 2) 0;
   vertical-align: middle;
@@ -192,7 +188,7 @@ td {
 
 // Headings
 //
-// Styleguide 1.5.3.
+// Styleguide 1.7.
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: $font-family-display;
@@ -205,6 +201,13 @@ h1, h2, h3, h4, h5, h6,
   }
   code {
     background-color: transparent;
+  }
+  .icon {
+    max-width: 1.25em;
+    max-height: 1.25em;
+    margin-right: 0.25em;
+    @include transform(translateY(0.25em));
+    display: inline-block;
   }
 }
 
@@ -294,10 +297,16 @@ pre {
 
 // Helpers
 //
-// Move. Could be dropped, or could use these in favour
-// of blockquote--left, etc.
+// Declarative text-level helpers.
 //
-// No styleguide reference.
+// Markup:
+// <div class="{$modifiers}">Build hybrid apps with Crosswalk.</div>
+//
+// .text-center - Center-aligns text
+// .text-left   - Left-aligns text
+// .text-right  - Right-aligns text
+//
+// Styleguide 1.8.
 .text-center {
   text-align: center;
 }
@@ -312,28 +321,35 @@ pre {
 
 // Addresses
 //
+// Remove default styling on addresses.
+//
 // No styleguide reference.
 address {
   font-style: normal;
 }
 
-// Inputs
+// Small
 //
-// No styleguide reference.
-textarea,
-#{$all-text-inputs},
-select[multiple=multiple] {
-  &:focus {
-    outline: none;
-  }
-}
-
+// Improves line-height and styling for legal messages.
+//
+// Markup:
+// <small>Crosswalk is a project from the Intel Open
+// Source Technology Center. Copyright © 2013–2014
+// Intel Corporation. All rights reserved.</small>
+//
+// Styleguide 1.9.
 small {
-  line-height: 1;
-  @include media($mid)
+  line-height: modular-scale($base-font-size, 1, $base-ratio);
+  display: block;
+  font-style: italic;
+  opacity: 0.75;
 }
 
 // Quotation marks
+//
+// Applies correct quotation marks to <q> and <blockquote>
+//
+// No styleguide reference.
 :lang(en-us) {
   quotes: '\201C' '\201D' '\2018' '\2019' '\201C' '\201D' '\2018' '\2019';
 }

@@ -1,6 +1,23 @@
 // Nav
 //
-// Styleguide 3.7.1.
+// Primariy, horisontal navigation
+//
+// Markup:
+// <nav class="nav">
+//   <ul class="nav-list">
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Documentation</a>
+//     </li>
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Blog</a>
+//     </li>
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Dev Wiki</a>
+//     </li>
+//   </ul>
+// </nav>
+//
+// Styleguide 3.8.1.
 .nav {
   a,
   a:visited,
@@ -87,7 +104,22 @@
 
 // Nav logo
 //
-// Styleguide 3.7.2.
+// Markup:
+// <nav class="nav">
+//   <a class="nav-logo logo" href="#">
+//     <img class="logo-image" src="/images/crosswalk-logo-black.svg">
+//   </a>
+//   <ul class="nav-list">
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Documentation</a>
+//     </li>
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Blog</a>
+//     </li>
+//   </ul>
+// </nav>
+//
+// Styleguide 3.8.2.
 .nav-logo {
   padding-top: modular-scale($base-font-size, 1, $base-ratio);
   padding-bottom: modular-scale($base-font-size, 1, $base-ratio);
@@ -106,10 +138,22 @@
 
 // Nav Toggle
 //
-// A jump-to-nav toggle that’s hidden
-// on larger screens.
+// Content that’s visible on larger
+// screens, and uses a CSS-only toggle
+// to reveal on smaller screens.
 //
-// No styleguide reference.
+// Markup:
+// <nav id="contents" class="nav-toggleContainer">
+//   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Toggle</a>
+//   <a href="#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Toggle</a>
+//   <ul class="nav-toggleHide">
+//    <li>Nav item 1 (hidden on small screens)</li>
+//    <li>Nav item 2 (hidden on small screens)</li>
+//    <li>Nav item 3 (hidden on small screens)</li>
+//   </ul>
+// </nav>
+//
+// Styleguide 3.8.3.
 .nav-toggle {
   display: block;
   visibility: visible;

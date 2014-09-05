@@ -17,6 +17,7 @@
 //
 // .knockout           - Inverted hero section
 // .hero--bg1.knockout - Coffee and game background
+// .hero--bg2          - Example of adding additional, new headers
 //
 // Styleguide 3.4.1.
 .hero {
@@ -38,12 +39,27 @@
 .hero.hero--bg1 {
   background: #000 url("/images/crosswalk-landing-banner-1.jpg") center top no-repeat;
   background-size: cover;
-  @include media($mid) {
-
-  }
   @include media($massive) {
     background-position: 75% top;
     background-size: contain;
+  }
+}
+
+// An example, add more custom
+// hero images like this.
+.hero.hero--bg2 {
+  background-color: lighten(tomato, 20%);
+  @include media($mid) {
+    // Changes at mid-sizes
+  }
+  @include media($wide) {
+    // Changes at wide-sizes
+  }
+  @include media($huge) {
+    // Changes at huge-size
+  }
+  @include media($massive) {
+    // Changes at massive sizes
   }
 }
 

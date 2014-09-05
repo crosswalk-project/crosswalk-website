@@ -1,10 +1,10 @@
 // Knockout
 //
-// For sections with light text on dark backgrounds
+// For sections with light text on dark backgrounds.
+// Particularly useful in conjunction with the <.hero> and <.blockquote> module.
 //
-// :hover  -
-// :focus  -
-// :active -
+// Markup:
+// <div class="knockout">Sectioned off content. <a href="#">Read more…</a></div>
 //
 // Styleguide 3.7.1.
 .knockout {
@@ -43,9 +43,8 @@
 // For sections with regular text on grey backgrounds.
 // Like Bootstrap’s “Well.”
 //
-// :hover  -
-// :active -
-// :focus  -
+// Markup:
+// <div class="well">Sectioned-off content. <a href="#">Read more…</a></div>
 //
 // Styleguide 3.7.2.
 .well {

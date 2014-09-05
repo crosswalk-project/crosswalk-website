@@ -1,6 +1,47 @@
 // Table
 //
-// No styleguide reference.
+// This module could be improved or have a better name;
+// basically, it is used for the tables on the landing page.
+//
+// Markup:
+// <table class="table--ftcomp">
+//   <thead>
+//     <tr>
+//       <td>HTML5 feature</td>
+//       <td>Android <code>WebView</code></td>
+//       <td>Crosswalk WebView</td>
+//     </tr>
+//   </thead>
+//   <tbody>
+//     <tr>
+//       <td>WebRTC</td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//     <tr>
+//       <td>WebGL</td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//     <tr>
+//       <td>Vibration <abbr>API</abbr></td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//     <tr>
+//       <td>Presentation <abbr>API</abbr></td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//     <tr>
+//       <td><code>WebView</code> updates</td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//   </tbody>
+// </table>
+//
+// Styleguide 3.12.1.
 .table--ftcomp {
   thead {
     td {

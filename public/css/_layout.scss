@@ -1,3 +1,5 @@
+// Container
+//
 // The main container
 //
 // Markup:
@@ -16,7 +18,7 @@
   }
 }
 
-// Container intro
+// Container Intro
 //
 // The first heading of the main container
 //
@@ -51,6 +53,8 @@
   }
 }
 
+// Row
+//
 // A class that resets the row within a container.
 //
 // Markup:
@@ -99,9 +103,9 @@
   @include row(RTL);
 }
 
-// Row margins
+// Consecutive Rows
 //
-// Adds margins above consecutive rows. (This might be too presumptuous.)
+// Adds margins above consecutive rows.
 //
 // No styleguide reference.
 .main {
@@ -115,9 +119,28 @@
   }
 }
 
-// Grid
+// Simple Grid
 //
-// Very simple grid classes.
+// Very simple grid classes. Most of the site’s grid is built into the
+// appropriate modules for better responsive styling. When you just need
+// a simple 3-up grid, this is the answer.
+//
+// Markup:
+// <div class="row">
+//   <div class="{$modifiers}">
+//     <img class="logo-image" src="/images/icons/wordmark-tizen.png">
+//   </div>
+//   <div class="{$modifiers}">
+//     <img class="logo-image" src="/images/icons/wordmark-famous.png">
+//   </div>
+//   <div class="{$modifiers}">
+//     <img class="logo-image" src="/images/icons/wordmark-cocos2d.png">
+//   </div>
+// </div>
+//
+// .grid-1-of-2 - Span one of two columns
+// .grid-1-of-3 - Span one of three columns
+// .grid-2-of-3 - Span two of three columns
 //
 // Styleguide 2.3.
 
