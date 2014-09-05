@@ -28,7 +28,7 @@ Once installed, Crosswalk on Tizen will use the field values in `manifest.json` 
 
 The [embedding API](/documentation/apis/embedding_api) enables you to embed a Crosswalk runtime in an Android application. [The embedding Crosswalk tutorial](/documentation/embedding_crosswalk) explains how to use this API to load an application's main HTML file into an embedded Crosswalk.
 
-However, the API also [exposes methods for loading an application from a manifest file](/apis/embeddingapidocs/reference/org/xwalk/core/XWalkView.html) as an alternative. The advantage of loading an application from a manifest is that it provides more flexibility than loading an application by URL.
+However, the API also [exposes methods for loading an application from a manifest file](/documentation/apis/embedding_api) as an alternative. The advantage of loading an application from a manifest is that it provides more flexibility than loading an application by URL.
 
 For example, if you decide to change the entry point for your application (e.g. rename `index.html` to `home.html`), you can do this in the manifest without having to change any Java application code. Similarly, if new fields become available for Crosswalk manifests, you can take advantage of those fields in your own manifest without changing any Java code.
 

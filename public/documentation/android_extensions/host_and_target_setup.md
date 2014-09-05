@@ -4,7 +4,7 @@ You should have set up a development environment as explained in [Getting starte
 
 These instructions have been tested on a Fedora Linux 20 host, in a bash shell; but they could be adapted to other environments (e.g. Windows console).
 
-You will also need to [set up an Android target](/documentation/getting_started/android_target_setup). For testing, you can either use [your own Android device](/documentation/getting_started/android_target_setup/Android-device) or [an emulated device](/documentation/getting_started/android_target_setup/Android-emulator). I used:
+You will also need to [set up an Android target](/documentation/getting_started/android_target_setup). For testing, you can either use [your own Android device](/documentation/getting_started/android_target_setup#android-device) or [an emulated device](/documentation/getting_started/android_target_setup#android-emulator). I used:
 
 * x86 ZTE Geek phone with Android 4.2.2
 * ARM HTC OneX with Android 4.0.4

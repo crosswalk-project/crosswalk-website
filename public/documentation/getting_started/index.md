@@ -4,13 +4,13 @@ This tutorial will get you up and running with Crosswalk as quickly as possible.
 
 Note that the tutorial uses the latest stable version of Crosswalk for Android: newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).
 
-For Tizen, a [canary](/documentation/downloads/Release-channels) version is used (there are no stable or beta downloads for Tizen).
+For Tizen, a [canary](/documentation/downloads#release-channels) version is used (there are no stable or beta downloads for Tizen).
 
 **This tutorial explains how to:**
 
 1.  Set up the *host*: the machine where you will be developing the application.
-    *   [Windows host](/documentation/getting_started/Windows_host_setup)
-    *   [Linux host](/documentation/getting_started/Linux_host_setup)
+    *   [Windows host](/documentation/getting_started/windows_host_setup)
+    *   [Linux host](/documentation/getting_started/linux_host_setup)
 
     Note that it may be possible to develop for Crosswalk on other platforms, but only Windows and Linux are officially supported.
 2.  Set up *targets*: machines which will run the Crosswalk application, either physical or virtual.
@@ -34,4 +34,4 @@ Throughout this tutorial, commands you should run in a shell are prefixed with a
 *   How to write HTML5 applications. We use the simplest possible HTML5 application for this tutorial, so we can focus on the packaging and deployment aspects of Crosswalk.
 *   How to use Crosswalk-specific APIs. The code in the tutorial should run perfectly well on any modern web browser, as well as on Crosswalk.
 *   How to write [Crosswalk extensions](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Extensions). This will be covered in other tutorials.
-*   How to compile Crosswalk itself. This is covered in the [Contribute](#contribute) section.
+*   How to compile Crosswalk itself. This is covered in the [Contribute](/contribute) section.
