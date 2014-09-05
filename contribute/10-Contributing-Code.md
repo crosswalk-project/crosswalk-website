@@ -78,14 +78,11 @@ After your "intent to implement" has been approved, you can begin working on you
 
 Make sure that any new source code you introduce contains the appropriate license text at the beginning of the file. If you are the author of a new file, the preferred license text to include can be found in the LICENSE file or any existing file.
 
-You should also add your name to the AUTHORS file the first time you make a patch.
-
 ## Code style guidelines
 
 Patches must comply with the code style guidelines. Your patch will be automatically checked for style compliance when you upload it to the bug tracker.
 
 See the [Crosswalk coding style](#contribute/coding_style) for details.
-
 
 ## Commit message guidelines
 
