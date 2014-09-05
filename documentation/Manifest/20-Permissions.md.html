@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Manifest/20 Permissions';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Manifest/20 Permissions</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Permissions</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Manifest/20-Permissions"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Manifest/20-Permissions"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The <code>permissions</code> (Crosswalk 4-7) and <code>xwalk_permissions</code> (Crosswalk 8+) fields are Crosswalk-specific and non-standard. They is used to set permissions in the <code>AndroidManifest.xml</code> file when packaging an application for Crosswalk on Android. This is necessary because Android applications cannot request permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.</p>
+
+<p><strong>Note:</strong> If you are <a href="#documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk">loading an application from a manifest with the embedding API</a>, you will have to manually specify permissions for Crosswalk in <code>AndroidManifest.xml</code>. See the <a href="#Permissions-required-by-API">section below</a> for guidance on which Android permissions are required by Crosswalk's <a href="#documentation/apis/web_apis">web APIs</a>.</p>
+
+<h2>Effect on Android packaging<a class="anchor" id="Effect-on-Android-packaging" href="#Effect-on-Android-packaging"></a></h2>
+
+<p>The <code>make_apk.py</code> script translates the <code>permissions</code> or <code>xwalk_permissions</code> field in <code>manifest.json</code> into <code>&lt;android:uses-permission&gt;</code> elements in <code>AndroidManifest.xml</code>.</p>
+
+<p>For example, given the following manifest (Crosswalk 8+):</p>
+
+<pre><code>{
+  "name": "simple",
+  "version": "0.0.0.1",
+  "app": {
+    "launch":{
+      "local_path": "index.html"
+    }
+  },
+  "xwalk_permissions": [
+    "Contacts",
+    "Geolocation",
+    "Messaging",
+    "Vibration"
+  ],
+  "icons": {
+    "96": "icon.png"
+  }
+}
+</code></pre>
+
+<p>...and this <code>make_apk.py</code> command line:</p>
+
+<pre><code>python make_apk.py --package=org.crosswalkproject.example \
+  --manifest=manifest.json
+</code></pre>
+
+<p>...the following <code>AndroidManifest.xml</code> permission elements are generated:</p>
+
+<pre><code>&lt;!-- permissions always added during packaging --&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/&gt;
+&lt;uses-permission android:name="android.permission.CAMERA"/&gt;
+&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+&lt;uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/&gt;
+&lt;uses-permission android:name="android.permission.RECORD_AUDIO"/&gt;
+&lt;uses-permission android:name="android.permission.WAKE_LOCK"/&gt;
+&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/&gt;
+
+&lt;!-- permissions added due to the "permissions" manifest field --&gt;
+&lt;uses-permission android:name="android.permission.READ_CONTACTS"/&gt;
+&lt;uses-permission android:name="android.permission.WRITE_CONTACTS"/&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/&gt;
+&lt;uses-permission android:name="android.permission.READ_SMS"/&gt;
+&lt;uses-permission android:name="android.permission.READ_PHONE_STATE"/&gt;
+&lt;uses-permission android:name="android.permission.RECEIVE_SMS"/&gt;
+&lt;uses-permission android:name="android.permission.SEND_SMS"/&gt;
+&lt;uses-permission android:name="android.permission.WRITE_SMS"/&gt;
+&lt;uses-permission android:name="android.permission.VIBRATE"/&gt;
+</code></pre>
+
+<p>Note that the <code>make_apk.py</code> script always adds a default set of permissions (the first group in the example above). Only the second group of permissions are the ones added because of the presence of the <code>xwalk_permissions</code> field in the manifest. The mappings from permissions in the manifest to Android permissions are shown in the <a href="#Permissions-required-by-API">table in the next section</a>.</p>
+
+<p>Alternatively, permissions can be specified on the command line and not included in <code>manifest.json</code>. For example, the following command line option would have the same effect as the manifest shown:</p>
+
+<pre><code>--permissions=Contacts:Geolocation:Messaging:Vibration
+</code></pre>
+
+<p>Note that permission values are not case sensitive (either in the manifest or on the command line), so the following would be equivalent:</p>
+
+<pre><code>--permissions=contacts:geolocation:messaging:vibration
+</code></pre>
+
+<h2>Permissions required by API<a class="anchor" id="Permissions-required-by-API" href="#Permissions-required-by-API"></a></h2>
+
+<p>If you want to use some of Crosswalk's web APIs in an application, you may need to add permissions to <code>AndroidManifest.xml</code> to make those APIs accessible. You can either do this via the <a href="#documentation/getting_started/run_on_android">packaging script</a>, or manually (if you are using the embedding API).</p>
+
+<p>The table below shows which web APIs require which permissions.</p>
+
+<table><tr><th>
+      Crosswalk web API
+    </th>
+
+    <th>
+      Permission in manifest.json or on <code>make_apk.py</code> command line
+    </th>
+
+    <th>
+      AndroidManifest.xml permission(s)
+    </th>
+  </tr><tr><td>
+      Contacts
+    </td>
+
+    <td>
+      Contacts
+    </td>
+
+    <td>
+      android.permission.READ_CONTACTS<br />
+      android.permission.WRITE_CONTACTS
+    </td>
+  </tr><tr><td>
+      <a href="http://www.w3.org/TR/geolocation-API/">Geolocation</a>
+    </td>
+
+    <td>
+      Geolocation
+    </td>
+
+    <td>
+      android.permission.ACCESS_FINE_LOCATION
+    </td>
+  </tr><tr><td>
+      Messaging
+    </td>
+
+    <td>
+      Messaging
+    </td>
+
+    <td>
+      android.permission.READ_SMS<br />
+      android.permission.READ_PHONE_STATE<br />
+      android.permission.RECEIVE_SMS<br />
+      android.permission.SEND_SMS<br />
+      android.permission.WRITE_SMS
+    </td>
+  </tr><tr><td>
+      <a href="http://www.w3.org/TR/vibration/">Vibration</a>
+    </td>
+
+    <td>
+      Vibration
+    </td>
+
+    <td>
+      android.permission.VIBRATE
+    </td>
+  </tr></table><p>For example, you may have an Android application which embeds Crosswalk, and want to use the JavaScript <a href="http://www.w3.org/TR/vibration/">Vibration API</a> in the web application part of the app. In this case, you would need to manually add this permission to <code>AndroidManifest.xml</code>:</p>
+
+<pre><code>&lt;uses-permission android:name="android.permission.VIBRATE"/&gt;
+</code></pre>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-07-22 15:08:12</p>
+  <p>
+    <a id="delete-link" href="/documentation/Manifest/20-Permissions" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Manifest/20-Permissions">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
