@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Cordova/10 Develop_an_application';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Cordova/10 Develop_an_application</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Developing a Crosswalk Cordova application</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Cordova/10-Develop_an_application"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Cordova/10-Develop_an_application"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>These instructions were tested with crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86} (for x86 architecture); both an emulated x86 and a physical x86 Android device were used as deployment targets.</p>
+
+<p>The development environment used was Linux (Fedora 20), but the instructions should also work for Windows.</p>
+
+<h2>Set up the host<a class="anchor" id="Set-up-the-host" href="#Set-up-the-host"></a></h2>
+
+<p>Crosswalk Cordova for Android needs the following software to be installed on the development host:</p>
+
+<ul><li>  Java JDK (version 1.5 or greater)</li>
+<li>  Apache Ant (version 1.8.0 or greater)</li>
+<li>  Python (version 2.6 or greater)</li>
+<li>  Android SDK (with Android platform version 4.0 or later installed)</li>
+<li>  <a href="http://nodejs.org">node</a></li>
+</ul><p>The host setup instructions (<a href="#documentation/getting_started/windows_host_setup">Windows</a>, <a href="#documentation/getting_started/linux_host_setup">Linux</a>) explain how to install all of these pre-requisites, except node.</p>
+
+<p>To install node, follow the <a href="http://nodejs.org/download/">instructions on the nodejs.org website</a>.</p>
+
+<p>Additional instructions for installing the Java JDK, Apache Ant, and the Android SDK can be found in the <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Cordova Android Platform Guide</a>.</p>
+
+<h3>Download the crosswalk-cordova-android bundle<a class="anchor" id="Download-the-crosswalk-cordova-android-bundle" href="#Download-the-crosswalk-cordova-android-bundle"></a></h3>
+
+<p>Once you've installed the pre-requisite software, download the crosswalk-cordova-android bundle from <a href="#documentation/downloads">the downloads page</a>. Ensure that you get the correct bundle for your target architecture.</p>
+
+<p>For example, to get the stable x86 version:</p>
+
+<pre><code>$ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-CORDOVA-X86}/x86/crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86.zip
+</code></pre>
+
+<p>Or the ARM version:</p>
+
+<pre><code>$ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-CORDOVA-ARM}/arm/crosswalk-cordova-${XWALK-STABLE-CORDOVA-ARM}-arm.zip
+</code></pre>
+
+<p>If you prefer, you can download Crosswalk Cordova via a browser by following the links on the <a href="#documentation/downloads">Downloads page</a>.</p>
+
+<p>Once you've downloaded the zip file, unzip it (WinZip, 7Zip, command line etc.).</p>
+
+<h2>Set up the target<a class="anchor" id="Set-up-the-target" href="#Set-up-the-target"></a></h2>
+
+<p>You will need an Android target to deploy the Cordova application to. You can either use a real Android device or an emulated one. Instructions for both are on the <a href="#documentation/getting_started/android_target_setup">Android target setup page</a>.</p>
+
+<h2>Create a sample application<a class="anchor" id="Create-a-sample-application" href="#Create-a-sample-application"></a></h2>
+
+<p>Create a sample application using the Crosswalk Cordova tools (inside the unpacked bundle in the <code>bin/</code> directory):</p>
+
+<pre><code>$ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create &lt;project_directory&gt; &lt;package_name&gt; &lt;project_name&gt; [&lt;template_path&gt;] [--shared]
+</code></pre>
+
+<p>The project will be generated in the directory <code>&lt;project_directory&gt;</code>, using the application template specified by <code>&lt;template_path&gt;</code> (or the default "Hello world" template if <code>&lt;template_path&gt;</code> is not set); <code>&lt;project_name&gt;</code> sets the application name in the <code>AndroidManifest.xml</code> file.</p>
+
+<p>The <code>--shared</code> option prevents the content of the <code>crosswalk-cordova-android/framework</code> folder being copied into the project. Note that when you build the Android package for your application, the Cordova and Crosswalk libraries are still included: the <code>--shared</code> option just affects how much space the project takes up on your development machine.</p>
+
+<p>For example, to create a "HelloWorld" app:</p>
+
+<pre><code>$ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create HelloWorld org.crosswalkproject.sample HelloWorld
+</code></pre>
+
+<p>You should use your own Java package name for your application, using <a href="http://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html">the standard Java package naming conventions</a>.</p>
+
+<p>A new project is created in the <code>HelloWorld</code> directory. The example HTML, JS and CSS files are located in <code>HelloWorld/assets/www</code> (you can replace them with your own files later).</p>
+
+<h2>Build and run the application<a class="anchor" id="Build-and-run-the-application" href="#Build-and-run-the-application"></a></h2>
+
+<p>Build HelloWorld:</p>
+
+<pre><code>$ cd HelloWorld
+$ ./cordova/run
+</code></pre>
+
+<p>(Note that there is a separate <code>./cordova/build</code> command which will just build the application; but the <code>run</code> command will do a build first before installing and running the application.)</p>
+
+<p>The command installs the HelloWorld package on the target and starts it. (If there are no attached Android devices, the <code>run</code> command will also try to start an emulated Android target before installation.)</p>
+
+<p>On the target, you should see the "APACHE CORDOVA" page with a blinking "DEVICE IS READY" element. For example, this is HelloWorld running on an x86 ZTE Geek phone:</p>
+
+<p><img src="assets/cordova-hello-world.png" /></p>
+
+<p>Please refer to <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_tools.md.html#Android%20Command-line%20Tools">Android Command-line Tools</a> for more command-line commands.</p>
+
+<h2>Debug the application<a class="anchor" id="Debug-the-application" href="#Debug-the-application"></a></h2>
+
+<p>Remote debugging works as for standard Crosswalk apps.</p>
+
+<p>First, you need to build your app with the <code>--debug</code> option enabled:</p>
+
+<pre><code>cd HelloWorld
+./cordova/build --debug
+</code></pre>
+
+<p>Then run it as usual:</p>
+
+<pre><code>./cordova/run
+</code></pre>
+
+<p>You should now be able to follow the instructions on <a href="#documentation/getting_started/remote_debugging">this page</a> to debug the application.</p>
+
+<h2>Debug Cordova Crosswalk<a class="anchor" id="Debug-Cordova-Crosswalk" href="#Debug-Cordova-Crosswalk"></a></h2>
+
+<p>You may be in the situation where the application crashes before Crosswalk itself starts (i.e. the runtime crashes before the web application can be loaded). To see what's happening in this situation, you can follow the system logs on the target:</p>
+
+<pre><code>$ cd HelloWorld
+$ ./cordova/log
+</code></pre>
+
+<p>This shows the Android device log, dynamically updated as events occur on the target.</p>
+
+<p>Now start your application. You should see some output as the application attempts to start, and hopefully get more information about any errors.</p>
+
+<h2>Importing a project into ADT<a class="anchor" id="Importing-a-project-into-ADT" href="#Importing-a-project-into-ADT"></a></h2>
+
+<p>A project generated using the command-line tools can be imported into the Android Developer Tools (ADT) (GUI-based development environment) by following these steps:</p>
+
+<ol><li> Open ADT. Depending on your environment, you may already have a menu entry to start it; if not, run the <code>eclipse/eclipse</code> command from inside your Android SDK's root directory.</li>
+<li> In the <em>File</em> menu, choose <em>Import...</em>.</li>
+<li> In the <em>Import</em> dialog box, choose <em>Android</em> then <em>Existing Android Code into Workspace</em>. Click the <em>Next</em> button.</li>
+<li> A file browser window will open. Choose the directory for the generated project; for example, for the HelloWorld project, the directory is <strong>HelloWorld</strong>.</li>
+<li> The <em>Import Projects</em> dialog will indicate that it is ready to import three projects: <strong>xwalk_core_library</strong>, <strong>HelloWorld-CordovaLib</strong> and <strong>HelloWorld</strong>. Click the <em>Finish</em> button to import the projects.</li>
+<li><p>Build each project in turn, in this order:</p>
+
+<ol><li><strong>xwalk_core_library</strong></li>
+<li><strong>CordovaLib</strong></li>
+<li><strong>HelloWorld</strong></li>
+</ol><p>You may need to turn off the automatic build option (uncheck <em>Project</em> &gt; <em>Build Automatically</em> in Eclipse) so you can build the projects manually and in the correct order.</p>
+
+<p>If all builds pass, the application was imported correctly by ADT, and you are ready to continue development.</p></li>
+</ol>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-07-22 14:05:17</p>
+  <p>
+    <a id="delete-link" href="/documentation/Cordova/10-Develop_an_application" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Cordova/10-Develop_an_application">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
