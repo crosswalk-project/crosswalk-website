@@ -55,10 +55,8 @@
       "versions": "1+"
     },
     "android": {
-      "versions": "2+"
-    },
-    "webview": {
-      "versions": "6+"
+      "versions": "2+",
+      "deprecated": "8"
     }
   },
   "display": {
@@ -99,9 +97,6 @@
     },
     "android": {
       "versions": "8+"
-    },
-    "webview": {
-      "versions": "8+"
     }
   },
   "name.extension": {
@@ -111,9 +106,6 @@
     },
     "android": {
       "versions": "2-7"
-    },
-    "webview": {
-      "versions": "6-7"
     }
   },
   "orientation": {
@@ -147,10 +139,14 @@
       "versions": "1+"
     },
     "android": {
-      "versions": "2+"
-    },
-    "webview": {
-      "versions": "6+"
+      "versions": "2+",
+      "deprecated": "8+"
+    }
+  },
+  "xwalk_description.extension": {
+    "name": "xwalk_description (extension)",
+    "android": {
+      "versions": "8+"
     }
   },
   "xwalk_hosts.extension": {
@@ -170,6 +166,12 @@
   },
   "xwalk_permissions.extension": {
     "name": "xwalk_permissions (extension)",
+    "android": {
+      "versions": "8+"
+    }
+  },
+  "xwalk_version.extension": {
+    "name": "xwalk_version (extension)",
     "android": {
       "versions": "8+"
     }

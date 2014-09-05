@@ -175,6 +175,11 @@
         <p>A string containing one to four dot-separated integers identifying the application version; for example: "2", "1.2", "1.3.0", "4.0.0.11". A couple of rules apply to the integers: they must be between 0 and 65535, inclusive; and you can't prefix any non-zero values with "0" (e.g. "01.1" is invalid).</p>
       </li>
 
+      <li data-field="xwalk_description.extension">
+        <p><strong data-role="field-name"></strong></p>
+        <p>Free-form text describing the application.</p>
+      </li>
+
       <li data-field="xwalk_hosts.extension">
         <p><strong data-role="field-name"></strong></p>
         <p>Defines host URL patterns to which the application can make Ajax requests, allowing <a href="https://developer.chrome.com/extensions/xhr">Cross-Origin Ajax requests</a> (using a mechanism similar to Chrome's).</p>
@@ -191,6 +196,11 @@
         <p><strong data-role="field-name"></strong></p>
         <p>Defines permissions the application needs so it can access platform features. <a href="#manifest-permissions">See below</a> for details of the available permissions.</p>
         <p><a href="#documentation/manifest/permissions">Read more...</a></p>
+      </li>
+
+      <li data-field="xwalk_version.extension">
+        <p><strong data-role="field-name"></strong></p>
+        <p>A string containing one to four dot-separated integers identifying the application version; for example: "2", "1.2", "1.3.0", "4.0.0.11". A couple of rules apply to the integers: they must be between 0 and 65535, inclusive; and you can't prefix any non-zero values with "0" (e.g. "01.1" is invalid).</p>
       </li>
     </ul>
 
@@ -598,8 +608,8 @@
       <pre>
 {
   "name": "app name",
-  "description": "a sample description",
-  "version": "1.0.0",
+  "xwalk_description": "a sample description",
+  "xwalk_version": "1.0.0",
   "start_url": "index.html",
   "csp": "script-src 'self'; object-src 'self'",
   "icons": [
@@ -653,9 +663,6 @@
     <div data-crosswalk-versions="6-7" data-crosswalk-platforms="webview">
       <pre>
 {
-  "name": "app name",
-  "description": "a sample description",
-  "version": "1.0.0",
   "app": {
     "launch": {
       "local_path": "index.html"
@@ -672,9 +679,6 @@
     <div data-crosswalk-versions="8+" data-crosswalk-platforms="webview">
       <pre>
 {
-  "name": "app name",
-  "description": "a sample description",
-  "version": "1.0.0",
   "start_url": "index.html",
   "csp": "script-src 'self'; object-src 'self'",
   "xwalk_hosts": [
