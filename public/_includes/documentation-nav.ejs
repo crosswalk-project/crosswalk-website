@@ -6,7 +6,7 @@
     <% for(var slug in public.documentation._data) { %>
       <% var article = public.documentation._data[slug] %>
       <% /* If it’s a documentation index page, then add the .nav-item--active class */ %>
-      <li class="article-item <%= current.source === 'index' && current.path[current.path.length - 2] === slug.toLowerCase() ? ' nav-item--active' : '' %>">
+      <li class="article-item <%= (current.path.length === 2 && current.path[0] === slug.toLowerCase()) || current.source === 'index' && current.path[current.path.length - 2] === slug.toLowerCase() ? ' nav-item--active' : '' %>">
         <a class="article-link" href="/documentation/<%= slug.toLowerCase() %>"><%= article.title %></a>
         <% /* If there are sub articles of documentation… */ %>
         <% if(current.path[current.path.length - 2] === slug.toLowerCase() && typeof public.documentation[slug] !== 'undefined' && typeof public.documentation[slug]._data !== 'undefined') { %>
