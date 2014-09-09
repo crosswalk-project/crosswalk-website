@@ -73,7 +73,7 @@ $color-green-dark: #437072;
 $color-green-darker: #344a3c;
 
 $color-gray: #CCC;
-$color-gray-light: lighten($color-gray, 10%);
+$color-gray-light: darken($color-background, 5%);
 $color-gray-lighter: lighten($color-gray, 30%);
 $color-gray-dark: darken($color-gray, 10%);
 $color-gray-darker: darken($color-gray, 30%);

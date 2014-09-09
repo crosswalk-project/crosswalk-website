@@ -124,7 +124,20 @@ samp {
 
 code {
   background-color: $color-gray-light;
+  border-radius: 3px;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
   text-shadow: 0 1px 0 $color-background;
+
+  &::-moz-selection {
+    background: $color-orange;
+  }
+  &::selection {
+    background: $color-orange;
+    color: inherit; // http://robsterlini.co.uk/journal/opentype-and-selection-dont-mix
+    text-shadow: inherit; // See above
+  }
+
 }
 
 // Normally <pre><code> … </code></pre>
@@ -148,6 +161,8 @@ pre {
 
   code {
     padding: 0;
+    border: 0;
+    border-radius: 0;
     margin: 0;
     display: block;
     background-color: transparent;
