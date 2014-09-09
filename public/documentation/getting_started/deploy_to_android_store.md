@@ -2,7 +2,7 @@
 
 A Crosswalk app for Android can be deployed to an app store after following the previous steps. The deployment mode varies depending on the packaging mode used (embedded or shared).
 
-In this tutorial, you packaged the application using embedded mode. However, it is also possible to [package an application using shared mode](/documentation/getting_started/Run_on_Android/Shared-mode).
+In this tutorial, you packaged the application using embedded mode. However, it is also possible to [package an application using shared mode](/documentation/getting_started/run_on_android#shared-vs-embedded-mode).
 
 Methods for deploying both types of package to an app store are briefly outlined below.
 

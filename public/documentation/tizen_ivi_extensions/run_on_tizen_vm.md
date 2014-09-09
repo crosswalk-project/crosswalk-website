@@ -55,7 +55,7 @@ You have now built the extension and application, and are at the point where you
 
     You should see this in the emulator:
 
-    ![Crosswalk application with extensions on Tizen IVI](assets/tizen-ivi3-emulator-echo-extension.png)
+    ![Crosswalk application with extensions on Tizen IVI](/assets/tizen-ivi3-emulator-echo-extension.png)
 
     If you don't, check for errors and warnings coming from the command. In particular, the output from the command should end with:
 

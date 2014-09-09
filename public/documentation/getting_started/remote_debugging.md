@@ -6,7 +6,7 @@ Note that to debug a Crosswalk application with Chrome, you must ensure that you
 
 ## Android
 
-On Android, the connection between the host and target is established using [`adb`](http://developer.android.com/tools/help/adb.html). You will need to ensure that you have installed the Android SDK (instructions for [Windows](/documentation/getting_started/windows_host_setup/Installation-for-Crosswalk-Android) and [Linux](/documentation/getting_started/linux_host_setup/Installation-for-Crosswalk-Android)) so that this tool is available.
+On Android, the connection between the host and target is established using [`adb`](http://developer.android.com/tools/help/adb.html). You will need to ensure that you have installed the Android SDK (instructions for [Windows](/documentation/getting_started/windows_host_setup#Installation-for-Crosswalk-Android) and [Linux](/documentation/getting_started/linux_host_setup#Installation-for-Crosswalk-Android)) so that this tool is available.
 
 You will also need to set up an Android target and install a packaged Crosswalk application on it. See [these instructions](/documentation/getting_started/android_target_setup).
 
@@ -52,7 +52,7 @@ XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
 
 <p>Then build the application package the usual way (e.g. using Ant or ADT).</p>
 
-<p>Full details are given in the <a href="/documentation/embedding_crosswalk/Debugging">Crosswalk embedding tutorial</a>.</p>
+<p>Full details are given in the <a href="/documentation/embedding_crosswalk#Debugging">Crosswalk embedding tutorial</a>.</p>
 
 </li>
 
@@ -130,7 +130,7 @@ First ensure that the [pre-requisites](#Android) have been met. Then follow thes
 
 3.  On the host, open a Chrome browser and go to "chrome://inspect" in the address bar. This should show a list of attached devices, with your application listed, for example:
 
-    ![Debugging a Crosswalk application in Chrome](assets/crosswalk-debug-in-chrome.png)
+    ![Debugging a Crosswalk application in Chrome](/assets/crosswalk-debug-in-chrome.png)
 
     (The application available for debugging is highlighted with a red box in the image.)
 
@@ -144,7 +144,7 @@ Note that it is also possible to disable remote debugging using the same intent,
 
 *   **adb can't connect to the device**
 
-    You may occasionally find that `adb` is unable to connect to the device, and remote debugging won't work. You can try unplugging the USB cable between your host and target (if using a USB connection), then reattaching it, which sometimes fixes the issue; or you could try [running `adb` as root](/documentation/getting_started/android_target_setup/Fixing-device-access-issues-on-Linux).
+    You may occasionally find that `adb` is unable to connect to the device, and remote debugging won't work. You can try unplugging the USB cable between your host and target (if using a USB connection), then reattaching it, which sometimes fixes the issue; or you could try [running `adb` as root](/documentation/getting_started/android_target_setup#Fixing-device-access-issues-on-Linux).
 
 *   **The application doesn't appear in the chrome://inspect page**
 
@@ -195,13 +195,13 @@ Once you have the pre-requisites in place, turn on debugging for the Crosswalk s
 
 Once the Crosswalk service is enabled for debugging, debug your applications as follows:
 
-1.  Launch a Crosswalk application on the Tizen target using a console. See [these instructions](/documentation/getting_started/run_on_tizen/Run-the-application).
+1.  Launch a Crosswalk application on the Tizen target using a console. See [these instructions](/documentation/getting_started/run_on_tizen#Run-the-application).
 
-2.  Back on the host, open a Chrome browser and open the address "http://&lt;Tizen target IP&gt;:9222". For example, for the IP address 192.168.0.19, the URL to use would be "http://192.168.0.19:9222".
+2.  Back on the host, open a Chrome browser and open the address `http://&lt;Tizen target IP&gt;:9222`. For example, for the IP address 192.168.0.19, the URL to use would be "http://192.168.0.19:9222".
 
     A list of all the pages available for debugging should now be displayed in the Chrome browser window:
 
-    ![Crosswalk on Tizen IVI: remote debugging](assets/crosswalk-tizen-remote-debug.png)
+    ![Crosswalk on Tizen IVI: remote debugging](/assets/crosswalk-tizen-remote-debug.png)
 
     Click on the link for the application you want to debug.
 

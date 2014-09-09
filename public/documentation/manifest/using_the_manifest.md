@@ -6,25 +6,25 @@ This page covers how to use a `manifest.json` file when deploying a Crosswalk ap
 2.  [To configure how a Crosswalk application launches on Tizen](#Configure-launch-on-Tizen).
 3.  [To load an application into an embedded Crosswalk runtime](#Load-an-application-into-an-embedded-Crosswalk).
 
-## Configure Android packaging
+<h2 id="Configure-Android-packaging">Configure Android packaging</h2>
 
 A Crosswalk manifest file can be used as the basis for generating an Android package for an application. Instructions on how to do this are given in [the Getting started tutorial](/documentation/getting_started).
 
 However, that tutorial only uses a basic manifest, and does not explain in detail how some manifest fields can affect Android packaging. The links below provide some extra information about this:
 
-* `icons`: [effect on Android packaging](/documentation/manifest/icons_\(extension\)/Effect-on-Android-packaging)
+* `icons`: [effect on Android packaging](/documentation/manifest/icons#Effect-on-Android-packaging)
 
-* `permissions`: [effect on Android packaging](/documentation/manifest/permissions/Effect-on-Android-packaging)
+* `permissions`: [effect on Android packaging](/documentation/manifest/permissions#Effect-on-Android-packaging)
 
 Note that neither of these fields has an effect if it is included in a `manifest.json` file [loaded into an embedded Crosswalk](#Load-an-application-into-an-embedded-Crosswalk).
 
-## Configure launch on Tizen
+<h2 id="Configure-launch-on-Tizen">Configure launch on Tizen</h2>
 
 When you create an xpk package to install with Crosswalk on Tizen, the `manifest.json` file should be included with the other assets in the application, as described in the [Run on Tizen](/documentation/getting_started/run_on_tizen) section of the "Getting started" tutorial.
 
 Once installed, Crosswalk on Tizen will use the field values in `manifest.json` to control how the application is launched: which [entry point](/documentation/manifest/entry_points) is used, whether the application is [displayed in fullscreen mode](/documentation/manifest/display), etc.
 
-## Load an application into an embedded Crosswalk
+<h2 id="Load-an-application-into-an-embedded-Crosswalk">Load an application into an embedded Crosswalk</h2>
 
 The [embedding API](/documentation/apis/embedding_api) enables you to embed a Crosswalk runtime in an Android application. [The embedding Crosswalk tutorial](/documentation/embedding_crosswalk) explains how to use this API to load an application's main HTML file into an embedded Crosswalk.
 

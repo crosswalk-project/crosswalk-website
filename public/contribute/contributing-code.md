@@ -99,7 +99,7 @@ Your commits and/or PRs should reference the ID of the issue you are working on.
 
     Only opening and closing a PR (with an issue ID in the description) will result in a comment being added to Jira. Updating a PR will *not* update related Jira issues.
 
-*   To close a related Jira issue, add a line with the format **BUG=XWALK-N** to a PR description (NB this is case sensitive). Doing this will resolve the corresponding issue in Jira when the PR is merged. Using the issue URL (**BUG=https://path/to/issue/XWALK-N**) is also acceptable.
+*   To close a related Jira issue, add a line with the format **BUG=XWALK-N** to a PR description (NB this is case sensitive). Doing this will resolve the corresponding issue in Jira when the PR is merged. Using the issue URL `(**BUG=https://path/to/issue/XWALK-N**)` is also acceptable.
 
     For example, if your PR closes issue XWALK-898, you could include this in the PR description:
 

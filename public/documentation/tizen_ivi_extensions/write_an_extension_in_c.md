@@ -14,9 +14,9 @@ The extension consists of three parts:
 
 You also need some supporting files to build and package the extension.
 
-Before starting, make sure you have already followed the steps in [Host and target setup](/documentation/Tizen_IVI_extensions/Host_and_target_setup).
+Before starting, make sure you have already followed the steps in [Host and target setup](/documentation/Tizen_IVI_extensions/host_and_target_setup).
 
-## Create project files and directories
+<h2 id="Create-project-files-and-directories">Create project files and directories</h2>
 
 The first step is to set up the basic project directories and include the Crosswalk headers (for compiling the code).
 
@@ -39,7 +39,7 @@ Put the extension in an `echo-extension` directory with these commands:
 
 Because you'll be using gbs to build the rpm file for your extension, you need to make your project into a git repository (gbs won't work on plain directories).
 
-### Include Crosswalk headers
+<h3 id="Include-Crosswalk-headers">Include Crosswalk headers</h3>
 
 You will need a copy of the Crosswalk headers, to compile your extension against:
 
@@ -51,7 +51,7 @@ You will need a copy of the Crosswalk headers, to compile your extension against
 
         cp ~/crosswalk-source/src/xwalk/extensions/public/*.h echo-extension/common/
 
-### JavaScript bridge API to the C extension
+<h3 id="JavaScript-bridge-API-to-the-C-extension">JavaScript bridge API to the C extension</h3>
 
 This file wires the C interface to JavaScript and provides the bridge between the HTML5 application and the C code.
 
@@ -78,7 +78,7 @@ Add a file at `extension/api.js` with this content:
 
 This JavaScript file is converted into a C header file at build-time; that header file is then referenced from the extension code. This is the simplest way to incorporate the JavaScript code into the C extension. See [this section](/documentation/tizen_ivi_extensions/build_an_application/C-header-file-for-the-JavaScript-API) for details of how the conversion happens.
 
-#### A note on the JavaScript API
+<h4 id="A-note-on-the-JavaScript-API">A note on the JavaScript API</h4>
 
 Note that the asynchronous part of this API is *not suitable* for a real production environment.
 
@@ -116,7 +116,7 @@ The solution is to pass a token from the JavaScript API to the C code, then retu
 
 If you're interested in seeing a real world example of how this would be implemented, the [Crosswalk Tizen extensions](https://github.com/crosswalk-project/tizen-extensions-crosswalk) are a good place to start, e.g. [the application API JavaScript file](https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/application/application_api.js).
 
-### C header file for the JavaScript API
+<h3 id="C-header-file-for-the-JavaScript-API">C header file for the JavaScript API</h3>
 
 The header file, `extension/echo-extension.h`, is a generated file which looks like this:
 
@@ -169,7 +169,7 @@ Invoke it like this:
 
 While the script can be invoked manually for testing, the aim is to incorporate it into an automated build later.
 
-### C program code
+<h3 id="C-program-code">C program code</h3>
 
 This implements the Crosswalk extension API and has access to the full Tizen native API. For the purposes of this tutorial, the C code simply prefixes a message string with "You said: " and returns it.
 
@@ -286,7 +286,7 @@ Some notes on the code:
 
 *   Both the sync (`XW_Internal_SyncMessagingInterface->SetSyncReply()`) and async (`XW_MessagingInterface->PostMessage()`) functions for returning a response "preserve their inputs", so you can free any pointers you pass to those functions once you've invoked them.
 
-#### More details on the C interfaces
+<h4 id="More-details-on-the-C-interfaces">More details on the C interfaces</h4>
 
 *   Core interface: `XW_CORE_INTERFACE`
 
@@ -320,7 +320,7 @@ Some notes on the code:
 
 The interface names and structures described above have a versioning suffix in their names. However, extension writers should use the unversioned macros to get the desired interfaces.
 
-## Add build infrastructure
+<h2 id="Add-build-infrastructure">Add build infrastructure</h2>
 
 The build infrastructure enables generating an installable rpm package for your extension. This `.rpm` file can then be installed to the Tizen IVI target using the `rpm` package manager tool.
 
@@ -332,7 +332,7 @@ The files you need to add are:
 
 2.  An rpm spec file, `packaging/echo-extension.spec`. This file defines how the extension should be packaged and installed on the Tizen system.
 
-### Makefile
+<h3 id="Makefile">Makefile</h3>
 
 You can use a `Makefile` to invoke the compiler and generate the header file for the JavaScript API. In the project directory, add a file called `Makefile` with this content:
 
@@ -361,7 +361,7 @@ You can use a `Makefile` to invoke the compiler and generate the header file for
 
 (As with all Makefiles, indent using tabs, rather than spaces.)
 
-### RPM spec file
+<h3 id="RPM-spec-file">RPM spec file</h3>
 
 Crosswalk Tizen extensions should be packaged as rpm files. The structure and content of this rpm file is defined in an rpm `.spec` file. `gbs` uses this spec file to compile the extension against the Tizen IVI librarires; then generates an rpm compatible with a Tizen IVI target.
 
@@ -400,7 +400,7 @@ The rpm spec file format is a complicated beast, and out of scope for this tutor
 
 You should also be aware of the [Tizen packaging guidelines](https://wiki.tizen.org/wiki/Packaging/Guidelines), which explain best practices for writing spec files for Tizen packages.
 
-## Run the build
+<h2 id="Run-the-build">Run the build</h2>
 
 Before running your build with `gbs`, make sure all your changes are committed to the local git repository:
 
@@ -415,6 +415,6 @@ Note that you're using the gbs configuration file in your home directory, so you
 
 During the build, `gbs` will download the appropriate Tizen IVI packages, then compile and package your extension. The output `.rpm` files should end up in `/home/ell/GBS-ROOT/local/repos/tizen3.0/i586/RPMS` (unless you changed the gbs root location).
 
-# Acknowledgements
+<h2 id="Acknowledgements">Acknowledgements</h2>
 
 Thanks to José Bollo for improvements to the `js2c.sh` script via [crosswalk-dev](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-help).

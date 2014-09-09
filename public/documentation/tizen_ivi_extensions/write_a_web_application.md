@@ -111,11 +111,11 @@ When the application runs, the extension's API is invoked asynchronously and syn
 
 ## Create the package
 
-Now that you have the web application, follow the steps in [Run on Tizen](/documentation/getting_started/Run_on_Tizen) to create the Tizen package (`.xpk` file).
+Now that you have the web application, follow the steps in [Run on Tizen](/documentation/getting_started/run_on_Tizen) to create the Tizen package (`.xpk` file).
 
 The steps are summarised below:
 
-1.  Add the `make_xpk.sh` script to the project. See [Create the xpk file](/documentation/getting_started/Run_on_Tizen/Create-the-xpk-file) for the content of the script and how to create it.
+1.  Add the `make_xpk.sh` script to the project. See [Create the xpk file](/documentation/getting_started/run_on_Tizen#Create-the-xpk-file) for the content of the script and how to create it.
 
 2.  Create a private key for signing packages:
 

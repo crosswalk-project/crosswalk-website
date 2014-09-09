@@ -48,15 +48,15 @@ The C code which corresponds to the JavaScript API above looks like this:
 
 The diagram below shows how the application and the extension interact:
 
-![Structure of a Crosswalk application with extension](assets/crosswalk-extension-layout.png)
+![Structure of a Crosswalk application with extension](/assets/crosswalk-extension-layout.png)
 
 **The tutorial contains the following steps:**
 
 1.  [Set up your host development environment](/documentation/tizen_ivi_extensions/host_and_target_setup).
-2.  [Write a Tizen Crosswalk extension in C](/documentation/tizen_ivi_extensions/write_an_extension_in_C).
-3.  [Write a Tizen Crosswalk extension in C++](/documentation/tizen_ivi_extensions/write_an_extension_in_C++).
+2.  [Write a Tizen Crosswalk extension in C](/documentation/tizen_ivi_extensions/write_an_extension_in_c).
+3.  [Write a Tizen Crosswalk extension in C++](/documentation/tizen_ivi_extensions/write_an_extension_in_c++).
 4.  [Write a web application](/documentation/tizen_ivi_extensions/write_a_web_application).
-5.  [Run the application and extension using the Tizen emulator](/documentation/tizen_ivi_extensions/run_on_tizen_emulator).
+<!-- 5.  [Run the application and extension using the Tizen emulator](/documentation/tizen_ivi_extensions/run_on_tizen_emulator). -->
 
 As far as tooling goes, you'll use command line tools to compile the extension, and simple text editors to write the code. It is possible to use the Tizen SDK IDE to build Tizen applications; but using command line tools and a text editor exposes the internals of the extension more clearly.
 

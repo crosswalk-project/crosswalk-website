@@ -34,7 +34,7 @@ The web application for this project is a simple HTML5/CSS/Javascript applicatio
 
     The manifest file (above) specifies a 96x96px icon with filename `icon.png` as the application icon. Crosswalk will use this as the icon for the application in the Android target's application list/home screen etc.
 
-    You can either use your own icon (with the right dimensions), or copy the default Crosswalk one by following the instructions on [this page](/documentation/getting_started/build_an_application/A-simple-application).
+    You can either use your own icon (with the right dimensions), or copy the default Crosswalk one by following the instructions on [this page](/documentation/getting_started/build_an_application/a-simple-application).
 
 4.  Add the HTML file `index.html`:
 

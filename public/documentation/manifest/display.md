@@ -22,8 +22,8 @@ To give an idea of how this field setting affects the application's appearance, 
 
 **Fullscreen:**
 
-![Application in fullscreen display mode on Tizen IVI](assets/crosswalk-manifest-tizen-fullscreen.png "Fullscreen")
+![Application in fullscreen display mode on Tizen IVI](/assets/crosswalk-manifest-tizen-fullscreen.png "Fullscreen")
 
 **Standalone (note the device's toolbar):**
 
-![Application in standalone display mode on Tizen IVI](assets/crosswalk-manifest-tizen-standalone.png "Standalone")
+![Application in standalone display mode on Tizen IVI](/assets/crosswalk-manifest-tizen-standalone.png "Standalone")

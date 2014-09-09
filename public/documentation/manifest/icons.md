@@ -2,7 +2,7 @@
 
 The `icons` field specifies one or more icon graphics which visually represent the application. For example, the icon may be used by a task switcher, in a notifications area, or in an application list on the device. The image below shows the icon for the *townxelliot media player* being used in the *application list* (left) and *recent apps* (right) contexts on Android:
 
-![Manifest icon used in "application list" and "recent apps" context on Android](assets/manifest-icon-contexts.png)
+![Manifest icon used in "application list" and "recent apps" context on Android](/assets/manifest-icon-contexts.png)
 
 There are two variants of the `icons` field, depending on which version of Crosswalk you are using:
 
@@ -10,7 +10,7 @@ There are two variants of the `icons` field, depending on which version of Cross
 
 *   In Crosswalk 1-7, the `icons` field is a non-standard extension, based on the format used in the [manifest for Chromium extensions](https://developer.chrome.com/apps/manifest/icons).
 
-Note that in both cases, this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk on Android](/documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk).
+Note that in both cases, this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk on Android](/documentation/manifest/using_the_manifest#Load-an-application-into-an-embedded-Crosswalk).
 
 ## W3C variant (Crosswalk 8)
 
@@ -140,7 +140,7 @@ Setting icons for multiple sizes [can affect Android packaging for your applicat
 
 As a minimum, the `"128"` key (for a 128x128 pixel image) should be specified. The preferred file format is PNG, but BMP, GIF, ICO, and JPEG formats may also be used.
 
-## Effect on Android packaging
+<h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
 Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](/documentation/getting_started/run_on_android).
 

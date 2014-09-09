@@ -1,6 +1,6 @@
 # Write an extension in C++ (2)
 
-This is a modified version of the [tutorial](/documentation/Tizen_IVI_extensions/17-Write_an_extension_in_C++.md) to provide more robust handling of asynchronous callbacks. The mechanism illustrated below is inspired by real production code.
+This is a modified version of the [tutorial](/documentation/Tizen_IVI_extensions/write_an_extension_in_c++.md) to provide more robust handling of asynchronous callbacks. The mechanism illustrated below is inspired by real production code.
 
 ## Modified Javascript File
 

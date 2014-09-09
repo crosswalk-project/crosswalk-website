@@ -31,7 +31,7 @@ If the installation is successful, your application should now be on the Android
 
 <img src="assets/xwalk-simple-on-android.png">
 
-## Shared vs. embedded mode
+<h2 id="shared-vs-embedded-mode">Shared vs. embedded mode</h2>
 
 Above, we packaged the application using the default *embedded* mode (the Crosswalk runtime is bundled with the application). This creates two apk files, one for Intel architecture devices, and a second for ARM devices.
 

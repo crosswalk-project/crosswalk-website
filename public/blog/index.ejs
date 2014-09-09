@@ -15,7 +15,7 @@
             </span>
           </header>
           <div class="article-excerpt">
-            <p><%-: partial(slug).replace(/<[^>]*>/g, "") | truncate_words: 50 %> <a href="<%= article.slug %>" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>
+            <p><%-: partial(slug).replace(/<[^>]*>/g, "") | truncate_words: 50 %> <a href="<%= slug %>" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>
           </div>
         </li>
       <% } %>

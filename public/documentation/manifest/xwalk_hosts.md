@@ -18,12 +18,12 @@ Crosswalk provides a manifest field, `xwalk_hosts`, which enables an application
 
 The field takes an array of URL patterns representing hosts which the application should be able to access. The values can be fully qualified host names, like this:
 
-* "http://crosswalk-project.org/"
+* `"http://crosswalk-project.org/"`
 
 Or patterns with wild-card characters, such as:
 
-* "http://*.org/"
-* "https://*/"
+* `"http://*.org/"`
+* `"https://*/"`
 
 For example, this manifest would allow access to the Crosswalk website, or any intel.com sub-domains:
 

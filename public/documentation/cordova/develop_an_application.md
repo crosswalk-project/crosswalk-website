@@ -4,7 +4,7 @@ These instructions were tested with crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86
 
 The development environment used was Linux (Fedora 20), but the instructions should also work for Windows.
 
-## Set up the host
+<h2 id="Set-up-the-host">Set up the host</h2>
 
 Crosswalk Cordova for Android needs the following software to be installed on the development host:
 
@@ -20,7 +20,7 @@ To install node, follow the [instructions on the nodejs.org website](http://node
 
 Additional instructions for installing the Java JDK, Apache Ant, and the Android SDK can be found in the [Cordova Android Platform Guide](http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide).
 
-### Download the crosswalk-cordova-android bundle
+<h3 id="Download-the-crosswalk-cordova-android-bundle">Download the crosswalk-cordova-android bundle</h3>
 
 Once you've installed the pre-requisite software, download the crosswalk-cordova-android bundle from [the downloads page](/documentation/downloads). Ensure that you get the correct bundle for your target architecture.
 
@@ -36,7 +36,7 @@ If you prefer, you can download Crosswalk Cordova via a browser by following the
 
 Once you've downloaded the zip file, unzip it (WinZip, 7Zip, command line etc.).
 
-## Set up the target
+<h2 id="Set-up-the-target">Set up the target</h2>
 
 You will need an Android target to deploy the Cordova application to. You can either use a real Android device or an emulated one. Instructions for both are on the [Android target setup page](/documentation/getting_started/android_target_setup).
 
@@ -58,7 +58,7 @@ You should use your own Java package name for your application, using [the stand
 
 A new project is created in the `HelloWorld` directory. The example HTML, JS and CSS files are located in `HelloWorld/assets/www` (you can replace them with your own files later).
 
-## Build and run the application
+<h2 id="Build-and-run-the-application">Build and run the application</h2>
 
 Build HelloWorld:
 
@@ -75,7 +75,7 @@ On the target, you should see the "APACHE CORDOVA" page with a blinking "DEVICE 
 
 Please refer to [Android Command-line Tools](http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_tools.md.html#Android%20Command-line%20Tools) for more command-line commands.
 
-## Debug the application
+<h2 id="Debug-the-application">Debug the application</h2>
 
 Remote debugging works as for standard Crosswalk apps.
 
@@ -90,7 +90,7 @@ Then run it as usual:
 
 You should now be able to follow the instructions on [this page](/documentation/getting_started/remote_debugging) to debug the application.
 
-## Debug Cordova Crosswalk
+<h2 id="Debug-Cordova-Crosswalk">Debug Cordova Crosswalk</h2>
 
 You may be in the situation where the application crashes before Crosswalk itself starts (i.e. the runtime crashes before the web application can be loaded). To see what's happening in this situation, you can follow the system logs on the target:
 
@@ -101,7 +101,7 @@ This shows the Android device log, dynamically updated as events occur on the ta
 
 Now start your application. You should see some output as the application attempts to start, and hopefully get more information about any errors.
 
-## Importing a project into ADT
+<h2 id="Importing-a-project-into-ADT">Importing a project into ADT</h2>
 
 A project generated using the command-line tools can be imported into the Android Developer Tools (ADT) (GUI-based development environment) by following these steps:
 

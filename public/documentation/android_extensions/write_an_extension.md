@@ -62,7 +62,7 @@ Here's an overview of how this extension works:
 
 In the following sections, you'll create the Java and JavaScript sides of the extension and wire them together with a configuration file.
 
-## Set up the directory structure
+<h2 id="Set-up-the-directory-structure">Set up the directory structure</h2>
 
     cd ~/<my projects directory>/xwalk-echo-project
 
@@ -81,7 +81,7 @@ In the following sections, you'll create the Java and JavaScript sides of the ex
     # for third party libs distributed with the project
     mkdir tools
 
-The `build/`, `lib/` and `xwalk-echo-extension/` directories (shown in the [project outline](/documentation/android_extensions/host_and_target_setup/project_outline)) will be created at build time.
+The `build/`, `lib/` and `xwalk-echo-extension/` directories (shown in the [project outline](/documentation/android_extensions/host_and_target_setup#Project-Outline)) will be created at build time.
 
 Note that the following instructions assume you're in `xwalk-echo-extension-src/` (the top-level directory for the extension project).
 
@@ -159,7 +159,7 @@ A supporting class is used to make these JSON operations easier, as shown below.
 
 Before you can build the extension, you will need to add the other required files, as explained below.
 
-## Add the extension configuration file
+<h2 id="Add-the-extension-configuration-file">Add the extension configuration file</h2>
 
 The configuration file tells the Crosswalk packaging tool (`make_apk.py`) how the Java and JavaScript parts of the extension work together.
 
@@ -200,7 +200,7 @@ The properties in the object defined in this file have the following roles:
 
 At build time, `make_apk.py` will combine this JSON file with configuration files for other extensions into a single `extensions-config.json` file. This is the file that Crosswalk actually uses to load the extension class and its corresponding JavaScript API.
 
-## Add the JavaScript API file
+<h2 id="Add-the-JavaScript-API-file">Add the JavaScript API file</h2>
 
 Create `js/xwalk-echo-extension.js` with this content:
 
@@ -402,7 +402,7 @@ Follow the instructions below to install and configure Ivy:
 
     Note that Crosswalk is not in the Ivy repositories, and will be downloaded by Ant in the main buildfile.
 
-### Add an Ant buildfile
+<h3 id="Add-an-Ant-buildfile">Add an Ant buildfile</h3>
 
 You should have already installed Ant as described in the *Getting started* instructions ([Windows](/documentation/getting_started/windows_host_setup/Install-Ant), [Linux](/documentation/getting_started/linux_host_setup/Install-Ant)).
 
@@ -557,7 +557,7 @@ The final output of this task, the `xwalk-echo-extension/` directory, contains a
       xwalk-echo-extension.js
       xwalk-echo-extension.json
 
-## Build the extension
+<h2 id="Build-the-extension">Build the extension</h2>
 
 As you added a standard Ant buildfile, building the extension is as simple as running this command in the `xwalk-echo-extension-src/` directory:
 

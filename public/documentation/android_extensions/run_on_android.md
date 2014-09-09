@@ -40,7 +40,7 @@ This command installs the x86 package. For more details about installing Crosswa
 
 The icon for the application should now be in the application menu on the Android target. Tap the icon to start the application and you should see something like this:
 
-![Crosswalk Android application with extensions on x86 ZTE Geek](assets/android-extensions-x86.png)
+![Crosswalk Android application with extensions on x86 ZTE Geek](/assets/android-extensions-x86.png)
 
 (The screenshot above shows the application running on an x86 ZTE Geek.)
 

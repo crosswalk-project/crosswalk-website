@@ -9,7 +9,7 @@ You will also need to [set up an Android target](/documentation/getting_started/
 * x86 ZTE Geek phone with Android 4.2.2
 * ARM HTC OneX with Android 4.0.4
 
-## Project outline
+<h2 id="Project-outline">Project outline</h2>
 
 For the purposes of the tutorial, the extension and the application are developed within a single top-level project directory. Here is an outline of the structure:
 

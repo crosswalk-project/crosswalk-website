@@ -45,7 +45,7 @@ To keep the tutorial simple, a WebRTC wrapper library is used to manage communic
 
 This is what the client application looks like when a call is in progress:
 
-![Video calling with WebRTC in Crosswalk](assets/crosswalk-webrtc.png)
+![Video calling with WebRTC in Crosswalk](/assets/crosswalk-webrtc.png)
 
 Here are the steps involved in setting up the server and clients to establish a call:
 
@@ -474,7 +474,7 @@ To run the application on a desktop machine via Chrome, do the following:
 
 ### Run on Android with Crosswalk
 
-During the host setup for Android ([Windows](/documentation/getting_started/windows_host_setup/Download-the-Crosswalk-Android-app-template), [Linux](/documentation/getting_started/linux_host_setup/Download-the-Crosswalk-Android-app-template)), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on [this page](/documentation/getting_started/run_on_android), but here's a summary (tested on Linux):
+During the host setup for Android ([Windows](/documentation/getting_started/windows_host_setup#Download-the-Crosswalk-Android-app-template), [Linux](/documentation/getting_started/linux_host_setup#Download-the-Crosswalk-Android-app-template)), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on [this page](/documentation/getting_started/run_on_android), but here's a summary (tested on Linux):
 
     $ cd crosswalk-${XWALK-STABLE-ANDROID-X86}
 
@@ -505,7 +505,7 @@ Once the application is running on two targets, you should be able to make a cal
 
     If you are using Chrome, you will be prompted to allow the application to use the webcam:
 
-    ![Chrome prompt to allow input device access](assets/crosswalk-webrtc-webcam-prompt.png)
+    ![Chrome prompt to allow input device access](/assets/crosswalk-webrtc-webcam-prompt.png)
 
     Click on *Allow* to grant access.
 
@@ -527,7 +527,7 @@ Once the application is running on two targets, you should be able to make a cal
 
     In the *Make call to* text entry, enter the ID of the second client:
 
-    ![Making a WebRTC call](assets/crosswalk-webrtc-making-call.png)
+    ![Making a WebRTC call](/assets/crosswalk-webrtc-making-call.png)
 
     Click the *Call* button.
 
@@ -552,7 +552,7 @@ If one or both of the client applications isn't working, or you have problems ma
 
     Once the application is launched on the Android target, open Chrome and go to the special "chrome://inspect" address. You should see the Android target listed, along with applications which can be debugged:
 
-    ![Debugging the WebRTC client application on Android](assets/crosswalk-webrtc-debug.png)
+    ![Debugging the WebRTC client application on Android](/assets/crosswalk-webrtc-debug.png)
 
     Click on the link to open a console for the application. Look for error messages.
 

@@ -182,7 +182,7 @@ No. Crosswalk is effectively a modified version of Chromium, the open source bas
 
 ### Why do I need Crosswalk now that Android (KitKat and later) has a Chrome-based webview?
 
-Crosswalk provides access to the [full range of modern web APIs](https://crosswalk-project.org/#documentation/apis/web_apis) supported by Chrome. By contrast, the Android Chrome-based web view [lacks some features](https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android) which are available in Chrome on Android.
+Crosswalk provides access to the [full range of modern web APIs](https://crosswalk-project.org/documentation/apis/web_apis) supported by Chrome. By contrast, the Android Chrome-based web view [lacks some features](https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android) which are available in Chrome on Android.
 
 On top of this, Crosswalk adds extra features which are *not* available in either Chrome or the Android webview, such as experimental support for [SIMD](https://01.org/blogs/tlcounts/2014/bringing-simd-javascript) and support for the [Presentation API](https://crosswalk-project.org/#wiki/presentation-api-manual).
 

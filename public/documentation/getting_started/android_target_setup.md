@@ -16,7 +16,7 @@ To test whether the device has been detected, run the following command from a s
 
 If the list of devices attached is empty, you may need to change the developer options on your device to enable USB debugging (*Settings* &gt; *Developer options* &gt; turn on *USB debugging*).
 
-### Fixing device access issues on Linux
+<h3 id="Fixing-device-access-issues-on-Linux">Fixing device access issues on Linux</h3>
 
 In some cases, running `adb` as a non-root user on Linux may result in your devices not being detected:
 

@@ -1,10 +1,12 @@
 # Permissions
 
-The `permissions` (Crosswalk 4-7) and `xwalk_permissions` (Crosswalk 8+) fields are Crosswalk-specific and non-standard. They is used to set permissions in the `AndroidManifest.xml` file when packaging an application for Crosswalk on Android. This is necessary because Android applications cannot request permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.
+The `permissions` (Crosswalk 4-7) and `xwalk_permissions` (Crosswalk 8+) fields are Crosswalk-specific and non-standard. They is used to set permissions in the `AndroidManifest.xml` file when packaging an application for Crosswalk on Android.
+
+This is necessary because Android applications cannot request permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.
 
 **Note:** If you are [loading an application from a manifest with the embedding API](/documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk), you will have to manually specify permissions for Crosswalk in `AndroidManifest.xml`. See the [section below](#Permissions-required-by-API) for guidance on which Android permissions are required by Crosswalk's [web APIs](/documentation/apis/web_apis).
 
-## Effect on Android packaging
+<h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
 The `make_apk.py` script translates the `permissions` or `xwalk_permissions` field in `manifest.json` into `<android:uses-permission>` elements in `AndroidManifest.xml`.
 
@@ -67,7 +69,7 @@ Note that permission values are not case sensitive (either in the manifest or on
 
     --permissions=contacts:geolocation:messaging:vibration
 
-## Permissions required by API
+<h2 id="Permissions-required-by-API">Permissions required by API</h2>
 
 If you want to use some of Crosswalk's web APIs in an application, you may need to add permissions to `AndroidManifest.xml` to make those APIs accessible. You can either do this via the [packaging script](/documentation/getting_started/run_on_android), or manually (if you are using the embedding API).
 

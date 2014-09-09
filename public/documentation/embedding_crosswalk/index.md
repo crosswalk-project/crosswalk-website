@@ -284,7 +284,7 @@ Follow the steps below to add some web assets and bundle them with your applicat
     }
     ```
 
-### Debugging
+<h3 id="debugging">Debugging</h3>
 
 To enable debugging of the web application running in an embedded Crosswalk webview, modify the `MainActivity.java` file to look like this:
 

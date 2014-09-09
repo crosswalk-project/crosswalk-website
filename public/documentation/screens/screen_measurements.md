@@ -1,6 +1,8 @@
 # Screen measurements
 
-Understanding screen measurements in web applications is not a simple task. There are many technical terms to get to grips with, and several layers of abstraction between the real, physical screen and how it is presented to web applications. This page attempts to explain some of the terminology used, and give practical examples of how different types, sizes and resolutions of screens and images affect an application's appearance.
+Understanding screen measurements in web applications is not a simple task. There are many technical terms to get to grips with, and several layers of abstraction between the real, physical screen and how it is presented to web applications.
+
+This page attempts to explain some of the terminology used, and give practical examples of how different types, sizes and resolutions of screens and images affect an application's appearance.
 
 The concepts covered include:
 
@@ -37,7 +39,8 @@ By contrast, mobile screens are designed to be used closer to your face, at a di
 
 What has this got to do with density? On a screen with more pixels per inch, the pixels are smaller and closer together (more densely packed). Therefore, a screen with a high number of pixels per inch is often called "high density". Apple's *Retina Display* (trademarked by Apple) was one of the first "high density" screens, and is still prevalent today. It is defined as:
 
-> a screen where the pixel density is typically 300ppi or higher for a device held 10 to 12 inches from the eye. (http://www.npr.org/blogs/alltechconsidered/2010/06/07/127530049/live-blogging-apple-s-developers-conference)
+> a screen where the pixel density is typically 300ppi or higher for a device held 10 to 12 inches from the eye.
+> <footer>__NPR__ [source](http://www.npr.org/blogs/alltechconsidered/2010/06/07/127530049/live-blogging-apple-s-developers-conference)</footer>
 
 Keep this definition in mind, and consider devices with a screen pixel density of 250ppi or more as "high density".
 
@@ -47,7 +50,7 @@ dpi is a concept related to ppi, in that it describes *dots per inch*. It has it
 
 You may be wondering: why is this relevant to screens?
 
-The first reason is that ppi and dpi are often used interchangeably when discussing screens. This happens in places like the Android documentation, where screens are described in terms of dpi (e.g. http://developer.android.com/guide/practices/screens_support.html); and in W3C specifications which refer to screens (e.g. http://www.w3.org/TR/css3-values/#absolute-lengths). However, for the purposes of this article, I will use "ppi" when referring to screens and reserve "dpi" for referring to print.
+The first reason is that ppi and dpi are often used interchangeably when discussing screens. This happens in places like the Android documentation, where screens are described in terms of dpi (e.g. [http://developer.android.com/guide/practices/screens_support.html](http://developer.android.com/guide/practices/screens_support.html)); and in W3C specifications which refer to screens (e.g. http://www.w3.org/TR/css3-values/#absolute-lengths). However, for the purposes of this article, I will use "ppi" when referring to screens and reserve "dpi" for referring to print.
 
 The second reason is that various specifications relating to HTML and CSS refer to dpi, particularly with respect to images. This is because CSS is not specific to screens, and can also be applied to print media. Some key concepts in CSS are based around dpi, as they use measurements from printing as part of their definition (even when they relate to screens).
 
@@ -69,7 +72,8 @@ Now imagine an application which is 320 dips wide. It will display at the same w
 
 In the context of CSS, a dip corresponds with the "reference pixel". This is equivalent to one physical pixel on a 96dpi screen at arm's length:
 
-> The reference pixel is the visual angle of one pixel on a device with a pixel density of 96dpi and a distance from the reader of an arm's length. For a nominal arm's length of 28 inches, the visual angle is therefore about 0.0213 degrees. For reading at arm's length, 1px thus corresponds to about 0.26 mm (1/96 inch). (from http://www.w3.org/TR/css3-values/#absolute-lengths)
+> The reference pixel is the visual angle of one pixel on a device with a pixel density of 96dpi and a distance from the reader of an arm's length. For a nominal arm's length of 28 inches, the visual angle is therefore about 0.0213 degrees. For reading at arm's length, 1px thus corresponds to about 0.26 mm (1/96 inch).
+> <footer>__W3__ [source](http://www.w3.org/TR/css3-values/#absolute-lengths)</footer>
 
 Why is the reference pixel defined this way? It's because the definition originated with the default resolution of images displayed in CSS, as defined by the `image-resolution` CSS property (see https://developer.mozilla.org/en-US/docs/Web/CSS/resolution).
 
@@ -77,7 +81,10 @@ The reference pixel is what you are using when you define a size or length with 
 
 Android uses the term "density-independent pixels" rather than "device-independent pixels", but they are effectively the same thing. Though the definition of a dip in Android is different from the CSS definition:
 
-> The density-independent pixel is equivalent to one physical pixel on a 160 dpi screen, which is the baseline density assumed by the system for a "medium" density screen...The conversion of dp units to screen pixels is simple: px = dp * (dpi / 160). For example, on a 240 dpi screen, 1 dp equals 1.5 physical pixels. (from http://developer.android.com/guide/practices/screens_support.html; if you're interested in finding out more about density-independent design, this page is generally helpful)
+> The density-independent pixel is equivalent to one physical pixel on a 160 dpi screen, which is the baseline density assumed by the system for a "medium" density screen...The conversion of dp units to screen pixels is simple: px = dp * (dpi / 160). For example, on a 240 dpi screen, 1 dp equals 1.5 physical pixels.
+> <footer>__Android Developer documentation__ [source](http://developer.android.com/guide/practices/screens_support.html)</footer>
+
+(If you're interested in finding out more about density-independent design, [this page](http://developer.android.com/guide/practices/screens_support.html) is generally helpful)
 
 While this calculation holds for applications on Android, the same is not true for browsers: it is not possible to determine the dips a browser will have from a screen's ppi in a similar fashion. Browser vendors actually decide how many dips a browser should have on a particular device or physical screen, regardless of its screen size. [This article](http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html) explains the details, but the important point is that browsers (and Crosswalk) actually use another calculation to get the dimension of the viewport in dips:
 

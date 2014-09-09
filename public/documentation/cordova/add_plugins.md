@@ -16,7 +16,7 @@ It's also worth noting that some functionality provided by Cordova plugins alrea
 
 ## Adding a plugin to a project
 
-**If you aren't set up for Crosswalk Cordova development, see the [host setup instructions](/documentation/cordova/develop_an_application/set_up_the_host). You can also follow those instructions to create a Crosswalk Cordova HelloWorld project. Plugins are added to a HelloWorld sample application in the instructions below, but the same steps will work for any Crosswalk Cordova application.**
+**If you aren't set up for Crosswalk Cordova development, see the [host setup instructions](/documentation/cordova/develop_an_application#Set-up-the-host). You can also follow those instructions to create a Crosswalk Cordova HelloWorld project. Plugins are added to a HelloWorld sample application in the instructions below, but the same steps will work for any Crosswalk Cordova application.**
 
 In addition to the standard Crosswalk Cordova pre-requisites, you will also need to install [node.js](http://nodejs.org) for your platform.
 

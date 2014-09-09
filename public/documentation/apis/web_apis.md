@@ -1,6 +1,6 @@
 # Web APIs
 
-The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2](wiki/Crosswalk-3-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only, <sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later, <sup id="va">[X.X.X.X;x86|ARM]</sup> = this version or later for the specified architecture).
+The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-3-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only, <sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later, <sup id="va">[X.X.X.X;x86|ARM]</sup> = this version or later for the specified architecture).
 
 ## Runtime & Packaging
 * [app: URI](http://www.w3.org/2012/sysapps/app-uri/)<sup><a href="#t">[t]</a></sup> - Address resources inside a packaged application.
@@ -17,7 +17,7 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 * [CSS Transitions](http://www.w3.org/TR/css3-transitions/) - Enables property changes in CSS values over time.
 * [HTML Canvas 2D Context](http://www.w3.org/TR/2dcontext/) - An API for 2D immediate mode graphics.
 * [HTML5 Audio/Video](http://www.w3.org/TR/html5/) - Audio and Video support without plugins.
-* [Media Queries Level 3](http://w3c-test.org/csswg/mediaqueries3/) - CSS media features for adapting the same content to different output devices and screens.
+* [Media Queries Level 3](http://www.w3.org/TR/css3-mediaqueries/) - CSS media features for adapting the same content to different output devices and screens.
 * [Responsive Images](http://picture.responsiveimages.org/)<sup><a href="#v">[5.34.104.5]</a></sup> - Control which image resource is presented to a user, based on media query and/or image format support.
 * [Scalable Vector Graphics (SVG) 1.1](http://www.w3.org/TR/SVG11/) - An XML markup language for 2D vector graphics.
 * [WebRTC](http://www.w3.org/TR/webrtc/)<sup><a href="#a">[a]</a></sup> <sup><a href="#va">[7.36.154.6;x86]</a></sup> - Peer to peer sharing of video and audio streams.

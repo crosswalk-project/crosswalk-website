@@ -6,7 +6,7 @@ For the purposes of this tutorial, we use the simplest possible Crosswalk applic
 
 However, because Crosswalk applications are intended to integrate well with the target environment, they require an additional file, `manifest.json`, containing metadata for that purpose. The manifest can be used to specify icons to use at different resolutions, set an app description, adjust [content security policy settings](http://developer.chrome.com/extensions/contentSecurityPolicy.html), and otherwise configure how the app integrates with the target environment.
 
-## A simple application
+<h2 id="A-simple-application">A simple application</h2>
 
 1.  First, create a directory called `xwalk-simple` for the project:
 
