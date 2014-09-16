@@ -114,9 +114,13 @@ Note that although the prefix is "BUG=", this mechanism applies to features and 
 
 ## Regression tests
 
-A buildbot infrastructure will be available soon. Those buildbots will run the unit tests and the browser tests.
+Crosswalk relies on [Buildbot](http://buildbot.net) for automatically testing each patch sent or committed to the source repository.
 
-You are responsible for keeping the tree green. If the tree is red because of your patch, it may be that your commit will be reverted if the other contributors can't reach you or can't fix the problem themselves.
+* Each patch submitted as a pull request in GitHub is built for different platforms (such as Android and Tizen), different tests are run on the built binaries and the results are reported back to the pull request. You can see what each slave is doing [here](https://build.crosswalk-project.org/try/).
+
+* Each patch committed to the tree is then built and tested again (the target platforms and the tests run can differ from the ones above), and if any slave has problems the committer and the person who merged the pull request are notified via email. You can see what each slave is doing [here](https://build.crosswalk-project.org/).
+
+Keeping all platforms building and working correctly is of utmost importance: if a patch ends up causing regressions, it will be reverted and will need to be landed again once it is verified that it does not break anything -- do not worry, though, having a patch reverted is OK and is part of Crosswalk's workflow.
 
 ## Respond to reviewers
 
