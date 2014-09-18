@@ -110,7 +110,7 @@ Once you have the application working with standard Cordova, you can move on to 
 
     These will be replaced with the Crosswalk-enabled equivalent.
 
-3.  Copy the `framework/` directory from the crosswalk-cordova-android bundle you unpacked earlier:
+3.  Copy the contents of the `framework/` directory from the crosswalk-cordova-android bundle you unpacked earlier:
 
         $ cp -a <path_to_unpacked_bundle>/framework/* \
             platforms/android/CordovaLib/
