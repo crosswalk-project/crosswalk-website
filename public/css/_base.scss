@@ -22,10 +22,10 @@ body,
 //
 // No styleguide reference.
 ::-moz-selection {
-  background: $color-orange-lighter;
+  background: $color-primary-lighter;
 }
 ::selection {
-  background: $color-orange-lighter;
+  background: $color-primary-lighter;
   color: inherit; // http://robsterlini.co.uk/journal/opentype-and-selection-dont-mix
   text-shadow: inherit; // “”
 }
@@ -47,23 +47,33 @@ a:visited,
   text-decoration: none;
   background-repeat: repeat-x;
   background-position: 0 1.125em;
-  @include linear-gradient(to bottom, rgba(0,0,0,0) 75%, $color-green 75%);
+  @include linear-gradient(to bottom, rgba(0,0,0,0) 75%, $color-primary 75%);
   background-size: 2px 2px;
-  text-shadow: 1px 1px 0 #FFF, -1px 1px 0 #FFF;
-  color: $color-green;
+  text-shadow: 1px 0.5px 0 $color-background,  -1px -0.5px 0 $color-background;
+  color: $color-primary;
   @include transition(opacity 0.125s ease-in-out, color 0.125s ease-in-out, background-color 0.125s ease-in-out, border-color 0.125s ease-in-out);
   &:hover {
-    color: darken($color-green-light, 15%);
+    color: $color-primary-dark;
   }
   &:focus {
-    color: darken($color-green-light, 15%);
+    color: darken($color-primary-dark, 15%);
     transition-duration: 0;
-    box-shadow: 0 0 0 1px $color-orange;
+    box-shadow: 0 0 0 1px $color-primary-dark;
     outline: 0;
     border-radius: $base-border-radius;
   }
   &:active {
-    color: $color-green-dark;
+    color: $color-primary-darker;
+  }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  a,
+  a:visited,
+  .a-faux {
+    text-shadow: 2px 1px 0 $color-background, -2px -1px 0 $color-background;
   }
 }
 
@@ -130,10 +140,10 @@ code {
   text-shadow: 0 1px 0 $color-background;
 
   &::-moz-selection {
-    background: $color-orange;
+    background: $color-primary;
   }
   &::selection {
-    background: $color-orange;
+    background: $color-primary;
     color: inherit; // http://robsterlini.co.uk/journal/opentype-and-selection-dont-mix
     text-shadow: inherit; // See above
   }

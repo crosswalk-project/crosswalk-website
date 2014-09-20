@@ -109,7 +109,7 @@ blockquote,
     float: left;
     text-align: left;
     font-style: italic;
-    color: $color-orange;
+    color: $color-primary;
     padding-left: 0;
     padding-bottom: modular-scale($base-font-size, 1, $base-line-height);
     padding-right: $gutter/2; // Prevent overlap with ul, ol

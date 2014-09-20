@@ -26,10 +26,10 @@ input[type="submit"],
   padding: modular-scale($base-font-size, 0, $base-ratio) modular-scale($base-font-size, 5, $base-ratio);
   display: inline-block;
 
-  background: $color-orange;
+  background: $color-primary;
   color: $color-background;
   text-decoration: none;
-  text-shadow: 0 1px 0 $color-orange-dark;
+  text-shadow: 0 1px 0 $color-primary-darker;
   text-align: center;
   border: none;
   border-radius: $base-border-radius;
@@ -42,47 +42,48 @@ input[type="submit"],
 
   width: 100%;
   text-align: center;
+
   @include media($mid) {
     text-align: inheirt;
     width: auto;
     padding-right: modular-scale($base-font-size, 8, $base-ratio);
-    padding-left: modular-scale($base-font-size, 8, $base-ratio)
+    padding-left: modular-scale($base-font-size, 8, $base-ratio);
   }
 
   &:hover,
   &:focus {
-    background: $color-orange-dark;
+    background: $color-primary-dark;
     color: $color-background;
     outline: 0;
   }
   &:active {
-    background: $color-orange-darker;
+    background: $color-primary-darker;
     color: $color-background;
   }
   &.button--secondary {
-    background-color: $color-green;
-    text-shadow: 0 1px 0 $color-green-dark;
+    background-color: $color-secondary;
+    text-shadow: 0 1px 0 $color-secondary-dark;
     &:hover,
     &:focus {
-      background-color: $color-green-dark;
+      background-color: $color-secondary-dark;
     }
     &:active {
-      background-color: $color-green-darker;
+      background-color: $color-secondary-darker;
     }
   }
   &.button--tertiary {
     background-color: transparent;
     text-shadow: 0 1px 0 $color-background;
-    border: 1px solid $color-green;
-    color: $color-green;
+    border: 1px solid $color-secondary;
+    color: $color-secondary;
     &:hover,
     &:focus {
-      color: $color-green-dark;
-      border-color: $color-green-dark;
+      color: $color-secondary-dark;
+      border-color: $color-secondary-dark;
     }
     &:active {
-      color: $color-green-darker;
-      border-color: $color-green-darker;
+      color: $color-secondary-darker;
+      border-color: $color-secondary-darker;
     }
   }
 }

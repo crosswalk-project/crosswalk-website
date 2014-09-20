@@ -37,7 +37,7 @@
 
 .hero--bg1,
 .hero.hero--bg1 {
-  background: #000 url("/images/crosswalk-landing-banner-1.jpg") center top no-repeat;
+  background: #000 url("/images/crosswalk-landing-banner-2.jpg") center top no-repeat;
   background-size: cover;
   @include media($massive) {
     background-position: 75% top;
@@ -154,7 +154,7 @@
 //
 // Styleguide 3.4.3.
 .hero-seperator {
-  // background: $color-green-lighter;
+  // background: $color-secondary-lighter;
   // text-shadow: 0 1px 0 rgba($color-background, 0.5);
   @include background-image(linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%));
   display: block;

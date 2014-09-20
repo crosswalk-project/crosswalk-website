@@ -37,7 +37,7 @@
   .cards-item,
   .card {
     padding: modular-scale($base-font-size, 0, $base-ratio);
-    background: $color-green-lighter;
+    background: $color-secondary-lighter;
     @include media($wide) {
       padding: modular-scale($base-font-size, 2, $base-ratio);
     }
