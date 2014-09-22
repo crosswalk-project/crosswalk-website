@@ -8,7 +8,8 @@
     "url":         "http://crosswalk-project.org",
     "basicAuth":   "crosswalk:chloi",
     "service": {
-      "analytics": "",
+      "analytics": false,
+      "tagManager": "GTM-WC843Q",
       "disqus": false,
       "prism": true
     },
