@@ -56,7 +56,7 @@
     },
     "android": {
       "versions": "2+",
-      "deprecated": "8"
+      "deprecated": "8+"
     }
   },
   "display": {
@@ -80,13 +80,14 @@
       "versions": "1+"
     },
     "android": {
-      "versions": "2-7"
+      "versions": "2+",
+      "deprecated": "8+"
     }
   },
   "launch_screen.extension": {
     "name": "launch_screen (extension)",
     "android": {
-      "versions": "5-8",
+      "versions": "5+",
       "deprecated": "8+"
     }
   },

@@ -18,6 +18,7 @@
       <br>
 
       <select name="crosswalk-version">
+        <option value="9">Crosswalk 9</option>
         <option value="8">Crosswalk 8</option>
         <option value="7">Crosswalk 7</option>
         <option value="6">Crosswalk 6</option>
@@ -604,7 +605,7 @@
       </pre>
     </div>
 
-    <div data-crosswalk-versions="8" data-crosswalk-platforms="android">
+    <div data-crosswalk-versions="8+" data-crosswalk-platforms="android">
       <pre>
 {
   "name": "app name",
