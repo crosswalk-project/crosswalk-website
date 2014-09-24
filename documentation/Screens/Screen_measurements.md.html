@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Screens/Screen_measurements';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Screens/Screen_measurements</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Screen measurements</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Screens/Screen_measurements"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Screens/Screen_measurements"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>Understanding screen measurements in web applications is not a simple task. There are many technical terms to get to grips with, and several layers of abstraction between the real, physical screen and how it is presented to web applications. This page attempts to explain some of the terminology used, and give practical examples of how different types, sizes and resolutions of screens and images affect an application's appearance.</p>
+
+<p>The concepts covered include:</p>
+
+<ul><li>  <em>ppi</em> (pixels per inch)</li>
+<li>  <em>dpi</em> (dots per inch)</li>
+<li>  <em>dips</em> (device-independent or density-independent pixels)</li>
+<li>  <em>reference pixel</em> (CSS)</li>
+<li>  <em>devicePixelRatio</em></li>
+<li>  <em>screen density</em></li>
+</ul><h2>Screens and ppi<a class="anchor" id="Screens-and-ppi" href="#Screens-and-ppi"></a></h2>
+
+<p><em>Pixels per inch</em> or <em>ppi</em> is a common unit for describing the resolution or pixel density of a screen. The following formula calculates the ppi of a screen on one axis:</p>
+
+<blockquote>
+<p>screen ppi = number of physical pixels on the axis / length of screen on the axis</p>
+</blockquote>
+
+<p>A variation of this formula is useful for monitors, as they are typically described in terms of their diagonal length (based on Pythagoras' theorem):</p>
+
+<blockquote>
+<p>screen ppi = (&amp;sqrt; ((pw * pw) + (ph * ph))) / dl</p>
+</blockquote>
+
+<p>where:</p>
+
+<ul><li>  pw = width of the screen in pixels</li>
+<li>  ph = height of the screen in pixels</li>
+<li>  dl = diagonal length of the screen in inches</li>
+</ul><p>To give a concrete example, my Samsung 21" monitor has a maximum resolution of 1680x1050. The formula above gives the following ppi value:</p>
+
+<blockquote>
+<p>ppi = (&amp;sqrt; ((1680 * 1680) + (1050 * 1050))) / 21 = 94.34</p>
+</blockquote>
+
+<p>Allowing for my inaccurate measurements, these values are in line with the expected ppi of a desktop screen (around 100ppi). Desktop screens are designed to be viewed between 3 and 4 feet away from the user; and, at 100ppi, the human eye can't distinguish individual pixels, making an image drawn in pixels appear continuous. But if you look more closely at a desktop screen (at a distance of less than 3 feet), you start to see individual pixels.</p>
+
+<p>By contrast, mobile screens are designed to be used closer to your face, at a distance of half your arm's length or closer (10-12 inches). At this distance, you can see the individual pixels if the ppi is around 100. Consequently, mobile devices typically have a higher pixel density (250ppi or more), so you can't discern individual pixels from 10-12 inches away.</p>
+
+<p>What has this got to do with density? On a screen with more pixels per inch, the pixels are smaller and closer together (more densely packed). Therefore, a screen with a high number of pixels per inch is often called "high density". Apple's <em>Retina Display</em> (trademarked by Apple) was one of the first "high density" screens, and is still prevalent today. It is defined as:</p>
+
+<blockquote>
+<p>a screen where the pixel density is typically 300ppi or higher for a device held 10 to 12 inches from the eye. (<a href="http://www.npr.org/blogs/alltechconsidered/2010/06/07/127530049/live-blogging-apple-s-developers-conference">http://www.npr.org/blogs/alltechconsidered/2010/06/07/127530049/live-blogging-apple-s-developers-conference</a>)</p>
+</blockquote>
+
+<p>Keep this definition in mind, and consider devices with a screen pixel density of 250ppi or more as "high density".</p>
+
+<h2>Image resolution and dpi<a class="anchor" id="Image-resolution-and-dpi" href="#Image-resolution-and-dpi"></a></h2>
+
+<p>dpi is a concept related to ppi, in that it describes <em>dots per inch</em>. It has its origin in printing, where the number of dots per inch defines the resolution of a printed image (higher dpi == higher resolution).</p>
+
+<p>You may be wondering: why is this relevant to screens?</p>
+
+<p>The first reason is that ppi and dpi are often used interchangeably when discussing screens. This happens in places like the Android documentation, where screens are described in terms of dpi (e.g. <a href="http://developer.android.com/guide/practices/screens_support.html">http://developer.android.com/guide/practices/screens_support.html</a>); and in W3C specifications which refer to screens (e.g. <a href="http://www.w3.org/TR/css3-values/#absolute-lengths">http://www.w3.org/TR/css3-values/#absolute-lengths</a>). However, for the purposes of this article, I will use "ppi" when referring to screens and reserve "dpi" for referring to print.</p>
+
+<p>The second reason is that various specifications relating to HTML and CSS refer to dpi, particularly with respect to images. This is because CSS is not specific to screens, and can also be applied to print media. Some key concepts in CSS are based around dpi, as they use measurements from printing as part of their definition (even when they relate to screens).</p>
+
+<p>But it's important to note that the resolution of an image (the situation where dpi is used most commonly) has absolutely no bearing on how it displays on a screen: it only affects how it appears in print.</p>
+
+<p>As an illustration, consider two image files, both 128x128 pixels square. (These are "raw" pixels inside the image file, not the pixels occupied by the image on a screen.) Even though these images are both the same raw size, they can have different dpi settings, recorded in the image file itself. Each image's "real" size on printed media is determined by combining the raw pixel size of the image file with its resolution (in dpi).</p>
+
+<p>For example, if the first 128x128 pixel image has a resolution of 96 dpi, its print size will be 1.333x1.333 inches (128 / 96); but if the resolution of the second image is 300 dpi (the typical resolution for printed images), its print size will be 0.427x0.427 inches (128 / 300). This is because more of the pixels of the second image will be printed into each inch of the medium.</p>
+
+<p>But if the images are displayed side by side on a web page, they will be indistinguishable, despite their differing resolutions. The resolution only affects print.</p>
+
+<h2>Device-independent pixels<a class="anchor" id="Device-independent-pixels" href="#Device-independent-pixels"></a></h2>
+
+<p>Having defined ppi and dpi, we are now ready to move on to "device-independent pixels" ("dips" - be careful not to confuse this with dpi). The dip is a convenience for describing "virtual" pixels which don't correspond one to one with real physical pixels on a device's screen. The reason for their existence is to make life easier for developers: an application's layout can be defined in terms of dips and should scale correctly for different physical screen sizes.</p>
+
+<p>For example, imagine two devices: the first is 320 physical pixels wide, and the second 640 physical pixels wide; but both have the same number of dips. The only difference is that the second device displays each device-independent pixel using 4 physical pixels (it has a screen pixel density of 2dppx - see the next section).</p>
+
+<p>Now imagine an application which is 320 dips wide. It will display at the same width on both devices, despite them having different numbers of physical pixels. This is because its width is defined in dips, and both device screens are the same width in dips.</p>
+
+<p>In the context of CSS, a dip corresponds with the "reference pixel". This is equivalent to one physical pixel on a 96dpi screen at arm's length:</p>
+
+<blockquote>
+<p>The reference pixel is the visual angle of one pixel on a device with a pixel density of 96dpi and a distance from the reader of an arm's length. For a nominal arm's length of 28 inches, the visual angle is therefore about 0.0213 degrees. For reading at arm's length, 1px thus corresponds to about 0.26 mm (1/96 inch). (from <a href="http://www.w3.org/TR/css3-values/#absolute-lengths">http://www.w3.org/TR/css3-values/#absolute-lengths</a>)</p>
+</blockquote>
+
+<p>Why is the reference pixel defined this way? It's because the definition originated with the default resolution of images displayed in CSS, as defined by the <code>image-resolution</code> CSS property (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolution">https://developer.mozilla.org/en-US/docs/Web/CSS/resolution</a>).</p>
+
+<p>The reference pixel is what you are using when you define a size or length with a <code>px</code> value in a CSS stylesheet. When you set sizes in CSS using <code>px</code> values, you are referring to the number of reference pixels (i.e. device-independent pixels) the element should span, rather than physical pixels on the screen.</p>
+
+<p>Android uses the term "density-independent pixels" rather than "device-independent pixels", but they are effectively the same thing. Though the definition of a dip in Android is different from the CSS definition:</p>
+
+<blockquote>
+<p>The density-independent pixel is equivalent to one physical pixel on a 160 dpi screen, which is the baseline density assumed by the system for a "medium" density screen...The conversion of dp units to screen pixels is simple: px = dp * (dpi / 160). For example, on a 240 dpi screen, 1 dp equals 1.5 physical pixels. (from <a href="http://developer.android.com/guide/practices/screens_support.html">http://developer.android.com/guide/practices/screens_support.html</a>; if you're interested in finding out more about density-independent design, this page is generally helpful)</p>
+</blockquote>
+
+<p>While this calculation holds for applications on Android, the same is not true for browsers: it is not possible to determine the dips a browser will have from a screen's ppi in a similar fashion. Browser vendors actually decide how many dips a browser should have on a particular device or physical screen, regardless of its screen size. <a href="http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html">This article</a> explains the details, but the important point is that browsers (and Crosswalk) actually use another calculation to get the dimension of the viewport in dips:</p>
+
+<blockquote>
+<p>dips = number of physical pixels / devicePixelRatio</p>
+</blockquote>
+
+<p>window.devicePixelRatio is set by the browser, depending on the context where it is running and other quirks. This is explained next.</p>
+
+<h2>devicePixelRatio and screen density<a class="anchor" id="devicePixelRatio-and-screen-density" href="#devicePixelRatio-and-screen-density"></a></h2>
+
+<p>The devicePixelRatio is "the ratio between physical pixels and device-independent pixels (dips) on the device" (<a href="http://www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html">http://www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html</a>).</p>
+
+<p>The formula for calculating the devicePixelRatio is:</p>
+
+<blockquote>
+<p>devicePixelRatio = physical pixels / dips</p>
+</blockquote>
+
+<p>The density of a screen is correlated with devicePixelRatio, and measured in <em>device pixels per device-independent pixel</em>, or <em>dppx</em>. In fact, the screen density in dppx is the same as the devicePixelRatio, i.e.</p>
+
+<blockquote>
+<p>density dppx = physical pixels / dips</p>
+</blockquote>
+
+<p>As mentioned previously, the number of dips available depends on a variety of factors, and does not directly correlate with the physical size of the screen nor the number of physical pixels it has. However, the devicePixelRatio can usually be retrieved via the <code>window.devicePixelRatio</code> variable in the browser. Combined with the physical size of the device's screen, you can then figure out the number of dips available.</p>
+
+<p>What difference does devicePixelRatio/screen density make? To give a concrete example, imagine two devices which are 2.5" across, displaying a page which is 320 device-independent pixels wide (defined in a CSS stylesheet), at the same zoom level and distance:</p>
+
+<ul><li><p>The first device is 320 physical pixels wide (resolution of 128ppi, so normal density). Each dip of the 320 dip page is represented by one physical pixel.</p></li>
+<li><p>The second device is 640 physical pixels wide (resolution of 256ppi, so high density). Each dip of the 320 dip page is represented by four physical pixels (two across, two down).</p></li>
+</ul><p>This gives the following devicePixelRatio values for the two devices:</p>
+
+<ul><li><p>First device devicePixelRatio = 320 / 320 = 1</p></li>
+<li><p>Second device devicePixelRatio = 640 / 320 = 2</p></li>
+</ul><p>While the page is the same width and scale on both devices, and being viewed on two screens of the same size and at the same distance, the page will appear sharper on the device which is 640 pixels wide. This is because the second, high-density device (2dppx) uses more physical pixels to display each device-independent pixel (4 screen pixels per dip, 2 across and 2 down) than the device with screen density of 1dppx (1 screen pixel per dip).</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-08-06 09:35:00</p>
+  <p>
+    <a id="delete-link" href="/documentation/Screens/Screen_measurements" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Screens/Screen_measurements">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
