@@ -1,0 +1,1017 @@
+/*
+ * NOTE: xwalk.css is generated dynamically from xwalk.scss via
+ *       xwalk.css.php
+ *
+ * If there is a conversion problem, this file will be prefixed
+ * with a note that it is a stale version and that the current
+ * scss is failing to parse.
+ *
+ * If the site renders RED then check the file xwalk.msg
+ *
+ * When a version of xwalk.scss is newer than xwalk.css, the php
+ * script will use sass to generate the new version.
+ *
+ * Source maps are created and saved as xwalk.css.map
+ * If you are using Chrome 30 or newer, you can use these source
+ * maps by following the insructions here:
+
+https://developers.google.com/chrome-developer-tools/docs/css-preprocessors
+
+ *
+ */
+body {
+  background-color: #ed7332;
+  line-height: 1.4rem;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  font-family: "ClearSans-Regular",helvetica,georgia,sans-serif;
+  overflow-y: scroll; }
+  @media screen and (max-width: 80ex) {
+    body {
+      font-size: 1rem;
+      line-height: 1.4rem; } }
+  @media screen and (min-width: 120ex) {
+    body {
+      font-size: 1.2rem;
+      line-height: 1.5rem; } }
+
+sup, sub {
+  font-size: 0.75rem;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+b {
+  font-weight: bold;
+  font-family: "ClearSans-Medium",helvetica,georgia,sans-serif; }
+
+h1 {
+  font-family: "ClearSans-Bold",helvetica,georgia,sans-serif;
+  margin: 40px 0;
+  font-size: 1.6rem;
+  text-transform: uppercase; }
+  @media (max-width: 440px) {
+    h1 {
+      font-size: 1.2rem; } }
+
+p {
+  margin: 0;
+  padding: 10px 0; }
+
+.absent {
+  color: red; }
+
+.error {
+  color: red; }
+
+#wiki-content .release > table {
+  width: 100%; }
+  #wiki-content .release > table tr:nth-child(2) > td:last-child {
+    font-weight: bold; }
+  #wiki-content .release > table td:first-child {
+    width: 24ex; }
+
+#wiki-content .home-link, .home-link {
+  display: inline-block;
+  font-family: "ClearSans-Medium",helvetica,georgia,sans-serif;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  cursor: pointer;
+  position: relative;
+  top: -1px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0 4px 1px 4px;
+  border-radius: 4px;
+  color: #e5623e;
+  background-color: #ffe7c2; }
+  #wiki-content .home-link:hover, .home-link:hover {
+    color: #e87454;
+    background-color: #fff1db; }
+
+.scrollable {
+  position: relative; }
+
+.scrollbar {
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  width: 7px;
+  background-color: white;
+  opacity: 0.25;
+  height: 100%;
+  z-index: 95;
+  /* Underneath the top-menu */
+  -webkit-transition: opacity 0.25s ease-out;
+  -moz-transition: opacity 0.25s ease-out;
+  transition: opacity 0.25s ease-out; }
+  .scrollbar .scrollbar-thumb {
+    display: inline-block;
+    position: relative;
+    width: 0.5ex;
+    min-height: 50px;
+    border-radius: 0.5ex;
+    background-color: black;
+    pointer-events: none; }
+
+#page {
+  background: url(assets/tile-chocolate.jpg);
+  position: relative; }
+  #page .missing {
+    color: red; }
+  #page .sub-menu-box {
+    display: inline-block;
+    position: fixed;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    max-width: 220px;
+    min-width: 200px;
+    z-index: 50; }
+    @media (max-width: 440px) {
+      #page .sub-menu-box {
+        top: 36px; } }
+    #page .sub-menu-box .sub-menu {
+      background-color: #dbd4ce;
+      color: #2e1a1c;
+      padding-top: 48px;
+      padding-bottom: 48px;
+      display: inline-block;
+      width: 220px;
+      min-width: 220px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+      #page .sub-menu-box .sub-menu a {
+        display: block;
+        text-decoration: none;
+        color: #2e1a1c;
+        text-align: left;
+        padding: 4px 20px;
+        line-height: 18px;
+        font-size: 16px; }
+      #page .sub-menu-box .sub-menu a:hover {
+        color: #736e6c; }
+      #page .sub-menu-box .sub-menu a.active {
+        background-color: #fbf5ef;
+        color: #2d1a20; }
+      #page .sub-menu-box .sub-menu a.loading {
+        background-image: url(assets/loading.gif);
+        background-size: 16px 16px;
+        background-position: 2px 50%;
+        background-repeat: no-repeat; }
+      #page .sub-menu-box .sub-menu .menu-closed {
+        background-image: url(assets/down.png);
+        background-repeat: no-repeat;
+        background-position: 95% 50%;
+        background-size: auto 50%; }
+      #page .sub-menu-box .sub-menu .menu-open {
+        background-image: url(assets/up.png);
+        background-repeat: no-repeat;
+        background-position: 95% 50%;
+        background-size: auto 50%; }
+      #page .sub-menu-box .sub-menu .menu-sub-pages {
+        -webkit-transition: opacity 0.25s ease-out;
+        -moz-transition: opacity 0.25s ease-out;
+        transition: opacity 0.25s ease-out;
+        padding-left: 0.25ex;
+        border-top: 1px solid #bbada2;
+        border-left: 1px solid #bbada2;
+        border-right: 1px solid #fbfbfa;
+        border-bottom: 1px solid #fbfbfa; }
+        #page .sub-menu-box .sub-menu .menu-sub-pages a:last-child {
+          padding-bottom: 6px; }
+        #page .sub-menu-box .sub-menu .menu-sub-pages.off {
+          opacity: 0;
+          height: 0;
+          pointer-events: none;
+          border: none; }
+  #page .sub-content {
+    position: relative;
+    left: 220px;
+    vertical-align: top;
+    display: inline-block;
+    background: #fbf7f0;
+    color: #361d23;
+    text-align: left;
+    white-space: normal;
+    position: relative;
+    padding-bottom: 64px; }
+    @media (max-width: 600px) {
+      #page .sub-content {
+        left: 0px; } }
+
+#documentation-column, #contribute-column, #wiki-column {
+  max-width: 950px;
+  margin: 0 auto; }
+
+.column {
+  width: 100%;
+  height: auto;
+  min-height: 320px;
+  background: #dbd4ce;
+  /* padding-top: height (top-menu); <-- calculated in js */ }
+
+#home-column p {
+  margin: 0 16px; }
+#home-column h1 {
+  margin-left: 16px;
+  margin-right: 16px; }
+
+#error {
+  min-width: 320px;
+  background-color: #ef7332; }
+  #error .logo {
+    margin-top: 5em;
+    display: inline-block;
+    background-image: url(assets/crosswalk-LOGO-lrg.png);
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-size: 477px auto;
+    height: 51px;
+    width: 100%;
+    margin-bottom: 36px; }
+  @media (max-width: 600px) {
+    #error .logo {
+      background-size: 400px auto;
+      height: 43px; } }
+  #error .content {
+    white-space: normal;
+    margin: 32px 0;
+    color: #fff4e5;
+    position: relative;
+    padding: 0;
+    height: 100%;
+    padding-bottom: 100px; }
+
+#home {
+  min-width: 320px;
+  background-color: #ed7332;
+  background: -webkit-linear-gradient(bottom, #e76840 0%, #f49541 65%, #ed7332 100%);
+  background: linear-gradient(to top, #e76840 0%, #f49541 65%, #ed7332 100%); }
+  #home .logo {
+    margin-top: 5em;
+    display: inline-block;
+    background-image: url(assets/crosswalk-LOGO-lrg.png);
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-size: 477px auto;
+    height: 51px;
+    width: 100%;
+    margin-bottom: 36px; }
+  @media (max-width: 600px) {
+    #home .logo {
+      background-size: 400px auto;
+      height: 43px; } }
+  @media (max-width: 440px) {
+    #home .logo {
+      background-size: 320px auto;
+      height: 34px; } }
+  #home .content {
+    white-space: normal;
+    color: #fff4e5;
+    position: relative;
+    padding: 0 0 72px 0;
+    height: 100%; }
+    #home .content .releases {
+      text-align: center;
+      margin: -8px auto 8px auto; }
+      #home .content .releases a.version-link {
+        display: inline-block;
+        color: #ffefd8;
+        text-decoration: none;
+        padding-bottom: 1px;
+        background-image: url(dash-paper.svg);
+        background-repeat: repeat-x;
+        background-size: 4px 2px;
+        background-position: 0 100%; }
+      #home .content .releases a.home-link {
+        margin-left: 1ex;
+        margin-top: 4px; }
+  #home .container {
+    width: 100%; }
+  #home .container:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 0px;
+    vertical-align: middle; }
+  #home .more-button-box {
+    position: absolute;
+    height: 58px;
+    left: 0px;
+    width: 100%;
+    display: inline-block;
+    text-align: center; }
+    #home .more-button-box a {
+      background: url(assets/home-arrow.png) 50% 50% no-repeat;
+      background-size: 48px;
+      border-radius: 48px;
+      display: inline-block;
+      height: 48px;
+      width: 48px; }
+      #home .more-button-box a:hover {
+        outline: none;
+        box-shadow: 0 0 10px rgba(252, 217, 90, 0.8); }
+  #home #sunburst.background {
+    background: -webkit-radial-gradient(50% 115%,  circle, white 0%, white 9%, rgba(252, 217, 89, 0.8) 17%, rgba(246, 137, 55, 0) 45%);
+    background: radial-gradient(  circle at 50% 115%, white 0%, white 9%, rgba(252, 217, 89, 0.8) 17%, rgba(246, 137, 55, 0) 45%); }
+  #home #small-circle.background {
+    background: -webkit-radial-gradient(50% 115%,  circle, rgba(250, 196, 72, 0.12) 0%, rgba(250, 196, 72, 0.12) 40%, transparent 40%);
+    background: radial-gradient(  circle at 50% 115%, rgba(250, 196, 72, 0.12) 0%, rgba(250, 196, 72, 0.12) 40%, transparent 40%); }
+  #home #big-circle.background {
+    background: -webkit-radial-gradient(40% 115%,  farthest-side circle, rgba(222, 97, 62, 0.2) 0%, rgba(222, 97, 62, 0.3) 90%, transparent 90%);
+    background: radial-gradient( farthest-side circle at 40% 115%, rgba(222, 97, 62, 0.2) 0%, rgba(222, 97, 62, 0.3) 90%, transparent 90%); }
+  #home .button {
+    font-family: "ClearSans-Medium",helvetica,georgia,sans-serif;
+    height: 40px;
+    font-size: 18px;
+    width: 180px;
+    display: inline-block;
+    margin: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 2px;
+    border-radius: 6px;
+    vertical-align: middle;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center; }
+    @media (max-width: 960px) {
+      #home .button {
+        width: 240px;
+        display: block;
+        margin: 3px auto; } }
+    @media (max-width: 440px) {
+      #home .button {
+        font-size: 0.8rem;
+        width: 120px;
+        display: block;
+        margin: 3px auto; } }
+    #home .button a {
+      display: inline-block;
+      border-radius: 2px;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+      line-height: 40px; }
+  #home #button-box {
+    text-align: center;
+    margin-top: 18px;
+    width: 100%; }
+  #home #download-button {
+    background-color: #ffe8c7;
+    border-color: #689277; }
+    #home #download-button a {
+      background-color: #689277;
+      color: #ffe8c7; }
+  #home #download-button:hover {
+    background-color: #fff2e0;
+    border-color: #769e84; }
+    #home #download-button:hover a {
+      background-color: #769e84;
+      color: #fff2e0; }
+  #home #documentation-button {
+    background-color: #ffe8c7;
+    border-color: #e5623e; }
+    #home #documentation-button a {
+      background-color: #e5623e;
+      color: #ffe8c7; }
+  #home #documentation-button:hover {
+    background-color: #fff2e0;
+    border-color: #e87454; }
+    #home #documentation-button:hover a {
+      background-color: #e87454;
+      color: #fff2e0; }
+  #home #contribute-button {
+    background-color: #e5623e;
+    border-color: #ffe7c2; }
+    #home #contribute-button a {
+      background-color: #ffe7c2;
+      color: #e5623e; }
+  #home #contribute-button:hover {
+    background-color: #e87454;
+    border-color: #fffbf5; }
+    #home #contribute-button:hover a {
+      background-color: #fffbf5;
+      color: #e87454; }
+
+#arch-diagram {
+  width: 100%;
+  height: auto; }
+
+.divider {
+  border-top: 2px solid;
+  text-align: center;
+  height: 10px;
+  display: inline-block;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px; }
+
+.right-corner {
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid;
+  width: 0;
+  height: 0;
+  left: calc(50%);
+  top: 10px;
+  position: relative; }
+
+.left-corner {
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid;
+  width: 0;
+  height: 0;
+  left: calc(50% - 10px);
+  top: 0px;
+  position: relative; }
+
+#overview .divider {
+  border-color: #ef8f45;
+  background-color: #e4643d; }
+  #overview .divider .right-corner {
+    border-left-color: #e4643d; }
+  #overview .divider .left-corner {
+    border-right-color: #e4643d; }
+
+#footer .divider {
+  border-color: #6c5245;
+  background-color: #331c22; }
+#footer .content {
+  padding: 0; }
+#footer #copyright a {
+  color: #ed7332;
+  text-decoration: none;
+  padding-bottom: 2px;
+  background-image: url(dash-grapefruit.svg);
+  background-repeat: repeat-x;
+  background-size: 4px 2px;
+  background-position: 0 100%; }
+
+.tile-overlay {
+  background: url(assets/bg-tile.png);
+  background: url(assets/bg-tile.png); }
+
+#overview {
+  background-color: #3e2220;
+  background: -webkit-radial-gradient(50% 50%,  circle, #532824 0%, #3e2220 300px, #2f191e 100%);
+  background: radial-gradient(  circle at 50% 50%, #532824 0%, #3e2220 300px, #2f191e 100%);
+  min-width: 320px; }
+  #overview h1 {
+    line-height: 1.1em; }
+  #overview p {
+    margin: 0; }
+  #overview .content {
+    padding: 48px 16px 64px 16px;
+    text-align: left;
+    color: #fcfcfc;
+    width: auto; }
+
+.community-button {
+  padding: 2px;
+  border-radius: 7px;
+  margin: 5px 0;
+  vertical-align: middle;
+  border: 2px solid #fcddb6;
+  text-align: left;
+  min-width: 194px; }
+  @media (max-width: 440px) {
+    .community-button {
+      font-size: 0.8rem;
+      min-width: 104px; } }
+  .community-button a {
+    display: inline-block;
+    border-radius: 3px;
+    height: 100%;
+    width: calc(100% - 15px);
+    text-decoration: none;
+    line-height: 32px;
+    color: #2d3928;
+    background-color: #fcddb6;
+    padding-left: 15px; }
+
+.community-button:hover {
+  border-color: #fde9ce; }
+  .community-button:hover a {
+    color: #44573d;
+    background-color: #fde9ce; }
+
+#samples-overview {
+  background-color: #55523e;
+  background: -webkit-linear-gradient(top, #354b3d 0%, #55523e 80%);
+  background: linear-gradient(to bottom, #354b3d 0%, #55523e 80%);
+  padding-top: 40px;
+  min-width: 320px;
+  padding-bottom: 64px;
+  /* JS is used to size and position the crossing-tile */ }
+  #samples-overview .content {
+    text-align: center;
+    max-width: 800px; }
+  #samples-overview .divider {
+    border-color: #bcba70;
+    background-color: #8eb08f; }
+    #samples-overview .divider .right-corner {
+      border-left-color: #8eb08f; }
+    #samples-overview .divider .left-corner {
+      border-right-color: #8eb08f; }
+  #samples-overview .content {
+    padding-bottom: 48px; }
+    #samples-overview .content h1 {
+      margin: 0 0 16px 0; }
+  #samples-overview #crossing-tile {
+    border-style: solid;
+    border-color: rgba(128, 128, 128, 0.15);
+    border-width: 2px 0;
+    padding: 16px 0; }
+    #samples-overview #crossing-tile > div {
+      background: url(assets/crossing-tile-vertical.png) 50% 16px repeat repeat;
+      background: url(assets/crossing-tile-vertical.png) 50% 16px repeat repeat;
+      position: asolute;
+      width: 100%;
+      height: 100%; }
+  #samples-overview table {
+    border: 0;
+    margin: auto;
+    width: 100%;
+    text-align: left;
+    vertical-align: top;
+    color: #fcfcfc;
+    padding-bottom: 16px; }
+    #samples-overview table td:first-child {
+      max-width: 450px; }
+    #samples-overview table tr:first-child > td {
+      font-size: 18px;
+      line-height: 1.5em; }
+    #samples-overview table tr:first-child td:first-child h1 {
+      padding-left: 12px; }
+    #samples-overview table td {
+      vertical-align: top; }
+    #samples-overview table tbody > tr > td:first-child {
+      padding-top: 16px; }
+    #samples-overview table tbody > tr > td:last-child {
+      padding-right: 16px;
+      padding-top: 24px; }
+  #samples-overview #contribute {
+    vertical-align: top;
+    line-height: 32px; }
+
+.content {
+  display: inline-block;
+  max-width: 70ex;
+  opacity: 1;
+  padding: 52px 0 64px 0;
+  position: relative; }
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 1;
+  text-align: center; }
+
+/*
+.sample:before {
+    border: 3px solid rgb(40, 40, 40);
+    border-radius: 3px;
+    opacity: 0.8;
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+*/
+.sample {
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: inset;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-color: #756e5d;
+  border-left-color: #444032;
+  border-bottom-color: #756e5d;
+  box-shadow: inset 0 0 3px 3px rgba(40, 40, 40, 0.3);
+  width: 160px;
+  height: 120px;
+  display: inline-block;
+  margin: 12px 10px;
+  background-size: calc(100% - 6px);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  color: #fcd7ab;
+  text-align: center;
+  background-color: rgba(40, 40, 40, 0.3);
+  font-size: 18px;
+  line-height: 120px;
+  cursor: pointer;
+  opacity: 0.8; }
+
+.sample:hover {
+  opacity: 1; }
+
+.sample-1 {
+  background-image: url(assets/sampapp-icon-helloworld.png); }
+
+.sample-2 {
+  background-image: url(assets/sampapp-icon-api.png); }
+
+.sample-3 {
+  background-image: url(assets/sampapp-icon-webgl.png); }
+
+.sample-4 {
+  background-image: url(assets/sampapp-icon-simd.png); }
+
+#footer {
+  position: relative;
+  background-color: #1c1305;
+  background: -webkit-linear-gradient(top, #262414 0%, #1c1305 100px);
+  background: linear-gradient(to bottom, #262414 0%, #1c1305 100px);
+  color: #cbc6c2;
+  padding: 0 0 32px 0;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  font-family: "ClearSans-Regular",helvetica,georgia,sans-serif;
+  font-size: 1.1em;
+  min-width: 320px; }
+
+#footer .background {
+  z-index: 0; }
+
+#footer-padding {
+  width: 100%;
+  min-width: 320px;
+  display: inline-block;
+  position: relative;
+  background: #1c1305;
+  margin-bottom: -5px; }
+
+#footer-logo {
+  display: inline-block;
+  position: relative;
+  height: 76px;
+  top: 0px;
+  margin-bottom: -20px;
+  width: 100%;
+  background: url(assets/crosswalk-LOGO-small.png) 50% 50% no-repeat;
+  background-size: 143px 15px;
+  z-index: 100; }
+
+#footer #who {
+  line-height: 1rem;
+  font-size: 0.8rem;
+  padding-top: 18px; }
+
+#footer #copyright {
+  line-height: 1rem;
+  font-size: 0.8rem; }
+
+#footer #others {
+  line-height: 1rem;
+  font-size: 0.8rem;
+  color: #808080; }
+
+#top-menu {
+  display: inline-block;
+  position: fixed;
+  background: #d55734;
+  color: #ffefd8;
+  height: 1px;
+  opacity: 0.9;
+  width: 100%;
+  min-height: 64px;
+  min-width: 308px;
+  top: -64px;
+  border-bottom: 3px solid #f8d0ad;
+  z-index: 100;
+  font-family: "ClearSans-Medium",helvetica,georgia,sans-serif;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  -webkit-transition: opacity 0.125s ease-out, top 0.125s ease-out;
+  -moz-transition: opacity 0.125s ease-out, top 0.125s ease-out;
+  transition: opacity 0.125s ease-out, top 0.125s ease-out; }
+  #top-menu > div {
+    padding-right: 100px; }
+  #top-menu .top-menu-right {
+    text-align: right; }
+  #top-menu .menu-item {
+    position: relative;
+    top: 0px;
+    -webkit-transition: top 0.25s ease-out;
+    -moz-transition: top 0.25s ease-out;
+    transition: top 0.25s ease-out; }
+  #top-menu.hide-delay {
+    -webkit-transition: opacity 0.125s ease-out 0.75s, top 0.125s ease-out 0.75s;
+    -moz-transition: opacity 0.125s ease-out 0.75s, top 0.125s ease-out 0.75s;
+    transition: opacity 0.125s ease-out 0.75s, top 0.125s ease-out 0.75s; }
+  #top-menu .slider {
+    left: 0px;
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    background: #c4583b;
+    height: 100%;
+    border-style: solid;
+    border-color: #f8d0ad;
+    border-width: 0 2px;
+    z-index: -1; }
+    #top-menu .slider.slide-around {
+      -webkit-transition: left 0.2s ease-out, width 0.2s ease-out;
+      -moz-transition: left 0.2s ease-out, width 0.2s ease-out;
+      transition: left 0.2s ease-out, width 0.2s ease-out; }
+  #top-menu a {
+    display: inline-block;
+    height: 64px;
+    line-height: 64px;
+    padding: 0 15px;
+    text-align: center;
+    color: #ffefd8;
+    text-decoration: none; }
+  #top-menu a:hover {
+    background: #c4583b; }
+  #top-menu a.active {
+    color: white;
+    background: none; }
+  #top-menu a[href="#home"] {
+    background-image: url(assets/crosswalk-LOGO-med.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 200px auto;
+    width: 200px;
+    height: 64px;
+    position: absolute;
+    left: 0px;
+    min-width: 200px; }
+  #top-menu a.loading {
+    background-image: url(assets/loading.gif);
+    background-size: 16px 16px;
+    background-position: 50% 34px;
+    background-repeat: no-repeat;
+    top: -5px;
+    height: 53px; }
+  @media (max-width: 960px) {
+    #top-menu {
+      min-height: 48px;
+      top: -48px; }
+      #top-menu > div {
+        padding-right: 8px; }
+      #top-menu a {
+        height: 48px;
+        line-height: 48px; }
+      #top-menu a[href="#home"] {
+        background-image: url(assets/crosswalk-LOGO-tiny.png);
+        width: 100px;
+        height: 48px;
+        min-width: 100px;
+        background-size: 100px 11px; } }
+  @media (max-width: 600px) {
+    #top-menu a[href="#home"] {
+      width: 30px;
+      height: 48px;
+      min-width: 30px;
+      background-image: url(assets/crosswalk-LOGO-Wmark-small.png);
+      background-size: 30px auto; } }
+  @media (max-width: 440px) {
+    #top-menu {
+      min-height: 32px;
+      top: -32px; }
+      #top-menu > div {
+        padding-right: 6px; }
+      #top-menu a {
+        height: 32px;
+        line-height: 32px; }
+        #top-menu a.menu-item {
+          padding: 0 4px; }
+      #top-menu a[href="#home"] {
+        width: 20px;
+        height: 32px;
+        min-width: 20px;
+        background-image: url(assets/crosswalk-LOGO-Wmark-small.png);
+        background-size: 20px auto; } }
+
+.section {
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: auto; }
+
+.hidden {
+  display: none; }
+
+.nowrap {
+  white-space: nowrap; }
+
+/*
+ * Wiki Markdown styling
+ */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  clear: both; }
+
+#wiki-content center {
+  margin-bottom: 10px; }
+#wiki-content .sample-thumb {
+  display: inline-block;
+  width: 100px;
+  height: 75px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  padding-right: 1.5ex;
+  vertical-align: top;
+  float: left; }
+#wiki-content #last-edit {
+  border-top: 1px solid #ead4ae;
+  margin-top: 3rem;
+  margin-bottom: -3rem;
+  color: #af966e;
+  font-size: 0.8rem; }
+  #wiki-content #last-edit a {
+    color: #af966e;
+    float: right; }
+#wiki-content .markdown-body h3 {
+  font-weight: bold;
+  font-size: 15px;
+  color: black; }
+#wiki-content ul.history-list {
+  padding-left: 1.75ex; }
+  #wiki-content ul.history-list li {
+    list-style: none; }
+  #wiki-content ul.history-list li a:last-child {
+    color: #8eb08f;
+    /*            top: -8px;
+                position: relative;
+                display:inline-block;*/
+    font-size: 0.8rem; }
+  #wiki-content ul.history-list li span:last-child {
+    color: #736e6c;
+    /*            top: -8px;
+                position: relative;
+                display:inline-block;*/
+    font-size: 0.8rem; }
+#wiki-content a.primary-link {
+  color: #ed7332;
+  text-decoration: none;
+  padding-bottom: 1px;
+  background-image: url(dash-grapefruit.svg);
+  background-repeat: repeat-x;
+  background-size: 4px 2px;
+  background-position: 0 100%; }
+
+.downloads-table {
+  width: 100%; }
+
+/* center channel column headings on downloads page */
+.downloads-table tr:first-child th {
+  text-align: center !important; }
+
+/* force first column of downloads table to not wrap its content */
+.downloads-table tr:first-child th:first-child {
+  width: 35%; }
+
+/* divide remaining space evenly between columns */
+.downloads-table tr th {
+  width: 21.666666%;
+  /* 65% / 3 */ }
+
+/* center channel/platform cells on downloads page */
+.downloads-table td {
+  text-align: center !important; }
+
+/* last row thick top border downloads table */
+.downloads-table .release-notes-row {
+  border-top: 4px solid #dbd4ce !important; }
+
+/* no bold on "release notes" heading on downloads table */
+.downloads-table .release-notes-heading {
+  font-weight: normal !important; }
+
+[data-role="download-cell"][data-loading="true"] {
+  background-image: url(assets/loading.gif);
+  background-repeat: no-repeat;
+  background-position: 50% 50%; }
+
+#social-buttons {
+  margin-top: 0.5em; }
+
+#channels-viewer-table td {
+  text-align: center !important; }
+
+@media (max-width: 600px) {
+  .sub-menu-box {
+    display: none !important; } }
+
+@media (max-width: 600px) {
+  .sub-menu-box[data-menu-state="open"] {
+    display: block !important;
+    width: 225px !important;
+    max-width: 225px !important;
+    min-width: 225px !important; } }
+
+@media (max-width: 600px) {
+  .sub-menu {
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.25); } }
+
+.sub-menu-button-container {
+  position: fixed;
+  display: none;
+  top: 64px; }
+  @media (max-width: 600px) {
+    .sub-menu-button-container {
+      display: block;
+      z-index: 50;
+      top: 48px; } }
+  @media (max-width: 440px) {
+    .sub-menu-button-container {
+      top: 32px; } }
+
+.sub-menu-button-container[data-hide="true"] {
+  display: none !important; }
+
+.sub-menu-button {
+  width: 32px;
+  height: 32px;
+  background-image: url(assets/menu-button.png);
+  background-position: 50% 50%;
+  background-size: 100%;
+  background-repeat: none;
+  background-color: #dbd4ce;
+  border: thin solid #ccc; }
+
+.github-meta-link {
+  border-left: 2px #AAA solid;
+  padding-left: 0.3em !important; }
+
+.gh-header-meta {
+  font-size: 0.6em;
+  padding-top: 0.4em !important;
+  margin-top: 0.8em !important;
+  border-top: thin solid #ccc; }
+
+[data-role="manifest-filter"] {
+  border-top: thin solid #ccc;
+  padding: 1em !important;
+  background-color: #ccc; }
+
+[data-role="manifest-filter"] p {
+  margin-bottom: 0px !important; }
+
+#jira-feedback-trigger {
+  padding: 1em; }
+
+.survey {
+  position: fixed;
+  z-index: 2000;
+  background-color: #bf0013;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid white;
+  top: 90px;
+  margin-left: 25%;
+  width: 50%; }
+  @media (max-width: 960px) {
+    .survey {
+      top: 70px;
+      width: 80%;
+      margin-left: 10%; } }
+  @media (max-width: 600px) {
+    .survey {
+      top: 70px;
+      width: 90%;
+      margin-left: 5%; } }
+  @media (max-width: 440px) {
+    .survey {
+      top: 40px;
+      width: 90%;
+      margin-left: 5%;
+      font-size: 75%; } }
+
+.survey p {
+  box-sizing: border-box;
+  padding: 0.25em 1em;
+  line-height: 2em; }
+
+.survey a {
+  text-decoration: none;
+  color: white; }
+
+/*# sourceMappingURL=xwalk.css.map */
