@@ -316,8 +316,8 @@ p {
     min-width: 320px;
     background-color: #ef7332;
     .logo {
-        padding-top: 5em;
-        display: inline-block;
+        margin-top: 5em;
+        display: block;
         background-image: url(assets/crosswalk-LOGO-lrg.png);
         background-repeat: no-repeat;
         background-position: 50% 100%;
@@ -350,8 +350,8 @@ p {
     background-color: #ed7332;
     @include background(linear-gradient(to top, #e76840 0%, #f49541 65%, #ed7332 100%));
     .logo {
-        padding-top: 5em;
-        display: inline-block;
+        margin-top: 5em;
+        display: block;
         background-image: url(assets/crosswalk-LOGO-lrg.png);
         background-repeat: no-repeat;
         background-position: 50% 100%;
@@ -1257,4 +1257,47 @@ p {
 
 #jira-feedback-trigger {
   padding: 1em;
+}
+
+.survey {
+  position: absolute;
+  z-index: 2000;
+  background-color: #bf0013;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid white;
+
+  @media (max-width: $medium-break) {
+    top: 70px;
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  @media (max-width: $small-break) {
+    top: 70px;
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  @media (max-width: $tiny-break) {
+    top: 40px;
+    width: 90%;
+    margin-left: 5%;
+    font-size: 75%;
+  }
+
+  top: 90px;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.survey p {
+  box-sizing: border-box;
+  padding: 0.25em 1em;
+  line-height: 2em;
+}
+
+.survey a {
+  text-decoration: none;
+  color: white;
 }
