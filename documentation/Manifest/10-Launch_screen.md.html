@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/gollum.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/editor.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/dialog.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/template.css" media="all">
+  
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie7.css" media="all">
+  <![endif]-->
+
+  <script>
+      var baseUrl = '';
+      var pageFullPath = 'documentation/Manifest/10 Launch_screen';
+  </script>
+  <script type="text/javascript" src="/javascript/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/javascript/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.dialog.js"></script>
+  <script type="text/javascript" src="/javascript/gollum.placeholder.js"></script>
+  <script type="text/javascript" src="/javascript/editor/gollum.editor.js"></script>
+
+  
+
+  <title>documentation/Manifest/10 Launch_screen</title>
+</head>
+<body>
+
+<script>
+Mousetrap.bind(['e'], function( e ) {
+  e.preventDefault();
+  window.location = "/edit" + window.location.pathname;
+  return false;
+});
+</script>
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <h1>Launch screen</h1>
+  <ul class="actions">
+    <li class="minibutton">
+      <div id="searchbar">
+        <form action="/search" method="get" id="search-form">
+        <div id="searchbar-fauxtext">
+          <input type="text" name="q" id="search-query" value="Search&hellip;" autocomplete="off">
+          <a href="#" id="search-submit" title="Search this wiki">
+            <span>Search</span>
+          </a>
+        </div>
+        </form>
+      </div>    </li>
+    <li class="minibutton"><a href="/"
+       class="action-home-page">Home</a></li>
+    <li class="minibutton"><a href="/pages"
+      class="action-all-pages">All</a></li>
+    <li class="minibutton"><a href="/fileview"
+    class="action-fileview">Files</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-new-page">New</a></li>
+    <li class="minibutton jaws">
+      <a href="#" id="minibutton-rename-page">Rename</a></li>
+    <li class="minibutton"><a href="/edit/documentation/Manifest/10-Launch_screen"
+       class="action-edit-page">Edit</a></li>
+    <li class="minibutton"><a href="/history/documentation/Manifest/10-Launch_screen"
+       class="action-page-history">History</a></li>
+  </ul>
+</div>
+<div id="wiki-content">
+<div class="">
+  <div id="wiki-body" class="gollum-markdown-content">
+    <div class="markdown-body">
+      
+
+<p>The launch screen is a static user interface shown immediately after the application is launched. The launch screen will then be hidden at the point when the application's "real" user interface can be constructed: i.e. when the application and any required resources have loaded.</p>
+
+<p>Because the launch screen allows a user to view application content almost immediately, it can greatly improve their perception of the application's performance and generally improve the user experience.</p>
+
+<h2>The full specification<a class="anchor" id="The-full-specification" href="#The-full-specification"></a></h2>
+
+<p><a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit">Interstitial launch screens</a>.</p>
+
+<h2>Definition of the manifest property<a class="anchor" id="Definition-of-the-manifest-property" href="#Definition-of-the-manifest-property"></a></h2>
+
+<p>In Crosswalk Android 5-7, the property is <code>launch_screen</code>; in Crosswalk Android 8+ it is <code>xwalk_launch_screen</code>. It is defined as follows:</p>
+
+<pre><code>"launch_screen | xwalk_launch_screen": {
+  "ready_when": "first-paint | complete | custom",
+  "default | portrait | landscape": {
+     "background_color": "#ff0000",
+     "background_image": "bgfoo.png [1x, bgfoo-2x.png 2x]",
+     "image": "foo.png [1x, foo-2x.png 2x]",
+     "image_border": "30px [30px 30px 30px] [repeat | stretch | round] [repeat | stretch | round]"
+   }
+}
+</code></pre>
+
+<p>Example (Crosswalk Android 5-7):</p>
+
+<pre><code>"launch_screen": {
+  "ready_when": "custom",
+  "portrait": {
+     "background_color": "#ff0000",
+     "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
+     "image": "foo.png 1x, foo-2x.png 2x",
+     "image_border": "30px 40px stretch",
+   }
+}
+</code></pre>
+
+<p>Example (Crosswalk Android 8+):</p>
+
+<pre><code>"xwalk_launch_screen": {
+  "ready_when": "custom",
+  "portrait": {
+     "background_color": "#ff0000",
+     "background_image": "bgfoo.png 1x, bgfoo-2x.png 2x",
+     "image": "foo.png 1x, foo-2x.png 2x",
+     "image_border": "30px 40px stretch",
+   }
+}
+</code></pre>
+
+<h2><code>launch_screen/xwalk_launch_screen</code> members<a class="anchor" id="launch_screen/xwalk_launch_screen-members" href="#launch_screen/xwalk_launch_screen-members"></a></h2>
+
+<table><thead><tr><th>Member</th>
+<th>Description</th>
+</tr></thead><tbody><tr><td><code>"ready_when"</code></td>
+<td>The application readiness state at which to hide the launch screen. If undefined, defaults to <code>"first-paint"</code>. See the next section for more details.</td>
+</tr><tr><td><code>"default"</code></td>
+<td>The launch screen to use for both landscape and portrait mode.</td>
+</tr><tr><td><code>"landscape"</code></td>
+<td>The launch screen to use for landscape mode.</td>
+</tr><tr><td><code>"portrait"</code></td>
+<td>The launch screen to use for portrait mode.</td>
+</tr></tbody></table><h3><code>ready_when</code><a class="anchor" id="ready_when" href="#ready_when"></a></h3>
+
+<table><thead><tr><th>Application readiness state</th>
+<th>Preconditions</th>
+</tr></thead><tbody><tr><td><code>"first-paint"</code></td>
+<td>* The first visually non-empty paint has occurred.</td>
+</tr><tr><td><code>"user-interactive"</code></td>
+<td>* The first visually non-empty paint has occurred.<br />* The DOM and CSSOM have been constructed.</td>
+</tr><tr><td><code>"complete"</code></td>
+<td>* The first visually non-empty paint has occurred. <br />* All the resources have been loaded.<br /><strong>WARNING: This may take a long time, as it only triggers after all sub-resources have been downloaded.</strong></td>
+</tr><tr><td><code>"custom"</code></td>
+<td>* The first visually non-empty paint has occurred. <br />* The <code>window.screen.show()</code> method was called.</td>
+</tr></tbody></table><h3><code>default</code> / <code>portrait</code> / <code>landscape</code><a class="anchor" id="default-/-portrait-/-landscape" href="#default-/-portrait-/-landscape"></a></h3>
+
+<p>These properties specify the images and backgrounds to use for the launch screen in different screen orientations. If only <code>portrait</code> or <code>landscape</code> are set, the launch screen will only be shown in the corresponding orientation (portrait or landscape respectively).</p>
+
+<p>Each of these orientation properties can be defined by an object with the following properties:</p>
+
+<ul><li><code>background_color</code>: The background color for the launch screen, in <a href="http://www.w3.org/TR/css3-color/#rgb-color">hexadecimal notation</a>.</li>
+<li><code>background_image</code>: The repeating background image. The upper left corner of the image is aligned with the upper left corner of the viewing area on the screen. See the <a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.p51ynj4nuqv7">background_image spec</a> for full details.</li>
+<li><code>image</code>: The image to be centered horizontally and vertically within the background.</li>
+<li><code>image_border</code>: A border image, split into a 9-piece image with the intermediate border pieces scaled and/or stretched to fill the whole viewport. See the <a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.rq1ayw778vp6">Image Border spec</a> for full details.</li>
+</ul><p>Note: The <code>background_color</code> and <code>background_image</code> will be the first thing displayed when user starts the application. The image specified by the <code>image</code> property will then be displayed over the background.</p>
+
+<h3>Image and color definitions<a class="anchor" id="Image-and-color-definitions" href="#Image-and-color-definitions"></a></h3>
+
+<p>The supported image formats are <strong>png</strong>, <strong>bmp</strong>, <strong>jpg</strong>, and <strong>gif</strong>.</p>
+
+<p>The <code>background_image</code> and <code>image</code> properties have the following format:</p>
+
+<pre><code>"&lt;filename1&gt; &lt;density1&gt;, &lt;filename2&gt; &lt;density2&gt;, ..."
+</code></pre>
+
+<p>where <code>&lt;filename*&gt;</code> is a path to an image file, relative to the manifest; and <code>&lt;density*&gt;</code> is the screen density where this image should be applied (<code>density</code> is optional if only one file is specified). For example, for the following field value:</p>
+
+<pre><code>"background_image": "file1.png 1x, file2.png 2x, file3.png"
+</code></pre>
+
+<p>and a screen density of 2.5 dppx (dots per pixel), <code>file2.png</code> will be selected (as it is the closest value which is lower than the dppx).</p>
+
+<p>For this field value:</p>
+
+<pre><code>"background_image": "file1.png"
+</code></pre>
+
+<p>the file <code>file1.png</code> will be used as the background image at all screen densities.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p id="last-edit">Last edited by <b>Elliot Smith</b>, 2014-08-22 10:09:26</p>
+  <p>
+    <a id="delete-link" href="/documentation/Manifest/10-Launch_screen" data-confirm="Are you sure you want to delete this page?"><span>Delete this Page</span></a>
+  </p>
+</div>
+</div>
+
+<form name="rename" method="POST" action="/rename/documentation/Manifest/10-Launch_screen">
+  <input type="hidden" name="rename"/>
+  <input type="hidden" name="message"/>
+</form>
+
+
+</body>
+</html>
