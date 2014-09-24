@@ -157,8 +157,7 @@ function activateColumn (name) {
             hide_delay_timeout = 0;
         }, 1000);
 
-        page.style.removeProperty ('padding-top');
-        page.style.removeProperty ('paddingTop');
+        page.style.removeProperty ('top');
 
         // hide the menu button always
         menuButton.setAttribute ('data-hide', 'true');
@@ -169,10 +168,7 @@ function activateColumn (name) {
             top_menu.classList.remove ('hide-delay');
         }
 
-        page.style['padding-top'] = top_menu.offsetHeight + 'px';
-
-        // why, firefox, why?
-        page.style.paddingTop = top_menu.offsetHeight + 'px';
+        page.style['top'] = top_menu.offsetHeight + 'px';
 
         // show the menu button if width is small enough
         menuButton.setAttribute ('data-hide', 'false');
@@ -1343,8 +1339,7 @@ function _onResize (from_resize_event) {
         scroll = window.scrollY || window.pageYOffset, item;
 
     // ensure the top of the page is aligned with the bottom of the top menu bar
-    page.style['padding-top'] = top_menu.offsetHeight + 'px';
-    page.style.paddingTop = top_menu.offsetHeight + 'px';
+    page.style['top'] = top_menu.offsetHeight + 'px';
 
     // Cache the window height dimension
     viewHeight = window.innerHeight;
@@ -1359,7 +1354,7 @@ function _onResize (from_resize_event) {
      * to its area. We subtract the 64px from viewHeight per above. The .more-button-box
      * spacing is accounted for with the #home .content padding-bottom */
     var content = home.querySelector ('.content'),
-        contentTop = Math.round ((viewHeight - 64 - content.offsetHeight) * 0.5);
+        contentTop = Math.round ((viewHeight - 128 - content.offsetHeight) * 0.5);
     contentTop = Math.max (contentTop, 0);
     content.style.top =  contentTop + 'px';
 
@@ -1367,7 +1362,7 @@ function _onResize (from_resize_event) {
      * the 50px padding... (the more-button is a child of content, so we determine the
      * full height of home and subtract the top of the content. */
     button = home.querySelector ('.more-button-box');
-    button.style.top = (home.offsetHeight - contentTop - button.offsetHeight) + 'px';
+    button.style.top = (home.offsetHeight - contentTop - button.offsetHeight - 96) + 'px';
 
     /* Calculate the size of the page so we can resize the footer-padding
      * to fill any bottom part of the page w/ the tile overlay */
@@ -1414,6 +1409,7 @@ function _onResize (from_resize_event) {
             subMenuCloseOnClick = true;
         }
 
+        sub_menu_box.style.top = '64px';
         sub_content.style.width = width + 'px';
         sub_content.style.minHeight = (viewHeight - top_menu.offsetHeight) + 'px';
     }
