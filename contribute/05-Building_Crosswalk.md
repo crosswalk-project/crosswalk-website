@@ -265,6 +265,14 @@ Tizen repositories) should be a matter of calling `gbs build`:
 By default, the generated RPM files end up in
 `~/GBS-ROOT/local/repos/<repository name>/i586/RPMS`.
 
+### GBS repositories
+
+At the moment, Crosswalk packages for Tizen are built using the following URLs
+and profiles:
+
+* Tizen Common: https://download.tizen.org/releases/daily/tizen/common/latest/repos/x86_64-wayland/packages/
+* Tizen IVI: https://download.tizen.org/releases/daily/tizen/ivi/ivi/latest/repos/atom/packages/
+
 ### Testing a Tizen build
 
 The steps for installing a Tizen rpm on a device are covered in
