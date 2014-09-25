@@ -68,3 +68,40 @@ To deploy a shared mode application, you will need to install architecture-speci
 
 *   [ARM](https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-ARM}/arm/crosswalk-apks-${XWALK-STABLE-ANDROID-ARM}-arm.zip)
 *   [Intel (x86)](https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-X86}/x86/crosswalk-apks-${XWALK-STABLE-ANDROID-X86}-x86.zip)
+
+## Package command for beta version
+
+The follows are samples of main packaging commands for Crosswalk beta ${XWALK-BETA-ANDROID-X86}:
+*  Basic packaging command
+
+        > python make_apk.py --package=org.crosswalkproject.example \
+            --manifest=xwalk-simple/manifest.json
+
+*  Package for apecific target architecture, taking x86 as example
+
+        > python make_apk.py --package=org.crosswalkproject.example \
+            --manifest=xwalk-simple/manifest.json --arch=x86
+
+Note that if unspecified, APKs for all possible architestures will be generated.
+
+*  Package an APK enabling remote debugging
+
+        > python make_apk.py --package=org.crosswalkproject.example \
+            --manifest=xwalk-simple/manifest.json --enable-remote-debugging
+
+*  Set orientation of display
+
+        > python make_apk.py --package=org.crosswalkproject.example \
+            --manifest=xwalk-simple/manifest.json --orientation=landscape
+
+*  Get help message
+
+        > python make_apk.py -h
+
+Since new features for the package tools are added continuely, this command is helpful when try newest version.
+
+*  Print debug message
+
+        > python make_apk.py --verbose
+
+When you meet problem with the package tools, using this argument can output more information to help developers to debug.
