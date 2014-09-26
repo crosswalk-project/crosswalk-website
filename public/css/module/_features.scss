@@ -116,7 +116,7 @@
 .features-pointer {
   display: block;
   border: none;
-  border-bottom: $color-primary solid 3px;
+  border-bottom: $color-gray solid 3px;
   position: relative;
   width: 100%;
   height: 0;
@@ -129,7 +129,7 @@
       position: absolute;
       right: 0;
       top: -16px;
-      background: $color-primary;
+      background: $color-gray;
       border-radius: 50%;
     }
   }
