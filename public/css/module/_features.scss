@@ -120,14 +120,15 @@
   position: relative;
   width: 100%;
   height: 0;
-  margin: .5em 0;
+  margin: 0.5em 0;
   @include media($narrow) {
+    width: 105%;
     &:after {
       content: "";
       width: 35px;
       height: 35px;
       position: absolute;
-      right: 0;
+      right: -16px;
       top: -16px;
       background: $color-gray;
       border-radius: 50%;
