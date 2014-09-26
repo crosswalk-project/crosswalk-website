@@ -52,11 +52,10 @@
       <% var next = true %>
     <% } else if(next === true) { %>
       <% next = false %>
-      <a href="/documentation/<%= current.path[1] %>/<%= slug %>" class="text-center">
+      <a href="/documentation/<%= current.path[1] %>/<%= slug %>" class="article-promo well">
         <em>What’s next?</em>
         <h3><%= item.title %></h3>
       </a>
-      <a href="#">Next cat</a>
     <% } %>
   <% } %>
 <% } %>
