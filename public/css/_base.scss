@@ -62,6 +62,9 @@ a:visited,
     outline: 0;
     border-radius: $base-border-radius;
   }
+  &:hover:focus {
+    box-shadow: none;
+  }
   &:active {
     color: $color-primary-darker;
   }
