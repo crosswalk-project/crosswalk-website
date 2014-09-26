@@ -48,12 +48,15 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  margin-top: modular-scale($base-font-size, 10, $base-ratio);
+
 
   @include media($mid) {
     @include display("flex");
     @include flex-flow("row wrap");
     @include justify-content("space-around");
     // @include align-items("baseline");
+    margin-top: 0;
     margin-left: -0.5 * $gutter;
     margin-right: -0.5 * $gutter;
   }
@@ -62,6 +65,7 @@
 .cards-item {
   margin: 0;
   list-style: none;
+  margin-bottom: modular-scale($base-font-size, 10, $base-ratio);
 
   .button {
     // max-width: 100%;
@@ -71,6 +75,7 @@
     text-align: center;
   }
   @include media($mid) {
+    margin-bottom: 0;
     margin-left: 0.5 * $gutter;
     margin-right: 0.5 * $gutter;
     @include flex(1);
