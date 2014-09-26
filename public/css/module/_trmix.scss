@@ -1,0 +1,79 @@
+// Coretext
+//
+// Text rendering on OS X and iOS
+//
+// .knockout - Only use font-smoothing for [light text on dark](http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing)
+//
+// Styleguide 3.1.
+.tr-coretext {
+  // Causes other bugs in Chrome on Windows and Linux for now
+  text-rendering: optimizeLegibility;
+  .knockout {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+// GDI
+//
+// Windows XP and Vista SP1
+//
+// Styleguide 3.2.
+.tr-gdi {
+
+}
+
+// DirectWrite
+//
+// Windows Vista SP2+
+//
+// Styleguide 3.3.
+.tr-directwrite {
+
+}
+
+.tr-unknown {
+
+}
+
+// Freetype
+//
+// Text rendering on Android and Linux
+//
+// Styleguide 3.4.
+.tr-freetype {
+
+}
+
+// No antialiasing
+//
+// Styleguide 3.5.
+.tr-aa-none,
+.tr-aa-unknown-none {
+  font-family: Verdana, serif;
+}
+
+// Grayscale antialiasing
+//
+// No styleguide reference.
+.tr-aa-grayscale {
+
+}
+
+.tr-aa-unknown-grayscale {
+
+}
+
+// Subpixel antialiasing
+//
+// No styleguide reference.
+.tr-aa-subpixel {
+
+}
+
+.tr-aa-unknown-subpixel {
+
+}
+
+.tr-aa-unknown {
+
+}
