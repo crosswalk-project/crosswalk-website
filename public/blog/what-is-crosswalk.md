@@ -11,7 +11,7 @@ This means Android developers can now deploy your mobile HTML5 application with 
 Using Crosswalk also allows you to use [state-of-the-art W3C* recommended HTML5 APIs](https://crosswalk-project.org/#documentation/apis). Several of the standards-based web features requested by app developers are enabled in Crosswalk and can be used today.
 
 <figure>
-![](/images/crosswalk-landing-withWithout-1.png)
+![](/assets/illustrations/crosswalk-landing-variety.png)
 <figcaption>Crosswalk creates a new context for you to work in—you’re not bound by the restrictions of the device’s default <code>WebView</code>.</figcaption>
 </figure>
 

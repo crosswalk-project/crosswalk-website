@@ -37,7 +37,7 @@
 
 .hero--bg1,
 .hero.hero--bg1 {
-  background: #000 url("/images/crosswalk-landing-banner-2.jpg") center top no-repeat;
+  background: #000 url("/assets/illustrations/crosswalk-landing-banner-2.jpg") center top no-repeat;
   background-size: cover;
   @include media($massive) {
     background-position: 75% top;
@@ -130,7 +130,7 @@
 //         <ul class="media-list">
 //           <li class="media-item">
 //             <a class="media-link" href="#">
-//               <img class="media-image" src="/images/icons/logo-cordova.svg" alt="Apache Cordova logo" />
+//               <img class="media-image" src="/assets/icons/logo-cordova.svg" alt="Apache Cordova logo" />
 //               <p class="media-description">
 //                 <strong class="media-heading">Apache Cordova compatable</strong>
 //                 Crosswalk includes Cordova / PhoneGap APIs
@@ -139,7 +139,7 @@
 //           </li>
 //           <li class="media-item">
 //             <a class="media-link" href="#">
-//               <img class="media-image" src="/images/icons/logo-cordova.svg" alt="Apache Cordova logo" />
+//               <img class="media-image" src="/assets/icons/logo-cordova.svg" alt="Apache Cordova logo" />
 //               <p class="media-description">
 //                 <strong class="media-heading">Apache Cordova compatable</strong>
 //                 Crosswalk includes Cordova / PhoneGap APIs
