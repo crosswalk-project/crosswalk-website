@@ -1,4 +1,11 @@
 {
+  "": {
+    "title": "Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView",
+    "date": "2014-09-22T09:00",
+    "author": "Michal Mocny",
+    "url": "http://blog.chromium.org/2014/09/now-with-faster-dev-workflow-and-modern.html",
+    "desc": "…now you have a way to leverage the latest Chromium WebView on any device running Android versions back to Ice Cream Sandwich by bundling your Chrome App with an embeddable Chromium WebView, provided by the Crosswalk open source project."
+  },
   "what-is-crosswalk": {
     "title": "What is Crosswalk and How you can use it with Intel XDK",
     "date": "2014-07-04T13:14",

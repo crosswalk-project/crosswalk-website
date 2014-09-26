@@ -145,6 +145,12 @@
   }
 }
 
+.article-item--external {
+  .article-title a:after {
+    content: " →";
+  }
+}
+
 .article-link {
   display: block;
   width: 100%;
