@@ -280,6 +280,12 @@
   }
 }
 
+.article--noLead > p:first-of-type {
+  margin-bottom: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 // Article Exerpt
 //
 // Exerpts used within article lists.
