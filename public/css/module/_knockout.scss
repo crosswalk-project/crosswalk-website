@@ -36,6 +36,18 @@
   .button.button--tertiary {
     text-shadow: none;
   }
+
+  .button-follower,
+  .button-follower:visited {
+    color: $color-gray;
+    &:hover,
+    &:focus {
+      color: darken($color-gray, 7.5%);
+    }
+    &:active {
+      color: darken($color-gray, 15%);
+    }
+  }  
 }
 
 // Well

@@ -106,7 +106,8 @@ a.button--large {
 // <a href="#" class="button-follower">You can always join later</a>
 //
 // Styleguide 3.1.2.
-.button-follower {
+.button-follower,
+.button-follower:visited {
   font-size: modular-scale($base-font-size, 0, $base-ratio);
   font-weight: 400;
   line-height: $base-line-height;
@@ -118,6 +119,7 @@ a.button--large {
   width: 100%;
   text-align: center;
   background: none;
+
 
   @include media($mid) {
     text-align: left;
