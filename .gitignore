@@ -15,6 +15,5 @@ components
 bower_components
 
 # Compile directories
-www/
 _book/
 public/styleguide/

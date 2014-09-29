@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Intel Crosswalk</title>
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Content security policy" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/content_security_policy" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/content_security_policy" />
+    <meta name="twitter:title" content="Content security policy" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started">Getting Started</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest">Manifest</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="using_the_manifest">Using the manifest</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="entry_points">Entry points</a>
+            </li>
+          
+            
+            
+            <li class="article-item  nav-item--active">
+              <a class="article-link" href="content_security_policy">Content security policy</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="display">Display</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="icons">Icons</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="launch_screen">Launch screen</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="orientation">Orientation</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="permissions">Permissions</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="xwalk_hosts">xwalk hosts</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions">Tizen IVI Extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Content security policy</h1>
+<p>The content security policy field specifies which types of content can be loaded and executed by the application. If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via <code>&lt;script&gt;</code>, <code>&lt;object&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;applet&gt;</code> elements).</p>
+<p><strong>For Crosswalk 4-7, this field was called <code>content_security_policy</code>. The name was changed to <code>csp</code> for Crosswalk 8+.</strong></p>
+<p>The suggested default value to provide minimal protection (Crosswalk 4-7) is:</p>
+<pre><code>&quot;content_security_policy&quot;: &quot;script-src &#39;self&#39;; object-src &#39;self&#39;&quot;</code></pre>
+<p>For Crosswalk 8+, the value is the same, but the field name is different:</p>
+<pre><code>&quot;csp&quot;: &quot;script-src &#39;self&#39;; object-src &#39;self&#39;&quot;</code></pre>
+<p>This restricts the application to using only JavaScripts (loaded via <code>&lt;script&gt;</code> elements) and objects (loaded via <code>&lt;object&gt;</code>, <code>&lt;embed&gt;</code>, and <code>&lt;applet&gt;</code> elements) from its own origin (i.e. distributed as part of the application, in the case of Crosswalk). It also implicitly applies other constraints, such as preventing the execution of inline scripts, and disabling <code>eval()</code> and other unsafe functions (see the next section).</p>
+<p>See Google&#39;s <a href="https://developer.chrome.com/extensions/contentSecurityPolicy">Content Security Policy (CSP)</a> page for some examples of the types of policy which can be set; <a href="http://www.w3.org/TR/CSP/">the full specification</a>, albeit for the HTTP headers variant of CSP, is also available.</p>
+<p>In the examples below, the long name for the field is used (<code>content_security_policy</code>); this should be replaced with <code>csp</code> if you are using Crosswalk 8 or later.</p>
+<h2>When to change the content security policy</h2>
+<p>You only need to change the content security policy settings if you want to tighten your application&#39;s security: as stated above, Crosswalk does not enforce content security unless you explicitly set the <code>content_security_policy</code> field.</p>
+<p>If you do decide to tighten your application&#39;s security and set a content security policy, you may find that the policy is <em>too</em> tight. In this case, you may need to loosen some of its constraints. The list below gives a few examples of setting a content security policy, but loosening it under specific conditions.</p>
+<ul>
+<li><p><strong>Enable the application to load scripts from a restricted range of remote hosts</strong></p>
+<p>In some cases, you may want to load a remote resource into a Crosswalk application: for example, load a resource from a content delivery network in an HTML page:</p>
+<pre><code>&lt;script src=&quot;http://cdn.crosswalk-project.org/utils.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p>At the same time, you may want to tighten Crosswalk&#39;s security to restrict the application to loading scripts <em>only</em> from that domain and from the app. (The default Crosswalk configuration allows loading scripts from any remote host.)</p>
+<p>In these cases, you can explicitly specify the CSP, whitelisting resources from the application itself and from known domains:</p>
+<pre><code>&quot;content_security_policy&quot;: &quot;script-src &#39;self&#39; https://cdn.crosswalk-project.org/; object-src &#39;self&#39;&quot;</code></pre>
+<p>This only allows scripts to be downloaded from the application itself or from <a href="https://cdn.crosswalk-project.org/">https://cdn.crosswalk-project.org/</a>. Note that you can only use arbitrary URLs with the &quot;https://&quot; scheme; or &quot;http://&quot; URLs which refer to &quot;localhost&quot; or &quot;127.0.0.1&quot;. The latter may be useful if you have your own server running on the same machine as the application.</p>
+</li>
+<li><p><strong>Enable the use of <code>eval()</code> inside scripts</strong></p>
+<p>The following CSP (recommended above as the minimum policy):</p>
+<pre><code>&quot;content_security_policy&quot;: &quot;script-src &#39;self&#39;; object-src &#39;self&#39;&quot;</code></pre>
+<p>disables the use of &quot;unsafe&quot; JavaScript. This means that any calls to <code>eval()</code> will not be allowed.</p>
+<p>In most cases, the recommendation is to avoid <code>eval()</code> <strong>at all costs</strong>, as it can be a vector for Cross-Site Scripting attacks. These can be particularly dangerous in the context of an application which has privileged access to system resources (the way a Crosswalk application does).</p>
+<p>However, you may find yourself in a situation where you are trying to use a third party library which depends on <code>eval()</code>; or in a situation where using <code>eval()</code> is the most sensible and pragmatic solution. In these situations, you may decide that it is appropriate to relax the content security policy to allow <code>eval()</code> to be invoked.</p>
+<p>You can allow the use of <code>eval()</code> by adding <code>&#39;unsafe-eval&#39;</code> to the CSP, as follows:</p>
+<pre><code>&quot;content_security_policy&quot;: &quot;script-src &#39;self&#39; &#39;unsafe-eval&#39;; object-src &#39;self&#39;&quot;</code></pre>
+</li>
+<li><p><strong>Enable inline JavaScript</strong></p>
+<p>In some situations, you may want to incorporate inline JavaScript in an HTML file via <code>&lt;script&gt;</code> elements. For example:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;my app&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;div id=&quot;content&quot;&gt;&lt;/div&gt;
+
+    &lt;!-- this is the inline script --&gt;
+    &lt;script&gt;
+    document.addEventListener(&#39;DOMContentLoaded&#39;, function () {
+      var elt = document.querySelector(&#39;#content&#39;);
+      elt.innerHTML = &#39;&lt;p&gt;Hello world&lt;/p&gt;&#39;;
+    });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>This is usually not necessary, as you can often put the script into an external file instead and reference it via the <code>src</code> attribute:</p>
+<pre><code>&lt;script src=&quot;myscript.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p>But there are occasionally cases where you may want to inline a script (e.g. for performance reasons).</p>
+<p>If you have inline JavaScript and have specified a <code>content_security_policy</code>, you may find that you get this warning:</p>
+<pre><code>Refused to execute inline script because it violates the following
+Content Security Policy directive: &quot;script-src &#39;self&#39;&quot;. Either
+the &#39;unsafe-inline&#39; keyword, a hash (&#39;sha256-...&#39;), or a
+nonce (&#39;nonce-...&#39;) is required to enable inline execution.</code></pre>
+<p>The quickest solution is to add the <code>&#39;unsafe-inline&#39;</code> keyword:</p>
+<pre><code>&quot;content_security_policy&quot;: &quot;script-src &#39;self&#39; &#39;unsafe-inline&#39;; object-src &#39;self&#39;&quot;</code></pre>
+<p>Inline scripts should now execute.</p>
+</li>
+</ul>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/manifest/display" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Display</h3>
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Mon, 22 Sep 2014 09:00:00 GMT">2014-09-22T09:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+    
+      <script src="/js/prism.js"></script>
+      <link async defer href="/css/prism.css" rel="stylesheet" />
+    
+  </body>
+</html>
