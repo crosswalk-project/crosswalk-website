@@ -5,35 +5,19 @@ Prepared by Chloi Inc. for Troy Allison of Intel.
 - Brock Whitten, [brock@chloi.io](mailto:brock@chloi.io)
 - Kenneth Ormandy, [kenneth@chloi.io](mailto:kenneth@chloi.io)
 
-## Run in production
-
-1. Install NodeJS [download here](http://nodejs.org/download/)
-
-2. Install [Harp](http://harpjs.com) web server...
-
-        npm install --gobal harp
-
-3. Clone the project...
-
-        git clone https://github.com/chloi/intel-crosswalk path/to/project
-
-4. Start the server in production mode
-
-         --port 80
-
 ## Running the project
 
 This static site for Crosswalk is built with:
 
 - [Node.js](http://nodejs.org)
 - [Harp](http://harpjs.com), the static web server with build-in preprocessing
-- [KSS](https://github.com/kss-node/kss-node), to build the styleguide
+- [KSS](https://github.com/kss-node/kss-node), which creates the styleguide
 
-Once Node.js is installed, just run the following commands:
+First, [install Node.js](http://nodejs.org). Then, run the following commands:
 
 ```sh
 # Install Harp. You may need to preface this command with `sudo`
-npm install -g harp
+npm install --global harp
 
 # Clone this project from GitHub
 git clone https://github.com/chloi/intel-crosswalk
@@ -52,7 +36,7 @@ harp server
 To run Harp in production:
 
 ```
-NODE_ENV=production harp server
+NODE_ENV=production harp server --port 80
 ```
 
 You can also use Harp to compile the site down to flat files, which can then be
