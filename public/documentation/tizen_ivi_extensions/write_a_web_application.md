@@ -34,7 +34,7 @@ Copy an icon file to the `simple-extension-app/app` directory, to serve as the a
 
 You can use this image if you don't have a suitable one of your own:
 
-<img src="assets/icon.png">
+<img src="/assets/icon.png">
 
 To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser); save it as `icon.png`.
 

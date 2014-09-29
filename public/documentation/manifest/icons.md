@@ -227,4 +227,4 @@ The *townxelliot media player* icon was modified from an original icon created b
 
 The modified icon is made available here to satisfy the terms of the licence, and is released under the same CC BY-SA licence:
 
-<img alt="Modified radio icon" title="Modified radio icon" src="assets/radio.png">
+<img alt="Modified radio icon" title="Modified radio icon" src="/assets/radio.png">
