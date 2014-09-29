@@ -106,14 +106,11 @@
     @include span-columns(3);
   }
   @include media($mid) {
-    @include span-columns(4 of 6);
+    @include span-columns(6 of 6);
     margin-top: 0;
     font-size: modular-scale($base-font-size, 7, $base-ratio);
   }
-  @include media($huge-width * 1.5) {
-    @include shift(-1 of 6);
-    // font-size: modular-scale($base-font-size, 9, $base-ratio);
-    // @include span-columns(6 of 6);
+  @include media($wide) {
     @include span-columns(5 of 6);
   }
 }
