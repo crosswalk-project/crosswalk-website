@@ -19,7 +19,7 @@
 // </ul>
 //
 // .article--narrow   - Thinner at mid width
-// .article--withSide - Includes an .article-side module
+// .article--hasToc   - Includes an .article-toc module
 //
 // Styleguide 3.13.1.
 .article,
@@ -34,7 +34,7 @@
 }
 
 
-.article--withSide {
+.article--hasToC {
   @include media($wide) {
     border-left: 1px solid $color-gray-light;
     padding-left: $gutter * 1;
@@ -56,13 +56,13 @@
   }
 }
 
-// Article Side
+// Article Table of Contents
 //
 // Secondary navigation for blog posts, documentation, etc.
 // Includes an `.article-list` inside.
 //
 // Markup:
-// <nav class="article-side">
+// <nav class="article-toc">
 //   <ul class="article-list">
 //     <li class="article-item">
 //       <a class="article-link" href="#">Main Item Title 1</a>
@@ -93,7 +93,7 @@
 // </nav>
 //
 // Styleguide 3.13.2.
-.article-side {
+.article-toc {
   @include span-columns(6 of 6);
   @include media($wide) {
     @include span-columns(2 of 6);
@@ -188,23 +188,6 @@
   }
 }
 
-// Artilce Nav
-//
-// Table of contents for long articles,
-// but moreso for documentation.
-//
-// Markup:
-// <nav class="article-nav">
-//   <a href="#cloning-crosswalk">Cloning Crosswalk</a>
-//   <a href="#installing-dependencies">Installing dependencies</a>
-//   <a href="#running-hello-world">Running “Hello, world”</a>
-// </nav>
-//
-// Styleguide 3.13.4.
-.article-nav {
-  @include span-columns(4 of 4);
-}
-
 // Artilce Title
 //
 // No styleguide reference.
@@ -227,7 +210,7 @@
 //   <span class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></span>
 // </header>
 //
-// Styleguide 3.13.5.
+// Styleguide 3.13.4.
 .article-header {
   margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
 }
@@ -242,7 +225,7 @@
 // </header>
 // <img class="article-hero" src="http://placehold.it/1500x300" alt="Example hero image" />
 //
-// Styleguide 3.13.6.
+// Styleguide 3.13.5.
 .article-hero {
   margin-top: modular-scale($base-font-size, 0, $base-ratio);
   margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
@@ -270,7 +253,7 @@
 //   <p>This means Android developers can now deploy your mobile HTML5 application with its own runtime without a dependence on the native WebView that is on your customer's device for all Android 4.0+ devices.</p>
 // </article>
 //
-// Styleguide 3.13.7.
+// Styleguide 3.13.6.
 .lead,
 .article > p:first-of-type {
   @include media($mid) {
@@ -295,7 +278,7 @@
 //   <p>Crosswalk is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities. <a href="#">Read more…</a>
 // </div>
 //
-// Styleguide 3.13.8.
+// Styleguide 3.13.7.
 .article-exerpt {
 
 }
@@ -312,7 +295,7 @@
 //
 // .well - A Bootstrap-like “Well,” distinguishes the content with alternate styling (usually a grey box)
 //
-// Styleguide 3.13.9.
+// Styleguide 3.13.8.
 .article-promo {
   display: block;
   background-image: none;
@@ -370,7 +353,7 @@
 //   </ol>
 // </article>
 //
-// Styleguide 3.13.10.
+// Styleguide 3.13.9.
 .article {
   ul,
   ol,

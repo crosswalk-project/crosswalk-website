@@ -4,7 +4,7 @@
 //
 // .knockout - Only use font-smoothing for [light text on dark](http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing)
 //
-// Styleguide 3.1.
+// Styleguide 3.15.1.
 .tr-coretext {
   // Causes other bugs in Chrome on Windows and Linux for now
   text-rendering: optimizeLegibility;
@@ -17,7 +17,7 @@
 //
 // Windows XP and Vista SP1
 //
-// Styleguide 3.2.
+// Styleguide 3.15.2.
 .tr-gdi {
 
 }
@@ -26,7 +26,7 @@
 //
 // Windows Vista SP2+
 //
-// Styleguide 3.3.
+// Styleguide 3.15.3.
 .tr-directwrite {
 
 }
@@ -39,14 +39,14 @@
 //
 // Text rendering on Android and Linux
 //
-// Styleguide 3.4.
+// Styleguide 3.15.4.
 .tr-freetype {
 
 }
 
 // No antialiasing
 //
-// Styleguide 3.5.
+// Styleguide 3.15.5.
 .tr-aa-none,
 .tr-aa-unknown-none {
   font-family: Verdana, serif;

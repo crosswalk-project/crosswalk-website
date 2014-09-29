@@ -1,7 +1,36 @@
+// Footer
+//
+// A site-wide footer.
+//
+// Markup:
+// <footer class="footer">
+//   <small>Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation.</small>
+// </footer>
+//
+// Styleguide 3.10.1.
 .footer {
   padding-top: modular-scale($base-font-size, 12, $base-ratio);
   padding-bottom: modular-scale($base-font-size, 5, $base-ratio);
   .row {
     margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
   }
+}
+
+// Block
+//
+// A chunk of content in the footer.
+//
+// Markup:
+// <footer class="footer">
+//   <div class="footer-block">
+//     <p>Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.</p>
+//   </div>
+//   <div class="footer-block">
+//     <small>Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation.</small>
+//   </div>
+// </footer>
+//
+// Styleguide 3.10.2.
+.footer-block {
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
 }
