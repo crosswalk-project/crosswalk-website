@@ -157,6 +157,7 @@
 .nav-toggle {
   display: block;
   visibility: visible;
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
   @include media($wide) {
     display: none;
     visibility: hidden;

@@ -363,7 +363,7 @@
     margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
     margin-left: modular-scale($base-font-size, 4, $base-ratio);
     margin-right: modular-scale($base-font-size, 4, $base-ratio);
-    @include media($wide) {
+    @include media($huge) {
       margin-left: modular-scale($base-font-size, 8, $base-ratio);
       margin-right: modular-scale($base-font-size, 8, $base-ratio);
     }
