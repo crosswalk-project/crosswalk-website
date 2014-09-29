@@ -1,7 +1,5 @@
 /*
- * This file can be automatically edited and pushed to the
- * live website through the use of the `./site.sh promote`
- * script.
+ * This approach was carried over from the previous site.
  *
  * version.js used to dynamically update the content
  * shown on the main site, including the home page and any
@@ -31,9 +29,6 @@
  *   crosswalk-2.31.27.0.zip
  *   crosswalk-${XWALK-BETA-ANDROID-X86}.zip
  *
- * See './site.sh promote' for a script to update this file
- * and push it to the website without pushing an entirely new
- * website (eg., without needing to run './site.sh mklive').
  *
  */
 var versions = {
