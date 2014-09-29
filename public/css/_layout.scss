@@ -150,6 +150,30 @@
   @include span-columns(4 of 4);
 }
 
+.grid-1-of-2,
+.grid-1-of-3,
+.grid-2-of-3 {
+  .grid-1-of-2 {
+    @include span-columns(1 of 2);
+  }
+}
+
+.grid-1-of-2,
+.grid-1-of-3,
+.grid-2-of-3 {
+  .grid-1-of-3 {
+    @include span-columns(1 of 3);
+  }
+}
+
+.grid-1-of-2,
+.grid-1-of-3,
+.grid-2-of-3 {
+  .grid-2-of-3 {
+    @include span-columns(2 of 3);
+  }
+}
+
 @include media($wide) {
 
   .grid-1-of-2 {
