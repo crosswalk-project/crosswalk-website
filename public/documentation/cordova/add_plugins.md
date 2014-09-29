@@ -90,7 +90,7 @@ Once installed, add a plugin to your Crosswalk Cordova project as follows:
 
     The result should look like this:
 
-    <img src="assets/cordova-hello-world-with-accelerometer.png">
+    <img src="/assets/cordova-hello-world-with-accelerometer.png">
 
 As with standard Cordova, you should still follow the Cordova guidelines for integrating plugins with your application (e.g. [waiting for the "device ready" event before using plugin features](http://cordova.apache.org/docs/en/3.3.0/cordova_events_events.md.html#deviceready)).
 

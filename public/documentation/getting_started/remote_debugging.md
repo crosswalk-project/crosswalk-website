@@ -97,7 +97,7 @@ cordova run android
 <li>
 <p>On the host, open a Chrome browser and go to "chrome://inspect" in the address bar. This should show a list of attached devices, with your application listed, for example:</p>
 
-<img src="assets/crosswalk-debug-in-chrome.png" title="Debugging a Crosswalk application in Chrome" alt="Debugging a Crosswalk application in Chrome">
+<img src="/assets/crosswalk-debug-in-chrome.png" title="Debugging a Crosswalk application in Chrome" alt="Debugging a Crosswalk application in Chrome">
 
 <p>(The application available for debugging is highlighted with a red box in the image.)</p>
 

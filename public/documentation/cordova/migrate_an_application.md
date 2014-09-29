@@ -83,7 +83,7 @@ To create the project for the application:
 
 If the above steps work correctly, the kitchen sink application should be running on the target. For example, here it is on an x86 ZTE Geek:
 
-<img src="assets/cordova-kitchensink.png">
+<img src="/assets/cordova-kitchensink.png">
 
 <h2 id="Migrate-to-Crosswalk">Migrate to Crosswalk</h2>
 
@@ -278,7 +278,7 @@ These steps assume that you created your project using the Cordova command line 
 
     <p>The final result should resemble this:</p>
 
-    <img src="assets/cordova-project-refs-adt.png">
+    <img src="/assets/cordova-project-refs-adt.png">
   </li>
 
   <li>
@@ -305,7 +305,7 @@ These steps assume that you created your project using the Cordova command line 
   <li>
     <p>To test the application on a target, right-click on the application project in the <em>Package Explorer</em>. Choose <em>Run As...</em> > <em>Android Application</em>. A list of available targets should be displayed, for example:</p>
 
-    <img src="assets/cordova-adt-target-select.png">
+    <img src="/assets/cordova-adt-target-select.png">
 
     <p>Select the target you want and click <em>OK</em> (remember the architecture must be aligned with the architecture of the crosswalk-cordova-android bundle). ADT will package the project, install it on the target, and run it.</p>
   </li>
@@ -437,7 +437,7 @@ These instructions assume that you have already [migrated a Cordova application 
 
         <p>Rename the projects so that they are distinct from any existing Crosswalk Cordova libraries you have imported by clicking on the entries under <em>New Project Name</em>. For example:</p>
 
-        <img src="assets/cordova-adt-import-and-rename-projects.png">
+        <img src="/assets/cordova-adt-import-and-rename-projects.png">
 
         <p>In the screenshot above, note that the libraries were renamed to <strong>CrosswalkCordova8</strong> and <strong>xwalk_core_library8</strong>. In the following steps, where these names are used, replace them with whichever names you used when renaming the imported proejcts.</p>
 
@@ -457,7 +457,7 @@ These instructions assume that you have already [migrated a Cordova application 
 
     <p>The final result should resemble this:</p>
 
-    <img src="assets/cordova-adt-add-updated-projects.png">
+    <img src="/assets/cordova-adt-add-updated-projects.png">
   </li>
 
   <li>

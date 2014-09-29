@@ -99,7 +99,7 @@ Here's a summary of the steps for Fedora 20, using VMware Workstation and the `t
 
 22. Eventually, you should see the Tizen IVI image boot:
 
-    <img src="assets/tizen-ivi-vmware.png">
+    <img src="/assets/tizen-ivi-vmware.png">
 
 #### VMware tips/reminders
 

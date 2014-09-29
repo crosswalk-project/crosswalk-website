@@ -75,7 +75,7 @@ Next, create an Android application which will use the Crosswalk embedding API (
 
     <p>It should look like this:</p>
 
-    <img src="assets/embedding-api-app1.png">
+    <img src="/assets/embedding-api-app1.png">
 
     <p>Click <em>Next</em>.</p>
   </li>
@@ -92,7 +92,7 @@ Next, create an Android application which will use the Crosswalk embedding API (
 
     <p>The result should look like this:</p>
 
-    <img src="assets/embedding-api-app2.png">
+    <img src="/assets/embedding-api-app2.png">
 
     <p>Click <em>Next</em>.</p>
   </li>
@@ -100,7 +100,7 @@ Next, create an Android application which will use the Crosswalk embedding API (
   <li>
     <p>In the <em>Create Activity</em> panel, select <em>Create Activity</em> and <em>Blank Activity</em>:</p>
 
-    <img src="assets/embedding-api-app3.png">
+    <img src="/assets/embedding-api-app3.png">
 
     <p>Click <em>Next</em>.</p>
   </li>
@@ -117,7 +117,7 @@ Next, create an Android application which will use the Crosswalk embedding API (
 
     <p>It should look like this:</p>
 
-    <img src="assets/embedding-api-app4.png">
+    <img src="/assets/embedding-api-app4.png">
 
     <p>Click <em>Finish</em>.</p>
   </li>

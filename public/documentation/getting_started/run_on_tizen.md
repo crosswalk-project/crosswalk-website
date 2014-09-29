@@ -134,7 +134,7 @@ Pass the ID to the `xwalk-launcher` command, in the same shell you used to insta
 
 The application should now start on the target. Here it is running on an emulated Tizen IVI device, on Fedora Linux:
 
-<img src="assets/xwalk-simple-on-tizen-ivi.png">
+<img src="/assets/xwalk-simple-on-tizen-ivi.png">
 
 To start the application in fullscreen mode, you can either [configure this in the manifest](/documentation/manifest/display) or pass the `--fullscreen` option to `xwalk-launcher`:
 

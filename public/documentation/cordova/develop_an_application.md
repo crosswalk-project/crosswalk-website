@@ -71,7 +71,7 @@ The command installs the HelloWorld package on the target and starts it. (If the
 
 On the target, you should see the "APACHE CORDOVA" page with a blinking "DEVICE IS READY" element. For example, this is HelloWorld running on an x86 ZTE Geek phone:
 
-<img src="assets/cordova-hello-world.png">
+<img src="/assets/cordova-hello-world.png">
 
 Please refer to [Android Command-line Tools](http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_tools.md.html#Android%20Command-line%20Tools) for more command-line commands.
 
