@@ -6,12 +6,13 @@ These are the recommended steps for contributing code to Crosswalk:
 
 * Choose or create a bug report to work on.
 * Declare your "intent to implement".
+* [Fork Crosswalk from GitHub.](https://help.github.com/articles/fork-a-repo)
 * Develop your changes.
 * Make sure your changes meet the code style guidelines. The check-style script may be of help.
 * Run the unit tests.
 * Add any new files to your working directory.
 * Prepare your commit message.
-* Submit your patch for review using the Github pull request system.
+* [Submit your patch for review using the Github pull request system.](https://help.github.com/articles/using-pull-requests)
 * Make any changes recommended by the reviewer.
 * Once reviewed, the patch will be landed for you.
 * Please watch for any regressions it may have caused (hopefully none)!
