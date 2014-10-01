@@ -1,18 +1,17 @@
 # Contributing Code
-This page outlines the process for contributing code to Crosswalk. For information on obtaining the source and building Crosswalk, see [Building Crosswalk](#contribute/building_crosswalk).
+This page outlines the process for contributing code to Crosswalk. For information on obtaining the source and building Crosswalk, see [Building Crosswalk](/contribute/building_crosswalk).
 
 ## Overview
 These are the recommended steps for contributing code to Crosswalk:
 
 * Choose or create a bug report to work on.
 * Declare your "intent to implement".
-* [Fork Crosswalk from GitHub.](https://help.github.com/articles/fork-a-repo)
 * Develop your changes.
 * Make sure your changes meet the code style guidelines. The check-style script may be of help.
 * Run the unit tests.
 * Add any new files to your working directory.
 * Prepare your commit message.
-* [Submit your patch for review using the Github pull request system.](https://help.github.com/articles/using-pull-requests)
+* Submit your patch for review using the Github pull request system.
 * Make any changes recommended by the reviewer.
 * Once reviewed, the patch will be landed for you.
 * Please watch for any regressions it may have caused (hopefully none)!
@@ -41,7 +40,7 @@ You should note the ID of the issue you work on, so you can include it in your "
 
 In an attempt to improve the efficiency of code reviews, we are taking a page from the Blink project and adopting the practice of "intent to implement". The idea is to let owners and other developers know what a developer (or development team) plans to implement, and when and how they intend to do it. This gives the community a chance to comment on early design choices, avoiding the cost of undoing or redoing work when an implementation is already too far ahead.
 
-An intent to implement is required for new features, non-trivial refactoring, or for implementations which are likely to be controversial. If you're not sure whether your implementation falls into one of these categories, ask for advice about how to proceed by using the [crosswalk-dev mailing list or #crosswalk IRC channel](#contribute/community).
+An intent to implement is required for new features, non-trivial refactoring, or for implementations which are likely to be controversial. If you're not sure whether your implementation falls into one of these categories, ask for advice about how to proceed by using the [crosswalk-dev mailing list or #crosswalk IRC channel](/contribute/community).
 
 To declare an "intent to implement", a developer should send a mail to the [crosswalk-dev mailing list](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev) following the outline below.
 
@@ -71,7 +70,7 @@ short discussion, or a link to a design document
 is started before extensive design is done&gt;
 </pre>
 
-The plan should be approved ("LGTM") by the [relevant owner(s)](https://crosswalk-project.org/#contribute/reviewer_policy/The-OWNERS-files) before substantial work is carried out.
+The plan should be approved ("LGTM") by the [relevant owner(s)](https://crosswalk-project.org/contribute/reviewer_policy) before substantial work is carried out.
 
 ## Develop your changes
 
@@ -79,11 +78,14 @@ After your "intent to implement" has been approved, you can begin working on you
 
 Make sure that any new source code you introduce contains the appropriate license text at the beginning of the file. If you are the author of a new file, the preferred license text to include can be found in the LICENSE file or any existing file.
 
+You should also add your name to the AUTHORS file the first time you make a patch.
+
 ## Code style guidelines
 
 Patches must comply with the code style guidelines. Your patch will be automatically checked for style compliance when you upload it to the bug tracker.
 
-See the [Crosswalk coding style](#contribute/coding_style) for details.
+See the [Crosswalk coding style](/contribute/coding_style) for details.
+
 
 ## Commit message guidelines
 
@@ -97,7 +99,7 @@ Your commits and/or PRs should reference the ID of the issue you are working on.
 
     Only opening and closing a PR (with an issue ID in the description) will result in a comment being added to Jira. Updating a PR will *not* update related Jira issues.
 
-*   To close a related Jira issue, add a line with the format **BUG=XWALK-N** to a PR description (NB this is case sensitive). Doing this will resolve the corresponding issue in Jira when the PR is merged. Using the issue URL (**BUG=https://path/to/issue/XWALK-N**) is also acceptable.
+*   To close a related Jira issue, add a line with the format **BUG=XWALK-N** to a PR description (NB this is case sensitive). Doing this will resolve the corresponding issue in Jira when the PR is merged. Using the issue URL `(**BUG=https://path/to/issue/XWALK-N**)` is also acceptable.
 
     For example, if your PR closes issue XWALK-898, you could include this in the PR description:
 
@@ -115,13 +117,9 @@ Note that although the prefix is "BUG=", this mechanism applies to features and 
 
 ## Regression tests
 
-Crosswalk relies on [Buildbot](http://buildbot.net) for automatically testing each patch sent or committed to the source repository.
+A buildbot infrastructure will be available soon. Those buildbots will run the unit tests and the browser tests.
 
-* Each patch submitted as a pull request in GitHub is built for different platforms (such as Android and Tizen), different tests are run on the built binaries and the results are reported back to the pull request. You can see what each slave is doing [here](https://build.crosswalk-project.org/try/).
-
-* Each patch committed to the tree is then built and tested again (the target platforms and the tests run can differ from the ones above), and if any slave has problems the committer and the person who merged the pull request are notified via email. You can see what each slave is doing [here](https://build.crosswalk-project.org/).
-
-Keeping all platforms building and working correctly is of utmost importance: if a patch ends up causing regressions, it will be reverted and will need to be landed again once it is verified that it does not break anything -- do not worry, though, having a patch reverted is OK and is part of Crosswalk's workflow.
+You are responsible for keeping the tree green. If the tree is red because of your patch, it may be that your commit will be reverted if the other contributors can't reach you or can't fix the problem themselves.
 
 ## Respond to reviewers
 
@@ -133,4 +131,4 @@ By default, contributors do not have push rights to Crosswalk repositories. Afte
 
 ## Obtaining review privileges
 
-Our [Reviewer policy](#contribute/Reviewer_Policy) provides details on obtaining review privileges.
+Our [Reviewer policy](/contribute/reviewer_policy) provides details on obtaining review privileges.
