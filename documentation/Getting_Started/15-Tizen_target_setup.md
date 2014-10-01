@@ -4,7 +4,7 @@ To run Crosswalk applications on Tizen, you need to install the Crosswalk runtim
 
 You can use either a physical Tizen device or an emulated one (virtual machine) as a target. The instructions below cover both, but mainly concentrate on using a Tizen IVI virtual machine.
 
-Crosswalk is available for Tizen version 2.1 or higher.
+Crosswalk is available for Tizen version 3.0 or higher.
 
 Tizen extensions for Crosswalk are also available, which enable you to make use of [Tizen APIs](https://developer.tizen.org/documentation/dev-guide/2.2.1?redirect=https%3A//developer.tizen.org/dev-guide/2.2.1/org.tizen.web.appprogramming/html/api_reference/api_reference.htm) in applications running in Crosswalk on Tizen. We don't need them for this tutorial, so we won't cover them here.
 

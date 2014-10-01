@@ -6,12 +6,13 @@ These are the recommended steps for contributing code to Crosswalk:
 
 * Choose or create a bug report to work on.
 * Declare your "intent to implement".
+* [Fork Crosswalk from GitHub.](https://help.github.com/articles/fork-a-repo)
 * Develop your changes.
 * Make sure your changes meet the code style guidelines. The check-style script may be of help.
 * Run the unit tests.
 * Add any new files to your working directory.
 * Prepare your commit message.
-* Submit your patch for review using the Github pull request system.
+* [Submit your patch for review using the Github pull request system.](https://help.github.com/articles/using-pull-requests)
 * Make any changes recommended by the reviewer.
 * Once reviewed, the patch will be landed for you.
 * Please watch for any regressions it may have caused (hopefully none)!
@@ -78,14 +79,11 @@ After your "intent to implement" has been approved, you can begin working on you
 
 Make sure that any new source code you introduce contains the appropriate license text at the beginning of the file. If you are the author of a new file, the preferred license text to include can be found in the LICENSE file or any existing file.
 
-You should also add your name to the AUTHORS file the first time you make a patch.
-
 ## Code style guidelines
 
 Patches must comply with the code style guidelines. Your patch will be automatically checked for style compliance when you upload it to the bug tracker.
 
 See the [Crosswalk coding style](#contribute/coding_style) for details.
-
 
 ## Commit message guidelines
 
@@ -117,9 +115,13 @@ Note that although the prefix is "BUG=", this mechanism applies to features and 
 
 ## Regression tests
 
-A buildbot infrastructure will be available soon. Those buildbots will run the unit tests and the browser tests.
+Crosswalk relies on [Buildbot](http://buildbot.net) for automatically testing each patch sent or committed to the source repository.
 
-You are responsible for keeping the tree green. If the tree is red because of your patch, it may be that your commit will be reverted if the other contributors can't reach you or can't fix the problem themselves.
+* Each patch submitted as a pull request in GitHub is built for different platforms (such as Android and Tizen), different tests are run on the built binaries and the results are reported back to the pull request. You can see what each slave is doing [here](https://build.crosswalk-project.org/try/).
+
+* Each patch committed to the tree is then built and tested again (the target platforms and the tests run can differ from the ones above), and if any slave has problems the committer and the person who merged the pull request are notified via email. You can see what each slave is doing [here](https://build.crosswalk-project.org/).
+
+Keeping all platforms building and working correctly is of utmost importance: if a patch ends up causing regressions, it will be reverted and will need to be landed again once it is verified that it does not break anything -- do not worry, though, having a patch reverted is OK and is part of Crosswalk's workflow.
 
 ## Respond to reviewers
 

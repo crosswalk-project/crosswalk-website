@@ -66,7 +66,7 @@ To create the project for the application:
         cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-globalization.git#r0.2.7
         cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git#r0.4.0
         cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git#r0.2.10
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media-capture.git#r0.3.0
+        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media-capture.git#r0.3.2
         cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-network-information.git#r0.2.8
         cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git#r0.3.0
         cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibration.git#r0.3.8
@@ -110,7 +110,7 @@ Once you have the application working with standard Cordova, you can move on to 
 
     These will be replaced with the Crosswalk-enabled equivalent.
 
-3.  Copy the `framework/` directory from the crosswalk-cordova-android bundle you unpacked earlier:
+3.  Copy the contents of the `framework/` directory from the crosswalk-cordova-android bundle you unpacked earlier:
 
         $ cp -a <path_to_unpacked_bundle>/framework/* \
             platforms/android/CordovaLib/
