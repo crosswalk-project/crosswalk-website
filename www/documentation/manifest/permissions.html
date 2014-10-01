@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Intel Crosswalk</title>
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Permissions" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/permissions" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/permissions" />
+    <meta name="twitter:title" content="Permissions" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started">Getting Started</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest">Manifest</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="using_the_manifest">Using the manifest</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="entry_points">Entry points</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="content_security_policy">Content security policy</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="display">Display</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="icons">Icons</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="launch_screen">Launch screen</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="orientation">Orientation</a>
+            </li>
+          
+            
+            
+            <li class="article-item  nav-item--active">
+              <a class="article-link" href="permissions">Permissions</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="xwalk_hosts">xwalk hosts</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions">Tizen IVI Extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Permissions</h1>
+<p>The <code>permissions</code> (Crosswalk 4-7) and <code>xwalk_permissions</code> (Crosswalk 8+) fields are Crosswalk-specific and non-standard. They is used to set permissions in the <code>AndroidManifest.xml</code> file when packaging an application for Crosswalk on Android.</p>
+<p>This is necessary because Android applications cannot request permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.</p>
+<p><strong>Note:</strong> If you are <a href="/documentation/manifest/using_the_manifest/Load-an-application-into-an-embedded-Crosswalk">loading an application from a manifest with the embedding API</a>, you will have to manually specify permissions for Crosswalk in <code>AndroidManifest.xml</code>. See the <a href="#Permissions-required-by-API">section below</a> for guidance on which Android permissions are required by Crosswalk&#39;s <a href="/documentation/apis/web_apis">web APIs</a>.</p>
+<h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
+
+<p>The <code>make_apk.py</code> script translates the <code>permissions</code> or <code>xwalk_permissions</code> field in <code>manifest.json</code> into <code>&lt;android:uses-permission&gt;</code> elements in <code>AndroidManifest.xml</code>.</p>
+<p>For example, given the following manifest (Crosswalk 8+):</p>
+<pre><code>{
+  &quot;name&quot;: &quot;simple&quot;,
+  &quot;version&quot;: &quot;0.0.0.1&quot;,
+  &quot;app&quot;: {
+    &quot;launch&quot;:{
+      &quot;local_path&quot;: &quot;index.html&quot;
+    }
+  },
+  &quot;xwalk_permissions&quot;: [
+    &quot;Contacts&quot;,
+    &quot;Geolocation&quot;,
+    &quot;Messaging&quot;,
+    &quot;Vibration&quot;
+  ],
+  &quot;icons&quot;: {
+    &quot;96&quot;: &quot;icon.png&quot;
+  }
+}</code></pre>
+<p>...and this <code>make_apk.py</code> command line:</p>
+<pre><code>python make_apk.py --package=org.crosswalkproject.example \
+  --manifest=manifest.json</code></pre>
+<p>...the following <code>AndroidManifest.xml</code> permission elements are generated:</p>
+<pre><code>&lt;!-- permissions always added during packaging --&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.CAMERA&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;
+
+&lt;!-- permissions added due to the &quot;permissions&quot; manifest field --&gt;
+&lt;uses-permission android:name=&quot;android.permission.READ_CONTACTS&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.WRITE_CONTACTS&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.READ_SMS&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.RECEIVE_SMS&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.WRITE_SMS&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot;/&gt;</code></pre>
+<p>Note that the <code>make_apk.py</code> script always adds a default set of permissions (the first group in the example above). Only the second group of permissions are the ones added because of the presence of the <code>xwalk_permissions</code> field in the manifest. The mappings from permissions in the manifest to Android permissions are shown in the <a href="#Permissions-required-by-API">table in the next section</a>.</p>
+<p>Alternatively, permissions can be specified on the command line and not included in <code>manifest.json</code>. For example, the following command line option would have the same effect as the manifest shown:</p>
+<pre><code>--permissions=Contacts:Geolocation:Messaging:Vibration</code></pre>
+<p>Note that permission values are not case sensitive (either in the manifest or on the command line), so the following would be equivalent:</p>
+<pre><code>--permissions=contacts:geolocation:messaging:vibration</code></pre>
+<h2 id="Permissions-required-by-API">Permissions required by API</h2>
+
+<p>If you want to use some of Crosswalk&#39;s web APIs in an application, you may need to add permissions to <code>AndroidManifest.xml</code> to make those APIs accessible. You can either do this via the <a href="/documentation/getting_started/run_on_android">packaging script</a>, or manually (if you are using the embedding API).</p>
+<p>The table below shows which web APIs require which permissions.</p>
+<table>
+  <tr>
+    <th>
+      Crosswalk web API
+    </th>
+
+    <th>
+      Permission in manifest.json or on <code>make_apk.py</code> command line
+    </th>
+
+    <th>
+      AndroidManifest.xml permission(s)
+    </th>
+  </tr>
+
+  <tr>
+    <td>
+      Contacts
+    </td>
+
+    <td>
+      Contacts
+    </td>
+
+    <td>
+      android.permission.READ_CONTACTS<br>
+      android.permission.WRITE_CONTACTS
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <a href="http://www.w3.org/TR/geolocation-API/">Geolocation</a>
+    </td>
+
+    <td>
+      Geolocation
+    </td>
+
+    <td>
+      android.permission.ACCESS_FINE_LOCATION
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Messaging
+    </td>
+
+    <td>
+      Messaging
+    </td>
+
+    <td>
+      android.permission.READ_SMS<br>
+      android.permission.READ_PHONE_STATE<br>
+      android.permission.RECEIVE_SMS<br>
+      android.permission.SEND_SMS<br>
+      android.permission.WRITE_SMS
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <a href="http://www.w3.org/TR/vibration/">Vibration</a>
+    </td>
+
+    <td>
+      Vibration
+    </td>
+
+    <td>
+      android.permission.VIBRATE
+    </td>
+  </tr>
+</table>
+
+<p>For example, you may have an Android application which embeds Crosswalk, and want to use the JavaScript <a href="http://www.w3.org/TR/vibration/">Vibration API</a> in the web application part of the app. In this case, you would need to manually add this permission to <code>AndroidManifest.xml</code>:</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot;/&gt;</code></pre>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/manifest/xwalk_hosts" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>xwalk hosts</h3>
+      </a>
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Mon, 22 Sep 2014 09:00:00 GMT">2014-09-22T09:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+    
+      <script src="/js/prism.js"></script>
+      <link async defer href="/css/prism.css" rel="stylesheet" />
+    
+  </body>
+</html>

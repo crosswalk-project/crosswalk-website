@@ -1,0 +1,147 @@
+// Blockquote
+//
+// A stylised blockquote, for when you want to cite someone else’s words.
+//
+// Markup:
+// <blockquote class="blockquote {$modifiers}">
+//   <footer>
+//     <img src="http://placehold.it/100x100" alt="" />
+//     <strong>Amol Kher</strong>
+//     Former Engineer Manager at Netflix said
+//   </footer>
+//   <p>We see almost around 1,000 different devices streaming Netflix on Android every day.</p>
+// </blockquote>
+//
+// .blockquote--left   - A left-aligned blockquote
+// .blockquote--right  - A left-aligned blockquote
+// .blockquote--center - Another way to use the centre-aligned blockquote
+//
+// Styleguide 3.2.1.
+blockquote,
+.blockquote,
+.blockquote--center {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  font-size: 1.25rem;
+  @include media($mid) {
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+  @include media($wide) {
+    font-size: 1.75rem;
+  }
+  @include media($huge) {
+    font-size: 2rem;
+  }
+  @include media(min-width $huge-width min-height 40em) {
+    font-size: 2.75rem;
+  }
+  p:first-of-type:before {
+    content: open-quote;
+  }
+  p:last-of-type:after {
+    content: close-quote;
+  }
+  p:last-of-type {
+    margin: 0;
+  }
+
+
+  footer {
+    text-align: left;
+    font-size: 1rem;
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 15em;
+    margin-bottom: modular-scale($base-font-size, -2, $base-line-height);
+    @include media($wide) {
+      max-width: 33%;
+    }
+    strong {
+      &:after {
+        content: ", ";
+      }
+      @include media($wide) {
+        display: block;
+      }
+
+    }
+    // Could be swaped with media obj
+    img {
+      float: left;
+      margin-right: $gutter;
+      border-radius: $base-border-radius;
+      max-width: 3em;
+      margin-bottom: $base-line-height * 1em;
+      display: block;
+      // margin: 0 auto;
+    }
+  }
+}
+
+.blockquote--left {
+  text-align: left;
+}
+
+.blockquote--right {
+  text-align: right;
+}
+
+// Pullquote
+//
+// A stylised pullquote, perfect for highlighting content in your own article.
+// http://miekd.com/articles/pull-quotes-with-html5-and-css
+//
+// Markup:
+// <div class="pullquote {$modifiers}" data-pullquote="The details are not the details. They make the design."></div>
+//
+// .pullquote--left   - Another way to use the left-aligned pullquote
+// .pullquote--center - A centre-aligned pullquote
+//
+// Styleguide 3.2.2.
+.pullquote[data-pullquote],
+.pullquote--left[data-pullquote] {
+  &:before {
+    content: attr(data-pullquote);
+    font-weight: 400;
+    overflow: hidden;
+    float: left;
+    text-align: left;
+    font-style: italic;
+    color: $color-primary;
+    padding-left: 0;
+    padding-bottom: modular-scale($base-font-size, 1, $base-line-height);
+    padding-right: $gutter/2; // Prevent overlap with ul, ol
+    display: none;
+    @include hyphens(auto);
+    @include media($wide) {
+      font-size: modular-scale($base-font-size, 2, $base-ratio);
+      line-height: 1.3;
+      display: block;
+      @include span-columns(3 of 6);
+      @include shift(-1);
+    }
+    @include media($massive) {
+      font-size: modular-scale($base-font-size, 3, $base-ratio);
+      line-height: 1.2;
+      @include shift(-1 of 5);
+    }
+  }
+}
+
+.pullquote--center[data-pullquote] {
+  &:before {
+    text-align: center;
+    display: none;
+    @include media($wide) {
+      display: block;
+      @include span-columns(8 of 6);
+      @include shift(-1);
+    }
+    @include media($massive) {
+      @include span-columns(7 of 5);
+      @include shift(-1 of 5);
+    }
+  }
+}

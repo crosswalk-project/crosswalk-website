@@ -1,0 +1,191 @@
+// Container
+//
+// The main container
+//
+// Markup:
+// <div class="container"></div>
+//
+// Styleguide 2.1.
+.container {
+  @include outer-container();
+  padding-left: $gutter;
+  padding-right: $gutter;
+  &.container--full {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+// Container Intro
+//
+// The first heading of the main container
+//
+// Markup:
+// <div class="container">
+//   <div class="container-intro">
+//     <h2>Make the most of your <code>WebView</code></h2>
+//     <p>Because it will help <a href="#">you</a>.</p>
+//   </div>
+// </div>
+//
+// Styleguide 2.1.1.
+.container-intro {
+  @include media($wide) {
+    text-align: center;
+    @include span-columns(4 of 6);
+    @include shift(1);
+    margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
+    h1, h2, h3, h4, h5, h6 {
+      text-align: center;
+    }
+  }
+}
+
+// Fixes the visual grid based on the container’s padding.
+//
+// No styleguide reference.
+@if $visual-grid == true {
+  body:before {
+    @include calc(width, '100% - #{ $gutter * 2 }');
+    @include calc(max-width, '#{ $max-width } - #{ $gutter * 2 }');
+  }
+}
+
+// Row
+//
+// A class that resets the row within a container.
+//
+// Markup:
+// <div class="row {$modifiers}"></div>
+//
+// .row--ltr - Explicitly set the column direction from left to right
+// .row--rtl - Explicitly set the column direction from right to left
+// .row--full - Full width row for breakout sections
+//
+// Styleguide 2.2.
+.row,
+.row--ltr {
+  position: relative;
+  display: block;
+  @include row();
+  @include media($wide) {
+    @include row();
+    @include span-columns(6);
+    @include shift(1);
+  }
+  &.row--full {
+    @include row();
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    @include media($wide) {
+      @include shift(0);
+      @include span-columns(0);
+    }
+  }
+  &.row--narrow {
+    @include media($wide) {
+      @include row();
+      @include shift(1);
+      @include span-columns(6);
+    }
+    @include media($huge) {
+      @include row();
+      @include shift(2);
+      @include span-columns(4);
+    }
+  }
+}
+
+.row--rtl {
+  @include row(RTL);
+}
+
+// Consecutive Rows
+//
+// Adds margins above consecutive rows.
+//
+// No styleguide reference.
+.main {
+  .row {
+    margin-top:    modular-scale($base-font-size, 2, $base-ratio) / 2;
+    margin-bottom: modular-scale($base-font-size, 2, $base-ratio) / 2;
+    @include media(min-width $wide-width min-height 40em) {
+      margin-top:    modular-scale($base-font-size, 6, $base-ratio) / 2;
+      margin-bottom: modular-scale($base-font-size, 6, $base-ratio) / 2;
+    }
+  }
+}
+
+// Simple Grid
+//
+// Very simple grid classes. Most of the site’s grid is built into the
+// appropriate modules for better responsive styling. When you just need
+// a simple 3-up grid, this is the answer.
+//
+// Markup:
+// <div class="row">
+//   <div class="{$modifiers}">
+//     <img class="logo-image" src="/assets/icons/wordmark-tizen.png">
+//   </div>
+//   <div class="{$modifiers}">
+//     <img class="logo-image" src="/assets/icons/wordmark-famous.png">
+//   </div>
+//   <div class="{$modifiers}">
+//     <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png">
+//   </div>
+// </div>
+//
+// .grid-1-of-2 - Span one of two columns
+// .grid-1-of-3 - Span one of three columns
+// .grid-2-of-3 - Span two of three columns
+//
+// Styleguide 2.3.
+
+.grid-1-of-2,
+.grid-1-of-3,
+.grid-2-of-3 {
+  @include span-columns(4 of 4);
+}
+
+.grid-1-of-2,
+.grid-1-of-3,
+.grid-2-of-3 {
+  .grid-1-of-2 {
+    @include span-columns(1 of 2);
+  }
+}
+
+.grid-1-of-2,
+.grid-1-of-3,
+.grid-2-of-3 {
+  .grid-1-of-3 {
+    @include span-columns(1 of 3);
+  }
+}
+
+.grid-1-of-2,
+.grid-1-of-3,
+.grid-2-of-3 {
+  .grid-2-of-3 {
+    @include span-columns(2 of 3);
+  }
+}
+
+@include media($wide) {
+
+  .grid-1-of-2 {
+    @include span-columns(1 of 2);
+  }
+
+  .grid-1-of-3 {
+    @include span-columns(1 of 3);
+  }
+
+  .grid-2-of-3 {
+    @include span-columns(2 of 3);
+  }
+
+}

@@ -1,0 +1,27 @@
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    <% /* For each article in documentation/_data.json */ %>
+    <% for(var slug in public.documentation._data) { %>
+      <% var article = public.documentation._data[slug] %>
+      <% /* If it’s a documentation index page, then add the .nav-item--active class */ %>
+      <li class="article-item <%= (current.path.length === 2 && current.path[0] === slug.toLowerCase()) || current.source === 'index' && current.path[current.path.length - 2] === slug.toLowerCase() ? ' nav-item--active' : '' %>">
+        <a class="article-link" href="/documentation/<%= slug.toLowerCase() %>"><%= article.title %></a>
+        <% /* If there are sub articles of documentation… */ %>
+        <% if(current.path[current.path.length - 2] === slug.toLowerCase() && typeof public.documentation[slug] !== 'undefined' && typeof public.documentation[slug]._data !== 'undefined') { %>
+          <ul class="article-list">
+          <% /* For each sub article */ %>
+          <% for(var subSlug in public.documentation[slug]._data) { %>
+            <% var subArticle = public.documentation[slug]._data[subSlug] %>
+            <% /* If it’s the current page, then add the .nav-item--active class */ %>
+            <li class="article-item <%= current.path[current.path.length - 3] === subSlug.toLowerCase() ? ' nav-item--active' : '' %>">
+              <a class="article-link" href="<%= subSlug %>"><%= subArticle.title %></a>
+            </li>
+          <% } %>
+          </ul>
+        <% } %>
+      </li>
+    <% } %>
+  </ul>
+</nav>

@@ -1,0 +1,41 @@
+// -------------------------------------------------------------------
+// Media Query Helper
+// http://joshfry.me/notes/sass-media-query-helper-for-designers/
+// -------------------------------------------------------------------
+
+$show_media_queries : false !default;
+$max-width: em(1200) !default;
+
+@mixin media-query-helper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  padding: em(8) em(12);
+  font-family: "Fira Mono", "Fira Mono OT", "Source Code Pro", Monaca, monospace;
+  font-size: 1.125em;
+  line-height: 1;
+  color: #20D832;
+  background: rgba(0,0,0,.8);
+}
+
+@if $show_media_queries == true {
+
+  $starting-at: 30em;
+  $increment-by: 5em;
+
+  $start: floor($starting-at/$increment-by);
+  $finish: floor($max-width/$increment-by);
+
+  body {
+    &:before {
+      @include media-query-helper;
+
+      @for $i from $start through $finish {
+        @include media(#{$i * $increment-by}) {
+          content: "@include media(#{$i * $increment-by})";
+        }
+      }
+    }
+  }
+}

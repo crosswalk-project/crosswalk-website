@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Intel Crosswalk</title>
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="JSON based C++ extension" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/tizen_ivi_extensions/json_based_c++_extension" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tizen_ivi_extensions/json_based_c++_extension" />
+    <meta name="twitter:title" content="JSON based C++ extension" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started">Getting Started</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest">Manifest</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions">Tizen IVI Extensions</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="host_and_target_setup">Host and target setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="write_an_extension_in_c">Write an extension in C</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="write_an_extension_in_c++">Write an extension in C++</a>
+            </li>
+          
+            
+            
+            <li class="article-item  nav-item--active">
+              <a class="article-link" href="json_based_c++_extension">JSON based C++ extension</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="write_a_web_application">Write a web application</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="run_on_tizen_vm">Run on Tizen VM</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Write an extension in C++ (2)</h1>
+<p>This is a modified version of the <a href="/documentation/Tizen_IVI_extensions/write_an_extension_in_c++.md">tutorial</a> to provide more robust handling of asynchronous callbacks. The mechanism illustrated below is inspired by real production code.</p>
+<h2>Modified Javascript File</h2>
+<p>These modifications are transparent to users of your extension as they don&#39;t change the API.</p>
+<pre><code>/**
+ * Javascript API file for extension
+ */
+var echoListener = null;
+var _callbacks = {};
+var _next_reply_id = 0;
+
+var getNextReplyId = function() {
+  return _next_reply_id++;
+};
+
+extension.setMessageListener(function(json) {
+  var message = JSON.parse(json);
+  var reply_id = message.reply_id;
+  var msg = message.msg;
+  var callback = _callbacks[reply_id];
+  if (typeof(callback) === &#39;function&#39;) {
+    callback(msg);
+    delete msg.reply_id;
+    delete _callbacks[reply_id];
+  } else {
+    console.log(&#39;Invalid reply_id: &#39; + reply_id);
+  }
+});
+
+exports.echoAsync = function (msg, callback) {
+  var reply_id = getNextReplyId();
+  _callbacks[reply_id] = callback;
+  var resp = {&quot;msg&quot;: msg};
+  resp.reply_id = reply_id;
+  extension.postMessage(JSON.stringify(resp));
+};
+
+exports.echoSync = function (msg) {
+  return extension.internal.sendSyncMessage(msg);
+};</code></pre>
+<p>As you can see, we associate a unique ID to each callback and record it in a <code>_callbacks</code> object. The ID is passed with the message to the C++ part of the extension in a JSON string. The C++ part is includes the same ID in its response, so the event listener can call the right callback.</p>
+<p>As the callbacks should only fire once, they are removed from the <code>_callbacks</code> object as soon as they return.</p>
+<h2>Modified C++ Instance class</h2>
+<p>We just modify the implementation (.cc file):</p>
+<pre><code>// Copyright (c) 2014 Intel Corporation. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+#include &quot;extension/echo_instance.h&quot;
+#include &quot;common/picojson.h&quot;
+
+EchoInstance::EchoInstance() {
+}
+
+EchoInstance::~EchoInstance() {
+}
+
+void EchoInstance::HandleMessage(const char* message) {
+  picojson::value v;
+  std::string err;
+  picojson::parse(v, message, message + strlen(message), &amp;err);
+  if (!err.empty()) {
+    std::cout &lt;&lt; &quot;Ignoring message.\n&quot;;
+    return;
+  }
+  std::string msg = v.get(&quot;msg&quot;).to_str();
+  double reply_id = v.get(&quot;reply_id&quot;).get&lt;double&gt;();
+
+  std::string resp = PrepareMessage(msg);
+
+  picojson::object o;
+  o[&quot;msg&quot;] = picojson::value(resp);
+  o[&quot;reply_id&quot;] = picojson::value(reply_id);
+  picojson::value rv(o);
+  PostMessage(rv.serialize().c_str());
+}
+
+void EchoInstance::HandleSyncMessage(const char* message) {
+  std::string resp = PrepareMessage(message);
+  SendSyncReply(resp.c_str());
+}
+
+std::string EchoInstance::PrepareMessage(std::string msg) const {
+  return &quot;You said: &quot; + msg;
+}</code></pre>
+<p>Here the <code>picojson</code> library is used to decode and encode the JSON messages: <code>picojson</code> is already in the <code>common/</code> directory, included earlier in the tutorial.</p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/tizen_ivi_extensions/write_a_web_application" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Write a web application</h3>
+      </a>
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Mon, 22 Sep 2014 09:00:00 GMT">2014-09-22T09:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+    
+      <script src="/js/prism.js"></script>
+      <link async defer href="/css/prism.css" rel="stylesheet" />
+    
+  </body>
+</html>

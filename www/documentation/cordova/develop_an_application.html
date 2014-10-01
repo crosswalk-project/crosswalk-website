@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Intel Crosswalk</title>
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Develop an application" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/cordova/develop_an_application" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/cordova/develop_an_application" />
+    <meta name="twitter:title" content="Develop an application" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started">Getting Started</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest">Manifest</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions">Tizen IVI Extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova">Cordova</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item  nav-item--active">
+              <a class="article-link" href="develop_an_application">Develop an application</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="add_plugins">Add plugins</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="migrate_an_application">Migrate an application</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Developing a Crosswalk Cordova application</h1>
+<p>These instructions were tested with crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86} (for x86 architecture); both an emulated x86 and a physical x86 Android device were used as deployment targets.</p>
+<p>The development environment used was Linux (Fedora 20), but the instructions should also work for Windows.</p>
+<h2 id="Set-up-the-host">Set up the host</h2>
+
+<p>Crosswalk Cordova for Android needs the following software to be installed on the development host:</p>
+<ul>
+<li>Java JDK (version 1.5 or greater)</li>
+<li>Apache Ant (version 1.8.0 or greater)</li>
+<li>Python (version 2.6 or greater)</li>
+<li>Android SDK (with Android platform version 4.0 or later installed)</li>
+<li><a href="http://nodejs.org">node</a></li>
+</ul>
+<p>The host setup instructions (<a href="/documentation/getting_started/windows_host_setup">Windows</a>, <a href="/documentation/getting_started/linux_host_setup">Linux</a>) explain how to install all of these pre-requisites, except node.</p>
+<p>To install node, follow the <a href="http://nodejs.org/download/">instructions on the nodejs.org website</a>.</p>
+<p>Additional instructions for installing the Java JDK, Apache Ant, and the Android SDK can be found in the <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Cordova Android Platform Guide</a>.</p>
+<h3 id="Download-the-crosswalk-cordova-android-bundle">Download the crosswalk-cordova-android bundle</h3>
+
+<p>Once you&#39;ve installed the pre-requisite software, download the crosswalk-cordova-android bundle from <a href="/documentation/downloads">the downloads page</a>. Ensure that you get the correct bundle for your target architecture.</p>
+<p>For example, to get the stable x86 version:</p>
+<pre><code>$ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-CORDOVA-X86}/x86/crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86.zip</code></pre>
+<p>Or the ARM version:</p>
+<pre><code>$ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-CORDOVA-ARM}/arm/crosswalk-cordova-${XWALK-STABLE-CORDOVA-ARM}-arm.zip</code></pre>
+<p>If you prefer, you can download Crosswalk Cordova via a browser by following the links on the <a href="/documentation/downloads">Downloads page</a>.</p>
+<p>Once you&#39;ve downloaded the zip file, unzip it (WinZip, 7Zip, command line etc.).</p>
+<h2 id="Set-up-the-target">Set up the target</h2>
+
+<p>You will need an Android target to deploy the Cordova application to. You can either use a real Android device or an emulated one. Instructions for both are on the <a href="/documentation/getting_started/android_target_setup">Android target setup page</a>.</p>
+<h2>Create a sample application</h2>
+<p>Create a sample application using the Crosswalk Cordova tools (inside the unpacked bundle in the <code>bin/</code> directory):</p>
+<pre><code>$ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create &lt;project_directory&gt; &lt;package_name&gt; &lt;project_name&gt; [&lt;template_path&gt;] [--shared]</code></pre>
+<p>The project will be generated in the directory <code>&lt;project_directory&gt;</code>, using the application template specified by <code>&lt;template_path&gt;</code> (or the default &quot;Hello world&quot; template if <code>&lt;template_path&gt;</code> is not set); <code>&lt;project_name&gt;</code> sets the application name in the <code>AndroidManifest.xml</code> file.</p>
+<p>The <code>--shared</code> option prevents the content of the <code>crosswalk-cordova-android/framework</code> folder being copied into the project. Note that when you build the Android package for your application, the Cordova and Crosswalk libraries are still included: the <code>--shared</code> option just affects how much space the project takes up on your development machine.</p>
+<p>For example, to create a &quot;HelloWorld&quot; app:</p>
+<pre><code>$ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create HelloWorld org.crosswalkproject.sample HelloWorld</code></pre>
+<p>You should use your own Java package name for your application, using <a href="http://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html">the standard Java package naming conventions</a>.</p>
+<p>A new project is created in the <code>HelloWorld</code> directory. The example HTML, JS and CSS files are located in <code>HelloWorld/assets/www</code> (you can replace them with your own files later).</p>
+<h2 id="Build-and-run-the-application">Build and run the application</h2>
+
+<p>Build HelloWorld:</p>
+<pre><code>$ cd HelloWorld
+$ ./cordova/run</code></pre>
+<p>(Note that there is a separate <code>./cordova/build</code> command which will just build the application; but the <code>run</code> command will do a build first before installing and running the application.)</p>
+<p>The command installs the HelloWorld package on the target and starts it. (If there are no attached Android devices, the <code>run</code> command will also try to start an emulated Android target before installation.)</p>
+<p>On the target, you should see the &quot;APACHE CORDOVA&quot; page with a blinking &quot;DEVICE IS READY&quot; element. For example, this is HelloWorld running on an x86 ZTE Geek phone:</p>
+<p><img src="/assets/cordova-hello-world.png"></p>
+<p>Please refer to <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_tools.md.html#Android%20Command-line%20Tools">Android Command-line Tools</a> for more command-line commands.</p>
+<h2 id="Debug-the-application">Debug the application</h2>
+
+<p>Remote debugging works as for standard Crosswalk apps.</p>
+<p>First, you need to build your app with the <code>--debug</code> option enabled:</p>
+<pre><code>cd HelloWorld
+./cordova/build --debug</code></pre>
+<p>Then run it as usual:</p>
+<pre><code>./cordova/run</code></pre>
+<p>You should now be able to follow the instructions on <a href="/documentation/getting_started/remote_debugging">this page</a> to debug the application.</p>
+<h2 id="Debug-Cordova-Crosswalk">Debug Cordova Crosswalk</h2>
+
+<p>You may be in the situation where the application crashes before Crosswalk itself starts (i.e. the runtime crashes before the web application can be loaded). To see what&#39;s happening in this situation, you can follow the system logs on the target:</p>
+<pre><code>$ cd HelloWorld
+$ ./cordova/log</code></pre>
+<p>This shows the Android device log, dynamically updated as events occur on the target.</p>
+<p>Now start your application. You should see some output as the application attempts to start, and hopefully get more information about any errors.</p>
+<h2 id="Importing-a-project-into-ADT">Importing a project into ADT</h2>
+
+<p>A project generated using the command-line tools can be imported into the Android Developer Tools (ADT) (GUI-based development environment) by following these steps:</p>
+<ol>
+<li>Open ADT. Depending on your environment, you may already have a menu entry to start it; if not, run the <code>eclipse/eclipse</code> command from inside your Android SDK&#39;s root directory.</li>
+<li>In the <em>File</em> menu, choose <em>Import...</em>.</li>
+<li>In the <em>Import</em> dialog box, choose <em>Android</em> then <em>Existing Android Code into Workspace</em>. Click the <em>Next</em> button.</li>
+<li>A file browser window will open. Choose the directory for the generated project; for example, for the HelloWorld project, the directory is <strong>HelloWorld</strong>.</li>
+<li>The <em>Import Projects</em> dialog will indicate that it is ready to import three projects: <strong>xwalk_core_library</strong>, <strong>HelloWorld-CordovaLib</strong> and <strong>HelloWorld</strong>. Click the <em>Finish</em> button to import the projects.</li>
+<li><p>Build each project in turn, in this order:</p>
+
+<ol>
+<li><strong>xwalk_core_library</strong></li>
+<li><strong>CordovaLib</strong></li>
+<li><strong>HelloWorld</strong></li>
+</ol>
+
+<p>You may need to turn off the automatic build option (uncheck <em>Project</em> &gt; <em>Build Automatically</em> in Eclipse) so you can build the projects manually and in the correct order.</p>
+
+<p>If all builds pass, the application was imported correctly by ADT, and you are ready to continue development.</p>
+</li>
+</ol>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/cordova/add_plugins" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Add plugins</h3>
+      </a>
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Mon, 22 Sep 2014 09:00:00 GMT">2014-09-22T09:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+    
+      <script src="/js/prism.js"></script>
+      <link async defer href="/css/prism.css" rel="stylesheet" />
+    
+  </body>
+</html>
