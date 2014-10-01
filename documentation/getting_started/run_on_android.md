@@ -1,6 +1,6 @@
 # Running a Crosswalk app on Android
 
-The Crosswalk Android download contains a Python script which can be used to make a self-contained package (`.apk` file) from an HTML5 application. See the host set up instructions ([Windows](#documentation/getting_started/Windows_host_setup/Download-the-Crosswalk-Android-app-template) / [Linux](#documentation/getting_started/Linux_host_setup/Download-the-Crosswalk-Android-app-template)) for details.
+The Crosswalk Android download contains a Python script which can be used to make a self-contained package (`.apk` file) from an HTML5 application. See the host set up instructions ([Windows](/documentation/getting_started/Windows_host_setup/Download-the-Crosswalk-Android-app-template) / [Linux](/documentation/getting_started/Linux_host_setup/Download-the-Crosswalk-Android-app-template)) for details.
 
 Once you have downloaded and unpacked Crosswalk Android, create the `apk` packages for your application as follows:
 
@@ -29,9 +29,9 @@ Once you have downloaded and unpacked Crosswalk Android, create the `apk` packag
 
 If the installation is successful, your application should now be on the Android target. Find its icon in the application list and open it. Here it is running on a ZTE Geek phone:
 
-<img src="assets/xwalk-simple-on-android.png">
+<img src="/assets/xwalk-simple-on-android.png">
 
-## Shared vs. embedded mode
+<h2 id="shared-vs-embedded-mode">Shared vs. embedded mode</h2>
 
 Above, we packaged the application using the default *embedded* mode (the Crosswalk runtime is bundled with the application). This creates two apk files, one for Intel architecture devices, and a second for ARM devices.
 

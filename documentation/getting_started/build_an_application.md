@@ -6,7 +6,7 @@ For the purposes of this tutorial, we use the simplest possible Crosswalk applic
 
 However, because Crosswalk applications are intended to integrate well with the target environment, they require an additional file, `manifest.json`, containing metadata for that purpose. The manifest can be used to specify icons to use at different resolutions, set an app description, adjust [content security policy settings](http://developer.chrome.com/extensions/contentSecurityPolicy.html), and otherwise configure how the app integrates with the target environment.
 
-## A simple application
+<h2 id="A-simple-application">A simple application</h2>
 
 1.  First, create a directory called `xwalk-simple` for the project:
 
@@ -15,7 +15,7 @@ However, because Crosswalk applications are intended to integrate well with the 
 
 2.  Next, copy an icon file to that directory, to serve as the application icon. You can use this image:
 
-    <img src="assets/icon.png">
+    <img src="/assets/icon.png">
 
     To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the `xwalk-simple` directory as `icon.png`. (Note that this image is from the Crosswalk source code and is [BSD licensed](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE).)
 
@@ -61,6 +61,6 @@ However, because Crosswalk applications are intended to integrate well with the 
               }
             }
 
-        See [the page about the manifest](#documentation/manifest) for more information.
+        See [the page about the manifest](/documentation/manifest) for more information.
 
 Once you've done this, you're ready to run the application on a target.

@@ -2,30 +2,30 @@
 
 You need different tools depending on which target platforms you want to deploy your application to:
 
-*   Deploy to Android: follow [Installation for Crosswalk Android](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Android).
-*   Deploy to Tizen: follow [Installation for Crosswalk Tizen](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen).
+*   Deploy to Android: follow [Installation for Crosswalk Android](/documentation/getting_started/Linux_host_setup#Installation-for-Crosswalk-Android).
+*   Deploy to Tizen: follow [Installation for Crosswalk Tizen](/documentation/getting_started/Linux_host_setup#Installation-for-Crosswalk-Tizen).
 
 These instructions have been tested on Fedora Linux 20, 64 bit. If you are using a different platform, you may need to modify them to suit your environment (e.g. use `apt-get` instead of `yum` if using Ubuntu, change package names where they differ from Fedora's package names).
 
-## Installation for Crosswalk Android
+<h2 id="Installation-for-Crosswalk-Android">Installation for Crosswalk Android</h2>
 
 These steps will enable you to develop Crosswalk applications to run on Android:
 
-1.  [Install Python](#documentation/getting_started/linux_host_setup/Install-Python).
-2.  [Install the Oracle Java Development Kit (JDK)](#documentation/getting_started/linux_host_setup/Install-the-Oracle-JDK).
-3.  [Install Ant](#documentation/getting_started/linux_host_setup/Install-Ant).
-4.  [Configure the tools](#documentation/getting_started/linux_host_setup/Configure-the-tools).
-5.  [Install the Android SDK](#documentation/getting_started/linux_host_setup/Install-the-Android-SDK).
-6.  [Download the Crosswalk Android app template](#documentation/getting_started/linux_host_setup/Download-the-Crosswalk-Android-app-template).
-7.  [Verify your environment](#documentation/getting_started/linux_host_setup/Verify-your-environment).
+1.  [Install Python](/documentation/getting_started/linux_host_setup#Install-Python).
+2.  [Install the Oracle Java Development Kit (JDK)](/documentation/getting_started/linux_host_setup#Install-the-Oracle-JDK).
+3.  [Install Ant](/documentation/getting_started/linux_host_setup#Install-Ant).
+4.  [Configure the tools](/documentation/getting_started/linux_host_setup#Configure-the-tools).
+5.  [Install the Android SDK](/documentation/getting_started/linux_host_setup#Install-the-Android-SDK).
+6.  [Download the Crosswalk Android app template](/documentation/getting_started/linux_host_setup#Download-the-Crosswalk-Android-app-template).
+7.  [Verify your environment](/documentation/getting_started/linux_host_setup#Verify-your-environment).
 
-### Install Python
+<h3 id="Install-Python">Install Python</h2>
 
 Python can usually be installed using your system's package manager. For example, on Fedora:
 
     sudo yum install python
 
-### Install the Oracle JDK
+<h3 id="Install-the-Oracle-JDK">Install the Oracle JDK</h3>
 
 The Oracle JDK has to be downloaded manually (you must accept a licence agreement):
 
@@ -43,7 +43,7 @@ The Oracle JDK has to be downloaded manually (you must accept a licence agreemen
 
     The JDK binaries are in `<unpacked directory>/bin`. We'll add that directory to our path later.
 
-### Install Ant
+<h3 id="Install-Ant">Install Ant</h3>
 
 1.  Download Ant from: http://www.apache.org/dist/ant/binaries/
 
@@ -53,7 +53,7 @@ The Oracle JDK has to be downloaded manually (you must accept a licence agreemen
 
 3.  Rename the unzipped directory to `ant`.
 
-### Configure the tools
+<h3 id="Configure-the-tools">Configure the tools</h3>
 
 The next step is to set up your environment so that binaries and scripts which were installed manually (ant, JDK) are on your `PATH`. Edit your `~/.bashrc` file, adding these lines to the end:
 
@@ -71,7 +71,7 @@ Then refresh your `PATH` variable in the shell:
 
 Note that we prepend the new paths to the `PATH` variable to ensure that we use scripts and binaries from our newly-installed packages.
 
-### Install the Android SDK
+<h3 id="Install-the-Android-SDK">Install the Android SDK</h3>
 
 1.  Download the Android SDK from <a href='http://developer.android.com/sdk/index.html' target='_blank'>http://developer.android.com/sdk/index.html</a>.
 
@@ -103,17 +103,17 @@ Note that we prepend the new paths to the `PATH` variable to ensure that we use 
 
     Note that if you are using devices with versions of Android later than 4.3, you should install the platform tools, build tools and SDK platform for those versions too.
 
-### Download the Crosswalk Android app template
+<h3 id="Download-the-Crosswalk-Android-app-template">Download the Crosswalk Android app template</h3>
 
 The Crosswalk Android distribution contains an application template which can be used as a wrapper for an HTML5 application. It also includes a script which will convert a wrapped HTML5 application into an installable Android `apk` file.
 
 To get Crosswalk Android:
 
-1.  Download the version you want from the [Downloads page](#documentation/downloads). We suggest that you use the stable Android version (${XWALK-STABLE-ANDROID-X86}).
+1.  Download the version you want from the [Downloads page](/documentation/downloads). We suggest that you use the stable Android version (${XWALK-STABLE-ANDROID-X86}).
 
 2.  Unzip it. You should now have a `crosswalk-${XWALK-STABLE-ANDROID-X86}` directory.
 
-### Verify your environment
+<h3 id="Verify-your-environment">Verify your environment</h3>
 
 Check that you have installed the tools properly by running these commands:
 
@@ -131,7 +131,7 @@ Check that you have installed the tools properly by running these commands:
     > adb help
     Android Debug Bridge version 1.0.31
 
-## Installation for Crosswalk Tizen
+<h2 id="Installation-for-Crosswalk-Tizen">Installation for Crosswalk Tizen</h2>
 
 In this tutorial, you're going to use an emulated Tizen IVI image, running under VMware. To be able to create this image and access it, you need to install a few packages on the host machine:
 

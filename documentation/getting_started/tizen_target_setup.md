@@ -4,7 +4,7 @@ To run Crosswalk applications on Tizen, you need to install the Crosswalk runtim
 
 You can use either a physical Tizen device or an emulated one (virtual machine) as a target. The instructions below cover both, but mainly concentrate on using a Tizen IVI virtual machine.
 
-Crosswalk is available for Tizen version 3.0 or higher.
+Crosswalk is available for Tizen version 2.1 or higher.
 
 Tizen extensions for Crosswalk are also available, which enable you to make use of [Tizen APIs](https://developer.tizen.org/documentation/dev-guide/2.2.1?redirect=https%3A//developer.tizen.org/dev-guide/2.2.1/org.tizen.web.appprogramming/html/api_reference/api_reference.htm) in applications running in Crosswalk on Tizen. We don't need them for this tutorial, so we won't cover them here.
 
@@ -31,11 +31,11 @@ The preferred approach, covered in the sections below, is to set up a Tizen IVI 
 
 ### Set up a Tizen IVI virtual machine with VMware
 
-After you have set up your host machine with the VMware Player or Workstation ([Windows](#documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen), [Linux](#documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen)), you can create a virtual Tizen IVI machine.
+After you have set up your host machine with the VMware Player or Workstation ([Windows](/documentation/getting_started/windows_host_setup#Installation-for-Crosswalk-Tizen), [Linux](/documentation/getting_started/linux_host_setup#Installation-for-Crosswalk-Tizen)), you can create a virtual Tizen IVI machine.
 
 To do this, follow [these instructions on the Tizen wiki](https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware).
 
-Here's a summary of the steps for Fedora 20, using VMware Workstation and the `tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2` daily build (available from the [daily builds page](http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/)). The steps for Windows are similar, though you will need to use [install git SCM](#documentation/getting_started/Windows_host_setup) to get the `curl` and `bunzip2` commands.
+Here's a summary of the steps for Fedora 20, using VMware Workstation and the `tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2` daily build (available from the [daily builds page](http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/)). The steps for Windows are similar, though you will need to use [install git SCM](/documentation/getting_started/windows_host_setup) to get the `curl` and `bunzip2` commands.
 
 1.  Download, unpack and convert the Tizen IVI image:
 
@@ -99,7 +99,7 @@ Here's a summary of the steps for Fedora 20, using VMware Workstation and the `t
 
 22. Eventually, you should see the Tizen IVI image boot:
 
-    <img src="assets/tizen-ivi-vmware.png">
+    <img src="/assets/tizen-ivi-vmware.png">
 
 #### VMware tips/reminders
 
@@ -141,4 +141,4 @@ Once you have a running Tizen IVI virtual machine ready as a target, you can ins
         Loaded: loaded (/usr/lib/systemd/user/xwalk.service; static)
         Active: inactive (dead)
 
-The [Run on Tizen](#documentation/getting_started/run_on_tizen) section explains how to run an application with Crosswalk.
+The [Run on Tizen](/documentation/getting_started/run_on_tizen) section explains how to run an application with Crosswalk.
