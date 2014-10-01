@@ -294,10 +294,18 @@ directory (`/`).
 If you are interested in running Crosswalk's test suites, you can
 build the test suites from the `src` directory with:
 
-    ninja -C out/Release xwalk_unittest
-    ninja -C out/Release xwalk_browsertest
+    ninja -C out/Release <test_name>
 
 Then run them with:
 
-    ./out/Release/xwalk_unitttest
-    ./out/Release/xwalk_browsertest
+    ./out/Release/<test_name>
+
+The following tests can be passed as `<test_name>`:
+
+* `xwalk_browsertest`
+* `xwalk_dbus_unittests`
+* `xwalk_extensions_browsertest`
+* `xwalk_extensions_unittest`
+* `xwalk_sysapps_browsertest`
+* `xwalk_sysapps_unittest`
+* `xwalk_unittest`
