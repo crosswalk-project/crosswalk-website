@@ -1,6 +1,6 @@
 # WebGL sample
 
-<img class='sample-thumb' src='assets/sampapp-icon-webgl.png'>
+<img class='sample-thumb' src='/assets/sampapp-icon-webgl.png'>
 
 Ah, the power of WebGL. This sample provides a quick example of integrating ThreeJS into a Crosswalk application.
 

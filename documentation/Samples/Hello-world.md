@@ -1,6 +1,6 @@
 # Hello World sample
 
-<img class='sample-thumb' src='assets/sampapp-icon-helloworld.png'>
+<img class='sample-thumb' src='/assets/sampapp-icon-helloworld.png'>
 
 The smallest of applications -- Hello, World! This sample provides a manifest.json and a minimal set of HTML files to start an application from the ground up.
 

@@ -1,6 +1,6 @@
 # Tizen APIs sample
 
-<img class='sample-thumb' src='assets/sampapp-icon-api.png'>
+<img class='sample-thumb' src='/assets/sampapp-icon-api.png'>
 
 A sample application leveraging a Crosswalk extension which implements
 some of the Tizen APIs. This sample demonstrates usage of the

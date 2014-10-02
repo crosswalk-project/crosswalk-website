@@ -1,6 +1,6 @@
 # SIMD sample
 
-<img class='sample-thumb' src='assets/sampapp-icon-simd.png'>
+<img class='sample-thumb' src='/assets/sampapp-icon-simd.png'>
 
 This sample shows how to use [SIMD](https://github.com/johnmccutchan/ecmascript_simd)
 in a Crosswalk application. In this sample, a Mandelbrot set
