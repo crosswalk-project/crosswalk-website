@@ -16,7 +16,7 @@ By contrast, one major benefit of Crosswalk is that many of these evolving stand
 
 One major complexity when working with HTML5 and CSS is figuring out how CSS pixels and physical pixels on the screen relate to each other. For the purposes of this article, I've glossed over these issues, as they can mostly be ignored if you aren't too concerned about how consistent a game appearson different devices. However, there are other situations where it is important to understand these nuances; for example, if you want your game to look identical on different devices, you will have to pay attention to screen densities.
 
-To help in these situations, the [screen measurements page](#documentation/screens/screen_measurements) explains the terminology, including units and measurements, which are relevant when dealing with heterogenous screens in detail.
+To help in these situations, the [screen measurements page](/documentation/screens/screen_measurements) explains the terminology, including units and measurements, which are relevant when dealing with heterogenous screens in detail.
 
 You may also find it useful to refer to [this article](http://www.html5rocks.com/en/tutorials/canvas/hidpi/) about working with the `<canvas>` element on HiDPI (aka retina) displays.
 
@@ -26,7 +26,7 @@ The game used in this article is a side-scrolling dodge game set in space. The c
 
 The layout of the game looks like this (shown in a Chrome browser on a Linux desktop machine):
 
-![space dodge game in Chrome on Linux desktop](assets/space_dodge_game-chrome_linux_desktop.png)
+![space dodge game in Chrome on Linux desktop](/assets/space_dodge_game-chrome_linux_desktop.png)
 
 The container element for the whole game is sized using CSS, and is 750 pixels across by 450 pixels down. It is positioned relative to the top-left of the browser window.
 
@@ -187,7 +187,7 @@ If you are interested in following along with the article, rather than just look
     $ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-X86}/crosswalk-${XWALK-STABLE-ANDROID-X86}.zip
     ```
 
-    If you want to run the version of the game designed to work with Crosswalk 8, fetch one of the Crosswalk Android *canary* bundles from [the download page](#documentation/downloads).
+    If you want to run the version of the game designed to work with Crosswalk 8, fetch one of the Crosswalk Android *canary* bundles from [the download page](/documentation/downloads).
 
 2.  Unzip the bundle, e.g. on Linux:
 
@@ -226,17 +226,17 @@ If you are interested in following along with the article, rather than just look
 
     depending on your target hardware.
 
-    For more details about building and running Crosswalk applications on Android, see [the Getting started pages](#documentation/getting_started/run_on_android).
+    For more details about building and running Crosswalk applications on Android, see [the Getting started pages](/documentation/getting_started/run_on_android).
 
 ## Issue 1: The game sometimes displays in portrait orientation
 
 If the game is packaged and deployed to a small screen device in its initial state, this is what it looks like:
 
-![space dodge game in portrait on ZTE Geek](assets/space_dodge_game-zte_geek_portrait.png)
+![space dodge game in portrait on ZTE Geek](/assets/space_dodge_game-zte_geek_portrait.png)
 
 It's obvious that it doesn't take up enough of the screen. The reason is that the game is in portrait orientation, when it should be in landscape. By rotating the device (so the game rotates), you can see an immediate improvement:
 
-![space dodge game in landscape on ZTE Geek](assets/space_dodge_game-zte_geek_landscape.png)
+![space dodge game in landscape on ZTE Geek](/assets/space_dodge_game-zte_geek_landscape.png)
 
 However, the game shouldn't accidentally rotate if the screen orientation changes, as it does at the moment: it should always display in landscape mode.
 
@@ -271,13 +271,13 @@ If you prefer, there are a couple of other ways to fix an application's orientat
     }
     ```
 
-    You could then [build an application package for Android](#documentation/getting_started/run_on_android) from this manifest with:
+    You could then [build an application package for Android](/documentation/getting_started/run_on_android) from this manifest with:
 
     ```
     $ python make_apk.py --manifest=/projects/space_dodge_game/manifest.json
     ```
 
-    Install it on an Android target as described in [the Getting started pages](#documentation/getting_started/run_on_android).
+    Install it on an Android target as described in [the Getting started pages](/documentation/getting_started/run_on_android).
 
     Using the `orientation` field in the manifest has exactly the same effect as using `screen.lockOrientation` in your application code: the application rotates to the requested orientation after the application starts. But `screen.lockOrientation` has the advantage of being supported by other runtimes (e.g. Firefox OS), so may be a better choice if you need your application to work cross-platform.
 
@@ -316,7 +316,7 @@ The next issue is that the toolbar is still visible, which is a distraction whil
     }
     ```
 
-    [Build and deploy to the device](#documentation/getting_started/run_on_android) as usual.
+    [Build and deploy to the device](/documentation/getting_started/run_on_android) as usual.
 
     The `display` manifest field is defined in the [W3C Manifest for web application specification](http://w3c.github.io/manifest/).
 
@@ -329,11 +329,11 @@ The next issue is that the toolbar is still visible, which is a distraction whil
         --orientation=landscape --fullscreen
     ```
 
-    This is a useful option if you are using an older version of Crosswalk which doesn't support the `display` field in the manifest. See [the Getting started pages](#documentation/getting_started/run_on_android) for more information about using `make_apk.py`.
+    This is a useful option if you are using an older version of Crosswalk which doesn't support the `display` field in the manifest. See [the Getting started pages](/documentation/getting_started/run_on_android) for more information about using `make_apk.py`.
 
 Using either the `display` field or the `--fullscreen` option has the same effect: the application displays in fullscreen, hiding the system status bar on Android:
 
-![space dodge game in fullscreen, landscape orientation](assets/space_dodge_game-zte_geek_fullscreen.png)
+![space dodge game in fullscreen, landscape orientation](/assets/space_dodge_game-zte_geek_fullscreen.png)
 
 You may be familiar with the [fullscreen API](https://dvcs.w3.org/hg/fullscreen/raw-file/tip/Overview.html), which enables an application to request that all or part of its user interface occupy the whole device screen. However, the fullscreen API has a different purpose from the approaches covered above: it requires some user activity to trigger the fullscreen request *after* an application is running.
 
@@ -396,13 +396,13 @@ To apply a viewport meta element to the space dodge game in this article, add it
 
 The result is this:
 
-![space dodge game with landscape orientation, fullscreen and viewport meta](assets/space_dodge_game-viewport_meta.png)
+![space dodge game with landscape orientation, fullscreen and viewport meta](/assets/space_dodge_game-viewport_meta.png)
 
 Note how the game is now filling the whole screen, and looks roughly the right size: the buttons are nice and big, and the graphics clear. However, the screen size on this device is 640px wide by 360px down, so the game canvas is spilling over the edges of the screen.
 
 By contrast, it doesn't take up enough space on a larger screen. Here it is on a Nexus 7:
 
-![space dodge game on Nexus 7 with landscape orientation, fullscreen, and viewport meta](assets/space_dodge_game-nexus7.png)
+![space dodge game on Nexus 7 with landscape orientation, fullscreen, and viewport meta](/assets/space_dodge_game-nexus7.png)
 
 In the next sections, I describe two ways to alter the size of the game to fit better into the screen.
 
@@ -477,7 +477,7 @@ To give an example of the CSS transforms which will be applied, consider the cas
 
 Setting the transform origin to `top left 0` ensures that the transforms are applied from the top-left corner of the container. The `scale(2.05, 2.05)` function changes the scaling of the container; and the `translate(40px, 0px)` function moves the container to the correct position on screen (40 pixels from the left-hand edge). Here's the result on a ZTE Geek:
 
-![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, CSS transform](assets/space_dodge_game-zte_geek_scale.png)
+![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, CSS transform](/assets/space_dodge_game-zte_geek_scale.png)
 
 Notice how the application is fitted vertically, then centered horizontally.
 
@@ -499,7 +499,7 @@ The first step is to make the container occupy the whole screen. In the olden da
 
 Note the `vw` (viewport percentage width) and `vh` (viewport percentage height) suffixes to the container's width and height settings. Here's what the game looks like on a ZTE Geek with this change to the container sizing:
 
-![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize](assets/space_dodge_game_zte_geek_resize.png)
+![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize](/assets/space_dodge_game_zte_geek_resize.png)
 
 Not bad for a first pass. But the bottom of the canvas has disappeared off-screen; and the buttons look squashed. We'll fix this in a minute.
 
@@ -549,7 +549,7 @@ to:
 
 Here's the result:
 
-![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize, fixed margin](assets/space_dodge_game-zte_geek_resize_2.png)
+![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize, fixed margin](/assets/space_dodge_game-zte_geek_resize_2.png)
 
 The buttons now look right, but the canvas is too tall for the screen (remember, its pixel height is set as an attribute on the canvas, not in CSS). This currently means you can move the spaceship off the bottom of the screen. The canvas needs to be resized to fit in the space to the right of the controls, while maintaining its aspect ratio.
 
@@ -641,7 +641,7 @@ Note that this changes the canvas width and height attributes then positions it,
 
 This is the result on a ZTE Geek (canvas size is "shrunk" to 480px by 360px):
 
-![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize, fixed margin, canvas resized](assets/space_dodge_game_zte_geek_resize_canvas.png)
+![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize, fixed margin, canvas resized](/assets/space_dodge_game_zte_geek_resize_canvas.png)
 
 #### Resize the sprites
 
@@ -670,7 +670,7 @@ This code can be modified as follows to draw the image at the correct scale:
 
 The result is as follows (on the ZTE Geek again):
 
-![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize, fixed margin, canvas and sprites resized](assets/space_dodge_game-zte_geek_resize_canvas_2.png)
+![space dodge game on ZTE Geek: landscape, fullscreen, viewport meta, resize, fixed margin, canvas and sprites resized](/assets/space_dodge_game-zte_geek_resize_canvas_2.png)
 
 Compare with the previous screenshot and you should be able to see that the ship and asteroids are slightly smaller in this screenshot (80% of the size of the previous one).
 
@@ -716,7 +716,7 @@ Depending on the game and the environment, it may be possible to cache the width
 
 Having applied the lessons in the previous section, one other possible issue is the potential for blurring due to scaling. If you take a close look at this image:
 
-![space dodge game: sprites blur on large screens](assets/space_dodge_game-large_screen_blur.png)
+![space dodge game: sprites blur on large screens](/assets/space_dodge_game-large_screen_blur.png)
 
 you may notice that it appears blurry. This image was copied from a screenshot of a large browser window, where the sprite graphic was being scaled up to twice its original size, making it blur.
 
@@ -779,7 +779,7 @@ One solution is to provide a larger graphic which can scale with less blurring, 
 
 Compare the double-sized image when scaled down slightly (on the left) with the smaller image scaled up to twice its original size (on the right):
 
-![space dodge game: large image scaled down vs small image scaled up](assets/space_dodge_game-large_screen_less_blur.png)
+![space dodge game: large image scaled down vs small image scaled up](/assets/space_dodge_game-large_screen_less_blur.png)
 
 As you can see here, the large image scaled down is far less blurry than the small image scaled up.
 
@@ -789,13 +789,13 @@ Depending on how large the images are, it might make sense to use larger images 
 
 Applications can sometimes take a while to load, due to network latency and/or sheer size and number of resources. This problem gets worse as the application grows and is especially problematic for games, where there are often a large number of graphical, audio and video assets in use. In such cases, a common technique is to show a screen with introductory images or text while the resources are loading, commonly known as a "loading" or "launch" screen. Frameworks often provide APIs to support this, or developers may add their own code to handle it.
 
-Crosswalk 8 and later provides baked-in support for launch screens, via an `xwalk_launch_screen` in the application manifest. This enables you to set background and foreground images and colours, differentiated according to screen orientation and pixel density if desired, with little or no programming. Full details of its capabilities are on the [launch screen page](#documentation/manifest/launch_screen).
+Crosswalk 8 and later provides baked-in support for launch screens, via an `xwalk_launch_screen` in the application manifest. This enables you to set background and foreground images and colours, differentiated according to screen orientation and pixel density if desired, with little or no programming. Full details of its capabilities are on the [launch screen page](/documentation/manifest/launch_screen).
 
 The steps below explain how to add a launch screen to the example game.
 
 1.  First, add a foreground image `fg.png`. This is a simple graphic composed of the name of the game plus the rocket sprite, with a transparent background (I've added a blue background to the graphic here so the white letters show up):
 
-    ![space dodge game launch screen foreground](assets/space_dodge_game-launch_screen_fg.png)
+    ![space dodge game launch screen foreground](/assets/space_dodge_game-launch_screen_fg.png)
 
     I made the image relatively small (320px by 240px), as it should fit small mobile screens.
 
@@ -822,7 +822,7 @@ The steps below explain how to add a launch screen to the example game.
 
     The `landscape` property specifies the background colour and `image` (foreground image) to use for the launch screen when in landscape mode. Any image paths are relative to `manifest.json`, and the foreground image will be centered on the background.
 
-    As the application will always be in landscape orientation (`"orientation": "landscape"` is set in the manifest), there's no need for a `portrait` property. Note that you may use the `default` key to specify the settings for all orientations; and can specify different backgrounds and images for different orientations and screen densities. See [this explanation](#documentation/manifest/launch_screen) for more details about the available launch screen options.
+    As the application will always be in landscape orientation (`"orientation": "landscape"` is set in the manifest), there's no need for a `portrait` property. Note that you may use the `default` key to specify the settings for all orientations; and can specify different backgrounds and images for different orientations and screen densities. See [this explanation](/documentation/manifest/launch_screen) for more details about the available launch screen options.
 
 3.  The final step is to modify the JavaScript to close the launch screen.
 
@@ -843,7 +843,7 @@ The steps below explain how to add a launch screen to the example game.
 
 Now the application can be packaged as usual with `make_apk.py` and installed on a target. This is what the launch screen looks like on a ZTE Geek:
 
-![space dodge game launch screen on ZTE Geek](assets/space_dodge_game_launch_screen-zte_geek.png)
+![space dodge game launch screen on ZTE Geek](/assets/space_dodge_game_launch_screen-zte_geek.png)
 
 ## Summary
 

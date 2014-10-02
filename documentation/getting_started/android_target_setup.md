@@ -97,7 +97,7 @@ To test your application on Android platforms you don't own, the next best optio
 
   <p>The configuration should look something like this:</p>
 
-  <p><img src='assets/emulator.png'></p>
+  <p><img src='/assets/emulator.png'></p>
 </li>
 
 <li>

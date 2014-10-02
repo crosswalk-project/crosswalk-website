@@ -7,11 +7,11 @@ some of the Tizen APIs. This sample demonstrates usage of the
 `tizen.systeminfo` API.
 
 This application is part of the
-[Crosswalk samples download](#documentation/samples).
+[Crosswalk samples download](https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz).
 
 To use this example, you need to run the application on a Tizen device
 or in the Tizen emulator. Instructions for preparing both are in
-the [Getting started](#documentation/getting_started) tutorial.
+the [Getting started](/documentation/getting_started) tutorial.
 
 The following steps use the helper script **tizen-extension-crosswalk**
 to load the Tizen extension API into Crosswalk during load time.

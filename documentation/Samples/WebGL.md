@@ -5,16 +5,16 @@
 Ah, the power of WebGL. This sample provides a quick example of integrating ThreeJS into a Crosswalk application.
 
 This application is part of the
-[Crosswalk samples download](#documentation/samples).
+[Crosswalk samples download](https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz).
 
 The steps for setting up an environment for Crosswalk are explained
-in detail in the [Getting started](#documentation/getting_started)
+in detail in the [Getting started](/documentation/getting_started)
 tutorial.
 
 ## WebGL on Android
 
 Once you've set up the Crosswalk Android packaging dependencies,
-follow the steps in [Run on Android](#documentation/getting_started/run_on_android)
+follow the steps in [Run on Android](/documentation/getting_started/run_on_android)
 to install and run the WebGL sample on Android.
 
 The quick version is that you can build the WebGL apk with:
@@ -37,7 +37,7 @@ Then install the apk file on Android:
 ## WebGL on Tizen
 
 Follow the steps in
-[Run on Tizen](#documentation/getting_started/run_on_tizen)
+[Run on Tizen](/documentation/getting_started/run_on_tizen)
 to install and run the WebGL sample on Tizen.
 
 Or here's the quick version:

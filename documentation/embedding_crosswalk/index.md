@@ -4,8 +4,8 @@ The Crosswalk embedding API enables you to embed the Crosswalk runtime in an And
 
 Using the embedding API is only recommended for cases where you have a substantial amount of Java code in your application, but want to write the UI (or parts of the UI) using web technologies. If you just need a runtime wrapper for a web application, there are two simpler options for deploying to Android with Crosswalk:
 
-*   [Use the default Crosswalk packaging tools](#documentation/getting_started/run_on_android) to generate an Android package for your web application.
-*   [Use Cordova with Crosswalk](#documentation/cordova): that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.
+*   [Use the default Crosswalk packaging tools](/documentation/getting_started/run_on_android) to generate an Android package for your web application.
+*   [Use Cordova with Crosswalk](/documentation/cordova): that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.
 
 If you do decide to use the embedding API, follow the instructions below which explain how to use it.
 
@@ -21,9 +21,9 @@ The tutorial steps were tested on Linux (Fedora 20), but should be adaptable to 
 
 ### Set up the host and target
 
-Before you use the embedding API, ensure that you have [set up your host environment for Android development](#documentation/getting_started/linux_host_setup).
+Before you use the embedding API, ensure that you have [set up your host environment for Android development](/documentation/getting_started/linux_host_setup).
 
-You will also need to set up an Android target to deploy the application to, as described on the [Android target setup](#documentation/getting_started/android_target_setup) page.
+You will also need to set up an Android target to deploy the application to, as described on the [Android target setup](/documentation/getting_started/android_target_setup) page.
 
 As this tutorial uses ADT, ensure that you have [installed the necessary ADT components](http://developer.android.com/tools/sdk/eclipse-adt.html) for your host.
 
@@ -35,7 +35,7 @@ For example, to get the latest beta Crosswalk webview for x86 architecture (at t
 
     $ wget https://download.01.org/crosswalk/releases/crosswalk/android/beta/${XWALK-BETA-ANDROID-X86}/x86/crosswalk-webview-${XWALK-BETA-ANDROID-X86}-x86.zip
 
-Note that the webview is architecture specific, so you will need a different package if you are deploying to ARM. See [this page](#documentation/downloads) for a complete list of downloads.
+Note that the webview is architecture specific, so you will need a different package if you are deploying to ARM. See [this page](/documentation/downloads) for a complete list of downloads.
 
 Unzip the downloaded `.zip` file.
 
@@ -75,7 +75,7 @@ Next, create an Android application which will use the Crosswalk embedding API (
 
     <p>It should look like this:</p>
 
-    <img src="assets/embedding-api-app1.png">
+    <img src="/assets/embedding-api-app1.png">
 
     <p>Click <em>Next</em>.</p>
   </li>
@@ -92,7 +92,7 @@ Next, create an Android application which will use the Crosswalk embedding API (
 
     <p>The result should look like this:</p>
 
-    <img src="assets/embedding-api-app2.png">
+    <img src="/assets/embedding-api-app2.png">
 
     <p>Click <em>Next</em>.</p>
   </li>
@@ -100,7 +100,7 @@ Next, create an Android application which will use the Crosswalk embedding API (
   <li>
     <p>In the <em>Create Activity</em> panel, select <em>Create Activity</em> and <em>Blank Activity</em>:</p>
 
-    <img src="assets/embedding-api-app3.png">
+    <img src="/assets/embedding-api-app3.png">
 
     <p>Click <em>Next</em>.</p>
   </li>
@@ -117,7 +117,7 @@ Next, create an Android application which will use the Crosswalk embedding API (
 
     <p>It should look like this:</p>
 
-    <img src="assets/embedding-api-app4.png">
+    <img src="/assets/embedding-api-app4.png">
 
     <p>Click <em>Finish</em>.</p>
   </li>
@@ -284,7 +284,7 @@ Follow the steps below to add some web assets and bundle them with your applicat
     }
     ```
 
-### Debugging
+<h3 id="debugging">Debugging</h3>
 
 To enable debugging of the web application running in an embedded Crosswalk webview, modify the `MainActivity.java` file to look like this:
 
@@ -318,8 +318,8 @@ The key line is:
 
 `XWalkPreferences.setValue()` sets global preferences for Crosswalk; in this case, you are turning on the debugging flag.
 
-Now install and run your application as usual. Then, to perform remote debugging, follow [these instructions](#documentation/getting_started/remote_debugging).
+Now install and run your application as usual. Then, to perform remote debugging, follow [these instructions](/documentation/getting_started/remote_debugging).
 
 ## Further information
 
-Further resources about working with the embedding API are listed on the [embedding API docs page](#documentation/apis/embedding_api).
+Further resources about working with the embedding API are listed on the [embedding API docs page](/documentation/apis/embedding_api).

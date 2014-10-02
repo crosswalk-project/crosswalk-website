@@ -1,3 +1,4 @@
+
 # Display
 
 The `display` field sets the preferred *display mode* for the application: how much of the available display area is occupied by the application, and whether other elements of the user interface (navigation bars, other toolbars) are visible.
@@ -22,8 +23,8 @@ To give an idea of how this field setting affects the application's appearance, 
 
 **Fullscreen:**
 
-![Application in fullscreen display mode on Tizen IVI](assets/crosswalk-manifest-tizen-fullscreen.png "Fullscreen")
+![Application in fullscreen display mode on Tizen IVI](/assets/crosswalk-manifest-tizen-fullscreen.png "Fullscreen")
 
 **Standalone (note the device's toolbar):**
 
-![Application in standalone display mode on Tizen IVI](assets/crosswalk-manifest-tizen-standalone.png "Standalone")
+![Application in standalone display mode on Tizen IVI](/assets/crosswalk-manifest-tizen-standalone.png "Standalone")
