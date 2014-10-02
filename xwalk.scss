@@ -1258,3 +1258,28 @@ p {
 #jira-feedback-trigger {
   padding: 1em;
 }
+
+.survey {
+  text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 440px) {
+  .survey {
+    font-size: 75%;
+  }
+}
+
+.survey p {
+  box-sizing: border-box;
+  padding: 0.25em 1em;
+  line-height: 2em;
+  border-radius: 5px;
+  border: 2px solid white;
+  background-color: #bf0013;
+}
+
+.survey a {
+  text-decoration: none;
+  color: white;
+}
