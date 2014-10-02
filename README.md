@@ -61,7 +61,7 @@ To build the Styleguide, run the following commands:
 
 ```sh
 # Install dependencies
-npm install
+npm install -g kss
 
 # Build the Styleguide
 npm run styleguide
@@ -71,5 +71,3 @@ harp server
 
 # Site and Styleguide now available at http://localhost:9000/styleguide
 ```
-
-![](assets/screenshot-styleguide.png)
