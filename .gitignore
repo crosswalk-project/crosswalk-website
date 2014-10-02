@@ -19,4 +19,4 @@ bower_components
 
 # Compile directories
 _book/
-public/styleguide/
+styleguide/

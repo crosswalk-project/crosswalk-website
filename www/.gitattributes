@@ -1,0 +1,7 @@
+*        text=auto
+*.html   text diff=html
+*.css    text
+*.scss   text
+*.js     text
+*.md     text diff=astextplain
+*.svg    binary

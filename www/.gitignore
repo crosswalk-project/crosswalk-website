@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+*.swp
+
+# Logs
+logs
+*.log
+*.msg
+*.map
+cache/*.json
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directory
+node_modules
+components
+bower_components
+
+# Compile directories
+_book/
+public/styleguide/

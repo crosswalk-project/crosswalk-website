@@ -29,12 +29,12 @@
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
     <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/getting-started" />
+    <meta property="og:url" content="http://crosswalk-project.org/README" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/getting-started" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/README" />
     <meta name="twitter:title" content="Crosswalk" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
@@ -81,150 +81,58 @@
         </div>
         <div class="row">
           
-            <nav id="contents" class="article-toc nav-toggleContainer">
-  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-  <ul class="article-list nav-toggleHide">
-    
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/about">About</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/getting_started">Getting Started</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/manifest">Manifest</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/android_extensions">Android extensions</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/tizen_ivi_extensions">Tizen IVI Extensions</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/cordova">Cordova</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/embedding_crosswalk">Embedding Crosswalk</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/webrtc">WebRTC</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/screens">Screens</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/downloads">Downloads</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/samples">Samples</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/apis">APIs</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/community">Community</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/report_bugs">Report bugs</a>
-        
-        
-      </li>
-    
-  </ul>
-</nav>
+            <h1>Intel Crosswalk</h1>
+<p>Prepared by Chloi Inc. for Troy Allison of Intel.</p>
+<ul>
+<li>Brock Whitten, <a href="mailto:brock@chloi.io">brock@chloi.io</a></li>
+<li>Kenneth Ormandy, <a href="mailto:kenneth@chloi.io">kenneth@chloi.io</a></li>
+</ul>
+<h2>Running the project</h2>
+<p>This static site for Crosswalk is built with:</p>
+<ul>
+<li><a href="http://nodejs.org">Node.js</a></li>
+<li><a href="http://harpjs.com">Harp</a>, the static web server with build-in preprocessing</li>
+<li><a href="https://github.com/kss-node/kss-node">KSS</a>, which creates the styleguide</li>
+</ul>
+<p>First, <a href="http://nodejs.org">install Node.js</a>. Then, run the following commands:</p>
+<pre><code class="language-sh"># Install Harp. You may need to preface this command with `sudo`
+npm install --global harp
 
-<article class="article article--hasToC">
-  <!DOCTYPE HTML>
-<html lang="en-US">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="robots" content="noindex, nofollow">
-        <meta http-equiv="refresh" content="1;url=/documentation/getting_started">
-        <script type="text/javascript">
-            window.location.href = "/documentation/getting_started"
-        </script>
-    </head>
-    <body>
-        If you are not redirected automatically, <a href="/documentation/getting_started">click here</a>.
-    </body>
-</html>
+# Clone this project from GitHub
+git clone https://github.com/chloi/intel-crosswalk
 
+# Install the project’s dependencies
+npm install
 
-  <footer class="article-next">
-    
+# Serve the project
+harp server
 
+# The project is now available at http://localhost:9000</code></pre>
+<h3>Run in production</h3>
+<p>To run Harp in production:</p>
+<pre><code>NODE_ENV=production harp server --port 80</code></pre>
+<p>You can also use Harp to compile the site down to flat files, which can then be
+hosted on any web server. These have been included within the repository already.</p>
+<pre><code>harp compile</code></pre>
+<p>Note that this site has been built to take advantage of Harp’s niceties, so the
+web server should:</p>
+<ul>
+<li>Create clean URLs by rewriting, for example, <code>about.html</code> to <code>about/</code></li>
+<li>Allow absolute paths from<code>/</code></li>
+</ul>
+<h3>Build the Styleguide</h3>
+<p>This site comes with its markup and CSS modules documented in a Styleguide. It’s comparable to a miniature version of the <a href="http://getbootstrap.com/css/">documentation for Bootstrap</a>, where each module has an example and the accompanying code.</p>
+<p>To build the Styleguide, run the following commands:</p>
+<pre><code class="language-sh"># Install dependencies
+npm install -g kss
 
-  </footer>
-</article>
+# Build the Styleguide
+npm run styleguide
+
+# Serve the project
+harp server
+
+# Site and Styleguide now available at http://localhost:9000/styleguide</code></pre>
 
           
         </div>
