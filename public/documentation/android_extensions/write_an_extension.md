@@ -81,7 +81,7 @@ In the following sections, you'll create the Java and JavaScript sides of the ex
     # for third party libs distributed with the project
     mkdir tools
 
-The `build/`, `lib/` and `xwalk-echo-extension/` directories (shown in the [project outline](/documentation/android_extensions/host_and_target_setup#Project-Outline)) will be created at build time.
+The `build/`, `lib/` and `xwalk-echo-extension/` directories (shown in the [project outline](/documentation/android_extensions/host_and_target_setup.html#project-outline)) will be created at build time.
 
 Note that the following instructions assume you're in `xwalk-echo-extension-src/` (the top-level directory for the extension project).
 
@@ -404,7 +404,7 @@ Follow the instructions below to install and configure Ivy:
 
 <h3 id="Add-an-Ant-buildfile">Add an Ant buildfile</h3>
 
-You should have already installed Ant as described in the *Getting started* instructions ([Windows](/documentation/getting_started/windows_host_setup/Install-Ant), [Linux](/documentation/getting_started/linux_host_setup/Install-Ant)).
+You should have already installed Ant as described in the *Getting started* instructions ([Windows](/documentation/getting_started/windows_host_setup/install-ant.html), [Linux](/documentation/getting_started/linux_host_setup/install-ant.html)).
 
 Once Ant is installed, add a buildfile, `build.xml`, to the top-level directory of your project with this content:
 

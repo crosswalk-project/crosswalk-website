@@ -1,6 +1,6 @@
 # Migrate an existing Cordova application to Crosswalk
 
-A project which was built with Cordova can be modified so it uses Crosswalk as the webview, rather than the Cordova default (Android webview). The [introduction](/documentation/cordova) explains the advantages of doing this.
+A project which was built with Cordova can be modified so it uses Crosswalk as the webview, rather than the Cordova default (Android webview). The [introduction](/documentation/cordova.html) explains the advantages of doing this.
 
 *   If you don't have a Cordova application you want to migrate, or would rather experiment with someone else's project, follow the steps in the [Create a Cordova application](#create-a-cordova-application) section to create a test application.
 *   If you already have a Cordova application to migrate, skip to the [Migrate](#migrate) section.
@@ -71,7 +71,7 @@ To create the project for the application:
         cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git#r0.3.0
         cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibration.git#r0.3.8
 
-    Note that the kitchen sink application uses all the Cordova plugins. Also note that the `cordova` command wraps the `plugman` tool, described in the [Add plugins](/documentation/cordova/add_plugins) page. You can get more details about how plugins are installed from that page.
+    Note that the kitchen sink application uses all the Cordova plugins. Also note that the `cordova` command wraps the `plugman` tool, described in the [Add plugins](/documentation/cordova/add_plugins.html) page. You can get more details about how plugins are installed from that page.
 
 5.  Build the Android package:
 
@@ -87,7 +87,7 @@ If the above steps work correctly, the kitchen sink application should be runnin
 
 <h2 id="Migrate-to-Crosswalk">Migrate to Crosswalk</h2>
 
-**Before you can migrate your application to Crosswalk, you need to download and unpack a crosswalk-cordova-android bundle. See [these instructions](/documentation/cordova/develop_an_application#Download-the-crosswalk-cordova-android-bundle).**
+**Before you can migrate your application to Crosswalk, you need to download and unpack a crosswalk-cordova-android bundle. See [these instructions](/documentation/cordova/develop_an_application.html#download-the-crosswalk-cordova-android-bundle).**
 
 You can migrate a Cordova application to Crosswalk in two ways:
 
@@ -203,7 +203,7 @@ Once you have the application working with standard Cordova, you can move on to 
 
     The application should now be running on the target.
 
-8.   The application should look identical to how it does on standard Cordova. If you are using a debug build (i.e. you didn't apply the `--release` option), you should also be able to [debug your application using Chrome](/documentation/cordova/develop_an_application#Debug-the-application).
+8.   The application should look identical to how it does on standard Cordova. If you are using a debug build (i.e. you didn't apply the `--release` option), you should also be able to [debug your application using Chrome](/documentation/cordova/develop_an_application.html#debug-the-application).
 
     You can also use the dev tools to confirm your application is using Crosswalk. Open "chrome://inspect" in a Chrome browser and select the "inspect" link for the *Intel XDK Kitchen Sink* application (or for your own application).
 
@@ -358,7 +358,7 @@ This will put the required files in the `platforms/android` directory and regist
 
 If you have a Cordova application which is already migrated to Crosswalk, but you want to upgrade the version of Crosswalk, follow the instructions below which apply to your environment (command line or ADT).
 
-Note that both sets of instructions require you to first [download and unpack the Crosswalk Cordova bundle](/documentation/cordova/develop_an_application/Download-the-crosswalk-cordova-android-bundle) which you want to upgrade to.
+Note that both sets of instructions require you to first [download and unpack the Crosswalk Cordova bundle](/documentation/cordova/develop_an_application/download-the-crosswalk-cordova-android-bundle.html) which you want to upgrade to.
 
 <h3 id="Upgrade-using-the-command-line-tools">Upgrade using the command line tools</h3>
 

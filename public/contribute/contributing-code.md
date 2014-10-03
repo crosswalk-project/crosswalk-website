@@ -1,5 +1,5 @@
 # Contributing Code
-This page outlines the process for contributing code to Crosswalk. For information on obtaining the source and building Crosswalk, see [Building Crosswalk](/contribute/building_crosswalk).
+This page outlines the process for contributing code to Crosswalk. For information on obtaining the source and building Crosswalk, see [Building Crosswalk](/contribute/building_crosswalk.html).
 
 ## Overview
 These are the recommended steps for contributing code to Crosswalk:
@@ -40,7 +40,7 @@ You should note the ID of the issue you work on, so you can include it in your "
 
 In an attempt to improve the efficiency of code reviews, we are taking a page from the Blink project and adopting the practice of "intent to implement". The idea is to let owners and other developers know what a developer (or development team) plans to implement, and when and how they intend to do it. This gives the community a chance to comment on early design choices, avoiding the cost of undoing or redoing work when an implementation is already too far ahead.
 
-An intent to implement is required for new features, non-trivial refactoring, or for implementations which are likely to be controversial. If you're not sure whether your implementation falls into one of these categories, ask for advice about how to proceed by using the [crosswalk-dev mailing list or #crosswalk IRC channel](/contribute/community).
+An intent to implement is required for new features, non-trivial refactoring, or for implementations which are likely to be controversial. If you're not sure whether your implementation falls into one of these categories, ask for advice about how to proceed by using the [crosswalk-dev mailing list or #crosswalk IRC channel](/contribute/community.html).
 
 To declare an "intent to implement", a developer should send a mail to the [crosswalk-dev mailing list](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev) following the outline below.
 
@@ -84,7 +84,7 @@ You should also add your name to the AUTHORS file the first time you make a patc
 
 Patches must comply with the code style guidelines. Your patch will be automatically checked for style compliance when you upload it to the bug tracker.
 
-See the [Crosswalk coding style](/contribute/coding_style) for details.
+See the [Crosswalk coding style](/contribute/coding_style.html) for details.
 
 
 ## Commit message guidelines
@@ -131,4 +131,4 @@ By default, contributors do not have push rights to Crosswalk repositories. Afte
 
 ## Obtaining review privileges
 
-Our [Reviewer policy](/contribute/reviewer_policy) provides details on obtaining review privileges.
+Our [Reviewer policy](/contribute/reviewer_policy.html) provides details on obtaining review privileges.

@@ -257,7 +257,7 @@
 </li>
 </ol>
 <p>You also need some supporting files to build and package the extension.</p>
-<p>Before starting, make sure you have already followed the steps in <a href="/documentation/Tizen_IVI_extensions/host_and_target_setup">Host and target setup</a>.</p>
+<p>Before starting, make sure you have already followed the steps in <a href="/documentation/tizen_ivi_extensions/host_and_target_setup.html">Host and target setup</a>.</p>
 <h2 id="Create-project-files-and-directories">Create project files and directories</h2>
 
 <p>The first step is to set up the basic project directories and include the Crosswalk headers (for compiling the code).</p>
@@ -309,7 +309,7 @@ exports.echoAsync = function (msg, callback) {
 exports.echoSync = function (msg) {
   return extension.internal.sendSyncMessage(msg);
 };</code></pre>
-<p>This JavaScript file is converted into a C header file at build-time; that header file is then referenced from the extension code. This is the simplest way to incorporate the JavaScript code into the C extension. See <a href="/documentation/tizen_ivi_extensions/build_an_application/C-header-file-for-the-JavaScript-API">this section</a> for details of how the conversion happens.</p>
+<p>This JavaScript file is converted into a C header file at build-time; that header file is then referenced from the extension code. This is the simplest way to incorporate the JavaScript code into the C extension. See <a href="/documentation/tizen_ivi_extensions/build_an_application.html#C-header-file-for-the-JavaScript-API">this section</a> for details of how the conversion happens.</p>
 <h4 id="A-note-on-the-JavaScript-API">A note on the JavaScript API</h4>
 
 <p>Note that the asynchronous part of this API is <em>not suitable</em> for a real production environment.</p>

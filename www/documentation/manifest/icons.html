@@ -272,7 +272,7 @@
 <li><p>In Crosswalk 1-7, the <code>icons</code> field is a non-standard extension, based on the format used in the <a href="https://developer.chrome.com/apps/manifest/icons">manifest for Chromium extensions</a>.</p>
 </li>
 </ul>
-<p>Note that in both cases, this field has no effect when used in a <code>manifest.json</code> file <a href="/documentation/manifest/using_the_manifest#Load-an-application-into-an-embedded-Crosswalk">loaded into an embedded Crosswalk on Android</a>.</p>
+<p>Note that in both cases, this field has no effect when used in a <code>manifest.json</code> file <a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">loaded into an embedded Crosswalk on Android</a>.</p>
 <h2>W3C variant (Crosswalk 8)</h2>
 <p>The field is a list of icon objects, each of which defines a URL for the icon as a minimum (via a <code>src</code> attribute). The icon&#39;s <code>type</code> attribute can be specified, describing the graphics format of the icon; and the optimal rendering <code>sizes</code> and screen pixel <code>density</code> for which the icon is intended can also be set.</p>
 <p>As an example, here is a simple Crosswalk manifest which specifies three icons: one to be used when a 64x64 pixel icon is needed; one to be used when a 128x128 pixel icon is needed; and one to be used when a 128x128 pixel icon is needed and the screen pixel density is 2:</p>
@@ -373,11 +373,11 @@
     &quot;128&quot;: &quot;icon128.png&quot;
   }
 }</code></pre>
-<p>Setting icons for multiple sizes <a href="/documentation/manifest/using_the_manifest/Configure-Android-packaging">can affect Android packaging for your application</a>.</p>
+<p>Setting icons for multiple sizes <a href="/documentation/manifest/using_the_manifest.html#Configure-Android-packaging">can affect Android packaging for your application</a>.</p>
 <p>As a minimum, the <code>&quot;128&quot;</code> key (for a 128x128 pixel image) should be specified. The preferred file format is PNG, but BMP, GIF, ICO, and JPEG formats may also be used.</p>
 <h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
-<p>Rather than affecting the Crosswalk runtime on Android directly, the <code>icons</code> field affects how an application is packaged by <a href="/documentation/getting_started/run_on_android"><code>make_apk.py</code></a>.</p>
+<p>Rather than affecting the Crosswalk runtime on Android directly, the <code>icons</code> field affects how an application is packaged by <a href="/documentation/getting_started/run_on_android.html"><code>make_apk.py</code></a>.</p>
 <h3>Crosswalk 1-7</h3>
 <p>If the <a href="/documentation/manifest/icons"><code>icons</code> field</a> contains multiple keys, the <code>make_apk.py</code> script will map the corresponding icon files to <a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a> as follows:</p>
 <table>

@@ -215,13 +215,13 @@
 
 <article class="article article--hasToC">
   <h1>Use Crosswalk extensions with the embedding API</h1>
-<p><a href="https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/XWalkExtension.html">Extensions</a> are supported in version 2.1 and later of the <a href="/documentation/apis/embedding_api">embedding API</a>. The extensions API is similar to the one for <a href="/documentation/android_extensions">Crosswalk runtime extensions</a>, but with a few differences due to the usage model of an <em>embedding application</em> (i.e. an Android application which embeds Crosswalk using Java code):</p>
+<p><a href="https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/XWalkExtension.html">Extensions</a> are supported in version 2.1 and later of the <a href="/documentation/apis/embedding_api.html">embedding API</a>. The extensions API is similar to the one for <a href="/documentation/android_extensions.html">Crosswalk runtime extensions</a>, but with a few differences due to the usage model of an <em>embedding application</em> (i.e. an Android application which embeds Crosswalk using Java code):</p>
 <ul>
 <li>There is no support for lifecycle events. The extension <em>cannot</em> use <code>onResume()</code>, <code>onPause()</code>, <code>onDestroy()</code>, or <code>onActivityResult()</code>. Such events should be taken care of by the embedding application.</li>
 <li>No configuration file is needed, because the embedding application is responsible for creating and destroying the extensions in Java code.</li>
 <li>No support for [<code>make_apk.py</code>]. The embedding application is likely to be built using Android SDK tools, ant etc.; the extension code should be compiled and packaged as part of this build.</li>
 </ul>
-<p>The following sections explain how to add code for an extension and use it in an embedding application. Before following them, you will need to <a href="/documentation/embedding_crosswalk">create an application with the embedding API</a>.</p>
+<p>The following sections explain how to add code for an extension and use it in an embedding application. Before following them, you will need to <a href="/documentation/embedding_crosswalk.html">create an application with the embedding API</a>.</p>
 <h2>Write the extension</h2>
 <p>Create a Java class which extends <a href="https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/XWalkExtension.html"><code>XWalkExtension</code></a>. For example:</p>
 <p><strong><code>org/crosswalkproject/sample/ExtensionEcho.java</code>:</strong></p>
@@ -261,12 +261,12 @@ public class ExtensionEcho extends XWalkExtension {
 <ul>
 <li><p>The JavaScript string in the constructor can be passed in different ways: it could be passed in as a <code>String</code> (as done here), read from a <code>.js</code> file in the <code>assets/</code> directory, fetched from a web server, etc.</p>
 </li>
-<li><p>The string returned by the <code>onMessage()</code> and <code>onSyncMessage()</code> methods could be serialised to/from JSON to handle more complex interactions. See <a href="/documentation/android_extensions/write_an_extension">the runtime extension documentation</a> for details.</p>
+<li><p>The string returned by the <code>onMessage()</code> and <code>onSyncMessage()</code> methods could be serialised to/from JSON to handle more complex interactions. See <a href="/documentation/android_extensions/write_an_extension.html">the runtime extension documentation</a> for details.</p>
 </li>
 </ul>
 <p>Note that it is also possible to include an extension in binary format, in a jar or <code>.class</code> file bundled with the embedding application. Extensions included by the embedding application can be used the same way as any other imported Java classes.</p>
 <h2>Use the extension in the embedding application</h2>
-<p>To use the extension, you need to initialise it just after the embedding application&#39;s main activity is started. For example, if your activity was <code>src/org/crosswalkproject/sample/MainActivity.java</code> (see the <a href="/documentation/android_extensions/write_an_extension">embedding tutorial</a>), you could use the extension as follows:</p>
+<p>To use the extension, you need to initialise it just after the embedding application&#39;s main activity is started. For example, if your activity was <code>src/org/crosswalkproject/sample/MainActivity.java</code> (see the <a href="/documentation/android_extensions/write_an_extension.html">embedding tutorial</a>), you could use the extension as follows:</p>
 <ol>
 <li><p>Add code to the main activity to create an instance of the extension when the activity is ready:</p>
 <pre><code>import org.crosswalkproject.sample.ExtensionEcho;

@@ -215,7 +215,7 @@
 
 <article class="article article--hasToC">
   <h1>Frequently-asked questions</h1>
-<p>If you have any questions that are not answered below, the crosswalk-help mailing list is a good place to ask them. Alternatively, contact us directly via the #crosswalk IRC channel on Freenode. See the <a href="/documentation/community">Community page</a> for more details.</p>
+<p>If you have any questions that are not answered below, the crosswalk-help mailing list is a good place to ask them. Alternatively, contact us directly via the #crosswalk IRC channel on Freenode. See the <a href="/documentation/community.html">Community page</a> for more details.</p>
 <h3>Contents</h3>
 <ul>
 <li><a href="#Background-to-the-project">Background to the project</a></li>
@@ -264,7 +264,7 @@
 <p>There are two approaches to building an application which supports both x86 and ARM platforms:</p>
 <ul>
 <li><p>Build two separate packages for your application, one for x86 and one for ARM; then upload both to the app stores where you are hosting your application. Prominent stores like Google Play have support for <a href="http://developer.android.com/google/play/publishing/multiple-apks.html">uploading multiple packages for different platforms</a>.</p>
-<p>The <a href="/documentation/getting_started/run_on_android">Crosswalk apk generation script</a> (<code>make_apk.py</code>) generates packages for both architectures to facilitate this way of working.</p>
+<p>The <a href="/documentation/getting_started/run_on_android.html">Crosswalk apk generation script</a> (<code>make_apk.py</code>) generates packages for both architectures to facilitate this way of working.</p>
 </li>
 <li><p>Build one package for your application, but include both the x86 and ARM versions of Crosswalk in it. The down-side of this approach is that it makes the package file very large (c. 40Mb before you add your application code).</p>
 <p>Creating a package this way requires you to copy the Crosswalk shared object files for both architectures into the <code>lib/</code> directory of the apk package file. For example, an apk with support for x86 and ARM would contain the following files:</p>
@@ -273,7 +273,7 @@ lib/armeabi-v7a/libxwalkcore.so
 lib/x86/libxwalkcore.so
 </pre>
 
-<p>How you achieve this depends on your build process. If you need a reference, see <a href="/documentation/cordova/migrate_an_application/Multi-architecture-packages">the Cordova migration instructions</a>, which explain how to do this in the context of Crosswalk Cordova.</p>
+<p>How you achieve this depends on your build process. If you need a reference, see <a href="/documentation/cordova/migrate_an_application/Multi-architecture-packages.html">the Cordova migration instructions</a>, which explain how to do this in the context of Crosswalk Cordova.</p>
 </li>
 </ul>
 <h3>Which platforms does Crosswalk support?</h3>
@@ -293,11 +293,11 @@ lib/x86/libxwalkcore.so
 <p>(Other command-line options can be added to the file if desired.)</p>
 <p>The method for adding this file to your Android package depends on how you are using Crosswalk:</p>
 <ul>
-<li><p>If you are <strong><a href="/documentation/embedding_crosswalk">embedding Crosswalk in an Android application</a></strong>, the file should be placed in the <code>assets/</code> directory of your project.</p>
+<li><p>If you are <strong><a href="/documentation/embedding_crosswalk.html">embedding Crosswalk in an Android application</a></strong>, the file should be placed in the <code>assets/</code> directory of your project.</p>
 </li>
-<li><p>If you are <strong><a href="/documentation/cordova">using Crosswalk Cordova</a></strong>, the file should be placed in the <code>platforms/android/assets/</code> directory of your project.</p>
+<li><p>If you are <strong><a href="/documentation/cordova.html">using Crosswalk Cordova</a></strong>, the file should be placed in the <code>platforms/android/assets/</code> directory of your project.</p>
 </li>
-<li><p>If you are <strong><a href="/documentation/getting_started/run_on_android">building an Android package with the <code>make_apk.py</code> script</a></strong>, you can pass an option to create the file inside the output Android package:</p>
+<li><p>If you are <strong><a href="/documentation/getting_started/run_on_android.html">building an Android package with the <code>make_apk.py</code> script</a></strong>, you can pass an option to create the file inside the output Android package:</p>
 <pre><code>make_apk.py --manifest=mygame/manifest.json \
   --xwalk-command-line=&quot;--ignore-gpu-blacklist&quot;</code></pre>
 </li>

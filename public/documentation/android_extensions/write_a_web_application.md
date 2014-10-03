@@ -1,6 +1,6 @@
 # Write a web application
 
-The web application for this project is a simple HTML5/CSS/Javascript application, with some additional files to enable it to be used in a Crosswalk package. Full details about adapting web applications for Crosswalk are given [in the *Getting started* pages](/documentation/getting_started/build_an_application).
+The web application for this project is a simple HTML5/CSS/Javascript application, with some additional files to enable it to be used in a Crosswalk package. Full details about adapting web applications for Crosswalk are given [in the *Getting started* pages](/documentation/getting_started/build_an_application.html).
 
 1.  Create the directories for the web application:
 
@@ -34,7 +34,7 @@ The web application for this project is a simple HTML5/CSS/Javascript applicatio
 
     The manifest file (above) specifies a 96x96px icon with filename `icon.png` as the application icon. Crosswalk will use this as the icon for the application in the Android target's application list/home screen etc.
 
-    You can either use your own icon (with the right dimensions), or copy the default Crosswalk one by following the instructions on [this page](/documentation/getting_started/build_an_application/a-simple-application).
+    You can either use your own icon (with the right dimensions), or copy the default Crosswalk one by following the instructions on [this page](/documentation/getting_started/build_an_application/a-simple-application.html).
 
 4.  Add the HTML file `index.html`:
 

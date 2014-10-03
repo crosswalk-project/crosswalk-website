@@ -6,7 +6,7 @@ The application can be split into two pieces: the application "proper", containi
 
 You will also add some supporting files for packaging the extension into a Tizen package (`rpm` file).
 
-Before starting, make sure you have already followed the steps in [Host and target setup](/documentation/Tizen_IVI_extensions/Host_and_target_setup).
+Before starting, make sure you have already followed the steps in [Host and target setup](/documentation/tizen_IVI_extensions/host_and_target_setup.html).
 
 In the sections below, you'll create the metadata and the application; then add the build infrastructure.
 
@@ -111,11 +111,11 @@ When the application runs, the extension's API is invoked asynchronously and syn
 
 ## Create the package
 
-Now that you have the web application, follow the steps in [Run on Tizen](/documentation/getting_started/run_on_Tizen) to create the Tizen package (`.xpk` file).
+Now that you have the web application, follow the steps in [Run on Tizen](/documentation/getting_started/run_on_tizen.html) to create the Tizen package (`.xpk` file).
 
 The steps are summarised below:
 
-1.  Add the `make_xpk.sh` script to the project. See [Create the xpk file](/documentation/getting_started/run_on_Tizen#Create-the-xpk-file) for the content of the script and how to create it.
+1.  Add the `make_xpk.sh` script to the project. See [Create the xpk file](/documentation/getting_started/run_on_tizen.html#Create-the-xpk-file) for the content of the script and how to create it.
 
 2.  Create a private key for signing packages:
 
@@ -127,4 +127,4 @@ The steps are summarised below:
 
     Note that you are just including the `app` directory in the `.xpk` file, not the whole project directory (i.e. not the whole of `simple-extension-app`).
 
-    The output from this command is an `app.xpk` file in the project directory. The [next section](/documentation/tizen_ivi_extensions/run_on_tizen_vm) explains how to install and run it.
+    The output from this command is an `app.xpk` file in the project directory. The [next section](/documentation/tizen_ivi_extensions/run_on_tizen_vm.html) explains how to install and run it.

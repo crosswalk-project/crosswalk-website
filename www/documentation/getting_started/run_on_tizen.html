@@ -264,7 +264,7 @@
 <article class="article article--hasToC">
   <h1>Running a Crosswalk app on Tizen</h1>
 <p>On Tizen, Crosswalk runs as a background service, only becoming active when needed (i.e. when a user session activates it). In technical terms, Crosswalk effectively runs as a daemon, exposing a D-Bus interface for managing applications.</p>
-<p>To run an application on a Tizen target, first ensure you have set up your host for Tizen (<a href="/documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen">Windows</a>, <a href="/documentation/getting_started/Linux_host_setup/Installation-for-Crosswalk-Tizen">Linux</a>) and <a href="/documentation/getting_started/tizen_target_setup">set up a Tizen target</a>. In the instructions below, we assume you are using a Tizen IVI target running under VMware, and consequently use <code>ssh</code> to push files to, and get a shell on, the target.</p>
+<p>To run an application on a Tizen target, first ensure you have set up your host for Tizen (<a href="/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Tizen">Windows</a>, <a href="/documentation/getting_started/linux_host_setup.html#Installation-for-Crosswalk-Tizen">Linux</a>) and <a href="/documentation/getting_started/tizen_target_setup.html">set up a Tizen target</a>. In the instructions below, we assume you are using a Tizen IVI target running under VMware, and consequently use <code>ssh</code> to push files to, and get a shell on, the target.</p>
 <p>Next, follow these steps to get the application running:</p>
 <ol>
 <li><a href="#Create-a-Tizen-package">Create a Tizen package</a> (<code>.xpk</code> file) from the application code.</li>
@@ -276,7 +276,7 @@
 <h2 id="Create-a-Tizen-package">Create a Tizen package</h2>
 
 <p>A Tizen package file is a zip file with some &quot;magic&quot; (a special file header specific to Crosswalk) and an <code>.xpk</code> suffix. It will contain all of the files relating to your application (HTML, CSS, JavaScript, assets), as well as any metadata (<code>manifest.json</code>, icons etc.). See <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-package-management">the wiki</a> for detailed information about the format.</p>
-<p>To create a zip package, you will need a <code>bash</code> shell and the <code>zip</code> and <code>openssl</code> binaries installed. On Linux, these are usually available by default. On Windows, you will need to <a href="/documentation/getting_started/Windows_host_setup/Installation-for-Crosswalk-Tizen">install git SCM</a>.</p>
+<p>To create a zip package, you will need a <code>bash</code> shell and the <code>zip</code> and <code>openssl</code> binaries installed. On Linux, these are usually available by default. On Windows, you will need to <a href="/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Tizen">install git SCM</a>.</p>
 <p>Then follow the steps below to create the package.</p>
 <h3>Add the make_xpk script</h3>
 <ol>
@@ -378,7 +378,7 @@ successfully.</code></pre>
 <pre><code>app:~&gt; xwalk-launcher dogabgfklbjobjkfdbokaedngjeepepj</code></pre>
 <p>The application should now start on the target. Here it is running on an emulated Tizen IVI device, on Fedora Linux:</p>
 <p><img src="/assets/xwalk-simple-on-tizen-ivi.png"></p>
-<p>To start the application in fullscreen mode, you can either <a href="/documentation/manifest/display">configure this in the manifest</a> or pass the <code>--fullscreen</code> option to <code>xwalk-launcher</code>:</p>
+<p>To start the application in fullscreen mode, you can either <a href="/documentation/manifest/display.html">configure this in the manifest</a> or pass the <code>--fullscreen</code> option to <code>xwalk-launcher</code>:</p>
 <pre><code>app:~&gt; xwalk-launcher --fullscreen dogabgfklbjobjkfdbokaedngjeepepj</code></pre>
 
   <footer class="article-next">

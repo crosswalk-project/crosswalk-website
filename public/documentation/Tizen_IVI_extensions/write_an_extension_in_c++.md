@@ -14,7 +14,7 @@ The extension consists of three parts:
 
 You also need some supporting files to build and package the extension.
 
-Before starting, make sure you have already followed the steps in [Host and target setup](/documentation/Tizen_IVI_extensions/Host_and_target_setup).
+Before starting, make sure you have already followed the steps in [Host and target setup](/documentation/tizen_ivi_extensions/host_and_target_setup.html).
 
 ## Create project files and directories
 
@@ -120,7 +120,7 @@ instead of the anticipated:
     hello world
     goodbye cruel world
 
-The solution is to pass a token from the JavaScript API to the C++ code, then return that token as part of the response from the C++ code. The JavaScript API would maintain a mapping from tokens to callbacks, so when responses are returned (containing a token), the correct handler can be looked up and invoked. A typical way to implement this would be to JSON-encode messages between the JavaScript and C++ parts of the extension, and include a token in each message. However, this process is too complex for the scope of this tutorial. Look at the [more elaborate version](/documentation/Tizen_IVI_extensions/18-JSON_based_C++_extension) of this tutorial extension to see that method in action.
+The solution is to pass a token from the JavaScript API to the C++ code, then return that token as part of the response from the C++ code. The JavaScript API would maintain a mapping from tokens to callbacks, so when responses are returned (containing a token), the correct handler can be looked up and invoked. A typical way to implement this would be to JSON-encode messages between the JavaScript and C++ parts of the extension, and include a token in each message. However, this process is too complex for the scope of this tutorial. Look at the [more elaborate version](/documentation/tizen_ivi_extensions/json_based_c++_extension.html) of this tutorial extension to see that method in action.
 
 If you're interested in seeing a more realistic example, the [Crosswalk Tizen extensions](https://github.com/crosswalk-project/tizen-extensions-crosswalk) are a good place to start, e.g. [the application API JavaScript file](https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/application/application_api.js).
 

@@ -227,7 +227,7 @@
 <p>By contrast, one major benefit of Crosswalk is that many of these evolving standards are implemented and available for use <em>right now</em>. In this article, I&#39;ll describe how to resolve some of the issues listed above using Crosswalk by optimising a simple side-scrolling HTML5 game for mobile screens.</p>
 <h2>Aside: measuring the screen in HTML5 applications</h2>
 <p>One major complexity when working with HTML5 and CSS is figuring out how CSS pixels and physical pixels on the screen relate to each other. For the purposes of this article, I&#39;ve glossed over these issues, as they can mostly be ignored if you aren&#39;t too concerned about how consistent a game appearson different devices. However, there are other situations where it is important to understand these nuances; for example, if you want your game to look identical on different devices, you will have to pay attention to screen densities.</p>
-<p>To help in these situations, the <a href="/documentation/screens/screen_measurements">screen measurements page</a> explains the terminology, including units and measurements, which are relevant when dealing with heterogenous screens in detail.</p>
+<p>To help in these situations, the <a href="/documentation/screens/screen_measurements.html">screen measurements page</a> explains the terminology, including units and measurements, which are relevant when dealing with heterogenous screens in detail.</p>
 <p>You may also find it useful to refer to <a href="http://www.html5rocks.com/en/tutorials/canvas/hidpi/">this article</a> about working with the <code>&lt;canvas&gt;</code> element on HiDPI (aka retina) displays.</p>
 <h2>The game</h2>
 <p>The game used in this article is a side-scrolling dodge game set in space. The code is <a href="https://github.com/crosswalk-project/crosswalk-samples">available on github</a>.</p>
@@ -372,7 +372,7 @@ p, button {
 <ol>
 <li><p>Download the latest stable Crosswalk Android bundle:</p>
 <pre><code>$ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-X86}/crosswalk-${XWALK-STABLE-ANDROID-X86}.zip</code></pre>
-<p>If you want to run the version of the game designed to work with Crosswalk 8, fetch one of the Crosswalk Android <em>canary</em> bundles from <a href="/documentation/downloads">the download page</a>.</p>
+<p>If you want to run the version of the game designed to work with Crosswalk 8, fetch one of the Crosswalk Android <em>canary</em> bundles from <a href="/documentation/downloads.html">the download page</a>.</p>
 </li>
 <li><p>Unzip the bundle, e.g. on Linux:</p>
 <pre><code>$ unzip crosswalk-${XWALK-STABLE-ANDROID-X86}.zip</code></pre>
@@ -391,7 +391,7 @@ $ python make_apk.py --manifest=/path/to/crosswalk-samples/space-dodge-game/&lt;
 <p>or</p>
 <pre><code>adb install space_dodge_game_0.0.0.1_arm.apk</code></pre>
 <p>depending on your target hardware.</p>
-<p>For more details about building and running Crosswalk applications on Android, see <a href="/documentation/getting_started/run_on_android">the Getting started pages</a>.</p>
+<p>For more details about building and running Crosswalk applications on Android, see <a href="/documentation/getting_started/run_on_android.html">the Getting started pages</a>.</p>
 </li>
 </ol>
 <h2>Issue 1: The game sometimes displays in portrait orientation</h2>
@@ -422,9 +422,9 @@ $ python make_apk.py --manifest=/path/to/crosswalk-samples/space-dodge-game/&lt;
   &quot;start_url&quot;: &quot;index.html&quot;,
   &quot;orientation&quot;: &quot;landscape&quot;
 }</code></pre>
-<p>You could then <a href="/documentation/getting_started/run_on_android">build an application package for Android</a> from this manifest with:</p>
+<p>You could then <a href="/documentation/getting_started/run_on_android.html">build an application package for Android</a> from this manifest with:</p>
 <pre><code>$ python make_apk.py --manifest=/projects/space_dodge_game/manifest.json</code></pre>
-<p>Install it on an Android target as described in <a href="/documentation/getting_started/run_on_android">the Getting started pages</a>.</p>
+<p>Install it on an Android target as described in <a href="/documentation/getting_started/run_on_android.html">the Getting started pages</a>.</p>
 <p>Using the <code>orientation</code> field in the manifest has exactly the same effect as using <code>screen.lockOrientation</code> in your application code: the application rotates to the requested orientation after the application starts. But <code>screen.lockOrientation</code> has the advantage of being supported by other runtimes (e.g. Firefox OS), so may be a better choice if you need your application to work cross-platform.</p>
 <p>The <code>orientation</code> manifest field is defined in the <a href="http://w3c.github.io/manifest/">W3C Manifest for web application specification</a>.</p>
 </li>
@@ -449,14 +449,14 @@ $ python make_apk.py --manifest=/path/to/crosswalk-samples/space-dodge-game/&lt;
   &quot;display&quot;: &quot;fullscreen&quot;,
   &quot;orientation&quot;: &quot;landscape&quot;
 }</code></pre>
-<p><a href="/documentation/getting_started/run_on_android">Build and deploy to the device</a> as usual.</p>
+<p><a href="/documentation/getting_started/run_on_android.html">Build and deploy to the device</a> as usual.</p>
 <p>The <code>display</code> manifest field is defined in the <a href="http://w3c.github.io/manifest/">W3C Manifest for web application specification</a>.</p>
 </li>
 <li><p>Use the <code>--fullscreen</code> option with the <code>make_apk.py</code> script.</p>
 <p>For example:</p>
 <pre><code>$ python make_apk.py --manifest=/projects/space_dodge_game/manifest.json \
     --orientation=landscape --fullscreen</code></pre>
-<p>This is a useful option if you are using an older version of Crosswalk which doesn&#39;t support the <code>display</code> field in the manifest. See <a href="/documentation/getting_started/run_on_android">the Getting started pages</a> for more information about using <code>make_apk.py</code>.</p>
+<p>This is a useful option if you are using an older version of Crosswalk which doesn&#39;t support the <code>display</code> field in the manifest. See <a href="/documentation/getting_started/run_on_android.html">the Getting started pages</a> for more information about using <code>make_apk.py</code>.</p>
 </li>
 </ul>
 <p>Using either the <code>display</code> field or the <code>--fullscreen</code> option has the same effect: the application displays in fullscreen, hiding the system status bar on Android:</p>
@@ -814,7 +814,7 @@ fitCanvas();</code></pre>
 <p>Depending on how large the images are, it might make sense to use larger images at all scales. But if you are trying to keep the size of the assets down, using different images for different scales may be a more viable approach.</p>
 <h2>Issue 5: We need a launch screen</h2>
 <p>Applications can sometimes take a while to load, due to network latency and/or sheer size and number of resources. This problem gets worse as the application grows and is especially problematic for games, where there are often a large number of graphical, audio and video assets in use. In such cases, a common technique is to show a screen with introductory images or text while the resources are loading, commonly known as a &quot;loading&quot; or &quot;launch&quot; screen. Frameworks often provide APIs to support this, or developers may add their own code to handle it.</p>
-<p>Crosswalk 8 and later provides baked-in support for launch screens, via an <code>xwalk_launch_screen</code> in the application manifest. This enables you to set background and foreground images and colours, differentiated according to screen orientation and pixel density if desired, with little or no programming. Full details of its capabilities are on the <a href="/documentation/manifest/launch_screen">launch screen page</a>.</p>
+<p>Crosswalk 8 and later provides baked-in support for launch screens, via an <code>xwalk_launch_screen</code> in the application manifest. This enables you to set background and foreground images and colours, differentiated according to screen orientation and pixel density if desired, with little or no programming. Full details of its capabilities are on the <a href="/documentation/manifest/launch_screen.html">launch screen page</a>.</p>
 <p>The steps below explain how to add a launch screen to the example game.</p>
 <ol>
 <li><p>First, add a foreground image <code>fg.png</code>. This is a simple graphic composed of the name of the game plus the rocket sprite, with a transparent background (I&#39;ve added a blue background to the graphic here so the white letters show up):</p>
@@ -838,7 +838,7 @@ fitCanvas();</code></pre>
 }</code></pre>
 <p>The <code>ready_when</code> property specifies when to stop showing the launch screen. By setting this to <code>custom</code>, the launch screen can be closed programmatically once all the assets are loaded. This is the typical mode you would want to use for launch screens in an HTML5 game, as you will often be doing some initialisation work in JavaScript before the game is usable. In the next step, we&#39;ll add the code which does this.</p>
 <p>The <code>landscape</code> property specifies the background colour and <code>image</code> (foreground image) to use for the launch screen when in landscape mode. Any image paths are relative to <code>manifest.json</code>, and the foreground image will be centered on the background.</p>
-<p>As the application will always be in landscape orientation (<code>&quot;orientation&quot;: &quot;landscape&quot;</code> is set in the manifest), there&#39;s no need for a <code>portrait</code> property. Note that you may use the <code>default</code> key to specify the settings for all orientations; and can specify different backgrounds and images for different orientations and screen densities. See <a href="/documentation/manifest/launch_screen">this explanation</a> for more details about the available launch screen options.</p>
+<p>As the application will always be in landscape orientation (<code>&quot;orientation&quot;: &quot;landscape&quot;</code> is set in the manifest), there&#39;s no need for a <code>portrait</code> property. Note that you may use the <code>default</code> key to specify the settings for all orientations; and can specify different backgrounds and images for different orientations and screen densities. See <a href="/documentation/manifest/launch_screen.html">this explanation</a> for more details about the available launch screen options.</p>
 </li>
 <li><p>The final step is to modify the JavaScript to close the launch screen.</p>
 <p>When the <code>ready_when</code> property is set to <code>custom</code>, the launch screen can be closed by calling the Crosswalk-specific <code>window.screen.show()</code> method. For this game, I added an artificial 5 second timeout before calling the <code>window.screen.show()</code> method (otherwise the game loads so quickly that you only see a flash of the launch screen). The code looks like this:</p>

@@ -248,7 +248,7 @@
 <p>In this section, you will create the web application (HTML5/JavaScript).</p>
 <p>The application can be split into two pieces: the application &quot;proper&quot;, containing the HTML, JavaScript, CSS, and other assets; and the metadata describing the application and how it should be installed on the system.</p>
 <p>You will also add some supporting files for packaging the extension into a Tizen package (<code>rpm</code> file).</p>
-<p>Before starting, make sure you have already followed the steps in <a href="/documentation/Tizen_IVI_extensions/Host_and_target_setup">Host and target setup</a>.</p>
+<p>Before starting, make sure you have already followed the steps in <a href="/documentation/tizen_IVI_extensions/host_and_target_setup.html">Host and target setup</a>.</p>
 <p>In the sections below, you&#39;ll create the metadata and the application; then add the build infrastructure.</p>
 <h2>Create project files and directories</h2>
 <p>The first step is to set up the basic project structure inside a <code>simple-extension-app</code> directory:</p>
@@ -329,10 +329,10 @@ div.appendChild(p2);
 <p>Note that the <code>echo</code> extension is available globally to the application: there&#39;s no need to include a script to make use of it.</p>
 <p>When the application runs, the extension&#39;s API is invoked asynchronously and synchronously (<code>echo.echoAsync()</code> and <code>echoSync()</code>). The returned responses (with the &quot;You said: &quot; prefixes added) are used to set the text of two paragraph (<code>p</code>) elements.</p>
 <h2>Create the package</h2>
-<p>Now that you have the web application, follow the steps in <a href="/documentation/getting_started/run_on_Tizen">Run on Tizen</a> to create the Tizen package (<code>.xpk</code> file).</p>
+<p>Now that you have the web application, follow the steps in <a href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a> to create the Tizen package (<code>.xpk</code> file).</p>
 <p>The steps are summarised below:</p>
 <ol>
-<li><p>Add the <code>make_xpk.sh</code> script to the project. See <a href="/documentation/getting_started/run_on_Tizen#Create-the-xpk-file">Create the xpk file</a> for the content of the script and how to create it.</p>
+<li><p>Add the <code>make_xpk.sh</code> script to the project. See <a href="/documentation/getting_started/run_on_tizen.html#Create-the-xpk-file">Create the xpk file</a> for the content of the script and how to create it.</p>
 </li>
 <li><p>Create a private key for signing packages:</p>
 <pre><code>&gt; openssl genrsa -out ~/mykey.pem 1024</code></pre>
@@ -340,7 +340,7 @@ div.appendChild(p2);
 <li><p>Create the <code>.xpk</code> file:</p>
 <pre><code>&gt; ./make_xpk.sh app/ ~/mykey.pem</code></pre>
 <p>Note that you are just including the <code>app</code> directory in the <code>.xpk</code> file, not the whole project directory (i.e. not the whole of <code>simple-extension-app</code>).</p>
-<p>The output from this command is an <code>app.xpk</code> file in the project directory. The <a href="/documentation/tizen_ivi_extensions/run_on_tizen_vm">next section</a> explains how to install and run it.</p>
+<p>The output from this command is an <code>app.xpk</code> file in the project directory. The <a href="/documentation/tizen_ivi_extensions/run_on_tizen_vm.html">next section</a> explains how to install and run it.</p>
 </li>
 </ol>
 

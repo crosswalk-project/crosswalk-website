@@ -10,7 +10,7 @@
         <% for(var slug in public.contribute._data) { %>
           <% var article = public.contribute._data[slug] %>
           <li class="article-item <%= current.source === slug.toLowerCase() ? ' nav-item--active' : '' %>">
-            <a href="/contribute/<%= slug.toLowerCase() %>"><%= article.title %></a>
+            <a href="/contribute/<%= slug ? slug.toLowerCase() + '.html' : '' %>"><%= article.title %></a>
           </li>
         <% } %>
       </ul>

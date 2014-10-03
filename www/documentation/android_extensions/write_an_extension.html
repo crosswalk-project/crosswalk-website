@@ -307,7 +307,7 @@ mkdir js
 
 # for third party libs distributed with the project
 mkdir tools</code></pre>
-<p>The <code>build/</code>, <code>lib/</code> and <code>xwalk-echo-extension/</code> directories (shown in the <a href="/documentation/android_extensions/host_and_target_setup#Project-Outline">project outline</a>) will be created at build time.</p>
+<p>The <code>build/</code>, <code>lib/</code> and <code>xwalk-echo-extension/</code> directories (shown in the <a href="/documentation/android_extensions/host_and_target_setup.html#project-outline">project outline</a>) will be created at build time.</p>
 <p>Note that the following instructions assume you&#39;re in <code>xwalk-echo-extension-src/</code> (the top-level directory for the extension project).</p>
 <h2>Add Java code for the extension</h2>
 <p>First, create a Java class which extends <a href="https://github.com/crosswalk-project/crosswalk/blob/master/app/android/runtime_client/src/org/xwalk/app/runtime/extension/XWalkExtensionClient.java"><code>XWalkExtensionClient</code></a>.</p>
@@ -577,7 +577,7 @@ $ cp apache-ivy-2.4.0-rc1/ivy-2.4.0-rc1.jar tools/</code></pre>
 </ol>
 <h3 id="Add-an-Ant-buildfile">Add an Ant buildfile</h3>
 
-<p>You should have already installed Ant as described in the <em>Getting started</em> instructions (<a href="/documentation/getting_started/windows_host_setup/Install-Ant">Windows</a>, <a href="/documentation/getting_started/linux_host_setup/Install-Ant">Linux</a>).</p>
+<p>You should have already installed Ant as described in the <em>Getting started</em> instructions (<a href="/documentation/getting_started/windows_host_setup/install-ant.html">Windows</a>, <a href="/documentation/getting_started/linux_host_setup/install-ant.html">Linux</a>).</p>
 <p>Once Ant is installed, add a buildfile, <code>build.xml</code>, to the top-level directory of your project with this content:</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;project xmlns:ivy=&quot;antlib:org.apache.ivy.ant&quot; name=&quot;xwalk-echo-extension&quot; default=&quot;dist&quot;&gt;

@@ -52,11 +52,11 @@ The diagram below shows how the application and the extension interact:
 
 **The tutorial contains the following steps:**
 
-1.  [Set up your host development environment](/documentation/tizen_ivi_extensions/host_and_target_setup).
-2.  [Write a Tizen Crosswalk extension in C](/documentation/tizen_ivi_extensions/write_an_extension_in_c).
-3.  [Write a Tizen Crosswalk extension in C++](/documentation/tizen_ivi_extensions/write_an_extension_in_c++).
-4.  [Write a web application](/documentation/tizen_ivi_extensions/write_a_web_application).
-<!-- 5.  [Run the application and extension using the Tizen emulator](/documentation/tizen_ivi_extensions/run_on_tizen_emulator). -->
+1.  [Set up your host development environment](/documentation/tizen_ivi_extensions/host_and_target_setup.html).
+2.  [Write a Tizen Crosswalk extension in C](/documentation/tizen_ivi_extensions/write_an_extension_in_c.html).
+3.  [Write a Tizen Crosswalk extension in C++](/documentation/tizen_ivi_extensions/write_an_extension_in_c++.html).
+4.  [Write a web application](/documentation/tizen_ivi_extensions/write_a_web_application.html).
+<!-- 5.  [Run the application and extension using the Tizen emulator](/documentation/tizen_ivi_extensions/run_on_tizen_emulator.html). -->
 
 As far as tooling goes, you'll use command line tools to compile the extension, and simple text editors to write the code. It is possible to use the Tizen SDK IDE to build Tizen applications; but using command line tools and a text editor exposes the internals of the extension more clearly.
 
