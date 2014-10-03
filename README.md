@@ -1,10 +1,5 @@
 # Intel Crosswalk
 
-Prepared by Chloi Inc. for Troy Allison of Intel.
-
-- Brock Whitten, [brock@chloi.io](mailto:brock@chloi.io)
-- Kenneth Ormandy, [kenneth@chloi.io](mailto:kenneth@chloi.io)
-
 ## Running the project
 
 This static site for Crosswalk is built with:

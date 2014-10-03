@@ -3,8 +3,11 @@
   "homepage": "https://crosswalk-project.org",
   "private": true,
   "scripts": {
-    "styleguide": "kss-node ./ ./styleguide --template ./_styleguide-template --sass ./css/styleguide.scss",
+    "styleguide": "kss-node ./ ./public/styleguide --template ./_styleguide-template --sass ./public/css/styleguide.scss",
     "dropbox": "harp compile && cp -R www/* ~/Dropbox/harp.io/apps/intel-crosswalk.harp.io/public",
     "deploy": "npm run styleguide && npm run dropbox"
+  },
+  "devDependencies": {
+    "kss": "~0.4.0"
   }
 }
