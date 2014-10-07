@@ -18,7 +18,7 @@ For Tizen, a [canary](#documentation/downloads/Release-channels) version is used
     * [Tizen target](#documentation/getting_started/tizen_target_setup)
 3.  [Build a very simple HTML5 application](#documentation/getting_started/build_an_application).
 4.  Run that application using stable releases of Crosswalk:
-    *   [Run on Crosswalk Android, version ${XWALK-STABLE-ANDROID-X86}](#documentation/getting_started/run_on_android)
+    *   [Run on Crosswalk Android, stable version ${XWALK-STABLE-ANDROID-X86} and beta vesion ${XWALK-BETA-ANDROID-X86}](#documentation/getting_started/run_on_android)
     *   [Run on Crosswalk Tizen for x86, canary version](#documentation/getting_started/run_on_tizen)
 5.  For Android only:
     *   [Deploy the application to an Android app store](#documentation/getting_started/deploy_to_android_store)
