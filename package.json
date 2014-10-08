@@ -2,6 +2,7 @@
   "name": "crosswalk-website",
   "homepage": "https://crosswalk-project.org",
   "private": true,
+  "version": "2.0.0",
   "scripts": {
     "styleguide": "kss-node ./ ./public/styleguide --template ./_styleguide-template --sass ./public/css/styleguide.scss",
     "dropbox": "harp compile && cp -R www/* ~/Dropbox/harp.io/apps/intel-crosswalk.harp.io/public",
