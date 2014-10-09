@@ -1,0 +1,14 @@
+<article class="article">
+  <header class="article-header">
+    <h1 class="article-title"><%- title %></h1>
+    <span class="article-meta">
+      <a href="<%= current.source %>.html"><time class="js-vagueTime" datetime="<%- new Date(date).toUTCString() %>"><%- new Date(date).toUTCString() %></time></a>
+      <% if(author) { %> by <span class="article-author"><%= author %></span><% } %>
+    </span>
+  </header>
+  <% if(typeof hero !== 'undefined') { %>
+    <img class="article-hero" src="<%= hero %>" alt="" />
+  <% } %>
+  <%- yield %>
+  <% include ../_includes/blog-promo-1 %>
+</article>

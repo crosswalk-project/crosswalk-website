@@ -1,0 +1,190 @@
+<% include _includes/redirect-hash %>
+<header class="hero hero--bg1 knockout">
+  <div class="container">
+    <div class="row">
+      <% include _includes/nav.ejs %>
+    </div>
+    <div class="row">
+      <h1 class="hero-heading">build world class hybrid&nbsp;apps</h1>
+    </div>
+    <div class="row hero-row">
+      <p>Replace Android’s default <code>WebView</code> with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps.</p>
+      <!-- <p>Build native or Cordova/PhoneGap apps with bleeding-edge <abbr>HTML5</abbr> features consistently: Audio API, WebGL, web fonts, <a href="#front-end">and more</a>.</p> -->
+    </div>
+    <div class="row">
+      <div class="button-group">
+        <a href="/documentation/getting_started.html" class="button">Get started</a>
+        <a class="button-follower" href="http://twitter.com/xwalk_project">
+          Follow Crosswalk on Twitter
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-seperator">
+      <div class="container">
+        <div class="row">
+
+        <aside class="media">
+          <ul class="media-list">
+            <li class="media-item">
+              <a class="media-link" href="/documentation/cordova.html">
+                <img class="media-image" src="/assets/icons/logo-cordova-white.svg" alt="Apache Cordova logo" />
+                <p class="media-description">
+                  <strong class="media-heading">Apache Cordova compatible</strong>
+                  Crosswalk includes Cordova / PhoneGap APIs
+                </p>
+              </a>
+            </li>
+            <li class="media-item">
+              <a class="media-link" href="/documentation/getting_started/build_an_application.html">
+                <img class="media-image" src="/assets/icons/logo-android-white.svg" alt="Google Android logo" />
+                <p class="media-description">
+                  <strong class="media-heading">Android compatible</strong>
+                  Use Crosswalk as your <code>WebView</code> or in-app browser
+                </p>
+              </a>
+            </li>
+            <li class="media-item">
+              <a class="media-link" href="/documentation/getting_started/run_on_tizen.html">
+                <img class="media-image" src="/assets/icons/logo-tizen-white.svg" alt="Tizen logo" />
+                <p class="media-description">
+                  <strong class="media-heading">Tizen compatible</strong>
+                  Use Crosswalk as your <code>WebView</code> or in-app browser
+                </p>
+              </a>
+            </li>
+            <li class="media-item">
+              <a class="media-link" href="/documentation/getting_started.html">
+                <img class="media-image" src="/assets/icons/logo-chrome-white.svg" alt="Google Chromium logo" />
+                <p class="media-description">
+                  <strong class="media-heading">Built with Google Chromium</strong>
+                  Crosswalk is powered by Chromium and Blink
+                </p>
+              </a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </div>
+</header>
+<main role="main" id="main" class="main">
+  <div class="container">
+    <div class="row row--narrow article">
+      <p class="lead">No developer wants <strong>old, outdated devices</strong> to stop them using awesome new APIs.</p>
+
+      <p>You’re forced to assume every Android <code>WebView</code> works differently. There are variations in:
+      <ul>
+        <li>Which JavaScript APIs are available</li>
+        <li>Support and syntax for CSS properties</li>
+        <li>How your application's interface is rendered</li>
+      </ul>
+      <p>…and plenty more. You want to support as many versions of Android as possible—but it’s frustrating and time consuming.</p>
+    </div>
+    <div class="row">
+      <img src="assets/illustrations/crosswalk-landing-variety.png" />
+    </div>
+  </div>
+  <div class="container">
+    <div class="row row--narrow article article--noLead">
+      <p><strong>There’s a better way.</strong> What if the only <code>WebView</code> you had to worry about was up to date with the latest version of Google Chromium? With <strong>Crosswalk</strong>, you can:</p>
+
+      <ul>
+        <li>Develop around device fragmentation</li>
+        <li>Provide a feature rich experience on all Android 4.x devices</li>
+        <li>Easily debug with Chrome DevTools</li>
+        <li>Improve the performance of your HTML, CSS, and JavaScript</li>
+      </ul>
+    </div>
+  </div>
+  <!-- <div class="knockout"> -->
+      <div class="container">
+        <div class="row">
+          <blockquote class="blockquote">
+            <footer>
+              <img src="/assets/profiles/ashley-gullen.jpg" alt="Ashley Scirra’s profile picture" />
+              <strong>Ashley Gullen</strong>
+              Creator of the <a href="https://www.scirra.com/blog/133/introducing-crosswalk-the-new-way-to-publish-to-android">Construct 2 game engine</a> says
+            </footer>
+            <p>Crosswalk looks like the new, best way to publish <abbr>HTML5</abbr> content to&nbsp;Android.</p>
+          </blockquote>
+        </div>
+      </div>
+  <!-- </div> -->
+  <div class="container">
+    <div class="row row--narrow">
+      <p>Include the Crosswalk web runtime with your hybrid <strong>Android</strong> or <strong>Cordova / PhoneGap</strong> app, and users will consistently see it through a predictable, powerful <code>WebView</code> based on Google Chromium.</p>
+    </div>
+    <div class="row">
+      <figure>
+        <div onclick="play();" id="vidwrap" class="embed-container embed-container--overlay" style="background-image: url('/assets/illustrations/crosswalk-landing-placeholder.jpg')"></div><script type="text/javascript">function play(){document.getElementById('vidwrap').innerHTML = '<iframe src="http://www.youtube.com/embed/nU4lvgTrjFI?modestbranding=1&autoplay=1&rel=0&showinfo=0&theme=light&color=white" frameborder="0"></iframe>';}</script>
+        <figcaption>Get started developing better hybrid apps with Crosswalk and this introduction from Google I/O.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row row--full">
+    <div class="container container--full">
+      <% include _includes/landing-promo-1 %>
+    </div>
+  </div>
+    <div class="row">
+      <div class="container">
+        <blockquote class="blockquote">
+          <footer>
+            <img src="/assets/profiles/dan-lynch.jpg" alt="Dan Lynch’s profile picture" />
+            <strong>Dan Lynch</strong>
+            Founder at <a href="http://famo.us">Famo.us</a> says
+          </footer>
+          <p>If you want to stop wrapping your apps in Chrome 9, and start wrapping them in Chrome 37, you’ve got to check Crosswalk&nbsp;out.</p>
+        </blockquote>
+      </div>
+    </div>
+  <div class="row row--full">
+    <div class="container container--full">
+      <% include _includes/landing-promo-2 %>
+    </div>
+  </div>
+  <div class="row row--full">
+    <div class="container">
+      <blockquote class="blockquote">
+        <footer>
+          <img src="/assets/profiles/max-woghiren.jpg" alt="Max Woghiren’s profile picture" />
+          <strong>Max Woghiren</strong>
+          Software Engineer at Google <a href="http://www.youtube.com/watch?v=nU4lvgTrjFI">says</a>
+        </footer>
+        <p>It’s finally possible to build hybrid apps that use a modern web view and run on almost every Android and i<abbr>OS</abbr> device released within the past three&nbsp;years.</p>
+      </blockquote>
+    </div>
+  </div>
+  <div class="row row--full">
+    <div class="container container--full">
+      <% include _includes/landing-promo-3 %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <h3 class="text-center">Compatible with</h3>
+      <div class="cards cards--filled">
+        <ul class="cards-list">
+          <li class="cards-item">
+            <img class="cards-icon" src="/assets/icons/logo-cordova.svg" alt="" />
+            <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+            <p class="text">Improve your app's wrapper by upgrading your WebView.</p>
+            <a class="button button--secondary" href="/documentation/cordova.html">Start with Cordova</a>
+          </li>
+          <li class="cards-item">
+            <img src="/assets/icons/logo-android.svg" alt="Cordova logo" class="cards-icon" />
+            <h3 class="cards-heading">Crosswalk for Android</h3>
+            <p>Use Crosswalk as your WebView or in-app browser</p>
+            <a class="button button--secondary" href="/documentation/getting_started/android_target_setup.html">Start with Android</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container-intro">
+        <h2>Can I use…? Yes.</h2>
+        <p>Crosswalk provides a predictable and powerful environment for building great Android apps.</p>
+        <a href="/documentation/getting_started.html" class="button">Get started</a>
+      </div>
+    </div>
+  </div>
+</main>

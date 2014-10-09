@@ -1,0 +1,19 @@
+// Logo
+//
+// The module for logos.
+//
+// Markup:
+// <a href="https://software.intel.com/en-us/oss" class="logo">
+//   <img class="logo-image" src="/assets/icons/wordmark-intel.png">
+// </a>
+//
+// Styleguide 3.6.1.
+.logo {
+  display: block;
+  background-image: none;
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+}
+
+.logo-image {
+  width: 100%;
+}

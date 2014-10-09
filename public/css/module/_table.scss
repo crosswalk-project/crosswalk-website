@@ -1,0 +1,83 @@
+// Table
+//
+// This module could be improved or have a better name;
+// basically, it is used for the tables on the landing page.
+//
+// Markup:
+// <table class="table--ftcomp">
+//   <thead>
+//     <tr>
+//       <td>HTML5 feature</td>
+//       <td>Android <code>WebView</code></td>
+//       <td>Crosswalk WebView</td>
+//     </tr>
+//   </thead>
+//   <tbody>
+//     <tr>
+//       <td>WebRTC</td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//     <tr>
+//       <td>WebGL</td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//     <tr>
+//       <td>Vibration <abbr>API</abbr></td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//     <tr>
+//       <td>Presentation <abbr>API</abbr></td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//     <tr>
+//       <td><code>WebView</code> updates</td>
+//       <td><img src="/images/crosswalk-landing-question.svg" /></td>
+//       <td><img src="/images/crosswalk-landing-check.svg" /></td>
+//     </tr>
+//   </tbody>
+// </table>
+//
+// Styleguide 3.12.1.
+.table--ftcomp {
+  thead {
+    td {
+      padding-bottom: $base-line-height * 1em;
+      &:first-child {
+        text-align: left;
+      }
+      text-align: center;
+    }
+  }
+  tr {
+    border-bottom: 1px solid $color-gray-light;
+  }
+  td {
+    padding: $base-line-height * 0.5em 0;
+    img,
+    svg {
+      width: 25%;
+      max-width: 25%;
+      margin-left: (75%/2);
+      margin-right: (75%/2);
+      display: inline-block;
+      text-align: center;
+    }
+  }
+  @include media($mid) {
+    font-size: 0.75em;
+    td {
+      img,
+      svg {
+        width: 1.25em;
+        max-width: 1.25em;
+        margin-left: 50%;
+        margin-right: 50%;
+      }
+
+    }
+  }
+}

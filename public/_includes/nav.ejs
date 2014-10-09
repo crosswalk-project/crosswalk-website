@@ -1,0 +1,26 @@
+<nav class="nav">
+  <a href="/" class="nav-logo logo">
+    <% if(current.path.length === 1 && current.source === 'index') { %>
+      <img src="/assets/identity/crosswalk-logo-horizontal-light.svg" class="logo-image">
+    <% } else { %>
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    <% } %>
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
