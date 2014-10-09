@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Intel Crosswalk</title>
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Extensions" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/Embedding_Crosswalk/extensions" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/Embedding_Crosswalk/extensions" />
+    <meta name="twitter:title" content="Extensions" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens.html">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Use Crosswalk extensions with the embedding API</h1>
+<p><a href="https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/XWalkExtension.html">Extensions</a> are supported in version 2.1 and later of the <a href="/documentation/apis/embedding_api.html">embedding API</a>. The extensions API is similar to the one for <a href="/documentation/android_extensions.html">Crosswalk runtime extensions</a>, but with a few differences due to the usage model of an <em>embedding application</em> (i.e. an Android application which embeds Crosswalk using Java code):</p>
+<ul>
+<li>There is no support for lifecycle events. The extension <em>cannot</em> use <code>onResume()</code>, <code>onPause()</code>, <code>onDestroy()</code>, or <code>onActivityResult()</code>. Such events should be taken care of by the embedding application.</li>
+<li>No configuration file is needed, because the embedding application is responsible for creating and destroying the extensions in Java code.</li>
+<li>No support for [<code>make_apk.py</code>]. The embedding application is likely to be built using Android SDK tools, ant etc.; the extension code should be compiled and packaged as part of this build.</li>
+</ul>
+<p>The following sections explain how to add code for an extension and use it in an embedding application. Before following them, you will need to <a href="/documentation/embedding_crosswalk.html">create an application with the embedding API</a>.</p>
+<h2>Write the extension</h2>
+<p>Create a Java class which extends <a href="https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/XWalkExtension.html"><code>XWalkExtension</code></a>. For example:</p>
+<p><strong><code>org/crosswalkproject/sample/ExtensionEcho.java</code>:</strong></p>
+<pre><code>package org.crosswalkproject.sample;
+
+import org.xwalk.core.XWalkExtension;
+
+public class ExtensionEcho extends XWalkExtension {
+  private static String name = &quot;echo&quot;;
+
+  private static String jsapi = &quot;var echoListener = null;&quot; +
+    &quot;extension.setMessageListener(function(msg) {&quot; +
+    &quot;  if (echoListener instanceof Function) {&quot; +
+    &quot;    echoListener(msg);&quot; + &quot;  };&quot; + &quot;});&quot; +
+    &quot;exports.echo = function (msg, callback) {&quot; +
+    &quot;  echoListener = callback;&quot; + &quot;  extension.postMessage(msg);&quot; +
+    &quot;};&quot; + &quot;exports.echoSync = function (msg) {&quot; +
+    &quot;  return extension.internal.sendSyncMessage(msg);&quot; + &quot;};&quot;;
+
+  public ExtensionEcho() {
+    super(name, jsapi);
+  }
+
+  @Override
+  public void onMessage(int instanceID, String message) {
+    postMessage(instanceID, &quot;From java: &quot; + message);
+  }
+
+  @Override
+  public String onSyncMessage(int instanceID, String message) {
+    return &quot;From java sync: &quot; + message;
+  }
+
+}</code></pre>
+<p>This extension only does some basic string manipulation, but a real extension could make use of the full range of Android APIs, as well as any imported Java libraries.</p>
+<p>Some hints about the code:</p>
+<ul>
+<li><p>The JavaScript string in the constructor can be passed in different ways: it could be passed in as a <code>String</code> (as done here), read from a <code>.js</code> file in the <code>assets/</code> directory, fetched from a web server, etc.</p>
+</li>
+<li><p>The string returned by the <code>onMessage()</code> and <code>onSyncMessage()</code> methods could be serialised to/from JSON to handle more complex interactions. See <a href="/documentation/android_extensions/write_an_extension.html">the runtime extension documentation</a> for details.</p>
+</li>
+</ul>
+<p>Note that it is also possible to include an extension in binary format, in a jar or <code>.class</code> file bundled with the embedding application. Extensions included by the embedding application can be used the same way as any other imported Java classes.</p>
+<h2>Use the extension in the embedding application</h2>
+<p>To use the extension, you need to initialise it just after the embedding application&#39;s main activity is started. For example, if your activity was <code>src/org/crosswalkproject/sample/MainActivity.java</code> (see the <a href="/documentation/android_extensions/write_an_extension.html">embedding tutorial</a>), you could use the extension as follows:</p>
+<ol>
+<li><p>Add code to the main activity to create an instance of the extension when the activity is ready:</p>
+<pre><code>import org.crosswalkproject.sample.ExtensionEcho;
+
+public class MainActivity extends Activity {
+  private XWalkView mXWalkView;
+  private ExtensionEcho mExtension;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    // here is where the extension instance is created
+    mExtension = new ExtensionEcho();
+
+    // create the main Crosswalk view
+    mXWalkView = (XWalkView) findViewById(R.id.activity_main);
+    mXWalkView.load(&quot;file:///android_asset/index.html&quot;, null);
+  }
+}</code></pre>
+<p>Note that it is recommended that you create extensions before creating the <code>XWalkView</code> instance.</p>
+<p>Also note that if you create multiple instances of an extension with the same name (<code>&quot;echo&quot;</code> in the example above), only the first has any effect. Any subsequent instances you create will not have any effect (the C++ code in Crosswalk ignores an attempt to add an extension which has the same name as an existing one).</p>
+</li>
+<li><p>Use the extension from JavaScript in the web part of the application. The following code performs a simple test on the extension and writes the result into a paragraph element:</p>
+<pre><code>&lt;script&gt;
+try {
+  var now = new Date().toString();
+
+  // test the async API of the extension
+  echo.echo(now, function (msg) {
+    var p1 = document.createElement(&#39;p&#39;);
+    p1.innerHTML = msg + &quot;&lt;br&gt;&quot;;
+    document.body.appendChild(p1);
+
+    var expected = &quot;From java:&quot; + now;
+
+    var p2 = document.createElement(&#39;p&#39;);
+
+    if (msg === expected) {
+      p2.innerHTML = &#39;Async echo &lt;span style=&quot;color:green;&quot;&gt;passed&lt;/span&gt;.&#39;;
+      document.title = &#39;Pass&#39;;
+    }
+    else {
+      p2.innerHTML = &#39;Async echo &lt;span style=&quot;color:red;&quot;&gt;failed&lt;/span&gt;.&#39;;
+      document.title = &#39;Fail&#39;;
+    }
+
+    document.body.appendChild(p2);
+  });
+}
+catch (e) {
+  console.log(e);
+  document.title = &quot;Fail&quot;;
+}
+&lt;/script&gt;</code></pre>
+</li>
+</ol>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Mon, 22 Sep 2014 09:00:00 GMT">2014-09-22T09:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

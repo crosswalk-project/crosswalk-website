@@ -1,5 +1,0 @@
-# ignore www folder.  This is the static content created by "harp compile"
-# and used on the live server.  It should be generated and tested each time 
-# from the harp code
-www/
-

@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Intel Crosswalk</title>
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Write an extension" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android_extensions/write_an_extension" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android_extensions/write_an_extension" />
+    <meta name="twitter:title" content="Write an extension" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/android_extensions/host_and_target_setup.html">Host and target setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item  nav-item--active">
+              <a class="article-link" href="/documentation/android_extensions/write_an_extension.html">Write an extension</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/android_extensions/write_a_web_application.html">Write a web application</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/android_extensions/run_on_android.html">Run on Android</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens.html">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Write an extension</h1>
+<p>Crosswalk extensions are written in Java, and have access to the standard <a href="http://developer.android.com/reference/packages.html">Android APIs</a>.</p>
+<p>In addition, because Crosswalk on Android acts as an <a href="http://developer.android.com/reference/android/app/Activity.html">Activity</a> and has access to a <a href="http://developer.android.com/reference/android/content/Context.html">Context</a>, an extension can make also use of those objects. However, the extension you&#39;ll develop in this tutorial doesn&#39;t use any Android APIs, as it only does simple string manipulation.</p>
+<p>Even with the extensive Android APIs available to you, there may be some cases where you need to use other third-party libraries in your extension. This tutorial explains how to do this, with an example of using <a href="https://code.google.com/p/google-gson/">Gson</a> to read and write JSON. (While the Android API has some JSON capabilities, Gson is much neater and easier to use.)</p>
+<h2>What does the extension do?</h2>
+<p>Here&#39;s an overview of how this extension works:</p>
+<ol>
+  <li>
+  When the Crosswalk application (with extension) starts on the Android device, an instance of the <code>Echo</code> extension is instantiated.
+  </li>
+
+  <li>
+    <p>The web part of the application calls one of the methods exported by the JavaScript part of the extension; either <code>echo.echoAsync()</code> (asynchronous) or <code>echo.echo()</code> (synchronous). Both take a single argument, representing the message to echo.</p>
+
+    <p>In both cases, the JavaScript part of the extension creates a message object with this structure:</p>
+
+    <pre>
+{
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;content&quot;: &quot;Hello world&quot;
+}
+    </pre>
+
+    <p>Each message contains a unique request ID. This ID is used to ensure that the response is married up to the correct callback when the extension returns its results.</p>
+
+    <p>This message object is serialised to JSON and sent to the Java part of the extension.</p>
+  </li>
+
+  <li>
+    Inside the <code>Echo</code> instance (Java), the JSON string received from the JavaScript part of the extension is deserialised to a <code>Message</code> object.
+  </li>
+
+  <li>
+    Next, the private <code>echo()</code> method of the <code>Echo</code> instance is invoked. Note that this method receives the request ID (from the JavaScript side). <code>echo()</code> simply prefixes the string it was passed and returns it.
+  </li>
+
+  <li>
+    <p>The <code>Echo</code> instance then creates a <code>Message</code> object. This is serialised to a JSON string (via Gson) before being returned to the original caller.</p>
+
+    <p>The JSON string is either returned immediately (synchronous) or posted back to the JavaScript side of the extension as a message (asynchronous).</p>
+  </li>
+
+  <li>
+    <p><a name="message-data-structure"></a>On the JavaScript side, the JSON string is deserialised into an object with this structure:</p>
+
+    <pre>
+{
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;content&quot;: &quot;You said: Hello world&quot;
+}
+    </pre>
+
+    <p>The web application can do what it wants with the object; in this tutorial, it creates a DOM element containing the prefixed string held in the <code>content</code> property.</p>
+  </li>
+</ol>
+
+<p>In the following sections, you&#39;ll create the Java and JavaScript sides of the extension and wire them together with a configuration file.</p>
+<h2 id="Set-up-the-directory-structure">Set up the directory structure</h2>
+
+<pre><code>cd ~/&lt;my projects directory&gt;/xwalk-echo-project
+
+# top-level directory for extension code
+mkdir xwalk-echo-extension-src
+cd xwalk-echo-extension-src
+
+# for the extension Java code; NB the Java classes
+# will be in the package org.crosswalkproject.sample
+# - adjust this for your own project
+mkdir -p java/org/crosswalkproject/sample
+
+# for extension JavaScript code
+mkdir js
+
+# for third party libs distributed with the project
+mkdir tools</code></pre>
+<p>The <code>build/</code>, <code>lib/</code> and <code>xwalk-echo-extension/</code> directories (shown in the <a href="/documentation/android_extensions/host_and_target_setup.html#project-outline">project outline</a>) will be created at build time.</p>
+<p>Note that the following instructions assume you&#39;re in <code>xwalk-echo-extension-src/</code> (the top-level directory for the extension project).</p>
+<h2>Add Java code for the extension</h2>
+<p>First, create a Java class which extends <a href="https://github.com/crosswalk-project/crosswalk/blob/master/app/android/runtime_client/src/org/xwalk/app/runtime/extension/XWalkExtensionClient.java"><code>XWalkExtensionClient</code></a>.</p>
+<p><strong><code>java/org/crosswalkproject/sample/Echo.java</code>:</strong></p>
+<pre><code>package org.crosswalkproject.sample;
+
+import org.xwalk.app.runtime.extension.XWalkExtensionClient;
+import org.xwalk.app.runtime.extension.XWalkExtensionContextClient;
+import com.google.gson.Gson;
+
+public class Echo extends XWalkExtensionClient {
+  private Gson gson = new Gson();
+
+  public Echo(String name, String jsApiContent, XWalkExtensionContextClient xwalkContext) {
+    super(name, jsApiContent, xwalkContext);
+  }
+
+  private String echo(String requestJson) {
+    Message request = gson.fromJson(requestJson, Message.class);
+    String reply = &quot;You said: &quot; + request.content;
+    Message response = new Message(request.id, reply);
+    return gson.toJson(response);
+  }
+
+  @Override
+  public void onMessage(int instanceId, String requestJson) {
+    postMessage(instanceId, echo(requestJson));
+  }
+
+  @Override
+  public String onSyncMessage(int instanceId, String requestJson) {
+    return echo(requestJson);
+  }
+}</code></pre>
+<p>The two key methods in this class are the ones which override the default <code>XWalkExtensionClient</code> methods. These provide the means for communicating between the JavaScript and Java parts of the extension:</p>
+<ul>
+<li><code>onMessage()</code>: For asynchronous messages.</li>
+<li><code>onSyncMessage()</code>: For synchronous messages.</li>
+</ul>
+<p>Internally, both methods invoke the private <code>echo()</code> method, which:</p>
+<ol>
+<li>Deserialises the original request string to a <code>Message</code> object (see below).</li>
+<li>Prefixes the content string (passed in the request) with &quot;You said: &quot;.</li>
+<li>Creates a new <code>Message</code> object as the response, with the prefixed string and the original request ID.</li>
+<li>Serialises it back to JSON.</li>
+</ol>
+<p>However, they return the result in different ways:</p>
+<ul>
+<li><code>onSyncMessage()</code> returns the JSON string directly to the calling JavaScript code.</li>
+<li><code>onMessage()</code> indirectly returns the result by invoking <code>postMessage()</code> (a method on the <code>XWalkExtensionClient</code> class). This posts a JSON string back to the JavaScript side of the API asynchronously, where it can be handled by a listener.</li>
+</ul>
+<p>A supporting class is used to make these JSON operations easier, as shown below.</p>
+<p><strong><code>java/org/crosswalkproject/sample/Message.java</code>:</strong></p>
+<pre><code>package org.crosswalkproject.sample;
+
+public class Message {
+  public String id;
+  public String content;
+
+  public Message(String id, String content) {
+    this.id = id;
+    this.content = content;
+  }
+}</code></pre>
+<p>(Gson provides methods for serialising to and deserialising from Java objects, providing they have public member variables, as the <code>Message</code> class above does.)</p>
+<p>Before you can build the extension, you will need to add the other required files, as explained below.</p>
+<h2 id="Add-the-extension-configuration-file">Add the extension configuration file</h2>
+
+<p>The configuration file tells the Crosswalk packaging tool (<code>make_apk.py</code>) how the Java and JavaScript parts of the extension work together.</p>
+<p>Create a JSON file <code>xwalk-echo-extension.json</code> with this content:</p>
+<pre><code>{
+  &quot;name&quot;:  &quot;echo&quot;,
+  &quot;class&quot;: &quot;org.crosswalkproject.sample.Echo&quot;,
+  &quot;jsapi&quot;: &quot;xwalk-echo-extension.js&quot;,
+  &quot;permissions&quot;: []
+}</code></pre>
+<p>The properties in the object defined in this file have the following roles:</p>
+<ul>
+<li><p><code>name</code>: The extension&#39;s namespace, exposed to the web application&#39;s global scope. For example, as the namespace is <code>echo</code> for your extension, the web application can use it as follows:</p>
+<pre><code>// async
+echo.echoAsync(&quot;Hello world&quot;).then(
+  function (result) {
+    // ...process result...
+  }
+);
+
+// sync
+var message = echo.echo(&quot;Hello world&quot;);</code></pre>
+<p>Note that the web application doesn&#39;t have to import a JavaScript file: the extension&#39;s API is automatically made available in the global JavaScript scope when the extension is instantiated. The methods available on the API are the ones defined in the <code>xwalk-echo-extension.js</code> file you will create next.</p>
+</li>
+<li><p><code>class</code>: The Java class which implements the extension; in your case, the <code>org.crosswalkproject.sample.Echo</code> class. Note that this should include the package name as well as the class name.</p>
+</li>
+<li><p><code>jsapi</code>: The file which defines the JavaScript API. You will create this in the next section.</p>
+</li>
+<li><p><code>permissions</code>: A list of additional permissions required by the extension. It&#39;s included here for completeness, but is empty in this case as this extension only requires Crosswalk&#39;s default permissions. If you are writing your own application, you may need to add extra permissions.</p>
+<p>The strings in the <code>permissions</code> array should match the corresponding Android permission; see the <a href="http://developer.android.com/reference/android/Manifest.permission.html">list of Android permissions</a> for details. For example, if you needed access to the <code>FLASHLIGHT</code> and <code>GET_ACCOUNTS</code> permissions, your extension configuration file would have a <code>permissions</code> property like this:</p>
+<pre><code>&quot;permissions&quot;: [&quot;android.permission.FLASHLIGHT&quot;, &quot;android.permission.GET_ACCOUNTS&quot;]</code></pre>
+</li>
+</ul>
+<p>At build time, <code>make_apk.py</code> will combine this JSON file with configuration files for other extensions into a single <code>extensions-config.json</code> file. This is the file that Crosswalk actually uses to load the extension class and its corresponding JavaScript API.</p>
+<h2 id="Add-the-JavaScript-API-file">Add the JavaScript API file</h2>
+
+<p>Create <code>js/xwalk-echo-extension.js</code> with this content:</p>
+<pre><code>/*
+echoAsync() and echo() resolve to/return an object (respectively)
+with the form:
+
+{
+  id: &#39;&lt;request ID&gt;&#39;,
+  content: &#39;&lt;content of reply from Java extension code&gt;&#39;
+}
+*/
+
+// provides a unique ID for each call to the extension
+var counter = 0;
+
+// map from a request ID to a callback for the response
+var successCbs = {};
+
+// private method for building the message object and converting it
+// to a JSON string for transfer to the Java part of the extension
+var messageToJson = function (counter, message) {
+  var obj = {
+    id: &#39;&#39; + counter,
+    content: message
+  };
+
+  return JSON.stringify(obj);
+};
+
+// message listener for ALL messages; this invokes the correct
+// callback depending on the ID in the message
+extension.setMessageListener(function (message) {
+  var data = JSON.parse(message);
+  var cb = successCbs[data.id];
+
+  if (cb) {
+    cb(data);
+    delete successCbs[data.id];
+  }
+});
+
+// returns a promise which resolves to an array of file objects, or
+// rejects with an error if the call to the extension fails
+exports.echoAsync = function (message) {
+  counter += 1;
+  var messageJson = messageToJson(counter, message);
+
+  return new Promise(function (resolve, reject) {
+    successCbs[counter] = resolve;
+
+    // NB you MUST pass a string to postMessage()
+    try {
+      extension.postMessage(messageJson);
+    }
+    catch (e) {
+      reject(e);
+    }
+  });
+};
+
+// returns a Response object
+exports.echo = function (message) {
+  counter += 1;
+  var messageJson = messageToJson(counter, message);
+
+  // NB you MUST pass a string to sendSyncMessage()
+  var result = extension.internal.sendSyncMessage(messageJson);
+
+  return JSON.parse(result);
+};</code></pre>
+<p>A few notes on the content of this file:</p>
+<ul>
+<li><p>The <code>counter</code> variable is incremented and passed as the request ID each time a call is made to the <code>postMessage()</code> method in the Java part of the extension. This is so that any messages returning from the extension can be married up to a corresponding callback. The counter is also passed to the <code>sendSyncMessage()</code> method for the sake of consistency (the Java part of the extension always receives a JSON string with an <code>id</code> and <code>content</code>); this is despite the fact that there&#39;s no need to coordinate synchronous method calls with callbacks (as the result is returned immediately).</p>
+</li>
+<li><p>When <code>echoAsync()</code> is invoked, a new Promise is created (see the next section). The function for handling a successful resolution of the Promise (<code>resolve</code>) is associated with the unique ID for this request by adding it to <code>successCbs</code>.</p>
+</li>
+<li><p><code>extension.setMessageListener()</code> sets a function to invoke for each message returned by the Java side of the extension. This function will be invoked for <em>every</em> message; but the handlers which will actually deal with the data are stored in the <code>successCbs</code> object: a map from request IDs to handlers. When a message is received, the correct handler is looked up from <code>successCbs</code> and invoked with the message as an argument. The handler is deleted from the <code>successCbs</code> object after it has been invoked.</p>
+</li>
+<li><p>Any properties (methods/objects/constants etc.) you want to expose as the JavaScript API for your extension should be appended to the <code>exports</code> object inside the JavaScript API file. This has a similar role to the <code>exports</code> object in nodejs modules, defining the public face of the API. Any other variables <em>not</em> attached to <code>exports</code> are only scoped to this file, and won&#39;t pollute the web application&#39;s global scope.</p>
+<p>The namespace the JavaScript API is exported to here (<code>echo</code>) is set in the extension configuration file, <code>xwalk-echo-extension.json</code>, which you created in the previous section.</p>
+</li>
+<li><p>The Java side of the extension is available via the <code>extension</code> object. Note that the code above invokes the <code>extension.internal.sendSyncMessage()</code> and <code>extension.postMessage()</code> functions, which communicate with the Java code you wrote earlier.</p>
+</li>
+</ul>
+<h3>Promises, promises</h3>
+<p>The synchronous method defined for the extension&#39;s JavaScript API (<code>echo()</code>) is straightforward, and has this signature:</p>
+<pre><code>echo.echo() : Message</code></pre>
+<p>where <code>Message</code> has the shape described <a href="#message-data-structure">here</a>.</p>
+<p>By contrast, the asynchronous <code>echoAsync()</code> method has this signature:</p>
+<pre><code>echo.echoAsync() : Promise</code></pre>
+<p>If you&#39;re not familiar with <a href="http://promises-aplus.github.io/promises-spec/">Promises</a> (a relatively recent addition to the web application developer&#39;s toolkit), this might look odd. Why not just use callbacks? For example, replace the Promise-returning method with an async method which has this signature:</p>
+<pre><code>echo.echoAsync(callback) : undefined</code></pre>
+<p>and call <code>callback(message)</code> when the Java side of the API returns its <code>Message</code> object (serialised to JSON).</p>
+<p>The problem with callbacks is that they have to be managed carefully: if callbacks are nested inside callbacks inside  callbacks etc., it can lead to the so-called <a href="http://survivejs.com/common_problems/pyramid.html">pyramid of doom</a>. For example, imagine that you wanted to do some additional work on the response to set extra properties on it. You might have a couple of objects to do this, and invoke their methods once the initial result is passed to the callback:</p>
+<pre><code>echo.echoAsync(function (result) {
+
+  // decorate result with more properties
+  decorator1.decorate(result, function (decoratedResult) {
+
+    // decorate decoratedResult with even more properties
+    decorator2.decorate(decoratedResult, function (evenMoreDecoratedResult) {
+      displayData(evenMoreDecoratedResult);
+    });
+
+  });
+
+});</code></pre>
+<p>In the code sample above, there are calls to two asynchronous functions, <code>decorator1.decorate()</code> and <code>decorator2.decorate()</code>, which decorate the response with additional properties. Note how the pyramid is already starting to emerge. Adding yet more decorators could make it even worse.</p>
+<p>There are other ways to avoid the pyramid emerging here; but the point of using Promises is to codify those approaches with extra sugar on top, to simplify asynchronous code and avoid nested callbacks. For example, if <code>echoAsync()</code> returns a Promise, and the <code>*.decorate()</code> methods also return Promises, we could instead use this code:</p>
+<pre><code>echo.echoAsync()
+.then(
+  function (result) {
+    return decorator1.decorate(result);
+  }
+)
+.then(
+  function (decoratedResult) {
+    return decorator2.decorate(decoratedResult);
+  }
+)
+.then(displayData);</code></pre>
+<p>The <code>then()</code> method takes a function to apply to the value returned by the Promise when it is <em>resolved</em> (i.e. it successfully completes its asynchronous operation and &quot;becomes&quot; a value which is not an error). It can also optionally take a method to apply to any errors returned by the Promise if it is <em>rejected</em> (i.e. it fails in some way and &quot;becomes&quot; an error).</p>
+<p>You can see that the pyramid effect has been avoided, and it&#39;s much clearer which processing steps are being applied to the data when.</p>
+<p>Note that in the last <code>then()</code> call, because we&#39;re not returning anything, we can just pass the <code>displayData</code> function and the result of <code>decorator2.decorate()</code> will be implicitly passed to that method.</p>
+<p>In many environments, Promises are not natively available; the typical solution is to incorporate a library like <a href="http://documentup.com/kriskowal/q/">Q</a> to fill the gap. By contrast, in Crosswalk, you <em>do</em> have native access to Promises, which is what you&#39;re using in the JavaScript side of the extension (above); so there&#39;s less need for an external library.</p>
+<h2>Add build infrastructure</h2>
+<p>To use an extension in a Crosswalk application, you have to include it in the Android package for your application. The Crosswalk packaging tool has stringent requirements about how an extension should be structured to be included in a package. The layout of the extension <em>must</em> be like this:</p>
+<pre><code>myextension/
+  myextension.jar
+  myextension.js
+  myextension.json</code></pre>
+<p>All of the names <em>must</em> match: the directory name must match the prefix of the <code>.jar</code>, <code>.js</code> and <code>.json</code> files, otherwise the extension won&#39;t be included in the package.</p>
+<p>You would replace &quot;myextension&quot; with your extension&#39;s name. For the extension in this tutorial, the layout you need is:</p>
+<pre><code>xwalk-echo-extension/
+  xwalk-echo-extension.jar
+  xwalk-echo-extension.js
+  xwalk-echo-extension.json</code></pre>
+<p>However, you may notice that the files you have so far don&#39;t match this layout (e.g. the <code>xwalk-echo-extension.js</code> is in a <code>js</code> directory and you don&#39;t have a <code>.jar</code> file at all). This is where the build infrastructure comes in. Rather than manually create these files and place them in the right directory, you&#39;ll set up an automatic build which will create a temporary <code>xwalk-echo-extension</code> directory and copy/compile the three required files into it.</p>
+<p>Ivy and Ant are common tools for working with Java projects, so you&#39;ll use them to build the extension: Ivy to download the Gson jar file at build time (as <code>Echo</code> depends on it); and Ant to compile the Java code for the extension and copy files to the required locations. (If you are familiar with Eclipse, it&#39;s possible to use that as well as, or instead of, command-line tools.)</p>
+<p>The next two sections explain how to set up Ivy and Ant.</p>
+<h3>Set up and configure Ivy</h3>
+<p>Follow the instructions below to install and configure Ivy:</p>
+<ol>
+<li><p>Download the Apache Ivy distribution, which contains the Ivy tasks for Ant. It&#39;s available from <a href="https://ant.apache.org/ivy/download.cgi">the Apache Ivy download site</a>. For example, to get Ivy 2.4.0-rc1:</p>
+<pre><code>$ wget http://www.mirrorservice.org/sites/ftp.apache.org/ant/ivy/2.4.0-rc1/apache-ivy-2.4.0-rc1-bin.zip</code></pre>
+</li>
+<li><p>Unpack it and copy the Ivy jar file to the <code>tools/</code> directory:</p>
+<pre><code>$ unzip apache-ivy-2.4.0-rc1-bin.zip
+$ cp apache-ivy-2.4.0-rc1/ivy-2.4.0-rc1.jar tools/</code></pre>
+<p>You can remove the zip file once you&#39;re done with it.</p>
+</li>
+<li><p>Add the Ivy configuration file, <code>ivy.xml</code>, to the top-level directory:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ivy-module version=&quot;2.3&quot;&gt;
+  &lt;info organisation=&quot;org.crosswalkproject.sample&quot; module=&quot;xwalk-echo-extension&quot; /&gt;
+  &lt;dependencies&gt;
+    &lt;dependency org=&quot;com.google.code.gson&quot;
+                name=&quot;gson&quot;
+                rev=&quot;2.2.4&quot;
+                conf=&quot;default-&gt;master&quot; /&gt;
+  &lt;/dependencies&gt;
+&lt;/ivy-module&gt;</code></pre>
+<p>You only have one dependency here (<code>gson.jar</code>), but you could add other third-party libraries to this file.</p>
+<p>Note that Crosswalk is not in the Ivy repositories, and will be downloaded by Ant in the main buildfile.</p>
+</li>
+</ol>
+<h3 id="Add-an-Ant-buildfile">Add an Ant buildfile</h3>
+
+<p>You should have already installed Ant as described in the <em>Getting started</em> instructions (<a href="/documentation/getting_started/windows_host_setup/install-ant.html">Windows</a>, <a href="/documentation/getting_started/linux_host_setup/install-ant.html">Linux</a>).</p>
+<p>Once Ant is installed, add a buildfile, <code>build.xml</code>, to the top-level directory of your project with this content:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns:ivy=&quot;antlib:org.apache.ivy.ant&quot; name=&quot;xwalk-echo-extension&quot; default=&quot;dist&quot;&gt;
+  &lt;!-- Java source --&gt;
+  &lt;property name=&quot;src&quot; value=&quot;java&quot; /&gt;
+
+  &lt;!-- downloaded third party libraries --&gt;
+  &lt;property name=&quot;lib&quot; value=&quot;lib&quot; /&gt;
+
+  &lt;!-- Crosswalk Android version --&gt;
+  &lt;property name=&quot;crosswalk-version&quot; value=&quot;${XWALK-STABLE-ANDROID-X86}&quot; /&gt;
+
+  &lt;!-- URL of Crosswalk Android bundle --&gt;
+  &lt;property name=&quot;crosswalk-download-url&quot;
+            value=&quot;https://download.01.org/crosswalk/releases/crosswalk/android/stable/${crosswalk-version}/crosswalk-${crosswalk-version}.zip&quot; /&gt;
+
+  &lt;!-- location of downloaded Crosswalk Android file --&gt;
+  &lt;property name=&quot;crosswalk-zip&quot; value=&quot;${lib}/crosswalk.zip&quot; /&gt;
+
+  &lt;!-- temporary build directory --&gt;
+  &lt;property name=&quot;build&quot; value=&quot;build&quot; /&gt;
+
+  &lt;!-- final location for the built extension --&gt;
+  &lt;property name=&quot;dist&quot; value=&quot;xwalk-echo-extension&quot; /&gt;
+
+  &lt;!-- classpath containing the Ivy Ant tasks jar file --&gt;
+  &lt;path id=&quot;ivy.lib.path&quot;&gt;
+    &lt;fileset dir=&quot;tools&quot; includes=&quot;*.jar&quot;/&gt;
+  &lt;/path&gt;
+
+  &lt;!-- delete + make the temporary build directories --&gt;
+  &lt;target name=&quot;prepare&quot;&gt;
+    &lt;delete dir=&quot;${build}&quot; quiet=&quot;true&quot; /&gt;
+    &lt;delete dir=&quot;${dist}&quot; quiet=&quot;true&quot; /&gt;
+
+    &lt;mkdir dir=&quot;${build}&quot; /&gt;
+    &lt;mkdir dir=&quot;${lib}&quot; /&gt;
+    &lt;mkdir dir=&quot;${dist}&quot; /&gt;
+  &lt;/target&gt;
+
+  &lt;!-- download dependencies using Ivy --&gt;
+  &lt;target name=&quot;download-deps&quot; depends=&quot;prepare&quot;&gt;
+    &lt;taskdef resource=&quot;org/apache/ivy/ant/antlib.xml&quot;
+             uri=&quot;antlib:org.apache.ivy.ant&quot;
+             classpathref=&quot;ivy.lib.path&quot; /&gt;
+    &lt;ivy:retrieve pattern=&quot;${lib}/[artifact]-[revision].[ext]&quot; /&gt;
+  &lt;/target&gt;
+
+  &lt;!-- check whether the Crosswalk zip file is present --&gt;
+  &lt;target name=&quot;check-crosswalk-present&quot; depends=&quot;prepare&quot;&gt;
+    &lt;available file=&quot;${crosswalk-zip}&quot; property=&quot;crosswalk-zip.present&quot;/&gt;
+  &lt;/target&gt;
+
+  &lt;!-- manually get crosswalk.zip if it&#39;s not already there --&gt;
+  &lt;target name=&quot;download-crosswalk&quot; depends=&quot;prepare, check-crosswalk-present&quot;
+          unless=&quot;crosswalk-zip.present&quot;&gt;
+    &lt;!-- fetch from the download site --&gt;
+    &lt;get src=&quot;${crosswalk-download-url}&quot; dest=&quot;${crosswalk-zip}&quot; /&gt;
+
+    &lt;!-- unpack to lib/crosswalk-*/ --&gt;
+    &lt;unzip src=&quot;${crosswalk-zip}&quot; dest=&quot;${lib}&quot; /&gt;
+  &lt;/target&gt;
+
+  &lt;!-- compile the extension Java code --&gt;
+  &lt;target name=&quot;compile&quot; depends=&quot;download-deps, download-crosswalk&quot;&gt;
+    &lt;javac srcdir=&quot;${src}&quot; destdir=&quot;${build}&quot;
+           encoding=&quot;utf-8&quot; debug=&quot;true&quot; verbose=&quot;true&quot;&gt;
+      &lt;classpath&gt;
+        &lt;fileset dir=&quot;${lib}&quot; includes=&quot;*.jar&quot; /&gt;
+        &lt;file file=&quot;${lib}/crosswalk-${crosswalk-version}/libs/xwalk_app_runtime_java.jar&quot; /&gt;
+      &lt;/classpath&gt;
+    &lt;/javac&gt;
+  &lt;/target&gt;
+
+  &lt;!--
+  pack third party Java code and extension code into a single
+  jar, and copy supporting files to the xwalk-echo-extension/
+  directory; NB we don&#39;t need to pack any Crosswalk jars, as they
+  will be added by the packaging tool; and we don&#39;t need android.jar,
+  as that is on the Android target already
+  --&gt;
+  &lt;target name=&quot;dist&quot; depends=&quot;compile&quot;&gt;
+    &lt;unjar dest=&quot;${build}&quot;&gt;
+      &lt;fileset dir=&quot;${lib}&quot;&gt;
+        &lt;include name=&quot;*.jar&quot; /&gt;
+      &lt;/fileset&gt;
+    &lt;/unjar&gt;
+
+    &lt;jar destfile=&quot;${dist}/xwalk-echo-extension.jar&quot;&gt;
+      &lt;fileset dir=&quot;${build}&quot; excludes=&quot;META-INF/**&quot; /&gt;
+    &lt;/jar&gt;
+
+    &lt;copy file=&quot;xwalk-echo-extension.json&quot; todir=&quot;${dist}&quot; /&gt;
+    &lt;copy file=&quot;js/xwalk-echo-extension.js&quot; todir=&quot;${dist}&quot; /&gt;
+  &lt;/target&gt;
+&lt;/project&gt;</code></pre>
+<p>This is a fairly standard Ant buildfile for a small project. The default task is <code>dist</code>, which does the following:</p>
+<ol>
+  <li>Deletes and recreates the <code>build/</code> and <code>xwalk-echo-extension/</code> directories.</li>
+
+  <li>Downloads the Gson jar file dependency and puts it in the <code>lib/</code> directory (via Ivy).</li>
+
+  <li>Downloads Crosswalk Android (via HTTP) and unpacks it in the <code>lib/</code> directory. Note that if you want to use the <a href="/documentation/downloads">beta or canary versions of Crosswalk</a>, you will need to modify the <code>crosswalk-version</code> and <code>crosswalk-download-url</code> <code>&lt;property&gt;</code> elements as follows:
+
+    <ul>
+      <li>
+        <p><strong>beta:</strong></p>
+
+        <pre>
+&lt;property name=&quot;crosswalk-version&quot; value=&quot;${XWALK-BETA-ANDROID-X86}&quot; /&gt;
+
+&lt;property name=&quot;crosswalk-download-url&quot;
+          value=&quot;<a href="https://download.01.org/crosswalk/releases/crosswalk/android/beta/${crosswalk-version}/crosswalk-${crosswalk-version}.zip">https://download.01.org/crosswalk/releases/crosswalk/android/beta/${crosswalk-version}/crosswalk-${crosswalk-version}.zip</a>&quot; /&gt;
+        </pre>
+      </li>
+
+      <li>
+        <p><strong>canary:</strong></p>
+
+        <pre>
+&lt;property name=&quot;crosswalk-version&quot; value=&quot;...Crosswalk canary version...&quot; /&gt;
+
+&lt;property name=&quot;crosswalk-download-url&quot;
+          value=&quot;<a href="https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip">https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip</a>&quot; /&gt;
+        </pre>
+
+        <p>You can find the current canary version by consulting the <a href="/documentation/downloads">downloads page</a>.</p>
+      </li>
+    </ul>
+  </li>
+
+  <li>Compiles the extension Java source in the <code>src/</code> directory, placing the output <code>.class</code> files into the <code>build/</code> directory.</li>
+
+  <li>Unpacks the Gson jar file into the <code>build/</code> directory. This is so it can be included in the extension jar file.</li>
+
+  <li>Creates a jar file in <code>xwalk-echo-extension/</code> containing the extension <code>.class</code> files and the content unpacked from the Gson jar file.</li>
+
+  <li>Copies the extension JSON configuration <code>xwalk-echo-extension.json</code> and the JavaScript API definition <code>js/xwalk-echo-extension.js</code> into the <code>xwalk-echo-extension/</code> directory.</li>
+
+</ol>
+
+<p>The final output of this task, the <code>xwalk-echo-extension/</code> directory, contains an extension with the correct layout to be included in a Crosswalk <code>.apk</code> file, i.e.</p>
+<pre><code>xwalk-echo-extension/
+  xwalk-echo-extension.jar
+  xwalk-echo-extension.js
+  xwalk-echo-extension.json</code></pre>
+<h2 id="Build-the-extension">Build the extension</h2>
+
+<p>As you added a standard Ant buildfile, building the extension is as simple as running this command in the <code>xwalk-echo-extension-src/</code> directory:</p>
+<pre><code>$ ant</code></pre>
+<p>This runs the default <code>dist</code> task (see above). (It may take a while the first time, as it will download the third party dependencies.)</p>
+<p>Once the extension is built, the next step is to create the web application which can use it.</p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/android_extensions/write_a_web_application.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Write a web application</h3>
+      </a>
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Mon, 22 Sep 2014 09:00:00 GMT">2014-09-22T09:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>
