@@ -1,0 +1,44 @@
+{
+  "about": {
+    "title": "About"
+  },
+  "getting_started": {
+    "title": "Getting Started"
+  },
+  "manifest": {
+    "title": "Manifest"
+  },
+  "android_extensions": {
+    "title": "Android extensions"
+  },
+  "tizen_ivi_extensions": {
+    "title": "Tizen IVI Extensions"
+  },
+  "cordova": {
+    "title": "Cordova"
+  },
+  "embedding_crosswalk": {
+    "title": "Embedding Crosswalk"
+  },
+  "webrtc": {
+    "title": "WebRTC"
+  },
+  "screens": {
+    "title": "Screens"
+  },
+  "downloads": {
+    "title": "Downloads"
+  },
+  "samples": {
+    "title": "Samples"
+  },
+  "apis": {
+    "title": "APIs"
+  },
+  "community": {
+    "title": "Community"
+  },
+  "report_bugs": {
+    "title": "Report bugs"
+  }
+}

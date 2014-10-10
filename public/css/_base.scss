@@ -1,0 +1,383 @@
+// Base styling
+//
+// Establishes the basic font and color settings beyond Normalize.css.
+//
+// Styleguide 1.1.
+html,
+body,
+.body {
+  font-family: $base-font-family;
+  background: $color-background;
+  color: $color-text;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  @include media($wide) {
+    font-size: $base-font-size * 1.05;
+  }
+}
+
+// Text selection
+//
+// Changes background color of selected text.
+//
+// No styleguide reference.
+::-moz-selection {
+  background: $color-primary-lighter;
+}
+::selection {
+  background: $color-primary-lighter;
+  color: inherit; // http://robsterlini.co.uk/journal/opentype-and-selection-dont-mix
+  text-shadow: inherit; // “”
+}
+
+// Anchors
+//
+// Markup:
+// <a href="#">Intel XDK</a>
+// <a href="#"><p>Example content large target area. <span class="a-faux">Read more…</span></p></a>
+//
+// :focus  - lighten the link when focusing with the keyboard
+// :hover  - lighten the link when hovering with a pointer
+// :active - darken the link once it’s been pressed
+//
+// Styleguide 1.2.
+a,
+a:visited,
+.a-faux {
+  text-decoration: none;
+  background-repeat: repeat-x;
+  background-position: 0 1.125em;
+  @include linear-gradient(to bottom, rgba(0,0,0,0) 75%, $color-primary 75%);
+  background-size: 2px 2px;
+  text-shadow: 1px 0.5px 0 $color-background,  -1px -0.5px 0 $color-background;
+  color: $color-primary;
+  @include transition(opacity 0.125s ease-in-out, color 0.125s ease-in-out, background-color 0.125s ease-in-out, border-color 0.125s ease-in-out);
+  &:hover {
+    color: $color-primary-dark;
+  }
+  &:focus {
+    color: darken($color-primary-dark, 15%);
+    transition-duration: 0;
+    box-shadow: 0 0 0 1px $color-primary-dark;
+    outline: 0;
+    border-radius: $base-border-radius;
+  }
+  &:hover:focus {
+    box-shadow: none;
+  }
+  &:active {
+    color: $color-primary-darker;
+  }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  a,
+  a:visited,
+  .a-faux {
+    text-shadow: 2px 1px 0 $color-background, -2px -1px 0 $color-background;
+  }
+}
+
+// Lists
+//
+// Default list styling with <ul> hanging bullets and figures
+//
+// Styleguide 1.3.
+ul,
+ol,
+dl,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+// Media
+//
+// Constrain images to a max-width by default
+//
+// Styleguide 1.4.
+figure,
+svg,
+img {
+  max-width: 100%;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-style: italic;
+  font-weight: 300;
+  margin-top: modular-scale($base-font-size, 0, $base-ratio);
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  @include media($mid) {
+    max-width: $max-width / 3;
+  }
+}
+
+// Monospaced sections
+//
+// Code, keyboard, and preformatted blocks.
+//
+// Styleguide 1.5.
+code,
+kbd,
+pre,
+samp {
+  font-family: $font-family-monospace;
+  font-weight: inherit;
+}
+
+code {
+  background-color: $color-gray-light;
+  border-radius: 3px;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  text-shadow: 0 1px 0 $color-background;
+
+  &::-moz-selection {
+    background: $color-primary;
+  }
+  &::selection {
+    background: $color-primary;
+    color: inherit; // http://robsterlini.co.uk/journal/opentype-and-selection-dont-mix
+    text-shadow: inherit; // See above
+  }
+
+}
+
+// Normally <pre><code> … </code></pre>
+// is prefered, but most code blocks in
+// the existing content have just been
+// written as <pre>
+pre {
+
+  background: $color-text;
+  color: $color-background;
+  padding: modular-scale($base-font-size, -2, $base-ratio);
+  margin: 0;
+  border-radius: $base-border-radius;
+  display: block;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  code {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    display: block;
+    background-color: transparent;
+    color: $color-background;
+    text-shadow: none;
+    @include media($wide) {
+      @include span-columns(7 of 6);
+    }
+    @include media($huge) {
+      // overflow: visible;
+      @include span-columns(8 of 7);
+    }
+  }
+}
+
+// Basic tables.
+//
+// Styleguide 1.6.
+table {
+  border-collapse: collapse;
+  margin: $base-line-height * 1em 0;
+  table-layout: fixed;
+  width: 100%;
+  vertical-align: middle;
+}
+
+thead {
+  font-weight: 600;
+  padding: $base-line-height * 1em 0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+td {
+  padding: ($base-line-height / 2) 0;
+  vertical-align: middle;
+}
+
+// Headings
+//
+// Styleguide 1.7.
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $font-family-display;
+  font-weight: 800; // Maybe move this
+  // line-height: $headings-line-height;
+
+  small {
+    display: inline-block;
+    line-height: 1.1;
+  }
+  code {
+    background-color: transparent;
+  }
+  .icon {
+    max-width: 1.25em;
+    max-height: 1.25em;
+    margin-right: 0.25em;
+    @include transform(translateY(0.25em));
+    display: inline-block;
+  }
+}
+
+h1, .h1 {
+  margin-top: 0;
+  margin-bottom: modular-scale($base-font-size, -8, $base-ratio);
+  line-height: 1;
+
+  small {
+    font-size: 65%;
+  }
+}
+
+h2, .h2,
+h3, .h3 {
+  margin-top: modular-scale($base-font-size, -4, $base-ratio);
+  margin-bottom: modular-scale($base-font-size, -3, $base-ratio);
+
+  small {
+    font-size: 65%;
+  }
+}
+
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: modular-scale($base-font-size, -2, $base-ratio);
+  margin-bottom: modular-scale($base-font-size, -3, $base-ratio);
+
+  small {
+    font-size: 75%;
+  }
+}
+
+h1,
+.h1 {
+  font-size: modular-scale($base-font-size, 5, $base-ratio);
+  line-height: 1.1;
+  @include media($wide) {
+    font-size: modular-scale($base-font-size, 6, $base-ratio);
+  }
+  @include media($huge) {
+    font-size: modular-scale($base-font-size, 7, $base-ratio);
+  }
+}
+
+h2,
+.h2 {
+  font-size: $base-font-size;
+  font-size: modular-scale($base-font-size, 3, $base-ratio);
+  line-height: 1.1;
+  text-align: center;
+  @include media($wide) {
+    font-size: modular-scale($base-font-size, 4, $base-ratio);
+    text-align: left;
+  }
+}
+
+h3,
+.h3 {
+  font-size: modular-scale($base-font-size, 2, $base-ratio);
+  line-height: 1.1;
+  @include media($wide) {
+    font-size: modular-scale($base-font-size, 2, $base-ratio);
+  }
+}
+
+h4,
+.h4 {
+  font-size: $base-font-size;
+  line-height: 1.3;
+  font-size: modular-scale($base-font-size, 1, $base-ratio);
+}
+
+h5,
+h6,
+.h5,
+.h6 {
+  font-size: $base-font-size;
+  font-size: modular-scale($base-font-size, 0, $base-ratio);
+}
+
+p,
+pre {
+  margin: 0 0 ($base-line-height * 1em / 2);
+}
+
+// Helpers
+//
+// Declarative text-level helpers.
+//
+// Markup:
+// <div class="{$modifiers}">Build hybrid apps with Crosswalk.</div>
+//
+// .text-center - Center-aligns text
+// .text-left   - Left-aligns text
+// .text-right  - Right-aligns text
+//
+// Styleguide 1.8.
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Addresses
+//
+// Remove default styling on addresses.
+//
+// No styleguide reference.
+address {
+  font-style: normal;
+}
+
+// Small
+//
+// Improves line-height and styling for legal messages.
+//
+// Markup:
+// <small>Crosswalk is a project from the Intel Open
+// Source Technology Center. Copyright © 2013–2014
+// Intel Corporation. All rights reserved.</small>
+//
+// Styleguide 1.9.
+small {
+  line-height: modular-scale($base-font-size, 1, $base-ratio);
+  display: block;
+  font-style: italic;
+  opacity: 0.75;
+}
+
+// Quotation marks
+//
+// Applies correct quotation marks to <q> and <blockquote>
+//
+// No styleguide reference.
+:lang(en-us) {
+  quotes: '\201C' '\201D' '\2018' '\2019' '\201C' '\201D' '\2018' '\2019';
+}

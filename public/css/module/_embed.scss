@@ -1,0 +1,47 @@
+// Container
+//
+// For display videos with http://embedresponsively.com,
+// so you can exclude the inline style tags it generates.
+//
+// Markup:
+// <figure class="embed-container">
+//   <iframe src="http://www.youtube.com/embed/nU4lvgTrjFI?modestbranding=1&autoplay=0&rel=0&showinfo=0&theme=light&color=white" frameborder="0"></iframe>
+// </figure>
+//
+// Styleguide 3.14.1.
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Overlay
+//
+// Custom images for YouTube videos, etc.
+//
+// Markup:
+// <div onclick="play();" id="vidwrap" class="embed-container embed-container--overlay" style="background-image: url('//placehold.it/800x400&text=your%20custom%20image,%20press%20here!')"></div><script type="text/javascript">function play(){document.getElementById('vidwrap').innerHTML = '<iframe src="http://www.youtube.com/embed/nU4lvgTrjFI?modestbranding=1&autoplay=1&rel=0&showinfo=0&theme=light&color=white" frameborder="0"></iframe>';}</script>
+//
+// Styleguide 3.14.2.
+.embed-container--overlay {
+  display: block;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-position: center top;
+  background-size: cover;
+  overflow: hidden;
+  cursor: pointer;
+}

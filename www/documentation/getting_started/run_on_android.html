@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Intel Crosswalk</title>
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Run on Android" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/getting_started/run_on_android" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/getting_started/run_on_android" />
+    <meta name="twitter:title" content="Run on Android" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/windows_host_setup.html">Windows host setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/linux_host_setup.html">Linux host setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/android_target_setup.html">Android target setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/tizen_target_setup.html">Tizen target setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/build_an_application.html">Build an application</a>
+            </li>
+          
+            
+            
+            <li class="article-item  nav-item--active">
+              <a class="article-link" href="/documentation/getting_started/run_on_android.html">Run on Android</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/remote_debugging.html">Remote debugging</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/deploy_to_android_store.html">Deploy to Android store</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens.html">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Running a Crosswalk app on Android</h1>
+<p>The Crosswalk Android download contains a Python script which can be used to make a self-contained package (<code>.apk</code> file) from an HTML5 application. See the host set up instructions (<a href="/documentation/getting_started/windows_host_setup.html#Download-the-Crosswalk-Android-app-template">Windows</a> / <a href="/documentation/getting_started/linux_host_setup.html#Download-the-Crosswalk-Android-app-template">Linux</a>) for details.</p>
+<p>Once you have downloaded and unpacked Crosswalk Android, create the <code>apk</code> packages for your application as follows:</p>
+<ol>
+<li><p>Go to the unpacked Crosswalk Android directory:</p>
+<pre><code>&gt; cd crosswalk-${XWALK-STABLE-ANDROID-X86}</code></pre>
+</li>
+<li><p>Run the <code>make_apk.py</code> script with Python as follows:</p>
+<pre><code>&gt; python make_apk.py --package=org.crosswalkproject.example \
+    --manifest=xwalk-simple/manifest.json</code></pre>
+<p>This will package the application defined in the specified <code>manifest.json</code> file and produce two apk files from it, one for x86 architecture and one for ARM. The apk files will end up in the directory where you ran the script. Each file is given the name set in the manifest, with any filesystem-sensitive characters removed and an architecture identifier (&quot;x86&quot; or &quot;arm&quot;) appended. For our example, the output files are <code>simple_x86.apk</code> and <code>simple_arm.apk</code>.</p>
+</li>
+<li><p>Install the application on the target.</p>
+<p>If installing on an x86 device:</p>
+<pre><code>&gt; adb install -r simple_x86.apk</code></pre>
+<p>If installing on an ARM device:</p>
+<pre><code>&gt; adb install -r simple_arm.apk</code></pre>
+<p>The <code>-r</code> flag stands for &quot;reinstall&quot;. It is not required for the first installation, but useful for subsequent reinstalls of the same package.</p>
+</li>
+</ol>
+<p>If the installation is successful, your application should now be on the Android target. Find its icon in the application list and open it. Here it is running on a ZTE Geek phone:</p>
+<p><img src="/assets/xwalk-simple-on-android.png"></p>
+<h2 id="shared-vs-embedded-mode">Shared vs. embedded mode</h2>
+
+<p>Above, we packaged the application using the default <em>embedded</em> mode (the Crosswalk runtime is bundled with the application). This creates two apk files, one for Intel architecture devices, and a second for ARM devices.</p>
+<p>However, it is also possible to package an application in <em>shared</em> mode. In this mode, the apk is architecture-independent; but a separate Crosswalk runtime also has to be installed on the target to run the application.</p>
+<p>Each of these modes has its own pros and cons:</p>
+<ul>
+<li><p><em>Embedded</em></p>
+<p>In embedded mode packaging, each web app is bundled with the full Crosswalk runtime. Since the Crosswalk runtime needs an architecture-dependent native library, two Android apks need to be generated for embedded mode: one for targets with Intel architecture (x86) and another for ARM targets. The <code>make_apk.py</code> script used in this tutorial generates a package for each architecture by default, as explained above.</p>
+<p>The advantage is that you can keep a tight dependency between Crosswalk and the application, so you can ensure that the correct Crosswalk version is used. (In shared mode, you would have to ensure that the user had the correct runtime version available.)</p>
+<p>The disadvantage is that the generated apk is significantly larger, as it contains the whole Crosswalk runtime inside it.</p>
+</li>
+<li><p><em>Shared</em></p>
+<p>In shared mode packaging, each web app is bundled with a thin layer of Java code which is architecture-independent. This produces a much smaller apk file. However, to run this shared mode application, a separate, architecture-dependent Crosswalk runtime also has to be installed on the target. Again, one runtime is required for each architecture (one for x86, one for ARM); but, unlike embedded mode, multiple applications can share this single runtime.</p>
+<p>The advantage is that one Crosswalk runtime library can support multiple shared mode applications: valuable if you are using Crosswalk to deploy multiple applications on the same Crosswalk version, as it reduces the size of each application apk.</p>
+<p>Another advantage is that you can upgrade the runtime for multiple applications by upgrading one shared Crosswalk runtime package. By contrast, in embedded mode, upgrading the runtime requires you to upgrade each application at the same time: so moving to a newer runtime for multiple applications means upgrading each of those applications separately.</p>
+<p>The disadvantage is that you must distribute apks both for your web applications and for the Crosswalk runtime.</p>
+</li>
+</ul>
+<p>To make a shared mode apk, pass the <code>--mode=shared</code> option to the <code>make_apk.py</code> script, for example:</p>
+<pre><code>&gt; python make_apk.py --mode=shared --package=com.intel.xwalk-simple \
+    --manifest=xwalk-simple/manifest.json</code></pre>
+<p>Note that the <code>--package</code> option is mandatory and should be set to the Java package name for your application.</p>
+<p>To deploy a shared mode application, you will need to install architecture-specific runtime apks on the target. These can be found in the Crosswalk Android downloads area, under the <code>arm/</code> and <code>x86/</code> directories. For example, the apks for the latest stable versions are in these files:</p>
+<ul>
+<li><a href="https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-ARM}/arm/crosswalk-apks-${XWALK-STABLE-ANDROID-ARM}-arm.zip">ARM</a></li>
+<li><a href="https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-X86}/x86/crosswalk-apks-${XWALK-STABLE-ANDROID-X86}-x86.zip">Intel (x86)</a></li>
+</ul>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/getting_started/run_on_tizen.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Run on Tizen</h3>
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Mon, 22 Sep 2014 09:00:00 GMT">2014-09-22T09:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

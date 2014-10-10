@@ -1,0 +1,79 @@
+// Knockout
+//
+// For sections with light text on dark backgrounds.
+// Particularly useful in conjunction with the <.hero> and <.blockquote> module.
+//
+// Markup:
+// <div class="knockout">Sectioned off content. <a href="#">Read more…</a></div>
+//
+// Styleguide 3.7.1.
+.knockout {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  background-color: $color-text;
+  color: $color-background;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.33);
+  }
+  a,
+  a:visited,
+  .a-faux {
+    text-shadow: inherit;
+    &:hover,
+    &:focus {
+
+    }
+    &:active {
+
+    }
+  }
+  code {
+    background: transparent;
+    text-shadow: none;
+  }
+  .button.button--tertiary {
+    text-shadow: none;
+  }
+
+  .button-follower,
+  .button-follower:visited {
+    color: $color-gray;
+    &:hover,
+    &:focus {
+      color: darken($color-gray, 7.5%);
+    }
+    &:active {
+      color: darken($color-gray, 15%);
+    }
+  }  
+}
+
+// Well
+//
+// For sections with regular text on grey backgrounds.
+// Like Bootstrap’s “Well.”
+//
+// Markup:
+// <div class="well">Sectioned-off content. <a href="#">Read more…</a></div>
+//
+// Styleguide 3.7.2.
+.well {
+  border-radius: $base-border-radius;
+  background: $color-gray-light;
+  border: 1px solid $color-gray-dark;
+  padding: $gutter;
+  margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+  }
+  a,
+  a:visited,
+  .a-faux {
+    text-shadow: 1px 1px 0 $color-gray-light, -1px 1px 0 $color-gray-light;
+  }
+  .button {
+    text-shadow: inherit;
+  }
+}

@@ -1,0 +1,383 @@
+// Article List
+//
+// A list of Articles
+//
+// Markup:
+// <ul class="article-list {$modifiers}">
+//   <li class="article-item">
+//     <header class="article-header">
+//       <h2 class="article-title"><a href="#">Introducing Cordova Intergration</a></h2>
+//       <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jul 2014 13:14:00 GMT">1 month ago</time></a>
+//     </header>
+//   </li>
+//   <li class="article-item">
+//     <header class="article-header">
+//       <h2 class="article-title"><a href="#">Introducing Android Intergration</a></h2>
+//       <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></a>
+//     </header>
+//   </li>
+// </ul>
+//
+// .article--narrow   - Thinner at mid width
+// .article--hasToc   - Includes an .article-toc module
+//
+// Styleguide 3.13.1.
+.article,
+.article-list {
+  @include media($wide) {
+    // font-size: modular-scale($base-font-size, 0, $base-ratio);
+    @include span-columns(6 of 6);
+  }
+  @include media($huge) {
+    @include span-columns(4 of 6);
+  }
+}
+
+
+.article--hasToC {
+  @include media($wide) {
+    border-left: 1px solid $color-gray-light;
+    padding-left: $gutter * 1;
+    margin-left: -$gutter * 1;
+    @include span-columns(5 of 6);
+  }
+  @include media($huge) {
+    padding-left: $gutter * 2;
+    margin-left: -$gutter * 2;
+
+    @include span-columns(5 of 6);
+  }
+  @include media($massive) {
+    .article-promo {
+      margin-top: modular-scale($base-font-size, 4, $base-ratio);
+      @include span-columns(4 of 6);
+      @include shift(1);
+    }
+  }
+}
+
+// Article Table of Contents
+//
+// Secondary navigation for blog posts, documentation, etc.
+// Includes an `.article-list` inside.
+//
+// Markup:
+// <nav class="article-toc">
+//   <ul class="article-list">
+//     <li class="article-item">
+//       <a class="article-link" href="#">Main Item Title 1</a>
+//       <ul class="article-list">
+//         <li class="article-item">
+//           <a class="article-link" href="#">Sub Item Title 1</a>
+//         </li>
+//         <li class="article-item nav-item--active">
+//           <a class="article-link" href="#">Sub Item Title 2 (active)</a>
+//         </li>
+//         <li class="article-item">
+//           <a class="article-link" href="#">Sub Item Title 3</a>
+//         </li>
+//       </ul>
+//     </li>
+//     <li class="article-item">
+//       <a class="article-link" href="#">Main Item Title 2</a>
+//       <ul class="article-list">
+//         <li class="article-item">
+//           <a class="article-link" href="#">Sub Item Title 1</a>
+//         </li>
+//         <li class="article-item">
+//           <a class="article-link" href="#">Sub Item Title 2</a>
+//         </li>
+//       </ul>
+//     </li>
+//   </ul>
+// </nav>
+//
+// Styleguide 3.13.2.
+.article-toc {
+  @include span-columns(6 of 6);
+  @include media($wide) {
+    @include span-columns(2 of 6);
+    @include shift(-1 of 6);
+  }
+  .article-list {
+    margin-bottom: 0;
+    padding: 0;
+    width: 100%;
+    .article-list {
+      width: 100%;
+      margin-left: 0;
+      padding-left: 0;
+      margin-bottom: modular-scale($base-font-size, -2, $base-ratio);
+      .article-link {
+        border-left: 1px solid $color-gray-light;
+        padding: 0;
+        width: 100%;
+        // padding-left: $gutter;
+        display: block;
+        padding-left: modular-scale($base-font-size, 0, $base-ratio);
+      }
+      .nav-item--active {
+        .article-link {
+          border-left-color: $color-secondary;
+        }
+      }
+
+    }
+    @include media($wide) {
+      margin-top: modular-scale($base-font-size, -2, $base-ratio);
+      margin-bottom: modular-scale($base-font-size, -2, $base-ratio);
+    }
+  }
+  &:target {
+    .article-list {
+      padding: modular-scale($base-font-size, -2, $base-ratio) 0;
+    }
+  }
+
+}
+
+.article-item {
+  display: block;
+  width: 100%;
+  // margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
+  @include media($wide) {
+    // margin-bottom: modular-scale($base-font-size, 6, $base-ratio);
+  }
+}
+
+.article-item--external {
+  .article-title a:after {
+    content: " →";
+  }
+}
+
+.article-link {
+  display: block;
+  width: 100%;
+  padding-right: $gutter;
+  background-image: none;
+}
+
+.article-meta {
+  display: inline-block;
+  font-style: italic;
+  margin-bottom: 0;
+  margin-left: modular-scale($base-font-size, 0, $base-ratio);
+}
+
+// Article
+//
+// A generic blog post, documentation, help, etc. article.
+//
+// Markup:
+// <article class="article">
+//     <header class="article-header">
+//       <h2 class="article-title"><a href="#">Introducing Android Intergration</a></h2>
+//       <span class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></span>
+//     </header>
+//   <p>
+//      Crosswalk is a HTML5 runtime, built on open source foundations,
+//      which extends the web platform with new capabilities…
+//   </p>
+// </article>
+//
+// Styleguide 3.13.3.
+.article {
+  a {
+    // @include word-wrap(break-word);
+  }
+}
+
+// Artilce Title
+//
+// No styleguide reference.
+.article-title {
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: modular-scale($base-font-size, -10, $base-ratio);
+  @include media($huge) {
+    @include span-columns(6 of 5);
+  }
+}
+
+// Article Header
+//
+// The header in article list items and articles themselves.
+//
+// Markup:
+// <header class="article-header">
+//   <h1 class="article-title">Crosswalk for app designers</h1>
+//   <span class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></span>
+// </header>
+//
+// Styleguide 3.13.4.
+.article-header {
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+}
+
+// Article Hero
+//
+// Optional opening article images.
+//
+// Markup:
+// <header class="article-header">
+//   <h1 class="article-title">Crosswalk for app designers</h1>
+// </header>
+// <img class="article-hero" src="http://placehold.it/1500x300" alt="Example hero image" />
+//
+// Styleguide 3.13.5.
+.article-hero {
+  margin-top: modular-scale($base-font-size, 0, $base-ratio);
+  margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+  @include media($wide) {
+    display: block;
+    margin-top: modular-scale($base-font-size, 4, $base-ratio);
+    margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
+  }
+  @include media($huge) {
+    min-width: inherit;
+    max-width: inherit;
+    @include shift(-1);
+    @include span-columns(6 of 4);
+
+  }
+}
+
+// Article Lead
+//
+// Stylized opening paragraphs for articles. Also available elsewhere via the helper class `.lead`.
+//
+// Markup:
+// <article class="article">
+//   <p>Crosswalk is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities.</p>
+//   <p>This means Android developers can now deploy your mobile HTML5 application with its own runtime without a dependence on the native WebView that is on your customer's device for all Android 4.0+ devices.</p>
+// </article>
+//
+// Styleguide 3.13.6.
+.lead,
+.article > p:first-of-type {
+  @include media($mid) {
+    margin-bottom: modular-scale($base-font-size, -4, $base-ratio);
+    font-size: modular-scale($base-font-size, 2, $base-ratio);
+    line-height: modular-scale($base-font-size, 1, $base-ratio);
+  }
+}
+
+.article--noLead > p:first-of-type {
+  margin-bottom: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// Article Exerpt
+//
+// Exerpts used within article lists.
+//
+// Markup:
+// <div class="article-exerpt">
+//   <p>Crosswalk is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities. <a href="#">Read more…</a>
+// </div>
+//
+// Styleguide 3.13.7.
+.article-exerpt {
+
+}
+
+// Article Promo
+//
+// Callouts at the end of blog posts and documentation sections.
+//
+// Markup:
+// <a href="http://twitter.com/xwalk_project" class="article-promo {$modifiers}">
+//   <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+//   <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+// </a>
+//
+// .well - A Bootstrap-like “Well,” distinguishes the content with alternate styling (usually a grey box)
+//
+// Styleguide 3.13.8.
+.article-promo {
+  display: block;
+  background-image: none;
+  margin-top: modular-scale($base-font-size, 4, $base-ratio);
+  text-shadow: none;
+  color: $color-text;
+  // border: 1px solid $color-gray-dark;
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus {
+    text-shadow: none;
+    color: $color-text;
+  }
+  @include media($wide) {
+    @include span-columns(4 of 6);
+    @include shift(1);
+  }
+  @include media($massive) {
+    margin-top: -1 * modular-scale($base-font-size, 14, $base-ratio);
+    @include span-columns(4 of 6);
+    @include shift(6);
+    padding: modular-scale($base-font-size, 2, $base-ratio);
+  }
+}
+
+// Article Lists
+//
+// Numbered, bullited, and definition lists are styled in a more
+// pleasing manner for long form reading within articles
+//
+// Markup:
+// <article class="article">
+//   <ul>
+//     <li>Android
+//       <ol>
+//         <li>Hybrid</li>
+//         <li>In-app browser</li>
+//       </ol>
+//     </li>
+//     <li>Cordova</li>
+//     <li>Tizen</li>
+//     <li>Chrome</li>
+//   </ul>
+//   <ol>
+//     <li>Android
+//       <ul>
+//         <li>Hybrid</li>
+//         <li>In-app browser</li>
+//       </ul>
+//     </li>
+//     <li>Cordova</li>
+//     <li>Tizen</li>
+//     <li>Chrome</li>
+//   </ol>
+// </article>
+//
+// Styleguide 3.13.9.
+.article {
+  ul,
+  ol,
+  dl {
+    padding-left: 0;
+    margin-top: modular-scale($base-font-size, 0, $base-ratio);
+    margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+    margin-left: modular-scale($base-font-size, 4, $base-ratio);
+    margin-right: modular-scale($base-font-size, 4, $base-ratio);
+    @include media($huge) {
+      margin-left: modular-scale($base-font-size, 8, $base-ratio);
+      margin-right: modular-scale($base-font-size, 8, $base-ratio);
+    }
+    ul,
+    ol,
+    dl {
+      margin-top: modular-scale($base-font-size, -4, $base-ratio);
+      margin-left: modular-scale($base-font-size, 2, $base-ratio);
+    }
+  }
+  ul > li {
+    list-style-type: disc;
+  }
+  ol > li {
+    list-style-type: decimal;
+  }
+}
