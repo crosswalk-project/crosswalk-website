@@ -1,3 +1,14 @@
+// Styleguide
+//
+// All CSS is documented using [KSS](http://warpspire.com/kss/).
+// Specifically, the Node implementation is used alongside Harp
+// as a sort of additional Static Site Generator for
+// documentation. Here, we’re using Sass to import all the
+// styles from the main stylesheet, but scope them within the
+// `.kss-modifier` class for the `_styleguide-template`. This
+// scopes the site styles so they can be documented more effectively.
+//
+// No styleguide reference. 
 .kss-modifier {
   @import "main";
 }
