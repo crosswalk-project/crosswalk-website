@@ -472,11 +472,14 @@ Once Ant is installed, add a buildfile, `build.xml`, to the top-level directory 
 
       <!-- compile the extension Java code -->
       <target name="compile" depends="download-deps, download-crosswalk">
+        <first id="app_runtime_java">
+          <fileset dir="${lib}/crosswalk-${crosswalk-version}" includes="**/xwalk_app_runtime_java.jar" />
+        </first>
         <javac srcdir="${src}" destdir="${build}"
                encoding="utf-8" debug="true" verbose="true">
           <classpath>
             <fileset dir="${lib}" includes="*.jar" />
-            <file file="${lib}/crosswalk-${crosswalk-version}/libs/xwalk_app_runtime_java.jar" />
+            <file file="${toString:app_runtime_java}" />
           </classpath>
         </javac>
       </target>
