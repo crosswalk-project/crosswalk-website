@@ -200,17 +200,25 @@ table {
   table-layout: fixed;
   width: 100%;
   vertical-align: middle;
+  tr:nth-of-type(2n) {
+    background-color: $color-gray-light;
+  }
 }
 
 thead {
   font-weight: 600;
   padding: $base-line-height * 1em 0;
-  text-align: left;
+  text-align: center;
   vertical-align: middle;
 }
 
-td {
-  padding: ($base-line-height / 2) 0;
+th {
+  font-weight: 600;
+  text-align: left;
+}
+
+td, th {
+  padding: modular-scale($base-font-size, -2, $base-ratio);
   vertical-align: middle;
 }
 

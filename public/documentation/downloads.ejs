@@ -28,91 +28,91 @@
     </tr>
 
     <tr>
-    <th>Android (ARM + x86)</th>
+    <th>Android<br/>(ARM + x86)</th>
     <td>
     <a data-role="static-download-link" data-channel="stable" data-os="android" data-arch="x86"></a>
     </td>
     <td>
     <a data-role="static-download-link" data-channel="beta" data-os="android" data-arch="x86"></a>
     </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="android" data-arch="x86"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="canary" data-os="android" data-arch="x86"></a>
     </td>
     </tr>
 
     <tr>
-    <th>Android webview (x86)</th>
+    <th>Android webview<br/>(x86)</th>
     <td>
     <a data-role="static-download-link" data-channel="stable" data-os="android-webview" data-arch="x86"></a>
     </td>
     <td>
     <a data-role="static-download-link" data-channel="beta" data-os="android-webview" data-arch="x86"></a>
     </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="android-webview" data-arch="x86"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="canary" data-os="android-webview" data-arch="x86"></a>
     </td>
     </tr>
 
     <tr>
-    <th>Android webview (ARM)</th>
+    <th>Android webview<br/>(ARM)</th>
     <td>
     <a data-role="static-download-link" data-channel="stable" data-os="android-webview" data-arch="arm"></a>
     </td>
     <td>
     <a data-role="static-download-link" data-channel="beta" data-os="android-webview" data-arch="arm"></a>
     </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="android-webview" data-arch="arm"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="canary" data-os="android-webview" data-arch="arm"></a>
     </td>
     </tr>
 
     <tr>
-    <th>Cordova Android (x86)</th>
+    <th>Cordova Android<br/>(x86)</th>
     <td>
     <a data-role="static-download-link" data-channel="stable" data-os="cordova" data-arch="x86"></a>
     </td>
     <td>
     <a data-role="static-download-link" data-channel="beta" data-os="cordova" data-arch="x86"></a>
     </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="cordova" data-arch="x86"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="canary" data-os="cordova" data-arch="x86"></a>
     </td>
     </tr>
 
     <tr>
-    <th>Cordova Android (ARM)</th>
+    <th>Cordova Android<br/>(ARM)</th>
     <td>
     <a data-role="static-download-link" data-channel="stable" data-os="cordova" data-arch="arm"></a>
     </td>
     <td>
     <a data-role="static-download-link" data-channel="beta" data-os="cordova" data-arch="arm"></a>
     </td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="cordova" data-arch="arm"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="canary" data-os="cordova" data-arch="arm"></a>
     </td>
     </tr>
 
     <tr>
-    <th>Tizen 3.0 Mobile (x86)</th>
+    <th>Tizen 3.0 Mobile<br/>(x86)</th>
     <td>-</td>
     <td>-</td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="tizen-mobile" data-arch="x86"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="canary" data-os="tizen-mobile" data-arch="x86"></a>
     </td>
     </tr>
 
     <tr>
-    <th>Tizen 3.0 IVI (x86)</th>
+    <th>Tizen 3.0 IVI<br/>(x86)</th>
     <td>-</td>
     <td>-</td>
-    <td data-role="download-cell" data-loading="true">
-    <a data-role="download-link" data-channel="canary" data-os="tizen-ivi" data-arch="x86"></a>
+    <td>
+    <a data-role="static-download-link" data-channel="canary" data-os="tizen-ivi" data-arch="x86"></a>
     </td>
     </tr>
 
     </table>
 
-    <p><a href="https://download.01.org/crosswalk/releases/crosswalk/">More downloads...</a></p>
+    <p><a href="https://download.01.org/crosswalk/releases/crosswalk/">More downloads…</a></p>
 
     <h2>Release notes</h2>
 
@@ -174,81 +174,7 @@
     version numbers page</a> describes how Crosswalk versions are assigned.</p>
 
     <script>
-    populateStaticLinks();
-
-    // populate any download links and release notes links after
-    // fetching version info for a channel/branch
-    var populateLinks = function (channel, branch) {
-        // download links for this channel
-        var sel = 'a[data-role="download-link"][data-channel="' + channel + '"]';
-        var dlLinks = document.querySelectorAll(sel);
-
-        var clearAllSpinners = function () {
-            for (var i = 0; i < dlLinks.length; i++) {
-                dlLinks.item(i).parentNode.setAttribute('data-loading', false);
-            }
-        };
-
-        var githubError = function () {
-            for (var i = 0; i < dlLinks.length; i++) {
-                dlLinks.item(i).parentNode.innerHTML = 'github error';
-            }
-        };
-
-        // get version for this branch
-        var path = './github.php?fetch=version&branch=' + branch;
-        asyncJsonGet(path, function (err, response) {
-            if (err) {
-                clearAllSpinners();
-                githubError();
-                return;
-            }
-
-            var i, link, url, text;
-            var version = response.version;
-            var majorVersion = getXwalkMajorVersion(version);
-
-            // populate download links
-            for (i = 0; i < dlLinks.length; i++) {
-                link = dlLinks.item(i);
-                link.innerHTML = version;
-                link.href = getXwalkDownloadUrl(
-                    link.getAttribute('data-os'),
-                    link.getAttribute('data-arch'),
-                    channel,
-                    version
-                );
-            }
-
-            clearAllSpinners();
-        });
-    };
-
-    // get the branches; for each, populate the links corresponding
-    // to the channel for that branch
-    asyncJsonGet('./github.php', function (err, branches) {
-        // on error, clear all the loading spinners for the whole table
-        if (err) {
-            var spinnerElts = document.querySelectorAll('[data-loading="true"]');
-            var elt;
-            for (var i = 0; i < spinnerElts.length; i++) {
-                elt = spinnerElts.item(i);
-                elt.setAttribute('data-loading', 'false');
-                elt.innerHTML = 'github error';
-            }
-        }
-        else {
-            // iterate the branches; for each branch/channel, fetch the version
-            // and populate any corresponding download links and release
-            // note links
-            var channel, branch;
-            for (var i = 0; i < branches.length; i++) {
-                channel = branches[i].channel;
-                branch = branches[i].branch;
-                populateLinks(channel, branch);
-            }
-        }
-    });
+      populateStaticLinks();
     </script>
   </body>
 </html>
