@@ -155,7 +155,7 @@ function getXwalkMajorVersion(version) {
 // NB this assumes that release notes are given a consistent name
 // "Crosswalk N release notes"
 function getReleaseNotesUrl(majorVersion) {
-    return '#wiki/Crosswalk-' + majorVersion + '-release-notes';
+    return 'https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-' + majorVersion + '-release-notes';
 }
 
 // create a static download link based on data in versions.js;
