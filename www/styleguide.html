@@ -28,14 +28,14 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Run on Tizen VM" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/Tizen_IVI_extensions/run_on_tizen_vm" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/styleguide" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/Tizen_IVI_extensions/run_on_tizen_vm" />
-    <meta name="twitter:title" content="Run on Tizen VM" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/styleguide" />
+    <meta name="twitter:title" content="Crosswalk" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -81,210 +81,25 @@
         </div>
         <div class="row">
           
-            <nav id="contents" class="article-toc nav-toggleContainer">
-  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-  <ul class="article-list nav-toggleHide">
-    
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/about.html">About</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/screens.html">Screens</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/samples.html">Samples</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/apis.html">APIs</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/community.html">Community</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
-        
-        
-      </li>
-    
-  </ul>
-</nav>
-
-<article class="article article--hasToC">
-  <h1>Run on Tizen virtual machine</h1>
-<p>You have now built the extension and application, and are at the point where you can test on the Tizen IVI virtual machine.</p>
+            <h1>Styleguide</h1>
+<p>All CSS is documented using KSS—specifically, the <a href="https://github.com/hughsk/kss-node/">Node implantation</a>. This creates a reliable way to build a style guide, and a consistent method of documenting CSS within the modules themselves.</p>
+<h2>Structure</h2>
+<p>All CSS is written using the SCSS flavour of <a href="http://sass-lang.com/">Sass</a>, and is preprocessed automatically using <a href="http://harpjs.com">Harp</a>.</p>
+<p>The CSS is contained within the following partials, which is based on conventions from <a href="https://smacss.com/">SMACSS</a>.</p>
 <ol>
-<li><p>Start the Tizen IVI virtual machine (<em>target</em>), if it&#39;s not already running.</p>
-</li>
-<li><p>Use <code>scp</code> to push the extension rpm to the target. By default, the rpm you generated with <code>gbs</code> will be in <code>~/GBS-ROOT/local/repos/tizen3.0/i586/RPMS/</code>; so the command you need should look like this:</p>
-<pre><code>&gt; scp ~/GBS-ROOT/local/repos/tizen3.0/i586/RPMS/echo-extension-0.1-1.i686.rpm \
-    root@&lt;IP address&gt;:/root/</code></pre>
-<p>Replace <code>&lt;IP address&gt;</code> with the IP address of the virtual machine. The password is <strong>tizen</strong>.</p>
-</li>
-<li><p>Install the echo extension rpm on the target. To do this, first get a root shell on the target:</p>
-<pre><code># on the host, login to the target
-&gt; ssh root@&lt;IP address&gt;</code></pre>
-<p>Then, in the shell on the target:</p>
-<pre><code>root:~&gt; rpm -ih echo-extension-0.1-1.i686.rpm
-################################# [100%]
-Updating / installing...
-################################# [100%]</code></pre>
-<p>The rpm should install without errors.</p>
-</li>
-<li><p>Use scp to push the generated <code>app.xpk</code> file to the Tizen target:</p>
-<pre><code>&gt; scp app.xpk root@&lt;ip address&gt;:/home/app/</code></pre>
-</li>
-<li><p>Install the <code>.xpk</code> file on the target using <code>xwalkctl</code>. You should do this using a shell on the target as the &quot;app&quot; user. This user has the correct configuration and permissions to run applications.</p>
-<p>The best way to get an app user shell is to click the console icon in the top-left of the virtual machine&#39;s display. If you try to login remotely to get an app user shell, some required environment variables may not be set and <code>xwalkctl</code> may not run correctly.</p>
-<p>To install the <code>.xpk</code> file, run this command from the app user shell:</p>
-<pre><code>app:~&gt; xwalkctl --install /home/app/app.xpk</code></pre>
-<p>Make a note of the application ID (the last part of the <code>/installed/*</code> path displayed).</p>
-</li>
-<li><p>Finally, run the application from the app user&#39;s shell (on the target).</p>
-<p>You need the application&#39;s ID to do this. During installation of the simple-extension-app rpm, you will have been notified of this after the app was installed (see above). If you can&#39;t remember it, or missed it, you can use the <code>xwalkctl</code> command to list applications and their IDs:</p>
-<pre><code>app:~&gt; xwalkctl
-Application ID                       Application Name</code></pre>
-</li>
+<li><strong>Base</strong> Base styles are stored here</li>
+<li><strong>Layout</strong> Site-wide layout styles are stored here, like main containers</li>
+<li><strong>Module</strong> The majority of the CSS is imported here. Modules make up the majority of the site and are contained within the <code>module/</code> directory.</li>
+<li><strong>State</strong> When working with JavaScript, store all state specific classes here. These should be prefixed with <code>.is-</code> or <code>.js-</code>.</li>
+<li><strong>Shame</strong> If you’re unsure what to do, or need to fix something quickly, store it here. Just make sure to document the reason and locations it is used thoroughly, so it can be tidied up later.</li>
+<li><strong>Vendor</strong> Unmodified dependencies are stored here. For example, Bourbon and Normalize.css are stored here.</li>
 </ol>
-<pre><code>    -----------------------------------------------------
-    nejhjijinegiakjdkkdnbepefnmpdgcp    simple_extension_app
-    -----------------------------------------------------
-
-Once you know the ID, you can launch the application with:
-
-    app:~&gt; xwalk-launcher &lt;app ID&gt;
-
-You should see this in the emulator:
-
-![Crosswalk application with extensions on Tizen IVI](/assets/tizen-ivi3-emulator-echo-extension.png)
-
-If you don&#39;t, check for errors and warnings coming from the command. In particular, the output from the command should end with:
-
-    Instance 1 created!
-
-This message is coming from the `instance_created` callback of your extension. If it&#39;s not there, the extension is not being initialized correctly.</code></pre>
-
-  <footer class="article-next">
-    
-
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-
-
-  </footer>
-</article>
+<h2>Generating</h2>
+<p>Once you have the project cloned locally, you can rebuild the style guide with the following commands:</p>
+<pre><code class="language-bash">npm install
+npm run styleguide
+harp server
+# Visit http://localhost:9000/styleguide</code></pre>
 
           
         </div>
