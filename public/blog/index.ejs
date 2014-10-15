@@ -14,9 +14,13 @@
               <% if(article.author) { %> by <span class="article-author"><%= article.author %></span><% } %>
             </span>
           </header>
-          <% if(slug) { %>
+          <% if(typeof article.url === 'undefined') { %>
             <div class="article-excerpt">
               <p><%-: partial(slug).replace(/<[^>]*>/g, "") | truncate_words: 50 %> <a href="<%= slug %>.html" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>
+            </div>
+          <% } else if(article.desc) { %>
+            <div class="article-excerpt">
+              <p><%- article.desc %> <a href="<%= article.url %>" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>
             </div>
           <% } %>
         </li>
