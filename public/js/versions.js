@@ -1,11 +1,7 @@
 /*
- * This file can be automatically edited and pushed to the
- * live website through the use of the `./site.sh promote`
- * script.
- *
  * version.js used to dynamically update the content
  * shown on the main site, including the home page and any
- * content loaded from documentation/, contribute/, and wiki/.
+ * content loaded from documentation/, contribute/.
  *
  * Client side replacement occurs in xwalk.js replace_version_string
  *
@@ -70,5 +66,22 @@ var versions = {
             x86: "9.38.208.1",
             arm: "9.38.208.1"
         }
+    },
+    canary: {
+      android: {
+          x86: "10.38.225.0",
+          arm: "10.38.225.0"
+      },
+      'android-webview': {
+          x86: "10.38.225.0",
+          arm: "10.38.225.0"
+      },
+      tizen: {
+          x86: "10.38.225.0"
+      },
+      cordova: {
+          x86: "10.38.225.0",
+          arm: "10.38.225.0"
+      }
     }
 };
