@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Intel Crosswalk</title>
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Web APIs" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/apis/web_apis" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/apis/web_apis" />
+    <meta name="twitter:title" content="Web APIs" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens.html">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item  nav-item--active">
+              <a class="article-link" href="/documentation/apis/web_apis.html">Web APIs</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/apis/embedding_api.html">Embedding API</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Web APIs</h1>
+<p>The following standard APIs are supported by Crosswalk on both Android and Tizen since <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-3-release-notes">Crosswalk 3.32.53.2</a>, unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only, <sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later, <sup id="va">[X.X.X.X;x86|ARM]</sup> = this version or later for the specified architecture).</p>
+<h2>Runtime &amp; Packaging</h2>
+<ul>
+<li><a href="http://www.w3.org/2012/sysapps/app-uri/">app: URI</a><sup><a href="#t">[t]</a></sup> - Address resources inside a packaged application.</li>
+</ul>
+<h2>Multimedia &amp; Graphics</h2>
+<ul>
+<li><a href="http://www.w3.org/TR/css3-animations/">CSS Animations</a> - Animate CSS properties over time using keyframes.</li>
+<li><a href="http://www.w3.org/TR/css3-background/">CSS Backgrounds and Borders Level 3</a> - CSS features for borders and backgrounds.</li>
+<li><a href="http://www.w3.org/TR/css3-color/">CSS Color Module Level 3</a> - CSS features for color values and properties.</li>
+<li><a href="http://www.w3.org/TR/css3-flexbox/">CSS Flexible Box Layout </a> - A CSS box model for user interface design.</li>
+<li><a href="http://www.w3.org/TR/css3-webfonts/">CSS Fonts Level 3</a> - Font properties and dynamic font resource loading.</li>
+<li><a href="http://www.w3.org/TR/css3-multicol/">CSS Multi-column Layout</a> - Multi-column layouts with CSS.</li>
+<li><a href="http://www.w3.org/TR/css-text-decor-3/">CSS Text Decoration Level 3</a> - Text decoration CSS features.</li>
+<li><a href="http://www.w3.org/TR/css3-transforms/">CSS Transforms</a> - Change the position of content in 3D space without disrupting the normal flow using CSS.</li>
+<li><a href="http://www.w3.org/TR/css3-transitions/">CSS Transitions</a> - Enables property changes in CSS values over time.</li>
+<li><a href="http://www.w3.org/TR/2dcontext/">HTML Canvas 2D Context</a> - An API for 2D immediate mode graphics.</li>
+<li><a href="http://www.w3.org/TR/html5/">HTML5 Audio/Video</a> - Audio and Video support without plugins.</li>
+<li><a href="http://www.w3.org/TR/css3-mediaqueries/">Media Queries Level 3</a> - CSS media features for adapting the same content to different output devices and screens.</li>
+<li><a href="http://picture.responsiveimages.org/">Responsive Images</a><sup><a href="#v">[5.34.104.5]</a></sup> - Control which image resource is presented to a user, based on media query and/or image format support.</li>
+<li><a href="http://www.w3.org/TR/SVG11/">Scalable Vector Graphics (SVG) 1.1</a> - An XML markup language for 2D vector graphics.</li>
+<li><a href="http://www.w3.org/TR/webrtc/">WebRTC</a><sup><a href="#a">[a]</a></sup> <sup><a href="#va">[7.36.154.6;x86]</a></sup> - Peer to peer sharing of video and audio streams.</li>
+</ul>
+<h2>Networking &amp; Storage</h2>
+<ul>
+<li><a href="http://dev.w3.org/2006/webapi/FileAPI/">File API</a> - Asynchronously read the contents of files or raw data buffers stored on the client.</li>
+<li><a href="http://dev.w3.org/2009/dap/file-system/file-dir-sys.html">File API: Directories and System</a> - Expose a sandboxed filesystem on the client.</li>
+<li><a href="http://dev.w3.org/2009/dap/file-system/file-writer.html">File API: Writer</a> - Write files to a sandboxed sandboxed filesystem on the client.</li>
+<li><a href="http://www.w3.org/TR/webmessaging/">HTML5 Web Messaging</a> - A mechanism for communicating between browsing contexts.</li>
+<li><a href="https://dvcs.w3.org/hg/IndexedDB/raw-file/default/Overview.html">Indexed DB</a> - An asynchronous client-side storage API for fast access to large amounts of structured data.</li>
+<li><a href="http://www.w3.org/2012/sysapps/messaging/">Messaging</a><sup><a href="#a">[a]</a></sup> - Allows SMS and MMS message sending and receiving.</li>
+<li><a href="http://www.w3.org/html/wg/drafts/html/CR/browsers.html#browser-state">Online State</a> - Online and offline events for the network state.</li>
+<li><a href="http://www.w3.org/TR/webdatabase/">Web SQL</a> - Store data in databases on the client using a variant of SQL.</li>
+<li><a href="http://www.w3.org/TR/websockets/">Web Sockets</a> - A low overhead bi-directional communication with web servers over a persistent TCP connection.</li>
+<li><a href="http://www.w3.org/TR/webstorage/">Web Storage</a> - A simple synchronous client-side storage API for storing name-value pairs.</li>
+<li><a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest</a> - Transfer data between a client and a server programmatically over HTTP.</li>
+</ul>
+<h2>Performance &amp; Optimization</h2>
+<ul>
+<li><a href="http://www.w3.org/TR/navigation-timing/">Navigation Timing</a> - Access timing information related to navigation and elements.</li>
+<li><a href="http://www.w3.org/TR/page-visibility/">Page Visibility</a><sup><a href="#a">[a]</a></sup> - Programmatically determine the visibility state of the web application.</li>
+<li><a href="http://www.w3.org/TR/resource-timing/">Resource Timing</a> - Access timing information related to HTML elements.</li>
+<li><a href="http://www.w3.org/TR/selectors-api/">Selectors Level 1</a> and <a href="http://www.w3.org/TR/selectors-api2/">Level 2</a> - Retrieve elements from the DOM using CSS selectors.</li>
+<li><a href="http://www.khronos.org/registry/typedarray/specs/latest/">Typed Array 1.0</a> - Data types for raw binary data for performance-critical tasks.</li>
+<li><a href="http://www.w3.org/TR/workers/">Web Workers</a> - Run scripts in parallel to the main page.</li>
+</ul>
+<h2>Device &amp; Hardware</h2>
+<ul>
+<li><a href="http://www.w3.org/TR/orientation-event/">Device Orientation Events</a> - DOM events which provide information about the physical orientation and motion of the device.</li>
+<li><a href="http://fullscreen.spec.whatwg.org/">Fullscreen</a> - Programmatically instruct an element on the page to be presented in full screen mode.</li>
+<li><a href="http://www.w3.org/TR/geolocation-API/">Geolocation</a> - Access geographical location information associated with the hosting device.</li>
+<li><a href="http://www.w3.org/TR/html5/forms.html#date-and-time-state-(type=datetime)">HTML5 Date and Time state for input element</a><sup><a href="#a">[a]</a></sup> - Picker controls for date and time input types.</li>
+<li><a href="http://www.w3.org/TR/html5/forms.html#telephone-state-(type=tel)">HTML5 Telephone, Email and URL state for input element</a><sup><a href="#a">[a]</a></sup> - Picker controls for telephone, email and URL input types.</li>
+<li><a href="http://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a><sup><a href="#a">[a]</a></sup> - Provides access to local media streams including video (camera) and audio (microphone).</li>
+<li><a href="http://www.w3.org/TR/screen-orientation/">Screen Orientation</a> - Enables screen orientation locking and provides access to screen orientation data and events.</li>
+<li><a href="https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html">Touch Events</a> - Handle touch events programmatically.</li>
+<li><a href="http://www.w3.org/TR/vibration/">Vibration</a><sup><a href="#v">[5.34.104.5]</a></sup> - Programmatically control a device&#39;s vibration mechanism.</li>
+<li><a href="http://notifications.spec.whatwg.org/">Web Notifications</a><sup><a href="#v">[5.34.93.0]</a></sup> - Use the device&#39;s native notification mechanism (e.g. status bar on Android) to display messages to the user.</li>
+</ul>
+<h2>Social</h2>
+<ul>
+<li><a href="http://www.w3.org/2012/sysapps/contacts-manager-api/">Contacts</a><sup><a href="#a">[a]</a></sup> - Enables the management of contact information.</li>
+</ul>
+<h1>Experimental APIs</h1>
+<p>In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.</p>
+<ul>
+<li><a href="http://www.w3.org/2012/sysapps/device-capabilities/">Device Capabilities</a> - Retrieve information about the underlaying system.</li>
+<li><a href="https://crosswalk-project.org/#wiki/Launch-Screen">Launch Screen</a><sup><a href="#v">[6.35.131.4]</a></sup> - Display a static user interface on application launch and hide it when the application is ready.</li>
+<li><a href="http://webscreens.github.io/presentation-api/">Presentation API</a> - Access external displays from within web applications. For more information see the <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual">Presentation API developer documentation</a>.</li>
+<li><a href="http://www.w3.org/TR/raw-sockets/">Raw Sockets</a> - Raw TCP and UDP sockets for client and server sides.</li>
+<li><a href="https://github.com/johnmccutchan/ecmascript_simd">SIMD</a><sup><a href="#v">[5.34.104.0]</a></sup> - Data types and operations for access to the Single Instruction Multiple Data (SIMD) instruction sets available on common CPU architectures, such as SSE (IA32/X64) and NEON (ARMv7). <strong>Note that the implementation to generate NEON instructions is not done.</strong></li>
+</ul>
+<h1>Tizen Extension APIs</h1>
+<p>In addition to the experimental Crosswalk APIs, the Crosswalk developers have created
+a Crosswalk extension for Tizen users which provides many of the Tizen
+APIs. You can find information on those APIs on the <a href="https://github.com/crosswalk-project/tizen-extensions-crosswalk/wiki/APIs">Tizen Extension APIs</a> page.</p>
+<p><small>Some content in the Standard APIs section of this page has been adapted from <a href="http://www.chromestatus.com/">chromestatus.com</a>, &copy; 2013 The Chromium Authors, used under <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 license</a></small></p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/apis/embedding_api.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Embedding API</h3>
+      </a>
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/chrome-apps-for-mobile">Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Mon, 22 Sep 2014 09:00:00 GMT">2014-09-22T09:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>
