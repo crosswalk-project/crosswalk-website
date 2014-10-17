@@ -101,7 +101,7 @@
             <% for (slug in public.blog._data) { %>
               <% var article = public.blog._data[slug] %>
                 <li class="article-item">
-                  <h5 class="article-title"><a href="/blog/<%= slug %>"><%- article.title %></a></h5>
+                  <h5 class="article-title"><a href="/blog/"><%- article.title %></a></h5>
                   <span class="article-meta"><time class="js-vagueTime" datetime="<%- new Date(article.date).toUTCString() %>"><%- article.date %></time></span>
                 </li>
                 <% break %>
