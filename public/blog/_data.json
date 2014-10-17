@@ -1,10 +1,32 @@
 {
+  "Chromium Ozone-GBM explained": {
+    "title": "Chromium Ozone-GBM explained",
+    "date": "2014-10-08T08:00",
+    "author": "Tiago Vignatti",
+    "url": "https://01.org/chromium/blogs/tiagovignatti/2014/chromium-ozone-gbm-explained",
+    "desc": "Discover the Ozone-GBM platform that gives support for hardware-accelerated graphics and input support in Linux, without relying on any traditional windowing system like X11, Wayland etc. In addition, learn how the Linux graphics and Chromium architecture function together."
+  },
+  "Intel hosted Google engineers for coding camp": {
+    "title": "Intel hosted Google engineers for Text Improvements in Blink",
+    "date": "2014-10-03T08:00",
+    "author": "Dominik Röttsches",
+    "url": "https://01.org/chromium/blogs/drott/2014/intel-otc-hosted-google-engineers-coding-camp-non-latin-text-improvements-blink",
+    "desc": "Intel's Open source Technology Center in Finland hosted Google engineers Emil A. Eklund and Behdad Esfahbod for a week of hacking on Blink's font subsystem. By switch Chrome on Mac over to HarfBuzz, we now have a unified shaper on all platforms, allowing us to optimize faster across platforms and a landslide of cleaning up legacy code."
+  },
   "chrome-apps-for-mobile": {
     "title": "Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView",
     "date": "2014-09-22T09:00",
     "author": "Michal Mocny",
     "url": "http://blog.chromium.org/2014/09/now-with-faster-dev-workflow-and-modern.html",
     "desc": "…now you have a way to leverage the latest Chromium WebView on any device running Android versions back to Ice Cream Sandwich by bundling your Chrome App with an embeddable Chromium WebView, provided by the Crosswalk open source project."
+  },
+
+  "Application meta data for the web": {
+    "title": "Application meta data for the web",
+    "date": "2014-09-16T08:00",
+    "author": "Kenneth Christiansen",
+    "url": "https://01.org/chromium/blogs/kenchris/2014/application-meta-data-web",
+    "desc": "The Intel web team cares a lot about enabling real apps based on web technology. The web has had a huge impact on our industry and all of our lives, and we believe it would be sad if that impact and innovation doesn't become part of the new mobile world. This article discusses the the Manifest for web applications spec which aims at providing a single entry for web applications to store their meta data. Furthermore the current status is discusses as well as Intel's plans for Crosswalk."
   },
   "what-is-crosswalk": {
     "title": "What is Crosswalk and How you can use it with Intel XDK",
