@@ -258,8 +258,9 @@
 .article > p:first-of-type {
   @include media($mid) {
     margin-bottom: modular-scale($base-font-size, -4, $base-ratio);
-    font-size: modular-scale($base-font-size, 2, $base-ratio);
+    font-size: modular-scale($base-font-size, 1, $base-ratio);
     line-height: modular-scale($base-font-size, 1, $base-ratio);
+    font-style: italic;
   }
 }
 

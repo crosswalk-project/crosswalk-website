@@ -280,34 +280,34 @@ h6, .h6 {
 
 h1,
 .h1 {
-  font-size: modular-scale($base-font-size, 5, $base-ratio);
+  font-size: modular-scale($base-font-size, 2, $base-ratio);
   line-height: 1.1;
   @include media($wide) {
-    font-size: modular-scale($base-font-size, 6, $base-ratio);
+    font-size: modular-scale($base-font-size, 3, $base-ratio);
   }
   @include media($huge) {
-    font-size: modular-scale($base-font-size, 7, $base-ratio);
+    font-size: modular-scale($base-font-size, 4, $base-ratio);
   }
 }
 
 h2,
 .h2 {
   font-size: $base-font-size;
-  font-size: modular-scale($base-font-size, 3, $base-ratio);
+  font-size: modular-scale($base-font-size, 1, $base-ratio);
   line-height: 1.1;
   text-align: center;
   @include media($wide) {
-    font-size: modular-scale($base-font-size, 4, $base-ratio);
+    font-size: modular-scale($base-font-size, 2, $base-ratio);
     text-align: left;
   }
 }
 
 h3,
 .h3 {
-  font-size: modular-scale($base-font-size, 2, $base-ratio);
+  font-size: modular-scale($base-font-size, 0, $base-ratio);
   line-height: 1.1;
   @include media($wide) {
-    font-size: modular-scale($base-font-size, 2, $base-ratio);
+    font-size: modular-scale($base-font-size, 1, $base-ratio);
   }
 }
 
@@ -315,7 +315,7 @@ h4,
 .h4 {
   font-size: $base-font-size;
   line-height: 1.3;
-  font-size: modular-scale($base-font-size, 1, $base-ratio);
+  font-size: modular-scale($base-font-size, -1, $base-ratio);
 }
 
 h5,
@@ -323,7 +323,7 @@ h6,
 .h5,
 .h6 {
   font-size: $base-font-size;
-  font-size: modular-scale($base-font-size, 0, $base-ratio);
+  font-size: modular-scale($base-font-size, -2, $base-ratio);
 }
 
 p,

@@ -19,6 +19,7 @@
 // Styleguide 3.5.1.
 .media {
   .media-description {
+    font-size: modular-scale($base-font-size, 1, $base-ratio);
     @include media($mid) {
       @include span-columns(5 of 8);
     }

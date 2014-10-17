@@ -29,13 +29,13 @@ blockquote,
     line-height: 1.25;
   }
   @include media($wide) {
-    font-size: 1.75rem;
+    font-size: 1.35rem;
   }
   @include media($huge) {
-    font-size: 2rem;
+    font-size: 1.50rem;
   }
   @include media(min-width $huge-width min-height 40em) {
-    font-size: 2.75rem;
+    font-size: 1.70rem;
   }
   p:first-of-type:before {
     content: open-quote;
