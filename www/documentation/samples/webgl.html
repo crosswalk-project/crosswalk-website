@@ -28,14 +28,14 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/samples/Tizen" />
+    <meta property="og:title" content="WebGL" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/samples/webgl" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/samples/Tizen" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/samples/webgl" />
+    <meta name="twitter:title" content="WebGL" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -190,7 +190,7 @@
           
             
             
-            <li class="article-item ">
+            <li class="article-item  nav-item--active">
               <a class="article-link" href="/documentation/samples/webgl.html">WebGL</a>
             </li>
           
@@ -232,20 +232,35 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>Tizen APIs sample</h1>
-<p><img class='sample-thumb' src='/assets/sampapp-icon-api.png'></p>
-<p>A sample application leveraging a Crosswalk extension which implements
-some of the Tizen APIs. This sample demonstrates usage of the
-<code>tizen.systeminfo</code> API.</p>
+  <h1>WebGL sample</h1>
+<p><img class='sample-thumb' src='/assets/sampapp-icon-webgl.png'></p>
+<p>Ah, the power of WebGL. This sample provides a quick example of integrating ThreeJS into a Crosswalk application.</p>
 <p>This application is part of the
 <a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz">Crosswalk samples download</a>.</p>
-<p>To use this example, you need to run the application on a Tizen device
-or in the Tizen emulator. Instructions for preparing both are in
-the <a href="/documentation/getting_started.html">Getting started</a> tutorial.</p>
-<p>The following steps use the helper script <strong>tizen-extension-crosswalk</strong>
-to load the Tizen extension API into Crosswalk during load time.</p>
-<pre><code class="language-sh">&gt; sdb push samples/tizen_apis /home/developer/tizen_apis
-&gt; sdb shell &quot;tizen-extensions-crosswalk /home/developer/tizen_apis/index.html&quot;</code></pre>
+<p>The steps for setting up an environment for Crosswalk are explained
+in detail in the <a href="/documentation/getting_started.html">Getting started</a>
+tutorial.</p>
+<h2>WebGL on Android</h2>
+<p>Once you&#39;ve set up the Crosswalk Android packaging dependencies,
+follow the steps in <a href="/documentation/getting_started/run_on_android.html">Run on Android</a>
+to install and run the WebGL sample on Android.</p>
+<p>The quick version is that you can build the WebGL apk with:</p>
+<pre><code class="language-sh">&gt; cd &lt;xwalk_app_template directory&gt;
+&gt; python make_apk.py --package=org.crosswalkproject.example \
+    --manifest=&lt;path to crosswalk-samples&gt;/webgl/manifest.json</code></pre>
+<p><code>&lt;xwalk_app_template directory&gt;</code> refers to the directory where you
+downloaded and unpacked Crosswalk Android.</p>
+<p>Then install the apk file on Android:</p>
+<pre><code class="language-sh">&gt; adb install WebGL*.apk</code></pre>
+<h2>WebGL on Tizen</h2>
+<p>Follow the steps in
+<a href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a>
+to install and run the WebGL sample on Tizen.</p>
+<p>Or here&#39;s the quick version:</p>
+<pre><code class="language-sh">sdb push &lt;path to crosswalk-samples&gt;/webgl /home/developer/webgl
+sdb shell &quot;xwalk --usegl=osmesa /home/developer/webgl/&quot;</code></pre>
+<p>Note that you pass the <code>--usegl=osmesa</code> option to enable WebGL on
+Tizen Crosswalk.</p>
 
   <footer class="article-next">
     
@@ -260,8 +275,16 @@ to load the Tizen extension API into Crosswalk during load time.</p>
   
     
     
+      
+    
   
     
+    
+      
+      <a href="/documentation/samples/simd.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>SIMD</h3>
+      </a>
     
   
 

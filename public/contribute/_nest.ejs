@@ -5,11 +5,7 @@
     <% for(var slug in public.contribute._data) { %>
       <% var article = public.contribute._data[slug] %>
       <li class="article-item <%= current.source === slug.toLowerCase() ? ' nav-item--active' : '' %>">
-        <% if (slug) { %>
-          <a href="/contribute/<%= slug.toLowerCase() %>.html"><%= article.title %></a>
-        <% } else { %>
-          <a href="/contribute/"><%= article.title %></a>
-        <% } %>
+        <a href="/contribute/<%= slug ? slug.toLowerCase() + '.html' : 'index.html' %>"><%= article.title %></a>
       </li>
     <% } %>
   </ul>
@@ -20,3 +16,4 @@
     <% include ../_includes/documentation-next %>
   </footer>
 </article>
+
