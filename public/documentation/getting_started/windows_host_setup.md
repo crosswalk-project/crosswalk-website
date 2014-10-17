@@ -39,7 +39,7 @@ The Oracle JDK has to be downloaded manually (you must accept a licence agreemen
 
 3.  Once downloaded, run the Java <code>.exe</code> installer, and set <code>C:\jdk</code> as the installation directory.
 
-<h3 id="Install-Ant">Install Ant</id>
+<h3 id="Install-Ant">Install Ant</h3>
 
 1.  Download Ant from: http://www.apache.org/dist/ant/binaries/
 

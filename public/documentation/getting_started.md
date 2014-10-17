@@ -9,8 +9,8 @@ For Tizen, a [canary](/documentation/downloads.html#release-channels) version is
 **This tutorial explains how to:**
 
 1.  Set up the *host*: the machine where you will be developing the application.
-    *   [Windows host](/documentation/getting_started/windows_host_setup.html)
-    *   [Linux host](/documentation/getting_started/linux_host_setup.html)
+    * [Windows host](/documentation/getting_started/windows_host_setup.html)
+    * [Linux host](/documentation/getting_started/linux_host_setup.html)
 
     Note that it may be possible to develop for Crosswalk on other platforms, but only Windows and Linux are officially supported.
 2.  Set up *targets*: machines which will run the Crosswalk application, either physical or virtual.

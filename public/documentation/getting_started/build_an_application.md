@@ -15,7 +15,7 @@ However, because Crosswalk applications are intended to integrate well with the 
 
 2.  Next, copy an icon file to that directory, to serve as the application icon. You can use this image:
 
-    <img src="/assets/icon.png">
+    <img src="/assets/cw-app-icon.png">
 
     To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the `xwalk-simple` directory as `icon.png`. (Note that this image is from the Crosswalk source code and is [BSD licensed](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE).)
 
