@@ -371,8 +371,10 @@
     ul,
     ol,
     dl {
-      margin-top: modular-scale($base-font-size, -4, $base-ratio);
-      margin-left: modular-scale($base-font-size, 2, $base-ratio);
+      margin-left: 0;
+      margin-right: 0;
+      border-top: 1px solid $color-gray;
+      padding-top: modular-scale($base-font-size, 0, $base-ratio);
     }
   }
   ul > li {
