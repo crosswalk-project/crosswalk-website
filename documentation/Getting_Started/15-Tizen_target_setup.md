@@ -93,11 +93,13 @@ Here's a summary of the steps for Fedora 20, using VMware Workstation and the `t
 
         echo 'mks.gl.allowBlacklistedDrivers = "TRUE"' >> ~/.vmware/Tizen-IVI/Tizen-IVI.vmx
 
-20. OpenVMware Workstation again, and start the configured VM from the front screen by right-clicking on its name (**Tizen-IVI**) and selecting *Play Virtual Machine*.
+20. If you are using VMware Player on a Linux host, you will also need to enable TF2-S3TC Texture Support in DRI. The problem is described [here](http://dri.freedesktop.org/wiki/S3TC). It can be turned on with local `.drirc` file. On Ubuntu one can install the `driconf` application and change that setting from the GUI.
 
-21. The first time the virtual machine boots, you will be prompted to download the VMware Tools for Linux. Don't install these for now.
+21. Open VMware Workstation again, and start the configured VM from the front screen by right-clicking on its name (**Tizen-IVI**) and selecting *Play Virtual Machine*.
 
-22. Eventually, you should see the Tizen IVI image boot:
+22. The first time the virtual machine boots, you will be prompted to download the VMware Tools for Linux. Don't install these for now.
+
+23. Eventually, you should see the Tizen IVI image boot:
 
     <img src="assets/tizen-ivi-vmware.png">
 
