@@ -24,6 +24,10 @@
   .a-faux {
     background-image: none;
   }
+  @include media($mid) {
+    margin-top: modular-scale($base-font-size, -2, $base-ratio);
+    @include span-columns(6 of 6);
+  }
   @include media($wide) {
     // Break out of .row at wide size
     @include span-columns(7 of 6);
@@ -38,11 +42,14 @@
     display: inline-block;
     font-size: inherit;
     @include media($mid) {
-      font-size: inherit;
+      font-size: modular-scale($base-font-size, -1, $base-ratio);;
       margin-top: -modular-scale($base-font-size, 0, $base-ratio);
       margin-bottom: -modular-scale($base-font-size, 0, $base-ratio);
       margin-left: 0;
       margin-right: 0;
+    }
+    @include media($huge) {
+      font-size: modular-scale($base-font-size, 0, $base-ratio);
     }
   }
 }
@@ -55,12 +62,12 @@
   font-size: modular-scale($base-font-size, -1, $base-ratio);
   margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
   @include media($mid) {
-    margin-top: modular-scale($base-font-size, -1, $base-ratio);
-    margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+    margin-top: 0;
+    margin-bottom: 0;
     @include span-columns(4 of 6);
   }
   @include media($wide) {
-    margin-top: modular-scale($base-font-size, -2, $base-ratio);
+    margin-top: 0;
     margin-bottom: 0;
     font-size: modular-scale($base-font-size, -1, $base-ratio);
     @include shift(0);
@@ -73,6 +80,9 @@
   font-size: modular-scale($base-font-size, 1, $base-ratio);
   margin-left: 0;
   margin-bottom: modular-scale($base-font-size, -8, $base-ratio);
+  @include media($mid) {
+    margin: 0;
+  }
   @include media($wide) {
     display: inline-block;
   }
@@ -95,7 +105,10 @@
     display: inline-block;
     float: left;
     font-size: modular-scale($base-font-size, -1, $base-ratio);
-    padding: modular-scale($base-font-size, -1, $base-ratio) modular-scale($base-font-size, -4, $base-ratio);
+    padding: modular-scale($base-font-size, 2, $base-ratio) modular-scale($base-font-size, -4, $base-ratio) modular-scale($base-font-size, 0, $base-ratio);
+  }
+  @include media($wide) {
+    padding-top: modular-scale($base-font-size, -1, $base-ratio);
   }
   @include media($huge) {
     font-size: modular-scale($base-font-size, 0, $base-ratio);
