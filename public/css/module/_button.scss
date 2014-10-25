@@ -147,3 +147,13 @@ a.button--large {
     }
   }
 }
+
+// Hero Buttons.  The 2 big buttons top of home screen: 
+// get started and "follow crosswalk on twitter"
+#hero-button-group {
+  clear: both;
+}
+#main-get-started-button,
+#main-follow-twitter-button {
+  max-width: 300px;
+}

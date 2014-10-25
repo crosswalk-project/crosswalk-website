@@ -81,11 +81,13 @@
   font-size: modular-scale($base-font-size, 1, $base-ratio);
   margin-left: 0;
   margin-bottom: modular-scale($base-font-size, -8, $base-ratio);
+  #getting-started-nav{display:none}
   @include media($mid) {
     margin: 0;
   }
   @include media($wide) {
     display: inline-block;
+    #getting-started-nav{display:initial}
   }
 }
 
