@@ -362,16 +362,16 @@
     padding-left: 0;
     margin-top: modular-scale($base-font-size, 0, $base-ratio);
     margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
-    margin-left: modular-scale($base-font-size, 4, $base-ratio);
-    margin-right: modular-scale($base-font-size, 4, $base-ratio);
+    margin-left: 30px;
+    margin-right: 0px;
     @include media($huge) {
-      margin-left: modular-scale($base-font-size, 8, $base-ratio);
-      margin-right: modular-scale($base-font-size, 8, $base-ratio);
+      margin-left: 30px;
+      margin-right: 0px;
     }
     ul,
     ol,
     dl {
-      margin-left: 0;
+      margin-left: 30px;
       margin-right: 0;
       border-top: 1px solid $color-gray;
       padding-top: modular-scale($base-font-size, 0, $base-ratio);
