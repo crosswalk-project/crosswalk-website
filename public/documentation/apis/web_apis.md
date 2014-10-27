@@ -1,6 +1,12 @@
 # Web APIs
 
-The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-3-release-notes), unless noted otherwise (<sup id="t">[t]</sup> = Tizen only; <sup id="a">[a]</sup> = Android only, <sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later, <sup id="va">[X.X.X.X;x86|ARM]</sup> = this version or later for the specified architecture).
+The following standard APIs are supported by Crosswalk on both Android and Tizen since [Crosswalk 3.32.53.2](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-3-release-notes).
+
+Version key:<br />
+&nbsp;&nbsp;&nbsp;<sup id="t">[t]</sup> = Tizen only;<br/>
+&nbsp;&nbsp;&nbsp;<sup id="a">[a]</sup> = Android only<br/>
+&nbsp;&nbsp;&nbsp;<sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later<br/>
+&nbsp;&nbsp;&nbsp;<sup id="va">[X.X.X.X;x86|ARM]</sup> = this version or later for the specified architecture.
 
 ## Runtime & Packaging
 * [app: URI](http://www.w3.org/2012/sysapps/app-uri/)<sup><a href="#t">[t]</a></sup> - Address resources inside a packaged application.
@@ -63,7 +69,7 @@ The following standard APIs are supported by Crosswalk on both Android and Tizen
 In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.
 
 * [Device Capabilities](http://www.w3.org/2012/sysapps/device-capabilities/) - Retrieve information about the underlaying system.
-* [Launch Screen](https://crosswalk-project.org/#wiki/Launch-Screen)<sup><a href="#v">[6.35.131.4]</a></sup> - Display a static user interface on application launch and hide it when the application is ready.
+* [Launch Screen](https://crosswalk-project.org/documentation/manifest/launch_screen.html)<sup><a href="#v">[6.35.131.4]</a></sup> - Display a static user interface on application launch and hide it when the application is ready.
 * [Presentation API](http://webscreens.github.io/presentation-api/) - Access external displays from within web applications. For more information see the [Presentation API developer documentation](https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual).
 * [Raw Sockets](http://www.w3.org/TR/raw-sockets/) - Raw TCP and UDP sockets for client and server sides.
 * [SIMD](https://github.com/johnmccutchan/ecmascript_simd)<sup><a href="#v">[5.34.104.0]</a></sup> - Data types and operations for access to the Single Instruction Multiple Data (SIMD) instruction sets available on common CPU architectures, such as SSE (IA32/X64) and NEON (ARMv7). **Note that the implementation to generate NEON instructions is not done.**
