@@ -7,7 +7,7 @@ A project which was built with Cordova can be modified so it uses Crosswalk as t
 
 After you have migrated a Cordova application to Crosswalk, you may want to [upgrade the migrated application to a newer version of Crosswalk](#Upgrading-Crosswalk-in-a-migrated-project).
 
-<h2 id="Create a Cordova application">Create a Cordova application</h2>
+<h2 id="create-a-cordova-application">Create a Cordova application</h2>
 
 In this section, you will create a Cordova Android application which will be migrated to Crosswalk Cordova for Android later in the tutorial.
 
@@ -53,25 +53,25 @@ To create the project for the application:
 
 4.  Add the required plugins for this application by running these commands inside the `kitchensink/` directory:
 
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-battery-status.git#r0.2.8
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git#r0.2.9
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-contacts.git#r0.2.10
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git#r0.2.9
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.7
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-orientation.git#r0.3.6
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git#r0.2.7
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file.git#r1.1.0
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file-transfer.git#r0.4.3
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-geolocation.git#r0.3.7
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-globalization.git#r0.2.7
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git#r0.4.0
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git#r0.2.10
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media-capture.git#r0.3.0
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-network-information.git#r0.2.8
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git#r0.3.0
-        cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibration.git#r0.3.8
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-battery-status.git#r0.2.8
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git#r0.2.9
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-contacts.git#r0.2.10
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git#r0.2.9
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.7
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-orientation.git#r0.3.6
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git#r0.2.7
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file.git#r1.1.0
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file-transfer.git#r0.4.3
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-geolocation.git#r0.3.7
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-globalization.git#r0.2.7
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git#r0.4.0
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git#r0.2.10
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-media-capture.git#r0.3.0
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-network-information.git#r0.2.8
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git#r0.3.0
+        $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibration.git#r0.3.8
 
-    Note that the kitchen sink application uses all the Cordova plugins. Also note that the `cordova` command wraps the `plugman` tool, described in the [Add plugins](/documentation/cordova/add_plugins.html) page. You can get more details about how plugins are installed from that page.
+    Note that the kitchen sink application uses all the Cordova plugins. Also note that the `cordova` command wraps the `plugman` tool, described in the [Add Cordova plugins](/documentation/cordova/add_plugins.html) page. You can get more details about how plugins are installed from that page.
 
 5.  Build the Android package:
 
@@ -85,14 +85,14 @@ If the above steps work correctly, the kitchen sink application should be runnin
 
 <img src="/assets/cordova-kitchensink.png">
 
-<h2 id="Migrate-to-Crosswalk">Migrate to Crosswalk</h2>
+<h2 id="migrate">Migrate to Crosswalk</h2>
 
 **Before you can migrate your application to Crosswalk, you need to download and unpack a crosswalk-cordova-android bundle. See [these instructions](/documentation/cordova/develop_an_application.html#download-the-crosswalk-cordova-android-bundle).**
 
 You can migrate a Cordova application to Crosswalk in two ways:
 
-*   [Migrate using command line tools](#migrate-using-command-line-tools)
-*   [Migrate using ADT](#migrate-using-adt)
+*   [Migrate using command line tools](#Migrate-using-command-line-tools)
+*   [Migrate using ADT](#Migrate-using-ADT)
 
 The following sections explain these two approaches. In these sections, the **kitchensink** application is referred to (i.e. it's assumed that you created the test application to migrate, as explained above). If you are migrating your own application, replace **kitchensink** with the name of your project.
 
@@ -126,7 +126,7 @@ Once you have the application working with standard Cordova, you can move on to 
         <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-6.  <a name="build-project"></a>Build the projects in this order:
+6.  <a id="build-project"></a>Build the projects in this order:
 
     <ol>
     <li><strong>xwalk_core_library</strong></li>
@@ -156,7 +156,7 @@ Once you have the application working with standard Cordova, you can move on to 
         $ cd ../../..
         $ cordova build android
 
-    The `android update` command used above takes a `--target` option, specifying which Android API level you want to target. If you only have one platform versions installed in your Android SDK, this option is not required; but if you have multiple platform versions installed, you need to specify which one to use.
+    The `android update` command used above takes a `--target` option, specifying which Android API level you want to target. If you only have one platform version installed in your Android SDK, this option is not required; but if you have multiple platform versions installed, you need to specify which one to use.
 
     To get a list of the targets available in your Android SDK, run this command:
 
@@ -164,23 +164,25 @@ Once you have the application working with standard Cordova, you can move on to 
 
     Here's a sample of the output when Android 4.3 (API level 18) and Android 4.4.2 (API level 19) are available:
 
-        ----------
+        $ android list targets
         id: 1 or "android-18"
              Name: Android 4.3
              Type: Platform
              API level: 18
              Revision: 2
-             Skins: QVGA, WXGA720, WQVGA432, HVGA, WVGA800 (default), WQVGA400, WXGA800, WXGA800-7in, WVGA854, WSVGA
+             Skins: QVGA, WXGA720, WQVGA432, HVGA, WVGA800 (default), 
+                    WQVGA400, WXGA800, WXGA800-7in, WVGA854, WSVGA
          Tag/ABIs : no ABIs.
-        ----------
+
         id: 2 or "android-19"
              Name: Android 4.4.2
              Type: Platform
              API level: 19
              Revision: 3
-             Skins: QVGA, WXGA720, WQVGA432, HVGA, WVGA800 (default), WQVGA400, WXGA800, WXGA800-7in, WVGA854, WSVGA
+             Skins: QVGA, WXGA720, WQVGA432, HVGA, WVGA800 (default), 
+                    WQVGA400, WXGA800, WXGA800-7in, WVGA854, WSVGA
          Tag/ABIs : default/armeabi-v7a, default/x86
-
+    
     The `id` lines show the integer or string you need to pass to the `--target` option.
 
     By default, Cordova will build a debug package for your application. You can build a release version instead using:
@@ -203,15 +205,17 @@ Once you have the application working with standard Cordova, you can move on to 
 
     The application should now be running on the target.
 
-8.   The application should look identical to how it does on standard Cordova. If you are using a debug build (i.e. you didn't apply the `--release` option), you should also be able to [debug your application using Chrome](/documentation/cordova/develop_an_application.html#debug-the-application).
+8.  The application should look identical to how it does on standard Cordova. If you are using a debug build (i.e. you didn't apply the `--release` option), you should also be able to [debug your application using Chrome](/documentation/cordova/develop_an_application.html#debug-the-application).
 
     You can also use the dev tools to confirm your application is using Crosswalk. Open "chrome://inspect" in a Chrome browser and select the "inspect" link for the *Intel XDK Kitchen Sink* application (or for your own application).
 
     In the Chrome dev tools, you should now have a JavaScript console. You can verify that your application is using Crosswalk as its webview by echoing the `navigator.userAgent` property to the console:
 
         > navigator.userAgent
-        "Mozilla/5.0 (Linux; Android 4.2.2; ZTE V975 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Mobile Crosswalk/7.36.154.12 Mobile Safari/537.36"
-
+        "Mozilla/5.0 (Linux; Android 4.2.2; ZTE V975 Build/JDQ39) 
+         AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116
+         Mobile Crosswalk/7.36.154.12 Mobile Safari/537.36"
+     
     Note the presence of the "Crosswalk/N.N.N.N" string, which indicates that the application is using Crosswalk.
 
 <h3 id="Migrate-using-ADT">Migrate using ADT</h3>
@@ -235,11 +239,16 @@ These steps assume that you created your project using the Cordova command line 
         <p>Set the <em>Root Directory</em> by clicking the <em>Browse</em> button. Browse to the <code>framework/</code> directory inside the crosswalk-cordova-android bundle you unpacked earlier. Under <em>Projects to Import</em>, two projects should be displayed:</p>
 
         <ol>
-          <li><strong>Cordova</strong></li>
-          <li><strong>xwalk_core_library</strong></li>
+          <li>Cordova</li>
+          <li>xwalk_core_library</li>
         </ol>
 
-        <p>Click <em>Finish</em> to import both. The projects should now be visible in the <em>Package Explorer</em>.</p>
+<p>Or you can use `cordova` from the top-level directory of the project to install and run the application:</p>
+
+    $ cd kitchensink/
+    $ cordova run android
+        
+<p>Click <em>Finish</em> to import both. The projects should now be visible in the <em>Package Explorer</em>.</p>
       </li>
     </ol>
   </li>
@@ -247,23 +256,17 @@ These steps assume that you created your project using the Cordova command line 
   <li>
     <p>Import the directory containing your existing Cordova application into ADT.</p>
 
-    <ol>
-
+   <ol>
       <li>Select <em>File</em> > <em>Import...</em>; then <em>Android</em> > <em>Existing Android Code into Workspace</em>. Click <em>Next</em>.</li>
-
       <li>
         <p>Click <em>Browse</em> to browse to the root directory of the project you want to import. Under <em>Projects to Import</em>, two projects should be displayed:</p>
-
         <ol>
           <li><strong>Your application project</strong>, located in <code>platforms/android/</code>.</li>
           <li><strong>CordovaLib</strong>, located in <code>platforms/android/CordovaLib</code>.</li>
         </ol>
-
         <p>Uncheck the CordovaLib project then click <em>Finish</em> to just import your application project. The project should now be visible in the <em>Package Explorer</em>.</p>
       </li>
-
     </ol>
-
     <p>Note that if you have set up ADT with the web development tools, you can also import the <code>www/</code> directory containing your web application code into ADT (not covered in these steps).</p>
   </li>
 
@@ -284,8 +287,8 @@ These steps assume that you created your project using the Cordova command line 
   <li>
     <p>Crosswalk requires a couple of extra permissions which are not inserted by the Cordova application generator. Add these manually by editing <code>AndroidManifest.xml</code> in your project, adding these lines just before the existing <code>&lt;application&gt;</code> element:</p>
 
-    <pre>&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt;</pre>
-    <pre>&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;</pre>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   </li>
 
   <li>
@@ -296,12 +299,9 @@ These steps assume that you created your project using the Cordova command line 
         <li><strong>Cordova</strong></li>
         <li><strong>your application project</strong></li>
       </ol>
-
     <p>You may need to turn off the automatic build option (uncheck <em>Project</em> > <em>Build Automatically</em>) so you can build the projects manually and in the correct order.</p>
-
     <p>If all builds pass, the application was imported and built correctly by ADT, and you are ready to continue development.</p>
   </li>
-
   <li>
     <p>To test the application on a target, right-click on the application project in the <em>Package Explorer</em>. Choose <em>Run As...</em> > <em>Android Application</em>. A list of available targets should be displayed, for example:</p>
 
@@ -358,7 +358,7 @@ This will put the required files in the `platforms/android` directory and regist
 
 If you have a Cordova application which is already migrated to Crosswalk, but you want to upgrade the version of Crosswalk, follow the instructions below which apply to your environment (command line or ADT).
 
-Note that both sets of instructions require you to first [download and unpack the Crosswalk Cordova bundle](/documentation/cordova/develop_an_application/download-the-crosswalk-cordova-android-bundle.html) which you want to upgrade to.
+Note that both sets of instructions require you to first [download and unpack the Crosswalk Cordova bundle](/documentation/cordova/develop_an_application.html#Download-the-crosswalk-cordova-android-bundle) which you want to upgrade to.
 
 <h3 id="Upgrade-using-the-command-line-tools">Upgrade using the command line tools</h3>
 
@@ -392,8 +392,7 @@ To migrate a Cordova application to a new version of Crosswalk, you follow almos
 
         $ export ANDROID_HOME=$(dirname $(dirname $(which android)))
         $ cd platforms/android/CordovaLib/
-        $ android update project --subprojects --path . \
-            --target "android-19"
+        $ android update project --subprojects --path . --target "android-19"
         $ ant debug
 
 7.  **Remove files generated by Cordova during the previous build:**
@@ -435,13 +434,13 @@ These instructions assume that you have already [migrated a Cordova application 
           <li><strong>xwalk_core_library</strong></li>
         </ol>
 
-        <p>Rename the projects so that they are distinct from any existing Crosswalk Cordova libraries you have imported by clicking on the entries under <em>New Project Name</em>. For example:</p>
+   Rename the projects so that they are distinct from any existing Crosswalk Cordova libraries you have imported by clicking on the entries under <em>New Project Name</em>. For example:
 
-        <img src="/assets/cordova-adt-import-and-rename-projects.png">
+   <img src="/assets/cordova-adt-import-and-rename-projects.png">
 
-        <p>In the screenshot above, note that the libraries were renamed to <strong>CrosswalkCordova8</strong> and <strong>xwalk_core_library8</strong>. In the following steps, where these names are used, replace them with whichever names you used when renaming the imported proejcts.</p>
+   In the screenshot above, note that the libraries were renamed to <strong>CrosswalkCordova8</strong> and <strong>xwalk_core_library8</strong>. In the following steps, where these names are used, replace them with whichever names you used when renaming the imported proejcts.
 
-        <p>Click <em>Finish</em> to import both. The projects should now be visible in the <em>Package Explorer</em>.</p>
+Click <em>Finish</em> to import both. The projects should now be visible in the <em>Package Explorer</em>.
       </li>
     </ol>
   </li>

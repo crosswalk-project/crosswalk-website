@@ -230,13 +230,14 @@
 
 <article class="article article--hasToC">
   <h1>Adding Cordova plugins</h1>
-<p>Cordova&#39;s web APIs are packaged as <strong>plugins</strong>, optional add-ons for the Cordova runtime. Each plugin you add provides extra functionality and/or additional web API methods for the Cordova-wrapped web application. For example, the <a href="http://plugins.cordova.io/#/package/org.apache.cordova.device-motion">Cordova Device Motion Plugin</a> plugin adds the following JavaScript methods for working with accelerometer data:</p>
-<ul>
-<li>navigator.accelerometer.getCurrentAcceleration</li>
-<li>navigator.accelerometer.watchAcceleration</li>
-<li>navigator.accelerometer.clearWatch</li>
-</ul>
-<p>The <a href="http://plugins.cordova.io/">Cordova Plugin Registry</a> lists many of the available plugins (including all of the official ones) and where to get them.</p>
+<p>Cordova&#39;s web APIs are packaged as <strong>plugins</strong>, optional add-ons for the Cordova runtime. Each plugin you add provides extra functionality and/or additional web API methods for the Cordova-wrapped web application. For example, the <a href="http://plugins.cordova.io/#/package/org.apache.cordova.device-motion">Cordova Device Motion Plugin</a> adds the following JavaScript methods for working with accelerometer data:
+
+<em>   navigator.accelerometer.getCurrentAcceleration
+</em>   navigator.accelerometer.watchAcceleration
+*   navigator.accelerometer.clearWatch
+
+The <a href="http://plugins.cordova.io/">Cordova Plugin Registry</a> lists many of the available plugins (including all of the official ones) and where to get them.</p>
+
 <h2>Cordova plugins and Crosswalk</h2>
 <p>Cordova Crosswalk for Android can also be extended with Cordova plugins. However, the plugin version you need depends on the Crosswalk version you are using. The <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Cordova-for-Android:-plugin-compatibility-lists">plugins compatibility list</a> shows which Cordova plugin versions are supported by which version of Crosswalk Cordova for Android.</p>
 <p>It&#39;s also worth noting that some functionality provided by Cordova plugins already has an equivalent in Crosswalk (for example, geolocation data). In cases where you are only using Crosswalk for the webview (e.g. you&#39;re only deploying to Android), you could use such Crosswalk native APIs, rather than those provided by Cordova plugins.</p>
@@ -260,6 +261,7 @@
 </li>
 <li><p>Use the plugin in the application. As a simple example, you could modify the HelloWorld project to use the plugin as follows:</p>
 <p>In <code>assets/www/index.html</code>, modify the <code>&lt;div class=&quot;app&quot;&gt;</code> element, adding some paragraphs to display the x, y and z accelerometer coordinates:</p>
+
 <pre><code>&lt;div class=&quot;app&quot;&gt;
     &lt;h1&gt;Apache Cordova&lt;/h1&gt;
     &lt;div id=&quot;deviceready&quot; class=&quot;blink&quot;&gt;
@@ -272,32 +274,30 @@
     &lt;p style=&quot;color: white;&quot;&gt;y: &lt;span id=&quot;y&quot;&gt;0&lt;/span&gt;&lt;/p&gt;
     &lt;p style=&quot;color: white;&quot;&gt;z: &lt;span id=&quot;z&quot;&gt;0&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;</code></pre>
+<p>In <code>assets/www/js/index.js</code>, modify the <code>onDeviceReady()</code> function to watch the accelerometer:</p>
+
+<pre><code>onDeviceReady: function() {
+  app.receivedEvent(&#39;deviceready&#39;);
+
+  // listen to accelerometer events every 100ms
+  navigator.accelerometer.watchAcceleration(
+    // success handler
+    function (evt) {
+      document.getElementById(&#39;x&#39;).innerHTML = evt.x;
+      document.getElementById(&#39;y&#39;).innerHTML = evt.y;
+      document.getElementById(&#39;z&#39;).innerHTML = evt.z;
+    },
+
+    // error handler
+    function (e) {
+      alert(&quot;accel fail (&quot; + e.name + &quot;: &quot; + e.message + &quot;)&quot;);
+    },
+
+    // options: update every 100ms
+    { frequency: 100 }
+  );
+},</code></pre>
 </li>
-</ol>
-<pre><code>In `assets/www/js/index.js`, modify the `onDeviceReady()` function to watch the accelerometer:
-
-    onDeviceReady: function() {
-      app.receivedEvent(&#39;deviceready&#39;);
-
-      // listen to accelerometer events every 100ms
-      navigator.accelerometer.watchAcceleration(
-        // success handler
-        function (evt) {
-          document.getElementById(&#39;x&#39;).innerHTML = evt.x;
-          document.getElementById(&#39;y&#39;).innerHTML = evt.y;
-          document.getElementById(&#39;z&#39;).innerHTML = evt.z;
-        },
-
-        // error handler
-        function (e) {
-          alert(&quot;accel fail (&quot; + e.name + &quot;: &quot; + e.message + &quot;)&quot;);
-        },
-
-        // options: update every 100ms
-        { frequency: 100 }
-      );
-    },</code></pre>
-<ol>
 <li><p>Install and run the application as per usual:</p>
 <pre><code>$ cd HelloWorld
 $ ./cordova/run android</code></pre>

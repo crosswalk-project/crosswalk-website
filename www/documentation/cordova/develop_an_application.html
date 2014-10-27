@@ -259,11 +259,13 @@
 <p>You will need an Android target to deploy the Cordova application to. You can either use a real Android device or an emulated one. Instructions for both are on the <a href="/documentation/getting_started/android_target_setup.html">Android target setup page</a>.</p>
 <h2>Create a sample application</h2>
 <p>Create a sample application using the Crosswalk Cordova tools (inside the unpacked bundle in the <code>bin/</code> directory):</p>
-<pre><code>$ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create &lt;project_directory&gt; &lt;package_name&gt; &lt;project_name&gt; [&lt;template_path&gt;] [--shared]</code></pre>
+<pre><code>$ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create &lt;project_directory&gt; \
+     &lt;package_name&gt; &lt;project_name&gt; [&lt;template_path&gt;] [--shared]</code></pre>
 <p>The project will be generated in the directory <code>&lt;project_directory&gt;</code>, using the application template specified by <code>&lt;template_path&gt;</code> (or the default &quot;Hello world&quot; template if <code>&lt;template_path&gt;</code> is not set); <code>&lt;project_name&gt;</code> sets the application name in the <code>AndroidManifest.xml</code> file.</p>
 <p>The <code>--shared</code> option prevents the content of the <code>crosswalk-cordova-android/framework</code> folder being copied into the project. Note that when you build the Android package for your application, the Cordova and Crosswalk libraries are still included: the <code>--shared</code> option just affects how much space the project takes up on your development machine.</p>
 <p>For example, to create a &quot;HelloWorld&quot; app:</p>
-<pre><code>$ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create HelloWorld org.crosswalkproject.sample HelloWorld</code></pre>
+<pre><code>$ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create HelloWorld \
+     org.crosswalkproject.sample HelloWorld</code></pre>
 <p>You should use your own Java package name for your application, using <a href="http://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html">the standard Java package naming conventions</a>.</p>
 <p>A new project is created in the <code>HelloWorld</code> directory. The example HTML, JS and CSS files are located in <code>HelloWorld/assets/www</code> (you can replace them with your own files later).</p>
 <h2 id="Build-and-run-the-application">Build and run the application</h2>
