@@ -44,7 +44,8 @@ You will need an Android target to deploy the Cordova application to. You can ei
 
 Create a sample application using the Crosswalk Cordova tools (inside the unpacked bundle in the `bin/` directory):
 
-    $ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create <project_directory> <package_name> <project_name> [<template_path>] [--shared]
+    $ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create <project_directory> \
+         <package_name> <project_name> [<template_path>] [--shared]
 
 The project will be generated in the directory `<project_directory>`, using the application template specified by `<template_path>` (or the default "Hello world" template if `<template_path>` is not set); `<project_name>` sets the application name in the `AndroidManifest.xml` file.
 
@@ -52,7 +53,8 @@ The `--shared` option prevents the content of the `crosswalk-cordova-android/fra
 
 For example, to create a "HelloWorld" app:
 
-    $ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create HelloWorld org.crosswalkproject.sample HelloWorld
+    $ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create HelloWorld \
+         org.crosswalkproject.sample HelloWorld
 
 You should use your own Java package name for your application, using [the standard Java package naming conventions](http://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html).
 

@@ -1,12 +1,12 @@
 # Adding Cordova plugins
 
-Cordova's web APIs are packaged as **plugins**, optional add-ons for the Cordova runtime. Each plugin you add provides extra functionality and/or additional web API methods for the Cordova-wrapped web application. For example, the [Cordova Device Motion Plugin](http://plugins.cordova.io/#/package/org.apache.cordova.device-motion) plugin adds the following JavaScript methods for working with accelerometer data:
+<p>Cordova's web APIs are packaged as **plugins**, optional add-ons for the Cordova runtime. Each plugin you add provides extra functionality and/or additional web API methods for the Cordova-wrapped web application. For example, the [Cordova Device Motion Plugin](http://plugins.cordova.io/#/package/org.apache.cordova.device-motion) adds the following JavaScript methods for working with accelerometer data:
 
 *   navigator.accelerometer.getCurrentAcceleration
 *   navigator.accelerometer.watchAcceleration
 *   navigator.accelerometer.clearWatch
 
-The [Cordova Plugin Registry](http://plugins.cordova.io/) lists many of the available plugins (including all of the official ones) and where to get them.
+The [Cordova Plugin Registry](http://plugins.cordova.io/) lists many of the available plugins (including all of the official ones) and where to get them.</p>
 
 ## Cordova plugins and Crosswalk
 
@@ -43,7 +43,7 @@ Once installed, add a plugin to your Crosswalk Cordova project as follows:
 
 4.  Use the plugin in the application. As a simple example, you could modify the HelloWorld project to use the plugin as follows:
 
-    In `assets/www/index.html`, modify the `<div class="app">` element, adding some paragraphs to display the x, y and z accelerometer coordinates:
+    <p>In `assets/www/index.html`, modify the `<div class="app">` element, adding some paragraphs to display the x, y and z accelerometer coordinates:</p>
 
         <div class="app">
             <h1>Apache Cordova</h1>
@@ -58,8 +58,7 @@ Once installed, add a plugin to your Crosswalk Cordova project as follows:
             <p style="color: white;">z: <span id="z">0</span></p>
         </div>
 
-
-    In `assets/www/js/index.js`, modify the `onDeviceReady()` function to watch the accelerometer:
+    <p>In `assets/www/js/index.js`, modify the `onDeviceReady()` function to watch the accelerometer:</p>
 
         onDeviceReady: function() {
           app.receivedEvent('deviceready');
