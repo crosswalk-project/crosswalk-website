@@ -107,8 +107,6 @@ Use a terminal on the emulated device to run the following steps:
 
         app:~> xwalkctl --install /home/app/xwalk-simple.xpk
 
-    The path to the xpk file must be absolute, otherwise the installer won't work.
-
     The output from this command will end with something like this:
 
         [0717/103509:INFO:package_installer.cc(171)] Installed application with id:
