@@ -1,6 +1,6 @@
 # Permissions
 
-The `permissions` (Crosswalk 4-7) and `xwalk_permissions` (Crosswalk 8+) fields are Crosswalk-specific and non-standard. They is used to set permissions in the `AndroidManifest.xml` file when packaging an application for Crosswalk on Android.
+The `permissions` (Crosswalk 4-7) and `xwalk_permissions` (Crosswalk 8+) fields are Crosswalk-specific and non-standard. They are used to set permissions in the `AndroidManifest.xml` file when packaging an application for Crosswalk on Android.
 
 This is necessary because Android applications cannot request permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.
 

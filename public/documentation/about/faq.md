@@ -117,7 +117,7 @@ The method for adding this file to your Android package depends on how you are u
 
 *   If you are **[embedding Crosswalk in an Android application](/documentation/embedding_crosswalk.html)**, the file should be placed in the `assets/` directory of your project.
 
-*   If you are **[using Crosswalk Cordova](/documentation/cordova.html)**, the file should be placed in the `platforms/android/assets/` directory of your project.
+*   If you are **[using Crosswalk Cordova](/documentation/cordova.html)**, the file should be placed in the `assets/` directory of your project.
 
 *   If you are **[building an Android package with the `make_apk.py` script](/documentation/getting_started/run_on_android.html)**, you can pass an option to create the file inside the output Android package:
 
