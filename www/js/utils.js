@@ -41,11 +41,13 @@ function isLaterOrEqualVersion(basis, version) {
   var ok = true;
 
   for (var i = 0; i < basisParts.length; i++) {
-    if (versionParts[i] < basisParts[i]) {
+    versionNum = parseInt(versionParts[i]);
+    basisNum = parseInt(basisParts[i]);
+    if (versionNum < basisNum) {
       ok = false;
       break;
     }
-    else if (versionParts[i] > basisParts[i]) {
+    else if (versionNum > basisNum) {
       break;
     }
   }
@@ -86,42 +88,27 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
     var download_url = 'https://download.01.org/crosswalk/releases/crosswalk/'
                        + realOS + '/' + channel + '/' + version + '/';
 
-    // android: crosswalk-beta >= 5.34.104.1 and crosswalk-canary >= 6.34.106.0
-    // and crosswalk-stable >= 4.32.76.6
+    // android: crosswalk-beta >= 5.34.104.1, crosswalk-stable >= 4.32.76.6, crosswalk-canary >= 6.34.106.0
     // will be architecture-independent, so once we move to those we need to
     // remove |arch| from here and the checks below.
-    var androidStableArchIndependent = (OS === 'android' &&
-                                        channel === 'stable' &&
-                                        isLaterOrEqualVersion('4.32.76.6', version));
-
-    var androidBetaArchIndependent = (OS === 'android' &&
-                                      channel === 'beta' &&
-                                      isLaterOrEqualVersion('5.34.104.1', version));
-
-    var androidCanaryArchIndependent = (OS === 'android' &&
-                                        channel === 'canary' &&
-                                        isLaterOrEqualVersion('6.34.106.0', version));
-
-    if (OS === 'android' &&
-        !(androidBetaArchIndependent || androidCanaryArchIndependent || androidStableArchIndependent)) {
+    var archIndependent = false;
+    if (OS === 'android') {
+        if ((channel === 'stable' && isLaterOrEqualVersion('4.32.76.6', version)) ||
+            (channel === 'beta'   && isLaterOrEqualVersion('5.34.104.1', version)) ||
+            (channel === 'canary' && isLaterOrEqualVersion('6.34.106.0', version))) {
+            archIndependent = true;
+        }
+    }
+    if (!archIndependent) {
       download_url += arch + '/';
     }
-    else if (OS === 'cordova' || OS === 'android-webview') {
-      download_url += arch + '/';
-    }
-
     download_url += file_prefix + version;
 
     if (OS === 'android' || OS === 'cordova' || OS === 'android-webview') {
-      if (androidBetaArchIndependent || androidCanaryArchIndependent || androidStableArchIndependent) {
+      if (archIndependent) {
         download_url += '.zip';
       }
-      else if (arch === 'x86') {
-        download_url += '-x86.zip';
-      }
-      else if (arch === 'arm') {
-        download_url += '-arm.zip';
-      }
+      else download_url += "-" + arch + ".zip";  //e.g. -x86.zip or -arm.zip
     }
     // as of tizen-mobile 5.32.88.0, suffix changed to 686
     else if (OS === 'tizen-ivi' ||
