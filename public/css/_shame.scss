@@ -1,0 +1,14 @@
+// Feature media
+//
+// On landing page
+// small screens, media + button
+// Should not be necessary or be
+// in `_features.scss`
+//
+// Styleguide 5.1.
+.features-media {
+  margin-top: modular-scale($base-font-size, 4, $base-ratio);
+  @include media($mid) {
+    margin-top: 0;
+  }
+}

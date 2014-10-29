@@ -1,0 +1,159 @@
+// Standard Button
+//
+// Your average form and link buttons.
+//
+// Markup:
+// <a href="#" class="button {$modifiers}">Get started</a>
+//
+// :focus  - lighten the button when focusing with the keyboard
+// :hover  - lighten the button when hovering with a pointer
+// :active - darken the button once it’s been pressed
+// .button--small - A smaller button
+// .button--large - A larger button
+// .button--secondary - A less prominent button
+//
+// Styleguide 3.1.1.
+button,
+input[type="submit"],
+.button,
+.button:visited,
+.knockout .button {
+  font-size: modular-scale($base-font-size, 0, $base-ratio);
+  font-weight: 600;
+  line-height: $base-line-height;
+  text-transform: lowercase;
+
+  padding: modular-scale($base-font-size, 0, $base-ratio) modular-scale($base-font-size, 5, $base-ratio);
+  display: inline-block;
+
+  background: $color-primary;
+  color: $color-background;
+  text-decoration: none;
+  text-shadow: 0 1px 0 $color-primary-darker;
+  text-align: center;
+  border: none;
+  border-radius: $base-border-radius;
+
+  @include appearance(none);
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  width: 100%;
+  text-align: center;
+
+  @include media($mid) {
+    text-align: inheirt;
+    width: auto;
+    padding-right: modular-scale($base-font-size, 8, $base-ratio);
+    padding-left: modular-scale($base-font-size, 8, $base-ratio);
+  }
+
+  &:hover,
+  &:focus {
+    background: $color-primary-dark;
+    color: $color-background;
+    outline: 0;
+  }
+  &:active {
+    background: $color-primary-darker;
+    color: $color-background;
+  }
+  &.button--secondary {
+    background-color: $color-secondary;
+    text-shadow: 0 1px 0 $color-secondary-dark;
+    &:hover,
+    &:focus {
+      background-color: $color-secondary-dark;
+    }
+    &:active {
+      background-color: $color-secondary-darker;
+    }
+  }
+  &.button--tertiary {
+    background-color: transparent;
+    text-shadow: 0 1px 0 $color-background;
+    border: 1px solid $color-secondary;
+    color: $color-secondary;
+    &:hover,
+    &:focus {
+      color: $color-secondary-dark;
+      border-color: $color-secondary-dark;
+    }
+    &:active {
+      color: $color-secondary-darker;
+      border-color: $color-secondary-darker;
+    }
+  }
+}
+
+.button--small,
+a.button--small {
+  font-size: modular-scale($base-font-size, -1, $base-ratio);
+}
+
+.button--large,
+a.button--large {
+  font-size: modular-scale($base-font-size, 2, $base-ratio);
+}
+
+// Button Follower
+//
+// A secondary option to a standard button.
+//
+// Markup:
+// <a href="#" class="button-follower">You can always join later</a>
+//
+// Styleguide 3.1.2.
+.button-follower,
+.button-follower:visited {
+  font-size: modular-scale($base-font-size, 0, $base-ratio);
+  font-weight: 400;
+  line-height: $base-line-height;
+  text-transform: lowercase;
+
+  padding-top: modular-scale($base-font-size, 0, $base-ratio);
+  padding-bottom: modular-scale($base-font-size, 0, $base-ratio);
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background: none;
+
+
+  @include media($mid) {
+    text-align: left;
+    width: auto;
+  }
+}
+
+
+// Button Group
+//
+// Multiple buttons grouped together
+//
+// Markup:
+// <div class="button-group">
+//   <a href="#" class="button">Get started</a>
+//   <a href="#" class="button-follower">Or, join later</a>
+// </div>
+//
+// Styleguide 3.1.3.
+.button-group {
+  .button-follower {
+    padding-left: modular-scale($base-font-size, 2, $base-ratio);
+    @include media($mid) {
+      font-size: modular-scale($base-font-size, -1, $base-ratio);
+    }
+  }
+}
+
+// Hero Buttons.  The 2 big buttons top of home screen: 
+// get started and "follow crosswalk on twitter"
+#hero-button-group {
+  clear: both;
+}
+#main-get-started-button,
+#main-follow-twitter-button {
+  max-width: 300px;
+}

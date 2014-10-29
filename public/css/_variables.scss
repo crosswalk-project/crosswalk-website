@@ -1,0 +1,85 @@
+// Base sizes
+//
+// No styleguide reference.
+$base-font-size: 1.00em;
+$base-border-radius: 0.125em;
+$base-ratio: $minor-third;
+$base-line-height: 1.40;
+
+
+// Grid Settings
+//
+// No styleguide reference.
+$visual-grid: false;
+// $show_media_queries: true;
+$visual-grid-color: rgba(tomato, 0.5);
+$visual-grid-index: front;
+$column: modular-scale($base-font-size, 10, $base-ratio);
+$gutter: modular-scale($base-font-size, 1, $base-ratio);
+$grid-columns: 4;
+$max-width: 70em;
+
+
+// Font Stacks
+//
+// No styleguide reference.
+$font-family-sans:      "Clear Sans", "Avenir Next SemiBold", "AvenirNext-SemiBold", "Futura-Medium", Futura, "Futura Std", "Trebuchet MS", Helvetica, Arial, sans-serif;
+$font-family-serif:      Georgia, Times, "Times New Roman", serif;
+$font-family-display:    $font-family-sans;
+$font-family-monospace:  "Droid Sans Mono", monospace, "Lucida Sans Typewriter", "Lucida Console", "Lucida Typewriter", "Monaco";
+$base-font-family:       $font-family-sans;
+
+
+// Breakpoints
+//
+// No styleguide reference.
+$narrow-col: 4;
+$narrow-width: 28em;
+$narrow: new-breakpoint(min-width $narrow-width $narrow-col);
+
+$mid-col: 6;
+$mid-width: 37em;
+$mid: new-breakpoint(min-width $mid-width $mid-col);
+
+$wide-col: 8;
+$wide-width: 50em;
+$wide: new-breakpoint(min-width $wide-width $wide-col);
+
+$huge-col: $wide-col;
+$huge-width: 70em;
+$huge: new-breakpoint(min-width $huge-width $huge-col);
+
+$massive-col: $huge-col;
+$massive-width: 92em;
+$massive: new-breakpoint(min-width $massive-width $massive-col);
+
+
+// Colour Scheme
+//
+// No styleguide reference.
+$color-red: rgb(236, 84, 59);
+$color-cyan: rgb(59, 236, 234);
+$color-cw-gray-light: rgb(233, 240, 239);
+$color-cw-gray-dark: rgb(72, 66, 64);
+$color-cw-white: rgb(255, 255, 255);
+
+$color-primary: desaturate(darken($color-cyan, 15%), 10%);
+$color-primary-light: $color-cyan;
+$color-primary-lighter: desaturate(lighten($color-cyan, 20%), 20%);
+$color-primary-dark: darken($color-primary, 5%);
+$color-primary-darker: desaturate(darken($color-primary, 10%), 10%);
+
+$color-secondary: $color-red;
+$color-secondary-light: lighten($color-secondary, 10%);
+$color-secondary-lighter: lighten($color-secondary, 30%);
+$color-secondary-dark: desaturate(darken($color-secondary, 5%), 10%);
+$color-secondary-darker: desaturate(darken($color-secondary, 15%), 10%);
+
+$color-gray: #CFD3D2;
+$color-gray-light: $color-cw-gray-light;
+$color-gray-lighter: lighten($color-gray-light, 5%);
+$color-gray-dark: $color-cw-gray-dark;
+$color-gray-darker: darken($color-gray-dark, 5%);
+
+$color-text: $color-gray-dark;
+$color-background: $color-gray-lighter;

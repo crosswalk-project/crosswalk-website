@@ -1,18 +1,21 @@
-documentation/*.html
-documentation/*/*.html
-contribute/*.html
-contribute/*/*.html
-# The only file that should be in wiki/ is the README placeholder
-# all else is dynamically generated via gfm.php
-wiki/*
-!wiki/README
-wiki.git
+# OS
+.DS_Store
+*.swp
+
+# Logs
+logs
+*.log
 *.msg
 *.map
-*.log
-xwalk.css
-markdown.css
-menus.js
-github-regen
-site-config.php
 cache/*.json
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directory
+node_modules
+components
+bower_components
+
+# Compile directories
+public/styleguide/

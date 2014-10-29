@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Crosswalk</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/tizen_ivi_extensions" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tizen_ivi_extensions" />
+    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item  nav-item--active">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/tizen_ivi_extensions/host_and_target_setup.html">Host and target setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/tizen_ivi_extensions/write_an_extension_in_c.html">Write an extension in C</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/tizen_ivi_extensions/write_an_extension_in_c++.html">Write an extension in C++</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/tizen_ivi_extensions/json_based_c++_extension.html">JSON based C++ extension</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/tizen_ivi_extensions/write_a_web_application.html">Write a web application</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/tizen_ivi_extensions/run_on_tizen_vm.html">Run on Tizen VM</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens.html">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Writing extensions for Tizen IVI on x86</h1>
+<p>Extensions enhance the capabilities of Crosswalk, enabling applications to make full use of platform features via native code.</p>
+<p>Extensions are suitable for a number of use cases:</p>
+<ul>
+<li>You need to access a device capability not available via Crosswalk&#39;s JavaScript APIs: for example, use a specialised sensor or access part of the filesystem outside the web application&#39;s sandbox.</li>
+<li>You want to integrate existing C/C++ libraries with a web application where no JavaScript equivalents are available.</li>
+<li>You have some intellectual property in your application which you would prefer to not to distribute in an easily-readable JavaScript library.</li>
+<li>You want to optimize parts of your application but have reached the limits of what you can do with JavaScript.</li>
+</ul>
+<p>Crosswalk extensions for Tizen can be implemented in C or C++ and can link with external libraries, potentially allowing you to make use of any of the Tizen Core APIs, as well as other third party libraries.</p>
+<p>In addition, extensions are a safe way to add native capabilities to Crosswalk: each runs in its own process on Tizen, so it won&#39;t directly affect the stability of the runtime.</p>
+<h2>Introduction to the tutorial</h2>
+<p>This tutorial explains how to write a simple &quot;echo&quot; extension for Crosswalk running on <a href="https://wiki.tizen.org/wiki/IVI">Tizen IVI</a> (x86 architecture).</p>
+<p>The extension accepts an input and returns that input prefixed with &quot;You said: &quot;. It will be used from JavaScript code (in a HTML5 web application) like this:</p>
+<pre><code>var response = echo.echoSync(&#39;hello&#39;);
+// response == &#39;You said: hello&#39;
+
+echo.echoAsync(&#39;hello&#39;, function (response) {
+  // response == &#39;You said: hello&#39;
+});</code></pre>
+<p>The native part of extension is implemented in C or in C++. Note that it is trivial and could easily be implemented using pure JavaScript. However, the aim is to reduce the complexity of the extension to focus on code structure and workflow.</p>
+<p>This tutorial covers both C and C++. If you are a developer willing to contribute to the Tizen API crosswalk extensions, you should choose the C++ way.</p>
+<p>The C code which corresponds to the JavaScript API above looks like this:</p>
+<pre><code>// echoSync() handler
+static void handle_sync_message(XW_Instance instance, const char* message) {
+  char* response = build_response(message);
+  g_sync_messaging-&gt;SetSyncReply(instance, response);
+  free(response);
+}
+
+// echoAsync() handler
+static void handle_message(XW_Instance instance, const char* message) {
+  char* response = build_response(message);
+  g_messaging-&gt;PostMessage(instance, response);
+  free(response);
+}</code></pre>
+<p>The diagram below shows how the application and the extension interact:</p>
+<p><img src="/assets/crosswalk-extension-layout.png" alt="Structure of a Crosswalk application with extension"></p>
+<p><strong>The tutorial contains the following steps:</strong></p>
+<ol>
+<li><a href="/documentation/tizen_ivi_extensions/host_and_target_setup.html">Set up your host development environment</a>.</li>
+<li><a href="/documentation/tizen_ivi_extensions/write_an_extension_in_c.html">Write a Tizen Crosswalk extension in C</a>.</li>
+<li><a href="/documentation/tizen_ivi_extensions/write_an_extension_in_c++.html">Write a Tizen Crosswalk extension in C++</a>.</li>
+<li><a href="/documentation/tizen_ivi_extensions/write_a_web_application.html">Write a web application</a>.<!-- 5.  [Run the application and extension using the Tizen emulator](/documentation/tizen_ivi_extensions/run_on_tizen_emulator.html). -->
+
+</li>
+</ol>
+<p>As far as tooling goes, you&#39;ll use command line tools to compile the extension, and simple text editors to write the code. It is possible to use the Tizen SDK IDE to build Tizen applications; but using command line tools and a text editor exposes the internals of the extension more clearly.</p>
+<p>Note that the tutorial focuses on Tizen IVI, but works exactly the same on Tizen Common. The tutorial uses Linux as a build environment, as the tool for creating native Tizen packages (<code>gbs</code>) is not compatible with Windows.</p>
+<p><strong>By the end of this tutorial</strong>, you will understand the basics of writing a C or C++ extension for Crosswalk running on Tizen IVI.</p>
+
+  <footer class="article-next">
+    
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Crosswalk 7 and 8 updated to Cordova 3.5.1</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Tue, 21 Oct 2014 12:00:00 GMT">2014-10-21T12:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

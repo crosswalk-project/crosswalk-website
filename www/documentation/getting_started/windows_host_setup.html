@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Crosswalk</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Windows host setup" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/getting_started/windows_host_setup" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/getting_started/windows_host_setup" />
+    <meta name="twitter:title" content="Windows host setup" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item  nav-item--active">
+              <a class="article-link" href="/documentation/getting_started/windows_host_setup.html">Windows host setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/linux_host_setup.html">Linux host setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/android_target_setup.html">Android target setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/tizen_target_setup.html">Tizen target setup</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/build_an_application.html">Build an application</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/run_on_android.html">Run on Android</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/remote_debugging.html">Remote debugging</a>
+            </li>
+          
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/getting_started/deploy_to_android_store.html">Deploy to Android store</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens.html">Screens</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Windows host setup</h1>
+<p>You need different tools depending on which target platforms you want to deploy your application to:</p>
+<ul>
+<li>Deploy to Android: follow <a href="/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Android">Installation for Crosswalk Android</a>.</li>
+<li>Deploy to Tizen: follow <a href="/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Tizen">Installation for Crosswalk Tizen</a>.</li>
+</ul>
+<p>These instructions have been tested on Windows 7 Enterprise, 64 bit.</p>
+<h2 id="Installation-for-Crosswalk-Android">Installation for Crosswalk Android</h2>
+
+<p>These steps will enable you to develop Crosswalk applications to run on Android:</p>
+<ol>
+<li><a href="/documentation/getting_started/windows_host_setup.html#Install-Python">Install Python</a>.</li>
+<li><a href="/documentation/getting_started/windows_host_setup.html#Install-the-Oracle-JDK">Install the Oracle Java Development Kit (JDK)</a>.</li>
+<li><a href="/documentation/getting_started/windows_host_setup.html#Install-Ant">Install Ant</a>.</li>
+<li><a href="/documentation/getting_started/windows_host_setup.html#Configure-the-tools">Configure the tools</a>.</li>
+<li><a href="/documentation/getting_started/windows_host_setup.html#Install-the-Android-SDK">Install the Android SDK</a>.</li>
+<li><a href="/documentation/getting_started/windows_host_setup.html#Download-the-Crosswalk-Android-app-template">Download the Crosswalk Android app template</a>.</li>
+<li><a href="/documentation/getting_started/windows_host_setup.html#Verify-your-environment">Verify your environment</a>.</li>
+</ol>
+<h3 id="Install-Python">Install Python</h3>
+
+<p>Get Python from <a href="http://www.python.org/downloads/">http://www.python.org/downloads/</a>, choosing an &quot;MSI installer&quot; for your architecture (32 or 64 bit).</p>
+<p>When the installer starts, choose <em>Install for all users</em> and set <strong>C:\python</strong> as the installation location. You will need to manually add the Python directory to your path for it to be available in the bash shell (see <a href="#Configure-your-environment">Configure your environment</a>).</p>
+<h3 id="Install-the-Oracle-JDK">Install the Oracle JDK</h3>
+
+<p>The Oracle JDK has to be downloaded manually (you must accept a licence agreement):</p>
+<ol>
+<li><p>Go to the Oracle Java JDK download page in a browser:</p>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/">http://www.oracle.com/technetwork/java/javase/downloads/</a></p>
+<p>Choose the Java version to download (Java 7 is known to work).</p>
+</li>
+<li><p>Choose a JDK download and accept the licence agreement.</p>
+</li>
+<li><p>Once downloaded, run the Java <code>.exe</code> installer, and set <code>C:\jdk</code> as the installation directory.</p>
+</li>
+</ol>
+<h3 id="Install-Ant">Install Ant</h3>
+
+<ol>
+<li><p>Download Ant from: <a href="http://www.apache.org/dist/ant/binaries/">http://www.apache.org/dist/ant/binaries/</a></p>
+<p>Version 1.9.3 is known to work.</p>
+</li>
+<li><p>Unzip it (using WinZip or similar) to your <code>C:</code> drive.</p>
+</li>
+<li><p>Rename the unzipped directory to <code>ant</code>.</p>
+</li>
+</ol>
+<p>Your Ant installation should now be in <code>C:\ant</code>.</p>
+<h3 id="Configure-the-tools">Configure the tools</h3>
+
+<p>The next step is to set up your environment so that binaries and scripts which were installed manually (ant, JDK, Python) are on your <code>Path</code>.</p>
+<p>To set the <code>Path</code> variable, search for the &quot;Edit environment variables for your account&quot; option from the Windows start menu. Alternatively, click on the <em>System</em> icon in the <em>Control Panel</em>; then go to <em>Advanced system settings</em> and click the <em>Environment Variables</em> button. You should see this dialog box:</p>
+<p><img src="/assets/windows-env-variables.png" alt="Windows environment variables dialog"></p>
+<p>Edit the <code>Path</code> environment variable as follows:</p>
+<ol>
+<li><p>Select the <em>Path</em> environment variable (in the top select box, <em>User variables...</em>).</p>
+</li>
+<li><p>Click <em>Edit</em>.</p>
+</li>
+<li><p>Append this to the end of the <em>Variable value</em> field:</p>
+<pre><code>;c:\python;c:\ant\bin;c:\jdk\bin</code></pre>
+</li>
+<li><p>Click <em>OK</em>.</p>
+</li>
+</ol>
+<p>To ensure that Ant is using the correct version of Java (the one you just installed), set the <code>JAVA_HOME</code> environment variable to the location of the JDK:</p>
+<ol>
+<li><p>Click the <em>New</em> button just under the top select box (<em>User variables...</em>).</p>
+</li>
+<li><p>Set <em>Variable name</em> to <strong>JAVA_HOME</strong>.</p>
+</li>
+<li><p>Set <em>Variable value</em> to <strong>c:\jdk\bin</strong>.</p>
+</li>
+<li><p>Click <em>OK</em>.</p>
+</li>
+</ol>
+<h3 id="Install-the-Android-SDK">Install the Android SDK</h3>
+
+<ol>
+<li><p>Download the Android SDK from <a href='http://developer.android.com/sdk/index.html' target='_blank'><a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a></a>.</p>
+</li>
+<li><p>Extract the files from the archive.</p>
+</li>
+<li><p>Add the Android SDK directories to your <code>PATH</code>:</p>
+<pre><code>&gt; setx path &quot;%path%;&lt;path to Android SDK&gt;&quot;
+&gt; setx path &quot;%path%;&lt;path to Android SDK&gt;\sdk\tools&quot;
+&gt; setx path &quot;%path%;&lt;path to Android SDK&gt;\sdk\platform-tools&quot;</code></pre>
+<p>The <code>tools</code> and <code>platform-tools</code> directories may be in slightly different locations, depending on how you installed the SDK. Amend the above paths appropriately.</p>
+</li>
+<li><p>Run the <em>SDK Manager</em>:</p>
+<pre><code>&gt; &quot;SDK Manager.exe&quot;</code></pre>
+</li>
+<li><p>In the SDK Manager window, select the following items from the list:</p>
+<pre><code>[ ] Tools
+  [x] Android SDK Platform-tools 19.0.1
+  [x] Android SDK Build tools 18.0.1
+[ ] Android 4.3 (API 18)
+  [x] SDK Platform</code></pre>
+<p>Note that if you are using devices with versions of Android later than 4.3, you should install the platform tools, build tools and SDK platform for those versions too.</p>
+</li>
+</ol>
+<h3 id="Download-the-Crosswalk-Android-app-template">Download the Crosswalk Android app template</h3>
+
+<p>The Crosswalk Android distribution contains an application template which can be used as a wrapper for an HTML5 application. It also includes a script which will convert a wrapped HTML5 application into an installable Android <code>apk</code> file.</p>
+<p>To get Crosswalk Android:</p>
+<ol>
+<li><p>Download the version you want from the <a href="/documentation/downloads.html">Downloads page</a>. We suggest that you use the stable Android version (${XWALK-STABLE-ANDROID-X86}).</p>
+</li>
+<li><p>Unzip it. You should now have a <code>crosswalk-${XWALK-STABLE-ANDROID-X86}</code> directory.</p>
+</li>
+</ol>
+<h3 id="Verify-your-environment">Verify your environment</h3>
+
+<p>Check that you have installed the tools properly by running these commands:</p>
+<pre><code>&gt; java -version
+java version &quot;1.7.0_45&quot;
+Java(TM) SE Runtime Environment (build 1.7.0_45-b18)
+Java HotSpot(TM) 64-Bit Server VM (build 24.45-b08, mixed mode)
+
+&gt; ant -version
+Apache Ant(TM) version 1.9.3 compiled on December 23 2013
+
+&gt; python --version
+Python 2.7.6
+
+&gt; adb help
+Android Debug Bridge version 1.0.31</code></pre>
+<h2 id="Installation-for-Crosswalk-Tizen">Installation for Crosswalk Tizen</h2>
+
+<p>In this tutorial, you&#39;re going to use an emulated Tizen IVI image, running under VMware. To be able to create this image and access it, you need to install a few packages on the host machine:</p>
+<ol>
+<li><p><strong>Utilities</strong>, available as part of the <a href="http://git-scm.com/download/win">git SCM tools for Windows</a>.</p>
+ <ul>
+ <li><code>bash</code>: this is required to run the script for generating Tizen packages.</li>
+ <li><code>ssh</code>: this command is used to push files to, and log in to, the virtual machine.</li>
+ <li><code>openssl</code>: the command used to create a key for signing your Tizen packages.</li>
+ <li><code>bunzip2</code>: the command to unpack the Tizen IVI disk image.</li>
+ </ul>
+
+<p> Download a git SCM tools <code>.exe</code> for your architecture and install it.</p>
+<p> Once installed, you should have a <em>Git Bash</em> entry in the Windows menu, which will bring up a <code>bash</code> shell.</p>
+</li>
+<li><p><strong>QEMU:</strong> you need the <code>qemu-img</code> tool to convert a Tizen IVI disk image into a format suitable for use with VMware.</p>
+<p>A version of QEMU for Windows is available from <a href="http://qemu.weilnetz.de/">http://qemu.weilnetz.de/</a>. Use this at your own risk.</p>
+</li>
+<li><p><strong>VMware Player</strong> or <strong>VMware Workstation</strong>, to create and run the virtual machine. The free version of Player can be downloaded from <a href="https://my.vmware.com/web/vmware/free">the VMware website</a>. However, if you are using Player for commercial purposes, you will <a href="http://store.vmware.com/buyplayerplus">need a licence</a>.</p>
+<p>If you need help with installing VMware products, see <a href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2053973">this page on the VMware website</a>.</p>
+</li>
+</ol>
+<p>Now the host is setup, you can prepare your targets.</p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/getting_started/linux_host_setup.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Linux host setup</h3>
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Crosswalk 7 and 8 updated to Cordova 3.5.1</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Tue, 21 Oct 2014 12:00:00 GMT">2014-10-21T12:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

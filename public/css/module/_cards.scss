@@ -1,0 +1,135 @@
+// Cards
+//
+// Cards for housing highlighted blocks of content.
+//
+// Markup:
+// <div class="cards {$modifiers}">
+//   <ul class="cards-list">
+//     <li class="cards-item">
+//       <h3 class="cards-heading">Crosswalk for Tizen</h3>
+//       <p>Extension ready, powered by Chromium and Blink</p>
+//     </li>
+//     <li class="cards-item">
+//       <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+//       <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
+//     </li>
+//     <li class="cards-item">
+//       <h3 class="cards-heading">Crosswalk for Android</h3>
+//       <p>Use Crosswalk as your WebView or in-app browser</p>
+//     </li>
+//   </ul>
+// </div>
+//
+// .cards--filled - Card item with background
+//
+// Styleguide 3.3.1.
+.cards {
+
+}
+
+.cards--filled {
+  margin-top: modular-scale($base-font-size, 4, $base-ratio);
+  margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
+  @include media($mid) {
+    margin-top: modular-scale($base-font-size, 8, $base-ratio);
+    margin-bottom: modular-scale($base-font-size, 8, $base-ratio);
+  }
+  .cards-item,
+  .card {
+    padding: modular-scale($base-font-size, 0, $base-ratio);
+    background: $color-gray-light;
+    @include media($wide) {
+      padding: modular-scale($base-font-size, 2, $base-ratio);
+    }
+  }
+}
+
+.cards-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-top: modular-scale($base-font-size, 10, $base-ratio);
+
+
+  @include media($mid) {
+    @include display("flex");
+    @include flex-flow("row wrap");
+    @include justify-content("space-around");
+    // @include align-items("baseline");
+    margin-top: 0;
+    margin-left: -0.5 * $gutter;
+    margin-right: -0.5 * $gutter;
+  }
+}
+
+.cards-item {
+  margin: 0;
+  list-style: none;
+  margin-bottom: modular-scale($base-font-size, 10, $base-ratio);
+
+  .button {
+    // max-width: 100%;
+    width: 100%;
+    padding-left: 0.25 * $gutter;
+    padding-right: 0.25 * $gutter;
+    text-align: center;
+  }
+  @include media($mid) {
+    margin-bottom: 0;
+    margin-left: 0.5 * $gutter;
+    margin-right: 0.5 * $gutter;
+    @include flex(1);
+  }
+  @include media($wide) {
+    text-align: center;
+  }
+}
+
+.card {
+}
+
+// Card icon
+//
+// An optional icon above a card
+//
+// Markup:
+// <div class="cards {$modifiers}">
+//   <ul class="cards-list">
+//     <li class="cards-item">
+//       <img class="cards-icon" src="http://placehold.it/100" alt="" />
+//       <h3 class="cards-heading">Crosswalk for Tizen</h3>
+//       <p>Extension ready, powered by Chromium and Blink</p>
+//     </li>
+//     <li class="cards-item">
+//       <img class="cards-icon" src="http://placehold.it/100" alt="" />
+//       <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+//       <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
+//     </li>
+//     <li class="cards-item">
+//       <img class="cards-icon" src="http://placehold.it/100" alt="" />
+//       <h3 class="cards-heading">Crosswalk for Android</h3>
+//       <p>Use Crosswalk as your WebView or in-app browser</p>
+//     </li>
+//   </ul>
+// </div>
+//
+// .cards--filled - Card item with background
+//
+// Styleguide 3.3.2.
+.cards-icon {
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 2px solid $color-background;
+  max-width: modular-scale($base-font-size, 10, $base-ratio);
+  margin-top: -5em;
+  background: $color-background;
+  @include media($mid) {
+    padding: modular-scale($base-font-size, 0, $base-ratio);
+  }
+}
+
+.cards-heading {
+  text-align: center;
+  font-weight: 600;
+}

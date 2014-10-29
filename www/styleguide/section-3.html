@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Crosswalk Styleguide</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="generator" content="kss-node" />
+    <link rel="stylesheet" href="public/kss.css" />
+    <link rel="stylesheet" href="../css/styleguide.css" />
+    <!--[if lt IE 9]><script src="public/html5shiv.js"></script><![endif]-->
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Source Code Pro:n4,n6'],
+          text: 'webviWV'
+        },
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        timeout: 2000
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                  '://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+  </head>
+  <body id="kss-node">
+    <div class="kss-wrapper">
+      <div class="kss-sidebar">
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <h1 class="kss-doc-title"><a href="./">Crosswalk Styleguide</a></h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu" data-kss-ref="3">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+              <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Base</span></a></li>
+              <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Layout</span></a></li>
+              <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Modules</span></a></li>
+              <li class="kss-menu-item"><a href="section-4.html"><span class="kss-ref">4</span><span class="kss-name">State</span></a></li>
+              <li class="kss-menu-item"><a href="section-5.html"><span class="kss-ref">5</span><span class="kss-name">Shame</span></a></li>
+            </ul>
+            <ul class="kss-menu-child">
+              <li class="kss-menu-item"><a href="#section-3.1"><span class="kss-ref">3.1</span><span class="kss-name">Buttons</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.1.1"><span class="kss-ref">3.1.1</span><span class="kss-name">Standard Button</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.1.2"><span class="kss-ref">3.1.2</span><span class="kss-name">Button Follower</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.1.3"><span class="kss-ref">3.1.3</span><span class="kss-name">Button Group</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.2"><span class="kss-ref">3.2</span><span class="kss-name">Quotes</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.2.1"><span class="kss-ref">3.2.1</span><span class="kss-name">Blockquote</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.2.2"><span class="kss-ref">3.2.2</span><span class="kss-name">Pullquote</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.3"><span class="kss-ref">3.3</span><span class="kss-name">Cards</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.3.1"><span class="kss-ref">3.3.1</span><span class="kss-name">Cards</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.3.2"><span class="kss-ref">3.3.2</span><span class="kss-name">Card icon</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.4"><span class="kss-ref">3.4</span><span class="kss-name">Hero</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.4.1"><span class="kss-ref">3.4.1</span><span class="kss-name">Standard Hero</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.4.3"><span class="kss-ref">3.4.3</span><span class="kss-name">Hero seperator</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.5"><span class="kss-ref">3.5</span><span class="kss-name">Media</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.5.1"><span class="kss-ref">3.5.1</span><span class="kss-name">Media</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.5.2"><span class="kss-ref">3.5.2</span><span class="kss-name">Media list</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.5.4"><span class="kss-ref">3.5.4</span><span class="kss-name">Media image</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.6"><span class="kss-ref">3.6</span><span class="kss-name">Logo</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.6.1"><span class="kss-ref">3.6.1</span><span class="kss-name">Logo</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.7"><span class="kss-ref">3.7</span><span class="kss-name">Knockout</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.7.1"><span class="kss-ref">3.7.1</span><span class="kss-name">Knockout</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.7.2"><span class="kss-ref">3.7.2</span><span class="kss-name">Well</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.8"><span class="kss-ref">3.8</span><span class="kss-name">Navigation</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.8.1"><span class="kss-ref">3.8.1</span><span class="kss-name">Nav</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.8.2"><span class="kss-ref">3.8.2</span><span class="kss-name">Nav logo</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.8.3"><span class="kss-ref">3.8.3</span><span class="kss-name">Nav Toggle</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.9"><span class="kss-ref">3.9</span><span class="kss-name">Features</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.9.1"><span class="kss-ref">3.9.1</span><span class="kss-name">Features</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.10"><span class="kss-ref">3.10</span><span class="kss-name">Footer</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.10.1"><span class="kss-ref">3.10.1</span><span class="kss-name">Footer</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.10.2"><span class="kss-ref">3.10.2</span><span class="kss-name">Block</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.11"><span class="kss-ref">3.11</span><span class="kss-name">Form</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.11.1"><span class="kss-ref">3.11.1</span><span class="kss-name">Label</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.11.3"><span class="kss-ref">3.11.3</span><span class="kss-name">Textarea</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.11.4"><span class="kss-ref">3.11.4</span><span class="kss-name">Search Input</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.11.5"><span class="kss-ref">3.11.5</span><span class="kss-name">Checkboxes</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.11.6"><span class="kss-ref">3.11.6</span><span class="kss-name">File</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.11.7"><span class="kss-ref">3.11.7</span><span class="kss-name">Select</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.11.8"><span class="kss-ref">3.11.8</span><span class="kss-name">Filedset</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.11.9"><span class="kss-ref">3.11.9</span><span class="kss-name">Form Button Group</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.12"><span class="kss-ref">3.12</span><span class="kss-name">Table</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.12.1"><span class="kss-ref">3.12.1</span><span class="kss-name">Table</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13"><span class="kss-ref">3.13</span><span class="kss-name">Article</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13.1"><span class="kss-ref">3.13.1</span><span class="kss-name">Article List</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13.2"><span class="kss-ref">3.13.2</span><span class="kss-name">Article Table of Contents</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13.3"><span class="kss-ref">3.13.3</span><span class="kss-name">Article</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13.4"><span class="kss-ref">3.13.4</span><span class="kss-name">Article Header</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13.5"><span class="kss-ref">3.13.5</span><span class="kss-name">Article Hero</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13.6"><span class="kss-ref">3.13.6</span><span class="kss-name">Article Lead</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13.7"><span class="kss-ref">3.13.7</span><span class="kss-name">Article Exerpt</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13.8"><span class="kss-ref">3.13.8</span><span class="kss-name">Article Promo</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.13.9"><span class="kss-ref">3.13.9</span><span class="kss-name">Article Lists</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.14"><span class="kss-ref">3.14</span><span class="kss-name">Embed</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.14.1"><span class="kss-ref">3.14.1</span><span class="kss-name">Container</span></a></li>
+              <li class="kss-menu-item"><a href="#section-3.14.2"><span class="kss-ref">3.14.2</span><span class="kss-name">Overlay</span></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="kss-content">
+        <article class="kss-article">
+              <section id="section-3" class="kss-section kss-depth-1">
+                <h1 class="kss-title"><span class="kss-ref">3</span> Modules</h1>
+                    <div class="kss-description">
+                      <p>Reusable components that comprise the majority of the styles.</p>
+
+                    </div>
+              </section>
+              <section id="section-3.1" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.1</span> Buttons</h1>
+              </section>
+              <section id="section-3.1.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.1.1</span> Standard Button</h1>
+                    <div class="kss-description">
+                      <p>Your average form and link buttons.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <a href="#" class="button {$modifiers}">Get started</a>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">:focus</div>
+                        <div class="kss-modifier-description">
+                          <p>lighten the button when focusing with the keyboard</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <a href="#" class="button pseudo-class-focus">Get started</a>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">:hover</div>
+                        <div class="kss-modifier-description">
+                          <p>lighten the button when hovering with a pointer</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <a href="#" class="button pseudo-class-hover">Get started</a>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">:active</div>
+                        <div class="kss-modifier-description">
+                          <p>darken the button once it’s been pressed</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <a href="#" class="button pseudo-class-active">Get started</a>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.button--small</div>
+                        <div class="kss-modifier-description">
+                          <p>A smaller button</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <a href="#" class="button button--small">Get started</a>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.button--large</div>
+                        <div class="kss-modifier-description">
+                          <p>A larger button</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <a href="#" class="button button--large">Get started</a>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.button--secondary</div>
+                        <div class="kss-modifier-description">
+                          <p>A less prominent button</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <a href="#" class="button button--secondary">Get started</a>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;a href=&quot;#&quot; class=&quot;button {$modifiers}&quot;&gt;Get started&lt;/a&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.1.2" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.1.2</span> Button Follower</h1>
+                    <div class="kss-description">
+                      <p>A secondary option to a standard button.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <a href="#" class="button-follower">You can always join later</a>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;a href=&quot;#&quot; class=&quot;button-follower&quot;&gt;You can always join later&lt;/a&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.1.3" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.1.3</span> Button Group</h1>
+                    <div class="kss-description">
+                      <p>Multiple buttons grouped together</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="button-group">
+  <a href="#" class="button">Get started</a>
+  <a href="#" class="button-follower">Or, join later</a>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;button-group&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;button&quot;&gt;Get started&lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;button-follower&quot;&gt;Or, join later&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.2" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.2</span> Quotes</h1>
+              </section>
+              <section id="section-3.2.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.2.1</span> Blockquote</h1>
+                    <div class="kss-description">
+                      <p>A stylised blockquote, for when you want to cite someone else’s words.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <blockquote class="blockquote {$modifiers}">
+  <footer>
+    <img src="http://placehold.it/100x100" alt="" />
+    <strong>Amol Kher</strong>
+    Former Engineer Manager at Netflix said
+  </footer>
+  <p>We see almost around 1,000 different devices streaming Netflix on Android every day.</p>
+</blockquote>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.blockquote--left</div>
+                        <div class="kss-modifier-description">
+                          <p>A left-aligned blockquote</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <blockquote class="blockquote blockquote--left">
+  <footer>
+    <img src="http://placehold.it/100x100" alt="" />
+    <strong>Amol Kher</strong>
+    Former Engineer Manager at Netflix said
+  </footer>
+  <p>We see almost around 1,000 different devices streaming Netflix on Android every day.</p>
+</blockquote>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.blockquote--right</div>
+                        <div class="kss-modifier-description">
+                          <p>A left-aligned blockquote</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <blockquote class="blockquote blockquote--right">
+  <footer>
+    <img src="http://placehold.it/100x100" alt="" />
+    <strong>Amol Kher</strong>
+    Former Engineer Manager at Netflix said
+  </footer>
+  <p>We see almost around 1,000 different devices streaming Netflix on Android every day.</p>
+</blockquote>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.blockquote--center</div>
+                        <div class="kss-modifier-description">
+                          <p>Another way to use the centre-aligned blockquote</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <blockquote class="blockquote blockquote--center">
+  <footer>
+    <img src="http://placehold.it/100x100" alt="" />
+    <strong>Amol Kher</strong>
+    Former Engineer Manager at Netflix said
+  </footer>
+  <p>We see almost around 1,000 different devices streaming Netflix on Android every day.</p>
+</blockquote>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;blockquote class=&quot;blockquote {$modifiers}&quot;&gt;
+  &lt;footer&gt;
+    &lt;img src=&quot;http://placehold.it/100x100&quot; alt=&quot;&quot; /&gt;
+    &lt;strong&gt;Amol Kher&lt;/strong&gt;
+    Former Engineer Manager at Netflix said
+  &lt;/footer&gt;
+  &lt;p&gt;We see almost around 1,000 different devices streaming Netflix on Android every day.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.2.2" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.2.2</span> Pullquote</h1>
+                    <div class="kss-description">
+                      <p>A stylised pullquote, perfect for highlighting content in your own article.
+<a href="http://miekd.com/articles/pull-quotes-with-html5-and-css">http://miekd.com/articles/pull-quotes-with-html5-and-css</a></p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="pullquote {$modifiers}" data-pullquote="The details are not the details. They make the design."></div>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.pullquote--left</div>
+                        <div class="kss-modifier-description">
+                          <p>Another way to use the left-aligned pullquote</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <div class="pullquote pullquote--left" data-pullquote="The details are not the details. They make the design."></div>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.pullquote--center</div>
+                        <div class="kss-modifier-description">
+                          <p>A centre-aligned pullquote</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <div class="pullquote pullquote--center" data-pullquote="The details are not the details. They make the design."></div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;pullquote {$modifiers}&quot; data-pullquote=&quot;The details are not the details. They make the design.&quot;&gt;&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.3" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.3</span> Cards</h1>
+              </section>
+              <section id="section-3.3.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.3.1</span> Cards</h1>
+                    <div class="kss-description">
+                      <p>Cards for housing highlighted blocks of content.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="cards {$modifiers}">
+  <ul class="cards-list">
+    <li class="cards-item">
+      <h3 class="cards-heading">Crosswalk for Tizen</h3>
+      <p>Extension ready, powered by Chromium and Blink</p>
+    </li>
+    <li class="cards-item">
+      <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+      <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
+    </li>
+    <li class="cards-item">
+      <h3 class="cards-heading">Crosswalk for Android</h3>
+      <p>Use Crosswalk as your WebView or in-app browser</p>
+    </li>
+  </ul>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.cards--filled</div>
+                        <div class="kss-modifier-description">
+                          <p>Card item with background</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <div class="cards cards--filled">
+  <ul class="cards-list">
+    <li class="cards-item">
+      <h3 class="cards-heading">Crosswalk for Tizen</h3>
+      <p>Extension ready, powered by Chromium and Blink</p>
+    </li>
+    <li class="cards-item">
+      <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+      <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
+    </li>
+    <li class="cards-item">
+      <h3 class="cards-heading">Crosswalk for Android</h3>
+      <p>Use Crosswalk as your WebView or in-app browser</p>
+    </li>
+  </ul>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;cards {$modifiers}&quot;&gt;
+  &lt;ul class=&quot;cards-list&quot;&gt;
+    &lt;li class=&quot;cards-item&quot;&gt;
+      &lt;h3 class=&quot;cards-heading&quot;&gt;Crosswalk for Tizen&lt;/h3&gt;
+      &lt;p&gt;Extension ready, powered by Chromium and Blink&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;cards-item&quot;&gt;
+      &lt;h3 class=&quot;cards-heading&quot;&gt;Crosswalk for Apache Cordova&lt;/h3&gt;
+      &lt;p&gt;Improve your entire app’s wrapper by upgrading your WebView.&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;cards-item&quot;&gt;
+      &lt;h3 class=&quot;cards-heading&quot;&gt;Crosswalk for Android&lt;/h3&gt;
+      &lt;p&gt;Use Crosswalk as your WebView or in-app browser&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.3.2" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.3.2</span> Card icon</h1>
+                    <div class="kss-description">
+                      <p>An optional icon above a card</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="cards {$modifiers}">
+  <ul class="cards-list">
+    <li class="cards-item">
+      <img class="cards-icon" src="http://placehold.it/100" alt="" />
+      <h3 class="cards-heading">Crosswalk for Tizen</h3>
+      <p>Extension ready, powered by Chromium and Blink</p>
+    </li>
+    <li class="cards-item">
+      <img class="cards-icon" src="http://placehold.it/100" alt="" />
+      <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+      <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
+    </li>
+    <li class="cards-item">
+      <img class="cards-icon" src="http://placehold.it/100" alt="" />
+      <h3 class="cards-heading">Crosswalk for Android</h3>
+      <p>Use Crosswalk as your WebView or in-app browser</p>
+    </li>
+  </ul>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.cards--filled</div>
+                        <div class="kss-modifier-description">
+                          <p>Card item with background</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <div class="cards cards--filled">
+  <ul class="cards-list">
+    <li class="cards-item">
+      <img class="cards-icon" src="http://placehold.it/100" alt="" />
+      <h3 class="cards-heading">Crosswalk for Tizen</h3>
+      <p>Extension ready, powered by Chromium and Blink</p>
+    </li>
+    <li class="cards-item">
+      <img class="cards-icon" src="http://placehold.it/100" alt="" />
+      <h3 class="cards-heading">Crosswalk for Apache Cordova</h3>
+      <p>Improve your entire app’s wrapper by upgrading your WebView.</p>
+    </li>
+    <li class="cards-item">
+      <img class="cards-icon" src="http://placehold.it/100" alt="" />
+      <h3 class="cards-heading">Crosswalk for Android</h3>
+      <p>Use Crosswalk as your WebView or in-app browser</p>
+    </li>
+  </ul>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;cards {$modifiers}&quot;&gt;
+  &lt;ul class=&quot;cards-list&quot;&gt;
+    &lt;li class=&quot;cards-item&quot;&gt;
+      &lt;img class=&quot;cards-icon&quot; src=&quot;http://placehold.it/100&quot; alt=&quot;&quot; /&gt;
+      &lt;h3 class=&quot;cards-heading&quot;&gt;Crosswalk for Tizen&lt;/h3&gt;
+      &lt;p&gt;Extension ready, powered by Chromium and Blink&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;cards-item&quot;&gt;
+      &lt;img class=&quot;cards-icon&quot; src=&quot;http://placehold.it/100&quot; alt=&quot;&quot; /&gt;
+      &lt;h3 class=&quot;cards-heading&quot;&gt;Crosswalk for Apache Cordova&lt;/h3&gt;
+      &lt;p&gt;Improve your entire app’s wrapper by upgrading your WebView.&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;cards-item&quot;&gt;
+      &lt;img class=&quot;cards-icon&quot; src=&quot;http://placehold.it/100&quot; alt=&quot;&quot; /&gt;
+      &lt;h3 class=&quot;cards-heading&quot;&gt;Crosswalk for Android&lt;/h3&gt;
+      &lt;p&gt;Use Crosswalk as your WebView or in-app browser&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.4" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.4</span> Hero</h1>
+              </section>
+              <section id="section-3.4.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.4.1</span> Standard Hero</h1>
+                    <div class="kss-description">
+                      <p>A prominent header section, usually the main focus of a page.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <header class="hero {$modifiers}">
+  <div class="container">
+    <div class="row">
+      <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
+    </div>
+    <div class="row hero-row">
+      <p>Crosswalk is a powerful <code>WebView</code> for building hybrid mobile applications on multiple versions of Android.</p>
+      <a href="#" class="button">Get started</a>
+    </div>
+  </div>
+</header>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.knockout</div>
+                        <div class="kss-modifier-description">
+                          <p>Inverted hero section</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <header class="hero knockout">
+  <div class="container">
+    <div class="row">
+      <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
+    </div>
+    <div class="row hero-row">
+      <p>Crosswalk is a powerful <code>WebView</code> for building hybrid mobile applications on multiple versions of Android.</p>
+      <a href="#" class="button">Get started</a>
+    </div>
+  </div>
+</header>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.hero--bg1.knockout</div>
+                        <div class="kss-modifier-description">
+                          <p>Coffee and game background</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <header class="hero hero--bg1 knockout">
+  <div class="container">
+    <div class="row">
+      <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
+    </div>
+    <div class="row hero-row">
+      <p>Crosswalk is a powerful <code>WebView</code> for building hybrid mobile applications on multiple versions of Android.</p>
+      <a href="#" class="button">Get started</a>
+    </div>
+  </div>
+</header>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.hero--bg2</div>
+                        <div class="kss-modifier-description">
+                          <p>Example of adding additional, new headers</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <header class="hero hero--bg2">
+  <div class="container">
+    <div class="row">
+      <h1 class="hero-heading">Build Hybrid Apps from the Future</h1>
+    </div>
+    <div class="row hero-row">
+      <p>Crosswalk is a powerful <code>WebView</code> for building hybrid mobile applications on multiple versions of Android.</p>
+      <a href="#" class="button">Get started</a>
+    </div>
+  </div>
+</header>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;header class=&quot;hero {$modifiers}&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;h1 class=&quot;hero-heading&quot;&gt;Build Hybrid Apps from the Future&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row hero-row&quot;&gt;
+      &lt;p&gt;Crosswalk is a powerful &lt;code&gt;WebView&lt;/code&gt; for building hybrid mobile applications on multiple versions of Android.&lt;/p&gt;
+      &lt;a href=&quot;#&quot; class=&quot;button&quot;&gt;Get started&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.4.3" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.4.3</span> Hero seperator</h1>
+                    <div class="kss-description">
+                      <p>A seperator inbetween, or a prefix or suffix to hero sections.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="hero-seperator">
+  <div class="container">
+    <div class="row">
+      <aside class="media">
+        <ul class="media-list">
+          <li class="media-item">
+            <a class="media-link" href="#">
+              <img class="media-image" src="/assets/icons/logo-cordova.svg" alt="Apache Cordova logo" />
+              <p class="media-description">
+                <strong class="media-heading">Apache Cordova compatible</strong>
+                Crosswalk includes Cordova / PhoneGap APIs
+              </p>
+            </a>
+          </li>
+          <li class="media-item">
+            <a class="media-link" href="#">
+              <img class="media-image" src="/assets/icons/logo-cordova.svg" alt="Apache Cordova logo" />
+              <p class="media-description">
+                <strong class="media-heading">Apache Cordova compatible</strong>
+                Crosswalk includes Cordova / PhoneGap APIs
+              </p>
+            </a>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;hero-seperator&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;aside class=&quot;media&quot;&gt;
+        &lt;ul class=&quot;media-list&quot;&gt;
+          &lt;li class=&quot;media-item&quot;&gt;
+            &lt;a class=&quot;media-link&quot; href=&quot;#&quot;&gt;
+              &lt;img class=&quot;media-image&quot; src=&quot;/assets/icons/logo-cordova.svg&quot; alt=&quot;Apache Cordova logo&quot; /&gt;
+              &lt;p class=&quot;media-description&quot;&gt;
+                &lt;strong class=&quot;media-heading&quot;&gt;Apache Cordova compatible&lt;/strong&gt;
+                Crosswalk includes Cordova / PhoneGap APIs
+              &lt;/p&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;media-item&quot;&gt;
+            &lt;a class=&quot;media-link&quot; href=&quot;#&quot;&gt;
+              &lt;img class=&quot;media-image&quot; src=&quot;/assets/icons/logo-cordova.svg&quot; alt=&quot;Apache Cordova logo&quot; /&gt;
+              &lt;p class=&quot;media-description&quot;&gt;
+                &lt;strong class=&quot;media-heading&quot;&gt;Apache Cordova compatible&lt;/strong&gt;
+                Crosswalk includes Cordova / PhoneGap APIs
+              &lt;/p&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/aside&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.5" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.5</span> Media</h1>
+              </section>
+              <section id="section-3.5.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.5.1</span> Media</h1>
+                    <div class="kss-description">
+                      <p>The media object</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="media {$modifiers}">
+  <div class="media-image">
+    <img src="http://placehold.it/300" />
+  </div>
+  <div class="media-description">
+    <h2>A lot of content</h2>
+    <p>Content</p>
+  </div>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.media--left</div>
+                        <div class="kss-modifier-description">
+                          <p>Left aligned cutoff</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <div class="media media--left">
+  <div class="media-image">
+    <img src="http://placehold.it/300" />
+  </div>
+  <div class="media-description">
+    <h2>A lot of content</h2>
+    <p>Content</p>
+  </div>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.media--right</div>
+                        <div class="kss-modifier-description">
+                          <p>Right aligned cutoff</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <div class="media media--right">
+  <div class="media-image">
+    <img src="http://placehold.it/300" />
+  </div>
+  <div class="media-description">
+    <h2>A lot of content</h2>
+    <p>Content</p>
+  </div>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;media {$modifiers}&quot;&gt;
+  &lt;div class=&quot;media-image&quot;&gt;
+    &lt;img src=&quot;http://placehold.it/300&quot; /&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;media-description&quot;&gt;
+    &lt;h2&gt;A lot of content&lt;/h2&gt;
+    &lt;p&gt;Content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.5.2" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.5.2</span> Media list</h1>
+                    <div class="kss-description">
+                      <p>A list of media objects</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="media">
+  <ul class="media-list">
+    <li class="media-item">
+      <a class="media-link" href="#">
+        <img class="media-image" src="http://placehold.it/32" alt="" />
+        <strong class="media-heading">Apache Cordova compatible</strong>
+        Crosswalk includes Cordova / PhoneGap APIs
+      </a>
+    </li>
+    <li class="media-item">
+      <a class="media-link" href="#">
+        <img class="media-image" src="http://placehold.it/32" alt="" />
+        <strong class="media-heading">Apache Cordova compatible</strong>
+        Crosswalk includes Cordova / PhoneGap APIs
+      </a>
+    </li>
+  </ul>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;media&quot;&gt;
+  &lt;ul class=&quot;media-list&quot;&gt;
+    &lt;li class=&quot;media-item&quot;&gt;
+      &lt;a class=&quot;media-link&quot; href=&quot;#&quot;&gt;
+        &lt;img class=&quot;media-image&quot; src=&quot;http://placehold.it/32&quot; alt=&quot;&quot; /&gt;
+        &lt;strong class=&quot;media-heading&quot;&gt;Apache Cordova compatible&lt;/strong&gt;
+        Crosswalk includes Cordova / PhoneGap APIs
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;media-item&quot;&gt;
+      &lt;a class=&quot;media-link&quot; href=&quot;#&quot;&gt;
+        &lt;img class=&quot;media-image&quot; src=&quot;http://placehold.it/32&quot; alt=&quot;&quot; /&gt;
+        &lt;strong class=&quot;media-heading&quot;&gt;Apache Cordova compatible&lt;/strong&gt;
+        Crosswalk includes Cordova / PhoneGap APIs
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.5.4" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.5.4</span> Media image</h1>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="media-image">
+  <img src="http://placehold.it/500" alt="Your description" />
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;media-image&quot;&gt;
+  &lt;img src=&quot;http://placehold.it/500&quot; alt=&quot;Your description&quot; /&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.6" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.6</span> Logo</h1>
+              </section>
+              <section id="section-3.6.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.6.1</span> Logo</h1>
+                    <div class="kss-description">
+                      <p>The module for logos.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <a href="https://software.intel.com/en-us/oss" class="logo">
+  <img class="logo-image" src="/assets/icons/wordmark-intel.png">
+</a>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;a href=&quot;https://software.intel.com/en-us/oss&quot; class=&quot;logo&quot;&gt;
+  &lt;img class=&quot;logo-image&quot; src=&quot;/assets/icons/wordmark-intel.png&quot;&gt;
+&lt;/a&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.7" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.7</span> Knockout</h1>
+              </section>
+              <section id="section-3.7.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.7.1</span> Knockout</h1>
+                    <div class="kss-description">
+                      <p>For sections with light text on dark backgrounds.
+Particularly useful in conjunction with the &lt;.hero&gt; and &lt;.blockquote&gt; module.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="knockout">Sectioned off content. <a href="#">Read more…</a></div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;knockout&quot;&gt;Sectioned off content. &lt;a href=&quot;#&quot;&gt;Read more…&lt;/a&gt;&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.7.2" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.7.2</span> Well</h1>
+                    <div class="kss-description">
+                      <p>For sections with regular text on grey backgrounds.
+Like Bootstrap’s “Well.”</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="well">Sectioned-off content. <a href="#">Read more…</a></div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;well&quot;&gt;Sectioned-off content. &lt;a href=&quot;#&quot;&gt;Read more…&lt;/a&gt;&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.8" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.8</span> Navigation</h1>
+              </section>
+              <section id="section-3.8.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.8.1</span> Nav</h1>
+                    <div class="kss-description">
+                      <p>Primariy, horisontal navigation</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <nav class="nav">
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Dev Wiki</a>
+    </li>
+  </ul>
+</nav>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;nav class=&quot;nav&quot;&gt;
+  &lt;ul class=&quot;nav-list&quot;&gt;
+    &lt;li class=&quot;nav-item&quot;&gt;
+      &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Documentation&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;nav-item&quot;&gt;
+      &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Blog&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;nav-item&quot;&gt;
+      &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Dev Wiki&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.8.2" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.8.2</span> Nav logo</h1>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <nav class="nav">
+  <a class="nav-logo logo" href="#">
+    <img class="logo-image" src="/images/crosswalk-logo-black.svg">
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Blog</a>
+    </li>
+  </ul>
+</nav>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;nav class=&quot;nav&quot;&gt;
+  &lt;a class=&quot;nav-logo logo&quot; href=&quot;#&quot;&gt;
+    &lt;img class=&quot;logo-image&quot; src=&quot;/images/crosswalk-logo-black.svg&quot;&gt;
+  &lt;/a&gt;
+  &lt;ul class=&quot;nav-list&quot;&gt;
+    &lt;li class=&quot;nav-item&quot;&gt;
+      &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Documentation&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;nav-item&quot;&gt;
+      &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Blog&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.8.3" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.8.3</span> Nav Toggle</h1>
+                    <div class="kss-description">
+                      <p>Content that’s visible on larger
+screens, and uses a CSS-only toggle
+to reveal on smaller screens.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <nav id="contents" class="nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Toggle</a>
+  <a href="#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Toggle</a>
+  <ul class="nav-toggleHide">
+   <li>Nav item 1 (hidden on small screens)</li>
+   <li>Nav item 2 (hidden on small screens)</li>
+   <li>Nav item 3 (hidden on small screens)</li>
+  </ul>
+</nav>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;nav id=&quot;contents&quot; class=&quot;nav-toggleContainer&quot;&gt;
+  &lt;a href=&quot;#contents&quot; id=&quot;contents-toggle&quot; class=&quot;button button--small button--tertiary nav-toggle&quot;&gt;Toggle&lt;/a&gt;
+  &lt;a href=&quot;#contents-toggle&quot; class=&quot;button button--small button--tertiary nav-toggle--dummy&quot;&gt;Toggle&lt;/a&gt;
+  &lt;ul class=&quot;nav-toggleHide&quot;&gt;
+   &lt;li&gt;Nav item 1 (hidden on small screens)&lt;/li&gt;
+   &lt;li&gt;Nav item 2 (hidden on small screens)&lt;/li&gt;
+   &lt;li&gt;Nav item 3 (hidden on small screens)&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.9" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.9</span> Features</h1>
+              </section>
+              <section id="section-3.9.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.9.1</span> Features</h1>
+                    <div class="kss-description">
+                      <p>Feature blocks</p>
+
+                    </div>
+              </section>
+              <section id="section-3.10" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.10</span> Footer</h1>
+              </section>
+              <section id="section-3.10.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.10.1</span> Footer</h1>
+                    <div class="kss-description">
+                      <p>A site-wide footer.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <footer class="footer">
+  <small>Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation.</small>
+</footer>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;footer class=&quot;footer&quot;&gt;
+  &lt;small&gt;Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation.&lt;/small&gt;
+&lt;/footer&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.10.2" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.10.2</span> Block</h1>
+                    <div class="kss-description">
+                      <p>A chunk of content in the footer.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <footer class="footer">
+  <div class="footer-block">
+    <p>Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.</p>
+  </div>
+  <div class="footer-block">
+    <small>Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation.</small>
+  </div>
+</footer>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;footer class=&quot;footer&quot;&gt;
+  &lt;div class=&quot;footer-block&quot;&gt;
+    &lt;p&gt;Follow &lt;a href=&quot;http://twitter.com/xwalk_project&quot;&gt;@xwalk_project on Twitter&lt;/a&gt; for hybrid app development&amp;nbsp;resources.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;footer-block&quot;&gt;
+    &lt;small&gt;Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation.&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.11" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.11</span> Form</h1>
+              </section>
+              <section id="section-3.11.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.11.1</span> Label</h1>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                          <label for="form-androidVersions">Android Version</label>
+  <input id="form-androidVersions" name="form-androidVersions" type="text" placeholder="Ex. 4.3" />
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">  &lt;label for=&quot;form-androidVersions&quot;&gt;Android Version&lt;/label&gt;
+  &lt;input id=&quot;form-androidVersions&quot; name=&quot;form-androidVersions&quot; type=&quot;text&quot; placeholder=&quot;Ex. 4.3&quot; /&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.11.3" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.11.3</span> Textarea</h1>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <textarea placeholder="Tell us about your experience with Crosswalk."></textarea>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;textarea placeholder=&quot;Tell us about your experience with Crosswalk.&quot;&gt;&lt;/textarea&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.11.4" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.11.4</span> Search Input</h1>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <input type="search" placeholder="Search, ex. Cordova…" />
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;input type=&quot;search&quot; placeholder=&quot;Search, ex. Cordova…&quot; /&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.11.5" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.11.5</span> Checkboxes</h1>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <label>Tizen</label>
+<input type="checkbox" />
+<label>Android</label>
+<input type="checkbox" checked="checked" />
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;label&gt;Tizen&lt;/label&gt;
+&lt;input type=&quot;checkbox&quot; /&gt;
+&lt;label&gt;Android&lt;/label&gt;
+&lt;input type=&quot;checkbox&quot; checked=&quot;checked&quot; /&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.11.6" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.11.6</span> File</h1>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <input type="file" />
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;input type=&quot;file&quot; /&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.11.7" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.11.7</span> Select</h1>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <select>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+</select>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;select&gt;
+&lt;option&gt;1&lt;/option&gt;
+&lt;option&gt;2&lt;/option&gt;
+&lt;option&gt;3&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.11.8" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.11.8</span> Filedset</h1>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <form>
+<fieldset>
+  <legend>Versions</legend>
+  <label for="form-androidVersions">Android Version</label>
+  <input id="form-androidVersions" name="form-androidVersions" type="text" placeholder="Ex. 4.3" />
+</fieldset>
+</form>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;form&gt;
+&lt;fieldset&gt;
+  &lt;legend&gt;Versions&lt;/legend&gt;
+  &lt;label for=&quot;form-androidVersions&quot;&gt;Android Version&lt;/label&gt;
+  &lt;input id=&quot;form-androidVersions&quot; name=&quot;form-androidVersions&quot; type=&quot;text&quot; placeholder=&quot;Ex. 4.3&quot; /&gt;
+&lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.11.9" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.11.9</span> Form Button Group</h1>
+                    <div class="kss-description">
+                      <p>An input paired with a button</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <form class="form">
+  <fieldset class="form-buttonGroup">
+    <input type="email" placeholder="Add your email, learn Android development" />
+    <input type="submit" value="join" class="button button--secondary" />
+  </fieldset>
+</form>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;form class=&quot;form&quot;&gt;
+  &lt;fieldset class=&quot;form-buttonGroup&quot;&gt;
+    &lt;input type=&quot;email&quot; placeholder=&quot;Add your email, learn Android development&quot; /&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;join&quot; class=&quot;button button--secondary&quot; /&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.12" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.12</span> Table</h1>
+              </section>
+              <section id="section-3.12.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.12.1</span> Table</h1>
+                    <div class="kss-description">
+                      <p>This module could be improved or have a better name;
+basically, it is used for the tables on the landing page.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <table class="table--ftcomp">
+  <thead>
+    <tr>
+      <td>HTML5 feature</td>
+      <td>Android <code>WebView</code></td>
+      <td>Crosswalk WebView</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>WebRTC</td>
+      <td><img src="/images/crosswalk-landing-question.svg" /></td>
+      <td><img src="/images/crosswalk-landing-check.svg" /></td>
+    </tr>
+    <tr>
+      <td>WebGL</td>
+      <td><img src="/images/crosswalk-landing-question.svg" /></td>
+      <td><img src="/images/crosswalk-landing-check.svg" /></td>
+    </tr>
+    <tr>
+      <td>Vibration <abbr>API</abbr></td>
+      <td><img src="/images/crosswalk-landing-question.svg" /></td>
+      <td><img src="/images/crosswalk-landing-check.svg" /></td>
+    </tr>
+    <tr>
+      <td>Presentation <abbr>API</abbr></td>
+      <td><img src="/images/crosswalk-landing-question.svg" /></td>
+      <td><img src="/images/crosswalk-landing-check.svg" /></td>
+    </tr>
+    <tr>
+      <td><code>WebView</code> updates</td>
+      <td><img src="/images/crosswalk-landing-question.svg" /></td>
+      <td><img src="/images/crosswalk-landing-check.svg" /></td>
+    </tr>
+  </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;table class=&quot;table--ftcomp&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;td&gt;HTML5 feature&lt;/td&gt;
+      &lt;td&gt;Android &lt;code&gt;WebView&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Crosswalk WebView&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;WebRTC&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-question.svg&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-check.svg&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;WebGL&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-question.svg&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-check.svg&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Vibration &lt;abbr&gt;API&lt;/abbr&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-question.svg&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-check.svg&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Presentation &lt;abbr&gt;API&lt;/abbr&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-question.svg&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-check.svg&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code&gt;WebView&lt;/code&gt; updates&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-question.svg&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/crosswalk-landing-check.svg&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.13" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.13</span> Article</h1>
+              </section>
+              <section id="section-3.13.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.13.1</span> Article List</h1>
+                    <div class="kss-description">
+                      <p>A list of Articles</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <ul class="article-list {$modifiers}">
+  <li class="article-item">
+    <header class="article-header">
+      <h2 class="article-title"><a href="#">Introducing Cordova Intergration</a></h2>
+      <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jul 2014 13:14:00 GMT">1 month ago</time></a>
+    </header>
+  </li>
+  <li class="article-item">
+    <header class="article-header">
+      <h2 class="article-title"><a href="#">Introducing Android Intergration</a></h2>
+      <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></a>
+    </header>
+  </li>
+</ul>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.article--narrow</div>
+                        <div class="kss-modifier-description">
+                          <p>Thinner at mid width</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <ul class="article-list article--narrow">
+  <li class="article-item">
+    <header class="article-header">
+      <h2 class="article-title"><a href="#">Introducing Cordova Intergration</a></h2>
+      <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jul 2014 13:14:00 GMT">1 month ago</time></a>
+    </header>
+  </li>
+  <li class="article-item">
+    <header class="article-header">
+      <h2 class="article-title"><a href="#">Introducing Android Intergration</a></h2>
+      <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></a>
+    </header>
+  </li>
+</ul>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.article--hasToc</div>
+                        <div class="kss-modifier-description">
+                          <p>Includes an .article-toc module</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <ul class="article-list article--hasToc">
+  <li class="article-item">
+    <header class="article-header">
+      <h2 class="article-title"><a href="#">Introducing Cordova Intergration</a></h2>
+      <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jul 2014 13:14:00 GMT">1 month ago</time></a>
+    </header>
+  </li>
+  <li class="article-item">
+    <header class="article-header">
+      <h2 class="article-title"><a href="#">Introducing Android Intergration</a></h2>
+      <a href="#" class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></a>
+    </header>
+  </li>
+</ul>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;ul class=&quot;article-list {$modifiers}&quot;&gt;
+  &lt;li class=&quot;article-item&quot;&gt;
+    &lt;header class=&quot;article-header&quot;&gt;
+      &lt;h2 class=&quot;article-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Introducing Cordova Intergration&lt;/a&gt;&lt;/h2&gt;
+      &lt;a href=&quot;#&quot; class=&quot;article-meta&quot;&gt;&lt;time class=&quot;js-vagueTime&quot; datetime=&quot;Fri, 04 Jul 2014 13:14:00 GMT&quot;&gt;1 month ago&lt;/time&gt;&lt;/a&gt;
+    &lt;/header&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;article-item&quot;&gt;
+    &lt;header class=&quot;article-header&quot;&gt;
+      &lt;h2 class=&quot;article-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Introducing Android Intergration&lt;/a&gt;&lt;/h2&gt;
+      &lt;a href=&quot;#&quot; class=&quot;article-meta&quot;&gt;&lt;time class=&quot;js-vagueTime&quot; datetime=&quot;Fri, 04 Jun 2014 13:14:00 GMT&quot;&gt;2 months ago&lt;/time&gt;&lt;/a&gt;
+    &lt;/header&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.13.2" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.13.2</span> Article Table of Contents</h1>
+                    <div class="kss-description">
+                      <p>Secondary navigation for blog posts, documentation, etc.
+Includes an <code>.article-list</code> inside.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <nav class="article-toc">
+  <ul class="article-list">
+    <li class="article-item">
+      <a class="article-link" href="#">Main Item Title 1</a>
+      <ul class="article-list">
+        <li class="article-item">
+          <a class="article-link" href="#">Sub Item Title 1</a>
+        </li>
+        <li class="article-item nav-item--active">
+          <a class="article-link" href="#">Sub Item Title 2 (active)</a>
+        </li>
+        <li class="article-item">
+          <a class="article-link" href="#">Sub Item Title 3</a>
+        </li>
+      </ul>
+    </li>
+    <li class="article-item">
+      <a class="article-link" href="#">Main Item Title 2</a>
+      <ul class="article-list">
+        <li class="article-item">
+          <a class="article-link" href="#">Sub Item Title 1</a>
+        </li>
+        <li class="article-item">
+          <a class="article-link" href="#">Sub Item Title 2</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;nav class=&quot;article-toc&quot;&gt;
+  &lt;ul class=&quot;article-list&quot;&gt;
+    &lt;li class=&quot;article-item&quot;&gt;
+      &lt;a class=&quot;article-link&quot; href=&quot;#&quot;&gt;Main Item Title 1&lt;/a&gt;
+      &lt;ul class=&quot;article-list&quot;&gt;
+        &lt;li class=&quot;article-item&quot;&gt;
+          &lt;a class=&quot;article-link&quot; href=&quot;#&quot;&gt;Sub Item Title 1&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;article-item nav-item--active&quot;&gt;
+          &lt;a class=&quot;article-link&quot; href=&quot;#&quot;&gt;Sub Item Title 2 (active)&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;article-item&quot;&gt;
+          &lt;a class=&quot;article-link&quot; href=&quot;#&quot;&gt;Sub Item Title 3&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;article-item&quot;&gt;
+      &lt;a class=&quot;article-link&quot; href=&quot;#&quot;&gt;Main Item Title 2&lt;/a&gt;
+      &lt;ul class=&quot;article-list&quot;&gt;
+        &lt;li class=&quot;article-item&quot;&gt;
+          &lt;a class=&quot;article-link&quot; href=&quot;#&quot;&gt;Sub Item Title 1&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;article-item&quot;&gt;
+          &lt;a class=&quot;article-link&quot; href=&quot;#&quot;&gt;Sub Item Title 2&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.13.3" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.13.3</span> Article</h1>
+                    <div class="kss-description">
+                      <p>A generic blog post, documentation, help, etc. article.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <article class="article">
+    <header class="article-header">
+      <h2 class="article-title"><a href="#">Introducing Android Intergration</a></h2>
+      <span class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></span>
+    </header>
+  <p>
+     Crosswalk is a HTML5 runtime, built on open source foundations,
+     which extends the web platform with new capabilities…
+  </p>
+</article>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;article class=&quot;article&quot;&gt;
+    &lt;header class=&quot;article-header&quot;&gt;
+      &lt;h2 class=&quot;article-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Introducing Android Intergration&lt;/a&gt;&lt;/h2&gt;
+      &lt;span class=&quot;article-meta&quot;&gt;&lt;time class=&quot;js-vagueTime&quot; datetime=&quot;Fri, 04 Jun 2014 13:14:00 GMT&quot;&gt;2 months ago&lt;/time&gt;&lt;/span&gt;
+    &lt;/header&gt;
+  &lt;p&gt;
+     Crosswalk is a HTML5 runtime, built on open source foundations,
+     which extends the web platform with new capabilities…
+  &lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.13.4" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.13.4</span> Article Header</h1>
+                    <div class="kss-description">
+                      <p>The header in article list items and articles themselves.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <header class="article-header">
+  <h1 class="article-title">Crosswalk for app designers</h1>
+  <span class="article-meta"><time class="js-vagueTime" datetime="Fri, 04 Jun 2014 13:14:00 GMT">2 months ago</time></span>
+</header>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;header class=&quot;article-header&quot;&gt;
+  &lt;h1 class=&quot;article-title&quot;&gt;Crosswalk for app designers&lt;/h1&gt;
+  &lt;span class=&quot;article-meta&quot;&gt;&lt;time class=&quot;js-vagueTime&quot; datetime=&quot;Fri, 04 Jun 2014 13:14:00 GMT&quot;&gt;2 months ago&lt;/time&gt;&lt;/span&gt;
+&lt;/header&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.13.5" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.13.5</span> Article Hero</h1>
+                    <div class="kss-description">
+                      <p>Optional opening article images.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <header class="article-header">
+  <h1 class="article-title">Crosswalk for app designers</h1>
+</header>
+<img class="article-hero" src="http://placehold.it/1500x300" alt="Example hero image" />
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;header class=&quot;article-header&quot;&gt;
+  &lt;h1 class=&quot;article-title&quot;&gt;Crosswalk for app designers&lt;/h1&gt;
+&lt;/header&gt;
+&lt;img class=&quot;article-hero&quot; src=&quot;http://placehold.it/1500x300&quot; alt=&quot;Example hero image&quot; /&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.13.6" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.13.6</span> Article Lead</h1>
+                    <div class="kss-description">
+                      <p>Stylized opening paragraphs for articles. Also available elsewhere via the helper class <code>.lead</code>.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <article class="article">
+  <p>Crosswalk is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities.</p>
+  <p>This means Android developers can now deploy your mobile HTML5 application with its own runtime without a dependence on the native WebView that is on your customer's device for all Android 4.0+ devices.</p>
+</article>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;article class=&quot;article&quot;&gt;
+  &lt;p&gt;Crosswalk is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities.&lt;/p&gt;
+  &lt;p&gt;This means Android developers can now deploy your mobile HTML5 application with its own runtime without a dependence on the native WebView that is on your customer&#x27;s device for all Android 4.0+ devices.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.13.7" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.13.7</span> Article Exerpt</h1>
+                    <div class="kss-description">
+                      <p>Exerpts used within article lists.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div class="article-exerpt">
+  <p>Crosswalk is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities. <a href="#">Read more…</a>
+</div>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div class=&quot;article-exerpt&quot;&gt;
+  &lt;p&gt;Crosswalk is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities. &lt;a href=&quot;#&quot;&gt;Read more…&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.13.8" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.13.8</span> Article Promo</h1>
+                    <div class="kss-description">
+                      <p>Callouts at the end of blog posts and documentation sections.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <a href="http://twitter.com/xwalk_project" class="article-promo {$modifiers}">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
+                      </div>
+                    </div>
+                    <div class="kss-modifier">
+                      <div class="kss-modifier-head">
+                        <div class="kss-modifier-name">.well</div>
+                        <div class="kss-modifier-description">
+                          <p>A Bootstrap-like “Well,” distinguishes the content with alternate styling (usually a grey box)</p>
+
+                        </div>
+                      </div>
+                      <div class="kss-modifier-example body">
+                        <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;a href=&quot;http://twitter.com/xwalk_project&quot; class=&quot;article-promo {$modifiers}&quot;&gt;
+  &lt;h4 class=&quot;article-promoTitle&quot;&gt;Get more hybrid app secrets&lt;/h4&gt;
+  &lt;p&gt;Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with &lt;span class=&quot;a-faux&quot;&gt;tips from the Intel Crosswalk team&lt;/span&gt;.&lt;/p&gt;
+&lt;/a&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.13.9" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.13.9</span> Article Lists</h1>
+                    <div class="kss-description">
+                      <p>Numbered, bullited, and definition lists are styled in a more
+pleasing manner for long form reading within articles</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <article class="article">
+  <ul>
+    <li>Android
+      <ol>
+        <li>Hybrid</li>
+        <li>In-app browser</li>
+      </ol>
+    </li>
+    <li>Cordova</li>
+    <li>Tizen</li>
+    <li>Chrome</li>
+  </ul>
+  <ol>
+    <li>Android
+      <ul>
+        <li>Hybrid</li>
+        <li>In-app browser</li>
+      </ul>
+    </li>
+    <li>Cordova</li>
+    <li>Tizen</li>
+    <li>Chrome</li>
+  </ol>
+</article>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;article class=&quot;article&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Android
+      &lt;ol&gt;
+        &lt;li&gt;Hybrid&lt;/li&gt;
+        &lt;li&gt;In-app browser&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Cordova&lt;/li&gt;
+    &lt;li&gt;Tizen&lt;/li&gt;
+    &lt;li&gt;Chrome&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Android
+      &lt;ul&gt;
+        &lt;li&gt;Hybrid&lt;/li&gt;
+        &lt;li&gt;In-app browser&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Cordova&lt;/li&gt;
+    &lt;li&gt;Tizen&lt;/li&gt;
+    &lt;li&gt;Chrome&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.14" class="kss-section kss-depth-2">
+                <h1 class="kss-title"><span class="kss-ref">3.14</span> Embed</h1>
+              </section>
+              <section id="section-3.14.1" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.14.1</span> Container</h1>
+                    <div class="kss-description">
+                      <p>For display videos with <a href="http://embedresponsively.com">http://embedresponsively.com</a>,
+so you can exclude the inline style tags it generates.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <figure class="embed-container">
+  <iframe src="http://www.youtube.com/embed/nU4lvgTrjFI?modestbranding=1&autoplay=0&rel=0&showinfo=0&theme=light&color=white" frameborder="0"></iframe>
+</figure>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;figure class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;http://www.youtube.com/embed/nU4lvgTrjFI?modestbranding=1&amp;autoplay=0&amp;rel=0&amp;showinfo=0&amp;theme=light&amp;color=white&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;/figure&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+              <section id="section-3.14.2" class="kss-section kss-depth-3">
+                <h1 class="kss-title"><span class="kss-ref">3.14.2</span> Overlay</h1>
+                    <div class="kss-description">
+                      <p>Custom images for YouTube videos, etc.</p>
+
+                    </div>
+                  <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                      <div class="kss-modifier-example body">
+                        <div onclick="play();" id="vidwrap" class="embed-container embed-container--overlay" style="background-image: url('//placehold.it/800x400&text=your%20custom%20image,%20press%20here!')"></div><script type="text/javascript">function play(){document.getElementById('vidwrap').innerHTML = '<iframe src="http://www.youtube.com/embed/nU4lvgTrjFI?modestbranding=1&autoplay=1&rel=0&showinfo=0&theme=light&color=white" frameborder="0"></iframe>';}</script>
+                      </div>
+                    </div>
+                    <div class="kss-markup">
+                      <pre><code data-language="html">&lt;div onclick=&quot;play();&quot; id=&quot;vidwrap&quot; class=&quot;embed-container embed-container--overlay&quot; style=&quot;background-image: url(&#x27;//placehold.it/800x400&amp;text=your%20custom%20image,%20press%20here!&#x27;)&quot;&gt;&lt;/div&gt;&lt;script type=&quot;text/javascript&quot;&gt;function play(){document.getElementById(&#x27;vidwrap&#x27;).innerHTML = &#x27;&lt;iframe src=&quot;http://www.youtube.com/embed/nU4lvgTrjFI?modestbranding=1&amp;autoplay=1&amp;rel=0&amp;showinfo=0&amp;theme=light&amp;color=white&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&#x27;;}&lt;/script&gt;</code></pre>
+                    </div>
+                  </div>
+              </section>
+        </article>
+        <footer class="kss-footer">
+        </footer>
+      </div>
+    </div>
+    <script src="public/kss.js"></script>
+    <script src="public/jquery-1.9.1.min.js"></script>
+    <!--[if gt IE 8]><!-->
+    <script src="public/rainbow.min.js"></script>
+    <!--<![endif]-->
+    <script src="public/main.js"></script>
+  </body>
+</html>

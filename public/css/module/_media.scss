@@ -1,0 +1,148 @@
+// Media
+//
+// The media object
+//
+// Markup:
+// <div class="media {$modifiers}">
+//   <div class="media-image">
+//     <img src="http://placehold.it/300" />
+//   </div>
+//   <div class="media-description">
+//     <h2>A lot of content</h2>
+//     <p>Content</p>
+//   </div>
+// </div>
+//
+// .media--left  - Left aligned cutoff
+// .media--right - Right aligned cutoff
+//
+// Styleguide 3.5.1.
+.media {
+  .media-description {
+    font-size: modular-scale($base-font-size, 1, $base-ratio);
+    @include media($mid) {
+      @include span-columns(5 of 8);
+    }
+    @include media($wide) {
+      @include span-columns(4 of 8);
+    }
+  }
+}
+
+.media--right,
+.media--left {
+  @include span-columns(4);
+  @include media($wide) {
+    @include span-columns(8 of 6);
+    @include shift(-1);
+  }
+  .media-image {
+    margin-right: 0;
+    @include span-columns(4);
+    @include media($mid) {
+      margin-right: 0;
+      @include span-columns(3 of 8);
+    }
+  }
+}
+
+.media--left {
+  .media-image--breakout {
+    margin-right: 0;
+    @include media($mid) {
+      @include span-columns(6 of 8);
+      @include shift(-3);
+    }
+  }
+}
+
+.media--right {
+  .media-description {
+    @include media($wide) {
+      @include shift(1 of 8);
+    }
+  }
+}
+
+// Media list
+//
+// A list of media objects
+//
+// Markup:
+// <div class="media">
+//   <ul class="media-list">
+//     <li class="media-item">
+//       <a class="media-link" href="#">
+//         <img class="media-image" src="http://placehold.it/32" alt="" />
+//         <strong class="media-heading">Apache Cordova compatible</strong>
+//         Crosswalk includes Cordova / PhoneGap APIs
+//       </a>
+//     </li>
+//     <li class="media-item">
+//       <a class="media-link" href="#">
+//         <img class="media-image" src="http://placehold.it/32" alt="" />
+//         <strong class="media-heading">Apache Cordova compatible</strong>
+//         Crosswalk includes Cordova / PhoneGap APIs
+//       </a>
+//     </li>
+//   </ul>
+// </div>
+//
+// Styleguide 3.5.2.
+.media-list {
+  display: block;
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+  margin-top: $base-line-height * 1em;
+  margin-bottom: $base-line-height * 1em;
+  @include media($mid) {
+    margin-left: 0;
+    margin-right: 0;
+    @include span-columns(4 of 6);
+  }
+  @include media($wide) {
+    // @include span-columns(2 of 6);
+  }
+}
+
+.media-item {
+  display: block;
+  overflow: hidden;
+  margin-left: 0;
+  .media-description {
+    @include span-columns(2 of 3);
+  }
+}
+
+.media-link {
+  display: block;
+  overflow: hidden;
+  padding: modular-scale($base-font-size, 0, $base-ratio) 0;
+  background-image: none;
+  @include media($wide) {
+    padding-top: modular-scale($base-font-size, 2, $base-ratio);
+    padding-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  }
+}
+
+.media-heading {
+  display: block;
+}
+
+// Media image
+//
+// Markup:
+// <div class="media-image">
+//   <img src="http://placehold.it/500" alt="Your description" />
+// </div>
+//
+// Styleguide 3.5.4.
+.media-image {
+  @include span-columns(1 of 4);
+  img {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: auto;
+  }
+}

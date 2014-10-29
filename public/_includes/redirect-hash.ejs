@@ -1,0 +1,11 @@
+<%
+// Redirect old hash URLs
+// Ex. crosswalk-project.org/#documentation/getting_started/linux_host_setup
+// and crosswalk-project.org/#contribute
+%>
+<script>
+  var reservedIds = ['main', 'front-end', 'predictability', 'games'];
+  if(window.location.hash && reservedIds.indexOf(window.location.hash.replace('#', '')) === -1) {
+    window.location.href = window.location.href.replace('/#', '/').replace(/\/$/, '') + '.html'
+  }
+</script>

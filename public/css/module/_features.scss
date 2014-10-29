@@ -1,0 +1,137 @@
+// Features
+//
+// Feature blocks
+//
+// .feature--left - Image-on-left, text-on-right feature
+//
+// Styleguide 3.9.1.
+.features {
+  overflow: hidden;
+  width: 100%;
+  padding-left: $gutter;
+  padding-right: $gutter;
+  @include span-columns(4);
+  @include media($wide) {
+    overflow: visible;
+  }
+}
+
+.features--left {
+
+  .features-pointer {
+    width: 100%;
+    &:after {
+      right: auto;
+      left: -35px;
+    }
+  }
+  @include media($mid) {
+    .features-wrap {
+      @include span-columns(9);
+      @include shift(-3);
+    }
+    .features-media{
+      @include span-columns(3 of 6);
+    }
+    .features-list {
+      @include span-columns(3 of 6);
+    }
+  }
+  @include media($wide) {
+    .features-wrap {
+      @include span-columns(8);
+      @include shift(0);
+      overflow: visible;
+    }
+    .features-media {
+      @include span-columns(6 of 8);
+      @include shift(-2);
+    }
+    .features-list {
+      @include span-columns(4 of 8);
+      @include shift(0);
+    }
+  }
+}
+
+.features-wrap {
+  display: block;
+  overflow: hidden;
+  @include span-columns(4);
+  @include media($mid) {
+    @include span-columns(9);
+  }
+  @include media($wide) {
+    @include span-columns(8);
+  }
+}
+
+.features-intro {
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  @include span-columns(4);
+  @include media($wide) {
+    @include span-columns(6);
+    @include shift(1);
+  }
+  @include media($huge) {
+    @include span-columns(4 of 8);
+  }
+}
+
+.features-list {
+  @include span-columns(4);
+  @include media($mid) {
+    @include span-columns(3 of 6);
+  }
+  @include media($mid) {
+    @include span-columns(4 of 8);
+  }
+  @include media($huge) {
+    @include span-columns(3 of 8);
+    @include shift(1);
+  }
+
+}
+
+.features-media {
+  margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+
+  @include span-columns(4);
+  @include media($mid) {
+    @include span-columns(3 of 6);
+  }
+  @include media($wide) {
+    @include span-columns(4 of 8);
+  }
+}
+
+.features-item {
+  position: relative;
+}
+
+.features-heading {
+  margin-bottom: 0;
+}
+
+.features-pointer {
+  display: block;
+  border: none;
+  border-bottom: $color-gray solid 3px;
+  position: relative;
+  width: 100%;
+  height: 0;
+  margin: 0.5em 0;
+  @include media($narrow) {
+    width: 105%;
+    &:after {
+      content: "";
+      width: 35px;
+      height: 35px;
+      position: absolute;
+      right: -16px;
+      top: -16px;
+      background: $color-gray;
+      border-radius: 50%;
+    }
+  }
+}

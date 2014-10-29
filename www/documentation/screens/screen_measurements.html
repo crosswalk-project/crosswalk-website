@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Crosswalk</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Screen measurements" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/screens/screen_measurements" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/screens/screen_measurements" />
+    <meta name="twitter:title" content="Screen measurements" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/screens.html">Screens</a>
+        
+        
+          <ul class="article-list">
+          
+          
+            
+            
+            <li class="article-item  nav-item--active">
+              <a class="article-link" href="/documentation/screens/screen_measurements.html">Screen measurements</a>
+            </li>
+          
+          </ul>
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        
+      </li>
+    
+      
+      
+      <li class="article-item ">
+        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Screen measurements</h1>
+<p>Understanding screen measurements in web applications is not a simple task. There are many technical terms to get to grips with, and several layers of abstraction between the real, physical screen and how it is presented to web applications.</p>
+<p>This page attempts to explain some of the terminology used, and give practical examples of how different types, sizes and resolutions of screens and images affect an application&#39;s appearance.</p>
+<p>The concepts covered include:</p>
+<ul>
+<li><em>ppi</em> (pixels per inch)</li>
+<li><em>dpi</em> (dots per inch)</li>
+<li><em>dips</em> (device-independent or density-independent pixels)</li>
+<li><em>reference pixel</em> (CSS)</li>
+<li><em>devicePixelRatio</em></li>
+<li><em>screen density</em></li>
+</ul>
+<h2>Screens and ppi</h2>
+<p><em>Pixels per inch</em> or <em>ppi</em> is a common unit for describing the resolution or pixel density of a screen. The following formula calculates the ppi of a screen on one axis:</p>
+<blockquote>
+<p>screen ppi = number of physical pixels on the axis / length of screen on the axis</p>
+</blockquote>
+<p>A variation of this formula is useful for monitors, as they are typically described in terms of their diagonal length (based on Pythagoras&#39; theorem):</p>
+<blockquote>
+<p>screen ppi = (&sqrt; ((pw <em> pw) + (ph </em> ph))) / dl</p>
+</blockquote>
+<p>where:</p>
+<ul>
+<li>pw = width of the screen in pixels</li>
+<li>ph = height of the screen in pixels</li>
+<li>dl = diagonal length of the screen in inches</li>
+</ul>
+<p>To give a concrete example, my Samsung 21&quot; monitor has a maximum resolution of 1680x1050. The formula above gives the following ppi value:</p>
+<blockquote>
+<p>ppi = (&sqrt; ((1680 <em> 1680) + (1050 </em> 1050))) / 21 = 94.34</p>
+</blockquote>
+<p>Allowing for my inaccurate measurements, these values are in line with the expected ppi of a desktop screen (around 100ppi). Desktop screens are designed to be viewed between 3 and 4 feet away from the user; and, at 100ppi, the human eye can&#39;t distinguish individual pixels, making an image drawn in pixels appear continuous. But if you look more closely at a desktop screen (at a distance of less than 3 feet), you start to see individual pixels.</p>
+<p>By contrast, mobile screens are designed to be used closer to your face, at a distance of half your arm&#39;s length or closer (10-12 inches). At this distance, you can see the individual pixels if the ppi is around 100. Consequently, mobile devices typically have a higher pixel density (250ppi or more), so you can&#39;t discern individual pixels from 10-12 inches away.</p>
+<p>What has this got to do with density? On a screen with more pixels per inch, the pixels are smaller and closer together (more densely packed). Therefore, a screen with a high number of pixels per inch is often called &quot;high density&quot;. Apple&#39;s <em>Retina Display</em> (trademarked by Apple) was one of the first &quot;high density&quot; screens, and is still prevalent today. It is defined as:</p>
+<blockquote>
+<p>a screen where the pixel density is typically 300ppi or higher for a device held 10 to 12 inches from the eye.</p>
+<footer><strong>NPR</strong> <a href="http://www.npr.org/blogs/alltechconsidered/2010/06/07/127530049/live-blogging-apple-s-developers-conference">source</a></footer>
+
+</blockquote>
+<p>Keep this definition in mind, and consider devices with a screen pixel density of 250ppi or more as &quot;high density&quot;.</p>
+<h2>Image resolution and dpi</h2>
+<p>dpi is a concept related to ppi, in that it describes <em>dots per inch</em>. It has its origin in printing, where the number of dots per inch defines the resolution of a printed image (higher dpi == higher resolution).</p>
+<p>You may be wondering: why is this relevant to screens?</p>
+<p>The first reason is that ppi and dpi are often used interchangeably when discussing screens. This happens in places like the Android documentation, where screens are described in terms of dpi (e.g. <a href="http://developer.android.com/guide/practices/screens_support.html"><a href="http://developer.android.com/guide/practices/screens_support.html">http://developer.android.com/guide/practices/screens_support.html</a></a>); and in W3C specifications which refer to screens (e.g. <a href="http://www.w3.org/TR/css3-values/#absolute-lengths">http://www.w3.org/TR/css3-values/#absolute-lengths</a>). However, for the purposes of this article, I will use &quot;ppi&quot; when referring to screens and reserve &quot;dpi&quot; for referring to print.</p>
+<p>The second reason is that various specifications relating to HTML and CSS refer to dpi, particularly with respect to images. This is because CSS is not specific to screens, and can also be applied to print media. Some key concepts in CSS are based around dpi, as they use measurements from printing as part of their definition (even when they relate to screens).</p>
+<p>But it&#39;s important to note that the resolution of an image (the situation where dpi is used most commonly) has absolutely no bearing on how it displays on a screen: it only affects how it appears in print.</p>
+<p>As an illustration, consider two image files, both 128x128 pixels square. (These are &quot;raw&quot; pixels inside the image file, not the pixels occupied by the image on a screen.) Even though these images are both the same raw size, they can have different dpi settings, recorded in the image file itself. Each image&#39;s &quot;real&quot; size on printed media is determined by combining the raw pixel size of the image file with its resolution (in dpi).</p>
+<p>For example, if the first 128x128 pixel image has a resolution of 96 dpi, its print size will be 1.333x1.333 inches (128 / 96); but if the resolution of the second image is 300 dpi (the typical resolution for printed images), its print size will be 0.427x0.427 inches (128 / 300). This is because more of the pixels of the second image will be printed into each inch of the medium.</p>
+<p>But if the images are displayed side by side on a web page, they will be indistinguishable, despite their differing resolutions. The resolution only affects print.</p>
+<h2>Device-independent pixels</h2>
+<p>Having defined ppi and dpi, we are now ready to move on to &quot;device-independent pixels&quot; (&quot;dips&quot; - be careful not to confuse this with dpi). The dip is a convenience for describing &quot;virtual&quot; pixels which don&#39;t correspond one to one with real physical pixels on a device&#39;s screen. The reason for their existence is to make life easier for developers: an application&#39;s layout can be defined in terms of dips and should scale correctly for different physical screen sizes.</p>
+<p>For example, imagine two devices: the first is 320 physical pixels wide, and the second 640 physical pixels wide; but both have the same number of dips. The only difference is that the second device displays each device-independent pixel using 4 physical pixels (it has a screen pixel density of 2dppx - see the next section).</p>
+<p>Now imagine an application which is 320 dips wide. It will display at the same width on both devices, despite them having different numbers of physical pixels. This is because its width is defined in dips, and both device screens are the same width in dips.</p>
+<p>In the context of CSS, a dip corresponds with the &quot;reference pixel&quot;. This is equivalent to one physical pixel on a 96dpi screen at arm&#39;s length:</p>
+<blockquote>
+<p>The reference pixel is the visual angle of one pixel on a device with a pixel density of 96dpi and a distance from the reader of an arm&#39;s length. For a nominal arm&#39;s length of 28 inches, the visual angle is therefore about 0.0213 degrees. For reading at arm&#39;s length, 1px thus corresponds to about 0.26 mm (1/96 inch).</p>
+<footer><strong>W3</strong> <a href="http://www.w3.org/TR/css3-values/#absolute-lengths">source</a></footer>
+
+</blockquote>
+<p>Why is the reference pixel defined this way? It&#39;s because the definition originated with the default resolution of images displayed in CSS, as defined by the <code>image-resolution</code> CSS property (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolution">https://developer.mozilla.org/en-US/docs/Web/CSS/resolution</a>).</p>
+<p>The reference pixel is what you are using when you define a size or length with a <code>px</code> value in a CSS stylesheet. When you set sizes in CSS using <code>px</code> values, you are referring to the number of reference pixels (i.e. device-independent pixels) the element should span, rather than physical pixels on the screen.</p>
+<p>Android uses the term &quot;density-independent pixels&quot; rather than &quot;device-independent pixels&quot;, but they are effectively the same thing. Though the definition of a dip in Android is different from the CSS definition:</p>
+<blockquote>
+<p>The density-independent pixel is equivalent to one physical pixel on a 160 dpi screen, which is the baseline density assumed by the system for a &quot;medium&quot; density screen...The conversion of dp units to screen pixels is simple: px = dp * (dpi / 160). For example, on a 240 dpi screen, 1 dp equals 1.5 physical pixels.</p>
+<footer><strong>Android Developer documentation</strong> <a href="http://developer.android.com/guide/practices/screens_support.html">source</a></footer>
+
+</blockquote>
+<p>(If you&#39;re interested in finding out more about density-independent design, <a href="http://developer.android.com/guide/practices/screens_support.html">this page</a> is generally helpful)</p>
+<p>While this calculation holds for applications on Android, the same is not true for browsers: it is not possible to determine the dips a browser will have from a screen&#39;s ppi in a similar fashion. Browser vendors actually decide how many dips a browser should have on a particular device or physical screen, regardless of its screen size. <a href="http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html">This article</a> explains the details, but the important point is that browsers (and Crosswalk) actually use another calculation to get the dimension of the viewport in dips:</p>
+<blockquote>
+<p>dips = number of physical pixels / devicePixelRatio</p>
+</blockquote>
+<p>window.devicePixelRatio is set by the browser, depending on the context where it is running and other quirks. This is explained next.</p>
+<h2>devicePixelRatio and screen density</h2>
+<p>The devicePixelRatio is &quot;the ratio between physical pixels and device-independent pixels (dips) on the device&quot; (<a href="http://www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html">http://www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html</a>).</p>
+<p>The formula for calculating the devicePixelRatio is:</p>
+<blockquote>
+<p>devicePixelRatio = physical pixels / dips</p>
+</blockquote>
+<p>The density of a screen is correlated with devicePixelRatio, and measured in <em>device pixels per device-independent pixel</em>, or <em>dppx</em>. In fact, the screen density in dppx is the same as the devicePixelRatio, i.e.</p>
+<blockquote>
+<p>density dppx = physical pixels / dips</p>
+</blockquote>
+<p>As mentioned previously, the number of dips available depends on a variety of factors, and does not directly correlate with the physical size of the screen nor the number of physical pixels it has. However, the devicePixelRatio can usually be retrieved via the <code>window.devicePixelRatio</code> variable in the browser. Combined with the physical size of the device&#39;s screen, you can then figure out the number of dips available.</p>
+<p>What difference does devicePixelRatio/screen density make? To give a concrete example, imagine two devices which are 2.5&quot; across, displaying a page which is 320 device-independent pixels wide (defined in a CSS stylesheet), at the same zoom level and distance:</p>
+<ul>
+<li><p>The first device is 320 physical pixels wide (resolution of 128ppi, so normal density). Each dip of the 320 dip page is represented by one physical pixel.</p>
+</li>
+<li><p>The second device is 640 physical pixels wide (resolution of 256ppi, so high density). Each dip of the 320 dip page is represented by four physical pixels (two across, two down).</p>
+</li>
+</ul>
+<p>This gives the following devicePixelRatio values for the two devices:</p>
+<ul>
+<li><p>First device devicePixelRatio = 320 / 320 = 1</p>
+</li>
+<li><p>Second device devicePixelRatio = 640 / 320 = 2</p>
+</li>
+</ul>
+<p>While the page is the same width and scale on both devices, and being viewed on two screens of the same size and at the same distance, the page will appear sharper on the device which is 640 pixels wide. This is because the second, high-density device (2dppx) uses more physical pixels to display each device-independent pixel (4 screen pixels per dip, 2 across and 2 down) than the device with screen density of 1dppx (1 screen pixel per dip).</p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Crosswalk 7 and 8 updated to Cordova 3.5.1</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Tue, 21 Oct 2014 12:00:00 GMT">2014-10-21T12:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

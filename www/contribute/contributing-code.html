@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Crosswalk</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Contributing code" />
+    <meta property="og:url" content="http://crosswalk-project.org/contribute/contributing-code" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/contribute/contributing-code" />
+    <meta name="twitter:title" content="Contributing code" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">GitHub Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+      
+      <li class="article-item ">
+        <a href="/contribute/index.html">Overview</a>
+      </li>
+    
+      
+      <li class="article-item ">
+        <a href="/contribute/building_crosswalk.html">Building Crosswalk</a>
+      </li>
+    
+      
+      <li class="article-item  nav-item--active">
+        <a href="/contribute/contributing-code.html">Contributing code</a>
+      </li>
+    
+      
+      <li class="article-item ">
+        <a href="/contribute/coding_style.html">Coding style</a>
+      </li>
+    
+      
+      <li class="article-item ">
+        <a href="/contribute/downstream-chromium.html">Downstream Chromium</a>
+      </li>
+    
+      
+      <li class="article-item ">
+        <a href="/contribute/reviewer_policy.html">Reviewer policy</a>
+      </li>
+    
+      
+      <li class="article-item ">
+        <a href="/contribute/report_bugs.html">Report bugs</a>
+      </li>
+    
+  </ul>
+</nav>
+<article class="article article--withSide">
+  <h1>Contributing Code</h1>
+<p>This page outlines the process for contributing code to Crosswalk. For information on obtaining the source and building Crosswalk, see <a href="/contribute/building_crosswalk.html">Building Crosswalk</a>.</p>
+<h2>Overview</h2>
+<p>These are the recommended steps for contributing code to Crosswalk:</p>
+<ul>
+<li>Choose or create a bug report to work on.</li>
+<li>Declare your &quot;intent to implement&quot;.</li>
+<li>Develop your changes.</li>
+<li>Make sure your changes meet the code style guidelines. The check-style script may be of help.</li>
+<li>Run the unit tests.</li>
+<li>Add any new files to your working directory.</li>
+<li>Prepare your commit message.</li>
+<li>Submit your patch for review using the Github pull request system.</li>
+<li>Make any changes recommended by the reviewer.</li>
+<li>Once reviewed, the patch will be landed for you.</li>
+<li>Please watch for any regressions it may have caused (hopefully none)!</li>
+</ul>
+<p>More detail about some of these steps is below.</p>
+<h3>Terminology</h3>
+<ul>
+<li><p><strong>PR:</strong></p>
+<p>Pull request - a request (made via github) for your code to be incorporated into the main Crosswalk code base.</p>
+</li>
+<li><p><strong>LGTM:</strong></p>
+<p>&quot;Looks Good To Me&quot; - an abbreviation used to confirm that a pull request, intent to implement (see below) etc. is approved by a member of the project.</p>
+</li>
+</ul>
+<h2>Choose a bug report</h2>
+<p>The <a href="https://crosswalk-project.org/jira/">Jira issue tracker</a> is the central point of communication for contributions to Crosswalk. Nearly every contribution corresponds to an issue there.</p>
+<p>Choose an issue to work on, or create a new one if no suitable issue exists. To avoid duplication, be sure to search the database before creating new issues.</p>
+<p>You should note the ID of the issue you work on, so you can include it in your &quot;intent to implement&quot;, if you need to declare one (see below). The ID is the <strong>XWALK-N</strong> identifier at the end of the URL for the issue: for example, for <a href="https://crosswalk-project.org/jira/browse/XWALK-898">https://crosswalk-project.org/jira/browse/XWALK-898</a>, the ID is <strong>XWALK-898</strong>.</p>
+<h2>Declare your &quot;intent to implement&quot;</h2>
+<p>In an attempt to improve the efficiency of code reviews, we are taking a page from the Blink project and adopting the practice of &quot;intent to implement&quot;. The idea is to let owners and other developers know what a developer (or development team) plans to implement, and when and how they intend to do it. This gives the community a chance to comment on early design choices, avoiding the cost of undoing or redoing work when an implementation is already too far ahead.</p>
+<p>An intent to implement is required for new features, non-trivial refactoring, or for implementations which are likely to be controversial. If you&#39;re not sure whether your implementation falls into one of these categories, ask for advice about how to proceed by using the <a href="/contribute/community.html">crosswalk-dev mailing list or #crosswalk IRC channel</a>.</p>
+<p>To declare an &quot;intent to implement&quot;, a developer should send a mail to the <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev">crosswalk-dev mailing list</a> following the outline below.</p>
+<p><strong>Subject</strong> (brief summary):</p>
+<pre>
+Intent to Implement &lt;summary of intent&gt;
+</pre>
+
+<p><strong>Body</strong> (more detail about what is to be implemented):</p>
+<pre>
+Description:
+&lt;what this implementation is about, what it does,
+why it's needed&gt;
+
+Affected component: &lt;affected Crosswalk component&gt;
+
+Related feature: &lt;Jira issue ID&gt;
+
+Target release: &lt;Crosswalk version number&gt;
+
+Implementation details:
+&lt;depending on the complexity, this can be a a one-liner,
+short discussion, or a link to a design document
+(e.g. Google Docs); however, we prefer that the discussion
+is started before extensive design is done&gt;
+</pre>
+
+<p>The plan should be approved (&quot;LGTM&quot;) by the <a href="https://crosswalk-project.org/contribute/reviewer_policy">relevant owner(s)</a> before substantial work is carried out.</p>
+<h2>Develop your changes</h2>
+<p>After your &quot;intent to implement&quot; has been approved, you can begin working on your changes.</p>
+<p>Make sure that any new source code you introduce contains the appropriate license text at the beginning of the file. If you are the author of a new file, the preferred license text to include can be found in the LICENSE file or any existing file.</p>
+<p>You should also add your name to the AUTHORS file the first time you make a patch.</p>
+<h2>Code style guidelines</h2>
+<p>Patches must comply with the code style guidelines. Your patch will be automatically checked for style compliance when you upload it to the bug tracker.</p>
+<p>See the <a href="/contribute/coding_style.html">Crosswalk coding style</a> for details.</p>
+<h2>Commit message guidelines</h2>
+<p>Your commits and/or PRs should reference the ID of the issue you are working on. You can use issue IDs in commit messages and PRs in the following ways:</p>
+<ul>
+<li><p>To refer to an issue from a PR, include the issue ID in the PR&#39;s description. This will result in a mention of the PR in the corresponding Crosswalk Jira issue.</p>
+<p>For example, if you were working on issue XWALK-898, you could reference the issue in a commit message like this:</p>
+<pre><code>Append &quot;-tests&quot; to package name, as per XWALK-898.</code></pre>
+<p>Only opening and closing a PR (with an issue ID in the description) will result in a comment being added to Jira. Updating a PR will <em>not</em> update related Jira issues.</p>
+</li>
+<li><p>To close a related Jira issue, add a line with the format <strong>BUG=XWALK-N</strong> to a PR description (NB this is case sensitive). Doing this will resolve the corresponding issue in Jira when the PR is merged. Using the issue URL <code>(**BUG=https://path/to/issue/XWALK-N**)</code> is also acceptable.</p>
+<p>For example, if your PR closes issue XWALK-898, you could include this in the PR description:</p>
+<pre><code>BUG=XWALK-898</code></pre>
+<p>or this:</p>
+<pre><code>BUG=https://crosswalk-project.org/jira/browse/XWALK-898</code></pre>
+<p>If a PR doesn&#39;t completely fix an issue, do not use the &quot;BUG=&quot; prefix, but do mention the issue ID. Only use &quot;BUG=&quot; when the PR fixes the issue.</p>
+<p>If a PR fixes multiple issues, reference them on separate lines of the description, starting each with &quot;BUG=&quot;.</p>
+</li>
+</ul>
+<p>Note that although the prefix is &quot;BUG=&quot;, this mechanism applies to features and tasks as well.</p>
+<h2>Regression tests</h2>
+<p>A buildbot infrastructure will be available soon. Those buildbots will run the unit tests and the browser tests.</p>
+<p>You are responsible for keeping the tree green. If the tree is red because of your patch, it may be that your commit will be reverted if the other contributors can&#39;t reach you or can&#39;t fix the problem themselves.</p>
+<h2>Respond to reviewers</h2>
+<p>A Crosswalk reviewer must approve your patch before Crosswalk can accept it into the source control repository. A reviewer will either approve your patch by responding with &quot;LGTM&quot; in the pull request, or request revisions to your patch. In rare cases, a patch may be permanently rejected, meaning that the reviewer believes the feature should never be committed to the tree. The review process can consist of multiple iterations between you and the reviewer as you submit revised patches.</p>
+<h2>Obtaining commit privileges</h2>
+<p>By default, contributors do not have push rights to Crosswalk repositories. After contributing a few patches (~5-10) you may ask an OWNER to nominate you for push access. This privilege is granted with some expectation of responsibility: committers are people who care about the Crosswalk project and want to help it meet its goals. A committer is not just someone who can make changes, but someone who has demonstrated his or her ability to collaborate with the team, get the most knowledgeable people to review code, contribute high-quality code, and follow through to fix issues (in code or tests).</p>
+<h2>Obtaining review privileges</h2>
+<p>Our <a href="/contribute/reviewer_policy.html">Reviewer policy</a> provides details on obtaining review privileges.</p>
+
+  <footer class="article-next">
+    
+
+
+  </footer>
+</article>
+
+
+          
+        </div>
+      </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-3">
+            <a href="http://twitter.com/xwalk_project" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+            </a>
+          </div>
+          <div class="grid-2-of-3">
+            Follow <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <ul class="footer-block grid-1-of-3">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <div class="footer-block grid-1-of-3">
+            <ul class="article-list">
+            
+              
+                <li class="article-item">
+                  <h5 class="article-title"><a href="/blog/">Crosswalk 7 and 8 updated to Cordova 3.5.1</a></h5>
+                  <span class="article-meta"><time class="js-vagueTime" datetime="Tue, 21 Oct 2014 12:00:00 GMT">2014-10-21T12:00</time></span>
+                </li>
+                
+          </ul>
+          </div>
+          <div class="footer-block grid-1-of-3">
+            <!-- <div class="well">
+              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
+              Privacy policy. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

@@ -10,252 +10,106 @@ Any bugs for the website should be logged on the
 component.
 
 Pull requests for the website should be submitted via
-[github](https://github.com/crosswalk-project/crosswalk-website/pulls).
+[github](https://github.com/crosswalk-project/crosswalk-website-v2/pulls).
 
-Note that this document gives an overview of the site and explains how
-to setup and release for staging and live servers. If you need to edit
-the content of the site, the [HACKING](HACKING.md) file explains how
-to set the site up locally.
+This document gives an overview of the source and how to build the project
+on your system.
 
-# Website design
+## Building the project
 
-The Crosswalk website consists of the following functional areas:
+This static site for Crosswalk is built with:
 
-1.  [Main landing page](https://crosswalk-project.org). Mostly
-static content. Some Javascript is used to compensate for style
-areas that were difficult to code in a pure CSS model. Javascript
-is also used for dynamically changing the version strings in the top
-overview section.
+- [Node.js](http://nodejs.org)
+- [Harp](http://harpjs.com), the static web server with build-in preprocessing
+- [KSS](https://github.com/kss-node/kss-node), which creates the styleguide
 
-2.  [Documentation](https://crosswalk-project.org/#documentation)
-and [Contribute](https://crosswalk-project.org/#contribute). Statically
-generated from content checked into the crosswalk-website.git project.
-These sections are hand-picked selections from the wiki which are
-particularly useful or frequently viewed.
+First, [install Node.js](http://nodejs.org). Then, run the following commands:
 
-    The menu content on the left is generated via xwalk.js when the page
-is loaded, based on the content of menus.js. The content in the
-contribute/ and documentation/ directories are cached .html files
-generated from the markdown sources. This occurs during the
-`site.sh mklive` script execution described later.
+```
+# Install Harp. You may need to preface this command with `sudo`
+npm install --global harp
 
-3.  [Wiki](https://crosswalk-project.org/#wiki). This content is a
-dynamic proxy to the Wiki content hosted in the
-[crosswalk-website.wiki.git](https://github.com/crosswalk-project/crosswalk-website.wiki.git)
-on GitHub. Whenever a commit is made to the wiki, the Gollum Event Webhook on
-GitHub invokes the regen.php page on the live site; this in turn recreates
-the content viewed in the Pages and History pages of the Wiki.
+# Clone this project from GitHub
+git clone https://github.com/crosswalk-project/crosswalk-website-v2.git
 
-    Fetches of actual Wiki content are proxied on the server to GitHub
-via php (XHR on the client is blocked due to Access-Control-Allow-Origin;
-currently PHP doesn't cache the fetched content - it should).
-The wiki content is served to the client in the format output by the
-GitHub wiki system (Gollum). The client-side javascript (see xwalk.js
-content_response and generate_wiki_page) creates pages using
-content from the wiki: it pulls out the wiki DOM element, performs some
-URL rewrites, and then injects the resulting content into the Crosswalk
-website page requested by the browser.
+# Install the project’s dependencies
+cd crosswalk-website-v2/
+npm install
 
-# Content management for crosswalk-project.org
+# Serve the project
+harp server
 
-## Managing documentation for different Crosswalk versions
+# The project is now available at http://localhost:9000
+```
+## Create static web content for production
 
-The content on crosswalk-project.org relates to the current stable release
-of Crosswalk.
+Harp can be used to create static web content. This is the content that the
+current website uses.
 
-Documentation for previous versions stays on the wiki.
+### Build the Styleguide
 
-## Editing wiki content
+The styleguide should be created first. The markup and CSS modules are
+documented in a Styleguide. It’s comparable to a miniature version of the
+[documentation for Bootstrap](http://getbootstrap.com/css/), where each module
+has an example and the accompanying code.
 
-The content under the `#wiki/` path on crosswalk-project.org is maintained
-in the crosswalk-website wiki. This can either be edited via
-[github](https://github.com/crosswalk-project/crosswalk-website/wiki) or
-by cloning the wiki github repo (the latter is required if you want to
-add images).
+To build the Styleguide, run the following commands:
 
-See https://crosswalk-project.org/#wiki/Editing-the-Wiki for instructions.
+```
+# Install dependencies
+npm install -g kss
 
-## Editing non-wiki content
+# Build the Styleguide
+npm run styleguide
+```
+### Compile and generate static content
 
-Other content on crosswalk-project.org is managed through this
-project (crosswalk-website). The process for editing this content is
-as follows:
+This site has been built to take advantage of Harp’s niceties, so the
+web server should:
+ * Create clean URLs by rewriting, for example, `about.html` to `about/`
+ * Allow absolute paths from`/`
 
-*   [Fork the crosswalk-website repo](https://help.github.com/articles/fork-a-repo).
+```
+harp compile
+```
+The results are placed in "www" directory and can be viewed on your local
+system with apache server by simply setting
+```	DocumentRoot <path to www directory> ```
+in the apache configuration file.
 
-*   Make your edits (see [HACKING.md](HACKING.md)).
+## Adding Blog Posts
 
-*   [Make a pull request via github](https://help.github.com/articles/using-pull-requests)
-asking for your changes to be merged into the master branch of the
-crosswalk-website repo.
+The Crosswalk blog accepts static posts written in Markdown. If your post was called “Meet Crosswalk”, create the file `meet-crosswalk.md` in `public/blog/`. Add your post’s metadata in `public/blog/_data.json`. It will probably look something like this:
 
-# Workflow
+```js
+"meet-crosswalk": {
+  "title": "Meet Crosswalk",
+  "date": "2014-10-16T12:00",
+  "author": "Annie Person"
+},
+```
 
-The general work flow for releasing a new version of the
-Crosswalk website is as follows:
+If you’d like, you can also include a path to a large “Hero” image for the blog post:
 
-1.  Develop on a local machine (see [HACKING.md](HACKING.md))
-2.  Create a 'live snapshot' via the command `./site.sh mklive`
-3.  Push latest 'live snapshot' to the staging server via the script:
-`./site.sh push`
-4.  Test the results on the staging server at http://stg.crosswalk-project.org/
-5.  Push the staging version to the live server via the command
-`./site.sh push live`
+```js
+"meet-crosswalk": {
+  "title": "Meet Crosswalk",
+  "date": "2014-10-16T12:00",
+  "author": "Annie Person",
+  "hero": "/assets/illustrations/my-hero-image.png"
+},
+```
 
-To push to the staging or live servers, you will need to be given access
-by the Crosswalk infrastructure team.
+### Adding Remote Blog Posts
 
-NOTE: You can determine the version of the website that is active by
-fetching the file [REVISION](https://crosswalk-project.org/REVISION).
-The part before the colon is the branch name, the part after the colon
-is the commit-id. This file is queried by several of the functions
-defined in scripts/common.inc.
+If you are linking to a remote post rather than a local post—for example, a post on [the Chromium blog about Crosswalk](http://blog.chromium.org/2014/09/now-with-faster-dev-workflow-and-modern.html)—you only need to edit the `public/blog/_data.json` file. The key, in this case `chrome-apps-for-mobile`, must be unique, but the `url` will be what’s used to link to the external post.
 
-## Cached dynamic content
-
-There are several pieces of content that are generated during the site
-development. These include:
-
-*   xwalk.css <= generated from xwalk.scss
-*   markdown.css <= generated from markdown.scss
-*   menus.js <= generated from menus.js.php
-*   wiki/pages.md.html <= generated from regen.php via gfm.php
-*   wiki/history.md.html <= generated from regen.php via gfm.php
-*   contribute/\*.html <= generated from the markdown files in
-contribute/*.md via gfm.php
-*   documentation/\*.html <= generated from the markdown files in
-contribute/*.md via gfm.php
-
-On your local development server, all of the above are regenerated
-dynamically when any source file changes (via .htaccess and gfm.php).
-
-On the staging and live servers, no content is generated on the fly:
-the mklive script generates a one-off snapshot from the source files
-(*.md, *.scss etc.). This snapshot is then pushed to the server as static
-HTML/CSS/JS. See `./site.sh --help mklive` for details.
-
-# Setting up a server for crosswalk-website
-
-**This is a list of one time setup instructions for hosting crosswalk-website.
-These steps have already been carried out on the live and production
-servers, and do not have to be repeated to make a new release of the site.
-However, they are provided for reference in case the setup needs to be
-done again on a different server, or if the existing setup needs to be
-modified or debugged.**
-
-## Server software requirements
-
-Running the live version requires the rewrite module in Apache2.
-This is used in the wiki subsystem to map requested URLs through
-a PHP script which will then perform smart matching of leaf names.
-
-Enable the rewrite module via:
-
-    sudo a2enmod rewrite
-    sudo service apache2 restart
-
-The rest of the content is served from static files that are generated
-as part of the development cycle, described in the Workflow section (above).
-
-In addition, you will need to enable the cURL extension for PHP. This is
-used by the gfm.php script to perform HTTP requests for pages from the
-Crosswalk wiki. Enable it by editing the `php.ini` file for the PHP
-installation and adding this line (there should be several other
-`extension` lines in `php.ini` already, so add it after those):
-
-    extension=php_curl.so
-
-## Server configuration
-
-To host the Crosswalk website, the following needs to be done on the server:
-
-    # Initialize the site content into the docroot directory
-    sudo git clone https://github.com/crosswalk-project/crosswalk-website.git docroot
-    cd docroot
-
-    # make a clone of the wiki content
-    sudo git clone --bare https://github.com/crosswalk-project/crosswalk-website.wiki.git wiki.git
-
-    # everything should be owned by drush:users...
-    sudo chown -R drush:users * .git*
-
-    # ...except htaccess, and wiki and cache directories
-    # (which Apache needs to write to)
-    sudo chown -R wwwrun:www .htaccess wiki.git wiki cache
-
-    # create a configuration file with github credentials (see below)
-    sudo cp site-config.php.template site-config.php
-    sudo vim site-config.php
-
-    # Switch to the latest live branch
-    . scripts/common.inc
-    branch=$(get_remote_live_info)
-    echo ${branch} > REVISION
-    git checkout -f ${branch}
-
-At this point, the site is now initialized and set to the latest
-live branch. The `scripts/` directory is not part of the live version
-of the site - once you checkout `${branch}`, you won't be able to run
-any of the scripts on the live site.
-
-The chown command is necessary as regen.php writes to wiki.git and wiki,
-which also executes as the Apache user. On Ubuntu this user is `wwwrun`,
-but if you're using a different operating system, or a different Apache
-distribution, the user may be someone else; for example, XAMPP uses
-`nobody` as the user.
-
-## Site configuration
-
-The `site-config.php` file should be created on the server in the root
-directory, using the `site-config.php.template` file as the template.
-
-`site-config.php` requires credentials for accessing the github API
-(see the `github.php` script for how the github API proxy is implemented).
-The proxy is used by the Downloads and Channels Viewer pages, to
-populate the Crosswalk version numbers, download URLs, commit SHAs etc.
-
-The credentials required are a **Client ID** and **Client Secret**,
-which can be created by [registering a new application against a github
-account](https://github.com/settings/applications/new).
-
-## github configuration for wiki
-
-The crosswalk-project.org website needs to be set up in tandem with a
-[github hook](http://developer.github.com/v3/repos/hooks/) to ensure that
-any changes to the wiki are immediately reflected on the website.
-The hook should invoke the `regen.php` script for any `gollum` events
-triggered by changes to the [crosswalk project's
-wiki](https://github.com/crosswalk-project/crosswalk-website/wiki).
-
-However, this hook has to be manually added to the github project for
-crosswalk-website: the built-in web hooks available via github
-<em>Settings</em> cannot be set up to respond to gollum wiki events.
-
-### Adding the hook to the crosswalk-website github project
-
-The JSON data to required for configuring the hook looks like this:
-
-    {
-      "name": "web",
-      "active": true,
-      "events": [
-        "gollum"
-      ],
-      "config": {
-        "url": "http://crosswalk-project.org/regen.php",
-        "content_type": "json"
-      }
-    }
-
-Paste this into a file and post it to the github API using an HTTP client
-tool; for example, if the JSON file was called `config.json` and you
-were posting it as the `foo` user via `curl`, you would do:
-
-    curl -k -u foo -d @config.json \
-      https://api.github.com/repos/crosswalk-project/crosswalk-website/hooks
-
-You should get a response from the API which indicates whether the
-request was successful. From now on, any time the wiki for
-crosswalk-website changes, the script at
-http://crosswalk-project.org/regen.php will be invoked
-with details of the pages which changed.
+```js
+"chrome-apps-for-mobile": {
+  "title": "Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView",
+  "date": "2014-09-22T09:00",
+  "author": "Michal Mocny",
+  "url": "http://blog.chromium.org/2014/09/now-with-faster-dev-workflow-and-modern.html",
+  "desc": "…now you have a way to leverage the latest Chromium WebView on any device running Android versions back to Ice Cream Sandwich by bundling your Chrome App with an embeddable Chromium WebView, provided by the Crosswalk open source project."
+},
+```

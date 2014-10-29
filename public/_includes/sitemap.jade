@@ -1,0 +1,23 @@
+- var filter = /(\.html$)/;
+- var replace = /(\.html$)|(^index\.html$)/;
+
+mixin tree(head, tail)
+  for val, key in head
+    if key !== '.git' && key !== '_data'
+      if key == '_contents'
+        each file in val
+          if filter.test(file) && !/^404\.html/.test(file) &&  !/^200_wip\.html/.test(file) && !/^google199b767a306f5a69.html/.test(file)
+            - file = file.replace(replace, "");
+            - depth = tail.split("/").length
+            if (file == "" && depth == 2)
+              url
+                loc http://harpjs.com#{ tail + file }
+                changefreq weekly
+                priority 100
+            else
+              url
+                loc http://harpjs.com#{ tail + file }
+                changefreq weekly
+                priority= (100 - ((depth - 1) * 7))
+      else
+        mixin tree(val, tail + key + "/")

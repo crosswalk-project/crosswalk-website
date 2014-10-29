@@ -1,0 +1,223 @@
+// Nav
+//
+// Primariy, horisontal navigation
+//
+// Markup:
+// <nav class="nav">
+//   <ul class="nav-list">
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Documentation</a>
+//     </li>
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Blog</a>
+//     </li>
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Dev Wiki</a>
+//     </li>
+//   </ul>
+// </nav>
+//
+// Styleguide 3.8.1.
+.nav {
+  a,
+  a:visited,
+  .a-faux {
+    background-image: none;
+  }
+  @include media($mid) {
+    margin-top: modular-scale($base-font-size, -2, $base-ratio);
+    margin-bottom: modular-scale($base-font-size, -2, $base-ratio);
+    @include span-columns(6 of 6);
+  }
+  @include media($wide) {
+    // Break out of .row at wide size
+    @include span-columns(7 of 6);
+  }
+  .button {
+    width: auto;
+    padding: modular-scale($base-font-size, 0, $base-ratio);
+    margin-left: -1 * modular-scale($base-font-size, 0, $base-ratio);
+    margin-right: -1 * modular-scale($base-font-size, 0, $base-ratio);
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline-block;
+    font-size: inherit;
+    @include media($mid) {
+      font-size: modular-scale($base-font-size, -1, $base-ratio);;
+      margin-top: -modular-scale($base-font-size, 0, $base-ratio);
+      margin-bottom: -modular-scale($base-font-size, 0, $base-ratio);
+      margin-left: 0;
+      margin-right: 0;
+    }
+    @include media($huge) {
+      font-size: modular-scale($base-font-size, 0, $base-ratio);
+    }
+  }
+}
+
+.nav-list {
+  list-style-type: none;
+  margin-left: 0;
+  display: block;
+  text-align: right;
+  font-size: modular-scale($base-font-size, -1, $base-ratio);
+  margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+  @include media($mid) {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include span-columns(4 of 6);
+  }
+  @include media($wide) {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: modular-scale($base-font-size, -1, $base-ratio);
+    @include shift(0);
+    @include span-columns(5 of 7);
+  }
+}
+
+.nav-item {
+  display: block;
+  font-size: modular-scale($base-font-size, 1, $base-ratio);
+  margin-left: 0;
+  margin-bottom: modular-scale($base-font-size, -8, $base-ratio);
+  #getting-started-nav{display:none}
+  @include media($mid) {
+    margin: 0;
+  }
+  @include media($wide) {
+    display: inline-block;
+    #getting-started-nav{display:initial}
+  }
+}
+
+.nav-item--active {
+  font-weight: 600;
+  > ol,
+  > ul,
+  > dl,
+  > li {
+    font-weight: 400;
+  }
+}
+
+.nav-link {
+  display: block;
+  padding: modular-scale($base-font-size, -8, $base-ratio) 0;
+  @include media($mid) {
+    display: inline-block;
+    float: left;
+    font-size: modular-scale($base-font-size, -1, $base-ratio);
+    padding: modular-scale($base-font-size, 2, $base-ratio) modular-scale($base-font-size, -4, $base-ratio) modular-scale($base-font-size, 0, $base-ratio);
+  }
+  @include media($wide) {
+    padding-top: modular-scale($base-font-size, -1, $base-ratio);
+  }
+  @include media($huge) {
+    font-size: modular-scale($base-font-size, 0, $base-ratio);
+    padding: modular-scale($base-font-size, 0, $base-ratio) modular-scale($base-font-size, 0, $base-ratio);
+  }
+}
+
+// Nav logo
+//
+// Markup:
+// <nav class="nav">
+//   <a class="nav-logo logo" href="#">
+//     <img class="logo-image" src="/images/crosswalk-logo-black.svg">
+//   </a>
+//   <ul class="nav-list">
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Documentation</a>
+//     </li>
+//     <li class="nav-item">
+//       <a class="nav-link" href="#">Blog</a>
+//     </li>
+//   </ul>
+// </nav>
+//
+// Styleguide 3.8.2.
+.nav-logo {
+  padding-top: modular-scale($base-font-size, 1, $base-ratio);
+  padding-bottom: modular-scale($base-font-size, 1, $base-ratio);
+  @include span-columns(2);
+  .logo-image {
+    width: 100%;
+  }
+  @include media($mid) {
+    @include span-columns(2);
+  }
+  @include media($wide) {
+    // .nav is 7 columns when wide
+    @include span-columns(2 of 7);
+  }
+}
+
+// Nav Toggle
+//
+// Content that’s visible on larger
+// screens, and uses a CSS-only toggle
+// to reveal on smaller screens.
+//
+// Markup:
+// <nav id="contents" class="nav-toggleContainer">
+//   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Toggle</a>
+//   <a href="#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Toggle</a>
+//   <ul class="nav-toggleHide">
+//    <li>Nav item 1 (hidden on small screens)</li>
+//    <li>Nav item 2 (hidden on small screens)</li>
+//    <li>Nav item 3 (hidden on small screens)</li>
+//   </ul>
+// </nav>
+//
+// Styleguide 3.8.3.
+.nav-toggle {
+  display: block;
+  visibility: visible;
+  margin-bottom: modular-scale($base-font-size, 2, $base-ratio);
+  @include media($wide) {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.nav-toggle--dummy {
+  display: none;
+  visibility: hidden;
+}
+
+.nav-toggleHide {
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  @include media($wide) {
+    overflow: visible;
+    display: block;
+    height: 100%;
+  }
+}
+
+.nav-toggleContainer:target {
+  .nav-toggle {
+    display: none;
+    visibility: hidden;
+  }
+  .nav-toggle--dummy {
+    display: block;
+    visibility: visible;
+  }
+  &:target {
+    .nav-toggleHide {
+      overflow: visible;
+      display: block;
+      height: 100%;
+    }
+  }
+  @include media($wide) {
+    .nav-toggle--dummy {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+}

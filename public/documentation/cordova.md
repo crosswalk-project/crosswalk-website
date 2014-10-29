@@ -1,0 +1,13 @@
+# Cordova
+
+[Cordova](http://cordova.apache.org/) is a set of device APIs for accessing device capabilities (e.g. file storage, accelerometer) from JavaScript. Browsers typically prevent access to such APIs, as they could introduce serious security risks on the open web. But secure access to those capabilities can be granted to Cordova applications, which are installed directly on a device (Crosswalk uses the same model).
+
+Cordova applications are built as platform-specific packages, with a runtime "wrapper" to load the embedded web application. On Android, the wrapper is based on the [WebView](http://developer.android.com/guide/webapps/webview.html), which loads the web application files (HTML, CSS and JavaScript). Unfortunately, the stock WebView has [some limitations](https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android), one of the most notable being lack of support for WebGL. This means it's not possible to run WebGL applications with Cordova on Android.
+
+Unlike Cordova, Crosswalk doesn't use the Android WebView: its features are more closely aligned with Chrome on Android (as Crosswalk and Chrome share the same ancestor, [Chromium](http://www.chromium.org/)). This means that Crosswalk *does* support WebGL on Android, as well as the wealth of other APIs available in Chrome on Android. In addition, Crosswalk goes beyond Chrome, providing support for cutting edge features such as [SIMD](/documentation/samples/simd.html) (x86 only) and [the Presentation API](https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual). But Crosswalk on its own doesn't support the Cordova APIs.
+
+## Crosswalk + Cordova
+
+There is a way to get the best of both Crosswalk and Cordova by using *Crosswalk Cordova for Android*. This provides Cordova's APIs plus additional APIs available in Crosswalk (WebGL, SIMD, Presentation API etc.). The packages available [for download](/documentation/downloads.html) provide tools for creating Cordova Android applications with Crosswalk as the web view. Such applications will work on Android version 4.0 or later.
+
+The intention is for Crosswalk Cordova for Android to be as compatible as possible with [Cordova Android](https://github.com/apache/cordova-android). Consequently, the [Cordova Android Platform Guide](http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide) is a good guide to getting started with Crosswalk Cordova for Android. Alternatively, see the [HelloWorld example](/documentation/cordova/develop_an_application.html) for a more Crosswalk-focused overview.
