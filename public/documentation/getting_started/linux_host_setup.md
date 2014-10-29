@@ -2,8 +2,8 @@
 
 You need different tools depending on which target platforms you want to deploy your application to:
 
-*   Deploy to Android: follow [Installation for Crosswalk Android](/documentation/getting_started/Linux_host_setup.html#Installation-for-Crosswalk-Android).
-*   Deploy to Tizen: follow [Installation for Crosswalk Tizen](/documentation/getting_started/Linux_host_setup.html#Installation-for-Crosswalk-Tizen).
+*   Deploy to Android: follow [Installation for Crosswalk Android](#Installation-for-Crosswalk-Android)
+*   Deploy to Tizen: follow [Installation for Crosswalk Tizen](#Installation-for-Crosswalk-Tizen)
 
 These instructions have been tested on Fedora Linux 20, 64 bit. If you are using a different platform, you may need to modify them to suit your environment (e.g. use `apt-get` instead of `yum` if using Ubuntu, change package names where they differ from Fedora's package names).
 
@@ -11,13 +11,13 @@ These instructions have been tested on Fedora Linux 20, 64 bit. If you are using
 
 These steps will enable you to develop Crosswalk applications to run on Android:
 
-1.  [Install Python](/documentation/getting_started/linux_host_setup.html#Install-Python).
-2.  [Install the Oracle Java Development Kit (JDK)](/documentation/getting_started/linux_host_setup.html#Install-the-Oracle-JDK).
-3.  [Install Ant](/documentation/getting_started/linux_host_setup.html#Install-Ant).
-4.  [Configure the tools](/documentation/getting_started/linux_host_setup.html#Configure-the-tools).
-5.  [Install the Android SDK](/documentation/getting_started/linux_host_setup.html#Install-the-Android-SDK).
-6.  [Download the Crosswalk Android app template](/documentation/getting_started/linux_host_setup.html#Download-the-Crosswalk-Android-app-template).
-7.  [Verify your environment](/documentation/getting_started/linux_host_setup.html#Verify-your-environment).
+1.  [Install Python](#Install-Python)
+2.  [Install the Oracle Java Development Kit (JDK)](#Install-the-Oracle-JDK)
+3.  [Install Ant](#Install-Ant)
+4.  [Configure the tools](#Configure-the-tools)
+5.  [Install the Android SDK](#Install-the-Android-SDK)
+6.  [Download the Crosswalk Android app template](#Download-the-Crosswalk-Android-app-template)
+7.  [Verify your environment](#Verify-your-environment)
 
 <h3 id="Install-Python">Install Python</h2>
 

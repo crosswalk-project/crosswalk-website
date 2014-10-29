@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 function replace_version_string (str) {
     var re, version;
     Object.getOwnPropertyNames (versions).forEach (function (channel) {
@@ -39,3 +41,19 @@ function replace_version_string (str) {
         });
     return str;
 }
+
+function init () {
+    /* Set title to the main header string (first h1 value) */
+    var mainHeader = document.getElementsByTagName("H1")[0].innerHTML;
+    if (mainHeader) {
+        document.title = "Crosswalk - " + mainHeader;
+    }
+
+    /* Replace all version instances with the correct version numbers */
+    document.body.innerHTML = replace_version_string (document.body.innerHTML);
+}
+
+if (document.addEventListener) {
+    document.addEventListener ('DOMContentLoaded', init);
+}
+

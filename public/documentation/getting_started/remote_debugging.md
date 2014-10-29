@@ -10,14 +10,9 @@ On Android, the connection between the host and target is established using [`ad
 
 You will also need to set up an Android target and install a packaged Crosswalk application on it. See [these instructions](/documentation/getting_started/android_target_setup.html).
 
-Debugging on Android can be enabled in two ways:
+Debugging on Android can be enabled in two ways: [at build time](#Enable-debugging-at-build-time-for-Android) and [at run time](#Enable-debugging-at-run-time-for-Android). Both options are described below.
 
-1.  [At build time](#Enable-debugging-at-build-time-for-Android).
-2.  [At run time](#Enable-debugging-at-run-time-for-Android).
-
-Both options are described below.
-
-### Enable debugging at build time for Android
+### <a id="Enable-debugging-at-build-time-for-Android"></a>Enable debugging at build time for Android
 
 Once the [pre-requisites](#Android) have been met, debug your Crosswalk application as follows:
 
@@ -29,60 +24,50 @@ Once the [pre-requisites](#Android) have been met, debug your Crosswalk applicat
 <ul>
 
 <li>
-<p><strong>Generating an Android package using <a href="/documentation/getting_started/run_on_android"><code>make_apk.py</code></a></strong></p>
+<p><strong>Generating an Android package using <a href="/documentation/getting_started/run_on_android.html"><code>make_apk.py</code></a></strong></p>
 
 <p>Enable remote debugging by passing a flag to <code>make_apk.py</code> when building the package. For example:</p>
 
-<pre>
-$ python make_apk.py --package=org.crosswalkproject.example \
-  --manifest=/home/me/myapp/manifest.json --enable-remote-debugging
-</pre>
+<pre><code>$ python make_apk.py --package=org.crosswalkproject.example \
+  --manifest=/home/me/myapp/manifest.json --enable-remote-debugging</code></pre>
 
 </li>
 
 <li>
 
-<p><strong>Embedding Crosswalk in your application</strong> via the <a href="/documentation/embedding_crosswalk">embedding API</a></p>
+<p><strong>Embedding Crosswalk in your application</strong> via the <a href="/documentation/embedding_crosswalk.html">embedding API</a></p>
 
 <p>Modify your application's main activity to set the remote debugging preference. For example:</p>
 
-<pre>
-XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
-</pre>
+<pre><code>XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);</code></pre>
 
 <p>Then build the application package the usual way (e.g. using Ant or ADT).</p>
 
-<p>Full details are given in the <a href="/documentation/embedding_crosswalk#Debugging">Crosswalk embedding tutorial</a>.</p>
+<p>Full details are given in the <a href="/documentation/embedding_crosswalk.html#Debugging">Crosswalk embedding tutorial</a>.</p>
 
 </li>
 
 <li>
 
-<p><strong>Using <a href="/documentation/cordova/migrate_an_application">a Cordova application migrated to Crosswalk</a></strong>
+<p><strong>Using <a href="/documentation/cordova/migrate_an_application.html">a Cordova application migrated to Crosswalk</a></strong>
 
 <p>When you build a Cordova application which has been migrated to Crosswalk, remote debugging is enabled by default. You shouldn't have to do anything other than the usual build:</p>
 
-<pre>
-cordova build android
-</pre>
+<pre><code>$ cordova build android</code></pre>
 
 <p>Install and run the application as usual, for example:</p>
 
-<pre>
-cordova run android
-</pre>
+<pre><code>$ cordova run android</code></pre>
 
 <p>Remote debugging can be disabled by <a href="http://docs.phonegap.com/en/3.3.0/guide_command-line_index.md.html">passing the <code>--release</code> option to the build</a>.</p>
 </li>
 
 <li>
-<p><strong>Using <a href="/documentation/cordova/develop_an_application">an application created using Crosswalk Cordova</a></strong></p>
+<p><strong>Using <a href="/documentation/cordova/develop_an_application.html">an application created using Crosswalk Cordova</a></strong></p>
 
 <p>Remote debugging is enabled by default when you build an application created with Crosswalk Cordova. For example:</p>
 
-<pre>
-./cordova/build
-</pre>
+<pre><code>$ ./cordova/build</code></pre>
 
 <p>will build an application with remote debugging turned on.</p>
 
@@ -92,7 +77,7 @@ cordova run android
 
 </li>
 
-<li>Install and run the application on the target, using your preferred tool (for example, <a href="/documentation/getting_started/run_on_android"><code>adb</code></a>).</li>
+<li>Install and run the application on the target, using your preferred tool (for example, <a href="/documentation/getting_started/run_on_android.html"><code>adb</code></a>).</li>
 
 <li>
 <p>On the host, open a Chrome browser and go to "chrome://inspect" in the address bar. This should show a list of attached devices, with your application listed, for example:</p>
@@ -107,7 +92,7 @@ cordova run android
 
 </ol>
 
-### Enable debugging at run time for Android
+### <a id="Enable-debugging-at-run-time-for-Android"></a>Enable debugging at run time for Android
 
 If you built your Android package without the debugging feature, you can still turn on the feature at run time by sending it an [intent](http://developer.android.com/guide/components/intents-filters.html). This works for a Crosswalk application built using any of the packaging methods, i.e.
 

@@ -31,7 +31,7 @@ As this tutorial uses ADT, ensure that you have [installed the necessary ADT com
 
 On the host (the machine you're writing the code), download the Crosswalk webview bundle. This contains the libraries and supporting tools for embedding Crosswalk in an application.
 
-For example, to get the latest beta Crosswalk webview for x86 architecture (at the time of writing, there are no stable releases of the webview):
+For example, to get the latest beta Crosswalk webview for x86 architecture:
 
     $ wget https://download.01.org/crosswalk/releases/crosswalk/android/beta/${XWALK-BETA-ANDROID-X86}/x86/crosswalk-webview-${XWALK-BETA-ANDROID-X86}-x86.zip
 
@@ -284,7 +284,7 @@ Follow the steps below to add some web assets and bundle them with your applicat
     }
     ```
 
-<h3 id="debugging">Debugging</h3>
+<h3 id="Debugging">Debugging</h3>
 
 To enable debugging of the web application running in an embedded Crosswalk webview, modify the `MainActivity.java` file to look like this:
 

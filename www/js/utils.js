@@ -107,8 +107,9 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
     if (OS === 'android' || OS === 'cordova' || OS === 'android-webview') {
       if (archIndependent) {
         download_url += '.zip';
+      } else {
+        download_url += "-" + arch + ".zip";  //e.g. -x86.zip or -arm.zip
       }
-      else download_url += "-" + arch + ".zip";  //e.g. -x86.zip or -arm.zip
     }
     // as of tizen-mobile 5.32.88.0, suffix changed to 686
     else if (OS === 'tizen-ivi' ||

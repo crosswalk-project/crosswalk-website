@@ -1,6 +1,8 @@
 # Using the manifest file
 
-This page covers how to use a `manifest.json` file when deploying a Crosswalk application. A manifest can be used in the following "modes":
+This page covers how to use a `manifest.json` file when deploying a Crosswalk application. 
+
+<p>A manifest can be used in the following "modes":</p>
 
 1.  [To configure how a Crosswalk application is packaged for Android](#Configure-Android-packaging).
 2.  [To configure how a Crosswalk application launches on Tizen](#Configure-launch-on-Tizen).

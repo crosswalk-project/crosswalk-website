@@ -467,7 +467,7 @@ To run the application on a desktop machine via Chrome, do the following:
 
     The solution is to start Chrome with the `--allow-file-access-from-files` option, which gives `file://` URIs access to the webcam (as well as [other](https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally) [things](http://joshuamcginnis.com/2011/02/28/how-to-disable-same-origin-policy-in-chrome/)). As an example, to start the WebRTC client on Linux with Chrome, you would use the following command line:
 
-        google-chrome --allow-file-access-from-files \
+        $ google-chrome --allow-file-access-from-files \
           file:///<path to xwalk-webrtc>/client/index.html
 
     The webcam should now be accessible.
@@ -495,7 +495,7 @@ During the host setup for Android ([Windows](/documentation/getting_started/wind
 
 Finally, start the application on the target by selecting its icon in the applications list.
 
-### Make a call
+### <a id="Make-a-call"></a>Make a call
 
 Once the application is running on two targets, you should be able to make a call between them by following these steps:
 
@@ -547,7 +547,7 @@ If one or both of the client applications isn't working, or you have problems ma
 
 *   To debug the client application running in Crosswalk Android, build the package with the `--enable-remote-debugging` option:
 
-        python make_apk.py --package=org.crosswalkproject.example \
+        $ python make_apk.py --package=org.crosswalkproject.example \
           --enable-remote-debugging --manifest=...
 
     Once the application is launched on the Android target, open Chrome and go to the special "chrome://inspect" address. You should see the Android target listed, along with applications which can be debugged:

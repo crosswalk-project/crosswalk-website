@@ -198,7 +198,7 @@ If you are interested in following along with the article, rather than just look
 3.  Check out the code for the Crosswalk samples from github:
 
     ```
-    git checkout https://github.com/crosswalk-project/crosswalk-samples.git
+    $ git checkout https://github.com/crosswalk-project/crosswalk-samples.git
     ```
 
     The game used in this tutorial is in the `space-dodge-game` directory.
@@ -215,13 +215,13 @@ If you are interested in following along with the article, rather than just look
 5.  Once you have built a package for the game, you can deploy it to Android using `adb`:
 
     ```
-    adb install space_dodge_game_0.0.0.1_x86.apk
+    $ adb install space_dodge_game_0.0.0.1_x86.apk
     ```
 
     or
 
     ```
-    adb install space_dodge_game_0.0.0.1_arm.apk
+    $ adb install space_dodge_game_0.0.0.1_arm.apk
     ```
 
     depending on your target hardware.
