@@ -287,7 +287,7 @@
 <h3>Set up a Tizen IVI virtual machine with VMware</h3>
 <p>After you have set up your host machine with the VMware Player or Workstation (<a href="/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Tizen">Windows</a>, <a href="/documentation/getting_started/linux_host_setup.html#Installation-for-Crosswalk-Tizen">Linux</a>), you can create a virtual Tizen IVI machine.</p>
 <p>To do this, follow <a href="https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware">these instructions on the Tizen wiki</a>.</p>
-<p>Here&#39;s a summary of the steps for Fedora 20, using VMware Workstation and the <code>tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2</code> daily build (available from the <a href="http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/">daily builds page</a>). The steps for Windows are similar, though you will need to use <a href="/documentation/getting_started/windows_host_setup.html">install git SCM</a> to get the <code>curl</code> and <code>bunzip2</code> commands.</p>
+<p>Here&#39;s a summary of the steps for Fedora 20, using VMware Workstation and the <code>tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2</code> daily build (available from the <a href="http://download.tizen.org/releases/daily/tizen/ivi-3.0.m14.3/latest/images/emulator/ivi-mbr-i586-emul/">daily builds page</a>). The steps for Windows are similar, though you will need to use <a href="/documentation/getting_started/windows_host_setup.html">install git SCM</a> to get the <code>curl</code> and <code>bunzip2</code> commands.</p>
 <ol>
 <li><p>Download, unpack and convert the Tizen IVI image:</p>
 <pre><code>&gt; curl -O http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2
@@ -357,7 +357,7 @@
 <li>Ctrl+Alt releases input capturing in the VM, giving you back the mouse and keyboard.</li>
 <li>My preference is to use bridged networking between the VM and the host, as this simplifies using ssh (for me at least).</li>
 </ul>
-<h2>Install Crosswalk</h2>
+<h2><a id="Install-Crosswalk"></a>Install Crosswalk</h2>
 <p>Once you have a running Tizen IVI virtual machine ready as a target, you can install Crosswalk on it. The instructions below assume that the target machine can be reached from the host machine over the network (to create the examples, I used bridged networking on the VM).</p>
 <ol>
 <li><p>Get a root shell on the VM with:</p>

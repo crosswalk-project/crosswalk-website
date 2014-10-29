@@ -35,7 +35,7 @@ After you have set up your host machine with the VMware Player or Workstation ([
 
 To do this, follow [these instructions on the Tizen wiki](https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware).
 
-Here's a summary of the steps for Fedora 20, using VMware Workstation and the `tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2` daily build (available from the [daily builds page](http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/)). The steps for Windows are similar, though you will need to use [install git SCM](/documentation/getting_started/windows_host_setup.html) to get the `curl` and `bunzip2` commands.
+Here's a summary of the steps for Fedora 20, using VMware Workstation and the `tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2` daily build (available from the [daily builds page](http://download.tizen.org/releases/daily/tizen/ivi-3.0.m14.3/latest/images/emulator/ivi-mbr-i586-emul/)). The steps for Windows are similar, though you will need to use [install git SCM](/documentation/getting_started/windows_host_setup.html) to get the `curl` and `bunzip2` commands.
 
 1.  Download, unpack and convert the Tizen IVI image:
 
@@ -108,7 +108,7 @@ Here's a summary of the steps for Fedora 20, using VMware Workstation and the `t
 *   Ctrl+Alt releases input capturing in the VM, giving you back the mouse and keyboard.
 *   My preference is to use bridged networking between the VM and the host, as this simplifies using ssh (for me at least).
 
-## Install Crosswalk
+## <a id="Install-Crosswalk"></a>Install Crosswalk
 
 Once you have a running Tizen IVI virtual machine ready as a target, you can install Crosswalk on it. The instructions below assume that the target machine can be reached from the host machine over the network (to create the examples, I used bridged networking on the VM).
 

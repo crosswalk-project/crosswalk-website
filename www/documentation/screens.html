@@ -381,7 +381,7 @@ p, button {
 <pre><code>$ unzip crosswalk-${XWALK-STABLE-ANDROID-X86}.zip</code></pre>
 </li>
 <li><p>Check out the code for the Crosswalk samples from github:</p>
-<pre><code>git checkout https://github.com/crosswalk-project/crosswalk-samples.git</code></pre>
+<pre><code>$ git checkout https://github.com/crosswalk-project/crosswalk-samples.git</code></pre>
 <p>The game used in this tutorial is in the <code>space-dodge-game</code> directory.</p>
 </li>
 <li><p>Use <code>make_apk.py</code> to build a Crosswalk package from the checked-out crosswalk-samples project:</p>
@@ -390,9 +390,9 @@ $ python make_apk.py --manifest=/path/to/crosswalk-samples/space-dodge-game/&lt;
 <p>Replace <code>&lt;version&gt;</code> with whichever version of the game you want to run; <code>master</code> is the version of the game before optimisation, and there are four other versions for different Crosswalk versions and techniques. See the <code>README.md</code> file in the <code>space-dodge-game</code> directory for details.</p>
 </li>
 <li><p>Once you have built a package for the game, you can deploy it to Android using <code>adb</code>:</p>
-<pre><code>adb install space_dodge_game_0.0.0.1_x86.apk</code></pre>
+<pre><code>$ adb install space_dodge_game_0.0.0.1_x86.apk</code></pre>
 <p>or</p>
-<pre><code>adb install space_dodge_game_0.0.0.1_arm.apk</code></pre>
+<pre><code>$ adb install space_dodge_game_0.0.0.1_arm.apk</code></pre>
 <p>depending on your target hardware.</p>
 <p>For more details about building and running Crosswalk applications on Android, see <a href="/documentation/getting_started/run_on_android.html">the Getting started pages</a>.</p>
 </li>

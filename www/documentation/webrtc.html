@@ -611,7 +611,7 @@ peer server running on 192.168.0.25:9000</code></pre>
 </li>
 <li><p>If you open an application in Chrome (via a <code>file://</code> URI), access to the webcam is blocked by default. Because you&#39;re going to open the application directly from the filesystem via a <code>file://</code> URI, you therefore need to explicitly enable access to the webcam.</p>
 <p>The solution is to start Chrome with the <code>--allow-file-access-from-files</code> option, which gives <code>file://</code> URIs access to the webcam (as well as <a href="https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally">other</a> <a href="http://joshuamcginnis.com/2011/02/28/how-to-disable-same-origin-policy-in-chrome/">things</a>). As an example, to start the WebRTC client on Linux with Chrome, you would use the following command line:</p>
-<pre><code>google-chrome --allow-file-access-from-files \
+<pre><code>$ google-chrome --allow-file-access-from-files \
   file:///&lt;path to xwalk-webrtc&gt;/client/index.html</code></pre>
 <p>The webcam should now be accessible.</p>
 </li>
@@ -635,7 +635,7 @@ which can be found at
 # install the package for your target&#39;s architecture
 $ adb install /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.apk</code></pre>
 <p>Finally, start the application on the target by selecting its icon in the applications list.</p>
-<h3>Make a call</h3>
+<h3><a id="Make-a-call"></a>Make a call</h3>
 <p>Once the application is running on two targets, you should be able to make a call between them by following these steps:</p>
 <ol>
 <li><p>Make sure the <a href="#run-peerjs-server">PeerJS server is running</a>.</p>
@@ -673,7 +673,7 @@ $ adb install /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.ap
 <li><p>Try opening two tabs in a single Chrome browser on a laptop machine, and load the client application into both. These tabs can still make calls to each other, but it&#39;s much easier to get at the logs (through the developer console: Ctrl+Shift+j).</p>
 </li>
 <li><p>To debug the client application running in Crosswalk Android, build the package with the <code>--enable-remote-debugging</code> option:</p>
-<pre><code>python make_apk.py --package=org.crosswalkproject.example \
+<pre><code>$ python make_apk.py --package=org.crosswalkproject.example \
   --enable-remote-debugging --manifest=...</code></pre>
 <p>Once the application is launched on the Android target, open Chrome and go to the special &quot;chrome://inspect&quot; address. You should see the Android target listed, along with applications which can be debugged:</p>
 <p><img src="/assets/crosswalk-webrtc-debug.png" alt="Debugging the WebRTC client application on Android"></p>
