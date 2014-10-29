@@ -2,16 +2,6 @@
 
 The Crosswalk AAR bundle is the binary distribution of the `xwalk_core_library` and includes both x86 and armv7 architectures. A developer no longer needs to download the crosswalk-webview bundle manually but can specify a version code using either the Gradle or Maven projects.
 
-<!--
-Maven will download the AAR automatically into local Maven repository.
-
-    path/to/.m2/repository/
-
-Gradle will cache it in caches directory.
-
-    path/to/.gradle/caches/modules-2/files-2.1/
--->
-
 ## Set up host
 
 ### Install JDK
@@ -48,20 +38,13 @@ Gradle requires JDK version 6 or higher. The JAVA_HOME environment variable must
 
 #### Install Gradle
 
-The Gradle wrapper is the preferred way to start a Gradle build. The wrapper is a batch/shell script. When you start a Gradle build via the wrapper, Gradle is automatically downloaded and used to run the build. You can copy the construct files into your project from [the sample](/documentation/samples/AAR-Sample.tar.gz).
+1.  Download gradle-1.10-bin.zip distribution from [Gradle web site](http://www.gradle.org/downloads)
 
-    RootProject/
-      gradlew
-      gradlew.bat
-      gradle/wrapper/
-        gradle-wrapper.jar
-        gradle-wrapper.properties
+2.  Unzip it
+    $ unzip gradle-1.10-bin.zip
 
-Also you can specify the Gradle version you wish to use. The gradlew command will download the appropriate distribution from the Gradle repository.
-
-    task wrapper(type: Wrapper) {
-        gradleVersion = '1.12'
-    }
+3.  For running Gradle, add GRADLE_HOME/bin to your PATH environment variable.
+    $ export PATH=/path/to/gradle-1.10/bin
 
 ### Develop With Maven Project
 
@@ -140,6 +123,9 @@ The beta version of maven is available from [the xwalk_core_library_beta](https:
         Compile ‘org.xwalk:xwalk_core_library_beta:9.38.208.8’
     }
     ```
+    Gradle will cache the AAR in caches directory.
+
+        path/to/.gradle/caches/modules-2/files-2.1/
 
 4.  Support different CPU architectures with each APK (such as for ARM, x86).
     
@@ -172,9 +158,9 @@ The beta version of maven is available from [the xwalk_core_library_beta](https:
 
 5.  Build your project with Gradle, the following commands will build the corresponding arch apk in build/apk directory.
     
-    ./gradlew assemblex86
+    $ ./gradlew assemblex86
     
-    ./gradlew assemblearmv7
+    $ ./gradlew assemblearmv7
 
 ## Build with Maven
 
@@ -216,6 +202,9 @@ The Maven android plugin have an known issue that it can’t build multiple APK 
     ```
     <classifier>arm</classifier>
     ```
+    Maven will download the AARs automatically into local Maven repository.
+
+        path/to/.m2/repository/
 
 4.  Support multiple APK
 
