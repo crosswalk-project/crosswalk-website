@@ -20,12 +20,10 @@ Here's an overview of how this extension works:
 
     <p>In both cases, the JavaScript part of the extension creates a message object with this structure:</p>
 
-    <pre>
-{
+<pre><code>{
   "id": "1",
   "content": "Hello world"
-}
-    </pre>
+}</code></pre>
 
     <p>Each message contains a unique request ID. This ID is used to ensure that the response is married up to the correct callback when the extension returns its results.</p>
 
@@ -49,12 +47,10 @@ Here's an overview of how this extension works:
   <li>
     <p><a name="message-data-structure"></a>On the JavaScript side, the JSON string is deserialised into an object with this structure:</p>
 
-    <pre>
-{
+    <pre><code>{
   "id": "1",
   "content": "You said: Hello world"
-}
-    </pre>
+}</code></pre>
 
     <p>The web application can do what it wants with the object; in this tutorial, it creates a DOM element containing the prefixed string held in the <code>content</code> property.</p>
   </li>
@@ -89,7 +85,7 @@ Note that the following instructions assume you're in `xwalk-echo-extension-src/
 
 First, create a Java class which extends [`XWalkExtensionClient`](https://github.com/crosswalk-project/crosswalk/blob/master/app/android/runtime_client/src/org/xwalk/app/runtime/extension/XWalkExtensionClient.java).
 
-**`java/org/crosswalkproject/sample/Echo.java`:**
+`java/org/crosswalkproject/sample/Echo.java`:
 
     package org.crosswalkproject.sample;
 
@@ -141,7 +137,7 @@ However, they return the result in different ways:
 
 A supporting class is used to make these JSON operations easier, as shown below.
 
-**`java/org/crosswalkproject/sample/Message.java`:**
+`java/org/crosswalkproject/sample/Message.java`:
 
     package org.crosswalkproject.sample;
 
@@ -472,11 +468,14 @@ Once Ant is installed, add a buildfile, `build.xml`, to the top-level directory 
 
       <!-- compile the extension Java code -->
       <target name="compile" depends="download-deps, download-crosswalk">
+        <first id="app_runtime_java">
+          <fileset dir="${lib}/crosswalk-${crosswalk-version}" includes="**/xwalk_app_runtime_java.jar" />
+        </first>
         <javac srcdir="${src}" destdir="${build}"
                encoding="utf-8" debug="true" verbose="true">
           <classpath>
             <fileset dir="${lib}" includes="*.jar" />
-            <file file="${lib}/crosswalk-${crosswalk-version}/libs/xwalk_app_runtime_java.jar" />
+            <file file="${toString:app_runtime_java}" />
           </classpath>
         </javac>
       </target>
@@ -517,23 +516,17 @@ This is a fairly standard Ant buildfile for a small project. The default task is
       <li>
         <p><strong>beta:</strong></p>
 
-        <pre>
-&lt;property name="crosswalk-version" value="${XWALK-BETA-ANDROID-X86}" /&gt;
-
+        <pre><code>&lt;property name="crosswalk-version" value="${XWALK-BETA-ANDROID-X86}" /&gt;
 &lt;property name="crosswalk-download-url"
-          value="https://download.01.org/crosswalk/releases/crosswalk/android/beta/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" /&gt;
-        </pre>
+          value="https://download.01.org/crosswalk/releases/crosswalk/android/beta/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" /&gt;</code></pre>
       </li>
 
       <li>
         <p><strong>canary:</strong></p>
 
-        <pre>
-&lt;property name="crosswalk-version" value="...Crosswalk canary version..." /&gt;
-
+        <pre><code>&lt;property name="crosswalk-version" value="...Crosswalk canary version..." /&gt;
 &lt;property name="crosswalk-download-url"
-          value="https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" /&gt;
-        </pre>
+          value="https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip" /&gt;</code></pre>
 
         <p>You can find the current canary version by consulting the <a href="/documentation/downloads">downloads page</a>.</p>
       </li>

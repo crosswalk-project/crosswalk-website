@@ -251,12 +251,10 @@
 
     <p>In both cases, the JavaScript part of the extension creates a message object with this structure:</p>
 
-    <pre>
-{
+<pre><code>{
   &quot;id&quot;: &quot;1&quot;,
   &quot;content&quot;: &quot;Hello world&quot;
-}
-    </pre>
+}</code></pre>
 
     <p>Each message contains a unique request ID. This ID is used to ensure that the response is married up to the correct callback when the extension returns its results.</p>
 
@@ -280,12 +278,10 @@
   <li>
     <p><a name="message-data-structure"></a>On the JavaScript side, the JSON string is deserialised into an object with this structure:</p>
 
-    <pre>
-{
+    <pre><code>{
   &quot;id&quot;: &quot;1&quot;,
   &quot;content&quot;: &quot;You said: Hello world&quot;
-}
-    </pre>
+}</code></pre>
 
     <p>The web application can do what it wants with the object; in this tutorial, it creates a DOM element containing the prefixed string held in the <code>content</code> property.</p>
   </li>
@@ -314,7 +310,7 @@ mkdir tools</code></pre>
 <p>Note that the following instructions assume you&#39;re in <code>xwalk-echo-extension-src/</code> (the top-level directory for the extension project).</p>
 <h2>Add Java code for the extension</h2>
 <p>First, create a Java class which extends <a href="https://github.com/crosswalk-project/crosswalk/blob/master/app/android/runtime_client/src/org/xwalk/app/runtime/extension/XWalkExtensionClient.java"><code>XWalkExtensionClient</code></a>.</p>
-<p><strong><code>java/org/crosswalkproject/sample/Echo.java</code>:</strong></p>
+<p><code>java/org/crosswalkproject/sample/Echo.java</code>:</p>
 <pre><code>package org.crosswalkproject.sample;
 
 import org.xwalk.app.runtime.extension.XWalkExtensionClient;
@@ -363,7 +359,7 @@ public class Echo extends XWalkExtensionClient {
 <li><code>onMessage()</code> indirectly returns the result by invoking <code>postMessage()</code> (a method on the <code>XWalkExtensionClient</code> class). This posts a JSON string back to the JavaScript side of the API asynchronously, where it can be handled by a listener.</li>
 </ul>
 <p>A supporting class is used to make these JSON operations easier, as shown below.</p>
-<p><strong><code>java/org/crosswalkproject/sample/Message.java</code>:</strong></p>
+<p><code>java/org/crosswalkproject/sample/Message.java</code>:</p>
 <pre><code>package org.crosswalkproject.sample;
 
 public class Message {
@@ -646,11 +642,14 @@ $ cp apache-ivy-2.4.0-rc1/ivy-2.4.0-rc1.jar tools/</code></pre>
 
   &lt;!-- compile the extension Java code --&gt;
   &lt;target name=&quot;compile&quot; depends=&quot;download-deps, download-crosswalk&quot;&gt;
+    &lt;first id=&quot;app_runtime_java&quot;&gt;
+      &lt;fileset dir=&quot;${lib}/crosswalk-${crosswalk-version}&quot; includes=&quot;**/xwalk_app_runtime_java.jar&quot; /&gt;
+    &lt;/first&gt;
     &lt;javac srcdir=&quot;${src}&quot; destdir=&quot;${build}&quot;
            encoding=&quot;utf-8&quot; debug=&quot;true&quot; verbose=&quot;true&quot;&gt;
       &lt;classpath&gt;
         &lt;fileset dir=&quot;${lib}&quot; includes=&quot;*.jar&quot; /&gt;
-        &lt;file file=&quot;${lib}/crosswalk-${crosswalk-version}/libs/xwalk_app_runtime_java.jar&quot; /&gt;
+        &lt;file file=&quot;${toString:app_runtime_java}&quot; /&gt;
       &lt;/classpath&gt;
     &lt;/javac&gt;
   &lt;/target&gt;
@@ -689,23 +688,17 @@ $ cp apache-ivy-2.4.0-rc1/ivy-2.4.0-rc1.jar tools/</code></pre>
       <li>
         <p><strong>beta:</strong></p>
 
-        <pre>
-&lt;property name=&quot;crosswalk-version&quot; value=&quot;${XWALK-BETA-ANDROID-X86}&quot; /&gt;
-
+        <pre><code>&lt;property name=&quot;crosswalk-version&quot; value=&quot;${XWALK-BETA-ANDROID-X86}&quot; /&gt;
 &lt;property name=&quot;crosswalk-download-url&quot;
-          value=&quot;<a href="https://download.01.org/crosswalk/releases/crosswalk/android/beta/${crosswalk-version}/crosswalk-${crosswalk-version}.zip">https://download.01.org/crosswalk/releases/crosswalk/android/beta/${crosswalk-version}/crosswalk-${crosswalk-version}.zip</a>&quot; /&gt;
-        </pre>
+          value=&quot;<a href="https://download.01.org/crosswalk/releases/crosswalk/android/beta/${crosswalk-version}/crosswalk-${crosswalk-version}.zip">https://download.01.org/crosswalk/releases/crosswalk/android/beta/${crosswalk-version}/crosswalk-${crosswalk-version}.zip</a>&quot; /&gt;</code></pre>
       </li>
 
       <li>
         <p><strong>canary:</strong></p>
 
-        <pre>
-&lt;property name=&quot;crosswalk-version&quot; value=&quot;...Crosswalk canary version...&quot; /&gt;
-
+        <pre><code>&lt;property name=&quot;crosswalk-version&quot; value=&quot;...Crosswalk canary version...&quot; /&gt;
 &lt;property name=&quot;crosswalk-download-url&quot;
-          value=&quot;<a href="https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip">https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip</a>&quot; /&gt;
-        </pre>
+          value=&quot;<a href="https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip">https://download.01.org/crosswalk/releases/crosswalk/android/canary/${crosswalk-version}/crosswalk-${crosswalk-version}.zip</a>&quot; /&gt;</code></pre>
 
         <p>You can find the current canary version by consulting the <a href="/documentation/downloads">downloads page</a>.</p>
       </li>
