@@ -225,16 +225,6 @@
 <article class="article article--hasToC">
   <h1>Developing with Crosswalk AAR</h1>
 <p>The Crosswalk AAR bundle is the binary distribution of the <code>xwalk_core_library</code> and includes both x86 and armv7 architectures. A developer no longer needs to download the crosswalk-webview bundle manually but can specify a version code using either the Gradle or Maven projects.</p>
-<!--
-Maven will download the AAR automatically into local Maven repository.
-
-    path/to/.m2/repository/
-
-Gradle will cache it in caches directory.
-
-    path/to/.gradle/caches/modules-2/files-2.1/
--->
-
 <h2>Set up host</h2>
 <h3>Install JDK</h3>
 <p>Gradle requires JDK version 6 or higher. The JAVA_HOME environment variable must be set to the correct JDK installation directory.</p>
@@ -261,17 +251,16 @@ $ export PATH=&lt;path to Android SDK&gt;/platform-tools:$PATH</code></pre>
 </ol>
 <h3>Develop With the Gradle Project</h3>
 <h4>Install Gradle</h4>
-<p>The Gradle wrapper is the preferred way to start a Gradle build. The wrapper is a batch/shell script. When you start a Gradle build via the wrapper, Gradle is automatically downloaded and used to run the build. You can copy the construct files into your project from <a href="/documentation/samples/AAR-Sample.tar.gz">the sample</a>.</p>
-<pre><code>RootProject/
-  gradlew
-  gradlew.bat
-  gradle/wrapper/
-    gradle-wrapper.jar
-    gradle-wrapper.properties</code></pre>
-<p>Also you can specify the Gradle version you wish to use. The gradlew command will download the appropriate distribution from the Gradle repository.</p>
-<pre><code>task wrapper(type: Wrapper) {
-    gradleVersion = &#39;1.12&#39;
-}</code></pre>
+<ol>
+<li><p>Download a recent version of the gradle binary (~40MB): <a href="http://www.gradle.org/downloads"><a href="http://www.gradle.org/downloads/">http://www.gradle.org/downloads/</a></a></p>
+</li>
+<li><p>Unzip it:</p>
+<pre><code>$ unzip gradle-&lt;version&gt;-bin.zip</code></pre>
+</li>
+<li><p>For convenience, add the gradle binary to your PATH environment variable:</p>
+<pre><code>$ export PATH=$PATH:&lt;path to gradle&gt;/bin</code></pre>
+</li>
+</ol>
 <h3>Develop With Maven Project</h3>
 <h4>Install Maven</h4>
 <ol>
@@ -329,35 +318,36 @@ All of the stable version you want from [the xwalk_core_library](https://downloa
     }
 }</code></pre>
 </li>
-<li><p>The dependency (a reference) to the AAR library will look like(9.38.208.8 is crosswalk version):</p>
+<li><p>The dependency (a reference) to the AAR library will look like (9.38.208.8 is a crosswalk version):</p>
 <pre><code> Dependencies {
      Compile ‘org.xwalk:xwalk_core_library_beta:9.38.208.8’
  }</code></pre>
+<p>Gradle places the AAR library in its project directory:</p>
+<p> ~/.gradle/caches/modules-2/files-2.1/</p>
 </li>
 <li><p>Support different CPU architectures with each APK (such as for ARM, x86).</p>
 <p>A product flavor defines a customized version of the application build by the project. We can have different flavors which generate apk for each  architecture.</p>
 <pre><code>android {
-    ....
-
-    productFlavors {
-        armv7 {
-            ndk {
-                abiFilters &quot;armeabi-v7a&quot;, &quot;&quot;
-            }
-        }
-        x86 {
-            ndk {
-                abiFilters &quot;x86&quot;, &quot;&quot;
-            }
-        }
+  ...
+  productFlavors {
+    armv7 {
+      ndk {
+        abiFilters &quot;armeabi-v7a&quot;, &quot;&quot;
+      }
     }
+    x86 {
+      ndk {
+        abiFilters &quot;x86&quot;, &quot;&quot;
+      }
+    }
+  }
 }</code></pre>
-<p>Get version code from Manifest, Add an extra digit to the end of the version code, which implicity specifies the architecture. The x86 final digit is 4, arm is 2.</p>
+<p>Get the version code from the manifest.  Add an extra digit to the end of the version code which implicity specifies the architecture. The x86 final digit is 4, arm is 2.</p>
 <pre><code>versionCode manifest.versionCode + 4</code></pre>
 </li>
 <li><p>Build your project with Gradle, the following commands will build the corresponding arch apk in build/apk directory.</p>
-<p>./gradlew assemblex86</p>
-<p>./gradlew assemblearmv7</p>
+<pre><code>$ ./gradlew assemblex86
+$ ./gradlew assemblearmv7</code></pre>
 </li>
 </ol>
 <h2>Build with Maven</h2>
@@ -387,25 +377,27 @@ All of the stable version you want from [the xwalk_core_library](https://downloa
 &lt;/dependency&gt;</code></pre>
 <p>If you want to use arm AAR in your maven project, you can set classifier to arm:</p>
 <pre><code>&lt;classifier&gt;arm&lt;/classifier&gt;</code></pre>
+<p>Maven will download the AARs automatically into project repository:</p>
+<pre><code>~/.m2/repository/</code></pre>
 </li>
-<li><p>Support multiple APK</p>
+<li><p>Support multiple APKs</p>
 <ul>
-<li><p>Build different apk using &#39;Build profile&#39;</p>
+<li><p>Build different APKs using &#39;Build profile&#39;</p>
 <p>A Build profile is a set of configuration values which can be used to set or override default values of Maven build.</p>
-<pre><code>&lt;profile&gt;
-    &lt;id&gt;x86&lt;/id&gt;
-&lt;profile&gt;</code></pre>
+<pre><code> &lt;profile&gt;
+   &lt;id&gt;x86&lt;/id&gt;
+ &lt;/profile&gt;</code></pre>
 <p>Execute the following mvn command. Pass the profile name as argument using -P option.</p>
-<pre><code>$ mvn install -Px86</code></pre>
+<pre><code> $ mvn install -Px86</code></pre>
 </li>
 <li><p>Update manifest versioncode and versionname. Refer to <a href="http://stackoverflow.com/questions/10803088/how-do-i-change-my-androidmanifest-as-its-being-packaged-by-maven">stackoverflow</a></p>
 <p>android-maven-plugin support resource filtering to update manifest.</p>
 <p>Modify AndroidManifest.xml:</p>
-<pre><code> &lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-   package=&quot;com.example.xwalkEmbedd&quot;
-   android:versionCode=&quot;${app.version.code}&quot;
-   android:versionName=&quot;${app.version.name}&quot;  &gt;</code></pre>
-<p>Set versioncode and versionname: </p>
+<pre><code>&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+  package=&quot;com.example.xwalkEmbedd&quot;
+  android:versionCode=&quot;${app.version.code}&quot;
+  android:versionName=&quot;${app.version.name}&quot;  &gt;</code></pre>
+<p>Set versioncode and versionname.</p>
 <p>arm profile:</p>
 <pre><code>&lt;app.version.code&gt;1.0.0.2&lt;/app.version.code&gt;
 &lt;app.version.name&gt;1.0.0-SNAPSHOT&lt;/app.version.name&gt;</code></pre>
@@ -414,32 +406,31 @@ All of the stable version you want from [the xwalk_core_library](https://downloa
 &lt;app.version.name&gt;1.0.0-SNAPSHOT&lt;/app.version.name&gt;</code></pre>
 <p>Filter manifest and put filtered file in target/filtered-manifest:</p>
 <pre><code>&lt;resource&gt;
-   &lt;directory&gt;${project.basedir}&lt;/directory&gt;
-   &lt;filtering&gt;true&lt;/filtering&gt;
-   &lt;targetPath&gt;${project.build.directory}/filtered-manifest&lt;/targetPath&gt;
-   &lt;includes&gt;
-     &lt;include&gt;src/main/AndroidManifest.xml&lt;/include&gt;
-   &lt;/includes&gt;
+  &lt;directory&gt;${project.basedir}&lt;/directory&gt;
+  &lt;filtering&gt;true&lt;/filtering&gt;
+  &lt;targetPath&gt;${project.build.directory}/filtered-manifest&lt;/targetPath&gt;
+  &lt;includes&gt;
+    &lt;include&gt;src/main/AndroidManifest.xml&lt;/include&gt;
+  &lt;/includes&gt;
 &lt;/resource&gt;
 ...
 &lt;plugins&gt;
- &lt;plugin&gt;
-   &lt;groupId&gt;com.jayway.maven.plugins.android.generation2&lt;/groupId&gt;
-   &lt;artifactId&gt;android-maven-plugin&lt;/artifactId&gt;
-   &lt;extensions&gt;true&lt;/extensions&gt;
-   &lt;configuration&gt;
-     &lt;undeployBeforeDeploy&gt;true&lt;/undeployBeforeDeploy&gt;
-     &lt;!-- tell build process to use filtered manifest --&gt;
-     &lt;androidManifestFile&gt;${project.build.directory}/src/main/filtered-manifest/AndroidManifest.xml&lt;/androidManifestFile&gt;
-   &lt;/configuration&gt;
- &lt;/plugin&gt;
-...</code></pre>
+  &lt;plugin&gt;
+    &lt;groupId&gt;com.jayway.maven.plugins.android.generation2&lt;/groupId&gt;
+    &lt;artifactId&gt;android-maven-plugin&lt;/artifactId&gt;
+    &lt;extensions&gt;true&lt;/extensions&gt;
+    &lt;configuration&gt;
+      &lt;undeployBeforeDeploy&gt;true&lt;/undeployBeforeDeploy&gt;
+      &lt;!-- tell build process to use filtered manifest --&gt;
+      &lt;androidManifestFile&gt;${project.build.directory}/src/main/filtered-manifest/AndroidManifest.xml&lt;/androidManifestFile&gt;
+    &lt;/configuration&gt;
+  &lt;/plugin&gt;
+  ...</code></pre>
 </li>
 <li><p>Output different name to apk:</p>
-<pre><code>&lt;finalName&gt;${project.artifactId}-${project.version}-${profile-id}&lt;/finalName&gt;
-
-&lt;profile-id&gt;x86&lt;/profile-id&gt;
-&lt;profile-id&gt;arm&lt;/profile-id&gt;</code></pre>
+<pre><code> &lt;finalName&gt;${project.artifactId}-${project.version}-${profile-id}&lt;/finalName&gt;
+ &lt;profile-id&gt;x86&lt;/profile-id&gt;
+ &lt;profile-id&gt;arm&lt;/profile-id&gt;</code></pre>
 </li>
 </ul>
 </li>
@@ -451,7 +442,7 @@ $ mvn install -Parm</code></pre>
 <h2>Samples</h2>
 <p>We have created two sample applications demonstrating Gradle and Maven to get you started:  <a href="/documentation/samples/AAR-Sample.tar.gz">AAR-Sample.tar.gz</a>. </p>
 <p>After downloading, unzip it from the command line:</p>
-<pre><code class="language-sh">$ tar -xzvf AAR-Sample.tar.gz</code></pre>
+<pre><code>$ tar -xzvf AAR-Sample.tar.gz</code></pre>
 <p>This will create an <code>AAR-Sample</code> directory with two project sub-directories:</p>
 <p>&nbsp;&nbsp;   \xwalkEmbed-Gradle &ndash; An example using multiple architecture AAR with Gradle.<br />
 &nbsp;&nbsp;   \xwalkEmbed-Maven &ndash; An example using classifier AAR with Maven.</p>
