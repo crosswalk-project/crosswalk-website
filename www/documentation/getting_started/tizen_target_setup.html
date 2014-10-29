@@ -342,7 +342,9 @@
 <li><p>If you are using Intel integrated graphics, you need to force VMware to use 3D acceleration. Append a line to the <code>.vmx</code> file associated with this VM:</p>
 <pre><code>echo &#39;mks.gl.allowBlacklistedDrivers = &quot;TRUE&quot;&#39; &gt;&gt; ~/.vmware/Tizen-IVI/Tizen-IVI.vmx</code></pre>
 </li>
-<li><p>OpenVMware Workstation again, and start the configured VM from the front screen by right-clicking on its name (<strong>Tizen-IVI</strong>) and selecting <em>Play Virtual Machine</em>.</p>
+<li><p>If you are using VMware Player on a Linux host, you will also need to enable TF2-S3TC Texture Support in DRI. The problem is described <a href="http://dri.freedesktop.org/wiki/S3TC">here</a>. It can be turned on with local <code>.drirc</code> file. On Ubuntu one can install the <code>driconf</code> application and change that setting from the GUI.</p>
+</li>
+<li><p>Open VMware Workstation again, and start the configured VM from the front screen by right-clicking on its name (<strong>Tizen-IVI</strong>) and selecting <em>Play Virtual Machine</em>.</p>
 </li>
 <li><p>The first time the virtual machine boots, you will be prompted to download the VMware Tools for Linux. Don&#39;t install these for now.</p>
 </li>
