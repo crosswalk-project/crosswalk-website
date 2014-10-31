@@ -1,23 +1,23 @@
 # DemoExpress
 
-**DemoExpress** is a set of samples to show [Crosswalk](https://crosswalk-project.org/) advantages from comprehensive APIs support, such as W3C standard APIs, embedded APIs, Cordova APIs and web runtime features. It collects most popular Web samples for both Tizen and Android, see [released samples](https://github.com/crosswalk-project/demo-express#introduction).
+**DemoExpress** is a set of samples that show the Crosswalk advantage by having comprehensive API support: W3C standard APIs, embedded APIs, Cordova APIs and web runtime features. It includes popular web samples from Tizen and Android.
 
-<img class='sample-thumb' src='/assets/sampapp-icon-demoexpress.jpg'>
+<img class='sample-thumb' src='/assets/sampapp-icon-demoexpress.png'>
 
-Get more DemoExpress snapshots [HERE](https://github.com/crosswalk-project/demo-express/tree/master/image).
+View more [DemoExpress snapshots](https://github.com/crosswalk-project/demo-express/tree/master/image).  View the [DemoExpress overview on github](https://github.com/crosswalk-project/demo-express#introduction).
 
 ## Building
 
-Follow the instruction to build DemoExpress based on Crosswalk: https://github.com/crosswalk-project/demo-express#building
+Details for building the DemoExpress apps for Crosswalk can be found on the [DemoExpress github page](https://github.com/crosswalk-project/demo-express#building)
 
 ## Download
 
-Download the latest release based on Crosswalk 10 (share mode):
+Download the latest release based on Crosswalk 10 (shared mode):
 
 *   Android: [apk_x86](https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-x86.apk), [apk_arm](https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-arm.apk), [apk_arm_cordova](https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-arm-cordova.apk)
 *   Tizen: [wgt_x86](https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-x86.wgt)
  
-View all downloads at [DemoExpress release versions](https://github.com/crosswalk-project/demo-express/releases)
+View [all available DemoExpress downloads](https://github.com/crosswalk-project/demo-express/releases)
 
 ## Contact
 
