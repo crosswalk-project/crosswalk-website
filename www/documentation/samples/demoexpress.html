@@ -30,15 +30,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="WebGL" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/samples/webgl" />
+    <meta property="og:title" content="DemoExpress" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/samples/demoexpress" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/samples/webgl" />
-    <meta name="twitter:title" content="WebGL" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/samples/demoexpress" />
+    <meta name="twitter:title" content="DemoExpress" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -193,7 +193,7 @@
           
             
             
-            <li class="article-item  nav-item--active">
+            <li class="article-item ">
               <a class="article-link" href="/documentation/samples/webgl.html">WebGL</a>
             </li>
           
@@ -205,7 +205,7 @@
           
             
             
-            <li class="article-item ">
+            <li class="article-item  nav-item--active">
               <a class="article-link" href="/documentation/samples/demoexpress.html">DemoExpress</a>
             </li>
           
@@ -241,35 +241,21 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>WebGL sample</h1>
-<p><img class='sample-thumb' src='/assets/sampapp-icon-webgl.png'></p>
-<p>Ah, the power of WebGL. This sample provides a quick example of integrating ThreeJS into a Crosswalk application.</p>
-<p>This application is part of the
-<a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz">Crosswalk samples download</a>.</p>
-<p>The steps for setting up an environment for Crosswalk are explained
-in detail in the <a href="/documentation/getting_started.html">Getting started</a>
-tutorial.</p>
-<h2>WebGL on Android</h2>
-<p>Once you&#39;ve set up the Crosswalk Android packaging dependencies,
-follow the steps in <a href="/documentation/getting_started/run_on_android.html">Run on Android</a>
-to install and run the WebGL sample on Android.</p>
-<p>The quick version is that you can build the WebGL apk with:</p>
-<pre><code class="language-sh">&gt; cd &lt;xwalk_app_template directory&gt;
-&gt; python make_apk.py --package=org.crosswalkproject.example \
-    --manifest=&lt;path to crosswalk-samples&gt;/webgl/manifest.json</code></pre>
-<p><code>&lt;xwalk_app_template directory&gt;</code> refers to the directory where you
-downloaded and unpacked Crosswalk Android.</p>
-<p>Then install the apk file on Android:</p>
-<pre><code class="language-sh">&gt; adb install WebGL*.apk</code></pre>
-<h2>WebGL on Tizen</h2>
-<p>Follow the steps in
-<a href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a>
-to install and run the WebGL sample on Tizen.</p>
-<p>Or here&#39;s the quick version:</p>
-<pre><code class="language-sh">sdb push &lt;path to crosswalk-samples&gt;/webgl /home/developer/webgl
-sdb shell &quot;xwalk --usegl=osmesa /home/developer/webgl/&quot;</code></pre>
-<p>Note that you pass the <code>--usegl=osmesa</code> option to enable WebGL on
-Tizen Crosswalk.</p>
+  <h1>DemoExpress</h1>
+<p><strong>DemoExpress</strong> is a set of samples that show the Crosswalk advantage by having comprehensive API support: W3C standard APIs, embedded APIs, Cordova APIs and web runtime features. It includes popular web samples from Tizen and Android.</p>
+<p><img class='sample-thumb' src='/assets/sampapp-icon-demoexpress.png'></p>
+<p>View more <a href="https://github.com/crosswalk-project/demo-express/tree/master/image">DemoExpress snapshots</a>.  View the <a href="https://github.com/crosswalk-project/demo-express#introduction">DemoExpress overview on github</a>.</p>
+<h2>Building</h2>
+<p>Details for building the DemoExpress apps for Crosswalk can be found on the <a href="https://github.com/crosswalk-project/demo-express#building">DemoExpress github page</a></p>
+<h2>Download</h2>
+<p>Download the latest release based on Crosswalk 10 (shared mode):</p>
+<ul>
+<li>Android: <a href="https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-x86.apk">apk_x86</a>, <a href="https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-arm.apk">apk_arm</a>, <a href="https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-arm-cordova.apk">apk_arm_cordova</a></li>
+<li>Tizen: <a href="https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-x86.wgt">wgt_x86</a></li>
+</ul>
+<p>View <a href="https://github.com/crosswalk-project/demo-express/releases">all available DemoExpress downloads</a></p>
+<h2>Contact</h2>
+<p>Feel free to send us feedback via <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-help">crosswalk-help</a> mailing list.</p>
 
   <footer class="article-next">
     
@@ -284,19 +270,13 @@ Tizen Crosswalk.</p>
   
     
     
-      
+  
+    
     
   
     
     
       
-      <a href="/documentation/samples/simd.html" class="article-promo well">
-        <em>What’s next?</em>
-        <h3>SIMD</h3>
-      </a>
-    
-  
-    
     
   
 

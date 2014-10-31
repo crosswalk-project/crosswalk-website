@@ -10,5 +10,8 @@
   },
   "simd": {
     "title": "SIMD"
+  },
+  "demoexpress": {
+    "title": "DemoExpress"
   }
 }
