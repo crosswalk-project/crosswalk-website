@@ -278,17 +278,17 @@ These steps assume that you created your project using the Cordova command line 
 
   <li>
     <p>Now configure your project to use a reference to the project in the crosswalk-cordova-android bundle. Click <em>Add...</em> to display the <em>Project Selection</em> dialog. First add the <strong>Cordova</strong> project, then the <strong>xwalk_core_library</strong> project.</p>
-
     <p>The final result should resemble this:</p>
 
     <img src="/assets/cordova-project-refs-adt.png">
+
   </li>
 
-  <li>
-    <p>Crosswalk requires a couple of extra permissions which are not inserted by the Cordova application generator. Add these manually by editing <code>AndroidManifest.xml</code> in your project, adding these lines just before the existing <code>&lt;application&gt;</code> element:</p>
+  <li><p>Crosswalk requires a couple of extra permissions which are not inserted by the Cordova application generator. Add these manually by editing <code>AndroidManifest.xml</code> in your project, adding these lines just before the existing <code>&lt;application&gt;</code> element:</p>
 
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<pre><code>&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;</code></pre>
+
   </li>
 
   <li>
