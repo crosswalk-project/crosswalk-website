@@ -69,16 +69,18 @@
     <% } else { %>
       <%- yield %>
     <% } %>
+
+    <hr class="footer-divider" />
     <footer class="footer">
       <div class="container">
         <div class="row">
-          <div class="grid-1-of-3">
+          <div class="grid-1-of-2">
             <a href="http://twitter.com/<%= social.twitter %>" class="logo">
-              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image" style="max-width:300px; vertical-align:top" />
             </a>
           </div>
-          <div class="grid-2-of-3">
-            Follow <a href="http://twitter.com/<%= social.twitter %>">@<%= social.twitter %> on Twitter</a> for hybrid app development&nbsp;resources.
+          <div>
+            Follow  <a href="http://twitter.com/<%= social.twitter %>">@<%= social.twitter %> on Twitter</a> for hybrid app development&nbsp;resources.
             <!--
              <form class="form">
               <fieldset class="form-buttonGroup">
@@ -89,30 +91,28 @@
           </div>
         </div>
         <div class="row">
-          <ul class="footer-block grid-1-of-3">
-            <li><a href="/documentation">Documentation</a></li>
-            <li><a href="/contribute">Contribute</a></li>
-            <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
-            <li><a href="https://github.com/crosswalk-project">GitHub</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/sitemap">Sitemap</a></li>
-          </ul>
-          <div class="footer-block grid-1-of-3">
-            <ul class="article-list">
-            <% for (slug in public.blog._data) { %>
-              <% var article = public.blog._data[slug] %>
-                <li class="article-item">
-                  <h5 class="article-title"><a href="/blog/"><%- article.title %></a></h5>
-                  <span class="article-meta"><time class="js-vagueTime" datetime="<%- new Date(article.date).toUTCString() %>"><%- article.date %></time></span>
-                </li>
-                <% break %>
-            <% } %>
-          </ul>
+          <div class="grid-1-of-2">
+            <ul class="footer-block grid-1-of-2">
+              <li><a href="/documentation">Documentation</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+              <li><a href="/contribute">Contribute</a></li>
+            </ul>
+            <ul>
+              <li><a href="/documentation/downloads">Downloads</a></li>
+              <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki">Wiki</a>
+              <li><a href="https://github.com/crosswalk-project">GitHub source</a></li>
+              <li><a href="/sitemap">Sitemap</a></li>
+            </ul>
           </div>
-          <div class="footer-block grid-1-of-3">
-            <!-- <div class="well">
-              <p>The updated Intel® XDK is here! Download it now for free. <a href="#">#HTML5</a> <a href="#">http://intel.ly/1mn7fKY</a> <a href="#">pic.twitter.com/3bcWVgZs4a</a></p>
-            </div> -->
+          <div>
+              <% for (slug in public.blog._data) { %>
+              <% var article = public.blog._data[slug] %>
+                <b><a href="/blog"><%- article.title %></a></b><br/>
+                &nbsp;<span ><time class="js-vagueTime" datetime="<%- new Date(article.date).toUTCString() %>"><%- article.date %></time></span><br/>
+              <% break %>
+              <% } %>
+              <br/><b><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></b></li>
           </div>
         </div>
         <div class="row">

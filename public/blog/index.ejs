@@ -6,24 +6,26 @@
     <ul class="article-list">
       <% for (slug in public.blog._data) { %>
         <% var article = public.blog._data[slug] %>
-        <li class="article-item <%= article.url ? 'article-item--external' : '' %>">
-          <header class="article-header">
-            <h2 class="article-title"><a href="<%= article.url || slug + '.html' %>"><%- article.title %></a></h2>
-            <span class="article-meta">
-              <time class="article-time js-vagueTime" datetime="<%- new Date(article.date) %>"><%- new Date(article.date).toUTCString() %></time>
-              <% if(article.author) { %> by <span class="article-author"><%= article.author %></span><% } %>
-            </span>
-          </header>
-          <% if(typeof article.url === 'undefined') { %>
+        <% if (article.title) { %>
+          <li class="article-item <%= article.url ? 'article-item--external' : '' %>">
+            <header class="article-header">
+              <h2 class="article-title"><a href="<%= article.url || slug + '.html' %>"><%- article.title %></a></h2>
+              <span class="article-meta">
+                <time class="article-time js-vagueTime" datetime="<%- new Date(article.date) %>"><%- new Date(article.date).toUTCString() %></time>
+                <% if(article.author) { %> by <span class="article-author"><%= article.author %></span><% } %>
+              </span>
+            </header>
+            <% if(typeof article.url === 'undefined') { %>
             <div class="article-excerpt">
               <p><%-: partial(slug).replace(/<[^>]*>/g, "") | truncate_words: 50 %> <a href="<%= slug %>.html" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>
             </div>
-          <% } else if(article.desc) { %>
+            <% } else if(article.desc) { %>
             <div class="article-excerpt">
               <p><%- article.desc %> <a href="<%= article.url %>" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>
             </div>
-          <% } %>
-        </li>
+            <% } %>
+          </li>
+        <% } %>
       <% } %>
     </ul>
   </div>
