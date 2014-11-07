@@ -159,17 +159,3 @@ a.button--large {
   }
 }
 
-#main-downloads-button {
-  border: solid #1ebcba 4px;
-  background: none;
-  padding-top: 15px;
-  padding-bottom: 14px;
-  &:hover,
-  &:focus {
-    border-color: $color-primary-darker;
-  }
-  &:active {
-    background: $color-primary-darker;
-  }
-
-}
