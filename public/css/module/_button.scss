@@ -111,7 +111,6 @@ a.button--large {
   font-size: modular-scale($base-font-size, 0, $base-ratio);
   font-weight: 400;
   line-height: $base-line-height;
-  text-transform: lowercase;
 
   padding-top: modular-scale($base-font-size, 0, $base-ratio);
   padding-bottom: modular-scale($base-font-size, 0, $base-ratio);
@@ -152,8 +151,25 @@ a.button--large {
 // get started and "follow crosswalk on twitter"
 #hero-button-group {
   clear: both;
+  
+  .button,
+  .button-follower {
+    margin-top: 2px;
+    max-width: 300px;
+  }
 }
-#main-get-started-button,
-#main-follow-twitter-button {
-  max-width: 300px;
+
+#main-downloads-button {
+  border: solid #1ebcba 4px;
+  background: none;
+  padding-top: 15px;
+  padding-bottom: 14px;
+  &:hover,
+  &:focus {
+    border-color: $color-primary-darker;
+  }
+  &:active {
+    background: $color-primary-darker;
+  }
+
 }
