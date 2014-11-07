@@ -154,8 +154,28 @@ a.button--large {
   
   .button,
   .button-follower {
-    margin-top: 2px;
-    max-width: 300px;
+    max-width: 240px;
+  }
+  .button,
+  .button-visited {
+      padding: 14px 60px 14px 60px;
+      margin: 8px;
+      background: $color-primary;
+      
+      border: 2px solid #3e8378;
+      border-radius: 3px;
+      box-shadow: 0 0 0 2px $color-primary, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+      &:hover,
+      &:focus {
+          background: $color-primary-dark;
+          color: $color-background;
+          outline: 0;
+      }
+      &:active {
+          background: $color-primary-darker;
+          color: $color-background;
+      }
+
   }
 }
 
