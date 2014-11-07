@@ -1,3 +1,15 @@
+// Footer divider
+//
+// A site-wide footer divider.
+.footer-divider {
+  width: 80%; 
+  height:1px; 
+  border:none; 
+  color:#E9F0EF; 
+  background-color:#E9F0EF; 
+  margin-top:50px;
+}
+
 // Footer
 //
 // A site-wide footer.
@@ -9,8 +21,8 @@
 //
 // Styleguide 3.10.1.
 .footer {
-  padding-top: modular-scale($base-font-size, 12, $base-ratio);
-  padding-bottom: modular-scale($base-font-size, 5, $base-ratio);
+  padding-top: modular-scale($base-font-size, 4, $base-ratio);
+  padding-bottom: modular-scale($base-font-size, 2, $base-ratio);
   .row {
     margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
   }
