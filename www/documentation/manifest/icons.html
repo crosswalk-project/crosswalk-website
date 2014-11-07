@@ -266,7 +266,8 @@
 
 <article class="article article--hasToC">
   <h1>Icons</h1>
-<p>The <code>icons</code> field specifies one or more icon graphics which visually represent the application. For example, the icon may be used by a task switcher, in a notifications area, or in an application list on the device. The image below shows the icon for the <em>townxelliot media player</em> being used in the <em>application list</em> (left) and <em>recent apps</em> (right) contexts on Android:</p>
+<p>The <code>icons</code> field specifies one or more icon graphics which visually represent the application. </p>
+<p>An icon may be used by a task switcher, in a notifications area, or in an application list on the device. The image below shows the icon for the <em>townxelliot media player</em> being used in the <em>application list</em> (left) and <em>recent apps</em> (right) contexts on Android:</p>
 <p><img src="/assets/manifest-icon-contexts.png" alt="Manifest icon used in &quot;application list&quot; and &quot;recent apps&quot; context on Android"></p>
 <p>There are two variants of the <code>icons</code> field, depending on which version of Crosswalk you are using:</p>
 <ul>
@@ -320,7 +321,7 @@
 <p>For example, an image file may be 128x128 pixels in size; but the manifest may state that this image can be used for 128x128 or 256x256 pixel icons. When used as a 256x256 pixel icon, the image file will be scaled up (2x) to fit the required icon size (which may result in some degradation in its appearance).</p>
 <h3>density</h3>
 <p>The <code>density</code> property specifies which screen densities an icon should be used for. Coupled with the <code>sizes</code> property, it makes it possible to adjust which image file is delivered for a particular icon size at a given screen density.</p>
-<p>If you are unfamiliar with the concept of screen density, see the <a href="#screens/screen_measurements">screen measurements page</a>.</p>
+<p>If you are unfamiliar with the concept of screen density, see the <a href="/documentation/screens/screen_measurements">screen measurements page</a>.</p>
 <p>The property&#39;s value is a float representing the screen density for which the image is suitable, in dots per pixel (dppx). For example:</p>
 <ul>
 <li><code>&quot;density&quot;: &quot;2&quot;</code>: this image is suitable for screens with a density of 2dppx.</li>
@@ -381,8 +382,8 @@
 <h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
 <p>Rather than affecting the Crosswalk runtime on Android directly, the <code>icons</code> field affects how an application is packaged by <a href="/documentation/getting_started/run_on_android.html"><code>make_apk.py</code></a>.</p>
-<h3>Crosswalk 1-7</h3>
-<p>If the <a href="/documentation/manifest/icons"><code>icons</code> field</a> contains multiple keys, the <code>make_apk.py</code> script will map the corresponding icon files to <a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a> as follows:</p>
+<h3><a id="Crosswalk-1-7"></a>Crosswalk 1-7</h3>
+<p>If the <a href="/documentation/manifest/icons.html"><code>icons</code> field</a> contains multiple keys, the <code>make_apk.py</code> script will map the corresponding icon files to <a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a> as follows:</p>
 <table>
 <thead>
 <tr>
