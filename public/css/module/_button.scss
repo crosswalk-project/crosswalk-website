@@ -98,35 +98,6 @@ a.button--large {
   font-size: modular-scale($base-font-size, 2, $base-ratio);
 }
 
-// Button Follower
-//
-// A secondary option to a standard button.
-//
-// Markup:
-// <a href="#" class="button-follower">You can always join later</a>
-//
-// Styleguide 3.1.2.
-.button-follower,
-.button-follower:visited {
-  font-size: modular-scale($base-font-size, 0, $base-ratio);
-  font-weight: 400;
-  line-height: $base-line-height;
-
-  padding-top: modular-scale($base-font-size, 0, $base-ratio);
-  padding-bottom: modular-scale($base-font-size, 0, $base-ratio);
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  background: none;
-
-
-  @include media($mid) {
-    text-align: left;
-    width: auto;
-  }
-}
-
-
 // Button Group
 //
 // Multiple buttons grouped together
@@ -151,31 +122,42 @@ a.button--large {
 // get started and "follow crosswalk on twitter"
 #hero-button-group {
   clear: both;
-  
-  .button,
-  .button-follower {
-    max-width: 240px;
-  }
-  .button,
-  .button-visited {
-      padding: 14px 60px 14px 60px;
-      margin: 8px;
-      background: $color-primary;
-      
-      border: 2px solid #3e8378;
-      border-radius: 3px;
-      box-shadow: 0 0 0 2px $color-primary, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-      &:hover,
-      &:focus {
-          background: $color-primary-dark;
-          color: $color-background;
-          outline: 0;
-      }
-      &:active {
-          background: $color-primary-darker;
-          color: $color-background;
-      }
+}
 
-  }
+#main-get-started-button,
+#main-downloads-button {
+  max-width: 204px;
+  padding: 14px 60px 14px 60px;
+  margin: 8px;
+}
+
+#main-follow-twitter-button,
+#main-follow-twitter-button:visited {
+    max-width: 204px;
+    margin: 20px 0px 20px 0px;
+    padding: 0px;
+    font-size: modular-scale($base-font-size, -1, $base-ratio);
+    font-weight: 400;
+    line-height: $base-line-height;
+
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: none;
+
+    @include media($mid) {
+        margin: 20px 20px 20px 5px;
+        max-width: none;
+        text-align: left;
+        width: auto;
+    }
+
+    &:hover,
+    &:focus {
+        color: darken($color-gray, 7.5%);
+    }
+    &:active {
+        color: darken($color-gray, 15%);
+    }
 }
 
