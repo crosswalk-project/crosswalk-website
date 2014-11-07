@@ -172,7 +172,7 @@ The [Intel XDK](http://xdk-software.intel.com/) is a development environment (ID
 
 No, they are complementary. If you intend to build for multiple platforms (beyond Android and Tizen), need extensive documentation and a very mature community, Cordova may be a better choice. If you are interested in hardware-accelerated WebGL support and bleeding edge HTML5 features, Crosswalk may be a better choice.
 
-Having said this, you can get the best of both worlds by [using Cordova APIs from Crosswalk](http://localhost/documentation/cordova.html) if you wish.
+Having said this, you can get the best of both worlds by [using Cordova APIs from Crosswalk](/documentation/cordova.html) if you wish.
 
 ### Does Crosswalk for Android use the Android webview?
 
@@ -180,7 +180,7 @@ No. Crosswalk is effectively a modified version of Chromium, the open source bas
 
 ### Why do I need Crosswalk now that Android (KitKat and later) has a Chrome-based webview?
 
-Crosswalk provides access to the [full range of modern web APIs](https://crosswalk-project.org/documentation/apis/web_apis.html) supported by Chrome. By contrast, the Android Chrome-based web view [lacks some features](https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android) which are available in Chrome on Android.
+Crosswalk provides access to the [full range of modern web APIs](/documentation/apis/web_apis.html) supported by Chrome. By contrast, the Android Chrome-based web view [lacks some features](https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android) which are available in Chrome on Android.
 
 On top of this, Crosswalk adds extra features which are *not* available in either Chrome or the Android webview, such as experimental support for [SIMD](https://01.org/blogs/tlcounts/2014/bringing-simd-javascript) and support for the [Presentation API](https://github.com/crosswalk-project/crosswalk-website/wiki/presentation-api-manual).
 

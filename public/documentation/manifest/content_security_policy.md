@@ -1,8 +1,10 @@
 # Content security policy
 
-The content security policy field specifies which types of content can be loaded and executed by the application. If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via `<script>`, `<object>`, `<embed>` and `<applet>` elements).
+The content security policy field specifies which types of content can be loaded and executed by the application. 
 
 **For Crosswalk 4-7, this field was called `content_security_policy`. The name was changed to `csp` for Crosswalk 8+.**
+
+If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via `<script>`, `<object>`, `<embed>` and `<applet>` elements).
 
 The suggested default value to provide minimal protection (Crosswalk 4-7) is:
 
@@ -36,7 +38,7 @@ If you do decide to tighten your application's security and set a content securi
 
         "content_security_policy": "script-src 'self' https://cdn.crosswalk-project.org/; object-src 'self'"
 
-    This only allows scripts to be downloaded from the application itself or from https://cdn.crosswalk-project.org/. Note that you can only use arbitrary URLs with the "https://" scheme; or "http://" URLs which refer to "localhost" or "127.0.0.1". The latter may be useful if you have your own server running on the same machine as the application.
+    This only allows scripts to be downloaded from the application itself or from `https:\/\/cdn.crosswalk-project.org/`. Note that you can only use arbitrary URLs with the "https://" scheme; or "http://" URLs which refer to "localhost" or "127.0.0.1". The latter may be useful if you have your own server running on the same machine as the application.
 
 *   **Enable the use of `eval()` inside scripts**
 

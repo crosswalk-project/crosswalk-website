@@ -266,8 +266,9 @@
 
 <article class="article article--hasToC">
   <h1>Content security policy</h1>
-<p>The content security policy field specifies which types of content can be loaded and executed by the application. If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via <code>&lt;script&gt;</code>, <code>&lt;object&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;applet&gt;</code> elements).</p>
+<p>The content security policy field specifies which types of content can be loaded and executed by the application. </p>
 <p><strong>For Crosswalk 4-7, this field was called <code>content_security_policy</code>. The name was changed to <code>csp</code> for Crosswalk 8+.</strong></p>
+<p>If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via <code>&lt;script&gt;</code>, <code>&lt;object&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;applet&gt;</code> elements).</p>
 <p>The suggested default value to provide minimal protection (Crosswalk 4-7) is:</p>
 <pre><code>&quot;content_security_policy&quot;: &quot;script-src &#39;self&#39;; object-src &#39;self&#39;&quot;</code></pre>
 <p>For Crosswalk 8+, the value is the same, but the field name is different:</p>
@@ -285,7 +286,7 @@
 <p>At the same time, you may want to tighten Crosswalk&#39;s security to restrict the application to loading scripts <em>only</em> from that domain and from the app. (The default Crosswalk configuration allows loading scripts from any remote host.)</p>
 <p>In these cases, you can explicitly specify the CSP, whitelisting resources from the application itself and from known domains:</p>
 <pre><code>&quot;content_security_policy&quot;: &quot;script-src &#39;self&#39; https://cdn.crosswalk-project.org/; object-src &#39;self&#39;&quot;</code></pre>
-<p>This only allows scripts to be downloaded from the application itself or from <a href="https://cdn.crosswalk-project.org/">https://cdn.crosswalk-project.org/</a>. Note that you can only use arbitrary URLs with the &quot;https://&quot; scheme; or &quot;http://&quot; URLs which refer to &quot;localhost&quot; or &quot;127.0.0.1&quot;. The latter may be useful if you have your own server running on the same machine as the application.</p>
+<p>This only allows scripts to be downloaded from the application itself or from <code>https:\/\/cdn.crosswalk-project.org/</code>. Note that you can only use arbitrary URLs with the &quot;https://&quot; scheme; or &quot;http://&quot; URLs which refer to &quot;localhost&quot; or &quot;127.0.0.1&quot;. The latter may be useful if you have your own server running on the same machine as the application.</p>
 </li>
 <li><p><strong>Enable the use of <code>eval()</code> inside scripts</strong></p>
 <p>The following CSP (recommended above as the minimum policy):</p>
