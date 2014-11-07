@@ -896,7 +896,7 @@ ManifestDisplay.prototype.selectCrosswalkPlatform = function (platform) {
 
 // MAIN
 // asyncJsonGet() is defined in utils.js
-asyncJsonGet('manifest-fields.json', function (err, manifestFields) {
+asyncJsonGet('manifest/manifest-fields.json', function (err, manifestFields) {
   var manifestDiv = document.querySelector('[data-role="manifest-description"]');
   manifestDiv.classList.remove('hidden');
 
