@@ -72,7 +72,7 @@ For example, an image file may be 128x128 pixels in size; but the manifest may s
 
 The `density` property specifies which screen densities an icon should be used for. Coupled with the `sizes` property, it makes it possible to adjust which image file is delivered for a particular icon size at a given screen density.
 
-If you are unfamiliar with the concept of screen density, see the [screen measurements page](/documentation/screens/screen_measurements).
+If you are unfamiliar with the concept of screen density, see the [screen measurements page](/documentation/screens/screen_measurements.html).
 
 The property's value is a float representing the screen density for which the image is suitable, in dots per pixel (dppx). For example:
 
@@ -148,7 +148,7 @@ Rather than affecting the Crosswalk runtime on Android directly, the `icons` fie
 
 ### <a id="Crosswalk-1-7"></a>Crosswalk 1-7
 
-If the <a href="/documentation/manifest/icons.html"><code>icons</code> field</a> contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
+If the <code>icons</code> field contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
 
 |Icon key range...|`make_apk.py` copies the icon file to...|
 |:---------------:|----------------------------------------|
