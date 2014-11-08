@@ -72,10 +72,11 @@ blockquote,
       float: left;
       margin-right: $gutter;
       border-radius: $base-border-radius;
-      max-width: 3em;
+      max-width: 80px;
       margin-bottom: $base-line-height * 1em;
       display: block;
       // margin: 0 auto;
+      vertical-align: middle;
     }
   }
 }
