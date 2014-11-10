@@ -314,13 +314,13 @@ All of the stable version you want from [the xwalk_core_library](https://downloa
 <li><p>The reference to maven repo in build.gradle will look like:</p>
 <pre><code>Repositories {
     Maven {
-        url ‘https://download.01.org/crosswalk/releases/crosswalk/android/maven2’
+        url &#39;https://download.01.org/crosswalk/releases/crosswalk/android/maven2&#39;
     }
 }</code></pre>
 </li>
 <li><p>The dependency (a reference) to the AAR library will look like (9.38.208.8 is a crosswalk version):</p>
 <pre><code> Dependencies {
-     Compile ‘org.xwalk:xwalk_core_library_beta:9.38.208.8’
+     Compile &#39;org.xwalk:xwalk_core_library_beta:9.38.208.8&#39;
  }</code></pre>
 <p>Gradle places the AAR library in its project directory:</p>
 <p> ~/.gradle/caches/modules-2/files-2.1/</p>
@@ -351,7 +351,7 @@ $ ./gradlew assemblearmv7</code></pre>
 </li>
 </ol>
 <h2>Build with Maven</h2>
-<p>The Maven android plugin have an known issue that it can’t build multiple APK for different architectures automatically. We need to specify x86/arm aar in classifier. You can try to test from <a href="/documentation/samples/AAR-Sample.tar.gz">the sample</a></p>
+<p>The Maven android plugin has a known issue that it can&#39;t build multiple APKs for different architectures automatically. We need to specify x86/arm aar in classifier. You can try to test from <a href="/documentation/samples/AAR-Sample.tar.gz">the sample</a></p>
 <h3>Create Maven Project</h3>
 <ol>
 <li><p>Create Android Project with the Crosswalk webview APIs.</p>

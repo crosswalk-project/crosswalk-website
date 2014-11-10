@@ -1,6 +1,6 @@
 # Developing with Crosswalk AAR
 
-The Crosswalk AAR bundle is the binary distribution of the 'xwalk_core_library' and includes both x86 and armv7 architectures. A developer no longer needs to download the crosswalk-webview bundle manually but can specify a version code using either the Gradle or Maven projects.
+The Crosswalk AAR bundle is the binary distribution of the `xwalk_core_library` and includes both x86 and armv7 architectures. A developer no longer needs to download the crosswalk-webview bundle manually but can specify a version code using either the Gradle or Maven projects.
 
 ## Set up host
 
@@ -32,7 +32,7 @@ Gradle requires JDK version 6 or higher. The JAVA_HOME environment variable must
       [x] SDK Platform
     ```
 
-    Note: if you are using devices with versions of Android later than 4.3, you should also install the 'platform tools', 'build tools' and 'SDK platform' for those versions.
+    Note: if you are using devices with versions of Android later than 4.3, you should also install the `platform tools`, `build tools` and `SDK platform` for those versions.
 
 ### Develop With the Gradle Project
 
@@ -161,7 +161,7 @@ The beta version of maven is available from [the xwalk_core_library_beta](https:
 
 ## Build with Maven
 
-The Maven android plugin have an known issue that it can't build multiple APK for different architectures automatically. We need to specify x86/arm aar in classifier. You can try to test from [the sample](/documentation/samples/AAR-Sample.tar.gz)
+The Maven android plugin has a known issue that it can't build multiple APKs for different architectures automatically. We need to specify x86/arm aar in classifier. You can try to test from [the sample](/documentation/samples/AAR-Sample.tar.gz)
 
 ### Create Maven Project
 
@@ -278,7 +278,7 @@ After downloading, unzip it from the command line:
 
     $ tar -xzvf AAR-Sample.tar.gz
 
-This will create an 'AAR-Sample' directory with two project sub-directories:
+This will create an `AAR-Sample` directory with two project sub-directories:
 
 &nbsp;&nbsp;   \xwalkEmbed-Gradle &ndash; An example using multiple architecture AAR with Gradle.<br />
 &nbsp;&nbsp;   \xwalkEmbed-Maven &ndash; An example using classifier AAR with Maven.
