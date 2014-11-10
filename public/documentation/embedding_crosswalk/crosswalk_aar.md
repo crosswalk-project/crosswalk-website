@@ -113,7 +113,7 @@ The beta version of maven is available from [the xwalk_core_library_beta](https:
     ```
     Repositories {
         Maven {
-            url ‘https://download.01.org/crosswalk/releases/crosswalk/android/maven2’
+            url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2'
         }
     }
     ```
@@ -122,7 +122,7 @@ The beta version of maven is available from [the xwalk_core_library_beta](https:
     
     ```
     Dependencies {
-        Compile ‘org.xwalk:xwalk_core_library_beta:9.38.208.8’
+        Compile 'org.xwalk:xwalk_core_library_beta:9.38.208.8'
     }
     ```
 
@@ -161,7 +161,7 @@ The beta version of maven is available from [the xwalk_core_library_beta](https:
 
 ## Build with Maven
 
-The Maven android plugin have an known issue that it can’t build multiple APK for different architectures automatically. We need to specify x86/arm aar in classifier. You can try to test from [the sample](/documentation/samples/AAR-Sample.tar.gz)
+The Maven android plugin has a known issue that it can't build multiple APKs for different architectures automatically. We need to specify x86/arm aar in classifier. You can try to test from [the sample](/documentation/samples/AAR-Sample.tar.gz)
 
 ### Create Maven Project
 
