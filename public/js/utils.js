@@ -92,7 +92,7 @@ function getXwalkDownloadUrl(OS, arch, channel, version) {
     // will be architecture-independent, so once we move to those we need to
     // remove |arch| from here and the checks below.
     var archIndependent = false;
-    if (OS === 'android') {
+    if (OS === 'android' || OS === 'tizen-ivi') {
         if ((channel === 'stable' && isLaterOrEqualVersion('4.32.76.6', version)) ||
             (channel === 'beta'   && isLaterOrEqualVersion('5.34.104.1', version)) ||
             (channel === 'canary' && isLaterOrEqualVersion('6.34.106.0', version))) {
