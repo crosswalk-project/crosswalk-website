@@ -97,8 +97,8 @@ Then install it into the local maven repository:
     $ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library \
           -Dversion=9.38.207.0 -Dpackaging=aar  -Dfile=crosswalk-9.38.207.0.aar \
           -DgeneratePom=true
-<!--
-All of the stable version you want from [the xwalk_core_library](https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library/).-->
+
+All of the stable version you want from [the xwalk_core_library](https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library/).
 
 The beta version of maven is available from [the xwalk_core_library_beta](https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library_beta/).
 
@@ -156,8 +156,10 @@ The beta version of maven is available from [the xwalk_core_library_beta](https:
 
 5.  Build your project with Gradle, the following commands will build the corresponding arch apk in build/apk directory.
     
-        $ ./gradlew assemblex86
-        $ ./gradlew assemblearmv7
+        $ gradle assemblex86
+        $ gradle assemblearmv7
+
+    Using `$ gradle build` to build both arm and x86 apk at once.
 
 ## Build with Maven
 
@@ -267,8 +269,10 @@ The Maven android plugin has a known issue that it can't build multiple APKs for
 
 5.  Build your project with maven, the following commands will build the corresponding arch apk in target/ directory:
 
-        $ mvn install -Px86
-        $ mvn install -Parm
+        $ mvn clean install -Px86
+        $ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-x86.apk
+        $ mvn clean install -Parm
+        $ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-arm.apk
 
 ## Samples
 
