@@ -38,13 +38,13 @@ Gradle requires JDK version 6 or higher. The JAVA_HOME environment variable must
 
 #### Install Gradle
 
-1.  Download a recent version of the gradle binary (~40MB): [http://www.gradle.org/downloads/](http://www.gradle.org/downloads)
+1.  Download a recent version of the `gradle` binary (~40MB): [http://www.gradle.org/downloads/](http://www.gradle.org/downloads)
 
 2.  Unzip it:
 
         $ unzip gradle-<version>-bin.zip
 
-3.  For convenience, add the gradle binary to your PATH environment variable:
+3.  For convenience, add the `gradle` binary to your PATH environment variable:
 
         $ export PATH=$PATH:<path to gradle>/bin
 
@@ -58,7 +58,7 @@ Gradle requires JDK version 6 or higher. The JAVA_HOME environment variable must
 
         $ tar -zxvf apache-maven-3.2.2-bin.tar.gz
 
-3.  Set the maven enviroment variables to point to the install directory:
+3.  Set the Maven enviroment variables to point to the install directory:
 
         $ M2_HOME=/path/to/apache-maven-3.2.2
         $ export MAVEN_OPTS="-Xms256m -Xmx512m"
@@ -88,19 +88,15 @@ Gradle requires JDK version 6 or higher. The JAVA_HOME environment variable must
 
 ## Crosswalk AAR Version
 
-The AAR remote maven repository is https://download.01.org/crosswalk/releases/crosswalk/android/maven2/. It hosts both stable and beta versions. If you want the canary version you can download it:
+The AAR remote Maven repository is https://download.01.org/crosswalk/releases/crosswalk/android/maven2/. Versions are available for [stable](https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library/) and [beta](https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library_beta/). If you need the canary version you can download it:
 
     $ wget https://download.01.org/crosswalk/releases/crosswalk/android/canary/9.38.207.0/crosswalk-9.38.207.0.aar
 
-Then install it into the local maven repository:
+Then install it into the local Maven repository:
     
     $ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library \
           -Dversion=9.38.207.0 -Dpackaging=aar  -Dfile=crosswalk-9.38.207.0.aar \
           -DgeneratePom=true
-<!--
-All of the stable version you want from [the xwalk_core_library](https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library/).-->
-
-The beta version of maven is available from [the xwalk_core_library_beta](https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library_beta/).
 
 ## Create and Build your Android project with Crosswalk AAR
 
@@ -108,7 +104,7 @@ The beta version of maven is available from [the xwalk_core_library_beta](https:
 
     Refer to the section in the Embedding Crosswalk article called [Add code to integrate the webview](/documentation/embedding_crosswalk.html#Add-code-to-integrate-the-webview).
 
-2.  The reference to maven repo in build.gradle will look like:
+2.  The reference to Maven repo in build.gradle will look like:
     
     ```
     Repositories {
@@ -156,8 +152,10 @@ The beta version of maven is available from [the xwalk_core_library_beta](https:
 
 5.  Build your project with Gradle, the following commands will build the corresponding arch apk in build/apk directory.
     
-        $ ./gradlew assemblex86
-        $ ./gradlew assemblearmv7
+        $ gradle assemblex86
+        $ gradle assemblearmv7
+
+    Use `$ gradle build` to build both arm and x86 APKs at once.
 
 ## Build with Maven
 
@@ -190,7 +188,7 @@ The Maven android plugin has a known issue that it can't build multiple APKs for
           <typr>aar</type>
         </dependency>
 
-    If you want to use arm AAR in your maven project, you can set classifier to arm:
+    If you want to use arm AAR in your Maven project, you can set classifier to arm:
     
         <classifier>arm</classifier>
 
@@ -265,10 +263,12 @@ The Maven android plugin has a known issue that it can't build multiple APKs for
             <profile-id>x86</profile-id>
             <profile-id>arm</profile-id>
 
-5.  Build your project with maven, the following commands will build the corresponding arch apk in target/ directory:
+5.  Build your project with Maven, the following commands will build the corresponding arch apk in target/ directory:
 
-        $ mvn install -Px86
-        $ mvn install -Parm
+        $ mvn clean install -Px86
+        $ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-x86.apk
+        $ mvn clean install -Parm
+        $ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-arm.apk
 
 ## Samples
 
