@@ -29,13 +29,7 @@ For example, this manifest would allow access to the Crosswalk website, or any i
 
     {
       "name": "app name",
-      "description": "a sample description",
-      "version": "1.0.0",
-      "app": {
-        "launch": {
-          "local_path": "index.html"
-        }
-      },
+      "start_url": "index.html",
       "xwalk_hosts": [
         "http://crosswalk-project.org/",
         "http://*.intel.com/"
@@ -52,5 +46,3 @@ Once you've specified the domains which can be accessed by the application, `XML
       }
     }
     xhr.send();
-
-Wrappers for Ajax requests which use XMLHttpRequest underneath (such as jQuery's `$.ajax()`) will also be able to access the domains you specified.

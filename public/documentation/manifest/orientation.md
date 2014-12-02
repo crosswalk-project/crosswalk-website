@@ -6,8 +6,6 @@ An example manifest setting the default orientation to portrait:
 
     {
       "name": "app name",
-      "description": "a sample description",
-      "version": "1.0.0",
       "start_url": "index.html",
       "orientation": "portrait"
     }
@@ -16,8 +14,6 @@ Another example, setting the default orientation to landscape:
 
     {
       "name": "app name",
-      "description": "a sample description",
-      "version": "1.0.0",
       "start_url": "index.html",
       "orientation": "landscape"
     }

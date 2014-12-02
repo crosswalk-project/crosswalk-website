@@ -6,15 +6,9 @@ An icon may be used by a task switcher, in a notifications area, or in an applic
 
 ![Manifest icon used in "application list" and "recent apps" context on Android](/assets/manifest-icon-contexts.png)
 
-There are two variants of the `icons` field, depending on which version of Crosswalk you are using:
+The `icons` field is compatible with the [`icons` field in the W3C manifest specification](http://w3c.github.io/manifest/#icons-member).
 
-*   In Crosswalk 8 or later, the `icons` field is compatible with the [`icons` field in the W3C manifest specification](http://w3c.github.io/manifest/#icons-member).
-
-*   In Crosswalk 1-7, the `icons` field is a non-standard extension, based on the format used in the [manifest for Chromium extensions](https://developer.chrome.com/apps/manifest/icons).
-
-Note that in both cases, this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk on Android](/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk).
-
-## W3C variant (Crosswalk 8)
+Note that this field has no effect when used in a `manifest.json` file [loaded into an embedded Crosswalk on Android](/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk).
 
 The field is a list of icon objects, each of which defines a URL for the icon as a minimum (via a `src` attribute). The icon's `type` attribute can be specified, describing the graphics format of the icon; and the optimal rendering `sizes` and screen pixel `density` for which the icon is intended can also be set.
 
@@ -22,8 +16,6 @@ As an example, here is a simple Crosswalk manifest which specifies three icons: 
 
     {
       "name": "simple_app",
-      "description": "A simple Crosswalk application",
-      "version": "0.0.0.1",
       "icons": [
         {
           "src": "icon_small.png",
@@ -118,110 +110,13 @@ And set the `icons` property in the manifest as:
 
 Note that we don't mention anywhere that `foo_hd.png` is 256x256 raw pixels in size: we just specify that it is suitable for a 128x128 pixel icon on a screen with density of 2dppx.
 
-## Chromium extensions variant (Crosswalk 1-7)
-
-The `icons` field is an object whose keys represent the icon's pixel size (width and height are the same); the value for each key is the path to the appropriate image file, relative to the manifest. For example, here's a manifest with icons at three different sizes:
-
-    {
-      "name": "app name",
-      "description": "a sample description",
-      "version": "1.0.0",
-      "app": {
-        "launch": {
-          "local_path": "index.html"
-        }
-      },
-      "icons": {
-        "16":  "icon16.png",
-        "48":  "icon48.png",
-        "128": "icon128.png"
-      }
-    }
-
-Setting icons for multiple sizes [can affect Android packaging for your application](/documentation/manifest/using_the_manifest.html#Configure-Android-packaging).
-
-As a minimum, the `"128"` key (for a 128x128 pixel image) should be specified. The preferred file format is PNG, but BMP, GIF, ICO, and JPEG formats may also be used.
-
 <h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
-Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](/documentation/getting_started/run_on_android.html).
+Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](/documentation/getting_started/run_on_android.html). The `make_apk.py` script discards some of the information included in the `icon` field, for example the `density`.
 
-### <a id="Crosswalk-1-7"></a>Crosswalk 1-7
-
-If the <code>icons</code> field contains multiple keys, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) as follows:
-
-|Icon key range...|`make_apk.py` copies the icon file to...|
-|:---------------:|----------------------------------------|
-|1-36             |`res/drawable/ldpi/icon.<suffix>`       |
-|37-72            |`res/drawable/mdpi/icon.<suffix>`       |
-|73-95            |`res/drawable/hdpi/icon.<suffix>`       |
-|96-119           |`res/drawable/xhdpi/icon.<suffix>`      |
-|120-143          |`res/drawable/xxhdpi/icon.<suffix>`     |
-|144-167          |`res/drawable/xxxhdpi/icon.<suffix>`    |
-
-where `<suffix>` is the file suffix (`.png`, `.jpg` etc.) of the original file.
-
-For example, the `icons` field in this manifest:
-
-    {
-      "name": "app name",
-      "description": "a sample description",
-      "version": "1.0.0",
-      "app": {
-        "launch": {
-          "local_path": "index.html"
-        }
-      },
-      "icons": {
-        "16":  "icon16.png",
-        "48":  "icon48.png",
-        "128": "icon128.png"
-      }
-    }
-
-would cause the following resources to be added to the Android application package:
-
-    res/drawable/ldpi/icon.png   (copied from icon16.png)
-    res/drawable/hdpi/icon.png   (copied from icon48.png)
-    res/drawable/xxhdpi/icon.png (copied from icon128.png)
+If the <code>icons</code> field contains multiple icon sizes, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) depending on their size.
 
 When the application is installed, Android will use the file appropriate for the target's screen resolution as the application icon in the home screen, application list and other relevant locations.
-
-### Crosswalk 8
-
-Although the `icons` field is more complex, the `make_apk.py` script discards most of the information it contains, instead simplifying its content to match the [format used in Crosswalk 1-7](#Crosswalk-1-7). This makes most sense if illustrated by an example.
-
-Using the example `icons` field setting from above:
-
-    "icons": [
-      {
-        "src": "icon_small.png",
-        "type": "image/png",
-        "sizes": "64x64"
-      },
-      {
-        "src": "icon_large.png",
-        "type": "image/png",
-        "sizes": "128x128"
-      },
-      {
-        "src": "icon_large_hd.png",
-        "type": "image/png",
-        "sizes": "128x128",
-        "density": "2"
-      }
-    ]
-
-`make_apk.py` would parse this to produce this object, equivalent to the one used by Crosswalk 1-7:
-
-    "icons": {
-      "64": "icon_small.png",
-      "128": "icon_large_hd.png"
-    }
-
-The script effectively takes the first part of the `sizes` property and uses this as the key; then sets the value to whatever is in `src`. As can be seen from the above example, this discards the `density` information altogether: the `"128"` key is first set to the value `"icon_large.png"` (as this occurs first in the array); but is then overwritten by `"icon_large_hd.png"`, which occurs later in the icon array.
-
-Once the `icons` object has been parsed and simplified, the [same mapping to Android drawables](#Crosswalk-1-7) is used to write the icon files into the apk file.
 
 ## Acknowledgements
 
