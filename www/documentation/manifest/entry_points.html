@@ -169,6 +169,12 @@
               <a class="article-link" href="/documentation/manifest/xwalk_hosts.html">xwalk hosts</a>
             </li>
           
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/manifest/other_fields.html">Other fields</a>
+            </li>
+          
           </ul>
         
       </li>
@@ -267,34 +273,13 @@
 <article class="article article--hasToC">
   <h1>Application entry points</h1>
 <p>An <em>entry point</em> for a web application is the first resource (or set of resources) which should be loaded to &quot;bootstrap&quot; the application when it is first started.</p>
-<p>The recommendation is to use a single HTML file as the entry point, and specify it using <code>start_url</code> (if available) or <code>app.launch.local_path</code>.</p>
-<p>The following fields are available for specifying the entry point:</p>
-<ul>
-<li><p><code>app.launch.local_path</code></p>
-<p>This is the preferred field for Crosswalk on Android. It is also compatible with Crosswalk on Tizen.</p>
-<p>It should refer to a single HTML file path, relative to the application root.</p>
-</li>
-<li><p><code>start_url</code></p>
-<p>This is the preferred field for later versions of Crosswalk on Tizen. It plays the same role as <code>app.launch.local_path</code>.</p>
-<p>It should refer to a single HTML file path, relative to the application root.</p>
-</li>
-<li><p><code>app.main.source</code></p>
-<p>This field is deprecated (as of Crosswalk 7).</p>
-<p>If used, it should refer to a single HTML file path, relative to the application root (similar to <code>app.launch.local_path</code>).</p>
-</li>
-<li><p><code>app.main.scripts</code></p>
-<p>This field is deprecated (as of Crosswalk 7).</p>
-<p>If used, it should refer to an array of JavaScript files which would be loaded into a default empty HTML file, generated at runtime.</p>
-</li>
-</ul>
-<h2>Field precedence</h2>
-<p>If you are using the deprecated <code>app</code> properties, you should bear in mind the rules which govern their precedence:</p>
-<ul>
-<li><p>If either or both of <code>app.main.source</code> or <code>app.main.scripts</code> are specified, they take precedence over <code>app.local.launch_path</code>.</p>
-</li>
-<li><p>If both <code>app.main.source</code> and <code>app.main.scripts</code> are specified, <code>app.main.source</code> takes precedence.</p>
-</li>
-</ul>
+<p>The recommendation is to use a single HTML file as the entry point, and specify it using <code>start_url</code>.</p>
+<p><code>start_url</code> is part of the <a href="https://w3c.github.io/manifest/#start_url-member">W3C manifest specification</a>.</p>
+<p>Example:</p>
+<pre><code>{
+  &quot;name&quot;: &quot;app name&quot;,
+  &quot;start_url&quot;: &quot;index.html&quot;
+}</code></pre>
 
   <footer class="article-next">
     
@@ -316,6 +301,9 @@
         <em>What’s next?</em>
         <h3>Content security policy</h3>
       </a>
+    
+  
+    
     
   
     

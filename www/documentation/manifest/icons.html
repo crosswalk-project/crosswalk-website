@@ -169,6 +169,12 @@
               <a class="article-link" href="/documentation/manifest/xwalk_hosts.html">xwalk hosts</a>
             </li>
           
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/manifest/other_fields.html">Other fields</a>
+            </li>
+          
           </ul>
         
       </li>
@@ -269,21 +275,12 @@
 <p>The <code>icons</code> field specifies one or more icon graphics which visually represent the application. </p>
 <p>An icon may be used by a task switcher, in a notifications area, or in an application list on the device. The image below shows the icon for the <em>townxelliot media player</em> being used in the <em>application list</em> (left) and <em>recent apps</em> (right) contexts on Android:</p>
 <p><img src="/assets/manifest-icon-contexts.png" alt="Manifest icon used in &quot;application list&quot; and &quot;recent apps&quot; context on Android"></p>
-<p>There are two variants of the <code>icons</code> field, depending on which version of Crosswalk you are using:</p>
-<ul>
-<li><p>In Crosswalk 8 or later, the <code>icons</code> field is compatible with the <a href="http://w3c.github.io/manifest/#icons-member"><code>icons</code> field in the W3C manifest specification</a>.</p>
-</li>
-<li><p>In Crosswalk 1-7, the <code>icons</code> field is a non-standard extension, based on the format used in the <a href="https://developer.chrome.com/apps/manifest/icons">manifest for Chromium extensions</a>.</p>
-</li>
-</ul>
-<p>Note that in both cases, this field has no effect when used in a <code>manifest.json</code> file <a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">loaded into an embedded Crosswalk on Android</a>.</p>
-<h2>W3C variant (Crosswalk 8)</h2>
+<p>The <code>icons</code> field is compatible with the <a href="http://w3c.github.io/manifest/#icons-member"><code>icons</code> field in the W3C manifest specification</a>.</p>
+<p>Note that this field has no effect when used in a <code>manifest.json</code> file <a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">loaded into an embedded Crosswalk on Android</a>.</p>
 <p>The field is a list of icon objects, each of which defines a URL for the icon as a minimum (via a <code>src</code> attribute). The icon&#39;s <code>type</code> attribute can be specified, describing the graphics format of the icon; and the optimal rendering <code>sizes</code> and screen pixel <code>density</code> for which the icon is intended can also be set.</p>
 <p>As an example, here is a simple Crosswalk manifest which specifies three icons: one to be used when a 64x64 pixel icon is needed; one to be used when a 128x128 pixel icon is needed; and one to be used when a 128x128 pixel icon is needed and the screen pixel density is 2:</p>
 <pre><code>{
   &quot;name&quot;: &quot;simple_app&quot;,
-  &quot;description&quot;: &quot;A simple Crosswalk application&quot;,
-  &quot;version&quot;: &quot;0.0.0.1&quot;,
   &quot;icons&quot;: [
     {
       &quot;src&quot;: &quot;icon_small.png&quot;,
@@ -360,114 +357,11 @@
   }
 ]</code></pre>
 <p>Note that we don&#39;t mention anywhere that <code>foo_hd.png</code> is 256x256 raw pixels in size: we just specify that it is suitable for a 128x128 pixel icon on a screen with density of 2dppx.</p>
-<h2>Chromium extensions variant (Crosswalk 1-7)</h2>
-<p>The <code>icons</code> field is an object whose keys represent the icon&#39;s pixel size (width and height are the same); the value for each key is the path to the appropriate image file, relative to the manifest. For example, here&#39;s a manifest with icons at three different sizes:</p>
-<pre><code>{
-  &quot;name&quot;: &quot;app name&quot;,
-  &quot;description&quot;: &quot;a sample description&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;app&quot;: {
-    &quot;launch&quot;: {
-      &quot;local_path&quot;: &quot;index.html&quot;
-    }
-  },
-  &quot;icons&quot;: {
-    &quot;16&quot;:  &quot;icon16.png&quot;,
-    &quot;48&quot;:  &quot;icon48.png&quot;,
-    &quot;128&quot;: &quot;icon128.png&quot;
-  }
-}</code></pre>
-<p>Setting icons for multiple sizes <a href="/documentation/manifest/using_the_manifest.html#Configure-Android-packaging">can affect Android packaging for your application</a>.</p>
-<p>As a minimum, the <code>&quot;128&quot;</code> key (for a 128x128 pixel image) should be specified. The preferred file format is PNG, but BMP, GIF, ICO, and JPEG formats may also be used.</p>
 <h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
-<p>Rather than affecting the Crosswalk runtime on Android directly, the <code>icons</code> field affects how an application is packaged by <a href="/documentation/getting_started/run_on_android.html"><code>make_apk.py</code></a>.</p>
-<h3><a id="Crosswalk-1-7"></a>Crosswalk 1-7</h3>
-<p>If the <code>icons</code> field contains multiple keys, the <code>make_apk.py</code> script will map the corresponding icon files to <a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a> as follows:</p>
-<table>
-<thead>
-<tr>
-<th align="center">Icon key range...</th>
-<th><code>make_apk.py</code> copies the icon file to...</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">1-36</td>
-<td><code>res/drawable/ldpi/icon.&lt;suffix&gt;</code></td>
-</tr>
-<tr>
-<td align="center">37-72</td>
-<td><code>res/drawable/mdpi/icon.&lt;suffix&gt;</code></td>
-</tr>
-<tr>
-<td align="center">73-95</td>
-<td><code>res/drawable/hdpi/icon.&lt;suffix&gt;</code></td>
-</tr>
-<tr>
-<td align="center">96-119</td>
-<td><code>res/drawable/xhdpi/icon.&lt;suffix&gt;</code></td>
-</tr>
-<tr>
-<td align="center">120-143</td>
-<td><code>res/drawable/xxhdpi/icon.&lt;suffix&gt;</code></td>
-</tr>
-<tr>
-<td align="center">144-167</td>
-<td><code>res/drawable/xxxhdpi/icon.&lt;suffix&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<p>where <code>&lt;suffix&gt;</code> is the file suffix (<code>.png</code>, <code>.jpg</code> etc.) of the original file.</p>
-<p>For example, the <code>icons</code> field in this manifest:</p>
-<pre><code>{
-  &quot;name&quot;: &quot;app name&quot;,
-  &quot;description&quot;: &quot;a sample description&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;app&quot;: {
-    &quot;launch&quot;: {
-      &quot;local_path&quot;: &quot;index.html&quot;
-    }
-  },
-  &quot;icons&quot;: {
-    &quot;16&quot;:  &quot;icon16.png&quot;,
-    &quot;48&quot;:  &quot;icon48.png&quot;,
-    &quot;128&quot;: &quot;icon128.png&quot;
-  }
-}</code></pre>
-<p>would cause the following resources to be added to the Android application package:</p>
-<pre><code>res/drawable/ldpi/icon.png   (copied from icon16.png)
-res/drawable/hdpi/icon.png   (copied from icon48.png)
-res/drawable/xxhdpi/icon.png (copied from icon128.png)</code></pre>
+<p>Rather than affecting the Crosswalk runtime on Android directly, the <code>icons</code> field affects how an application is packaged by <a href="/documentation/getting_started/run_on_android.html"><code>make_apk.py</code></a>. The <code>make_apk.py</code> script discards some of the information included in the <code>icon</code> field, for example the <code>density</code>.</p>
+<p>If the <code>icons</code> field contains multiple icon sizes, the <code>make_apk.py</code> script will map the corresponding icon files to <a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a> depending on their size.</p>
 <p>When the application is installed, Android will use the file appropriate for the target&#39;s screen resolution as the application icon in the home screen, application list and other relevant locations.</p>
-<h3>Crosswalk 8</h3>
-<p>Although the <code>icons</code> field is more complex, the <code>make_apk.py</code> script discards most of the information it contains, instead simplifying its content to match the <a href="#Crosswalk-1-7">format used in Crosswalk 1-7</a>. This makes most sense if illustrated by an example.</p>
-<p>Using the example <code>icons</code> field setting from above:</p>
-<pre><code>&quot;icons&quot;: [
-  {
-    &quot;src&quot;: &quot;icon_small.png&quot;,
-    &quot;type&quot;: &quot;image/png&quot;,
-    &quot;sizes&quot;: &quot;64x64&quot;
-  },
-  {
-    &quot;src&quot;: &quot;icon_large.png&quot;,
-    &quot;type&quot;: &quot;image/png&quot;,
-    &quot;sizes&quot;: &quot;128x128&quot;
-  },
-  {
-    &quot;src&quot;: &quot;icon_large_hd.png&quot;,
-    &quot;type&quot;: &quot;image/png&quot;,
-    &quot;sizes&quot;: &quot;128x128&quot;,
-    &quot;density&quot;: &quot;2&quot;
-  }
-]</code></pre>
-<p><code>make_apk.py</code> would parse this to produce this object, equivalent to the one used by Crosswalk 1-7:</p>
-<pre><code>&quot;icons&quot;: {
-  &quot;64&quot;: &quot;icon_small.png&quot;,
-  &quot;128&quot;: &quot;icon_large_hd.png&quot;
-}</code></pre>
-<p>The script effectively takes the first part of the <code>sizes</code> property and uses this as the key; then sets the value to whatever is in <code>src</code>. As can be seen from the above example, this discards the <code>density</code> information altogether: the <code>&quot;128&quot;</code> key is first set to the value <code>&quot;icon_large.png&quot;</code> (as this occurs first in the array); but is then overwritten by <code>&quot;icon_large_hd.png&quot;</code>, which occurs later in the icon array.</p>
-<p>Once the <code>icons</code> object has been parsed and simplified, the <a href="#Crosswalk-1-7">same mapping to Android drawables</a> is used to write the icon files into the apk file.</p>
 <h2>Acknowledgements</h2>
 <p>The <em>townxelliot media player</em> icon was modified from an original icon created by <a href="http://www.wpzoom.com/">wpzoom.com</a> under a <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA licence</a>. It was sourced from <a href="http://findicons.com/icon/457729/radio?id=457887">Find Icons</a>.</p>
 <p>The modified icon is made available here to satisfy the terms of the licence, and is released under the same CC BY-SA licence:</p>
@@ -502,6 +396,9 @@ res/drawable/xxhdpi/icon.png (copied from icon128.png)</code></pre>
         <em>What’s next?</em>
         <h3>Launch screen</h3>
       </a>
+    
+  
+    
     
   
     

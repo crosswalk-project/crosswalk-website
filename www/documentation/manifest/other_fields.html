@@ -30,15 +30,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Content security policy" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/content_security_policy" />
+    <meta property="og:title" content="Other fields" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/other_fields" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/content_security_policy" />
-    <meta name="twitter:title" content="Content security policy" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/other_fields" />
+    <meta name="twitter:title" content="Other fields" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -129,7 +129,7 @@
           
             
             
-            <li class="article-item  nav-item--active">
+            <li class="article-item ">
               <a class="article-link" href="/documentation/manifest/content_security_policy.html">Content security policy</a>
             </li>
           
@@ -171,7 +171,7 @@
           
             
             
-            <li class="article-item ">
+            <li class="article-item  nav-item--active">
               <a class="article-link" href="/documentation/manifest/other_fields.html">Other fields</a>
             </li>
           
@@ -271,69 +271,20 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>Content security policy</h1>
-<p>The content security policy field specifies which types of content can be loaded and executed by the application. </p>
-<p>If this field is not set, no content security policy is enforced. By default, this means that a Crosswalk application can load scripts and objects from any host (via <code>&lt;script&gt;</code>, <code>&lt;object&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;applet&gt;</code> elements).</p>
-<p>The suggested default value to provide minimal protection is:</p>
-<pre><code>&quot;csp&quot;: &quot;script-src &#39;self&#39;; object-src &#39;self&#39;&quot;</code></pre>
-<p>This restricts the application to using only JavaScripts (loaded via <code>&lt;script&gt;</code> elements) and objects (loaded via <code>&lt;object&gt;</code>, <code>&lt;embed&gt;</code>, and <code>&lt;applet&gt;</code> elements) from its own origin (i.e. distributed as part of the application, in the case of Crosswalk). It also implicitly applies other constraints, such as preventing the execution of inline scripts, and disabling <code>eval()</code> and other unsafe functions (see the next section).</p>
-<p>See Google&#39;s <a href="https://developer.chrome.com/extensions/contentSecurityPolicy">Content Security Policy (CSP)</a> page for some examples of the types of policy which can be set; <a href="http://www.w3.org/TR/CSP/">the full specification</a>, albeit for the HTTP headers variant of CSP, is also available.</p>
-<h2>When to change the content security policy</h2>
-<p>You only need to change the content security policy settings if you want to tighten your application&#39;s security: as stated above, Crosswalk does not enforce content security unless you explicitly set the <code>csp</code> field.</p>
-<p>If you do decide to tighten your application&#39;s security and set a content security policy, you may find that the policy is <em>too</em> tight. In this case, you may need to loosen some of its constraints. The list below gives a few examples of setting a content security policy, but loosening it under specific conditions.</p>
+  <h1>Other fields</h1>
+<p>Two more manifest extensions, <code>xwalk_description</code> and <code>xwalk_version</code> are specified by the Crosswalk manifest to add application specific metadata.</p>
 <ul>
-<li><p><strong>Enable the application to load scripts from a restricted range of remote hosts</strong></p>
-<p>In some cases, you may want to load a remote resource into a Crosswalk application: for example, load a resource from a content delivery network in an HTML page:</p>
-<pre><code>&lt;script src=&quot;http://cdn.crosswalk-project.org/utils.js&quot;&gt;&lt;/script&gt;</code></pre>
-<p>At the same time, you may want to tighten Crosswalk&#39;s security to restrict the application to loading scripts <em>only</em> from that domain and from the app. (The default Crosswalk configuration allows loading scripts from any remote host.)</p>
-<p>In these cases, you can explicitly specify the CSP, whitelisting resources from the application itself and from known domains:</p>
-<pre><code>&quot;csp&quot;: &quot;script-src &#39;self&#39; https://cdn.crosswalk-project.org/; object-src &#39;self&#39;&quot;</code></pre>
-<p>This only allows scripts to be downloaded from the application itself or from <code>https:\/\/cdn.crosswalk-project.org/</code>. Note that you can only use arbitrary URLs with the &quot;https://&quot; scheme; or &quot;http://&quot; URLs which refer to &quot;localhost&quot; or &quot;127.0.0.1&quot;. The latter may be useful if you have your own server running on the same machine as the application.</p>
-</li>
-<li><p><strong>Enable the use of <code>eval()</code> inside scripts</strong></p>
-<p>The following CSP (recommended above as the minimum policy):</p>
-<pre><code>&quot;csp&quot;: &quot;script-src &#39;self&#39;; object-src &#39;self&#39;&quot;</code></pre>
-<p>disables the use of &quot;unsafe&quot; JavaScript. This means that any calls to <code>eval()</code> will not be allowed.</p>
-<p>In most cases, the recommendation is to avoid <code>eval()</code> <strong>at all costs</strong>, as it can be a vector for Cross-Site Scripting attacks. These can be particularly dangerous in the context of an application which has privileged access to system resources (the way a Crosswalk application does).</p>
-<p>However, you may find yourself in a situation where you are trying to use a third party library which depends on <code>eval()</code>; or in a situation where using <code>eval()</code> is the most sensible and pragmatic solution. In these situations, you may decide that it is appropriate to relax the content security policy to allow <code>eval()</code> to be invoked.</p>
-<p>You can allow the use of <code>eval()</code> by adding <code>&#39;unsafe-eval&#39;</code> to the CSP, as follows:</p>
-<pre><code>&quot;csp&quot;: &quot;script-src &#39;self&#39; &#39;unsafe-eval&#39;; object-src &#39;self&#39;&quot;</code></pre>
-</li>
-<li><p><strong>Enable inline JavaScript</strong></p>
-<p>In some situations, you may want to incorporate inline JavaScript in an HTML file via <code>&lt;script&gt;</code> elements. For example:</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;my app&lt;/title&gt;
-  &lt;/head&gt;
-
-  &lt;body&gt;
-    &lt;div id=&quot;content&quot;&gt;&lt;/div&gt;
-
-    &lt;!-- this is the inline script --&gt;
-    &lt;script&gt;
-    document.addEventListener(&#39;DOMContentLoaded&#39;, function () {
-      var elt = document.querySelector(&#39;#content&#39;);
-      elt.innerHTML = &#39;&lt;p&gt;Hello world&lt;/p&gt;&#39;;
-    });
-    &lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<p>This is usually not necessary, as you can often put the script into an external file instead and reference it via the <code>src</code> attribute:</p>
-<pre><code>&lt;script src=&quot;myscript.js&quot;&gt;&lt;/script&gt;</code></pre>
-<p>But there are occasionally cases where you may want to inline a script (e.g. for performance reasons).</p>
-<p>If you have inline JavaScript and have specified a <code>csp</code>, you may find that you get this warning:</p>
-<pre><code>Refused to execute inline script because it violates the following
-Content Security Policy directive: &quot;script-src &#39;self&#39;&quot;. Either
-the &#39;unsafe-inline&#39; keyword, a hash (&#39;sha256-...&#39;), or a
-nonce (&#39;nonce-...&#39;) is required to enable inline execution.</code></pre>
-<p>The quickest solution is to add the <code>&#39;unsafe-inline&#39;</code> keyword:</p>
-<pre><code>&quot;csp&quot;: &quot;script-src &#39;self&#39; &#39;unsafe-inline&#39;; object-src &#39;self&#39;&quot;</code></pre>
-<p>Inline scripts should now execute.</p>
-</li>
+<li><code>xwalk_version</code>: the version of the application. If present, it will be included in the package name.</li>
+<li><code>xwalk_description</code>: a description of the application. At present this field has no effect on the packaged application.</li>
 </ul>
+<p>Example:</p>
+<pre><code>{
+  &quot;name&quot;: &quot;app name&quot;,
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;orientation&quot;: &quot;portrait&quot;,
+  &quot;xwalk_version&quot;: &quot;1.0.0&quot;,
+  &quot;xwalk_description&quot;: &quot;A sample application&quot;
+}</code></pre>
 
   <footer class="article-next">
     
@@ -348,16 +299,8 @@ nonce (&#39;nonce-...&#39;) is required to enable inline execution.</code></pre>
   
     
     
-      
-    
   
     
-    
-      
-      <a href="/documentation/manifest/display.html" class="article-promo well">
-        <em>What’s next?</em>
-        <h3>Display</h3>
-      </a>
     
   
     
@@ -376,6 +319,8 @@ nonce (&#39;nonce-...&#39;) is required to enable inline execution.</code></pre>
     
   
     
+    
+      
     
   
 

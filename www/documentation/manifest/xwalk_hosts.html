@@ -169,6 +169,12 @@
               <a class="article-link" href="/documentation/manifest/xwalk_hosts.html">xwalk hosts</a>
             </li>
           
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/manifest/other_fields.html">Other fields</a>
+            </li>
+          
           </ul>
         
       </li>
@@ -287,13 +293,7 @@ resource. Origin &#39;file://&#39; is therefore not allowed access.</code></pre>
 <p>For example, this manifest would allow access to the Crosswalk website, or any intel.com sub-domains:</p>
 <pre><code>{
   &quot;name&quot;: &quot;app name&quot;,
-  &quot;description&quot;: &quot;a sample description&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;app&quot;: {
-    &quot;launch&quot;: {
-      &quot;local_path&quot;: &quot;index.html&quot;
-    }
-  },
+  &quot;start_url&quot;: &quot;index.html&quot;,
   &quot;xwalk_hosts&quot;: [
     &quot;http://crosswalk-project.org/&quot;,
     &quot;http://*.intel.com/&quot;
@@ -308,7 +308,6 @@ xhr.onreadystatechange = function () {
   }
 }
 xhr.send();</code></pre>
-<p>Wrappers for Ajax requests which use XMLHttpRequest underneath (such as jQuery&#39;s <code>$.ajax()</code>) will also be able to access the domains you specified.</p>
 
   <footer class="article-next">
     
@@ -342,6 +341,15 @@ xhr.send();</code></pre>
     
     
       
+    
+  
+    
+    
+      
+      <a href="/documentation/manifest/other_fields.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Other fields</h3>
+      </a>
     
   
 

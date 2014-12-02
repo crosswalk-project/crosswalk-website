@@ -169,6 +169,12 @@
               <a class="article-link" href="/documentation/manifest/xwalk_hosts.html">xwalk hosts</a>
             </li>
           
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/manifest/other_fields.html">Other fields</a>
+            </li>
+          
           </ul>
         
       </li>
@@ -271,8 +277,8 @@
 <h2>The full specification</h2>
 <p><a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit">Interstitial launch screens</a>.</p>
 <h2>Definition of the manifest property</h2>
-<p>In Crosswalk Android 5-7, the property is <code>launch_screen</code>; in Crosswalk Android 8+ it is <code>xwalk_launch_screen</code>. It is defined as follows:</p>
-<pre><code>&quot;launch_screen | xwalk_launch_screen&quot;: {
+<p>The launch screen property in the manifest is called <code>xwalk_launch_screen</code> and is defined as follows:</p>
+<pre><code>&quot;xwalk_launch_screen&quot;: {
   &quot;ready_when&quot;: &quot;first-paint | complete | custom&quot;,
   &quot;default | portrait | landscape&quot;: {
      &quot;background_color&quot;: &quot;#ff0000&quot;,
@@ -281,17 +287,7 @@
      &quot;image_border&quot;: &quot;30px [30px 30px 30px] [repeat | stretch | round] [repeat | stretch | round]&quot;
    }
 }</code></pre>
-<p>Example (Crosswalk Android 5-7):</p>
-<pre><code>&quot;launch_screen&quot;: {
-  &quot;ready_when&quot;: &quot;custom&quot;,
-  &quot;portrait&quot;: {
-     &quot;background_color&quot;: &quot;#ff0000&quot;,
-     &quot;background_image&quot;: &quot;bgfoo.png 1x, bgfoo-2x.png 2x&quot;,
-     &quot;image&quot;: &quot;foo.png 1x, foo-2x.png 2x&quot;,
-     &quot;image_border&quot;: &quot;30px 40px stretch&quot;,
-   }
-}</code></pre>
-<p>Example (Crosswalk Android 8+):</p>
+<p>Example:</p>
 <pre><code>&quot;xwalk_launch_screen&quot;: {
   &quot;ready_when&quot;: &quot;custom&quot;,
   &quot;portrait&quot;: {
@@ -301,7 +297,7 @@
      &quot;image_border&quot;: &quot;30px 40px stretch&quot;,
    }
 }</code></pre>
-<h2><code>launch_screen/xwalk_launch_screen</code> members</h2>
+<h2>xwalk_launch_screen` members</h2>
 <table>
 <thead>
 <tr>
@@ -408,6 +404,9 @@
         <em>What’s next?</em>
         <h3>Orientation</h3>
       </a>
+    
+  
+    
     
   
     

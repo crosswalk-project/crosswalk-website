@@ -169,6 +169,12 @@
               <a class="article-link" href="/documentation/manifest/xwalk_hosts.html">xwalk hosts</a>
             </li>
           
+            
+            
+            <li class="article-item ">
+              <a class="article-link" href="/documentation/manifest/other_fields.html">Other fields</a>
+            </li>
+          
           </ul>
         
       </li>
@@ -266,30 +272,29 @@
 
 <article class="article article--hasToC">
   <h1>Permissions</h1>
-<p>The <code>permissions</code> (Crosswalk 4-7) and <code>xwalk_permissions</code> (Crosswalk 8+) fields are Crosswalk-specific and non-standard. They are used to set permissions in the <code>AndroidManifest.xml</code> file when packaging an application for Crosswalk on Android.</p>
+<p>The <code>xwalk_permissions</code> field is a Crosswalk extension to the W3C manifest. It is used to set permissions in the <code>AndroidManifest.xml</code> file when packaging an application for Crosswalk on Android.</p>
 <p>This is necessary because Android applications cannot request permissions at runtime: all the permissions required by the application must be granted during installation. In other contexts (Crosswalk Tizen, embedding API), this field is ignored.</p>
 <p><strong>Note:</strong> If you are <a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">loading an application from a manifest with the embedding API</a>, you will have to manually specify permissions for Crosswalk in <code>AndroidManifest.xml</code>. See the <a href="#Permissions-required-by-API">section below</a> for guidance on which Android permissions are required by Crosswalk&#39;s <a href="/documentation/apis/web_apis.html">web APIs</a>.</p>
 <h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
 <p>The <code>make_apk.py</code> script translates the <code>permissions</code> or <code>xwalk_permissions</code> field in <code>manifest.json</code> into <code>&lt;android:uses-permission&gt;</code> elements in <code>AndroidManifest.xml</code>.</p>
-<p>For example, given the following manifest (Crosswalk 8+):</p>
+<p>For example, given the following manifest:</p>
 <pre><code>{
   &quot;name&quot;: &quot;simple&quot;,
-  &quot;version&quot;: &quot;0.0.0.1&quot;,
-  &quot;app&quot;: {
-    &quot;launch&quot;:{
-      &quot;local_path&quot;: &quot;index.html&quot;
-    }
-  },
+  &quot;start_url&quot;: &quot;index.html&quot;,
   &quot;xwalk_permissions&quot;: [
     &quot;Contacts&quot;,
     &quot;Geolocation&quot;,
     &quot;Messaging&quot;,
     &quot;Vibration&quot;
   ],
-  &quot;icons&quot;: {
-    &quot;96&quot;: &quot;icon.png&quot;
-  }
+  &quot;icons&quot;: [{
+    &quot;src&quot;: &quot;icon96.png&quot;,
+    &quot;type&quot;: &quot;image/png&quot;,
+    &quot;sizes&quot;: &quot;96x96&quot;,
+    &quot;density&quot;: &quot;2.0&quot;
+    }
+  ]
 }</code></pre>
 <p>...and this <code>make_apk.py</code> command line:</p>
 <pre><code>python make_apk.py --package=org.crosswalkproject.example \
@@ -442,6 +447,9 @@
         <em>What’s next?</em>
         <h3>xwalk hosts</h3>
       </a>
+    
+  
+    
     
   
 
