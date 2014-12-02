@@ -252,12 +252,12 @@ $ export PATH=&lt;path to Android SDK&gt;/platform-tools:$PATH</code></pre>
 <h3>Develop With the Gradle Project</h3>
 <h4>Install Gradle</h4>
 <ol>
-<li><p>Download a recent version of the gradle binary (~40MB): <a href="http://www.gradle.org/downloads"><a href="http://www.gradle.org/downloads/">http://www.gradle.org/downloads/</a></a></p>
+<li><p>Download a recent version of the <code>gradle</code> binary (~40MB): <a href="http://www.gradle.org/downloads"><a href="http://www.gradle.org/downloads/">http://www.gradle.org/downloads/</a></a></p>
 </li>
 <li><p>Unzip it:</p>
 <pre><code>$ unzip gradle-&lt;version&gt;-bin.zip</code></pre>
 </li>
-<li><p>For convenience, add the gradle binary to your PATH environment variable:</p>
+<li><p>For convenience, add the <code>gradle</code> binary to your PATH environment variable:</p>
 <pre><code>$ export PATH=$PATH:&lt;path to gradle&gt;/bin</code></pre>
 </li>
 </ol>
@@ -269,7 +269,7 @@ $ export PATH=&lt;path to Android SDK&gt;/platform-tools:$PATH</code></pre>
 <li><p>Unzip it:</p>
 <pre><code>$ tar -zxvf apache-maven-3.2.2-bin.tar.gz</code></pre>
 </li>
-<li><p>Set the maven enviroment variables to point to the install directory:</p>
+<li><p>Set the Maven enviroment variables to point to the install directory:</p>
 <pre><code>$ M2_HOME=/path/to/apache-maven-3.2.2
 $ export MAVEN_OPTS=&quot;-Xms256m -Xmx512m&quot;
 $ export PATH=$M2_HOME/bin:$PATH</code></pre>
@@ -296,22 +296,18 @@ $ mvn clean install</code></pre>
 </li>
 </ol>
 <h2>Crosswalk AAR Version</h2>
-<p>The AAR remote maven repository is <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/">https://download.01.org/crosswalk/releases/crosswalk/android/maven2/</a>. It hosts both stable and beta versions. If you want the canary version you can download it:</p>
+<p>The AAR remote Maven repository is <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/">https://download.01.org/crosswalk/releases/crosswalk/android/maven2/</a>. Versions are available for <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library/">stable</a> and <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library_beta/">beta</a>. If you need the canary version you can download it:</p>
 <pre><code>$ wget https://download.01.org/crosswalk/releases/crosswalk/android/canary/9.38.207.0/crosswalk-9.38.207.0.aar</code></pre>
-<p>Then install it into the local maven repository:</p>
+<p>Then install it into the local Maven repository:</p>
 <pre><code>$ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library \
       -Dversion=9.38.207.0 -Dpackaging=aar  -Dfile=crosswalk-9.38.207.0.aar \
       -DgeneratePom=true</code></pre>
-<!--
-All of the stable version you want from [the xwalk_core_library](https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library/).-->
-
-<p>The beta version of maven is available from <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library_beta/">the xwalk_core_library_beta</a>.</p>
 <h2>Create and Build your Android project with Crosswalk AAR</h2>
 <ol>
 <li><p>Create Android Project with the Crosswalk embedding APIs.</p>
 <p>Refer to the section in the Embedding Crosswalk article called <a href="/documentation/embedding_crosswalk.html#Add-code-to-integrate-the-webview">Add code to integrate the webview</a>.</p>
 </li>
-<li><p>The reference to maven repo in build.gradle will look like:</p>
+<li><p>The reference to Maven repo in build.gradle will look like:</p>
 <pre><code>Repositories {
     Maven {
         url &#39;https://download.01.org/crosswalk/releases/crosswalk/android/maven2&#39;
@@ -346,8 +342,9 @@ All of the stable version you want from [the xwalk_core_library](https://downloa
 <pre><code>versionCode manifest.versionCode + 4</code></pre>
 </li>
 <li><p>Build your project with Gradle, the following commands will build the corresponding arch apk in build/apk directory.</p>
-<pre><code>$ ./gradlew assemblex86
-$ ./gradlew assemblearmv7</code></pre>
+<pre><code>$ gradle assemblex86
+$ gradle assemblearmv7</code></pre>
+<p>Use <code>$ gradle build</code> to build both arm and x86 APKs at once.</p>
 </li>
 </ol>
 <h2>Build with Maven</h2>
@@ -375,7 +372,7 @@ $ ./gradlew assemblearmv7</code></pre>
   &lt;classifier&gt;x86&lt;/classifier&gt;
   &lt;typr&gt;aar&lt;/type&gt;
 &lt;/dependency&gt;</code></pre>
-<p>If you want to use arm AAR in your maven project, you can set classifier to arm:</p>
+<p>If you want to use arm AAR in your Maven project, you can set classifier to arm:</p>
 <pre><code>&lt;classifier&gt;arm&lt;/classifier&gt;</code></pre>
 <p>Maven will download the AARs automatically into project repository:</p>
 <pre><code>~/.m2/repository/</code></pre>
@@ -434,9 +431,11 @@ $ ./gradlew assemblearmv7</code></pre>
 </li>
 </ul>
 </li>
-<li><p>Build your project with maven, the following commands will build the corresponding arch apk in target/ directory:</p>
-<pre><code>$ mvn install -Px86
-$ mvn install -Parm</code></pre>
+<li><p>Build your project with Maven, the following commands will build the corresponding arch apk in target/ directory:</p>
+<pre><code>$ mvn clean install -Px86
+$ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-x86.apk
+$ mvn clean install -Parm
+$ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-arm.apk</code></pre>
 </li>
 </ol>
 <h2>Samples</h2>
