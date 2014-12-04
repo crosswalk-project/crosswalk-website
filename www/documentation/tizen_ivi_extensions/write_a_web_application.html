@@ -281,18 +281,19 @@
 <p>For now, this file can be very simple. Create <code>app/manifest.json</code> with this content:</p>
 <pre><code>{
   &quot;name&quot;: &quot;simple_extension_app&quot;,
-  &quot;description&quot;: &quot;simple extension app (demo)&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;app&quot;: {
-    &quot;launch&quot;:{
-      &quot;local_path&quot;: &quot;index.html&quot;
+  &quot;xwalk_description&quot;: &quot;simple extension app (demo)&quot;,
+  &quot;xwalk_version&quot;: &quot;1.0.0&quot;,
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;icon.png&quot;,
+      &quot;sizes&quot;: &quot;128x128&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;density&quot;: &quot;4.0&quot;
     }
-  },
-  &quot;icons&quot;: {
-    &quot;128&quot;: &quot;icon.png&quot;
-  }
+  ]
 }</code></pre>
-<p>For more information about what the manifest can contain, see <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-manifest">Crosswalk manifest</a>.</p>
+<p>For more information about what the manifest can contain, see <a href="/documentation/manifest.html">Crosswalk manifest</a>.</p>
 <h3>Create the web application</h3>
 <p>This is a standalone HTML5 application which uses the Crosswalk extension. It consists of a single HTML file, <code>index.html</code>, in the <code>app</code> directory. This file also contains the JavaScript to invoke the Crosswalk extension.</p>
 <p>Create this file as <code>app/index.html</code>:</p>

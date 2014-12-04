@@ -35,7 +35,7 @@ After you have set up your host machine with the VMware Player or Workstation ([
 
 To do this, follow [these instructions on the Tizen wiki](https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware).
 
-Here's a summary of the steps for Fedora 20, using VMware Workstation and the `tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2` daily build (available from the [daily builds page](http://download.tizen.org/releases/daily/tizen/ivi-3.0.m14.3/latest/images/emulator/ivi-mbr-i586-emul/)). The steps for Windows are similar, though you will need to use [install git SCM](/documentation/getting_started/windows_host_setup.html) to get the `curl` and `bunzip2` commands.
+Here's a summary of the steps for Fedora 20, using VMware Workstation and the `tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2` daily build (available from the [daily builds page](http://download.tizen.org/releases/daily/tizen/ivi-3.0.m14.3/latest/images/emulator/ivi-mbr-i586-emul/)). The steps for Windows are similar, though you will need to first install [git SCM for Windows](http://git-scm.com/download/win). After installing you will find a `Git Bash` entry in the Windows menu which will bring up a bash shell with the tools you need, including `curl` and `bunzip2`.
 
 1.  Download, unpack and convert the Tizen IVI image:
 

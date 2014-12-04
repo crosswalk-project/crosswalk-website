@@ -48,19 +48,20 @@ For now, this file can be very simple. Create `app/manifest.json` with this cont
 
     {
       "name": "simple_extension_app",
-      "description": "simple extension app (demo)",
-      "version": "1.0.0",
-      "app": {
-        "launch":{
-          "local_path": "index.html"
+      "xwalk_description": "simple extension app (demo)",
+      "xwalk_version": "1.0.0",
+      "start_url": "index.html",
+      "icons": [
+        {
+          "src": "icon.png",
+          "sizes": "128x128",
+          "type": "image/png",
+          "density": "4.0"
         }
-      },
-      "icons": {
-        "128": "icon.png"
-      }
+      ]
     }
 
-For more information about what the manifest can contain, see [Crosswalk manifest](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-manifest).
+For more information about what the manifest can contain, see [Crosswalk manifest](/documentation/manifest.html).
 
 ### Create the web application
 

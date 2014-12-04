@@ -1,6 +1,8 @@
 # Remote debugging
 
-Web applications running under Crosswalk can be debugged remotely using the [Chrome dev tools](https://developer.chrome.com/devtools/index). Depending on the platform, a connection must be established between the host (the machine where you are doing the development) and the target (the machine running the application under Crosswalk). The type of connection depends on the target's operating system, as explained below.
+Web applications running under Crosswalk can be debugged remotely using the [Chrome dev tools](https://developer.chrome.com/devtools/index). 
+
+Depending on the platform, a connection must be established between the host (the machine where you are doing the development) and the target (the machine running the application under Crosswalk). The type of connection depends on the target's operating system, as explained below.
 
 Note that to debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See [this wiki page](https://github.com/crosswalk-project/crosswalk-website/wiki/Remote-debugging-on-android), which shows the mapping between Crosswalk and Chrome versions for debugging.
 
@@ -93,6 +95,10 @@ Once the [pre-requisites](#Android) have been met, debug your Crosswalk applicat
 </ol>
 
 ### <a id="Enable-debugging-at-run-time-for-Android"></a>Enable debugging at run time for Android
+
+**Note: The instructions below only work with Crosswalk version 10 and lower.**
+
+*Starting with Crosswalk version 11, the ability to turn on debugging at run time was disabled for security purposes.*
 
 If you built your Android package without the debugging feature, you can still turn on the feature at run time by sending it an [intent](http://developer.android.com/guide/components/intents-filters.html). This works for a Crosswalk application built using any of the packaging methods, i.e.
 

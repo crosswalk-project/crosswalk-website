@@ -7,14 +7,15 @@ mixin tree(head, tail)
       if key == '_contents'
         each file in val
           if filter.test(file) && !/^404\.html/.test(file) && !/^sitemap/.test(file) && !/^styleguide/.test(file)
-            - file = file.replace(replace, "");
             - depth = tail.split("/").length
 
             li: a(href="#{ tail + file }") #{ tail + file }
+            = "\n"
       else
         mixin tree(val, tail + key + "/")
 
 h1 Sitemap
 
 ol
+  = "\n"
   mixin tree(public, "/")

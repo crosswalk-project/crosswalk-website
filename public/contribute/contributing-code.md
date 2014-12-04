@@ -40,7 +40,7 @@ You should note the ID of the issue you work on, so you can include it in your "
 
 In an attempt to improve the efficiency of code reviews, we are taking a page from the Blink project and adopting the practice of "intent to implement". The idea is to let owners and other developers know what a developer (or development team) plans to implement, and when and how they intend to do it. This gives the community a chance to comment on early design choices, avoiding the cost of undoing or redoing work when an implementation is already too far ahead.
 
-An intent to implement is required for new features, non-trivial refactoring, or for implementations which are likely to be controversial. If you're not sure whether your implementation falls into one of these categories, ask for advice about how to proceed by using the [crosswalk-dev mailing list or #crosswalk IRC channel](/contribute/community.html).
+An intent to implement is required for new features, non-trivial refactoring, or for implementations which are likely to be controversial. If you're not sure whether your implementation falls into one of these categories, ask for advice about how to proceed by using the [crosswalk-dev mailing list or #crosswalk IRC channel](/documentation/community.html).
 
 To declare an "intent to implement", a developer should send a mail to the [crosswalk-dev mailing list](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev) following the outline below.
 

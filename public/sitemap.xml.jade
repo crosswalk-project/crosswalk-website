@@ -7,7 +7,6 @@ mixin tree(head, tail)
       if key == '_contents'
         each file in val
           if filter.test(file) && !/^404\.html/.test(file) && !/^styleguide/.test(file) && !/^sitemap/.test(file)
-            - file = file.replace(replace, "");
             - depth = tail.split("/").length
             if (file == "" && depth == 2)
               url

@@ -1,8 +1,8 @@
-# Frequently-asked questions
+# <a id="Frequently-asked-questions"></a>Frequently-asked questions
 
 If you have any questions that are not answered below, the crosswalk-help mailing list is a good place to ask them. Alternatively, contact us directly via the #crosswalk IRC channel on Freenode. See the [Community page](/documentation/community.html) for more details.
 
-### Contents
+### <a id="Contents"></a>Contents
 
 *   [Background to the project](#Background-to-the-project)
 *   [Ways to use Crosswalk](#Ways-to-use-Crosswalk)
@@ -14,7 +14,7 @@ If you have any questions that are not answered below, the crosswalk-help mailin
 
 ## <a id="Background-to-the-project"></a>Background to the project
 
-### What is Crosswalk for?
+### <a id="What-is-Crosswalk-for"></a>What is Crosswalk for?
 
 If you are a developer working with web technologies, Crosswalk enables you to deploy a web application with its own dedicated runtime. This means three things:
 
@@ -22,15 +22,15 @@ If you are a developer working with web technologies, Crosswalk enables you to d
 2.  Your application won't break in whatever ancient webviews or browsers your audience is using, as you control the runtime and its upgrade cycle.
 3.  You can build applications without worrying so much about runtime differences and quirks: you only have one runtime to deal with.
 
-### Is this a runtime like Java or Visual Basic?
+### <a id="Is-this-a-runtime-like-Java-or-Visual-Basic"></a>Is this a runtime like Java or Visual Basic?
 
 No, because Crosswalk is based on W3C standards: HTML5, CSS and JavaScript. Unlike the languages supported by earlier runtimes, W3C standards are implemented in multiple contexts, by multiple companies, in both open source and commercial forms. A broad range of open source as well as commercial tools and projects support the developer. When you use a Crosswalk application runtime, you are participating in a growing ecosystem.
 
-### If my apps need W3C standards, why not target a browser?
+### <a id="If-my-apps-need-W3C-standards-why-not-target-a-browser"></a>If my apps need W3C standards, why not target a browser?
 
 Browsers do a great job of supporting W3C standards, but they are not allowed to support the APIs from the [Systems Applications Working Group](http://www.w3.org/2012/sysapps/). This is because these APIs access platform features which, if known to a web site and combined with other data available to the browser, would allow violations of the user's privacy. Because Crosswalk applications have a different security model, where a user is able to choose which permissions an application is given, system application APIs *can* be supported. This in turn makes it possible for Crosswalk to run applications which are not possible on the open web.
 
-### Isn't the Crosswalk Project just going to mean more fragmentation of the web?
+### <a id="Isnt-the-Crosswalk-Project-just-going-to-mean-more-fragmentation-of-the-web"></a>Isn't the Crosswalk Project just going to mean more fragmentation of the web?
 
 No, because:
 
@@ -42,11 +42,11 @@ No, because:
 
 ## <a id="Ways-to-use-Crosswalk"></a>Ways to use Crosswalk
 
-### Can I use Crosswalk to "appify" my website?
+### <a id="Can-I-use-Crosswalk-to-appify-my-website"></a>Can I use Crosswalk to "appify" my website?
 
 Yes. You can wrap a website URL with a Crosswalk runtime so it behaves like an app (fullscreen, no browser chrome, home screen icon etc.).
 
-### Can I customise Crosswalk?
+### <a id="Can-I-customise-Crosswalk"></a>Can I customise Crosswalk?
 
 Yes. Crosswalk itself can be modified, as the code is open source. We actively encourage [contributions](https://crosswalk-project.org/contribute/index.html).
 
@@ -54,17 +54,17 @@ Alternatively, you can add extra capabilities to Crosswalk through its [extensio
 
 ## <a id="Distributing-Crosswalk-applications"></a>Distributing Crosswalk applications
 
-### How big is the Crosswalk runtime, and how will it affect my application's size?
+### <a id="How-big-is-the-Crosswalk-runtime-and-how-will-it-affect-my-applications-size"></a>How big is the Crosswalk runtime, and how will it affect my application's size?
 
 To give a rough idea, the HTML/JS/CSS for [one of the project's sample applications](https://github.com/crosswalk-project/crosswalk-samples/tree/master/hello_world) takes up 24Kb of disk space.
 
 Once this application is packaged with its own Crosswalk 10 (x86 Android) runtime, the apk file size is ~20Mb. Installed, the application takes ~58Mb of disk space.
 
-### Can one Crosswalk installation be shared between multiple applications?
+### <a id="Can-one-Crosswalk-installation-be-shared-between-multiple-applications"></a>Can one Crosswalk installation be shared between multiple applications?
 
 Bundling the runtime with the application (aka "embedded mode") is the simplest approach for distribution purposes. But Crosswalk applications *can* share a single Crosswalk runtime library (in "shared mode"); and a package which enables shared mode is part of the Crosswalk for Android distribution. However, you would have to distribute this shared runtime package yourself.
 
-### How can I distribute a Crosswalk Android application across multiple architectures?
+### <a id="How-can-I-distribute-a-Crosswalk-Android-application-across-multiple-architectures"></a>How can I distribute a Crosswalk Android application across multiple architectures?
 
 The Crosswalk binaries are architecture-specific. This means that you will need an x86-compatible Crosswalk on Android devices with x86 chips; and an ARM-compatible Crosswalk on Android devices with ARM chips.
 
@@ -83,7 +83,7 @@ There are two approaches to building an application which supports both x86 and 
 
     How you achieve this depends on your build process. If you need a reference, see [the Cordova migration instructions](/documentation/cordova/migrate_an_application.html#Multi-architecture-packages), which explain how to do this in the context of Crosswalk Cordova.
 
-### Which platforms does Crosswalk support?
+### <a id="Which-platforms-does-Crosswalk-support"></a>Which platforms does Crosswalk support?
 
 Crosswalk officially supports [Android (version 4.0 and above)](http://www.android.com/) and [Tizen 3.0 (Common and IVI profiles)](https://wiki.tizen.org/wiki/IVI). Pre-built packages are available from https://download.01.org/ for both platforms. See the [downloads page](https://crosswalk-project.org/documentation/downloads.html) for details.
 
@@ -95,7 +95,7 @@ Crosswalk does not support iOS at this time.
 
 ## <a id="Canvas-and-WebGL-support"></a>Canvas and WebGL support
 
-### <a id="Why-won't-WebGL-work-in-Crosswalk-on-my-device?"></a>Why won't WebGL work in Crosswalk on my device?
+### <a id="Why-wont-WebGL-work-in-Crosswalk-on-my-device"></a>Why won't WebGL work in Crosswalk on my device?
 
 Chromium has a blacklist of GPUs which are know to cause stability and/or conformance problems when running WebGL. Chromium will disable WebGL if running on a device with one of the GPUs in this list.
 
@@ -103,7 +103,7 @@ Crosswalk uses the same blacklist. Consequently, if Crosswalk is running on a de
 
 For more information about which GPUs are blacklisted and when, see the [Khronos WebGL wiki](http://www.khronos.org/webgl/wiki/BlacklistsAndWhitelists#Chrome).
 
-### <a id="Can-I-force-Crosswalk-to-enable-WebGL?"></a>Can I force Crosswalk to enable WebGL?
+### <a id="Can-I-force-Crosswalk-to-enable-WebGL"></a>Can I force Crosswalk to enable WebGL?
 
 A work-around is available if you want to test an application using WebGL on a device with a blacklisted GPU: pass the `--ignore-gpu-blacklist` command-line option to the `xwalk` binary. But you can't do this directly if Crosswalk is embedded in an application as a native library (for example, using Crosswalk Cordova, the Crosswalk Android packaging tool, or using the embedding API).
 
@@ -128,67 +128,67 @@ The method for adding this file to your Android package depends on how you are u
 
 Note that enabling WebGL on platforms with blacklisted GPUs could result in the application (or the whole device) freezing or crashing, so it is not recommended for production applications.
 
-### Why is canvas performance poor on my device?
+### <a id="Why-is-canvas-performance-poor-on-my-device"></a>Why is canvas performance poor on my device?
 
 If a device has a [blacklisted GPU](#Why-won't-WebGL-work-in-Crosswalk-on-my-device?), canvas elements are not hardware accelerated. This can result in poor performance. [Forcing Crosswalk to ignore the GPU blacklist](#Can-I-force-Crosswalk-to-enable-WebGL?) can improve performance, but may cause your application to become unstable.
 
 ## <a id="The-Crosswalk-community"></a>The Crosswalk community
 
-### Who is using Crosswalk?
+### <a id="Who-is-using-Crosswalk"></a>Who is using Crosswalk?
 
 Crosswalk is still a young project but quickly gaining momentum.  There are currently over 300 applications (mostly games) in app stores that are built with Crosswalk.
 
-### How often is Crosswalk released?
+### <a id="How-often-is-Crosswalk-released"></a>How often is Crosswalk released?
 
 Crosswalk is updated to the latest Chromium once every six weeks. In practice, this means that the longest gap between a feature appearing in Chromium and the same feature appearing in Crosswalk is six weeks.
 
 For more details, see [this explanation of how Crosswalk relates to Chromium](https://github.com/crosswalk-project/crosswalk-website/wiki/Downstream-Chromium).
 
-### Can I get involved?
+### <a id="Can-I-get-involved"></a>Can I get involved?
 
 Yes. We welcome contributions from anyone who would like to make the project better, whether by writing code, filing bugs, or adding documentation. Full details of how to get involved are [on the Crosswalk website](https://crosswalk-project.org/contribute/index.html).
 
 ## <a id="Commercial-aspects"></a>Commercial aspects
 
-### Do I have to pay for Crosswalk?
+### <a id="Do-I-have-to-pay-for-Crosswalk"></a>Do I have to pay for Crosswalk?
 
 No, Crosswalk is an open source project, hosted on [github](https://github.com/crosswalk-project/crosswalk), and licensed under the [BSD licence](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE). It is free to use for any purpose, commercial or otherwise.
 
-### If I'm not paying for Crosswalk, who is?
+### <a id="If-Im-not-paying-for-Crosswalk-who-is"></a>If I'm not paying for Crosswalk, who is?
 
 Crosswalk development is largely sponsored by Intel, but builds on top of [Chromium](http://www.chromium.org/) development.
 
-### Can I get commercial support for Crosswalk?
+### <a id="Can-I-get-commercial-support-for-Crosswalk"></a>Can I get commercial support for Crosswalk?
 
 Not at the moment, but we would love to hear from you if you need it.
 
 ## <a id="Relationships-with-other-projects"></a>Relationships with other projects
 
-### How does Crosswalk relate to the Intel XDK?
+### <a id="How-does-Crosswalk-relate-to-the-Intel-XDK"></a>How does Crosswalk relate to the Intel XDK?
 
 The [Intel XDK](http://xdk-software.intel.com/) is a development environment (IDE) for HTML5 applications. When a developer builds an application using the XDK, they have a choice of exporting their application to a Crosswalk Android package (apk). Packages built this way by the XDK consist of the HTML5 application, bundled with its own Crosswalk runtime.
 
-### Is Crosswalk a replacement for Phonegap/Cordova?
+### <a id="Is-Crosswalk-a-replacement-for-Phonegap-Cordova"></a>Is Crosswalk a replacement for Phonegap/Cordova?
 
 No, they are complementary. If you intend to build for multiple platforms (beyond Android and Tizen), need extensive documentation and a very mature community, Cordova may be a better choice. If you are interested in hardware-accelerated WebGL support and bleeding edge HTML5 features, Crosswalk may be a better choice.
 
 Having said this, you can get the best of both worlds by [using Cordova APIs from Crosswalk](/documentation/cordova.html) if you wish.
 
-### Does Crosswalk for Android use the Android webview?
+### <a id="Does-Crosswalk-for-Android-use-the-Android-webview"></a>Does Crosswalk for Android use the Android webview?
 
 No. Crosswalk is effectively a modified version of Chromium, the open source basis of the Google Chrome browser.
 
-### Why do I need Crosswalk now that Android (KitKat and later) has a Chrome-based webview?
+### <a id="Why-do-I-need-Crosswalk-now-that-Android-KitKat-and-later-has-a-Chrome-based-webview"></a>Why do I need Crosswalk now that Android (KitKat and later) has a Chrome-based webview?
 
 Crosswalk provides access to the [full range of modern web APIs](/documentation/apis/web_apis.html) supported by Chrome. By contrast, the Android Chrome-based web view [lacks some features](https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android) which are available in Chrome on Android.
 
 On top of this, Crosswalk adds extra features which are *not* available in either Chrome or the Android webview, such as experimental support for [SIMD](https://01.org/blogs/tlcounts/2014/bringing-simd-javascript) and support for the [Presentation API](https://github.com/crosswalk-project/crosswalk-website/wiki/presentation-api-manual).
 
-### Why use Blink vs. the higher-level Chromium Embedded Framework as a basis for Crosswalk?
+### <a id="Why-use-Blink-vs-the-higher-level-Chromium-Embedded-Framework-as-a-basis-for-Crosswalk"></a>Why use Blink vs. the higher-level Chromium Embedded Framework as a basis for Crosswalk?
 
 [CEF 1.0](https://code.google.com/p/chromiumembedded/) has proven to be quite popular, but is being [phased out](http://www.magpcss.org/ceforum/viewtopic.php?f=10&t=10647&sid=510426ccd8a9650f72ba416d7b51de06) in favor of the larger CEF 3.0. Since we want a consistent implementation in the Crosswalk project, we had to pick a level in the Chromium architecture that could accommodate both use cases. By starting with Blink and building up, rather starting with CEF 3.0 and removing pieces, we think we'll end up with a tighter, more consistent result.
 
-### When should I use Chrome's new packaged apps rather than Crosswalk?
+### <a id="When-should-I-use-Chromes-new-packaged-apps-rather-than-Crosswalk"></a>When should I use Chrome's new packaged apps rather than Crosswalk?
 
 With Chrome packaged apps, you get access to the Chrome app store and the capabilities Chrome offers.
 

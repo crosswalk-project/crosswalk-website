@@ -269,7 +269,8 @@
 
 <article class="article article--hasToC">
   <h1>Remote debugging</h1>
-<p>Web applications running under Crosswalk can be debugged remotely using the <a href="https://developer.chrome.com/devtools/index">Chrome dev tools</a>. Depending on the platform, a connection must be established between the host (the machine where you are doing the development) and the target (the machine running the application under Crosswalk). The type of connection depends on the target&#39;s operating system, as explained below.</p>
+<p>Web applications running under Crosswalk can be debugged remotely using the <a href="https://developer.chrome.com/devtools/index">Chrome dev tools</a>. </p>
+<p>Depending on the platform, a connection must be established between the host (the machine where you are doing the development) and the target (the machine running the application under Crosswalk). The type of connection depends on the target&#39;s operating system, as explained below.</p>
 <p>Note that to debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Remote-debugging-on-android">this wiki page</a>, which shows the mapping between Crosswalk and Chrome versions for debugging.</p>
 <h2>Android</h2>
 <p>On Android, the connection between the host and target is established using <a href="http://developer.android.com/tools/help/adb.html"><code>adb</code></a>. You will need to ensure that you have installed the Android SDK (instructions for <a href="/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Android">Windows</a> and <a href="/documentation/getting_started/linux_host_setup.html#Installation-for-Crosswalk-Android">Linux</a>) so that this tool is available.</p>
@@ -354,6 +355,8 @@
 </ol>
 
 <h3><a id="Enable-debugging-at-run-time-for-Android"></a>Enable debugging at run time for Android</h3>
+<p><strong>Note: The instructions below only work with Crosswalk version 10 and lower.</strong></p>
+<p><em>Starting with Crosswalk version 11, the ability to turn on debugging at run time was disabled for security purposes.</em></p>
 <p>If you built your Android package without the debugging feature, you can still turn on the feature at run time by sending it an <a href="http://developer.android.com/guide/components/intents-filters.html">intent</a>. This works for a Crosswalk application built using any of the packaging methods, i.e.</p>
 <ol>
 <li>Packaged with <code>make_apk.py</code>.</li>

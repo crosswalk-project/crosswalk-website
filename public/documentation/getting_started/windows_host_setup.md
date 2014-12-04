@@ -141,7 +141,7 @@ Check that you have installed the tools properly by running these commands:
 
 In this tutorial, you're going to use an emulated Tizen IVI image, running under VMware. To be able to create this image and access it, you need to install a few packages on the host machine:
 
-1. **Utilities**, available as part of the [git SCM tools for Windows](http://git-scm.com/download/win).
+1. <a id="Utilities"></a>**Utilities**, available as part of the [git SCM tools for Windows](http://git-scm.com/download/win).
 
     <ul>
     <li><code>bash</code>: this is required to run the script for generating Tizen packages.</li>
