@@ -19,15 +19,16 @@ The web application for this project is a simple HTML5/CSS/Javascript applicatio
 
         {
           "name": "xwalk_echo_app",
-          "version": "0.0.0.1",
-          "app": {
-            "launch":{
-              "local_path": "index.html"
+          "xwalk_version": "0.0.0.1",
+          "start_url": "index.html",
+          "icons": [
+            {
+              "src": "icon.png",
+              "sizes": "96x96",
+              "type": "image/png",
+              "density": "4.0"
             }
-          },
-          "icons": {
-            "96": "icon.png"
-          }
+          ]
         }
 
 3.  Add an icon file `icon.png`.

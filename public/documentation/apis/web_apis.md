@@ -24,7 +24,7 @@ Version key:<br />
 * [HTML Canvas 2D Context](http://www.w3.org/TR/2dcontext/) - An API for 2D immediate mode graphics.
 * [HTML5 Audio/Video](http://www.w3.org/TR/html5/) - Audio and Video support without plugins.
 * [Media Queries Level 3](http://www.w3.org/TR/css3-mediaqueries/) - CSS media features for adapting the same content to different output devices and screens.
-* [Responsive Images](http://picture.responsiveimages.org/)<sup><a href="#v">[5.34.104.5]</a></sup> - Control which image resource is presented to a user, based on media query and/or image format support.
+<!-- (Bob: Waiting for official support)* [Responsive Images](http://picture.responsiveimages.org/)<sup><a href="#v">[5.34.104.5]</a></sup> - Control which image resource is presented to a user, based on media query and/or image format support. -->
 * [Scalable Vector Graphics (SVG) 1.1](http://www.w3.org/TR/SVG11/) - An XML markup language for 2D vector graphics.
 * [WebRTC](http://www.w3.org/TR/webrtc/)<sup><a href="#a">[a]</a></sup> <sup><a href="#va">[7.36.154.6;x86]</a></sup> - Peer to peer sharing of video and audio streams.
 

@@ -50,17 +50,17 @@ However, because Crosswalk applications are intended to integrate well with the 
 
             {
               "name": "simple",
-              "version": "0.0.0.1",
-              "app": {
-                "launch":{
-                  "local_path": "index.html"
+              "xwalk_version": "0.0.0.1",
+              "start_url": "index.html",
+              "icons": [
+                {
+                  "src": "icon.png",
+                  "sizes": "128x128",
+                  "type": "image/png",
+                  "density": "4.0"
                 }
-              },
-              "icons": {
-                "128": "icon.png"
-              }
             }
 
-        See [the page about the manifest](/documentation/manifest.html) for more information.
+        See [the manifest documentation](/documentation/manifest.html) for more information.
 
 Once you've done this, you're ready to run the application on a target.

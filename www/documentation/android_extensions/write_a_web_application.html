@@ -255,15 +255,16 @@ mkdir -p assets js</code></pre>
 <li><p>Add a <code>manifest.json</code> file:</p>
 <pre><code>{
   &quot;name&quot;: &quot;xwalk_echo_app&quot;,
-  &quot;version&quot;: &quot;0.0.0.1&quot;,
-  &quot;app&quot;: {
-    &quot;launch&quot;:{
-      &quot;local_path&quot;: &quot;index.html&quot;
+  &quot;xwalk_version&quot;: &quot;0.0.0.1&quot;,
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;icon.png&quot;,
+      &quot;sizes&quot;: &quot;96x96&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;density&quot;: &quot;4.0&quot;
     }
-  },
-  &quot;icons&quot;: {
-    &quot;96&quot;: &quot;icon.png&quot;
-  }
+  ]
 }</code></pre>
 </li>
 <li><p>Add an icon file <code>icon.png</code>.</p>
