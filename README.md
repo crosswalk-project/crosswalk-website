@@ -10,7 +10,7 @@ Any bugs for the website should be logged on the
 component.
 
 Pull requests for the website should be submitted via
-[github](https://github.com/crosswalk-project/crosswalk-website-v2/pulls).
+[github](https://github.com/crosswalk-project/crosswalk-website/pulls).
 
 This document gives an overview of the source and how to build the project
 on your system.
@@ -30,10 +30,10 @@ First, [install Node.js](http://nodejs.org). Then, run the following commands:
 npm install --global harp
 
 # Clone this project from GitHub
-git clone https://github.com/crosswalk-project/crosswalk-website-v2.git
+git clone https://github.com/crosswalk-project/crosswalk-website.git
 
 # Install the project’s dependencies
-cd crosswalk-website-v2/
+cd crosswalk-website/
 npm install
 
 # Serve the project
