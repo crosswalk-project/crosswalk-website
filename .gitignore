@@ -19,3 +19,6 @@ bower_components
 
 # Compile directories
 public/styleguide/
+
+# Deploy local-config.php
+local-config.php
