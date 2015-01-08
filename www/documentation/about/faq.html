@@ -228,6 +228,7 @@
 <li><a href="#Ways-to-use-Crosswalk">Ways to use Crosswalk</a></li>
 <li><a href="#Distributing-Crosswalk-applications">Distributing Crosswalk applications</a></li>
 <li><a href="#Canvas-and-WebGL-support">Canvas and WebGL support</a></li>
+<li><a href="#Embedding-API">Embedding API</a></li>
 <li><a href="#The-Crosswalk-community">The Crosswalk community</a></li>
 <li><a href="#Commercial-aspects">Commercial aspects</a></li>
 <li><a href="#Relationships-with-other-projects">Relationships with other projects</a></li>
@@ -317,6 +318,14 @@ lib/x86/libxwalkcore.so</code></pre>
 <p>Note that enabling WebGL on platforms with blacklisted GPUs could result in the application (or the whole device) freezing or crashing, so it is not recommended for production applications.</p>
 <h3><a id="Why-is-canvas-performance-poor-on-my-device"></a>Why is canvas performance poor on my device?</h3>
 <p>If a device has a <a href="#Why-won&#39;t-WebGL-work-in-Crosswalk-on-my-device?">blacklisted GPU</a>, canvas elements are not hardware accelerated. This can result in poor performance. <a href="#Can-I-force-Crosswalk-to-enable-WebGL?">Forcing Crosswalk to ignore the GPU blacklist</a> can improve performance, but may cause your application to become unstable.</p>
+<h2><a id="Embedding-API"></a>Embedding API</h2>
+<h3><a id="Webview-compatibility"></a>I used to be able to call WebView methods from the Crosswalk embedding API, but starting with Crosswalk 9 this doesn’t work anymore. Why is that?</h3>
+<p>The embedding API in Crosswalk 8 unfortunately included some classes and methods that were not meant to be accessed, and have thus been made private starting from Crosswalk 9.</p>
+<p>From the start, we have chosen not to be 100% compatible with the existing Android WebView API. The reason behind this decision was that we wanted to avoid locking ourselves into supporting old legacy API which would not be needed for our common use-cases and negatively affect performance and the ability to refactor and improve the project.</p>
+<p>The goal of the Crosswalk Project is to provide the latest web technologies to application developers, while being very performant and modern. Making it a drop-in replacement for the WebView technically goes against these goals.</p>
+<p>That being said, we are very open to feedback and extending our API.</p>
+<p>If you have a specific need, you should create a feature request in the Crosswalk Project JIRA and specify your use-case and requirements for the API.</p>
+<p>If the API is blocking you from moving to a newer version of Crosswalk, please explain why and we will try to adjust the priority accordingly.</p>
 <h2><a id="The-Crosswalk-community"></a>The Crosswalk community</h2>
 <h3><a id="Who-is-using-Crosswalk"></a>Who is using Crosswalk?</h3>
 <p>Crosswalk is still a young project but quickly gaining momentum.  There are currently over 300 applications (mostly games) in app stores that are built with Crosswalk.</p>
