@@ -8,6 +8,7 @@ If you have any questions that are not answered below, the crosswalk-help mailin
 *   [Ways to use Crosswalk](#Ways-to-use-Crosswalk)
 *   [Distributing Crosswalk applications](#Distributing-Crosswalk-applications)
 *   [Canvas and WebGL support](#Canvas-and-WebGL-support)
+*   [Embedding API](#Embedding-API)
 *   [The Crosswalk community](#The-Crosswalk-community)
 *   [Commercial aspects](#Commercial-aspects)
 *   [Relationships with other projects](#Relationships-with-other-projects)
@@ -143,6 +144,22 @@ Note that enabling WebGL on platforms with blacklisted GPUs could result in the 
 ### <a id="Why-is-canvas-performance-poor-on-my-device"></a>Why is canvas performance poor on my device?
 
 If a device has a [blacklisted GPU](#Why-won't-WebGL-work-in-Crosswalk-on-my-device?), canvas elements are not hardware accelerated. This can result in poor performance. [Forcing Crosswalk to ignore the GPU blacklist](#Can-I-force-Crosswalk-to-enable-WebGL?) can improve performance, but may cause your application to become unstable.
+
+## <a id="Embedding-API"></a>Embedding API
+
+### <a id="Webview-compatibility"></a>I used to be able to call WebView methods from the Crosswalk embedding API, but starting with Crosswalk 9 this doesn’t work anymore. Why is that?
+
+The embedding API in Crosswalk 8 unfortunately included some classes and methods that were not meant to be accessed, and have thus been made private starting from Crosswalk 9.
+
+From the start, we have chosen not to be 100% compatible with the existing Android WebView API. The reason behind this decision was that we wanted to avoid locking ourselves into supporting old legacy API which would not be needed for our common use-cases and negatively affect performance and the ability to refactor and improve the project.
+
+The goal of the Crosswalk Project is to provide the latest web technologies to application developers, while being very performant and modern. Making it a drop-in replacement for the WebView technically goes against these goals.
+
+That being said, we are very open to feedback and extending our API.
+
+If you have a specific need, you should create a feature request in the Crosswalk Project JIRA and specify your use-case and requirements for the API.
+
+If the API is blocking you from moving to a newer version of Crosswalk, please explain why and we will try to adjust the priority accordingly.
 
 ## <a id="The-Crosswalk-community"></a>The Crosswalk community
 
