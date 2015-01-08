@@ -11,7 +11,7 @@
       
         
         <item>
-          <title>Crosswalk 10 Stable Release</title>
+          <title>Crosswalk Project 10 Stable Release</title>
           <description></description>
           <pubDate>2015-01-05T12:00</pubDate>
           <link>http://crosswalk-project.org/blog/crosswalk-10-stable.html</link>
@@ -23,7 +23,7 @@
       
         
         <item>
-          <title>Crosswalk 9 Stable is available</title>
+          <title>Crosswalk Project 9 Stable is available</title>
           <description></description>
           <pubDate>2014-11-28T12:00</pubDate>
           <link>http://crosswalk-project.org/blog/crosswalk-9-stable.html</link>
@@ -35,7 +35,7 @@
       
         
         <item>
-          <title>Crosswalk 10 Beta is available</title>
+          <title>Crosswalk Project 10 Beta is available</title>
           <description></description>
           <pubDate>2014-11-12T12:00</pubDate>
           <link>http://crosswalk-project.org/blog/crosswalk-10-beta.html</link>
@@ -47,7 +47,7 @@
       
         
         <item>
-          <title>Crosswalk 7 and 8 updated to Cordova 3.5.1</title>
+          <title>Crosswalk Project 7 and 8 updated to Cordova 3.5.1</title>
           <description></description>
           <pubDate>2014-10-21T12:00</pubDate>
           <link>http://crosswalk-project.org/blog/crosswalk-cordova-update-351.html</link>
@@ -84,7 +84,7 @@
         
         <item>
           <title>Chrome Apps for Mobile: Now with a faster dev workflow and a modern WebView</title>
-          <description>…now you have a way to leverage the latest Chromium WebView on any device running Android versions back to Ice Cream Sandwich by bundling your Chrome App with an embeddable Chromium WebView, provided by the Crosswalk open source project.</description>
+          <description>…now you have a way to leverage the latest Chromium WebView on any device running Android versions back to Ice Cream Sandwich by bundling your Chrome App with an embeddable Chromium WebView, provided by the open source Crosswalk Project.</description>
           <pubDate>2014-09-22T09:00</pubDate>
           <link>http://blog.chromium.org/2014/09/now-with-faster-dev-workflow-and-modern.html</link>
           <guid isPermaLink="true">http://blog.chromium.org/2014/09/now-with-faster-dev-workflow-and-modern.html</guid>
@@ -96,7 +96,7 @@
         
         <item>
           <title>Application meta data for the web</title>
-          <description>The Intel web team cares a lot about enabling real apps based on web technology. The web has had a huge impact on our industry and all of our lives, and we believe it would be sad if that impact and innovation doesn't become part of the new mobile world. This article discusses the the Manifest for web applications spec which aims at providing a single entry for web applications to store their meta data. Furthermore the current status is discusses as well as Intel's plans for Crosswalk.</description>
+          <description>The Intel web team cares a lot about enabling real apps based on web technology. The web has had a huge impact on our industry and all of our lives, and we believe it would be sad if that impact and innovation doesn't become part of the new mobile world. This article discusses the the Manifest for web applications spec which aims at providing a single entry for web applications to store their meta data. Furthermore the current status is discusses as well as Intel's plans for the Crosswalk Project.</description>
           <pubDate>2014-09-16T08:00</pubDate>
           <link>https://01.org/chromium/blogs/kenchris/2014/application-meta-data-web</link>
           <guid isPermaLink="true">https://01.org/chromium/blogs/kenchris/2014/application-meta-data-web</guid>
@@ -107,7 +107,7 @@
       
         
         <item>
-          <title>What is Crosswalk and How you can use it with Intel XDK</title>
+          <title>What is the Crosswalk Project and How you can use it with Intel XDK</title>
           <description></description>
           <pubDate>2014-07-04T13:14</pubDate>
           <link>http://crosswalk-project.org/blog/what-is-crosswalk.html</link>
@@ -119,7 +119,7 @@
       
         
         <item>
-          <title>Crosswalk 101: The New HTML5 Application Runtime</title>
+          <title>Crosswalk Project 101: The New HTML5 Application Runtime</title>
           <description></description>
           <pubDate>2014-05-01T10:00</pubDate>
           <link>http://crosswalk-project.org/blog/crosswalk-101-new-html5-application-runtime.html</link>
@@ -131,7 +131,7 @@
       
         
         <item>
-          <title>Using the Intel XDK “Crosswalk for Android” Build Option</title>
+          <title>Using the Intel XDK “Crosswalk Project for Android” Build Option</title>
           <description></description>
           <pubDate>2014-03-21T10:38</pubDate>
           <link>http://crosswalk-project.org/blog/using-the-crosswalk-for-android-build-option.html</link>
