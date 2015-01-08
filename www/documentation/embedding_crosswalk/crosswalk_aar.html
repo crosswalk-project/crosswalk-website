@@ -302,7 +302,7 @@ $ mvn clean install</code></pre>
 <p>The AAR remote Maven repository is <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/">https://download.01.org/crosswalk/releases/crosswalk/android/maven2/</a>. Versions are available for <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library/">stable</a> and <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library_beta/">beta</a>. If you need the canary version you can download it:</p>
 <pre><code>$ wget https://download.01.org/crosswalk/releases/crosswalk/android/canary/9.38.207.0/crosswalk-9.38.207.0.aar</code></pre>
 <p>Then install it into the local Maven repository:</p>
-<pre><code>$ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library \
+<pre><code>$ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library_canary \
       -Dversion=9.38.207.0 -Dpackaging=aar  -Dfile=crosswalk-9.38.207.0.aar \
       -DgeneratePom=true</code></pre>
 <h2>Create and Build your Android project with Crosswalk AAR</h2>
@@ -315,6 +315,10 @@ $ mvn clean install</code></pre>
     Maven {
         url &#39;https://download.01.org/crosswalk/releases/crosswalk/android/maven2&#39;
     }
+}</code></pre>
+<p>Use <code>mavenLocal()</code> instead of the remote repo url to refer to the local aar:</p>
+<pre><code>Repositories {
+    mavenLocal()
 }</code></pre>
 </li>
 <li><p>The dependency (a reference) to the AAR library will look like (9.38.208.8 is a crosswalk version):</p>
@@ -436,9 +440,9 @@ $ gradle assemblearmv7</code></pre>
 </li>
 <li><p>Build your project with Maven, the following commands will build the corresponding arch apk in target/ directory:</p>
 <pre><code>$ mvn clean install -Px86
-$ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-x86.apk
+$ adb install ./target/xwalk-aar-example-1.0.0-SNAPSHOT-x86.apk
 $ mvn clean install -Parm
-$ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-arm.apk</code></pre>
+$ adb install ./target/xwalk-aar-example-1.0.0-SNAPSHOT-arm.apk</code></pre>
 </li>
 </ol>
 <h2>Samples</h2>

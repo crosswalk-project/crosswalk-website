@@ -284,6 +284,15 @@ lib/x86/libxwalkcore.so</code></pre>
 <p>Crosswalk builds for Windows, Mac OS and Linux are available: see <a href="https://build.crosswalk-project.org/waterfall">https://build.crosswalk-project.org/waterfall</a>. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.</p>
 <p>Also note that we don&#39;t have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or similar). Again, if you are interested in working on this, please feel free to contact us.</p>
 <p>Crosswalk does not support iOS at this time.</p>
+<h3><a id="How-to-use-Crosswalk-on-a-project-using-ProGuard"></a>How to use Crosswalk on a project using ProGuard</h3>
+<p>Don&#39;t use ProGuard to obfuscate the xwalk core library because it will create a &quot;broken JNI link&quot; error. Add the following ProGuard rules in the proguard-project.txt file:&quot;</p>
+<pre><code>-keep class org.xwalk.core.** {
+    *;
+}
+-keep class org.chromium.** {
+    *;
+}
+-keepattributes **</code></pre>
 <h2><a id="Canvas-and-WebGL-support"></a>Canvas and WebGL support</h2>
 <h3><a id="Why-wont-WebGL-work-in-Crosswalk-on-my-device"></a>Why won&#39;t WebGL work in Crosswalk on my device?</h3>
 <p>Chromium has a blacklist of GPUs which are know to cause stability and/or conformance problems when running WebGL. Chromium will disable WebGL if running on a device with one of the GPUs in this list.</p>
