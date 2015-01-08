@@ -93,6 +93,18 @@ Also note that we don't have a way to package your app with Crosswalk for deploy
 
 Crosswalk does not support iOS at this time.
 
+### <a id="How-to-proguard-Crosswalk"></a>How to proguard Crosswalk?
+
+Don't proguard xwalk library because of broken JNI link. Add following ProGuard rules in proguard-project.txt file.
+
+    -keep class org.xwalk.core.** {
+        *;
+    }
+    -keep class org.chromium.** {
+	    *;
+    }
+    -keepattributes **
+
 ## <a id="Canvas-and-WebGL-support"></a>Canvas and WebGL support
 
 ### <a id="Why-wont-WebGL-work-in-Crosswalk-on-my-device"></a>Why won't WebGL work in Crosswalk on my device?
