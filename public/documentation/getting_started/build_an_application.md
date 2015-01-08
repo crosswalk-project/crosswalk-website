@@ -59,6 +59,7 @@ However, because Crosswalk applications are intended to integrate well with the 
                   "type": "image/png",
                   "density": "4.0"
                 }
+              ]
             }
 
         See [the manifest documentation](/documentation/manifest.html) for more information.
