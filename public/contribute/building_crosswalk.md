@@ -169,10 +169,6 @@ Chrome's process, so make sure you are
     xorg-x11-utils zlib-devel.i686 zlib.i686
     ```
 
-2.  Install the Oracle JDK. It is
-    available from the
-    [Oracle Java download site](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html).
-
 2.  Configure gyp.
 
     gyp is the build system generator used in Chromium to generate actual build
