@@ -93,9 +93,9 @@ Also note that we don't have a way to package your app with Crosswalk for deploy
 
 Crosswalk does not support iOS at this time.
 
-### <a id="How-to-proguard-Crosswalk"></a>How to proguard Crosswalk?
+### <a id="How-to-use-Crosswalk-on-a-project-using-ProGuard"></a>How to use Crosswalk on a project using ProGuard
 
-Don't proguard xwalk library because of broken JNI link. Add following ProGuard rules in proguard-project.txt file.
+Don't use ProGuard to obfuscate the xwalk core library because it will create a "broken JNI link" error. Add the following ProGuard rules in the proguard-project.txt file:"
 
     -keep class org.xwalk.core.** {
         *;

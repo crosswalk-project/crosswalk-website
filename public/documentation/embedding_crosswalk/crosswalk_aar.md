@@ -114,7 +114,12 @@ Then install it into the local Maven repository:
     }
     ```
 
-    Using mavenLocal() instead of remote repo url to refer local aar.
+    Use <code>mavenLocal()</code> instead of the remote repo url to refer to the local aar:
+    ```
+    Repositories {
+        mavenLocal()
+    }
+    ```
 
 3. The dependency (a reference) to the AAR library will look like (9.38.208.8 is a crosswalk version):
     
