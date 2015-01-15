@@ -103,37 +103,39 @@ Use a terminal on the emulated device to run the following steps:
 
 1.  Open a shell on the target as the `app` user. You can do this using the small console icon in the top-left of the screen.
 
-2.  Install the `xwalk-simple.xpk` package using the `xwalkctl` command (still as the app user):
+2.  Install the `xwalk-simple.xpk` package using the `pkgcmd` command (still as the app user):
 
-        app:~> xwalkctl --install /home/app/xwalk-simple.xpk
+        app:~> pkgcmd -i -t xpk -p /home/app/xwalk-simple.xpk -q
 
     The output from this command will end with something like this:
 
-        [0717/103509:INFO:package_installer.cc(171)] Installed application with id:
-        dogabgfklbjobjkfdbokaedngjeepepj to
-        /home/app/.config/xwalk-service/applications/dogabgfklbjobjkfdbokaedngjeepepj
-        successfully.
+        path is /home/app/xwalk-simple.xpk
+        __return_cb req_id[1] pkg_type[wgt] pkgid[ihogjblnkegkonaaaddobhoncmdpbomi] key[start] val[install]
+        __return_cb req_id[1] pkg_type[wgt] pkgid[ihogjblnkegkonaaaddobhoncmdpbomi] key[end] val[ok]
+        spend time for pkgcmd is [2640]ms
 
-    The long ID string (*dogabgfklbjobjkfdbokaedngjeepepj* here) is the **application ID**. This is important, as you'll need it to launch the application in the next step.
+    The long ID string (*ihogjblnkegkonaaaddobhoncmdpbomi* here) is the **application ID**. This is important, as you'll need it to launch the application in the next step.
 
     If you need to uninstall the application, you can do this with:
 
-        xwalkctl --uninstall <application ID>
+        pkgcmd -u -n <application ID> -q
+
+    Please refer to [Tizen package management](https://wiki.tizen.org/wiki/Application_framework#Package_Management_2) for more details.
 
 <h2 id="Run-the-application">Run the application</h2>
 
 To start the application, you need to know the ID assigned to the application when it was installed. If you can't remember it, you can list the installed applications with:
 
-    app:~> xwalkctl
+    app:~> ail_list
 
-Pass the ID to the `xwalk-launcher` command, in the same shell you used to install the application:
+Pass the ID to the `app_launcher` command, in the same shell you used to install the application:
 
-    app:~> xwalk-launcher dogabgfklbjobjkfdbokaedngjeepepj
+    app:~> app_launcher -s xwalk.ihogjblnkegkonaaaddobhoncmdpbomi
 
 The application should now start on the target. Here it is running on an emulated Tizen IVI device, on Fedora Linux:
 
 <img src="/assets/xwalk-simple-on-tizen-ivi.png">
 
-To start the application in fullscreen mode, you can either [configure this in the manifest](/documentation/manifest/display.html) or pass the `--fullscreen` option to `xwalk-launcher`:
+Please refer to [Tizen application management](https://wiki.tizen.org/wiki/Application_framework#Application_Management) for more details.
 
-    app:~> xwalk-launcher --fullscreen dogabgfklbjobjkfdbokaedngjeepepj
+To start the application in fullscreen mode, you can [configure this in the manifest](/documentation/manifest/display.html).
