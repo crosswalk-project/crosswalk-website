@@ -1,4 +1,9 @@
 {
+  "crosswalk-lite-10": {
+  "title": "Crosswalk Project Lite Branch 10 Release",
+  "date": "2015-01-29T12:00",
+  "author": "Halton Huo"
+  },
   "crosswalk-11-beta": {
   "title": "Crosswalk 11 Beta: SIMD updates, Chromium 40, Service Worker",
   "date": "2015-01-14T12:00",
