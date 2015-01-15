@@ -2,7 +2,7 @@
 <html id="top" lang="en-us">
   <head>
     <meta charset="utf-8">
-    <title>Crosswalk</title>
+    <title>The Crosswalk Project</title>
     <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
     <script>
@@ -228,6 +228,7 @@
 <li><a href="#Ways-to-use-Crosswalk">Ways to use Crosswalk</a></li>
 <li><a href="#Distributing-Crosswalk-applications">Distributing Crosswalk applications</a></li>
 <li><a href="#Canvas-and-WebGL-support">Canvas and WebGL support</a></li>
+<li><a href="#Embedding-API">Embedding API</a></li>
 <li><a href="#The-Crosswalk-community">The Crosswalk community</a></li>
 <li><a href="#Commercial-aspects">Commercial aspects</a></li>
 <li><a href="#Relationships-with-other-projects">Relationships with other projects</a></li>
@@ -284,6 +285,15 @@ lib/x86/libxwalkcore.so</code></pre>
 <p>Crosswalk builds for Windows, Mac OS and Linux are available: see <a href="https://build.crosswalk-project.org/waterfall">https://build.crosswalk-project.org/waterfall</a>. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.</p>
 <p>Also note that we don&#39;t have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or similar). Again, if you are interested in working on this, please feel free to contact us.</p>
 <p>Crosswalk does not support iOS at this time.</p>
+<h3><a id="How-to-use-Crosswalk-on-a-project-using-ProGuard"></a>How to use Crosswalk on a project using ProGuard</h3>
+<p>Don&#39;t use ProGuard to obfuscate the xwalk core library because it will create a &quot;broken JNI link&quot; error. Add the following ProGuard rules in the proguard-project.txt file:&quot;</p>
+<pre><code>-keep class org.xwalk.core.** {
+    *;
+}
+-keep class org.chromium.** {
+    *;
+}
+-keepattributes **</code></pre>
 <h2><a id="Canvas-and-WebGL-support"></a>Canvas and WebGL support</h2>
 <h3><a id="Why-wont-WebGL-work-in-Crosswalk-on-my-device"></a>Why won&#39;t WebGL work in Crosswalk on my device?</h3>
 <p>Chromium has a blacklist of GPUs which are know to cause stability and/or conformance problems when running WebGL. Chromium will disable WebGL if running on a device with one of the GPUs in this list.</p>
@@ -308,6 +318,14 @@ lib/x86/libxwalkcore.so</code></pre>
 <p>Note that enabling WebGL on platforms with blacklisted GPUs could result in the application (or the whole device) freezing or crashing, so it is not recommended for production applications.</p>
 <h3><a id="Why-is-canvas-performance-poor-on-my-device"></a>Why is canvas performance poor on my device?</h3>
 <p>If a device has a <a href="#Why-won&#39;t-WebGL-work-in-Crosswalk-on-my-device?">blacklisted GPU</a>, canvas elements are not hardware accelerated. This can result in poor performance. <a href="#Can-I-force-Crosswalk-to-enable-WebGL?">Forcing Crosswalk to ignore the GPU blacklist</a> can improve performance, but may cause your application to become unstable.</p>
+<h2><a id="Embedding-API"></a>Embedding API</h2>
+<h3><a id="Webview-compatibility"></a>I used to be able to call WebView methods from the Crosswalk embedding API, but starting with Crosswalk 9 this doesn’t work anymore. Why is that?</h3>
+<p>The embedding API in Crosswalk 8 unfortunately included some classes and methods that were not meant to be accessed, and have thus been made private starting from Crosswalk 9.</p>
+<p>From the start, we have chosen not to be 100% compatible with the existing Android WebView API. The reason behind this decision was that we wanted to avoid locking ourselves into supporting old legacy API which would not be needed for our common use-cases and negatively affect performance and the ability to refactor and improve the project.</p>
+<p>The goal of the Crosswalk Project is to provide the latest web technologies to application developers, while being very performant and modern. Making it a drop-in replacement for the WebView technically goes against these goals.</p>
+<p>That being said, we are very open to feedback and extending our API.</p>
+<p>If you have a specific need, you should create a feature request in the Crosswalk Project JIRA and specify your use-case and requirements for the API.</p>
+<p>If the API is blocking you from moving to a newer version of Crosswalk, please explain why and we will try to adjust the priority accordingly.</p>
 <h2><a id="The-Crosswalk-community"></a>The Crosswalk community</h2>
 <h3><a id="Who-is-using-Crosswalk"></a>Who is using Crosswalk?</h3>
 <p>Crosswalk is still a young project but quickly gaining momentum.  There are currently over 300 applications (mostly games) in app stores that are built with Crosswalk.</p>
@@ -371,7 +389,7 @@ lib/x86/libxwalkcore.so</code></pre>
         <div class="row">
           <div class="grid-1-of-2">
             <a href="/" class="logo">
-              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image" style="max-width:300px" />
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk Project logo" class="logo-image" style="max-width:300px" />
             </a>
           </div>
           <div>
@@ -403,8 +421,8 @@ lib/x86/libxwalkcore.so</code></pre>
           <div>
               
               
-                <b><a href="/blog">Crosswalk 9 Stable is available</a></b><br/>
-                &nbsp;<span ><time class="js-vagueTime" datetime="Fri, 28 Nov 2014 12:00:00 GMT">2014-11-28T12:00</time></span><br/>
+                <b><a href="/blog">Crosswalk 11 Beta: SIMD updates, Chromium 40, Service Worker</a></b><br/>
+                &nbsp;<span ><time class="js-vagueTime" datetime="Wed, 14 Jan 2015 12:00:00 GMT">2015-01-14T12:00</time></span><br/>
               
               <br/><b><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></b></li>
           </div>
@@ -412,8 +430,7 @@ lib/x86/libxwalkcore.so</code></pre>
         <div class="row">
           <div class="grid-1-of-2">
             <small>
-              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
-              Privacy policy. *Other names and brands may be claimed as the property of others.
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
             </small>
           </div>
           <div class="grid-1-of-2">

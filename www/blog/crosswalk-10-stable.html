@@ -30,15 +30,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk Project 101: The New HTML5 Application Runtime" />
-    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-101-new-html5-application-runtime" />
+    <meta property="og:title" content="Crosswalk Project 10 Stable Release" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-10-stable" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-101-new-html5-application-runtime" />
-    <meta name="twitter:title" content="Crosswalk Project 101: The New HTML5 Application Runtime" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-10-stable" />
+    <meta name="twitter:title" content="Crosswalk Project 10 Stable Release" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -89,25 +89,35 @@
           
             <article class="article">
   <header class="article-header">
-    <h1 class="article-title">Crosswalk Project 101: The New HTML5 Application Runtime</h1>
+    <h1 class="article-title">Crosswalk Project 10 Stable Release</h1>
     <span class="article-meta">
-      <a href="crosswalk-101-new-html5-application-runtime.html"><time class="js-vagueTime" datetime="Thu, 01 May 2014 10:00:00 GMT">Thu, 01 May 2014 10:00:00 GMT</time></a>
-       by <span class="article-author">Kenneth Christiansen</span>
+      <a href="crosswalk-10-stable.html"><time class="js-vagueTime" datetime="Mon, 05 Jan 2015 12:00:00 GMT">Mon, 05 Jan 2015 12:00:00 GMT</time></a>
+       by <span class="article-author">Francesco Balestrieri</span>
     </span>
   </header>
   
-  <p>HTML5 brings many advantages, ranging from easy integration with cloud services to super flexible layout primitives. It also brings value to app developers with its openness, deployment model and with responsive design built in.</p>
-<p>The web platform is rapidly improving, with new versions of HTML, CSS and JavaScript and with an increased focus on mobile performance and web components a standard way to encapsulate and create reusable UI and logic components. But to many developers basic things are still missing and that makes it hard to adopt the web as it is today.</p>
-<p>With Crosswalk that changes; Crosswalk is an HTML application runtime, built on an open source foundation. It extends today&#39;s web platform with new capabilities, empowering applications written using web technologies.</p>
-<p>By using Crosswalk, an application developer can:</p>
+  <p>Crosswalk 10.39.235.15 is our new stable release.</p>
+<p>This release fixes two major issues:</p>
 <ul>
-<li>Access the latest recommended and emerging web standards</li>
-<li>Control the upgrade cycle of an application by distributing it with its own runtime</li>
-<li>Add custom extensions to an application to take advantage of platform features not exposed by Crosswalk or the standardized web platform</li>
+<li>Updates the SSL implementation to BoringSSL. This solves an issue with the Google Play Store warning about a security vulnerability in the version of OpenSSL previously used by Crosswalk (<a href="https://crosswalk-project.org/jira/browse/XWALK-3217">XWALK-3217</a>)</li>
+<li>Due to some changes to support multiple profiles, upgrading an application to Crosswalk 9 was causing local storage data to disappear. With Crosswalk 10 the data is migrated correctly (<a href="https://crosswalk-project.org/jira/browse/XWALK-3252">XWALK-3252</a>)</li>
 </ul>
-<p>At the heart of Crosswalk is the Blink rendering and layout engine. This provides the same HTML5 features and capabilities you would expect to find in any modern web browser.</p>
-<p>Building on Blink, Crosswalk uses parts and modules of Chromium to provide a multiprocess architecture, designed for security and performance, as well as state of the art performance and graphics.</p>
-<p>Be sure to check ou the <a href="http://crosswalk-project.org/">Crosswalk</a> site and the <a href="http://software.intel.com/en-us/html5/tools">tools and XDK</a>.</p>
+<p>Crosswalk 10 is updated to Chromium 39 and introduces the following new features:</p>
+<ul>
+<li>Updated Embedding API (v4), adding the following methods:<ul>
+<li><a href="https://crosswalk-project.org/jira/browse/XWALK-2763">getRemoteDebuggingUrl</a></li>
+<li><a href="https://crosswalk-project.org/jira/browse/XWALK-2762">onReceivedSslError</a></li>
+<li><a href="https://crosswalk-project.org/jira/browse/XWALK-2374">onCreateWindowRequested</a></li>
+<li><a href="https://crosswalk-project.org/jira/browse/XWALK-2373">onIconAvailable and onReceivedIcon</a></li>
+</ul>
+</li>
+<li>Support for Cordova 3.6.3</li>
+<li>Crosswalk AAR package in Stable and Beta channels for Maven/Gradle integration (<a href="https://crosswalk-project.org/documentation/embedding_crosswalk/crosswalk_aar.html">documentation</a>)</li>
+<li>Remote debugging is disabled by default and needs to be enabled with <code>--enable-remote-debugging</code></li>
+</ul>
+<p>Download Crosswalk 10 from the <a href="https://download.01.org/crosswalk/releases/crosswalk/android/stable/10.39.235.15/">Stable Channel</a> </p>
+<hr>
+<p><a href="https://crosswalk-project.org/jira/secure/ReleaseNote.jspa?projectId=10001&amp;version=10609">Full release notes in Jira</a></p>
 
   <a href="http://twitter.com/xwalk_project" class="article-promo well">
   <h4 class="article-promoTitle">Get more hybrid app secrets</h4>

@@ -94,7 +94,7 @@ The AAR remote Maven repository is https://download.01.org/crosswalk/releases/cr
 
 Then install it into the local Maven repository:
     
-    $ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library \
+    $ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library_canary \
           -Dversion=9.38.207.0 -Dpackaging=aar  -Dfile=crosswalk-9.38.207.0.aar \
           -DgeneratePom=true
 
@@ -111,6 +111,13 @@ Then install it into the local Maven repository:
         Maven {
             url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2'
         }
+    }
+    ```
+
+    Use <code>mavenLocal()</code> instead of the remote repo url to refer to the local aar:
+    ```
+    Repositories {
+        mavenLocal()
     }
     ```
 
@@ -266,9 +273,9 @@ The Maven android plugin has a known issue that it can't build multiple APKs for
 5.  Build your project with Maven, the following commands will build the corresponding arch apk in target/ directory:
 
         $ mvn clean install -Px86
-        $ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-x86.apk
+        $ adb install ./target/xwalk-aar-example-1.0.0-SNAPSHOT-x86.apk
         $ mvn clean install -Parm
-        $ adb ./target/install xwalk-aar-example-1.0.0-SNAPSHOT-arm.apk
+        $ adb install ./target/xwalk-aar-example-1.0.0-SNAPSHOT-arm.apk
 
 ## Samples
 

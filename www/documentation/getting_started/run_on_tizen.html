@@ -2,7 +2,7 @@
 <html id="top" lang="en-us">
   <head>
     <meta charset="utf-8">
-    <title>Crosswalk</title>
+    <title>The Crosswalk Project</title>
     <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
     <script>
@@ -363,28 +363,29 @@ echo &quot;Wrote $xpk&quot;</code></pre>
 <ol>
 <li><p>Open a shell on the target as the <code>app</code> user. You can do this using the small console icon in the top-left of the screen.</p>
 </li>
-<li><p>Install the <code>xwalk-simple.xpk</code> package using the <code>xwalkctl</code> command (still as the app user):</p>
-<pre><code>app:~&gt; xwalkctl --install /home/app/xwalk-simple.xpk</code></pre>
+<li><p>Install the <code>xwalk-simple.xpk</code> package using the <code>pkgcmd</code> command (still as the app user):</p>
+<pre><code>app:~&gt; pkgcmd -i -t xpk -p /home/app/xwalk-simple.xpk -q</code></pre>
 <p>The output from this command will end with something like this:</p>
-<pre><code>[0717/103509:INFO:package_installer.cc(171)] Installed application with id:
-dogabgfklbjobjkfdbokaedngjeepepj to
-/home/app/.config/xwalk-service/applications/dogabgfklbjobjkfdbokaedngjeepepj
-successfully.</code></pre>
-<p>The long ID string (<em>dogabgfklbjobjkfdbokaedngjeepepj</em> here) is the <strong>application ID</strong>. This is important, as you&#39;ll need it to launch the application in the next step.</p>
+<pre><code>path is /home/app/xwalk-simple.xpk
+__return_cb req_id[1] pkg_type[wgt] pkgid[ihogjblnkegkonaaaddobhoncmdpbomi] key[start] val[install]
+__return_cb req_id[1] pkg_type[wgt] pkgid[ihogjblnkegkonaaaddobhoncmdpbomi] key[end] val[ok]
+spend time for pkgcmd is [2640]ms</code></pre>
+<p>The long ID string (<em>ihogjblnkegkonaaaddobhoncmdpbomi</em> here) is the <strong>application ID</strong>. This is important, as you&#39;ll need it to launch the application in the next step.</p>
 <p>If you need to uninstall the application, you can do this with:</p>
-<pre><code>xwalkctl --uninstall &lt;application ID&gt;</code></pre>
+<pre><code>pkgcmd -u -n &lt;application ID&gt; -q</code></pre>
+<p>Please refer to <a href="https://wiki.tizen.org/wiki/Application_framework#Package_Management_2">Tizen package management</a> for more details.</p>
 </li>
 </ol>
 <h2 id="Run-the-application">Run the application</h2>
 
 <p>To start the application, you need to know the ID assigned to the application when it was installed. If you can&#39;t remember it, you can list the installed applications with:</p>
-<pre><code>app:~&gt; xwalkctl</code></pre>
-<p>Pass the ID to the <code>xwalk-launcher</code> command, in the same shell you used to install the application:</p>
-<pre><code>app:~&gt; xwalk-launcher dogabgfklbjobjkfdbokaedngjeepepj</code></pre>
+<pre><code>app:~&gt; ail_list</code></pre>
+<p>Pass the ID to the <code>app_launcher</code> command, in the same shell you used to install the application:</p>
+<pre><code>app:~&gt; app_launcher -s xwalk.ihogjblnkegkonaaaddobhoncmdpbomi</code></pre>
 <p>The application should now start on the target. Here it is running on an emulated Tizen IVI device, on Fedora Linux:</p>
 <p><img src="/assets/xwalk-simple-on-tizen-ivi.png"></p>
-<p>To start the application in fullscreen mode, you can either <a href="/documentation/manifest/display.html">configure this in the manifest</a> or pass the <code>--fullscreen</code> option to <code>xwalk-launcher</code>:</p>
-<pre><code>app:~&gt; xwalk-launcher --fullscreen dogabgfklbjobjkfdbokaedngjeepepj</code></pre>
+<p>Please refer to <a href="https://wiki.tizen.org/wiki/Application_framework#Application_Management">Tizen application management</a> for more details.</p>
+<p>To start the application in fullscreen mode, you can <a href="/documentation/manifest/display.html">configure this in the manifest</a>.</p>
 
   <footer class="article-next">
     
@@ -442,7 +443,7 @@ successfully.</code></pre>
         <div class="row">
           <div class="grid-1-of-2">
             <a href="/" class="logo">
-              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk logo" class="logo-image" style="max-width:300px" />
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk Project logo" class="logo-image" style="max-width:300px" />
             </a>
           </div>
           <div>
@@ -474,8 +475,8 @@ successfully.</code></pre>
           <div>
               
               
-                <b><a href="/blog">Crosswalk 9 Stable is available</a></b><br/>
-                &nbsp;<span ><time class="js-vagueTime" datetime="Fri, 28 Nov 2014 12:00:00 GMT">2014-11-28T12:00</time></span><br/>
+                <b><a href="/blog">Crosswalk 11 Beta: SIMD updates, Chromium 40, Service Worker</a></b><br/>
+                &nbsp;<span ><time class="js-vagueTime" datetime="Wed, 14 Jan 2015 12:00:00 GMT">2015-01-14T12:00</time></span><br/>
               
               <br/><b><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></b></li>
           </div>
@@ -483,8 +484,7 @@ successfully.</code></pre>
         <div class="row">
           <div class="grid-1-of-2">
             <small>
-              Crosswalk is a project from the Intel Open Source Technology Center. Copyright © 2013–2014 Intel Corporation. All rights reserved.
-              Privacy policy. *Other names and brands may be claimed as the property of others.
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
             </small>
           </div>
           <div class="grid-1-of-2">

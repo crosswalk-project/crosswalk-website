@@ -30,15 +30,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk Project 101: The New HTML5 Application Runtime" />
-    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-101-new-html5-application-runtime" />
+    <meta property="og:title" content="Crosswalk 11 Beta: SIMD updates, Chromium 40, Service Worker" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-11-beta" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-101-new-html5-application-runtime" />
-    <meta name="twitter:title" content="Crosswalk Project 101: The New HTML5 Application Runtime" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-11-beta" />
+    <meta name="twitter:title" content="Crosswalk 11 Beta: SIMD updates, Chromium 40, Service Worker" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -89,25 +89,56 @@
           
             <article class="article">
   <header class="article-header">
-    <h1 class="article-title">Crosswalk Project 101: The New HTML5 Application Runtime</h1>
+    <h1 class="article-title">Crosswalk 11 Beta: SIMD updates, Chromium 40, Service Worker</h1>
     <span class="article-meta">
-      <a href="crosswalk-101-new-html5-application-runtime.html"><time class="js-vagueTime" datetime="Thu, 01 May 2014 10:00:00 GMT">Thu, 01 May 2014 10:00:00 GMT</time></a>
-       by <span class="article-author">Kenneth Christiansen</span>
+      <a href="crosswalk-11-beta.html"><time class="js-vagueTime" datetime="Wed, 14 Jan 2015 12:00:00 GMT">Wed, 14 Jan 2015 12:00:00 GMT</time></a>
+       by <span class="article-author">Francesco Balestrieri</span>
     </span>
   </header>
   
-  <p>HTML5 brings many advantages, ranging from easy integration with cloud services to super flexible layout primitives. It also brings value to app developers with its openness, deployment model and with responsive design built in.</p>
-<p>The web platform is rapidly improving, with new versions of HTML, CSS and JavaScript and with an increased focus on mobile performance and web components a standard way to encapsulate and create reusable UI and logic components. But to many developers basic things are still missing and that makes it hard to adopt the web as it is today.</p>
-<p>With Crosswalk that changes; Crosswalk is an HTML application runtime, built on an open source foundation. It extends today&#39;s web platform with new capabilities, empowering applications written using web technologies.</p>
-<p>By using Crosswalk, an application developer can:</p>
+  <p>Crosswalk 11 for Android has entered the Beta channel. This release sees an update to Chromium 40 and introduces some new functionality in the SIMD.js API. As usual, we welcome feedback on the <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-help">crosswalk-help</a> mailing list or <a href="https://crosswalk-project.org/jira/">JIRA</a>.</p>
+<h2>Chromium 40 and Service Worker</h2>
+<p>Crosswalk 11 is rebased to Chromium 40, which introduces the <a href="http://www.w3.org/TR/service-workers/">Service Worker API</a>. Service Worker is a powerful API that can be used to improve the offline experience of applications that access data across a network.  </p>
+<p>Two APIs for use within the service worker are included. The <a href="https://fetch.spec.whatwg.org/">Fetch API</a> which allows to make cross-origin network requests and return the responses as well as the <a href="https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#cache-objects">Cache API</a> which makes it possible to save fetched responses and return the from the cache next time the resource is requested, while bypassing the network and thus making the app work offline.</p>
+<p>Only a subset of the Cache API is supported for now but full compatibility with the spec can be reached by using a <a href="https://github.com/coonsta/cache-polyfill/blob/master/dist/serviceworker-cache-polyfill.js">polyfill</a>. </p>
+<p>Below are some useful resources about Service Worker, we are eager to hear how you will use the API for your applications!</p>
 <ul>
-<li>Access the latest recommended and emerging web standards</li>
-<li>Control the upgrade cycle of an application by distributing it with its own runtime</li>
-<li>Add custom extensions to an application to take advantage of platform features not exposed by Crosswalk or the standardized web platform</li>
+<li><a href="http://blog.chromium.org/2014/12/chrome-40-beta-powerful-offline-and.html">http://blog.chromium.org/2014/12/chrome-40-beta-powerful-offline-and.html</a></li>
+<li><a href="https://github.com/w3c-webmob/ServiceWorkersDemos">https://github.com/w3c-webmob/ServiceWorkersDemos</a></li>
+<li><a href="http://www.chromium.org/blink/serviceworker">http://www.chromium.org/blink/serviceworker</a></li>
 </ul>
-<p>At the heart of Crosswalk is the Blink rendering and layout engine. This provides the same HTML5 features and capabilities you would expect to find in any modern web browser.</p>
-<p>Building on Blink, Crosswalk uses parts and modules of Chromium to provide a multiprocess architecture, designed for security and performance, as well as state of the art performance and graphics.</p>
-<p>Be sure to check ou the <a href="http://crosswalk-project.org/">Crosswalk</a> site and the <a href="http://software.intel.com/en-us/html5/tools">tools and XDK</a>.</p>
+<p>For a list of new features in Chromium 40, check the <a href="https://www.chromestatus.com/features">Chromium Dashboard</a></p>
+<h2>SIMD updates</h2>
+<p>The <a href="https://github.com/johnmccutchan/ecmascript_simd/">SIMD.js API</a> now implements load and store of data types. These APIs allow developers to load or store all or partial elements of SIMD data from or to variable typed arrays and are important for several use cases:</p>
+<ol>
+<li>load/store SIMD data from/to non 16 bytes aligned memory.</li>
+<li>load/store 1, 2 or 3 float32/int32 packed data structure from/to memory to/from SIMD types.</li>
+<li>enable Emscripten (<a href="https://github.com/kripken/emscripten">https://github.com/kripken/emscripten</a>) generated SIMD.js code. </li>
+</ol>
+<p>APIs include:</p>
+<pre><code>SIMD.float32x4.load
+SIMD.float32x4.loadX
+SIMD.float32x4.loadXY
+SIMD.float32x4.loadXYZ
+SIMD.float32x4.store
+SIMD.float32x4.storeX
+SIMD.float32x4.storeXY
+SIMD.float32x4.storeXYZ
+SIMD.float64x2.load
+SIMD.float64x2.loadX
+SIMD.float64x2.store
+SIMD.float64x2.storeX
+SIMD.int32x4.load
+SIMD.int32x4.loadX
+SIMD.int32x4.loadXY
+SIMD.int32x4.loadXYZ
+SIMD.int32x4.store
+SIMD.int32x4.storeX
+SIMD.int32x4.storeXY
+SIMD.int32x4.storeXYZ</code></pre>
+<hr>
+<p><a href="https://crosswalk-project.org/jira/secure/ReleaseNote.jspa?projectId=10001&amp;version=10700">Full release notes in Jira</a></p>
+<p>Download Crosswalk 11 from the <a href="https://download.01.org/crosswalk/releases/crosswalk/android/beta/">Beta Channel</a> </p>
 
   <a href="http://twitter.com/xwalk_project" class="article-promo well">
   <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
