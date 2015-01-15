@@ -1,4 +1,9 @@
 {
+  "crosswalk-11-beta": {
+  "title": "Crosswalk 11 Beta: SIMD updates, Chromium 40, Service Worker",
+  "date": "2015-01-14T12:00",
+  "author": "Francesco Balestrieri"
+  },
   "crosswalk-10-stable": {
   "title": "Crosswalk Project 10 Stable Release",
   "date": "2015-01-05T12:00",
