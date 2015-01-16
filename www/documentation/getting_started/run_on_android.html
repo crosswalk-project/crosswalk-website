@@ -279,6 +279,7 @@
 <pre><code>&gt; python make_apk.py --package=org.crosswalkproject.example \
     --manifest=xwalk-simple/manifest.json</code></pre>
 <p>This will package the application defined in the specified <code>manifest.json</code> file and produce two apk files from it, one for x86 architecture and one for ARM. The apk files will end up in the directory where you ran the script. Each file is given the name set in the manifest, with any filesystem-sensitive characters removed and an architecture identifier (&quot;x86&quot; or &quot;arm&quot;) appended. For our example, the output files are <code>simple_x86.apk</code> and <code>simple_arm.apk</code>.</p>
+<p>Please specify --app-versionCode or --app-versionCodeBase, otherwise android:versionCode will be generated based on android:versionName. For example, versionName "3.2.1" will get versionCode: ABI prefix + "0302001".</p>
 </li>
 <li><p>Install the application on the target.</p>
 <p>If installing on an x86 device:</p>
