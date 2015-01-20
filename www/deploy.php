@@ -1,4 +1,93 @@
-<?php
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/deploy" />
+    <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/deploy" />
+    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+      <div class="container">
+        <div class="row">
+          <nav class="nav">
+  <a href="/" class="nav-logo logo">
+    
+      <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" class="logo-image">
+    
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">Wiki</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation/about/faq.html" class="nav-link">FAQ</a>
+    </li>
+    <li class="nav-item">
+      <a href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div class="row">
+          
+            <?php
 	/*
 	 * Copyright © 2012 by Eric Schultz.
 	 *
@@ -118,3 +207,112 @@
 			}
 		}
 	}
+          
+        </div>
+      </div>
+    
+
+    <hr class="footer-divider" />
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="grid-1-of-2">
+            <a href="/" class="logo">
+              <img src="/assets/identity/crosswalk-logo-horizontal-dark.svg" alt="The Crosswalk Project logo" class="logo-image" style="max-width:300px" />
+            </a>
+          </div>
+          <div>
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <ul class="footer-block grid-1-of-2">
+              <li><a href="/documentation">Documentation</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+              <li><a href="/contribute">Contribute</a></li>
+            </ul>
+            <ul>
+              <li><a href="/documentation/downloads.html">Downloads</a></li>
+              <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki">Wiki</a>
+              <li><a href="https://github.com/crosswalk-project">GitHub source</a></li>
+              <li><a href="/sitemap.html">Sitemap</a></li>
+            </ul>
+          </div>
+          <div>
+              
+              
+                <b><a href="/blog">Crosswalk 11 Beta: SIMD updates, Chromium 40, Service Worker</a></b><br/>
+                &nbsp;<span ><time class="js-vagueTime" datetime="Wed, 14 Jan 2015 12:00:00 GMT">2015-01-14T12:00</time></span><br/>
+              
+              <br/><b><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></b></li>
+          </div>
+        </div>
+        <div class="row">
+          <div class="grid-1-of-2">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+            </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="https://software.intel.com/en-us/oss" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-intel.png" alt="The Intel logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.appgyver.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-appgyver.png" alt="The Appgyver logo">
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>
