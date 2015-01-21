@@ -1,4 +1,4 @@
-# Getting started with Crosswalk
+# Getting started with the Crosswalk Project
 
 This tutorial will get you up and running with Crosswalk as quickly as possible.
 
