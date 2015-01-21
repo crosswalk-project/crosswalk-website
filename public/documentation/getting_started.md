@@ -1,6 +1,6 @@
 # Getting started with the Crosswalk Project
 
-This tutorial will get you up and running with Crosswalk as quickly as possible.
+This tutorial will get you up and running with the Crosswalk Project as quickly as possible.
 
 Note that the tutorial uses the latest stable version of Crosswalk for Android: newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).
 
