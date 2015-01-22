@@ -1,6 +1,6 @@
 # Remote debugging
 
-Web applications running under Crosswalk can be debugged remotely using the [Chrome dev tools](https://developer.chrome.com/devtools/index). 
+Web applications running under Crosswalk can be debugged remotely using [Chrome dev tools](https://developer.chrome.com/devtools/index). 
 
 Depending on the platform, a connection must be established between the host (the machine where you are doing the development) and the target (the machine running the application under Crosswalk). The type of connection depends on the target's operating system, as explained below.
 
@@ -152,11 +152,11 @@ Note that it is also possible to disable remote debugging using the same intent,
 
 ## Tizen
 
-To debug Crosswalk applications on Tizen, the Crosswalk service on the target must be configured to provide a debugging endpoint. You can then access this endpoint from a Chrome browser on the host.
+To debug Crosswalk applications on Tizen, the Crosswalk service on the target device should be configured to provide a debugging endpoint.  A properly-configured endpoint is accessible via Chrome browser on the host. 
 
-Before you can follow these instructions, you will first need a Tizen target (with Crosswalk installed); and an application installed on that target via `xwalkctl`. See [Getting started](/documentation/getting_started.html) for details.
+All you need is a Tizen target (with Crosswalk installed) and an application installed on that target via `xwalkctl`. See [Getting started](/documentation/getting_started.html) for details.
 
-Once you have the pre-requisites in place, turn on debugging for the Crosswalk service on the Tizen target as follows:
+Once the pre-requisites are in place, log in and turn on debugging for the Crosswalk service on the Tizen target as follows:
 
 1.  From the host, log on to the Tizen target. For example, if the Tizen target has the IP address 192.168.0.19:
 
@@ -169,7 +169,19 @@ Once you have the pre-requisites in place, turn on debugging for the Crosswalk s
 
     (The default password is **tizen**.)
 
-2.  On the target, add a `--remote-debugging-port=9222` option to the `ExecStart=` line in the Crosswalk service configuration file, `/usr/lib/systemd/user/xwalk.service`. For example, open the file for editing:
+2.  Remote debugging-mode of the xwalk service with the specified port can be opened by either of following methods (a) or (b); (a) is the recommend method:
+
+    (a)  `xwalkctl -d PORT_NUMBER` `#enable/disable remote-debugging-mode`   
+
+      Usage:
+        ```
+        xwalkctl -d 9222 #enabled remote debugging at port '9222'
+        xwalkctl -d 0    #disable remote debugging.
+        ```
+
+    (b) Modify the `xwalk.service` configuration file under `/usr/lib/systemd/user/xwalk.service` on the target and restart xwalk service. 
+
+    Add option `--remote-debugging-port=9222` to the `ExecStart=` line in the Crosswalk service configuration file.  For example, to open the file for editing with VIM:
 
     ```
     root:~> vim /usr/lib/systemd/user/xwalk.service
@@ -182,13 +194,17 @@ Once you have the pre-requisites in place, turn on debugging for the Crosswalk s
       --external-extensions-path=/usr/lib/tizen-extensions-crosswalk
     ```
 
-3.  Reboot the Tizen target device.
+    
 
-Once the Crosswalk service is enabled for debugging, debug your applications as follows:
+3. Reboot the Tizen target device
 
-1.  Launch a Crosswalk application on the Tizen target using a console. See [these instructions](/documentation/getting_started/run_on_tizen.html#Run-the-application).
 
-2.  Back on the host, open a Chrome browser and open the address `http://&lt;Tizen target IP&gt;:9222`. For example, for the IP address 192.168.0.19, the URL to use would be "http://192.168.0.19:9222".
+
+4. Now that the Crosswalk service has been enabled for debugging, debug your application(s) as follows:
+
+    (a) Launch a Crosswalk application on the Tizen target using a console. See [these instructions](/documentation/getting_started/run_on_tizen.html#Run-the-application).
+
+    (b) Back on the host, open a Chrome browser and open the address `http://&lt;Tizen target IP&gt;:9222`. For example, for the IP address 192.168.0.19, the URL to use would be "http://192.168.0.19:9222".
 
     A list of all the pages available for debugging should now be displayed in the Chrome browser window:
 
@@ -196,6 +212,20 @@ Once the Crosswalk service is enabled for debugging, debug your applications as 
 
     Click on the link for the application you want to debug.
 
+    After remote-debugging-mode of xwalk is opened, remote debugging of an app can be enabled with command:
+
+    `app_launcher -s APP_ID -d`
+
+    Note that only the target application is debugged; other applications running services are kept unaffected.  Navigate to `http://remote_device_ip:port` from your host and attach to any of the discovered Tizen applications for debugging.
+
+    You can also use `sdb forward` to forward socket connections
+
+    For example:  `sdb forward tcp:9222 tcp:9222`  and navigate to `http://localhost:9222`
+
+
+
+
 ## Further information
 
-For information about using the Chrome dev tools for debugging, see [this page](https://developer.chrome.com/devtools/index).
+
+For more information about using Chrome DevTools for debugging, see [this page](https://developer.chrome.com/devtools/index).
