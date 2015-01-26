@@ -158,7 +158,7 @@ Once you have the application working with standard Cordova, you can move on to 
 
     The `android update` command used above takes a `--target` option, specifying which Android API level you want to target. If you only have one platform version installed in your Android SDK, this option is not required; but if you have multiple platform versions installed, you need to specify which one to use.
 
-    The latest xwalk_core_library need target Android 5.0.1 (API level 21), so you need run the command with the `--target` option of `"android-21"` in `platforms/android` directory.
+    The latest xwalk_core_library requires Android 5.0.1 (API level 21), so you must run the command with the `--target` option of `"android-21"`.
 
     To get a list of the targets available in your Android SDK, run this command:
 
