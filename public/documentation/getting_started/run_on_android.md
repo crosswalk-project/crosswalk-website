@@ -15,6 +15,7 @@ Once you have downloaded and unpacked Crosswalk Android, create the `apk` packag
 
     This will package the application defined in the specified `manifest.json` file and produce two apk files from it, one for x86 architecture and one for ARM. The apk files will end up in the directory where you ran the script. Each file is given the name set in the manifest, with any filesystem-sensitive characters removed and an architecture identifier ("x86" or "arm") appended. For our example, the output files are `simple_x86.apk` and `simple_arm.apk`.
 
+    Please specify --app-versionCode or --app-versionCodeBase, otherwise android:versionCode will be generated based on android:versionName. For example, versionName "3.2.1" will get versionCode: ABI prefix + "0302001".
 3.  Install the application on the target.
 
     If installing on an x86 device:
