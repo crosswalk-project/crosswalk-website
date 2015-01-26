@@ -2,7 +2,7 @@
 
 This tutorial will get you up and running with the Crosswalk Project as quickly as possible.
 
-Note that the tutorial uses the latest stable version of Crosswalk for Android: newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).
+Note that the tutorial uses the latest stable version of the Crosswalk Project for Android: newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).
 
 For Tizen, a [canary](/documentation/downloads.html#release-channels) version is used (there are no stable or beta downloads for Tizen).
 

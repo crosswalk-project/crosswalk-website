@@ -139,7 +139,8 @@
 // Styleguide 3.8.2.
 .nav-logo {
   padding-top: modular-scale($base-font-size, 1, $base-ratio);
-  padding-bottom: modular-scale($base-font-size, 1, $base-ratio);
+  padding-bottom: modular-scale($base-font-size, 1, $base-ratio);  
+  margin: 0px;
   @include span-columns(2);
   .logo-image {
     width: 100%;
