@@ -21,7 +21,7 @@ Once you have the pre-requisites, you can install the Cordova command line tools
 
     $ npm install -g cordova@3.5
 
-(You're installing Cordova 3.5.*, as this is the version supported by the current stable Crosswalk.)
+(Install Cordova 3.6 for Crosswalk-10 and newer, and Cordova 3.5 for Crosswalk-9 and older.)
 
 This installs the tools globally so they are available from any shell.
 
@@ -157,6 +157,8 @@ Once you have the application working with standard Cordova, you can move on to 
         $ cordova build android
 
     The `android update` command used above takes a `--target` option, specifying which Android API level you want to target. If you only have one platform version installed in your Android SDK, this option is not required; but if you have multiple platform versions installed, you need to specify which one to use.
+
+    The latest xwalk_core_library requires Android 5.0.1 (API level 21), so you must run the command with the `--target` option of `"android-21"`.
 
     To get a list of the targets available in your Android SDK, run this command:
 
