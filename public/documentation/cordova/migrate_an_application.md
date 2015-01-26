@@ -21,7 +21,7 @@ Once you have the pre-requisites, you can install the Cordova command line tools
 
     $ npm install -g cordova@3.5
 
-(Please install Cordova 3.5.* if you're using Crosswalk-8 and Crosswalk-9, install Cordova 3.6 for Crosswalk-10)
+(Install Cordova 3.6 for Crosswalk-10 and newer, and Cordova 3.5 for Crosswalk-9 and older.)
 
 This installs the tools globally so they are available from any shell.
 
