@@ -76,7 +76,7 @@ Add a file at `extension/api.js` with this content:
       return extension.internal.sendSyncMessage(msg);
     };
 
-This JavaScript file is converted into a C header file at build-time; that header file is then referenced from the extension code. This is the simplest way to incorporate the JavaScript code into the C extension. See [this section](/documentation/tizen_ivi_extensions/build_an_application.html#C-header-file-for-the-JavaScript-API) for details of how the conversion happens.
+This JavaScript file is converted into a C header file at build-time; that header file is then referenced from the extension code. This is the simplest way to incorporate the JavaScript code into the C extension. See [this section](#C-header-file-for-the-JavaScript-API) for details of how the conversion happens.
 
 <h4 id="A-note-on-the-JavaScript-API">A note on the JavaScript API</h4>
 
@@ -114,7 +114,7 @@ instead of the anticipated:
 
 The solution is to pass a token from the JavaScript API to the C code, then return that token as part of the response from the C code. The JavaScript API would maintain a mapping from tokens to callbacks, so when responses are returned (containing a token), the correct handler can be looked up and invoked. A typical way to implement this would be to JSON-encode messages between the JavaScript and C parts of the extension, and include a token in each message. However, this process is too complex for the scope of this tutorial.
 
-If you're interested in seeing a real world example of how this would be implemented, the [Crosswalk Tizen extensions](https://github.com/crosswalk-project/tizen-extensions-crosswalk) are a good place to start, e.g. [the application API JavaScript file](https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/application/application_api.js).
+If you're interested in seeing a real world example of how this would be implemented, the [Crosswalk Tizen extensions](https://github.com/crosswalk-project/tizen-extensions-crosswalk) are a good place to start, e.g. [the application API JavaScript file](https://github.com/crosswalk-project/tizen-extensions-crosswalk/blob/master/src/application/application_api.js).
 
 <h3 id="C-header-file-for-the-JavaScript-API">C header file for the JavaScript API</h3>
 

@@ -21,7 +21,7 @@ The recommended command-line build environment for Tizen is the [git build syste
 
 To build projects, `gbs` needs a configuration file for the Tizen IVI version you are using. Example configuration files for different Tizen IVI versions are available on [this page](https://wiki.tizen.org/wiki/IVI/GBS_configuration_files_Tizen_IVI).
 
-The Tizen IVI version used to write this tutorial was [this daily build](http://download.tizen.org/releases/daily/tizen/ivi/ivi-release/latest/images/ivi-release-mbr-i586/tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2). The gbs config file for working with this version looks like this:
+The gbs config file for working with an image with version "tizen_20140410.5" looks like this:
 
     [general]
     profile = profile.3.0

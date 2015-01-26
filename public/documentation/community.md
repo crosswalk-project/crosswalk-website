@@ -8,7 +8,7 @@ You can join the Crosswalk developer and user mailing lists on the [Crosswalk Ma
 *   The [crosswalk-dev](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev) and [crosswalk-autotest](https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-autotest) lists are for developers working on the Crosswalk core.
 
 ## IRC Channel
-Connect to the [Freenode IRC Network](irc://freenode.net) and join us on the [#crosswalk](irc://irc.freenode.net/crosswalk) channel.
+Connect to [Freenode IRC](irc://freenode.net) and join us on the #crosswalk channel.
 
 ## GitHub
 All of the source code for Crosswalk can be found on the [Crosswalk GitHub project page](http://github.com/crosswalk-project).
