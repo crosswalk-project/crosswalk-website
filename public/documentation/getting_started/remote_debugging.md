@@ -1,6 +1,6 @@
 # Remote debugging
 
-Web applications running under Crosswalk can be debugged remotely using [Chrome dev tools](https://developer.chrome.com/devtools/index). 
+Web applications running under Crosswalk can be debugged remotely using the [Chrome DevTools](https://developer.chrome.com/devtools/index). 
 
 Depending on the platform, a connection must be established between the host (the machine where you are doing the development) and the target (the machine running the application under Crosswalk). The type of connection depends on the target's operating system, as explained below.
 
@@ -152,7 +152,7 @@ Note that it is also possible to disable remote debugging using the same intent,
 
 ## Tizen
 
-To debug Crosswalk applications on Tizen, the Crosswalk service on the target device should be configured to provide a debugging endpoint.  A properly-configured endpoint is accessible via Chrome browser on the host. 
+To debug Crosswalk applications on Tizen, the Crosswalk service on the target device must be configured to provide a debugging endpoint.  A properly-configured endpoint is accessible via Chrome browser on the host. 
 
 All you need is a Tizen target (with Crosswalk installed) and an application installed on that target via `xwalkctl`. See [Getting started](/documentation/getting_started.html) for details.
 
@@ -164,7 +164,7 @@ Once the pre-requisites are in place, log in and turn on debugging for the Cross
     $ ssh root@192.168.0.19
     Password:
     Welcome to Tizen
-    root:~>
+    root:~">"
     ```
 
     (The default password is **tizen**.)
@@ -184,7 +184,7 @@ Once the pre-requisites are in place, log in and turn on debugging for the Cross
     Add option `--remote-debugging-port=9222` to the `ExecStart=` line in the Crosswalk service configuration file.  For example, to open the file for editing with VIM:
 
     ```
-    root:~> vim /usr/lib/systemd/user/xwalk.service
+    root:~">" vim /usr/lib/systemd/user/xwalk.service
     ```
 
     Then edit the `ExecStart=` line so it looks like this:
