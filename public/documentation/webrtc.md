@@ -440,7 +440,7 @@ To add the client code, follow these steps:
 
     Change the IP address to the value output by the PeerJS server when you started it.
 
-7.  Create a minimal [Crosswalk manifest](/documentation/manifest) file, `manifest.json`, with this content:
+7.  Create a minimal [Crosswalk manifest](/documentation/manifest.html) file, `manifest.json`, with this content:
 
         {
           "name": "WebRTC",

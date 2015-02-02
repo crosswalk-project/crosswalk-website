@@ -6,7 +6,7 @@ The application can be split into two pieces: the application "proper", containi
 
 You will also add some supporting files for packaging the extension into a Tizen package (`rpm` file).
 
-Before starting, make sure you have already followed the steps in [Host and target setup](/documentation/tizen_IVI_extensions/host_and_target_setup.html).
+Before starting, make sure you have already followed the steps in [Host and target setup](/documentation/tizen_ivi_extensions/host_and_target_setup.html).
 
 In the sections below, you'll create the metadata and the application; then add the build infrastructure.
 
