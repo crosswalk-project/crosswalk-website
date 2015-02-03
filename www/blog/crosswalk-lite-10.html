@@ -30,15 +30,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Run on Tizen VM" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/tizen_ivi_extensions/run_on_tizen_vm" />
+    <meta property="og:title" content="Crosswalk Project Lite Branch 10 Release" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-lite-10" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tizen_ivi_extensions/run_on_tizen_vm" />
-    <meta name="twitter:title" content="Run on Tizen VM" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-lite-10" />
+    <meta name="twitter:title" content="Crosswalk Project Lite Branch 10 Release" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -87,250 +87,62 @@
         </div>
         <div class="row">
           
-            <nav id="contents" class="article-toc nav-toggleContainer">
-  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-  <ul class="article-list nav-toggleHide">
-    
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/about.html">About</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
-        
-        
-          <ul class="article-list">
-          
-          
-            
-            
-            <li class="article-item ">
-              <a class="article-link" href="/documentation/tizen_ivi_extensions/host_and_target_setup.html">Host and target setup</a>
-            </li>
-          
-            
-            
-            <li class="article-item ">
-              <a class="article-link" href="/documentation/tizen_ivi_extensions/write_an_extension_in_c.html">Write an extension in C</a>
-            </li>
-          
-            
-            
-            <li class="article-item ">
-              <a class="article-link" href="/documentation/tizen_ivi_extensions/write_an_extension_in_c++.html">Write an extension in C++</a>
-            </li>
-          
-            
-            
-            <li class="article-item ">
-              <a class="article-link" href="/documentation/tizen_ivi_extensions/json_based_c++_extension.html">JSON based C++ extension</a>
-            </li>
-          
-            
-            
-            <li class="article-item ">
-              <a class="article-link" href="/documentation/tizen_ivi_extensions/write_a_web_application.html">Write a web application</a>
-            </li>
-          
-            
-            
-            <li class="article-item  nav-item--active">
-              <a class="article-link" href="/documentation/tizen_ivi_extensions/run_on_tizen_vm.html">Run on Tizen VM</a>
-            </li>
-          
-          </ul>
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/screens.html">Screens</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/samples.html">Samples</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/apis.html">APIs</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/community.html">Community</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
-        
-        
-      </li>
-    
-  </ul>
-</nav>
-
-<article class="article article--hasToC">
-  <h1>Run on Tizen virtual machine</h1>
-<p>You have now built the extension and application, and are at the point where you can test on the Tizen IVI virtual machine.</p>
-<ol>
-<li><p>Start the Tizen IVI virtual machine (<em>target</em>), if it&#39;s not already running.</p>
-</li>
-<li><p>Use <code>scp</code> to push the extension rpm to the target. By default, the rpm you generated with <code>gbs</code> will be in <code>~/GBS-ROOT/local/repos/tizen3.0/i586/RPMS/</code>; so the command you need should look like this:</p>
-<pre><code>&gt; scp ~/GBS-ROOT/local/repos/tizen3.0/i586/RPMS/echo-extension-0.1-1.i686.rpm \
-    root@&lt;IP address&gt;:/root/</code></pre>
-<p>Replace <code>&lt;IP address&gt;</code> with the IP address of the virtual machine. The password is <strong>tizen</strong>.</p>
-</li>
-<li><p>Install the echo extension rpm on the target. To do this, first get a root shell on the target:</p>
-<pre><code># on the host, login to the target
-&gt; ssh root@&lt;IP address&gt;</code></pre>
-<p>Then, in the shell on the target:</p>
-<pre><code>root:~&gt; rpm -ih echo-extension-0.1-1.i686.rpm
-################################# [100%]
-Updating / installing...
-################################# [100%]</code></pre>
-<p>The rpm should install without errors.</p>
-</li>
-<li><p>Use scp to push the generated <code>app.xpk</code> file to the Tizen target:</p>
-<pre><code>&gt; scp app.xpk root@&lt;ip address&gt;:/home/app/</code></pre>
-</li>
-<li><p>Install the <code>.xpk</code> file on the target using <code>xwalkctl</code>. You should do this using a shell on the target as the &quot;app&quot; user. This user has the correct configuration and permissions to run applications.</p>
-<p>The best way to get an app user shell is to click the console icon in the top-left of the virtual machine&#39;s display. If you try to login remotely to get an app user shell, some required environment variables may not be set and <code>xwalkctl</code> may not run correctly.</p>
-<p>To install the <code>.xpk</code> file, run this command from the app user shell:</p>
-<pre><code>app:~&gt; xwalkctl --install /home/app/app.xpk</code></pre>
-<p>Make a note of the application ID (the last part of the <code>/installed/*</code> path displayed).</p>
-</li>
-<li><p>Finally, run the application from the app user&#39;s shell (on the target).</p>
-<p>You need the application&#39;s ID to do this. During installation of the simple-extension-app rpm, you will have been notified of this after the app was installed (see above). If you can&#39;t remember it, or missed it, you can use the <code>xwalkctl</code> command to list applications and their IDs:</p>
-<pre><code>app:~&gt; xwalkctl
-Application ID                       Application Name</code></pre>
-</li>
-</ol>
-<pre><code>    -----------------------------------------------------
-    nejhjijinegiakjdkkdnbepefnmpdgcp    simple_extension_app
-    -----------------------------------------------------
-
-Once you know the ID, you can launch the application with:
-
-    app:~&gt; xwalk-launcher &lt;app ID&gt;
-
-You should see this in the emulator:
-
-![Crosswalk application with extensions on Tizen IVI](/assets/tizen-ivi3-emulator-echo-extension.png)
-
-If you don&#39;t, check for errors and warnings coming from the command. In particular, the output from the command should end with:
-
-    Instance 1 created!
-
-This message is coming from the `instance_created` callback of your extension. If it&#39;s not there, the extension is not being initialized correctly.</code></pre>
-
-  <footer class="article-next">
-    
-
+            <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">Crosswalk Project Lite Branch 10 Release</h1>
+    <span class="article-meta">
+      <a href="crosswalk-lite-10.html"><time class="js-vagueTime" datetime="Thu, 29 Jan 2015 12:00:00 GMT">Thu, 29 Jan 2015 12:00:00 GMT</time></a>
+       by <span class="article-author">Halton Huo</span>
+    </span>
+  </header>
   
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
+  <p><strong>Introducing the Crosswalk Project “Lite” branch.</strong>  One of the most frequent complaints about Crosswalk is that it makes the packaged application bigger. We’ve been hard at work to find out whether we could shave off any MBs from the Crosswalk binary, and we are happy to present the first results by introducing the Crosswalk Project Lite. </p>
+<p>“Lite” is developed in a separate branch (currently based on Crosswalk 10.39.232.0) and attempts to reduce the size of the APK and installed application footprint as much as possible, without compromising commonly used features. Below you can see the current measurements using Crosswalk master and Lite:</p>
+<table>
+  <tr align="center">
+    <td colspan="2">Crosswalk Project</td>
+    <td colspan="2">Crosswalk Lite</td>
+  </tr>
+  <tr align="center">
+    <td>APK</td>
+    <td>Installed</td>
+    <td>APK</td>
+    <td>Installed</td>
+  </tr>
+  <tr align="center">
+    <td>20M</td>
+    <td>55M</td>
+    <td>10-15M</td>
+    <td>40M</td>
+  </tr>
+</table>
 
+<p>More precisely:</p>
+<ul>
+<li>x86: 11.1M (vs. 20.8M on Crosswalk 10.39.232.0)</li>
+<li>ARM: 9.63M (vs. 18M on Crosswalk 10.39.232.0)</li>
+</ul>
+<p>As with any diet, a smaller size means some sacrifices. Here are the changes done so far to achieve these results:</p>
+<ul>
+<li>[NEW] Use LZMA compress xwalk_core_library (at the cost of longer first-time startup time) (<a href="https://github.com/crosswalk-project/crosswalk/pull/2733">PR 2733</a>)</li>
+<li>Replace ICU with Java utils (<a href="https://github.com/crosswalk-project/blink-crosswalk/pull/30">PR 30</a>)</li>
+<li>Remove ANGLE (only needed on Windows) (<a href="https://github.com/crosswalk-project/crosswalk/pull/2683">PR 2683</a>)</li>
+<li>No support for Web Inspector nor remote debugging (<a href="https://github.com/crosswalk-project/crosswalk/pull/2685">PR 2685</a>)</li>
+<li>No support for the experimental QUIC protocol (<a href="https://github.com/crosswalk-project/crosswalk/pull/2686">PR 2686</a>)</li>
+<li>No support for the FTP protocol</li>
+<li>No support for WebRTC and WebRTC: Media streams (<a href="https://github.com/crosswalk-project/crosswalk/pull/2596">PR 2596</a> and <a href="https://github.com/crosswalk-project/crosswalk/pull/2614">PR 2614</a> respectively)</li>
+<li>No support for WebP (<a href="https://github.com/crosswalk-project/crosswalk/pull/2670">PR 2670</a>)</li>
+<li>No support for XSLT (<a href="https://github.com/crosswalk-project/crosswalk/pull/2628">PR 2628</a>)</li>
+</ul>
+<h3>What next?</h3>
+<p>Our goal with the Lite branch is to try out different size optimization techniques, and if they are proven to be effective without compromising quality, apply them to the Crosswalk master branch. Therefore we encourage you to try it out and send us feedback, however we don’t recommend using it in production applications at this early stage. That being said, we do run our usual QA tests on Lite and try to ensure as much as possible the same experience as the “regular” Crosswalk.</p>
+<p>You can download precompiled Crosswalk Project Lite binaries from our <a href="https://download.01.org/crosswalk/releases/crosswalk/android/lite/canary/10.39.232.1/">download area</a>. For more details, please refer to the <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Project-Lite">Crosswalk Project Lite wiki</a>.</p>
 
-  </footer>
+  <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
+
 </article>
 
           
