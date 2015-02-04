@@ -1,6 +1,8 @@
-# Using Crosswalk screen APIs
+# Screen APIs
 
-There are many challenges when developing HTML5 applications for mobile devices. One of the biggest is making the application work well on a small screen, with the same look and feel as a native application. Some of the most common screen-related issues on mobile devices are:
+The Crosswalk Project simplifies the difficult task of making an application work well on a small screen, with the same look and feel as a native application.
+
+Some of the most common screen-related issues on mobile devices are:
 
 * Fitting the application to the "real" screen width and height.
 * Locking the screen orientation to the one preferred for the application.

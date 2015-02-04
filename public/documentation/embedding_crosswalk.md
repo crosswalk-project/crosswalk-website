@@ -1,6 +1,6 @@
-# Embedding Crosswalk
+# Embedding the Crosswalk Project
 
-The Crosswalk embedding API enables you to embed the Crosswalk runtime in an Android application. You can then load a web page (or whole web application) into the embedded runtime, similar to how you might with an Android [WebView](http://developer.android.com/guide/webapps/webview.html).
+The Crosswalk Project embedding API enables you to embed the Crosswalk Project runtime in an Android application. You can then load a web page (or whole web application) into the embedded runtime, similar to how you might with an Android [WebView](http://developer.android.com/guide/webapps/webview.html).
 
 Using the embedding API is only recommended for cases where you have a substantial amount of Java code in your application, but want to write the UI (or parts of the UI) using web technologies. If you just need a runtime wrapper for a web application, there are two simpler options for deploying to Android with Crosswalk:
 

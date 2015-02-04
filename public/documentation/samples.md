@@ -1,8 +1,8 @@
 # Samples
 
-The sample applications can get you up and running with Crosswalk. The source is available on github (MIT license).
+These sample applications can help get you up and running with the Crosswalk Project. 
 
-To use the samples, download the <a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.8.tar.gz">sample archive</a> and unpack it:
+All sample source is available on github (MIT license).  To use the samples, download the <a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.8.tar.gz">sample archive</a> and unpack it:
 
 ```sh
 $ tar xvf crosswalk-samples-0.8.tar.gz

@@ -5,19 +5,19 @@ If you have any questions that are not answered below, the crosswalk-help mailin
 ### <a id="Contents"></a>Contents
 
 *   [Background to the project](#Background-to-the-project)
-*   [Ways to use Crosswalk](#Ways-to-use-Crosswalk)
-*   [Distributing Crosswalk applications](#Distributing-Crosswalk-applications)
+*   [Ways to use the Crosswalk Project](#Ways-to-use-the-Crosswalk-Project)
+*   [Distributing Crosswalk Project applications](#Distributing-Crosswalk-Project-applications)
 *   [Canvas and WebGL support](#Canvas-and-WebGL-support)
 *   [Embedding API](#Embedding-API)
-*   [The Crosswalk community](#The-Crosswalk-community)
+*   [The Crosswalk Project community](#The-Crosswalk-Project-community)
 *   [Commercial aspects](#Commercial-aspects)
 *   [Relationships with other projects](#Relationships-with-other-projects)
 
 ## <a id="Background-to-the-project"></a>Background to the project
 
-### <a id="What-is-Crosswalk-for"></a>What is Crosswalk for?
+### <a id="What-is-the-Crosswalk-Project-for"></a>What is the Crosswalk Project for?
 
-If you are a developer working with web technologies, Crosswalk enables you to deploy a web application with its own dedicated runtime. This means three things:
+If you are a developer working with web technologies, the Crosswalk Project enables you to deploy a web application with its own dedicated runtime. This means three things:
 
 1.  You can distribute your web application via app stores.
 2.  Your application won't break in whatever ancient webviews or browsers your audience is using, as you control the runtime and its upgrade cycle.
@@ -25,37 +25,37 @@ If you are a developer working with web technologies, Crosswalk enables you to d
 
 ### <a id="Is-this-a-runtime-like-Java-or-Visual-Basic"></a>Is this a runtime like Java or Visual Basic?
 
-No, because Crosswalk is based on W3C standards: HTML5, CSS and JavaScript. Unlike the languages supported by earlier runtimes, W3C standards are implemented in multiple contexts, by multiple companies, in both open source and commercial forms. A broad range of open source as well as commercial tools and projects support the developer. When you use a Crosswalk application runtime, you are participating in a growing ecosystem.
+No, because the Crosswalk Project is based on W3C standards: HTML5, CSS and JavaScript. Unlike the languages supported by earlier runtimes, W3C standards are implemented in multiple contexts, by multiple companies, in both open source and commercial forms. A broad range of open source as well as commercial tools and projects support the developer. When you use the Crosswalk Project application runtime, you are participating in a growing ecosystem.
 
 ### <a id="If-my-apps-need-W3C-standards-why-not-target-a-browser"></a>If my apps need W3C standards, why not target a browser?
 
-Browsers do a great job of supporting W3C standards, but they are not allowed to support the APIs from the [Systems Applications Working Group](http://www.w3.org/2012/sysapps/). This is because these APIs access platform features which, if known to a web site and combined with other data available to the browser, would allow violations of the user's privacy. Because Crosswalk applications have a different security model, where a user is able to choose which permissions an application is given, system application APIs *can* be supported. This in turn makes it possible for Crosswalk to run applications which are not possible on the open web.
+Browsers do a great job of supporting W3C standards, but they are not allowed to support the APIs from the [Systems Applications Working Group](http://www.w3.org/2012/sysapps/). This is because these APIs access platform features which, if known to a web site and combined with other data available to the browser, would allow violations of the user's privacy. Because Crosswalk Project applications have a different security model, where a user is able to choose which permissions an application is given, system application APIs *can* be supported. This in turn makes it possible for the Crosswalk Project to run applications which are not possible on the open web.
 
 ### <a id="Isnt-the-Crosswalk-Project-just-going-to-mean-more-fragmentation-of-the-web"></a>Isn't the Crosswalk Project just going to mean more fragmentation of the web?
 
 No, because:
 
 * The Crosswalk Project isn't aimed at the web at all: it's aimed at applications that happen to be written in HTML5, CSS and JS.
-* Applications using a Crosswalk runtime know about the environment they are built for. Minor differences between runtime implementations (e.g. a sensor available on one platform but not on another) can be easily managed by developers.
+* Applications using a Crosswalk Project runtime know about the environment they are built for. Minor differences between runtime implementations (e.g. a sensor available on one platform but not on another) can be easily managed by developers.
 * We don't intend to fork Blink, the underlying rendering engine for Chromium.
 * We rebase regularly to new versions of Blink.
 * If a change makes sense for generic Chromium, we will submit it upstream.
 
-## <a id="Ways-to-use-Crosswalk"></a>Ways to use Crosswalk
+## <a id="Ways-to-use-the-Crosswalk-Project"></a>Ways to use the Crosswalk Project
 
-### <a id="Can-I-use-Crosswalk-to-appify-my-website"></a>Can I use Crosswalk to "appify" my website?
+### <a id="Can-I-use-the-Crosswalk-Project-to-appify-my-website"></a>Can I use the Crosswalk Project to "appify" my website?
 
-Yes. You can wrap a website URL with a Crosswalk runtime so it behaves like an app (fullscreen, no browser chrome, home screen icon etc.).
+Yes. You can wrap a website URL with a Crosswalk Project runtime so it behaves like an app (fullscreen, no browser chrome, home screen icon etc.).
 
-### <a id="Can-I-customise-Crosswalk"></a>Can I customise Crosswalk?
+### <a id="Can-I-customise-the-Crosswalk-Project"></a>Can I customise the Crosswalk Project?
 
-Yes. Crosswalk itself can be modified, as the code is open source. We actively encourage [contributions](https://crosswalk-project.org/contribute/index.html).
+Yes. The Crosswalk Project itself can be modified, as the code is open source. We actively encourage [contributions](https://crosswalk-project.org/contribute/index.html).
 
 Alternatively, you can add extra capabilities to Crosswalk through its [extension mechanism](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Extensions) without having to modify the core code. This enables an application to access platform features via native code (Java on Android, C/C++ on Tizen) and go beyond the boundaries of the web runtime.
 
-## <a id="Distributing-Crosswalk-applications"></a>Distributing Crosswalk applications
+## <a id="Distributing-Crosswalk-Project-applications"></a>Distributing Crosswalk Project applications
 
-### <a id="How-big-is-the-Crosswalk-runtime-and-how-will-it-affect-my-applications-size"></a>How big is the Crosswalk runtime, and how will it affect my application's size?
+### <a id="How-big-is-the-Crosswalk-Project-runtime-and-how-will-it-affect-my-applications-size"></a>How big is the Crosswalk Project runtime, and how will it affect my application's size?
 
 To give a rough idea, the HTML/JS/CSS for [one of the project's sample applications](https://github.com/crosswalk-project/crosswalk-samples/tree/master/hello_world) takes up 24Kb of disk space.
 
@@ -161,13 +161,13 @@ If you have a specific need, you should create a feature request in the Crosswal
 
 If the API is blocking you from moving to a newer version of Crosswalk, please explain why and we will try to adjust the priority accordingly.
 
-## <a id="The-Crosswalk-community"></a>The Crosswalk community
+## <a id="The-Crosswalk-Project-community"></a>The Crosswalk Project community
 
-### <a id="Who-is-using-Crosswalk"></a>Who is using Crosswalk?
+### <a id="Who-is-using-the-Crosswalk-Project"></a>Who is using the Crosswalk Project?
 
 Crosswalk is still a young project but quickly gaining momentum.  There are currently over 300 applications (mostly games) in app stores that are built with Crosswalk.
 
-### <a id="How-often-is-Crosswalk-released"></a>How often is Crosswalk released?
+### <a id="How-often-is-the-Crosswalk-Project-released"></a>How often is the Crosswalk Project released?
 
 Crosswalk is updated to the latest Chromium once every six weeks. In practice, this means that the longest gap between a feature appearing in Chromium and the same feature appearing in Crosswalk is six weeks.
 
@@ -179,15 +179,15 @@ Yes. We welcome contributions from anyone who would like to make the project bet
 
 ## <a id="Commercial-aspects"></a>Commercial aspects
 
-### <a id="Do-I-have-to-pay-for-Crosswalk"></a>Do I have to pay for Crosswalk?
+### <a id="Do-I-have-to-pay-for-the-Crosswalk-Project"></a>Do I have to pay for the Crosswalk Project?
 
 No, Crosswalk is an open source project, hosted on [github](https://github.com/crosswalk-project/crosswalk), and licensed under the [BSD licence](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE). It is free to use for any purpose, commercial or otherwise.
 
-### <a id="If-Im-not-paying-for-Crosswalk-who-is"></a>If I'm not paying for Crosswalk, who is?
+### <a id="If-Im-not-paying-for-the-Crosswalk-Project-who-is"></a>If I'm not paying for the Crosswalk Project, who is?
 
 Crosswalk development is largely sponsored by Intel, but builds on top of [Chromium](http://www.chromium.org/) development.
 
-### <a id="Can-I-get-commercial-support-for-Crosswalk"></a>Can I get commercial support for Crosswalk?
+### <a id="Can-I-get-commercial-support-for-the-Crosswalk-Project"></a>Can I get commercial support for the Crosswalk Project?
 
 Not at the moment, but we would love to hear from you if you need it.
 

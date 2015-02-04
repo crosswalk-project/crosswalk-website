@@ -1,6 +1,6 @@
 # Writing extensions for Tizen IVI on x86
 
-Extensions enhance the capabilities of Crosswalk, enabling applications to make full use of platform features via native code.
+Extensions enhance the capabilities of the Crosswalk Project, enabling applications to make full use of platform features via native code.
 
 Extensions are suitable for a number of use cases:
 
