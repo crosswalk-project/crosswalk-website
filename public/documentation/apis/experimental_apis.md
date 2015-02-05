@@ -1,12 +1,16 @@
 # Experimental APIs
 
-In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.
+In addition to the standard APIs, the Crosswalk Project provides additional experimental or emerging-standards APIs to further support building a native application experience using web platform technologies.
 
 * [Device Capabilities](http://www.w3.org/2012/sysapps/device-capabilities/) - Retrieve information about the underlaying system.
+	* [GitHub Repo](https://github.com/sysapps/device-capabilities)
+	* [Tizen System Namespace Reference](https://developer.tizen.org/dev-guide/2.2.0/org.tizen.native.apireference/namespaceTizen_1_1System.html)
+	* [Chrome](http://www.chromium.org/developers/design-documents/extensions/proposed-changes/apis-under-development/systeminfo)
 
 * [Launch Screen](https://crosswalk-project.org/documentation/manifest/launch_screen.html)<sup><a href="#v">[6.35.131.4]</a></sup> - Display a static user interface on application launch and hide it when the application is ready.
 
 * [Presentation API](http://webscreens.github.io/presentation-api/)<sup>[\[a\]](#a)</sup> - Access external displays from within web applications. For more information see the [Presentation API developer documentation](https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual).
+	* [Tutorial on HTML5Hub](http://html5hub.com/presentation-api-tutorial/)
 
 * [Raw Sockets](http://www.w3.org/TR/raw-sockets/) - Raw TCP and UDP sockets for client and server sides.
 
