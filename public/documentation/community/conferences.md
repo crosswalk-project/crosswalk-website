@@ -3,8 +3,8 @@ Crosswalk Project at Conferences in 2015.
 
 The Crosswalk Project will have sessions or a booth at the following conferences in 2015:
 
-<p>[Mobile World Congress](www.mobileworldcongress.com), March 2-5, Barcelona, Spain</p>
- <a href="www.mobileworldcongress.com">
+<p>[Mobile World Congress](http://www.mobileworldcongress.com), March 2-5, Barcelona, Spain</p>
+ <a href="http://www.mobileworldcongress.com">
   <img src="/assets/MWC15-banner.jpg" style="height:80px;">
  </a>
 <hr>
