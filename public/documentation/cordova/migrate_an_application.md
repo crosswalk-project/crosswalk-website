@@ -141,7 +141,7 @@ Once you have the application working with standard Cordova, you can move on to 
         # path; this variable is required for the manual builds below
         $ export ANDROID_HOME=$(dirname $(dirname $(which android)))
 
-        $ cd platforms/android/CordovaLib/
+        $ cd platforms/android/
 
         # this updates the CordovaLib project and the
         # xwalk_core_library subproject and target Android 4.4.2 (API
