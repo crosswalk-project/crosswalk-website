@@ -1,4 +1,9 @@
 {
+  "crosswalk-12-beta": {
+  "title": "Crosswalk Project 12 Beta: Chromium 41, new SIMD.js and Embedding APIs",
+  "date": "2015-03-04T12:00",
+  "author": "Francesco Balestrieri"
+  },
   "crosswalk-lite-10": {
   "title": "Crosswalk Project Lite Branch 10 Release",
   "date": "2015-01-29T12:00",
