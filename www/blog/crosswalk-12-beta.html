@@ -30,15 +30,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/community" />
+    <meta property="og:title" content="Crosswalk Project 12 Beta: Chromium 41, new SIMD.js and Embedding APIs" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-12-beta" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/community" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-12-beta" />
+    <meta name="twitter:title" content="Crosswalk Project 12 Beta: Chromium 41, new SIMD.js and Embedding APIs" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -87,165 +87,49 @@
         </div>
         <div class="row">
           
-            <nav id="contents" class="article-toc nav-toggleContainer">
-  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-  <ul class="article-list nav-toggleHide">
-    
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/about.html">About</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/screens.html">Screens</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/samples.html">Samples</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/apis.html">APIs</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item  nav-item--active">
-        <a class="article-link" href="/documentation/community.html">Community</a>
-        
-        
-          <ul class="article-list">
-          
-          
-            
-            
-            <li class="article-item ">
-              <a class="article-link" href="/documentation/community/mwc2015.html">Mobile World Congress 2015</a>
-            </li>
-          
-            
-            
-            <li class="article-item ">
-              <a class="article-link" href="/documentation/community/conferences.html">Conferences</a>
-            </li>
-          
-          </ul>
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
-        
-        
-      </li>
-    
-  </ul>
-</nav>
+            <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">Crosswalk Project 12 Beta: Chromium 41, new SIMD.js and Embedding APIs</h1>
+    <span class="article-meta">
+      <a href="crosswalk-12-beta.html"><time class="js-vagueTime" datetime="Wed, 04 Mar 2015 12:00:00 GMT">Wed, 04 Mar 2015 12:00:00 GMT</time></a>
+       by <span class="article-author">Francesco Balestrieri</span>
+    </span>
+  </header>
+  
+  <p>We are happy to announce that version 12 of the Crosswalk Project for Android is in Beta. This release sees an update to Chromium 41 and introduces some new functionality in the Embedding and SIMD.js API. As usual, we welcome feedback on the <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-help">crosswalk-help</a> mailing list or <a href="https://crosswalk-project.org/jira/">JIRA</a>.</p>
+<h2>Chromium 41</h2>
+<p>With this release Crosswalk Project is updated to Chromium 41, which brings new ES6 template literals and new debugging features for CSS Animation and Service Worker. Read more about Chromium 41 in this <a href="http://blog.chromium.org/2015/01/chrome-41-beta-new-es6-features-and.html">announcement</a>.</p>
+<p>For a list of new features in Chromium 41, check the <a href="https://www.chromestatus.com/features">Chromium Dashboard</a></p>
+<h2>Embedding API updates</h2>
+<h3>XWalkView</h3>
+<p>Set the User Agent string of the application:</p>
+<pre><code>void setUserAgentString(String userAgent)</code></pre>
+<p>Use <code>XWalkView.setBackgroundColor(0)</code> to make the XWalkView transparent (<a href="https://crosswalk-project.org/jira/browse/XWALK-3308">XWALK-3308</a>)</p>
+<h3>XWalkUIClient</h3>
+<p>Notify the host application of a console message.:</p>
+<pre><code>void onConsoleMessage(XWalkView view, String message, int lineNumber, String sourceId, ConsoleMessageType messageType)</code></pre>
+<h2>SIMD updates</h2>
+<p>The <a href="https://github.com/johnmccutchan/ecmascript_simd/">SIMD.js API</a> now implements load and store of data types. These APIs allow developers to load or store all or partial elements of SIMD data from or to variable typed arrays and are important for several use cases:</p>
+<p>Adds &quot;ByScalar&quot; suffix to shift operations according to the latest <a href="https://github.com/johnmccutchan/ecmascript_simd/">SIMD.js spec</a>. It clarifies that their shift count is a scalar value, and to make namespace room for adding vector-vector shifts in the future.</p>
+<pre><code>SIMD.int32x4.shiftLeftByScalar
+SIMD.int32x4.shiftRightLogicalByScalar
+SIMD.int32x4.shiftRightArithmeticByScalar</code></pre>
+<p>SIMD.js introduces new swizzle and shuffle APIs to rearrange lanes in SIMD data types. They include:</p>
+<pre><code>SIMD.float32x4.swizzle
+SIMD.float32x4.shuffle
+SIMD.float64x2.swizzle
+SIMD.float64x2.shuffle
+SIMD.int32x4.swizzle
+SIMD.int32x4.shuffle</code></pre>
+<hr>
+<p><a href="https://crosswalk-project.org/jira/secure/ReleaseNote.jspa?projectId=10001&amp;version=10800">Full release notes in Jira</a></p>
+<p>Download Crosswalk 12 from the <a href="https://download.01.org/crosswalk/releases/crosswalk/android/beta/">Beta Channel</a> </p>
 
-<article class="article article--hasToC">
-  <h1>Community Links</h1>
-<p>The Crosswalk Project is an open source project. All of our communication, source files, and infrastructure are hosted in the open. If you would like to help out, or chat with developers and users of the Crosswalk Project, you can connect with us in the following ways:</p>
-<h2>Mailing lists</h2>
-<p>You can join the Crosswalk Project developer and user mailing lists on the <a href="http://lists.crosswalk-project.org">Crosswalk MailMan</a> page.</p>
-<ul>
-<li>The <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-help">crosswalk-help</a> list is intended for application developers who want to use the Crosswalk Project as a web application runtime.</li>
-<li>The <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev">crosswalk-dev</a> and <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-autotest">crosswalk-autotest</a> lists are for developers working on the Crosswalk core.</li>
-</ul>
-<h2>IRC Channel</h2>
-<p>Connect to <a href="irc://freenode.net">Freenode IRC</a> and join us on the #crosswalk channel.</p>
-<h2>GitHub</h2>
-<p>All of the source code for the Crosswalk Project can be found on the <a href="http://github.com/crosswalk-project">Crosswalk Project GitHub project page</a>.</p>
-<h2>Contributor Documentation</h2>
-<p>We are working on comprehensive documentation to get new contributing developers up and running with the Crosswalk Project. You can find that information in the <a href="/contribute">Contribute</a> section of the website.</p>
+  <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
 
-  <footer class="article-next">
-    
-
-
-  </footer>
 </article>
 
           
