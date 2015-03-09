@@ -6,7 +6,7 @@ Overview
 
 [Presentation API](http://webscreens.github.io/presentation-api/) is currently a [W3C spec](http://w3c.github.io/presentation-api/) draft for secondary display support for the Web. It allows a web app to present web content on a secondary display connected to the device. It has several uses: presenting slides, sharing video and image, and playing game on a large screen TV via the mobile device.
 
-Presentation API is an experimental feature for Crosswalk for Android 4.2+ based on Miracast-compatible wireless display support. It is available in [current versions](https://crosswalk-project.org/documentation/downloads.html) of Crosswalk.
+Presentation API is an experimental feature for Crosswalk for Android 4.2+ based on Miracast-compatible wireless display support. It is available in [current versions](https://crosswalk-project.org/documentation/downloads.html) of Crosswalk.  This tutorial is based on an article from [HTML5 Hub](http://html5hub.com/presentation-api-tutorial/) by Hongbo Min, and has been tested with [Crosswalk Stable 11.40.277.7](https://crosswalk-project.org/documentation/downloads.html).
 
 This initial version of the Presentation API spec is defined as follows:
 
@@ -57,6 +57,7 @@ In the following sample, there are two HTML files:
  * `index.html` – a controller page which shows on the primary display and opens a page on the secondary display
  * `content.html` – the content page to show on the secondary display
 
+
 > index.html
 
 ```
@@ -98,30 +99,30 @@ window.addEventListener("message", function(event) {
 });
 </script>
 </head>
-<body>
-<input type="button" onclick="showPresentation();" value=”Show Presentation”></input>
- 
-<div id=”msg”>Message from secondary display: N/A</div>
-</body>
+  <body>
+  <input type="button" onclick="showPresentation();" value=”Show Presentation”>
+  </input>
+   
+  <div id=”msg”>Message from secondary display: N/A</div>
+  </body>
 </html>
 ``` 
 
 > content.html
-
 ``` 
 <html>
  
 <head>
  
 <script>
-window.addEventListener("message", function(event) {
-  var msg = event.data;
- 
-  var elem = document.getElementById(“output”);
- 
-  elem.innerHTML = msg;
-  event.source.postMessage("Hello from the secondary display", "*");
-});
+  window.addEventListener("message", function(event) {
+    var msg = event.data;
+   
+    var elem = document.getElementById(“output”);
+   
+    elem.innerHTML = msg;
+    event.source.postMessage("Hello from the secondary display", "*");
+  });
 </script>
  
 </head>
