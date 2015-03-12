@@ -77,7 +77,7 @@ To ensure that Ant is using the correct version of Java (the one you just instal
 
 2.  Set *Variable name* to **JAVA_HOME**.
 
-3.  Set *Variable value* to **c:\jdk\bin**.
+3.  Set *Variable value* to **c:\jdk**.
 
 4.  Click *OK*.
 
