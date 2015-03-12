@@ -34,7 +34,6 @@ Version key:<br />
 * [File API: Writer](http://dev.w3.org/2009/dap/file-system/file-writer.html) - Write files to a sandboxed sandboxed filesystem on the client.
 * [HTML5 Web Messaging](http://www.w3.org/TR/webmessaging/) - A mechanism for communicating between browsing contexts.
 * [Indexed DB](https://dvcs.w3.org/hg/IndexedDB/raw-file/default/Overview.html) - An asynchronous client-side storage API for fast access to large amounts of structured data.
-* [Messaging](http://www.w3.org/2012/sysapps/messaging/)<sup><a href="#a">[a]</a></sup> - Allows SMS and MMS message sending and receiving.
 * [Online State](http://www.w3.org/html/wg/drafts/html/CR/browsers.html#browser-state) - Online and offline events for the network state.
 * [Web SQL](http://www.w3.org/TR/webdatabase/) - Store data in databases on the client using a variant of SQL.
 * [Web Sockets](http://www.w3.org/TR/websockets/) - A low overhead bi-directional communication with web servers over a persistent TCP connection.
@@ -63,6 +62,7 @@ Version key:<br />
 
 ## Social
 * [Contacts](http://www.w3.org/2012/sysapps/contacts-manager-api/)<sup>[\[a\]](#a)</sup> - Enables the management of contact information.
+* [Messaging](http://www.w3.org/2012/sysapps/messaging/)<sup><a href="#a">[a]</a></sup> - Allows SMS and MMS message sending and receiving.
 
 # Experimental APIs
 
@@ -70,10 +70,10 @@ In addition to the standard APIs, Crosswalk provides additional experimental or 
 
 * [Device Capabilities](http://www.w3.org/2012/sysapps/device-capabilities/) - Retrieve information about the underlaying system.
 * [Launch Screen](https://crosswalk-project.org/documentation/manifest/launch_screen.html)<sup><a href="#v">[6.35.131.4]</a></sup> - Display a static user interface on application launch and hide it when the application is ready.
-* [Presentation API](http://webscreens.github.io/presentation-api/)<sup>[\[a\]](#a)</sup> - Access external displays from within web applications. For more information see the [Presentation API developer documentation](https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual).
+* [Presentation API](http://webscreens.github.io/presentation-api/)<sup>[\[a\]](#a)</sup> - Access external displays from within web applications. Get started with this tutorial: [Presentation API Tutorial](http://xwalk.com/documentation/apis/presentation_api_tutorial.html). For more information see the [developer documentation](https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual).
 * [Raw Sockets](http://www.w3.org/TR/raw-sockets/) - Raw TCP and UDP sockets for client and server sides.
-* [SIMD](https://github.com/johnmccutchan/ecmascript_simd)<sup><a href="#v">[5.34.104.0]</a></sup> - Data types and operations for access to the Single Instruction Multiple Data (SIMD) instruction sets available on common CPU architectures, such as SSE (IA32/X64) and NEON (ARMv7). **Note that the implementation to generate NEON instructions is not done.**
-* [WebCL](https://www.khronos.org/registry/webcl/specs/1.0.0/)<sup>[\[a\]](#a)</sup><sup><a href="#v">[13.41.304.0]</a></sup> - JavaScript binding to the Khronos OpenCL standard. It enables web            applications to access harness GPU and multi-core CPU for parallel processing.
+* [SIMD](https://github.com/johnmccutchan/ecmascript_simd)<sup><a href="#v">[5.34.104.0]</a></sup> - Data types and operations for access to the Single Instruction Multiple Data (SIMD) instruction sets available on common CPU architectures, such as SSE (IA32/X64) and NEON (ARMv7. This implemention is not yet complete).  Whitepaper: [SIMD in Javascript via C++ and Emscripten](https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fviewer%3Fa%3Dv%26pid%3Dsites%26srcid%3DZGVmYXVsdGRvbWFpbnx3cG12cDIwMTV8Z3g6NTkzYWE2OGNlNDAyMTRjOQ).
+* [WebCL](https://www.khronos.org/registry/webcl/specs/1.0.0/)<sup>[\[a\]](#a)</sup><sup><a href="#v">[13.41.304.0]</a></sup> - JavaScript binding to the Khronos OpenCL standard. It enables web applications to access harness GPU and multi-core CPU for parallel processing.
 
 # Tizen Extension APIs
 
