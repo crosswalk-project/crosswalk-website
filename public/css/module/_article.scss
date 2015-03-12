@@ -254,8 +254,8 @@
 // </article>
 //
 // Styleguide 3.13.6.
-.lead,
-.article > p:first-of-type {
+.lead {
+//.article > p:first-of-type {
   @include media($mid) {
     margin-bottom: modular-scale($base-font-size, -4, $base-ratio);
     font-size: modular-scale($base-font-size, 1, $base-ratio);
@@ -373,8 +373,8 @@
     dl {
       margin-left: 30px;
       margin-right: 0;
-      border-top: 1px solid $color-gray;
-      padding-top: modular-scale($base-font-size, 0, $base-ratio);
+//      border-top: 1px solid $color-gray;
+//      padding-top: modular-scale($base-font-size, 0, $base-ratio);
     }
   }
   ul > li {
