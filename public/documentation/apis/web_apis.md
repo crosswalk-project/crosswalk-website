@@ -82,3 +82,8 @@ a Crosswalk extension for Tizen users which provides many of the Tizen
 APIs. You can find information on those APIs on the [Tizen Extension APIs](https://github.com/crosswalk-project/tizen-extensions-crosswalk/wiki/APIs) page.
 
 <small>Some content in the Standard APIs section of this page has been adapted from [chromestatus.com](http://www.chromestatus.com/), &copy; 2013 The Chromium Authors, used under [Creative Commons Attribution 2.5 license](http://creativecommons.org/licenses/by/2.5/)</small>
+
+
+# SIMD 
+
+Whitepaper on [SIMD in Javascript via C++ and Emscripten](https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fviewer%3Fa%3Dv%26pid%3Dsites%26srcid%3DZGVmYXVsdGRvbWFpbnx3cG12cDIwMTV8Z3g6NTkzYWE2OGNlNDAyMTRjOQ).
