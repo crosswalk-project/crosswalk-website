@@ -72,7 +72,7 @@ To ensure that Ant is using the correct version of Java (the one you just instal
 <h3 id="Install-the-Android-SDK">Install the Android SDK</h3>
 
 1.  Download Android Studio from <a href='http://developer.android.com/sdk/index.html' target='_blank'>http://developer.android.com/sdk/index.html</a>.
-2.  Run the installer.  Note the directory location you select for the next step.  For our example, 
+2.  Run the installer.  Remember the installation directory you select for the next step.
 
 3.  Add the Android SDK directories to your `PATH` either through the Environment Variables dialog or from the command-line. 
 ```
