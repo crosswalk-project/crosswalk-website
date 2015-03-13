@@ -179,6 +179,6 @@ In this tutorial, we introduced a new W3C Presentation API for presenting web co
 
 Here are a few related links:
 
-* [W3C Presentation API Draft](http://webscreens.github.io/presentation-api/)
+* [W3C Presentation API Draft](http://w3c.github.io/presentation-api/)
 * [Second Screen Presentation Community Group](http://www.w3.org/community/webscreens/)
 * [Web Screens Mail List](http://lists.w3.org/Archives/Public/public-webscreens/)
