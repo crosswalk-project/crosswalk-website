@@ -8,7 +8,11 @@ The Crosswalk Project will have sessions or a booth at the following conferences
   <img src="/assets/MWC15-banner.jpg" style="height:80px;">
  </a>
 <hr>
-
+<p>[FOSSASIA](http://www.fossasia.org), March 13-15, Singapore</p>
+ <a href="http://www.fossasia.org">
+  <img src="/assets/fossasia15-banner.jpg" style="height:80px;">
+ </a>
+<hr>
 <p>[SenchaCon](http://www.senchacon.com/), April 7-9, Santa Clara, California</p>
 
  <div style="border:solid 1px gray; height:82px; width:600px">
