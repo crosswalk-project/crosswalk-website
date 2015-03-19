@@ -159,6 +159,24 @@ contains detailed usage instructions.</li>
 
 </li>
 </ol>
+<h2>Proxy setup</h2>
+<p>If you are behind a network proxy, you need to make sure your environment is
+properly set up and the appropriate variables are set. On Linux, you need to do
+at least the following:</p>
+<ol>
+<li><p>Set the <code>http_proxy</code> and <code>https_proxy</code> environment variables.</p>
+<pre><code> export http_proxy=http://example-host:port
+ export https_proxy=http://example-host:port</code></pre>
+</li>
+<li><p>Create a Boto configuration file somewhere with the following contents:</p>
+<pre><code> [Boto]
+ proxy = example-host
+ proxy_port = port number</code></pre>
+<p> After that, point the <code>NO_AUTH_BOTO_CONFIG</code> environment variable to the file
+ you created:</p>
+<pre><code> export NO_AUTH_BOTO_CONFIG=/path/to/boto-file</code></pre>
+</li>
+</ol>
 <h2>Download the Crosswalk source</h2>
 <h3>Before starting: Android</h3>
 <p>If you are building Crosswalk for Android, you should first set the

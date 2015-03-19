@@ -29,6 +29,34 @@ source:
     contains detailed usage instructions.</li>
     </ul>
 
+## Proxy setup
+
+If you are behind a network proxy, you need to make sure your environment is
+properly set up and the appropriate variables are set. On Linux, you need to do
+at least the following:
+
+1. Set the `http_proxy` and `https_proxy` environment variables.
+
+    ```
+    export http_proxy=http://example-host:port
+    export https_proxy=http://example-host:port
+    ```
+
+1. Create a Boto configuration file somewhere with the following contents:
+
+    ```
+    [Boto]
+    proxy = example-host
+    proxy_port = port number
+    ```
+
+    After that, point the `NO_AUTH_BOTO_CONFIG` environment variable to the file
+    you created:
+
+    ```
+    export NO_AUTH_BOTO_CONFIG=/path/to/boto-file
+    ```
+
 ## Download the Crosswalk source
 
 ### Before starting: Android
