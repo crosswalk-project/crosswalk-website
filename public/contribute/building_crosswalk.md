@@ -35,7 +35,7 @@ If you are behind a network proxy, you need to make sure your environment is
 properly set up and the appropriate variables are set. On Linux, you need to do
 at least the following:
 
-1. Set the `http_proxy` and `http_proxy` environment variables.
+1. Set the `http_proxy` and `https_proxy` environment variables.
 
     ```
     export http_proxy=http://example-host:port
