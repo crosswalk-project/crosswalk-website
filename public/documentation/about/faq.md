@@ -1,4 +1,4 @@
-# <a id="Frequently-asked-questions"></a>Frequently-asked questions
+# Frequently-asked questions
 
 If you have any questions that are not answered below, the crosswalk-help mailing list is a good place to ask them. Alternatively, contact us directly via the #crosswalk IRC channel on Freenode. See the [Community page](/documentation/community.html) for more details.
 
