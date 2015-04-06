@@ -43,23 +43,38 @@
           <nav class="kss-nav">
             <ul class="kss-menu" data-kss-ref="0">
               <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+              
               <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Base</span></a></li>
+              
               <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Layout</span></a></li>
+              
               <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Modules</span></a></li>
+              
               <li class="kss-menu-item"><a href="section-4.html"><span class="kss-ref">4</span><span class="kss-name">State</span></a></li>
+              
               <li class="kss-menu-item"><a href="section-5.html"><span class="kss-ref">5</span><span class="kss-name">Shame</span></a></li>
+              
             </ul>
+            
+            
           </nav>
         </div>
       </div>
       <div class="kss-content">
         <article class="kss-article">
+          
             <section id="section-0" class="kss-section kss-overview">
-              <h1 id="styleguide">Styleguide</h1>
-<p>All CSS is documented using KSS—specifically, the <a href="https://github.com/hughsk/kss-node/">Node implantation</a>. This creates a reliable way to build a style guide, and a consistent method of documenting CSS within the modules themselves.</p>
-<h2 id="structure">Structure</h2>
-<p>All CSS is written using the SCSS flavour of <a href="http://sass-lang.com/">Sass</a>, and is preprocessed automatically using <a href="http://harpjs.com">Harp</a>.</p>
-<p>The CSS is contained within the following partials, which is based on conventions from <a href="https://smacss.com/">SMACSS</a>.</p>
+              <h1>Styleguide</h1>
+<p>All CSS is documented using KSS—specifically, the <a href="https://github.com/hughsk/kss-node/">Node implantation</a>. This creates a reliable way to build a style guide, and a consistent method of documenting CSS within the modules themselves.
+
+</p>
+<h2>Structure</h2>
+<p>All CSS is written using the SCSS flavour of <a href="http://sass-lang.com/">Sass</a>, and is preprocessed automatically using <a href="http://harpjs.com">Harp</a>.
+
+</p>
+<p>The CSS is contained within the following partials, which is based on conventions from <a href="https://smacss.com/">SMACSS</a>.
+
+</p>
 <ol>
 <li><strong>Base</strong> Base styles are stored here</li>
 <li><strong>Layout</strong> Site-wide layout styles are stored here, like main containers</li>
@@ -68,15 +83,17 @@
 <li><strong>Shame</strong> If you’re unsure what to do, or need to fix something quickly, store it here. Just make sure to document the reason and locations it is used thoroughly, so it can be tidied up later.</li>
 <li><strong>Vendor</strong> Unmodified dependencies are stored here. For example, Bourbon and Normalize.css are stored here.</li>
 </ol>
-<h2 id="generating">Generating</h2>
-<p>Once you have the project cloned locally, you can rebuild the style guide with the following commands:</p>
-<pre><code class="lang-bash">npm install
+<h2>Generating</h2>
+<p>Once you have the project cloned locally, you can rebuild the style guide with the following commands:
+
+</p>
+<pre><code class="bash">npm install
 npm run styleguide
 harp server
-# Visit http://localhost:9000/styleguide
-</code></pre>
+# Visit http://localhost:9000/styleguide</code></pre>
 
             </section>
+          
         </article>
         <footer class="kss-footer">
         </footer>
