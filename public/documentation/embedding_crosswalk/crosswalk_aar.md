@@ -129,6 +129,8 @@ Then install it into the local Maven repository:
     }
     ```
 
+   The latest AAR need set compileSdkVersion to 21 in build.gradle file.
+
    Gradle places the AAR library in its project directory:
 
     ~/.gradle/caches/modules-2/files-2.1/
