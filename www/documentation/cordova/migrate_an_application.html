@@ -337,7 +337,7 @@ $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibr
 <li><strong>kitchensink</strong></li>
 </ol>
 
-<p>The sequence of commands you need is as follows (from the top-level project directory):</p>
+<p>Here are the commands needed (from the top-level project directory):</p>
 <pre><code># this finds the root directory of the Android SDK installed
 # on your system, assuming the android command is on your
 # path; this variable is required for the manual builds below
@@ -346,10 +346,12 @@ $ export ANDROID_HOME=$(dirname $(dirname $(which android)))
 $ cd platforms/android/
 
 # this updates the CordovaLib project and the
-# xwalk_core_library subproject and target Android 4.4.2 (API
-# level 19)
+# xwalk_core_library subproject and target Android 5.0.1 (API
+# level 21)
 $ android update project --subprojects --path . \
-    --target &quot;android-19&quot;
+    --target &quot;android-21&quot;
+
+$ cd CordovaLib
 
 # build both the CordovaLib and xwalk_core_library projects
 $ ant debug
@@ -358,7 +360,8 @@ $ ant debug
 $ cd ../../..
 $ cordova build android</code></pre>
 <p>The <code>android update</code> command used above takes a <code>--target</code> option, specifying which Android API level you want to target. If you only have one platform version installed in your Android SDK, this option is not required; but if you have multiple platform versions installed, you need to specify which one to use.</p>
-<p>The latest xwalk_core_library requires Android 5.0.1 (API level 21), so you must run the command with the <code>--target</code> option of <code>&quot;android-21&quot;</code>.</p>
+<p>The latest <code>xwalk_core_library</code> requires Android 5.0.1 (API level 21), so you must run the command with the <code>--target</code> option of <code>&quot;android-21&quot;</code>.</p>
+<p>The crosswalk-cordova project now supports shared mode for the crosswalk library. You should implement the <code>onXWalkReady</code> function in your main Android Activity that extends the class of CordovaActivity. Please note the changes in <code>bin/templates/project/Activity.java</code> in <a href="https://github.com/crosswalk-project/crosswalk-cordova-android/commit/2db7369014649cc0cf30635db5af9c470d24b910">this patch</a> .</p>
 <p>To get a list of the targets available in your Android SDK, run this command:</p>
 <pre><code>$ android list targets</code></pre>
 <p>Here&#39;s a sample of the output when Android 4.3 (API level 18) and Android 4.4.2 (API level 19) are available:</p>

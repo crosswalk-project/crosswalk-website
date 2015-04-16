@@ -134,7 +134,7 @@ Once you have the application working with standard Cordova, you can move on to 
     <li><strong>kitchensink</strong></li>
     </ol>
 
-    The sequence of commands you need is as follows (from the top-level project directory):
+    Here are the commands needed (from the top-level project directory):
 
         # this finds the root directory of the Android SDK installed
         # on your system, assuming the android command is on your
@@ -144,10 +144,10 @@ Once you have the application working with standard Cordova, you can move on to 
         $ cd platforms/android/
 
         # this updates the CordovaLib project and the
-        # xwalk_core_library subproject and target Android 4.4.2 (API
-        # level 19)
+        # xwalk_core_library subproject and target Android 5.0.1 (API
+        # level 21)
         $ android update project --subprojects --path . \
-            --target "android-19"
+            --target "android-21"
 
         $ cd CordovaLib
 
@@ -160,9 +160,9 @@ Once you have the application working with standard Cordova, you can move on to 
 
     The `android update` command used above takes a `--target` option, specifying which Android API level you want to target. If you only have one platform version installed in your Android SDK, this option is not required; but if you have multiple platform versions installed, you need to specify which one to use.
 
-    The latest xwalk_core_library requires Android 5.0.1 (API level 21), so you must run the command with the `--target` option of `"android-21"`.
+    The latest `xwalk_core_library` requires Android 5.0.1 (API level 21), so you must run the command with the `--target` option of `"android-21"`.
 
-    The latest crosswalk-cordova project supported shared mode for crosswalk library, so implement onXWalkReady function in your main Android Activity that extends the class of CordovaActivity. Please refer with the difference of `bin/templates/project/Activity.java` in [the patch](https://github.com/crosswalk-project/crosswalk-cordova-android/commit/2db7369014649cc0cf30635db5af9c470d24b910) .
+    The crosswalk-cordova project now supports shared mode for the crosswalk library. You should implement the `onXWalkReady` function in your main Android Activity that extends the class of CordovaActivity. Please note the changes in `bin/templates/project/Activity.java` in [this patch](https://github.com/crosswalk-project/crosswalk-cordova-android/commit/2db7369014649cc0cf30635db5af9c470d24b910) .
 
     To get a list of the targets available in your Android SDK, run this command:
 
