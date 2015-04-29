@@ -37,7 +37,7 @@ Version key:<br />
 * [Online State](http://www.w3.org/html/wg/drafts/html/CR/browsers.html#browser-state) - Online and offline events for the network state.
 * [Web SQL](http://www.w3.org/TR/webdatabase/) - Store data in databases on the client using a variant of SQL.
 * [Web Sockets](http://www.w3.org/TR/websockets/) - A low overhead bi-directional communication with web servers over a persistent TCP connection.
-* [Web Storage](http://www.w3.org/TR/webstorage/) - A simple synchronous client-side storage API for storing name-value pairs.
+* [Web Storage](http://dev.w3.org/html5/webstorage/) - A simple synchronous client-side storage API for storing name-value pairs.
 * [XMLHttpRequest](http://www.w3.org/TR/XMLHttpRequest/) - Transfer data between a client and a server programmatically over HTTP.
 
 ## Performance & Optimization
