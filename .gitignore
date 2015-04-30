@@ -22,3 +22,6 @@ public/styleguide/
 
 # Deploy local-config.php
 local-config.php
+
+# Gimp files
+*.xcf
