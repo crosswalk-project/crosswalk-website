@@ -284,6 +284,11 @@ Follow the steps below to add some web assets and bundle them with your applicat
     }
     ```
 
+### Enable Proguard to compress apk size (Optional)
+ProGuard is a free Java class file shrinker, optimizer, obfuscator and pre-verifier. Those operations are optional when generating your final apk. If you have developed your own Proguard config file along with your Java code, you might want to add some Proguard rules to compress the size of the Crosswalk library: <a href="/documentation/samples/proguard-xwalk.txt">Proguard rules for crosswalk example</a>.
+
+The purpose of using Proguard on the Crosswalk library is to shrink the size not for anti-decompilation consideration. Note that there are a lot of reflections in Crosswalk code, many of which directly reference class names as strings. Thus the shrink and obfuscate operations mainly affect the chromium areas. 
+
 <h3 id="Debugging">Debugging</h3>
 
 To enable debugging of the web application running in an embedded Crosswalk webview, modify the `MainActivity.java` file to look like this:
