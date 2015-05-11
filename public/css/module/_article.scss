@@ -29,7 +29,7 @@
     @include span-columns(6 of 6);
   }
   @include media($huge) {
-    @include span-columns(4 of 6);
+    @include span-columns(5 of 6);
   }
 }
 
@@ -312,14 +312,12 @@
     color: $color-text;
   }
   @include media($wide) {
-    @include span-columns(4 of 6);
+    @include span-columns(5 of 6);
     @include shift(1);
   }
   @include media($massive) {
-    margin-top: -1 * modular-scale($base-font-size, 14, $base-ratio);
-    @include span-columns(4 of 6);
-    @include shift(6);
-    padding: modular-scale($base-font-size, 2, $base-ratio);
+    @include span-columns(5 of 6);
+    @include shift(1);
   }
 }
 

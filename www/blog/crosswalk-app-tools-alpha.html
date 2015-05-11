@@ -30,15 +30,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Embedding API" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/apis/embedding_api" />
+    <meta property="og:title" content="Crosswalk Project App Tools Alpha release" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-app-tools-alpha" />
     <meta property="og:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/apis/embedding_api" />
-    <meta name="twitter:title" content="Embedding API" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-app-tools-alpha" />
+    <meta name="twitter:title" content="Crosswalk Project App Tools Alpha release" />
     <meta name="twitter:description" content="Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -87,202 +87,88 @@
         </div>
         <div class="row">
           
-            <nav id="contents" class="article-toc nav-toggleContainer">
-  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-  <ul class="article-list nav-toggleHide">
-    
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/about.html">About</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/screens.html">Screens</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/samples.html">Samples</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/apis.html">APIs</a>
-        
-        
-          <ul class="article-list">
-          
-          
-            
-            
-            <li class="article-item ">
-              <a class="article-link" href="/documentation/apis/web_apis.html">Web APIs</a>
-            </li>
-          
-            
-            
-            <li class="article-item  nav-item--active">
-              <a class="article-link" href="/documentation/apis/embedding_api.html">Embedding API</a>
-            </li>
-          
-          </ul>
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/community.html">Community</a>
-        
-        
-      </li>
-    
-      
-      
-      <li class="article-item ">
-        <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
-        
-        
-      </li>
-    
-  </ul>
-</nav>
+            <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">Crosswalk Project App Tools Alpha release</h1>
+    <span class="article-meta">
+      <a href="crosswalk-app-tools-alpha.html"><time class="js-vagueTime" datetime="Fri, 08 May 2015 12:00:00 GMT">Fri, 08 May 2015 12:00:00 GMT</time></a>
+       by <span class="article-author">Robert Staudinger</span>
+    </span>
+  </header>
+  
+  <p>We are happy to announce the alpha version for Crosswalk-app-tools. This is a preview milestone of our forthcoming Node.js based tools for Android app development. Deployment in a production environment is not encouraged at this time.</p>
+<p>Crosswalk-app-tools is licensed under the Apache License Version 2.0, please refer to the file LICENSE-APACHE-V2 included in the package.</p>
+<h3>Installation</h3>
+<p>Crosswalk-app-tools is cross-platform by virtue of being based on Node.js. However at this point most testing is done on Linux, so we expect the least number of hiccups there. In any case we have seen reports of successful runs on Apple OS X, and are looking forward to hearing about adventurous individuals giving it a spin on Microsoft Windows as well. (But be warned that there are known problems with proxy support on Windows, for starters)</p>
+<p>The following components are required</p>
+<ol>
+<li>Android SDK with 5.0 (target-21) installed</li>
+<li>Java JDK and Apache Ant</li>
+<li>Node.js and NPM</li>
+</ol>
+<p>The best way to check if a machine has all the required dependencies is to create and build a plain empty Android app on the system. If this does not work, then building Crosswalk apps will not succeed either.</p>
+<pre><code>android create project -a MainActivity -k com.example.foo -p com.example.foo -t android-21
+cd com.example.foo
+ant debug</code></pre>
+<p>In order to get the <code>crosswalk-app</code> script available everywhere, global npm installation is required. On most Linux distributions this can be achieved by using <code>sudo</code>.</p>
+<pre><code>sudo npm install -g crosswalk-app-tools</code></pre>
+<h3>Usage</h3>
+<pre><code>Crosswalk Application Project and Packaging Tool
 
-<article class="article article--hasToC">
-  <!--
+    crosswalk-app create &lt;package-id&gt;           Create project &lt;package-id&gt;
 
-$base_url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['CONTEXT_PREFIX']. '/apis/';
+    crosswalk-app build [release|debug]         Build project to create packages
+                                                Defaults to debug when not given
 
-$docs_url_v1 = $base_url . 'embeddingapidocs/reference/org/xwalk/core/package-summary.html';
-$docs_url_v2 = $base_url . 'embeddingapidocs_v2/reference/org/xwalk/core/package-summary.html';
+    crosswalk-app update &lt;channel&gt;|&lt;version&gt;    Update Crosswalk to latest in named
+                                                channel, or specific version
 
-https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/package-summary.html
+    crosswalk-app help                          Display usage information
 
-$sample_url_v1 = $base_url . 'embeddingapidocs/reference/org/xwalk/core/XWalkView.html';
-$sample_url_v2 = $base_url . 'embeddingapidocs_v2/reference/org/xwalk/core/XWalkView.html';
--->
+    crosswalk-app version                       Display version information
 
-<h1>Embedding API</h1>
+Options for platform &#39;android&#39;
 
-<p>The embedding API enables Crosswalk to be used as a web view for Android applications, as an alternative to the stock <a href="http://developer.android.com/guide/webapps/webview.html">WebView</a>. You can use it to load HTML pages or whole web applications inside a Java application running on Android.</p>
+    For command &#39;create&#39;
+        --android-crosswalk                     Channel name (stable/beta/canary)
+                                                or version number (w.x.y.z)
+Environment Variables
 
-<p>The <a href="/documentation/embedding_crosswalk.html">Getting started with the embedding API</a> article covers basic use of the API.</p>
-
-<p>Links for more references and resources are given below.</p>
-
-<h2>Version 3</h2>
-
+    CROSSWALK_APP_TOOLS_CACHE_DIR               Keep downloaded files in this dir</code></pre>
+<h4>Example: Create App</h4>
+<pre><code>crosswalk-app create com.example.foo</code></pre>
+<p>This sets up a skeleton project in directory com.example.foo/, downloads and imports Crosswalk, and puts a sample &quot;hello world&quot; web app under com.example.foo/app/.</p>
+<h4>Example: Build App</h4>
+<pre><code>cd com.example.foo
+crosswalk-app build</code></pre>
+<p>Builds packages. The APKs can be found under pkg/ when done.</p>
+<p>For more details, see the project&#39;s <a href="https://github.com/crosswalk-project/crosswalk-app-tools/blob/master/README.md">README file</a>.</p>
+<h2>Highlights</h2>
 <ul>
-  <li><a href="/apis/embeddingapidocs_v3/index.html">Javadocs v3 (Sept 2014)</a></li>
+<li><p>Straightforward creation and building of app packages (APKs) for Android. Crosswalk is downloaded and integrated into the build process without user intervention.</p>
+</li>
+<li><p>Distributed via the Node Package Manager, with the Android SDK and Ant as only requirements, relying only on standard web app and Android development tools.</p>
+</li>
+<li><p>Extensible architecture allows for adding operating system support and package formats over time.</p>
+</li>
 </ul>
-
-<h2>Version 2 - Crosswalk 8</h2>
-
+<h2>Limitations</h2>
 <ul>
-  <li><a href="/apis/embeddingapidocs_v2/reference/org/xwalk/core/package-summary.html">Javadocs v2 (July 2014)</a></li>
-  <li><a href="/apis/embeddingapidocs_v2/reference/org/xwalk/core/XWalkView.html">Sample code for v2</a></li>
-  <li><a href="https://github.com/crosswalk-project/crosswalk/tree/master/runtime/android/sample" target="_blank">Sample project</a></li>
+<li>Tested and known to work on Linux. Support for additional host operating systems coming soon (has been found to work on OS X, although there is no official support yet).</li>
 </ul>
-
-<p><h2>Version 1 - Crosswalk 6 and 7</h1></p>
+<h2>Upcoming features</h2>
 <ul>
-  <li><a href="/apis/embeddingapidocs/reference/org/xwalk/core/package-summary.html">Javadocs v1</a></li>
-  <li><a href="/apis/embeddingapidocs/reference/org/xwalk/core/XWalkView.html">Sample code or v1</a></li>
+<li>Support for W3C manifest.</li>
+<li>Support building release packages that can be round-trip tested via the Google Play Store.</li>
 </ul>
+<h2>Issue tracking</h2>
+<p>Bugs are tracked and fixed as quickly as possible. Please enter those you find. Crosswalk JIRA can be found at <a href="https://crosswalk-project.org/jira/">https://crosswalk-project.org/jira/</a> (&quot;App Tools&quot; component)</p>
 
-  <footer class="article-next">
-    
+  <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
 
-  
-  
-    
-    
-  
-    
-    
-      
-    
-  
-
-
-  </footer>
 </article>
 
           
