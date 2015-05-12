@@ -1,7 +1,7 @@
 {
   "globals": {
     "title":       "Crosswalk",
-    "description": "Replace Android’s default WebView with Crosswalk, a predictable web runtime for developing powerful Android and Cordova apps.",
+    "description": "Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps.",
     "tagline":     "Build world class hybrid apps",
     "name":        "Crosswalk",
     "email":       "",
