@@ -30,15 +30,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Add plugins" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/cordova/add_plugins" />
+    <meta property="og:title" content="Crosswalk with Cordova 4" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/cordova/crosswalk_with_cordova4" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/cordova/add_plugins" />
-    <meta name="twitter:title" content="Add plugins" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/cordova/crosswalk_with_cordova4" />
+    <meta name="twitter:title" content="Crosswalk with Cordova 4" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -150,7 +150,7 @@
           
             
             
-            <li class="article-item  nav-item--active">
+            <li class="article-item ">
               <a class="article-link" href="/documentation/cordova/add_plugins.html">Add plugins</a>
             </li>
           
@@ -162,7 +162,7 @@
           
             
             
-            <li class="article-item ">
+            <li class="article-item  nav-item--active">
               <a class="article-link" href="/documentation/cordova/crosswalk_with_cordova4.html">Crosswalk with Cordova 4</a>
             </li>
           
@@ -238,89 +238,95 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>Adding Cordova plugins</h1>
-<p>Cordova&#39;s web APIs are packaged as <strong>plugins</strong>, optional add-ons for the Cordova runtime. Each plugin you add provides extra functionality and/or additional web API methods for the Cordova-wrapped web application. For example, the <a href="http://plugins.cordova.io/#/package/org.apache.cordova.device-motion">Cordova Device Motion Plugin</a> adds the following JavaScript methods for working with accelerometer data:
-
-<em>   navigator.accelerometer.getCurrentAcceleration
-</em>   navigator.accelerometer.watchAcceleration
-*   navigator.accelerometer.clearWatch
-
-The <a href="http://plugins.cordova.io/">Cordova Plugin Registry</a> lists many of the available plugins (including all of the official ones) and where to get them.</p>
-
-<h2>Cordova plugins and Crosswalk</h2>
-<p>Cordova Crosswalk for Android can also be extended with Cordova plugins. However, the plugin version you need depends on the Crosswalk version you are using. The <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Cordova-for-Android:-plugin-compatibility-lists">plugins compatibility list</a> shows which Cordova plugin versions are supported by which version of Crosswalk Cordova for Android.</p>
-<p>It&#39;s also worth noting that some functionality provided by Cordova plugins already has an equivalent in Crosswalk (for example, geolocation data). In cases where you are only using Crosswalk for the webview (e.g. you&#39;re only deploying to Android), you could use such Crosswalk native APIs, rather than those provided by Cordova plugins.</p>
-<h2>Adding a plugin to a project</h2>
-<p><strong>If you aren&#39;t set up for Crosswalk Cordova development, see the <a href="/documentation/cordova/develop_an_application.html#Set-up-the-host">host setup instructions</a>. You can also follow those instructions to create a Crosswalk Cordova HelloWorld project. Plugins are added to a HelloWorld sample application in the instructions below, but the same steps will work for any Crosswalk Cordova application.</strong></p>
-<p>In addition to the standard Crosswalk Cordova pre-requisites, you will also need to install <a href="http://nodejs.org">node.js</a> for your platform.</p>
-<p>The Cordova tool for installing plugins is <code>plugman</code>. Install it by running:</p>
-<pre><code>$ npm install -g plugman</code></pre>
-<p>Once installed, add a plugin to your Crosswalk Cordova project as follows:</p>
+  <h1>Using Crosswalk WebView in Cordova Android 4.0</h1>
+<h2>Overview</h2>
+<p>With the introduction in <a href="http://cordova.apache.org/announcements/2015/04/15/cordova-android-4.0.0.html">Cordova Android 4.0.0</a> of pluggable WebView support, it is now easy to use the <a href="https://crosswalk-project.org/">Crosswalk WebView</a> with your Cordova app. By using the Crosswalk WebView plugin, developers can enjoy remote debugging capabilities, cutting edge HTML5 features such as WebGL, WebAudio and WebRTC, and significant performance enhancements on Android devices, all the way down to Android 4.0 Ice Cream Sandwich (ICS).</p>
+<h2>Prerequisites</h2>
+<p>Please refer to the <a href="https://cordova.apache.org/docs/en/4.0.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Android Platform Guide</a> to setup the Android SDK environment for Cordova application development.</p>
+<p>Also, please make sure you have an up-to-date version of <a href="https://nodejs.org/">node.js</a> installed on your system.</p>
+<h2>Workflow</h2>
 <ol>
-<li><p>Go to the top-level project directory:</p>
-<pre><code>cd HelloWorld</code></pre>
+<li><p>Install the Cordova Command Line Interface (CLI)</p>
+<pre><code>$ npm install -g cordova</code></pre>
+<p>Check that the version of Cordova CLI is &gt;= 5.0.0:</p>
+<pre><code>$ cordova -v
+5.0.0</code></pre>
 </li>
-<li><p>Find the URL for the plugin you want to install, by looking it up in the appropriate <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Cordova-for-Android:-plugin-compatibility-lists">plugins compatibility list</a>. For example, if you&#39;ve using version 5 of Crosswalk, the <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Plugins-list-@-3.3.0-supported-by-crosswalk-cordova-android">compatible plugins for Cordova 3.3.0 list</a> is the one you need.</p>
-<p>For example, to install the accelerometer plugin for Cordova 3.3.0, the URL you need is: <a href="https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4">https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4</a>.</p>
+<li><p>Create a Cordova example app, which can be used as a stub for creating new projects</p>
+<pre><code>$ cordova create hello com.example.hello HelloWorld</code></pre>
 </li>
-<li><p>Add the plugin to the project:</p>
-<pre><code>$ plugman install --platform android --project . \
-    --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.4</code></pre>
-<p>Please refer to <a href="http://cordova.apache.org/docs/en/3.3.0/plugin_ref_plugman.md.html">Using Plugman to Manage Plugins</a> for more details about the <code>plugman</code> command line options.</p>
+<li><p>Navigate to the newly created project directory</p>
+<pre><code>$ cd hello</code></pre>
+<p>All subsequent commands must be run within the project&#39;s directory (e.g. <code>hello</code>)</p>
 </li>
-<li><p>Use the plugin in the application. As a simple example, you could modify the HelloWorld project to use the plugin as follows:</p>
-<p>In <code>assets/www/index.html</code>, modify the <code>&lt;div class=&quot;app&quot;&gt;</code> element, adding some paragraphs to display the x, y and z accelerometer coordinates:</p>
-
-<pre><code>&lt;div class=&quot;app&quot;&gt;
-    &lt;h1&gt;Apache Cordova&lt;/h1&gt;
-    &lt;div id=&quot;deviceready&quot; class=&quot;blink&quot;&gt;
-        &lt;p class=&quot;event listening&quot;&gt;Connecting to Device&lt;/p&gt;
-        &lt;p class=&quot;event received&quot;&gt;Device is Ready&lt;/p&gt;
-    &lt;/div&gt;
-
-    &lt;!-- display x,y,z accelerometer coordinates --&gt;
-    &lt;p style=&quot;color: white;&quot;&gt;x: &lt;span id=&quot;x&quot;&gt;0&lt;/span&gt;&lt;/p&gt;
-    &lt;p style=&quot;color: white;&quot;&gt;y: &lt;span id=&quot;y&quot;&gt;0&lt;/span&gt;&lt;/p&gt;
-    &lt;p style=&quot;color: white;&quot;&gt;z: &lt;span id=&quot;z&quot;&gt;0&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-<p>In <code>assets/www/js/index.js</code>, modify the <code>onDeviceReady()</code> function to watch the accelerometer:</p>
-
-<pre><code>onDeviceReady: function() {
-  app.receivedEvent(&#39;deviceready&#39;);
-
-  // listen to accelerometer events every 100ms
-  navigator.accelerometer.watchAcceleration(
-    // success handler
-    function (evt) {
-      document.getElementById(&#39;x&#39;).innerHTML = evt.x;
-      document.getElementById(&#39;y&#39;).innerHTML = evt.y;
-      document.getElementById(&#39;z&#39;).innerHTML = evt.z;
-    },
-
-    // error handler
-    function (e) {
-      alert(&quot;accel fail (&quot; + e.name + &quot;: &quot; + e.message + &quot;)&quot;);
-    },
-
-    // options: update every 100ms
-    { frequency: 100 }
-  );
-},</code></pre>
+<li><p>Add Android as the target platform</p>
+<pre><code>$ cordova platform add android</code></pre>
+<p>This adds the Cordova Android platform (version &gt;= 4.0.0) into the app.</p>
 </li>
-<li><p>Install and run the application as per usual:</p>
-<pre><code>$ cd HelloWorld
-$ ./cordova/run android</code></pre>
-<p>The result should look like this:</p>
-<p><img src="/assets/cordova-hello-world-with-accelerometer.png"></p>
+<li><p>Install the Crosswalk WebView plugin</p>
+<pre><code>$ cordova plugin add  cordova-plugin-crosswalk-webview</code></pre>
+<p>This adds the <a href="https://www.npmjs.com/package/cordova-plugin-crosswalk-webview/">Crosswalk WebView cordova plugin</a> into the app.</p>
+</li>
+<li><p>Build with Crosswalk WebView engine for Android</p>
+<pre><code>$ cordova build android</code></pre>
+<p>This will automatically fetch the stable Crosswalk WebView libraries from the Crosswalk Project download site (<a href="https://download.01.org/crosswalk/releases/crosswalk/android/">https://download.01.org/crosswalk/releases/crosswalk/android/</a>) and build for both X86 and ARM architectures. For example, building a <code>HelloWorld</code> project generates:</p>
+<pre><code>/path/to/hello/platforms/android/build/outputs/apk/android-x86-debug.apk
+/path/to/hello/platforms/android/build/outputs/apk/android-armv7-debug.apk</code></pre>
+<p>The Crosswalk WebView library will be embedded within your app. It adds about 18MB to the APK size.</p>
+</li>
+<li><p>Launch it in the emulator</p>
+<pre><code>$ cordova emulate android</code></pre>
+<p>Launching a Cordova app using the Crosswalk WebView is done the same way as Cordova app. The command will launch the emulator, install the application APK, and then launch your app. As an example, after launching the above Cordova example, you will see the following result on your screen:</p>
+<p><img src="/assets/cordova-in-emulator.jpg" /></p>
+<p>Please refer to The <a href="https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html#The%20Command-Line%20Interface">Command-Line Interface</a> for a full listing of commands and options.</p>
 </li>
 </ol>
-<p>As with standard Cordova, you should still follow the Cordova guidelines for integrating plugins with your application (e.g. <a href="http://cordova.apache.org/docs/en/3.3.0/cordova_events_events.md.html#deviceready">waiting for the &quot;device ready&quot; event before using plugin features</a>).</p>
-<h2>Additional external plugins</h2>
-<p>External plugins (i.e. not part of the main Cordova distribution) can also be used with Crosswalk Cordova for Android:</p>
-<ul>
-<li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/AdMob-Plugin-on-Crosswalk">Use AdMob plugin in Crosswalk</a></li>
-<li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/IAP-Plugin-on-Crosswalk">Use IAP plugin in Crosswalk </a></li>
-</ul>
+<h2>Remote debugging with Crosswalk</h2>
+<p>The Crosswalk WebView allows remote debugging the Cordova app, even on old Android devices (4.0+).</p>
+<p>You can use desktop Google Chrome to debug any apps running on Crosswalk remotely. After the app launches, navigate to “chrome://inspect” to list the debuggable app on the device. For example, when inspecting the <code>HelloWorld</code> app running in the emulator with Crosswalk:</p>
+<p><img src="/assets/cordova-devtools-inspect.jpg" /></p>
+<p>By clicking the “inspect” link under <code>Hello World</code>, a Chrome DevTools window will be opened. In the JavaScript console tab, you can make sure the app is running on Crosswalk by inspecting <code>navigator.userAgent</code>. For example, the app is running on Crosswalk 13 (Chromium M42):</p>
+<p><img src="/assets/cordova-with-devtools.jpg" /></p>
+<p>Please refer to <a href="https://developer.chrome.com/devtools/docs/remote-debugging">Remote Debugging on Android with Chrome</a> for the user manual.</p>
+<h2>(Optional) Android Platform Only Workflow</h2>
+<p>This workflow is mainly for developers who want to stay on the bleeding edge of development. Go to Cordova CLI workflow if you want a stable release.</p>
+<p><a href="http://www.google.com/url?q=http%3A%2F%2Fgit-scm.com%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFOqwvh2KbuCJQUVsR5fW38FrTRTw">git</a> is required.</p>
+<ol>
+<li><p>Pull the cordova-android repo</p>
+<pre><code>$ git clone https://github.com/apache/cordova-android.git</code></pre>
+</li>
+<li><p>Install plugman</p>
+<pre><code>$ npm install -g plugman</code></pre>
+<p>Check that the version of plugman is &gt;= 0.22.17</p>
+<pre><code>$ plugman -v
+0.23.1</code></pre>
+<p>For more information about plugman, please refer to <a href="https://cordova.apache.org/docs/en/4.0.0/plugin_ref_plugman.md.html#Using%20Plugman%20to%20Manage%20Plugins">Using Plugman to Manage Plugins</a>.</p>
+</li>
+<li><p>Create a Cordova example app</p>
+<pre><code>$ /path/to/cordova-android/bin/create hello com.example.hello HelloWorld</code></pre>
+</li>
+<li><p>Navigate to the project directory</p>
+<pre><code>$ cd hello</code></pre>
+<p>All subsequent commands need to be run within the project&#39;s directory.</p>
+</li>
+<li><p>Install Crosswalk WebView engine plugin</p>
+<pre><code>$ plugman install --platform android \
+ --plugin https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview.git \
+ --project .</code></pre>
+<p>Note: as there are binary files in the git history, the first git cloning downloads about 100MB. This  might be slow across a low bandwidth connection.</p>
+</li>
+<li><p>Build with the Crosswalk WebView engine</p>
+<pre><code>$ ./cordova/build</code></pre>
+<p>This automatically fetches the Crosswalk WebView libraries from the Crosswalk Project release site (<a href="https://download.01.org/crosswalk/releases/crosswalk/android/">https://download.01.org/crosswalk/releases/crosswalk/android/</a>) and builds for both X86 and ARM architectures. For example, it generates:</p>
+<pre><code>/path/to/hello/build/outputs/apk/hello-x86-debug.apk
+/path/to/hello/build/outputs/apk/hello-armv7-debug.apk</code></pre>
+</li>
+<li><p>Launch in emulator</p>
+<pre><code>$ ./cordova/run --emulator --nobuild</code></pre>
+<p>This launches the emulator, installs the application APK, and launches your app. </p>
+</li>
+</ol>
+<p>For more commands of cordova-android, please refer to <a href="https://github.com/apache/cordova-android">cordova-android README.md</a>.</p>
 
   <footer class="article-next">
     
@@ -332,19 +338,13 @@ $ ./cordova/run android</code></pre>
   
     
     
-      
+  
+    
     
   
     
     
       
-      <a href="/documentation/cordova/migrate_an_application.html" class="article-promo well">
-        <em>What’s next?</em>
-        <h3>Migrate an application</h3>
-      </a>
-    
-  
-    
     
   
 
