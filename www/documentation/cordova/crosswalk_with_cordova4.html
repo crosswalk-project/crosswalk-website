@@ -240,10 +240,10 @@
 <article class="article article--hasToC">
   <h1>Using Crosswalk WebView in Cordova Android 4.0</h1>
 <h2>Overview</h2>
-<p>With the introduction in <a href="http://cordova.apache.org/announcements/2015/04/15/cordova-android-4.0.0.html">Cordova Android 4.0.0</a> of pluggable WebView support, it is now easy to use the <a href="https://crosswalk-project.org/">Crosswalk WebView</a> with your Cordova app. By using the Crosswalk WebView plugin, developers can enjoy remote debugging capabilities, cutting edge HTML5 features such as WebGL, WebAudio and WebRTC, and significant performance enhancements on Android devices, all the way down to Android 4.0 Ice Cream Sandwich (ICS).</p>
+<p>With the introduction in <a href="http://cordova.apache.org/announcements/2015/04/15/cordova-android-4.0.0.html">Cordova Android 4.0.0</a> of pluggable WebView support, it is now easy to use the <a href="https://crosswalk-project.org/">Crosswalk WebView</a> with your Cordova app. By using the Crosswalk WebView plugin, developers can enjoy remote debugging capabilities, cutting edge HTML5 features such as WebGL, WebAudio and WebRTC, and significant performance enhancements on Android devices all the way down to Android 4.0 Ice Cream Sandwich (ICS).</p>
 <h2>Prerequisites</h2>
 <p>Please refer to the <a href="https://cordova.apache.org/docs/en/4.0.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Android Platform Guide</a> to setup the Android SDK environment for Cordova application development.</p>
-<p>Also, please make sure you have an up-to-date version of <a href="https://nodejs.org/">node.js</a> installed on your system.</p>
+<p>Make sure you have an up-to-date version of <a href="https://nodejs.org/">node.js</a> installed on your system.</p>
 <h2>Workflow</h2>
 <ol>
 <li><p>Install the Cordova Command Line Interface (CLI)</p>
@@ -264,15 +264,15 @@
 <p>This adds the Cordova Android platform (version &gt;= 4.0.0) into the app.</p>
 </li>
 <li><p>Install the Crosswalk WebView plugin</p>
-<pre><code>$ cordova plugin add  cordova-plugin-crosswalk-webview</code></pre>
+<pre><code>$ cordova plugin add cordova-plugin-crosswalk-webview</code></pre>
 <p>This adds the <a href="https://www.npmjs.com/package/cordova-plugin-crosswalk-webview/">Crosswalk WebView cordova plugin</a> into the app.</p>
 </li>
 <li><p>Build with Crosswalk WebView engine for Android</p>
 <pre><code>$ cordova build android</code></pre>
-<p>This will automatically fetch the stable Crosswalk WebView libraries from the Crosswalk Project download site (<a href="https://download.01.org/crosswalk/releases/crosswalk/android/">https://download.01.org/crosswalk/releases/crosswalk/android/</a>) and build for both X86 and ARM architectures. For example, building a <code>HelloWorld</code> project generates:</p>
+<p>This automatically fetches the stable Crosswalk WebView libraries from the Crosswalk Project download site (<a href="https://download.01.org/crosswalk/releases/crosswalk/android/">https://download.01.org/crosswalk/releases/crosswalk/android/</a>) and build for both X86 and ARM architectures. For example, building a <code>HelloWorld</code> project generates:</p>
 <pre><code>/path/to/hello/platforms/android/build/outputs/apk/android-x86-debug.apk
 /path/to/hello/platforms/android/build/outputs/apk/android-armv7-debug.apk</code></pre>
-<p>The Crosswalk WebView library will be embedded within your app. It adds about 18MB to the APK size.</p>
+<p>The Crosswalk WebView library will be embedded in your app. This adds about 18MB to the APK size.</p>
 </li>
 <li><p>Launch it in the emulator</p>
 <pre><code>$ cordova emulate android</code></pre>
@@ -289,7 +289,7 @@
 <p><img src="/assets/cordova-with-devtools.jpg" /></p>
 <p>Please refer to <a href="https://developer.chrome.com/devtools/docs/remote-debugging">Remote Debugging on Android with Chrome</a> for the user manual.</p>
 <h2>(Optional) Android Platform Only Workflow</h2>
-<p>This workflow is mainly for developers who want to stay on the bleeding edge of development. Go to Cordova CLI workflow if you want a stable release.</p>
+<p>This workflow is for developers who want to stay on the bleeding edge of development. Go to Cordova CLI workflow if you want a stable release.</p>
 <p><a href="http://www.google.com/url?q=http%3A%2F%2Fgit-scm.com%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFOqwvh2KbuCJQUVsR5fW38FrTRTw">git</a> is required.</p>
 <ol>
 <li><p>Pull the cordova-android repo</p>

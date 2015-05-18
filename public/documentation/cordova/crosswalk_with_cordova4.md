@@ -1,10 +1,10 @@
 # Using Crosswalk WebView in Cordova Android 4.0
 ## Overview
-With the introduction in [Cordova Android 4.0.0](http://cordova.apache.org/announcements/2015/04/15/cordova-android-4.0.0.html) of pluggable WebView support, it is now easy to use the [Crosswalk WebView](https://crosswalk-project.org/) with your Cordova app. By using the Crosswalk WebView plugin, developers can enjoy remote debugging capabilities, cutting edge HTML5 features such as WebGL, WebAudio and WebRTC, and significant performance enhancements on Android devices, all the way down to Android 4.0 Ice Cream Sandwich (ICS).
+With the introduction in [Cordova Android 4.0.0](http://cordova.apache.org/announcements/2015/04/15/cordova-android-4.0.0.html) of pluggable WebView support, it is now easy to use the [Crosswalk WebView](https://crosswalk-project.org/) with your Cordova app. By using the Crosswalk WebView plugin, developers can enjoy remote debugging capabilities, cutting edge HTML5 features such as WebGL, WebAudio and WebRTC, and significant performance enhancements on Android devices all the way down to Android 4.0 Ice Cream Sandwich (ICS).
 ## Prerequisites
 Please refer to the [Android Platform Guide](https://cordova.apache.org/docs/en/4.0.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide) to setup the Android SDK environment for Cordova application development.
 
-Also, please make sure you have an up-to-date version of [node.js](https://nodejs.org/) installed on your system.
+Make sure you have an up-to-date version of [node.js](https://nodejs.org/) installed on your system.
 ## Workflow
 
 1.  Install the Cordova Command Line Interface (CLI)
@@ -34,7 +34,7 @@ Also, please make sure you have an up-to-date version of [node.js](https://nodej
 
 5.  Install the Crosswalk WebView plugin
 
-        $ cordova plugin add  cordova-plugin-crosswalk-webview
+        $ cordova plugin add cordova-plugin-crosswalk-webview
 
     This adds the [Crosswalk WebView cordova plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview/) into the app.
 
@@ -42,12 +42,12 @@ Also, please make sure you have an up-to-date version of [node.js](https://nodej
 
         $ cordova build android
 
-    This will automatically fetch the stable Crosswalk WebView libraries from the Crosswalk Project download site (https://download.01.org/crosswalk/releases/crosswalk/android/) and build for both X86 and ARM architectures. For example, building a `HelloWorld` project generates:
+    This automatically fetches the stable Crosswalk WebView libraries from the Crosswalk Project download site (https://download.01.org/crosswalk/releases/crosswalk/android/) and build for both X86 and ARM architectures. For example, building a `HelloWorld` project generates:
 
         /path/to/hello/platforms/android/build/outputs/apk/android-x86-debug.apk
         /path/to/hello/platforms/android/build/outputs/apk/android-armv7-debug.apk
 
-    The Crosswalk WebView library will be embedded within your app. It adds about 18MB to the APK size.
+    The Crosswalk WebView library will be embedded in your app. This adds about 18MB to the APK size.
 
 7.  Launch it in the emulator
 
@@ -77,7 +77,7 @@ Please refer to [Remote Debugging on Android with Chrome](https://developer.chro
 
 ## (Optional) Android Platform Only Workflow
 
-This workflow is mainly for developers who want to stay on the bleeding edge of development. Go to Cordova CLI workflow if you want a stable release.
+This workflow is for developers who want to stay on the bleeding edge of development. Go to Cordova CLI workflow if you want a stable release.
 
 [git](http://www.google.com/url?q=http%3A%2F%2Fgit-scm.com%2F&sa=D&sntz=1&usg=AFQjCNFOqwvh2KbuCJQUVsR5fW38FrTRTw) is required.
 
