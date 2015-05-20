@@ -2,7 +2,9 @@
 
 This tutorial will get you up and running with the Crosswalk Project as quickly as possible.
 
-Note that the tutorial uses the latest stable version of the Crosswalk Project for Android: newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).
+<strong>For Cordova users, also check out [Crosswalk WebView in Cordova 4.0](http://xwalk.com/documentation/cordova_4.html) to easily use the advanced Crosswalk webview with your Cordova 4.0 app.</strong>
+
+Note the tutorial uses the latest stable version of the Crosswalk Project for Android. Newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).
 
 For Tizen, a [canary](/documentation/downloads.html#release-channels) version is used (there are no stable or beta downloads for Tizen).
 
