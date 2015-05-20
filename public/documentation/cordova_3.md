@@ -1,5 +1,9 @@
 # Cordova
 
+<hr>
+<strong>Note:</strong> Newer versions of Cordova (4.0+), allow Crosswalk to be used easily as a puggable webview. Unless you must use Cordova version 3 or lower, it is recommended that you use that method: [Using Crosswalk WebView in Cordova Android 4.0](http://xwalk.com/documentation/cordova_4.html)
+<hr>
+
 [Cordova](http://cordova.apache.org/) is a set of device APIs for accessing device capabilities (e.g. file storage, accelerometer) from JavaScript. Browsers typically prevent access to such APIs, as they could introduce serious security risks on the open web. But secure access to those capabilities can be granted to Cordova applications, which are installed directly on a device (The Crosswalk Project uses the same model).
 
 Cordova applications are built as platform-specific packages, with a runtime "wrapper" to load the embedded web application. On Android, the wrapper is based on the [WebView](http://developer.android.com/guide/webapps/webview.html), which loads the web application files (HTML, CSS and JavaScript). Unfortunately, the stock WebView has [some limitations](https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android), one of the most notable being lack of support for WebGL. This means it's not possible to run WebGL applications with Cordova on Android.

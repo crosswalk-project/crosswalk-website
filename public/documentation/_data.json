@@ -14,8 +14,11 @@
   "tizen_ivi_extensions": {
     "title": "Tizen IVI Extensions"
   },
-  "cordova": {
-    "title": "Cordova"
+  "cordova_4": {
+    "title": "Cordova 4"
+  },
+  "cordova_3": {
+    "title": "Cordova 3"
   },
   "embedding_crosswalk": {
     "title": "Embedding Crosswalk"
