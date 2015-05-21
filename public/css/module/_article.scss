@@ -103,6 +103,7 @@
     margin-bottom: 0;
     padding: 0;
     width: 100%;
+    // Second level indentation
     .article-list {
       width: 100%;
       margin-left: 0;
@@ -121,7 +122,19 @@
           border-left-color: $color-secondary;
         }
       }
-
+      // Third level indentation
+      .article-list {
+        padding-left: 12px;
+        margin-bottom: 0px;
+        .article-link {
+          border-left: 1px solid $color-gray-light;
+        }
+        .nav-item--active {
+          .article-link {
+            border-left-color: $color-secondary;
+          }
+        }
+      }
     }
     @include media($wide) {
       margin-top: modular-scale($base-font-size, -2, $base-ratio);
