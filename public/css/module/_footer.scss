@@ -7,7 +7,6 @@
   border:none; 
   color:#E9F0EF; 
   background-color:#E9F0EF; 
-  margin-top:50px;
 }
 
 // Footer
@@ -25,6 +24,9 @@
   padding-bottom: modular-scale($base-font-size, 2, $base-ratio);
   .row {
     margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
+  }
+  &.footer--documentation {
+    padding-top: 0px;
   }
 }
 
