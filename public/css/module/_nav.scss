@@ -1,6 +1,6 @@
 // Nav
 //
-// Mainly for horizontal navigation
+// Primariy, horisontal navigation
 //
 // Markup:
 // <nav class="nav">
@@ -222,3 +222,126 @@
   }
 
 }
+
+// Header area above documentation
+//
+// The style is different than above so that
+// the header can be fixed and the documentation
+// scroll beneath it.
+
+// Header row
+.doc-header {
+    background-color: #f4f4f4;  //fallback-color
+    background-image: url(/assets/doc-header-bkgd.png);  /*fallback image*/
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #FFFFFF),color-stop(1, #CFCFCF));
+    background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #CFCFCF 100%);
+    background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #CFCFCF 100%);
+    background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #CFCFCF 100%);
+    background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #CFCFCF 100%);
+    background-image: linear-gradient(to bottom, #FFFFFF 0%, #CFCFCF 100%);
+
+    top: 0px;
+    left: 0px;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    display: table;
+
+    //padding: 0px 100px 0px 100px;
+    //@include span-columns(6);
+    //@include shift(1);
+}
+
+// Style for Crosswalk logo in header
+
+.doc-logo-div {
+    display: block;
+    margin: auto;
+    @include media($mid) {
+      display: table-cell;
+      vertical-align: middle;
+    }
+}
+.doc-logo-link {
+    background-image: none;
+}
+.doc-logo-img {
+    max-height: 35px;
+    display: block;
+    //margin: auto;
+    padding: 5px;
+
+    @include media($mid) {
+      padding: 0px 5px 0px 5px;
+      float: left;
+    }
+    @include media($wide) {
+      float: right;
+    }
+}
+
+// Style for header navigation links
+
+.doc-nav-div {
+    display: block;
+
+    @include media($mid) {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+.doc-nav-list {
+  //<ul>
+  list-style-type: none;
+  width: 100%;
+  margin-left: 3px;
+
+  @include media($wide) {
+    margin-left: 50px;
+  }
+  @include media($huge) {
+    margin-left: 100px
+  }
+}
+
+.doc-nav-item {
+  //<li>
+  font-size: 17px;
+  display: inline-block;
+
+  @include media($mid) {
+
+  }
+}
+
+// when screen size shrinks, hide these items
+.hide-on-small {
+  display: none;
+  @include media($wide) {
+      display: inline-block;
+  }
+}
+
+.doc-nav-link {
+  background-image: none;
+
+
+  @include media($narrow) {
+    padding: modular-scale($base-font-size, 2, $base-ratio) modular-scale($base-font-size, -4, $base-ratio) modular-scale($base-font-size, 0, $base-ratio);
+  }
+  @include media($wide) {
+    padding-top: modular-scale($base-font-size, -1, $base-ratio);
+  }
+  @include media($huge) {
+    padding: modular-scale($base-font-size, 0, $base-ratio) modular-scale($base-font-size, 0, $base-ratio);
+  }
+}
+
+.doc-main {
+    position: relative;
+    height: 100%;
+    top: 58px;
+}
+
