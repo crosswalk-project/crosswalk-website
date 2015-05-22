@@ -221,41 +221,94 @@
     </div>
     
 
-       
-    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
-    <div style="position:relative; top:-30px;">
-       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
-    </div>
-    <footer class="footer footer--documentation" >
-      <div class="container" >
+    
+
+    <hr class="footer-divider" />
+    <footer class="footer">
+      <div class="container">
         <div class="row">
           <div class="grid-1-of-2">
-            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates. <br/><br/>
+            <a href="/" class="logo">
+              <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" alt="The Crosswalk Project logo" class="logo-image" style="max-width:300px" />
+            </a>
           </div>
-
+          <div>
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for hybrid app development&nbsp;resources.
+            <!--
+             <form class="form">
+              <fieldset class="form-buttonGroup">
+                <input type="email" placeholder="Add your email, learn Android development" />
+                <input type="submit" value="join" class="button button--secondary" />
+              </fieldset>
+            </form> -->
+          </div>
+        </div>
+        <div class="row">
           <div class="grid-1-of-2">
-             Latest blog post:</br>
+            <ul class="footer-block grid-1-of-2">
+              <li><a href="/documentation">Documentation</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a></li>
+              <li><a href="/contribute">Contribute</a></li>
+            </ul>
+            <ul>
+              <li><a href="/documentation/downloads.html">Downloads</a></li>
+              <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki">Wiki</a>
+              <li><a href="https://github.com/crosswalk-project">GitHub source</a></li>
+              <li><a href="/sitemap.html">Sitemap</a></li>
+            </ul>
+          </div>
+          <div>
               
               
                 <b><a href="/blog">Crosswalk Project App Tools Alpha release</a></b><br/>
-                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 08 May 2015 12:00:00 GMT">2015-05-08T12:00</time></span>)
+                &nbsp;<span ><time class="js-vagueTime" datetime="Fri, 08 May 2015 12:00:00 GMT">2015-05-08T12:00</time></span><br/>
               
+              <br/><b><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></b></li>
           </div>
         </div>
         <div class="row">
           <div class="grid-1-of-2">
-            <b><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></b><br/><br/>
-          </div>
-          <div>
-             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
-             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
-             <a href="/sitemap.html">Sitemap</a> <br/>
-          </div>
-        </div>
-        <div class="row">
             <small>
               The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
             </small>
+          </div>
+          <div class="grid-1-of-2">
+            <ul>
+              <li>
+                <a href="https://software.intel.com/en-us/html5/tools" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-xdk.png" alt="The Intel XDK logo">
+                </a>
+              </li>
+
+              </li>
+              <li>
+                <a href="http://famo.us/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-famous.png" alt="The Famo.us logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.cocos2d-x.org/wiki/Getting_Started_Cocos2d-js" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-cocos2d.png" alt="The Cocos2D logo">
+                </a>
+              </li>
+
+              <li>
+                <a href="http://www.sencha.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-sencha.png" alt="The Sencha logo">
+                </a>
+              </li>
+              <li>
+                <a href="https://www.tizen.org/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-tizen.png" alt="The Tizen logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://www.appgyver.com/" class="grid-1-of-3 logo">
+                  <img class="logo-image" src="/assets/icons/wordmark-appgyver.png" alt="The Appgyver logo">
+                </a>
+              </li>
+          </div>
         </div>
       </div>
     </footer>

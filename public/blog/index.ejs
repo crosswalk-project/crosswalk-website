@@ -1,8 +1,10 @@
 <div class="container">
-  <div class="row">
+  <div class="doc-header">
     <% include ../_includes/nav.ejs %>
   </div>
-  <div class="row">
+  <br />
+  <div class="doc-main">
+   <div class="row" style="">
     <ul class="article-list">
       <% for (slug in public.blog._data) { %>
         <% var article = public.blog._data[slug] %>
@@ -24,9 +26,11 @@
               <p><%- article.desc %> <a href="<%= article.url %>" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>
             </div>
             <% } %>
+              <hr class="presentation-splitter" style="margin:25px 0px 25px 0px"/>
           </li>
         <% } %>
       <% } %>
     </ul>
+   </div>
   </div>
 </div>

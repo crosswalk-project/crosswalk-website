@@ -74,7 +74,8 @@
     <%- yield %>
     <% } %>
 
-    <% if(current.source == 'index') { %>
+    <% /* Only show old footer with home page */ 
+      if (current.path.length === 1) {  %>
 
     <hr class="footer-divider" />
     <footer class="footer">
