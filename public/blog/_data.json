@@ -1,4 +1,9 @@
 {
+  "crosswalk-14-beta": {
+  "title": "Crosswalk Project 14 Beta: Shared Mode, Chromium 43, WebCL, SIMD for asm.js",
+  "date": "2015-05-22T12:00",
+  "author": "Francesco Balestrieri"
+  },
   "crosswalk-app-tools-alpha": {
   "title": "Crosswalk Project App Tools Alpha release",
   "date": "2015-05-08T12:00",
