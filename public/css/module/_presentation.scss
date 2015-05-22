@@ -1,0 +1,53 @@
+
+// Presentations page
+.presentation-div {
+    //border: 1px solid red;
+    display:table;
+    width: 100%;
+}
+
+.presentation-title {
+    //border: 1px solid blue;
+    display: block;
+    padding: 20px;
+    font-size: modular-scale($base-font-size, -1, $base-ratio);
+ 
+   @include media($mid) {
+      font-size: modular-scale($base-font-size, 0, $base-ratio);
+      display:table-cell;
+      vertical-align: top;
+      width: 60%;
+    }
+}
+
+
+.presentation-graphic {
+    //border: 1px solid green;
+    display: block;
+    max-width: 270px;
+   @include media($mid) {
+      display:table-cell;
+      vertical-align: middle;
+   }
+}
+
+.presentation-link {
+    background-image: none;
+}
+
+.presentation-img {
+    width: 100%;
+    min-width: 150px;
+    background-image: none;
+}
+
+.presentation-caption {
+    text-align: center;
+    font-size: smaller;
+    font-style: italic;
+}
+
+.presentation-splitter {
+    color: LightGray;
+    width: 90%;
+}
