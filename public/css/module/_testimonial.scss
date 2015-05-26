@@ -1,0 +1,70 @@
+// Styles for index.html quote section
+//
+// Show 4 quotes, with picture and title below
+//
+// Markup:
+//  <div class="quoteArea">
+//    <h1 style="text-align:center">Title</h1>
+//      <div class="quoteRow">
+//        <div class="quoteBlock">
+//          <div class="quoteText">
+//          "The quote"
+//          </div>
+//          <div class="speakerBlock">
+//            <img class="speakerImg" src="face-img1.jpg" /> 
+//            <div class="speakerTitle">
+//              <b>Gordon Langford</b><br>
+//              Software Guru, Calefornia Inc.
+//            </div>
+//          </div>
+//        </div>
+//        <div class="quoteBlock">
+//          ...repeat
+
+.quoteArea {
+  background-color: #F0F0F0;
+  padding: 30px 50px 30px 50px;
+  margin: 20px 0px 20px 0px;
+} 
+.quoteRow {
+  //border: solid orange 1px;
+}
+.quoteBlock {
+  //border: solid green 2px;
+  margin: 30px 0px 30px 0px;
+  overflow: hidden;
+
+  @include media($wide) {
+    display: table-cell;
+    width: 50%;
+  }
+}
+
+.quoteText {
+  //border: solid red 1px;
+  vertical-align: top;
+  font-style: italic;
+  margin: 10px 20px 10px 20px;
+}
+.speakerBlock {
+  //border: solid black 1px;
+  margin: 10px 20px 10px 20px;
+  overflow: hidden;
+  display: table;
+}    
+.speakerImg {
+  //border: 1px solid red;
+  display: table-cell; 
+  border-radius: 10px;
+}
+.speakerTitle {   
+  //border: solid green 1px;
+  display: table-cell; 
+  vertical-align: middle;
+  padding-left: 20px;
+}
+.quoteShowMore {
+  //border: solid green 1px;
+  padding-right: 10px;
+  text-align: right;
+}
