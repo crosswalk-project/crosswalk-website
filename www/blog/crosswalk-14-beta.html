@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="SIMD" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/samples/simd" />
+    <meta property="og:title" content="Crosswalk Project 14 Beta: Shared Mode, Chromium 43, WebCL, SIMD for asm.js" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-14-beta" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/samples/simd" />
-    <meta name="twitter:title" content="SIMD" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-14-beta" />
+    <meta name="twitter:title" content="Crosswalk Project 14 Beta: Shared Mode, Chromium 43, WebCL, SIMD for asm.js" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -95,206 +95,46 @@
       <div class="doc-main">
         <div class="row">
           
-          <nav id="contents" class="article-toc nav-toggleContainer">
-  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-  <ul class="article-list nav-toggleHide">
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/about.html">About</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova_4.html">Cordova 4</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova_3.html">Cordova 3</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-
-
-         <ul class="article-list">
-            
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/samples/hello-world.html">Hello-world</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/samples/tizen.html">Tizen</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/samples/webgl.html">WebGL</a>
-               
-           </li>
-           
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/samples/simd.html">SIMD</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/samples/demoexpress.html">DemoExpress</a>
-               
-           </li>
-           
-         </ul>
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/community.html">Community</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
-
-         
-       </li>
-    
-  </ul>
-
-</nav>
-
-
-
-<article class="article article--hasToC">
-  <h1>SIMD sample</h1>
-<p><img class='sample-thumb' src='/assets/sampapp-icon-simd.png'></p>
-<p>This sample shows how to use <a href="https://github.com/johnmccutchan/ecmascript_simd">SIMD</a>
-in a Crosswalk application. In this sample, a Mandelbrot set
-is animated at different zoom levels.</p>
-<p>The code is based on the Mandelbrot animation demo developed by Intel&#39;s
-Peter Jensen and Ningxin Hu.</p>
-<p><strong>Note that Crosswalk has native support for SIMD on x86 architecture
-since version 5.34.104.0. You will need a version of Crosswalk with
-that version or later to be able to run this demo; and you will need
-a device with an Intel x86 chipset (emulated or physical).</strong></p>
-<p>This application is part of the
-<a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz">Crosswalk samples download</a>.</p>
-<p>The steps for setting up an environment for Crosswalk are explained
-in detail in the <a href="/documentation/getting_started.html">Getting started</a>
-tutorial.</p>
-<h2>SIMD on Android</h2>
-<p>Once you&#39;ve set up the Crosswalk Android packaging dependencies,
-follow the steps in <a href="/documentation/getting_started/run_on_android.html">Run on Android</a>
-to install and run the SIMD sample on Android.</p>
-<p>The quick version is that you can build the SIMD apk with:</p>
-<pre><code class="language-sh">&gt; cd &lt;xwalk_app_template directory&gt;
-&gt; python make_apk.py --package=org.crosswalkproject.example \
-    --manifest=&lt;path to crosswalk-samples&gt;/simd/manifest.json</code></pre>
-<p><code>&lt;xwalk_app_template directory&gt;</code> refers to the directory where you
-downloaded and unpacked Crosswalk Android.</p>
-<p>Then install the apk file on Android:</p>
-<pre><code class="language-sh">&gt; adb install simd*.apk</code></pre>
-<h2>SIMD on Tizen</h2>
-<p>Follow the steps in
-<a href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a>
-to install and run the SIMD sample on Tizen.</p>
-<p>Or here&#39;s the quick version:</p>
-<pre><code class="language-sh">sdb push &lt;path to crosswalk-samples&gt;/simd /home/developer/simd
-sdb shell &quot;xwalk /home/developer/simd/&quot;</code></pre>
-
-  <footer class="article-next">
-    
-
+          <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">Crosswalk Project 14 Beta: Shared Mode, Chromium 43, WebCL, SIMD for asm.js</h1>
+    <span class="article-meta">
+      <a href="crosswalk-14-beta.html"><time class="js-vagueTime" datetime="Fri, 22 May 2015 12:00:00 GMT">Fri, 22 May 2015 12:00:00 GMT</time></a>
+       by <span class="article-author">Francesco Balestrieri</span>
+    </span>
+  </header>
   
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-      <a href="/documentation/samples/demoexpress.html" class="article-promo well">
-        <em>What’s next?</em>
-        <h3>DemoExpress</h3>
-      </a>
-    
-  
+  <p>Crosswalk 14 is in beta! Starting from this release, Crosswalk is <a href="https://play.google.com/store/apps/details?id=org.xwalk.core&amp;hl=en">available</a> in the Google Play Store and applications can be configured to download it on demand. Also, this release comes with the usual update to Chromium (M43)and introduces the WebCL API for devices that support OpenCL. Finally, we have added SIMD support for code written in asm.js.  </p>
+<h2>Shared Crosswalk runtime available in the Google Play Store</h2>
+<p>You can now package your application in “shared mode”. This means that your application’s APK won’t include the Crosswalk runtime, which will be downloaded from the Play Store when the application is first started. From that point on, the Crosswalk runtime will be shared with any other Crosswalk application that is also packaged in shared mode. The advantage is that your APK doesn’t need to include the Crosswalk library, making it a lot smaller. A few things to notice:</p>
+<ul>
+<li>The user will be directed to the Play Store and will need to accept the installation of Crosswalk</li>
+<li>There will be only one version of Crosswalk at any given time and it will be updated automatically </li>
+<li>Shared mode is not yet supported by the Crosswalk Cordova WebView plugin. To use it with Cordova applications you’ll need to use our fork of Cordova Android 3.6</li>
+<li>This feature is currently in Beta and backwards compatibility won’t be guaranteed until it’s promoted to stable. If you use it in your published applications, be prepared to release an update</li>
+</ul>
+<p>To package the application in shared mode with make_apk use the option:</p>
+<pre><code>./make_apk.py --mode=shared ...</code></pre>
+<p>To create a cordova project in shared mode, use the option:</p>
+<pre><code>./bin/create --xwalk-shared-library ...</code></pre>
+<h2>Chromium 43</h2>
+<p>Chromium 43 introduces Web MIDI support, new features to improve security and compatibility and a number of small changes to enable developers to build more powerful web applications. For more information see the <a href="http://blog.chromium.org/2015/04/chrome-43-beta-web-midi-and-upgrading.html">announcement</a> in the Chromium Developers blog.</p>
+<h2>WebCL</h2>
+<p><a href="https://www.khronos.org/webcl/">WebCL</a> defines a JavaScript binding to the Khronos <a href="https://www.khronos.org/opencl/">OpenCL</a> standard for heterogeneous parallel computing. WebCL enables web applications to harness GPU and multi-core CPU parallel processing and achieve significant acceleration. The WebCL API first landed in Crosswalk Canary (version 13.41.304.0) as an experimental feature, and is now enabled by default on Android.</p>
+<p>Because WebCL feature depends on the OpenCL library, before you try it, please make sure that “libPVROCL.so<em>” or “libOpenCL.so</em>” are present under “/system/vendor/lib” folder on the device. The WebCL feature was verified on a Asus MemoPad8 and Xiaomi3. You can also check the OpenCL support with an application like <a href="https://play.google.com/store/apps/details?id=com.xh.openclinfo">OpenCL Info</a>.</p>
+<h2>SIMD.js and ASM.js optimizations in V8 Turbo Fan</h2>
+<p><a href="http://asmjs.org/">asm.js</a> is a highly optimizable, low-level subset of JavaScript. With the newly introduced TurboFan engine, V8 is able to recognize asm.js module (“use asm” directive) and emits very efficient machine code. Crosswalk 14 adds the SIMD.js support to the TurboFan engine. It allows web developers to utilize SIMD.js API in asm.js code or cross-compile C/C++ code with SSE intrinsics to asm.js with SIMD.js via <a href="http://kripken.github.io/emscripten-site/index.html">emscripten</a>.</p>
+<h2>Embedding API Updates</h2>
+<p>The Crosswalk XwalkView class has a new method to control whether its surface is placed on top of its window. Note that this only works when XWalkPreferences.ANIMATABLE_XWALK_VIEW is false.</p>
+<p><code>public void setZOrderOnTop (boolean onTop);</code></p>
+<h2>Notable bug fixes</h2>
+<p>The --disk-cache-size command line switch now behaves as expected (bug XWALK-3821)</p>
 
+  <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
 
-  </footer>
 </article>
 
           
