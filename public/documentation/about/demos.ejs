@@ -1,0 +1,93 @@
+
+<h1>The Power of Crosswalk</h1>
+
+<h2>Reduced Fragmentation</h2>
+<p>The immediate benefit of bundling an application with the Crosswalk webview is that everywhere your application runs, it uses the same, Chromium-based runtime. This reduces or eliminates many of the headaches encountered with older webviews.  <small>(The web app run below uses Web Components and WebGL.)</small></p>
+
+<div class="demo-block"> 
+  <div class="demo-block-center">
+    <div class="demo-cube-frag-phone">
+      <img class="demo-img-phone" src="/assets/demo-web-innovation-fail.png" />
+      <div class="demo-caption">Ambitious web app without Crosswalk</div>
+      <div class="demo-frag-text">Cutton-edge features may not work with the default Android webview on older devices.</div>
+    </div>
+    
+    <div class="demo-cube-frag-tablet"  >
+      <img class="demo-img" src="/assets/demo-web-innovation.png" />
+      <div class="demo-caption">Ambitious web app with Crosswalk</div>
+      <div class="demo-frag-text">Web apps built with the Crosswalk webview can use the latest web innovations on any Android 4.0+ device.</div>
+    </div>
+
+    <br style="clear: left;" />  
+  </div>
+</div>
+
+<!--        <iframe class="demo-img-webcl" src="https://www.youtube.com/embed/RviAF98lQOQ?vq=large&autoplay=0&controls=0&showinfo=0&rel=0&loop=0&playlist=RviAF98lQOQ" frameborder="0" allowfullscreen></iframe>  -->
+
+
+<h2>WebCL: Accelerated Graphics</h2>
+
+<p>Building your web app with Crosswalk enables you to take advantage of new web app features and libraries. One example is <a href="http://webcl.nokiaresearch.com/">WebCL</a> which enables web apps to leverage the GPU to accelerate graphics processing.  <small>(The video below is a screen capture of an arm-based Nexus 7.)</small></p>
+
+<div class="demo-block">
+  <div class="demo-block-center" id="demo-block-webcl" >
+
+    <div class="demo-cube-webcl">
+      <div id="webcl1-div">
+        <img class="demo-img-webcl" id="webcl1" src="/assets/demo-webcl1.jpg" />
+      </div>
+      <div class="demo-caption">Web app without WebCL</div>
+    </div>
+
+    <div class="demo-cube-webcl" style="border:none;" >
+      <div id="webcl2-div">
+        <img class="demo-img-webcl" id="webcl2" src="/assets/demo-webcl2.jpg" />
+      </div>
+      <div class="demo-caption">Web app with WebCL</div>
+    </div>
+
+    <br style="clear: left;" />  
+
+    <a class="demo-play-btn demo-btn-webcl" id="webcl-play-btn"></a>
+
+  </div>
+</div>
+
+
+<h2>SIMD: Parallel Execution</h2>
+
+<p>An advanced feature available on x86-based devices is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SIMD">SIMD</a>: the ability to leverage the CPU to run data calculations in parallel. SIMD.js is a Javascript library that gives this ability to web apps.</p>
+
+<div class="demo-block">
+  <div class="demo-block-center" id="demo-block-simd" >
+    <div class="demo-cube-simd-text">
+      <p>The "Flocking Birds" web app to the right continually calculates the position and velocity of each bird.  It tries to add as many birds as it can while maintaining ~30FPS.</p>
+      <p>About 17 birds can be generated without SIMD and about 32 birds with SIMD enabled.</p>
+      <p><small>(The video is a screen capture of an x86-based ZenPhone5.)</small></p>
+  
+    </div>    
+
+   <div style="float:left; width:65%; text-align: center;">
+    <div class="demo-cube-simd">
+      <div id="simd1-div">
+        <img class="demo-img-simd" id="simd1" src="/assets/demo-simd1.jpg" />
+      </div>
+      <div class="demo-caption">Web app without SIMD</div>
+    </div>
+
+    <div class="demo-cube-simd" style="border:none;" >
+      <div id="simd2-div">
+        <img class="demo-img-simd" id="simd2" src="/assets/demo-simd2.jpg" />
+      </div>
+      <div class="demo-caption">Web app with SIMD</div>
+    </div>
+    <br style="clear: left;" />  
+
+    <a class="demo-play-btn demo-btn-simd" id="simd-play-btn"></a>
+   </div>
+  </div>
+</div>
+
+<script>
+  onLoadDemoPage();
+</script>

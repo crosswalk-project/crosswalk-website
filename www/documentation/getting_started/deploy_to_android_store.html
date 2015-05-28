@@ -17,7 +17,7 @@
         timeout: 2000
       };
     </script>
-    <script async defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
     <link rel="stylesheet" href="/css/main.css">
 
@@ -47,6 +47,7 @@
     <script src="/js/utils.js"></script>
     <script src="/js/xwalk.js"></script>
     <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
 
   </head>
   <body>
