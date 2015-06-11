@@ -36,7 +36,6 @@
     text-align: center;
     @include span-columns(4 of 6);
     @include shift(1);
-    margin-bottom: modular-scale($base-font-size, 4, $base-ratio);
     h1, h2, h3, h4, h5, h6 {
       text-align: center;
     }
