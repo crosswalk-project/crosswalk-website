@@ -3,9 +3,23 @@ Our global team presents Crosswalk in a variety of forums and conferences. Below
 
 <div class="presentation-div">
   <div class="presentation-title">
+    <h3>Unleash the fury of web innovation in your Android app today</h3>
+    <p>How to use the latest web technologies, the PhoneGap API, and the Crosswalk webview. This presentation was given at PhoneGap Day EU by Francesco Balestrieri, Crosswalk Project Technical Manager. The Crosswalk Project is now available as a Cordova plugin so build and deploy steps are right at your fingertips.</p>
+    <p>PhoneGap Day EU, May 18, 2015</p>
+  </div>
+  <div class="presentation-graphic">
+    <iframe class="presentation" src="https://www.youtube.com/embed/s_3gUHwg4ms" frameborder="0" allowfullscreen></iframe>
+    <div class="presentation-caption">Video (20 min)</div>
+  </div>
+</div>
+
+<hr class="presentation-splitter" />
+
+<div class="presentation-div">
+  <div class="presentation-title">
     <h3>Cordova 4.0 and Crosswalk</h3>
     <p>Cordova 4.0 now supports pluggable webview. This presentation, given by Sakari Poussa at PhoneGap Day, describes how to use the high-powered Crosswalk webview. More details <a href="/documentation/cordova_4.html">here.</a></p>
-    <p>PhoneGap Day, May 18, 2015</p>
+    <p>PhoneGap Day EU, May 18, 2015</p>
   </div>
   <div class="presentation-graphic">
    <a class="presentation-link" href="/assets/presentations/Crosswalk for PhoneGap Day EU 2015 - Workshop.pdf" />
@@ -25,23 +39,7 @@ Our global team presents Crosswalk in a variety of forums and conferences. Below
   </div>
   <div class="presentation-graphic">
     <iframe class="presentation-img" src="https://www.youtube.com/embed/GHEXR8TgbAk?vq=large" frameborder="0" allowfullscreen></iframe>
-    <div class="presentation-caption">Video</div>
-  </div>
-</div>
-
-<hr class="presentation-splitter" />
-
-<div class="presentation-div">
-  <div class="presentation-title">
-    <h3>Crosswalk and Sencha tools</h3>
-    <p>The Crosswalk tools make it easy to bundle the Crosswalk webview and create store-ready packages, whether you use Sencha's framework, or other libraries and tools.</p>
-    <p>SenchaCon, April 2015</p>
-  </div>
-  <div class="presentation-graphic">
-   <a class="presentation-link" href="/assets/presentations/Crosswalk at SenchaCon2015-online.pdf" />
-    <img class="presentation-img"  src="/assets/presentations/Crosswalk at SenchaCon2015-online.jpg" />
-   </a><br/>
-   <div class="presentation-caption">PDF Presentation</div>
+    <div class="presentation-caption">Video (3 min)</div>
   </div>
 </div>
 
@@ -57,7 +55,7 @@ Our global team presents Crosswalk in a variety of forums and conferences. Below
    <a class="presentation-link" href="https://software.intel.com/en-us/videos/using-intel-xdk-to-build-html5-applications#10272014">
     <img class="presentation-img"  src="/assets/presentations/xdk-crosswalk-webinar.jpg" />
    </a><br/>
-   <div class="presentation-caption">Presentation plays from Intel website</div>
+   <div class="presentation-caption">Presentation plays from Intel website (1 hr)</div>
   </div>
 </div>
 
@@ -70,8 +68,8 @@ Our global team presents Crosswalk in a variety of forums and conferences. Below
     <p>November 2014</p>
   </div>
   <div class="presentation-graphic">
-    <iframe class="presentation-img" src="https://www.youtube.com/embed/60I8_Olb9Kc?vq=large" frameborder="0" allowfullscreen></iframe>
-    <div class="presentation-caption">Video</div>
+    <iframe class="presentation-img" src="https://www.youtube.com/embed/q2Fhr0_HzmM?vq=large" frameborder="0" allowfullscreen></iframe>
+    <div class="presentation-caption">Video (2 min)</div>
   </div>
 </div>
 
@@ -85,7 +83,7 @@ Our global team presents Crosswalk in a variety of forums and conferences. Below
   </div>
   <div class="presentation-graphic">
     <iframe class="presentation-img" src="https://www.youtube.com/embed/qNuc8eZRdXY?vq=large" frameborder="0" allowfullscreen></iframe>
-    <div class="presentation-caption">Video</div>
+    <div class="presentation-caption">Video (3 min)</div>
   </div>
 </div>
 
