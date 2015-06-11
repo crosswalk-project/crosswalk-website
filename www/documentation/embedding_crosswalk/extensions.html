@@ -48,6 +48,7 @@
     <script src="/js/xwalk.js"></script>
     <script src="/js/versions.js"></script>
     <script src="/js/demos.js"></script>
+    <script src="/js/tools.js"></script>
 
   </head>
   <body>
