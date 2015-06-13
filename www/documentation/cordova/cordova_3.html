@@ -32,13 +32,13 @@
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
     <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/cordova_3" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/cordova/cordova_3" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/cordova_3" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/cordova/cordova_3" />
     <meta name="twitter:title" content="Crosswalk" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
@@ -133,13 +133,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova_4.html">Cordova 4</a>
-
-         
-       </li>
-    
-       <li class="article-item  nav-item--active">
-         <a class="article-link" href="/documentation/cordova_3.html">Cordova 3</a>
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
 
          
 
@@ -147,18 +141,32 @@
          <ul class="article-list">
             
            <li class="article-item ">
-             <a class="article-link" href="/documentation/cordova_3/develop_an_application.html">Develop an application</a>
+             <a class="article-link" href="/documentation/cordova/cordova_4.html">Cordova 4</a>
                
            </li>
            
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/cordova_3/add_plugins.html">Add plugins</a>
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/cordova/cordova_3.html">Cordova 3</a>
                
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/cordova_3/migrate_an_application.html">Migrate an application</a>
+             <ul class="article-list">
                
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/cordova/cordova_3/develop_an_application.html">Develop an application</a>
+               </li>
+
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/cordova/cordova_3/add_plugins.html">Add plugins</a>
+               </li>
+
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/cordova/cordova_3/migrate_an_application.html">Migrate an application</a>
+               </li>
+
+               
+             </ul>
+             
            </li>
            
          </ul>
@@ -220,20 +228,28 @@
 
 
 <article class="article article--hasToC">
-  <h1>Cordova</h1>
+  <h1>Crosswalk with Cordova 3.0</h1>
 <p><hr>
-<strong>Note:</strong> Newer versions of Cordova (4.0+), allow Crosswalk to be used easily as a puggable webview. Unless you must use Cordova version 3 or lower, it is recommended that you use that method: <a href="http://xwalk.com/documentation/cordova_4.html">Using Crosswalk WebView in Cordova Android 4.0</a></p>
+<strong>Note:</strong> Newer versions of Cordova (4.0+), allow Crosswalk to be used easily as a puggable webview. Unless you must use Cordova version 3 or lower, it is recommended that you use that method: <a href="http://xwalk.com/documentation/cordova.html">Using Crosswalk WebView in Cordova Android 4.0</a></p>
 <hr>
 
-<p><a href="http://cordova.apache.org/">Cordova</a> is a set of device APIs for accessing device capabilities (e.g. file storage, accelerometer) from JavaScript. Browsers typically prevent access to such APIs, as they could introduce serious security risks on the open web. But secure access to those capabilities can be granted to Cordova applications, which are installed directly on a device (The Crosswalk Project uses the same model).</p>
-<p>Cordova applications are built as platform-specific packages, with a runtime &quot;wrapper&quot; to load the embedded web application. On Android, the wrapper is based on the <a href="http://developer.android.com/guide/webapps/webview.html">WebView</a>, which loads the web application files (HTML, CSS and JavaScript). Unfortunately, the stock WebView has <a href="https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android">some limitations</a>, one of the most notable being lack of support for WebGL. This means it&#39;s not possible to run WebGL applications with Cordova on Android.</p>
-<p>Unlike Cordova, Crosswalk doesn&#39;t use the Android WebView: its features are more closely aligned with Chrome on Android (as Crosswalk and Chrome share the same ancestor, <a href="http://www.chromium.org/">Chromium</a>). This means that Crosswalk <em>does</em> support WebGL on Android, as well as the wealth of other APIs available in Chrome on Android. In addition, Crosswalk goes beyond Chrome, providing support for cutting edge features such as <a href="/documentation/samples/simd.html">SIMD</a> (x86 only) and <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual">the Presentation API</a>. But Crosswalk on its own doesn&#39;t support the Cordova APIs.</p>
-<h2>Crosswalk + Cordova</h2>
-<p>There is a way to get the best of both Crosswalk and Cordova by using <em>Crosswalk Cordova for Android</em>. This provides Cordova&#39;s APIs plus additional APIs available in Crosswalk (WebGL, SIMD, Presentation API etc.). The packages available <a href="/documentation/downloads.html">for download</a> provide tools for creating Cordova Android applications with Crosswalk as the web view. Such applications will work on Android version 4.0 or later.</p>
+<h2>Overview</h2>
+<p>Using Cordova v3, there is a way to get the best of both Crosswalk and Cordova by using <em>Crosswalk Cordova for Android</em>. This provides Cordova&#39;s APIs plus additional APIs available in Crosswalk (WebGL, SIMD, Presentation API etc.). The packages available <a href="/documentation/downloads.html">for download</a> provide tools for creating Cordova Android applications with Crosswalk as the web view. Such applications will work on Android version 4.0 or later.</p>
 <p>The intention is for Crosswalk Cordova for Android to be as compatible as possible with <a href="https://github.com/apache/cordova-android">Cordova Android</a>. Consequently, the <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Cordova Android Platform Guide</a> is a good guide to getting started with Crosswalk Cordova for Android. Alternatively, see the <a href="/documentation/cordova/develop_an_application.html">HelloWorld example</a> for a more Crosswalk-focused overview.</p>
 
   <footer class="article-next">
     
+
+  
+  
+    
+    
+  
+    
+    
+      
+    
+  
 
 
   </footer>

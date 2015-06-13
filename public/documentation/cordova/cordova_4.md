@@ -1,4 +1,4 @@
-# Crosswalk WebView in Cordova 4.0
+# Crosswalk with Cordova 4.0
 ## Overview
 With the introduction in [Cordova Android 4.0.0](http://cordova.apache.org/announcements/2015/04/15/cordova-android-4.0.0.html) of pluggable WebView support, it is now easy to use the Crosswalk WebView with your Cordova app. By using the Crosswalk WebView plugin, developers can enjoy remote debugging capabilities, cutting edge HTML5 features such as WebGL, WebAudio and WebRTC, and significant performance enhancements on Android devices all the way down to Android 4.0 Ice Cream Sandwich (ICS).
 ## Prerequisites
