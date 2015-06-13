@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Build an application" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/getting_started/build_an_application" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/getting_started/build_an_application" />
-    <meta name="twitter:title" content="Build an application" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android" />
+    <meta name="twitter:title" content="Crosswalk" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -112,56 +112,53 @@
          <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
 
          
+       </li>
+    
+       <li class="article-item  nav-item--active">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
 
 
          <ul class="article-list">
             
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/windows_host_setup.html">Windows host setup</a>
+             <a class="article-link" href="/documentation/android/android_target_setup.html">Android target setup</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/linux_host_setup.html">Linux host setup</a>
+             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/android_target_setup.html">Android target setup</a>
+             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/tizen_target_setup.html">Tizen target setup</a>
-               
-           </li>
-           
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/getting_started/build_an_application.html">Build an application</a>
+             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/run_on_android.html">Run on Android</a>
+             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/remote_debugging.html">Remote debugging</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/deploy_to_android_store.html">Deploy to Android store</a>
+             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
                
            </li>
            
          </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
          
        </li>
     
@@ -172,19 +169,19 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
 
          
        </li>
@@ -208,19 +205,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
@@ -244,103 +229,11 @@
 
 
 <article class="article article--hasToC">
-  <h1>Building a Crosswalk application</h1>
-<p>Crosswalk is a runtime for HTML5 applications. This means that any existing HTML5 applications should run on Crosswalk, providing they already run in a modern browser (Chrome, Firefox, Safari).</p>
-<p>For the purposes of this tutorial, we use the simplest possible Crosswalk application: one HTML file.</p>
-<p>However, because Crosswalk applications are intended to integrate well with the target environment, they require an additional file, <code>manifest.json</code>, containing metadata for that purpose. The manifest can be used to specify icons to use at different resolutions, set an app description, adjust <a href="http://developer.chrome.com/extensions/contentSecurityPolicy.html">content security policy settings</a>, and otherwise configure how the app integrates with the target environment.</p>
-<h2 id="A-simple-application">A simple application</h2>
-
-<ol>
-<li><p>First, create a directory called <code>xwalk-simple</code> for the project:</p>
-<pre><code>&gt; mkdir xwalk-simple/
-&gt; cd xwalk-simple/</code></pre>
-</li>
-<li><p>Next, copy an icon file to that directory, to serve as the application icon. You can use this image:</p>
-<p><img src="/assets/cw-app-icon.png"></p>
-<p>To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the <code>xwalk-simple</code> directory as <code>icon.png</code>. (Note that this image is from the Crosswalk source code and is <a href="https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE">BSD licensed</a>.)</p>
-<p>If you have your own favourite icon, copy that to the <code>xwalk-simple</code> directory instead. It should be 128 pixels square.</p>
-</li>
-<li><p>Create two text files inside <code>xwalk-simple</code> (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):</p>
-<ol>
-<li><p><code>index.html</code></p>
-<p>This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.</p>
-<p>The content should be:</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta name=&quot;viewport&quot;
-          content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;simple&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;p&gt;hello world&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-</li>
-<li><p><code>manifest.json</code></p>
-<p>This contains the application metadata (see above).</p>
-<p>The content should be:</p>
-<pre><code>{
-  &quot;name&quot;: &quot;simple&quot;,
-  &quot;xwalk_version&quot;: &quot;0.0.0.1&quot;,
-  &quot;start_url&quot;: &quot;index.html&quot;,
-  &quot;icons&quot;: [
-    {
-      &quot;src&quot;: &quot;icon.png&quot;,
-      &quot;sizes&quot;: &quot;128x128&quot;,
-      &quot;type&quot;: &quot;image/png&quot;,
-      &quot;density&quot;: &quot;4.0&quot;
-    }
-  ]
-}</code></pre>
-<p>See <a href="/documentation/manifest.html">the manifest documentation</a> for more information.</p>
-</li>
-</ol>
-</li>
-</ol>
-<p>Once you&#39;ve done this, you&#39;re ready to run the application on a target.</p>
+  <h1>Crosswalk on Android</h1>
+<p>This section describes how to create web and hybrid applications using Crosswalk for the <a href="http://developer.android.com/index.html">Android operating system</a>. </p>
 
   <footer class="article-next">
     
-
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-      <a href="/documentation/getting_started/run_on_android.html" class="article-promo well">
-        <em>What’s next?</em>
-        <h3>Run on Android</h3>
-      </a>
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
 
 
   </footer>

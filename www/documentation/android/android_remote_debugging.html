@@ -32,13 +32,13 @@
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
     <meta property="og:title" content="Remote debugging" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/getting_started/remote_debugging" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/android_remote_debugging" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/getting_started/remote_debugging" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/android_remote_debugging" />
     <meta name="twitter:title" content="Remote debugging" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
@@ -112,56 +112,53 @@
          <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
 
          
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
 
 
          <ul class="article-list">
             
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/windows_host_setup.html">Windows host setup</a>
+             <a class="article-link" href="/documentation/android/android_target_setup.html">Android target setup</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/linux_host_setup.html">Linux host setup</a>
+             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/android_target_setup.html">Android target setup</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/tizen_target_setup.html">Tizen target setup</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/build_an_application.html">Build an application</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/run_on_android.html">Run on Android</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a>
+             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
                
            </li>
            
            <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/getting_started/remote_debugging.html">Remote debugging</a>
+             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/deploy_to_android_store.html">Deploy to Android store</a>
+             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
                
            </li>
            
          </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
          
        </li>
     
@@ -172,19 +169,19 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
 
          
        </li>
@@ -208,19 +205,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
@@ -246,9 +231,7 @@
 <article class="article article--hasToC">
   <h1>Remote debugging</h1>
 <p>Web applications running under Crosswalk can be debugged remotely using the <a href="https://developer.chrome.com/devtools/index">Chrome dev tools</a>. </p>
-<p>Depending on the platform, a connection must be established between the host (the machine where you are doing the development) and the target (the machine running the application under Crosswalk). The type of connection depends on the target&#39;s operating system, as explained below.</p>
 <p>Note that to debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Remote-debugging-on-android">this wiki page</a>, which shows the mapping between Crosswalk and Chrome versions for debugging.</p>
-<h2>Android</h2>
 <p>On Android, the connection between the host and target is established using <a href="http://developer.android.com/tools/help/adb.html"><code>adb</code></a>. You will need to ensure that you have installed the Android SDK (instructions for <a href="/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Android">Windows</a> and <a href="/documentation/getting_started/linux_host_setup.html#Installation-for-Crosswalk-Android">Linux</a>) so that this tool is available.</p>
 <p>You will also need to set up an Android target and install a packaged Crosswalk application on it. See <a href="/documentation/getting_started/android_target_setup.html">these instructions</a>.</p>
 <p>Debugging on Android can be enabled in two ways: <a href="#Enable-debugging-at-build-time-for-Android">at build time</a> and <a href="#Enable-debugging-at-run-time-for-Android">at run time</a>. Both options are described below.</p>
@@ -371,37 +354,6 @@ shell@android$ cat /proc/net/unix |grep devtools_remote
 <p>If you cannot see any entries ending with <code>_devtools_remote</code>, it&#39;s likely that remote debugging is not enabled for the application. Follow the steps above to either rebuild the application with remote debugging support, or switch remote debugging on at run time.</p>
 </li>
 </ul>
-<h2>Tizen</h2>
-<p>To debug Crosswalk applications on Tizen, the Crosswalk service on the target must be configured to provide a debugging endpoint. You can then access this endpoint from a Chrome browser on the host.</p>
-<p>Before you can follow these instructions, you will first need a Tizen target (with Crosswalk installed); and an application installed on that target via <code>xwalkctl</code>. See <a href="/documentation/getting_started.html">Getting started</a> for details.</p>
-<p>Once you have the pre-requisites in place, turn on debugging for the Crosswalk service on the Tizen target as follows:</p>
-<ol>
-<li><p>From the host, log on to the Tizen target. For example, if the Tizen target has the IP address 192.168.0.19:</p>
-<pre><code>$ ssh root@192.168.0.19
-Password:
-Welcome to Tizen
-root:~&gt;</code></pre>
-<p>(The default password is <strong>tizen</strong>.)</p>
-</li>
-<li><p>On the target, add a <code>--remote-debugging-port=9222</code> option to the <code>ExecStart=</code> line in the Crosswalk service configuration file, <code>/usr/lib/systemd/user/xwalk.service</code>. For example, open the file for editing:</p>
-<pre><code>root:~&gt; vim /usr/lib/systemd/user/xwalk.service</code></pre>
-<p>Then edit the <code>ExecStart=</code> line so it looks like this:</p>
-<pre><code>ExecStart=/usr/lib/xwalk/xwalk --remote-debugging-port=9222 \
-  --external-extensions-path=/usr/lib/tizen-extensions-crosswalk</code></pre>
-</li>
-<li><p>Reboot the Tizen target device.</p>
-</li>
-</ol>
-<p>Once the Crosswalk service is enabled for debugging, debug your applications as follows:</p>
-<ol>
-<li><p>Launch a Crosswalk application on the Tizen target using a console. See <a href="/documentation/getting_started/run_on_tizen.html#Run-the-application">these instructions</a>.</p>
-</li>
-<li><p>Back on the host, open a Chrome browser and open the address <code>http://&amp;lt;Tizen target IP&amp;gt;:9222</code>. For example, for the IP address 192.168.0.19, the URL to use would be &quot;<a href="http://192.168.0.19:9222">http://192.168.0.19:9222</a>&quot;.</p>
-<p>A list of all the pages available for debugging should now be displayed in the Chrome browser window:</p>
-<p><img src="/assets/crosswalk-tizen-remote-debug.png" alt="Crosswalk on Tizen IVI: remote debugging"></p>
-<p>Click on the link for the application you want to debug.</p>
-</li>
-</ol>
 <h2>Further information</h2>
 <p>For information about using the Chrome dev tools for debugging, see <a href="https://developer.chrome.com/devtools/index">this page</a>.</p>
 
@@ -421,28 +373,19 @@ root:~&gt;</code></pre>
   
     
     
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
       
     
   
     
     
       
-      <a href="/documentation/getting_started/deploy_to_android_store.html" class="article-promo well">
+      <a href="/documentation/android/deploy_to_android_store.html" class="article-promo well">
         <em>What’s next?</em>
         <h3>Deploy to Android store</h3>
       </a>
+    
+  
+    
     
   
 

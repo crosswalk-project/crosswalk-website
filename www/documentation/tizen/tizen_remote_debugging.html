@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Run on Tizen VM" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/tizen_ivi_extensions/run_on_tizen_vm" />
+    <meta property="og:title" content="Remote debugging" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/tizen/tizen_remote_debugging" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tizen_ivi_extensions/run_on_tizen_vm" />
-    <meta name="twitter:title" content="Run on Tizen VM" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tizen/tizen_remote_debugging" />
+    <meta name="twitter:title" content="Remote debugging" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -115,19 +115,13 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+         <a class="article-link" href="/documentation/android.html">Android</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
 
          
 
@@ -135,32 +129,27 @@
          <ul class="article-list">
             
            <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen_ivi_extensions/host_and_target_setup.html">Host and target setup</a>
+             <a class="article-link" href="/documentation/tizen/tizen_target_setup.html">Tizen target setup</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen_ivi_extensions/write_an_extension_in_c.html">Write an extension in C</a>
+             <a class="article-link" href="/documentation/tizen/build_an_application.html">Build an application</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen_ivi_extensions/write_an_extension_in_c++.html">Write an extension in C++</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen_ivi_extensions/json_based_c++_extension.html">JSON based C++ extension</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen_ivi_extensions/write_a_web_application.html">Write a web application</a>
+             <a class="article-link" href="/documentation/tizen/run_on_tizen.html">Run on Tizen</a>
                
            </li>
            
            <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/tizen_ivi_extensions/run_on_tizen_vm.html">Run on Tizen VM</a>
+             <a class="article-link" href="/documentation/tizen/tizen_remote_debugging.html">Remote debugging</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/ivi_extensions.html">IVI Extensions</a>
                
            </li>
            
@@ -169,7 +158,25 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
 
          
        </li>
@@ -193,19 +200,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
@@ -229,58 +224,41 @@
 
 
 <article class="article article--hasToC">
-  <h1>Run on Tizen virtual machine</h1>
-<p>You have now built the extension and application, and are at the point where you can test on the Tizen IVI virtual machine.</p>
+  <h1>Remote debugging</h1>
+<p>Web applications running under Crosswalk can be debugged remotely using the <a href="https://developer.chrome.com/devtools/index">Chrome dev tools</a>. </p>
+<p>Note that to debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Remote-debugging-on-android">this wiki page</a>, which shows the mapping between Crosswalk and Chrome versions for debugging.</p>
+<p>To debug Crosswalk applications on Tizen, the Crosswalk service on the target must be configured to provide a debugging endpoint. You can then access this endpoint from a Chrome browser on the host.</p>
+<p>Before you can follow these instructions, you will first need a Tizen target (with Crosswalk installed); and an application installed on that target via <code>xwalkctl</code>. See <a href="/documentation/getting_started.html">Getting started</a> for details.</p>
+<p>Once you have the pre-requisites in place, turn on debugging for the Crosswalk service on the Tizen target as follows:</p>
 <ol>
-<li><p>Start the Tizen IVI virtual machine (<em>target</em>), if it&#39;s not already running.</p>
+<li><p>From the host, log on to the Tizen target. For example, if the Tizen target has the IP address 192.168.0.19:</p>
+<pre><code>$ ssh root@192.168.0.19
+Password:
+Welcome to Tizen
+root:~&gt;</code></pre>
+<p>(The default password is <strong>tizen</strong>.)</p>
 </li>
-<li><p>Use <code>scp</code> to push the extension rpm to the target. By default, the rpm you generated with <code>gbs</code> will be in <code>~/GBS-ROOT/local/repos/tizen3.0/i586/RPMS/</code>; so the command you need should look like this:</p>
-<pre><code>&gt; scp ~/GBS-ROOT/local/repos/tizen3.0/i586/RPMS/echo-extension-0.1-1.i686.rpm \
-    root@&lt;IP address&gt;:/root/</code></pre>
-<p>Replace <code>&lt;IP address&gt;</code> with the IP address of the virtual machine. The password is <strong>tizen</strong>.</p>
+<li><p>On the target, add a <code>--remote-debugging-port=9222</code> option to the <code>ExecStart=</code> line in the Crosswalk service configuration file, <code>/usr/lib/systemd/user/xwalk.service</code>. For example, open the file for editing:</p>
+<pre><code>root:~&gt; vim /usr/lib/systemd/user/xwalk.service</code></pre>
+<p>Then edit the <code>ExecStart=</code> line so it looks like this:</p>
+<pre><code>ExecStart=/usr/lib/xwalk/xwalk --remote-debugging-port=9222 \
+  --external-extensions-path=/usr/lib/tizen-extensions-crosswalk</code></pre>
 </li>
-<li><p>Install the echo extension rpm on the target. To do this, first get a root shell on the target:</p>
-<pre><code># on the host, login to the target
-&gt; ssh root@&lt;IP address&gt;</code></pre>
-<p>Then, in the shell on the target:</p>
-<pre><code>root:~&gt; rpm -ih echo-extension-0.1-1.i686.rpm
-################################# [100%]
-Updating / installing...
-################################# [100%]</code></pre>
-<p>The rpm should install without errors.</p>
-</li>
-<li><p>Use scp to push the generated <code>app.xpk</code> file to the Tizen target:</p>
-<pre><code>&gt; scp app.xpk root@&lt;ip address&gt;:/home/app/</code></pre>
-</li>
-<li><p>Install the <code>.xpk</code> file on the target using <code>xwalkctl</code>. You should do this using a shell on the target as the &quot;app&quot; user. This user has the correct configuration and permissions to run applications.</p>
-<p>The best way to get an app user shell is to click the console icon in the top-left of the virtual machine&#39;s display. If you try to login remotely to get an app user shell, some required environment variables may not be set and <code>xwalkctl</code> may not run correctly.</p>
-<p>To install the <code>.xpk</code> file, run this command from the app user shell:</p>
-<pre><code>app:~&gt; xwalkctl --install /home/app/app.xpk</code></pre>
-<p>Make a note of the application ID (the last part of the <code>/installed/*</code> path displayed).</p>
-</li>
-<li><p>Finally, run the application from the app user&#39;s shell (on the target).</p>
-<p>You need the application&#39;s ID to do this. During installation of the simple-extension-app rpm, you will have been notified of this after the app was installed (see above). If you can&#39;t remember it, or missed it, you can use the <code>xwalkctl</code> command to list applications and their IDs:</p>
-<pre><code>app:~&gt; xwalkctl
-Application ID                       Application Name</code></pre>
+<li><p>Reboot the Tizen target device.</p>
 </li>
 </ol>
-<pre><code>    -----------------------------------------------------
-    nejhjijinegiakjdkkdnbepefnmpdgcp    simple_extension_app
-    -----------------------------------------------------
-
-Once you know the ID, you can launch the application with:
-
-    app:~&gt; xwalk-launcher &lt;app ID&gt;
-
-You should see this in the emulator:
-
-![Crosswalk application with extensions on Tizen IVI](/assets/tizen-ivi3-emulator-echo-extension.png)
-
-If you don&#39;t, check for errors and warnings coming from the command. In particular, the output from the command should end with:
-
-    Instance 1 created!
-
-This message is coming from the `instance_created` callback of your extension. If it&#39;s not there, the extension is not being initialized correctly.</code></pre>
+<p>Once the Crosswalk service is enabled for debugging, debug your applications as follows:</p>
+<ol>
+<li><p>Launch a Crosswalk application on the Tizen target using a console. See <a href="/documentation/getting_started/run_on_tizen.html#Run-the-application">these instructions</a>.</p>
+</li>
+<li><p>Back on the host, open a Chrome browser and open the address <code>http://&amp;lt;Tizen target IP&amp;gt;:9222</code>. For example, for the IP address 192.168.0.19, the URL to use would be &quot;<a href="http://192.168.0.19:9222">http://192.168.0.19:9222</a>&quot;.</p>
+<p>A list of all the pages available for debugging should now be displayed in the Chrome browser window:</p>
+<p><img src="/assets/crosswalk-tizen-remote-debug.png" alt="Crosswalk on Tizen IVI: remote debugging"></p>
+<p>Click on the link for the application you want to debug.</p>
+</li>
+</ol>
+<h2>Further information</h2>
+<p>For information about using the Chrome dev tools for debugging, see <a href="https://developer.chrome.com/devtools/index">this page</a>.</p>
 
   <footer class="article-next">
     
@@ -298,13 +276,16 @@ This message is coming from the `instance_created` callback of your extension. I
   
     
     
-  
-    
+      
     
   
     
     
       
+      <a href="/documentation/tizen/ivi_extensions.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>IVI Extensions</h3>
+      </a>
     
   
 

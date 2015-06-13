@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Run on Android" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/android_extensions/run_on_android" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/android_extensions" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android_extensions/run_on_android" />
-    <meta name="twitter:title" content="Run on Android" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/android_extensions" />
+    <meta name="twitter:title" content="Crosswalk" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -115,13 +115,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
+         <a class="article-link" href="/documentation/android.html">Android</a>
 
          
 
@@ -129,23 +123,57 @@
          <ul class="article-list">
             
            <li class="article-item ">
-             <a class="article-link" href="/documentation/android_extensions/host_and_target_setup.html">Host and target setup</a>
+             <a class="article-link" href="/documentation/android/android_target_setup.html">Android target setup</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/android_extensions/write_an_extension.html">Write an extension</a>
+             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
                
            </li>
            
            <li class="article-item ">
-             <a class="article-link" href="/documentation/android_extensions/write_a_web_application.html">Write a web application</a>
+             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
                
            </li>
            
            <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/android_extensions/run_on_android.html">Run on Android</a>
+             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
                
+             <ul class="article-list">
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/android_extensions/host_and_target_setup.html">Host and target setup</a>
+               </li>
+
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/android_extensions/write_an_extension.html">Write an extension</a>
+               </li>
+
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/android_extensions/write_a_web_application.html">Write a web application</a>
+               </li>
+
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/android_extensions/run_on_android.html">Run on Android</a>
+               </li>
+
+               
+             </ul>
+             
            </li>
            
          </ul>
@@ -153,13 +181,31 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
 
          
        </li>
@@ -183,19 +229,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
@@ -219,44 +253,58 @@
 
 
 <article class="article article--hasToC">
-  <h1>Run on Android</h1>
-<p>Building a Crosswalk Android application with extensions is almost identical to building any other Crosswalk Android application, and uses the same <code>make_apk.py</code> script (see the <a href="/documentation/getting_started/run_on_android.html"><em>Run on Android</em> documentation</a>). The main difference is that an additional <code>--extensions</code> option is required, to instruct the script where to find extension directories.</p>
-<h2>Create the Android packages</h2>
-<p>To make Android packages for your project, do the following:</p>
+  <h1>Android extensions</h1>
+<p>This tutorial explains how to write Crosswalk Android extensions using Java.</p>
+<p>The application you&#39;ll build in the tutorial demonstrates a very simple &quot;echo&quot; extension. This simply returns the string passed to it, prefixed with &quot;You said: &quot;. The extension is deliberately trivial so that the tutorial can focus on explaining the principles behind Crosswalk Android extensions.</p>
+<p>This tutorial <strong>doesn&#39;t</strong> cover best practices for web development. For example, it avoids <a href="http://gruntjs.com/">grunt</a> and <a href="http://bower.io/">bower</a> and doesn&#39;t use any third party front-end libraries, for simplicity&#39;s sake. Instead, it focuses on helping you explore the pieces of a hybrid Crosswalk application and how they fit together.</p>
+<p>This tutorial uses <a href="http://ant.apache.org/">Ant</a> and <a href="http://ant.apache.org/projects/ivy.html">Ivy</a> to build the extension. Alternatively, other Java tools, such as <a href="http://www.gradle.org/">gradle</a>, could be used.</p>
+<p><strong>By the end of the tutorial</strong>, you will be able to develop your own Java extensions for Crosswalk applications on Android.</p>
+<h2>Introduction to the tutorial</h2>
+<p>In this tutorial, you will build a Crosswalk Android application with a Java extension. This consists of two main pieces:</p>
 <ol>
-<li><p>Build the extension, as described <a href="/documentation/android_extensions/write_an_extension/build_the_extension.html">previously</a>. This will create the <code>xwalk-echo-extension/</code> directory with the extension files inside.</p>
-</li>
-<li><p>After the build, the extension project directory (<code>xwalk-echo-extension-src/</code>) will contain a <code>lib/crosswalk-${XWALK-STABLE-ANDROID-X86}</code> directory, which is an unpacked Crosswalk Android distribution. You can use the scripts in here to build the Android packages.</p>
-<p>Ensure you have installed the Android SDK correctly (<a href="/documentation/getting_started/windows_host_setup/install-the-android-sdk.html">Windows</a>, <a href="/documentation/getting_started/linux_host_setup/install-the-android-sdk.html">Linux</a>). Then use these commands to create the packages:</p>
-<pre><code># set an environment variable to the location of the project
-$ PROJECT_DIR=~/&lt;my projects directory&gt;/xwalk-echo-project
 
-# enter the unpacked Crosswalk Android directory
-$ cd $PROJECT_DIR/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}
+<li>
+<p><strong>A Crosswalk extension</strong></p>
 
-# invoke the package builder
-$ python make_apk.py --package=org.crosswalkproject.example \
-    --enable-remote-debugging --fullscreen \
-    --manifest=$PROJECT_DIR/xwalk-echo-app/manifest.json \
-    --extensions=$PROJECT_DIR/xwalk-echo-extension-src/xwalk-echo-extension/</code></pre>
-<p>The generated packages are in the <code>~/&lt;my projects directory&gt;/xwalk-echo-project/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}</code> directory, and called <code>xwalk_echo_app_x86.apk</code> and <code>xwalk_echo_app_arm.apk</code>.</p>
-<p>Note that if you are using multiple extension directories, you still have a single <code>--extensions</code> option but supply the paths as a comma-delimited string, e.g.</p>
-<pre><code>--extensions=myextension1,myextension2</code></pre>
+<p>The extension consists of:</p>
+
+<ul>
+<li>Java source code: Standard Android/Java classes, packaged into a jar file.</li>
+<li>JavaScript wrapper: A JavaScript file which exposes the Java code to an app running on Crosswalk.</li>
+<li>Configuration: A JSON file to wire up the JavaScript wrapper with the Java classes.</li>
+</ul>
+
+<p>The extension you&#39;ll write provides an echo service, which prefixes any string passed to it and returns it.</p>
+
+<p>Note that a Crosswalk application can use multiple extensions if desired.</p>
+
 </li>
+
+<li>
+<p><strong>An HTML5 web application</strong></p>
+
+<p>This is a self-contained web application which &quot;lives inside&quot; the Android application, but uses Crosswalk as its runtime. It consists of standard assets like HTML files, JavaScript files, images, fonts etc.</p>
+
+<p>The Crosswalk extension is invoked by code in the web application, via the JavaScript wrapper mentioned above. In the tutorial application, the response from the echo extension is rendered into a DOM element.</p>
+
+</li>
+
 </ol>
-<h2>Install a package on a target</h2>
-<p>Choose the correct package for your Android target&#39;s architecture and install it with a command like:</p>
-<pre><code>$ adb install -r ~/&lt;my projects directory&gt;/xwalk-echo-project/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}/xwalk_echo_app_x86.apk</code></pre>
-<p>This command installs the x86 package. For more details about installing Crosswalk packages on Android, see <a href="/documentation/getting_started/run_on_android.html">this page</a>.</p>
-<p>The icon for the application should now be in the application menu on the Android target. Tap the icon to start the application and you should see something like this:</p>
-<p><img src="/assets/android-extensions-x86.png" alt="Crosswalk Android application with extensions on x86 ZTE Geek"></p>
-<p>(The screenshot above shows the application running on an x86 ZTE Geek.)</p>
-<p>The application should display the text &quot;You said: Hello world&quot;, which demonstrates that the Java and JavaScript parts of the Crosswalk extension are communicating correctly.</p>
+
+<p>The project you create will also contain a few files to assist with packaging the above components into an <code>.apk</code> package file you can install on the Android target.</p>
+
+<p>All of the source code for the tutorial is available as part of the <a href="https://github.com/crosswalk-project/crosswalk-samples/releases">crosswalk-samples download</a>, or on github at <a href="https://github.com/crosswalk-project/crosswalk-samples">https://github.com/crosswalk-project/crosswalk-samples</a> (inside the <code>extensions-android</code> directory).</p>
 
   <footer class="article-next">
     
 
   
+  
+    
+    
+  
+    
+    
   
     
     
