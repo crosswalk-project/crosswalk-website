@@ -18,7 +18,7 @@ Our global team presents Crosswalk in a variety of forums and conferences. Below
 <div class="presentation-div">
   <div class="presentation-title">
     <h3>Cordova 4.0 and Crosswalk</h3>
-    <p>Cordova 4.0 now supports pluggable webview. This presentation, given by Sakari Poussa at PhoneGap Day, describes how to use the high-powered Crosswalk webview. More details <a href="/documentation/cordova_4.html">here.</a></p>
+    <p>Cordova 4.0 now supports pluggable webview. This presentation, given by Sakari Poussa at PhoneGap Day, describes how to use the high-powered Crosswalk webview. More details <a href="/documentation/cordova.html">here.</a></p>
     <p>PhoneGap Day EU, May 18, 2015</p>
   </div>
   <div class="presentation-graphic">
