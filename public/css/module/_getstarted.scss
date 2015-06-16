@@ -1,4 +1,6 @@
 
+//narrow, mid, wide, huge, massive
+
 .featureBlock {
     //border: solid 1px #ff0000;
     display: inline-block;
@@ -10,13 +12,29 @@
 .featureDiv {
     border: 1px solid gray; 
     border-radius: 3px; 
-    margin: 10px; 
-    width: 46%; 
     cursor:pointer;
     display: inline-block;
     vertical-align: top;
     text-align: left;
+    
+    margin: 10px 0px; 
+    width: 100%; 
+
+     @include media($mid) {
+        margin: 10px 8px; 
+        width: 46%; 
+    }
+    @include media($wide) {
+        margin: 10px 0px; 
+        width: 46%; 
+    }
+    @include media($huge) {
+        margin: 10px; 
+        width: 46%; 
+    }
+
 }
+
 .featureDiv:hover {
     box-shadow: 0 0 0pt 2pt blue;
     //outline: 3px solid blue;
