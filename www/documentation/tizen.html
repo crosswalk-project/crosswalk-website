@@ -129,6 +129,16 @@
          <ul class="article-list">
             
            <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/windows_host_setup.html">Windows host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/linux_host_setup.html">Linux host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
              <a class="article-link" href="/documentation/tizen/tizen_target_setup.html">Tizen target setup</a>
                
            </li>
@@ -225,7 +235,33 @@
 
 <article class="article article--hasToC">
   <h1>Crosswalk on Tizen</h1>
-<p>This section describes how to create web and hybrid applications using Crosswalk for the <a href="https://developer.tizen.org/">Tizen operating system</a>. </p>
+<p>This section describes how to create web and hybrid applications using the Crosswalk Project for the <a href="http://developer.tizen.org">Tizen operating system</a>.</p>
+<p>For Tizen, a <a href="/documentation/downloads.html#release-channels">canary</a> version is used (there are no stable or beta downloads for Tizen).</p>
+<p><strong>This tutorial explains how to:</strong></p>
+<ol>
+<li><p>Set up the <em>host</em>: the machine where you will be developing the application.</p>
+<ul>
+<li><a href="/documentation/tizen/windows_host_setup.html">Windows host</a></li>
+<li><a href="/documentation/tizen/linux_host_setup.html">Linux host</a></li>
+</ul>
+<p>Note that it may be possible to develop for Crosswalk on other platforms, but only Windows and Linux are officially supported.</p>
+</li>
+<li><p>Set up your <a href="/documentation/tizen/tizen_target_setup.html">Tizen target</a>: the device that will run the Crosswalk application, either physical or virtual.</p>
+</li>
+<li><p><a href="/documentation/tizen/build_an_application.html">Build a very simple HTML5 application</a>.</p>
+</li>
+<li><p><a href="/documentation/tizen/run_on_tizen.html">Run your application</a> using Crosswalk</p>
+</li>
+</ol>
+<p>You will need to be comfortable using a command line to follow these steps. If you prefer to use a graphical integrated development environment (IDE), the free <strong>Intel XDK</strong> provides an alternative way to package applications for Crosswalk Android. See the <a href="http://xdk-software.intel.com/">Intel XDK website</a> for more details.</p>
+<p>Throughout this tutorial, commands you should run in a shell are prefixed with a <code>&gt;</code> character. On Windows, you can use the standard Windows console; on Linux, you can use a bash shell.</p>
+<p><strong>By the end of the tutorial</strong>, you should understand the workflow for creating Crosswalk applications from your own HTML5 projects.</p>
+<p><strong>This tutorial does not cover:</strong></p>
+<ul>
+<li>How to write HTML5 applications. We use the simplest possible HTML5 application for this tutorial, so we can focus on the packaging and deployment aspects of Crosswalk.</li>
+<li>How to use <a href="/documentation/apis/web_apis.html#Experimental-APIs">Crosswalk-specific APIs</a>. The code in the tutorial should run on any modern web browser, as well as on Crosswalk.</li>
+<li>How to compile Crosswalk itself. This is covered in the <a href="/contribute">Contribute</a> section.</li>
+</ul>
 
   <footer class="article-next">
     

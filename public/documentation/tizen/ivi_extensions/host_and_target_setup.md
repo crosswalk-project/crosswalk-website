@@ -9,7 +9,7 @@ In this section, we outline how to prepare for developing Tizen Crosswalk extens
 
 # Host setup
 
-First follow the [instructions for setting up a Linux host](/documentation/getting_started/linux_host_setup.html#Installation-for-Crosswalk-Tizen).
+First follow the [instructions for setting up a Linux host](/documentation/tizen/linux_host_setup.html).
 
 Then follow the steps below to install the extra pieces needed for developing Crosswalk extensions.
 
@@ -42,6 +42,6 @@ Adjust the URL to suit the version of Tizen IVI you are using. Then save this co
 
 For the purposes of this tutorial, we'll use an Tizen IVI virtual machine, running under VMware.
 
-Instructions for setting up this type of target are on the [Tizen target set up page](/documentation/getting_started/tizen_target_setup.html). Ensure that you follow all the steps, so that the virtual machine is set up with Crosswalk installed on it.
+Instructions for setting up this type of target are on the [Tizen target set up page](/documentation/tizen/tizen_target_setup.html). Ensure that you follow all the steps, so that the virtual machine is set up with Crosswalk installed on it.
 
 You are now ready to start developing the extension.

@@ -6,7 +6,7 @@ You can use either a physical Tizen device or an emulated one (virtual machine) 
 
 Crosswalk is available for Tizen version 2.1 or higher.
 
-Tizen extensions for Crosswalk are also available, which enable you to make use of [Tizen APIs](https://developer.tizen.org/documentation/dev-guide/2.2.1?redirect=https%3A//developer.tizen.org/dev-guide/2.2.1/org.tizen.web.appprogramming/html/api_reference/api_reference.htm) in applications running in Crosswalk on Tizen. We don't need them for this tutorial, so we won't cover them here.
+Tizen extensions for Crosswalk are also available, which enable you to make use of [Tizen APIs](https://developer.tizen.org/web-application?redirect=https%3A//developer.tizen.org/dev-guide/2.3.0/org.tizen.web.apireference/html/web_api_reference.htm) in applications running in Crosswalk on Tizen. We don't need them for this tutorial, so we won't cover them here.
 
 In the instructions below, `<path to Tizen SDK>` refers to the path to the root directory of your Tizen SDK installation.
 
@@ -31,7 +31,7 @@ The preferred approach, covered in the sections below, is to set up a Tizen IVI 
 
 ### Set up a Tizen IVI virtual machine with VMware
 
-After you have set up your host machine with the VMware Player or Workstation ([Windows](/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Tizen), [Linux](/documentation/getting_started/linux_host_setup.html#Installation-for-Crosswalk-Tizen)), you can create a virtual Tizen IVI machine.
+After you have set up your host machine with the VMware Player or Workstation ([Windows](/documentation/tizen/windows_host_setup.html), [Linux](/documentation/tizen/linux_host_setup.html)), you can create a virtual Tizen IVI machine.
 
 To do this, follow [these instructions on the Tizen wiki](https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware).
 
@@ -143,4 +143,4 @@ Once you have a running Tizen IVI virtual machine ready as a target, you can ins
         Loaded: loaded (/usr/lib/systemd/user/xwalk.service; static)
         Active: inactive (dead)
 
-The [Run on Tizen](/documentation/getting_started/run_on_tizen.html) section explains how to run an application with Crosswalk.
+The [Run on Tizen](/documentation/tizen/run_on_tizen.html) section explains how to run an application with Crosswalk.

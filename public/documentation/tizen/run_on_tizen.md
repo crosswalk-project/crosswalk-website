@@ -2,7 +2,7 @@
 
 On Tizen, Crosswalk runs as a background service, only becoming active when needed (i.e. when a user session activates it). In technical terms, Crosswalk effectively runs as a daemon, exposing a D-Bus interface for managing applications.
 
-To run an application on a Tizen target, first ensure you have set up your host for Tizen ([Windows](/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Tizen), [Linux](/documentation/getting_started/linux_host_setup.html#Installation-for-Crosswalk-Tizen)) and [set up a Tizen target](/documentation/getting_started/tizen_target_setup.html). In the instructions below, we assume you are using a Tizen IVI target running under VMware, and consequently use `ssh` to push files to, and get a shell on, the target.
+To run an application on a Tizen target, first ensure you have set up your host for Tizen ([Windows](/documentation/tizen/windows_host_setup.html), [Linux](/documentation/linux/linux_host_setup.html)) and [set up a Tizen target](/documentation/tizen/tizen_target_setup.html). In the instructions below, we assume you are using a Tizen IVI target running under VMware, and consequently use `ssh` to push files to, and get a shell on, the target.
 
 Next, follow these steps to get the application running:
 
@@ -17,7 +17,7 @@ These steps are explained in detail below.
 
 A Tizen package file is a zip file with some "magic" (a special file header specific to Crosswalk) and an `.xpk` suffix. It will contain all of the files relating to your application (HTML, CSS, JavaScript, assets), as well as any metadata (`manifest.json`, icons etc.). See [the wiki](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-package-management) for detailed information about the format.
 
-To create a zip package, you will need a `bash` shell and the `zip` and `openssl` binaries installed. On Linux, these are usually available by default. On Windows, you will need to [install git SCM](/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Tizen).
+To create a zip package, you will need a `bash` shell and the `zip` and `openssl` binaries installed. On Linux, these are usually available by default. On Windows, you will need to [install git SCM](/documentation/tizen/windows_host_setup.html).
 
 Then follow the steps below to create the package.
 

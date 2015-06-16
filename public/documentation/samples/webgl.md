@@ -14,7 +14,7 @@ tutorial.
 ## WebGL on Android
 
 Once you've set up the Crosswalk Android packaging dependencies,
-follow the steps in [Run on Android](/documentation/getting_started/run_on_android.html)
+follow the steps in [Run on Android](/documentation/android/run_on_android.html)
 to install and run the WebGL sample on Android.
 
 The quick version is that you can build the WebGL apk with:
@@ -36,9 +36,7 @@ Then install the apk file on Android:
 
 ## WebGL on Tizen
 
-Follow the steps in
-[Run on Tizen](/documentation/getting_started/run_on_tizen.html)
-to install and run the WebGL sample on Tizen.
+Follow the steps in [Run on Tizen](/documentation/tizen/run_on_tizen.html) to install and run the WebGL sample on Tizen.
 
 Or here's the quick version:
 

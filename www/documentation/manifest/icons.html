@@ -337,7 +337,7 @@
 <p>Note that we don&#39;t mention anywhere that <code>foo_hd.png</code> is 256x256 raw pixels in size: we just specify that it is suitable for a 128x128 pixel icon on a screen with density of 2dppx.</p>
 <h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
-<p>Rather than affecting the Crosswalk runtime on Android directly, the <code>icons</code> field affects how an application is packaged by <a href="/documentation/getting_started/run_on_android.html"><code>make_apk.py</code></a>. The <code>make_apk.py</code> script discards some of the information included in the <code>icon</code> field, for example the <code>density</code>.</p>
+<p>Rather than affecting the Crosswalk runtime on Android directly, the <code>icons</code> field affects how an application is packaged by <a href="/documentation/android/run_on_android.html"><code>make_apk.py</code></a>. The <code>make_apk.py</code> script discards some of the information included in the <code>icon</code> field, for example the <code>density</code>.</p>
 <p>If the <code>icons</code> field contains multiple icon sizes, the <code>make_apk.py</code> script will map the corresponding icon files to <a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a> depending on their size.</p>
 <p>When the application is installed, Android will use the file appropriate for the target&#39;s screen resolution as the application icon in the home screen, application list and other relevant locations.</p>
 <h2>Acknowledgements</h2>

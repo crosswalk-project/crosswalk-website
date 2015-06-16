@@ -73,7 +73,7 @@ There are two approaches to building an application which supports both x86 and 
 
 *   Build two separate packages for your application, one for x86 and one for ARM; then upload both to the app stores where you are hosting your application. Prominent stores like Google Play have support for [uploading multiple packages for different platforms](http://developer.android.com/google/play/publishing/multiple-apks.html).
 
-    The [Crosswalk apk generation script](/documentation/getting_started/run_on_android.html) (`make_apk.py`) generates packages for both architectures to facilitate this way of working.
+    The [Crosswalk apk generation script](/documentation/android/run_on_android.html) (`make_apk.py`) generates packages for both architectures to facilitate this way of working.
 
 *   Build one package for your application, but include both the x86 and ARM versions of Crosswalk in it. The down-side of this approach is that it makes the package file very large (c. 40Mb before you add your application code).
 
@@ -132,7 +132,7 @@ The method for adding this file to your Android package depends on how you are u
 
 *   If you are **[using Crosswalk Cordova](/documentation/cordova.html)**, the file should be placed in the `assets/` directory of your project.
 
-*   If you are **[building an Android package with the `make_apk.py` script](/documentation/getting_started/run_on_android.html)**, you can pass an option to create the file inside the output Android package:
+*   If you are **[building an Android package with the `make_apk.py` script](/documentation/android/run_on_android.html)**, you can pass an option to create the file inside the output Android package:
 
     ```
     $ make_apk.py --manifest=mygame/manifest.json \

@@ -1,5 +1,5 @@
 # Conference Presence
-The Crosswalk Project will be participating in the following conferences in 2015
+The Crosswalk Project will be participating in the following conferences in 2015.  To view presentations from past conferences, visit the [Presentations](/documentation/community/presentations.html) page.
 
 <h2>Upcoming</h2>
 <p>[AnDevCon Boston](http://www.andevcon.com/boston), July 29-31, Boston, MA</p>

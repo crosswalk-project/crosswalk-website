@@ -70,7 +70,7 @@ Note that permission values are not case sensitive (either in the manifest or on
 
 <h2 id="Permissions-required-by-API">Permissions required by API</h2>
 
-If you want to use some of Crosswalk's web APIs in an application, you may need to add permissions to `AndroidManifest.xml` to make those APIs accessible. You can either do this via the [packaging script](/documentation/getting_started/run_on_android.html), or manually (if you are using the embedding API).
+If you want to use some of Crosswalk's web APIs in an application, you may need to add permissions to `AndroidManifest.xml` to make those APIs accessible. You can either do this via the [packaging script](/documentation/android/run_on_android.html), or manually (if you are using the embedding API).
 
 The table below shows which web APIs require which permissions.
 

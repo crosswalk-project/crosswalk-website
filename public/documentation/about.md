@@ -16,4 +16,4 @@ By using the Crosswalk Project, an application developer can:
 *   Control the upgrade cycle of an application by distributing it with its own runtime.
 *   Add custom extensions to an application, to leverage platform features not exposed by Crosswalk or the standardized web platform.
 
-The Crosswalk Project is open source, released under a [BSD licence](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE). The project was founded by Intel's Open Source Technology Center.
+The Crosswalk Project is open source, released under a [BSD licence](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE). The project was founded by Intel's Open Source Technology Center. For more information, please view the [Frequently Asked Questions](/documentation/about/faq.html).

@@ -129,6 +129,16 @@
          <ul class="article-list">
             
            <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/windows_host_setup.html">Windows host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/linux_host_setup.html">Linux host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
              <a class="article-link" href="/documentation/tizen/tizen_target_setup.html">Tizen target setup</a>
                
            </li>
@@ -344,10 +354,10 @@ div.appendChild(p2);
 <p>Note that the <code>echo</code> extension is available globally to the application: there&#39;s no need to include a script to make use of it.</p>
 <p>When the application runs, the extension&#39;s API is invoked asynchronously and synchronously (<code>echo.echoAsync()</code> and <code>echoSync()</code>). The returned responses (with the &quot;You said: &quot; prefixes added) are used to set the text of two paragraph (<code>p</code>) elements.</p>
 <h2>Create the package</h2>
-<p>Now that you have the web application, follow the steps in <a href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a> to create the Tizen package (<code>.xpk</code> file).</p>
+<p>Now that you have the web application, follow the steps in <a href="/documentation/tizen/run_on_tizen.html">Run on Tizen</a> to create the Tizen package (<code>.xpk</code> file).</p>
 <p>The steps are summarised below:</p>
 <ol>
-<li><p>Add the <code>make_xpk.sh</code> script to the project. See <a href="/documentation/getting_started/run_on_tizen.html#Create-the-xpk-file">Create the xpk file</a> for the content of the script and how to create it.</p>
+<li><p>Add the <code>make_xpk.sh</code> script to the project. See <a href="/documentation/tizen/run_on_tizen.html#Create-the-xpk-file">Create the xpk file</a> for the content of the script and how to create it.</p>
 </li>
 <li><p>Create a private key for signing packages:</p>
 <pre><code>&gt; openssl genrsa -out ~/mykey.pem 1024</code></pre>

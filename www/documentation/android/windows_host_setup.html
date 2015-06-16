@@ -32,13 +32,13 @@
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
     <meta property="og:title" content="Windows host setup" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/getting_started/windows_host_setup" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/windows_host_setup" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/getting_started/windows_host_setup" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/windows_host_setup" />
     <meta name="twitter:title" content="Windows host setup" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
@@ -112,27 +112,57 @@
          <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
 
          
-
-
-         <ul class="article-list">
-            
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/getting_started/windows_host_setup.html">Windows host setup</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/getting_started/linux_host_setup.html">Linux host setup</a>
-               
-           </li>
-           
-         </ul>
-         
        </li>
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/android.html">Android</a>
 
+         
+
+
+         <ul class="article-list">
+            
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/android/windows_host_setup.html">Windows host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/linux_host_setup.html">Linux host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_target_setup.html">Android target setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
+               
+           </li>
+           
+         </ul>
          
        </li>
     
@@ -210,14 +240,7 @@
 
 <article class="article article--hasToC">
   <h1>Windows host setup</h1>
-<p>You need different tools depending on which target platform you want to deploy your application to:</p>
-<ul>
-<li>Deploy to Android: follow <a href="#Installation-for-Crosswalk-Android">Installation for Crosswalk Android</a></li>
-<li>Deploy to Tizen: follow <a href="#Installation-for-Crosswalk-Tizen">Installation for Crosswalk Tizen</a></li>
-</ul>
 <p>These instructions have been tested on Windows 7 Enterprise, 64 bit.</p>
-<h2 id="Installation-for-Crosswalk-Android">Installation for Crosswalk Android</h2>
-
 <p>These steps will enable you to develop Crosswalk applications to run on Android:</p>
 <ol>
 <li><a href="#Install-Python">Install Python</a></li>
@@ -326,28 +349,6 @@ Python 2.7.6
 &gt; adb help
 Android Debug Bridge version 1.0.31</code></pre>
 <p>Congratulations, your system is ready for Android development with Crosswalk.</p>
-<h2 id="Installation-for-Crosswalk-Tizen">Installation for Crosswalk Tizen</h2>
-
-<p>In this tutorial, you&#39;re going to use an emulated Tizen IVI image, running under VMware. To be able to create this image and access it, you need to install a few packages on the host machine:</p>
-<ol>
-<li><p><a id="Utilities"></a><strong>Utilities</strong>, available as part of the <a href="http://git-scm.com/download/win">git SCM tools for Windows</a>.</p>
- <ul>
- <li><code>bash</code>: this is required to run the script for generating Tizen packages.</li>
- <li><code>ssh</code>: this command is used to push files to, and log in to, the virtual machine.</li>
- <li><code>openssl</code>: the command used to create a key for signing your Tizen packages.</li>
- <li><code>bunzip2</code>: the command to unpack the Tizen IVI disk image.</li>
- </ul>
-
-<p> Download a git SCM tools <code>.exe</code> for your architecture and install it.</p>
-<p> Once installed, you should have a <em>Git Bash</em> entry in the Windows menu, which will bring up a <code>bash</code> shell.</p>
-</li>
-<li><p><strong>QEMU:</strong> you need the <code>qemu-img</code> tool to convert a Tizen IVI disk image into a format suitable for use with VMware.</p>
-<p>A version of QEMU for Windows is available from <a href="http://qemu.weilnetz.de/">http://qemu.weilnetz.de/</a>. Use this at your own risk.</p>
-</li>
-<li><p><strong>VMware Player</strong> or <strong>VMware Workstation</strong>, to create and run the virtual machine. The free version of Player can be downloaded from <a href="https://my.vmware.com/web/vmware/free">the VMware website</a>. However, if you are using Player for commercial purposes, you will <a href="http://store.vmware.com/buyplayerplus">need a licence</a>.</p>
-<p>If you need help with installing VMware products, see <a href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2053973">this page on the VMware website</a>.</p>
-</li>
-</ol>
 <p>Now the host is setup, you can prepare your targets.</p>
 
   <footer class="article-next">
@@ -363,10 +364,28 @@ Android Debug Bridge version 1.0.31</code></pre>
     
     
       
-      <a href="/documentation/getting_started/linux_host_setup.html" class="article-promo well">
+      <a href="/documentation/android/linux_host_setup.html" class="article-promo well">
         <em>What’s next?</em>
         <h3>Linux host setup</h3>
       </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
     
   
 

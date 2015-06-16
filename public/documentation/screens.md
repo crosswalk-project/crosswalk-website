@@ -228,7 +228,7 @@ If you are interested in following along with the article, rather than just look
 
     depending on your target hardware.
 
-    For more details about building and running Crosswalk applications on Android, see [the Getting started pages](/documentation/getting_started/run_on_android.html).
+    For more details about building and running Crosswalk applications on Android, see [the Getting started pages](/documentation/android/run_on_android.html).
 
 ## Issue 1: The game sometimes displays in portrait orientation
 
@@ -273,13 +273,13 @@ If you prefer, there are a couple of other ways to fix an application's orientat
     }
     ```
 
-    You could then [build an application package for Android](/documentation/getting_started/run_on_android.html) from this manifest with:
+    You could then [build an application package for Android](/documentation/android/run_on_android.html) from this manifest with:
 
     ```
     $ python make_apk.py --manifest=/projects/space_dodge_game/manifest.json
     ```
 
-    Install it on an Android target as described in [the Getting started pages](/documentation/getting_started/run_on_android.html).
+    Install it on an Android target as described in [the Getting started pages](/documentation/android/run_on_android.html).
 
     Using the `orientation` field in the manifest has exactly the same effect as using `screen.lockOrientation` in your application code: the application rotates to the requested orientation after the application starts. But `screen.lockOrientation` has the advantage of being supported by other runtimes (e.g. Firefox OS), so may be a better choice if you need your application to work cross-platform.
 
@@ -318,7 +318,7 @@ The next issue is that the toolbar is still visible, which is a distraction whil
     }
     ```
 
-    [Build and deploy to the device](/documentation/getting_started/run_on_android.html) as usual.
+    [Build and deploy to the device](/documentation/android/run_on_android.html) as usual.
 
     The `display` manifest field is defined in the [W3C Manifest for web application specification](http://w3c.github.io/manifest/).
 
@@ -331,7 +331,7 @@ The next issue is that the toolbar is still visible, which is a distraction whil
         --orientation=landscape --fullscreen
     ```
 
-    This is a useful option if you are using an older version of Crosswalk which doesn't support the `display` field in the manifest. See [the Getting started pages](/documentation/getting_started/run_on_android.html) for more information about using `make_apk.py`.
+    This is a useful option if you are using an older version of Crosswalk which doesn't support the `display` field in the manifest. See [the Getting started pages](/documentation/android/run_on_android.html) for more information about using `make_apk.py`.
 
 Using either the `display` field or the `--fullscreen` option has the same effect: the application displays in fullscreen, hiding the system status bar on Android:
 

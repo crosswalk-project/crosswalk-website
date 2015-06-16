@@ -129,6 +129,16 @@
          <ul class="article-list">
             
            <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/windows_host_setup.html">Windows host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/linux_host_setup.html">Linux host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
              <a class="article-link" href="/documentation/tizen/tizen_target_setup.html">Tizen target setup</a>
                
            </li>
@@ -228,7 +238,7 @@
 <p>Web applications running under Crosswalk can be debugged remotely using the <a href="https://developer.chrome.com/devtools/index">Chrome dev tools</a>. </p>
 <p>Note that to debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Remote-debugging-on-android">this wiki page</a>, which shows the mapping between Crosswalk and Chrome versions for debugging.</p>
 <p>To debug Crosswalk applications on Tizen, the Crosswalk service on the target must be configured to provide a debugging endpoint. You can then access this endpoint from a Chrome browser on the host.</p>
-<p>Before you can follow these instructions, you will first need a Tizen target (with Crosswalk installed); and an application installed on that target via <code>xwalkctl</code>. See <a href="/documentation/getting_started.html">Getting started</a> for details.</p>
+<p>Before you can follow these instructions, you will first need a Tizen target (with Crosswalk installed); and an application installed on that target via <code>xwalkctl</code>. See <a href="/documentation/tizen.html">Getting started</a> for details.</p>
 <p>Once you have the pre-requisites in place, turn on debugging for the Crosswalk service on the Tizen target as follows:</p>
 <ol>
 <li><p>From the host, log on to the Tizen target. For example, if the Tizen target has the IP address 192.168.0.19:</p>
@@ -249,7 +259,7 @@ root:~&gt;</code></pre>
 </ol>
 <p>Once the Crosswalk service is enabled for debugging, debug your applications as follows:</p>
 <ol>
-<li><p>Launch a Crosswalk application on the Tizen target using a console. See <a href="/documentation/getting_started/run_on_tizen.html#Run-the-application">these instructions</a>.</p>
+<li><p>Launch a Crosswalk application on the Tizen target using a console. See <a href="/documentation/tizen/run_on_tizen.html#Run-the-application">these instructions</a>.</p>
 </li>
 <li><p>Back on the host, open a Chrome browser and open the address <code>http://&amp;lt;Tizen target IP&amp;gt;:9222</code>. For example, for the IP address 192.168.0.19, the URL to use would be &quot;<a href="http://192.168.0.19:9222">http://192.168.0.19:9222</a>&quot;.</p>
 <p>A list of all the pages available for debugging should now be displayed in the Chrome browser window:</p>
@@ -264,6 +274,12 @@ root:~&gt;</code></pre>
     
 
   
+  
+    
+    
+  
+    
+    
   
     
     

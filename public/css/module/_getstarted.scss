@@ -1,0 +1,84 @@
+
+.featureBlock {
+    //border: solid 1px #ff0000;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.featureDiv {
+    border: 1px solid gray; 
+    border-radius: 3px; 
+    margin: 10px; 
+    width: 46%; 
+    cursor:pointer;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+}
+.featureDiv:hover {
+    box-shadow: 0 0 0pt 2pt blue;
+    //outline: 3px solid blue;
+    //border: 3px solid blue;
+    //margin: 0px 10px;
+}
+
+.featureLink {
+    text-decoration:none; 
+    outline: 0;
+    color: black;
+}
+
+.featureLink:focus {
+    color: blue;
+}
+.featureLink:visited {
+    color: black;
+}    
+.featureLink:visited:focus {
+    color: blue;
+}    
+.featureLink:visited:hover {
+    color: blue;
+}    
+.featureLink:hover {
+    color: blue;
+}
+
+
+.featureHeader,
+.featureHeaderDark {
+    //border: 1px solid lightgray;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px 3px 0px 0px;
+    font-weight: 600;
+    color: white;
+    padding:3px; 
+    text-shadow: none;
+}
+.featureHeaderDark {
+    color: black;
+    padding:8px; 
+}
+
+.featureImg {
+    //border: 1px solid red;
+    height:40px;
+    vertical-align: middle;
+    margin: 0px 7px 0px 10px;
+}
+.featureSplitter {
+    height: 1px;
+    margin: 0px;
+    border-top:0;
+    color: black;
+}
+
+.featureBody {
+    background: rgba(255,255,255,0.8);
+    padding: 10px; 
+    border-radius: 0px 0px 3px 3px;
+    text-shadow: none;
+}
+

@@ -241,7 +241,7 @@
 <li>Android SDK (with Android platform version 4.0 or later installed)</li>
 <li><a href="http://nodejs.org">node</a></li>
 </ul>
-<p>The host setup instructions (<a href="/documentation/getting_started/windows_host_setup.html">Windows</a>, <a href="/documentation/getting_started/linux_host_setup.html">Linux</a>) explain how to install all of these pre-requisites, except node.</p>
+<p>The host setup instructions (<a href="/documentation/android/windows_host_setup.html">Windows</a>, <a href="/documentation/android/linux_host_setup.html">Linux</a>) explain how to install all of these pre-requisites, except node.</p>
 <p>To install node, follow the <a href="http://nodejs.org/download/">instructions on the nodejs.org website</a>.</p>
 <p>Additional instructions for installing the Java JDK, Apache Ant, and the Android SDK can be found in the <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Cordova Android Platform Guide</a>.</p>
 <h3 id="Download-the-crosswalk-cordova-android-bundle">Download the crosswalk-cordova-android bundle</h3>
@@ -255,7 +255,7 @@
 <p>Once you&#39;ve downloaded the zip file, unzip it (WinZip, 7Zip, command line etc.).</p>
 <h2 id="Set-up-the-target">Set up the target</h2>
 
-<p>You will need an Android target to deploy the Cordova application to. You can either use a real Android device or an emulated one. Instructions for both are on the <a href="/documentation/getting_started/android_target_setup.html">Android target setup page</a>.</p>
+<p>You will need an Android target to deploy the Cordova application to. You can either use a real Android device or an emulated one. Instructions for both are on the <a href="/documentation/android/android_target_setup.html">Android target setup page</a>.</p>
 <h2>Create a sample application</h2>
 <p>Create a sample application using the Crosswalk Cordova tools (inside the unpacked bundle in the <code>bin/</code> directory):</p>
 <pre><code>$ crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86/bin/create &lt;project_directory&gt; \
@@ -285,7 +285,7 @@ $ ./cordova/run</code></pre>
 ./cordova/build --debug</code></pre>
 <p>Then run it as usual:</p>
 <pre><code>./cordova/run</code></pre>
-<p>You should now be able to follow the instructions on <a href="/documentation/getting_started/remote_debugging.html">this page</a> to debug the application.</p>
+<p>You should now be able to follow the instructions on <a href="/documentation/android/android_remote_debugging.html">this page</a> to debug the application.</p>
 <h2 id="Debug-Cordova-Crosswalk">Debug Cordova Crosswalk</h2>
 
 <p>You may be in the situation where the application crashes before Crosswalk itself starts (i.e. the runtime crashes before the web application can be loaded). To see what&#39;s happening in this situation, you can follow the system logs on the target:</p>

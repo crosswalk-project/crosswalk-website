@@ -400,7 +400,7 @@ Follow the instructions below to install and configure Ivy:
 
 <h3 id="Add-an-Ant-buildfile">Add an Ant buildfile</h3>
 
-You should have already installed Ant as described in the *Getting started* instructions ([Windows](/documentation/getting_started/windows_host_setup/install-ant.html), [Linux](/documentation/getting_started/linux_host_setup/install-ant.html)).
+You should have already installed Ant as described in the *Getting started* instructions ([Windows](/documentation/android/windows_host_setup.html#Install-Ant), [Linux](/documentation/android/linux_host_setup.html#Install-Ant)).
 
 Once Ant is installed, add a buildfile, `build.xml`, to the top-level directory of your project with this content:
 

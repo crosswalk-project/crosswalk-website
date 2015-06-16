@@ -4,9 +4,9 @@ Web applications running under Crosswalk can be debugged remotely using the [Chr
 
 Note that to debug a Crosswalk application with Chrome, you must ensure that your Chrome version is appropriate for the version of Crosswalk you are using. See [this wiki page](https://github.com/crosswalk-project/crosswalk-website/wiki/Remote-debugging-on-android), which shows the mapping between Crosswalk and Chrome versions for debugging.
 
-On Android, the connection between the host and target is established using [`adb`](http://developer.android.com/tools/help/adb.html). You will need to ensure that you have installed the Android SDK (instructions for [Windows](/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Android) and [Linux](/documentation/getting_started/linux_host_setup.html#Installation-for-Crosswalk-Android)) so that this tool is available.
+On Android, the connection between the host and target is established using [`adb`](http://developer.android.com/tools/help/adb.html). You will need to ensure that you have installed the Android SDK (instructions for [Windows](/documentation/android/windows_host_setup.html) and [Linux](/documentation/android/linux_host_setup.html)) so that this tool is available.
 
-You will also need to set up an Android target and install a packaged Crosswalk application on it. See [these instructions](/documentation/getting_started/android_target_setup.html).
+You will also need to set up an Android target and install a packaged Crosswalk application on it. See [these instructions](/documentation/android/android_target_setup.html).
 
 Debugging on Android can be enabled in two ways: [at build time](#Enable-debugging-at-build-time-for-Android) and [at run time](#Enable-debugging-at-run-time-for-Android). Both options are described below.
 
@@ -22,7 +22,7 @@ Once the [pre-requisites](#Android) have been met, debug your Crosswalk applicat
 <ul>
 
 <li>
-<p><strong>Generating an Android package using <a href="/documentation/getting_started/run_on_android.html"><code>make_apk.py</code></a></strong></p>
+<p><strong>Generating an Android package using <a href="/documentation/android/run_on_android.html"><code>make_apk.py</code></a></strong></p>
 
 <p>Enable remote debugging by passing a flag to <code>make_apk.py</code> when building the package. For example:</p>
 
@@ -75,7 +75,7 @@ Once the [pre-requisites](#Android) have been met, debug your Crosswalk applicat
 
 </li>
 
-<li>Install and run the application on the target, using your preferred tool (for example, <a href="/documentation/getting_started/run_on_android.html"><code>adb</code></a>).</li>
+<li>Install and run the application on the target, using your preferred tool (for example, <a href="/documentation/android/run_on_android.html"><code>adb</code></a>).</li>
 
 <li>
 <p>On the host, open a Chrome browser and go to "chrome://inspect" in the address bar. This should show a list of attached devices, with your application listed, for example:</p>
@@ -107,7 +107,7 @@ Note that the intent will enable remote debugging feature for *all* Crosswalk ap
 
 First ensure that the [pre-requisites](#Android) have been met. Then follow these steps to enable remote debugging for Crosswalk applications:
 
-1.  Install and run the application(s) on the target, using your preferred tool (for example, [`adb`](/documentation/getting_started/run_on_android.html)).
+1.  Install and run the application(s) on the target, using your preferred tool (for example, [`adb`](/documentation/android/run_on_android.html)).
 
 2.  From the host, use `adb` to broadcast the remote debugging intent to all Crosswalk applications on the target:
 
@@ -131,7 +131,7 @@ Note that it is also possible to disable remote debugging using the same intent,
 
 *   **adb can't connect to the device**
 
-    You may occasionally find that `adb` is unable to connect to the device, and remote debugging won't work. You can try unplugging the USB cable between your host and target (if using a USB connection), then reattaching it, which sometimes fixes the issue; or you could try [running `adb` as root](/documentation/getting_started/android_target_setup.html#Fixing-device-access-issues-on-Linux).
+    You may occasionally find that `adb` is unable to connect to the device, and remote debugging won't work. You can try unplugging the USB cable between your host and target (if using a USB connection), then reattaching it, which sometimes fixes the issue; or you could try [running `adb` as root](/documentation/android/android_target_setup.html#Fixing-device-access-issues-on-Linux).
 
 *   **The application doesn't appear in the chrome://inspect page**
 

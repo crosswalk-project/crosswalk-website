@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/tizen/getting_started" />
+    <meta property="og:title" content="Linux host setup" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/tizen/linux_host_setup" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tizen/getting_started" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tizen/linux_host_setup" />
+    <meta name="twitter:title" content="Linux host setup" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -128,6 +128,16 @@
 
          <ul class="article-list">
             
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/windows_host_setup.html">Windows host setup</a>
+               
+           </li>
+           
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/tizen/linux_host_setup.html">Linux host setup</a>
+               
+           </li>
+           
            <li class="article-item ">
              <a class="article-link" href="/documentation/tizen/tizen_target_setup.html">Tizen target setup</a>
                
@@ -224,46 +234,32 @@
 
 
 <article class="article article--hasToC">
-  <h1>Getting started with the Crosswalk Project</h1>
-<p>This tutorial will get you up and running with the Crosswalk Project as quickly as possible.</p>
-<p><strong>For Cordova users, also check out <a href="/documentation/cordova.html">Crosswalk WebView in Cordova 4.0</a> to easily use the advanced Crosswalk webview with your Cordova 4.0 app.</strong></p>
-<p>Note the tutorial uses the latest stable version of the Crosswalk Project for Android. Newer versions may not work as explained below (for example, the structure of the Crosswalk Android download file may be different).</p>
-<p>For Tizen, a <a href="/documentation/downloads.html#release-channels">canary</a> version is used (there are no stable or beta downloads for Tizen).</p>
-<p><strong>This tutorial explains how to:</strong></p>
+  <h1>Linux host setup</h1>
+<p>These instructions have been tested on Fedora Linux 20, 64 bit. If you are using a different platform, you may need to modify them to suit your environment (e.g. use <code>apt-get</code> instead of <code>yum</code> if using Ubuntu, change package names where they differ from Fedora&#39;s package names).</p>
+<p>In this tutorial, you&#39;re going to use an emulated Tizen IVI image, running under VMware. To be able to create this image and access it, you need to install a few packages on the host machine:</p>
 <ol>
-<li><p>Set up the <em>host</em>: the machine where you will be developing the application.</p>
+<li><p><strong>bash:</strong> the script for generating Tizen packages runs under a bash shell. Usually, bash is installed by default, but just in case it&#39;s not:</p>
+<pre><code>sudo yum install bash</code></pre>
+</li>
+<li><p>Packages containing utilities:</p>
 <ul>
-<li><a href="/documentation/getting_started/windows_host_setup.html">Windows host</a></li>
-<li><a href="/documentation/getting_started/linux_host_setup.html">Linux host</a></li>
+<li><strong>openssh:</strong> this is so you can use the <code>ssh</code> command to push files to, and log in to, the virtual machine./li&gt;
+<li><strong>openssl:</strong> this provides the <code>openssl</code> command used to create a key for signing your Tizen packages.</li>
+<li><strong>bzip2:</strong> to unpack the Tizen IVI disk image.</li>
+<li><strong>qemu-img:</strong> this is used to convert a Tizen IVI disk image into a format suitable for use with VMware.</li>
 </ul>
-<p>Note that it may be possible to develop for Crosswalk on other platforms, but only Windows and Linux are officially supported.</p>
+
+<p>You can usually install all of these with your package manager. For example, on Fedora</p>
+<pre><code>sudo yum install openssh openssl bzip2 qemu-img</code></pre>
 </li>
-<li>Set up <em>targets</em>: machines which will run the Crosswalk application, either physical or virtual.<ul>
-<li><a href="/documentation/getting_started/android_target_setup.html">Android target</a></li>
-<li><a href="/documentation/getting_started/tizen_target_setup.html">Tizen target</a></li>
-</ul>
+<li><p><strong>Kernel headers:</strong> these are required so that VMware can compile the Linux kernel modules which enable it to run:</p>
+<pre><code>sudo yum install kernel-headers</code></pre>
 </li>
-<li><a href="/documentation/getting_started/build_an_application.html">Build a very simple HTML5 application</a>.</li>
-<li>Run that application using stable releases of Crosswalk:<ul>
-<li><a href="/documentation/getting_started/run_on_android.html">Run on Crosswalk Android, version ${XWALK-STABLE-ANDROID-X86}</a></li>
-<li><a href="/documentation/getting_started/run_on_tizen.html">Run on Crosswalk Tizen for x86, canary version</a></li>
-</ul>
-</li>
-<li>For Android only:<ul>
-<li><a href="/documentation/getting_started/deploy_to_android_store.html">Deploy the application to an Android app store</a></li>
-</ul>
+<li><p><strong>VMware Player</strong> or <strong>VMware Workstation</strong>, to create and run the virtual machine. The free version of Player can be downloaded from <a href="https://my.vmware.com/web/vmware/free">the VMware website</a>. However, if you are using Player for commercial purposes, you will <a href="http://store.vmware.com/buyplayerplus">need a licence</a>.</p>
+<p>If you need help with installing VMware products, see <a href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2053973">this page on the VMware website</a>.</p>
 </li>
 </ol>
-<p>You will need to be comfortable using a command line to follow these steps. If you prefer to use a graphical integrated development environment (IDE), the free <strong>Intel XDK</strong> provides an alternative way to package applications for Crosswalk Android. See the <a href="http://xdk-software.intel.com/">Intel XDK website</a> for more details.</p>
-<p>Throughout this tutorial, commands you should run in a shell are prefixed with a <code>&gt;</code> character. On Windows, you can use the standard Windows console; on Linux, you can use a bash shell.</p>
-<p><strong>By the end of the tutorial</strong>, you should understand the workflow for creating Crosswalk applications from your own HTML5 projects.</p>
-<p><strong>This tutorial doesn&#39;t cover:</strong></p>
-<ul>
-<li>How to write HTML5 applications. We use the simplest possible HTML5 application for this tutorial, so we can focus on the packaging and deployment aspects of Crosswalk.</li>
-<li>How to use Crosswalk-specific APIs. The code in the tutorial should run perfectly well on any modern web browser, as well as on Crosswalk.</li>
-<li>How to write <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Extensions">Crosswalk extensions</a>. This will be covered in other tutorials.</li>
-<li>How to compile Crosswalk itself. This is covered in the <a href="/contribute">Contribute</a> section.</li>
-</ul>
+<p>Now the host is setup, you can prepare your targets.</p>
 
   <footer class="article-next">
     
@@ -271,6 +267,20 @@
   
   
     
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/tizen/tizen_target_setup.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Tizen target setup</h3>
+      </a>
     
   
     

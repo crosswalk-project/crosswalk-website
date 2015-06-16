@@ -14,7 +14,7 @@ tutorial.
 ## Hello World on Android
 
 Once you've set up the Crosswalk Android packaging dependencies,
-follow the steps in [Run on Android](/documentation/getting_started/run_on_android.html).
+follow the steps in [Run on Android](/documentation/android/run_on_android.html).
 
 The quick version is that you can build the Hello World apk with:
 
@@ -36,7 +36,7 @@ Then install the apk file on Android:
 ## Hello World on Tizen
 
 Follow the steps in
-[Run on Tizen](/documentation/getting_started/run_on_tizen.html)
+[Run on Tizen](/documentation/tizen/run_on_tizen.html)
 to install and run the Hello World sample.
 
 Or here's the quick version:

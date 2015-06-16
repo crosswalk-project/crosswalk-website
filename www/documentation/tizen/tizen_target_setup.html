@@ -128,6 +128,16 @@
 
          <ul class="article-list">
             
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/windows_host_setup.html">Windows host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/linux_host_setup.html">Linux host setup</a>
+               
+           </li>
+           
            <li class="article-item  nav-item--active">
              <a class="article-link" href="/documentation/tizen/tizen_target_setup.html">Tizen target setup</a>
                
@@ -228,7 +238,7 @@
 <p>To run Crosswalk applications on Tizen, you need to install the Crosswalk runtime on each target. (Unlike Crosswalk for Android, it is currently not possible to bundle the Crosswalk runtime with the application for deployment to Tizen.)</p>
 <p>You can use either a physical Tizen device or an emulated one (virtual machine) as a target. The instructions below cover both, but mainly concentrate on using a Tizen IVI virtual machine.</p>
 <p>Crosswalk is available for Tizen version 2.1 or higher.</p>
-<p>Tizen extensions for Crosswalk are also available, which enable you to make use of <a href="https://developer.tizen.org/documentation/dev-guide/2.2.1?redirect=https%3A//developer.tizen.org/dev-guide/2.2.1/org.tizen.web.appprogramming/html/api_reference/api_reference.htm">Tizen APIs</a> in applications running in Crosswalk on Tizen. We don&#39;t need them for this tutorial, so we won&#39;t cover them here.</p>
+<p>Tizen extensions for Crosswalk are also available, which enable you to make use of <a href="https://developer.tizen.org/web-application?redirect=https%3A//developer.tizen.org/dev-guide/2.3.0/org.tizen.web.apireference/html/web_api_reference.htm">Tizen APIs</a> in applications running in Crosswalk on Tizen. We don&#39;t need them for this tutorial, so we won&#39;t cover them here.</p>
 <p>In the instructions below, <code>&lt;path to Tizen SDK&gt;</code> refers to the path to the root directory of your Tizen SDK installation.</p>
 <h2>Tizen device</h2>
 <p>At the time of writing (April 2014), there are no off-the-shelf Tizen devices on the market.</p>
@@ -244,7 +254,7 @@
 <p>The preferred approach, covered in the sections below, is to set up a Tizen IVI image under VMware.</p>
 <p><strong>Note:</strong> If you use the Tizen SDK Emulator manager or a physical device, some of the instructions below may not be applicable, as you will be using <code>sdb</code> to copy files to and run a shell on the target, rather than <code>ssh</code>.</p>
 <h3>Set up a Tizen IVI virtual machine with VMware</h3>
-<p>After you have set up your host machine with the VMware Player or Workstation (<a href="/documentation/getting_started/windows_host_setup.html#Installation-for-Crosswalk-Tizen">Windows</a>, <a href="/documentation/getting_started/linux_host_setup.html#Installation-for-Crosswalk-Tizen">Linux</a>), you can create a virtual Tizen IVI machine.</p>
+<p>After you have set up your host machine with the VMware Player or Workstation (<a href="/documentation/tizen/windows_host_setup.html">Windows</a>, <a href="/documentation/tizen/linux_host_setup.html">Linux</a>), you can create a virtual Tizen IVI machine.</p>
 <p>To do this, follow <a href="https://wiki.tizen.org/wiki/IVI/IVI_3.0_VMware">these instructions on the Tizen wiki</a>.</p>
 <p>Here&#39;s a summary of the steps for Fedora 20, using VMware Workstation and the <code>tizen_20140410.5_ivi-release-mbr-i586-sdb.raw.bz2</code> daily build (available from the <a href="http://download.tizen.org/releases/daily/tizen/ivi-3.0.m14.3/latest/images/emulator/ivi-mbr-i586-emul/">daily builds page</a>). The steps for Windows are similar, though you will need to first install <a href="http://git-scm.com/download/win">git SCM for Windows</a>. After installing you will find a <code>Git Bash</code> entry in the Windows menu which will bring up a bash shell with the tools you need, including <code>curl</code> and <code>bunzip2</code>.</p>
 <ol>
@@ -341,12 +351,18 @@ Loaded: loaded (/usr/lib/systemd/user/xwalk.service; static)
 Active: inactive (dead)</code></pre>
 </li>
 </ol>
-<p>The <a href="/documentation/getting_started/run_on_tizen.html">Run on Tizen</a> section explains how to run an application with Crosswalk.</p>
+<p>The <a href="/documentation/tizen/run_on_tizen.html">Run on Tizen</a> section explains how to run an application with Crosswalk.</p>
 
   <footer class="article-next">
     
 
   
+  
+    
+    
+  
+    
+    
   
     
     
