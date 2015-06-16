@@ -1,7 +1,7 @@
 # Crosswalk with Cordova 3.0
 
 <hr>
-<strong>Note:</strong> Newer versions of Cordova (4.0+), allow Crosswalk to be used easily as a puggable webview. Unless you must use Cordova version 3 or lower, it is recommended that you use that method: [Using Crosswalk WebView in Cordova Android 4.0](http://xwalk.com/documentation/cordova.html)
+<strong>Note:</strong> Newer versions of Cordova (4.0+), allow Crosswalk to be used easily as a puggable webview. Unless you must use Cordova version 3 or lower, it is recommended that you use that method: [Using Crosswalk WebView in Cordova Android 4.0](/documentation/cordova/cordova_4.html)
 <hr>
 
 ## Overview
