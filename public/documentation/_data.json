@@ -5,17 +5,23 @@
   "getting_started": {
     "title": "Getting Started"
   },
+  "android": {
+    "title": "Android"
+  },
+  "tizen": {
+    "title": "Tizen"
+  },
   "manifest": {
     "title": "Manifest"
   },
-  "android_extensions": {
-    "title": "Android extensions"
-  },
-  "tizen_ivi_extensions": {
-    "title": "Tizen IVI Extensions"
+  "apis": {
+    "title": "APIs"
   },
   "cordova": {
     "title": "Cordova"
+  },
+  "downloads": {
+    "title": "Downloads"
   },
   "embedding_crosswalk": {
     "title": "Embedding Crosswalk"
@@ -26,14 +32,8 @@
   "screens": {
     "title": "Screens"
   },
-  "downloads": {
-    "title": "Downloads"
-  },
   "samples": {
     "title": "Samples"
-  },
-  "apis": {
-    "title": "APIs"
   },
   "community": {
     "title": "Community"

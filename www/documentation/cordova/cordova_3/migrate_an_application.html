@@ -115,19 +115,25 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/manifest.html">Manifest</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
@@ -174,6 +180,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
 
          
@@ -192,19 +204,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
@@ -283,7 +283,7 @@ $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-medi
 $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-network-information.git#r0.2.8
 $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git#r0.3.0
 $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibration.git#r0.3.8</code></pre>
-<p>Note that the kitchen sink application uses all the Cordova plugins. Also note that the <code>cordova</code> command wraps the <code>plugman</code> tool, described in the <a href="/documentation/cordova/add_plugins.html">Add Cordova plugins</a> page. You can get more details about how plugins are installed from that page.</p>
+<p>Note that the kitchen sink application uses all the Cordova plugins. Also note that the <code>cordova</code> command wraps the <code>plugman</code> tool, described in the <a href="/documentation/cordova/cordova_3/add_plugins.html">Add Cordova plugins</a> page. You can get more details about how plugins are installed from that page.</p>
 </li>
 <li><p>Build the Android package:</p>
 <pre><code>$ cordova build android</code></pre>
@@ -296,7 +296,7 @@ $ cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibr
 <p><img src="/assets/cordova-kitchensink.png"></p>
 <h2 id="migrate">Migrate to Crosswalk</h2>
 
-<p><strong>Before you can migrate your application to Crosswalk, you need to download and unpack a crosswalk-cordova-android bundle. See <a href="/documentation/cordova/develop_an_application.html#download-the-crosswalk-cordova-android-bundle">these instructions</a>.</strong></p>
+<p><strong>Before you can migrate your application to Crosswalk, you need to download and unpack a crosswalk-cordova-android bundle. See <a href="/documentation/cordova/cordova_3/develop_an_application.html#download-the-crosswalk-cordova-android-bundle">these instructions</a>.</strong></p>
 <p>You can migrate a Cordova application to Crosswalk in two ways:</p>
 <ul>
 <li><a href="#Migrate-using-command-line-tools">Migrate using command line tools</a></li>
@@ -393,7 +393,7 @@ $ adb install platforms/android/bin/KitchenSink-debug.apk</code></pre>
 $ cordova run android</code></pre>
 <p>The application should now be running on the target.</p>
 </li>
-<li><p>The application should look identical to how it does on standard Cordova. If you are using a debug build (i.e. you didn&#39;t apply the <code>--release</code> option), you should also be able to <a href="/documentation/cordova/develop_an_application.html#debug-the-application">debug your application using Chrome</a>.</p>
+<li><p>The application should look identical to how it does on standard Cordova. If you are using a debug build (i.e. you didn&#39;t apply the <code>--release</code> option), you should also be able to <a href="/documentation/cordova/cordova_3/develop_an_application.html#debug-the-application">debug your application using Chrome</a>.</p>
 <p>You can also use the dev tools to confirm your application is using Crosswalk. Open &quot;chrome://inspect&quot; in a Chrome browser and select the &quot;inspect&quot; link for the <em>Intel XDK Kitchen Sink</em> application (or for your own application).</p>
 <p>In the Chrome dev tools, you should now have a JavaScript console. You can verify that your application is using Crosswalk as its webview by echoing the <code>navigator.userAgent</code> property to the console:</p>
 <pre><code>&gt; navigator.userAgent
@@ -528,7 +528,7 @@ $ cp -a &lt;path_to_unpacked_bundle&gt;/framework/xwalk_core_library/libs/* \
 <h2 id="Upgrading-Crosswalk-in-a-migrated-project">Upgrading Crosswalk in a migrated project</h2>
 
 <p>If you have a Cordova application which is already migrated to Crosswalk, but you want to upgrade the version of Crosswalk, follow the instructions below which apply to your environment (command line or ADT).</p>
-<p>Note that both sets of instructions require you to first <a href="/documentation/cordova/develop_an_application.html#Download-the-crosswalk-cordova-android-bundle">download and unpack the Crosswalk Cordova bundle</a> which you want to upgrade to.</p>
+<p>Note that both sets of instructions require you to first <a href="/documentation/cordova/cordova_3/develop_an_application.html#Download-the-crosswalk-cordova-android-bundle">download and unpack the Crosswalk Cordova bundle</a> which you want to upgrade to.</p>
 <h3 id="Upgrade-using-the-command-line-tools">Upgrade using the command line tools</h3>
 
 <p>These instructions assume that you have already <a href="#Migrate-using-command-line-tools">migrated a Cordova application to Crosswalk using the command-line tools</a>.</p>

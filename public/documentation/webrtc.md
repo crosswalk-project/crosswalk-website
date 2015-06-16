@@ -82,13 +82,13 @@ You could have a host machine to run the server and two Android devices to run t
 
 ### Host setup
 
-The host should first be set up for Crosswalk Android development ([Windows](/documentation/getting_started/windows_host_setup.html), [Linux](/documentation/getting_started/linux_host_setup.html)). Pay particular attention to the *Installation for Crosswalk Android* section.
+The host should first be set up for Crosswalk Android development ([Windows](/documentation/android/windows_host_setup.html), [Linux](/documentation/android/linux_host_setup.html)). 
 
 You will also need to install [**node**](http://nodejs.org/) to run the server. Providing you use a recent enough version of node, it should also include the **npm** package manager; if not, you will need to install that separately.
 
 ### Target setup
 
-For Android targets, ensure that you [have access via adb](/documentation/getting_started/android_target_setup.html). No special setup is required beyond that.
+For Android targets, ensure that you [have access via adb](/documentation/android/android_target_setup.html). No special setup is required beyond that.
 
 If you are using a desktop machine as a target, no special setup is required, other than ensuring that you have a Chrome browser installed.
 
@@ -474,7 +474,7 @@ To run the application on a desktop machine via Chrome, do the following:
 
 ### Run on Android with Crosswalk
 
-During the host setup for Android ([Windows](/documentation/getting_started/windows_host_setup.html#Download-the-Crosswalk-Android-app-template), [Linux](/documentation/getting_started/linux_host_setup.html#Download-the-Crosswalk-Android-app-template)), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on [this page](/documentation/getting_started/run_on_android.html), but here's a summary (tested on Linux):
+During the host setup for Android ([Windows](/documentation/android/windows_host_setup.html#Download-the-Crosswalk-Android-app-template), [Linux](/documentation/about/linux_host_setup.html#Download-the-Crosswalk-Android-app-template)), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on [this page](/documentation/android/run_on_android.html), but here's a summary (tested on Linux):
 
     $ cd crosswalk-${XWALK-STABLE-ANDROID-X86}
 
@@ -535,7 +535,7 @@ Once the application is running on two targets, you should be able to make a cal
 
     In the second client, you should see a message which states: "incoming call answered". You should eventually see the stream from the first client in the "REMOTE" video element.
 
-### Troubleshooting
+### <a id="Troubleshooting"></a>Troubleshooting
 
 If one or both of the client applications isn't working, or you have problems making a call, there are a few things you can try:
 

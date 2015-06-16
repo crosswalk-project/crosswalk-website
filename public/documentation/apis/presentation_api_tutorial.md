@@ -118,7 +118,7 @@ window.addEventListener("message", function(event) {
 </html>
 ```
 
-Follow the instructions on [how to build a Crosswalk application](https://crosswalk-project.org/#documentation/getting_started/build_an_application) to package the above two HTML files into an Android application; then follow the instructions for [running on Android](https://crosswalk-project.org/documentation/getting_started/run_on_android.html) to launch the application on a Android 4.2+ device. Make sure there is at least one available secondary display before running the application: see the Setup Wireless Display section above.
+Follow the instructions on [how to build a Crosswalk application](/documentation/android/build_an_application.html) to package the above two HTML files into an Android application; then follow the instructions for [running on Android](/documentation/android/run_on_android.html) to launch the application on a Android 4.2+ device. Make sure there is at least one available secondary display before running the application: see the Setup Wireless Display section above.
 
 Once the application is running, clicking the “Show Presentation” button will open the `content.html` page on the secondary display.
 

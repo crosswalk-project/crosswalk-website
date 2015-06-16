@@ -4,7 +4,7 @@ The Crosswalk Project embedding API enables you to embed the Crosswalk Project r
 
 Using the embedding API is only recommended for cases where you have a substantial amount of Java code in your application, but want to write the UI (or parts of the UI) using web technologies. If you just need a runtime wrapper for a web application, there are two simpler options for deploying to Android with Crosswalk:
 
-*   [Use the default Crosswalk packaging tools](/documentation/getting_started/run_on_android.html) to generate an Android package for your web application.
+*   [Use the default Crosswalk packaging tools](/documentation/android/run_on_android.html) to generate an Android package for your web application.
 *   [Use Cordova with Crosswalk](/documentation/cordova.html): that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.
 
 If you do decide to use the embedding API, follow the instructions below which explain how to use it.
@@ -21,9 +21,9 @@ The tutorial steps were tested on Linux (Fedora 20), but should be adaptable to 
 
 ### Set up the host and target
 
-Before you use the embedding API, ensure that you have [set up your host environment for Android development](/documentation/getting_started/linux_host_setup.html).
+Before you use the embedding API, ensure that you have [set up your host environment for Android development](/documentation/android/linux_host_setup.html).
 
-You will also need to set up an Android target to deploy the application to, as described on the [Android target setup](/documentation/getting_started/android_target_setup.html) page.
+You will also need to set up an Android target to deploy the application to, as described on the [Android target setup](/documentation/android/android_target_setup.html) page.
 
 As this tutorial uses ADT, ensure that you have [installed the necessary ADT components](http://developer.android.com/tools/sdk/eclipse-adt.html) for your host.
 
@@ -323,7 +323,7 @@ The key line is:
 
 `XWalkPreferences.setValue()` sets global preferences for Crosswalk; in this case, you are turning on the debugging flag.
 
-Now install and run your application as usual. Then, to perform remote debugging, follow [these instructions](/documentation/getting_started/remote_debugging.html).
+Now install and run your application as usual. Then, to perform remote debugging, follow [these instructions](/documentation/android/android_remote_debugging.html).
 
 ## Further information
 

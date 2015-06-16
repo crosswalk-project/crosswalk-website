@@ -112,7 +112,7 @@ Note that we don't mention anywhere that `foo_hd.png` is 256x256 raw pixels in s
 
 <h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
-Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](/documentation/getting_started/run_on_android.html). The `make_apk.py` script discards some of the information included in the `icon` field, for example the `density`.
+Rather than affecting the Crosswalk runtime on Android directly, the `icons` field affects how an application is packaged by [`make_apk.py`](/documentation/android/run_on_android.html). The `make_apk.py` script discards some of the information included in the `icon` field, for example the `density`.
 
 If the <code>icons</code> field contains multiple icon sizes, the `make_apk.py` script will map the corresponding icon files to [Android drawable resources](http://developer.android.com/guide/topics/resources/providing-resources.html) depending on their size.
 

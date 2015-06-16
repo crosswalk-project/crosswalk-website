@@ -115,25 +115,37 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/manifest.html">Manifest</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
 
          
        </li>
@@ -168,19 +180,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
@@ -382,7 +382,7 @@ $ python make_apk.py --manifest=/path/to/crosswalk-samples/space-dodge-game/&lt;
 <p>or</p>
 <pre><code>$ adb install space_dodge_game_0.0.0.1_arm.apk</code></pre>
 <p>depending on your target hardware.</p>
-<p>For more details about building and running Crosswalk applications on Android, see <a href="/documentation/getting_started/run_on_android.html">the Getting started pages</a>.</p>
+<p>For more details about building and running Crosswalk applications on Android, see <a href="/documentation/android/run_on_android.html">the Getting started pages</a>.</p>
 </li>
 </ol>
 <h2>Issue 1: The game sometimes displays in portrait orientation</h2>
@@ -413,9 +413,9 @@ $ python make_apk.py --manifest=/path/to/crosswalk-samples/space-dodge-game/&lt;
   &quot;start_url&quot;: &quot;index.html&quot;,
   &quot;orientation&quot;: &quot;landscape&quot;
 }</code></pre>
-<p>You could then <a href="/documentation/getting_started/run_on_android.html">build an application package for Android</a> from this manifest with:</p>
+<p>You could then <a href="/documentation/android/run_on_android.html">build an application package for Android</a> from this manifest with:</p>
 <pre><code>$ python make_apk.py --manifest=/projects/space_dodge_game/manifest.json</code></pre>
-<p>Install it on an Android target as described in <a href="/documentation/getting_started/run_on_android.html">the Getting started pages</a>.</p>
+<p>Install it on an Android target as described in <a href="/documentation/android/run_on_android.html">the Getting started pages</a>.</p>
 <p>Using the <code>orientation</code> field in the manifest has exactly the same effect as using <code>screen.lockOrientation</code> in your application code: the application rotates to the requested orientation after the application starts. But <code>screen.lockOrientation</code> has the advantage of being supported by other runtimes (e.g. Firefox OS), so may be a better choice if you need your application to work cross-platform.</p>
 <p>The <code>orientation</code> manifest field is defined in the <a href="http://w3c.github.io/manifest/">W3C Manifest for web application specification</a>.</p>
 </li>
@@ -440,14 +440,14 @@ $ python make_apk.py --manifest=/path/to/crosswalk-samples/space-dodge-game/&lt;
   &quot;display&quot;: &quot;fullscreen&quot;,
   &quot;orientation&quot;: &quot;landscape&quot;
 }</code></pre>
-<p><a href="/documentation/getting_started/run_on_android.html">Build and deploy to the device</a> as usual.</p>
+<p><a href="/documentation/android/run_on_android.html">Build and deploy to the device</a> as usual.</p>
 <p>The <code>display</code> manifest field is defined in the <a href="http://w3c.github.io/manifest/">W3C Manifest for web application specification</a>.</p>
 </li>
 <li><p>Use the <code>--fullscreen</code> option with the <code>make_apk.py</code> script.</p>
 <p>For example:</p>
 <pre><code>$ python make_apk.py --manifest=/projects/space_dodge_game/manifest.json \
     --orientation=landscape --fullscreen</code></pre>
-<p>This is a useful option if you are using an older version of Crosswalk which doesn&#39;t support the <code>display</code> field in the manifest. See <a href="/documentation/getting_started/run_on_android.html">the Getting started pages</a> for more information about using <code>make_apk.py</code>.</p>
+<p>This is a useful option if you are using an older version of Crosswalk which doesn&#39;t support the <code>display</code> field in the manifest. See <a href="/documentation/android/run_on_android.html">the Getting started pages</a> for more information about using <code>make_apk.py</code>.</p>
 </li>
 </ul>
 <p>Using either the <code>display</code> field or the <code>--fullscreen</code> option has the same effect: the application displays in fullscreen, hiding the system status bar on Android:</p>

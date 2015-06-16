@@ -1,0 +1,23 @@
+{
+  "windows_host_setup": {
+    "title": "Windows host setup"
+  },
+  "linux_host_setup": {
+    "title": "Linux host setup"
+  },
+  "tizen_target_setup": {
+    "title": "Tizen target setup"
+  },
+  "build_an_application": {
+    "title": "Build an application"
+  },
+  "run_on_tizen": {
+    "title": "Run on Tizen"
+  },
+  "tizen_remote_debugging": {
+    "title": "Remote debugging"
+  },
+  "ivi_extensions": {
+    "title": "IVI Extensions"
+  }
+}

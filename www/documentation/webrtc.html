@@ -115,25 +115,37 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/manifest.html">Manifest</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
 
          
        </li>
@@ -157,19 +169,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
@@ -255,10 +255,10 @@
 </ul>
 <p>You could have a host machine to run the server and two Android devices to run the client applications if you prefer. Alternatively, you could use one or more emulated Android devices, providing they are able to emulate the camera.</p>
 <h3>Host setup</h3>
-<p>The host should first be set up for Crosswalk Android development (<a href="/documentation/getting_started/windows_host_setup.html">Windows</a>, <a href="/documentation/getting_started/linux_host_setup.html">Linux</a>). Pay particular attention to the <em>Installation for Crosswalk Android</em> section.</p>
+<p>The host should first be set up for Crosswalk Android development (<a href="/documentation/android/windows_host_setup.html">Windows</a>, <a href="/documentation/android/linux_host_setup.html">Linux</a>). </p>
 <p>You will also need to install <a href="http://nodejs.org/"><strong>node</strong></a> to run the server. Providing you use a recent enough version of node, it should also include the <strong>npm</strong> package manager; if not, you will need to install that separately.</p>
 <h3>Target setup</h3>
-<p>For Android targets, ensure that you <a href="/documentation/getting_started/android_target_setup.html">have access via adb</a>. No special setup is required beyond that.</p>
+<p>For Android targets, ensure that you <a href="/documentation/android/android_target_setup.html">have access via adb</a>. No special setup is required beyond that.</p>
 <p>If you are using a desktop machine as a target, no special setup is required, other than ensuring that you have a Chrome browser installed.</p>
 <h2>Setting up the project</h2>
 <p>Make a project directory:</p>
@@ -604,7 +604,7 @@ peer server running on 192.168.0.25:9000</code></pre>
 </li>
 </ol>
 <h3>Run on Android with Crosswalk</h3>
-<p>During the host setup for Android (<a href="/documentation/getting_started/windows_host_setup.html#Download-the-Crosswalk-Android-app-template">Windows</a>, <a href="/documentation/getting_started/linux_host_setup.html#Download-the-Crosswalk-Android-app-template">Linux</a>), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on <a href="/documentation/getting_started/run_on_android.html">this page</a>, but here&#39;s a summary (tested on Linux):</p>
+<p>During the host setup for Android (<a href="/documentation/android/windows_host_setup.html#Download-the-Crosswalk-Android-app-template">Windows</a>, <a href="/documentation/about/linux_host_setup.html#Download-the-Crosswalk-Android-app-template">Linux</a>), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on <a href="/documentation/android/run_on_android.html">this page</a>, but here&#39;s a summary (tested on Linux):</p>
 <pre><code>$ cd crosswalk-${XWALK-STABLE-ANDROID-X86}
 
 $ python make_apk.py --package=org.crosswalkproject.example \
@@ -650,7 +650,7 @@ $ adb install /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.ap
 <p>In the second client, you should see a message which states: &quot;incoming call answered&quot;. You should eventually see the stream from the first client in the &quot;REMOTE&quot; video element.</p>
 </li>
 </ol>
-<h3>Troubleshooting</h3>
+<h3><a id="Troubleshooting"></a>Troubleshooting</h3>
 <p>If one or both of the client applications isn&#39;t working, or you have problems making a call, there are a few things you can try:</p>
 <ul>
 <li><p>Check the PeerJS server output. Make sure that connection requests are reaching the server and that it is registering the IDs correctly.</p>

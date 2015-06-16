@@ -22,7 +22,7 @@ Note that neither of these fields has an effect if it is included in a `manifest
 
 <h2 id="Configure-launch-on-Tizen">Configure launch on Tizen</h2>
 
-When you create an xpk package to install with Crosswalk on Tizen, the `manifest.json` file should be included with the other assets in the application, as described in the [Run on Tizen](/documentation/getting_started/run_on_tizen.html) section of the "Getting started" tutorial.
+When you create an xpk package to install with Crosswalk on Tizen, the `manifest.json` file should be included with the other assets in the application, as described in the [Run on Tizen](/documentation/tizen/run_on_tizen.html) section of the "Getting started" tutorial.
 
 Once installed, Crosswalk on Tizen will use the field values in `manifest.json` to control how the application is launched: which [entry point](/documentation/manifest/entry_points.html) is used, whether the application is [displayed in fullscreen mode](/documentation/manifest/display.html), etc.
 

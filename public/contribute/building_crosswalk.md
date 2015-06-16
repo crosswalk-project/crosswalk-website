@@ -292,10 +292,10 @@ By default, the generated RPM files end up in
 ### Testing a Tizen build
 
 The steps for installing a Tizen rpm on a device are covered in
-[Tizen target set up](/documentation/getting_started/tizen_target_setup.html).
+[Tizen target set up](/documentation/tizen/tizen_target_setup.html).
 
 Running an application on Tizen is covered in
-[Run on Tizen](/documentation/getting_started/run_on_tizen.html).
+[Run on Tizen](/documentation/tizen/run_on_tizen.html).
 
 ### Incremental builds
 

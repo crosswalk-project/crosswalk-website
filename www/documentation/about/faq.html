@@ -131,25 +131,37 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/manifest.html">Manifest</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/android_extensions.html">Android extensions</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen_ivi_extensions.html">Tizen IVI Extensions</a>
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
 
          
        </li>
@@ -173,19 +185,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
 
          
        </li>
@@ -260,7 +260,7 @@
 <p>There are two approaches to building an application which supports both x86 and ARM platforms:</p>
 <ul>
 <li><p>Build two separate packages for your application, one for x86 and one for ARM; then upload both to the app stores where you are hosting your application. Prominent stores like Google Play have support for <a href="http://developer.android.com/google/play/publishing/multiple-apks.html">uploading multiple packages for different platforms</a>.</p>
-<p>The <a href="/documentation/getting_started/run_on_android.html">Crosswalk apk generation script</a> (<code>make_apk.py</code>) generates packages for both architectures to facilitate this way of working.</p>
+<p>The <a href="/documentation/android/run_on_android.html">Crosswalk apk generation script</a> (<code>make_apk.py</code>) generates packages for both architectures to facilitate this way of working.</p>
 </li>
 <li><p>Build one package for your application, but include both the x86 and ARM versions of Crosswalk in it. The down-side of this approach is that it makes the package file very large (c. 40Mb before you add your application code).</p>
 <p>Creating a package this way requires you to copy the Crosswalk shared object files for both architectures into the <code>lib/</code> directory of the apk package file. For example, an apk with support for x86 and ARM would contain the following files:</p>
@@ -299,7 +299,7 @@ lib/x86/libxwalkcore.so</code></pre>
 </li>
 <li><p>If you are <strong><a href="/documentation/cordova.html">using Crosswalk Cordova</a></strong>, the file should be placed in the <code>assets/</code> directory of your project.</p>
 </li>
-<li><p>If you are <strong><a href="/documentation/getting_started/run_on_android.html">building an Android package with the <code>make_apk.py</code> script</a></strong>, you can pass an option to create the file inside the output Android package:</p>
+<li><p>If you are <strong><a href="/documentation/android/run_on_android.html">building an Android package with the <code>make_apk.py</code> script</a></strong>, you can pass an option to create the file inside the output Android package:</p>
 <pre><code>$ make_apk.py --manifest=mygame/manifest.json \
   --xwalk-command-line=&quot;--ignore-gpu-blacklist&quot;</code></pre>
 </li>
