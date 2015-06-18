@@ -1,4 +1,9 @@
 {
+  "crosswalk-shared-mode": {
+  "title": "Using the Crosswalk Project Runtime in Shared Mode",
+  "date": "2015-06-18T12:00",
+  "author": "Francesco Balestrieri"
+  },
   "crosswalk-14-beta": {
   "title": "Crosswalk Project 14 Beta: Shared Mode, Chromium 43, WebCL, SIMD for asm.js",
   "date": "2015-05-22T12:00",
