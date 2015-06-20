@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/contribute" />
+    <meta property="og:title" content="Using the Crosswalk Project Runtime in Shared Mode" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-shared-mode" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/contribute" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-shared-mode" />
+    <meta name="twitter:title" content="Using the Crosswalk Project Runtime in Shared Mode" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -97,24 +97,36 @@
       <div class="doc-main">
         <div class="row">
           
-          
-<!DOCTYPE HTML>
-<html lang="en-US">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="robots" content="noindex, nofollow">
-        <meta http-equiv="refresh" content="1;url=/contribute/">
-        <script type="text/javascript">
-            window.location.href = "/contribute/"
-        </script>
-    </head>
-    <body>
-        If you are not redirected automatically, <a href="/contribute/">click here</a>.
-    </body>
-</html>
+          <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">Using the Crosswalk Project Runtime in Shared Mode</h1>
+    <span class="article-meta">
+      <a href="crosswalk-shared-mode.html"><time class="js-vagueTime" datetime="Thu, 18 Jun 2015 12:00:00 GMT">Thu, 18 Jun 2015 12:00:00 GMT</time></a>
+       by <span class="article-author">Francesco Balestrieri</span>
+    </span>
+  </header>
+  
+  <p>Starting wiht Crosswalk 14, you can package your application in “shared mode”. This means that your application’s APK won’t include the Crosswalk runtime, which will be downloaded from the Play Store when the application is first started. From that point on, the Crosswalk runtime will be shared with any other Crosswalk application that is also packaged in shared mode. This has a few pros and cons:</p>
+<h2>Pros</h2>
+<ul>
+<li>Produces a significant smaller APK file size for Crosswalk applications. For example if packaging a simple HelloWorld web application, the APK file size is 20MB for ARM and 23MB for x86. If the same contents is packaged in shared mode, the APK file size will shrink to 68KB</li>
+<li>Applications built in shared mode are architecture independent. Only one package needs to be submitted to the Play Store</li>
+<li>Crosswalk is updated independently of the application. Taking advantage of the latest improvements doesn&#39;t require an update of the application</li>
+<li>Web applications that use Crosswalk embedded which are downloaded to the wrong architecture will now automatically download the correct Crosswalk runtime for the architecture and use it in shared mode. (<a href="/documentation/shared_mode.html#Architecture-Independence">Read more</a>)</li>
+</ul>
+<h2>Cons</h2>
+<ul>
+<li>If the Crosswalk runtime library is not installed, the user will have to download the APK of the runtime library in the first run. The normal startup process of the application will be interrupted.</li>
+<li>While we strive to maintain backwards compatibility, an updated Crosswalk runtime may be introduce incompatibility with the previous version. Developers need to test their applications against the latest Crosswalk release.</li>
+</ul>
+<p>Follow <a href="/documentation/shared_mode.html">these instructions</a> to package your application in shared mode.</p>
 
+  <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
 
-
+</article>
 
           
         </div>

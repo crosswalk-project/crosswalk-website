@@ -26,6 +26,9 @@
   "embedding_crosswalk": {
     "title": "Embedding Crosswalk"
   },
+  "shared_mode": {
+    "title": "Shared Mode"
+  },
   "webrtc": {
     "title": "WebRTC"
   },
