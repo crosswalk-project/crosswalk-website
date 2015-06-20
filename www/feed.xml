@@ -10,6 +10,18 @@
       
         
         <item>
+          <title>Using the Crosswalk Project Runtime in Shared Mode</title>
+          <description></description>
+          <pubDate>2015-06-18T12:00</pubDate>
+          <link>http://crosswalk-project.org/blog/crosswalk-shared-mode.html</link>
+          <guid isPermaLink="true">http://crosswalk-project.org/blog/crosswalk-shared-mode.html</guid>
+        </item>
+          
+    
+      
+      
+        
+        <item>
           <title>Crosswalk Project 14 Beta: Shared Mode, Chromium 43, WebCL, SIMD for asm.js</title>
           <description></description>
           <pubDate>2015-05-22T12:00</pubDate>
