@@ -9,42 +9,35 @@
 
 /*global $, jQuery, alert*/ 
 
-"use strict";
-
 const TOOLS_PAGE = 1;
 const HOME_PAGE = 2;
 
 var imgSize = 130;
 var hoverImgSize = 150;
-var widthPercentage = 25;
 
 function onHomePageImgClick (event) {
     window.open("/documentation/community/tools.html?tool=" + event.data.value, "_self");
 }
 
-function addToolImgEventHandlers(index, pageType) {
-    if (pageType == TOOLS_PAGE) {
-        //place holder
-    } else {
-        var img = $("#hp-img" + index);
-        img.on('mouseenter mouseleave', function(e) {
-            if ($(window).width() < 600) {
-                imgSize = 115;
-                hoverImgSize = 125;
-            }
-              $(this).stop().animate({  
-                  height: (e.type === 'mouseenter' ? hoverImgSize + "px" : imgSize + "px"),
-                  width:  (e.type === 'mouseenter' ? hoverImgSize + "px" : imgSize + "px")
-              }, "fast", "swing");
-        });
-        img.on('click', {value:index}, onHomePageImgClick);
-        img.css('cursor', 'pointer');
-    }
+function addToolImgEventHandlers(index) {
+    var img = $("#hp-img" + index);
+    img.on('mouseenter mouseleave', function(e) {
+        if ($(window).width() < 600) {
+            imgSize = 115;
+            hoverImgSize = 125;
+        }
+        $(this).stop().animate({  
+            height: (e.type === 'mouseenter' ? hoverImgSize + "px" : imgSize + "px"),
+            width:  (e.type === 'mouseenter' ? hoverImgSize + "px" : imgSize + "px")
+        }, "fast", "swing");
+    });
+    img.on('click', {value:index}, onHomePageImgClick);
+    img.css('cursor', 'pointer');
 }
 
 function createHtmlFromItem (item, pageType, itemWidth) {
     var content;
-    if (pageType == TOOLS_PAGE) {
+    if (pageType === TOOLS_PAGE) {
         content = 
         "<div class='tool-cube' id='cube" + item.index + "'>" + 
           (item.link ? "<a href='" + item.link + "'>" : "") + 
@@ -58,7 +51,7 @@ function createHtmlFromItem (item, pageType, itemWidth) {
               (item.company ? item.company : "") + 
               (item.link ? "</a></div>" : "") + 
           "</div></div></div>";
-    } else if (pageType == HOME_PAGE) {
+    } else if (pageType === HOME_PAGE) {
         content = 
         "<div class='tools-hp-cube' style='width:" + itemWidth + "%;' >" + 
           "<a href='/documentation/community/tools.html?tool=" + item.index + "'>" + 
@@ -81,16 +74,18 @@ function loadToolsOnPage(itemsToLoad, pageType, sortOrder) {
     if (divContent.length === 0) {
         divContent = "<br><br><h3 style='text-align: center;'>No tools to display</h3>";
     }
-    if (pageType == HOME_PAGE) {
+    if (pageType === HOME_PAGE) {
         divContent += "<br style='clear: left;' />";
     }
-    console.log (divContent);
+    //console.log (divContent);
     $("#tool-div").html(divContent);
     
     //add event handlers    
-    for (index = 0; index < itemsToLoad.length; index++) {
-        //addToolImgEventHandlers(index, pageType);
-    }    
+    /*if (pageType === HOME_PAGE) {
+        for (index = 0; index < itemsToLoad.length; index++) {
+            addToolImgEventHandlers(index);
+        }
+    }*/
 }
 
 function loadToolsFromFile(pageType, toolNum) {
@@ -131,9 +126,9 @@ function getToolURLParameters() {
     var toolNum = 0;
     //get the values passed in with URL (e.g. ?tool=5 --means the 5th tool in the tool.json file)
     var args = location.search.substring(1).split("&");
-    if (args.length == 1) {
+    if (args.length === 1) {
         var toolArg = args[0].split("=");
-        if (toolArg.length == 2) {
+        if (toolArg.length === 2) {
             if ($.isNumeric(toolArg[1])) {
                 toolNum = toolArg[1];
             }
