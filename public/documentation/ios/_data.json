@@ -1,0 +1,18 @@
+{
+  "quick_start_guide": {
+    "title": "Quick Start Guide"
+  },
+  "embedding_mode_&_native_apis": {
+    "title": "Embedding mode & native APIs"
+  },
+  "manifest": {
+    "title": "Manifest"
+  },
+  "extensions": {
+    "title": "Extensions"
+  },
+  "cordova_plugin_support": {
+    "title": "Cordova plugin support"
+  }
+}
+
