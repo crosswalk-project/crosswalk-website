@@ -1,8 +1,6 @@
 #Cordova Plugin Support
 
-## Concept
-
-Crosswalk for iOS provides the Cordova Plugins support by introducing the Cordova.framework based on the Crosswalk Extension. The `XWalkCordovaExtension` is responsible for managing the life cycle of the Cordova Plugins, simulates the environment that Cordova Plugin runs, and provides the functionalities that Cordova Plugin needs based on Crosswalk Extension framework. You can leverage the existing Cordova Plugins to extend Crosswalk's functionalities without changing any code of the plugins.
+Crosswalk for iOS provides support for Cordova Plugins by introducing the Cordova.framework based on the Crosswalk Extension mechanism. The `XWalkCordovaExtension` is responsible for managing the life cycle of the Cordova Plugins, replicates the environment that Cordova Plugins run in, and provides the functionalities that Cordova Plugins need based on the Crosswalk Extension framework. You can leverage the existing Cordova Plugins to extend Crosswalk's functionalities without changing any code of the plugins.
 
 ## Cordova Plugin API
 
@@ -33,7 +31,7 @@ We are going to support all the Cordova Plugin API in the comming future, the st
 
 * [org.apache.cordova.camera](https://github.com/apache/cordova-plugin-camera)
 
-It is warmly welcomed that you can contribute together with us to enable more Cordova Plugins for Crosswalk.
+You are warmly welcome to contribute together with us to enable more Cordova Plugins for Crosswalk.
 
 ## Quickstart
 

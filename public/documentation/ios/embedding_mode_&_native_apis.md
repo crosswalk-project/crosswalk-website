@@ -1,6 +1,6 @@
 # Embedding Mode & Native APIs
 
-The embedding mode enables the application developers to embed the Crosswalk runtime in their own iOS applications. The main interface is `XWalkView`, which is derived from `WKWebView`. You can use it as the way you use a `WKWebView` or `UIWebView` to load web pages or the whole web application, meanwhile utilizing the Crosswalk extension and Cordova plugin support provided by the Crosswalk runtime.
+The embedding mode enables the application developers to embed the Crosswalk runtime in their own iOS applications. The main interface is `XWalkView`, which is derived from `WKWebView`. You can use it as you would use a `WKWebView` or `UIWebView` to load web pages or the whole web application, meanwhile utilizing the Crosswalk extension and Cordova plugin support provided by the Crosswalk runtime.
 
 ## Creating an application with embedding mode
 
