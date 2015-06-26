@@ -8,6 +8,9 @@
   "android": {
     "title": "Android"
   },
+  "ios": {
+    "title": "iOS"
+  },
   "tizen": {
     "title": "Tizen"
   },
