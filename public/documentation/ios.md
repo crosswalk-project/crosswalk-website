@@ -50,8 +50,6 @@ NOTICE: Try them after the project's submodules get initialized, using:
   git submodule update --init --recursive
   ```
 
-You may also try out the [HexGL-iOS Demo](https://github.com/jondong/HexGL-iOS) written in HTML5 with the Crosswalk Extension support to evaluate the performance and extensibility of the Crosswalk framework.
-
 ## Licence
 
 Crosswalk Project for iOS is available under the BSD license. See the [LICENSE](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE) file for more information.
