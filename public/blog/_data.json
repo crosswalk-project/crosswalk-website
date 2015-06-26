@@ -1,4 +1,9 @@
 {
+  "ios-release": {
+  "title": "Introducing the Crosswalk Project for iOS",
+  "date": "2015-06-26T12:00",
+  "author": "Jonathan Dong"
+  },
   "crosswalk-shared-mode": {
   "title": "Using the Crosswalk Project Runtime in Shared Mode",
   "date": "2015-06-18T12:00",
