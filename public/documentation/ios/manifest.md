@@ -2,8 +2,6 @@
 
 **_This page describes the usage of manifest file in Crosswalk for iOS web applications._**
 
-## Concept
-
 The manifest file (e.g. manifest.plist) is located in your project source and used to specify meta data for your application (title, icon, etc.) as well as how it should behave and present itself.
 
 Crosswalk for iOS uses json format as its manifest format, and based on the [W3C Manifest for Web Application](http://w3c.github.io/manifest/). Crosswalk for iOS also extends the W3C manifest spec with additional fields prefixed with `xwalk_` keyword.

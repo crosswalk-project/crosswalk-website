@@ -1,8 +1,6 @@
 # Extensions
 
-## Concept
-
-The Extension is a way to extend the ability of the Crosswalk runtime. By creating an extension, you can introduce new objects or functions to the Javascript world, and implement those functionalities based on the native codes, written in either Objective-C or Swift. An Crosswalk Extension consist of:
+Extensions are a way to extend the ability of the Crosswalk runtime. By creating an extension, you can introduce new objects or functions to the Javascript world, and implement those functionalities based on the native codes, written in either Objective-C or Swift. An Crosswalk Extension consist of:
 
 * Native source codes (in Objective-C or Swift):
 
@@ -12,7 +10,7 @@ The Extension is a way to extend the ability of the Crosswalk runtime. By creati
 
   * A JavaScript file which exposes the native code to an app running on Crosswalk.
 
-Crosswalk for iOS runtime provides a way to auto generate JavaScript mapping codes, besides it also allows you to inject your own JavaScript codes for the extension.
+The Crosswalk for iOS runtime provides a way to auto generate JavaScript mapping codes, besides it also allows you to inject your own JavaScript codes for the extension.
 
 ## How to write an extension
 
