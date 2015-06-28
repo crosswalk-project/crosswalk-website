@@ -26,9 +26,21 @@ Here we'd like to show you the quick demo to setup a native application with Cro
 
     In `File` -> `Add Files to "Echo"...`, choose the `XWalkView.xcodeproj` from `crosswalk-ios/XWalkView/XWalkView.xcodeproj`;
 
+    Now the project layout should look like this:
+
+    ![projectLayout1](https://cloud.githubusercontent.com/assets/700736/8390277/c7080352-1cbe-11e5-8fe7-81f788ed6861.png)
+
   * Link `XWalkView` into `Echo` target.
 
-    Select `Echo` target in `Echo` project, in `General` -> `Linked Frameworks and Libraries`, add `XWalkView.framework`.
+    Select `Echo` target in `Echo` project;
+
+    ![selectEcho](https://cloud.githubusercontent.com/assets/700736/8390270/c65d47a0-1cbe-11e5-8b8f-6dd2e48f612b.png)
+
+    In `General` -> `Linked Frameworks and Libraries`, add `XWalkView.framework`.
+
+    ![linkXWalkView1](https://cloud.githubusercontent.com/assets/700736/8390279/c749a460-1cbe-11e5-83b1-e5a51260e4a9.png)
+
+    ![linkXWalkView2](https://cloud.githubusercontent.com/assets/700736/8390276/c6d22d9a-1cbe-11e5-8aa4-56d15d98b928.png)
 
   * For quick test, replace the auto-generated `ViewController.swift` with the corresponding file in `crosswalk-ios/AppShell/AppShell`, which has setup a WKWebView instance for you already.
 
@@ -62,6 +74,10 @@ Here we'd like to show you the quick demo to setup a native application with Cro
 
     In `File` -> `Add Files to "Echo"...`, choose the `www` directory and select `Create folder reference`.
 
+    Now the project layout should look like this:
+
+    ![projectLayout2](https://cloud.githubusercontent.com/assets/700736/8390273/c687a5a4-1cbe-11e5-9260-73848b9e023f.png)
+
   * We need to crate a `manifest.plist` for `Echo` project to describe the application's configuration.
 
     * In `File` -> `New...` -> `File...`, choose `iOS` -> `Resource` -> `Property List`, create a plist file with name `manifest.plist` in `Echo` directory. This manifest file will be loaded at the application startup;
@@ -78,6 +94,8 @@ Here we'd like to show you the quick demo to setup a native application with Cro
 
     In `File` -> `New...` -> `Target...`, choose `Framework & Library` -> `Cocoa Touch Framework`, with name `EchoExtension` and language type `Swift` for convenience.
 
+    ![targets](https://cloud.githubusercontent.com/assets/700736/8390269/c6422de4-1cbe-11e5-9dd5-3e7ea021d741.png)
+
   * Link `XWalkView` into `EchoExtension` target.
 
     Select `EchoExtension` target in `Echo` project, in `General` -> `Linked Frameworks and Libraries`, add `XWalkView.framework`.
@@ -85,6 +103,12 @@ Here we'd like to show you the quick demo to setup a native application with Cro
   * Create the `EchoExtension` extension class.
 
     Select `EchoExtension` group first, in `File` -> `New...` -> `File...`, choose `iOS` -> `Source` -> `Cocoa Touch Class`, with name `EchoExtension`, subclassing from `XWalkExtension`, and use `Swift` language type.
+
+    ![createClass](https://cloud.githubusercontent.com/assets/700736/8390280/c76a93aa-1cbe-11e5-823a-bee32aa8f741.png)
+
+    Now the project layout should look like this:
+
+    ![projectLayout3](https://cloud.githubusercontent.com/assets/700736/8390274/c6be5cca-1cbe-11e5-83c3-f7dd375bc1d4.png)
 
   * Add the contents into `EchoExtension.swift` as follows:
 
@@ -102,9 +126,11 @@ Here we'd like to show you the quick demo to setup a native application with Cro
 
   * Then we need to add the extension description section in the `Info.plist` of the `EchoExtension` target, to make the framework users aware that what kind of extensions are provided by this framework, and what are the extension names in both native and JavaScript world.
 
+  ![projectLayout4](https://cloud.githubusercontent.com/assets/700736/8390272/c67221ca-1cbe-11e5-948d-e0f4e226f814.png)
+
     * Create `XWalkExtensions` section in the `Info.plist` with `Dictionary` type, then add an entry with `xwalk.example.echo` as key and `EchoExtension` as value.
 
-      ![Info.plist](https://cloud.githubusercontent.com/assets/700736/7226047/58728d94-e777-11e4-9fd4-8d23a24d981f.png)
+      ![Info.plist](https://cloud.githubusercontent.com/assets/700736/8390278/c715238e-1cbe-11e5-9d25-eadcab37182b.png)
 
     This indicates that the extension `EchoExtension` will be exported with the object name: `xwalk.example.echo` in JavaScript.
 
@@ -119,4 +145,8 @@ Here we'd like to show you the quick demo to setup a native application with Cro
       ![manifest2](https://cloud.githubusercontent.com/assets/700736/7226213/3ef59a9e-e779-11e4-822f-1ef6775723ad.png)
 
   * Then you can build and run the application to test. If everything goes well, you can see an extra line: `Echo from native: Hello World!` displayed on the screen.
+
+  Screenshot in iPhone6 simulator:
+
+  ![screenshot](https://cloud.githubusercontent.com/assets/700736/8390271/c65d8bc0-1cbe-11e5-8ff5-2c537593403e.png)
 
