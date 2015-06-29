@@ -24,13 +24,15 @@ Welcome to the Crosswalk Project, the best web runtime for your mobile and deskt
       <hr class="featureSplitter" />
       <div class="featureBody">
         Create applications for Android<br>
-        <ul>
-          <li>Setup host development system</li>
-          <li>Android device target setup</li>
-          <li>Create application</li>
-          <li>Debugging</li>
-          <li>Other Android features</li>
-        </ul>
+      </div>
+    </a>
+  </div>
+  <div class="featureDiv" style="background-color: #a0a0a0">
+    <a class="featureLink" href="/documentation/ios.html">
+      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-apple-white.png"/>iOS target</div>
+      <hr class="featureSplitter" />
+      <div class="featureBody">
+        Create applications for iOS<br>
       </div>
     </a>
   </div>
@@ -40,13 +42,6 @@ Welcome to the Crosswalk Project, the best web runtime for your mobile and deskt
       <hr class="featureSplitter" />
       <div class="featureBody">
         Create applications for Tizen<br>
-        <ul>
-          <li>Setup host development system</li>
-          <li>Tizen device target setup</li>
-          <li>Create application</li>
-          <li>Debugging</li>
-          <li>Other Tizen features</li>
-        </ul>
       </div>
     </a>
   </div>

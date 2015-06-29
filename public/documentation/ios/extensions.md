@@ -1,6 +1,6 @@
 # Extensions
 
-Extensions are a way to extend the ability of the Crosswalk runtime. By creating an extension, you can introduce new objects or functions to the Javascript world, and implement those functionalities based on the native codes, written in either Objective-C or Swift. An Crosswalk Extension consist of:
+Extensions enable you to extend the ability of the Crosswalk runtime. By creating an extension, you can introduce new objects or functions to the Javascript world, and implement those features in native code, written in either Objective-C or Swift. A Crosswalk Extension consist of:
 
 * Native source codes (in Objective-C or Swift):
 
@@ -10,29 +10,29 @@ Extensions are a way to extend the ability of the Crosswalk runtime. By creating
 
   * A JavaScript file which exposes the native code to an app running on Crosswalk.
 
-The Crosswalk for iOS runtime provides a way to auto generate JavaScript mapping codes, besides it also allows you to inject your own JavaScript codes for the extension.
+The Crosswalk for iOS runtime provides a way to auto-generate JavaScript mapping codes and allow you to inject your own JavaScript code for the extension.
 
 ## How to write an extension
 
-In this section we are trying to show you the way to implement an extension. Here are the steps:
+This section shows how to implement an extension.
 
 ### Create a Cocoa Touch Framework Project
 
-1. Open Xcode, in "File" -> "New" -> "Project...", Create a "Cocoa Touch Framework" project.
+1. Open Xcode, in "File" -> "New" -> "Project...". Create a "Cocoa Touch Framework" project.
 
-2. Select the project you've created in Navigator panel, choose "File" -> "Save As Workspace..." to create a workspace for the project;
+2. Select the project you've created in Navigator panel, choose "File" -> "Save As Workspace..." to create a workspace for the project.
 
-3. Added the "XWalkView" project into this workspace;
+3. Add the "XWalkView" project into the workspace.
 
-4. In the "General" tab of the project's configuration, add "XWalkView" into the "Linked Frameworks and Libraries" to make the extension project link with XWalkView.
+4. In the "General" tab of the project's configuration add "XWalkView" into the "Linked Frameworks and Libraries" to make the extension project link with XWalkView.
 
-5. Open the **Info.plist** of this extension project, add a new row named `XWalkExtensions` with type `Dictionary`. This section defines the mapping information between app JavaScript runtime and the native extension class. The key/value defines like this:
+5. Open the **Info.plist** of this extension project and add a new row named `XWalkExtensions` with type `Dictionary`. This section defines the mapping information between app JavaScript runtime and the native extension class. The key/value defines like this:
 
-
-  | Field | Type | Content | Example |
-  | ------------- | ------------- |:--------------:| -----:|
-  | key | String | _The exposed namespace in JavaScript runtime_ | `"xwalk.sample.echo"` |
-  | value | String | _The native class name_ | `"EchoExtension"` |
+<table style="table-layout: auto;">
+ <tr><th>Field</th><th>Type</th><th width="100%">Content</th><th>Example</th></tr>
+ <tr><td>key</td><td>String</td><td>The exposed namespace in JavaScript runtime</td><td>`"xwalk.sample.echo"`</td></tr>
+ <tr><td>value</td><td>String</td><td>The native class name</td><td>`"EchoExtension"`</td></tr>
+</table>
 
 ### Implement The Extension
 
@@ -54,11 +54,11 @@ Crosswalk for iOS provided a most convenient way to generate mappings between na
 
   * Example:
 
-
-  | World | Definition |
-  | ----- | ---------- |
-  | Native | `func jsfunc_echo(cid: UInt32, message: String, callback: UInt32)` |
-  | JavaScript | `function echo(message, callback)` |
+<table style="table-layout: auto;">
+ <tr><th>World</th><th width="100%">Definition</th></tr>
+ <tr><td>Native</td><td>`func jsfunc_echo(cid: UInt32, message: String, callback: UInt32)`</td></tr>
+ <tr><td>JavaScript</td><td>`function echo(message, callback)`</td></tr>
+</table>
 
   * Invoke from JavaScript:
 
@@ -74,11 +74,11 @@ Crosswalk for iOS provided a most convenient way to generate mappings between na
 
   * Example:
 
-
-  | World | Definition |
-  | ----- | ---------- |
-  | Native | `dynamic var jsprop_prefix: String = ""` |
-  | JavaScript | `prefix` |
+<table style="table-layout: auto;">
+ <tr><th>World</th><th width="100%">Definition</th></tr>
+ <tr><td>Native</td><td>`dynamic var jsprop_prefix: String = ""`</td></tr>
+ <tr><td>JavaScript</td><td>`prefix`</td></tr>
+</table>
 
   * Invoke from JavaScript:
 
@@ -95,17 +95,12 @@ Crosswalk for iOS provided a most convenient way to generate mappings between na
 
 ### Test your extension
 
-1. Create the test app and workspace
+1. Create the test app and workspace.
 
-2. embed the XWalkView framework and the extension framework into the app;
+2. Embed the XWalkView framework and the extension framework into the app.
 
-3. import or create the HTML5 resources;
+3. Import or create the HTML5 resources.
 
-4. Load the extension
+4. Load the extension.
 
-## Extension API
-
-### XWalkExtension
-
-### XWalkDelegate
 

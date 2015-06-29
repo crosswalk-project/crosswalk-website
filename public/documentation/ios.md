@@ -2,28 +2,28 @@
 
 ## Introduction
 
-Crosswalk Project for iOS is a sub-project of Crosswalk, aiming to provide a web runtime to develop sophisticated iOS native or hybrid applications.
+The Crosswalk Project for iOS provides a web runtime for sophisticated iOS native and hybrid applications.
 
 * Extended WKWebView
 
-  Crosswalk Project for iOS is built on top of `WKWebView`, the modern WebKit framework debuted in iOS 8. We extend the WKWebView to build Crosswalk extension framework within. For the detailed information you may refer to [Embedding Mode & WKWebView](/documentation/ios/embedding_mode_&_native_apis.html).
+  The Crosswalk Project for iOS is built on top of `WKWebView`, the modern WebKit framework that debuted in iOS 8. We extend the WKWebView with the Crosswalk extension framework. For detailed information, refer to [Embedding Mode & Native APIs](/documentation/ios/embedding_mode_&_native_apis.html).
 
 * Crosswalk Extension Framework
 
-  Extensions are a way to extend the ability of the Crosswalk runtime. You can write your functionalities in both Swift and Objective-C codes and expose it as a JavaScript function or object. All JavaScript stub code can be generated automatically based on the native interface. For more information please refer to [Crosswalk Extension](/documentation/ios/extensions.html).
+  Extensions allow you to extend the ability of the Crosswalk runtime. You create your feature using Swift or Objective-C and expose it as a JavaScript function or object.  The JavaScript stub code can be generated automatically based on the native interface. For more information, refer to [Extensions](/documentation/ios/extensions.html).
 
 * Cordova Plugins Support
 
-  To leverage existing Cordova plugins, a Cordova extension is provided to simulate the Cordova environment. You only need to place source files of Cordova plugins into your project and register the classes of plugins in the manifest. For more information please refer to [Cordova Plugins Support](/documentation/ios/cordova_plugin_support.html).
+  To leverage existing Cordova plugins, a Cordova extension is provided to simulate the Cordova environment. Simply place the source files of the Cordova plugins into your project and register the plugin classes in the manifest. For more information, refer to [Cordova plugin support](/documentation/ios/cordova_plugin_support.html).
 
 ## System Requirements
 
-Development:
+Host development system:
 
-* iOS SDK 8+
-* Xcode 6+
+* <a href="https://developer.apple.com/ios/">iOS SDK 8+</a>
+* <a href="https://developer.apple.com/ios/">Xcode 6+</a>
 
-Deployment:
+Target system:
 
 * iOS 8+
 
@@ -33,21 +33,21 @@ Follow the [Quick Start Guide](/documentation/ios/quick_start_guide.html) to set
 
 ## Demos
 
-There are 3 built-in demos in the project:
+The following 3 demos are available:
 
 * [Sample](https://github.com/crosswalk-project/crosswalk-ios/tree/master/Demos/Sample)
 
-	A simple demo which shows how to embed a XWalkView, implement Crosswalk Extensions, configuring extensions and application, etc.
+	A simple app that shows how to embed a XWalkView, implement Crosswalk Extensions, and configuring the extensions and application.
 
 * [CordovaPluginDeviceDemo](https://github.com/crosswalk-project/crosswalk-ios/tree/master/Demos/Cordova/CordovaPluginDeviceDemo)
 
-	A demo to show the way to integrate a Cordova Plugin with the Crosswalk Cordova Extension support, and the usage of `apache.cordova.device` plugin.
+	An example that shows how to integrate a Cordova Plugin with the Crosswalk Cordova Extension support, and usage of the `apache.cordova.device` plugin.
 
 * [CordovaPluginFileDemo](https://github.com/crosswalk-project/crosswalk-ios/tree/master/Demos/Cordova/CordovaPluginFileDemo)
 
-	Another Cordova Plugin demo, which is imported from https://github.com/Icenium/sample-file.git, which demostrates the usage of `apache.cordova.file` plugin.
+	Another Cordova Plugin demo, imported from https://github.com/Icenium/sample-file.git, that demostrates the usage of the `apache.cordova.file` plugin.
 
-NOTICE: Try them after the project's submodules get initialized, using:
+NOTE: Try the demos after the project's submodules get initialized, using:
 
   ```bash
   git submodule update --init --recursive
@@ -55,4 +55,4 @@ NOTICE: Try them after the project's submodules get initialized, using:
 
 ## Licence
 
-Crosswalk Project for iOS is available under the BSD license. See the [LICENSE](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE) file for more information.
+The Crosswalk Project for iOS is available under the [BSD license](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE).

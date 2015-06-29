@@ -1,28 +1,34 @@
 # Quick Start Guide
 
-Here we'd like to show you the quick demo to setup a native application with Crosswalk extension support.
+This guide describes how to create an application with Crosswalk extension support.
 
-## Setup The Working Directory
+## Setup a working directory
 
-  * Create a working directory called `EchoDemo` in a suitable place, then `cd EchoDemo`;
+  * Create a working directory and go into that directory.  For this example, we use "EchoDemo"
+    ```
+    $ mkdir EchoDemo
+    $ cd EchoDemo
+    ```
 
-  * Clone the `crosswalk-ios` project with command:
+  * Clone the `crosswalk-ios` project:
 
-    `git clone https://github.com/crosswalk-project/crosswalk-ios.git`
+    ```
+    $ git clone https://github.com/crosswalk-project/crosswalk-ios.git
+    ```
 
   * Initialize the `crosswalk-ios` submodules with commands:
 
-    ```bash
-      cd crosswalk-ios
-      git submodule update --init --recursive
-      cd -
+    ```
+    $ cd crosswalk-ios
+    $ git submodule update --init --recursive
+    $ cd -
     ```
 
-## Create The Application Project
+## Create the application project
 
-  * Create an iOS application project called `Echo` with the "Single View Application" template in the working directory, and use language "Swift" for convenience.
+  * Create an iOS application project with the "Single View Application" template in the working directory.  For this example, we use "Echo".  Use Swift for convenience.
 
-  * Add `XWalkView` project into the `Echo` project.
+  * Add the `XWalkView` project into the `Echo` project.
 
     In `File` -> `Add Files to "Echo"...`, choose the `XWalkView.xcodeproj` from `crosswalk-ios/XWalkView/XWalkView.xcodeproj`;
 
@@ -44,11 +50,11 @@ Here we'd like to show you the quick demo to setup a native application with Cro
 
   * For quick test, replace the auto-generated `ViewController.swift` with the corresponding file in `crosswalk-ios/AppShell/AppShell`, which has setup a WKWebView instance for you already.
 
-    Just Remove the auto-generated `ViewController.swift` from your project, and add `crosswalk-ios/AppShell/AppShell/ViewController.swift` into it.
+    Remove the auto-generated `ViewController.swift` from your project, and add `crosswalk-ios/AppShell/AppShell/ViewController.swift`.
 
-  * Create a directory called `www` in `Echo` to place your HTML5 files and resources.
+  * Create a directory called `www` in `Echo` for the HTML5 files and resources.
 
-    And create the `index.html` file in it as your entry page with the contents as follows:
+    Create the `index.html` file as your entry page with the contents as follows:
 
     ```html
     <html>
@@ -74,25 +80,25 @@ Here we'd like to show you the quick demo to setup a native application with Cro
 
     In `File` -> `Add Files to "Echo"...`, choose the `www` directory and select `Create folder reference`.
 
-    Now the project layout should look like this:
+    The project layout should look like this:
 
     ![projectLayout2](https://cloud.githubusercontent.com/assets/700736/8390273/c687a5a4-1cbe-11e5-9260-73848b9e023f.png)
 
-  * We need to crate a `manifest.plist` for `Echo` project to describe the application's configuration.
+  * Create `manifest.plist` to describe the application's configuration.
 
-    * In `File` -> `New...` -> `File...`, choose `iOS` -> `Resource` -> `Property List`, create a plist file with name `manifest.plist` in `Echo` directory. This manifest file will be loaded at the application startup;
+    * In `File` -> `New...` -> `File...`, choose `iOS` -> `Resource` -> `Property List`.  Create a plist file with name `manifest.plist` in `Echo` directory. This manifest file will be loaded at application startup;
 
-    * Add an entry with the key: `start_url` and the Stirng value: `index.html`, which indicates the file name of the entry page, `XWalkView` will locate it in the `www` directory automatically.
+    * Add an entry with the key: `start_url` and the string value: `index.html`.  This is the entry page. `XWalkView` will locate it in the `www` directory.
 
       ![manifest1](https://cloud.githubusercontent.com/assets/700736/7226211/36a710c0-e779-11e4-9852-000d3bab8f57.png)
 
-  * Now your `Echo` demo can get run. As we haven't added any extension to support the functionality of the object `xwalk.example.echo`, you can only see the title: `Echo Demo of Crosswalk` on the page.
+  * The `Echo` demo can now run. We haven't yet added any extensions to support the functionality of the object `xwalk.example.echo`, so only the title (`Echo Demo of Crosswalk`) is on the page.
 
-## Create The Echo Extension
+## Create the Echo extension
 
   * Create a framework target called `EchoExtension` in the `Echo` project.
 
-    In `File` -> `New...` -> `Target...`, choose `Framework & Library` -> `Cocoa Touch Framework`, with name `EchoExtension` and language type `Swift` for convenience.
+    Select `File` -> `New...` -> `Target...`.  Choose `Framework & Library` -> `Cocoa Touch Framework`, with name `EchoExtension` and language type `Swift` for convenience.
 
     ![targets](https://cloud.githubusercontent.com/assets/700736/8390269/c6422de4-1cbe-11e5-9dd5-3e7ea021d741.png)
 
@@ -102,7 +108,7 @@ Here we'd like to show you the quick demo to setup a native application with Cro
 
   * Create the `EchoExtension` extension class.
 
-    Select `EchoExtension` group first, in `File` -> `New...` -> `File...`, choose `iOS` -> `Source` -> `Cocoa Touch Class`, with name `EchoExtension`, subclassing from `XWalkExtension`, and use `Swift` language type.
+    Select `EchoExtension` group first:  Select `File` -> `New...` -> `File...`.  Choose `iOS` -> `Source` -> `Cocoa Touch Class`, with name `EchoExtension`, subclassing from `XWalkExtension`, and use `Swift` language type.
 
     ![createClass](https://cloud.githubusercontent.com/assets/700736/8390280/c76a93aa-1cbe-11e5-823a-bee32aa8f741.png)
 
@@ -124,29 +130,28 @@ Here we'd like to show you the quick demo to setup a native application with Cro
   }
   ```
 
-  * Then we need to add the extension description section in the `Info.plist` of the `EchoExtension` target, to make the framework users aware that what kind of extensions are provided by this framework, and what are the extension names in both native and JavaScript world.
+  * Add the extension description section in the `Info.plist` of the `EchoExtension` target.  This informs the framework users what extensions are provided by this framework, and what how to access them natively and in JavaScript.
 
   ![projectLayout4](https://cloud.githubusercontent.com/assets/700736/8390272/c67221ca-1cbe-11e5-948d-e0f4e226f814.png)
 
-    * Create `XWalkExtensions` section in the `Info.plist` with `Dictionary` type, then add an entry with `xwalk.example.echo` as key and `EchoExtension` as value.
+    * Create a `XWalkExtensions` section in the `Info.plist` with `Dictionary` type and add an entry with `xwalk.example.echo` as key and `EchoExtension` as value.
 
       ![Info.plist](https://cloud.githubusercontent.com/assets/700736/8390278/c715238e-1cbe-11e5-9d25-eadcab37182b.png)
 
     This indicates that the extension `EchoExtension` will be exported with the object name: `xwalk.example.echo` in JavaScript.
 
-## Bundle The Extension With The Application
+## Bundle the extension with the application
 
   * Modify the `manifest.plist` to add the extension configuration to the `Echo` application.
 
     * Add `xwalk_extensions` section with Array type which describes the extensions that should be loaded within the `Echo` application;
 
-    * And add `xwalk.example.echo` with String type as an entry of `xwalk_extensions`, which indicates that the extension `xwalk.example.echo` should be loaded into the JavaScript context of `Echo` project.
+    * Add `xwalk.example.echo` with string type as an entry of `xwalk_extensions`.  This indicates that the extension `xwalk.example.echo` should be loaded into the JavaScript context of `Echo` project.
 
       ![manifest2](https://cloud.githubusercontent.com/assets/700736/7226213/3ef59a9e-e779-11e4-822f-1ef6775723ad.png)
 
-  * Then you can build and run the application to test. If everything goes well, you can see an extra line: `Echo from native: Hello World!` displayed on the screen.
+  * The application can now be built and run. You should now see an extra line: `Echo from native: Hello World!` displayed on the screen.
 
   Screenshot in iPhone6 simulator:
 
   ![screenshot](https://cloud.githubusercontent.com/assets/700736/8390271/c65d8bc0-1cbe-11e5-8ff5-2c537593403e.png)
-
