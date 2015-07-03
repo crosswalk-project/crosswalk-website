@@ -11,6 +11,9 @@
   "ios": {
     "title": "iOS"
   },
+  "linux": {
+    "title": "Linux"
+  },
   "tizen": {
     "title": "Tizen"
   },
