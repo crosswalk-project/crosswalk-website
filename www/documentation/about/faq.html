@@ -230,6 +230,7 @@
 <li><a href="#Distributing-Crosswalk-Project-applications">Distributing Crosswalk Project applications</a></li>
 <li><a href="#Canvas-and-WebGL-support">Canvas and WebGL support</a></li>
 <li><a href="#Embedding-API">Embedding API</a></li>
+<li><a href="#iOS-Support">iOS Support</a></li>
 <li><a href="#The-Crosswalk-Project-community">The Crosswalk Project community</a></li>
 <li><a href="#Commercial-aspects">Commercial aspects</a></li>
 <li><a href="#Relationships-with-other-projects">Relationships with other projects</a></li>
@@ -327,6 +328,47 @@ lib/x86/libxwalkcore.so</code></pre>
 <p>That being said, we are very open to feedback and extending our API.</p>
 <p>If you have a specific need, you should create a feature request in the Crosswalk Project JIRA and specify your use-case and requirements for the API.</p>
 <p>If the API is blocking you from moving to a newer version of Crosswalk, please explain why and we will try to adjust the priority accordingly.</p>
+<h2><a id="iOS-Support"></a>iOS Support</h2>
+<h3><a id="Why-use-iOS"></a>Why should I use Crosswalk when creating an iOS web app?</h3>
+<p>Crosswalk for iOS advantages include:</p>
+<ul><li>a performance boosted web runtime which is based on the latest WKWebView</li>
+    <li>a unified web application creation and mantainance experience across platforms (Android, iOS, etc.)</li>
+    <li>a much easier way for hybrid developers to extend their own Web APIs</li>
+    <li>the ability to leverage Cordova Plugins</li>
+</ul>
+
+<h3>What features are different between Android and iOS?  Will my Android+Crosswalk app &quot;just work&quot; on iOS?</h3>
+<p>On Android, Crosswalk uses a Chromium-based web engine. iOS store limitations prevent us from using the Chromium engine.  Thus, Crosswalk on iOS relies on WKWebView. The differences between the two engines will result in HTML5 feature differences and some Crosswalk specific features (e.g. WebCL and SIMD.js) can not be supported on iOS.  The Crosswalk unified web API should reduce platform differences for both Android and iOS and, for most features, your unmodified Android web app should works the same on iOS.</p>
+<h3>What versions of iOS does Crosswalk support?</h3>
+<p>iOS 8 or newer</p>
+<h3>Do I need a Mac to create iOS web apps?  Can I build Android and iOS apps from the same system?</h3>
+<p>Yes, you need a Mac to build iOS apps with Crosswalk. You can also install the Android SDK and create Android applications using the Crosswalk build tools, although the setup for this environment is not yet documented.</p>
+<h3>I use Cordova to build my iOS apps currently.  What is the difference with Crosswalk?  Can I use them both?</h3>
+<p>Crosswalk is based on WKWebView which enables a lot of new HTML5 features and is up to 10x times faster than UIWebView used by Cordova. Crosswalk also supports the Cordova Plugins mechanism enabling apps to use the large body of Cordova plugins and leverage a plethora of features. Third-party plugins should also work, though this has not been tested.</p>
+<h3>What is the basic workflow for building apps with Crosswalk?</h3>
+<p><strong>Web app developers:</strong></p>
+<ul>
+<li>Use <code>crosswalk-app-tool create</code> to create a template project</li>
+<li>Write your HTML5 source codes and place them in the right directory</li>
+<li>Run <code>crosswalk-app-tool build</code> to build them into an iOS application</li>
+</ul>
+<p><strong>Hybrid app developers:</strong></p>
+<ul>
+<li>Create your own iOS application project</li>
+<li>Import <code>XWalkView.xcodeproj</code> into your project</li>
+<li>Embed <code>XWalkView</code> target as a framwork in your app target</li>
+<li>Embed the extensions frameworks into your app, if you have any extensions</li>
+<li>For the app itself:<ul>
+<li>Add <code>XWalkView</code> into your view controller as the main view</li>
+<li>Create extensions and load them</li>
+<li>Load your entry page</li>
+</ul>
+</li>
+</ul>
+<p>Please refer to <a href="/documentation/ios.html">Crosswalk Project or iOS</a> for more detials.</p>
+<h3>Will Crosswalk Project for iOS be published to CocoaPods?</h3>
+<p>This is on our plan and we are pushing forward to make it happen.</p>
+<hr>
 <h2><a id="The-Crosswalk-Project-community"></a>The Crosswalk Project community</h2>
 <h3><a id="Who-is-using-the-Crosswalk-Project"></a>Who is using the Crosswalk Project?</h3>
 <p>Crosswalk is still a young project but quickly gaining momentum.  There are currently over 300 applications (mostly games) in app stores that are built with Crosswalk.</p>

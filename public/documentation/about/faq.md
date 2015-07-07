@@ -9,6 +9,7 @@ If you have any questions that are not answered below, the crosswalk-help mailin
 *   [Distributing Crosswalk Project applications](#Distributing-Crosswalk-Project-applications)
 *   [Canvas and WebGL support](#Canvas-and-WebGL-support)
 *   [Embedding API](#Embedding-API)
+*   [iOS Support](#iOS-Support)
 *   [The Crosswalk Project community](#The-Crosswalk-Project-community)
 *   [Commercial aspects](#Commercial-aspects)
 *   [Relationships with other projects](#Relationships-with-other-projects)
@@ -160,6 +161,65 @@ That being said, we are very open to feedback and extending our API.
 If you have a specific need, you should create a feature request in the Crosswalk Project JIRA and specify your use-case and requirements for the API.
 
 If the API is blocking you from moving to a newer version of Crosswalk, please explain why and we will try to adjust the priority accordingly.
+
+## <a id="iOS-Support"></a>iOS Support
+
+### <a id="Why-use-iOS"></a>Why should I use Crosswalk when creating an iOS web app?
+
+Crosswalk for iOS advantages include:
+<ul><li>a performance boosted web runtime which is based on the latest WKWebView</li>
+    <li>a unified web application creation and mantainance experience across platforms (Android, iOS, etc.)</li>
+    <li>a much easier way for hybrid developers to extend their own Web APIs</li>
+    <li>the ability to leverage Cordova Plugins</li>
+</ul>
+
+### What features are different between Android and iOS?  Will my Android+Crosswalk app "just work" on iOS? 
+
+On Android, Crosswalk uses a Chromium-based web engine. iOS store limitations prevent us from using the Chromium engine.  Thus, Crosswalk on iOS relies on WKWebView. The differences between the two engines will result in HTML5 feature differences and some Crosswalk specific features (e.g. WebCL and SIMD.js) can not be supported on iOS.  The Crosswalk unified web API should reduce platform differences for both Android and iOS and, for most features, your unmodified Android web app should works the same on iOS.
+
+### What versions of iOS does Crosswalk support?	
+
+iOS 8 or newer
+
+### Do I need a Mac to create iOS web apps?  Can I build Android and iOS apps from the same system?	
+
+Yes, you need a Mac to build iOS apps with Crosswalk. You can also install the Android SDK and create Android applications using the Crosswalk build tools, although the setup for this environment is not yet documented.
+
+### I use Cordova to build my iOS apps currently.  What is the difference with Crosswalk?  Can I use them both?	
+
+Crosswalk is based on WKWebView which enables a lot of new HTML5 features and is up to 10x times faster than UIWebView used by Cordova. Crosswalk also supports the Cordova Plugins mechanism enabling apps to use the large body of Cordova plugins and leverage a plethora of features. Third-party plugins should also work, though this has not been tested.
+
+### What is the basic workflow for building apps with Crosswalk?	
+
+**Web app developers:**
+
+ * Use `crosswalk-app-tool create` to create a template project
+ * Write your HTML5 source codes and place them in the right directory
+ * Run `crosswalk-app-tool build` to build them into an iOS application
+
+**Hybrid app developers:**
+
+ * Create your own iOS application project
+ * Import `XWalkView.xcodeproj` into your project
+ * Embed `XWalkView` target as a framwork in your app target
+ * Embed the extensions frameworks into your app, if you have any extensions
+ * For the app itself:
+  * Add `XWalkView` into your view controller as the main view
+  * Create extensions and load them
+  * Load your entry page
+
+Please refer to [Crosswalk Project or iOS](/documentation/ios.html) for more detials.
+	
+### Will Crosswalk Project for iOS be published to CocoaPods?	
+
+This is on our plan and we are pushing forward to make it happen.
+
+
+****************************************************************
+
+
+
+
 
 ## <a id="The-Crosswalk-Project-community"></a>The Crosswalk Project community
 
