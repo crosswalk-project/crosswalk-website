@@ -23,7 +23,7 @@ Welcome to the Crosswalk Project, the best web runtime for your mobile and deskt
       <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-android-white.png"/>Android target</div>
       <hr class="featureSplitter" />
       <div class="featureBody">
-        Create applications for Android<br>
+        Create applications for Android
       </div>
     </a>
   </div>
@@ -32,7 +32,16 @@ Welcome to the Crosswalk Project, the best web runtime for your mobile and deskt
       <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-apple-white.png"/>iOS target</div>
       <hr class="featureSplitter" />
       <div class="featureBody">
-        Create applications for iOS<br>
+        Create applications for iOS
+      </div>
+    </a>
+  </div>
+  <div class="featureDiv" style="background-color: #f04e64">
+    <a class="featureLink" href="/documentation/linux.html">
+      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-linux-white.png"/>Linux desktop target</div>
+      <hr class="featureSplitter" />
+      <div class="featureBody">
+        Create applications for Linux (deb)<br>
       </div>
     </a>
   </div>
