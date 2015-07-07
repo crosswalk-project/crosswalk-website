@@ -1,4 +1,4 @@
-# Crosswalk on Android
+# Crosswalk Project for Android
 
 This section describes how to create web and hybrid applications using the Crosswalk Project for the [Android operating system](http://developer.android.com/index.html).
 
