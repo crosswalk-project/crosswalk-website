@@ -1,4 +1,9 @@
 {
+  "announce-linux-dt": {
+  "title": "Introducing Crosswalk Project for Debian Linux",
+  "date": "2015-07-03T12:00",
+  "author": "Xiang Long"
+  },
   "ios-release": {
   "title": "Introducing the Crosswalk Project for iOS",
   "date": "2015-06-26T12:00",
