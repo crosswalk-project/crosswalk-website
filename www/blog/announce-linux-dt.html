@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Tizen" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/samples/tizen" />
+    <meta property="og:title" content="Introducing Crosswalk Project for Debian Linux" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/announce-linux-dt" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/samples/tizen" />
-    <meta name="twitter:title" content="Tizen" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/announce-linux-dt" />
+    <meta name="twitter:title" content="Introducing Crosswalk Project for Debian Linux" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -97,197 +97,27 @@
       <div class="doc-main">
         <div class="row">
           
-          <nav id="contents" class="article-toc nav-toggleContainer">
-  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-  <ul class="article-list nav-toggleHide">
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/about.html">About</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/android.html">Android</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/ios.html">iOS</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/linux.html">Linux</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-
-
-         <ul class="article-list">
-            
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/samples/hello-world.html">Hello-world</a>
-               
-           </li>
-           
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/samples/tizen.html">Tizen</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/samples/webgl.html">WebGL</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/samples/simd.html">SIMD</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/samples/demoexpress.html">DemoExpress</a>
-               
-           </li>
-           
-         </ul>
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/community.html">Community</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
-
-         
-       </li>
-    
-  </ul>
-
-</nav>
-
-
-
-<article class="article article--hasToC">
-  <h1>Tizen APIs sample</h1>
-<p><img class='sample-thumb' src='/assets/sampapp-icon-api.png'></p>
-<p>A sample application leveraging a Crosswalk extension which implements
-some of the Tizen APIs. This sample demonstrates usage of the
-<code>tizen.systeminfo</code> API.</p>
-<p>This application is part of the
-<a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.2.tar.gz">Crosswalk samples download</a>.</p>
-<p>To use this example, you need to run the application on a Tizen device
-or in the Tizen emulator. Instructions for preparing both are in
-the <a href="/documentation/getting_started.html">Getting started</a> tutorial.</p>
-<p>The following steps use the helper script <strong>tizen-extension-crosswalk</strong>
-to load the Tizen extension API into Crosswalk during load time.</p>
-<pre><code class="language-sh">&gt; sdb push samples/tizen_apis /home/developer/tizen_apis
-&gt; sdb shell &quot;tizen-extensions-crosswalk /home/developer/tizen_apis/index.html&quot;</code></pre>
-
-  <footer class="article-next">
-    
-
+          <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">Introducing Crosswalk Project for Debian Linux</h1>
+    <span class="article-meta">
+      <a href="announce-linux-dt.html"><time class="js-vagueTime" datetime="Fri, 03 Jul 2015 12:00:00 GMT">Fri, 03 Jul 2015 12:00:00 GMT</time></a>
+       by <span class="article-author">Xiang Long</span>
+    </span>
+  </header>
   
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-      <a href="/documentation/samples/webgl.html" class="article-promo well">
-        <em>What’s next?</em>
-        <h3>WebGL</h3>
-      </a>
-    
-  
-    
-    
-  
-    
-    
-  
+  <p>We are pleased to announce the first version of <a href="https://www.crosswalk-project.org/documentation/linux.html">Crosswalk Project for Linux</a>, a runtime for modern web applications on Debian based Linux desktop distributions.</p>
+<p>Crosswalk Project for Linux is based on the Chromium content layer and supports cutting-edge web technologies like WebGL, WebRTC, WebAudio, ServiceWorker, SIMD, and Web Manifest.</p>
+<p>The JavaScript API extension mechanism is also supported, allowing for developers to extend web application capabilities and bridge native code with their JavaScript code to make competitive hybrid Linux desktop applications.</p>
+<p>Finally, Crosswalk Project for Linux provides tools for developers to package their applications into Debian packages. Web applications with standard W3C web app manifests can easily be packaged one command line. See the <a href="https://www.crosswalk-project.org/documentation/linux.html">documentation</a> for instructions.</p>
+<p>The Crosswalk Project Debian package is available from the <a href="https://download.01.org/crosswalk/releases/crosswalk/linux/deb/canary/">canary channel</a>, and has been tested on Ubuntu Linux 14.04 64-bit and Deepin Linux 2014.2.</p>
+<p>We look forward to hearing your feedback!</p>
 
+  <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
 
-  </footer>
 </article>
 
           
