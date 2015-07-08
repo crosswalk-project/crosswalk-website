@@ -23,16 +23,16 @@ $sample_url_v2 = $base_url . 'embeddingapidocs_v2/reference/org/xwalk/core/XWalk
 <h2>Version 5 - Crosswalk 14</h2>
 
 <ul>
-  <li><a href="/apis/embeddingapidocs_v5/index.html">Javadocs v5</a></li>
+  <li><a href="/apis/embeddingapidocs_v5/index.html">Javadocs v5 (May 2015)</a></li>
 </ul>
 
-<h2>Version 4</h2>
+<h2>Version 4 - Crosswalk 10</h2>
 
 <ul>
-  <li><a href="/apis/embeddingapidocs_v4/index.html">Javadocs v4</a></li>
+  <li><a href="/apis/embeddingapidocs_v4/index.html">Javadocs v4 (Oct 2014)</a></li>
 </ul>
 
-<h2>Version 3</h2>
+<h2>Version 3 - Crosswalk 9</h2>
 
 <ul>
   <li><a href="/apis/embeddingapidocs_v3/index.html">Javadocs v3 (Sept 2014)</a></li>
