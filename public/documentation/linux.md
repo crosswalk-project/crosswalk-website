@@ -40,7 +40,7 @@ To package a Crosswalk application as an XPK package, follow the instructions in
 The XPK package can be launched directly with the xwalk command (see the previous section)
 
 **Package as .deb**
-To package a Crosswalk application as a deb package, you’ll need to use the [crosswalk-app-tools](https://www.npmjs.com/package/crosswalk-app-tools/access) CLI suite and its debian backend. Follow the instructions in https://github.com/crosswalk-project/crosswalk-app-tools-deb to install the backend, and package the application with the command `crosswalk-app build`.
+To package a Crosswalk application as a deb package, you’ll need to use the [crosswalk-app-tools](https://www.npmjs.com/package/crosswalk-app-tools/) CLI suite and its debian backend. Follow the instructions in https://github.com/crosswalk-project/crosswalk-app-tools-deb to install the backend, and package the application with the command `crosswalk-app build`.
 
 Note: crosswalk-app-tools does not yet support multiple backends. Once you install the .deb backend, you will only be able to create .deb packages until it is removed. You may want to keep multiple copies of crosswalk-app-tools to build for multiple platforms.
 
@@ -48,7 +48,7 @@ Note: crosswalk-app-tools does not yet support multiple backends. Once you insta
 
 The “devscripts” and “debhelper” packages are needed to create debian packages with crosswalk-app-tools.
 
-Crosswalk follows the [W3C manifest specification](http://www.w3.org/TR/appmanifest/). In particular, if no `display` member is specified in the manifest, Crosswalk will use `browser` as the default value and will display simple navigation controls with the application. To remove them, you need to explicitly specify `“display”: “standalone”` in the manifest.
+Crosswalk follows the [W3C manifest specification](http://www.w3.org/TR/appmanifest/). In particular, if no `display` member is specified in the manifest, Crosswalk will use `minimal-ui` as the default value and will display simple navigation controls with the application. To remove them, you need to explicitly specify `“display”: “standalone”` or `“display”: “fullscreen”` in the manifest.
 
 When launching an application, Crosswalk will display the error
 
