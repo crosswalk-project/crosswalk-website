@@ -68,6 +68,13 @@
         "link": "http://www.manifoldjs.com/",
         "company": "manifoldjs.com",
         "description": "The simplest way to create hosted apps across platforms and devices. Package your web experience as native apps across Android, iOS, and Windows."
+    },
+    "tool11": {
+        "name": "Telerik Platform",
+        "appImg": "telerik-icon150.jpg",
+        "link": "http://www.telerik.com/platform",
+        "company": "telerik.com/platform",
+        "description": "Telerik Platform provides developers with an instantly available PhoneGap/Cordova-based development environment that enables cross-platform hybrid mobile apps to be created using HTML5, JavaScript and CSS."
     }
 }
 
