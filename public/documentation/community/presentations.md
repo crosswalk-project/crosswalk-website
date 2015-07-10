@@ -1,6 +1,24 @@
 # Crosswalk Presentations
 Our global team presents Crosswalk in a variety of forums and conferences. Below are a few recent presentations. We hope you'll join us for <a href="/documentation/community/conferences.html">the next one</a>.
 
+
+
+<div class="presentation-div">
+  <div class="presentation-title">
+    <h3>Crosswalk: Solve your Android fragmentation</h3>
+    <p>Join Alexis Menard, a senior architect on the Crosswalk Project, in this presentation describing how Crosswalk enables developers to create more compelling web apps with advanced features such as the latest Material Design style using Polymer, Cordova APIs, and WebGL enabled games. Your web application just got a lot cooler!</p>
+    <p>June 10, 2015</p>
+  </div>
+  <div class="presentation-graphic">
+   <a class="presentation-link" href="http://www.oreilly.com/pub/e/3419">
+    <img class="presentation-img"  src="/assets/presentations/alexis-oreilly-webcast.png" />
+   </a><br/>
+   <div class="presentation-caption">Presentation plays from O'Reilly website (1 hr)</div>
+  </div>
+</div>
+
+<hr class="presentation-splitter" />
+
 <div class="presentation-div">
   <div class="presentation-title">
     <h3>Unleash the fury of web innovation in your Android app today</h3>
