@@ -38,7 +38,7 @@
         "name": "Construct 2",
         "appImg": "construct2-icon150.jpg",
         "link": "https://www.scirra.com/construct2",
-        "company": "www.scirra.com/construct2",
+        "company": "scirra.com/construct2",
         "description": "Construct 2 is a powerful ground breaking HTML5 game creator designed specifically for 2D games. It allows anyone to build games — no coding required!"
     },
     "tool4": {
@@ -52,15 +52,22 @@
         "name": "App Gyver",
         "appImg": "appgyver-icon150.jpg",
         "link": "http://www.appgyver.com/",
-        "company": "www.appgyver.com",
+        "company": "appgyver.com",
         "description": "Introducing the first UI framework that's designed solely for building awesome hybrid mobile apps:  the best of what HTML5, native APIs and the top frameworks have to offer."
     },
     "tool6": {
         "name": "cocos2D-X",
         "appImg": "cocos2dx-icon150.jpg",
         "link": "http://www.cocos2d-x.org/",
-        "company": "www.cocos2d-x.org",
+        "company": "cocos2d-x.org",
         "description": "Worldwide, more than 400,000 developers, including developers of 7 out of the 10 top grossing games in China, rely on Cocos2D-x to build their mobile games."
+    },
+    "tool10": {
+        "name": "ManifoldJS",
+        "appImg": "manifoldjs-icon150.jpg",
+        "link": "http://www.manifoldjs.com/",
+        "company": "manifoldjs.com",
+        "description": "The simplest way to create hosted apps across platforms and devices. Package your web experience as native apps across Android, iOS, and Windows."
     }
 }
 
