@@ -106,18 +106,18 @@
     </span>
   </header>
   
-  <p>Starting wiht Crosswalk 14, you can package your application in “shared mode”. This means that your application’s APK won’t include the Crosswalk runtime, which will be downloaded from the Play Store when the application is first started. From that point on, the Crosswalk runtime will be shared with any other Crosswalk application that is also packaged in shared mode. This has a few pros and cons:</p>
+  <p>Starting with Crosswalk 14, you can package your application in “shared mode”. This means that your application’s APK won’t include the Crosswalk runtime, which will be downloaded from the Play Store when the application is first started. From that point on, the Crosswalk runtime will be shared with any other Crosswalk application that is also packaged in shared mode. This has a few pros and cons:</p>
 <h2>Pros</h2>
 <ul>
-<li>Produces a significant smaller APK file size for Crosswalk applications. For example if packaging a simple HelloWorld web application, the APK file size is 20MB for ARM and 23MB for x86. If the same contents is packaged in shared mode, the APK file size will shrink to 68KB</li>
-<li>Applications built in shared mode are architecture independent. Only one package needs to be submitted to the Play Store</li>
-<li>Crosswalk is updated independently of the application. Taking advantage of the latest improvements doesn&#39;t require an update of the application</li>
+<li>Produces a significantly smaller APK file size for Crosswalk applications. For example if packaging a simple HelloWorld web application, the APK file size is 20MB for ARM and 23MB for x86. If the same content is packaged in shared mode, the APK file size will shrink to 68KB.</li>
+<li>Applications built in shared mode are architecture independent. Only one package needs to be submitted to the Play Store.</li>
+<li>Crosswalk is updated independently of the application. Taking advantage of the latest improvements doesn&#39;t require an update of the application.</li>
 <li>Web applications that use Crosswalk embedded which are downloaded to the wrong architecture will now automatically download the correct Crosswalk runtime for the architecture and use it in shared mode. (<a href="/documentation/shared_mode.html#Architecture-Independence">Read more</a>)</li>
 </ul>
 <h2>Cons</h2>
 <ul>
 <li>If the Crosswalk runtime library is not installed, the user will have to download the APK of the runtime library in the first run. The normal startup process of the application will be interrupted.</li>
-<li>While we strive to maintain backwards compatibility, an updated Crosswalk runtime may be introduce incompatibility with the previous version. Developers need to test their applications against the latest Crosswalk release.</li>
+<li>While we strive to maintain backwards compatibility, an updated Crosswalk runtime may be incompatible with the previous version. Testing applications against the latest Crosswalk release is recommended.</li>
 </ul>
 <p>Follow <a href="/documentation/shared_mode.html">these instructions</a> to package your application in shared mode.</p>
 
