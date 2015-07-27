@@ -89,9 +89,9 @@ Note that we prepend the new paths to the `PATH` variable to ensure that we use 
 6.  In the SDK Manager window, select the following items from the list:
 
         [ ] Tools
-          [x] Android SDK Platform-tools 19.0.1
-          [x] Android SDK Build tools 18.0.1
-        [ ] Android 4.3 (API 18)
+          [x] Android SDK Platform-tools <version>
+          [x] Android SDK Build tools <version>
+        [ ] Android 4.3 (API <version>)
           [x] SDK Platform
 
     Note that if you are using devices with versions of Android later than 4.3, you should install the platform tools, build tools and SDK platform for those versions too.
