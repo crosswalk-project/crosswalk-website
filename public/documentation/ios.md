@@ -39,11 +39,11 @@ The following 3 demos are available:
 
 	A simple app that shows how to embed a XWalkView, implement Crosswalk Extensions, and configuring the extensions and application.
 
-* [CordovaPluginDeviceDemo](https://github.com/crosswalk-project/crosswalk-ios/tree/master/Demos/Cordova/CordovaPluginDeviceDemo)
+* [CordovaPluginDeviceDemo](https://github.com/crosswalk-project/ios-extensions-crosswalk/tree/master/demos/CordovaPluginDeviceDemo)
 
 	An example that shows how to integrate a Cordova Plugin with the Crosswalk Cordova Extension support, and usage of the `apache.cordova.device` plugin.
 
-* [CordovaPluginFileDemo](https://github.com/crosswalk-project/crosswalk-ios/tree/master/Demos/Cordova/CordovaPluginFileDemo)
+* [CordovaPluginFileDemo](https://github.com/crosswalk-project/ios-extensions-crosswalk/tree/master/demos/CordovaPluginFileDemo)
 
 	Another Cordova Plugin demo, imported from https://github.com/Icenium/sample-file.git, that demostrates the usage of the `apache.cordova.file` plugin.
 
