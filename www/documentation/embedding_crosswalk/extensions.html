@@ -228,7 +228,7 @@
 
 <article class="article article--hasToC">
   <h1>Use Crosswalk extensions with the embedding API</h1>
-<p><a href="https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/XWalkExtension.html">Extensions</a> are supported in version 2.1 and later of the <a href="/documentation/apis/embedding_api.html">embedding API</a>. The extensions API is similar to the one for <a href="/documentation/android_extensions.html">Crosswalk runtime extensions</a>, but with a few differences due to the usage model of an <em>embedding application</em> (i.e. an Android application which embeds Crosswalk using Java code):</p>
+<p><a href="https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/XWalkExtension.html">Extensions</a> are supported in version 2.1 and later of the <a href="/documentation/apis/embedding_api.html">embedding API</a>. The extensions API is similar to the one for <a href="/documentation/android/android_extensions.html">Crosswalk runtime extensions</a>, but with a few differences due to the usage model of an <em>embedding application</em> (i.e. an Android application which embeds Crosswalk using Java code):</p>
 <ul>
 <li>There is no support for lifecycle events. The extension <em>cannot</em> use <code>onResume()</code>, <code>onPause()</code>, <code>onDestroy()</code>, or <code>onActivityResult()</code>. Such events should be taken care of by the embedding application.</li>
 <li>No configuration file is needed, because the embedding application is responsible for creating and destroying the extensions in Java code.</li>
