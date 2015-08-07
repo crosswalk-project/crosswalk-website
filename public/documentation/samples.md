@@ -2,13 +2,13 @@
 
 These sample applications can help get you up and running with the Crosswalk Project. 
 
-All sample source is available on github (MIT license).  To use the samples, download the <a href="https://github.com/crosswalk-project/crosswalk-samples/archive/0.8.tar.gz">sample archive</a> and unpack it:
+All sample source is available on [github](https://github.com/crosswalk-project/crosswalk-samples) (MIT license). To use the samples, clone this project:
 
 ```sh
-$ tar xvf crosswalk-samples-0.8.tar.gz
+$ git clone https://github.com/crosswalk-project/crosswalk-samples.git
 ```
 
-This will create a `crosswalk-samples-0.8` directory with several project sub-directories:
+There will be a `crosswalk-samples` directory with several project sub-directories:
 
 *   `extensions-android` &ndash; A simple Crosswalk Android extension example. The [Android extensions tutorial](/documentation/android_extensions.html) explains how this was developed. See [this README](https://github.com/crosswalk-project/crosswalk-samples/blob/master/extensions-android/README.md) for build instructions.
 
