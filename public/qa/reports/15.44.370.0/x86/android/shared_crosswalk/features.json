@@ -1,0 +1,1 @@
+{"Embedding API":{"block":"0","fail":"45","hardware":"ASUS MeMO Pad 8 K011","issues":{},"pass":"162","short_desc":"Embedding API"},"SIMD":{"block":"0","fail":"44","hardware":"ASUS MeMO Pad 8 K011","issues":{"XWALK-4148":{"desc":"XWALK-4148","url":"https://crosswalk-project.org/jira/browse/XWALK-4148"}},"pass":"1635","short_desc":"SIMD"}}
