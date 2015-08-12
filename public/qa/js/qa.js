@@ -3674,7 +3674,7 @@ function qaDashboardHandler(){
             }
         });
 
-        $.each(ms_list, function(n, ms){
+        $.each(ms_list.reverse(), function(n, ms){
             $(".qa-dashboard-accordion", qualityTag).append("<h id=\""+ms+"\"><li>Crosswalk Project"+ms+"</li></h><div ms=\""+ms+"\"></div>")
 
         });

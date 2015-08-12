@@ -49,5 +49,8 @@
   },
   "quality_dashboard": {
     "title": "Quality Dashboard"
+  },
+  "test_suite": {
+    "title": "Test Suite"
   }
 }
