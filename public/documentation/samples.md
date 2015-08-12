@@ -10,7 +10,7 @@ $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
 
 There will be a `crosswalk-samples` directory with several project sub-directories:
 
-*   `extensions-android` &ndash; A simple Crosswalk Android extension example. The [Android extensions tutorial](/documentation/android_extensions.html) explains how this was developed. See [this README](https://github.com/crosswalk-project/crosswalk-samples/blob/master/extensions-android/README.md) for build instructions.
+*   `extensions-android` &ndash; A simple Crosswalk Android extension example. The [Android extensions tutorial](/documentation/android/android_extensions.html) explains how this was developed. See [this README](https://github.com/crosswalk-project/crosswalk-samples/blob/master/extensions-android/README.md) for build instructions.
 
 *   `hello_world` &ndash; A minimal example.
 
