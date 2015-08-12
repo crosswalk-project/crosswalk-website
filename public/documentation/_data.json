@@ -11,9 +11,6 @@
   "ios": {
     "title": "iOS"
   },
-  "linux": {
-    "title": "Linux"
-  },
   "tizen": {
     "title": "Tizen"
   },
@@ -49,5 +46,11 @@
   },
   "report_bugs": {
     "title": "Report bugs"
+  },
+  "quality_dashboard": {
+    "title": "Quality Dashboard"
+  },
+  "test_suite": {
+    "title": "Test Suite"
   }
 }

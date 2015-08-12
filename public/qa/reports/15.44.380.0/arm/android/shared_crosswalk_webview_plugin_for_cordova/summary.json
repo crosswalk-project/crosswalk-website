@@ -1,0 +1,1 @@
+{"block":"4","desc":"Shared Crosswalk WebView Plugin for Cordova","fail":"4","hardware":"Google Nexus 4","issues":{"XWALK-4467":{"desc":"XWALK-4467","url":"https://crosswalk-project.org/jira/browse/XWALK-4467"},"XWALK-4470":{"desc":"XWALK-4470","url":"https://crosswalk-project.org/jira/browse/XWALK-4470"}},"pass":"44","short_desc":"Shared Crosswalk WebView Plugin for Cordova"}

@@ -1,0 +1,464 @@
+/*! jQuery UI - v1.11.4 - 2015-07-01
+* http://jqueryui.com
+* Includes: core.css, accordion.css, button.css, tooltip.css
+* Copyright 2015 jQuery Foundation and other contributors; Licensed MIT */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden {
+	display: none;
+}
+.ui-helper-hidden-accessible {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+.ui-helper-reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	line-height: 1.3;
+	text-decoration: none;
+	font-size: 100%;
+	list-style: none;
+}
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
+	content: "";
+	display: table;
+	border-collapse: collapse;
+}
+.ui-helper-clearfix:after {
+	clear: both;
+}
+.ui-helper-clearfix {
+	min-height: 0; /* support: IE7 */
+}
+.ui-helper-zfix {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	opacity: 0;
+	filter:Alpha(Opacity=0); /* support: IE8 */
+}
+
+.ui-front {
+	z-index: 100;
+}
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled {
+	cursor: default !important;
+}
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon {
+        width: 16px;
+        height: 16px;
+        background-image: url("images/ui-icons.png");
+}
+
+.ui-icon-triangle-1-e {
+        background-position: -64px 0;
+}
+
+.ui-icon-triangle-1-s {
+        background-position: 0 0;
+}
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.ui-accordion .ui-accordion-header {
+	display: block;
+	cursor: pointer;
+	position: relative;
+	padding: .4em .4em .4em .6em;
+	min-height: 0; /* support: IE7 */
+	font-size: 80%;
+        border: 0px;
+        border-top: 1px solid #ffffff;
+        color: #000000;
+        background-color: #E2FFE7;
+}
+
+.ui-accordion .ui-state-active {
+        border: 0px;
+        border-top: 1px solid #ffffff;
+        color: #000000;
+}
+
+.ui-accordion .ui-accordion-icons {
+	padding-left: 2.2em;
+}
+.ui-accordion .ui-accordion-icons .ui-accordion-icons {
+	padding-left: 2.2em;
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+	position: absolute;
+	right: .5em;
+	top: 50%;
+	margin-top: -8px;
+}
+.ui-accordion .ui-accordion-content {
+	padding: 0;
+	overflow: auto;
+        background-color: #fcfcfc;
+}
+.ui-button {
+	display: inline-block;
+	position: relative;
+	padding: 0;
+	line-height: normal;
+	margin-right: .1em;
+	cursor: pointer;
+	vertical-align: middle;
+	text-align: center;
+	overflow: visible; /* removes extra width in IE */
+}
+.ui-button,
+.ui-button:link,
+.ui-button:visited,
+.ui-button:hover,
+.ui-button:active {
+	text-decoration: none;
+}
+/* to make room for the icon, a width needs to be set here */
+.ui-button-icon-only {
+	width: 2.2em;
+}
+/* button elements seem to need a little more width */
+button.ui-button-icon-only {
+	width: 2.4em;
+}
+.ui-button-icons-only {
+	width: 3.4em;
+}
+button.ui-button-icons-only {
+	width: 3.7em;
+}
+
+/* button text element */
+.ui-button .ui-button-text {
+	display: block;
+	line-height: normal;
+}
+.ui-button-text-only .ui-button-text {
+	padding: .4em 1em;
+}
+.ui-button-icon-only .ui-button-text,
+.ui-button-icons-only .ui-button-text {
+	padding: .4em;
+	text-indent: -9999999px;
+}
+.ui-button-text-icon-primary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+	padding: .4em 1em .4em 2.1em;
+}
+.ui-button-text-icon-secondary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+	padding: .4em 2.1em .4em 1em;
+}
+.ui-button-text-icons .ui-button-text {
+	padding-left: 2.1em;
+	padding-right: 2.1em;
+}
+/* no icon support for input elements, provide padding by default */
+input.ui-button {
+	padding: .4em 1em;
+}
+
+/* button icon element(s) */
+.ui-button-icon-only .ui-icon,
+.ui-button-text-icon-primary .ui-icon,
+.ui-button-text-icon-secondary .ui-icon,
+.ui-button-text-icons .ui-icon,
+.ui-button-icons-only .ui-icon {
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+}
+.ui-button-icon-only .ui-icon {
+	left: 50%;
+	margin-left: -8px;
+}
+.ui-button-text-icon-primary .ui-button-icon-primary,
+.ui-button-text-icons .ui-button-icon-primary,
+.ui-button-icons-only .ui-button-icon-primary {
+	left: .5em;
+}
+.ui-button-text-icon-secondary .ui-button-icon-secondary,
+.ui-button-text-icons .ui-button-icon-secondary,
+.ui-button-icons-only .ui-button-icon-secondary {
+	right: .5em;
+}
+
+/* button sets */
+.ui-buttonset {
+	margin-right: 7px;
+}
+.ui-buttonset .ui-button {
+	margin-left: 0;
+	margin-right: -.3em;
+}
+
+/* workarounds */
+/* reset extra padding in Firefox, see h5bp.com/l */
+input.ui-button::-moz-focus-inner,
+button.ui-button::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+.ui-tooltip {
+        padding: 0em;
+        background-color: #1ebcba; 
+	position: absolute;
+	z-index: 9999;
+	max-width: 300px;
+        -webkit-box-shadow: 0 0 3px #aaa;
+        box-shadow: 0 0 10px #aaa;
+}
+
+body .ui-tooltip {
+	border-width: 1px;
+}
+
+/*!
+jquery-quality-indicator - Quality Widgets to show Crosswalk quality indicators
+
+Author: Yugang Fan <yugang.fan@intel.com>
+Version: 0.0.1
+License: MIT
+*/
+
+.inline-box {
+    display: inline-block;
+}
+
+.qa-feature-div {
+    width: 100%;
+}
+
+.qa-feature-item {
+    vertical-align: bottom;
+    margin-right: 0.3em; 
+    padding:2px;
+}
+
+.qa-feature-title {
+    font-weight: 600;
+    margin-right: 0.3em; 
+}
+
+.qa-feature-platform-title {
+    margin-right: 0.3em;
+}
+
+.qa-feature-progressbar {
+    background-color:#cccccc;
+    padding:0px;
+    width: 3em;
+    border-radius: 2px;
+}
+
+.qa-feature-progressbar span {
+    position:relative;
+    text-align:right;
+    color:#ffffff;
+    display:block;
+    height: 100%;
+    border-radius: 2px;
+    font-size: 90%;
+}
+
+.qa-feature-progress-red {
+    background-color: #f37183;
+}
+
+.qa-feature-progress-or {
+    background-color: #ffc000;
+}
+
+.qa-feature-progress-gr {
+    background-color: #93CE7C;
+}
+
+.qa-feature-tt-div, .qa-build-tt-div, .qa-dashboard-tt-div {
+    font-size: 65%;
+    padding: 5px;
+    background-color:#ffffff;
+}
+
+.qa-feature-warn {
+    color: #f37183;
+}
+
+.qa-build-tt-li, .qa-feature-tt-li, .qa-dashboard-tt-li {
+    width: 100%;
+    list-style-type:none
+} 
+
+.qa-build-tt-warn {
+    color: #f37183;
+}
+
+.qa-build-tt-span, .qa-feature-tt-span, .qa-dashboard-tt-span {
+    width: 70px;
+    font-size:12px;
+    color:#1ebcba;
+    font-weight: 600;
+    text-align: left;
+    display: inline-block;
+} 
+
+.qa-build-progressbar {
+    width: 30px;
+    margin: 1px 1px 1px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
+.qa-build-progressbar canvas {
+    vertical-align: top;
+}
+
+.qa-build-progressbar strong {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    text-align: center;
+    padding: 5px 0px 0px 5px;
+    font-size: 11px;
+}
+
+.qa-build-progressbar strong i {
+    font-size: 0.6em;
+}
+
+.qa-dashboard-accordion {
+    width: 100%;
+    padding: 0px;
+}
+
+.qa-dashboard-table {
+    min-width: 100%;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+    font-size: 60%;
+    background-color: #ffffff;
+}
+
+.qa-dashboard-table tr:nth-of-type(2n) {
+    background-color: #ffffff;
+}
+
+.qa-dashboard-table th, .qa-dashboard-table td {
+    border-bottom: 1px solid #000000;
+    padding: 0.1em;
+}
+
+.qa-dashboard-platform-th {
+    text-align: center;
+}
+
+.qa-dashboard-seg-td {
+    font-weight: 600;
+    width: auto;
+    min-width: 20px;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.qa-dashboard-seg-info {
+    width: auto;
+    word-wrap: break-word;
+    color: #ffffff;
+}
+
+.qa-dashboard-table .qa-dashboard-component-th {
+    width: 20%;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.qa-dashboard-table .qa-dashboard-issue-th {
+    width: 70px;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.qa-dashboard-table .qa-dashboard-component-info {
+    width: 20%;
+    word-wrap: break-word;
+}
+
+.qa-dashboard-table .qa-dashboard-issue-info {
+    width: 70px;
+}
+
+.qa-dashboard-platform-title {
+    margin-right: 0.3em;
+}
+
+.qa-dashboard-info-title {
+   font-weight: 600; 
+}
+
+.qa-dashboard-info-span {
+    display: none;
+}
+
+.qa-dashboard-seg-none {
+    background-color: #ececec;
+}
+
+.qa-dashboard-seg-info-red{
+    text-align: center;
+    background-color: #f37183;
+}
+
+.qa-dashboard-seg-info-or{
+    text-align: center;
+    background-color: #ffc000;
+}
+
+.qa-dashboard-seg-info-gr{
+    text-align: center;
+    background-color: #93CE7C;
+}
+
+.qa-dashboard-more-button {
+    margin: 0.2em;
+    padding: 0px;
+    font-size: 70%;
+    font-weight: 600;
+    border: 0px;
+    background-color: transparent;
+    color: #1ebcba;     
+}

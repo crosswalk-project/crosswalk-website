@@ -19,5 +19,8 @@
   },
   "report_bugs": {
     "title": "Report bugs"
+  },
+  "contributing_tests": {
+    "title": "Contributing tests"
   }
 }

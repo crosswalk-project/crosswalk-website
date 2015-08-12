@@ -1,0 +1,1 @@
+{"SIMD":{"block":"0","fail":"28","hardware":"Google Nexus 4","issues":{"XWALK-4148":{"desc":"XWALK-4148","url":"https://crosswalk-project.org/jira/browse/XWALK-4148"}},"pass":"1609","short_desc":"SIMD"}}
