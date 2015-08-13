@@ -20,12 +20,9 @@ Be sure to follow the [contribution guidelines](/contribute/contributing-code.ht
 
 ## Testing
 
-For a quick overview of the overall test results for Crosswalk
-binaries, see
-[Crosswalk test result indicators](https://crosswalk-project.org/#wiki/Crosswalk-test-result-indicators).
+Full details of everything related to test scope, test execution plan, and running tests can be found on the [Crosswalk testing home](https://github.com/crosswalk-project/crosswalk-website/wiki/crosswalk-testing-home).
 
-Full details of everything related to test scope, test execution plan, and running tests
-can be found on the [Crosswalk Testing Home](https://github.com/crosswalk-project/crosswalk-website/wiki/crosswalk-testing-home).
+You are welcome to contribute test cases for Crosswalk Project, the detailed process can be found in [contribute tests](/contribute/contributing_tests.html) page.
 
 ## Questions?
 Jump on IRC and chat with other developers; they hang out on Freenode in the #crosswalk channel. Details in the [Community](/documentation/community.html) page.
