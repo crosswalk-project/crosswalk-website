@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/tizen" />
+    <meta property="og:title" content="Test Suite" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/test_suite" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tizen" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/test_suite" />
+    <meta name="twitter:title" content="Test Suite" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -132,50 +132,9 @@
          
        </li>
     
-       <li class="article-item  nav-item--active">
+       <li class="article-item ">
          <a class="article-link" href="/documentation/tizen.html">Tizen</a>
 
-         
-
-
-         <ul class="article-list">
-            
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen/windows_host_setup.html">Windows host setup</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen/linux_host_setup.html">Linux host setup</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen/tizen_target_setup.html">Tizen target setup</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen/build_an_application.html">Build an application</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen/run_on_tizen.html">Run on Tizen</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen/tizen_remote_debugging.html">Remote debugging</a>
-               
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/tizen/ivi_extensions.html">IVI Extensions</a>
-               
-           </li>
-           
-         </ul>
          
        </li>
     
@@ -245,7 +204,7 @@
          
        </li>
     
-       <li class="article-item ">
+       <li class="article-item  nav-item--active">
          <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
 
          
@@ -258,34 +217,29 @@
 
 
 <article class="article article--hasToC">
-  <h1>Crosswalk on Tizen</h1>
-<p>This section describes how to create web and hybrid applications using the Crosswalk Project for the <a href="http://developer.tizen.org">Tizen operating system</a>.</p>
-<p>For Tizen, a <a href="/documentation/downloads.html#release-channels">canary</a> version is used (there are no stable or beta downloads for Tizen).</p>
-<p><strong>This tutorial explains how to:</strong></p>
-<ol>
-<li><p>Set up the <em>host</em>: the machine where you will be developing the application.</p>
+  <h1>Test Suite</h1>
+<p>The Crosswalk Project test suite includes test cases that validate the behavior of the project. The tests are open source.  The souce code can be obtained from <a href="https://github.com/crosswalk-project/crosswalk-test-suite">Crosswalk Test Suite repository</a>.</p>
+<h2>Overview</h2>
+<p>There are several components in the Crosswalk Project.  For example:</p>
 <ul>
-<li><a href="/documentation/tizen/windows_host_setup.html">Windows host</a></li>
-<li><a href="/documentation/tizen/linux_host_setup.html">Linux host</a></li>
+<li>Web API -- APIs used by web applications running on the Crosswalk Project runtime</li>
+<li>Embedding API --  the Java API for embedding the Crosswalk Project in an Android application.</li>
 </ul>
-<p>Note that it may be possible to develop for Crosswalk on other platforms, but only Windows and Linux are officially supported.</p>
-</li>
-<li><p>Set up your <a href="/documentation/tizen/tizen_target_setup.html">Tizen target</a>: the device that will run the Crosswalk application, either physical or virtual.</p>
-</li>
-<li><p><a href="/documentation/tizen/build_an_application.html">Build a very simple HTML5 application</a>.</p>
-</li>
-<li><p><a href="/documentation/tizen/run_on_tizen.html">Run your application</a> using Crosswalk</p>
-</li>
-</ol>
-<p>You will need to be comfortable using a command line to follow these steps. If you prefer to use a graphical integrated development environment (IDE), the free <strong>Intel XDK</strong> provides an alternative way to package applications for Crosswalk Android. See the <a href="http://xdk-software.intel.com/">Intel XDK website</a> for more details.</p>
-<p>Throughout this tutorial, commands you should run in a shell are prefixed with a <code>&gt;</code> character. On Windows, you can use the standard Windows console; on Linux, you can use a bash shell.</p>
-<p><strong>By the end of the tutorial</strong>, you should understand the workflow for creating Crosswalk applications from your own HTML5 projects.</p>
-<p><strong>This tutorial does not cover:</strong></p>
+<p>The corresponding test suites for these components are well orginazed with the following parts:</p>
 <ul>
-<li>How to write HTML5 applications. We use the simplest possible HTML5 application for this tutorial, so we can focus on the packaging and deployment aspects of Crosswalk.</li>
-<li>How to use <a href="/documentation/apis/web_apis.html#Experimental-APIs">Crosswalk-specific APIs</a>. The code in the tutorial should run on any modern web browser, as well as on Crosswalk.</li>
-<li>How to compile Crosswalk itself. This is covered in the <a href="/contribute">Contribute</a> section.</li>
+<li>Web API tests</li>
+<li>Embedding API tests</li>
+<li>Web Runtime and feature tests</li>
+<li>Crosswalk based Cordova tests</li>
+<li>Usecases</li>
 </ul>
+<p>Tools, documentation, and some other tests (e.g. stability tests and BAT tests) are also included in the test suite. Please refer to <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-test-suite">test suite wiki</a> for more details.</p>
+<h2>Development guide</h2>
+<p>The Test Suite provides a series of <a href="https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/doc">development guides</a> for test case developers and contributors. The guides cover test suite source layout, coding style, test case naming convention, folder naming convention, test case classification, and how to add test cases into test suites for components like Web API, Embedding API, Cordova and Web Runtime. You may also need to understand the <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-test-suite">test case priority and test coverage</a> before developing the test cases.</p>
+<h2>Branches</h2>
+<p>The Test Suite not only covers the master branch but also the beta branch since usually case bugs are affected on both of them and sometimes we need to add hotfixes on the beta branch. The Test Suite branch schedule aligns with <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Release-dates">branch dates</a> of Crosswalk Project which follows <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Release-methodology">Crosswalk release methodology</a>.</p>
+<h2>Contribute test cases</h2>
+<p>No test is too small or too simple if it helps to validate a feature or behavior. Everyone is encouraged to contribute to test development. Please refer to detailed contribution steps in <a href="/contribute/contributing_tests.html">contribute tests</a> page.</p>
 
   <footer class="article-next">
     
