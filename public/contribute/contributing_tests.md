@@ -1,5 +1,5 @@
 # Contributing Tests
-This page outlines the process for contributing test cases or test suites to Crosswalk, basically the process follows [contributing code](/contribute/contributing-code.html) but with more details as follows.
+This page outlines the process for contributing test cases or test suites to Crosswalk.  The process follows [contributing code](/contribute/contributing-code.html) but with more details as follows.
 
 For information on obtaining the source code, see [Crosswalk Test Suite](/documentation/test_suite.html).
 
