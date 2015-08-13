@@ -8,6 +8,9 @@
   "contributing-code": {
     "title": "Contributing code"
   },
+  "contributing_tests": {
+    "title": "Contributing tests"
+  },
   "coding_style": {
     "title": "Coding style"
   },

@@ -49,5 +49,8 @@
   },
   "report_bugs": {
     "title": "Report bugs"
+  },
+  "test_suite": {
+    "title": "Test Suite"
   }
 }
