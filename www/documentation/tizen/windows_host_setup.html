@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Windows host setup" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/tizen/windows_host_setup" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tizen/windows_host_setup" />
+    <meta name="twitter:title" content="Windows host setup" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/tools.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+  
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+
+
+         <ul class="article-list">
+            
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/tizen/windows_host_setup.html">Windows host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/linux_host_setup.html">Linux host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/tizen_target_setup.html">Tizen target setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/build_an_application.html">Build an application</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/run_on_tizen.html">Run on Tizen</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/tizen_remote_debugging.html">Remote debugging</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tizen/ivi_extensions.html">IVI Extensions</a>
+               
+           </li>
+           
+         </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/screens.html">Screens</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
+
+         
+       </li>
+    
+  </ul>
+
+</nav>
+
+
+
+<article class="article article--hasToC">
+  <h1>Windows host setup</h1>
+<p>These instructions have been tested on Windows 7 Enterprise, 64 bit.</p>
+<p>In this tutorial, you&#39;re going to use an emulated Tizen IVI image, running under VMware. To be able to create this image and access it, you need to install a few packages on the host machine:</p>
+<ol>
+<li><p><a id="Utilities"></a><strong>Utilities</strong>, available as part of the <a href="http://git-scm.com/download/win">git SCM tools for Windows</a>.</p>
+ <ul>
+ <li><code>bash</code>: this is required to run the script for generating Tizen packages.</li>
+ <li><code>ssh</code>: this command is used to push files to, and log in to, the virtual machine.</li>
+ <li><code>openssl</code>: the command used to create a key for signing your Tizen packages.</li>
+ <li><code>bunzip2</code>: the command to unpack the Tizen IVI disk image.</li>
+ </ul>
+
+<p> Download a git SCM tools <code>.exe</code> for your architecture and install it.</p>
+<p> Once installed, you should have a <em>Git Bash</em> entry in the Windows menu, which will bring up a <code>bash</code> shell.</p>
+</li>
+<li><p><strong>QEMU:</strong> you need the <code>qemu-img</code> tool to convert a Tizen IVI disk image into a format suitable for use with VMware.</p>
+<p>A version of QEMU for Windows is available from <a href="http://qemu.weilnetz.de/">http://qemu.weilnetz.de/</a>. Use this at your own risk.</p>
+</li>
+<li><p><strong>VMware Player</strong> or <strong>VMware Workstation</strong>, to create and run the virtual machine. The free version of Player can be downloaded from <a href="https://my.vmware.com/web/vmware/free">the VMware website</a>. However, if you are using Player for commercial purposes, you will <a href="http://store.vmware.com/buyplayerplus">need a licence</a>.</p>
+<p>If you need help with installing VMware products, see <a href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2053973">this page on the VMware website</a>.</p>
+</li>
+</ol>
+<p>Now the host is setup, you can prepare your targets.</p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/tizen/linux_host_setup.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Linux host setup</h3>
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div">
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Crosswalk received <i>2015 Outstanding Open Source Project</i> award</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 10 Jul 2015 12:00:00 GMT">2015-07-10T12:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation">Documentation</a> &nbsp;
+             <a href="/blog">Blog</a> &nbsp;
+             <a href="/documentation/downloads.html">Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

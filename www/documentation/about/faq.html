@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="FAQ" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/about/faq" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/about/faq" />
+    <meta name="twitter:title" content="FAQ" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/tools.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+  
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+
+         
+
+
+         <ul class="article-list">
+            
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/about/faq.html">FAQ</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/about/demos.html">Demos</a>
+               
+           </li>
+           
+         </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/screens.html">Screens</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
+
+         
+       </li>
+    
+  </ul>
+
+</nav>
+
+
+
+<article class="article article--hasToC">
+  <h1>Frequently-asked questions</h1>
+<p>If you have any questions that are not answered below, the crosswalk-help mailing list is a good place to ask them. Alternatively, contact us directly via the #crosswalk IRC channel on Freenode. See the <a href="/documentation/community.html">Community page</a> for more details.</p>
+<h3><a id="Contents"></a>Contents</h3>
+<ul>
+<li><a href="#Background-to-the-project">Background to the project</a></li>
+<li><a href="#Ways-to-use-the-Crosswalk-Project">Ways to use the Crosswalk Project</a></li>
+<li><a href="#Distributing-Crosswalk-Project-applications">Distributing Crosswalk Project applications</a></li>
+<li><a href="#Canvas-and-WebGL-support">Canvas and WebGL support</a></li>
+<li><a href="#Embedding-API">Embedding API</a></li>
+<li><a href="#iOS-Support">iOS Support</a></li>
+<li><a href="#The-Crosswalk-Project-community">The Crosswalk Project community</a></li>
+<li><a href="#Commercial-aspects">Commercial aspects</a></li>
+<li><a href="#Relationships-with-other-projects">Relationships with other projects</a></li>
+</ul>
+<h2><a id="Background-to-the-project"></a>Background to the project</h2>
+<h3><a id="What-is-the-Crosswalk-Project-for"></a>What is the Crosswalk Project for?</h3>
+<p>If you are a developer working with web technologies, the Crosswalk Project enables you to deploy a web application with its own dedicated runtime. This means three things:</p>
+<ol>
+<li>You can distribute your web application via app stores.</li>
+<li>Your application won&#39;t break in whatever ancient webviews or browsers your audience is using, as you control the runtime and its upgrade cycle.</li>
+<li>You can build applications without worrying so much about runtime differences and quirks: you only have one runtime to deal with.</li>
+</ol>
+<h3><a id="Is-this-a-runtime-like-Java-or-Visual-Basic"></a>Is this a runtime like Java or Visual Basic?</h3>
+<p>No, because the Crosswalk Project is based on W3C standards: HTML5, CSS and JavaScript. Unlike the languages supported by earlier runtimes, W3C standards are implemented in multiple contexts, by multiple companies, in both open source and commercial forms. A broad range of open source as well as commercial tools and projects support the developer. When you use the Crosswalk Project application runtime, you are participating in a growing ecosystem.</p>
+<h3><a id="If-my-apps-need-W3C-standards-why-not-target-a-browser"></a>If my apps need W3C standards, why not target a browser?</h3>
+<p>Browsers do a great job of supporting W3C standards, but they are not allowed to support the APIs from the <a href="http://www.w3.org/2012/sysapps/">Systems Applications Working Group</a>. This is because these APIs access platform features which, if known to a web site and combined with other data available to the browser, would allow violations of the user&#39;s privacy. Because Crosswalk Project applications have a different security model, where a user is able to choose which permissions an application is given, system application APIs <em>can</em> be supported. This in turn makes it possible for the Crosswalk Project to run applications which are not possible on the open web.</p>
+<h3><a id="Isnt-the-Crosswalk-Project-just-going-to-mean-more-fragmentation-of-the-web"></a>Isn&#39;t the Crosswalk Project just going to mean more fragmentation of the web?</h3>
+<p>No, because:</p>
+<ul>
+<li>The Crosswalk Project isn&#39;t aimed at the web at all: it&#39;s aimed at applications that happen to be written in HTML5, CSS and JS.</li>
+<li>Applications using a Crosswalk Project runtime know about the environment they are built for. Minor differences between runtime implementations (e.g. a sensor available on one platform but not on another) can be easily managed by developers.</li>
+<li>We don&#39;t intend to fork Blink, the underlying rendering engine for Chromium.</li>
+<li>We rebase regularly to new versions of Blink.</li>
+<li>If a change makes sense for generic Chromium, we will submit it upstream.</li>
+</ul>
+<h2><a id="Ways-to-use-the-Crosswalk-Project"></a>Ways to use the Crosswalk Project</h2>
+<h3><a id="Can-I-use-the-Crosswalk-Project-to-appify-my-website"></a>Can I use the Crosswalk Project to &quot;appify&quot; my website?</h3>
+<p>Yes. You can wrap a website URL with a Crosswalk Project runtime so it behaves like an app (fullscreen, no browser chrome, home screen icon etc.).</p>
+<h3><a id="Can-I-customise-the-Crosswalk-Project"></a>Can I customise the Crosswalk Project?</h3>
+<p>Yes. The Crosswalk Project itself can be modified, as the code is open source. We actively encourage <a href="https://crosswalk-project.org/contribute/index.html">contributions</a>.</p>
+<p>Alternatively, you can add extra capabilities to Crosswalk through its <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Extensions">extension mechanism</a> without having to modify the core code. This enables an application to access platform features via native code (Java on Android, C/C++ on Tizen) and go beyond the boundaries of the web runtime.</p>
+<h2><a id="Distributing-Crosswalk-Project-applications"></a>Distributing Crosswalk Project applications</h2>
+<h3><a id="How-big-is-the-Crosswalk-Project-runtime-and-how-will-it-affect-my-applications-size"></a>How big is the Crosswalk Project runtime, and how will it affect my application&#39;s size?</h3>
+<p>To give a rough idea, the HTML/JS/CSS for <a href="https://github.com/crosswalk-project/crosswalk-samples/tree/master/hello_world">one of the project&#39;s sample applications</a> takes up 24Kb of disk space.</p>
+<p>Once this application is packaged with its own Crosswalk 10 (x86 Android) runtime, the apk file size is ~20Mb. Installed, the application takes ~58Mb of disk space.</p>
+<h3><a id="Can-one-Crosswalk-installation-be-shared-between-multiple-applications"></a>Can one Crosswalk installation be shared between multiple applications?</h3>
+<p>Bundling the runtime with the application (aka &quot;embedded mode&quot;) is the simplest approach for distribution purposes. But Crosswalk applications <em>can</em> share a single Crosswalk runtime library (in &quot;shared mode&quot;); and a package which enables shared mode is part of the Crosswalk for Android distribution. However, you would have to distribute this shared runtime package yourself.</p>
+<h3><a id="How-can-I-distribute-a-Crosswalk-Android-application-across-multiple-architectures"></a>How can I distribute a Crosswalk Android application across multiple architectures?</h3>
+<p>The Crosswalk binaries are architecture-specific. This means that you will need an x86-compatible Crosswalk on Android devices with x86 chips; and an ARM-compatible Crosswalk on Android devices with ARM chips.</p>
+<p>There are two approaches to building an application which supports both x86 and ARM platforms:</p>
+<ul>
+<li><p>Build two separate packages for your application, one for x86 and one for ARM; then upload both to the app stores where you are hosting your application. Prominent stores like Google Play have support for <a href="http://developer.android.com/google/play/publishing/multiple-apks.html">uploading multiple packages for different platforms</a>.</p>
+<p>The <a href="/documentation/android/run_on_android.html">Crosswalk apk generation script</a> (<code>make_apk.py</code>) generates packages for both architectures to facilitate this way of working.</p>
+</li>
+<li><p>Build one package for your application, but include both the x86 and ARM versions of Crosswalk in it. The down-side of this approach is that it makes the package file very large (c. 40Mb before you add your application code).</p>
+<p>Creating a package this way requires you to copy the Crosswalk shared object files for both architectures into the <code>lib/</code> directory of the apk package file. For example, an apk with support for x86 and ARM would contain the following files:</p>
+<pre><code>lib/armeabi-v7a/libxwalkcore.so
+lib/x86/libxwalkcore.so</code></pre>
+<p>How you achieve this depends on your build process. If you need a reference, see <a href="/documentation/cordova/migrate_an_application.html#Multi-architecture-packages">the Cordova migration instructions</a>, which explain how to do this in the context of Crosswalk Cordova.</p>
+</li>
+</ul>
+<h3><a id="Which-platforms-does-Crosswalk-support"></a>Which platforms does Crosswalk support?</h3>
+<p>Crosswalk officially supports <a href="http://www.android.com/">Android (version 4.0 and above)</a> and <a href="https://wiki.tizen.org/wiki/IVI">Tizen 3.0 (Common and IVI profiles)</a>. Pre-built packages are available from <a href="https://download.01.org/">https://download.01.org/</a> for both platforms. See the <a href="https://crosswalk-project.org/documentation/downloads.html">downloads page</a> for details.</p>
+<p>Crosswalk builds for Windows, Mac OS and Linux are available: see <a href="https://build.crosswalk-project.org/waterfall">https://build.crosswalk-project.org/waterfall</a>. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.</p>
+<p>Also note that we don&#39;t have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or similar). Again, if you are interested in working on this, please feel free to contact us.</p>
+<p>Crosswalk does not support iOS at this time.</p>
+<h3><a id="How-to-use-Crosswalk-on-a-project-using-ProGuard"></a>How to use Crosswalk on a project using ProGuard</h3>
+<p>Don&#39;t use ProGuard to obfuscate the xwalk core library because it will create a &quot;broken JNI link&quot; error. Add the following ProGuard rules in the proguard-project.txt file:&quot;</p>
+<pre><code>-keep class org.xwalk.core.** {
+    *;
+}
+-keep class org.chromium.** {
+    *;
+}
+-keepattributes **</code></pre>
+<h2><a id="Canvas-and-WebGL-support"></a>Canvas and WebGL support</h2>
+<h3><a id="Why-wont-WebGL-work-in-Crosswalk-on-my-device"></a>Why won&#39;t WebGL work in Crosswalk on my device?</h3>
+<p>Chromium has a blacklist of GPUs which are know to cause stability and/or conformance problems when running WebGL. Chromium will disable WebGL if running on a device with one of the GPUs in this list.</p>
+<p>Crosswalk uses the same blacklist. Consequently, if Crosswalk is running on a device with a blacklisted GPU, WebGL is disabled by default.</p>
+<p>For more information about which GPUs are blacklisted and when, see the <a href="http://www.khronos.org/webgl/wiki/BlacklistsAndWhitelists#Chrome">Khronos WebGL wiki</a>.</p>
+<h3><a id="Can-I-force-Crosswalk-to-enable-WebGL"></a>Can I force Crosswalk to enable WebGL?</h3>
+<p>A work-around is available if you want to test an application using WebGL on a device with a blacklisted GPU: pass the <code>--ignore-gpu-blacklist</code> command-line option to the <code>xwalk</code> binary. But you can&#39;t do this directly if Crosswalk is embedded in an application as a native library (for example, using Crosswalk Cordova, the Crosswalk Android packaging tool, or using the embedding API).</p>
+<p>However, you can use a custom command-line (Crosswalk 6 or later) by adding a text file called <code>xwalk-command-line</code> (no suffix) to the <code>assets/</code> directory of your Android <code>apk</code> package. This file should contain a single line, representing the <code>xwalk</code> command line to run; in this case, the line would be:</p>
+<pre><code>xwalk --ignore-gpu-blacklist</code></pre>
+<p>(Other command-line options can be added to the file if desired.)</p>
+<p>The method for adding this file to your Android package depends on how you are using Crosswalk:</p>
+<ul>
+<li><p>If you are <strong><a href="/documentation/embedding_crosswalk.html">embedding Crosswalk in an Android application</a></strong>, the file should be placed in the <code>assets/</code> directory of your project.</p>
+</li>
+<li><p>If you are <strong><a href="/documentation/cordova.html">using Crosswalk Cordova</a></strong>, the file should be placed in the <code>assets/</code> directory of your project.</p>
+</li>
+<li><p>If you are <strong><a href="/documentation/android/run_on_android.html">building an Android package with the <code>make_apk.py</code> script</a></strong>, you can pass an option to create the file inside the output Android package:</p>
+<pre><code>$ make_apk.py --manifest=mygame/manifest.json \
+  --xwalk-command-line=&quot;--ignore-gpu-blacklist&quot;</code></pre>
+</li>
+</ul>
+<p>Note that enabling WebGL on platforms with blacklisted GPUs could result in the application (or the whole device) freezing or crashing, so it is not recommended for production applications.</p>
+<h3><a id="Why-is-canvas-performance-poor-on-my-device"></a>Why is canvas performance poor on my device?</h3>
+<p>If a device has a <a href="#Why-won&#39;t-WebGL-work-in-Crosswalk-on-my-device?">blacklisted GPU</a>, canvas elements are not hardware accelerated. This can result in poor performance. <a href="#Can-I-force-Crosswalk-to-enable-WebGL?">Forcing Crosswalk to ignore the GPU blacklist</a> can improve performance, but may cause your application to become unstable.</p>
+<h2><a id="Embedding-API"></a>Embedding API</h2>
+<h3><a id="Webview-compatibility"></a>I used to be able to call WebView methods from the Crosswalk embedding API, but starting with Crosswalk 9 this doesn’t work anymore. Why is that?</h3>
+<p>The embedding API in Crosswalk 8 unfortunately included some classes and methods that were not meant to be accessed, and have thus been made private starting from Crosswalk 9.</p>
+<p>From the start, we have chosen not to be 100% compatible with the existing Android WebView API. The reason behind this decision was that we wanted to avoid locking ourselves into supporting old legacy API which would not be needed for our common use-cases and negatively affect performance and the ability to refactor and improve the project.</p>
+<p>The goal of the Crosswalk Project is to provide the latest web technologies to application developers, while being very performant and modern. Making it a drop-in replacement for the WebView technically goes against these goals.</p>
+<p>That being said, we are very open to feedback and extending our API.</p>
+<p>If you have a specific need, you should create a feature request in the Crosswalk Project JIRA and specify your use-case and requirements for the API.</p>
+<p>If the API is blocking you from moving to a newer version of Crosswalk, please explain why and we will try to adjust the priority accordingly.</p>
+<h2><a id="iOS-Support"></a>iOS Support</h2>
+<h3><a id="Why-use-iOS"></a>Why should I use Crosswalk when creating an iOS web app?</h3>
+<p>Crosswalk for iOS advantages include:</p>
+<ul><li>a performance boosted web runtime which is based on the latest WKWebView</li>
+    <li>a unified web application creation and mantainance experience across platforms (Android, iOS, etc.)</li>
+    <li>a much easier way for hybrid developers to extend their own Web APIs</li>
+    <li>the ability to leverage Cordova Plugins</li>
+</ul>
+
+<h3>What features are different between Android and iOS?  Will my Android+Crosswalk app &quot;just work&quot; on iOS?</h3>
+<p>On Android, Crosswalk uses a Chromium-based web engine. iOS store limitations prevent us from using the Chromium engine.  Thus, Crosswalk on iOS relies on WKWebView. The differences between the two engines will result in HTML5 feature differences and some Crosswalk specific features (e.g. WebCL and SIMD.js) can not be supported on iOS.  The Crosswalk unified web API should reduce platform differences for both Android and iOS and, for most features, your unmodified Android web app should works the same on iOS.</p>
+<h3>What versions of iOS does Crosswalk support?</h3>
+<p>iOS 8 or newer</p>
+<h3>Do I need a Mac to create iOS web apps?  Can I build Android and iOS apps from the same system?</h3>
+<p>Yes, you need a Mac to build iOS apps with Crosswalk. You can also install the Android SDK and create Android applications using the Crosswalk build tools, although the setup for this environment is not yet documented.</p>
+<h3>I use Cordova to build my iOS apps currently.  What is the difference with Crosswalk?  Can I use them both?</h3>
+<p>Crosswalk is based on WKWebView which enables a lot of new HTML5 features and is up to 10x times faster than UIWebView used by Cordova. Crosswalk also supports the Cordova Plugins mechanism enabling apps to use the large body of Cordova plugins and leverage a plethora of features. Third-party plugins should also work, though this has not been tested.</p>
+<h3>What is the basic workflow for building apps with Crosswalk?</h3>
+<p><strong>Web app developers:</strong></p>
+<ul>
+<li>Use <code>crosswalk-app-tool create</code> to create a template project</li>
+<li>Write your HTML5 source codes and place them in the right directory</li>
+<li>Run <code>crosswalk-app-tool build</code> to build them into an iOS application</li>
+</ul>
+<p><strong>Hybrid app developers:</strong></p>
+<ul>
+<li>Create your own iOS application project</li>
+<li>Import <code>XWalkView.xcodeproj</code> into your project</li>
+<li>Embed <code>XWalkView</code> target as a framwork in your app target</li>
+<li>Embed the extensions frameworks into your app, if you have any extensions</li>
+<li>For the app itself:<ul>
+<li>Add <code>XWalkView</code> into your view controller as the main view</li>
+<li>Create extensions and load them</li>
+<li>Load your entry page</li>
+</ul>
+</li>
+</ul>
+<p>Please refer to <a href="/documentation/ios.html">Crosswalk Project or iOS</a> for more detials.</p>
+<h3>Will Crosswalk Project for iOS be published to CocoaPods?</h3>
+<p>This is on our plan and we are pushing forward to make it happen.</p>
+<hr>
+<h2><a id="The-Crosswalk-Project-community"></a>The Crosswalk Project community</h2>
+<h3><a id="Who-is-using-the-Crosswalk-Project"></a>Who is using the Crosswalk Project?</h3>
+<p>Crosswalk is still a young project but quickly gaining momentum.  There are currently over 300 applications (mostly games) in app stores that are built with Crosswalk.</p>
+<h3><a id="How-often-is-the-Crosswalk-Project-released"></a>How often is the Crosswalk Project released?</h3>
+<p>Crosswalk is updated to the latest Chromium once every six weeks. In practice, this means that the longest gap between a feature appearing in Chromium and the same feature appearing in Crosswalk is six weeks.</p>
+<p>For more details, see <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Downstream-Chromium">this explanation of how Crosswalk relates to Chromium</a>.</p>
+<h3><a id="Can-I-get-involved"></a>Can I get involved?</h3>
+<p>Yes. We welcome contributions from anyone who would like to make the project better, whether by writing code, filing bugs, or adding documentation. Full details of how to get involved are <a href="https://crosswalk-project.org/contribute/index.html">on the Crosswalk website</a>.</p>
+<h2><a id="Commercial-aspects"></a>Commercial aspects</h2>
+<h3><a id="Do-I-have-to-pay-for-the-Crosswalk-Project"></a>Do I have to pay for the Crosswalk Project?</h3>
+<p>No, Crosswalk is an open source project, hosted on <a href="https://github.com/crosswalk-project/crosswalk">github</a>, and licensed under the <a href="https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE">BSD licence</a>. It is free to use for any purpose, commercial or otherwise.</p>
+<h3><a id="If-Im-not-paying-for-the-Crosswalk-Project-who-is"></a>If I&#39;m not paying for the Crosswalk Project, who is?</h3>
+<p>Crosswalk development is largely sponsored by Intel, but builds on top of <a href="http://www.chromium.org/">Chromium</a> development.</p>
+<h3><a id="Can-I-get-commercial-support-for-the-Crosswalk-Project"></a>Can I get commercial support for the Crosswalk Project?</h3>
+<p>Not at the moment, but we would love to hear from you if you need it.</p>
+<h2><a id="Relationships-with-other-projects"></a>Relationships with other projects</h2>
+<h3><a id="How-does-Crosswalk-relate-to-the-Intel-XDK"></a>How does Crosswalk relate to the Intel XDK?</h3>
+<p>The <a href="http://xdk-software.intel.com/">Intel XDK</a> is a development environment (IDE) for HTML5 applications. When a developer builds an application using the XDK, they have a choice of exporting their application to a Crosswalk Android package (apk). Packages built this way by the XDK consist of the HTML5 application, bundled with its own Crosswalk runtime.</p>
+<h3><a id="Is-Crosswalk-a-replacement-for-Phonegap-Cordova"></a>Is Crosswalk a replacement for Phonegap/Cordova?</h3>
+<p>No, they are complementary. If you intend to build for multiple platforms (beyond Android and Tizen), need extensive documentation and a very mature community, Cordova may be a better choice. If you are interested in hardware-accelerated WebGL support and bleeding edge HTML5 features, Crosswalk may be a better choice.</p>
+<p>Having said this, you can get the best of both worlds by <a href="/documentation/cordova.html">using Cordova APIs from Crosswalk</a> if you wish.</p>
+<h3><a id="Does-Crosswalk-for-Android-use-the-Android-webview"></a>Does Crosswalk for Android use the Android webview?</h3>
+<p>No. Crosswalk is effectively a modified version of Chromium, the open source basis of the Google Chrome browser.</p>
+<h3><a id="Why-do-I-need-Crosswalk-now-that-Android-KitKat-and-later-has-a-Chrome-based-webview"></a>Why do I need Crosswalk now that Android (KitKat and later) has a Chrome-based webview?</h3>
+<p>Crosswalk provides access to the <a href="/documentation/apis/web_apis.html">full range of modern web APIs</a> supported by Chrome. By contrast, the Android Chrome-based web view <a href="https://developers.google.com/chrome/mobile/docs/webview/overview#does_the_new_webview_have_feature_parity_with_chrome_for_android">lacks some features</a> which are available in Chrome on Android.</p>
+<p>On top of this, Crosswalk adds extra features which are <em>not</em> available in either Chrome or the Android webview, such as experimental support for <a href="https://01.org/blogs/tlcounts/2014/bringing-simd-javascript">SIMD</a> and support for the <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/presentation-api-manual">Presentation API</a>.</p>
+<h3><a id="Why-use-Blink-vs-the-higher-level-Chromium-Embedded-Framework-as-a-basis-for-Crosswalk"></a>Why use Blink vs. the higher-level Chromium Embedded Framework as a basis for Crosswalk?</h3>
+<p><a href="https://code.google.com/p/chromiumembedded/">CEF 1.0</a> has proven to be quite popular, but is being <a href="http://www.magpcss.org/ceforum/viewtopic.php?f=10&amp;t=10647&amp;sid=510426ccd8a9650f72ba416d7b51de06">phased out</a> in favor of the larger CEF 3.0. Since we want a consistent implementation in the Crosswalk project, we had to pick a level in the Chromium architecture that could accommodate both use cases. By starting with Blink and building up, rather starting with CEF 3.0 and removing pieces, we think we&#39;ll end up with a tighter, more consistent result.</p>
+<h3><a id="When-should-I-use-Chromes-new-packaged-apps-rather-than-Crosswalk"></a>When should I use Chrome&#39;s new packaged apps rather than Crosswalk?</h3>
+<p>With Chrome packaged apps, you get access to the Chrome app store and the capabilities Chrome offers.</p>
+<p>With the Crosswalk project, you have different possibilities:</p>
+<ul>
+<li>If you are building a platform, you can include a Crosswalk Application Runtime as a service for your own catalog of applications.</li>
+<li>A developer can package an application with a Crosswalk Application runtime so that the app and runtime are never revised without developer permission.</li>
+</ul>
+<p>Of course, because Crosswalk is based on Blink and Chromium, a developer could publish a standard HTML5 app for both Crosswalk and Chrome.</p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/about/demos.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Demos</h3>
+      </a>
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div">
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Crosswalk received <i>2015 Outstanding Open Source Project</i> award</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 10 Jul 2015 12:00:00 GMT">2015-07-10T12:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation">Documentation</a> &nbsp;
+             <a href="/blog">Blog</a> &nbsp;
+             <a href="/documentation/downloads.html">Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

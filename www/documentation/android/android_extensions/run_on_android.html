@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Run on Android" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/android_extensions/run_on_android" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/android_extensions/run_on_android" />
+    <meta name="twitter:title" content="Run on Android" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/tools.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+  
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+
+
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/windows_host_setup.html">Windows host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/linux_host_setup.html">Linux host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_target_setup.html">Android target setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
+               
+             <ul class="article-list">
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/android_extensions/host_and_target_setup.html">Host and target setup</a>
+               </li>
+
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/android_extensions/write_an_extension.html">Write an extension</a>
+               </li>
+
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/android_extensions/write_a_web_application.html">Write a web application</a>
+               </li>
+
+               
+               <li class="article-item  nav-item--active">
+                 <a class="article-link" href="/documentation/android/android_extensions/run_on_android.html">Run on Android</a>
+               </li>
+
+               
+             </ul>
+             
+           </li>
+           
+         </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/screens.html">Screens</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
+
+         
+       </li>
+    
+  </ul>
+
+</nav>
+
+
+
+<article class="article article--hasToC">
+  <h1>Run on Android</h1>
+<p>Building a Crosswalk Android application with extensions is almost identical to building any other Crosswalk Android application, and uses the same <code>make_apk.py</code> script (see the <a href="/documentation/android/run_on_android.html"><em>Run on Android</em> documentation</a>). The main difference is that an additional <code>--extensions</code> option is required, to instruct the script where to find extension directories.</p>
+<h2>Create the Android packages</h2>
+<p>To make Android packages for your project, do the following:</p>
+<ol>
+<li><p>Build the extension, as described <a href="/documentation/android/android_extensions/write_an_extension.html#Build-the-extension">previously</a>. This will create the <code>xwalk-echo-extension/</code> directory with the extension files inside.</p>
+</li>
+<li><p>After the build, the extension project directory (<code>xwalk-echo-extension-src/</code>) will contain a <code>lib/crosswalk-${XWALK-STABLE-ANDROID-X86}</code> directory, which is an unpacked Crosswalk Android distribution. You can use the scripts in here to build the Android packages.</p>
+<p>Ensure you have installed the Android SDK correctly (<a href="/documentation/android/windows_host_setup.html#Install-the-Android-SDK">Windows</a>, <a href="/documentation/android/linux_host_setup.html#Install-the-Android-SDK">Linux</a>). Then use these commands to create the packages:</p>
+<pre><code># set an environment variable to the location of the project
+$ PROJECT_DIR=~/&lt;my projects directory&gt;/xwalk-echo-project
+
+# enter the unpacked Crosswalk Android directory
+$ cd $PROJECT_DIR/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}
+
+# invoke the package builder
+$ python make_apk.py --package=org.crosswalkproject.example \
+    --enable-remote-debugging --fullscreen \
+    --manifest=$PROJECT_DIR/xwalk-echo-app/manifest.json \
+    --extensions=$PROJECT_DIR/xwalk-echo-extension-src/xwalk-echo-extension/</code></pre>
+<p>The generated packages are in the <code>~/&lt;my projects directory&gt;/xwalk-echo-project/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}</code> directory, and called <code>xwalk_echo_app_x86.apk</code> and <code>xwalk_echo_app_arm.apk</code>.</p>
+<p>Note that if you are using multiple extension directories, you still have a single <code>--extensions</code> option but supply the paths as a comma-delimited string, e.g.</p>
+<pre><code>--extensions=myextension1,myextension2</code></pre>
+</li>
+</ol>
+<h2>Install a package on a target</h2>
+<p>Choose the correct package for your Android target&#39;s architecture and install it with a command like:</p>
+<pre><code>$ adb install -r ~/&lt;my projects directory&gt;/xwalk-echo-project/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}/xwalk_echo_app_x86.apk</code></pre>
+<p>This command installs the x86 package. For more details about installing Crosswalk packages on Android, see <a href="/documentation/android/run_on_android.html">this page</a>.</p>
+<p>The icon for the application should now be in the application menu on the Android target. Tap the icon to start the application and you should see something like this:</p>
+<p><img src="/assets/android-extensions-x86.png" alt="Crosswalk Android application with extensions on x86 ZTE Geek"></p>
+<p>(The screenshot above shows the application running on an x86 ZTE Geek.)</p>
+<p>The application should display the text &quot;You said: Hello world&quot;, which demonstrates that the Java and JavaScript parts of the Crosswalk extension are communicating correctly.</p>
+
+  <footer class="article-next">
+    
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div">
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Crosswalk received <i>2015 Outstanding Open Source Project</i> award</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 10 Jul 2015 12:00:00 GMT">2015-07-10T12:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation">Documentation</a> &nbsp;
+             <a href="/blog">Blog</a> &nbsp;
+             <a href="/documentation/downloads.html">Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

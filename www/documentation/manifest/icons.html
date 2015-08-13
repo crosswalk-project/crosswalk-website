@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Icons" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/icons" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/icons" />
+    <meta name="twitter:title" content="Icons" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/tools.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+  
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+
+
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/manifest/using_the_manifest.html">Using the manifest</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/manifest/entry_points.html">Entry points</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/manifest/content_security_policy.html">Content security policy</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/manifest/display.html">Display</a>
+               
+           </li>
+           
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/manifest/icons.html">Icons</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/manifest/launch_screen.html">Launch screen</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/manifest/orientation.html">Orientation</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/manifest/permissions.html">Permissions</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/manifest/xwalk_hosts.html">xwalk hosts</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/manifest/other_fields.html">Other fields</a>
+               
+           </li>
+           
+         </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/screens.html">Screens</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
+
+         
+       </li>
+    
+  </ul>
+
+</nav>
+
+
+
+<article class="article article--hasToC">
+  <h1>Icons</h1>
+<p>The <code>icons</code> field specifies one or more icon graphics which visually represent the application. </p>
+<p>An icon may be used by a task switcher, in a notifications area, or in an application list on the device. The image below shows the icon for the <em>townxelliot media player</em> being used in the <em>application list</em> (left) and <em>recent apps</em> (right) contexts on Android:</p>
+<p><img src="/assets/manifest-icon-contexts.png" alt="Manifest icon used in &quot;application list&quot; and &quot;recent apps&quot; context on Android"></p>
+<p>The <code>icons</code> field is compatible with the <a href="http://w3c.github.io/manifest/#icons-member"><code>icons</code> field in the W3C manifest specification</a>.</p>
+<p>Note that this field has no effect when used in a <code>manifest.json</code> file <a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">loaded into an embedded Crosswalk on Android</a>.</p>
+<p>The field is a list of icon objects, each of which defines a URL for the icon as a minimum (via a <code>src</code> attribute). The icon&#39;s <code>type</code> attribute can be specified, describing the graphics format of the icon; and the optimal rendering <code>sizes</code> and screen pixel <code>density</code> for which the icon is intended can also be set.</p>
+<p>As an example, here is a simple Crosswalk manifest which specifies three icons: one to be used when a 64x64 pixel icon is needed; one to be used when a 128x128 pixel icon is needed; and one to be used when a 128x128 pixel icon is needed and the screen pixel density is 2:</p>
+<pre><code>{
+  &quot;name&quot;: &quot;simple_app&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;icon_small.png&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;sizes&quot;: &quot;64x64&quot;
+    },
+    {
+      &quot;src&quot;: &quot;icon_large.png&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;sizes&quot;: &quot;128x128&quot;
+    },
+    {
+      &quot;src&quot;: &quot;icon_large_hd.png&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;sizes&quot;: &quot;128x128&quot;,
+      &quot;density&quot;: &quot;2&quot;
+    }
+  ],
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;display&quot;: &quot;fullscreen&quot;,
+  &quot;orientation&quot;: &quot;landscape&quot;
+}</code></pre>
+<p>The properties for each object in the <code>icons</code> array are described below.</p>
+<h3>src</h3>
+<p>The path to the icon file, relative to the manifest.</p>
+<h3>type</h3>
+<p>The <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a> of the icon.</p>
+<h3>sizes</h3>
+<p>The icon sizes for which this image is suitable, as space-separated <code>&lt;width&gt;x&lt;height&gt;</code> substrings. For example:</p>
+<ul>
+<li><code>&quot;sizes&quot;: &quot;128x128&quot;</code>: this image is suitable for use as a 128x128 pixel icon.</li>
+<li><code>&quot;sizes&quot;: &quot;128x128 256x256&quot;</code>: this image is suitable for use as a 128x128 or 256x256 pixel icon.</li>
+</ul>
+<p>Note that the value for the <code>sizes</code> property is <em>not</em> the intrinsic size of the image (i.e. the pixel size stored in the image file): it is the set of icon sizes for which this image file is suitable. This means it is possible to have an image file with an intrinsic size smaller or larger than the icon it will serve as.</p>
+<p>For example, an image file may be 128x128 pixels in size; but the manifest may state that this image can be used for 128x128 or 256x256 pixel icons. When used as a 256x256 pixel icon, the image file will be scaled up (2x) to fit the required icon size (which may result in some degradation in its appearance).</p>
+<h3>density</h3>
+<p>The <code>density</code> property specifies which screen densities an icon should be used for. Coupled with the <code>sizes</code> property, it makes it possible to adjust which image file is delivered for a particular icon size at a given screen density.</p>
+<p>If you are unfamiliar with the concept of screen density, see the <a href="/documentation/screens/screen_measurements.html">screen measurements page</a>.</p>
+<p>The property&#39;s value is a float representing the screen density for which the image is suitable, in dots per pixel (dppx). For example:</p>
+<ul>
+<li><code>&quot;density&quot;: &quot;2&quot;</code>: this image is suitable for screens with a density of 2dppx.</li>
+<li><code>&quot;density&quot;: &quot;1.5&quot;</code>: this image is suitable for screens with a density of 1.5dppx.</li>
+</ul>
+<p>If <code>density</code> is not set, the default is <code>1.0</code>.</p>
+<p>To see how this works out in practice, imagine you have an icon which is 128x128 raw pixels. Now you put it on a device with one physical pixel per CSS pixel (1dppx) where a 128x128 pixel icon is required. Each raw pixel of the original image occupies one pixel in the icon on the device&#39;s screen.</p>
+<p>Now imagine a different device with density of 2dppx, which also requires a 128x128 icon. If the same 128x128 image file is used to fill that space on the screen, each raw pixel of the image occupies 4 pixels (2x2) on the device screen. The result is a blurred image, as the same single pixel is used to fill 4 pixels on the screen.</p>
+<p>To resolve this, the <a href="http://www.whatwg.org/specs/web-apps/current-work/#attr-link-sizes">W3C specification</a> recommends using images with different raw sizes, depending on the desired icon size and screen density. It provides this example:</p>
+<blockquote>
+<p>&quot;An icon that is 50 CSS pixels wide intended for displays with a device pixel density of two device pixels per CSS pixel (2x, 192dpi) would have a width of 100 raw pixels.&quot;</p>
+</blockquote>
+<p>From this, we can derive a formula for working out how big a raw image file should be for a given icon size and density:</p>
+<blockquote>
+<p>raw image file dimensions = dimensions of required icon in device-independent pixels * device screen pixel density</p>
+</blockquote>
+<p>For our case, we use two image files:</p>
+<ul>
+<li><code>foo.png</code> with raw size of 128x128 pixels, intended for use as a 128x128 dip icon on screens with density of 1dppx.</li>
+<li><code>foo_hd.png</code> with raw size of 256x256 pixels, intended for use as a 128x128 dip icon on screens with density of 2dppx.</li>
+</ul>
+<p>And set the <code>icons</code> property in the manifest as:</p>
+<pre><code>&quot;icons&quot;: [
+  {
+    &quot;src&quot;: &quot;foo.png&quot;,
+    &quot;type&quot;: &quot;image/png&quot;,
+    &quot;sizes&quot;: &quot;128x128&quot;,
+    &quot;density&quot;: &quot;1.0&quot;
+  },
+
+  {
+    &quot;src&quot;: &quot;foo_hd.png&quot;,
+    &quot;type&quot;: &quot;image/png&quot;,
+    &quot;sizes&quot;: &quot;128x128&quot;,
+    &quot;density&quot;: &quot;2.0&quot;
+  }
+]</code></pre>
+<p>Note that we don&#39;t mention anywhere that <code>foo_hd.png</code> is 256x256 raw pixels in size: we just specify that it is suitable for a 128x128 pixel icon on a screen with density of 2dppx.</p>
+<h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
+
+<p>Rather than affecting the Crosswalk runtime on Android directly, the <code>icons</code> field affects how an application is packaged by <a href="/documentation/android/run_on_android.html"><code>make_apk.py</code></a>. The <code>make_apk.py</code> script discards some of the information included in the <code>icon</code> field, for example the <code>density</code>.</p>
+<p>If the <code>icons</code> field contains multiple icon sizes, the <code>make_apk.py</code> script will map the corresponding icon files to <a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a> depending on their size.</p>
+<p>When the application is installed, Android will use the file appropriate for the target&#39;s screen resolution as the application icon in the home screen, application list and other relevant locations.</p>
+<h2>Acknowledgements</h2>
+<p>The <em>townxelliot media player</em> icon was modified from an original icon created by <a href="http://www.wpzoom.com/">wpzoom.com</a> under a <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA licence</a>. It was sourced from <a href="http://findicons.com/icon/457729/radio?id=457887">Find Icons</a>.</p>
+<p>The modified icon is made available here to satisfy the terms of the licence, and is released under the same CC BY-SA licence:</p>
+<p><img alt="Modified radio icon" title="Modified radio icon" src="/assets/radio.png"></p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/manifest/launch_screen.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Launch screen</h3>
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div">
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Crosswalk received <i>2015 Outstanding Open Source Project</i> award</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 10 Jul 2015 12:00:00 GMT">2015-07-10T12:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation">Documentation</a> &nbsp;
+             <a href="/blog">Blog</a> &nbsp;
+             <a href="/documentation/downloads.html">Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

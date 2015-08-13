@@ -23,14 +23,11 @@ These are the recommended steps for contributing test cases to Crosswalk Test Su
 
 More detail about some of these steps is below:
 
-<pre>
-$ git clone https://github.com/crosswalk-project/crosswalk-test-suite.git
-$ git checkout -b topic
-$ git add file1 file2 ... fileN 
-$ git commit (Follow "Commit message guidelines" section below to add commit messages)
-$ git push origin topic
-</pre>
-
+    $ git clone https://github.com/crosswalk-project/crosswalk-test-suite.git
+    $ git checkout -b topic
+    $ git add file1 file2 ... fileN 
+    $ git commit (Follow "Commit message guidelines" section below to add commit messages)
+    $ git push origin topic
 
 ## Choose a bug report
 
@@ -50,26 +47,24 @@ Your commits and/or PRs should reference the ID of the issue you are working on.
 
 It's better to follow the commit message template for contributing test cases:
 
-<pre>
-[area prefix] Capitalized, short (50 chars or less) summary
 
-More detailed explanatory text, if necessary.  Wrap it to about 72
-characters or so.  In some contexts, the first line is treated as the
-subject of an email and the rest of the text as the body.  The blank
-line separating the summary from the body is critical (unless you omit
-the body entirely); tools like rebase can get confused if you run the
-two together.
+    [area prefix] Capitalized, short (50 chars or less) summary
 
-Failure analysis goes here; describe possible reasons for the failed.
-If refer to a bug, please use full URL.
+    More detailed explanatory text, if necessary.  Wrap it to about 72
+    characters or so.  In some contexts, the first line is treated as the
+    subject of an email and the rest of the text as the body.  The blank
+    line separating the summary from the body is critical (unless you omit
+    the body entirely); tools like rebase can get confused if you run the
+    two together.
 
-Impacted tests(designed|approved): new 0, update 5, delete 0
-Unit test platform: Crosswalk Project for &lt;Android|IoT|Linux|Windows&gt; &lt;version&gt;
-Unit test result summary: pass 5, fail 0, block 0
+    Failure analysis goes here; describe possible reasons for the failed.
+    If refer to a bug, please use full URL.
 
-BUG=https://crosswalk-project.org/jira/browse/XWALK-4782
-</pre>
+    Impacted tests(designed|approved): new 0, update 5, delete 0
+    Unit test platform: Crosswalk Project for <Android|IoT|Linux|Windows>; <version>
+    Unit test result summary: pass 5, fail 0, block 0
 
+    BUG=https://crosswalk-project.org/jira/browse/XWALK-4782
 
 ## Respond to reviewers
 

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Quick Start Guide" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/ios/quick_start_guide" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/ios/quick_start_guide" />
+    <meta name="twitter:title" content="Quick Start Guide" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/tools.js"></script>
+
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+  
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+
+
+         <ul class="article-list">
+            
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/ios/quick_start_guide.html">Quick Start Guide</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/ios/embedding_mode_&amp;_native_apis.html">Embedding mode &amp; native APIs</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/ios/manifest.html">Manifest</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/ios/extensions.html">Extensions</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/ios/cordova_plugin_support.html">Cordova plugin support</a>
+               
+           </li>
+           
+         </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/screens.html">Screens</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
+
+         
+       </li>
+    
+  </ul>
+
+</nav>
+
+
+
+<article class="article article--hasToC">
+  <h1>Quick Start Guide</h1>
+<p>This guide describes how to create an application with Crosswalk extension support.</p>
+<h2>Setup a working directory</h2>
+<ul>
+<li><p>Create a working directory and go into that directory.  For this example, we use &quot;EchoDemo&quot;</p>
+<pre><code>$ mkdir EchoDemo
+$ cd EchoDemo</code></pre>
+</li>
+<li><p>Clone the <code>crosswalk-ios</code> project:</p>
+<pre><code>$ git clone https://github.com/crosswalk-project/crosswalk-ios.git</code></pre>
+</li>
+<li><p>Initialize the <code>crosswalk-ios</code> submodules with commands:</p>
+<pre><code>$ cd crosswalk-ios
+$ git submodule update --init --recursive
+$ cd -</code></pre>
+</li>
+</ul>
+<h2>Create the application project</h2>
+<ul>
+<li><p>Create an iOS application project with the &quot;Single View Application&quot; template in the working directory.  For this example, we use &quot;Echo&quot;.  Use Swift for convenience.</p>
+</li>
+<li><p>Add the <code>XWalkView</code> project into the <code>Echo</code> project.</p>
+<p>In <code>File</code> -&gt; <code>Add Files to &quot;Echo&quot;...</code>, choose the <code>XWalkView.xcodeproj</code> from <code>crosswalk-ios/XWalkView/XWalkView.xcodeproj</code>;</p>
+<p>Now the project layout should look like this:</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390277/c7080352-1cbe-11e5-8fe7-81f788ed6861.png" alt="projectLayout1"></p>
+</li>
+<li><p>Link <code>XWalkView</code> into <code>Echo</code> target.</p>
+<p>Select <code>Echo</code> target in <code>Echo</code> project;</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390270/c65d47a0-1cbe-11e5-8b8f-6dd2e48f612b.png" alt="selectEcho"></p>
+<p>In <code>General</code> -&gt; <code>Linked Frameworks and Libraries</code>, add <code>XWalkView.framework</code>.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390279/c749a460-1cbe-11e5-83b1-e5a51260e4a9.png" alt="linkXWalkView1"></p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390276/c6d22d9a-1cbe-11e5-8aa4-56d15d98b928.png" alt="linkXWalkView2"></p>
+</li>
+<li><p>For quick test, replace the auto-generated <code>ViewController.swift</code> with the corresponding file in <code>crosswalk-ios/AppShell/AppShell</code>, which has setup a WKWebView instance for you already.</p>
+<p>Remove the auto-generated <code>ViewController.swift</code> from your project, and add <code>crosswalk-ios/AppShell/AppShell/ViewController.swift</code>.</p>
+</li>
+<li><p>Create a directory called <code>www</code> in <code>Echo</code> for the HTML5 files and resources.</p>
+<p>Create the <code>index.html</code> file as your entry page with the contents as follows:</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta name=&#39;viewport&#39; content=&#39;width=device-width&#39; /&gt;
+    &lt;title&gt;Echo demo of Crosswalk&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body onload=&#39;onload()&#39;&gt;
+    &lt;h2&gt;Echo Demo of Crosswalk&lt;/h2&gt;
+    &lt;p id=&quot;content&quot; style=&quot;font-size: 20px;&quot; /&gt;
+    &lt;script&gt;
+      function onload() {
+        xwalk.example.echo.echo(&#39;Hello World!&#39;, function(msg) {
+          document.getElementById(&#39;content&#39;).innerHTML = msg;
+        });
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</li>
+<li><p>Add the <code>www</code> directory into the project.</p>
+<p>In <code>File</code> -&gt; <code>Add Files to &quot;Echo&quot;...</code>, choose the <code>www</code> directory and select <code>Create folder reference</code>.</p>
+<p>The project layout should look like this:</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390273/c687a5a4-1cbe-11e5-9260-73848b9e023f.png" alt="projectLayout2"></p>
+</li>
+<li><p>Create <code>manifest.plist</code> to describe the application&#39;s configuration.</p>
+<ul>
+<li><p>In <code>File</code> -&gt; <code>New...</code> -&gt; <code>File...</code>, choose <code>iOS</code> -&gt; <code>Resource</code> -&gt; <code>Property List</code>.  Create a plist file with name <code>manifest.plist</code> in <code>Echo</code> directory. This manifest file will be loaded at application startup;</p>
+</li>
+<li><p>Add an entry with the key: <code>start_url</code> and the string value: <code>index.html</code>.  This is the entry page. <code>XWalkView</code> will locate it in the <code>www</code> directory.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/7226211/36a710c0-e779-11e4-9852-000d3bab8f57.png" alt="manifest1"></p>
+</li>
+</ul>
+</li>
+<li><p>The <code>Echo</code> demo can now run. We haven&#39;t yet added any extensions to support the functionality of the object <code>xwalk.example.echo</code>, so only the title (<code>Echo Demo of Crosswalk</code>) is on the page.</p>
+</li>
+</ul>
+<h2>Create the Echo extension</h2>
+<ul>
+<li><p>Create a framework target called <code>EchoExtension</code> in the <code>Echo</code> project.</p>
+<p>Select <code>File</code> -&gt; <code>New...</code> -&gt; <code>Target...</code>.  Choose <code>Framework &amp; Library</code> -&gt; <code>Cocoa Touch Framework</code>, with name <code>EchoExtension</code> and language type <code>Swift</code> for convenience.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390269/c6422de4-1cbe-11e5-9dd5-3e7ea021d741.png" alt="targets"></p>
+</li>
+<li><p>Link <code>XWalkView</code> into <code>EchoExtension</code> target.</p>
+<p>Select <code>EchoExtension</code> target in <code>Echo</code> project, in <code>General</code> -&gt; <code>Linked Frameworks and Libraries</code>, add <code>XWalkView.framework</code>.</p>
+</li>
+<li><p>Create the <code>EchoExtension</code> extension class.</p>
+<p>Select <code>EchoExtension</code> group first:  Select <code>File</code> -&gt; <code>New...</code> -&gt; <code>File...</code>.  Choose <code>iOS</code> -&gt; <code>Source</code> -&gt; <code>Cocoa Touch Class</code>, with name <code>EchoExtension</code>, subclassing from <code>XWalkExtension</code>, and use <code>Swift</code> language type.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390280/c76a93aa-1cbe-11e5-823a-bee32aa8f741.png" alt="createClass"></p>
+<p>Now the project layout should look like this:</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390274/c6be5cca-1cbe-11e5-83c3-f7dd375bc1d4.png" alt="projectLayout3"></p>
+</li>
+<li><p>Add the contents into <code>EchoExtension.swift</code> as follows:</p>
+<pre><code class="language-swift">import Foundation
+import XWalkView
+
+class EchoExtension : XWalkExtension {
+func jsfunc_echo(cid: UInt32, message: String, callback: UInt32) -&gt; Bool {
+      invokeCallback(callback, key: nil, arguments: [&quot;Echo from native: &quot; + message])
+      return true
+  }
+}</code></pre>
+</li>
+<li><p>Add the extension description section in the <code>Info.plist</code> of the <code>EchoExtension</code> target.  This informs the framework users what extensions are provided by this framework, and what how to access them natively and in JavaScript.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390272/c67221ca-1cbe-11e5-948d-e0f4e226f814.png" alt="projectLayout4"></p>
+<ul>
+<li><p>Create a <code>XWalkExtensions</code> section in the <code>Info.plist</code> with <code>Dictionary</code> type and add an entry with <code>xwalk.example.echo</code> as key and <code>EchoExtension</code> as value.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390278/c715238e-1cbe-11e5-9d25-eadcab37182b.png" alt="Info.plist"></p>
+</li>
+</ul>
+<p>This indicates that the extension <code>EchoExtension</code> will be exported with the object name: <code>xwalk.example.echo</code> in JavaScript.</p>
+</li>
+</ul>
+<h2>Bundle the extension with the application</h2>
+<ul>
+<li><p>Modify the <code>manifest.plist</code> to add the extension configuration to the <code>Echo</code> application.</p>
+<ul>
+<li><p>Add <code>xwalk_extensions</code> section with Array type which describes the extensions that should be loaded within the <code>Echo</code> application;</p>
+</li>
+<li><p>Add <code>xwalk.example.echo</code> with string type as an entry of <code>xwalk_extensions</code>.  This indicates that the extension <code>xwalk.example.echo</code> should be loaded into the JavaScript context of <code>Echo</code> project.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/7226213/3ef59a9e-e779-11e4-822f-1ef6775723ad.png" alt="manifest2"></p>
+</li>
+</ul>
+</li>
+<li><p>The application can now be built and run. You should now see an extra line: <code>Echo from native: Hello World!</code> displayed on the screen.</p>
+<p>Screenshot in iPhone6 simulator:</p>
+<p><img src="https://cloud.githubusercontent.com/assets/700736/8390271/c65d8bc0-1cbe-11e5-8ff5-2c537593403e.png" alt="screenshot"></p>
+</li>
+</ul>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/ios/embedding_mode_&amp;_native_apis.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Embedding mode &amp; native APIs</h3>
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div">
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Crosswalk received <i>2015 Outstanding Open Source Project</i> award</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 10 Jul 2015 12:00:00 GMT">2015-07-10T12:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation">Documentation</a> &nbsp;
+             <a href="/blog">Blog</a> &nbsp;
+             <a href="/documentation/downloads.html">Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

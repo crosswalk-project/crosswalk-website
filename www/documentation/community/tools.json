@@ -1,0 +1,80 @@
+{
+    "tool1": {
+        "name": "Intel XDK",
+        "appImg": "xdk-icon150.jpg",
+        "link": "https://software.intel.com/en-us/html5/tools",
+        "company": "software.intel.com/en-us/html5/tools",
+        "description": "Intel® XDK HTML5 Cross-platform Development Tool provides a simple workflow for developers to create and deploy web and hybrid apps across multiple app stores, and form factor devices."
+    },
+    "tool7": {
+        "name": "ionic",
+        "appImg": "ionic-icon150.jpg",
+        "link": "http://ionicframework.com/",
+        "company": "ionicframework.com",
+        "description": "The beautiful, open source front-end SDK for developing hybrid mobile apps with HTML5."
+    },
+    "tool2": {
+        "name": "Sencha",
+        "appImg": "sencha-icon150.jpg",
+        "link": "http://www.sencha.com",        
+        "company": "sencha.com",
+        "description": "HTML5 and web technologies have transformed the browser into a first-class application platform. Sencha is the leading provider of open-source web application frameworks and tools."
+    },
+    "tool8": {
+        "name": "Monaca",
+        "appImg": "monaca-icon150.jpg",
+        "link": "http://monaca.io/",
+        "company": "monaca.io",
+        "description": "Comprehensive cloud-powered tools and services will make your hybrid mobile app development process with PhoneGap/Cordova simpler."
+    },
+    "tool9": {
+        "name": "PhoneGap",
+        "appImg": "phonegap-icon150.jpg",
+        "link": "http://phonegap.com/",
+        "company": "phonegap.com",
+        "description": "PhoneGap is a free and open source framework that allows you to create mobile apps using standardized web APIs for the platforms you care about."
+    },
+    "tool3": {
+        "name": "Construct 2",
+        "appImg": "construct2-icon150.jpg",
+        "link": "https://www.scirra.com/construct2",
+        "company": "scirra.com/construct2",
+        "description": "Construct 2 is a powerful ground breaking HTML5 game creator designed specifically for 2D games. It allows anyone to build games — no coding required!"
+    },
+    "tool4": {
+        "name": "famo.us",
+        "appImg": "famous-icon150.jpg",
+        "link": "http://famo.us/",
+        "company": "famo.us.org",
+        "description": "Famo.us is the only JavaScript framework that includes an open source 3D layout engine fully integrated with a 3D physics animation engine that can render to DOM, Canvas, or WebGL."
+    },
+    "tool5": {
+        "name": "App Gyver",
+        "appImg": "appgyver-icon150.jpg",
+        "link": "http://www.appgyver.com/",
+        "company": "appgyver.com",
+        "description": "Introducing the first UI framework that's designed solely for building awesome hybrid mobile apps:  the best of what HTML5, native APIs and the top frameworks have to offer."
+    },
+    "tool6": {
+        "name": "cocos2D-X",
+        "appImg": "cocos2dx-icon150.jpg",
+        "link": "http://www.cocos2d-x.org/",
+        "company": "cocos2d-x.org",
+        "description": "Worldwide, more than 400,000 developers, including developers of 7 out of the 10 top grossing games in China, rely on Cocos2D-x to build their mobile games."
+    },
+    "tool10": {
+        "name": "ManifoldJS",
+        "appImg": "manifoldjs-icon150.jpg",
+        "link": "http://www.manifoldjs.com/",
+        "company": "manifoldjs.com",
+        "description": "The simplest way to create hosted apps across platforms and devices. Package your web experience as native apps across Android, iOS, and Windows."
+    },
+    "tool11": {
+        "name": "Telerik Platform",
+        "appImg": "telerik-icon150.jpg",
+        "link": "http://www.telerik.com/platform",
+        "company": "telerik.com/platform",
+        "description": "Telerik Platform provides developers with an instantly available PhoneGap/Cordova-based development environment that enables cross-platform hybrid mobile apps to be created using HTML5, JavaScript and CSS."
+    }
+}
+
