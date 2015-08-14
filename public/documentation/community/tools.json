@@ -20,13 +20,6 @@
         "company": "sencha.com",
         "description": "HTML5 and web technologies have transformed the browser into a first-class application platform. Sencha is the leading provider of open-source web application frameworks and tools."
     },
-    "tool8": {
-        "name": "Monaca",
-        "appImg": "monaca-icon150.jpg",
-        "link": "http://monaca.io/",
-        "company": "monaca.io",
-        "description": "Comprehensive cloud-powered tools and services will make your hybrid mobile app development process with PhoneGap/Cordova simpler."
-    },
     "tool9": {
         "name": "PhoneGap",
         "appImg": "phonegap-icon150.jpg",
@@ -47,6 +40,13 @@
         "link": "http://famo.us/",
         "company": "famo.us.org",
         "description": "Famo.us is the only JavaScript framework that includes an open source 3D layout engine fully integrated with a 3D physics animation engine that can render to DOM, Canvas, or WebGL."
+    },
+    "tool8": {
+        "name": "Monaca",
+        "appImg": "monaca-icon150.jpg",
+        "link": "http://monaca.io/",
+        "company": "monaca.io",
+        "description": "Comprehensive cloud-powered tools and services will make your hybrid mobile app development process with PhoneGap/Cordova simpler."
     },
     "tool5": {
         "name": "App Gyver",
@@ -75,6 +75,14 @@
         "link": "http://www.telerik.com/platform",
         "company": "telerik.com/platform",
         "description": "Telerik Platform provides developers with an instantly available PhoneGap/Cordova-based development environment that enables cross-platform hybrid mobile apps to be created using HTML5, JavaScript and CSS."
+    },
+    "tool12": {
+        "name": "Trigger.io",
+        "appImg": "trigger-io-icon150.jpg",
+        "link": "https://trigger.io/",
+        "company": "trigger.io",
+        "description": "The alternative hybrid app runtime for the artists and artisans of the web. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
     }
 }
+
 
