@@ -20,8 +20,6 @@ Be sure to follow the [contribution guidelines](/contribute/contributing-code.ht
 
 ## Testing
 
-For a quick overview of the overall test results for Crosswalk binaries, see [Crosswalk quality dashboard](/documentation/quality_dashboard.html).
-
 Full details of everything related to test scope, test execution plan, and running tests can be found on the [Crosswalk testing home](https://github.com/crosswalk-project/crosswalk-website/wiki/crosswalk-testing-home).
 
 You are welcome to contribute test cases for Crosswalk Project, the detailed process can be found in [contribute tests](/contribute/contributing_tests.html) page.
