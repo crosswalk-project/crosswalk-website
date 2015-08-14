@@ -26,5 +26,5 @@ Crosswalk Test Suite not only covers master branch but also beta branch since us
 
 ## Contribute test cases
 
-No test is too small or too simple, everyone is welcome and even encouraged to contribute to test development, please refer to detailed contribution steps in [contribute tests](https://crosswalk-project.org/contribute/contributing-tests.html) page.
+No test is too small or too simple, everyone is welcome and even encouraged to contribute to test development, please refer to detailed contribution steps in [contribute tests](/contribute/contributing-tests.html) page.
 

@@ -1,7 +1,7 @@
 # Contributing Tests
-This page outlines the process for contributing test cases or test suites to Crosswalk, basically the process follows [contributing code](https://crosswalk-project.org/contribute/contributing-code.html) but with more details as follows.
+This page outlines the process for contributing test cases or test suites to Crosswalk, basically the process follows [contributing code](/contribute/contributing-code.html) but with more details as follows.
 
-For information on obtaining the source code, see [Crosswalk Test Suite](https://crosswalk-project.org/documentation/test_suite.html).
+For information on obtaining the source code, see [Crosswalk Test Suite](/documentation/test_suite.html).
 
 
 ## Overview
@@ -46,7 +46,7 @@ Patches must comply with the code style guidelines. See the [Crosswalk Test Suit
 
 ## Commit message guidelines
 
-Your commits and/or PRs should reference the ID of the issue you are working on. Please refer to "Commit message guidelines" section in [contributing code](https://crosswalk-project.org/contribute/contributing-code.html) page. 
+Your commits and/or PRs should reference the ID of the issue you are working on. Please refer to "Commit message guidelines" section in [contributing code](/contribute/contributing-code.html) page. 
 
 It's better to follow the commit message template for contributing test cases:
 
