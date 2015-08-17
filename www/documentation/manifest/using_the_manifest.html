@@ -307,12 +307,8 @@
 <li><p>Add a <code>manifest.json</code> file to the web root of the application (in the case of the embedding API app in the tutorial, this is the <code>assets/</code> directory):</p>
 <pre><code>{
     &quot;name&quot;: &quot;XWalkEmbed&quot;,
-    &quot;version&quot;: &quot;0.0.1&quot;,
-    &quot;app&quot;: {
-        &quot;launch&quot;: {
-            &quot;local_path&quot;: &quot;index.html&quot;
-        }
-    }
+    &quot;xwalk_version&quot;: &quot;0.0.1&quot;,
+    &quot;start_url&quot;: &quot;index.html&quot;
 }</code></pre>
 </li>
 <li><p>Modify the <code>org.crosswalkproject.xwalkembed.MainActivity</code> class (under <code>src/</code>) so it uses the <code>loadAppFromManifest()</code> method, rather than the <code>load()</code> method:</p>
@@ -340,7 +336,7 @@ public class MainActivity extends Activity {
 }</code></pre>
 </li>
 </ol>
-<p>Now when you run the application, the HTML file specified by the <code>app.launch.local_path</code> property in <code>manifest.json</code> is being loaded. It&#39;s the same <code>index.html</code> file as was being loaded previously; but using a manifest has made it easier to  change the application without changing Java code.</p>
+<p>Now when you run the application, the HTML file specified by the <code>start_url</code> property in <code>manifest.json</code> is being loaded. It&#39;s the same <code>index.html</code> file as was being loaded previously; but using a manifest has made it easier to  change the application without changing Java code.</p>
 <p>Note that some of the fields in <code>manifest.json</code> which are used when packaging an application for Android are <em>not</em> used when loading a manifest into an embedded Crosswalk. See <a href="#Configure-Android-packaging">this section</a> for details of these fields.</p>
 
   <footer class="article-next">

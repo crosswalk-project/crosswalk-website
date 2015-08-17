@@ -40,12 +40,8 @@ To give an idea of how this works, the [application developed for the embedded A
 
         {
 	        "name": "XWalkEmbed",
-	        "version": "0.0.1",
-	        "app": {
-		        "launch": {
-			        "local_path": "index.html"
-		        }
-	        }
+	        "xwalk_version": "0.0.1",
+	        "start_url": "index.html"
         }
 
 2.  Modify the `org.crosswalkproject.xwalkembed.MainActivity` class (under `src/`) so it uses the `loadAppFromManifest()` method, rather than the `load()` method:
@@ -73,6 +69,6 @@ To give an idea of how this works, the [application developed for the embedded A
 	        }
         }
 
-Now when you run the application, the HTML file specified by the `app.launch.local_path` property in `manifest.json` is being loaded. It's the same `index.html` file as was being loaded previously; but using a manifest has made it easier to  change the application without changing Java code.
+Now when you run the application, the HTML file specified by the `start_url` property in `manifest.json` is being loaded. It's the same `index.html` file as was being loaded previously; but using a manifest has made it easier to  change the application without changing Java code.
 
 Note that some of the fields in `manifest.json` which are used when packaging an application for Android are *not* used when loading a manifest into an embedded Crosswalk. See [this section](#Configure-Android-packaging) for details of these fields.

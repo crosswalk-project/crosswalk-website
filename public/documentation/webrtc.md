@@ -445,12 +445,8 @@ To add the client code, follow these steps:
         {
           "name": "WebRTC",
           "description": "WebRTC client",
-          "version": "0.0.1",
-          "app": {
-            "launch": {
-              "local_path": "index.html"
-            }
-          }
+          "xwalk_version": "0.0.1",
+          "start_url": "index.html"
         }
 
     This provides the minimal metadata required for packaging by Crosswalk Android.
