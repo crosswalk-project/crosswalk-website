@@ -1,6 +1,6 @@
 # DemoExpress
 
-**DemoExpress** is a set of samples that show the Crosswalk advantage by having comprehensive API support: W3C standard APIs, embedded APIs, Cordova APIs and web runtime features. It includes popular web samples from Tizen and Android.
+**DemoExpress** is a set of samples that show the Crosswalk Project advantage by having comprehensive API support: W3C standard APIs, embedded APIs, Cordova APIs and web runtime features. It includes popular web samples for Android and Linux.
 
 <img class='sample-thumb' src='/assets/sampapp-icon-demoexpress.png'>
 
@@ -12,10 +12,7 @@ Details for building the DemoExpress apps for Crosswalk can be found on the [Dem
 
 ## Download
 
-Download the latest release based on Crosswalk 10 (shared mode):
-
-*   Android: [apk_x86](https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-x86.apk), [apk_arm](https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-arm.apk), [apk_arm_cordova](https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-arm-cordova.apk)
-*   Tizen: [wgt_x86](https://github.com/crosswalk-project/demo-express/releases/download/v0.2/demoexpress-v0.2-x86.wgt)
+Download the DemoExpress apps from Play Store (shared mode): [Web API Demo](https://play.google.com/store/apps/details?id=org.xwalk.demoexpress), [Embedding API Demo](https://play.google.com/store/apps/details?id=org.xwalk.core.demoexpress).
  
 View [all available DemoExpress downloads](https://github.com/crosswalk-project/demo-express/releases)
 
