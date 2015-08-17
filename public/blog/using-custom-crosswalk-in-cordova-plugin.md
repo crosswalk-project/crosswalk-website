@@ -31,29 +31,27 @@ Canary releases are not currently published to the Crosswalk Maven repository, m
 First of all, you'll need to have Maven installed. On OS X, wich is what I used to test these instructions:
 
 ```
-brew install maven
+$ brew install maven
 ```
 
 You'll then need to download the Crosswalk canary AAR from the Crosswalk download site, for example:
 
 
 ```
-wget https://download.01.org/crosswalk/releases/crosswalk/android/canary/16.44.389.0/crosswalk-16.44.389.0.aar
+$ wget https://download.01.org/crosswalk/releases/crosswalk/android/canary/16.44.389.0/crosswalk-16.44.389.0.aar
 ```
 
 And install the downloaded file to the local Maven repository:
 
 ```
-mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library_canary \
+$ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library_canary \
       -Dversion=16.44.389.0 -Dpackaging=aar  -Dfile=crosswalk-16.44.389.0.aar \
       -DgeneratePom=true
 ```
 
 Next, you'll need to change the gradle configuration of the plugin. From your cordova project root folder open the file 
 
-```
-platforms/android/cordova-plugin-crosswalk-webview/<appname>.gradle
-```
+`platforms/android/cordova-plugin-crosswalk-webview/<appname>.gradle`
 
 At the beginning of the file, you'll see the Maven repository configuration:
 
@@ -90,7 +88,7 @@ The application is now using a canary version of Crosswalk.
 The instructions for the canary channel are the same also when using a local build of Crosswalk, except that you'll be building the Crosswalk AAR instead of downloading it. To build the Crosswalk AAR, use
 
 ```
-ninja -C out/Release xwalk_core_library_aar 
+$ ninja -C out/Release xwalk_core_library_aar 
 ```
 
 For more information about building Crosswalk, check [this link](https://crosswalk-project.org/contribute/building_crosswalk.html).
