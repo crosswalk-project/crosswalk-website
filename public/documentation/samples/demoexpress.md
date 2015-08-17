@@ -1,6 +1,6 @@
 # DemoExpress
 
-**DemoExpress** is a set of samples that show the Crosswalk Project advantage by having comprehensive API support: W3C standard APIs, embedded APIs, Cordova APIs and web runtime features. It includes popular web samples from Android, Linux and etc.
+**DemoExpress** is a set of samples that show the Crosswalk Project advantage by having comprehensive API support: W3C standard APIs, embedded APIs, Cordova APIs and web runtime features. It includes popular web samples for Android and Linux.
 
 <img class='sample-thumb' src='/assets/sampapp-icon-demoexpress.png'>
 
