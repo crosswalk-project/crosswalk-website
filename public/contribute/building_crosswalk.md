@@ -57,6 +57,11 @@ at least the following:
     export NO_AUTH_BOTO_CONFIG=/path/to/boto-file
     ```
 
+1. Set up your Subversion proxy settings. At least `http-proxy-host` and
+   `http-proxy-port` must be set in the `[global]` section. On Linux, the file
+   is called `.subversion/servers`, and on Windows it is
+   `C:\Users\<YOUR_USER>\AppData\Roaming\Subversion\servers`.
+
 ## Download the Crosswalk source
 
 ### Before starting: Android
@@ -84,10 +89,10 @@ components.
 2.  Auto-generate gclient's configuration file (`.gclient`):
 
         gclient config --name=src/xwalk \
-          git://github.com/crosswalk-project/crosswalk.git
+          https://github.com/crosswalk-project/crosswalk.git
 
-    You can replace `git://` with `ssh://git@` to use your
-GitHub credentials when checking out the code.
+    You can replace `https://` with `git://` or `ssh://git@` depending on your
+    proxy needs and whether you want to use your GitHub credentials.
 
 3.  From the same directory containing the `.gclient` file, fetch the source with:
 
@@ -152,13 +157,13 @@ run a web application):
 
 ### Testing a desktop build
 
-Once you've built the launcher, the executable you need is at:
+The simplest way to start a Crosswalk application is to use the `xwalk` command
+with an application’s manifest as argument:
 
-    ~/crosswalk-src/src/out/Release/xwalk
+    xwalk /path/to/manifest.json
 
-You can test it by using it to load an HTML file:
-
-    ~/crosswalk-src/src/out/Release/xwalk index.html
+Crosswalk will parse the manifest and launch the application from the entry
+point specified in `start_url`.
 
 If you don't have any HTML applications to test, the
 [Crosswalk samples](/documentation/samples.html) includes a few you can try.
@@ -171,7 +176,7 @@ Chrome's process, so make sure you are
 
 1.  Install the dependencies for building Crosswalk for Android:
 
-        sudo ./build/install-build-deps-android.sh
+        ./build/install-build-deps-android.sh
 
     Note that this requires support for `apt-get` on your system.
     If you are on system without `apt-get` (like Fedora Linux), the
@@ -211,60 +216,43 @@ Chrome's process, so make sure you are
     If you are building for ARM, use `target_arch=arm` instead of
     `target_arch=ia32` above.
 
-3.  Set up the Android build environment.
-
-    For Crosswalk > 5:
-
-        . ./xwalk/build/android/envsetup.sh
-
-    Or, if you are using Crossswalk <= 5:
-
-        . ./xwalk/build/android/envsetup.sh --target-arch=x86
-
-    If you are targeting ARM, pass `--target-arch=arm` instead of
-    `--target-arch=x86`.
-
-4.  Configure your setup to generate the Crosswalk projects.
+3.  Configure your setup to generate the Crosswalk projects.
 
         export GYP_GENERATORS='ninja'
         python xwalk/gyp_xwalk
 
-5.  To build xwalk core and runtime shell (for developer testing purposes,
-not for end users), execute:
+4.  To build the contents of the main Crosswalk package for Android, with tools
+    and an embeddable library, you can run:
 
-        ninja -C out/Release xwalk_core_shell_apk xwalk_runtime_shell_apk
+        ninja -C out/Release xwalk_core_library
 
-    To build the xwalk runtime library apk (which can act as the runtime
-    for applications built in shared mode), execute:
+    This will create a directory in `out/Release` called `xwalk_core_library`
+    with an architecture-specific Crosswalk library for use when embedding
+    Crosswalk in a project.
+
+    To build Crosswalk's runtime library APK (which can act as the runtime for
+    applications built using Crosswalk's shared mode), run:
 
         ninja -C out/Release xwalk_runtime_lib_apk
 
-    To build a sample web app apk (for quick install/test on a target),
+    This will create an APK called `XWalkRuntimeLib.apk` in `out/Release/apks`.
+
+    To build a sample web app APK (for quickly installing/testong on a target),
     execute:
 
         ninja -C out/Release xwalk_app_template_apk
 
-### Testing an Android build
+    which will create an APK called `XWalkAppTemplate.apk` in
+    `out/Release/apks`.
 
-To test the runtime shell, install the runtime library and shell apks
-on a physical device with:
+    Finally, you can also build AAR files for use with Gradle and Maven. The
+    following command will create an architecture-specific AAR file with the
+    main Crosswalk library, as well as an architecture-independent AAR for use
+    with Crosswalk's shared mode:
 
-    adb install -r out/Release/apks/XWalkRuntimeLib.apk
-    adb install -r out/Release/apks/XWalkRuntimeClientShell.apk
-    adb shell am start -n org.xwalk.runtime.client.shell/org.xwalk.runtime.client.shell.XWalkRuntimeClientShellActivity
+        ninja -C out/Release xwalk_core_library_aar xwalk_shared_library_aar
 
-If you don't have an Android device, you can use an Android virtual
-device (AVD) for testing instead. The Crosswalk source actually contains
-enough of the Android SDK to enable you to download, create and run an AVD.
-
-To make an AVD, run the `android` tool first:
-
-    src/third_party/android_tools/sdk/tools/android
-
-Then use it to install the **Intel x86 Atom System Image**, and
-create an AVD using that. Make sure you allocate enough
-*internal storage* and *SD card storage*: 1000MiB for each is
-known to work.
+    The AAR files will both be located in the `out/Release` directory.
 
 ## Building Crosswalk for Tizen
 
