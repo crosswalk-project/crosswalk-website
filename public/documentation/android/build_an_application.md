@@ -50,7 +50,7 @@ However, because Crosswalk applications are intended to integrate well with the 
 
             {
               "name": "simple",
-              "xwalk_version": "0.0.0.1",
+              "xwalk_version": "0.0.1",
               "start_url": "index.html",
               "icons": [
                 {
