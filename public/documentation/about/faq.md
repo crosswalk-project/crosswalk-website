@@ -208,7 +208,7 @@ Crosswalk is based on WKWebView which enables a lot of new HTML5 features and is
   * Create extensions and load them
   * Load your entry page
 
-Please refer to [Crosswalk Project or iOS](/documentation/ios.html) for more detials.
+Please refer to [Crosswalk Project for iOS](/documentation/ios.html) for more details.
 	
 ### Will Crosswalk Project for iOS be published to CocoaPods?	
 
