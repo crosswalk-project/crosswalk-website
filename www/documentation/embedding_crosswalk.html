@@ -353,16 +353,21 @@
 <p>Your project should now be linked to the Crosswalk webview project.</p>
 <h3><a id="Add-code-to-integrate-the-webview"></a>Add code to integrate the webview</h3>
 <ol>
-<li><p>Crosswalk requires a few permissions to be enabled on Android. To enable these, modify the <code>AndroidManifest.xml</code> file, adding these lines before the <code>&lt;application&gt;</code> element:</p>
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt;
+<li><p>Crosswalk requires a few permissions to be enabled on Android. To enable these, modify the <code>AndroidManifest.xml</code> file, adding permission lines before the <code>&lt;application&gt;</code> element. The minimal permissions required for the Crosswalk WebView to render pages are:</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
 &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;</code></pre>
+<p>Depending on the features of your app, you may need to request additional permissions. It is considered good security practice on Android to request only those permissions that your app actually needs.</p>
+<p><em>Accessing Location Information</em></p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</code></pre>
+<p><em>Accessing Camera, Video and Microphone</em></p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt;
 &lt;uses-permission android:name=&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</code></pre>
+&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;</code></pre>
+<p><em>Writing data to SD Card</em></p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</code></pre>
+<p><em>Keeping Screen On</em></p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;</code></pre>
 </li>
 <li><p>When the application was generated, some default layout resources were added to the project. Replace the content of the main layout resource file, <code>res/layout/activity_main.xml</code>, with this:</p>
 <pre><code>&lt;org.xwalk.core.XWalkView android:id=&quot;@+id/activity_main&quot;

@@ -143,18 +143,35 @@ Your project should now be linked to the Crosswalk webview project.
 
 ### <a id="Add-code-to-integrate-the-webview"></a>Add code to integrate the webview
 
-1.  Crosswalk requires a few permissions to be enabled on Android. To enable these, modify the `AndroidManifest.xml` file, adding these lines before the `<application>` element:
-
+1.  Crosswalk requires a few permissions to be enabled on Android. To enable these, modify the `AndroidManifest.xml` file, adding permission lines before the `<application>` element. The minimal permissions required for the Crosswalk WebView to render pages are:
+    ```
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    ```
+    
+    Depending on the features of your app, you may need to request additional permissions. It is considered good security practice on Android to request only those permissions that your app actually needs.
+    
+    *Accessing Location Information*
     ```
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    ```
+    
+    *Accessing Camera, Video and Microphone*
+    ```
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    ```
+    
+    *Writing data to SD Card*
+    ```
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    ```
+    
+    *Keeping Screen On*
+    ```
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     ```
 
 2.  When the application was generated, some default layout resources were added to the project. Replace the content of the main layout resource file, `res/layout/activity_main.xml`, with this:
