@@ -143,14 +143,14 @@ Your project should now be linked to the Crosswalk webview project.
 
 ### <a id="Add-code-to-integrate-the-webview"></a>Add code to integrate the webview
 
-1.  Crosswalk requires a few permissions to be enabled on Android. To enable these, modify the `AndroidManifest.xml` file, adding permission lines before the `<application>` element. The minimal set of permissions required for the Crosswalk WebView to render pages are
+1.  Crosswalk requires a few permissions to be enabled on Android. To enable these, modify the `AndroidManifest.xml` file, adding permission lines before the `<application>` element. The minimal permissions required for the Crosswalk WebView to render pages are:
     ```
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     ```
     
-    Depending on the capabilities accessed by your app, you may require to add one or more of these permission request lines in `AndroidManifest.xml`. It is considered good security practice on Android to request only for those permissions that you app will actulaly need.
+    Depending on the features of your app, you may need to request additional permissions. It is considered good security practice on Android to request only those permissions that your app actually needs.
     
     *Accessing Location Information*
     ```
