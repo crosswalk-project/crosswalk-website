@@ -32,56 +32,52 @@
  * website (eg., without needing to run './site.sh mklive').
  *
  */
+
+var stable="14.43.343.23";
+var beta="15.44.384.6";
+var canary="16.44.397.0";
+
 var versions = {
     stable: {
         android: {
-            x86: "14.43.343.17",
-            arm: "14.43.343.17"
+            x86: stable,
+            arm: stable
         },
         'android-webview': {
-            x86: "14.43.343.17",
-            arm: "14.43.343.17"
+            x86: stable,
+            arm: stable
         },
         cordova: {
-            x86: "14.43.343.17",
-            arm: "14.43.343.17"
-        },
-        tizen: {
-            x86: "3.32.53.4"
+            x86: stable,
+            arm: stable
         }
     },
     beta: {
         android: {
-            x86: "14.43.343.17",
-            arm: "14.43.343.17"
+            x86: beta,
+            arm: beta
         },
         'android-webview': {
-            x86: "14.43.343.17",
-            arm: "14.43.343.17"
+            x86: beta,
+            arm: beta
         },
         cordova: {
-            x86: "14.43.343.17",
-            arm: "14.43.343.17"
-        },
-        tizen: {
-            x86: "4.32.76.2"
+            x86: beta,
+            arm: beta
         }
     },
     canary: {
       android: {
-          x86: "15.44.371.0",
-          arm: "15.44.371.0"
+          x86: canary,
+          arm: canary
       },
       'android-webview': {
-          x86: "15.44.371.0",
-          arm: "15.44.371.0"
+          x86: canary,
+          arm: canary
       },
       cordova: {
-          x86: "15.44.371.0",
-          arm: "15.44.371.0"
-      },
-      tizen: {
-          x86: "15.44.371.0"
+          x86: canary,
+          arm: canary
       }
     }
 };
