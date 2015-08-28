@@ -141,7 +141,7 @@ Click Ok to accept.
 
 Your project should now be linked to the Crosswalk webview project.
 
-### <a id="Add-code-to-integrate-the-webview"></a>Add code to integrate the webview
+### <a class="doc-anchor" id="Add-code-to-integrate-the-webview"></a>Add code to integrate the webview
 
 1.  Crosswalk requires a few permissions to be enabled on Android. To enable these, modify the `AndroidManifest.xml` file, adding permission lines before the `<application>` element. The minimal permissions required for the Crosswalk WebView to render pages are:
     ```

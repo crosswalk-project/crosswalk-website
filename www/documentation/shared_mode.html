@@ -219,35 +219,35 @@
 <article class="article article--hasToC">
   <h1>Using the Crosswalk Project Runtime in Shared Mode</h1>
 <p>&quot;Shared mode&quot; allows multiple Crosswalk applications to share one Crosswalk runtime. If the runtime is not already installed in the device, it will be downloaded either from the Google Play Store, or from a download location specified by the developer. When using this feature, the Crosswalk library is not included in the application&#39;s package, making it significantly smaller. </p>
-<h2><a id="Pros"></a>Pros</h2>
+<h2><a class="doc-anchor" id="Pros"></a>Pros</h2>
 <ul>
 <li>Produces a significant smaller APK file size for Crosswalk applications. For example if packaging a simple HelloWorld web application, the APK file size is 20MB for ARM and 23MB for x86. If the same contents is packaged in shared mode, the APK file size will shrink to 68KB</li>
 <li>Applications built in shared mode are architecture independent. Only one package needs to be submitted to the Play Store</li>
 <li>Crosswalk is updated independently of the application. Taking advantage of the latest improvements doesn&#39;t require an update of the application</li>
 </ul>
-<h2><a id="Cons"></a>Cons</h2>
+<h2><a class="doc-anchor" id="Cons"></a>Cons</h2>
 <ul>
 <li>If the Crosswalk runtime library is not installed, the user will have to download the APK of the runtime library in the first run. The normal startup process of the application will be interrupted.</li>
 <li>While we strive to maintain backwards compatibility, an updated Crosswalk runtime may be introduce incompatibility with the previous version. Developers need to test their applications against the latest Crosswalk release.</li>
 </ul>
-<h1><a id="How-to-package-applications-in-shared-mode"></a>How to package applications in shared mode</h1>
-<h2><a id="Using-the-make_apk-packaging-tool"></a>Using the make_apk packaging tool</h2>
+<h1><a class="doc-anchor" id="How-to-package-applications-in-shared-mode"></a>How to package applications in shared mode</h1>
+<h2><a class="doc-anchor" id="Using-the-make_apk-packaging-tool"></a>Using the make_apk packaging tool</h2>
 <p>To package the application in shared mode, use the option:</p>
 <p><code>./make_apk.py --mode=shared ...</code></p>
 <p>Note: shared mode is not yet supported by crosswalk-app-tools</p>
-<h2><a id="Using-Cordova"></a>Using Cordova</h2>
+<h2><a class="doc-anchor" id="Using-Cordova"></a>Using Cordova</h2>
 <p>To create a cordova project in shared mode, use the option:</p>
 <p><code>./bin/create --xwalk-shared-library ...</code></p>
 <p>Note: shared mode is not yet supported by cordova-plugin-crosswalk-webview</p>
-<h2><a id="Using-an-IDE"></a>Using an IDE</h2>
+<h2><a class="doc-anchor" id="Using-an-IDE"></a>Using an IDE</h2>
 <p>For Eclipse ADT users, add library reference to the path of the xwalk_shared_library project.</p>
 <p>For Android Studio users, import the xwalk_shared_library.aar as dependency.</p>
-<h1><a id="How-to-Configure-the-download-URL"></a>How to Configure the download URL</h1>
+<h1><a class="doc-anchor" id="How-to-Configure-the-download-URL"></a>How to Configure the download URL</h1>
 <p>For testing purposes, it is possible to configure the application to download the Crosswalk runtime from a specific URL rather than the Google Play Store. Note that in any case there can only be one copy of the runtime installed in the device, no matter where it was downloaded from. Also, the Crosswalk package can only be installed if the user has enabled installation from untrusted sources.</p>
-<h2><a id="From-Packaging-Tool"></a>From Packaging Tool</h2>
+<h2><a class="doc-anchor" id="From-Packaging-Tool"></a>From Packaging Tool</h2>
 <p>Use the option below for make_apk.py:</p>
 <p><code>./make_apk.py --mode=shared --xwalk-apk-url=http://host/XWalkRuntimeLib.apk ...</code></p>
-<h2><a id="From-The-Crosswalk-Manifest"></a>From The Crosswalk Manifest</h2>
+<h2><a class="doc-anchor" id="From-The-Crosswalk-Manifest"></a>From The Crosswalk Manifest</h2>
 <p>Define an element with the key “xwalk_apk_url”:</p>
 <pre><code>{
     &quot;name&quot;: &quot;XWalkApp&quot;,
@@ -255,27 +255,27 @@
     &quot;xwalk_apk_url&quot;: &quot;http://10.0.2.2/XWalkRuntimeLib.apk&quot;,
     ...
 }</code></pre>
-<h2><a id="From-The-Android-Manifest"></a>From The Android Manifest</h2>
+<h2><a class="doc-anchor" id="From-The-Android-Manifest"></a>From The Android Manifest</h2>
 <p>Define a meta-data element with the name &quot;xwalk_apk_url&quot; inside the application tag:</p>
 <pre><code>&lt;application android:name=&quot;org.xwalk.core.XWalkApplication&quot;&gt;
     &lt;meta-data android:name=&quot;xwalk_apk_url&quot;
                android:value=&quot;http://host/XWalkRuntimeLib.apk&quot; /&gt;
     ...
 &lt;/application&gt;</code></pre>
-<h1><a id="Using-shared-mode-with-the-embedding-API"></a>Using shared mode with the embedding API</h1>
+<h1><a class="doc-anchor" id="Using-shared-mode-with-the-embedding-API"></a>Using shared mode with the embedding API</h1>
 <p>Developers that are embedding Crosswalk in their application using the Embedding API can take advantage of the shared mode following the instructions below.</p>
-<h2><a id="Permissions"></a>Permissions</h2>
+<h2><a class="doc-anchor" id="Permissions"></a>Permissions</h2>
 <p>Shared mode requires the following permissions to be enabled:</p>
 <pre><code>ACCESS_NETWORK_STATE
 ACCESS_WIFI_STATE
 INTERNET
 WRITE_EXTERNAL_STORAGE</code></pre>
-<h2><a id="XWalkApplication"></a>XWalkApplication</h2>
+<h2><a class="doc-anchor" id="XWalkApplication"></a>XWalkApplication</h2>
 <p>XWalkApplication is necessary to get the resources from Crosswalk runtime library. You may use XWalkApplication directly in the Android manifest, or make your own application class extend XWalkApplication class.</p>
 <pre><code>&lt;application android:name=&quot;org.xwalk.core.XWalkApplication&quot;&gt;
     ...
 &lt;/application&gt;</code></pre>
-<h2><a id="XWalkActivity"></a>XWalkActivity</h2>
+<h2><a class="doc-anchor" id="XWalkActivity"></a>XWalkActivity</h2>
 <p>XWalkActivity helps to execute all procedures for initializing the Crosswalk environment, and displays dialogs for interacting with the end-user if necessary. The activities that hold the XWalkView object might want to extend XWalkActivity to obtain this capability. For those activities, it’s important to override the abstract method onXWalkReady() that notifies the Crosswalk environment is ready.</p>
 <p>In shared mode, the Crosswalk runtime library is not loaded yet at the moment the activity is created. So the developer can’t use embedding API in onCreate() as usual. All routines using embedding API should be inside onXWalkReady() or after onXWalkReady() is invoked.</p>
 <pre><code>public class MyXWalkActivity extends XWalkActivity {
@@ -296,7 +296,7 @@ WRITE_EXTERNAL_STORAGE</code></pre>
         mXWalkView.load(&quot;index.html&quot;, null);
     }
 }</code></pre>
-<h2><a id="XWalkInitializer"></a>XWalkInitializer</h2>
+<h2><a class="doc-anchor" id="XWalkInitializer"></a>XWalkInitializer</h2>
 <p>XWalkInitializer is a helper to initialize the Crosswalk environment as XWalkActivity. But unlike XWalkActivity, XWalkInitializer neither provide UI interactions to help the end-user to download the appropriate Crosswalk library, nor prompt messages to notify the specific error during initializing. Due to this limitation, XWalkInitializer only works for embedded mode, or for shared mode if the appropriate Crosswalk library has already been installed on the device.</p>
 <pre><code>public class MyXWalkActivity extends Activity
         implements XWalkInitializer.XWalkInitListener {
@@ -319,15 +319,15 @@ WRITE_EXTERNAL_STORAGE</code></pre>
         mXWalkView.load(&quot;index.html&quot;, null);
     }
 }</code></pre>
-<h2><a id="Version-Check-Mechanism"></a>Version Check Mechanism</h2>
+<h2><a class="doc-anchor" id="Version-Check-Mechanism"></a>Version Check Mechanism</h2>
 <p>Along with the version name (e.g. 13.38.208.0), each release of Crosswalk has an independent version which is an incremental version code to show the revision of embedding API. This version is recorded in the API_VERSION file as below:</p>
 <p>API: 4
 API_SDK: 2</p>
 <p>The API version is for both of the Crosswalk application and runtime library. The MIN_API version is only for the runtime library, and indicates the minimal version of Crosswalk applications that the runtime library supports.</p>
 <p>When loaded, the Crosswalk application will check the version of the runtime library installed on the device. If the version of the application is between the current version and minimal backward-compatible version of the runtime library, the versions match and the application can start. Otherwise, a dialog will pop up to to prompt the user to get the latest version of the runtime library.</p>
-<h1><a id="Architecture-Independence"></a>Architecture Independence</h1>
+<h1><a class="doc-anchor" id="Architecture-Independence"></a>Architecture Independence</h1>
 <p>The Crosswalk application in embedded mode now checks whether the architecture of the embedded Crosswalk runtime library matches the device. If the architecture matches, the application uses the embedded runtime library. Otherwise, it switches to shared mode. This means that if you only publish an ARM version of your package, a user of your application using an x86 device will be directed to the Play Store to download an x86-compatible version of the Crosswalk Project runtime.</p>
-<h1><a id="Built-in Updater"></a>Built-in Updater</h1>
+<h1><a class="doc-anchor" id="Built-in Updater"></a>Built-in Updater</h1>
 <p>There is a built-in updater to help the user to get the APK of Crosswalk runtime library. By default, the updater will jump to the page of Crosswalk runtime library on Google Play Store, subsequent process will be up to the user. If the developer specified the download URL, the updater will launch the download manager to fetch the APK.</p>
 <p>The developer can also distribute and maintain the specific version of Crosswalk runtime library in their own way. The built-in updater won’t be activated as long as the version of the installed runtime library matches the Crosswalk application.</p>
 

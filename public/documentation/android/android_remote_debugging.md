@@ -10,7 +10,7 @@ You will also need to set up an Android target and install a packaged Crosswalk 
 
 Debugging on Android can be enabled in two ways: [at build time](#Enable-debugging-at-build-time-for-Android) and [at run time](#Enable-debugging-at-run-time-for-Android). Both options are described below.
 
-### <a id="Enable-debugging-at-build-time-for-Android"></a>Enable debugging at build time for Android
+### <a class="doc-anchor" id="Enable-debugging-at-build-time-for-Android"></a>Enable debugging at build time for Android
 
 Once the [pre-requisites](#Android) have been met, debug your Crosswalk application as follows:
 
@@ -90,7 +90,7 @@ Once the [pre-requisites](#Android) have been met, debug your Crosswalk applicat
 
 </ol>
 
-### <a id="Enable-debugging-at-run-time-for-Android"></a>Enable debugging at run time for Android
+### <a class="doc-anchor" id="Enable-debugging-at-run-time-for-Android"></a>Enable debugging at run time for Android
 
 **Note: The instructions below only work with Crosswalk version 10 and lower.**
 
