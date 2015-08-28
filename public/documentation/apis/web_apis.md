@@ -60,7 +60,7 @@ Version key:<br />
 * [Vibration](http://www.w3.org/TR/vibration/)<sup><a href="#v">[5.34.104.5]</a></sup> - Programmatically control a device's vibration mechanism.
 * [Web Notifications](http://notifications.spec.whatwg.org/)<sup><a href="#v">[5.34.93.0]</a></sup> - Use the device's native notification mechanism (e.g. status bar on Android) to display messages to the user.
 
-# <a id="Experimental-APIs"></a>Experimental APIs
+# <a class="doc-anchor" id="Experimental-APIs"></a>Experimental APIs
 
 In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.
 

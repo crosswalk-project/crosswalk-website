@@ -491,7 +491,7 @@ During the host setup for Android ([Windows](/documentation/android/windows_host
 
 Finally, start the application on the target by selecting its icon in the applications list.
 
-### <a id="Make-a-call"></a>Make a call
+### <a class="doc-anchor" id="Make-a-call"></a>Make a call
 
 Once the application is running on two targets, you should be able to make a call between them by following these steps:
 
@@ -531,7 +531,7 @@ Once the application is running on two targets, you should be able to make a cal
 
     In the second client, you should see a message which states: "incoming call answered". You should eventually see the stream from the first client in the "REMOTE" video element.
 
-### <a id="Troubleshooting"></a>Troubleshooting
+### <a class="doc-anchor" id="Troubleshooting"></a>Troubleshooting
 
 If one or both of the client applications isn't working, or you have problems making a call, there are a few things you can try:
 
