@@ -1,6 +1,3 @@
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']] }});</script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
 # Screen measurements
 
 Understanding screen measurements in web applications is not a simple task. There are many technical terms to get to grips with, and several layers of abstraction between the real, physical screen and how it is presented to web applications.
@@ -9,43 +6,40 @@ This page attempts to explain some of the terminology used, and give practical e
 
 The concepts covered include:
 
-*ppi*:  pixels per inch<br>
-*dpi*:  dots per inch<br>
-*dips*: device-independent or density-independent pixels<br>
-*reference pixel* (CSS)<br>
-*devicePixelRatio*<br>
-*screen density*<br>
+*   *ppi* (pixels per inch)
+*   *dpi* (dots per inch)
+*   *dips* (device-independent or density-independent pixels)
+*   *reference pixel* (CSS)
+*   *devicePixelRatio*
+*   *screen density*
 
 ## Screens and ppi
 
 *Pixels per inch* or *ppi* is a common unit for describing the resolution or pixel density of a screen. The following formula calculates the ppi of a screen on one axis:
 
-$$p = n / l$$
-
-where:<br>
-p = pixels per inch<br>
-n = number of physical pixels on the axis<br>
-l = length (in inches) of screen on the axis<br>
+`screen ppi = number of physical pixels on the axis / length of screen on the axis`
 
 A variation of this formula is useful for monitors, as they are typically described in terms of their diagonal length (based on Pythagoras' theorem):
 
-$$p = {\sqrt{w^2 + h^2} \over d}$$
+`screen ppi = (&sqrt; ((pw * pw) + (ph * ph))) / dl`
 
-where:<br>
-p = pixels per inch<br>
-w = width of the screen in pixels<br>
-h = height of the screen in pixels<br>
-d = diagonal length of the screen in inches
+where:
+
+*   pw = width of the screen in pixels
+*   ph = height of the screen in pixels
+*   dl = diagonal length of the screen in inches
 
 To give a concrete example, my Samsung 21" monitor has a maximum resolution of 1680x1050. The formula above gives the following ppi value:
 
-$$p = {\sqrt{1680^2 + 1050^2} \over 21} = 94.34$$
+`ppi = (&sqrt; ((1680 * 1680) + (1050 * 1050))) / 21 = 94.34`
 
 Allowing for my inaccurate measurements, these values are in line with the expected ppi of a desktop screen (around 100ppi). Desktop screens are designed to be viewed between 3 and 4 feet away from the user; and, at 100ppi, the human eye can't distinguish individual pixels, making an image drawn in pixels appear continuous. But if you look more closely at a desktop screen (at a distance of less than 3 feet), you start to see individual pixels.
 
 By contrast, mobile screens are designed to be used closer to your face, at a distance of half your arm's length or closer (10-12 inches). At this distance, you can see the individual pixels if the ppi is around 100. Consequently, mobile devices typically have a higher pixel density (250ppi or more), so you can't discern individual pixels from 10-12 inches away.
 
-What has this got to do with density? On a screen with more pixels per inch, the pixels are smaller and closer together (more densely packed). Therefore, a screen with a high number of pixels per inch is often called "high density". Apple's *Retina Display* (trademarked by Apple) was one of the first "high density" screens, and is still prevalent today. It was defined as "a screen where the pixel density is typically 300ppi or higher for a device held 10 to 12 inches from the eye." (<a href="http://www.npr.org/blogs/alltechconsidered/2010/06/07/127530049/live-blogging-apple-s-developers-conference">NPR source</a>)
+What has this got to do with density? On a screen with more pixels per inch, the pixels are smaller and closer together (more densely packed). Therefore, a screen with a high number of pixels per inch is often called "high density". Apple's *Retina Display* (trademarked by Apple) was one of the first "high density" screens, and is still prevalent today. It is defined as:
+
+*a screen where the pixel density is typically 300ppi or higher for a device held 10 to 12 inches from the eye.* ([NPR source](http://www.npr.org/blogs/alltechconsidered/2010/06/07/127530049/live-blogging-apple-s-developers-conference))
 
 Keep this definition in mind, and consider devices with a screen pixel density of 250ppi or more as "high density".
 
@@ -77,8 +71,7 @@ Now imagine an application which is 320 dips wide. It will display at the same w
 
 In the context of CSS, a dip corresponds with the "reference pixel". This is equivalent to one physical pixel on a 96dpi screen at arm's length:
 
-> The reference pixel is the visual angle of one pixel on a device with a pixel density of 96dpi and a distance from the reader of an arm's length. For a nominal arm's length of 28 inches, the visual angle is therefore about 0.0213 degrees. For reading at arm's length, 1px thus corresponds to about 0.26 mm (1/96 inch).
-> <footer>__W3__ [source](http://www.w3.org/TR/css3-values/#absolute-lengths)</footer>
+*The reference pixel is the visual angle of one pixel on a device with a pixel density of 96dpi and a distance from the reader of an arm's length. For a nominal arm's length of 28 inches, the visual angle is therefore about 0.0213 degrees. For reading at arm's length, 1px thus corresponds to about 0.26 mm (1/96 inch).* ([W3 source](http://www.w3.org/TR/css3-values/#absolute-lengths))
 
 Why is the reference pixel defined this way? It's because the definition originated with the default resolution of images displayed in CSS, as defined by the `image-resolution` CSS property (see https://developer.mozilla.org/en-US/docs/Web/CSS/resolution).
 
@@ -86,14 +79,13 @@ The reference pixel is what you are using when you define a size or length with 
 
 Android uses the term "density-independent pixels" rather than "device-independent pixels", but they are effectively the same thing. Though the definition of a dip in Android is different from the CSS definition:
 
-> The density-independent pixel is equivalent to one physical pixel on a 160 dpi screen, which is the baseline density assumed by the system for a "medium" density screen...The conversion of dp units to screen pixels is simple: px = dp * (dpi / 160). For example, on a 240 dpi screen, 1 dp equals 1.5 physical pixels.
-> <footer>__Android Developer documentation__ [source](http://developer.android.com/guide/practices/screens_support.html)</footer>
+*The density-independent pixel is equivalent to one physical pixel on a 160 dpi screen, which is the baseline density assumed by the system for a "medium" density screen...The conversion of dp units to screen pixels is simple: px = dp * (dpi / 160). For example, on a 240 dpi screen, 1 dp equals 1.5 physical pixels.* ([Android Developer documentation source](http://developer.android.com/guide/practices/screens_support.html))
 
 (If you're interested in finding out more about density-independent design, [this page](http://developer.android.com/guide/practices/screens_support.html) is generally helpful)
 
 While this calculation holds for applications on Android, the same is not true for browsers: it is not possible to determine the dips a browser will have from a screen's ppi in a similar fashion. Browser vendors actually decide how many dips a browser should have on a particular device or physical screen, regardless of its screen size. [This article](http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html) explains the details, but the important point is that browsers (and Crosswalk) actually use another calculation to get the dimension of the viewport in dips:
 
-> dips = number of physical pixels / devicePixelRatio
+`dips = number of physical pixels / devicePixelRatio`
 
 window.devicePixelRatio is set by the browser, depending on the context where it is running and other quirks. This is explained next.
 
@@ -103,11 +95,11 @@ The devicePixelRatio is "the ratio between physical pixels and device-independen
 
 The formula for calculating the devicePixelRatio is:
 
-> devicePixelRatio = physical pixels / dips
+`devicePixelRatio = physical pixels / dips`
 
 The density of a screen is correlated with devicePixelRatio, and measured in *device pixels per device-independent pixel*, or *dppx*. In fact, the screen density in dppx is the same as the devicePixelRatio, i.e.
 
-> density dppx = physical pixels / dips
+`density dppx = physical pixels / dips`
 
 As mentioned previously, the number of dips available depends on a variety of factors, and does not directly correlate with the physical size of the screen nor the number of physical pixels it has. However, the devicePixelRatio can usually be retrieved via the `window.devicePixelRatio` variable in the browser. Combined with the physical size of the device's screen, you can then figure out the number of dips available.
 
@@ -119,8 +111,8 @@ What difference does devicePixelRatio/screen density make? To give a concrete ex
 
 This gives the following devicePixelRatio values for the two devices:
 
-*   First device devicePixelRatio = 320 / 320 = 1
+`First device devicePixelRatio = 320 / 320 = 1`
 
-*   Second device devicePixelRatio = 640 / 320 = 2
+`Second device devicePixelRatio = 640 / 320 = 2`
 
 While the page is the same width and scale on both devices, and being viewed on two screens of the same size and at the same distance, the page will appear sharper on the device which is 640 pixels wide. This is because the second, high-density device (2dppx) uses more physical pixels to display each device-independent pixel (4 screen pixels per dip, 2 across and 2 down) than the device with screen density of 1dppx (1 screen pixel per dip).
