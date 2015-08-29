@@ -25,3 +25,6 @@ local-config.php
 
 # Gimp files
 *.xcf
+
+# Assets being edited locally
+assets-raw/

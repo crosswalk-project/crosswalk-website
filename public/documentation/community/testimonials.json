@@ -1,0 +1,79 @@
+
+{
+    "quote1": {
+        "date": "August 2015",
+        "name": "Brian LeRoux",
+        "title": "Principal Scientist",
+        "company": "Adobe Systems Canada",
+        "link": "http://brian.io/",
+        "companyLogo": "",
+        "faceImg": "brian-leroux.jpg",
+        "quote": "Crosswalk helps Phonegap developers ensure a highly performant and consistent user experience across a wide breadth of mobile devices."
+    },  
+    "quote7": {
+        "date": "July 2015",
+        "name": "Nick Harlow",
+        "title": "Director of Product Management",
+        "company": "Sencha",
+        "link": "https://www.sencha.com/products/web-application-manager/#overview",
+        "companyLogo": "",
+        "faceImg": "nick-harlow.jpg",
+        "faceLink": "https://youtu.be/sSYTKOy-Y_s",
+        "videoLink": "https://youtu.be/sSYTKOy-Y_s",
+        "quote": "Crosswalk solved the fragmentation problem for customers using Sencha's Web Application Manager. It also lowered our burden internally for building and maintaining the product."
+    },
+    "quote5": {
+        "date": "July 2015",
+        "name": "Rob Lauer",
+        "title": "Principal Product Manager",
+        "company": "Telerik",
+        "link": "http://developer.telerik.com/",
+        "companyLogo": "",
+        "faceImg": "rob-lauer.jpg",
+        "quote": "Crosswalk levels the playing field for Android developers and enables them to create performant, feature-rich apps using the web skills they know and love. We advise all Telerik Platform users to target the Crosswalk webview for an instant performance boost!"
+    },
+    "quote6": {
+        "date": "May 2015",
+        "name": "Ian Maffet",
+        "title": "Developer Advocate",
+        "company": "Intel",
+        "link": "https://crosswalk-project.org/software.intel.com/en-us/intel-xdk",
+        "companyLogo": "",
+        "faceImg": "ian-maffet-80.jpg",
+        "quote": "Crosswalk helps solve the fragmentation issue with Android and enables web applications to perform close to their native counterparts. We encourage all hybrid and Intel® XDK developers to deploy their Android applications using Crosswalk."
+    },
+    "quote2": {
+        "date": "February 2015",
+        "name": "Max Woghiren",
+        "title": "Software Engineer",
+        "company": "Google",
+        "link": "http://www.google.com",
+        "companyLogo": "",
+        "faceImg": "max-woghiren.jpg",
+        "faceLink" : "https://www.youtube.com/watch?v=nU4lvgTrjFI",
+        "videoLink": "https://www.youtube.com/watch?v=nU4lvgTrjFI",
+        "quote": "It’s finally possible to build hybrid apps that use a modern web view and run on almost every Android and iOS device released within the past three years."
+    },    
+    "quote3": {
+        "date": "February 2015",
+        "name": "Ashley Gullen",
+        "title": "Creator of the Construct 2 game engine",
+        "company": "Scirra",
+        "link": "https://www.scirra.com/construct2",
+        "companyLogo": "",
+        "faceImg": "ashley-gullen.jpg",
+        "faceLink": "https://twitter.com/AshleyGullen",
+        "quote": "The Crosswalk Project looks like the new, best way to publish HTML5 content to Android."
+    },    
+    "quote4": {
+        "date": "February 2015",
+        "name": "Steve Newcomb",
+        "title": "CEO and Co-founder",
+        "company": "famo.us",
+        "link": "http://famo.us/",
+        "companyLogo": "",
+        "faceImg": "steve-newcomb.jpg",
+        "quote": "Providing a modern Chrome webview is the key to delivering performant hybrid apps for Android, and the Crosswalk Project is the best way to do that."
+    }
+}
+

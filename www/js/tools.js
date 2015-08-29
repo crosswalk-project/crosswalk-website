@@ -51,6 +51,7 @@ function createHtmlFromItem (item, pageType, itemWidth) {
               (item.company ? item.company : "") + 
               (item.link ? "</a></div>" : "") + 
           "</div></div></div>";
+         console.log (content + "\n\n");
     } else if (pageType === HOME_PAGE) {
         content = 
         "<div class='tools-hp-cube' style='width:" + itemWidth + "%;' >" + 

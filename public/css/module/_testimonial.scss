@@ -1,6 +1,10 @@
-// Styles for index.html quote section
+// This document has the styles for 2 pages that have
+// testimonials:  the section on the home page "What experts say about the Crosswalk Project"
+// and the testimonial page, located under documentation/community/testimonials.md
 //
-// Show 4 quotes, with picture and title below
+// Styles for testimonials section of home page
+//
+// Show 4-6 quotes, with picture and title below
 //
 // Markup:
 //  <div class="quoteArea">
@@ -56,6 +60,7 @@
   //border: 1px solid red;
   display: table-cell; 
   border-radius: 10px;
+  width: 80px;
 }
 .speakerTitle {   
   //border: solid green 1px;
@@ -67,4 +72,50 @@
   //border: solid green 1px;
   padding-right: 10px;
   text-align: right;
+}
+
+// Styles for testimonial page
+//
+
+.t-block {
+    //border: solid blue 1px;
+    overflow: hidden;
+    display: table; 
+    padding: 0px 0px 20px 0px;
+}    
+.t-cube {
+    //border: 1px solid red;
+    display: table-cell; 
+    vertical-align: middle;  /*vert align*/
+    text-align: center;      /*horz align*/
+    
+    width: 250px;
+    height: 120px;
+    padding: 10px 0px 10px 0px;    
+    line-height: 1.1;
+}
+
+.t-img {
+    width: 100px;    
+    border-radius: 10px;
+}
+.t-title {
+    //font-size: 10px;
+    font-size: $base-font-size * 0.85;
+}
+.t-quote {   
+    //border: solid green 1px;
+    display: table-cell; 
+    vertical-align: top;
+    font-style: italic;
+    padding: 20px 0px 20px 0px;
+}
+.t-date {
+    font-style: normal;
+    padding: 10px 0px 0px 0px;
+    color: gray;
+}
+.t-logo {
+    vertical-align: 'middle';
+    height: 30px;    
 }

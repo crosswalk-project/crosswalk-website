@@ -94,6 +94,9 @@
 //
 // Styleguide 3.13.2.
 .article-toc {
+
+  line-height: 1.4em;
+
   @include span-columns(6 of 6);
   @include media($wide) {
     @include span-columns(2 of 6);

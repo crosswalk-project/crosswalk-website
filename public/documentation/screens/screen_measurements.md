@@ -1,3 +1,6 @@
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']] }});</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 # Screen measurements
 
 Understanding screen measurements in web applications is not a simple task. There are many technical terms to get to grips with, and several layers of abstraction between the real, physical screen and how it is presented to web applications.
@@ -6,41 +9,43 @@ This page attempts to explain some of the terminology used, and give practical e
 
 The concepts covered include:
 
-*   *ppi* (pixels per inch)
-*   *dpi* (dots per inch)
-*   *dips* (device-independent or density-independent pixels)
-*   *reference pixel* (CSS)
-*   *devicePixelRatio*
-*   *screen density*
+*ppi*:  pixels per inch<br>
+*dpi*:  dots per inch<br>
+*dips*: device-independent or density-independent pixels<br>
+*reference pixel* (CSS)<br>
+*devicePixelRatio*<br>
+*screen density*<br>
 
 ## Screens and ppi
 
 *Pixels per inch* or *ppi* is a common unit for describing the resolution or pixel density of a screen. The following formula calculates the ppi of a screen on one axis:
 
-> screen ppi = number of physical pixels on the axis / length of screen on the axis
+$$p = n / l$$
+
+where:<br>
+p = pixels per inch<br>
+n = number of physical pixels on the axis<br>
+l = length (in inches) of screen on the axis<br>
 
 A variation of this formula is useful for monitors, as they are typically described in terms of their diagonal length (based on Pythagoras' theorem):
 
-> screen ppi = (&sqrt; ((pw * pw) + (ph * ph))) / dl
+$$p = {\sqrt{w^2 + h^2} \over d}$$
 
-where:
-
-*   pw = width of the screen in pixels
-*   ph = height of the screen in pixels
-*   dl = diagonal length of the screen in inches
+where:<br>
+p = pixels per inch<br>
+w = width of the screen in pixels<br>
+h = height of the screen in pixels<br>
+d = diagonal length of the screen in inches
 
 To give a concrete example, my Samsung 21" monitor has a maximum resolution of 1680x1050. The formula above gives the following ppi value:
 
-> ppi = (&sqrt; ((1680 * 1680) + (1050 * 1050))) / 21 = 94.34
+$$p = {\sqrt{1680^2 + 1050^2} \over 21} = 94.34$$
 
 Allowing for my inaccurate measurements, these values are in line with the expected ppi of a desktop screen (around 100ppi). Desktop screens are designed to be viewed between 3 and 4 feet away from the user; and, at 100ppi, the human eye can't distinguish individual pixels, making an image drawn in pixels appear continuous. But if you look more closely at a desktop screen (at a distance of less than 3 feet), you start to see individual pixels.
 
 By contrast, mobile screens are designed to be used closer to your face, at a distance of half your arm's length or closer (10-12 inches). At this distance, you can see the individual pixels if the ppi is around 100. Consequently, mobile devices typically have a higher pixel density (250ppi or more), so you can't discern individual pixels from 10-12 inches away.
 
-What has this got to do with density? On a screen with more pixels per inch, the pixels are smaller and closer together (more densely packed). Therefore, a screen with a high number of pixels per inch is often called "high density". Apple's *Retina Display* (trademarked by Apple) was one of the first "high density" screens, and is still prevalent today. It is defined as:
-
-> a screen where the pixel density is typically 300ppi or higher for a device held 10 to 12 inches from the eye.
-> <footer>__NPR__ [source](http://www.npr.org/blogs/alltechconsidered/2010/06/07/127530049/live-blogging-apple-s-developers-conference)</footer>
+What has this got to do with density? On a screen with more pixels per inch, the pixels are smaller and closer together (more densely packed). Therefore, a screen with a high number of pixels per inch is often called "high density". Apple's *Retina Display* (trademarked by Apple) was one of the first "high density" screens, and is still prevalent today. It was defined as "a screen where the pixel density is typically 300ppi or higher for a device held 10 to 12 inches from the eye." (<a href="http://www.npr.org/blogs/alltechconsidered/2010/06/07/127530049/live-blogging-apple-s-developers-conference">NPR source</a>)
 
 Keep this definition in mind, and consider devices with a screen pixel density of 250ppi or more as "high density".
 
