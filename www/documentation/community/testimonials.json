@@ -42,8 +42,18 @@
         "faceImg": "ian-maffet-80.jpg",
         "quote": "Crosswalk helps solve the fragmentation issue with Android and enables web applications to perform close to their native counterparts. We encourage all hybrid and Intel® XDK developers to deploy their Android applications using Crosswalk."
     },
+    "quote4": {
+        "date": "November 2014",
+        "name": "Steve Newcomb",
+        "title": "CEO and Co-founder",
+        "company": "famo.us",
+        "link": "http://famo.us/",
+        "companyLogo": "",
+        "faceImg": "steve-newcomb.jpg",
+        "quote": "Providing a modern Chrome webview is the key to delivering performant hybrid apps for Android, and the Crosswalk Project is the best way to do that."
+    },
     "quote2": {
-        "date": "February 2015",
+        "date": "June 2014",
         "name": "Max Woghiren",
         "title": "Software Engineer",
         "company": "Google",
@@ -53,9 +63,9 @@
         "faceLink" : "https://www.youtube.com/watch?v=nU4lvgTrjFI",
         "videoLink": "https://www.youtube.com/watch?v=nU4lvgTrjFI",
         "quote": "It’s finally possible to build hybrid apps that use a modern web view and run on almost every Android and iOS device released within the past three years."
-    },    
+    },
     "quote3": {
-        "date": "February 2015",
+        "date": "2014",
         "name": "Ashley Gullen",
         "title": "Creator of the Construct 2 game engine",
         "company": "Scirra",
@@ -64,16 +74,6 @@
         "faceImg": "ashley-gullen.jpg",
         "faceLink": "https://twitter.com/AshleyGullen",
         "quote": "The Crosswalk Project looks like the new, best way to publish HTML5 content to Android."
-    },    
-    "quote4": {
-        "date": "February 2015",
-        "name": "Steve Newcomb",
-        "title": "CEO and Co-founder",
-        "company": "famo.us",
-        "link": "http://famo.us/",
-        "companyLogo": "",
-        "faceImg": "steve-newcomb.jpg",
-        "quote": "Providing a modern Chrome webview is the key to delivering performant hybrid apps for Android, and the Crosswalk Project is the best way to do that."
     }
 }
 
