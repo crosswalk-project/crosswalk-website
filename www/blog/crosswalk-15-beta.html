@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/404" />
+    <meta property="og:title" content="Crosswalk Project 15 Beta: Chromium 44, Android 4.0 support, migrating local storage from WebView, and more" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-15-beta" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/404" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-15-beta" />
+    <meta name="twitter:title" content="Crosswalk Project 15 Beta: Chromium 44, Android 4.0 support, migrating local storage from WebView, and more" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -97,8 +97,48 @@
       <div class="doc-main">
         <div class="row">
           
-          <h1>404 – Page Not Found</h1>
-<p>Unfortunately the page requested is not here.</p>
+          <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">Crosswalk Project 15 Beta: Chromium 44, Android 4.0 support, migrating local storage from WebView, and more</h1>
+    <span class="article-meta">
+      <a href="crosswalk-15-beta.html"><time class="js-vagueTime" datetime="Fri, 28 Aug 2015 16:00:00 GMT">Fri, 28 Aug 2015 16:00:00 GMT</time></a>
+       by <span class="article-author">Francesco Balestrieri</span>
+    </span>
+  </header>
+  
+  <p>Crosswalk 15 has finally entered the Beta channel and is available from our <a href="/documentation/downloads.html">Downloads</a> page. This is quite a bit later than the scheduled date, for what we hope is a good reason: we wanted to keep the Android 4.0 support that was removed from Chromium 44, but it took longer than the time we usually allocate for rebasing. Rather than skipping one Chromium update, we decided to delay the release. Going forward, we plan to maintain the 4.0 support for as long as the effort is manageable, while returning to the usual 6-week release cadence.</p>
+<p>Users of the <a href="https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview">Crosswalk Cordova WebView plugin</a> should note that this version of Crosswalk doesn’t work with the 1.2.0 plugin currently <a href="https://www.npmjs.com/package/cordova-android-crosswalk">available from NPM</a>. In order to try it out you’ll need to install the plugin from the github repository until we make a new release to NPM, which should happen soon.</p>
+<p>Below are the major features of Crosswalk 15. As usual please report bugs and issues to our <a href="https://crosswalk-project.org/jira">Jira</a>. Happy hacking!</p>
+<h2>Chromium 44 and Android 4.0.x support</h2>
+<p>Chromium 44 includes new EC6 features and updated APIs. For more information see the <a href="http://blog.chromium.org/2015/06/chrome-44-beta-improvements-to.html">announcement</a> in the Chromium Developers blog. </p>
+<p>Starting with this release, Chromium for Android no longer supports Android 4.0.x. However we have kept the support in our own fork of Chromium 44, which means that Crosswalk 15 still supports Android 4.0.x. </p>
+<h2>Preserving webview local storage data</h2>
+<p>Now that replacing the platform WebView with Crosswalk in Cordova is as easy as installing a plugin, many people have updated their existing Cordova applications to use Crosswalk. However doing so meant losing the data saved in the WebView local storage. With Crosswalk 15 this is no longer the case, and localStorage and IndexedDB data will be preserved when updating existing webview-based hybrid apps to Crosswalk.</p>
+<h2>Support for theme-color on Android 5+</h2>
+<p>Chrome 39 introduced the <a href="https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android?hl=en"><code>theme-color</code></a> meta tag to set the color of the toolbar when looking at a web application in the Android task switcher. This feature is now enabled in Crosswalk as well.</p>
+<h2>Embedding API updates</h2>
+<ul>
+<li>XWalkView now uses <a href="http://developer.android.com/reference/android/view/SurfaceView.html"><code>SurfaceView</code></a> as the default rendering backend. This solves several visual glitches, for example when opening/closing the virtual keyboard, and gives better performance, however it doesn’t support animating the view. If you need to animate the XWalkView, select <a href="http://developer.android.com/reference/android/view/TextureView.html"><code>TextureView</code></a> as the rendering backend. To change the view type to TextureView, use <code>XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true)</code></li>
+<li>New methods to programmatically zoom the view: <a href="https://crosswalk-project.org/jira/browse/XWALK-4171"><code>XWalkView.zoomOut</code></a>,<a href="https://crosswalk-project.org/jira/browse/XWALK-4170"><code>XWalkView.zoomIn</code></a>, <a href="https://crosswalk-project.org/jira/browse/XWALK-4169"><code>XWalkView.zoomBy</code></a></li>
+<li>Override the default DownloadListener with <a href="https://crosswalk-project.org/jira/browse/XWALK-3958"><code>XWalkView.setDownloadListener</code></a></li>
+<li>New helper class <a href="https://crosswalk-project.org/jira/browse/XWALK-3971"><code>XWalkInitializer</code></a> to initialize XWalkView asynchronously </li>
+</ul>
+<h2>Extension framework</h2>
+<p>JavaScript stub auto-generation for Java extensions on Android <a href="https://crosswalk-project.org/jira/browse/XWALK-3969">[XWALK-3969</a>]</p>
+<h2>Size optimizations</h2>
+<p>The following features were ported from the Crosswalk Lite branch to support better compression of the APK:</p>
+<ul>
+<li>Enable ProGuard for Crosswalk to compress APK size <a href="https://crosswalk-project.org/jira/browse/XWALK-3854">[XWALK-3854</a>]</li>
+<li>LZMA support <a href="https://crosswalk-project.org/jira/browse/XWALK-3810">[XWALK-3810</a>]</li>
+<li>Ability to customize the dialog shown when uncompressing Crosswalk <a href="https://crosswalk-project.org/jira/browse/XWALK-3475">[XWALK-3475</a>]</li>
+</ul>
+
+  <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
+
+</article>
 
           
         </div>
