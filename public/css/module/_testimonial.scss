@@ -88,28 +88,54 @@
     display: table-cell; 
     vertical-align: middle;  /*vert align*/
     text-align: center;      /*horz align*/
-    
-    width: 250px;
-    height: 120px;
-    padding: 10px 0px 10px 0px;    
     line-height: 1.1;
+    padding: 10px 0px 10px 0px;
+
+    width: 150px;
+    height: 120px;
+    font-size: $base-font-size * 0.85;
+
+    @include media($mid) {
+        width: 250px;
+        height: 120px;
+        font-size: $base-font-size * 1.0;
+    }
 }
 
 .t-img {
-    width: 100px;    
-    border-radius: 10px;
+    width: 60px;
+    border-radius: 5px;
+
+    @include media($mid) {
+        width: 80px;
+        border-radius: 10px;
+    }
+    @include media($huge) {
+        width: 100px;
+        border-radius: 10px;
+    }
 }
+
 .t-title {
     //font-size: 10px;
     font-size: $base-font-size * 0.85;
 }
+
 .t-quote {   
     //border: solid green 1px;
     display: table-cell; 
     vertical-align: top;
     font-style: italic;
-    padding: 20px 0px 20px 0px;
+
+    font-size: $base-font-size * 0.80;
+    padding: 5px 0px 5px 0px;
+
+    @include media($mid) {
+        font-size: $base-font-size * 1.0;
+        padding: 20px 0px 20px 0px;
+    }
 }
+
 .t-date {
     font-style: normal;
     padding: 10px 0px 0px 0px;
