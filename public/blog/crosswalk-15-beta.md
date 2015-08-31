@@ -1,8 +1,8 @@
-Crosswalk 15 has finally entered the Beta channel and is available from our [Downloads](/documentation/downloads) page. This is quite a bit later than the scheduled date, for what we hope is a good reason: we wanted to keep the Android 4.0 support that was removed from Chromium 44, but it took longer than the time we usually allocate for rebasing. Rather than skipping one Chromium update, we decided to delay the release. Going forward, we plan to maintain the 4.0 support for as long as the effort is manageable, while returning to the usual 6-week release cadence.
+Crosswalk 15 has finally entered the Beta channel and is available from our [Downloads](/documentation/downloads.html) page. This is quite a bit later than the scheduled date, for what we hope is a good reason: we wanted to keep the Android 4.0 support that was removed from Chromium 44, but it took longer than the time we usually allocate for rebasing. Rather than skipping one Chromium update, we decided to delay the release. Going forward, we plan to maintain the 4.0 support for as long as the effort is manageable, while returning to the usual 6-week release cadence.
 
 Users of the [Crosswalk Cordova WebView plugin](https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview) should note that this version of Crosswalk doesn’t work with the 1.2.0 plugin currently [available from NPM](https://www.npmjs.com/package/cordova-android-crosswalk). In order to try it out you’ll need to install the plugin from the github repository until we make a new release to NPM, which should happen soon.
 
-Below are the major features of Crosswalk 15. As usual please report bugs and issues to our [Jira](https://crosswalk-project/jira). Happy hacking!
+Below are the major features of Crosswalk 15. As usual please report bugs and issues to our [Jira](https://crosswalk-project.org/jira). Happy hacking!
 
 ## Chromium 44 and Android 4.0.x support
 
