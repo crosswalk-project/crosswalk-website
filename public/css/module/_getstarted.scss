@@ -80,12 +80,16 @@
     color: black;
     padding:8px; 
 }
-
 .featureImg {
     //border: 1px solid red;
     height:40px;
     vertical-align: middle;
     margin: 0px 7px 0px 10px;
+    display:inline-block;
+}
+.featureTitle {
+    display:inline-block;
+    vertical-align:middle;
 }
 .featureSplitter {
     height: 1px;

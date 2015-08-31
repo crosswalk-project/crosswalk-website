@@ -20,7 +20,7 @@ Welcome to the Crosswalk Project, the best web runtime for your mobile and deskt
 -->
   <div class="featureDiv" style="background-color: #78c25b">
     <a class="featureLink" href="/documentation/android.html">
-      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-android-white.png"/>Android target</div>
+      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-android-white.png"/><div class="featureTitle">Android target</div></div>
       <hr class="featureSplitter" />
       <div class="featureBody">
         Create applications for Android
@@ -29,7 +29,7 @@ Welcome to the Crosswalk Project, the best web runtime for your mobile and deskt
   </div>
   <div class="featureDiv" style="background-color: #a0a0a0">
     <a class="featureLink" href="/documentation/ios.html">
-      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-apple-white.png"/>iOS target</div>
+      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-apple-white.png"/><div class="featureTitle">iOS target</div></div>
       <hr class="featureSplitter" />
       <div class="featureBody">
         Create applications for iOS
@@ -38,7 +38,7 @@ Welcome to the Crosswalk Project, the best web runtime for your mobile and deskt
   </div>
   <div class="featureDiv" style="background-color: #f04e64">
     <a class="featureLink" href="/documentation/linux.html">
-      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-linux-white.png"/>Linux desktop target</div>
+      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-linux-white.png"/><div class="featureTitle">Linux desktop target</div></div>
       <hr class="featureSplitter" />
       <div class="featureBody">
         Create applications for Linux (deb)<br>
@@ -47,7 +47,7 @@ Welcome to the Crosswalk Project, the best web runtime for your mobile and deskt
   </div>
   <div class="featureDiv" style="background-color: #248bd1">
     <a class="featureLink" href="/documentation/tizen.html">
-      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-tizen-white.png"/>Tizen target</div>
+      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-tizen-white.png"/><div class="featureTitle">Tizen target</div></div>
       <hr class="featureSplitter" />
       <div class="featureBody">
         Create applications for Tizen<br>
