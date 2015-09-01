@@ -2,7 +2,8 @@
   "crosswalk-15-beta": {
   "title": "Crosswalk Project 15 Beta: Chromium 44, Android 4.0 support, migrating local storage from WebView, and more",
   "date": "2015-08-28T16:00",
-  "author": "Francesco Balestrieri"
+  "author": "Francesco Balestrieri",
+  "desc": "Get the breakdown of the features in v15 Beta and other Crosswalk release updates."
   },
   "using-custom-crosswalk-in-cordova-plugin": {
   "title": "How to change the Crosswalk version used by the Cordova Crosswalk Webview plugin",
@@ -10,7 +11,7 @@
   "author": "Francesco Balestrieri"
   },
   "copu2015-award": {
-  "title": "Crosswalk received <i>2015 Outstanding Open Source Project</i> award",
+  "title": "Crosswalk received 2015 Outstanding Open Source Project award",
   "date": "2015-07-10T12:00",
   "author": "Margaret LaBrecque"
   },

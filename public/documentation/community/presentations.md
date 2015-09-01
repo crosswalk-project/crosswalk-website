@@ -65,6 +65,20 @@ Our global team presents Crosswalk in a variety of forums and conferences. Below
 
 <div class="presentation-div">
   <div class="presentation-title">
+    <h3>Crosswalk and Chrome Apps</h3>
+    <p>Get started developing better hybrid apps with the Crosswalk Project and this introduction from Google I/O.</p>
+    <p>June 2014</p>
+  </div>
+  <div class="presentation-graphic">
+   <a class="presentation-link" href="https://www.youtube.com/watch?v=nU4lvgTrjFI">
+    <img class="presentation-img"  src="/assets/illustrations/google-max.jpg" />
+   </a><br/>
+   <div class="presentation-caption">Video (5 min)</div>
+  </div>
+</div>
+
+<div class="presentation-div">
+  <div class="presentation-title">
     <h3>Crosswalk and the Intel XDK</h3>
     <p>Crosswalk and the <a href="https://software.intel.com/en-us/intel-xdk">Intel XDK</a> make a great development combo. Gayathri Murali (Intel XDK engineer) and Alexis Menard (Crosswalk Project engineer) discuss the synergy of using both together.</p>
     <p>October 20, 2014</p>

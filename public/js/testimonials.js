@@ -9,31 +9,12 @@
 
 /*global $, jQuery, alert*/ 
 
-/*function createTestimonialHtml (item) {
-    alert ("createHtmlFromItem");
-    var content = 
-        "<div class='tool-cube' id='cube" + item.index + "'>" + 
-          (item.link ? "<a href='" + item.link + "'>" : "") + 
-          "<img class='tool-img' id='faceImg" + item.index + "'" + 
-            "src='/assets/tools/" + item.faceImg + "'/>" + 
-          (item.link ? "</a>" : "") + 
-          "<div class='tool-text'>" + 
-            "<div class='tool-label'>" + item.name + "</div>" +
-            "<div class='tool-description'>"  + item.quote + "<br>" + 
-              (item.link ? "<div class='tool-link'><a href='" + item.link + "'>" : "") + 
-              (item.company ? item.company : "") + 
-              (item.link ? "</a></div>" : "") + 
-          "</div></div></div>";
-    return content;
-}
-*/
-
 function createTestimonialHtml (item) {
     var content = 
         "<div class='t-block'>" + 
         "<div class='t-cube' id='t-cube" + item.index + "'>" + 
-          (item.faceLink ? "<a style='text-decoration:none;' href='" + item.faceLink + "'>" : "") +  
-          "<img style='text-decoration:none;' class='t-img' id='t-img" + item.index + "'" + 
+          (item.faceLink ? "<a href='" + item.faceLink + "'>" : "") +  
+          "<img class='t-img' id='t-img" + item.index + "'" + 
               "src='/assets/testimonials/" + item.faceImg + "'/>" + 
           (item.faceLink ? "</a>" : "") + "<br>" +
         "<div id='t-label" + item.index + "'>" + 
