@@ -12,13 +12,13 @@ There will be a `crosswalk-samples` directory with several project sub-directori
 
 *   `extensions-android` &ndash; A simple Crosswalk Android extension example. The [Android extensions tutorial](/documentation/android/android_extensions.html) explains how this was developed. See [this README](https://github.com/crosswalk-project/crosswalk-samples/blob/master/extensions-android/README.md) for build instructions.
 
-*   `hello_world` &ndash; A minimal example.
+*   `hello-world` &ndash; A minimal example.
 
 *   `simd-mandelbrot` &ndash; An example of using Crosswalk's native support for [SIMD](https://github.com/johnmccutchan/ecmascript_simd).
 
 *   `space-dodge-game` &ndash; A game where you dodge asteroids in a spaceship. This contains the code developed for the [article about Crosswalk's screen APIs](/documentation/screens.html).
 
-*   `tizen_apis` &ndash; A sample application using the Tizen APIs.
+*   `tizen-apis` &ndash; A sample application using the Tizen APIs.
 
 *   `webgl` &ndash; An example of how to use WebGL in Crosswalk via [three.js](http://threejs.org/).
 

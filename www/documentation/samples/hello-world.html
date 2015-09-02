@@ -31,7 +31,7 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Hello-world" />
+    <meta property="og:title" content="HelloWorld" />
     <meta property="og:url" content="http://crosswalk-project.org/documentation/samples/hello-world" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
@@ -39,7 +39,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="http://crosswalk-project.org/documentation/samples/hello-world" />
-    <meta name="twitter:title" content="Hello-world" />
+    <meta name="twitter:title" content="HelloWorld" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -195,7 +195,7 @@
          <ul class="article-list">
             
            <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/samples/hello-world.html">Hello-world</a>
+             <a class="article-link" href="/documentation/samples/hello-world.html">HelloWorld</a>
                
            </li>
            
@@ -250,30 +250,31 @@
 <article class="article article--hasToC">
   <h1>Hello World sample</h1>
 <p><img class='sample-thumb' src='/assets/sampapp-icon-helloworld.png'></p>
-<p>The smallest of applications -- Hello, World! This sample provides a manifest.json and a minimal set of HTML files to start an application from the ground up.</p>
+<p>The smallest of applications -- Hello, World! This sample provides a manifest.json
+and a minimal set of HTML files to start an application from the ground up.</p>
 <p>This application is part of the
 <a href="https://github.com/crosswalk-project/crosswalk-samples">Crosswalk samples</a>.</p>
 <p>The steps for setting up an environment for Crosswalk are explained
 in detail in the <a href="/documentation/getting_started.html">Getting started</a>
 tutorial.</p>
 <h2>Hello World on Android</h2>
-<p>Once you&#39;ve set up the Crosswalk Android packaging dependencies,
+<p>Once you have set up the Crosswalk Android packaging dependencies,
 follow the steps in <a href="/documentation/android/run_on_android.html">Run on Android</a>.</p>
 <p>The quick version is that you can build the Hello World apk with:</p>
-<pre><code class="language-sh">&gt; cd &lt;xwalk_app_template directory&gt;
-&gt; python make_apk.py --package=org.crosswalkproject.example \
-    --manifest=&lt;path to crosswalk-samples&gt;/hello_world/manifest.json</code></pre>
-<p><code>&lt;xwalk_app_template directory&gt;</code> refers to the directory where you
-downloaded and unpacked Crosswalk Android.</p>
+<pre><code class="language-sh">&gt; cd &lt;crosswalk directory&gt;
+&gt; python make_apk.py --package=org.crosswalkproject.helloworld \
+    --manifest=&lt;path to crosswalk-samples&gt;/hello-world/manifest.json</code></pre>
+<p><code>&lt;crosswalk directory&gt;</code> refers to the directory where you downloaded and
+unpacked Crosswalk Android.</p>
 <p>Then install the apk file on Android:</p>
-<pre><code class="language-sh">&gt; adb install HelloWorld*.apk</code></pre>
+<pre><code class="language-sh">&gt; adb install Helloworld*.apk</code></pre>
 <h2>Hello World on Tizen</h2>
 <p>Follow the steps in
 <a href="/documentation/tizen/run_on_tizen.html">Run on Tizen</a>
 to install and run the Hello World sample.</p>
-<p>Or here&#39;s the quick version:</p>
-<pre><code class="language-sh">&gt; sdb push &lt;path to crosswalk-samples&gt;/hello_world /home/developer/hello_world
-&gt; sdb shell &quot;xwalk /home/developer/hello_world/&quot;</code></pre>
+<p>Or here is the quick version:</p>
+<pre><code class="language-sh">&gt; sdb push &lt;path to crosswalk-samples&gt;/hello-world /home/developer/hello-world
+&gt; sdb shell &quot;tizen-extensions-crosswalk /home/developer/hello-world/index.html&quot;</code></pre>
 
   <footer class="article-next">
     

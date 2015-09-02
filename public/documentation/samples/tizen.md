@@ -17,6 +17,6 @@ The following steps use the helper script **tizen-extension-crosswalk**
 to load the Tizen extension API into Crosswalk during load time.
 
 ```sh
-> sdb push samples/tizen_apis /home/developer/tizen_apis
-> sdb shell "tizen-extensions-crosswalk /home/developer/tizen_apis/index.html"
+> sdb push <path to crosswalk-samples>/tizen-apis /home/developer/tizen-apis
+> sdb shell "tizen-extensions-crosswalk /home/developer/tizen-apis/index.html"
 ```
