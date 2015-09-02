@@ -1,0 +1,54 @@
+// This document has the styles for the Can I Use tables
+
+.can-table {
+    table-layout: auto;
+}
+
+.can-table td, th {
+    border: 1px solid black;
+    //background-color: $color-background;
+}
+
+.can-table th {
+    width: 100%;
+}
+
+.can-center {
+    text-align: center;
+}
+
+.can-yes {
+    text-align: center;
+    background-color: #cfffaf; //55FF55; //green;
+}
+.can-no {
+    text-align: center;
+    background: #ffc4cc; //FF5555;
+}
+.can-partial {
+    text-align: center;
+    background: #fffdb4; //fffef2; //yellow;
+}
+
+// Styles for Key table at end of page
+
+.key-table {
+//    border: 1px solid black;
+    table-layout: auto;
+    font-size: $base-font-size * 0.90;
+    //color:blue;
+    margin: 0;
+    padding: 0;
+    line-height: 0.92;
+    cellpadding: 0;
+}
+
+.key-table-key {
+    white-space: nowrap;
+    //color: red;
+}
+.key-table-val {
+    width: 100%;
+    //color: green;
+}
+

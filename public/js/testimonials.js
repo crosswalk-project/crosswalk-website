@@ -53,12 +53,9 @@ function loadTestimonialsOnPage(itemsToLoad) {
     console.log (content);
 }
 
-function loadTestimonials(sortOrder) {
-    var index, item;
-    var items = [];
-
+function loadTestimonials() {
     var gridContent="", index, item;
-    
+    var items = [];
     //read objects from .json file
     index = 0;
     $.getJSON( "/documentation/community/testimonials.json", function( data ) {

@@ -1,0 +1,155 @@
+{
+    "f1": {
+        "feature": "WebRTC",
+        "featureLink": "http://www.w3.org/TR/webrtc/",
+        "category": "W3C",
+        "android": "Y",
+        "linux": "Y",
+        "ios": "Y / not Cordova",
+        "iosLink": "https://github.com/alongubkin/phonertc",
+        "windows": "Y"
+    },  
+    "f3": {
+        "feature": "Presentation",
+        "featureLink": "http://w3c.github.io/presentation-api/",
+        "category": "W3C in progress",
+        "android": "Y",
+        "linux": "No plan",
+        "ios": "Ongoing",
+        "windows": "No plan"
+    },
+    "f4": {
+        "feature": "SIMD",
+        "featureLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SIMD",
+        "category": "Currently x86 only",
+        "android": "Y",
+        "linux": "Y",
+        "ios": "No plan",
+        "windows": "Y"
+    },
+    "f5": {
+        "feature": "WebCL",
+        "featureLink": "https://www.khronos.org/webcl/",
+        "category": "Khronos (New)",
+        "android": "Y",
+        "linux": "No plan",
+        "ios": "No Plan",
+        "windows": "No plan"
+    },
+    "f6": {
+        "feature": "WebGL",
+        "featureLink": "https://www.khronos.org/webgl/",
+        "category": "Khronos",
+        "android": "Y",
+        "linux": "Y",
+        "ios": "Patial",
+        "windows": "Y"
+    },
+    "f7": {
+        "feature": "Web Payment",
+        "featureLink": "http://www.w3.org/Payments/",
+        "category": "W3C",
+        "android": "Y",
+        "linux": "No plan",
+        "ios": "Planning",
+        "windows": "No plan"
+    },
+    "f8": {
+        "feature": "Manifest",
+        "featureLink": "http://www.w3.org/TR/appmanifest/",
+        "category": "W3C",
+        "android": "Y",
+        "linux": "Y",
+        "ios": "No plan",
+        "windows": "Y"
+    },
+    "f9": {
+        "feature": "Sensor",
+        "category": "W3C",
+        "android": "Y",
+        "linux": "Y",
+        "ios": "No plan",
+        "windows": "Planning"
+    },
+    "f10": {
+        "feature": "Depth Stream",
+        "featureLink": "http://www.w3.org/TR/mediacapture-depth/",
+        "category": "W3C in progress",
+        "android": "Planning",
+        "linux": "No plan",
+        "ios": "No plan",
+        "windows": "Planning"
+    },
+    "f11": {
+        "feature": "RealSense",
+        "category": "x86",
+        "android": "Planning",
+        "linux": "No plan",
+        "ios": "No plan",
+        "windows": "Planning"
+    },
+    "f12": {
+        "feature": "Vibration",
+        "featureLink" : "http://www.w3.org/TR/vibration/",
+        "category": "W3C",
+        "android": "Y + Cordova",
+        "linux": "Y",
+        "ios": "Y + Cordova",
+        "windows": "Y"
+    },
+    "f13": {
+        "feature": "Battery",
+        "featureLink": "http://www.w3.org/TR/battery-status/",
+        "category": "W3C",
+        "android": "Y / Cordova not compatible",
+        "linux": "Y",
+        "ios": "Y / Cordova not compatible",
+        "windows": "Y"
+    },
+    "f14": {
+        "feature": "Proximity",
+        "featureLink": "http://www.w3.org/TR/proximity/",
+        "category": "W3C",
+        "android": "Y / Cordova not compatible",
+        "linux": "No plan",
+        "ios": "Y / Cordova not compatible",
+        "windows": "No plan"
+    },
+    "f15": {
+        "feature": "Ambient Light",
+        "featureLink" : "http://www.w3.org/TR/ambient-light/",
+        "category": "W3C",
+        "android": "Y /Cordova not compatible",
+        "linux": "No plan",
+        "ios": "No such sensor",
+        "windows": "No plan"
+    },
+    "f16": {
+        "feature": "NFC",
+        "featureLink": "http://www.w3.org/TR/nfc/",
+        "category": "W3C",
+        "android": "Y / Cordova not compatible",
+        "linux": "No plan",
+        "ios": "No such sensor",
+        "windows": "No plan"
+    },
+    "f17": {
+        "feature": "Fingerprint reader",
+        "category": "Cordova",
+        "android": "No plan",
+        "linux": "No plan",
+        "ios": "Y + Cordova",
+        "windows": "No plan"
+    },
+    "f18": {
+        "feature": "Barcode scanner",
+        "category": "Cordova",
+        "android": "Y + Cordova",
+        "linux": "No plan",
+        "ios": "Y + Cordova",
+        "windows": "No plan"
+    }
+}
+
+
+
