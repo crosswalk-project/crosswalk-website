@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<style>
+.can-table tr th td {
+    border: 1px solid black;
+    background: transparent;
+    color: blue;
+    text-align: center !important;
+}
+
+</style>
+  <body>
+    <h1>Can I Use?</h1>
+    <p>The tables below identify which APIs are available on which platforms. They are organized as:</p>
+
+    <ul><li><a href="#Web-APIs">Web APIs</a>:  Industry standard (W3C) web APIs.</li>
+      <li><a href="#Experimental-APIs">Experimental APIs</a>:  New APIs for advanced features, including Cordova.</li>
+    </ul>
+
+    See <a href="#Key">the key</a> for table value descriptions.
+
+    <h2><a class="doc-anchor" id="Web-APIs"></a>Web APIs</h2>
+    <p>Industry standard (W3C) web APIs.</p>
+
+    <div class="webApiFeatures" id="webApiFeatures">Web API details.</div>
+
+    <h2><a class="doc-anchor" id="Experimental-APIs"></a>Experimental APIs</h2>
+    <p>New APIs for advanced features, including Cordova. Some are in the process of being upstreamed and/or standardized.</p>
+
+    <div class="expApiFeatures" id="expApiFeatures">Experimental API details.</div>
+
+    <br>
+    <a class="doc-anchor" id="Key"></a><strong>Key:</strong>
+    <table class="key-table">
+      <tr><td>&nbsp;&nbsp;Y =</td><td class="key-table-val">Fully supported</td></tr>
+      <tr><td class="key-table-key">&nbsp;&nbsp;Y / Not Cordova =</td><td>Fully supported ... but not the Cordova APIs.</td></tr>
+      <tr><td class="key-table-key">&nbsp;&nbsp;Y / Cordova =</td><td>Fully supported with Cordova too</td></tr>
+      <tr><td>&nbsp;&nbsp;N =</td><td>Not supported</td></tr>
+      <tr><td>&nbsp;&nbsp;Partial =</td><td>Partially supported. Click for more detail.</td></tr>
+      <tr><td>&nbsp;&nbsp;Planning =</td><td>Will implement. </td></tr>
+      <tr><td>&nbsp;&nbsp;Ongoing =</td><td>Started implementation. Should be fully supported when finished</td></tr>
+    </table>
+
+    <script type="text/javascript">
+      loadCanIUse(); 
+    </script>
+
+  </body>
+</html>
+
+<!--
+json file template
+    "f1": {
+        "feature": "WebRTC",
+        "featureLink": "www.featureLink.com",
+        "category": "W3C",  //if W3C, it gets put into Web API section, else into Experimental section
+        "categoryLink": "http://catlink.com",
+        "android": "Y",
+        "androidLink": "",
+        "linux": "Y",
+        "linuxLink": "",
+        "ios": "Y / not Cordova",
+        "iosLink": "",
+        "windows": "Y"
+        "windowsLink": ""
+    },  
+-->
