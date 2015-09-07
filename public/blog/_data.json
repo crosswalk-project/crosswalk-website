@@ -1,4 +1,9 @@
 {
+  "announcing-web-testing-service": {
+    "title": "Announcing the Web Testing Service",
+    "date": "2015-09-06T11:00",
+    "author": "Belem Zhang"
+  },
   "crosswalk-15-beta": {
   "title": "Crosswalk Project 15 Beta: Chromium 44, Android 4.0 support, migrating local storage from WebView, and more",
   "date": "2015-08-28T16:00",
