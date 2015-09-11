@@ -1,4 +1,10 @@
 {
+  "announcing-web-testing-service": {
+    "title": "Announcing the Web Testing Service",
+    "date": "2015-09-06T11:00",
+    "author": "Belem Zhang",
+    "desc": "The new Web Testing Service is a collection of tests that demonstrate how well browsers or web runtimes support web standards on different platforms.  Now available for the Crosswalk Project."
+  },
   "crosswalk-15-beta": {
   "title": "Crosswalk Project 15 Beta: Chromium 44, Android 4.0 support, migrating local storage from WebView, and more",
   "date": "2015-08-28T16:00",
