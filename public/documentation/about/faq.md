@@ -87,13 +87,7 @@ There are two approaches to building an application which supports both x86 and 
 
 ### <a class="doc-anchor" id="Which-platforms-does-Crosswalk-support"></a>Which platforms does Crosswalk support?
 
-Crosswalk officially supports [Android (version 4.0 and above)](http://www.android.com/) and [Tizen 3.0 (Common and IVI profiles)](https://wiki.tizen.org/wiki/IVI). Pre-built packages are available from https://download.01.org/ for both platforms. See the [downloads page](https://crosswalk-project.org/documentation/downloads.html) for details.
-
-Crosswalk builds for Windows, Mac OS and Linux are available: see https://build.crosswalk-project.org/waterfall. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.
-
-Also note that we don't have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or similar). Again, if you are interested in working on this, please feel free to contact us.
-
-Crosswalk does not support iOS at this time.
+Crosswalk officially supports [Android (version 4.0 and above)](/documentation/android.html), [iOS](/documentation/ios.html), [Linux desktop (deb)](/documentation/linux.html), and [Tizen 3.0 (Common and IVI profiles)](/documentation/tizen.html). Pre-built packages are available for these platforms. See the [downloads page](https://crosswalk-project.org/documentation/downloads.html) for details. Work is also underway to support Windows 10 desktop.
 
 ### <a class="doc-anchor" id="How-to-use-Crosswalk-on-a-project-using-ProGuard"></a>How to use Crosswalk on a project using ProGuard
 

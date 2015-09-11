@@ -302,10 +302,7 @@ lib/x86/libxwalkcore.so</code></pre>
 </li>
 </ul>
 <h3><a class="doc-anchor" id="Which-platforms-does-Crosswalk-support"></a>Which platforms does Crosswalk support?</h3>
-<p>Crosswalk officially supports <a href="http://www.android.com/">Android (version 4.0 and above)</a> and <a href="https://wiki.tizen.org/wiki/IVI">Tizen 3.0 (Common and IVI profiles)</a>. Pre-built packages are available from <a href="https://download.01.org/">https://download.01.org/</a> for both platforms. See the <a href="https://crosswalk-project.org/documentation/downloads.html">downloads page</a> for details.</p>
-<p>Crosswalk builds for Windows, Mac OS and Linux are available: see <a href="https://build.crosswalk-project.org/waterfall">https://build.crosswalk-project.org/waterfall</a>. However, these platforms do not receive intensive QA, and are community-supported. If you would like to help with these efforts, please get in touch.</p>
-<p>Also note that we don&#39;t have a way to package your app with Crosswalk for deployment on desktop (as an .exe, .dmg or similar). Again, if you are interested in working on this, please feel free to contact us.</p>
-<p>Crosswalk does not support iOS at this time.</p>
+<p>Crosswalk officially supports <a href="/documentation/android.html">Android (version 4.0 and above)</a>, <a href="/documentation/ios.html">iOS</a>, <a href="/documentation/linux.html">Linux desktop (deb)</a>, and <a href="/documentation/tizen.html">Tizen 3.0 (Common and IVI profiles)</a>. Pre-built packages are available for these platforms. See the <a href="https://crosswalk-project.org/documentation/downloads.html">downloads page</a> for details. Work is also underway to support Windows 10 desktop.</p>
 <h3><a class="doc-anchor" id="How-to-use-Crosswalk-on-a-project-using-ProGuard"></a>How to use Crosswalk on a project using ProGuard</h3>
 <p>Don&#39;t use ProGuard to obfuscate the xwalk core library because it will create a &quot;broken JNI link&quot; error. Add the following ProGuard rules in the proguard-project.txt file:&quot;</p>
 <pre><code>-keep class org.xwalk.core.** {
