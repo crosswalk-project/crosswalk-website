@@ -1,6 +1,6 @@
 We are pleased to announce our Web Testing Service today.
 
-The [Web Testing Service](http://wts.crosswalk-project.org/) is a web-based test runner. It indicates how well the browsers or web runtimes support the web standards and related specifications on different platforms.
+The [Web Testing Service](http://wts.crosswalk-project.org/) is a web-based test runner. It indicates how well browsers or web runtimes support web standards and related specifications on different platforms.
 
 The Web Testing Service is a collection of test suites for the latest W3C web standards and for the latest cutting-edge web technologies that are not yet a part of W3C, e.g. SIMD.
 
@@ -35,11 +35,10 @@ You are encouraged to play with the service, as always we'd like to get your fee
 
 Besides the Web Testing Service online website, a Web Test Client based on the Crosswalk Project is also available on Google Play.
 
-The Web Test Client is packaged in [Shared Mode](https://crosswalk-project.org/documentation/shared_mode.html), you can download the client from:
-https://play.google.com/store/search?q=org.xwalk.web_test_client
+The Web Test Client is packaged in [Shared Mode](https://crosswalk-project.org/documentation/shared_mode.html).  You can download the client from:
 https://play.google.com/store/apps/details?id=org.xwalk.web_test_client
 
-It supports Android 4.0 or higher on both ARM and x86 devices after installing [Crosswalk Project Runtime](https://play.google.com/store/apps/details?id=org.xwalk.core).
+It supports Android 4.0 or higher on both ARM and x86 devices after installing the [Crosswalk Project Runtime](https://play.google.com/store/apps/details?id=org.xwalk.core).
 
 ## Issue tracking
 

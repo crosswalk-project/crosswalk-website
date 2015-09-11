@@ -28,7 +28,7 @@ The Test Suite provides a series of [development guides](https://github.com/cros
 The Test Suite not only covers the master branch but also the beta branch since usually case bugs are affected on both of them and sometimes we need to add hotfixes on the beta branch. The Test Suite branch schedule aligns with [branch dates](https://github.com/crosswalk-project/crosswalk-website/wiki/Release-dates) of Crosswalk Project which follows [Crosswalk release methodology](https://github.com/crosswalk-project/crosswalk-website/wiki/Release-methodology).
 
 ## Web Testing Service
-The easiest way to run the test suites is using [Web Testing Service](http://wts.crosswalk-project.org/). It is a web-based test runner that indicates how well the browsers or web runtimes support the web standards and related specifications on different platforms. The [Web Test Client](https://play.google.com/store/search?q=org.xwalk.web_test_client) based on the Crosswalk Project is also available on Google Play. Please refer to [Web Testing Service wiki](https://github.com/crosswalk-project/web-testing-service/wiki) for more details.
+The easiest way to run the test suites is using the [Web Testing Service](http://wts.crosswalk-project.org/). It is a web-based test runner that indicates how well browsers or web runtimes support web standards and related specifications on different platforms. The [Web Test Client](https://play.google.com/store/apps/details?id=org.xwalk.web_test_client) based on the Crosswalk Project is also available on Google Play. Please refer to the [Web Testing Service wiki](https://github.com/crosswalk-project/web-testing-service/wiki) for more details.
 
 ## Contribute test cases
 
