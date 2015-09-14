@@ -50,7 +50,7 @@
     <script src="/js/demos.js"></script>
     <script src="/js/testimonials.js"></script>
     <script src="/js/tools.js"></script>
-    <script src="/qa/js/qa.js"></script>
+    <script src="/js/qualityindicators.js"></script>
   </head>
   <body>
     <!-- If the current page is an index less than two
