@@ -71,11 +71,13 @@ Our global team presents Crosswalk in a variety of forums and conferences. Below
   </div>
   <div class="presentation-graphic">
    <a class="presentation-link" href="https://www.youtube.com/watch?v=nU4lvgTrjFI">
-    <img class="presentation-img"  src="/assets/illustrations/google-max.jpg" />
+    <img class="presentation-img"  src="/assets/illustrations/google-max-video.jpg" />
    </a><br/>
    <div class="presentation-caption">Video (5 min)</div>
   </div>
 </div>
+
+<hr class="presentation-splitter" />
 
 <div class="presentation-div">
   <div class="presentation-title">
