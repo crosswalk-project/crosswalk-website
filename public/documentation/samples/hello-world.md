@@ -34,15 +34,3 @@ Then install the apk file on Android:
 > adb install Helloworld*.apk
 ```
 
-## Hello World on Tizen
-
-Follow the steps in
-[Run on Tizen](/documentation/tizen/run_on_tizen.html)
-to install and run the Hello World sample.
-
-Or here is the quick version:
-
-```sh
-> sdb push <path to crosswalk-samples>/hello-world /home/developer/hello-world
-> sdb shell "tizen-extensions-crosswalk /home/developer/hello-world/index.html"
-```

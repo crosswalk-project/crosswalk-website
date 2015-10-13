@@ -4,12 +4,8 @@ The following standard APIs are supported by Crosswalk.
 
 Version key:<br />
 &nbsp;&nbsp;&nbsp;<sup id="a">[a]</sup> = Android only<br/>
-&nbsp;&nbsp;&nbsp;<sup id="t">[t]</sup> = Tizen only;<br/>
 &nbsp;&nbsp;&nbsp;<sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later<br/>
 &nbsp;&nbsp;&nbsp;<sup id="va">[X.X.X.X;x86|ARM]</sup> = this version or later for the specified architecture.
-
-## Runtime & Packaging
-* [app: URI](http://www.w3.org/2012/sysapps/app-uri/)<sup><a href="#t">[t]</a></sup> - Address resources inside a packaged application.
 
 ## Multimedia & Graphics
 * [CSS Animations](http://www.w3.org/TR/css3-animations/) - Animate CSS properties over time using keyframes.
@@ -70,11 +66,5 @@ In addition to the standard APIs, Crosswalk provides additional experimental or 
 * [Raw Sockets](http://www.w3.org/TR/raw-sockets/) - Raw TCP and UDP sockets for client and server sides.
 * [SIMD](https://github.com/johnmccutchan/ecmascript_simd)<sup><a href="#v">[5.34.104.0]</a></sup> - Data types and operations for access to the Single Instruction Multiple Data (SIMD) instruction sets available on common CPU architectures, such as SSE (IA32/X64) and NEON (ARMv7. This implemention is not yet complete).  Whitepaper: [SIMD in Javascript via C++ and Emscripten](https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fviewer%3Fa%3Dv%26pid%3Dsites%26srcid%3DZGVmYXVsdGRvbWFpbnx3cG12cDIwMTV8Z3g6NTkzYWE2OGNlNDAyMTRjOQ).
 * [WebCL](https://www.khronos.org/registry/webcl/specs/1.0.0/)<sup>[\[a\]](#a)</sup><sup><a href="#v">[13.41.304.0]</a></sup> - JavaScript binding to the Khronos OpenCL standard. It enables web applications to access harness GPU and multi-core CPU for parallel processing.
-
-# Tizen Extension APIs
-
-In addition to the experimental Crosswalk APIs, the Crosswalk developers have created
-a Crosswalk extension for Tizen users which provides many of the Tizen
-APIs. You can find information on those APIs on the [Tizen Extension APIs](https://github.com/crosswalk-project/tizen-extensions-crosswalk/wiki/APIs) page.
 
 <small>Some content in the Standard APIs section of this page has been adapted from [chromestatus.com](http://www.chromestatus.com/), &copy; 2013 The Chromium Authors, used under [Creative Commons Attribution 2.5 license](http://creativecommons.org/licenses/by/2.5/)</small>

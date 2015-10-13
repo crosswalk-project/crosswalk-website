@@ -18,8 +18,6 @@ There will be a `crosswalk-samples` directory with several project sub-directori
 
 *   `space-dodge-game` &ndash; A game where you dodge asteroids in a spaceship. This contains the code developed for the [article about Crosswalk's screen APIs](/documentation/screens.html).
 
-*   `tizen-apis` &ndash; A sample application using the Tizen APIs.
-
 *   `webgl` &ndash; An example of how to use WebGL in Crosswalk via [three.js](http://threejs.org/).
 
 *   `webrtc` &ndash; An example of using the [WebRTC API](http://www.w3.org/TR/webrtc/) in Crosswalk. This is the example developed in the [WebRTC tutorial](/documentation/webrtc.html). See [this README](https://github.com/crosswalk-project/crosswalk-samples/blob/master/webrtc/README.md) for build instructions.

@@ -16,15 +16,3 @@ At the moment, the following display modes are available:
     In this mode, the application displays in the same manner as a native application. The standard UI elements from the context (e.g. the device's status bar) remain visible.
 
 See the [W3C spec](http://w3c.github.io/manifest/#display-member) for full details.
-
-## Examples
-
-To give an idea of how this field setting affects the application's appearance, here are some screenshots of the "hello world" application in each mode on a Tizen IVI virtual machine.
-
-**Fullscreen:**
-
-![Application in fullscreen display mode on Tizen IVI](/assets/crosswalk-manifest-tizen-fullscreen.png "Fullscreen")
-
-**Standalone (note the device's toolbar):**
-
-![Application in standalone display mode on Tizen IVI](/assets/crosswalk-manifest-tizen-standalone.png "Standalone")

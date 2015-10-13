@@ -5,8 +5,7 @@ This page covers how to use a `manifest.json` file when deploying a Crosswalk ap
 <p>A manifest can be used in the following "modes":</p>
 
 1.  [To configure how a Crosswalk application is packaged for Android](#Configure-Android-packaging).
-2.  [To configure how a Crosswalk application launches on Tizen](#Configure-launch-on-Tizen).
-3.  [To load an application into an embedded Crosswalk runtime](#Load-an-application-into-an-embedded-Crosswalk).
+2.  [To load an application into an embedded Crosswalk runtime](#Load-an-application-into-an-embedded-Crosswalk).
 
 <h2 id="Configure-Android-packaging">Configure Android packaging</h2>
 
@@ -19,12 +18,6 @@ However, that tutorial only uses a basic manifest, and does not explain in detai
 * `permissions`: [effect on Android packaging](/documentation/manifest/permissions.html#Effect-on-Android-packaging)
 
 Note that neither of these fields has an effect if it is included in a `manifest.json` file [loaded into an embedded Crosswalk](#Load-an-application-into-an-embedded-Crosswalk).
-
-<h2 id="Configure-launch-on-Tizen">Configure launch on Tizen</h2>
-
-When you create an xpk package to install with Crosswalk on Tizen, the `manifest.json` file should be included with the other assets in the application, as described in the [Run on Tizen](/documentation/tizen/run_on_tizen.html) section of the "Getting started" tutorial.
-
-Once installed, Crosswalk on Tizen will use the field values in `manifest.json` to control how the application is launched: which [entry point](/documentation/manifest/entry_points.html) is used, whether the application is [displayed in fullscreen mode](/documentation/manifest/display.html), etc.
 
 <h2 id="Load-an-application-into-an-embedded-Crosswalk">Load an application into an embedded Crosswalk</h2>
 
