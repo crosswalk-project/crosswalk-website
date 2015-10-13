@@ -34,16 +34,3 @@ Then install the apk file on Android:
 > adb install WebGL*.apk
 ```
 
-## WebGL on Tizen
-
-Follow the steps in [Run on Tizen](/documentation/tizen/run_on_tizen.html) to install and run the WebGL sample on Tizen.
-
-Or here's the quick version:
-
-```sh
-sdb push <path to crosswalk-samples>/webgl /home/developer/webgl
-sdb shell "xwalk --usegl=osmesa /home/developer/webgl/"
-```
-
-Note that you pass the `--usegl=osmesa` option to enable WebGL on
-Tizen Crosswalk.

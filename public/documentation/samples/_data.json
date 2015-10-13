@@ -2,9 +2,6 @@
   "hello-world": {
     "title": "HelloWorld"
   },
-  "tizen": {
-    "title": "Tizen"
-  },
   "webgl": {
     "title": "WebGL"
   },

@@ -43,14 +43,3 @@ Then install the apk file on Android:
 ```sh
 > adb install simd*.apk
 ```
-
-## SIMD on Tizen
-
-Follow the steps in [Run on Tizen](/documentation/tizen/run_on_tizen.html) to install and run the SIMD sample on Tizen.
-
-Or here's the quick version:
-
-```sh
-sdb push <path to crosswalk-samples>/simd /home/developer/simd
-sdb shell "xwalk /home/developer/simd/"
-```
