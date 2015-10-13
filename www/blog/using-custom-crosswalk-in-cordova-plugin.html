@@ -133,13 +133,13 @@
 <p>Next, you&#39;ll need to change the gradle configuration of the plugin. From your cordova project root folder open the file </p>
 <p><code>platforms/android/cordova-plugin-crosswalk-webview/&lt;appname&gt;.gradle</code></p>
 <p>At the beginning of the file, you&#39;ll see the Maven repository configuration:</p>
-<pre><code>Repositories {
+<pre><code>repositories {
     Maven {
         url &#39;https://download.01.org/crosswalk/releases/crosswalk/android/maven2&#39;
     }
 }</code></pre>
 <p>To use the local Maven repository instead, replace the text above with the following:</p>
-<pre><code>Repositories {
+<pre><code>repositories {
     mavenLocal()
 }</code></pre>
 <p>Finally, configure the Crosswalk version in config.xml:</p>
