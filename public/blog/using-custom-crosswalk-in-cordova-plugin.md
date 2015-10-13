@@ -56,7 +56,7 @@ Next, you'll need to change the gradle configuration of the plugin. From your co
 At the beginning of the file, you'll see the Maven repository configuration:
 
 ```
-Repositories {
+repositories {
     Maven {
         url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2'
     }
@@ -66,7 +66,7 @@ Repositories {
 To use the local Maven repository instead, replace the text above with the following:
 
 ```
-Repositories {
+repositories {
     mavenLocal()
 }
 ```
