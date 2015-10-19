@@ -6,10 +6,10 @@ This guide describes how to create a Crosswalk web application, and how to creat
 
 ### Prerequisites
 
-1. Xcode
-2. Valid Apple Developer Account
-3. NPM
-4. Crosswalk App Tools with iOS backend
+1. [Xcode](https://developer.apple.com/xcode/)
+2. [Valid Apple Developer Account](https://developer.apple.com/programs/)
+3. [NPM](https://www.npmjs.com/)
+4. [Crosswalk App Tools with iOS backend](https://github.com/crosswalk-project/crosswalk-app-tools-ios)
 
 ### Creation
 
@@ -56,12 +56,12 @@ This guide describes how to create a Crosswalk web application, and how to creat
     With the contents as below:
 
     ```
-    platform: ios, '8.0'
+    platform :ios, '8.1'
     use_frameworks!
-    pod 'crosswalk-ios', '~> 1.1'
+    pod 'crosswalk-ios', '~> 1.2'
     ```
 
-    This tells CocoaPods that the deploy target is iOS 8.0+ and to integrate library `crosswalk-ios` with the latest version of `1.0.x`. Remember to add `use_frameworks!` because `crosswalk-ios` is partly written in Swift and it has to be built as a framework instead of a static library.
+    This tells CocoaPods that the deploy target is iOS 8.1+ and to integrate library `crosswalk-ios` with the latest version of `1.2.x`. Remember to add `use_frameworks!` because `crosswalk-ios` is partly written in Swift and it has to be built as a framework instead of a static library.
 
     Install `Pods` target into the project. Quit the Xcode first, then in the `Echo` directory, use command:
 
@@ -106,4 +106,3 @@ This guide describes how to create a Crosswalk web application, and how to creat
 The `Echo` demo is ready to run now. Press 'Run' button and it will be deployed and run on your iOS simulator.
 
 This is the first step in building the Echo demo. If you need to know how to setup a hybrid project with your own Crosswalk extension, please go to: [Extension](extensions.html) for more details.
-
