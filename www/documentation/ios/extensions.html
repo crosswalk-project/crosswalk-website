@@ -278,11 +278,20 @@
 </li>
 <li><p>Select the project you&#39;ve created in Navigator panel, choose &quot;File&quot; -&gt; &quot;Save As Workspace...&quot; to create a workspace for the project.</p>
 </li>
-<li><p>Add the &quot;XWalkView&quot; project into the workspace.</p>
+<li><p>Use CocoaPods to integrate the <code>crosswalk-ios</code> library. For the CocoaPods installation and usage, please refer to: <a href="https://cocoapods.org/">CocoaPods</a>.</p>
+<p> In the project directory, create a file called <code>Podfile</code>:</p>
+<pre><code> touch Podfile;</code></pre>
+<p> With the contents as below:</p>
+<pre><code> platform :ios, &#39;8.1&#39;
+ use_frameworks!
+ pod &#39;crosswalk-ios&#39;, &#39;~&gt; 1.2&#39;</code></pre>
+<p> Install <code>Pods</code> target into the project. Quit the Xcode first, then in the project directory, use command:</p>
+<pre><code> pod install</code></pre>
+<p> After the installation, you will find an <code>&lt;projectName&gt;.xcworkspace</code> is generated, and CocoaPods output will notify you to use this workspace instead of the <code>&lt;projectName&gt;.xcodeproj</code> from now on.</p>
 </li>
-<li><p>In the &quot;General&quot; tab of the project&#39;s configuration add &quot;XWalkView&quot; into the &quot;Linked Frameworks and Libraries&quot; to make the extension project link with XWalkView.</p>
-</li>
-<li><p>Open the <strong>Info.plist</strong> of this extension project and add a new row named <code>XWalkExtensions</code> with type <code>Dictionary</code>. This section defines the mapping information between app JavaScript runtime and the native extension class. The key/value defines like this:</p>
+<li><p>Create <code>extensions.plist</code> to define the mapping information between application JavaScript runtime and the native extension class.</p>
+<p> In <code>File</code> -&gt; <code>New...</code> -&gt; <code>File...</code>, choose <code>iOS</code> -&gt; <code>Resource</code> -&gt; <code>Property List</code>.  Create a plist file with name <code>extensions.plist</code> in project directory.</p>
+<p> Add a new row named <code>XWalkExtensions</code> with type <code>Dictionary</code>. The key/value defines like this:</p>
 </li>
 </ol>
 <table style="table-layout: auto;">
@@ -293,7 +302,7 @@
 
 <h3>Implement The Extension</h3>
 <ol>
-<li><p>Create a subclass which derives from <code>XWalkExtension</code> with the name you defined in the <strong>Info.plist</strong>. Your subclass can be implemented with either Objective-C or Swift, and Swift is more recommended.</p>
+<li><p>Create a subclass which derives from <code>XWalkExtension</code> with the name you defined in the <strong>extensions.plist</strong>. Your subclass can be implemented with either Objective-C or Swift, and Swift is more recommended.</p>
 </li>
 <li><p>Write your own logic in this class.</p>
 </li>
