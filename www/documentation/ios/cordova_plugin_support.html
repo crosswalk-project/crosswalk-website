@@ -256,9 +256,9 @@
 
 <article class="article article--hasToC">
   <h1>Cordova Plugin Support</h1>
-<p>Crosswalk for iOS provides support for Cordova Plugins by introducing the Cordova.framework based on the Crosswalk Extension mechanism. The <code>XWalkCordovaExtension</code> is responsible for managing the life cycle of the Cordova Plugins, replicates the environment that Cordova Plugins run in, and provides the functionalities that Cordova Plugins need based on the Crosswalk Extension framework. You can leverage the existing Cordova Plugins to extend Crosswalk&#39;s functionalities without changing any code of the plugins.</p>
+<p>Crosswalk for iOS provides support for Cordova Plugins by introducing the Cordova.framework based on the Crosswalk Extension mechanism. The <a href="https://cocoapods.org/pods/crosswalk-extension-cordova">Cordova extension</a> is responsible for managing the life cycle of the Cordova Plugins, replicates the environment that Cordova Plugins run in, and provides the functionalities that Cordova Plugins need based on the Crosswalk Extension framework. You can leverage the existing Cordova Plugins to extend Crosswalk&#39;s functionalities without changing any code of the plugins.</p>
 <h2>Cordova Plugin API</h2>
-<p>We are going to support all the Cordova Plugin API in the comming future, the status of API availability is:</p>
+<p>We are going to support all the Cordova Plugin API in the coming future, the status of API availability is:</p>
 <h3>Supported</h3>
 <ul>
 <li><a href="https://github.com/apache/cordova-plugin-battery-status">org.apache.cordova.battery-status</a></li>
@@ -287,61 +287,55 @@
 <p>You are warmly welcome to contribute together with us to enable more Cordova Plugins for Crosswalk.</p>
 <h2>Quickstart</h2>
 <p>In this section we&#39;d like to show you a simple demo application with <code>org.apache.cordova.device</code> embedded to demonstrate the processes to create an application with Cordova Plugin support.</p>
-<h3>Setup The Working Directory</h3>
-<ol>
-<li><p>Create a working directory called <code>cordova-device-demo</code> in a suitable place:</p>
-<pre><code class="language-bash">mkdir cordova-device-demo
-cd cordova-device-demo</code></pre>
-</li>
-<li><p>Clone the <code>crosswalk-ios</code> project with command:</p>
-<pre><code class="language-bash">git clone https://github.com/crosswalk-project/crosswalk-ios.git</code></pre>
-</li>
-<li><p>Initialize the <code>crosswalk-ios</code> submodules with commands:</p>
-<pre><code class="language-bash">cd crosswalk-ios
-git submodule update --init --recursive
-cd -</code></pre>
-</li>
-</ol>
 <h3>Setup DeviceDemo Project</h3>
 <h4>Create DeviceDemo Project</h4>
 <p>We need to create an application project to host the Cordova plugin and the web resources.</p>
 <ol>
-<li><p>Create <code>DeviceDemo</code> Project in directory <code>cordova-device-demo</code></p>
+<li><p>Create <code>DeviceDemo</code> Project</p>
 <ul>
-<li><p>In <code>File</code> -&gt; <code>New</code> -&gt; <code>Project...</code>, create a single view application with Swift language.</p>
+<li><p>Open Xcode. Create an iOS application with the &quot;Single View Application&quot; template with project name: &quot;DeviceDemo&quot;. Select &quot;Swift&quot; as project language.</p>
 </li>
-<li><p>For quick demo, you may replace the auto-generated <code>ViewController.swift</code> with <code>crosswalk-ios/AppShell/AppShell/CordovaViewController.swift</code>, which has setup a WKWebView instance for you already.</p>
-<ul>
-<li>Just remove the auto-generated <code>ViewController.swift</code> file, and add <code>crosswalk-ios/AppShell/AppShell/CordovaViewController.swift</code> into the <code>DeviceDemo</code> project.</li>
-</ul>
+<li><p>For quick demo, replace the auto-generated <code>ViewController.swift</code> with the corresponding file in <a href="https://github.com/crosswalk-project/crosswalk-ios/blob/master/AppShell/AppShell/CordovaViewController.swift">crosswalk-ios/AppShell/AppShell/CordovaViewController.swift</a>, which has setup a XWalkView instance for you already.</p>
 </li>
-</ul>
-</li>
-<li><p>Embed <code>XWalkView.framework</code> and <code>Cordova.framework</code> into the <code>DeviceDemo</code></p>
-<p>To enable the extended XWalkView and Cordova plugin support, we need to link the application with those two libraries and embed Cordova.framework into the application bundle.</p>
-<ul>
-<li><p>In <code>File</code> -&gt; <code>Add Files to &quot;DeviceDemo&quot;...</code>, choose the <code>XWalkView.xcodeproj</code> from <code>crosswalk-ios/XWalkView/XWalkView.xcodeproj</code>, and <code>Cordova.framework</code> from <code>crosswalk-ios/Cordova/Cordova.xcodeproj</code>;</p>
-</li>
-<li><p>Select <code>DeviceDemo</code> target in <code>DeviceDemo</code> project, in <code>General</code> -&gt; <code>Linked Frameworks and Libraries</code>, add <code>XWalkView.framework</code>.</p>
-</li>
-<li><p>Drag <code>Cordova.framework</code> into the <code>General</code> -&gt; <code>Embedded Binaries</code> section in the Project Setting Panel of <code>DeviceDemo</code>, which will be added into the <code>Linked Frameworks and Libraries</code> automatically.</p>
+<li><p>Just clear the contents of the auto-generated <code>ViewController.swift</code> file, replace them with: <a href="https://github.com/crosswalk-project/crosswalk-ios/blob/master/AppShell/AppShell/CordovaViewController.swift">crosswalk-ios/AppShell/AppShell/CordovaViewController.swift</a>.</p>
 </li>
 </ul>
 </li>
-<li><p>Try to build the <code>DeviceDemo</code> application target, to see if it works fine.</p>
+<li><p>Use <a href="https://cocoapods.org/">CocoaPods</a> to integrate the <a href="https://cocoapods.org/pods/crosswalk-ios">crosswalk-ios</a> and <a href="https://cocoapods.org/pods/crosswalk-extension-cordova">crosswalk-extension-cordova</a> into the project.</p>
+<ul>
+<li>In the <code>DeviceDemo</code> directory, create a file called <code>Podfile</code>:<pre><code class="language-bash">cd DeviceDemo
+touch Podfile</code></pre>
+</li>
+</ul>
+<p>With the contents as below:</p>
+<pre><code class="language-ruby">platform :ios, &#39;8.1&#39;
+use_frameworks!
+pod &#39;crosswalk-extension-cordova&#39;, &#39;~&gt; 1.1&#39;</code></pre>
+<p>This will tell CocoaPods that the deploy target is iOS 8.1+ and to integrate library <code>crosswalk-extension-cordova</code> with the latest version of <code>1.1.x</code>. Remember to add <code>use_frameworks!</code> which is because <code>crosswalk-ios</code> is partly written in Swift and it has to be built as a framework instead of a static library.</p>
+<p>You may notice that we haven&#39;t added the dependency of <code>crosswalk-ios</code>. This is not necessary because <code>crosswalk-extension-cordova</code> depends on <code>crosswalk-ios</code> and the dependency is automatically handled by CocoaPods.</p>
+<ul>
+<li>Install the <code>Pod</code> targets into the project.</li>
+</ul>
+<p>Quit the Xcode firstly, then in the <code>DeviceDemo</code> directory, use the following command to install pods:</p>
+<pre><code class="language-bash">pod install</code></pre>
+<p>Then you&#39;ll find a <code>DeviceDemo.xcworkspace</code> is generated, and CocoaPods will notify you to use this workspace instead of the <code>DeviceDemo.xcodeproj</code> from now on.</p>
+</li>
+<li><p>Open the <code>DeviceDemo.xcworkspace</code>, try to build the <code>DeviceDemo</code> application target, to see if it works fine.</p>
 </li>
 </ol>
 <h4>Import <code>org.apache.cordova.device</code> Plugin Resources</h4>
 <p>Next step is to import both native and html5 resources from <a href="https://github.com/apache/cordova-plugin-device">org.apache.cordova.device</a> into the project.</p>
 <ol>
 <li><p>Clone org.apache.cordova.device</p>
-<pre><code class="language-bash">git clone git@github.com:apache/cordova-plugin-device.git</code></pre>
+<pre><code class="language-bash">git clone https://github.com/apache/cordova-plugin-device.git</code></pre>
 </li>
 <li><p>Add native part of the plugin source file in to the application</p>
 <ul>
 <li><p>Select <code>DeviceDemo</code> project, in <code>File</code> -&gt; <code>Add Files to &quot;DeviceDemo&quot;...</code>,</p>
 </li>
-<li><p>add <code>CDVDevice.h</code> and <code>CDVDevice.m</code> from <code>../cordova-plugin-device/src/ios</code> into the project.</p>
+<li><p>add <code>CDVDevice.h</code> and <code>CDVDevice.m</code> from <code>cordova-plugin-device/src/ios</code> into the project.</p>
+</li>
+<li><p>Notice: Xcode will notify you if you need to create the bridging header, just create it.</p>
 </li>
 </ul>
 </li>
@@ -356,7 +350,7 @@ vim plugins/org.apache.cordova.device/www/device.js</code></pre>
 });</code></pre>
 </li>
 <li><p>Create the configuration needed by Cordova Extension</p>
-<p>We also need to add a configuration file to tell Cordova Extension how to load the Cordova Plugin. Here we simulated the way that Cordova project does, in order to provide the same behavior as the Cordova project. in <code>www</code> directory:</p>
+<p>We also need to add a configuration file to tell Cordova Extension how to load the Cordova Plugin. Here we simulated the way that Cordova project does, in order to provide the same behavior as the Cordova project. In <code>www</code> directory:</p>
 <pre><code class="language-bash">touch cordova_plugins.js
 vim cordova_plugins.js</code></pre>
 <p>With the content:</p>
@@ -472,7 +466,7 @@ vim index.html</code></pre>
 </li>
 </ol>
 <h2>Demos</h2>
-<p>In <a href="https://github.com/crosswalk-project/crosswalk-ios/tree/master/Demos/Cordova">Demos/Cordova</a>, there&#39;re two demos to demonstrate the usage of Cordova plugin support. You may try them out to see how it works.</p>
+<p>In the <a href="https://github.com/crosswalk-project/ios-extensions-crosswalk/tree/master/demos">demos</a> directory of <a href="https://github.com/crosswalk-project/ios-extensions-crosswalk">ios-extension-crosswalk</a> project, there are two demos to demonstrate the usage of Cordova plugin support. You may try them out to see how it works.</p>
 
   <footer class="article-next">
     
