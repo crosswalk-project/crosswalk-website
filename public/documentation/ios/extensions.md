@@ -22,11 +22,35 @@ This section shows how to implement an extension.
 
 2. Select the project you've created in Navigator panel, choose "File" -> "Save As Workspace..." to create a workspace for the project.
 
-3. Add the "XWalkView" project into the workspace.
+3. Use CocoaPods to integrate the `crosswalk-ios` library. For the CocoaPods installation and usage, please refer to: [CocoaPods](https://cocoapods.org/).
 
-4. In the "General" tab of the project's configuration add "XWalkView" into the "Linked Frameworks and Libraries" to make the extension project link with XWalkView.
+    In the project directory, create a file called `Podfile`:
 
-5. Open the **Info.plist** of this extension project and add a new row named `XWalkExtensions` with type `Dictionary`. This section defines the mapping information between app JavaScript runtime and the native extension class. The key/value defines like this:
+    ```
+    touch Podfile;
+    ```
+
+    With the contents as below:
+
+    ```
+    platform :ios, '8.1'
+    use_frameworks!
+    pod 'crosswalk-ios', '~> 1.2'
+    ```
+
+    Install `Pods` target into the project. Quit the Xcode first, then in the project directory, use command:
+
+    ```
+    pod install
+    ```
+    
+    After the installation, you will find an `<projectName>.xcworkspace` is generated, and CocoaPods output will notify you to use this workspace instead of the `<projectName>.xcodeproj` from now on.
+   
+4. Create `extensions.plist` to define the mapping information between application JavaScript runtime and the native extension class.
+
+    In `File` -> `New...` -> `File...`, choose `iOS` -> `Resource` -> `Property List`.  Create a plist file with name `extensions.plist` in project directory.
+
+    Add a new row named `XWalkExtensions` with type `Dictionary`. The key/value defines like this:
 
 <table style="table-layout: auto;">
  <tr><th>Field</th><th>Type</th><th width="100%">Content</th><th>Example</th></tr>
@@ -36,7 +60,7 @@ This section shows how to implement an extension.
 
 ### Implement The Extension
 
-1. Create a subclass which derives from `XWalkExtension` with the name you defined in the **Info.plist**. Your subclass can be implemented with either Objective-C or Swift, and Swift is more recommended.
+1. Create a subclass which derives from `XWalkExtension` with the name you defined in the **extensions.plist**. Your subclass can be implemented with either Objective-C or Swift, and Swift is more recommended.
 
 2. Write your own logic in this class.
 
