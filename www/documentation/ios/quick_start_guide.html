@@ -260,10 +260,10 @@
 <h2>Create Crosswalk Web Application</h2>
 <h3>Prerequisites</h3>
 <ol>
-<li>Xcode</li>
-<li>Valid Apple Developer Account</li>
-<li>NPM</li>
-<li>Crosswalk App Tools with iOS backend</li>
+<li><a href="https://developer.apple.com/xcode/">Xcode</a></li>
+<li><a href="https://developer.apple.com/programs/">Valid Apple Developer Account</a></li>
+<li><a href="https://www.npmjs.com/">NPM</a></li>
+<li><a href="https://github.com/crosswalk-project/crosswalk-app-tools-ios">Crosswalk App Tools with iOS backend</a></li>
 </ol>
 <h3>Creation</h3>
 <ol>
@@ -293,10 +293,10 @@ crosswalk-app build</code></pre>
 <pre><code> cd Echo;
  touch Podfile;</code></pre>
 <p> With the contents as below:</p>
-<pre><code> platform: ios, &#39;8.0&#39;
+<pre><code> platform :ios, &#39;8.1&#39;
  use_frameworks!
- pod &#39;crosswalk-ios&#39;, &#39;~&gt; 1.1&#39;</code></pre>
-<p> This tells CocoaPods that the deploy target is iOS 8.0+ and to integrate library <code>crosswalk-ios</code> with the latest version of <code>1.0.x</code>. Remember to add <code>use_frameworks!</code> because <code>crosswalk-ios</code> is partly written in Swift and it has to be built as a framework instead of a static library.</p>
+ pod &#39;crosswalk-ios&#39;, &#39;~&gt; 1.2&#39;</code></pre>
+<p> This tells CocoaPods that the deploy target is iOS 8.1+ and to integrate library <code>crosswalk-ios</code> with the latest version of <code>1.2.x</code>. Remember to add <code>use_frameworks!</code> because <code>crosswalk-ios</code> is partly written in Swift and it has to be built as a framework instead of a static library.</p>
 <p> Install <code>Pods</code> target into the project. Quit the Xcode first, then in the <code>Echo</code> directory, use command:</p>
 <pre><code> pod install</code></pre>
 <p> After the installation, you will find an <code>Echo.xcworkspace</code> is generated, and CocoaPods output will notify you to use this workspace instead of the <code>Echo.xcodeproj</code> from now on.</p>
