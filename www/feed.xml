@@ -10,6 +10,18 @@
       
         
         <item>
+          <title>Crosswalk Game Mode</title>
+          <description>Working with Cocos2d, the game-development tool creators, Crosswalk engineers have identified effective web app performance optimizations that enable 5x improvement (near-native) for complex game scenarios.</description>
+          <pubDate>2015-10-23T18:05</pubDate>
+          <link>http://crosswalk-project.org/blog/crosswalk-game-mode.html</link>
+          <guid isPermaLink="true">http://crosswalk-project.org/blog/crosswalk-game-mode.html</guid>
+        </item>
+          
+    
+      
+      
+        
+        <item>
           <title>Announcing the Web Testing Service</title>
           <description>The new Web Testing Service is a collection of tests that demonstrate how well browsers or web runtimes support web standards on different platforms.  Now available for the Crosswalk Project.</description>
           <pubDate>2015-09-06T11:00</pubDate>

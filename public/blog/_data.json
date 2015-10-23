@@ -1,4 +1,10 @@
 {
+  "crosswalk-game-mode": {
+    "title": "Crosswalk Game Mode",
+    "date": "2015-10-23T18:05",
+    "author": "Ziquang Yu",
+    "desc": "Working with Cocos2d, the game-development tool creators, Crosswalk engineers have identified effective web app performance optimizations that enable 5x improvement (near-native) for complex game scenarios."
+  },
   "announcing-web-testing-service": {
     "title": "Announcing the Web Testing Service",
     "date": "2015-09-06T11:00",
