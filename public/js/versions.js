@@ -33,9 +33,9 @@
  *
  */
 
-var stable="14.43.343.23";
-var beta="15.44.384.6";
-var canary="16.44.397.0";
+var stable="15.44.384.12";
+var beta="16.45.421.2";
+var canary="17.45.424.0";
 
 var versions = {
     stable: {
