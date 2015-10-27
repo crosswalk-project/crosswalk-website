@@ -1,4 +1,9 @@
 {
+  "crosswalk-app-tools-07": {
+    "title": "Crosswalk App Tools, the fastest way to package Crosswalk Applications",
+    "date": "2015-10-27T12:00",
+    "author": "Robert Staudinger"
+  },
   "crosswalk-game-mode": {
     "title": "Crosswalk Game Mode",
     "date": "2015-10-23T18:05",
@@ -108,7 +113,6 @@
     "url": "http://blog.chromium.org/2014/09/now-with-faster-dev-workflow-and-modern.html",
     "desc": "…now you have a way to leverage the latest Chromium WebView on any device running Android versions back to Ice Cream Sandwich by bundling your Chrome App with an embeddable Chromium WebView, provided by the open source Crosswalk Project."
   },
-
   "Application meta data for the web": {
     "title": "Application meta data for the web",
     "date": "2014-09-16T08:00",
