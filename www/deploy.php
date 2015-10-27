@@ -238,8 +238,8 @@
              Latest blog post:</br>
               
               
-                <b><a href="/blog">Crosswalk Game Mode</a></b><br/>
-                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 23 Oct 2015 18:05:00 GMT">2015-10-23T18:05</time></span>)
+                <b><a href="/blog">Crosswalk App Tools, the fastest way to package Crosswalk Applications</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Tue, 27 Oct 2015 12:00:00 GMT">2015-10-27T12:00</time></span>)
               
               <br/>
            </div>
