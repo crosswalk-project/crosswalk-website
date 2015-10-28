@@ -144,10 +144,17 @@ environment (Windows, Linux, or Mac OS).
 1.  `gyp` is the tool used to generate Crosswalk projects. These projects
 are then used as the basis for the actual code compilation.
 
-    To build the projects, go to the `src` directory and run:
+    To build the projects, go to the `src` directory and run
+
+    on Linux, Mac OS:
 
         export GYP_GENERATORS='ninja'
         python xwalk/gyp_xwalk
+
+    on Windows:
+
+        set GYP_GENERATORS=ninja
+        python xwalk\gyp_xwalk
 
 2.  At this point you have built the projects with `gyp` and are ready for
 the actual compilation. To build the Crosswalk launcher (which can
