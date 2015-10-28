@@ -8,6 +8,9 @@
   "android": {
     "title": "Android"
   },
+  "windows": {
+    "title": "Windows"
+  },
   "ios": {
     "title": "iOS"
   },

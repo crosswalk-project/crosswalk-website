@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content=".NET extensions" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/windows/net_extensions" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/windows/net_extensions" />
+    <meta name="twitter:title" content=".NET extensions" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+  </head>
+  <body>
+    <!-- If the current page is an index less than two
+         directories deep or in the root directory,
+         leave it alone so we can do custom layouts.
+         Otherwise, provide the header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+  
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/windows.html">Windows</a>
+
+         
+
+
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/windows_host_setup.html">Windows host setup</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/build_an_application.html">Build an application</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/run_on_windows.html">Run on Windows</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/web_inspector_debugging.html">Web Inspector Debugging</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/deploy_windows_store.html">Deploy to Windows store</a>
+               
+           </li>
+           
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/windows/net_extensions.html">.NET extensions</a>
+               
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/build_crosswalk_for_windows.html">Build Crosswalk for Windows</a>
+               
+           </li>
+           
+         </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/screens.html">Screens</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
+
+         
+       </li>
+    
+  </ul>
+
+</nav>
+
+
+
+<article class="article article--hasToC">
+  <h1>.NET Extensions</h1>
+<p>Crosswalk .NET extensions are written in .NET, and have access to the standard .NET APIs. It allows exposing these APIs back to JavaScript in your Crosswalk application.</p>
+<h2>The .NET extensions system</h2>
+<p>Crosswalk for Windows can load several extensions from a given path, thus you can expose multiple .NET APIs back to your Crosswalk application. Crosswalk for Windows expects each .NET extension to be a multi-arch DLL file where several entry points are defined so communication can happen between Crosswalk and the extension. The .NET extensions are loaded in a separate process (for security and stability reasons).</p>
+<p>There are two main classes you should know about while writing a .NET extension:</p>
+<ul>
+<li><code>XWalkExtension</code> is instantiated once and used by Crosswalk to get information about the extension itself: the JavaScript API and the extension name (used as the prefix in JavaScript).</li>
+<li><code>XWalkExtensionInstance</code> may be created multiple times depending on browser context (such as iframes). Each instance is responsible of handling the messages from Crosswalk and responding back to Crosswalk.</li>
+</ul>
+<p>Each .NET extension is required to ship with a bridge which is provided by Crosswalk. Simply copy it and rename it according to your .NET extension DLL name with the <code>_bridge</code> suffix.  For example, if your extension is called <code>echo_extension.dll</code>, the bridge should be <code>echo_extension_bridge.dll</code>.</p>
+<h2><a class='doc-anchor' id='Writing-your-Net-Extension'></a>Writing your .NET Extension</h2>
+<ol>
+<li><p>Download and install <a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Visual Studio 2013</a>. (2015 has not been tested at the moment).</p>
+</li>
+<li><p>Download and install the <a href="https://drive.google.com/open?id=0B65HPC3GJ5tEbVhQMmNPc19pR3M">Crosswalk .NET Extensions Visual Studio Template</a>.</p>
+<p>This template will help you to create quickly an extension in Visual Studio.</p>
+</li>
+<li><p>Open Visual Studio and click: File -&gt; New Project</p>
+</li>
+<li><p>In the new dialog, select: “Visual C#” and scroll down to the bottom of the list where you can find the Crosswalk .NET Extensions Sample template.</p>
+<p><a href="/assets/win5-new-project.png"><img src="/assets/win5-new-project.png" style="display: block; margin: 0 auto"/></a></p>
+</li>
+<li><p>Enter the name of your .NET extension, set the location and give a name to the Visual Studio solution</p>
+</li>
+<li><p>Click OK and you should be all set up:</p>
+<p><a href="/assets/win6-visual-studio.png"><img src="/assets/win6-visual-studio.png" style="display: block; margin: 0 auto"/></a></p>
+</li>
+</ol>
+<p>In the <code>XWalkExtension</code> class there are two key methods you should implement:</p>
+<ul>
+<li><code>ExtensionName()</code>: This is the prefix of your extension in JavaScript and how you are expected to call the API provided by your extension. For example you can return “echo” and all your call in JavaScript will be prefixed with “echo.”</li>
+<li><p><code>ExtensionAPI()</code>: This is the API you’re going to expose to JavaScript. The image below is an example of how this API is used with a simple “Echo” app.</p>
+<p><a href="/assets/win7-extension-config.png"><img src="/assets/win7-extension-config.png" style="display: block; margin: 0 auto"/></a></p>
+</li>
+</ul>
+<h3>Writing the Extension API</h3>
+<ul>
+<li>Any properties (methods, objects, constants, etc.) you want to expose as the JavaScript API for your extension should be appended to the exports object inside the JavaScript API string. This has a similar role to the exports object in nodejs modules, defining the public face of the API. Any other variables not attached to exports are only scoped to this file and won&#39;t pollute the web application&#39;s global scope. In this simple <code>echo</code> example we have two methods exposed : <code>echo</code> and <code>syncEcho</code>. In the JavaScript side they will be called like this: <code>echo.echo(“test”)</code> and <code>echo.syncEcho(“test”)</code></li>
+<li><code>extension</code> object is set by the .NET extension framework and contains methods to communicate with the .NET side of your extension: <code>extension.PostMessage()</code> and <code>extension.internal.sendSyncMessage()</code>. The former is simple, it sends a message from JavaScript to .NET which will be responsible to handle it. <code>sendSyncMessage</code> is similar however it is a synchronous call (and thus blocking) which means that it will not return until the .NET side gives an answer.</li>
+<li><code>extension.setMessageListener()</code> sets a function to invoke for each message returned by the .NET side of the extension. In this simple example the <code>echo()</code> function takes a callback from the caller to be called when the .NET echoed our message. In that case the listener is called when .NET replied and the callback will be invoked.</li>
+</ul>
+<h3>Implementing XWalkExtensionInstance class</h3>
+<ul>
+<li>About the constructor: You should not modify its signature for the .NET extension to be loaded. It take a parameter <code>dynamic native</code> which is going to be used to communicate back to the Crosswalk extension system.</li>
+<li><code>HandleMessage(String message)</code> is going to be called for every message initiated from JavaScript, so every calls to <code>extension.PostMessage()</code> that we have from above. The message parameter contains the message passed from JavaScript.</li>
+<li><code>HandleSyncMessage(String message)</code> is equal to <code>HandleMessage</code> but receives the calls from JavaScript <code>sendSyncMessage()</code>. You’re expected to set a reply to JavaScript in that function because until you do so, the JavaScript execution is blocked.</li>
+<li>Communicating back to Javascript is done by using <code>PostMessageToJS</code> and <code>SendSyncReply</code> on the native handle. <code>PostMessageToJS</code> simply sends an answer to JavaScript in this simple example will be catched by the message listener in our JavaScript API (which will call the callback). <code>SendSyncReply</code> should be called from within <code>HandleSyncMessage</code> and tell the .NET extension framework that you are done with your synchronous call and JavaScript execution can be resumed. The return value of your JavaScript sync call is set by the <code>SendSyncReply</code> method parameter.</li>
+</ul>
+<p>When you’re done, click on the Build menu and select &#39;Build Solution&#39; to create your extension DLL.</p>
+<h3>Advanced JavaScript API in your .NET extension</h3>
+<p>The example in <a href="#Writing-your-Net-Extension">Writing your .NET Extension</a> above is a pretty simple and trivial API in JavaScript.</p>
+<p>It’s very common that your JavaScript API have several methods calling <code>PostMessage</code> therefore in your .NET extension <code>handleMessage</code> can get tricky. One way to handle this complexity is to pass through your .NET extension JSON-based messages where you can pass an ID and the message. The ID is going to be used to identify from which Javascript API the message originated and then any other attributes may be the parameters passed along. Once received in .NET <code>handleMessage</code> it’s straightforward to deserialize the JSON received. Here is how it would look like on the JavaScript side:</p>
+<pre><code>// private method for building the message object and converting it
+// to a JSON string for transfer to the .NET part of the extension
+var messageToJson = function (method, message) {
+  var obj = {
+    id: &#39;&#39; + method,
+    content: message
+  };
+
+  return JSON.stringify(obj);
+};
+
+exports.echoAsync = function (message, callback) {
+  extension.PostMessage(messageToJson(“async”, message));
+  ...
+}
+
+exports.echo2 = function (message, callback) { 
+  extension.PostMessage(messageToJson(“echo2”, message));
+  ...
+}</code></pre>
+<p>On the .NET side see <a href="https://msdn.microsoft.com/en-us/library/bb412179(v=vs.110"><a href="https://msdn.microsoft.com/en-us/library/bb412179(v=vs.110).aspx">https://msdn.microsoft.com/en-us/library/bb412179(v=vs.110).aspx</a></a></p>
+<p>You may also want to implement an API based on <a href="http://promises-aplus.github.io/promises-spec/">Promises</a>. In the previous example we showed a callback mechanism but it has to be managed carefully: if callbacks are nested inside callbacks inside callbacks etc., it can lead to the so-called <a href="https://github.com/survivejs/js_tricks_and_tips/blob/master/common_problems/pyramid.md">pyramid of doom</a>.</p>
+<h3>Packing your extension with crosswalk-app-tools</h3>
+<p>The ability to package your .MSI installer with your .NET extension is being implemented.  This section will beupdated when the ability is complete and part of the Crosswalk packaging tool.</p>
+<h3>Testing your .NET Extension using Crosswalk for Windows binary</h3>
+<p>After downloading Crosswalk for Windows and unzipping it you can easily try your extension.</p>
+<ol>
+<li>Make sure you copy xwalk_extension_bridge.dll in your .NET DLL extension folder</li>
+<li><p>Rename <code>xwalk_extension_bridge.dll</code> so that it looks identical as your extension DLL name with the suffix <code>_bridge</code> as the only difference. Here is an example:</p>
+<p><img src="/assets/win9-extension-net-bridge.png" style="display: block; margin: 0 auto"/></p>
+</li>
+<li><p>Inside your command line, navigate to the path where you unzipped Crosswalk and launch it using the method described in <a href="/documentation/windows/run_on_windows.html#Run-using-Crosswalk-binary-directly">Run using Crosswalk binary directly</a> with the following parameters:</p>
+<ul>
+<li><code>--allow-external-extensions-for-remote-sources</code> (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and</li>
+<li><code>--external-extensions-path=/path/to/myextension</code>.</li>
+</ul>
+</li>
+</ol>
+<p>Your extension should be loaded.</p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/windows/build_crosswalk_for_windows.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Build Crosswalk for Windows</h3>
+      </a>
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div">
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Introducing Crosswalk Project For Windows</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Wed, 28 Oct 2015 12:01:00 GMT">2015-10-28T12:01</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation">Documentation</a> &nbsp;
+             <a href="/blog">Blog</a> &nbsp;
+             <a href="/documentation/downloads.html">Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2015 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

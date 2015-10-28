@@ -1,4 +1,10 @@
 {
+  "crosswalk-windows": {
+    "title": "Introducing Crosswalk Project For Windows",
+    "date": "2015-10-28T12:01",
+    "author": "Alexis Menard",
+    "desc": "Crosswalk makes its debut on Windows desktop. Windows 8.1 and Windows 10 currently working."
+  },
   "crosswalk-app-tools-07": {
     "title": "Crosswalk App Tools, the fastest way to package Crosswalk Applications",
     "date": "2015-10-27T12:00",
