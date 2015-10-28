@@ -254,14 +254,19 @@ environment (Windows, Linux, or Mac OS).</p>
 <ol>
 <li><p><code>gyp</code> is the tool used to generate Crosswalk projects. These projects
 are then used as the basis for the actual code compilation.</p>
-<p>To build the projects, go to the <code>src</code> directory and run:</p>
+<p>To build the projects, go to the <code>src</code> directory and run</p>
+<p>on Linux, Mac OS:</p>
 <pre><code>export GYP_GENERATORS=&#39;ninja&#39;
 python xwalk/gyp_xwalk</code></pre>
+<p>on Windows:</p>
+<pre><code>set GYP_GENERATORS=ninja
+python xwalk\gyp_xwalk</code></pre>
+<p>Note: in Windows, <code>set</code> takes effect in the current cmd window. <code>setx</code> makes the setting permanent in <em>future</em> cmd windows, similar to setting the variable in the Environment Variables dialog.</p>
 </li>
 <li><p>At this point you have built the projects with <code>gyp</code> and are ready for
 the actual compilation. To build the Crosswalk launcher (which can
 run a web application):</p>
-<pre><code>ninja -C out/Release xwalk</code></pre>
+<pre><code> ninja -C out/Release xwalk</code></pre>
 </li>
 </ol>
 <h3>Testing a desktop build</h3>
