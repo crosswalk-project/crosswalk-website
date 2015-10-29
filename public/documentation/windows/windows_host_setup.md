@@ -47,70 +47,16 @@ In the command line (using cmd.exe for example) type :
 > npm install https://github.com/crosswalk-project/crosswalk-app-tools.git
 ```
 
+Note: the version of crosswalk-app-tools currently available in the NPM package repository doesn't yet support windows.
+
 ## <a class="doc-anchor" id="Verify-your-environment"></a>Verify your environment
 Check that you have installed the tools properly by running these commands:
 
 ```
-> crosswalk-app --help
-Crosswalk Project Application Packaging Tool
-
-    crosswalk-app create <package-id>           Create project <package-id>
-                  --platforms=<target>          Optional, e.g. "windows"
-
-    crosswalk-app build [release|debug] [<dir>] Build project to create packages
-                                                Defaults to "debug" when not given
-                                                Tries to build in current dir by default
-
-    crosswalk-app update <channel>|<version>    Update Crosswalk to latest in named
-                                                channel, or specific version
-
-    crosswalk-app platforms                     List available target platforms
-
-    crosswalk-app help                          Display usage information
-
-    crosswalk-app version                       Display version information
-
-Options for platform 'android'
-
-    For command 'create'
-        --android-crosswalk                     Channel name (stable/beta/canary)
-                                                or version number (w.x.y.z)
-Environment variables for platform 'android'
-
-    CROSSWALK_APP_TOOLS_CACHE_DIR               Keep downloaded files in this dir
-```
-
-```
-> candle --version
-Windows Installer XML Toolset Compiler version 3.10.0.2103
-Copyright (c) Outercurve Foundation. All rights reserved.
-
- usage:  candle.exe [-?] [-nologo] [-out outputFile] sourceFile [sourceFile ...] [@responseFile]
-
-   -arch      set architecture defaults for package, components, etc.
-              values: x86, x64, or ia64 (default: x86)
-   -d<name>[=<value>]  define a parameter for the preprocessor
-   -ext <extension>  extension assembly or "class, assembly"
-   -fips      enables FIPS compliant algorithms
-   -I<dir>    add to include search path
-   -nologo    skip printing candle logo information
-   -o[ut]     specify output file (default: write to current directory)
-   -p<file>   preprocess to a file (or stdout if no file supplied)
-   -pedantic  show pedantic messages
-   -platform  (deprecated alias for -arch)
-   -sfdvital  suppress marking files as Vital by default (deprecated)
-   -ss        suppress schema validation of documents (performance boost) (deprecated)
-   -sw[N]     suppress all warnings or a specific message ID
-              (example: -sw1009 -sw1103)
-   -swall     suppress all warnings (deprecated)
-   -trace     show source trace for errors, warnings, and verbose messages (deprecated)
-   -v         verbose output
-   -wx[N]     treat all warnings or a specific message ID as an error
-              (example: -wx1009 -wx1103)
-   -wxall     treat all warnings as errors (deprecated)
-   -? | -help this help information
-
-For more information see: http://wixtoolset.org/
+> crosswalk-app check windows
+  + Checking host setup for target windows
+  + Checking for candle... ...ram Files (x86)\WiX Toolset v3.10\bin\candle.exe
+  + Checking for light... ...ogram Files (x86)\WiX Toolset v3.10\bin\light.exe
 ```
 
 Congratulations, your system is ready for Windows development with Crosswalk.

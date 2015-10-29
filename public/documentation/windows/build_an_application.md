@@ -65,4 +65,10 @@ However, because Crosswalk applications are intended to integrate well with the 
 
         See [the manifest documentation](/documentation/manifest.html) for more information.
 
-Once you've done this, you're ready to run the application on a target.
+3. From your command line, run:
+
+   ```
+    > crosswalk-pkg --platforms=windows xwalk-simple
+   ```
+
+   This will download the Crosswalk libraries, package the application defined in the specified manifest.json file and produce an .msi (in our example `com.app.simple-0.1.0.0.msi`). The .msi is currently a 32-bit build of Crosswalk for Windows and should run fine on both 32-bit and 64-bit Windows. Once you've done this, you're ready to run the application on a target.
