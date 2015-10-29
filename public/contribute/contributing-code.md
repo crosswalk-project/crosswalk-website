@@ -109,7 +109,7 @@ Your commits and/or PRs should reference the ID of the issue you are working on.
 
         BUG=https://crosswalk-project.org/jira/browse/XWALK-898
 
-    If a PR doesn't completely fix an issue, do not use the "BUG=" prefix, but do mention the issue ID. Only use "BUG=" when the PR fixes the issue.
+    If a PR doesn't completely fix an issue, do not use the "BUG=" prefix, as the JIRA ticket would then be wrongly closed. A different prefix, such as "Related to: XWALK-898", is fine and preferred over just stating the ticket number (e.g. "XWALK-898"). Also note that we are only talking about the _pull request message_ here. Your actual git commit message should just use the "BUG=" prefix, as its contents will not be used to reference or close any JIRA tickets.
 
     If a PR fixes multiple issues, reference them on separate lines of the description, starting each with "BUG=".
 
