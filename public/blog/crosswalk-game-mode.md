@@ -9,7 +9,7 @@ The basic idea is to hook native processing capabilities into the HTML5 renderin
 
 At present, this optimization is mainly targeted at Cocos2D-HTML5 developers. The source code is in the [Crosswalk lite branch](https://download.01.org/crosswalk/releases/crosswalk-lite/android/), guarded by a compilation option. We would like to get your feedback on our approach as we continue to enhance it. We would also love to collaborate with more HTML5 game engine and framework providers, to apply similar ideas and optimization techniques that can benefit a wider game developer audience.
  
-For workflow details on how to build an optimized Cocos2d-HTML5 game with  Crosswalk Game Mode, please refer to [Cocos2d-Cordova-Crosswalk](https://github.com/crosswalk-project/crosswalk-cordova-android/tree/cocos2d-crosswalk-cordova).
+For workflow details on how to build an optimized Cocos2d-HTML5 game with Crosswalk Game Mode, please refer to [Cocos2d-Cordova-Crosswalk](https://github.com/crosswalk-project/crosswalk-cordova-android/tree/cocos2d-crosswalk-cordova).  For other questions about this great capability, feel free to contact me directly by clicking my name above.
 
 <br>
 <hr>
