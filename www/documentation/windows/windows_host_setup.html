@@ -122,6 +122,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/windows.html">Windows</a>
 
          
@@ -165,12 +171,6 @@
            </li>
            
          </ul>
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/ios.html">iOS</a>
-
          
        </li>
     
@@ -311,65 +311,13 @@
 <p>It is the tool which will create installable packages of your Crosswalk application.</p>
 <p>In the command line (using cmd.exe for example) type :</p>
 <pre><code>&gt; npm install https://github.com/crosswalk-project/crosswalk-app-tools.git</code></pre>
+<p>Note: the version of crosswalk-app-tools currently available in the NPM package repository doesn&#39;t yet support windows.</p>
 <h2><a class="doc-anchor" id="Verify-your-environment"></a>Verify your environment</h2>
 <p>Check that you have installed the tools properly by running these commands:</p>
-<pre><code>&gt; crosswalk-app --help
-Crosswalk Project Application Packaging Tool
-
-    crosswalk-app create &lt;package-id&gt;           Create project &lt;package-id&gt;
-                  --platforms=&lt;target&gt;          Optional, e.g. &quot;windows&quot;
-
-    crosswalk-app build [release|debug] [&lt;dir&gt;] Build project to create packages
-                                                Defaults to &quot;debug&quot; when not given
-                                                Tries to build in current dir by default
-
-    crosswalk-app update &lt;channel&gt;|&lt;version&gt;    Update Crosswalk to latest in named
-                                                channel, or specific version
-
-    crosswalk-app platforms                     List available target platforms
-
-    crosswalk-app help                          Display usage information
-
-    crosswalk-app version                       Display version information
-
-Options for platform &#39;android&#39;
-
-    For command &#39;create&#39;
-        --android-crosswalk                     Channel name (stable/beta/canary)
-                                                or version number (w.x.y.z)
-Environment variables for platform &#39;android&#39;
-
-    CROSSWALK_APP_TOOLS_CACHE_DIR               Keep downloaded files in this dir</code></pre>
-<pre><code>&gt; candle --version
-Windows Installer XML Toolset Compiler version 3.10.0.2103
-Copyright (c) Outercurve Foundation. All rights reserved.
-
- usage:  candle.exe [-?] [-nologo] [-out outputFile] sourceFile [sourceFile ...] [@responseFile]
-
-   -arch      set architecture defaults for package, components, etc.
-              values: x86, x64, or ia64 (default: x86)
-   -d&lt;name&gt;[=&lt;value&gt;]  define a parameter for the preprocessor
-   -ext &lt;extension&gt;  extension assembly or &quot;class, assembly&quot;
-   -fips      enables FIPS compliant algorithms
-   -I&lt;dir&gt;    add to include search path
-   -nologo    skip printing candle logo information
-   -o[ut]     specify output file (default: write to current directory)
-   -p&lt;file&gt;   preprocess to a file (or stdout if no file supplied)
-   -pedantic  show pedantic messages
-   -platform  (deprecated alias for -arch)
-   -sfdvital  suppress marking files as Vital by default (deprecated)
-   -ss        suppress schema validation of documents (performance boost) (deprecated)
-   -sw[N]     suppress all warnings or a specific message ID
-              (example: -sw1009 -sw1103)
-   -swall     suppress all warnings (deprecated)
-   -trace     show source trace for errors, warnings, and verbose messages (deprecated)
-   -v         verbose output
-   -wx[N]     treat all warnings or a specific message ID as an error
-              (example: -wx1009 -wx1103)
-   -wxall     treat all warnings as errors (deprecated)
-   -? | -help this help information
-
-For more information see: http://wixtoolset.org/</code></pre>
+<pre><code>&gt; crosswalk-app check windows
+  + Checking host setup for target windows
+  + Checking for candle... ...ram Files (x86)\WiX Toolset v3.10\bin\candle.exe
+  + Checking for light... ...ogram Files (x86)\WiX Toolset v3.10\bin\light.exe</code></pre>
 <p>Congratulations, your system is ready for Windows development with Crosswalk.</p>
 <p>Now the host is setup, you can build a Crosswalk application.</p>
 

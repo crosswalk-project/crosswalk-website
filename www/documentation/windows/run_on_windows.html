@@ -122,6 +122,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/windows.html">Windows</a>
 
          
@@ -165,12 +171,6 @@
            </li>
            
          </ul>
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/ios.html">iOS</a>
-
          
        </li>
     
@@ -272,25 +272,14 @@
 
 <article class="article article--hasToC">
   <h1>Run a Crosswalk App on Windows</h1>
-<h2>Run using Crosswalk packaging tool</h2>
+<h2>Run a packaged Crosswalk application</h2>
 <ol>
-<li><p>Download latest Crosswalk binary from: <a href="https://download.01.org/crosswalk/releases/crosswalk/windows/">https://download.01.org/crosswalk/releases/crosswalk/windows/</a></p>
-<p>(Note that this step will not be required when Crosswalk For Windows binaries are published on download.01.org)</p>
-</li>
-<li><p>In your command line, inside the directory of the application you want to build run:</p>
-<pre><code> &gt; crosswalk-pkg \
-     --platforms=windows \
-     --crosswalk=C:\Users\alexisme\Downloads\crosswalk-15.44.374.0.zip \
-     xwalk-simple</code></pre>
-<p>This will package the application defined in the specified manifest.json file and produce an .msi (in our example <code>com.app.simple-0.1.0.0.msi</code>). The .msi is currently a 32-bit build of Crosswalk for Windows and should run fine on both 32-bit and 64-bit Windows.</p>
-</li>
-<li><p>Click on the .msi and follow the installation instructions.</p>
-</li>
-<li><p>After the installation successfully finishes you should be able to see your application in the start menu. Click on it and launch the application.</p>
-<p>Note : Each .msi of Crosswalk applications contains its own copy of the Crosswalk runtime, it is not shared between installed Crosswalk based applications.</p>
+<li>Double-click on the .msi produced following the <a href="/documentation/windows/build_an_application.html">build an application</a> section and follow the installation instructions.</li>
+<li><p>After the installation succeeds you will see your application in the start menu. Double-click it to launch it.</p>
+<p>Note : Each Crosswalk-built .msi contains its own copy of the Crosswalk runtime, it is not shared between installed Crosswalk based applications.</p>
 </li>
 </ol>
-<h2><a class='doc-anchor' id='Run-using-Crosswalk-binary-directly'></a>Run using Crosswalk binary directly</h2>
+<h2><a class='doc-anchor' id='Run-using-Crosswalk-binary-directly'></a>Run using the Crosswalk binary directly</h2>
 <p>If you want faster code -&gt; test -&gt; debug cycles you can run Crosswalk for Windows from the command line. This enables you to test your code changes without creating an .msi every time.</p>
 <ol>
 <li>Download and unzip Crosswalk for Windows from <a href="https://download.01.org/crosswalk/releases/crosswalk/windows/">https://download.01.org/crosswalk/releases/crosswalk/windows/</a></li>

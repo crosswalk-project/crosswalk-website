@@ -2,10 +2,10 @@
 
 ## Run a packaged Crosswalk application
 
-1. Double-click on the .msi produced following the [build an application](build_an_application) section and follow the installation instructions.
-2. After the installation successfully finishes you should be able to see your application in the start menu. Double-click on it to launch it.
+1. Double-click on the .msi produced following the [build an application](/documentation/windows/build_an_application.html) section and follow the installation instructions.
+2. After the installation succeeds you will see your application in the start menu. Double-click it to launch it.
 
-   Note : Each .msi of Crosswalk applications contains its own copy of the Crosswalk runtime, it is not shared between installed Crosswalk based applications.
+   Note : Each Crosswalk-built .msi contains its own copy of the Crosswalk runtime, it is not shared between installed Crosswalk based applications.
 
 ## <a class='doc-anchor' id='Run-using-Crosswalk-binary-directly'></a>Run using the Crosswalk binary directly
 

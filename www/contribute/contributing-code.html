@@ -226,7 +226,7 @@ is started before extensive design is done&gt;
 <pre><code>BUG=XWALK-898</code></pre>
 <p>or this:</p>
 <pre><code>BUG=https://crosswalk-project.org/jira/browse/XWALK-898</code></pre>
-<p>If a PR doesn&#39;t completely fix an issue, do not use the &quot;BUG=&quot; prefix, but do mention the issue ID. Only use &quot;BUG=&quot; when the PR fixes the issue.</p>
+<p>If a PR doesn&#39;t completely fix an issue, do not use the &quot;BUG=&quot; prefix, as the JIRA ticket would then be wrongly closed. A different prefix, such as &quot;Related to: XWALK-898&quot;, is fine and preferred over just stating the ticket number (e.g. &quot;XWALK-898&quot;). Also note that we are only talking about the <em>pull request message</em> here. Your actual git commit message should just use the &quot;BUG=&quot; prefix, as its contents will not be used to reference or close any JIRA tickets.</p>
 <p>If a PR fixes multiple issues, reference them on separate lines of the description, starting each with &quot;BUG=&quot;.</p>
 </li>
 </ul>

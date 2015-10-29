@@ -122,6 +122,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/windows.html">Windows</a>
 
          
@@ -165,12 +171,6 @@
            </li>
            
          </ul>
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/ios.html">iOS</a>
-
          
        </li>
     
@@ -325,8 +325,11 @@
 </li>
 </ol>
 </li>
+<li><p>From your command line, run:</p>
+<pre><code> &gt; crosswalk-pkg --platforms=windows xwalk-simple</code></pre>
+<p>This will download the Crosswalk libraries, package the application defined in the specified manifest.json file and produce an .msi (in our example <code>com.app.simple-0.1.0.0.msi</code>). The .msi is currently a 32-bit build of Crosswalk for Windows and should run fine on both 32-bit and 64-bit Windows. Once you&#39;ve done this, you&#39;re ready to run the application on a target.</p>
+</li>
 </ol>
-<p>Once you&#39;ve done this, you&#39;re ready to run the application on a target.</p>
 
   <footer class="article-next">
     
