@@ -36,21 +36,21 @@ Welcome to the Crosswalk Project, the best web runtime for your mobile and deskt
       </div>
     </a>
   </div>
+  <div class="featureDiv" style="background-color: #248bd1">
+    <a class="featureLink" href="/documentation/windows.html">
+      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-windows-white.png"/><div class="featureTitle">Windows desktop target</div></div>
+      <hr class="featureSplitter" />
+      <div class="featureBody">
+        Create applications for Windows<br>
+      </div>
+    </a>
+  </div>
   <div class="featureDiv" style="background-color: #f04e64">
     <a class="featureLink" href="/documentation/linux.html">
       <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-linux-white.png"/><div class="featureTitle">Linux desktop target</div></div>
       <hr class="featureSplitter" />
       <div class="featureBody">
         Create applications for Linux (deb)<br>
-      </div>
-    </a>
-  </div>
-  <div class="featureDiv" style="background-color: #248bd1">
-    <a class="featureLink" href="/documentation/tizen.html">
-      <div class="featureHeader"><img class="featureImg" src="/assets/icons/logo-tizen-white.png"/><div class="featureTitle">Tizen target</div></div>
-      <hr class="featureSplitter" />
-      <div class="featureBody">
-        Create applications for Tizen<br>
       </div>
     </a>
   </div>
