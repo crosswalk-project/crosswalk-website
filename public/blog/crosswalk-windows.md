@@ -1,6 +1,6 @@
 We are pleased to announce the first canary version of [Crosswalk Project for Windows](https://download.01.org/crosswalk/releases/crosswalk/windows), a runtime for modern web applications.
 
-Crosswalk Project for Windows is based on the Chromium content layer and will support cutting-edge web technologies like WebGL, WebRTC, WebAudio, ServiceWorker, SIMD, and Web Manifest.
+Crosswalk Project for Windows is based on the Chromium content layer and supports cutting-edge web technologies like WebGL, WebRTC, WebAudio, ServiceWorker, SIMD, and Web Manifest.
 
 The JavaScript API extension mechanism is also supported, allowing developers to extend web application capabilities and bridge native code with their JavaScript code to make competitive hybrid Windows desktop applications. This extensions can be written in .NET or C/C++ allowing you to leverage the Windows APIs.
 
