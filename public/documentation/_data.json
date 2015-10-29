@@ -8,11 +8,11 @@
   "android": {
     "title": "Android"
   },
-  "windows": {
-    "title": "Windows"
-  },
   "ios": {
     "title": "iOS"
+  },
+  "windows": {
+    "title": "Windows"
   },
   "linux": {
     "title": "Linux"
