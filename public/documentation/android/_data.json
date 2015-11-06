@@ -22,5 +22,8 @@
   },
   "android_extensions": {
     "title": "Android extensions"
+  },
+  "android_64bit": {
+    "title": "64-bit Support"
   }
 }
