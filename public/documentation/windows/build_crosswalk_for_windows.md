@@ -46,5 +46,3 @@ To build from the command line, navigate into crosswalk-src/src and invoke:
 
 ### Visual Studio build
 To build in Visual Studio, open xwalk.sln from `crosswalk-src/src/xwalk` and you’re ready to go. Select a target and click Build (for example `xwalk`, or `xwalk_builder`). Please note that xwalk.sln actually has all the Chromium code as a dependency therefore xwalk.sln has something like 600 subprojects which requires a pretty powerful machine with a lot of RAM to be able to handle that correctly. We suggest using the [Funnel extension](http://vsfunnel.com/) which allows you to select which subproject you want to load.
-
-Additional tips and tricks can be found here:  https://github.com/otcshare/crosswalk-internal/wiki/Hacking-Crosswalk-Chromium-on-Windows
