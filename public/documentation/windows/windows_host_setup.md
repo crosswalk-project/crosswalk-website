@@ -44,10 +44,8 @@ It is the tool which will create installable packages of your Crosswalk applicat
 In the command line (using cmd.exe for example) type :
 
 ```
-> npm install -g https://github.com/crosswalk-project/crosswalk-app-tools.git
+> npm install -g crosswalk-app-tools
 ```
-
-Note: the version of crosswalk-app-tools currently available in the NPM package repository doesn't yet support windows.
 
 ## <a class="doc-anchor" id="Verify-your-environment"></a>Verify your environment
 Check that you have installed the tools properly by running these commands:
