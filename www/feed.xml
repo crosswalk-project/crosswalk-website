@@ -10,6 +10,18 @@
       
         
         <item>
+          <title>Crosswalk for 64-bit Android Devices</title>
+          <description>It is now possible to create 64-bit-optimized versions of Crosswalk applications.</description>
+          <pubDate>2015-11-06T12:00</pubDate>
+          <link>http://crosswalk-project.org/blog/android-64bit.html</link>
+          <guid isPermaLink="true">http://crosswalk-project.org/blog/android-64bit.html</guid>
+        </item>
+          
+    
+      
+      
+        
+        <item>
           <title>Introducing Crosswalk Project For Windows</title>
           <description>Crosswalk makes its debut on Windows desktop. Windows 8.1 and Windows 10 currently working.</description>
           <pubDate>2015-10-28T12:01</pubDate>

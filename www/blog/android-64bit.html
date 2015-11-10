@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="What is the Crosswalk Project and How you can use it with Intel XDK" />
-    <meta property="og:url" content="http://crosswalk-project.org/blog/what-is-crosswalk" />
+    <meta property="og:title" content="Crosswalk for 64-bit Android Devices" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/android-64bit" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/blog/what-is-crosswalk" />
-    <meta name="twitter:title" content="What is the Crosswalk Project and How you can use it with Intel XDK" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/android-64bit" />
+    <meta name="twitter:title" content="Crosswalk for 64-bit Android Devices" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -100,56 +100,27 @@
           
           <article class="article">
   <header class="article-header">
-    <h1 class="article-title">What is the Crosswalk Project and How you can use it with Intel XDK</h1>
+    <h1 class="article-title">Crosswalk for 64-bit Android Devices</h1>
     <span class="article-meta">
-      <a href="what-is-crosswalk.html"><time class="js-vagueTime" datetime="Fri, 04 Jul 2014 13:14:00 GMT">Fri, 04 Jul 2014 13:14:00 GMT</time></a>
+      <a href="android-64bit.html"><time class="js-vagueTime" datetime="Fri, 06 Nov 2015 12:00:00 GMT">Fri, 06 Nov 2015 12:00:00 GMT</time></a>
        
-        by <span class="article-author">Greeshma Yellareddy</span>
+        by <span class="article-author">Crosswalk Team</span>
       
     </span>
   </header>
   
-    <img class="article-hero" src="/assets/illustrations/crosswalk-landing-promo-2.png" alt="" />
-  
-  <p><a href="https://crosswalk-project.org/">Crosswalk</a> is a HTML5 runtime, built on open source foundations, which extends the web platform with new capabilities.</p>
-<p>This means Android developers can now deploy your mobile HTML5 application with its own runtime without a dependence on the native <code>WebView</code> that is on your customer&#39;s device for all Android 4.0+ devices. This means</p>
-<ul>
-<li>Uniform runtime across all devices and so you don&#39;t have to deal with runtime differences on different devices running different versions of the OS. </li>
-<li>Control the runtime upgrade cycle</li>
-<li>Better memory management</li>
-</ul>
-<h2>What is Crosswalk and why should you use it?</h2>
-<p>Using Crosswalk also allows you to use <a href="https://crosswalk-project.org/#documentation/apis">state-of-the-art W3C* recommended HTML5 APIs</a>. Several of the standards-based web features requested by app developers are enabled in Crosswalk and can be used today.</p>
-<figure>
-<img src="/assets/illustrations/crosswalk-landing-variety.png" alt="">
-<figcaption>Crosswalk creates a new context for you to work in—you’re not bound by the restrictions of the device’s default <code>WebView</code>.</figcaption>
-</figure>
-
-<p>Some examples of APIs supported in Crosswalk include:</p>
-<ul>
-<li>WebGL support</li>
-<li>Websockets</li>
-<li>Reliable Web Audio API support with advanced audio effects</li>
-<li>WebRTC for Real Time Communications</li>
-<li>Raw sockets</li>
-<li><a href="https://crosswalk-project.org/#wiki/presentation-api-manual">Presentation API (WiDi)</a></li>
-<li><a href="https://01.org/blogs/tlcounts/2014/bringing-simd-javascript">SIMD (Single Instruction Multiple Data) support for faster numeric operations</a></li>
-</ul>
-<h2>Using Intel® XDK to build a Crosswalk based Android App</h2>
-<p>You can use the Intel® XDK to develop, test, debug, profile and build your Crosswalk App. You can either start with creating a new project or play with some of our existing Crosswalk demos like the WebRTC Video, Threejs WebGL or any of the existing Cordova samples to explore using XDK with Crosswalk.</p>
-<div class="pullquote" data-pullquote="features requested by app developers are enabled in Crosswalk and can be used today"></div>
-
-<p>There is also a <a href="http://software.intel.com/en-us/html5/xdkdocs#508153">detailed documentation</a> explaining how to use the different features of the Intel XDK for development of a Crosswalk based Android App.</p>
-<p>Here are some important points you should keep in mind when using Crosswalk with the Intel XDK:</p>
-<ul>
-<li>We support the <a href="http://cordova.apache.org/docs/en/3.3.0/index.html">Cordova 3.3 APIs</a> and plugins for Crosswalk</li>
-<li>We do not yet support Intel XDK APIs when building Crosswalk apps. So, if you are using Intel XDK Javascript APIs, we recommend you either use the equivalent Cordova APIs or build using the non-Crosswalk version of Android Build target.</li>
-<li>Use the Debug tab (and not the test tab) to test a Crosswalk based app. The test feature using App Preview uses a different runtime on your Android phone and hence will not be an accurate representation of the final apk.</li>
-<li>Currently Crosswalk build target builds and provides download links for two apks - one each for x86 and ARM CPUs. We strongly recommend you submit both the apks to Stores like <a href="http://developer.android.com/google/play/publishing/multiple-apks.html">Google Play Store</a> to insure all of your customers can run your Crosswalk app.</li>
-<li>If your Crosswalk build fails, check for the following:
--- Verify that your bundle id/app name and other identifiers do not contain special characters (!$#% or even numbers at times). While we have covered most of them for you, we might have forgotten a few. You can verify this in the App Details page in the Build tab.
--- Verify that there are no files in your www directory with unicode characters in all file names. In short, try to avoid special characters in filenames. This is particularly important for non-English locations. We are hoping to add support for unicode characters in the build system, but this will take some time.</li>
-</ul>
+  <p>Android devices with 64-bit CPUs, such as the Nexus 9 and the Lenovo P90, are increasingly entering the market. To fully support this new generation of devices, 64-bit builds of the Crosswalk for Android binaries are now available in our Canary and Beta channels, as well as the Google Play Store. When using the 64-bit version of the runtime, Crosswalk applications can take full advantage of the modern CPUs found in the latest Android mobile devices.</p>
+<h2>Why should you care?</h2>
+<p>Depending on their functionality, applications optimized for 64-bit architectures can run slightly faster on 64-bit CPUs than their 32-bit counterparts. Aside from the performance benefit, there are cases where using 64-bit Crosswalk is mandatory for your application to work. For example, if your application is using another library that is optimized for 64-bit, using the 32-bit version of Crosswalk will cause the build to fail.</p>
+<h2>How to create 64-bit versions of Crosswalk applications</h2>
+<p>By default, Crosswalk applications are packaged for 32-bit architectures. Now it is possible to specify 64-bit targets for both ARM and x86 using the <code>-t &lt;target-archs&gt;</code> option in the <code>crosswalk-pkg</code> command. For example, use the command below to build 64-bit packages for both ARM and x86:</p>
+<pre><code>$ crosswalk-pkg -c beta -t 64 /path/to/app</code></pre>
+<p>At the moment you need to specify either the Beta or Canary channel because 64-bit support is not yet available from the stable releases.</p>
+<p>If you are using Crosswalk in shared mode, your application will automatically download the 64-bit optimized version of Crosswalk from the Play Store and no special action is required when packaging.</p>
+<p>Note: support for 64-bit is not yet available in the Crosswalk Cordova Webview plugin and will be enabled soon.</p>
+<h2>Uploading 64-bit apps to the Play Store</h2>
+<p>If you are bundling Crosswalk with your application, the Crosswalk App Tool will build architecture-specific packages for both ARM64 and x86_64 with the correct version code. You can upload these to the Play Store and they will be automatically downloaded by compatible devices.</p>
+<p>For more information, see the <a href="/documentation/android/android_64bit.html">documentation</a>.</p>
 
   <a href="http://twitter.com/xwalk_project" class="article-promo well">
   <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
