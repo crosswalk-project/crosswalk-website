@@ -20,10 +20,10 @@
   "deploy_to_android_store": {
     "title": "Deploy to Android store"
   },
-  "android_extensions": {
-    "title": "Android extensions"
-  },
   "android_64bit": {
     "title": "64-bit Support"
+  },
+  "android_extensions": {
+    "title": "Android extensions"
   }
 }
