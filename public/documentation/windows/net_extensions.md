@@ -15,7 +15,7 @@ Each .NET extension is required to ship with a bridge which is provided by Cross
 ## <a class='doc-anchor' id='Writing-your-Net-Extension'></a>Writing your .NET Extension
 1. Download and install [Visual Studio 2013](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx). (2015 has not been tested at the moment).
 
-2. Download and install the [Crosswalk .NET Extensions Visual Studio Template](https://drive.google.com/open?id=0B65HPC3GJ5tEbVhQMmNPc19pR3M).
+2. Download and install the [Crosswalk .NET Extensions Visual Studio Template](https://visualstudiogallery.msdn.microsoft.com/51e648be-c91a-40fa-9d13-8f49ec134e86). You can alternatively search for it in Visual Studio Extensions and Updates dialog.
 
    This template will help you to create quickly an extension in Visual Studio.
 
