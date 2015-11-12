@@ -1,0 +1,187 @@
+
+<div id="appSubmitPage">
+  <h2>Submit Crosswalk Application</h2>
+  Fill in at least the required fields below to submit your application to be displayed on the <a href="/documentation/community/apps/app-list.php">Application Page</a>. Thank you for taking advantage of the Crosswalk Project!
+
+  <form class="appSubmitForm" id="appSubmitForm" action="app-submit.php" method="post"
+        enctype="multipart/form-data">
+
+    <!-- preview item -->
+    <div class='appDisplayPvw' id='appSubmitPvw'>
+      <div class='appCube' id='pvwCube'>
+        <div class='appLabel' id='pvwLabel'>Application Name</div>
+        <img class='appImg' id='pvwImg' 
+             src='/assets/apps/missing-image.jpg' 
+             title="On click URL: <App store URL>"/>
+        <div class='appDetailLabel'>
+          <div class='appAuthor' id='pvwAuthor' 
+               title="On click URL: <Author URL>">Author</div>
+          <div id='pvwPublishDate'>Published: &lt;TBD&gt;</div>
+          <div id='pvwDownloads'>Downloads: &lt;TBD&gt;</div>
+        </div>
+      </div>
+      <div class='appPreviewLabel'>Display Preview</div>
+    </div>
+
+    <fieldset class="appSubmitMain">
+      <legend>App Details</legend>
+      <p class="ignoreMe">
+        <label>Title*: </label>
+        <input name="title" id="title" type="text" maxlength="50" 
+               oninput="onAppTitleChange(this.value)" />
+      </p>
+      <p style="padding-top:0px">
+        <label>App store URL: </label>
+        <input name="storeUrl" id="storeUrl" class="url" type="text" autofocus 
+               placeholder="Enter a valid website"
+               onblur="onStoreUrlBlur(this)"/>
+      </p>
+      <p>
+        <label>App name*: </label>
+        <input name="name" id="name" type="text" maxlength="50" 
+               oninput="onAppNameChange(this)" required />
+      </p>
+      <p>
+        <label>Image*: </label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+	<input name="imageFile" id="imageFile" type="file" accept="image/x-png, image/gif, image/jpeg" 
+               onchange="onImgSelect(this)" required />
+      </p>
+      <p>
+        <label>Author / Company*: </label>
+        <input name="author" id="author" type="text" maxlength="30" 
+               oninput="onAuthorChange(this)" required/>
+      </p>
+      <p>
+        <label>Author / Company URL: </label>
+        <input name="authorUrl" id="authorUrl" type="text" 
+               placeholder="Enter a valid website"
+               onblur="onAuthorUrlBlur(this)" />
+      </p>
+      <p>
+	<label>Email*: </label>
+	<input name="email" id="email" type="email" name="email" 
+               placeholder="Enter a valid email address" required />
+      </p>
+      <p>
+        <label>Publish date: </label>
+	<input name="publishDate" id="publishDate" type="date" maxlength="10" 
+               onchange="onPublishDateChange(this)"/>
+      </p>
+      <p>
+        <label>Number of downloads: </label>
+	<input name="downloads" id="downloads" class="downloads" type="text" maxlength="12" 
+               oninput="onDownloadsChange(this)" onblur="onDownloadsBlur(this)" />
+      <p>
+        <label>App price ($): </label>
+        <input name="price" id="price" type="text" maxlength="6" 
+               onblur="onPriceBlur(this)" />
+      </p>
+      <p>
+        <label>Size: </label>
+	<input name="size" id="size" class="size" type="text" maxlength="5" value="0"
+               onblur="onSizeBlur(this)" />
+        <label class="left">MB</label>
+      </p>
+      <p>
+	<label>Architectures supported: </label>
+	<input name="archArm" id="archArm" type="checkbox" value="1" /><label class="arch">ARM</label>
+        <input name="archx86" id="archx86" type="checkbox" value="1"/><label class="arch">x86</label>
+        <input name="archx86_64" id="archx86_64" type="checkbox" value="1"/><label class="arch">x86_64</label>
+      </p>
+      <p>
+	<label>Category: </label>
+        <select name="category" id="category">
+	  <option></option>
+          <option value="Arcade Action">Arcade Action</option>
+	  <option value="Books Reference">Books Reference</option>
+	  <option value="Brain Puzzle">Brain Puzzle</option>
+	  <option value="Business">Business</option>
+	  <option value="Cards/Casino">Cards/Casino</option>
+	  <option value="Casual">Casual</option>
+	  <option value="Communication">Communication</option>
+	  <option value="Education">Education</option>
+	  <option value="Entertainment">Entertainment</option>
+	  <option value="Finance">Finance</option>
+	  <option value="Health Fitness">Health Fitness</option>
+	  <option value="Libraries Demo">Libraries Demo</option>
+	  <option value="Lifestyle">Lifestyle</option>
+	  <option value="Media Video">Media Video</option>
+	  <option value="Medical">Medical</option>
+	  <option value="Music Audio">Music Audio</option>
+	  <option value="News Magazines">News Magazines</option>
+	  <option value="Personalization">Personalization</option>
+	  <option value="Photography">Photography</option>
+	  <option value="Productivity">Productivity</option>
+	  <option value="Racing">Racing</option>
+	  <option value="Social">Social</option>
+	  <option value="Shopping">Shopping</option>
+	  <option value="Sports">Sports</option>
+	  <option value="Tools">Tools</option>
+	  <option value="Transportation">Transportation</option>
+	  <option value="Travel Local">Travel Local</option>
+	  <option value="Weather">Weather</option>
+        </select>
+      </p>
+      <p>
+	<label>Tools/frameworks used: </label>
+        <input name="tools" id="tools" type="text" maxlength="255" />
+      </p>
+      <p>
+        <label>Version: </label>
+        <input name="version" id="version" type="text"/>
+      </p>
+      <p>
+        <label>Notes: </label>
+        <textarea name="notes" id="notes" placeholder="Optional information for submission"></textarea>
+      </p>
+      <p>
+        <label class="rqdLabel">* required fields</label>
+      </p>
+    </fieldset>
+
+    <fieldset class="appSubmitAgreement">
+      <legend>Agreement</legend>
+      <p class="appAccept">
+        <input type="checkbox" required value=""/>
+        <label>*  I accept the <a onclick='showTermsDialog();return false;' href="">Terms and Conditions</a>.</label>
+	<button class="appSubmitBtn" type="submit">Submit App &raquo;</button>
+      </p>
+    </fieldset>
+  </form> <!-- appSubmitForm -->
+</div> <!-- appSubmitPage -->
+
+<div id="appResultDiv">      
+  <h2>Crosswalk Application Submitted</h2>
+  <div id="appSubmitResultDiv">
+    <div id="appSubmitResult">
+      Processing application. Please wait...
+    </div>
+  </div>
+</div> <!-- appResultDiv -->
+
+<div id="appTermsDlg" class="appTermsDlg" title="Terms and Conditions">
+  <p>The Crosswalk Project would like to highlight applications that use its runtime. 
+
+  <p>The information provided as part of this form will be used to display the application on the Crosswalk Project website. The application will likely look similar to the 'Display Preview' shown with this form, but may also show additional information submitted here. The application will be displayed with other applications. These may or may not be comptetitors' applications.
+
+  <p>If the Play Store URL is provided, it will be used to link the application icon to the store website. If the Author URL is provided, it will be used to link the Author's name to that website.
+
+  <p>Once submitted, a confirmation email will be sent to the email address provided in the form.
+
+  <p><strong>Removal</strong><br>
+Your application can be removed from the Crosswalk Project website at any time. The removal process is explained in the confirmation email you receive upon submission. All efforts will be made to be responsive to this request. Upon removal, all submitted information, including email address, will be deleted.
+
+  <p><strong>Use of Email Address</strong><br>
+Your email address will only be used to contact you regarding this application submission and listing on crosswalk-project.org.  Intel will only use this information for the purpose in which it was collected and will not share or repurpose this information without first securing your consent. Intel reserves the right to contact you periodically regarding the application listing such as if the application is no longer available in the application store, is no longer maintained, or should be removed from our site.
+
+  <p>Intel respects your privacy. To learn more about Intel’s privacy practices, please go to <a href="http://www.intel.com/privacy" style="color:blue;text-decoration:underline; border-style: none;" tabindex=-1 >www.intel.com/privacy</a>.
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="/js/app-utils.js"></script>
+<script src="/js/app-submit.js"></script>

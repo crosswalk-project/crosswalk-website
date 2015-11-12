@@ -53,11 +53,13 @@
     <script src="/js/qualityindicators.js"></script>
   </head>
   <body>
-    <!-- If the current page is an index less than two
-         directories deep or in the root directory,
-         leave it alone so we can do custom layouts.
-         Otherwise, provide the header and nav. -->
-    <% if(current.source !== 'index' || current.path.length > 2) { %>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    <% if ((current.source == 'index' && current.path.length <= 2) ||
+           (current.source == 'app-mgmt')) { %>
+    <%- yield %>
+    <% } else { %>
     <div class="container">
       <div class="doc-header">
         <% include _includes/nav.ejs %>
@@ -73,8 +75,6 @@
         </div>
       </div>
     </div>
-    <% } else { %>
-    <%- yield %>
     <% } %>
 
     <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
