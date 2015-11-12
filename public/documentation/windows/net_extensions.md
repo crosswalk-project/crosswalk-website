@@ -17,7 +17,7 @@ Each .NET extension is required to ship with a bridge which is provided by Cross
 
 2. Download and install the [Crosswalk .NET Extensions Visual Studio Template](https://visualstudiogallery.msdn.microsoft.com/51e648be-c91a-40fa-9d13-8f49ec134e86). You can alternatively search for it in Visual Studio Extensions and Updates dialog.
 
-   This template will help you to create quickly an extension in Visual Studio.
+   This template will help you to quickly create an extension in Visual Studio.
 
 3. Open Visual Studio and click: File -> New Project
 
