@@ -53,10 +53,9 @@
     <script src="/js/qualityindicators.js"></script>
   </head>
   <body>
-    <!-- If the current page is an index less than two
-         directories deep or in the root directory,
-         leave it alone so we can do custom layouts.
-         Otherwise, provide the header and nav. -->
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
     
     <div class="container">
       <div class="doc-header">
@@ -98,7 +97,8 @@
       <div class="doc-main">
         <div class="row">
           
-          <nav id="contents" class="article-toc nav-toggleContainer">
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
@@ -126,32 +126,36 @@
 
          
 
-
          <ul class="article-list">
             
            <li class="article-item ">
              <a class="article-link" href="/documentation/ios/quick_start_guide.html">Quick Start Guide</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/ios/embedding_mode_&amp;_native_apis.html">Embedding mode &amp; native APIs</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/ios/manifest.html">Manifest</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/ios/extensions.html">Extensions</a>
-               
+
+             
            </li>
            
            <li class="article-item  nav-item--active">
              <a class="article-link" href="/documentation/ios/cordova_plugin_support.html">Cordova plugin support</a>
-               
+
+             
            </li>
            
          </ul>

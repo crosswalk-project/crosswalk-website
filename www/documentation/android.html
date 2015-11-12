@@ -53,10 +53,9 @@
     <script src="/js/qualityindicators.js"></script>
   </head>
   <body>
-    <!-- If the current page is an index less than two
-         directories deep or in the root directory,
-         leave it alone so we can do custom layouts.
-         Otherwise, provide the header and nav. -->
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
     
     <div class="container">
       <div class="doc-header">
@@ -98,7 +97,8 @@
       <div class="doc-main">
         <div class="row">
           
-          <nav id="contents" class="article-toc nav-toggleContainer">
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
@@ -120,52 +120,60 @@
 
          
 
-
          <ul class="article-list">
             
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/windows_host_setup.html">Windows host setup</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/linux_host_setup.html">Linux host setup</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/android_target_setup.html">Android target setup</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
-               
+
+             
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
-               
+
+             
            </li>
            
          </ul>

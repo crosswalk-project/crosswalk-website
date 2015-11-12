@@ -43,10 +43,10 @@ function replace_version_string (str) {
 }
 
 function init () {
-    /* Set title to the main header string (first h1 value) */
-    var mainHeader = document.getElementsByTagName("H1")[0].innerHTML;
-    if (mainHeader) {
-        document.title = "Crosswalk - " + mainHeader;
+    /* Set title to the main header string (first h1 or h2 value) */
+    var elem = document.getElementsByTagName("H1")[0] || document.getElementsByTagName("H2")[0];
+    if (elem) {
+        document.title = "Crosswalk - " + elem.innerHTML;
     }
 
     /* Replace all version instances with the correct version numbers */

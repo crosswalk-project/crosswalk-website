@@ -53,10 +53,9 @@
     <script src="/js/qualityindicators.js"></script>
   </head>
   <body>
-    <!-- If the current page is an index less than two
-         directories deep or in the root directory,
-         leave it alone so we can do custom layouts.
-         Otherwise, provide the header and nav. -->
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
     
     <div class="container">
       <div class="doc-header">
