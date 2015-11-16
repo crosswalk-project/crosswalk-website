@@ -135,12 +135,10 @@ $(document).ready (function () {
 
 //------------------------------------------------
 function onEditBtn() {
-    alert ("Edit Btn");
-    window.open("/documentation/community/apps/app-submit.html?id=" + selRow.emailToken, "_self");
+    window.open("/documentation/community/apps/app-submit.php?id=" + selRow.emailToken, "_self");
 }
 
 function onEmailBtn() {
-    alert ("Email Btn");
     if (!selRow) {
         alert ("Please select a row.");
         return;
