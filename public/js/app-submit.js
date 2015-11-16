@@ -2,7 +2,8 @@
 /* jslint browser: true */
 /* global $, jQuery, alert, confirm */
 
-var goodImage = false;
+var app = null;
+var goodImage = false; //if app image is valid
 
 function checkUrl(value) {
     return (/^((http(s)?):\/\/)?(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value));
@@ -25,6 +26,9 @@ function onAppNameChange(input) {
 // Load icon image when image selected and show in template
 function onImgSelect(input) {
     "use strict";
+    $('#oldImage').val ('');          //now a new image has been attempted, old image no longer used
+    $('#imageFile').attr('required'); //now required to be valid
+
     // Check file size!/Full file API support.
     var fileApiSupported = (window.FileReader && window.File && window.FileList && window.Blob);
     if (!fileApiSupported) {
@@ -37,15 +41,15 @@ function onImgSelect(input) {
     if (input.files.length !== 1 ||
         !(input.files[0].type.match('image.*'))) {
         alert("The file selected was not an image");
-        goodImage = false;
         input.style.color = "red";
+        goodImage = false;
         return;
     }
     //check size (limit 1MB, should be ~4K)
     if (input.files[0].size > 1000000) {
         alert("The image file is too large. Limit 1MB. 300x300px recommended dimensions.");
-        goodImage = false;
         input.style.color = "red";
+        goodImage = false;
         return;
     }
     //load preview window
@@ -103,12 +107,47 @@ function onSizeBlur(input) {
 }  
 
 
+//if id= passed into URL, load values into form (global 'app' var will not be NULL, set by PHP)
+function loadAppFormValues() {
+    if (!app) {
+        return;
+    }
+    $('#emailToken').val (app.emailToken); //hidden field/varialbe so app-insert.php knows to edit existing record
+    $('#storeUrl').val (app.storeUrl);
+    $('#name').val (app.name);
+
+    $('#pvwImg').attr('src', '/assets/apps/icons/' + app.image);
+    $('#oldImage').val (app.image);         //set hidden form value so image is not rqd
+    $('#imageFile').removeAttr('required'); //not required to click "Browse".
+
+    $('#author').val (app.author);
+    $('#authorUrl').val (app.authorUrl);
+    $('#email').val (app.email);
+    $('#authorUrl').val (app.authorUrl);
+    $('#publishDate').val (app.publishDate);
+    $('#downloads').val (app.downloads);
+    $('#price').val (app.price);
+    $('#size').val (app.size);
+    if (app.architecture) {
+        $('#archArm').prop("checked", app.architecture.indexOf('arm_32') > -1);
+        $('#archx86').prop("checked", app.architecture.indexOf('x86_32') > -1);
+        $('#archx86_64').prop("checked", app.architecture.indexOf('x86_64') > -1);
+    }
+    $('#tools').val (app.tools);
+    $('#category').val (app.category);
+    $('#version').val (app.version);
+    $('#notes').val (app.notes);
+}
+
 //update all preview fields (only called when page loaded)
 function onPageLoad() {
     $('html,body').animate({scrollTop:0},0); //for both result page or form error
 
-    // empty all fields
-    $('#appSubmitForm').trigger("reset");
+    if (app) {
+        loadAppFormValues();
+    } else {  // empty all fields
+        $('#appSubmitForm').trigger("reset");
+    }
 
     // set url fields' font color to default color on focus 
     $(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').focus(function() {
@@ -147,12 +186,11 @@ function validateForm() {
         }
     }
     //double-check values
-    if ($('#name').val()   === '' || $('#imageFile').val() === '' ||
-        $('#author').val() === '' || $('#email').val() === '') {
-        alert ("Error: One or more required fields were empty or not the correct format.");
+    if ($('#name').val()   === '' || $('#author').val() === '' || $('#email').val() === '') {
+        alert ("One or more required fields were empty or not the correct format.");
         return false;
     }
-    if (!goodImage) {
+    if (!goodImage && $('#oldImage').val () === '') {
         $('input[name=imageFile]').focus();
         alert ("Please select a valid icon image for your application.");
         return false;
@@ -175,6 +213,13 @@ function showTermsDialog() {
     $("#appTermsDlg").dialog("open");
 }
 
+function showResultDiv (title, content) {
+    $('html,body').animate({scrollTop:0},0);
+    $("#appResultTitleDiv").html("<h2>" + title + "</h2>");
+    $("#appSubmitResult").html(content);
+    $("#appSubmitPage").css("display","none");
+    $("#appResultDiv").css("display","block");
+}
 
 function onFormSubmit(e) {
     e.stopPropagation(); // Stop stuff happening
@@ -194,7 +239,7 @@ function onFormSubmit(e) {
     }
 
     var formData = new FormData(this);
-
+    $userMsg = "";
     $.ajax({
         url: formURL,
         type: 'POST',
@@ -205,19 +250,15 @@ function onFormSubmit(e) {
         processData:false,
         success: function(data, textStatus, jqXHR) {
             if (typeof data.error == 'undefined') {
-                $("#appSubmitResult").html(data);
+                showResultDiv ("Crosswalk Application Submitted", data);
             } else {
-                $("#appSubmitResult").html('An error occured during form submission. ' + data.error);
+                showResultDiv ("Crosswalk Application Submitted", "An error occured during form submission. " + data.error);
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            $("#appSubmitResult").html('The AJAX Request Failed. ' + errorThrown);
+            showResultDiv ("Crosswalk Application Submitted", "The AJAX Request Failed. " + errorThrown);
         }          
     });
-
-    $('html,body').animate({scrollTop:0},0);
-    $("#appSubmitPage").css("display","none");
-    $("#appResultDiv").css("display","block");
 }
 
 $(document).ready(function()
@@ -242,3 +283,25 @@ $(document).ready(function()
     $(".appSubmitForm").submit(onFormSubmit);
 });
 
+/*
+Edit behavior
+  app-submit.php will set variable 'app' to existing array of values for the emailToken passed into id=<>
+  All values from app loaded info form inside onPageLoad() --> loadAppFormValues:
+   if (app) {
+        loadAppFormValues();
+    } else {  // empty all fields
+        $('#appSubmitForm').trigger("reset");
+    }
+  Hidden emailToken field set to emailToken (so app-insert.php knows this is an existing record)
+    <input type='hidden' id='emailToken' name='emailToken' />  
+
+ Image manipulation on edit
+ 1) The user never clicks "Browse" button.  Keep orig image
+ - hidden form variable set to old image (in loadAppFormValues). If empty, we have to select a new one
+        $('#oldImage').val (app.image);
+ - Remove required for image. Don't need to click 'Browse' to proceed
+        $('#imageFile').removeAttr('required');.  
+ 2) User clicks "Browse" to set a new image
+ - hidden form variable old image set to empty ''.  Add required for image.
+ - Validate new image and process as normal
+*/
