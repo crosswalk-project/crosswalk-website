@@ -21,7 +21,7 @@ However, because Crosswalk applications are intended to integrate well with the 
 
     If you have your own favourite icon, copy that to the `xwalk-simple` directory instead. It should be 96 pixels square or larger.
 
-3.  Create two text files inside `xwalk-simple` (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):
+3.  Create two text files inside `xwalk-simple`. (Create them using any text editor, such as Notepad.):
 
     1.  `index.html`
 
@@ -65,10 +65,11 @@ However, because Crosswalk applications are intended to integrate well with the 
 
         See [the manifest documentation](/documentation/manifest.html) for more information.
 
-3. From your command line, run:
+3. From inside the `xwalk-simple` directory, run:
 
    ```
-    > crosswalk-pkg --platforms=windows xwalk-simple
+    > crosswalk-pkg --platforms=windows .
    ```
+   The `crosswalk-pkg` command above can be run from any location by putting the path to your project directory as the last parameter.
 
    This will download the Crosswalk libraries, package the application defined in the specified manifest.json file and produce an .msi (in our example `com.app.simple-0.1.0.0.msi`). The .msi is currently a 32-bit build of Crosswalk for Windows and should run fine on both 32-bit and 64-bit Windows. Once you've done this, you're ready to run the application on a target.

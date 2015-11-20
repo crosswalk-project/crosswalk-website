@@ -34,13 +34,6 @@
         "company": "scirra.com/construct2",
         "description": "Construct 2 is a powerful ground breaking HTML5 game creator designed specifically for 2D games. It allows anyone to build games — no coding required!"
     },
-    "tool4": {
-        "name": "famo.us",
-        "appImg": "famous-icon150.jpg",
-        "link": "http://famo.us/",
-        "company": "famo.us.org",
-        "description": "Famo.us is the only JavaScript framework that includes an open source 3D layout engine fully integrated with a 3D physics animation engine that can render to DOM, Canvas, or WebGL."
-    },
     "tool8": {
         "name": "Monaca",
         "appImg": "monaca-icon150.jpg",

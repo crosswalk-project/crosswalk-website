@@ -5,10 +5,10 @@ The Crosswalk Project for Windows provides a web runtime for web and hybrid appl
 
 **This tutorial explains how to:**
 
- 1. Set up the *host*: the machine where you will be developing the application.
+ 1. [Set up the Windows host](/documentation/windows/windows_host_setup.html): the machine where you will be developing the application.
 It is only possible to use Crosswalk for Windows on the Windows platform.
- 2. Build a very simple HTML5 application.
- 3. Run your application using the a stable release of Crosswalk
+ 2. [Build a very simple HTML5 application](/documentation/windows/build_an_application.html).
+ 3. [Run your application using the a stable release of Crosswalk](/documentation/windows/run_on_windows.html).
 
 You will need to be comfortable using a command line to follow these steps.
 
