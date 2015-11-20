@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Tools" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/community/tools" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/windows/npm-proxy-setup" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/community/tools" />
-    <meta name="twitter:title" content="Tools" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/windows/npm-proxy-setup" />
+    <meta name="twitter:title" content="Crosswalk" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -131,6 +131,53 @@
          <a class="article-link" href="/documentation/windows.html">Windows</a>
 
          
+
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/windows_host_setup.html">Windows host setup</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/build_an_application.html">Build an application</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/run_on_windows.html">Run on Windows</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/web_inspector_debugging.html">Web Inspector Debugging</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/deploy_windows_store.html">Deploy to Windows store</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/net_extensions.html">.NET extensions</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/build_crosswalk_for_windows.html">Build Crosswalk for Windows</a>
+
+             
+           </li>
+           
+         </ul>
+         
        </li>
     
        <li class="article-item ">
@@ -203,53 +250,6 @@
          <a class="article-link" href="/documentation/community.html">Community</a>
 
          
-
-         <ul class="article-list">
-            
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/community/apps/app-list.php">App Showcase</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/community/awards/copu2015.html">Awards</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/community/branding-guide.html">Branding Guide</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/community/conferences.html">Conferences</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/community/presentations.html">Presentations</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/community/testimonials.html">Testimonials</a>
-
-             
-           </li>
-           
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/community/tools.html">Tools</a>
-
-             
-           </li>
-           
-         </ul>
-         
        </li>
     
        <li class="article-item ">
@@ -277,22 +277,13 @@
 
 
 <article class="article article--hasToC">
-  <!DOCTYPE html>
-<html>
-  <body>
-    <h1>Tools and Frameworks</h1>
-
-    <p>The following developer tools and web app frameworks support Crosswalk making it easy for applications to take advantage of the powerful Crosswalk webview.</p>
-
-    <div class="tool-block">
-      <div class="tool-grid" id="tool-div" ></div>
-    </div>
-   
-    <script type="text/javascript">
-      onToolsPage(); 
-    </script>
-  </body>
-</html>
+  <h1>Proxy setup for npm</h1>
+<p>If you are developing behind a firewall you may need to configure npm to use a proxy server.  From the command-line, run the following:</p>
+<p>For http proxy: <code>npm config set proxy [proxy]:[port]</code>.<br>
+For https proxy: <code>npm config set https-proxy [proxy]:[port]</code>.</p>
+<p>For example, the following sets both http and https proxies to <a href="http://example.proxy.com">http://example.proxy.com</a> with port 8080.</p>
+<pre><code>&gt; npm config set proxy http://example.proxy.com:8080
+&gt; npm config set https-proxy http://example.proxy.com:8080</code></pre>
 
   <footer class="article-next">
     
@@ -318,8 +309,6 @@
     
   
     
-    
-      
     
   
 

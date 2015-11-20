@@ -292,7 +292,7 @@
 <p>To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the <code>xwalk-simple</code> directory as <code>icon.ico</code>. (Note that this image is from the Crosswalk source code and is <a href="https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE">BSD licensed</a>.)</p>
 <p>If you have your own favourite icon, copy that to the <code>xwalk-simple</code> directory instead. It should be 96 pixels square or larger.</p>
 </li>
-<li><p>Create two text files inside <code>xwalk-simple</code> (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):</p>
+<li><p>Create two text files inside <code>xwalk-simple</code>. (Create them using any text editor, such as Notepad.):</p>
 <ol>
 <li><p><code>index.html</code></p>
 <p>This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.</p>
@@ -331,8 +331,9 @@
 </li>
 </ol>
 </li>
-<li><p>From your command line, run:</p>
-<pre><code> &gt; crosswalk-pkg --platforms=windows xwalk-simple</code></pre>
+<li><p>From inside the <code>xwalk-simple</code> directory, run:</p>
+<pre><code> &gt; crosswalk-pkg --platforms=windows .</code></pre>
+<p>The <code>crosswalk-pkg</code> command above can be run from any location by putting the path to your project directory as the last parameter.</p>
 <p>This will download the Crosswalk libraries, package the application defined in the specified manifest.json file and produce an .msi (in our example <code>com.app.simple-0.1.0.0.msi</code>). The .msi is currently a 32-bit build of Crosswalk for Windows and should run fine on both 32-bit and 64-bit Windows. Once you&#39;ve done this, you&#39;re ready to run the application on a target.</p>
 </li>
 </ol>
