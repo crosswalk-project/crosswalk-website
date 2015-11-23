@@ -2,14 +2,24 @@
 The Crosswalk Project will be participating in the following conferences in 2015.  To view presentations from past conferences, visit the [Presentations](/documentation/community/presentations.html) page.
 
 <h2>Upcoming</h2>
-<p>[Tizen Developer Conference](https://www.tizen.org/events/tizen-developer-conference/2015), September 17-18, Shenzhen, China</p>
-<a href="https://www.tizen.org/events/tizen-developer-conference/2015">
-  <img src="/assets/conferences/tizen15-banner.jpg" style="height:80px;">
+<p>[AnDevCon Santa Clara](http://www.andevcon.com/santaclara), Dec 1-3, Santa Clara, CA</p>
+<a href="http://www.andevcon.com/santaclara">
+  <img src="/assets/conferences/andevcon-dec15-banner.jpg" style="height:80px;">
+</a>
+<hr>
+<p>[PhoneGap Day](http://pgday.phonegap.com/), Jan 29, Lehi, Utah</p>
+<a href="http://pgday.phonegap.com">
+  <img src="/assets/conferences/phonegap-jan16-banner.jpg" style="height:80px;">
 </a>
 
 Additional conferences will be added as the schedule is known.
 <br>
 <h2>Previous Conferences </h2>
+<p>[Tizen Developer Conference](https://www.tizen.org/events/tizen-developer-conference/2015), September 17-18, Shenzhen, China</p>
+<a href="https://www.tizen.org/events/tizen-developer-conference/2015">
+  <img src="/assets/conferences/tizen15-banner.jpg" style="height:80px;">
+</a>
+<hr>
 <p>[AnDevCon Boston](http://www.andevcon.com/boston), July 29-31, Boston, MA</p>
 <a href="http://www.andevcon.com/boston">
   <img src="/assets/conferences/andevcon-boston-banner.jpg" style="height:80px;">
