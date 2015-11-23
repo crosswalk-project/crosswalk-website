@@ -28,3 +28,8 @@ local-config.php
 
 # Assets being edited locally
 assets-raw/
+
+#icons of submitted showcase apps
+_db-app-images/
+public/assets/apps/icons
+www/assets/apps/icons
