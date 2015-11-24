@@ -1,6 +1,6 @@
 
 <head>
-  <base href="/assets/logos/" target="_blank">
+  <base href="/assets/logos/">
 </head>
 
 <h1>Crosswalk Project Branding</h1>
