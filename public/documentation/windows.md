@@ -19,5 +19,5 @@ By the end of the tutorial, you should understand the workflow for creating Cros
 **This tutorial does not cover:**
 
 *   How to write HTML5 applications. We use a simple HTML5 application for this tutorial, so we can focus on the packaging and deployment aspects of Crosswalk.
-*    How to use [Crosswalk-specific APIs](http://xwalk.com/documentation/apis/web_apis.html#Experimental-APIs). The code in the tutorial should run on any modern web browser, as well as on Crosswalk.
-*    How to compile Crosswalk itself. This is covered in the [Contribute](http://xwalk.com/contribute) section.
+*    How to use [Crosswalk-specific APIs](/documentation/apis/web_apis.html#Experimental-APIs). The code in the tutorial should run on any modern web browser, as well as on Crosswalk.
+*    How to compile Crosswalk itself. This is covered in the [Contribute](/contribute) section.
