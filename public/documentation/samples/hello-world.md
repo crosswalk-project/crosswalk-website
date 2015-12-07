@@ -20,17 +20,15 @@ follow the steps in [Run on Android](/documentation/android/run_on_android.html)
 The quick version is that you can build the Hello World apk with:
 
 ```sh
-> cd <crosswalk directory>
-> python make_apk.py --package=org.crosswalkproject.helloworld \
-    --manifest=<path to crosswalk-samples>/hello-world/manifest.json
+> <crosswalk-app-tools>/src/crosswalk-pkg --crosswalk=<crosswalk version> \
+    --platforms=android <path to crosswalk-samples>/hello-world
 ```
 
-`<crosswalk directory>` refers to the directory where you downloaded and
-unpacked Crosswalk Android.
+`<crosswalk-app-tools>` refers to the directory where you downloaded crosswalk-app-tools.
 
 Then install the apk file on Android:
 
 ```sh
-> adb install Helloworld*.apk
+> adb install org.xwalk.helloworld*.apk
 ```
 

@@ -20,17 +20,15 @@ to install and run the WebGL sample on Android.
 The quick version is that you can build the WebGL apk with:
 
 ```sh
-> cd <xwalk_app_template directory>
-> python make_apk.py --package=org.crosswalkproject.example \
-    --manifest=<path to crosswalk-samples>/webgl/manifest.json
+> <crosswalk-app-tools>/src/crosswalk-pkg --crosswalk=<crosswalk version> \
+    --platforms=android  <path to crosswalk-samples>/webgl
 ```
 
-`<xwalk_app_template directory>` refers to the directory where you
-downloaded and unpacked Crosswalk Android.
+`<crosswalk-app-tools>` refers to the directory where you downloaded crosswalk-app-tools.
 
 Then install the apk file on Android:
 
 ```sh
-> adb install WebGL*.apk
+> adb install org.xwalk.webgl*.apk
 ```
 
