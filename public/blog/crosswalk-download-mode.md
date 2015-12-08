@@ -1,0 +1,4 @@
+Starting with Crosswalk 17 beta, you can package your application in **download mode**. Download Mode provides another way to shrink the application size just like what shared mode does. Your application is still bundled with xwalk_shared_library which contains only the API layer of crosswalk, while the crosswalk core libraries/resources will be downloaded in the background at the first launch of your application from your specified server. Compared to shared mode, the crosswalk runtime is exclusive to your application therefor you are on control of the crosswalk runtime full lifecycle, and the crosswalk runtime download in the background could be done silently without any end user interaction.
+
+
+Follow [these instructions](/documentation/download_mode.html) to package your application in download mode.

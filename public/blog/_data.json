@@ -23,6 +23,12 @@
     "author": "Crosswalk Team",
     "desc": "It is now possible to create 64-bit-optimized versions of Crosswalk applications."
   },  
+  "crosswalk-download-mode": {
+    "title": "Introducing download mode in Crosswalk for Android",
+    "date": "2015-12-08T11:00",
+    "author": "Xiaosong Wei",
+    "desc": "It is now possible to package application in download mode."
+  },
   "android-64bit": {
     "title": "Crosswalk for 64-bit Android Devices",
     "date": "2015-11-06T12:00",
