@@ -280,13 +280,11 @@ tutorial.</p>
 follow the steps in <a href="/documentation/android/run_on_android.html">Run on Android</a>
 to install and run the SIMD sample on Android.</p>
 <p>The quick version is that you can build the SIMD apk with:</p>
-<pre><code class="language-sh">&gt; cd &lt;xwalk_app_template directory&gt;
-&gt; python make_apk.py --package=org.crosswalkproject.example \
-    --manifest=&lt;path to crosswalk-samples&gt;/simd/manifest.json</code></pre>
-<p><code>&lt;xwalk_app_template directory&gt;</code> refers to the directory where you
-downloaded and unpacked Crosswalk Android.</p>
+<pre><code class="language-sh">&gt; &lt;crosswalk-app-tools&gt;/src/crosswalk-pkg --crosswalk=&lt;crosswalk version&gt; \
+    --platforms=android &lt;path to crosswalk-samples&gt;/simd</code></pre>
+<p><code>&lt;crosswalk-app-tools&gt;</code> refers to the directory where you downloaded crosswalk-app-tools.</p>
 <p>Then install the apk file on Android:</p>
-<pre><code class="language-sh">&gt; adb install simd*.apk</code></pre>
+<pre><code class="language-sh">&gt; adb install org.xwalk.simd*.apk</code></pre>
 
   <footer class="article-next">
     
