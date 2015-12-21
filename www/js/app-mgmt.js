@@ -8,12 +8,13 @@
 var selRow = null;
 
 // 17 columns
-var cols = ["appid","status","name","email","submitDate","author","publishDate","downloads","price","size","architecture",
-            "category","tools", "version","notes","emailToken","storeUrl","authorUrl","image"];
+var cols = ["appid","status","name","email","submitDate","author","publishDate","downloads",
+            "price","size","architecture","category","tools", "version","notes","emailToken",
+            "storeUrl","authorUrl","image"];
 
-var colLabels = ["ID","Status","Name","Email","Submit Date","Author","Publish Date","Downloads","Price","Size","Architecture",
-                 "Category","Tools","Version","Notes","Email Token", "Store URL","Author URL","Image Name"];
-
+var colLabels = ["ID","Status","Name","Email","Submit Date","Author","Publish Date","Downloads",
+                 "Price","Size","Architecture","Category","Tools","Version","Notes","Email Token", 
+                 "Store URL","Author URL","Image Name"];
 
 function setPreviewValues (row) {
     if (row) {
@@ -52,6 +53,9 @@ function onRowSelected (rowArray) {
         dbRow[cols[i]] = rowArray[i];
     }
     setPreviewValues (dbRow);
+
+    // Set hidden field 'appid' in "Update status" form to selected row's appid
+    $('#appid').val(selRow.appid);
 }
 
 function initTable() {
@@ -85,14 +89,8 @@ function initTable() {
 
 // Create table for Application Database Management Page (apps-mgmt.php)
 function printAppTableRow (row) {
-    var rowStyle = '';
-    if (row.status == 'pending') {
-        rowStyle = " style='color:blue'";
-    } else if (row.status == 'rejected') {
-        rowStyle = " style='color:gray'";
-    }
     var output = '';
-    output += "<tr" + rowStyle + ">";
+    output += "<tr id='appid" + row.appid + "' class='" + row.status + "'>";
     var i;
     for (i=0; i<cols.length; i++) {
         output += "<td title='" + row[cols[i]] + "'>" + row[cols[i]] + "</td>\n";
@@ -120,9 +118,72 @@ function loadAppTable(dbRows, where) {
     output += "</tbody></table>";
 
     $('#appMgmtTableDiv').html (output);
-
     initTable();
 }
+
+//--------------------------------------------------
+
+function updateStatus (type, msg) {
+    alert (msg);
+    if (type == "success") {
+        var appid = "#appid" + selRow.appid;
+        var table = $('#appTable').DataTable();
+        var row = table.row(appid);
+        table.cell(row, 1).data( selRow.status );
+
+        //update style class w/jquery because I don't know how to do it with datatables
+        $(appid).removeClass();
+        $(appid).addClass(selRow.status);
+
+        //re-select the changed row
+        row.select();
+    }
+}
+
+function onStatusChangeSubmit(e) {
+    e.stopPropagation(); // Stop stuff happening
+    e.preventDefault(); //Prevent Default action
+
+    // Make sure we have an appid
+    if ($('#appid').val() == '') {
+        alert ("No valid application selected.  (appid not set). Exiting.");
+        return;
+    }
+    selRow.status = $('#status').val(); //just used to update local table on success (see updateStatus)
+
+    // spinner: $("#multi-msg").html("<img src='loading.gif'/>");
+    var formObj = $(this);
+    var formURL = formObj.attr("action");
+
+    if (window.FormData === undefined) {  // for HTML5 browsers
+        alert ("This browser does not support the form upload feature. Please use a newer browser.");
+        return;
+    }
+
+    var formData = new FormData(this);
+    $userMsg = "";
+    $.ajax({
+        url: formURL,
+        type: 'POST',
+        data:  formData,
+        mimeType:"multipart/form-data",
+        cache: false,
+        contentType: false,
+        processData:false,
+        success: function(data, textStatus, jqXHR) {
+            if (typeof data.error == 'undefined') {
+                updateStatus ("success", data);
+            } else {
+                updateStatus ("error", "An error occured during form submission. " + data.error);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            updateStatus ("error", "The AJAX Request Failed. " + errorThrown);
+        }
+    });
+}
+
+//------------------------------------------------------
 
 $(document).ready (function () {
     //PHP will create a page with var dbRows; and var dbError; 
@@ -131,7 +192,11 @@ $(document).ready (function () {
     } else {
         $('#appMgmtTableDiv').html ("<strong>Error:</strong> Application information is not available.<br><br>" + dbError);
     }
+
+    //Callback handler for form submit event (status changed)
+    $(".appStatusForm").submit(onStatusChangeSubmit);
 });
+
 
 //------------------------------------------------
 function onEditBtn() {

@@ -267,6 +267,15 @@
     cursor: pointer;
 }
 
+#appTable .accepted {
+    color: black;
+}
+#appTable .pending {
+    color: blue;
+}
+#appTable .rejected {
+    color: gray;
+}
 
 
 // ---------------------------------
