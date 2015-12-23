@@ -30,6 +30,8 @@ Each .NET extension is required to ship with a bridge which is provided by Cross
 6. Click OK and you should be all set up:
 
    <a href="/assets/win6-visual-studio.png"><img src="/assets/win6-visual-studio.png" style="display: block; margin: 0 auto"/></a>
+   
+   Please note that by default the Windows Runtime APIs are not available but you can quickly add them by right clicking on your project, then Add, then References and then tick Core under Windows.
 
 In the `XWalkExtension` class there are two key methods you should implement:
 
@@ -93,7 +95,7 @@ The ability to package your .MSI installer with your .NET extension is being imp
 ### Testing your .NET Extension using Crosswalk for Windows binary
 After downloading Crosswalk for Windows and unzipping it you can easily try your extension.
 
-1.  Make sure you copy xwalk_extension_bridge.dll in your .NET DLL extension folder
+1.  Make sure you copy xwalk_extension_bridge.dll in the folder where you built your .NET extension (so where the .DLL is located).
 2.  Rename `xwalk_extension_bridge.dll` so that it looks identical as your extension DLL name with the suffix `_bridge` as the only difference. Here is an example:
 
    <img src="/assets/win9-extension-net-bridge.png" style="display: block; margin: 0 auto"/>
@@ -101,7 +103,12 @@ After downloading Crosswalk for Windows and unzipping it you can easily try your
 3.  Inside your command line, navigate to the path where you unzipped Crosswalk and launch it using the method described in <a href="/documentation/windows/run_on_windows.html#Run-using-Crosswalk-binary-directly">Run using Crosswalk binary directly</a> with the following parameters:
 
     *  `--allow-external-extensions-for-remote-sources` (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and
-    *  `--external-extensions-path=/path/to/myextension`.
+    *  `--external-extensions-path=/path/to/myextension/myextension.dll`.
+  
+  The command line should look like this :
+   ```
+    > xwalk.exe --allow-external-extensions-for-remote-sources --external-extensions-path=/path/to/myextension/myextension.dll http://localhost:8000
+   ```
 
 Your extension should be loaded.
 

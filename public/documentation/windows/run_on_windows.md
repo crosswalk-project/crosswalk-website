@@ -26,3 +26,9 @@ If you want faster code -> test -> debug cycles you can run Crosswalk for Window
    > xwalk.exe http://localhost:8000
    ```
    Your index.html should load.
+   
+   Alternatively you can also call :
+   ```
+   > xwalk.exe "C:\Users\path\to\my\crosswalk\app\manifest.json"
+   ```
+   This will not use the local webserver to serve the files of your application but rather will read the manifest.
