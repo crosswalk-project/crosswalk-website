@@ -159,6 +159,12 @@ are then used as the basis for the actual code compilation.
    set GYP_GENERATORS=ninja
    python xwalk\gyp_xwalk
    ```
+
+   If you want to create a Visual Studio solution so you can build/edit in Visual Studio you should set the GYP_GENERATORS like this :
+   ```
+   set GYP_GENERATORS=ninja,ninja-msvs
+   ```
+   
    Note: in Windows, `set` takes effect in the current cmd window. `setx` makes the setting permanent in *future* cmd windows, similar to setting the variable in the Environment Variables dialog.
 
 2. At this point you have built the projects with `gyp` and are ready for
