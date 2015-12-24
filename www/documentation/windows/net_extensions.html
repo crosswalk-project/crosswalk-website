@@ -303,6 +303,7 @@
 </li>
 <li><p>Click OK and you should be all set up:</p>
 <p><a href="/assets/win6-visual-studio.png"><img src="/assets/win6-visual-studio.png" style="display: block; margin: 0 auto"/></a></p>
+<p>Please note that by default the Windows Runtime APIs are not available but you can quickly add them by right-clicking on your project, then Add -&gt; References and then tick Core under Windows.</p>
 </li>
 </ol>
 <p>In the <code>XWalkExtension</code> class there are two key methods you should implement:</p>
@@ -356,15 +357,19 @@ exports.echo2 = function (message, callback) {
 <h3>Testing your .NET Extension using Crosswalk for Windows binary</h3>
 <p>After downloading Crosswalk for Windows and unzipping it you can easily try your extension.</p>
 <ol>
-<li>Make sure you copy xwalk_extension_bridge.dll in your .NET DLL extension folder</li>
+<li>Make sure you copy xwalk_extension_bridge.dll in the folder where you built your .NET extension (where the .DLL is located).</li>
 <li><p>Rename <code>xwalk_extension_bridge.dll</code> so that it looks identical as your extension DLL name with the suffix <code>_bridge</code> as the only difference. Here is an example:</p>
 <p><img src="/assets/win9-extension-net-bridge.png" style="display: block; margin: 0 auto"/></p>
 </li>
 <li><p>Inside your command line, navigate to the path where you unzipped Crosswalk and launch it using the method described in <a href="/documentation/windows/run_on_windows.html#Run-using-Crosswalk-binary-directly">Run using Crosswalk binary directly</a> with the following parameters:</p>
 <ul>
 <li><code>--allow-external-extensions-for-remote-sources</code> (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and</li>
-<li><code>--external-extensions-path=/path/to/myextension</code>.</li>
+<li><code>--external-extensions-path=/path/to/myextension/myextension.dll</code>.</li>
 </ul>
+<p>The command line should look like this :</p>
+<pre><code>&gt; xwalk.exe --allow-external-extensions-for-remote-sources \
+             --external-extensions-path=/path/to/myextension/myextension.dll \
+             http://localhost:8000</code></pre>
 </li>
 </ol>
 <p>Your extension should be loaded.</p>
