@@ -72,4 +72,4 @@ However, because Crosswalk applications are intended to integrate well with the 
    ```
    The `crosswalk-pkg` command above can be run from any location by putting the path to your project directory as the last parameter.
 
-   This will download the Crosswalk libraries, package the application defined in the specified manifest.json file and produce an .msi (in our example `com.app.simple-0.1.0.0.msi`). The .msi is currently a 64-bits build of Crosswalk for Windows and will only run on 64-bit Windows. Once you've done this, you're ready to run the application on a target.
+   This will download the Crosswalk libraries, package the application defined in the specified manifest.json file and produce an .msi (in our example `com.app.simple-0.1.0.0.msi`). The .msi is currently a 64-bit build of Crosswalk for Windows and will only run on 64-bit Windows. Once you've done this, you're ready to run the application on a target.
