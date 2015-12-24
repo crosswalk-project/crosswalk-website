@@ -7,7 +7,12 @@ var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
 
 function getDateEst (inVal) {
     var outVal = "N/A";
-    var d = new Date (inVal);
+    var d = new Date(inVal);
+    // if SQL format (YYYY-MM-DD), Date() constructor gives bad values
+    if (inVal.length == 10 && inVal[4] == '-' && inVal[7]=='-') {
+        var t = inVal.split(/[-]/);
+        d = new Date(t[0], t[1]-1, t[2]);
+    }
     if (!isNaN( d.getTime())) {
         outVal = monthNames[d.getMonth()] + " " + d.getFullYear();
     }

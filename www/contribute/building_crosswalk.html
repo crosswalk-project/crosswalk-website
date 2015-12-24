@@ -129,6 +129,11 @@
     
       
       <li class="article-item ">
+        <a href="/contribute/visual_studio.html">Visual Studio Support</a>
+      </li>
+    
+      
+      <li class="article-item ">
         <a href="/contribute/downstream-chromium.html">Downstream Chromium</a>
       </li>
     
@@ -167,8 +172,8 @@ contains the following tools, used to manage and build Crosswalk from
 source:</p>
 <ul>
 <li><code>gclient</code> manages code and dependencies.</li>
-<li><code>ninja</code> is the recommended tool for building Crosswalk on most platforms.
-Its <a href="http://code.google.com/p/chromium/wiki/NinjaBuild">website</a>
+<li><code>Ninja</code> is the recommended tool for building Crosswalk on most platforms.
+Its <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/ninja_build.md">website</a>
 contains detailed usage instructions.</li>
 </ul>
 
@@ -260,6 +265,8 @@ python xwalk/gyp_xwalk</code></pre>
 <p>on Windows:</p>
 <pre><code>set GYP_GENERATORS=ninja
 python xwalk\gyp_xwalk</code></pre>
+<p>If you want to create a Visual Studio solution so you can build/edit in Visual Studio you should set the GYP_GENERATORS like this :</p>
+<pre><code>set GYP_GENERATORS=ninja,ninja-msvs</code></pre>
 <p>Note: in Windows, <code>set</code> takes effect in the current cmd window. <code>setx</code> makes the setting permanent in <em>future</em> cmd windows, similar to setting the variable in the Environment Variables dialog.</p>
 </li>
 <li><p>At this point you have built the projects with <code>gyp</code> and are ready for

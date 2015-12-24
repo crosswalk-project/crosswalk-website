@@ -151,7 +151,7 @@ function onStatusChangeSubmit(e) {
     }
     selRow.status = $('#status').val(); //just used to update local table on success (see updateStatus fn)
 
-    // We will send an email on 'accepted' status. 
+    // We will send an email on 'accepted' status.
     if (selRow.status == "accepted" && !confirm("Changing the status to 'accepted' will send an email to the application author.\nDo you want to continue?")) {
         return;
     }
