@@ -24,8 +24,8 @@ source:
 
     <ul>
     <li><code>gclient</code> manages code and dependencies.</li>
-    <li><code>ninja</code> is the recommended tool for building Crosswalk on most platforms.
-    Its <a href="http://code.google.com/p/chromium/wiki/NinjaBuild">website</a>
+    <li><code>Ninja</code> is the recommended tool for building Crosswalk on most platforms.
+    Its <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/ninja_build.md">website</a>
     contains detailed usage instructions.</li>
     </ul>
 
