@@ -1,6 +1,6 @@
 # Intel awarded 'Best Strategic Partner of the Year'
 
-Intel was recently awarded the <i>Best Strategic Partner of the Year</i> by [HTML5 DreamWorks](www.html5dw.com) in China. HTML5 DreamWorks is the largest HTML5 community in China and highly influential, hosting large HTML5 events such as iWeb.
+Intel was recently awarded the <i>Best Strategic Partner of the Year</i> by [HTML5 DreamWorks](http://www.html5dw.com) in China. HTML5 DreamWorks is the largest HTML5 community in China and highly influential, hosting large HTML5 events such as iWeb.
 
 The Crosswalk Project is proud to be a major part of Intel's web strategy to promote and enahnce HTML5 and Web technologies for both developers and consumers.
 
