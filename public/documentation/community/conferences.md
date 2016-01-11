@@ -2,8 +2,8 @@
 The Crosswalk Project will be participating in the following conferences in 2015.  To view presentations from past conferences, visit the [Presentations](/documentation/community/presentations.html) page.
 
 <h2>Upcoming</h2>
-<p>[PhoneGap Day](http://pgday.phonegap.com/), Jan 29, Lehi, Utah</p>
-<a href="http://pgday.phonegap.com">
+<p>[PhoneGap Day](conferences/phonegapday2016.html), Jan 29, Lehi, Utah</p>
+<a href="conferences/phonegapday2016.html">
   <img src="/assets/conferences/phonegap-jan16-banner.jpg" style="height:80px;">
 </a>
 
