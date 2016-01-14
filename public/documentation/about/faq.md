@@ -13,6 +13,7 @@ If you have any questions that are not answered below, the crosswalk-help mailin
 *   [The Crosswalk Project community](#The-Crosswalk-Project-community)
 *   [Commercial aspects](#Commercial-aspects)
 *   [Relationships with other projects](#Relationships-with-other-projects)
+*   [Common Issues](#Common-issues)
 
 ## <a class="doc-anchor" id="Background-to-the-project"></a>Background to the project
 
@@ -281,3 +282,10 @@ With the Crosswalk project, you have different possibilities:
 * A developer can package an application with a Crosswalk Application runtime so that the app and runtime are never revised without developer permission.
 
 Of course, because Crosswalk is based on Blink and Chromium, a developer could publish a standard HTML5 app for both Crosswalk and Chrome.
+
+## <a class="doc-anchor" id="Common-issues"></a>Common Issues
+
+### <a class="doc-anchor" id="Switch-to-shared-mode"></a>I packaged my application in embedded mode, but when started it asks to download Crosswalk from the Play Store. Why?
+
+Most probably, you have installed an APK built for ARM architecture on an x86 device. When this happens, Crosswalk tries to download the x86 version of the runtime to be able to start the application. To avoid this, ensure that the x86 version of your application is published to the Play Store.
+
