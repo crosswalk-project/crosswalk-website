@@ -205,6 +205,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/screens.html">Screens</a>
 
          
@@ -260,6 +266,7 @@
 <li><a href="#The-Crosswalk-Project-community">The Crosswalk Project community</a></li>
 <li><a href="#Commercial-aspects">Commercial aspects</a></li>
 <li><a href="#Relationships-with-other-projects">Relationships with other projects</a></li>
+<li><a href="#Common-issues">Common Issues</a></li>
 </ul>
 <h2><a class="doc-anchor" id="Background-to-the-project"></a>Background to the project</h2>
 <h3><a class="doc-anchor" id="What-is-the-Crosswalk-Project-for"></a>What is the Crosswalk Project for?</h3>
@@ -428,6 +435,9 @@ lib/x86/libxwalkcore.so</code></pre>
 <li>A developer can package an application with a Crosswalk Application runtime so that the app and runtime are never revised without developer permission.</li>
 </ul>
 <p>Of course, because Crosswalk is based on Blink and Chromium, a developer could publish a standard HTML5 app for both Crosswalk and Chrome.</p>
+<h2><a class="doc-anchor" id="Common-issues"></a>Common Issues</h2>
+<h3><a class="doc-anchor" id="Switch-to-shared-mode"></a>I packaged my application in embedded mode, but when started it asks to download Crosswalk from the Play Store. Why?</h3>
+<p>Most probably, you have installed an APK built for ARM architecture on an x86 device. When this happens, Crosswalk tries to download the x86 version of the runtime to be able to start the application. To avoid this, ensure that the x86 version of your application is published to the Play Store.</p>
 
   <footer class="article-next">
     
@@ -473,8 +483,8 @@ lib/x86/libxwalkcore.so</code></pre>
              Latest blog post:</br>
               
               
-                <b><a href="/blog">Crosswalk for 64-bit Android Devices</a></b><br/>
-                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 06 Nov 2015 12:00:00 GMT">2015-11-06T12:00</time></span>)
+                <b><a href="/blog">Crosswalk Project 16: Chromium 45, background_color, Widevine support</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Thu, 14 Jan 2016 12:00:00 GMT">2016-01-14T12:00</time></span>)
               
               <br/>
            </div>

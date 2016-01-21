@@ -10,6 +10,18 @@
       
         
         <item>
+          <title>Crosswalk Project 16: Chromium 45, background_color, Widevine support</title>
+          <description>It is now possible to create 64-bit-optimized versions of Crosswalk applications.</description>
+          <pubDate>2016-01-14T12:00</pubDate>
+          <link>http://crosswalk-project.org/blog/crosswalk-16.html</link>
+          <guid isPermaLink="true">http://crosswalk-project.org/blog/crosswalk-16.html</guid>
+        </item>
+          
+    
+      
+      
+        
+        <item>
           <title>Crosswalk for 64-bit Android Devices</title>
           <description>It is now possible to create 64-bit-optimized versions of Crosswalk applications.</description>
           <pubDate>2015-11-06T12:00</pubDate>
