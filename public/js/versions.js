@@ -34,8 +34,8 @@
  */
 
 var stable="16.45.421.19";
-var beta="17.46.448.4";
-var canary="18.46.466.0";
+var beta="17.46.448.6";
+var canary="18.46.471.0";
 
 var versions = {
     stable: {

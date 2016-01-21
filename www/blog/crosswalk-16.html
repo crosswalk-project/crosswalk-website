@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Coding style" />
-    <meta property="og:url" content="http://crosswalk-project.org/contribute/coding_style" />
+    <meta property="og:title" content="Crosswalk Project 16: Chromium 45, background_color, Widevine support" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-16" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/contribute/coding_style" />
-    <meta name="twitter:title" content="Coding style" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-16" />
+    <meta name="twitter:title" content="Crosswalk Project 16: Chromium 45, background_color, Widevine support" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -97,98 +97,36 @@
       <div class="doc-main">
         <div class="row">
           
-          <nav id="contents" class="article-toc nav-toggleContainer">
-  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-  <a href="#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-  <ul class="article-list nav-toggleHide">
-    
+          <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">Crosswalk Project 16: Chromium 45, background_color, Widevine support</h1>
+    <span class="article-meta">
+      <a href="crosswalk-16.html"><time class="js-vagueTime" datetime="Thu, 14 Jan 2016 12:00:00 GMT">Thu, 14 Jan 2016 12:00:00 GMT</time></a>
+       
+        by <span class="article-author">Crosswalk Team</span>
       
-      <li class="article-item ">
-        <a href="/contribute/index.html">Overview</a>
-      </li>
-    
-      
-      <li class="article-item ">
-        <a href="/contribute/building_crosswalk.html">Building Crosswalk</a>
-      </li>
-    
-      
-      <li class="article-item ">
-        <a href="/contribute/contributing-code.html">Contributing code</a>
-      </li>
-    
-      
-      <li class="article-item ">
-        <a href="/contribute/contributing_tests.html">Contributing tests</a>
-      </li>
-    
-      
-      <li class="article-item  nav-item--active">
-        <a href="/contribute/coding_style.html">Coding style</a>
-      </li>
-    
-      
-      <li class="article-item ">
-        <a href="/contribute/visual_studio.html">Visual Studio Support</a>
-      </li>
-    
-      
-      <li class="article-item ">
-        <a href="/contribute/downstream-chromium.html">Downstream Chromium</a>
-      </li>
-    
-      
-      <li class="article-item ">
-        <a href="/contribute/reviewer_policy.html">Reviewer policy</a>
-      </li>
-    
-      
-      <li class="article-item ">
-        <a href="/contribute/report_bugs.html">Report bugs</a>
-      </li>
-    
-  </ul>
-</nav>
-<article class="article article--withSide">
-  <h1>Crosswalk coding style</h1>
-<p>As a general rule, we follow the Chromium coding style: <a href="http://www.chromium.org/developers/coding-style">http://www.chromium.org/developers/coding-style</a>.</p>
-<p>For quick reference, here are some key rules:</p>
+    </span>
+  </header>
+  
+  <p>Crosswalk 16 for Android has entered the stable channel and adds the following features and changes.</p>
 <ul>
-<li><em>Never</em> use tabs for indentation; use spaces instead. The number of spaces per indentation level depends on the programming language: see the links below for details.</li>
-<li>Remove trailing spaces from every line.</li>
-<li>Remove any blank lines at the end of a file.</li>
-<li>Be careful with license headers: if you copy or modify a file from somewhere else, ensure that the licence header remains intact.</li>
+<li>Update to Chromium 45, which includes new JavaScript language features, an improved audio experience on Android, and a large number of minor API improvements and deprecations. Read the <a href="http://blog.chromium.org/2015/07/chrome-45-beta-new-es2015-features.html">announcement</a> for more details.</li>
+<li>Crosswalk can now play back Widevine DRM-protected content (<a href="https://crosswalk-project.org/jira/browse/XWALK-5030">XWALK-5030</a>)</li>
+<li>A new xwalk_view.background_color field can be added to the manifest.json, to specify the background color of the XWalkView</li>
+<li>When onReceivedLoadError occurs, a Toast notification is displayed to the user instead of a dialog (as the user cannot do anything to respond to the error)</li>
+<li>Presentation API on Android follows an updated <a href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/">W3C Spec</a>.</li>
+<li>External extensions have an additional binary messaging interface for better performance when large amounts of data need to be passed to and from the extension.</li>
+<li>The signature of the downloaded Crosswalk APK is verified when starting the application in shared mode.</li>
+<li>Android support libraries (e.g. support-v4, support-v7 etc) are no longer bundled by Crosswalk and should be included explicitly if required.</li>
 </ul>
-<h2>Coding Style for C++</h2>
-<p>For C++ code, we follow the <a href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a>.</p>
-<p>Note that C++11 can and should be used in Crosswalk extensions for Tizen.</p>
-<h2>Coding Style for Java</h2>
-<p>For Java code, we follow the Android Open Source style guide:</p>
-<ul>
-<li><a href="http://source.android.com/source/code-style.html">Android Open Source style guide</a></li>
-<li><a href="http://www.chromium.org/developers/coding-style/java">Java style guide for Chromium</a></li>
-</ul>
-<h2>Coding Style for Python</h2>
-<p>For Python code, we follow PEP-8, with the following exceptions:</p>
-<ul>
-<li>Use two spaces for indentation instead of four.</li>
-<li>Use <code>MixedCase</code> for method names and function names instead of <code>lower_case_with_underscores</code>.</li>
-</ul>
-<p>(These exceptions align Crosswalk Python code with Chromium Python code.)</p>
-<p>For more details, see:</p>
-<ul>
-<li><a href="http://www.python.org/dev/peps/pep-0008/">PEP-8 guide</a></li>
-<li><a href="http://www.chromium.org/chromium-os/python-style-guidelines">Python style guide for Chromium</a></li>
-</ul>
-<h2>Coding Style of HTML/JavaScript/CSS</h2>
-<p>For web resources, we follow <a href="http://www.chromium.org/developers/web-development-style-guide">Chromium&#39;s &quot;Web Development Style Guide&quot;</a>.</p>
 
-  <footer class="article-next">
-    
+  <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
 
-
-  </footer>
 </article>
+
 
 
           
