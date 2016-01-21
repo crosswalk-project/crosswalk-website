@@ -41,6 +41,9 @@
   "webrtc": {
     "title": "WebRTC"
   },
+  "webcl": {
+    "title": "WebCL"
+  },
   "screens": {
     "title": "Screens"
   },
