@@ -1,7 +1,4 @@
-Crosswalk had an incredible 2015, growing in adoption, features, and integration. Here's raising a glass to all the team accomplished and to the developers who made Crosswalk the best runtime for mobile web apps on Android.
-
-### Web Applications 
-  Each quarter, around 1500 new applications were built using the Crosswalk Project with an estimated 7000 application existing in the Google Play store by the end of the year.  The runtime was downloaded from the website and via developer tools over 50,000 times.
+Crosswalk had an incredible 2015, growing in adoption, features, and integration. Here's raising a glass to what was accomplished and to our great community of web developers who made Crosswalk the best runtime for mobile web apps on Android.
 
 ### New features
 A lot of significant new features were implemented in 2015.
