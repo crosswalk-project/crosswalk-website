@@ -5,9 +5,9 @@ A lot of significant new features were implemented in 2015.
 
 * [64-bit support](/blog/android-64bit.html): 64-bit builds of the Crosswalk runtime enabling the best performance of application running on 64-bit Android devices.
 * [Shared mode](/blog/crosswalk-shared-mode.html): The ability to package Android web applications in "shared mode" to allow the runtime to be dynamically downloaded, reducing APK size and solving architecture incompatiblity problems.
-* [Crosswalk Lite](crosswalk-app-tools-alpha.html): Initiated research to reduce the runtime footprint by removing features. Reduced APK size from 20M to 10M
-* [Crosswalk-App-Tools](crosswalk-app-tools-alpha.html): A new, Node.js-based build tool, replacing make_apk.py and unifying the setup and building process across all platforms.
-* [Game mode](crosswalk-game-mode.html): Working with Cocos2D, the team greatly optimized HTML5 games, especially complex scenarios, stunning effects, and advanced features.
+* [Crosswalk Lite](https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-Project-Lite): Initiated research to reduce the runtime footprint by removing features. Reduced APK size from 20M to 10M
+* [Crosswalk-App-Tools](/blog/crosswalk-app-tools-alpha.html): A new, Node.js-based build tool, replacing make_apk.py and unifying the setup and building process across all platforms.
+* [Game mode](/blog/crosswalk-game-mode.html): Working with Cocos2D, the team greatly optimized HTML5 games, especially complex scenarios, stunning effects, and advanced features.
 * 6 new releases. From [Crosswalk version 11, with Chromium 40](/blog/crosswalk-11-beta.html) to [Crosswalk version 16, with Chromium 45](/blog/crosswalk-16.html).
 
 ### New supported platforms
