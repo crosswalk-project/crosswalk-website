@@ -306,6 +306,7 @@
 <ul>
 <li><code>xwalk_version</code>: the version of the application. If present, it will be included in the package name.</li>
 <li><code>xwalk_description</code>: a description of the application. At present this field has no effect on the packaged application.</li>
+<li><code>xwalk_bounds</code>: Window size configuration in manifest. Desktop application only.</li>
 </ul>
 <p>Example:</p>
 <pre><code>{
@@ -313,7 +314,15 @@
   &quot;start_url&quot;: &quot;index.html&quot;,
   &quot;orientation&quot;: &quot;portrait&quot;,
   &quot;xwalk_version&quot;: &quot;1.0.0&quot;,
-  &quot;xwalk_description&quot;: &quot;A sample application&quot;
+  &quot;xwalk_description&quot;: &quot;A sample application&quot;,
+  &quot;xwalk_bounds&quot;: {
+      &quot;width&quot;: 500,
+      &quot;height&quot;: 600,
+      &quot;min-width&quot;: 250,
+      &quot;min-height&quot;: 300,
+      &quot;max-width&quot;: 800,
+      &quot;max-height&quot;: 1000
+  }
 }</code></pre>
 
   <footer class="article-next">
