@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Extensions" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/windows/extensions" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/windows/extensions" />
+    <meta name="twitter:title" content="Extensions" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+  
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/windows.html">Windows</a>
+
+         
+
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/windows_host_setup.html">Windows host setup</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/build_an_application.html">Build an application</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/run_on_windows.html">Run on Windows</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/web_inspector_debugging.html">Web Inspector Debugging</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/deploy_windows_store.html">Deploy to Windows store</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/net_extensions.html">.NET extensions</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/windows/build_crosswalk_for_windows.html">Build Crosswalk for Windows</a>
+
+             
+           </li>
+           
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/windows/extensions.html">Extensions</a>
+
+             
+           </li>
+           
+         </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/screens.html">Screens</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
+
+         
+       </li>
+    
+  </ul>
+
+</nav>
+
+
+
+<article class="article article--hasToC">
+  <h1>Extensions for Windows Apps</h1>
+<p>Extensions enhance the capabilities of the Crosswalk Project, enabling applications to make full use of platform features via native code.</p>
+<p>Extensions are suitable for a number of use cases:</p>
+<ul>
+<li>Accessing a device capability not available via Crosswalk&#39;s JavaScript APIs. For example, using a specialised sensor or accessing part of the filesystem outside the web application&#39;s sandbox.</li>
+<li>Integrating existing C/C++ libraries with a web application where no JavaScript equivalents are available.</li>
+<li>You have some intellectual property in your application which you would prefer to not to distribute in an easily-readable JavaScript library.</li>
+<li>You want to optimize parts of your application but have reached the limits of what you can do with JavaScript.</li>
+</ul>
+<p>Crosswalk extensions can be implemented in C or C++ and can link with external libraries, potentially allowing you to make use of any of the underlaying OS APIs, as well as other third party libraries.  In addition, extensions are a safe way to add native capabilities to Crosswalk: each runs in its own process, so it won&#39;t directly affect the stability of the runtime.</p>
+<p>This tutorial explains how to write a simple &quot;echo&quot; extension for Crosswalk running on 64-bit Windows. The extension accepts an input and returns that input prefixed with &quot;You said: &quot;. It will be used from JavaScript code (in an HTML5 web application) like this:</p>
+<pre><code>var response = echo.echoSync(&#39;hello&#39;);
+  // response == &#39;You said: hello&#39;
+
+echo.echoAsync(&#39;hello&#39;, function (response) {
+  // response == &#39;You said: hello&#39;
+});</code></pre>
+<p>The native part of the extension can be implemented in C or C++. Note that it is trivial and could easily be implemented using pure JavaScript. However, the aim is to reduce the complexity of the extension to focus on code structure and workflow.</p>
+<p>The C code which corresponds to the JavaScript API above looks like this:</p>
+<pre><code>// echoAsync() handler
+static void handle_message(XW_Instance instance, const char* message) {
+  char* response = build_response(message);
+  g_messaging-&gt;PostMessage(instance, response);
+  free(response);
+}
+// echoSync() handler
+static void handle_sync_message(XW_Instance instance, const char* message) {
+  char* response = build_response(message);
+  g_sync_messaging-&gt;SetSyncReply(instance, response);
+  free(response);
+}</code></pre>
+<p>In this section, you will write, build and package the Crosswalk extension. The extension itself is written in C and built using Visual Studio. Although you are creating the extension and the application alongside each other in this tutorial, they are actually two separate pieces: one extension can be used to support multiple applications if desired.</p>
+<p>The extension consists of three parts:</p>
+<ul>
+<li>A JavaScript file. This defines the API which web applications can invoke.</li>
+<li>A C header file containing a &quot;stringified&quot; version of the JavaScript file. This is used to define the JavaScript API for the extension inside the C program. This file is generated at build-time, before the C library is compiled.</li>
+<li>The C file which implements the native side of the extension.</li>
+</ul>
+<p>You also need some supporting files to build and package the extension.</p>
+<h2>Install the Visual Studio Template</h2>
+<p>Download the template zip file: <a href="/assets/Crosswalk%20C-C++%20Extensions%20Template.zip">Crosswalk C-C++ Extensions Template.zip</a> (17KB)</p>
+<p>Copy the zip file into one of the following:</p>
+<p>For Visual Studio 2013:<br>
+&nbsp; <code>C:\Users\&lt;your user name&gt;\Documents\Visual Studio 2013\Templates\ProjectTemplates\Visual C++ Project\</code> <br></p>
+<p>For Visual Studio 2015:<br>
+&nbsp; <code>C:\Users\&lt;your user name&gt;\Documents\Visual Studio 2015\</code></p>
+<h2>Getting started</h2>
+<p>Open Visual Studio and click “New Project” then “Templates” then “Visual C++” then in the list select “Crosswalk C-C++ Extensions Template”</p>
+<p>Select the location of your code and enter the name of your project.</p>
+<p><img src="/assets/windows-extension1.png" style="display: block; margin: 0 auto"/></p>
+<h2>JavaScript bridge API to the C extension</h2>
+<p>This file wires the C interface to JavaScript and provides the bridge between the HTML5 application and the C code.</p>
+<p>Let’s look at the JavaScript API :</p>
+<pre><code>var echoListener = null;
+
+extension.setMessageListener(function(msg) {
+  if (echoListener instanceof Function) {
+    echoListener(msg);
+  };
+});
+
+exports.echoAsync = function (msg, callback) {
+  echoListener = callback;
+  extension.postMessage(msg);
+};
+
+exports.echoSync = function (msg) {
+  return extension.internal.sendSyncMessage(msg);
+};</code></pre>
+<h4>A note on the JavaScript API</h4>
+<p>The asynchronous part of this API is not suitable for a real production environment.
+At the moment, when you invoke the <code>echoAsync()</code> method, you set a single global message listener: a function which waits for the next response to be returned by the C part of the extension. However, this approach would not work correctly if the processing which occurred in the extension took some time, and the <code>echoAsync()</code> method were invoked during that processing time.</p>
+<p>For example, consider the following program:</p>
+<pre><code>var callback1 = function (response) {
+  console.log(response + &#39; world&#39;);
+};
+
+var callback2 = function (response) {
+  console.log(response + &#39; cruel world&#39;);
+};
+
+// invocation 1
+echo.echoAsync(&#39;hello&#39;, callback1);
+
+// invocation 2
+echo.echoAsync(&#39;goodbye&#39;, callback2);</code></pre>
+<p>When invocation 1 occurs, the message listener is set to <code>callback1</code>. If the extension takes several seconds to respond, invocation 2 may have already happened before invocation 1 completes; and invocation 2 sets the message listener to <code>callback2</code> (there is only one listener for all responses). Consequently, when invocation 1 does eventually return, its handler (callback1) has been overwritten; so the responses for both invocation 1 and invocation 2 will be (incorrectly) handled by callback2.
+In practice, this means that you would see this on the console:</p>
+<pre><code>hello cruel world
+goodbye cruel world</code></pre>
+<p>instead of the anticipated:</p>
+<pre><code>hello world
+goodbye cruel world</code></pre>
+<p>The solution is to pass a token from the JavaScript API to the C code, then return that token as part of the response from the C code. The JavaScript API would maintain a mapping from tokens to callbacks, so when responses are returned (containing a token), the correct handler can be looked up and invoked. A typical way to implement this would be to JSON-encode messages between the JavaScript and C parts of the extension, and include a token in each message. However, this process is too complex for the scope of this tutorial.</p>
+<h2>C static constant for the JavaScript API</h2>
+<p>In <code>extension.c</code>, you should have:</p>
+<pre><code>static const char* kAPI= &quot;var echoListener = null;&quot;
+&quot;&quot;
+&quot;extension.setMessageListener(function(msg) {&quot;
+&quot;  if (echoListener instanceof Function) {&quot;
+&quot;    echoListener(msg);&quot;
+&quot;  };&quot;
+&quot;});&quot;
+&quot;&quot;
+&quot;exports.echoAsync = function (msg, callback) {&quot;
+&quot;  echoListener = callback;&quot;
+&quot;  extension.postMessage(msg);&quot;
+&quot;};&quot;
+&quot;&quot;
+&quot;exports.echoSync = function (msg) {&quot;
+&quot;  return extension.internal.sendSyncMessage(msg);&quot;
+&quot;};&quot;
+;</code></pre>
+<h2>C program code</h2>
+<p>This implements the Crosswalk extension API and has access to the full native API. For the purposes of this tutorial, the C code simply prefixes a message string with &quot;You said: &quot; and returns it.</p>
+<p>Create a file <code>extension/echo-extension.c</code> with this content:</p>
+<pre><code>// echo extension for Crosswalk
+// adapted from
+// https://github.com/crosswalk-project/crosswalk/blob/master/extensions/test/echo_extension.c
+// Copyright (c) 2013 Intel Corporation. All rights reserved.
+// Use of this source code is governed by a BSD-style license
+// that can be found in the LICENSE file.
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &quot;XW_Extension.h&quot;
+#include &quot;XW_Extension_SyncMessage.h&quot;
+
+// load kSource_echo_api string to set JavaScript API;
+// echo-extension.h is generated by the makefile at build time
+#include &quot;echo-extension.h&quot;
+
+static const char* echo_ext_response_prefix = &quot;You said: &quot;;
+
+static XW_Extension g_extension = 0;
+static const XW_CoreInterface* g_core = NULL;
+static const XW_MessagingInterface* g_messaging = NULL;
+static const XW_Internal_SyncMessagingInterface* g_sync_messaging = NULL;
+
+static void instance_created(XW_Instance instance) {
+    printf(&quot;Instance %d created!\n&quot;, instance);
+}
+
+static void instance_destroyed(XW_Instance instance) {
+    printf(&quot;Instance %d destroyed!\n&quot;, instance);
+}
+
+// add a &quot;You said: &quot; prefix to message
+static char* build_response(const char* message) {
+    int length = strlen(echo_ext_response_prefix) + strlen(message);
+    char* response = malloc(length);
+    strcpy(response, echo_ext_response_prefix);
+    strcat(response, message);
+    return response;
+}
+
+static void handle_message(XW_Instance instance, const char* message) {
+    char* response = build_response(message);
+    g_messaging-&gt;PostMessage(instance, response);
+    free(response);
+}
+
+static void handle_sync_message(XW_Instance instance, const char* message) {
+    char* response = build_response(message);
+    g_sync_messaging-&gt;SetSyncReply(instance, response);
+    free(response);
+}
+
+static void shutdown(XW_Extension extension) {
+    printf(&quot;Shutdown\n&quot;);
+}
+
+// this is the only function which needs to be public
+int32_t XW_Initialize(XW_Extension extension, XW_GetInterface get_interface) {
+    // set up the extension
+    g_extension = extension;
+    g_core = get_interface(XW_CORE_INTERFACE);
+    g_core-&gt;SetExtensionName(extension, &quot;echo&quot;);
+
+    // kSource_echo_api comes from the echo-extension.h
+    // header file
+    g_core-&gt;SetJavaScriptAPI(extension, kSource_echo_api);
+
+    g_core-&gt;RegisterInstanceCallbacks(
+    extension, instance_created, instance_destroyed);
+    g_core-&gt;RegisterShutdownCallback(extension, shutdown);
+
+    g_messaging = get_interface(XW_MESSAGING_INTERFACE);
+    g_messaging-&gt;Register(extension, handle_message);
+
+    g_sync_messaging = get_interface(XW_INTERNAL_SYNC_MESSAGING_INTERFACE);
+    g_sync_messaging-&gt;Register(extension, handle_sync_message);
+
+    return XW_OK;
+}</code></pre>
+<h4>Some notes on the code:</h4>
+<ul>
+<li>The <code>XW_Extension.h</code> header is used to define the structures used by the extension system.</li>
+<li><p>The only symbol that should be exported is the function:
+<code>int32_t XW_Initialize(XW_Extension extension, XW_GetInterface get_interface)</code>
+Its parameters are:</p>
+<ul>
+<li><code>extension</code>: The identifier for this extension. This identifier will be used for the extension</li>
+<li><code>get_interface</code>: A function with signature <code>const void* XW_GetInterface(const char* interface_name)</code> used for accessing the interfaces provided for integrating native code with the Crosswalk runtime. For each <code>interface_name</code>, it returns a pointer to a structure with functions that the extension can call.</li>
+</ul>
+</li>
+<li><p>This function should be implemented and exported in the shared object; and it should return <code>XW_OK</code> when the extension is correctly initialized.</p>
+</li>
+<li>Be sure to use <code>extern &quot;C&quot;</code> when defining this function to avoid name mangling if using a C++ compiler (you&#39;re not in this tutorial).</li>
+<li><code>SetExtensionName()</code> sets the public name for the JavaScript API which will be available to your web application.</li>
+<li><code>SetJavaScriptAPI()</code> takes a JavaScript string to be presented as the API. The name you set with <code>SetExtensionName()</code> should match the one you use in the JavaScript API string. In the case of this extension, the API string is loaded from a header file which is generated by the build.</li>
+<li>This example provides synchronous and asynchronous versions of the same handler. But an extension doesn&#39;t have to handle both synchronous and asynchronous messages: it can handle only one type if desired.</li>
+<li>You should use asynchronous messaging where the processing performed by the C extension is likely to take some time (i.e. more than a few milliseconds; usually, this means anything involving disk or network access). Where the C code will return quickly (perhaps tens of milliseconds), synchronous messaging is safe enough.</li>
+<li>However, in most cases, the safest approach is to provide an asynchronous API. The synchronous alternative is shown here for the sake of completeness.</li>
+<li>Both the sync (<code>XW_Internal_SyncMessagingInterface-&gt;SetSyncReply()</code>) and async (<code>XW_MessagingInterface-&gt;PostMessage()</code>) functions for returning a response &quot;preserve their inputs&quot;, so you can free any pointers you pass to those functions once you&#39;ve invoked them.</li>
+</ul>
+<h2>More details on the C interfaces</h2>
+<h3>Core interface: XW_CORE_INTERFACE</h3>
+<ul>
+<li>This interface is defined in the <code>XW_Extension.h</code> header file.</li>
+<li>It is a struct <code>XW_CoreInterface</code> with the following fields:<ul>
+<li><code>SetExtensionName()</code> sets name of the extension (identified by extension) to name. This is mandatory. It should only be called during <code>XW_Initialize()</code>.</li>
+<li><code>SetJavaScriptAPI()</code> exports the JavaScript shim that will be available to all page contexts. The JavaScript codeapi will be associated with extension. It should only be called during <code>XW_Initialize()</code>.</li>
+<li><code>RegisterInstanceCallbacks()</code> informs the Crosswalk runtime of functions that should be called when new instances of the extension are created or destroyed. Instances have the same lifetime of the web content. This should only be called during <code>XW_Initialize()</code>.</li>
+<li><code>RegisterShutdownCallback()</code> registers a callback that will be called when the extension is unloaded. This function should only be called during <code>XW_Initialize()</code>.</li>
+<li><code>SetInstanceData()</code> and <code>GetInstanceData()</code> are convenience functions that allow for arbitrary data to be associated with each instance, and for that data to be retrieved. These functions may be called at any time during the lifecycle of an instance.</li>
+</ul>
+</li>
+</ul>
+<h3>Messaging interface: XW_MESSAGING_INTERFACE</h3>
+<ul>
+<li>This interface is defined in the <code>XW_Extension.h</code> header file.</li>
+<li>It is a struct <code>XW_MessagingInterface</code> with the following fields:<ul>
+<li><code>Register()</code>: when called, this function tells Crosswalk which function should be called in event of a message from the JavaScript side.</li>
+<li><code>PostMessage()</code> sends a message to the web content associated with the instance.</li>
+</ul>
+</li>
+</ul>
+<h3>Sync messaging interface (experimental): XW_INTERNAL_SYNC_MESSAGING_INTERFACE</h3>
+<ul>
+<li>This interface is defined in the <code>XW_Extension_SyncMessage.h</code> header file. It is marked as internal, and no guarantee will be made for its compatibility with future Crosswalk versions.</li>
+<li>It is a struct <code>XW_Internal_SyncMessagingInterface</code> with the following fields:<ul>
+<li>Register(): this function tells Crosswalk which function should be called in event of a synchronous message from the JavaScript side.</li>
+<li>SetSyncReply() responds to a synchronous (blocking) message from the JavaScript side. The renderer process will be blocked until this function is called.rc/xwalk/extensions/public/*.h</li>
+</ul>
+</li>
+</ul>
+<p>The interface names and structures described above have a versioning suffix in their names. However, extension writers should use the unversioned macros to get the desired interfaces.</p>
+<h2>Build the project</h2>
+<p>You can just build the solution in Visual Studio which should just output the .DLL of your extension.</p>
+<h2>Run your extension</h2>
+<p>After downloading Crosswalk for Windows and unzipping it you can easily try your extension.</p>
+<p>Inside your command line, navigate to the path where you unzipped Crosswalk and launch it using the method described in Run using Crosswalk binary directly with the following parameters:</p>
+<ul>
+<li><p>--allow-external-extensions-for-remote-sources (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and</p>
+</li>
+<li><p>--external-extensions-path=/path/to/myextension/myextension.dll.</p>
+</li>
+</ul>
+<p>The command line should look like this :</p>
+<pre><code>&gt; xwalk.exe --allow-external-extensions-for-remote-sources \
+            --external-extensions-path=/path/to/myextension/myextension.dll \
+            http://localhost:8000</code></pre>
+<p>Your extension should be loaded.</p>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div">
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Crosswalk Project 2015: Highlights of a great year</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Thu, 21 Jan 2016 00:00:00 GMT">2016-01-21T00:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation">Documentation</a> &nbsp;
+             <a href="/blog">Blog</a> &nbsp;
+             <a href="/documentation/downloads.html">Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>
