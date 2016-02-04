@@ -48,6 +48,7 @@ In the command line (using cmd.exe for example) type :
 ```
 
 Note: If you are developing behind a proxy, see [this page](/documentation/windows/npm-proxy-setup.html)
+
 ## <a class="doc-anchor" id="Verify-your-environment"></a>Verify your environment
 Check that you have installed the tools properly by running these commands:
 
