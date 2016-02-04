@@ -19,5 +19,8 @@
   },
   "build_crosswalk_for_windows": {
     "title": "Build Crosswalk for Windows"
+  },
+  "extensions": {
+    "title": "Extensions"
   }
 }
