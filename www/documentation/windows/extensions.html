@@ -295,32 +295,35 @@
 <ul>
 <li>Accessing a device capability not available via Crosswalk&#39;s JavaScript APIs. For example, using a specialised sensor or accessing part of the filesystem outside the web application&#39;s sandbox.</li>
 <li>Integrating existing C/C++ libraries with a web application where no JavaScript equivalents are available.</li>
-<li>You have some intellectual property in your application which you would prefer to not to distribute in an easily-readable JavaScript library.</li>
-<li>You want to optimize parts of your application but have reached the limits of what you can do with JavaScript.</li>
+<li>Including technology or intellectual property in your application without distributing an easily-readable JavaScript library.</li>
+<li>Optimizing parts of your application after reaching the limits of what can be done with JavaScript.</li>
 </ul>
 <p>Crosswalk extensions can be implemented in C or C++ and can link with external libraries, potentially allowing you to make use of any of the underlaying OS APIs, as well as other third party libraries.  In addition, extensions are a safe way to add native capabilities to Crosswalk: each runs in its own process, so it won&#39;t directly affect the stability of the runtime.</p>
 <p>This tutorial explains how to write a simple &quot;echo&quot; extension for Crosswalk running on 64-bit Windows. The extension accepts an input and returns that input prefixed with &quot;You said: &quot;. It will be used from JavaScript code (in an HTML5 web application) like this:</p>
-<pre><code>var response = echo.echoSync(&#39;hello&#39;);
+<pre><code>// Synchronous call will wait until function returns
+var response = echo.echoSync(&#39;hello&#39;);
   // response == &#39;You said: hello&#39;
 
+// Asynchronous call. Pass in the callback function as the 2nd paramter
 echo.echoAsync(&#39;hello&#39;, function (response) {
   // response == &#39;You said: hello&#39;
 });</code></pre>
-<p>The native part of the extension can be implemented in C or C++. Note that it is trivial and could easily be implemented using pure JavaScript. However, the aim is to reduce the complexity of the extension to focus on code structure and workflow.</p>
+<p>The native part of the extension can be implemented in C or C++. Our simple example is trivial and could be implemented using JavaScript. However, the aim is to reduce the complexity of the extension to focus on code structure and workflow.</p>
 <p>The C code which corresponds to the JavaScript API above looks like this:</p>
-<pre><code>// echoAsync() handler
-static void handle_message(XW_Instance instance, const char* message) {
-  char* response = build_response(message);
-  g_messaging-&gt;PostMessage(instance, response);
-  free(response);
-}
-// echoSync() handler
+<pre><code>// echoSync() handler
 static void handle_sync_message(XW_Instance instance, const char* message) {
   char* response = build_response(message);
   g_sync_messaging-&gt;SetSyncReply(instance, response);
   free(response);
+}
+
+// echoAsync() handler
+static void handle_message(XW_Instance instance, const char* message) {
+  char* response = build_response(message);
+  g_messaging-&gt;PostMessage(instance, response);
+  free(response);
 }</code></pre>
-<p>In this section, you will write, build and package the Crosswalk extension. The extension itself is written in C and built using Visual Studio. Although you are creating the extension and the application alongside each other in this tutorial, they are actually two separate pieces: one extension can be used to support multiple applications if desired.</p>
+<p>In this section, we write, build and package the Crosswalk extension. The extension itself is written in C and built using Visual Studio. Although we create both the extension and the application in this tutorial, they are actually two separate pieces: one extension can be used to support multiple applications, if desired.</p>
 <p>The extension consists of three parts:</p>
 <ul>
 <li>A JavaScript file. This defines the API which web applications can invoke.</li>
@@ -329,16 +332,15 @@ static void handle_sync_message(XW_Instance instance, const char* message) {
 </ul>
 <p>You also need some supporting files to build and package the extension.</p>
 <h2>Install the Visual Studio Template</h2>
-<p>Download the template zip file: <a href="/assets/Crosswalk%20C-C++%20Extensions%20Template.zip">Crosswalk C-C++ Extensions Template.zip</a> (17KB)</p>
-<p>Copy the zip file into one of the following:</p>
-<p>For Visual Studio 2013:<br>
-&nbsp; <code>C:\Users\&lt;your user name&gt;\Documents\Visual Studio 2013\Templates\ProjectTemplates\Visual C++ Project\</code> <br></p>
-<p>For Visual Studio 2015:<br>
-&nbsp; <code>C:\Users\&lt;your user name&gt;\Documents\Visual Studio 2015\</code></p>
+<p>Download the template zip file: <a href="/assets/Crosswalk%20C-C++%20Extensions%20Template.zip">Crosswalk C-C++ Extensions Template.zip</a> (14KB)</p>
+<p>Copy the zip file into: <code>C:\Users\&lt;your user name&gt;\Documents\Visual Studio 2015\Templates\ProjectTemplates\Visual C++ Project\</code> </p>
+<p> (Note: Windows File Explorer may display &quot;Documents&quot; as &quot;My Documents&quot;) <br><br></p>
+<p><img src="/assets/windows-extension-dir.png" style="display: block; margin: 0 auto"/></p>
 <h2>Getting started</h2>
 <p>Open Visual Studio and click “New Project” then “Templates” then “Visual C++” then in the list select “Crosswalk C-C++ Extensions Template”</p>
+<p><img src="/assets/windows-extension-dlg.png" style="display: block; margin: 0 auto"/></p>
 <p>Select the location of your code and enter the name of your project.</p>
-<p><img src="/assets/windows-extension1.png" style="display: block; margin: 0 auto"/></p>
+<p><img src="/assets/windows-extension-dlg2.png" style="display: block; margin: 0 auto"/></p>
 <h2>JavaScript bridge API to the C extension</h2>
 <p>This file wires the C interface to JavaScript and provides the bridge between the HTML5 application and the C code.</p>
 <p>Let’s look at the JavaScript API :</p>
@@ -408,7 +410,7 @@ goodbye cruel world</code></pre>
 <pre><code>// echo extension for Crosswalk
 // adapted from
 // https://github.com/crosswalk-project/crosswalk/blob/master/extensions/test/echo_extension.c
-// Copyright (c) 2013 Intel Corporation. All rights reserved.
+// Copyright (c) 2016 Intel Corporation. All rights reserved.
 // Use of this source code is governed by a BSD-style license
 // that can be found in the LICENSE file.
 
