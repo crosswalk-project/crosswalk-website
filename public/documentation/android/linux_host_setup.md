@@ -121,7 +121,7 @@ Check that you have installed the tools properly by running these commands:
     > python --version
     Python 2.7.6
 
-    > adb help
+    > adb version
     Android Debug Bridge version 1.0.31
 
 
