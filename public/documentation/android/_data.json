@@ -1,12 +1,6 @@
 {
-  "windows_host_setup": {
-    "title": "Windows host setup"
-  },
-  "linux_host_setup": {
-    "title": "Linux host setup"
-  },
-  "android_target_setup": {
-    "title": "Android target setup"
+  "system_setup": {
+    "title": "System setup"
   },
   "build_an_application": {
     "title": "Build an application"

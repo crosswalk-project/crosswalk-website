@@ -149,8 +149,9 @@ code {
     color: inherit; // http://robsterlini.co.uk/journal/opentype-and-selection-dont-mix
     text-shadow: inherit; // See above
   }
-
 }
+
+
 
 // Normally <pre><code> … </code></pre>
 // is prefered, but most code blocks in
@@ -178,6 +179,28 @@ pre {
     color: $color-background;
     text-shadow: none;
   }
+}
+
+.usage {
+  white-space: pre;
+  font-family: $font-family-monospace;
+  color: $color-text;;
+  background: $color-gray-light;
+
+  font-size: 85%;
+  width: 130%;
+  padding: 5px;
+  margin: 0;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+//    padding: 0;
+  text-shadow: none;
 }
 
 // Basic tables.

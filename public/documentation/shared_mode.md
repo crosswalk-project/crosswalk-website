@@ -1,21 +1,21 @@
-# Using the Crosswalk Project Runtime in Shared Mode
+# Shared Mode vs. Embedded Mode
 
-"Shared mode" allows multiple Crosswalk applications to share one Crosswalk runtime. If the runtime is not already installed in the device, it will be downloaded either from the Google Play Store, or from a download location specified by the developer. When using this feature, the Crosswalk library is not included in the application's package, making it significantly smaller. 
+By default, the Crosswalk runtime is embedded with your application and included in the APK. In contrast, "shared mode" builds the application without the runtime, but the runtime must be downloaded later, at runtime.  "Shared mode" allows multiple Crosswalk applications to share one Crosswalk runtime. If the runtime is not already installed in the device, it will be downloaded either from the Google Play Store, or from a download location specified by the developer. Because the Crosswalk library is not included in the application's APK package, it is significantly smaller (~20MB).
 
 ## <a class="doc-anchor" id="Pros"></a>Pros
 
-* Produces a significant smaller APK file size for Crosswalk applications. For example if packaging a simple HelloWorld web application, the APK file size is 20MB for ARM and 23MB for x86. If the same contents is packaged in shared mode, the APK file size will shrink to 68KB
-* Applications built in shared mode are architecture independent. Only one package needs to be submitted to the Play Store
-* Crosswalk is updated independently of the application. Taking advantage of the latest improvements doesn't require an update of the application
+* Produces a significant smaller APK file size for Crosswalk applications (about 20MB smaller).
+* APKs built in shared mode are architecture independent. Only one package needs to be submitted to the Play Store. The architecture-dependent runtime will be downloaded later.
+* Crosswalk is updated independently of the application. Taking advantage of the latest improvements doesn't require an update of the application.
 
 ## <a class="doc-anchor" id="Cons"></a>Cons
 
-* If the Crosswalk runtime library is not installed, the user will have to download the APK of the runtime library in the first run. The normal startup process of the application will be interrupted.
-* While we strive to maintain backwards compatibility, an updated Crosswalk runtime may be introduce incompatibility with the previous version. Developers need to test their applications against the latest Crosswalk release.
+* If the Crosswalk runtime library is not already installed on the user's device, it will download when the app is first run. The normal startup process of the application will be interrupted.
+* An updated Crosswalk runtime may introduce incompatibility with already-installed, shared-mode apps. Developers need to test their applications against the latest Crosswalk release. Note that we do strive to maintain backwards compatibility.
 
-# <a class="doc-anchor" id="How-to-package-applications-in-shared-mode"></a>How to package applications in shared mode
+# <a class="doc-anchor" id="package"></a>Packaging in shared mode
 
-## <a class="doc-anchor" id="Using-the-make_apk-packaging-tool"></a>Using the make_apk packaging tool
+## <a class="doc-anchor" id="Using-the-make_apk-packaging-tool"></a>make_apk packaging tool
 
 To package the application in shared mode, use the option:
 
@@ -23,7 +23,7 @@ To package the application in shared mode, use the option:
 
 Note: shared mode is not yet supported by crosswalk-app-tools
 
-## <a class="doc-anchor" id="Using-Cordova"></a>Using Cordova
+## <a class="doc-anchor" id="Using-Cordova"></a>Cordova build
 
 To create a cordova project in shared mode, use the option:
 

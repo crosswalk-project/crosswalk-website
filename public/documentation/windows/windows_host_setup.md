@@ -39,15 +39,15 @@ The same task can be done on the command-line (note the quotes ""):
 ```
 
 ## <a class="doc-anchor" id="Install-crosswalk-app-tools"></a>Install crosswalk-app-tools
-It is the tool which will create installable packages of your Crosswalk application.
+Crosswalk-app-tools is a simple, NPM-based tool to create installable packages of your Crosswalk application.
 
-In the command line (using cmd.exe for example) type :
+Type the following inside a command shell (using cmd.exe for example):
 
 ```
 > npm install -g crosswalk-app-tools
 ```
 
-Note: If you are developing behind a proxy, see [this page](/documentation/windows/npm-proxy-setup.html)
+Note: If you are developing behind a proxy, see [this page](/documentation/npm-proxy-setup.html)
 
 ## <a class="doc-anchor" id="Verify-your-environment"></a>Verify your environment
 Check that you have installed the tools properly by running these commands:

@@ -2,15 +2,12 @@
 
 This section describes how to create web and hybrid applications using the Crosswalk Project for the [Android operating system](http://developer.android.com/index.html).
 
-<strong>Note: For Cordova users</strong>, also check out [Crosswalk WebView in Cordova 4.0](/documentation/cordova/cordova_4.html) to easily use the advanced Crosswalk webview with your Cordova 4.0 app.
+<strong>Note: For Cordova users</strong>, follow the tutorial in [Crosswalk WebView in Cordova 4.0](/documentation/cordova/cordova_4.html) to easily use the advanced Crosswalk webview with your Cordova 4.0 app.
 
 **This tutorial explains how to:**
 
-1.  Set up the *host*: the machine where you will be developing the application.
-    * [Windows host](/documentation/android/windows_host_setup.html)
-    * [Linux host](/documentation/android/linux_host_setup.html)
+1.  [Set up your development system *host*](/documentation/android/system_setup.html): the machine where you will be developing the application. Windows and Linux are officially supported.
 
-    Note that it may be possible to develop for Crosswalk on other platforms, but only Windows and Linux are officially supported.
 2.  Set up your [Android target](/documentation/android/android_target_setup.html): the device that will run the Crosswalk application, either physical or virtual.
 
 3.  [Build a very simple HTML5 application](/documentation/android/build_an_application.html).
