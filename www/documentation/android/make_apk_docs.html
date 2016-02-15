@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Host and target setup" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/android_extensions/host_and_target_setup" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/make_apk_docs" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/android_extensions/host_and_target_setup" />
-    <meta name="twitter:title" content="Host and target setup" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/make_apk_docs" />
+    <meta name="twitter:title" content="Crosswalk" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -162,30 +162,6 @@
              <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
 
              
-             <ul class="article-list">
-               
-               <li class="article-item  nav-item--active">
-                 <a class="article-link" href="/documentation/android/android_extensions/host_and_target_setup.html">Host and target setup</a>
-               </li>
-
-               
-               <li class="article-item ">
-                 <a class="article-link" href="/documentation/android/android_extensions/write_an_extension.html">Write an extension</a>
-               </li>
-
-               
-               <li class="article-item ">
-                 <a class="article-link" href="/documentation/android/android_extensions/write_a_web_application.html">Write a web application</a>
-               </li>
-
-               
-               <li class="article-item ">
-                 <a class="article-link" href="/documentation/android/android_extensions/run_on_android.html">Run on Android</a>
-               </li>
-
-               
-             </ul>
-             
            </li>
            
          </ul>
@@ -307,57 +283,42 @@
 
 
 <article class="article article--hasToC">
-  <h1>Host and target setup</h1>
-<p>You should have set up a development environment as explained in <a href="/documentation/getting_started.html">Getting started</a>. In particular, you need to follow the pages about setting up a host for Crosswalk Android (<a href="/documentation/android/windows_host_setup.html">Windows</a>, <a href="/documentation/android/linux_host_setup.html">Linux</a>).</p>
-<p>These instructions have been tested on a Fedora Linux 20 host, in a bash shell; but they could be adapted to other environments (e.g. Windows console).</p>
-<p>You will also need to <a href="/documentation/android/android_target_setup.html">set up an Android target</a>. For testing, you can either use <a href="/documentation/android/android_target_setup.html#Android-Device">your own Android device</a> or <a href="/documentation/android/android_target_setup.html#android-emulator">an emulated device</a>. I used:</p>
+  <h1>Using make_apk.py</h1>
+<p>As of Crosswalk version 16, make_apk.py is deprecated and will be removed from future builds. The new, simpler, NPM-based <a href="system_setup.html">crosswalk-app-tools</a> is recommended for building and debugging. For legacy support, the documentation for make_apk is still available from the following links.</p>
 <ul>
-<li>x86 ZTE Geek phone with Android 4.2.2</li>
-<li>ARM HTC OneX with Android 4.0.4</li>
+<li>Host setup for <a href="windows_host_setup_make_apk.html">Windows</a> and <a href="linux_host_setup_make_apk.html">Linux</a> desktops</li>
+<li><a href="build_an_application_make_apk.html">Build an application</a></li>
+<li><a href="android_target_setup.html">Android target setup</a> (Same for new tools)</li>
+<li><a href="run_on_android_make_apk.html">Run on Android</a></li>
+<li><a href="android_remote_debugging_make_apk.html">Remote debugging</a></li>
 </ul>
-<h2 id="Project-outline">Project outline</h2>
-
-<p>For the purposes of the tutorial, the extension and the application are developed within a single top-level project directory. Here is an outline of the structure:</p>
-<pre><code># top-level project directory
-xwalk-echo-project/
-
-  # directory for the extension
-  xwalk-echo-extension-src/
-    build/
-      ...temporary build artefacts...
-    java/
-      ...Java source files for the extension...
-    js/
-      ...JavaScript for the extension...
-    lib/
-      ...third party jar files (installed via Ivy)...
-    tools/
-      ...jar files to assist with the build...
-    xwalk-echo-extension/
-      ...temporary output directory for the extension...
-    build.xml                     # Ant build file
-    ivy.xml                       # Ivy configuration for Ant
-    xwalk-echo-extension.json     # extension configuration
-
-  # directory for the web application
-  xwalk-echo-app/
-    assets/
-      ...images, stylesheets etc...
-    js/
-      ...JavaScript files...
-    icon.png                      # application icon
-    index.html                    # main HTML file
-    manifest.json                 # Crosswalk manifest</code></pre>
-<p>Although you&#39;ll be developing the extension alongside the application, bear in mind that a Crosswalk extension can be reused between projects if you wish.</p>
-<h3>Create the project directories</h3>
-<p>For the purposes of the tutorial, it&#39;s assumed that you have a directory for your own projects in <code>~/&lt;my projects directory&gt;</code>. Create the required directories for <em>this</em> tutorial project inside your projects directory as follows:</p>
-<pre><code>cd ~/&lt;my projects directory&gt;
-
-# set up top-level directory for the xwalk-player project
-mkdir xwalk-echo-project</code></pre>
 
   <footer class="article-next">
     
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
 
 
   </footer>

@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Host and target setup" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/android_extensions/host_and_target_setup" />
+    <meta property="og:title" content="System setup" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/system_setup" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/android_extensions/host_and_target_setup" />
-    <meta name="twitter:title" content="Host and target setup" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/system_setup" />
+    <meta name="twitter:title" content="System setup" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -122,7 +122,7 @@
 
          <ul class="article-list">
             
-           <li class="article-item ">
+           <li class="article-item  nav-item--active">
              <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
 
              
@@ -161,30 +161,6 @@
            <li class="article-item ">
              <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
 
-             
-             <ul class="article-list">
-               
-               <li class="article-item  nav-item--active">
-                 <a class="article-link" href="/documentation/android/android_extensions/host_and_target_setup.html">Host and target setup</a>
-               </li>
-
-               
-               <li class="article-item ">
-                 <a class="article-link" href="/documentation/android/android_extensions/write_an_extension.html">Write an extension</a>
-               </li>
-
-               
-               <li class="article-item ">
-                 <a class="article-link" href="/documentation/android/android_extensions/write_a_web_application.html">Write a web application</a>
-               </li>
-
-               
-               <li class="article-item ">
-                 <a class="article-link" href="/documentation/android/android_extensions/run_on_android.html">Run on Android</a>
-               </li>
-
-               
-             </ul>
              
            </li>
            
@@ -307,57 +283,92 @@
 
 
 <article class="article article--hasToC">
-  <h1>Host and target setup</h1>
-<p>You should have set up a development environment as explained in <a href="/documentation/getting_started.html">Getting started</a>. In particular, you need to follow the pages about setting up a host for Crosswalk Android (<a href="/documentation/android/windows_host_setup.html">Windows</a>, <a href="/documentation/android/linux_host_setup.html">Linux</a>).</p>
-<p>These instructions have been tested on a Fedora Linux 20 host, in a bash shell; but they could be adapted to other environments (e.g. Windows console).</p>
-<p>You will also need to <a href="/documentation/android/android_target_setup.html">set up an Android target</a>. For testing, you can either use <a href="/documentation/android/android_target_setup.html#Android-Device">your own Android device</a> or <a href="/documentation/android/android_target_setup.html#android-emulator">an emulated device</a>. I used:</p>
+  <h1>System setup</h1>
+<p>This page describes using the new, simpler, NPM-based <a href="/documentation/crosswalk-app-tools.html">crosswalk-app-tools</a> to build and debug. The <a href="make_apk_docs.html">deprecated instructions for make_apk.py</a> are still available.</p>
+<p>These steps will enable you to develop Crosswalk applications to run on Android. </p>
+<h2>Install tools</h2>
+<p>The following tools are needed on your development system to build Android apps. The same tools are needed on Linux and Windows. Download and install the appropriate version for your platform.</p>
 <ul>
-<li>x86 ZTE Geek phone with Android 4.2.2</li>
-<li>ARM HTC OneX with Android 4.0.4</li>
+<li><a href="#Java">Java JDK</a></li>
+<li><a href="#Ant">Apache Ant</a></li>
+<li><a href="#Android">Android SDK</a></li>
+<li><a href="#NPM">NPM</a></li>
+<li><a href="#Crosswalk">Crosswalk App Tools</a></li>
 </ul>
-<h2 id="Project-outline">Project outline</h2>
-
-<p>For the purposes of the tutorial, the extension and the application are developed within a single top-level project directory. Here is an outline of the structure:</p>
-<pre><code># top-level project directory
-xwalk-echo-project/
-
-  # directory for the extension
-  xwalk-echo-extension-src/
-    build/
-      ...temporary build artefacts...
-    java/
-      ...Java source files for the extension...
-    js/
-      ...JavaScript for the extension...
-    lib/
-      ...third party jar files (installed via Ivy)...
-    tools/
-      ...jar files to assist with the build...
-    xwalk-echo-extension/
-      ...temporary output directory for the extension...
-    build.xml                     # Ant build file
-    ivy.xml                       # Ivy configuration for Ant
-    xwalk-echo-extension.json     # extension configuration
-
-  # directory for the web application
-  xwalk-echo-app/
-    assets/
-      ...images, stylesheets etc...
-    js/
-      ...JavaScript files...
-    icon.png                      # application icon
-    index.html                    # main HTML file
-    manifest.json                 # Crosswalk manifest</code></pre>
-<p>Although you&#39;ll be developing the extension alongside the application, bear in mind that a Crosswalk extension can be reused between projects if you wish.</p>
-<h3>Create the project directories</h3>
-<p>For the purposes of the tutorial, it&#39;s assumed that you have a directory for your own projects in <code>~/&lt;my projects directory&gt;</code>. Create the required directories for <em>this</em> tutorial project inside your projects directory as follows:</p>
-<pre><code>cd ~/&lt;my projects directory&gt;
-
-# set up top-level directory for the xwalk-player project
-mkdir xwalk-echo-project</code></pre>
+<h3><a class="doc-anchor" id="Java"></a>Install the Oracle Java Development Kit (JDK)</h3>
+<p>   Download and install the Oracle JDK: <a href="http://www.oracle.com/technetwork/java/javase/downloads/">http://www.oracle.com/technetwork/java/javase/downloads/</a>  (Java 7 and 8 are known to work)</p>
+<h3><a class="doc-anchor" id="Ant"></a>Install Apache Ant</h3>
+<p>   Download and install the Apache Ant build tool: <a href="http://www.apache.org/dist/ant/binaries/">http://www.apache.org/dist/ant/binaries/</a> (Version 1.9.3 is known to work)</p>
+<h3><a class="doc-anchor" id="Android"></a>Install the Android SDK</h3>
+<ul>
+<li><p>Download and install Android Studio from <a href='http://developer.android.com/sdk/index.html' target='_blank'><a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a></a>.</p>
+</li>
+<li><p>Start the <em>SDK Manager</em>, from the command-line or inside Android Studio:</p>
+<p> <p>In Windows: <pre><code>&gt; &quot;SDK Manager.exe&quot;</code></pre></p>
+ <p>In Linux: <pre><code>&gt; android</code></pre></p>
+ <p>or</p>
+ <img src="/assets/sdk-manager1.png" style="margin: 0 auto"/></p>
+</li>
+<li><p>In the SDK Manager window, install the Platform tools, Build tools, and SDK Platform for the version(s) you are interested in:</p>
+<p>  <img src="/assets/sdk-manager-select.png" style="display: block; margin: 0 auto"/></p>
+</li>
+</ul>
+<h3><a class="doc-anchor" id="NPM"></a>Install node.js and npm</h3>
+<p>   Download and install node.js for your platform: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.  This will also install npm.</p>
+<h3><a class="doc-anchor" id="Crosswalk"></a>Install crosswalk-app-tools</h3>
+<p>From a cmd shell use npm to install crosswalk-app-tools</p>
+<pre><code>    &gt; npm install -g crosswalk-app-tools</code></pre>
+<p>   Note: If you are developing behind a proxy, see <a href="/documentation/npm-proxy-setup.html">this page</a></p>
+<h2><a class="doc-anchor" id="Verify-your-environment"></a>Verify your environment</h2>
+<p>Check that you have installed the tools properly by running these commands:</p>
+<p>Example on Windows:</p>
+<pre><code>C:\dev&gt;crosswalk-app check android
+  + Checking host setup for target android
+  + Checking for android... C:\dev\android\sdk\tools\android.bat
+  + Checking for ant... C:\dev\apache-ant-1.9.4\bin\ant
+  + Checking for java... C:\ProgramData\Oracle\Java\javapath\java.exe
+  + Checking for ANDROID_HOME... C:\dev\Android\
+  ...</code></pre>
+<p>If any items report missing, add the directory to the program binaries in your PATH.
+<em>Note:</em> Currently the tool reports an ERROR if lzma is not found. You can safely ignore this for now.</p>
+<pre><code>  ERROR: Checking for lzma... null</code></pre>
+<h2>Next Steps</h2>
+<p>Your system is ready for Android development with Crosswalk.</p>
 
   <footer class="article-next">
     
+
+  
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/android/build_an_application.html" class="article-promo well">
+        <em>What’s next?</em>
+        <h3>Build an application</h3>
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
 
 
   </footer>

@@ -123,19 +123,7 @@
          <ul class="article-list">
             
            <li class="article-item ">
-             <a class="article-link" href="/documentation/android/windows_host_setup.html">Windows host setup</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/linux_host_setup.html">Linux host setup</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/android_target_setup.html">Android target setup</a>
+             <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
 
              
            </li>
@@ -295,7 +283,7 @@
 
 
 <article class="article article--hasToC">
-  <h1>Packaging applications for 64-bit devices</h1>
+  <h1>Packaging apps for 64-bit devices</h1>
 <p>By default, Crosswalk applications are packaged for 32-bit architectures. It&#39;s possible to specify 64-bit targets for both ARM and x86 using the <code>-t &lt;target-archs&gt;</code> option in the <code>crosswalk-pkg</code> command:</p>
 <pre><code>  &lt;target-archs&gt;
     List of CPU architectures for which to create packages.
@@ -314,24 +302,11 @@
 <p>The 64-bit packages can be uploaded to the Google Play Store and will be automatically selected for compatible devices. At the moment you need to specify either the Beta or Canary channel because 64-bit support is not yet available from the stable releases.</p>
 <p>If you are using Crosswalk in shared mode, your application will automatically download the 64-bit optimized version of Crosswalk from the Play Store and no special action is required when packaging.</p>
 <p>Note: support for 64-bit is not yet available in the Crosswalk Cordova Webview plugin and will be enabled soon.</p>
-<h2>Packaging with the <code>make_apk</code> tool</h2>
-<p>As <code>make_apk</code> is deprecated, we recommend that you use crosswalk-app-tools to package 64-bit applications. If you need to use make_apk, download a <a href="https://download.01.org/crosswalk/releases/crosswalk/android/beta/latest/x86_64/">64-bit version of Crosswalk</a>, unpack it, and use the --arch option as shown below:</p>
-<pre><code>&gt; wget https://download.01.org/crosswalk/releases/crosswalk/android/beta/16.45.421.7/crosswalk-16.45.421.7-64bit.zip
-&gt; unzip crosswalk-16.45.421.7-64bit.zip
-&gt; cd crosswalk-16.45.421.7-64bit
-&gt; python make_apk.py --arch=x86_64 --package=org.xwalk.test \
-  --manifest=/path/to/manifest.json</code></pre>
 
   <footer class="article-next">
     
 
   
-  
-    
-    
-  
-    
-    
   
     
     

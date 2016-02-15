@@ -32,13 +32,13 @@
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
     <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/windows/npm-proxy-setup" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/run_on_android_make_apk" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/windows/npm-proxy-setup" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/run_on_android_make_apk" />
     <meta name="twitter:title" content="Crosswalk" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
@@ -119,6 +119,53 @@
          <a class="article-link" href="/documentation/android.html">Android</a>
 
          
+
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
+
+             
+           </li>
+           
+         </ul>
+         
        </li>
     
        <li class="article-item ">
@@ -130,59 +177,6 @@
        <li class="article-item ">
          <a class="article-link" href="/documentation/windows.html">Windows</a>
 
-         
-
-         <ul class="article-list">
-            
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/windows_host_setup.html">Windows host setup</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/build_an_application.html">Build an application</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/run_on_windows.html">Run on Windows</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/web_inspector_debugging.html">Web Inspector Debugging</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/deploy_windows_store.html">Deploy to Windows store</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/net_extensions.html">.NET extensions</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/build_crosswalk_for_windows.html">Build Crosswalk for Windows</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/extensions.html">Extensions</a>
-
-             
-           </li>
-           
-         </ul>
          
        </li>
     
@@ -289,21 +283,61 @@
 
 
 <article class="article article--hasToC">
-  <h1>Proxy setup for npm</h1>
-<p>If you are developing behind a firewall you may need to configure npm to use a proxy server.  From the command-line, run the following:</p>
-<p>For http proxy: <code>npm config set proxy [proxy]:[port]</code>.<br>
-For https proxy: <code>npm config set https-proxy [proxy]:[port]</code>.</p>
-<p>For example, the following sets both http and https proxies to <a href="http://example.proxy.com">http://example.proxy.com</a> with port 8080.</p>
-<pre><code>&gt; npm config set proxy http://example.proxy.com:8080
-&gt; npm config set https-proxy http://example.proxy.com:8080</code></pre>
+  <h1>Running a Crosswalk app on Android</h1>
+<p>The Crosswalk Android download contains a Python script which can be used to make a self-contained package (<code>.apk</code> file) from an HTML5 application. See the host set up instructions (<a href="/documentation/android/windows_host_setup.html#Download-the-Crosswalk-Android-app-template">Windows</a> / <a href="/documentation/android/linux_host_setup.html#Download-the-Crosswalk-Android-app-template">Linux</a>) for details.</p>
+<p>Once you have downloaded and unpacked Crosswalk Android, create the <code>apk</code> packages for your application as follows:</p>
+<ol>
+<li><p>Go to the unpacked Crosswalk Android directory:</p>
+<pre><code>&gt; cd crosswalk-${XWALK-STABLE-ANDROID-X86}</code></pre>
+</li>
+<li><p>Run the <code>make_apk.py</code> script with Python as follows:</p>
+<pre><code>&gt; python make_apk.py --package=org.crosswalkproject.example \
+    --manifest=xwalk-simple/manifest.json</code></pre>
+<p>This will package the application defined in the specified <code>manifest.json</code> file and produce two apk files from it, one for x86 architecture and one for ARM. The apk files will end up in the directory where you ran the script. Each file is given the name set in the manifest, with any filesystem-sensitive characters removed and an architecture identifier (&quot;x86&quot; or &quot;arm&quot;) appended. For our example, the output files are <code>simple_x86.apk</code> and <code>simple_arm.apk</code>.</p>
+<p>Please specify --app-versionCode or --app-versionCodeBase, otherwise android:versionCode will be generated based on android:versionName. For example, versionName &quot;3.2.1&quot; will get versionCode: ABI prefix + &quot;0302001&quot;.</p>
+</li>
+<li><p>Install the application on the target.</p>
+<p>If installing on an x86 device:</p>
+<pre><code>&gt; adb install -r simple_x86.apk</code></pre>
+<p>If installing on an ARM device:</p>
+<pre><code>&gt; adb install -r simple_arm.apk</code></pre>
+<p>The <code>-r</code> flag stands for &quot;reinstall&quot;. It is not required for the first installation, but useful for subsequent reinstalls of the same package.</p>
+</li>
+</ol>
+<p>If the installation is successful, your application should now be on the Android target. Find its icon in the application list and open it. Here it is running on a ZTE Geek phone:</p>
+<p><img src="/assets/xwalk-simple-on-android.png"></p>
+<h2 id="shared-vs-embedded-mode">Shared vs. embedded mode</h2>
+
+<p>Above, we packaged the application using the default <em>embedded</em> mode (the Crosswalk runtime is bundled with the application). This creates two apk files, one for Intel architecture devices, and a second for ARM devices.</p>
+<p>However, it is also possible to package an application in <em>shared</em> mode. In this mode, the apk is architecture-independent; but a separate Crosswalk runtime also has to be installed on the target to run the application.</p>
+<p>Each of these modes has its own pros and cons:</p>
+<ul>
+<li><p><em>Embedded</em></p>
+<p>In embedded mode packaging, each web app is bundled with the full Crosswalk runtime. Since the Crosswalk runtime needs an architecture-dependent native library, two Android apks need to be generated for embedded mode: one for targets with Intel architecture (x86) and another for ARM targets. The <code>make_apk.py</code> script used in this tutorial generates a package for each architecture by default, as explained above.</p>
+<p>The advantage is that you can keep a tight dependency between Crosswalk and the application, so you can ensure that the correct Crosswalk version is used. (In shared mode, you would have to ensure that the user had the correct runtime version available.)</p>
+<p>The disadvantage is that the generated apk is significantly larger, as it contains the whole Crosswalk runtime inside it.</p>
+</li>
+<li><p><em>Shared</em></p>
+<p>In shared mode packaging, each web app is bundled with a thin layer of Java code which is architecture-independent. This produces a much smaller apk file. However, to run this shared mode application, a separate, architecture-dependent Crosswalk runtime also has to be installed on the target. Again, one runtime is required for each architecture (one for x86, one for ARM); but, unlike embedded mode, multiple applications can share this single runtime.</p>
+<p>The advantage is that one Crosswalk runtime library can support multiple shared mode applications: valuable if you are using Crosswalk to deploy multiple applications on the same Crosswalk version, as it reduces the size of each application apk.</p>
+<p>Another advantage is that you can upgrade the runtime for multiple applications by upgrading one shared Crosswalk runtime package. By contrast, in embedded mode, upgrading the runtime requires you to upgrade each application at the same time: so moving to a newer runtime for multiple applications means upgrading each of those applications separately.</p>
+<p>The disadvantage is that you must distribute apks both for your web applications and for the Crosswalk runtime.</p>
+</li>
+</ul>
+<p>To make a shared mode apk, pass the <code>--mode=shared</code> option to the <code>make_apk.py</code> script, for example:</p>
+<pre><code>&gt; python make_apk.py --mode=shared --package=com.intel.xwalk-simple \
+    --manifest=xwalk-simple/manifest.json</code></pre>
+<p>Note that the <code>--package</code> option is mandatory and should be set to the Java package name for your application.</p>
+<p>To deploy a shared mode application, you will need to install architecture-specific runtime apks on the target. These can be found in the Crosswalk Android downloads area, under the <code>arm/</code> and <code>x86/</code> directories. For example, the apks for the latest stable versions are in these files:</p>
+<ul>
+<li><a href="https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-ARM}/arm/crosswalk-apks-${XWALK-STABLE-ANDROID-ARM}-arm.zip">ARM</a></li>
+<li><a href="https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-ANDROID-X86}/x86/crosswalk-apks-${XWALK-STABLE-ANDROID-X86}-x86.zip">Intel (x86)</a></li>
+</ul>
 
   <footer class="article-next">
     
 
   
-  
-    
-    
   
     
     

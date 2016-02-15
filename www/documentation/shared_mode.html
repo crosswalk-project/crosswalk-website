@@ -236,25 +236,25 @@
 
 
 <article class="article article--hasToC">
-  <h1>Using the Crosswalk Project Runtime in Shared Mode</h1>
-<p>&quot;Shared mode&quot; allows multiple Crosswalk applications to share one Crosswalk runtime. If the runtime is not already installed in the device, it will be downloaded either from the Google Play Store, or from a download location specified by the developer. When using this feature, the Crosswalk library is not included in the application&#39;s package, making it significantly smaller. </p>
+  <h1>Shared Mode vs. Embedded Mode</h1>
+<p>By default, the Crosswalk runtime is embedded with your application and included in the APK. In contrast, &quot;shared mode&quot; builds the application without the runtime, but the runtime must be downloaded later, at runtime.  &quot;Shared mode&quot; allows multiple Crosswalk applications to share one Crosswalk runtime. If the runtime is not already installed in the device, it will be downloaded either from the Google Play Store, or from a download location specified by the developer. Because the Crosswalk library is not included in the application&#39;s APK package, it is significantly smaller (~20MB).</p>
 <h2><a class="doc-anchor" id="Pros"></a>Pros</h2>
 <ul>
-<li>Produces a significant smaller APK file size for Crosswalk applications. For example if packaging a simple HelloWorld web application, the APK file size is 20MB for ARM and 23MB for x86. If the same contents is packaged in shared mode, the APK file size will shrink to 68KB</li>
-<li>Applications built in shared mode are architecture independent. Only one package needs to be submitted to the Play Store</li>
-<li>Crosswalk is updated independently of the application. Taking advantage of the latest improvements doesn&#39;t require an update of the application</li>
+<li>Produces a significant smaller APK file size for Crosswalk applications (about 20MB smaller).</li>
+<li>APKs built in shared mode are architecture independent. Only one package needs to be submitted to the Play Store. The architecture-dependent runtime will be downloaded later.</li>
+<li>Crosswalk is updated independently of the application. Taking advantage of the latest improvements doesn&#39;t require an update of the application.</li>
 </ul>
 <h2><a class="doc-anchor" id="Cons"></a>Cons</h2>
 <ul>
-<li>If the Crosswalk runtime library is not installed, the user will have to download the APK of the runtime library in the first run. The normal startup process of the application will be interrupted.</li>
-<li>While we strive to maintain backwards compatibility, an updated Crosswalk runtime may be introduce incompatibility with the previous version. Developers need to test their applications against the latest Crosswalk release.</li>
+<li>If the Crosswalk runtime library is not already installed on the user&#39;s device, it will download when the app is first run. The normal startup process of the application will be interrupted.</li>
+<li>An updated Crosswalk runtime may introduce incompatibility with already-installed, shared-mode apps. Developers need to test their applications against the latest Crosswalk release. Note that we do strive to maintain backwards compatibility.</li>
 </ul>
-<h1><a class="doc-anchor" id="How-to-package-applications-in-shared-mode"></a>How to package applications in shared mode</h1>
-<h2><a class="doc-anchor" id="Using-the-make_apk-packaging-tool"></a>Using the make_apk packaging tool</h2>
+<h1><a class="doc-anchor" id="package"></a>Packaging in shared mode</h1>
+<h2><a class="doc-anchor" id="Using-the-make_apk-packaging-tool"></a>make_apk packaging tool</h2>
 <p>To package the application in shared mode, use the option:</p>
 <p><code>./make_apk.py --mode=shared ...</code></p>
 <p>Note: shared mode is not yet supported by crosswalk-app-tools</p>
-<h2><a class="doc-anchor" id="Using-Cordova"></a>Using Cordova</h2>
+<h2><a class="doc-anchor" id="Using-Cordova"></a>Cordova build</h2>
 <p>To create a cordova project in shared mode, use the option:</p>
 <p><code>./bin/create --xwalk-shared-library ...</code></p>
 <p>Note: shared mode is not yet supported by cordova-plugin-crosswalk-webview</p>
