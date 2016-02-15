@@ -48,46 +48,29 @@ In both cases, a work-around is to run the `adb` server as root:
 
 To test your application on Android platforms you don't own, the next best option is to use emulated devices. You can install these via the Android SDK.
 
-<ol>
+1. Start the Android SDK Manager via the `android` command on Linux or by running `SDK Manager.exe` on Windows.
 
-<li>
-  <p>Start the Android SDK Manager via the `android` command on Linux or by running `SDK Manager.exe` on Windows.</p>
-</li>
+2. In the SDK Manager window, check the following box in the list:
 
-<li>
-  <p>In the SDK Manager window, check the following box in the list:</p>
+        [ ] Android 4.3 (API 18)
+            [x] Intel x86 Atom System Image
 
-<pre>
-[ ] Android 4.3 (API 18)
-    [x] Intel x86 Atom System Image
-</pre>
+   If you want to test with other Android API versions, install the corresponding x86 system images.
 
-  <p>If you want to test with other Android API versions, install the corresponding x86 system images.</p>
-</li>
+3. On <strong>Windows only</strong>, use the SDK Manager to download HAXM as well:
 
-<li>
-  <p>On <strong>Windows only</strong>, use the SDK Manager to download HAXM as well:</p>
+        [ ] Extras
+            [x] Intel x86 Emulator Accelerator (HAXM)
 
-<pre>
-[ ] Extras
-  [x] Intel x86 Emulator Accelerator (HAXM)
-</pre>
+   This provides better graphics performance for emulated x86 devices running on Windows.
 
-  <p>This provides better graphics performance for emulated x86 devices running on Windows.</p>
+   Note that the SDK Manager downloads HAXM, but does not install it, so you need to find and install it yourself. The file you need is called `IntelHaxm.exe`.
 
-  <p>Note that the SDK Manager downloads HAXM, but does not install it, so you need to find and install it yourself. The file you need is called `IntelHaxm.exe`.</p>
-</li>
+4. After the selected packages are installed, set up an emulator image by running the AVD Manager:
 
-<li>
-  <p>After the selected packages are installed, set up an emulator image by running the AVD Manager:</p>
+        > android avd
 
-<pre>
-> android avd
-</pre>
-</li>
-
-<li>
-  <p>Create a new image called <strong>Tablet</strong> and select the following options:</p>
+5. Create a new image called <strong>Tablet</strong> and select the following options:
 
   <ul>
     <li><em>Target</em>: <strong>Android 4.3</strong></li>
@@ -95,27 +78,18 @@ To test your application on Android platforms you don't own, the next best optio
     <li><strong>Use Host GPU</strong> (check the box)</li>
   </ul>
 
-  <p>The configuration should look something like this:</p>
+  The configuration should look something like this:
 
-  <p><img src='/assets/emulator.png'></p>
-</li>
+  <img src='/assets/emulator.png' style="display:block;margin:0 auto">
 
-<li>
-  <p>Launch the new emulator image from a shell:</p>
+6. Launch the new emulator image from a shell:
 
-<pre>
-> emulator -avd Tablet
-</pre>
+        > emulator -avd Tablet
 
-  <p>You should be able to connect to any running images using adb, as for a hardware device:</p>
+   You should be able to connect to any running images using adb, as for a hardware device:
 
-<pre>
-$ adb devices
-List of devices attached
-emulator-5554	device
-</pre>
-</li>
-
-</ol>
+        $ adb devices
+        List of devices attached
+        emulator-5554   device
 
 The emulated Android device is now set up and ready to be used as a deployment target.

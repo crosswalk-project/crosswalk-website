@@ -1,4 +1,4 @@
-# Packaging applications for 64-bit devices
+# Packaging apps for 64-bit devices
 
 By default, Crosswalk applications are packaged for 32-bit architectures. It's possible to specify 64-bit targets for both ARM and x86 using the `-t <target-archs>` option in the `crosswalk-pkg` command:
 
@@ -37,14 +37,3 @@ If you are using Crosswalk in shared mode, your application will automatically d
 
 Note: support for 64-bit is not yet available in the Crosswalk Cordova Webview plugin and will be enabled soon.
 
-## Packaging with the `make_apk` tool
-
-As `make_apk` is deprecated, we recommend that you use crosswalk-app-tools to package 64-bit applications. If you need to use make_apk, download a [64-bit version of Crosswalk](https://download.01.org/crosswalk/releases/crosswalk/android/beta/latest/x86_64/), unpack it, and use the --arch option as shown below:
-
-```
-> wget https://download.01.org/crosswalk/releases/crosswalk/android/beta/16.45.421.7/crosswalk-16.45.421.7-64bit.zip
-> unzip crosswalk-16.45.421.7-64bit.zip
-> cd crosswalk-16.45.421.7-64bit
-> python make_apk.py --arch=x86_64 --package=org.xwalk.test \
-  --manifest=/path/to/manifest.json
-```

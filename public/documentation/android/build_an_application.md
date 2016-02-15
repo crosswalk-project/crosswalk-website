@@ -1,12 +1,35 @@
 # Building a Crosswalk application
 
-Crosswalk is a runtime for HTML5 applications. This means that any existing HTML5 applications should run on Crosswalk, providing they already run in a modern browser (Chrome, Firefox, Safari).
+Crosswalk is a runtime for HTML5 applications. This means that existing HTML5 applications should run with Crosswalk. Follow any of the options below to create and package a web application.
 
+1. [Use an existing web application project](#existing)
+2. [Create a sample project using crosswalk-app create &lt;package id&gt;](#create)
+3. [Manually create a very simple web project](#manual)
+
+## <a class="doc-anchor" id="existing"></a>Use an existing web application
+If you already have an existing project, you need only add an icon and a manifest.json file.
+
+<img src="/assets/existing-project.png" style="border:solid black 1px; display: block; margin: 0 auto"/>
+
+See step [3.2](#manifest) below for a description of the manifest.
+
+After adding the icon(s) and manifest, You can proceed to [build your application](#build-application).
+
+## <a class="doc-anchor" id="create"></a>Create a sample project using crosswalk-app
+The crosswalk-app tool can create a starting template for your application:
+```
+> crosswalk-app create <package id>
+```
+`package-id` is the 3-part Internet-domain name for your package, such as com.abc.myappname. For details on the format, see the [Android package documentation](http://developer.android.com/guide/topics/manifest/manifest-element.html#package).
+
+The command above will create a project with the following structure:
+
+<img src="/assets/create-project.png" style="border:solid black 1px; display: block; margin: 0 auto"/>
+
+Once created, you can proceed to [build your application](#build-application).
+
+## <a class="doc-anchor" id="manual"></a>Manually create a very simple web project
 For the purposes of this tutorial, we use the simplest possible Crosswalk application: one HTML file.
-
-However, because Crosswalk applications are intended to integrate well with the target environment, they require an additional file, `manifest.json`, containing metadata for that purpose. The manifest can be used to specify icons to use at different resolutions, set an app description, adjust [content security policy settings](http://developer.chrome.com/extensions/contentSecurityPolicy.html), and otherwise configure how the app integrates with the target environment.
-
-<h2 id="A-simple-application">A simple application</h2>
 
 1.  First, create a directory called `xwalk-simple` for the project:
 
@@ -23,11 +46,11 @@ However, because Crosswalk applications are intended to integrate well with the 
 
 3.  Create two text files inside `xwalk-simple` (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):
 
-    1.  `index.html`
+    1. `index.html`
 
-        This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.
+       This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.
 
-        The content should be:
+       The content should be:
 
             <!DOCTYPE html>
             <html>
@@ -42,11 +65,11 @@ However, because Crosswalk applications are intended to integrate well with the 
               </body>
             </html>
 
-    2.  `manifest.json`
+    2. <a class="doc-anchor" id="manifest"></a>`manifest.json`
 
-        This contains the application metadata (see above).
+       This contains the application metadata (see above).
 
-        The content should be:
+       The content should be:
 
             {
               "name": "simple",
@@ -64,4 +87,13 @@ However, because Crosswalk applications are intended to integrate well with the 
 
         See [the manifest documentation](/documentation/manifest.html) for more information.
 
-Once you've done this, you're ready to run the application on a target.
+## <a class="doc-anchor" id="build-application"></a>Build the application
+Once your application is ready, with an icon and manifest.json file, it is ready to be packaged with Crosswalk. 
+
+    > crosswalk-app build <path>
+
+This command downloads and imports Crosswalk and creates a package using the files in the path. By default, it will create [debug](android_remote_debugging.html), [embedded](/documentation/shared_mode.html), [32-bit](android_64bit.html) APKs for both x86 and ARM architectures (recommended). 64-bit APKs can also be created. For options, see the "Usage" section of the [Crosswalk-app-tools page](/documentation/crosswalk-app-tools.html), or view the help:
+
+    > crosswalk-app help
+
+You are now ready to run the application on a target.
