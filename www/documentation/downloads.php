@@ -243,38 +243,70 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-// Returns version from website, if exists. Assumes file directory
-// Example ret val: "16.45.421.19"
-function getVersion ($dir)
-{
-    $matches = array();
-    $pattern = "/crosswalk\-\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\.zip/i";
-    $subject = file_get_contents($dir);
-    $retVal = preg_match ($pattern, $subject, $matches);
-    if ($retVal) {
-        //return version number
-        $retVal = substr($matches[0], 10, strlen($matches[0]) - 14);
-    }
-    return $retVal;
-}
-
 $stableVersion = "N/A";
 $betaVersion = "N/A";
 $canaryVersion = "N/A";
 $baseUrl = "https://download.01.org/crosswalk/releases/crosswalk/android";
 
-$retVal = getVersion ($baseUrl . "/stable/latest");
-if ($retVal) {
-    $stableVersion = $retVal;
+
+// Get the version from website content. Example: "16.45.421.19"
+function getVersion ($subject)
+{
+    $matches = array();
+    $pattern = "/crosswalk\-\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\.zip/i";
+    $retVal = preg_match ($pattern, $subject, $matches);
+    if ($retVal) {
+        //return version number
+        $retVal = substr($matches[0], 10, strlen($matches[0]) - 14);
+    } else {
+        $retVal = "N/A";
+    }
+    return $retVal;
 }
-$retVal = getVersion ($baseUrl . "/beta/latest");
-if ($retVal) {
-    $betaVersion = $retVal;
-}
-$retVal = getVersion ($baseUrl . "/canary/latest");
-if ($retVal) {
-    $canaryVersion = $retVal;
-}
+
+
+// create 3 cURL resources (async retrieve stable,beta,canary info)
+$ch1 = curl_init();
+curl_setopt($ch1, CURLOPT_URL, $baseUrl . "/stable/latest");
+curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch1, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch1, CURLOPT_HEADER, false);
+
+$ch2 = curl_init();
+curl_setopt($ch2, CURLOPT_URL, $baseUrl . "/beta/latest");
+curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch2, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch2, CURLOPT_HEADER, false);
+
+$ch3 = curl_init();
+curl_setopt($ch3, CURLOPT_URL, $baseUrl . "/canary/latest");
+curl_setopt($ch3, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch3, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch3, CURLOPT_HEADER, false);
+
+$mh = curl_multi_init();
+curl_multi_add_handle($mh,$ch1);
+curl_multi_add_handle($mh,$ch2);
+curl_multi_add_handle($mh,$ch3);
+
+do {
+    curl_multi_exec($mh, $running);
+    curl_multi_select($mh);
+} while ($running > 0);
+
+$r1 = curl_multi_getcontent($ch1);
+$r2 = curl_multi_getcontent($ch2);
+$r3 = curl_multi_getcontent($ch3);
+$stableVersion = getVersion ($r1);
+$betaVersion   = getVersion ($r2);
+$canaryVersion = getVersion ($r3);
+
+//close handles
+curl_multi_remove_handle($mh, $ch1);
+curl_multi_remove_handle($mh, $ch2);
+curl_multi_remove_handle($mh, $ch3);
+curl_multi_close($mh);
+
 ?>
 
 <style>
@@ -302,12 +334,24 @@ if ($retVal) {
       <th>Android<br/>(ARM + x86)</th>
 
 <?php
-echo '      <td><a href="' . $baseUrl . '/stable/latest/crosswalk-' . $stableVersion . '.zip">32-bit</a> / ' .
-               '<a href="' . $baseUrl . '/stable/latest/crosswalk-' . $stableVersion . '-64bit.zip">64-bit</a></td>';
-echo '      <td><a href="' . $baseUrl . '/beta/latest/crosswalk-'   . $betaVersion   . '.zip">32-bit</a> / ' .
-               '<a href="' . $baseUrl . '/beta/latest/crosswalk-'   . $betaVersion   . '-64bit.zip">64-bit</a></td>';
-echo '      <td><a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '.zip">32-bit</a> / ' .
-               '<a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '-64bit.zip">64-bit</a></td>';
+if ($stableVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/stable/latest/crosswalk-' . $stableVersion . '.zip">32-bit</a> / ' .
+                   '<a href="' . $baseUrl . '/stable/latest/crosswalk-' . $stableVersion . '-64bit.zip">64-bit</a></td>';
+}
+if ($betaVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else { 
+    echo '      <td><a href="' . $baseUrl . '/beta/latest/crosswalk-'   . $betaVersion   . '.zip">32-bit</a> / ' .
+                   '<a href="' . $baseUrl . '/beta/latest/crosswalk-'   . $betaVersion   . '-64bit.zip">64-bit</a></td>';
+}
+if ($canaryVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '.zip">32-bit</a> / ' .
+                   '<a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '-64bit.zip">64-bit</a></td>';
+}
 ?>
     </tr>
 
@@ -317,12 +361,25 @@ echo '      <td><a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVer
 //    x86/crosswalk-webview-16.45.421.19-x86.zip
 // x86_64/crosswalk-webview-16.45.421.19-x86_64.zip
 
-echo '      <td><a href="' . $baseUrl . '/stable/latest/x86/crosswalk-webview-'    . $stableVersion . '-x86.zip">32-bit</a> / ' .
-               '<a href="' . $baseUrl . '/stable/latest/x86_64/crosswalk-webview-' . $stableVersion . '-x86_64.zip">64-bit</a></td>';
-echo '      <td><a href="' . $baseUrl . '/beta/latest/x86/crosswalk-webview-'      . $betaVersion   . '-x86.zip">32-bit</a> / ' .
-               '<a href="' . $baseUrl . '/beta/latest/x86_64/crosswalk-webview-'   . $betaVersion   . '-x86_64.zip">64-bit</a></td>';
-echo '      <td><a href="' . $baseUrl . '/canary/latest/x86/crosswalk-webview-'    . $canaryVersion . '-x86.zip">32-bit</a> / ' .
-               '<a href="' . $baseUrl . '/canary/latest/x86_64/crosswalk-webview-' . $canaryVersion . '-x86_64.zip">64-bit</a></td>';
+if ($stableVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/stable/latest/x86/crosswalk-webview-'    . $stableVersion . '-x86.zip">32-bit</a> / ' .
+                   '<a href="' . $baseUrl . '/stable/latest/x86_64/crosswalk-webview-' . $stableVersion . '-x86_64.zip">64-bit</a></td>';
+}
+if ($betaVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else { 
+    echo '      <td><a href="' . $baseUrl . '/beta/latest/x86/crosswalk-webview-'      . $betaVersion   . '-x86.zip">32-bit</a> / ' .
+                   '<a href="' . $baseUrl . '/beta/latest/x86_64/crosswalk-webview-'   . $betaVersion   . '-x86_64.zip">64-bit</a></td>';
+}
+if ($canaryVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/canary/latest/x86/crosswalk-webview-'    . $canaryVersion . '-x86.zip">32-bit</a> / ' .
+                   '<a href="' . $baseUrl . '/canary/latest/x86_64/crosswalk-webview-' . $canaryVersion . '-x86_64.zip">64-bit</a></td>';
+}
+
 ?>
     </tr>
 
@@ -332,12 +389,25 @@ echo '      <td><a href="' . $baseUrl . '/canary/latest/x86/crosswalk-webview-' 
 //   arm/crosswalk-webview-16.45.421.19-arm.zip
 //arm64/crosswalk-webview-16.45.421.19-arm64.zip
 
-echo '      <td><a href="' . $baseUrl . '/stable/latest/arm/crosswalk-webview-'    . $stableVersion . '-arm.zip">32-bit</a> / ' .
-               '<a href="' . $baseUrl . '/stable/latest/arm64/crosswalk-webview-' . $stableVersion . '-arm64.zip">64-bit</a></td>';
-echo '      <td><a href="' . $baseUrl . '/beta/latest/arm/crosswalk-webview-'      . $betaVersion   . '-arm.zip">32-bit</a> / ' .
-               '<a href="' . $baseUrl . '/beta/latest/arm64/crosswalk-webview-'   . $betaVersion   . '-arm64.zip">64-bit</a></td>';
-echo '      <td><a href="' . $baseUrl . '/canary/latest/arm/crosswalk-webview-'    . $canaryVersion . '-arm.zip">32-bit</a> / ' .
-               '<a href="' . $baseUrl . '/canary/latest/arm64/crosswalk-webview-' . $canaryVersion . '-arm64.zip">64-bit</a></td>';
+if ($stableVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/stable/latest/arm/crosswalk-webview-'    . $stableVersion . '-arm.zip">32-bit</a> / ' .
+                   '<a href="' . $baseUrl . '/stable/latest/arm64/crosswalk-webview-' . $stableVersion . '-arm64.zip">64-bit</a></td>';
+}
+if ($betaVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else { 
+    echo '      <td><a href="' . $baseUrl . '/beta/latest/arm/crosswalk-webview-'      . $betaVersion   . '-arm.zip">32-bit</a> / ' .
+                   '<a href="' . $baseUrl . '/beta/latest/arm64/crosswalk-webview-'   . $betaVersion   . '-arm64.zip">64-bit</a></td>';
+}
+if ($canaryVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/canary/latest/arm/crosswalk-webview-'    . $canaryVersion . '-arm.zip">32-bit</a> / ' .
+                   '<a href="' . $baseUrl . '/canary/latest/arm64/crosswalk-webview-' . $canaryVersion . '-arm64.zip">64-bit</a></td>';
+}
+
 ?>      
     </tr>
   </table>
