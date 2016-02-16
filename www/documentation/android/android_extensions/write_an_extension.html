@@ -447,7 +447,7 @@ public class Message {
 <p>Before you can build the extension, you will need to add the other required files, as explained below.</p>
 <h2 id="Add-the-extension-configuration-file">Add the extension configuration file</h2>
 
-<p>The configuration file tells the Crosswalk packaging tool (<code>make_apk.py</code>) how the Java and JavaScript parts of the extension work together.</p>
+<p>The configuration file tells the Crosswalk packaging tool how the Java and JavaScript parts of the extension work together.</p>
 <p>Create a JSON file <code>xwalk-echo-extension.json</code> with this content:</p>
 <pre><code>{
   &quot;name&quot;:  &quot;echo&quot;,
@@ -648,7 +648,7 @@ $ cp apache-ivy-2.4.0-rc1/ivy-2.4.0-rc1.jar tools/</code></pre>
 </ol>
 <h3 id="Add-an-Ant-buildfile">Add an Ant buildfile</h3>
 
-<p>You should have already installed Ant as described in the <em>Getting started</em> instructions (<a href="/documentation/android/windows_host_setup.html#Install-Ant">Windows</a>, <a href="/documentation/android/linux_host_setup.html#Install-Ant">Linux</a>).</p>
+<p>You should have already installed Ant as described on the <a href="/documentation/android/system_setup.html">system setup page</a></p>
 <p>Once Ant is installed, add a buildfile, <code>build.xml</code>, to the top-level directory of your project with this content:</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;project xmlns:ivy=&quot;antlib:org.apache.ivy.ant&quot; name=&quot;xwalk-echo-extension&quot; default=&quot;dist&quot;&gt;

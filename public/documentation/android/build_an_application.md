@@ -2,9 +2,9 @@
 
 Crosswalk is a runtime for HTML5 applications. This means that existing HTML5 applications should run with Crosswalk. Follow any of the options below to create and package a web application.
 
-1. [Use an existing web application project](#existing)
-2. [Create a sample project using crosswalk-app create &lt;package id&gt;](#create)
-3. [Manually create a very simple web project](#manual)
+* [Use an existing web application project](#existing)
+* [Create a sample project using crosswalk-app create &lt;package id&gt;](#create)
+* [Manually create a very simple web project](#manual)
 
 ## <a class="doc-anchor" id="existing"></a>Use an existing web application
 If you already have an existing project, you need only add an icon and a manifest.json file.

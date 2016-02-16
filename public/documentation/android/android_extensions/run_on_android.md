@@ -10,25 +10,26 @@ To make Android packages for your project, do the following:
 
 2.  After the build, the extension project directory (`xwalk-echo-extension-src/`) will contain a `lib/crosswalk-${XWALK-STABLE-ANDROID-X86}` directory, which is an unpacked Crosswalk Android distribution. You can use the scripts in here to build the Android packages.
 
-    Ensure you have installed the Android SDK correctly ([Windows](/documentation/android/windows_host_setup.html#Install-the-Android-SDK), [Linux](/documentation/android/linux_host_setup.html#Install-the-Android-SDK)). Then use these commands to create the packages:
+    Follow the [system setup page](/documentation/android/system_setup.html) to installed the Android SDK. Then use these commands to create the packages:
 
-        # set an environment variable to the location of the project
-        $ PROJECT_DIR=~/<my projects directory>/xwalk-echo-project
+    * Set an environment variable to the location of the project
 
-        # enter the unpacked Crosswalk Android directory
-        $ cd $PROJECT_DIR/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}
+            > PROJECT_DIR=~/<my projects directory>/xwalk-echo-project
 
-        # invoke the package builder
-        $ python make_apk.py --package=org.crosswalkproject.example \
-            --enable-remote-debugging --fullscreen \
-            --manifest=$PROJECT_DIR/xwalk-echo-app/manifest.json \
-            --extensions=$PROJECT_DIR/xwalk-echo-extension-src/xwalk-echo-extension/
+    * Enter the unpacked Crosswalk Android directory
+
+            > cd $PROJECT_DIR/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}
+
+    * Invoke the package builder
+    
+            > python make_apk.py --package=org.crosswalkproject.example \
+              --enable-remote-debugging --fullscreen \
+              --manifest=$PROJECT_DIR/xwalk-echo-app/manifest.json \
+              --extensions=$PROJECT_DIR/xwalk-echo-extension-src/xwalk-echo-extension/
 
     The generated packages are in the `~/<my projects directory>/xwalk-echo-project/xwalk-echo-extension-src/lib/crosswalk-${XWALK-STABLE-ANDROID-X86}` directory, and called `xwalk_echo_app_x86.apk` and `xwalk_echo_app_arm.apk`.
 
-    Note that if you are using multiple extension directories, you still have a single `--extensions` option but supply the paths as a comma-delimited string, e.g.
-
-        --extensions=myextension1,myextension2
+    Note that if you are using multiple extension directories, you still have a single `--extensions` option but supply the paths as a comma-delimited string, e.g. `--extensions=myextension1,myextension2`
 
 ## Install a package on a target
 

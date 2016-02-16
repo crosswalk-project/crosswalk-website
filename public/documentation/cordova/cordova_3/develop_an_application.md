@@ -4,7 +4,7 @@ These instructions were tested with crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86
 
 The development environment used was Linux (Fedora 20), but the instructions should also work for Windows.
 
-<h2 id="Set-up-the-host">Set up the host</h2>
+## <a class="doc-anchor" id="Set-up-the-host"></a>Set up the host
 
 Crosswalk Cordova for Android needs the following software to be installed on the development host:
 
@@ -14,29 +14,17 @@ Crosswalk Cordova for Android needs the following software to be installed on th
 *   Android SDK (with Android platform version 4.0 or later installed)
 *   [node](http://nodejs.org)
 
-The host setup instructions ([Windows](/documentation/android/windows_host_setup.html), [Linux](/documentation/android/linux_host_setup.html)) explain how to install all of these pre-requisites, except node.
+The [host setup instructions](/documentation/android/system_setup.html) explain how to install all of these pre-requisites.
 
-To install node, follow the [instructions on the nodejs.org website](http://nodejs.org/download/).
+### <a id="Download-the-crosswalk-cordova-android-bundle"></a>Download the crosswalk-cordova-android bundle
 
-Additional instructions for installing the Java JDK, Apache Ant, and the Android SDK can be found in the [Cordova Android Platform Guide](http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide).
+Once you've installed the pre-requisite software, download the crosswalk-cordova-android bundle. Since we now recommend using the Crosswalk webview plugin available in Cordova 4, we have removed the crosswalk-cordova3 links from the download page. However they are still available online. Follow the link below and navigate to the appropriate architecture. Then select the file named `crosswalk-cordova3-<version>-<arch>.zip`.
 
-<h3 id="Download-the-crosswalk-cordova-android-bundle">Download the crosswalk-cordova-android bundle</h3>
+[Latest Crosswalk releases](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/)
 
-Once you've installed the pre-requisite software, download the crosswalk-cordova-android bundle from [the downloads page](/documentation/downloads.html). Ensure that you get the correct bundle for your target architecture.
+Once you've downloaded the zip file, unzip it.
 
-For example, to get the stable x86 version:
-
-    $ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-CORDOVA-X86}/x86/crosswalk-cordova-${XWALK-STABLE-CORDOVA-X86}-x86.zip
-
-Or the ARM version:
-
-    $ wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/${XWALK-STABLE-CORDOVA-ARM}/arm/crosswalk-cordova-${XWALK-STABLE-CORDOVA-ARM}-arm.zip
-
-If you prefer, you can download Crosswalk Cordova via a browser by following the links on the [Downloads page](/documentation/downloads.html).
-
-Once you've downloaded the zip file, unzip it (WinZip, 7Zip, command line etc.).
-
-<h2 id="Set-up-the-target">Set up the target</h2>
+## <a id="Set-up-the-target"></a>Set up the target
 
 You will need an Android target to deploy the Cordova application to. You can either use a real Android device or an emulated one. Instructions for both are on the [Android target setup page](/documentation/android/android_target_setup.html).
 

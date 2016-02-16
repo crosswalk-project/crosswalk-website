@@ -298,8 +298,7 @@
 </ul>
 <p>You could have a host machine to run the server and two Android devices to run the client applications if you prefer. Alternatively, you could use one or more emulated Android devices, providing they are able to emulate the camera.</p>
 <h3>Host setup</h3>
-<p>The host should first be set up for Crosswalk Android development (<a href="/documentation/android/windows_host_setup.html">Windows</a>, <a href="/documentation/android/linux_host_setup.html">Linux</a>). </p>
-<p>You will also need to install <a href="http://nodejs.org/"><strong>node</strong></a> to run the server. Providing you use a recent enough version of node, it should also include the <strong>npm</strong> package manager; if not, you will need to install that separately.</p>
+<p>Follow the instructions on the <a href="/documentation/android/system_setup.html">system setup page</a> to set up for Crosswalk Android development.</p>
 <h3>Target setup</h3>
 <p>For Android targets, ensure that you <a href="/documentation/android/android_target_setup.html">have access via adb</a>. No special setup is required beyond that.</p>
 <p>If you are using a desktop machine as a target, no special setup is required, other than ensuring that you have a Chrome browser installed.</p>
@@ -643,23 +642,10 @@ peer server running on 192.168.0.25:9000</code></pre>
 </li>
 </ol>
 <h3>Run on Android with Crosswalk</h3>
-<p>During the host setup for Android (<a href="/documentation/android/windows_host_setup.html#Download-the-Crosswalk-Android-app-template">Windows</a>, <a href="/documentation/about/linux_host_setup.html#Download-the-Crosswalk-Android-app-template">Linux</a>), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on <a href="/documentation/android/run_on_android.html">this page</a>, but here&#39;s a summary (tested on Linux):</p>
-<pre><code>$ cd crosswalk-${XWALK-STABLE-ANDROID-X86}
-
-$ python make_apk.py --package=org.crosswalkproject.example \
-    --manifest=xwalk-webrtc/client/manifest.json
-...
-An APK for the web application &quot;WebRTC&quot; including the
-Crosswalk Runtime built for x86 was generated successfully,
-which can be found at
-/home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_x86.apk.
-An APK for the web application &quot;WebRTC&quot; including the
-Crosswalk Runtime built for arm was generated successfully,
-which can be found at
-/home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.apk.
-
-# install the package for your target&#39;s architecture
-$ adb install /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.apk</code></pre>
+<p>During the <a href="/documentation/android/system_setup.html">host setup for Android</a>, you will have downloaded the Crosswalk app tools. Follow the <a href="/documentation/build_an_application.html">steps to build</a> your new application.</p>
+<pre><code>&gt; crosswalk-app build &lt;dir&gt;</code></pre>
+<p>Install the package for your target&#39;s architecture</p>
+<pre><code>&gt; adb install &lt;apk&gt;</code></pre>
 <p>Finally, start the application on the target by selecting its icon in the applications list.</p>
 <h3><a class="doc-anchor" id="Make-a-call"></a>Make a call</h3>
 <p>Once the application is running on two targets, you should be able to make a call between them by following these steps:</p>
@@ -698,9 +684,7 @@ $ adb install /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.ap
 </li>
 <li><p>Try opening two tabs in a single Chrome browser on a laptop machine, and load the client application into both. These tabs can still make calls to each other, but it&#39;s much easier to get at the logs (through the developer console: Ctrl+Shift+j).</p>
 </li>
-<li><p>To debug the client application running in Crosswalk Android, build the package with the <code>--enable-remote-debugging</code> option:</p>
-<pre><code>$ python make_apk.py --package=org.crosswalkproject.example \
-  --enable-remote-debugging --manifest=...</code></pre>
+<li><p>Packages built with <code>crosswalk-app build</code> have debug information included by default.</p>
 <p>Once the application is launched on the Android target, open Chrome and go to the special &quot;chrome://inspect&quot; address. You should see the Android target listed, along with applications which can be debugged:</p>
 <p><img src="/assets/crosswalk-webrtc-debug.png" alt="Debugging the WebRTC client application on Android"></p>
 <p>Click on the link to open a console for the application. Look for error messages.</p>

@@ -1,8 +1,6 @@
 # Host and target setup
 
-You should have set up a development environment as explained in [Getting started](/documentation/getting_started.html). In particular, you need to follow the pages about setting up a host for Crosswalk Android ([Windows](/documentation/android/windows_host_setup.html), [Linux](/documentation/android/linux_host_setup.html)).
-
-These instructions have been tested on a Fedora Linux 20 host, in a bash shell; but they could be adapted to other environments (e.g. Windows console).
+Follow the [system setup page](/documentation/android/system_setup.html) to set up the Crosswalk development environment.
 
 You will also need to [set up an Android target](/documentation/android/android_target_setup.html). For testing, you can either use [your own Android device](/documentation/android/android_target_setup.html#Android-Device) or [an emulated device](/documentation/android/android_target_setup.html#android-emulator). I used:
 

@@ -157,7 +157,7 @@ Before you can build the extension, you will need to add the other required file
 
 <h2 id="Add-the-extension-configuration-file">Add the extension configuration file</h2>
 
-The configuration file tells the Crosswalk packaging tool (`make_apk.py`) how the Java and JavaScript parts of the extension work together.
+The configuration file tells the Crosswalk packaging tool how the Java and JavaScript parts of the extension work together.
 
 Create a JSON file `xwalk-echo-extension.json` with this content:
 
@@ -400,7 +400,7 @@ Follow the instructions below to install and configure Ivy:
 
 <h3 id="Add-an-Ant-buildfile">Add an Ant buildfile</h3>
 
-You should have already installed Ant as described in the *Getting started* instructions ([Windows](/documentation/android/windows_host_setup.html#Install-Ant), [Linux](/documentation/android/linux_host_setup.html#Install-Ant)).
+You should have already installed Ant as described on the [system setup page](/documentation/android/system_setup.html)
 
 Once Ant is installed, add a buildfile, `build.xml`, to the top-level directory of your project with this content:
 

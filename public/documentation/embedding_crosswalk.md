@@ -4,8 +4,8 @@ The Crosswalk Project embedding API enables you to embed the Crosswalk Project r
 
 Using the embedding API is only recommended for cases where you have a substantial amount of Java code in your application, but want to write the UI (or parts of the UI) using web technologies. If you just need a runtime wrapper for a web application, there are two simpler options for deploying to Android with Crosswalk:
 
-*   [Use the default Crosswalk packaging tools](/documentation/android/run_on_android.html) to generate an Android package for your web application.
-*   [Use Cordova with Crosswalk](/documentation/cordova.html): that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.
+*   [Use the default Crosswalk packaging tools](/documentation/android/build_an_application.html) to generate an Android package for your web application.
+*   [Use Cordova with Crosswalk](/documentation/cordova/cordova_4.html): that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.
 
 If you do decide to use the embedding API, follow the instructions below which explain how to use it.
 
@@ -21,7 +21,7 @@ The tutorial steps were tested on Linux (Fedora 20), but should be adaptable to 
 
 ### Set up the host and target
 
-Before you use the embedding API, ensure that you have [set up your host environment for Android development](/documentation/android/linux_host_setup.html).
+Before you use the embedding API, ensure that you have [set up your host environment for Android development](/documentation/android/system_setup.html).
 
 You will also need to set up an Android target to deploy the application to, as described on the [Android target setup](/documentation/android/android_target_setup.html) page.
 
@@ -29,13 +29,9 @@ As this tutorial uses ADT, ensure that you have [installed the necessary ADT com
 
 ### Download the Crosswalk webview bundle
 
-On the host (the machine you're writing the code), download the Crosswalk webview bundle. This contains the libraries and supporting tools for embedding Crosswalk in an application.
+<button onclick="location.href = '/documentation/downloads.html';">Downloads</button>
 
-For example, to get the latest beta Crosswalk webview for x86 architecture:
-
-    $ wget https://download.01.org/crosswalk/releases/crosswalk/android/beta/${XWALK-BETA-ANDROID-X86}/x86/crosswalk-webview-${XWALK-BETA-ANDROID-X86}-x86.zip
-
-Note that the webview is architecture specific, so you will need a different package if you are deploying to ARM. See [this page](/documentation/downloads.html) for a complete list of downloads.
+Download the Crosswalk webview bundle to your development system. The webview bundle contains the libraries and supporting tools for embedding Crosswalk in an application.  Note that the webview is architecture specific, so you will need to build multiple version for ARM, x86, and 64-bit devices.
 
 Unzip the downloaded `.zip` file.
 

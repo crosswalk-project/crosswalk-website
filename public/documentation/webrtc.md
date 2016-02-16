@@ -82,9 +82,7 @@ You could have a host machine to run the server and two Android devices to run t
 
 ### Host setup
 
-The host should first be set up for Crosswalk Android development ([Windows](/documentation/android/windows_host_setup.html), [Linux](/documentation/android/linux_host_setup.html)). 
-
-You will also need to install [**node**](http://nodejs.org/) to run the server. Providing you use a recent enough version of node, it should also include the **npm** package manager; if not, you will need to install that separately.
+Follow the instructions on the [system setup page](/documentation/android/system_setup.html) to set up for Crosswalk Android development.
 
 ### Target setup
 
@@ -470,24 +468,13 @@ To run the application on a desktop machine via Chrome, do the following:
 
 ### Run on Android with Crosswalk
 
-During the host setup for Android ([Windows](/documentation/android/windows_host_setup.html#Download-the-Crosswalk-Android-app-template), [Linux](/documentation/about/linux_host_setup.html#Download-the-Crosswalk-Android-app-template)), you will have downloaded the Crosswalk Android bundle. You can use this to generate an Android package for the client application. Full details are on [this page](/documentation/android/run_on_android.html), but here's a summary (tested on Linux):
+During the [host setup for Android](/documentation/android/system_setup.html), you will have downloaded the Crosswalk app tools. Follow the [steps to build](/documentation/build_an_application.html) your new application.
 
-    $ cd crosswalk-${XWALK-STABLE-ANDROID-X86}
+    > crosswalk-app build <dir>
+    
+Install the package for your target's architecture
 
-    $ python make_apk.py --package=org.crosswalkproject.example \
-        --manifest=xwalk-webrtc/client/manifest.json
-    ...
-    An APK for the web application "WebRTC" including the
-    Crosswalk Runtime built for x86 was generated successfully,
-    which can be found at
-    /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_x86.apk.
-    An APK for the web application "WebRTC" including the
-    Crosswalk Runtime built for arm was generated successfully,
-    which can be found at
-    /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.apk.
-
-    # install the package for your target's architecture
-    $ adb install /home/me/crosswalk-${XWALK-STABLE-ANDROID-X86}/WebRTC_0.0.1_arm.apk
+    > adb install <apk>
 
 Finally, start the application on the target by selecting its icon in the applications list.
 
@@ -541,10 +528,7 @@ If one or both of the client applications isn't working, or you have problems ma
 
 *   Try opening two tabs in a single Chrome browser on a laptop machine, and load the client application into both. These tabs can still make calls to each other, but it's much easier to get at the logs (through the developer console: Ctrl+Shift+j).
 
-*   To debug the client application running in Crosswalk Android, build the package with the `--enable-remote-debugging` option:
-
-        $ python make_apk.py --package=org.crosswalkproject.example \
-          --enable-remote-debugging --manifest=...
+*   Packages built with `crosswalk-app build` have debug information included by default.
 
     Once the application is launched on the Android target, open Chrome and go to the special "chrome://inspect" address. You should see the Android target listed, along with applications which can be debugged:
 
