@@ -348,41 +348,6 @@ with Crosswalk&#39;s shared mode:</p>
 <p>The AAR files will both be located in the <code>out/Release</code> directory.</p>
 </li>
 </ol>
-<h2>Building Crosswalk for Tizen</h2>
-<p>If you are unfamiliar with the RPM packaging process on Tizen, please
-consult the
-<a href="https://source.tizen.org/documentation/reference/git-build-system">GBS documentation</a>.</p>
-<p>Crosswalk&#39;s layout is a bit unusual, as it actually contains several
-independent git and Subversion repositories in the same directory tree.
-We employ some tricks to make it work with GBS, but it should all be
-transparent to users - the only actual caveat is that GBS will
-build <em>everything</em> that is in your source tree regardless of whether
-it has been committed or not; that is, it always acts as if
-the <code>--include-all</code> parameter has been passed to <code>gbs build</code>.</p>
-<p>That said, building an RPM for Tizen (after properly setting up your
-Tizen repositories) should be a matter of calling <code>gbs build</code>:</p>
-<pre><code>cd /path/to/src/xwalk
-gbs build -A i586</code></pre>
-<p>By default, the generated RPM files end up in
-<code>~/GBS-ROOT/local/repos/&lt;repository name&gt;/i586/RPMS</code>.</p>
-<h3>Testing a Tizen build</h3>
-<p>The steps for installing a Tizen rpm on a device are covered in
-<a href="/documentation/tizen/tizen_target_setup.html">Tizen target set up</a>.</p>
-<p>Running an application on Tizen is covered in
-<a href="/documentation/tizen/run_on_tizen.html">Run on Tizen</a>.</p>
-<h3>Incremental builds</h3>
-<p>By default, each time you call <code>gbs build</code>, the Tizen build directory
-will be erased and the build will start from scratch. To avoid that,
-you can set a different build directory in the Tizen chroot,
-outside <code>/home/abuild/rpmbuild</code>:</p>
-<pre><code>gbs build -A i586 --define &#39;BUILDDIR_NAME /tmp/crosswalk-builddir&#39;</code></pre>
-<h3>Troubleshooting</h3>
-<ul>
-<li>The directory you use as the GBS root must be an actual directory:
-symbolic links can cause problems.</li>
-<li>The GBS root directory must be on the same partition as your root
-directory (<code>/</code>).</li>
-</ul>
 <h2>Running the test suites</h2>
 <p>If you are interested in running Crosswalk&#39;s test suites, you can
 build the test suites from the <code>src</code> directory with:</p>
