@@ -1,3 +1,7 @@
+
+// App array that matches search value -- temporary whenever there is a search string active
+var appSearchArray = null;
+
 // Create application div for apps.php 
 /*
 --- Finished app div: ----
@@ -47,7 +51,7 @@ function printResultDiv (row) {
 }
 
 // Go through all apps and create divs
-function displayApps(dbRows, where) {
+function displayApps(dbRows) {
     var output = "", i;
     for (i=0; i<dbRows.length; i++) {
         var row = dbRows[i];
@@ -56,4 +60,64 @@ function displayApps(dbRows, where) {
     output += "<br clear='all' /><br>(App count: " + dbRows.length + ")";
     return output;
 }
+
+// Sort function
+var sort_by = function (field, asc, primer) {
+   var key = primer ? 
+       function(x) {return primer(x[field])} : 
+       function(x) {return x[field]};
+   asc = !asc ? -1 : 1;
+   return function (a, b) {
+       return a = key(a), b = key(b), asc * ((a > b) - (b > a));
+   } 
+}
+
+function sortApps (sort) {
+    // only sort visible (matching search) apps
+    var appSortArray = (appSearchArray ? appSearchArray : dbRows);
+
+    switch (sort) {
+      case "AZ":
+        appSortArray.sort (sort_by ("name", true, function(a){return a.toUpperCase()}));
+        break;
+      case "ZA":
+        appSortArray.sort (sort_by ("name", false, function(a){return a.toUpperCase()}));
+        break;
+      case "DownloadsHigh":
+        appSortArray.sort (sort_by ("downloads", false, parseInt));
+        break;
+      case "PublishedNew":
+        appSortArray.sort (sort_by ("publishDate", false));
+        break;
+      case "PublishedOld":
+        appSortArray.sort (sort_by ("publishDate", true));
+        break;
+    }
+    $('#appListGrid').html (displayApps(appSortArray));
+}
+
+function searchApps (str) {
+    if (str == "") {
+        $('#appListGrid').html (displayApps(dbRows));
+        appSearchArray = null;
+        return;
+    }
+    appSearchArray = $.grep(dbRows, function (app) { 
+        return (app.author.indexOf(str) > -1 || app.name.indexOf(str) > -1);
+    });
+    $('#appListGrid').html (displayApps(appSearchArray));
+}
+
+
+$(function() {
+    $("#appListSort" ).change(function() {
+        sortApps ($(this).val());
+    });
+
+    $("#appListSearch").on ('input', function () {
+        searchApps($(this).val());
+    });
+});
+
+
 

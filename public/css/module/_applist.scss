@@ -278,7 +278,80 @@
 }
 
 
-// ---------------------------------
+// ----- Search form ---------------
+
+#appSearchDiv {
+  border: 1px solid #b2b2b2;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+
+  position: relative;
+  height: 50px;
+  margin: 5px auto;
+  padding: 8px 0px;
+  display: flex;
+
+  font-family: Verdana, Arial,Helvetica, sans-serif;
+  font-size: 10pt;
+}
+
+#divSize { 
+  display: none;
+  width: 1%;
+  height: 34px;
+  float: left;
+}
+
+#labelSort,
+#labelSearch {
+  height: 33px;
+  margin: 2px 0px 0px 10px;
+  padding: 5px 3px 3px 3px;
+  float: left;
+  font-weight: normal;
+}
+
+#appListSort {
+  max-width: 180px;
+  min-width: 50px;
+  margin: 3px 10px 0px 5px;
+  height: 27px;
+  float:left;
+  flex: 2;
+}
+
+#appListSearch {
+  flex: 2;
+  float: left;
+  min-width: 50px;
+  height: 25px;
+  margin: 4px 10px 0px 5px;
+  padding: 0px 3px 0px 3px;
+
+  border: 1px solid #E1E1E1;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  transition: box-shadow 0.2s, border 0.2s;
+
+  color: #505050;
+
+  &:focus {
+    border: 1px solid black;
+  }
+}
+
+form.appSearchForm input:focus, select:focus {
+  background-color: #f1fafd; //light blue
+}
+
+form.appSearchForm input[type="image"] {
+  width: 31px;
+  height: 33px;
+  float: right;
+}
+
 /*
 
 .searchImg {
