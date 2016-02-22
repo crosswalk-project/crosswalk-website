@@ -103,12 +103,12 @@ After downloading Crosswalk for Windows and unzipping it you can easily try your
 3.  Inside your command line, navigate to the path where you unzipped Crosswalk and launch it using the method described in <a href="/documentation/windows/run_on_windows.html#Run-using-Crosswalk-binary-directly">Run using Crosswalk binary directly</a> with the following parameters:
 
     *  `--allow-external-extensions-for-remote-sources` (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and
-    *  `--external-extensions-path=/path/to/myextension/myextension.dll`.
+    *  `--external-extensions-path=/path/to/myextensiondir/`.
   
   The command line should look like this :
    ```
     > xwalk.exe --allow-external-extensions-for-remote-sources \
-                 --external-extensions-path=/path/to/myextension/myextension.dll \
+                 --external-extensions-path=/path/to/myextensiondir/ \
                  http://localhost:8000
    ```
 
