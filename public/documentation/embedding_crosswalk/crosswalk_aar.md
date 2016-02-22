@@ -281,13 +281,9 @@ The Maven android plugin has a known issue that it can't build multiple APKs for
 
 ## Samples
 
-We have created two sample applications demonstrating Gradle and Maven to get you started:  <a href="/documentation/samples/AAR-Sample.tar.gz">AAR-Sample.tar.gz</a>. 
+You can get the sample of using Crosswalk runtime library with Android Studio in <a href="https://github.com/crosswalk-project/crosswalk-samples/tree/master/embedded-gradle">crosswalk-samples</a>. An sample using classifier AAR with Maven you can get from <a href="/documentation/samples/xwalkEmbed-Maven.tar.gz">xwalkEmbed-Maven.tar.gz</a>. 
 
 After downloading, unzip it from the command line:
 
-    $ tar -xzvf AAR-Sample.tar.gz
+    $ tar -xzvf xwalkEmbed-Maven.tar.gz
 
-This will create an `AAR-Sample` directory with two project sub-directories:
-
-&nbsp;&nbsp;   \xwalkEmbed-Gradle &ndash; An example using multiple architecture AAR with Gradle.<br />
-&nbsp;&nbsp;   \xwalkEmbed-Maven &ndash; An example using classifier AAR with Maven.
