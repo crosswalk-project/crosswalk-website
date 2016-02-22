@@ -376,11 +376,11 @@ exports.echo2 = function (message, callback) {
 <li><p>Inside your command line, navigate to the path where you unzipped Crosswalk and launch it using the method described in <a href="/documentation/windows/run_on_windows.html#Run-using-Crosswalk-binary-directly">Run using Crosswalk binary directly</a> with the following parameters:</p>
 <ul>
 <li><code>--allow-external-extensions-for-remote-sources</code> (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and</li>
-<li><code>--external-extensions-path=/path/to/myextension/myextension.dll</code>.</li>
+<li><code>--external-extensions-path=/path/to/myextensiondir/</code>.</li>
 </ul>
 <p>The command line should look like this :</p>
 <pre><code>&gt; xwalk.exe --allow-external-extensions-for-remote-sources \
-             --external-extensions-path=/path/to/myextension/myextension.dll \
+             --external-extensions-path=/path/to/myextensiondir/ \
              http://localhost:8000</code></pre>
 </li>
 </ol>
