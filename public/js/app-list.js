@@ -103,7 +103,9 @@ function searchApps (str) {
         return;
     }
     appSearchArray = $.grep(dbRows, function (app) { 
-        return (app.author.indexOf(str) > -1 || app.name.indexOf(str) > -1);
+	//case insensitive search
+        return (app.author.toLowerCase().indexOf(str.toLowerCase()) > -1 ||
+		app.name.toLowerCase().indexOf(str.toLowerCase()) > -1);
     });
     $('#appListGrid').html (displayApps(appSearchArray));
 }
