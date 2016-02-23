@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Deploy to Windows store" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/windows/deploy_windows_store" />
+    <meta property="og:title" content="Introducing RealSense Web API" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-realsense-webapi" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/windows/deploy_windows_store" />
-    <meta name="twitter:title" content="Deploy to Windows store" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-realsense-webapi" />
+    <meta name="twitter:title" content="Introducing RealSense Web API" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -97,242 +97,59 @@
       <div class="doc-main">
         <div class="row">
           
-          
-<nav id="contents" class="article-toc nav-toggleContainer">
-  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
-  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
-  <ul class="article-list nav-toggleHide">
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/about.html">About</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/android.html">Android</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/ios.html">iOS</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/windows.html">Windows</a>
-
-         
-
-         <ul class="article-list">
-            
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/windows_host_setup.html">Windows host setup</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/build_an_application.html">Build an application</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/run_on_windows.html">Run on Windows</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/web_inspector_debugging.html">Web Inspector Debugging</a>
-
-             
-           </li>
-           
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/windows/deploy_windows_store.html">Deploy to Windows store</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/net_extensions.html">.NET extensions</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/build_crosswalk_for_windows.html">Build Crosswalk for Windows</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/extensions.html">Extensions</a>
-
-             
-           </li>
-           
-         </ul>
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/linux.html">Linux</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/samples.html">Samples</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/community.html">Community</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
-
-         
-       </li>
-    
-  </ul>
-
-</nav>
-
-
-
-<article class="article article--hasToC">
-  <h1>Deploy to the Windows store</h1>
-<p>Because Crosswalk for Windows is a C++ application and not a <a href="https://msdn.microsoft.com/library/windows/apps/dn894631.aspx">Microsoft universal app</a> we do not support deploying on the Windows store. However Microsoft did announce that they will allow deploying Win32 applications on the Windows 10 store through <a href="https://dev.windows.com/en-us/bridges">“Project Centennial”</a>. When the support is released we will evaluate the possibility to create Crosswalk applications that can be deployed on the Windows Store.</p>
-
-  <footer class="article-next">
-    
-
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
+          <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">Introducing RealSense Web API</h1>
+    <span class="article-meta">
+      <a href="crosswalk-realsense-webapi.html"><time class="js-vagueTime" datetime="Tue, 23 Feb 2016 00:00:00 GMT">Tue, 23 Feb 2016 00:00:00 GMT</time></a>
+       
+        by <span class="article-author">Web RealSense Team</span>
       
-    
+    </span>
+  </header>
   
-    
-    
-      
-      <a href="/documentation/windows/net_extensions.html" class="article-promo well">
-        <em>What’s next?</em>
-        <h3>.NET extensions</h3>
-      </a>
-    
-  
-    
-    
-  
-    
-    
-  
+  <p>Intel® <a href="https://software.intel.com/en-us/realsense/home">RealSense</a>™ technology redefines how we interact with our devices for a more natural, intuitive and immersive experience. By introducing 3D cameras with depth information combined with regular RGB data, new use cases are possible such as augmented reality, hand/face recognition, object tracking, and more. The <strong>Crosswalk Project Extensions for RealSense</strong> now brings these amazing capabilities to web developers.</p>
+<p>Our first public release (part of <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/tag/v18.6.0">Crosswalk v18.6.0</a>) includes the following:</p>
+<ul>
+<li>Depth Enhanced Photography (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">spec</a>)</li>
+<li>Scene Perception (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/scene-perception.html">spec</a>)</li>
+<li>Face Tracking and Recognition (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/face.html">spec</a>)</li>
+</ul>
+<p>Developers can create 3D-aware web applications that can be run on any Windows tablet with a built-in <a href="https://software.intel.com/en-us/RealSense/R200Camera">R200 camera</a>, such as the <a href="http://store.hp.com/us/en/ContentView?storeId=10151&amp;langId=-1&amp;catalogId=10051&amp;eSpotName=new-detachable">HP Spectre x2</a>, or a Windows PC with peripheral R200 camera. </p>
+<h2>Getting Started</h2>
+<p>Follow the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Usage-of-RealSense-Extensions">quick start page</a> to build your Realsense-powered web application. You can also download the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v18.6.0/rs_sample_v18.6.0.0_signed.zip">sample</a> for a quick glance.</p>
+<h2>Get involved</h2>
+<p>We invite you to contribute. This project is under the Crosswalk Project umbrella. The APIs are developed as external Crosswalk extensions, and the source code is hosted at <a href="http://github.com/crosswalk-project/realsense-extensions-crosswalk">http://github.com/crosswalk-project/realsense-extensions-crosswalk</a>. Please share any ideas you have for discussion on our mailing list: <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev">crosswalk-dev</a> and <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-help">crosswalk-help</a>. Follow the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Build-Instructions-for-Windows">instructions</a> to build the project.  Contribute your changes following regular github pull requests.</p>
+<p>The Crosswalk Project bug tracking system is: <a href="https://crosswalk-project.org/jira/">https://crosswalk-project.org/jira/</a>. For the RealSense API bugs, go to the <a href="https://crosswalk-project.org/jira/browse/XWALK/component/11000/?selectedTab=com.atlassian.jira.jira-projects-plugin:component-summary-panel"><em>Extensions for RealSense</em></a> component.</p>
+<h2>FAQ</h2>
+<h4>Is Windows the only platform supported? How about other platforms like Android?<br/></h4>
+<p>Currently Windows is the only platform shipping with R200 cameras. Support for Android will be considered once hardware is available and shipping with this capability.</p>
+<h4>RealSense SDK has a lot of native APIs.  Why are the web APIs limited to DEP, SP and Face?<br/></h4>
+<p>The team is working hard to add support for more capabilities. Please check the API dashboard <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/API-Dashboard">page</a>.</p>
+<h2>Feature Examples</h2>
+<p>The screenshots below show a few of the features that are available with RealSense and the Web API.</p>
+<figure>
+<a href="/assets/realsense/dep.png"><img src="/assets/realsense/dep.png"></a>
+<figcaption>Depth Enhanced Photography (DEP): Captures photo depth and provides various amazing effects on the photo, such as refocus, segmentation, and motion. </figcaption>
+</figure>
+
+<p><a href="/assets/realsense/sp.png"><img src="/assets/realsense/sp.png"></a></p>
+<figcaption>Scene Perception (SP): Creates a digital representation of the observed environment and estimates in real-time the camera pose.</figcaption>
+
+<p><a href="/assets/realsense/face.png"><img src="/assets/realsense/face.png"></a></p>
+<figcaption>Face Tracking and Recognition (Face): Tracks faces and does face recognition in real-time.</figcaption>
 
 
-  </footer>
+
+
+  <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
+
 </article>
+
+
 
           
         </div>
