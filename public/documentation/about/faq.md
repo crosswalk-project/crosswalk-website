@@ -31,7 +31,7 @@ No, because the Crosswalk Project is based on W3C standards: HTML5, CSS and Java
 
 ### <a class="doc-anchor" id="If-my-apps-need-W3C-standards-why-not-target-a-browser"></a>If my apps need W3C standards, why not target a browser?
 
-Browsers do a great job of supporting W3C standards, but they are not allowed to support the APIs from the [Systems Applications Working Group](http://www.w3.org/2012/sysapps/). This is because these APIs access platform features which, if known to a web site and combined with other data available to the browser, would allow violations of the user's privacy. Because Crosswalk Project applications have a different security model, where a user is able to choose which permissions an application is given, system application APIs *can* be supported. This in turn makes it possible for the Crosswalk Project to run applications which are not possible on the open web.
+Browsers do a great job of supporting W3C standards, but they may not be able to support more powerful APIs, or APIs that are considered experimental. This is because these APIs access platform features which, if known to a web site and combined with other data available to the browser, would allow violations of the user's privacy. Because Crosswalk Project applications have a different security model, where a user is able to choose which permissions an application is given, more powerful APIs can be supported. This in turn makes it possible for the Crosswalk Project to run applications which are not possible on the open web.
 
 ### <a class="doc-anchor" id="Isnt-the-Crosswalk-Project-just-going-to-mean-more-fragmentation-of-the-web"></a>Isn't the Crosswalk Project just going to mean more fragmentation of the web?
 
