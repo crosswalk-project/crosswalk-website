@@ -5,7 +5,7 @@ The Crosswalk Project embedding API enables you to embed the Crosswalk Project r
 Using the embedding API is only recommended for cases where you have a substantial amount of Java code in your application, but want to write the UI (or parts of the UI) using web technologies. If you just need a runtime wrapper for a web application, there are two simpler options for deploying to Android with Crosswalk:
 
 *   [Use the default Crosswalk packaging tools](/documentation/android/build_an_application.html) to generate an Android package for your web application.
-*   [Use Cordova with Crosswalk](/documentation/cordova/cordova_4.html): that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.
+*   [Use Cordova with Crosswalk](/documentation/cordova.html): that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.
 
 If you do decide to use the embedding API, follow the instructions below which explain how to use it.
 

@@ -1,0 +1,20 @@
+{
+  "realsense": {
+    "title": "RealSense Web APIs"
+  },
+  "webvr": {
+    "title": "WebVR"
+  },
+  "security-api": {
+    "title": "Intel Security APIs"
+  },
+  "webrtc": {
+    "title": "WebRTC"
+  },
+  "webcl": {
+    "title": "WebCL"
+  },
+  "screens": {
+    "title": "Screens"
+  }
+}

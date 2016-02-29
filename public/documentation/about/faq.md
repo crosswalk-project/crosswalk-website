@@ -124,7 +124,7 @@ However, you can use a custom command-line (Crosswalk 6 or later) by adding a te
 
 The method for adding this file to your Android package depends on how you are using Crosswalk:
 
-*   If you are **[embedding Crosswalk in an Android application](/documentation/embedding_crosswalk.html)**, the file should be placed in the `assets/` directory of your project.
+*   If you are **[embedding Crosswalk in an Android application](/documentation/android/embedding_crosswalk.html)**, the file should be placed in the `assets/` directory of your project.
 
 *   If you are **[using Crosswalk Cordova](/documentation/cordova.html)**, the file should be placed in the `assets/` directory of your project.
 

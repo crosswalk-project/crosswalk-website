@@ -19,5 +19,8 @@
   },
   "android_extensions": {
     "title": "Android extensions"
+  },
+  "embedding_crosswalk": {
+    "title": "Embedding Crosswalk"
   }
 }

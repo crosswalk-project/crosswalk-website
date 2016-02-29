@@ -47,7 +47,7 @@ Debugging on Android must be enabled during build time.
 
 * **Embedding Crosswalk in your application**
 
-  If you are embedding Crosswalk in your application using the Crosswalk embedding API (for example in a native application using the Crosswalk webview), you can enable debugging in your application code using the [embedding API](/documentation/embedding_crosswalk.html)
+  If you are embedding Crosswalk in your application using the Crosswalk embedding API (for example in a native application using the Crosswalk webview), you can enable debugging in your application code using the [embedding API](/documentation/android/embedding_crosswalk.html)
 
   * Modify your application's main activity to set the remote debugging preference. For example:
 
@@ -55,7 +55,7 @@ Debugging on Android must be enabled during build time.
 
   * Build the application package the usual way (e.g. using Ant or ADT).
 
-  Full details are given in the [Crosswalk embedding tutorial](/documentation/embedding_crosswalk.html#Debugging)
+  Full details are given in the [Crosswalk embedding tutorial](/documentation/android/embedding_crosswalk.html#Debugging)
 
 
 ## Install and debug
