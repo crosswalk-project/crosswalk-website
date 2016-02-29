@@ -44,9 +44,6 @@
   "community": {
     "title": "Community"
   },
-  "apps/app-list.php": {
-    "title": "App Showcase"
-  },
   "qa": {
     "title": "Quality Assurance"
   }
