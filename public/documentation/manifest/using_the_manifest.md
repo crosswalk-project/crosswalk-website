@@ -21,13 +21,13 @@ Note that neither of these fields has an effect if it is included in a `manifest
 
 <h2 id="Load-an-application-into-an-embedded-Crosswalk">Load an application into an embedded Crosswalk</h2>
 
-The [embedding API](/documentation/apis/embedding_api.html) enables you to embed a Crosswalk runtime in an Android application. [The embedding Crosswalk tutorial](/documentation/embedding_crosswalk.html) explains how to use this API to load an application's main HTML file into an embedded Crosswalk.
+The [embedding API](/documentation/apis/embedding_api.html) enables you to embed a Crosswalk runtime in an Android application. [The embedding Crosswalk tutorial](/documentation/android/embedding_crosswalk.html) explains how to use this API to load an application's main HTML file into an embedded Crosswalk.
 
 However, the API also [exposes methods for loading an application from a manifest file](/documentation/apis/embedding_api.html) as an alternative. The advantage of loading an application from a manifest is that it provides more flexibility than loading an application by URL.
 
 For example, if you decide to change the entry point for your application (e.g. rename `index.html` to `home.html`), you can do this in the manifest without having to change any Java application code. Similarly, if new fields become available for Crosswalk manifests, you can take advantage of those fields in your own manifest without changing any Java code.
 
-To give an idea of how this works, the [application developed for the embedded API tutorial](/documentation/embedding_crosswalk.html) can easily be adapted to use a manifest. Follow the tutorial to the end then modify the project as follows:
+To give an idea of how this works, the [application developed for the embedded API tutorial](/documentation/android/embedding_crosswalk.html) can easily be adapted to use a manifest. Follow the tutorial to the end then modify the project as follows:
 
 1.  Add a `manifest.json` file to the web root of the application (in the case of the embedding API app in the tutorial, this is the `assets/` directory):
 

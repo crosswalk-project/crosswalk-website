@@ -33,7 +33,7 @@ Once the [pre-requisites](#Android) have been met, debug your Crosswalk applicat
 
 <li>
 
-<p><strong>Embedding Crosswalk in your application</strong> via the <a href="/documentation/embedding_crosswalk.html">embedding API</a></p>
+<p><strong>Embedding Crosswalk in your application</strong> via the <a href="/documentation/android/embedding_crosswalk.html">embedding API</a></p>
 
 <p>Modify your application's main activity to set the remote debugging preference. For example:</p>
 
@@ -41,7 +41,7 @@ Once the [pre-requisites](#Android) have been met, debug your Crosswalk applicat
 
 <p>Then build the application package the usual way (e.g. using Ant or ADT).</p>
 
-<p>Full details are given in the <a href="/documentation/embedding_crosswalk.html#Debugging">Crosswalk embedding tutorial</a>.</p>
+<p>Full details are given in the <a href="/documentation/android/embedding_crosswalk.html#Debugging">Crosswalk embedding tutorial</a>.</p>
 
 </li>
 

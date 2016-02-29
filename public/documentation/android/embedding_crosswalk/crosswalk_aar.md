@@ -102,7 +102,7 @@ Then install it into the local Maven repository:
 
 1.  Create Android Project with the Crosswalk embedding APIs.
 
-    Refer to the section in the Embedding Crosswalk article called [Add code to integrate the webview](/documentation/embedding_crosswalk.html#Add-code-to-integrate-the-webview).
+    Refer to the section in the Embedding Crosswalk article called [Add code to integrate the webview](/documentation/android/embedding_crosswalk.html#Add-code-to-integrate-the-webview).
 
 2.  The reference to Maven repo in build.gradle will look like:
     
@@ -174,7 +174,7 @@ The Maven android plugin has a known issue that it can't build multiple APKs for
 
 1.  Create Android Project with the Crosswalk webview APIs.
 
-    Refer to the section in the Embedding Crosswalk article called [Add code to integrate the webview](/documentation/embedding_crosswalk.html#Add-code-to-integrate-the-webview).
+    Refer to the section in the Embedding Crosswalk article called [Add code to integrate the webview](/documentation/android/embedding_crosswalk.html#Add-code-to-integrate-the-webview).
 
 2.  The reference to the remote repo in pom.xml will look like:
 

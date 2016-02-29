@@ -16,7 +16,7 @@ $sample_url_v2 = $base_url . 'embeddingapidocs_v2/reference/org/xwalk/core/XWalk
 
 <p>The embedding API enables Crosswalk to be used as a web view for Android applications, as an alternative to the stock <a href="http://developer.android.com/guide/webapps/webview.html">WebView</a>. You can use it to load HTML pages or whole web applications inside a Java application running on Android.</p>
 
-<p>The <a href="/documentation/embedding_crosswalk.html">Getting started with the embedding API</a> article covers basic use of the API.</p>
+<p>The <a href="/documentation/android/embedding_crosswalk.html">Getting started with the embedding API</a> article covers basic use of the API.</p>
 
 <p>Links for more references and resources are given below.</p>
 

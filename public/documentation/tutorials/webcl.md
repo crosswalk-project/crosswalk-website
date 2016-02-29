@@ -1,4 +1,4 @@
-# Overview
+# WebCL Overview
 
 [WebCL](https://www.khronos.org/webcl/) defines a JavaScript binding to
 [the Khronos OpenCL standard](https://www.khronos.org/opencl/) for

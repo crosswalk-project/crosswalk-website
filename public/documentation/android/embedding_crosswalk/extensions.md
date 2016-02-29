@@ -6,7 +6,7 @@
 * No configuration file is needed, because the embedding application is responsible for creating and destroying the extensions in Java code.
 * No support for [`make_apk.py`]. The embedding application is likely to be built using Android SDK tools, ant etc.; the extension code should be compiled and packaged as part of this build.
 
-The following sections explain how to add code for an extension and use it in an embedding application. Before following them, you will need to [create an application with the embedding API](/documentation/embedding_crosswalk.html).
+The following sections explain how to add code for an extension and use it in an embedding application. Before following them, you will need to [create an application with the embedding API](/documentation/android/embedding_crosswalk.html).
 
 ## Write the extension
 
