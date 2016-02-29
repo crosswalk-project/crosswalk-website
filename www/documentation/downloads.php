@@ -140,6 +140,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/tizen.html">Tizen</a>
 
          
@@ -157,20 +163,8 @@
          
        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-       </li>
-    
        <li class="article-item  nav-item--active">
          <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
 
          
        </li>
@@ -182,19 +176,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
 
          
        </li>
@@ -212,19 +194,13 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+         <a class="article-link" href="/documentation/apps/app-list.php">App Showcase</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
 
          
        </li>
@@ -320,7 +296,7 @@ curl_multi_close($mh);
 <p>The Crosswalk Project provides binaries for multiple
   operating systems and platforms.</p>
 
-<p><strong>Note:</strong> Cordova developers are encouraged to use the <a href="https://crosswalk-project.org/documentation/cordova/cordova_4.html">Crosswalk Webview Plugin</a>, which will download the Crosswalk library automatically. 
+<p><strong>Note:</strong> Cordova developers are encouraged to use the <a href="https://crosswalk-project.org/documentation/cordova.html">Crosswalk Webview Plugin</a>, which will download the Crosswalk library automatically. 
 
   <table class="downloads-table">
     <tr>

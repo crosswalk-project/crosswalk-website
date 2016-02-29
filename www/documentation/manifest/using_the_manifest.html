@@ -140,6 +140,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/tizen.html">Tizen</a>
 
          
@@ -223,19 +229,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
 
          
        </li>
@@ -247,19 +241,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
 
          
        </li>
@@ -277,19 +259,13 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+         <a class="article-link" href="/documentation/apps/app-list.php">App Showcase</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
 
          
        </li>
@@ -322,10 +298,10 @@
 <p>Note that neither of these fields has an effect if it is included in a <code>manifest.json</code> file <a href="#Load-an-application-into-an-embedded-Crosswalk">loaded into an embedded Crosswalk</a>.</p>
 <h2 id="Load-an-application-into-an-embedded-Crosswalk">Load an application into an embedded Crosswalk</h2>
 
-<p>The <a href="/documentation/apis/embedding_api.html">embedding API</a> enables you to embed a Crosswalk runtime in an Android application. <a href="/documentation/embedding_crosswalk.html">The embedding Crosswalk tutorial</a> explains how to use this API to load an application&#39;s main HTML file into an embedded Crosswalk.</p>
+<p>The <a href="/documentation/apis/embedding_api.html">embedding API</a> enables you to embed a Crosswalk runtime in an Android application. <a href="/documentation/android/embedding_crosswalk.html">The embedding Crosswalk tutorial</a> explains how to use this API to load an application&#39;s main HTML file into an embedded Crosswalk.</p>
 <p>However, the API also <a href="/documentation/apis/embedding_api.html">exposes methods for loading an application from a manifest file</a> as an alternative. The advantage of loading an application from a manifest is that it provides more flexibility than loading an application by URL.</p>
 <p>For example, if you decide to change the entry point for your application (e.g. rename <code>index.html</code> to <code>home.html</code>), you can do this in the manifest without having to change any Java application code. Similarly, if new fields become available for Crosswalk manifests, you can take advantage of those fields in your own manifest without changing any Java code.</p>
-<p>To give an idea of how this works, the <a href="/documentation/embedding_crosswalk.html">application developed for the embedded API tutorial</a> can easily be adapted to use a manifest. Follow the tutorial to the end then modify the project as follows:</p>
+<p>To give an idea of how this works, the <a href="/documentation/android/embedding_crosswalk.html">application developed for the embedded API tutorial</a> can easily be adapted to use a manifest. Follow the tutorial to the end then modify the project as follows:</p>
 <ol>
 <li><p>Add a <code>manifest.json</code> file to the web root of the application (in the case of the embedding API app in the tutorial, this is the <code>assets/</code> directory):</p>
 <pre><code>{

@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Report bugs" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/report_bugs" />
+    <meta property="og:title" content="Quality Dashboard" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/qa/quality_dashboard" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/report_bugs" />
-    <meta name="twitter:title" content="Report bugs" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/qa/quality_dashboard" />
+    <meta name="twitter:title" content="Quality Dashboard" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -140,6 +140,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/tizen.html">Tizen</a>
 
          
@@ -158,19 +164,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
 
          
        </li>
@@ -182,19 +176,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
 
          
        </li>
@@ -211,21 +193,32 @@
          
        </li>
     
-       <li class="article-item  nav-item--active">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apps/app-list.php">App Showcase</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
 
          
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
 
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/qa/test_suite.html">Test Suite</a>
+
+             
+           </li>
+           
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/qa/quality_dashboard.html">Quality Dashboard</a>
+
+             
+           </li>
+           
+         </ul>
          
        </li>
     
@@ -236,13 +229,27 @@
 
 
 <article class="article article--hasToC">
-  <!-- This needs to be switched with the client-side JIRA module -->
+  <h1>Quality Dashboard</h1>
+<p>The tables below contain test results for each build organized by component and feature. Bug report links are included by features not passing 100% for more detail.</p>
+<h2>By Component</h2>
+<quality test-type="components"></quality>
 
-<h1>Reporting Bugs</h1>
-<p>Discovered a bug? Please submit it on the <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Crosswalk Project issue tracker</a>. Thank you!</p>
+<h2>By Feature</h2>
+<quality test-type="features"></quality>
 
   <footer class="article-next">
     
+
+  
+  
+    
+    
+  
+    
+    
+      
+    
+  
 
 
   </footer>
