@@ -140,6 +140,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/tizen.html">Tizen</a>
 
          
@@ -223,19 +229,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
 
          
        </li>
@@ -247,19 +241,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
 
          
        </li>
@@ -277,19 +259,13 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+         <a class="article-link" href="/documentation/apps/app-list.php">App Showcase</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
 
          
        </li>
@@ -304,50 +280,49 @@
   <h1>Manifest</h1>
 <p>The manifest file (e.g. manifest.json) is located in your project source and used to specify meta data for your application (title, icon, etc.) as well as how it should behave and present itself.</p>
 <p>The Crosswalk Project uses a JSON file based on the <a href="http://w3c.github.io/manifest/">W3C Manifest for Web Application specification</a>. In addition, the Crosswalk Project manifest extends the W3C manifest with additional fields prefixed with the <code>xwalk_</code> keyword.</p>
-<p>Below is an example of a basic manifest for the Hello World application. See <a href="manifest/using_the_manifest.html">Using the manifest</a> for details of how to use a <code>manifest.json</code> file with a Crosswalk Project application.</p>
+<p>See <a href="manifest/using_the_manifest.html">Using the manifest</a> for details of how to use a <code>manifest.json</code> file with a Crosswalk Project application.</p>
+<p>The minimal manifest.json required to build a simple application is:</p>
 <pre><code>{
-  &quot;name&quot;: &quot;Hello World&quot;,
+    &quot;name&quot;: &quot;My App Name&quot;,
+    &quot;start_url&quot;: &quot;index.html&quot;,
+    &quot;xwalk_app_version&quot;: &quot;0.1&quot;,
+    &quot;xwalk_package_id&quot;: &quot;com.abc.myapp&quot;,
+    &quot;icons&quot;: [
+      {
+        &quot;src&quot;: &quot;icon.png&quot;,
+        &quot;sizes&quot;: &quot;72x72&quot;
+      }
+    ]
+}</code></pre>
+<p>Below is the default manifest created by <code>crosswalk-build app</code> when creating a template. </p>
+<p>Running this command: </p>
+<pre><code>&gt; crosswalk-app create com.abc.myapp</code></pre>
+<p>creates the following manifest.json in your project&#39;s root directory:</p>
+<pre><code>{
+  &quot;name&quot;: &quot;myapp&quot;,
+  &quot;short_name&quot;: &quot;myapp&quot;,
+  &quot;background_color&quot;: &quot;#ffffff&quot;,
+  &quot;display&quot;: &quot;standalone&quot;,
+  &quot;orientation&quot;: &quot;any&quot;,
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;xwalk_app_version&quot;: &quot;0.1&quot;,
+  &quot;xwalk_command_line&quot;: &quot;&quot;,
+  &quot;xwalk_package_id&quot;: &quot;com.abc.myapp&quot;,
+  &quot;xwalk_target_platforms&quot;: [&quot;android&quot;],
+  &quot;xwalk_android_animatable_view&quot;: true,
+  &quot;xwalk_android_keep_screen_on&quot;: false,
+  &quot;xwalk_android_permissions&quot;: [
+    &quot;ACCESS_NETWORK_STATE&quot;,
+    &quot;ACCESS_WIFI_STATE&quot;,
+    &quot;INTERNET&quot;
+  ],
+  &quot;xwalk_windows_update_id&quot;: &quot;73148800-8517-7725-5290-324729867281&quot;,
   &quot;icons&quot;: [
     {
-      &quot;src&quot;: &quot;images/icon192.png&quot;,
-      &quot;sizes&quot;: &quot;192x192&quot;,
-      &quot;type&quot;: &quot;image/png&quot;,
-      &quot;density&quot;: &quot;4.0&quot;
-    },
-    {
-      &quot;src&quot;: &quot;images/icon144.png&quot;,
-      &quot;sizes&quot;: &quot;144x144&quot;,
-      &quot;type&quot;: &quot;image/png&quot;,
-      &quot;density&quot;: &quot;3.0&quot;
-    },
-    {
-      &quot;src&quot;: &quot;images/icon96.png&quot;,
-      &quot;sizes&quot;: &quot;96x96&quot;,
-      &quot;type&quot;: &quot;image/png&quot;,
-      &quot;density&quot;: &quot;2.0&quot;
-    },
-    {
-      &quot;src&quot;: &quot;images/icon72.png&quot;,
-      &quot;sizes&quot;: &quot;72x72&quot;,
-      &quot;type&quot;: &quot;image/png&quot;,
-      &quot;density&quot;: &quot;1.5&quot;
-    },
-    {
-      &quot;src&quot;: &quot;images/icon48.png&quot;,
-      &quot;sizes&quot;: &quot;48x48&quot;,
-      &quot;type&quot;: &quot;image/png&quot;,
-      &quot;density&quot;: &quot;1.0&quot;
-    },
-    {
-      &quot;src&quot;: &quot;images/icon36.png&quot;,
-      &quot;sizes&quot;: &quot;36x36&quot;,
-      &quot;type&quot;: &quot;image/png&quot;,
-      &quot;density&quot;: &quot;0.75&quot;
+      &quot;src&quot;: &quot;icon.png&quot;,
+      &quot;sizes&quot;: &quot;72x72&quot;
     }
-  ],
-  &quot;start_url&quot;: &quot;index.html&quot;,
-  &quot;display&quot;: &quot;standalone&quot;,
-  &quot;orientation&quot;: &quot;any&quot;
+  ]
 }</code></pre>
 
   <footer class="article-next">

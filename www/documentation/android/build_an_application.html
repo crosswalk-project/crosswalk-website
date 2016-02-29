@@ -164,6 +164,12 @@
              
            </li>
            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/embedding_crosswalk.html">Embedding Crosswalk</a>
+
+             
+           </li>
+           
          </ul>
          
        </li>
@@ -187,6 +193,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/tizen.html">Tizen</a>
 
          
@@ -205,19 +217,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
 
          
        </li>
@@ -229,19 +229,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
 
          
        </li>
@@ -259,19 +247,13 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+         <a class="article-link" href="/documentation/apps/app-list.php">App Showcase</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
 
          
        </li>
@@ -310,7 +292,7 @@
 &gt; cd xwalk-simple/</code></pre>
 </li>
 <li><p>Next, copy an icon file to that directory, to serve as the application icon. You can use this image:</p>
-<p><img src="/assets/cw-app-icon.png"></p>
+<p><img src="/assets/cw-app-icon.png" style="width: 128px; margin:0 auto;display:block;" /></p>
 <p>To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the <code>xwalk-simple</code> directory as <code>icon.png</code>. (Note that this image is from the Crosswalk source code and is <a href="https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE">BSD licensed</a>.)</p>
 <p>If you have your own favourite icon, copy that to the <code>xwalk-simple</code> directory instead. It should be 128 pixels square.</p>
 </li>
@@ -319,45 +301,43 @@
 <li><p><code>index.html</code></p>
 <p>This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.</p>
 <p>The content should be:</p>
-<pre><code> &lt;!DOCTYPE html&gt;
- &lt;html&gt;
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
    &lt;head&gt;
      &lt;meta name=&quot;viewport&quot;
            content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
      &lt;meta charset=&quot;utf-8&quot;&gt;
-     &lt;title&gt;simple&lt;/title&gt;
+     &lt;title&gt;Crosswalk Simple&lt;/title&gt;
    &lt;/head&gt;
    &lt;body&gt;
-     &lt;p&gt;hello world&lt;/p&gt;
+     &lt;p&gt;Hello World! Crosswalk is great.&lt;/p&gt;
    &lt;/body&gt;
- &lt;/html&gt;</code></pre>
+&lt;/html&gt;</code></pre>
 </li>
 <li><p><a class="doc-anchor" id="manifest"></a><code>manifest.json</code></p>
-<p>This contains the application metadata (see above).</p>
-<p>The content should be:</p>
-<pre><code> {
-   &quot;name&quot;: &quot;simple&quot;,
-   &quot;xwalk_version&quot;: &quot;0.0.1&quot;,
+<p>This contains the application metadata (see above). The minimum manifest.json required to build is:</p>
+<pre><code>{
+   &quot;name&quot;: &quot;Crosswalk Simple&quot;,
+   &quot;xwalk_app_version&quot;: &quot;0.1&quot;,
    &quot;start_url&quot;: &quot;index.html&quot;,
+   &quot;xwalk_package_id&quot;: &quot;com.xwalk.simple&quot;,
    &quot;icons&quot;: [
      {
-       &quot;src&quot;: &quot;icon.png&quot;,
-       &quot;sizes&quot;: &quot;128x128&quot;,
-       &quot;type&quot;: &quot;image/png&quot;,
-       &quot;density&quot;: &quot;4.0&quot;
+         &quot;src&quot;: &quot;icon.png&quot;,
+         &quot;sizes&quot;: &quot;72x72&quot;
      }
    ]
- }</code></pre>
-<p> See <a href="/documentation/manifest.html">the manifest documentation</a> for more information.</p>
+}</code></pre>
 </li>
 </ol>
+<p>See <a href="/documentation/manifest.html">the manifest documentation</a> for more information.</p>
 </li>
 </ol>
 <h2><a class="doc-anchor" id="build-application"></a>Build the application</h2>
 <p>Once your application is ready, with an icon and manifest.json file, it is ready to be packaged with Crosswalk. </p>
-<pre><code>&gt; crosswalk-app build &lt;path&gt;</code></pre>
+<pre><code>&gt; crosswalk-pkg &lt;folder with manifest.json&gt;</code></pre>
 <p>This command downloads and imports Crosswalk and creates a package using the files in the path. By default, it will create <a href="android_remote_debugging.html">debug</a>, <a href="/documentation/shared_mode.html">embedded</a>, <a href="android_64bit.html">32-bit</a> APKs for both x86 and ARM architectures (recommended). 64-bit APKs can also be created. For options, see the &quot;Usage&quot; section of the <a href="/documentation/crosswalk-app-tools.html">Crosswalk-app-tools page</a>, or view the help:</p>
-<pre><code>&gt; crosswalk-app help</code></pre>
+<pre><code>&gt; crosswalk-pkg help</code></pre>
 <p>You are now ready to run the application on a target.</p>
 
   <footer class="article-next">
@@ -380,6 +360,9 @@
         <em>What’s next?</em>
         <h3>Run on Android</h3>
       </a>
+    
+  
+    
     
   
     

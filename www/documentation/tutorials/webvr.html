@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Cordova 4" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/cordova/cordova_4" />
+    <meta property="og:title" content="WebVR" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/tutorials/webvr" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/cordova/cordova_4" />
-    <meta name="twitter:title" content="Cordova 4" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tutorials/webvr" />
+    <meta name="twitter:title" content="WebVR" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -140,6 +140,12 @@
        </li>
     
        <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
          <a class="article-link" href="/documentation/tizen.html">Tizen</a>
 
          
@@ -158,36 +164,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-
-         <ul class="article-list">
-            
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/cordova/cordova_4.html">Cordova 4</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/cordova/cordova_3.html">Cordova 3</a>
-
-             
-           </li>
-           
-         </ul>
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
 
          
        </li>
@@ -199,20 +176,49 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
 
          
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
 
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tutorials/realsense.html">RealSense Web APIs</a>
 
+             
+           </li>
+           
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/tutorials/webvr.html">WebVR</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tutorials/security-api.html">Intel Security APIs</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tutorials/webrtc.html">WebRTC</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tutorials/webcl.html">WebCL</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/tutorials/screens.html">Screens</a>
+
+             
+           </li>
+           
+         </ul>
          
        </li>
     
@@ -229,19 +235,13 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+         <a class="article-link" href="/documentation/apps/app-list.php">App Showcase</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
 
          
        </li>
@@ -253,95 +253,81 @@
 
 
 <article class="article article--hasToC">
-  <h1>Crosswalk with Cordova 4.0</h1>
-<h2>Overview</h2>
-<p>With the introduction in <a href="http://cordova.apache.org/announcements/2015/04/15/cordova-android-4.0.0.html">Cordova Android 4.0.0</a> of pluggable WebView support, it is now easy to use the Crosswalk WebView with your Cordova app. By using the Crosswalk WebView plugin, developers can enjoy remote debugging capabilities, cutting edge HTML5 features such as WebGL, WebAudio and WebRTC, and significant performance enhancements on Android devices all the way down to Android 4.0 Ice Cream Sandwich (ICS).</p>
-<h2>Prerequisites</h2>
-<p>Please refer to the <a href="https://cordova.apache.org/docs/en/4.0.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Android Platform Guide</a> to setup the Android SDK environment for Cordova application development.</p>
-<p>Make sure you have an up-to-date version of <a href="https://nodejs.org/">node.js</a> installed on your system.</p>
-<h2>Workflow</h2>
+  <h1>WebVR</h1>
+<p>This short tutorial describes how to bundle some of the nifty sample applications recently released (Dec 2015) as part of the <a href="https://aframe.io/">A-Frame</a> project, authored by Mozilla&#39;s VR team (<a href="http://mozvr.com/">MozVR</a>). Your system should already be <a href="/documentation/android/system_setup.html">set up for Crosswalk development</a>.</p>
+<h2>Background</h2>
+<p>Virtual Reality has garnered increased attention in the past year, from <a href="https://www.google.com/get/cardboard/">Google Cardboard</a> on the low end to <a href="https://www.oculus.com/en-us/rift/">Oculus Rift</a> or <a href="https://www.epson.com/cgi-bin/Store/jsp/Landing/moverio-augmented-reality-smart-glasses.do">Moverio glasses/headsets</a> on the high end. The immersive, 3-dimensional visual experience gives consumers the feeling they are in the scene. Given the advances in viewing devices and APIs, the technology, while still in the early stages, promises to shake up how we consume media and interact in the digital world.</p>
+<p>VR for web applications has been promoted by <a href="http://threejs.org/">three.js</a>, a JavaScript library for 3D animations and graphics, and a lot of great examples using three.js can be found online. <a href="http://aframe.io">A-Frame</a> was released in Dec 2015 and simplifies the task of creating and navigating basic 3D objects with just markup. No WebGL experience required. It is a nice way to get your feet wet.</p>
+<h2>From A-Frame Samples to Android Applications</h2>
+<p>If you want to see how these applications will work on your phone, you can open up Chrome on your phone and navigate to <a href="http://aframe.io">http://aframe.io</a>. Click the glasses icon in the bottom corner of any of the samples to split the screen:</p>
+<p><img src="/assets/hello-world-in-chrome.png" style="margin:0 auto;display:block;" /></p>
+<p>Using Crosswalk we can convert these samples to Android applications (Kudos to Pablo Mendigochea for his webinar on <a href="https://www.youtube.com/watch?v=Tt-pX1JMt60">How to use Crosswalk with Moverio</a>).</p>
+<h3>Create an app</h3>
 <ol>
-<li><p>Install the Cordova Command Line Interface (CLI)</p>
-<pre><code>$ npm install -g cordova</code></pre>
-<p>Check that the version of Cordova CLI is &gt;= 5.0.0:</p>
-<pre><code>$ cordova -v
-5.0.0</code></pre>
+<li><p>Download the full project source from the <a href="https://github.com/aframevr/aframe">A-Frame github</a> repo:</p>
+<p><strong><a href="https://github.com/aframevr/aframe/archive/master.zip">aframe-master.zip</a></strong></p>
+<p>Unzip the file.</p>
 </li>
-<li><p>Create a Cordova example app, which can be used as a stub for creating new projects</p>
-<pre><code>$ cordova create hello com.example.hello HelloWorld</code></pre>
+<li><p>Pick any sample you wish to build and copy the directory to a new location. For this tutorial, we will build the Composite example:</p>
+<pre><code>&gt; cp -r ./aframe-master/examples/showcase-composite ~/src/</code></pre>
 </li>
-<li><p>Navigate to the newly created project directory</p>
-<pre><code>$ cd hello</code></pre>
-<p>All subsequent commands must be run within the project&#39;s directory (e.g. <code>hello</code>)</p>
+<li><p>Copy required resources</p>
+<ul>
+<li><p>Investigate the <code>index.html</code> file and note any resources that are not included in the directory. In the Composite index.html we see there are 2 resources pulled from other locations:</p>
+<p><code>&lt;script src=&quot;../../dist/aframe.js&quot;&gt;&lt;/script&gt;</code><br>
+<code>&lt;a-sky src=&quot;../_skies/lake.jpg&quot;&gt;&lt;/a-sky&gt;</code></p>
 </li>
-<li><p>Add Android as the target platform</p>
-<pre><code>$ cordova platform add android</code></pre>
-<p>This adds the Cordova Android platform (version &gt;= 4.0.0) into the app.</p>
+<li><p>Find these resources in the master tree and copy them to your new folder.</p>
+<pre><code>&gt; cp ./aframe-master/dist/aframe.min.js ~/src/showcase-composite/
+&gt; cp ./aframe-master/examples/_skies/lake.jpg ~/src/showcase-composite/</code></pre>
+<p>(aframe.min.js can also be used online:<br>
+<code>&lt;script src=&quot;https://aframe.io/releases/latest/aframe.min.js&quot;&gt;&lt;/script&gt;</code> )</p>
 </li>
-<li><p>Install the Crosswalk WebView plugin</p>
-<pre><code>$ cordova plugin add cordova-plugin-crosswalk-webview</code></pre>
-<p>This adds the <a href="https://www.npmjs.com/package/cordova-plugin-crosswalk-webview/">Crosswalk WebView cordova plugin</a> into the app.</p>
+<li><p>Update the index.html to reference the local versions.  In our case:</p>
+<p><code>&lt;script src=&quot;aframe.min.js&quot;&gt;&lt;/script&gt;</code><br>
+<code>&lt;a-sky src=&quot;lake.jpg&quot;&gt;&lt;/a-sky&gt;</code></p>
 </li>
-<li><p>Build with Crosswalk WebView engine for Android</p>
-<pre><code>$ cordova build android</code></pre>
-<p>This automatically fetches the stable Crosswalk WebView libraries from the Crosswalk Project download site (<a href="https://download.01.org/crosswalk/releases/crosswalk/android/">https://download.01.org/crosswalk/releases/crosswalk/android/</a>) and build for both X86 and ARM architectures. For example, building a <code>HelloWorld</code> project generates:</p>
-<pre><code>/path/to/hello/platforms/android/build/outputs/apk/android-x86-debug.apk
-/path/to/hello/platforms/android/build/outputs/apk/android-armv7-debug.apk</code></pre>
-<p>The Crosswalk WebView library will be embedded in your app. This adds about 18MB to the APK size.</p>
+</ul>
 </li>
-<li><p>Launch it in the emulator</p>
-<pre><code>$ cordova emulate android</code></pre>
-<p>Launching a Cordova app using the Crosswalk WebView is done the same way as Cordova app. The command will launch the emulator, install the application APK, and then launch your app. As an example, after launching the above Cordova example, you will see the following result on your screen:</p>
-<p><img src="/assets/cordova-in-emulator.jpg" /></p>
-<p>Please refer to The <a href="https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html#The%20Command-Line%20Interface">Command-Line Interface</a> for a full listing of commands and options.</p>
+<li><p>Copy an icon to your project folder. Name it &quot;icon.png&quot; or whatever you call it in the manifest.json file (next step). Here is an icon you can use:</p>
+<p><img src="/assets/cw-app-icon.png" style="width:128px; margin:0 auto;display:block;" /></p>
+</li>
+<li><p>Create a manifest.json file for the project. In our example:</p>
+<pre><code>{
+ &quot;name&quot;: &quot;A-Frame Composite&quot;,
+ &quot;start_url&quot;: &quot;index.html&quot;,
+ &quot;xwalk_app_version&quot;: &quot;0.1&quot;,
+ &quot;xwalk_package_id&quot;: &quot;com.aframe.composite&quot;,
+ &quot;icons&quot;: [
+   {
+    &quot;src&quot;: &quot;icon.png&quot;,
+    &quot;sizes&quot;: &quot;72x72&quot;
+   }
+ ]
+}</code></pre>
+</li>
+<li><p>Build the apk and install</p>
+<pre><code>&gt; crosswalk-pkg ./showcase-composite/
+&gt; adb install -r &lt;apk for your architecture&gt;</code></pre>
+</li>
+<li><p>On your device, run the program. Below is what the Composite application looks like. As you move your phone around, the accelerometer will adjust the view. Drop your phone into Google Cardboard and take a trip to beautiful Portland!</p>
+<p><img src="/assets/aframe-composite.jpg" style="margin:0 auto;display:block;" /></p>
 </li>
 </ol>
-<h2>Remote debugging with Crosswalk</h2>
-<p>The Crosswalk WebView allows remote debugging the Cordova app, even on old Android devices (4.0+).</p>
-<p>You can use desktop Google Chrome to debug any apps running on Crosswalk remotely. After the app launches, navigate to “chrome://inspect” to list the debuggable app on the device. For example, when inspecting the <code>HelloWorld</code> app running in the emulator with Crosswalk:</p>
-<p><img src="/assets/cordova-devtools-inspect.jpg" /></p>
-<p>By clicking the “inspect” link under <code>Hello World</code>, a Chrome DevTools window will be opened. In the JavaScript console tab, you can make sure the app is running on Crosswalk by inspecting <code>navigator.userAgent</code>. For example, the app is running on Crosswalk 13 (Chromium M42):</p>
-<p><img src="/assets/cordova-with-devtools.jpg" /></p>
-<p>Please refer to <a href="https://developer.chrome.com/devtools/docs/remote-debugging">Remote Debugging on Android with Chrome</a> for the user manual.</p>
-<h2>(Optional) Android Platform Only Workflow</h2>
-<p>This workflow is for developers who want to stay on the bleeding edge of development. Go to Cordova CLI workflow if you want a stable release.</p>
-<p><a href="http://www.google.com/url?q=http%3A%2F%2Fgit-scm.com%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFOqwvh2KbuCJQUVsR5fW38FrTRTw">git</a> is required.</p>
+<h2>All-in-one</h2>
+<p>If you would like to try all the applications on your phone without individually building each one, we created an &quot;All-in-one&quot; application:</p>
+<p><img src="/assets/aframe-allinone.jpg" style="width: 50%; margin:0 auto;display:block;" /></p>
 <ol>
-<li><p>Pull the cordova-android repo</p>
-<pre><code>$ git clone https://github.com/apache/cordova-android.git</code></pre>
+<li><p>Download <a href="/assets/aframe-allinone.zip">aframe-allinone.zip</a>. Unzip it.</p>
 </li>
-<li><p>Install plugman</p>
-<pre><code>$ npm install -g plugman</code></pre>
-<p>Check that the version of plugman is &gt;= 0.22.17</p>
-<pre><code>$ plugman -v
-0.23.1</code></pre>
-<p>For more information about plugman, please refer to <a href="https://cordova.apache.org/docs/en/4.0.0/plugin_ref_plugman.md.html#Using%20Plugman%20to%20Manage%20Plugins">Using Plugman to Manage Plugins</a>.</p>
+<li><p>Copy the contents into the aframe-master directory. This adds a manifests.json, icon, and top-level index.html to launch all example applications:</p>
+<pre><code>&gt; cp -r ./aframe-allinone/* ./aframe-master</code></pre>
 </li>
-<li><p>Create a Cordova example app</p>
-<pre><code>$ /path/to/cordova-android/bin/create hello com.example.hello HelloWorld</code></pre>
-</li>
-<li><p>Navigate to the project directory</p>
-<pre><code>$ cd hello</code></pre>
-<p>All subsequent commands need to be run within the project&#39;s directory.</p>
-</li>
-<li><p>Install Crosswalk WebView engine plugin</p>
-<pre><code>$ plugman install --platform android \
- --plugin https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview.git \
- --project .</code></pre>
-<p>Note: as there are binary files in the git history, the first git cloning downloads about 100MB. This  might be slow across a low bandwidth connection.</p>
-</li>
-<li><p>Build with the Crosswalk WebView engine</p>
-<pre><code>$ ./cordova/build</code></pre>
-<p>This automatically fetches the Crosswalk WebView libraries from the Crosswalk Project release site (<a href="https://download.01.org/crosswalk/releases/crosswalk/android/">https://download.01.org/crosswalk/releases/crosswalk/android/</a>) and builds for both X86 and ARM architectures. For example, it generates:</p>
-<pre><code>/path/to/hello/build/outputs/apk/hello-x86-debug.apk
-/path/to/hello/build/outputs/apk/hello-armv7-debug.apk</code></pre>
-</li>
-<li><p>Launch in emulator</p>
-<pre><code>$ ./cordova/run --emulator --nobuild</code></pre>
-<p>This launches the emulator, installs the application APK, and launches your app. </p>
+<li><p>Build and install</p>
+<pre><code>&gt; crosswalk-pkg ./aframe-master
+&gt; adb install -r &lt;apk for your architecture&gt;</code></pre>
 </li>
 </ol>
-<p>For more commands of cordova-android, please refer to <a href="https://github.com/apache/cordova-android">cordova-android README.md</a>.</p>
 
   <footer class="article-next">
     
@@ -350,16 +336,28 @@
   
     
     
+  
+    
+    
       
     
   
     
     
       
-      <a href="/documentation/cordova/cordova_3.html" class="article-promo well">
+      <a href="/documentation/tutorials/security-api.html" class="article-promo well">
         <em>What’s next?</em>
-        <h3>Cordova 3</h3>
+        <h3>Intel Security APIs</h3>
       </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
     
   
 

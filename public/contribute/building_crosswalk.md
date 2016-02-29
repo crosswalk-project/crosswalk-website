@@ -7,12 +7,12 @@ on the Chromium wiki:
 
     <ul>
     <li><a href="http://www.chromium.org/developers/how-tos/build-instructions-windows">Building on Windows</a></li>
-    <li><a href="http://code.google.com/p/chromium/wiki/LinuxBuildInstructionsPrerequisites">Building on Linux</a></li>
+    <li><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/linux_build_instructions_prerequisites.md">Building on Linux</a></li>
     <li><a href="https://code.google.com/p/chromium/wiki/MacBuildInstructions">Building on Mac</a></li>
     </ul>
 
 2.  You need to install extra pre-requisites if you're building Crosswalk
-for Android, covered in [building Chrome for Android](http://code.google.com/p/chromium/wiki/AndroidBuildInstructions).
+for Android, covered in [building Chrome for Android](https://www.chromium.org/developers/how-tos/android-build-instructions).
 
     The
     [section below](#contribute/building_crosswalk/Building-Crosswalk-for-Android)

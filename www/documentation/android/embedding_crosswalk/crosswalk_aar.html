@@ -32,13 +32,13 @@
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
     <meta property="og:title" content="Crosswalk AAR" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/embedding_crosswalk/crosswalk_aar" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/embedding_crosswalk/crosswalk_aar" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/embedding_crosswalk/crosswalk_aar" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/embedding_crosswalk/crosswalk_aar" />
     <meta name="twitter:title" content="Crosswalk AAR" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
@@ -119,6 +119,73 @@
          <a class="article-link" href="/documentation/android.html">Android</a>
 
          
+
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
+
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/embedding_crosswalk.html">Embedding Crosswalk</a>
+
+             
+             <ul class="article-list">
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/embedding_crosswalk/extensions.html">Extensions</a>
+               </li>
+
+               
+               <li class="article-item  nav-item--active">
+                 <a class="article-link" href="/documentation/android/embedding_crosswalk/crosswalk_aar.html">Crosswalk AAR</a>
+               </li>
+
+               
+             </ul>
+             
+           </li>
+           
+         </ul>
+         
        </li>
     
        <li class="article-item ">
@@ -135,6 +202,12 @@
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/linux.html">Linux</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
 
          
        </li>
@@ -158,37 +231,8 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
          <a class="article-link" href="/documentation/downloads.html">Downloads</a>
 
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
-
-         
-
-         <ul class="article-list">
-            
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/embedding_crosswalk/extensions.html">Extensions</a>
-
-             
-           </li>
-           
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/embedding_crosswalk/crosswalk_aar.html">Crosswalk AAR</a>
-
-             
-           </li>
-           
-         </ul>
          
        </li>
     
@@ -199,19 +243,7 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
 
          
        </li>
@@ -229,19 +261,13 @@
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
+         <a class="article-link" href="/documentation/apps/app-list.php">App Showcase</a>
 
          
        </li>
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
 
          
        </li>
@@ -335,7 +361,7 @@ $ mvn clean install</code></pre>
 <h2>Create and Build your Android project with Crosswalk AAR</h2>
 <ol>
 <li><p>Create Android Project with the Crosswalk embedding APIs.</p>
-<p>Refer to the section in the Embedding Crosswalk article called <a href="/documentation/embedding_crosswalk.html#Add-code-to-integrate-the-webview">Add code to integrate the webview</a>.</p>
+<p>Refer to the section in the Embedding Crosswalk article called <a href="/documentation/android/embedding_crosswalk.html#Add-code-to-integrate-the-webview">Add code to integrate the webview</a>.</p>
 </li>
 <li><p>The reference to Maven repo in build.gradle will look like:</p>
 <pre><code>Repositories {
@@ -387,7 +413,7 @@ $ gradle assemblearmv7</code></pre>
 <h3>Create Maven Project</h3>
 <ol>
 <li><p>Create Android Project with the Crosswalk webview APIs.</p>
-<p>Refer to the section in the Embedding Crosswalk article called <a href="/documentation/embedding_crosswalk.html#Add-code-to-integrate-the-webview">Add code to integrate the webview</a>.</p>
+<p>Refer to the section in the Embedding Crosswalk article called <a href="/documentation/android/embedding_crosswalk.html#Add-code-to-integrate-the-webview">Add code to integrate the webview</a>.</p>
 </li>
 <li><p>The reference to the remote repo in pom.xml will look like:</p>
 <pre><code>&lt;repositories&gt;
@@ -480,17 +506,6 @@ $ adb install ./target/xwalk-aar-example-1.0.0-SNAPSHOT-arm.apk</code></pre>
 
   <footer class="article-next">
     
-
-  
-  
-    
-    
-  
-    
-    
-      
-    
-  
 
 
   </footer>
