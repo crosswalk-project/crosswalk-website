@@ -10,6 +10,16 @@
         "faceImg": "brian-leroux.jpg",
         "quote": "Crosswalk helps Phonegap developers ensure a highly performant and consistent user experience across a wide breadth of mobile devices."
     },  
+    "quote8": {
+        "date": "March 2016",
+        "name": "Alex Blom",
+        "title": "Awesome Ember Hacker",
+        "company": "Isle of Code",
+        "link": "http://isleofcode.com/",
+        "companyLogo": "",
+        "faceImg": "alex-blom.jpg",
+        "quote": "Crosswalk is essential for building Cordova/Phonegap apps with Ember/SPAs. It solves challenges rising from device fragmentation and offers a much needed performance boost for many devices."
+    },
     "quote7": {
         "date": "July 2015",
         "name": "Nick Harlow",
