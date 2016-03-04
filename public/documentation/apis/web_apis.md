@@ -22,7 +22,7 @@ Version key:<br />
 * [Media Queries Level 3](http://www.w3.org/TR/css3-mediaqueries/) - CSS media features for adapting the same content to different output devices and screens.
 <!-- (Bob: Waiting for official support)* [Responsive Images](http://picture.responsiveimages.org/)<sup><a href="#v">[5.34.104.5]</a></sup> - Control which image resource is presented to a user, based on media query and/or image format support. -->
 * [Scalable Vector Graphics (SVG) 1.1](http://www.w3.org/TR/SVG11/) - An XML markup language for 2D vector graphics.
-* [WebRTC](http://www.w3.org/TR/webrtc/)<sup><a href="#a">[a]</a></sup> <sup><a href="#va">[7.36.154.6;x86]</a></sup> - Peer to peer sharing of video and audio streams.
+* [WebRTC](http://www.w3.org/TR/webrtc/)<sup><a href="#a">[a]</a></sup> - Peer to peer sharing of video and audio streams.
 
 ## Networking & Storage
 * [File API](http://dev.w3.org/2006/webapi/FileAPI/) - Asynchronously read the contents of files or raw data buffers stored on the client.
@@ -53,18 +53,18 @@ Version key:<br />
 * [Media Capture and Streams](http://www.w3.org/TR/mediacapture-streams/)<sup><a href="#a">[a]</a></sup> - Provides access to local media streams including video (camera) and audio (microphone).
 * [Screen Orientation](http://www.w3.org/TR/screen-orientation/) - Enables screen orientation locking and provides access to screen orientation data and events.
 * [Touch Events](https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html) - Handle touch events programmatically.
-* [Vibration](http://www.w3.org/TR/vibration/)<sup><a href="#v">[5.34.104.5]</a></sup> - Programmatically control a device's vibration mechanism.
-* [Web Notifications](http://notifications.spec.whatwg.org/)<sup><a href="#v">[5.34.93.0]</a></sup> - Use the device's native notification mechanism (e.g. status bar on Android) to display messages to the user.
+* [Vibration](http://www.w3.org/TR/vibration/) - Programmatically control a device's vibration mechanism.
+* [Web Notifications](http://notifications.spec.whatwg.org/) - Use the device's native notification mechanism (e.g. status bar on Android) to display messages to the user.
 
 # <a class="doc-anchor" id="Experimental-APIs"></a>Experimental APIs
 
 In addition to the standard APIs, Crosswalk provides additional experimental or emerging standards APIs to further support building a native application experience using web platform technologies.
 
 * [Device Capabilities](http://www.w3.org/2012/sysapps/device-capabilities/) - Retrieve information about the underlaying system.
-* [Launch Screen](/documentation/manifest/launch_screen.html)<sup><a href="#v">[6.35.131.4]</a></sup> - Display a static user interface on application launch and hide it when the application is ready.
+* [Launch Screen](/documentation/manifest/launch_screen.html) - Display a static user interface on application launch and hide it when the application is ready.
 * [Presentation API](http://w3c.github.io/presentation-api/)<sup>[\[a\]](#a)</sup> - Access external displays from within web applications. Get started with this tutorial: [Presentation API Tutorial](/documentation/apis/presentation_api_tutorial.html). For more information see the [developer documentation](https://github.com/crosswalk-project/crosswalk-website/wiki/Presentation-api-manual).
 * [Raw Sockets](http://www.w3.org/TR/raw-sockets/) - Raw TCP and UDP sockets for client and server sides.
-* [SIMD](https://github.com/johnmccutchan/ecmascript_simd)<sup><a href="#v">[5.34.104.0]</a></sup> - Data types and operations for access to the Single Instruction Multiple Data (SIMD) instruction sets available on common CPU architectures, such as SSE (IA32/X64) and NEON (ARMv7. This implemention is not yet complete).  Whitepaper: [SIMD in Javascript via C++ and Emscripten](https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fviewer%3Fa%3Dv%26pid%3Dsites%26srcid%3DZGVmYXVsdGRvbWFpbnx3cG12cDIwMTV8Z3g6NTkzYWE2OGNlNDAyMTRjOQ).
+* [SIMD](http://tc39.github.io/ecmascript_simd/) - Data types and operations for access to the Single Instruction Multiple Data (SIMD) instruction sets available on common CPU architectures, such as SSE (IA32/X64) and NEON (ARMv7. This implemention is not yet complete).  Whitepaper: [SIMD in Javascript via C++ and Emscripten](https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fviewer%3Fa%3Dv%26pid%3Dsites%26srcid%3DZGVmYXVsdGRvbWFpbnx3cG12cDIwMTV8Z3g6NTkzYWE2OGNlNDAyMTRjOQ).
 * [WebCL](https://www.khronos.org/registry/webcl/specs/1.0.0/)<sup>[\[a\]](#a)</sup><sup><a href="#v">[13.41.304.0]</a></sup> - JavaScript binding to the Khronos OpenCL standard. It enables web applications to access harness GPU and multi-core CPU for parallel processing.
 
 <small>Some content in the Standard APIs section of this page has been adapted from [chromestatus.com](http://www.chromestatus.com/), &copy; 2013 The Chromium Authors, used under [Creative Commons Attribution 2.5 license](http://creativecommons.org/licenses/by/2.5/)</small>
