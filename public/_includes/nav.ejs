@@ -1,28 +1,35 @@
-
-
-  <% if(current.path.length === 1 && current.source === 'index') { %>
+<% if(current.path.length === 1 && current.source === 'index') { %>
 <nav class="nav">
   <a href="/" class="nav-logo logo">
     <img src="/assets/identity/crosswalkproject-logo-horizontal-light.png" class="logo-image">
   </a>
   <ul class="nav-list">
     <li class="nav-item">
-      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+      <a lang="en" href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+      <a lang="zh" href="/documentation/getting_started.html" class="nav-link">文档</a>
     </li>
     <li class="nav-item">
-      <a href="/blog" class="nav-link">Blog</a>
+      <a lang="en" href="/blog" class="nav-link">Blog</a>
+      <a lang="zh" href="/blog" class="nav-link">博客</a>
     </li>
     <li class="nav-item">
-      <a href="/contribute" class="nav-link">Contribute</a>
+      <a lang="en" href="/contribute" class="nav-link">Contribute</a>
+      <a lang="zh" href="/contribute" class="nav-link">贡献</a>
     </li>
     <li class="nav-item">
       <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">Wiki</a>
     </li>
     <li class="nav-item">
-      <a href="/documentation/about/faq.html" class="nav-link">FAQ</a>
+      <a lang="en" href="/documentation/about/faq.html" class="nav-link">FAQ</a>
+      <a lang="zh" href="/documentation/about/faq.html" class="nav-link">常见问题</a>
     </li>
     <li class="nav-item">
-      <a href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
+      <a lang="en" href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
+      <a lang="zh" href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">开始</a>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" onclick="switchToEnglish();">English Version</button>
+      <button class="nav-link" onclick="switchToChinese();">中文版</button>
     </li>
   </ul>
 </nav>
@@ -38,22 +45,31 @@
   <div class="doc-nav-div">
     <ul class="doc-nav-list">
       <li class="doc-nav-item">
-        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+        <a lang="en" href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+        <a lang="zh" href="/documentation/getting_started.html" class="doc-nav-link">文档</a>
       </li>
       <li class="doc-nav-item">
-        <a href="/blog" class="doc-nav-link">Blog</a>
+        <a lang="en" href="/blog" class="doc-nav-link">Blog</a>
+        <a lang="zh" href="/blog" class="doc-nav-link">博客</a>
       </li>
       <li class="doc-nav-item">
-        <a href="/contribute" class="doc-nav-link">Contribute</a>
+        <a lang="en" href="/contribute" class="doc-nav-link">Contribute</a>
+        <a lang="zh" href="/contribute" class="doc-nav-link">贡献</a>
       </li>
       <li class="doc-nav-item">
         <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
       </li>
       <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+        <a lang="en" href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+        <a lang="zh" href="/documentation/about/faq.html" class="doc-nav-link">常见问题</a>
       </li>
       <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+        <a lang="en" href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+        <a lang="zh" href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >开始</a>
+      </li>
+      <li class="doc-nav-item">
+        <button class="doc-nav-link" onclick="switchToEnglish();">English Version</button>
+        <button class="doc-nav-link" onclick="switchToChinese();">中文版</button>
       </li>
     </ul>
   </div>

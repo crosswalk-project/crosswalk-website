@@ -1,19 +1,25 @@
 <% include _includes/redirect-hash %>
 <header class="hero hero--bg1 knockout">
+  <div class="hero-botton-group">
+    <button onclick="switchToEnglish();">English Version</button>
+    <button onclick="switchToChinese();">中文版</button>
+  </div>
   <div class="container">
     <div class="row">
       <% include _includes/nav.ejs %>
     </div>
     <div class="row">
-      <h1 class="hero-heading">build world class hybrid apps</h1>
+      <h1 lang="en" class="hero-heading">build world class hybrid apps</h1>
+      <h1 lang="zh" class="hero-heading">构建世界级的hybrid应用</h1>
     </div>
     <div class="row hero-row">
-      <p>Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps.</p>
+      <p lang='en'>Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps.</p>
+      <p lang='zh'>使用集成了最前沿Web技术的Crosswalk运行时环境开发功能强大的Android和Cordova应用。</p>
     </div>
     <div class="row" id="hero-button-group">
       <div class="button-group">
-        <a class="button" id="main-get-started-button" href="/documentation/getting_started.html" >Get started</a>
-        <a class="button" id="main-downloads-button" href="/documentation/downloads.html">Download</a><br/>
+        <a class="button" id="main-get-started-button" href="/documentation/getting_started.html" ><div lang="en">Get started</div><div lang="zh">开始</div></a>
+        <a class="button" id="main-downloads-button" href="/documentation/downloads.html"><div lang="en">Download</div><div lang="zh">下载</div></a><br/>
 <!--    
 	<br />
 	<a href="/documentation/community/senchacon2015.html">
@@ -29,12 +35,16 @@
 -->
         <a href="/documentation/cordova.html">
           <div style="color:white;">
-            &nbsp;Cordova 4.0 now supports Crosswalk pluggable webview!
+            <p lang="en">&nbsp;Cordova 4.0 now supports Crosswalk pluggable webview!</p>
+            <p lang="zh">&nbsp;Cordova 4.0现已支持Crosswalk webview插件!</p>
           </div>
         </a>
-        <a class="button-follower" id="main-follow-twitter-button" href="http://twitter.com/xwalk_project">
+        <a lang="en" class="button-follower" id="main-follow-twitter-button" href="http://twitter.com/xwalk_project">
           <img src="/assets/Twitter_logo_white.png" width="20px" /> Follow the Crosswalk Project on Twitter
        </a>
+        <a lang="zh" class="button-follower" id="main-follow-twitter-button" href="http://weibo.com/crosswalk">
+          <img src="/assets/Twitter_logo_white.png" width="20px" /> 关注Crosswalk项目微博
+        </a>
      </div>
     </div>
   </div>
@@ -47,36 +57,52 @@
             <li class="media-item">
               <a class="media-link" href="/documentation/cordova.html">
                 <img class="media-image" src="/assets/icons/logo-cordova-white.png" alt="Apache Cordova logo" />
-                <p class="media-description">
+                <p lang="en" class="media-description">
                   <strong class="media-heading">Apache Cordova compatible</strong>
                   Easily add the Crosswalk pluggable webview in your Cordova app
+                </p>
+                <p lang="zh" class="media-description">
+                  <strong class="media-heading">兼容Apache Cordova</strong>
+                  在你的Cordova应用中轻松添加Crosswalk webview插件
                 </p>
               </a>
             </li>
             <li class="media-item">
               <a class="media-link" href="/documentation/android.html">
                 <img class="media-image" src="/assets/icons/logo-android-white.png" alt="Google Android logo" />
-                <p class="media-description">
+                <p lang="en" class="media-description">
                   <strong class="media-heading">Android compatible</strong>
                   Use the Crosswalk Project as your WebView or in-app browser
+                </p>
+                <p lang="zh" class="media-description">
+                  <strong class="media-heading">支持Android</strong>
+                  将Crosswalk Project作为应用的WebView或内嵌浏览器
                 </p>
               </a>
             </li>
             <li class="media-item">
               <a class="media-link" href="/documentation/ios.html">
                 <img class="media-image" src="/assets/icons/logo-apple-white.png" alt="Tizen logo" />
-                <p class="media-description">
+                <p lang="en" class="media-description">
                   <strong class="media-heading">iOS compatible</strong>
                   Use the Crosswalk Project as your WebView in your iOS mobile application
+                </p>
+                <p lang="zh" class="media-description">
+                  <strong class="media-heading">支持iOS</strong>
+                  在你的iOS应用中使用Crosswalk WebView
                 </p>
               </a>
             </li>
             <li class="media-item">
               <a class="media-link" href="/documentation/windows.html">
                 <img class="media-image" src="/assets/icons/logo-windows-white.png" alt="Windows logo" />
-                <p class="media-description">
+                <p lang="en" class="media-description">
                   <strong class="media-heading">Windows compatible</strong>
                   Create Windows applications using the Crosswalk Project WebView.
+                </p>
+                <p lang="zh" class="media-description">
+                  <strong class="media-heading">支持Windows</strong>
+                  使用Crosswalk WebView创建Windows应用
                 </p>
               </a>
             </li>

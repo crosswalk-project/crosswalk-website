@@ -5,6 +5,13 @@
     "author": "Web RealSense Team",
     "desc": "Time to develop RealSense applications with Web Technology."
   },  
+  "crosswalk-realsense-webapi-zh": {
+    "title": "RealSense Web API介绍",
+    "date": "2016-02-23T00:00",
+    "author": "Web RealSenset团队",
+    "desc": "是时候使用Web技术来开发RealSense应用了。",
+    "lang": "zh"
+  },
   "crosswalk-2015-summary": {
     "title": "Crosswalk Project 2015: Highlights of a great year",
     "date": "2016-01-21T00:00",
