@@ -271,9 +271,9 @@
 <p>Each .NET extension is required to ship with a bridge which is provided by Crosswalk. Simply copy it and rename it according to your .NET extension DLL name with the <code>_bridge</code> suffix.  For example, if your extension is called <code>echo_extension.dll</code>, the bridge should be <code>echo_extension_bridge.dll</code>.</p>
 <h2><a class='doc-anchor' id='Writing-your-Net-Extension'></a>Writing your .NET Extension</h2>
 <ol>
-<li><p>Download and install <a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Visual Studio 2013</a>. (2015 has not been tested at the moment).</p>
+<li><p>Download and install <a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Visual Studio 2013 or 2015</a>.</p>
 </li>
-<li><p>Download and install the <a href="https://visualstudiogallery.msdn.microsoft.com/51e648be-c91a-40fa-9d13-8f49ec134e86">Crosswalk .NET Extensions Visual Studio Template</a>. You can alternatively search for it in Visual Studio Extensions and Updates dialog.</p>
+<li><p>Download and install the <a href="https://visualstudiogallery.msdn.microsoft.com/0e042110-a345-413c-9014-5418ff1f2d00">Crosswalk .NET Extensions Visual Studio Template</a>. You can alternatively search for it in Visual Studio Extensions and Updates dialog.</p>
 <p>This template will help you to quickly create an extension in Visual Studio.</p>
 </li>
 <li><p>Open Visual Studio and click: File -&gt; New Project</p>
@@ -291,13 +291,13 @@
 <p>In the <code>XWalkExtension</code> class there are two key methods you should implement:</p>
 <ul>
 <li><code>ExtensionName()</code>: This is the prefix of your extension in JavaScript and how you are expected to call the API provided by your extension. For example you can return “echo” and all your call in JavaScript will be prefixed with “echo.”</li>
-<li><p><code>ExtensionAPI()</code>: This is the API you’re going to expose to JavaScript. The image below is an example of how this API is used with a simple “Echo” app.</p>
+<li><p><code>ExtensionAPI()</code>: This is the API you’re going to expose to JavaScript. This API is read from the file XWalkExtensionApi.js. Considering the &quot;echo&quot; example, here is how the API file looks like:</p>
 <p><a href="/assets/win7-extension-config.png"><img src="/assets/win7-extension-config.png" style="display: block; margin: 0 auto"/></a></p>
 </li>
 </ul>
 <h3>Writing the Extension API</h3>
 <ul>
-<li>Any properties (methods, objects, constants, etc.) you want to expose as the JavaScript API for your extension should be appended to the exports object inside the JavaScript API string. This has a similar role to the exports object in nodejs modules, defining the public face of the API. Any other variables not attached to exports are only scoped to this file and won&#39;t pollute the web application&#39;s global scope. In this simple <code>echo</code> example we have two methods exposed : <code>echo</code> and <code>syncEcho</code>. In the JavaScript side they will be called like this: <code>echo.echo(“test”)</code> and <code>echo.syncEcho(“test”)</code></li>
+<li>Any properties (methods, objects, constants, etc.) you want to expose as the JavaScript API for your extension should be appended to the exports object inside the JavaScript API file. This has a similar role to the exports object in nodejs modules, defining the public face of the API. Any other variables not attached to exports are only scoped to this file and won&#39;t pollute the web application&#39;s global scope. In this simple <code>echo</code> example we have two methods exposed : <code>echo</code> and <code>syncEcho</code>. In the JavaScript side they will be called like this: <code>echo.echo(“test”)</code> and <code>echo.syncEcho(“test”)</code></li>
 <li><code>extension</code> object is set by the .NET extension framework and contains methods to communicate with the .NET side of your extension: <code>extension.PostMessage()</code> and <code>extension.internal.sendSyncMessage()</code>. The former is simple, it sends a message from JavaScript to .NET which will be responsible to handle it. <code>sendSyncMessage</code> is similar however it is a synchronous call (and thus blocking) which means that it will not return until the .NET side gives an answer.</li>
 <li><code>extension.setMessageListener()</code> sets a function to invoke for each message returned by the .NET side of the extension. In this simple example the <code>echo()</code> function takes a callback from the caller to be called when the .NET echoed our message. In that case the listener is called when .NET replied and the callback will be invoked.</li>
 </ul>
@@ -338,11 +338,11 @@ exports.echo2 = function (message, callback) {
 <p>The ability to package your .MSI installer with your .NET extension is being implemented.  This section will beupdated when the ability is complete and part of the Crosswalk packaging tool.</p>
 <h3>Testing your .NET Extension using Crosswalk for Windows binary</h3>
 <p>After downloading Crosswalk for Windows and unzipping it you can easily try your extension.</p>
+<p>If you did not use the Visual Studio template you need to do the next two steps. Starting with version 2.0 of the template the bridge will automatically be added for you.
+1.  Make sure you copy xwalk_extension_bridge.dll in the folder where you built your .NET extension (where the .DLL is located).
+2.  Rename <code>xwalk_extension_bridge.dll</code> so that it looks identical as your extension DLL name with the suffix <code>_bridge</code> as the only difference. Here is an example:</p>
+<p>   <img src="/assets/win9-extension-net-bridge.png" style="display: block; margin: 0 auto"/></p>
 <ol>
-<li>Make sure you copy xwalk_extension_bridge.dll in the folder where you built your .NET extension (where the .DLL is located).</li>
-<li><p>Rename <code>xwalk_extension_bridge.dll</code> so that it looks identical as your extension DLL name with the suffix <code>_bridge</code> as the only difference. Here is an example:</p>
-<p><img src="/assets/win9-extension-net-bridge.png" style="display: block; margin: 0 auto"/></p>
-</li>
 <li><p>Inside your command line, navigate to the path where you unzipped Crosswalk and launch it using the method described in <a href="/documentation/windows/run_on_windows.html#Run-using-Crosswalk-binary-directly">Run using Crosswalk binary directly</a> with the following parameters:</p>
 <ul>
 <li><code>--allow-external-extensions-for-remote-sources</code> (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and</li>
@@ -418,7 +418,7 @@ exports.echo2 = function (message, callback) {
              Latest blog post:</br>
               
               
-                <b><a href="/blog">Introducing RealSense Web API</a></b><br/>
+                <b><a href="/blog">Introducing Crosswalk Project Extensions for Intel® RealSense™ Technology</a></b><br/>
                 &nbsp;(<span ><time class="js-vagueTime" datetime="Tue, 23 Feb 2016 00:00:00 GMT">2016-02-23T00:00</time></span>)
               
               <br/>
