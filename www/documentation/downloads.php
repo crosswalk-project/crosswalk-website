@@ -219,7 +219,7 @@ $canaryVersion = "N/A";
 $baseUrl = "https://download.01.org/crosswalk/releases/crosswalk/android";
 
 
-// Get the version from website content. Example: "16.45.421.19"
+// Get the version from website content. Return val example: "16.45.421.19"
 function getVersion ($subject)
 {
     $matches = array();
@@ -386,7 +386,7 @@ if ($canaryVersion == "N/A") {
 
 <p>See also:
   <ul><li><a href="/documentation/getting_started.html">Getting started</a>: How to use these downloads.</li>
-    <li><a href="/documentation/quality_dashboard.html">Quality Dashboard</a>: Test coverage and results for each build.</li>
+    <li><a href="/documentation/qa/quality_dashboard.html">Quality Dashboard</a>: Test coverage and results for each build.</li>
     <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/release-methodology/version-numbers">Release methodology</a>: The meaning of the version numbers.</li>
   </ul>
 

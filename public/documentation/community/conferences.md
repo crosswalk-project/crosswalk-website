@@ -31,9 +31,7 @@ Additional conferences will be added as the schedule is known.
 </a>
 <hr>
 <p>[AnDevCon Boston](http://www.andevcon.com/boston), July 29-31, Boston, MA</p>
-<a href="http://www.andevcon.com/boston">
   <img src="/assets/conferences/andevcon-boston-banner.jpg" style="height:80px;display:block;">
-</a>
 <hr>
 <p>Intel Developer Networking Event, May 27, San Francisco, CA</p>
 <img src="/assets/conferences/google-io-intel.jpg" style="height:80px;display:block;">

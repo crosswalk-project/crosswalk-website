@@ -54,7 +54,7 @@ Some hints about the code:
 
 * The JavaScript string in the constructor can be passed in different ways: it could be passed in as a `String` (as done here), read from a `.js` file in the `assets/` directory, fetched from a web server, etc.
 
-* The string returned by the `onMessage()` and `onSyncMessage()` methods could be serialised to/from JSON to handle more complex interactions. See [the runtime extension documentation](/documentation/android_extensions/write_an_extension.html) for details.
+* The string returned by the `onMessage()` and `onSyncMessage()` methods could be serialised to/from JSON to handle more complex interactions. See [the runtime extension documentation](/documentation/android/android_extensions/write_an_extension.html) for details.
 
 Note that it is also possible to include an extension in binary format, in a jar or `.class` file bundled with the embedding application. Extensions included by the embedding application can be used the same way as any other imported Java classes.
 

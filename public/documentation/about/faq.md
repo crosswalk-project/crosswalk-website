@@ -71,20 +71,11 @@ Bundling the runtime with the application (aka "embedded mode") is the simplest 
 
 The Crosswalk binaries are architecture-specific. This means that you will need an x86-compatible Crosswalk on Android devices with x86 chips; and an ARM-compatible Crosswalk on Android devices with ARM chips.
 
-There are two approaches to building an application which supports both x86 and ARM platforms:
+There are two approaches to building an application which supports both x86 and ARM platforms. Both approaches are supported by the npm-based tool [crosswalk-pkg](/documentation/crosswalk-app-tools.html).
 
-*   Build two separate packages for your application, one for x86 and one for ARM; then upload both to the app stores where you are hosting your application. Prominent stores like Google Play have support for [uploading multiple packages for different platforms](http://developer.android.com/google/play/publishing/multiple-apks.html).
+*   (Recommended) Build two separate packages for your application, one for x86 and one for ARM; then upload both to the app stores where you are hosting your application. Prominent stores like Google Play have support for [uploading multiple packages for different platforms](http://developer.android.com/google/play/publishing/multiple-apks.html).
 
-    The [Crosswalk apk generation script](/documentation/android/run_on_android.html) (`make_apk.py`) generates packages for both architectures to facilitate this way of working.
-
-*   Build one package for your application, but include both the x86 and ARM versions of Crosswalk in it. The down-side of this approach is that it makes the package file very large (c. 40Mb before you add your application code).
-
-    Creating a package this way requires you to copy the Crosswalk shared object files for both architectures into the `lib/` directory of the apk package file. For example, an apk with support for x86 and ARM would contain the following files:
-
-        lib/armeabi-v7a/libxwalkcore.so
-        lib/x86/libxwalkcore.so
-
-    How you achieve this depends on your build process. If you need a reference, see [the Cordova migration instructions](/documentation/cordova/migrate_an_application.html#Multi-architecture-packages), which explain how to do this in the context of Crosswalk Cordova.
+*   Build one package for your application, but include both the x86 and ARM versions of Crosswalk in it. This is sometimes called a "fat apk". The down-side of this approach is that it adds ~40MB to the application size.
 
 ### <a class="doc-anchor" id="Which-platforms-does-Crosswalk-support"></a>Which platforms does Crosswalk support?
 
