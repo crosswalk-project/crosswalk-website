@@ -1,12 +1,12 @@
 {
   "realsense": {
-    "title": "RealSense Web APIs"
+    "title": "Intel RealSense"
   },
   "webvr": {
     "title": "WebVR"
   },
   "security-api": {
-    "title": "Intel Security APIs"
+    "title": "Intel® Security APIs"
   },
   "webrtc": {
     "title": "WebRTC"

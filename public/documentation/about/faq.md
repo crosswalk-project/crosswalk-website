@@ -77,6 +77,8 @@ There are two approaches to building an application which supports both x86 and 
 
 *   Build one package for your application, but include both the x86 and ARM versions of Crosswalk in it. This is sometimes called a "fat apk". The down-side of this approach is that it adds ~40MB to the application size.
 
+*   Create a shared-mode APK.  This does not include the runtime and the APK size is not increased. When the user runs the application the first time, the architecture is detected and the approproate runtime is downloaded. Although flexible, this may not provide the best end-user experience.
+
 ### <a class="doc-anchor" id="Which-platforms-does-Crosswalk-support"></a>Which platforms does Crosswalk support?
 
 Crosswalk officially supports [Android (version 4.0 and above)](/documentation/android.html), [iOS](/documentation/ios.html), [Linux desktop (deb)](/documentation/linux.html), and [Tizen 3.0 (Common and IVI profiles)](/documentation/tizen.html). Pre-built packages are available for these platforms. See the [downloads page](https://crosswalk-project.org/documentation/downloads.html) for details. Work is also underway to support Windows 10 desktop.

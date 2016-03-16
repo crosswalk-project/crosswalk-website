@@ -1,4 +1,4 @@
-# RealSense Web API
+# Using Extensions for Intel RealSense technology
 
 Web APIs for [Intel® RealSense™ technology](http://www.intel.com/realsense) are now available for Windows applications. (Note: Support for Android will be considered once hardware is available and shipping with this capability.)
 

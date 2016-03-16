@@ -30,7 +30,7 @@ Additional conferences will be added as the schedule is known.
   <img src="/assets/conferences/tizen15-banner.jpg" style="height:80px;display:block;">
 </a>
 <hr>
-<p>[AnDevCon Boston](http://www.andevcon.com/boston), July 29-31, Boston, MA</p>
+<p>AnDevCon Boston, July 29-31, Boston, MA</p>
   <img src="/assets/conferences/andevcon-boston-banner.jpg" style="height:80px;display:block;">
 <hr>
 <p>Intel Developer Networking Event, May 27, San Francisco, CA</p>
