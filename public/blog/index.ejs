@@ -5,12 +5,13 @@
   <br />
   <div class="doc-main">
    <div class="row" style="">
-    <h1>Crosswalk Blog</h1><br>
+    <h1 lang="en">Crosswalk Blog</h1>
+    <h1 lang="zh">Crosswalk博客</h1><br>
     <ul class="article-list">
       <% for (slug in public.blog._data) { %>
         <% var article = public.blog._data[slug] %>
         <% if (article.title) { %>
-          <li class="article-item <%= article.url ? 'article-item--external' : '' %>">
+          <li lang="<%= article.lang ? article.lang : '' %>" class="article-item <%= article.url ? 'article-item--external' : '' %>">
             <header class="article-header">
               <h2 class="article-title"><a href="<%= article.url || slug + '.html' %>"><%- article.title %></a></h2>
               <span class="article-meta">
@@ -20,7 +21,7 @@
             </header>
             <% if(typeof article.url === 'undefined') { %>
             <div class="article-excerpt">
-              <p><%-: partial(slug).replace(/<[^>]*>/g, "") | truncate_words: 50 %> <a href="<%= slug %>.html" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>
+              <p><%- partial(slug).replace(/<[^>]*>/g, "") %> <a href="<%= slug %>.html" title="Read the rest of “<%= article.title %>”">Read more&hellip;</a></p>
             </div>
             <% } else if(article.desc) { %>
             <div class="article-excerpt">

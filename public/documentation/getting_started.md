@@ -1,9 +1,13 @@
-# Get started with the Crosswalk Project
+<h1 lang="en">Get started with the Crosswalk Project</h1>
+<h1 lang="zh">开启你的Crosswalk之旅</h1>
 
-Welcome to the Crosswalk Project, the best web runtime for your mobile and desktop web applications.  Select the area you are interested in below and jump in!
+<p lang="en">Welcome to the Crosswalk Project, the best web runtime for your mobile and desktop web applications.  Select the area you are interested in below and jump in!</p>
+<p lang="zh">欢迎使用业界领先的移动及桌面应用web运行时环境 - Crosswalk。选择以下你感兴趣的平台，开始探索吧！</p>
 
-<h2>Developing with Crosswalk</h2>
-<p>Setup your development system and begin creating applications that use the Crosswalk Project runtime and webview.</p>
+<h2 lang="en">Developing with Crosswalk</h2>
+<h2 lang="zh">使用Crosswalk开发</h2>
+<p lang="en">Setup your development system and begin creating applications that use the Crosswalk Project runtime and webview.</p>
+<p lang="zh">设置你的开发环境，使用Crosswalk运行时和webview进行开发。</p>
 
 <div class="featureBlock"> 
 <!--
