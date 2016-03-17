@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="doc-header">
+    <% include ../_includes/nav.ejs %>
+  </div>
+  <br />
+  <div class="doc-main">
+   <div class="row" style="">
+    <h1>Crosswalk博客</h1><br>
+    <ul class="article-list">
+      <% for (slug in public.cn.blog._data) { %>
+        <% var article = public.cn.blog._data[slug] %>
+        <% if (article.title) { %>
+          <li class="article-item <%= article.url ? 'article-item--external' : '' %>">
+            <header class="article-header">
+              <h2 class="article-title"><a href="<%= article.url || slug + '.html' %>"><%- article.title %></a></h2>
+              <span class="article-meta">
+                <time class="article-time js-vagueTime" datetime="<%- new Date(article.date) %>"><%- new Date(article.date).toUTCString() %></time>
+                <% if (article.author) { %> by <span class="article-author"><%= article.author %></span><% } %>
+              </span>
+            </header>
+            <% if (typeof article.url === 'undefined') { %>
+            <div class="article-excerpt">
+              <p><%- partial(slug).replace(/<[^>]*>/g, "") %> <a href="<%= slug %>.html" title="继续阅读“<%= article.title %>”">更多内容&hellip;</a></p>
+            </div>
+            <% } else if (article.desc) { %>
+            <div class="article-excerpt">
+              <p><%- article.desc %> <a href="<%= article.url %>" title="继续阅读“<%= article.title %>”">更多内容&hellip;</a></p>
+            </div>
+            <% } %>
+              <hr class="presentation-splitter" style="margin:25px 0px 25px 0px"/>
+          </li>
+        <% } %>
+      <% } %>
+    </ul>
+   </div>
+  </div>
+</div>
