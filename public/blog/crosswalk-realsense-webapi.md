@@ -1,4 +1,4 @@
-[Intel® RealSense™ Technology](https://www.intel.com/realsense) redefines how we interact with our devices for a more natural, intuitive and immersive experience. By introducing 3D cameras with depth information combined with regular RGB data, new use cases are possible such as augmented reality, hand/face recognition, object tracking, and more. The **Crosswalk Project Extensions for Intel® RealSense™ Technology** now brings these amazing capabilities to web developers.
+[Intel® RealSense™ Technology](http://www.intel.com/realsense) redefines how we interact with our devices for a more natural, intuitive and immersive experience. By introducing 3D cameras with depth information combined with regular RGB data, new use cases are possible such as augmented reality, hand/face recognition, object tracking, and more. The **Crosswalk Project Extensions for Intel® RealSense™ Technology** now brings these amazing capabilities to web developers.
 
 Our first public release (part of [Crosswalk v18.6.0](https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/tag/v18.6.0)) includes the following:
 
