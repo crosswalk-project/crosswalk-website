@@ -257,19 +257,27 @@
 </ul>
 <p>Developers can create 3D-aware web applications that can be run on any Windows tablet with a built-in <a href="https://software.intel.com/en-us/RealSense/R200Camera">R200 camera</a>, such as the <a href="http://store.hp.com/us/en/ContentView?storeId=10151&amp;langId=-1&amp;catalogId=10051&amp;eSpotName=new-detachable">HP Spectre x2</a>, or a Windows PC with peripheral R200 camera.</p>
 <h2>Setup</h2>
+<h3>Setup Windows host</h3>
 <p>Setup the Windows host as described here: <a href="/documentation/windows/windows_host_setup.html">Windows System Setup</a>.</p>
 <p>Ensure the version of <code>crosswalk-app-tools</code> is 0.10.0 or newer:</p>
 <pre><code>&gt; crosswalk-pkg -v
 0.10.2</code></pre>
 <p>Build a Crosswalk app by referring to this tutorial: <a href="https://crosswalk-project.org/documentation/windows/build_an_application.html">Build an Application</a>.</p>
-<h2>Use RealSense Extensions</h2>
-<p>Get the Crosswalk RealSense extensions. You can either fetch the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v19.6.0/realsense_extensions_v19.6.0.zip">binary zip</a> from a release or build them by referring to the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Dev-Instructions-for-Windows#building-extensions">instructions for building extensions</a>.</p>
+<h3>Install RealSense Extensions</h3>
+<p>Download and unzip the Crosswalk RealSense extensions (740K zipped, 1.7MB unzipped):</p>
 <ul>
+<li>For Crosswalk v19:  <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v19.6.0/realsense_extensions_v19.6.0.zip">Crosswalk RealSense Extensions v19</a> </li>
+<li>For Crosswalk v18: <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v18.6.0/realsense_extensions_v18.6.0.zip">Crosswalk RealSenes Extensions v18</a></li>
+</ul>
+<p>(You can also build them by referring to the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Dev-Instructions-for-Windows#building-extensions">instructions for building extensions</a>).</p>
+<h2>Use RealSense Extensions</h2>
+<p>To add support to your application, do the following:</p>
+<ol>
 <li>Copy the <code>realsense_extensions</code> folder to the root directory of your app.</li>
 <li><p>Modify your application&#39;s <code>manifest.json</code> to include the realsense extensions:</p>
 <p>Add <code>&quot;xwalk_command_line&quot;: &quot;--use-rs-video-capture&quot;</code>:</p>
 </li>
-</ul>
+</ol>
 <pre><code>{
   &quot;name&quot;: &quot;My Cool RealSense App&quot;,
   &quot;start_url&quot;: &quot;index.html&quot;,
@@ -282,9 +290,9 @@
   ]
 }</code></pre>
 <h2>Sample App</h2>
-<p>A <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/tree/v18.6.0/sample">simple application</a> has been created to demonstrate how to use the APIs.</p>
+<p>The <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/tree/v19.6.0/sample">sample code here</a> can used to see how some of the APIs are used. Other examples are provided in the next section.</p>
 <p>Download <a href="https://download.01.org/crosswalk/releases/crosswalk/windows/canary/19.48.498.0/crosswalk64-19.48.498.0.zip">Crosswalk for Windows 19.48.498.0</a>.</p>
-<p>Package the app with Crosswalk Runtime and RealSense Extensions to app installers.</p>
+<p>Package your app with the Crosswalk Runtime and RealSense Extensions:</p>
 <pre><code>&gt; crosswalk-pkg -p windows -c &lt;path to crosswalk zip file&gt; myapp</code></pre>
 <p>This creates two files:</p>
 <ul>
