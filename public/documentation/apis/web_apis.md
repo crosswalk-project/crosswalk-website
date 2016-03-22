@@ -2,10 +2,16 @@
 
 The following standard APIs are supported by Crosswalk.
 
-Version key:<br />
-&nbsp;&nbsp;&nbsp;<sup id="a">[a]</sup> = Android only<br/>
-&nbsp;&nbsp;&nbsp;<sup id="v">[X.X.X.X]</sup> = this Crosswalk version or later<br/>
-&nbsp;&nbsp;&nbsp;<sup id="va">[X.X.X.X;x86|ARM]</sup> = this version or later for the specified architecture.
+Version key:
+&nbsp;&nbsp;&nbsp;<a class="doc-anchor" id="a"></a><sup>[a]</sup> = Android only
+&nbsp;&nbsp;&nbsp;<a class="doc-anchor" id="w"></a><sup>[w]</sup> = Windows desktop only
+&nbsp;&nbsp;&nbsp;<a class="doc-anchor" id="v"></a><sup>[X.X.X.X]</sup> = this Crosswalk version or later
+&nbsp;&nbsp;&nbsp;<a class="doc-anchor" id="va"></a><sup>[X.X.X.X;x86|ARM]</sup> = this version or later for the specified architecture.
+
+## Crosswalk Project Extensions for Intel RealSense Technology
+* [Depth Enhanced Photography](http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html)<sup><a href="#w">[w]</a></sup> Capture 3D depth photo, enhance photo processing by leveraging the 3D depth information and I/O with [XDM] format. 
+* [Scene Perception](http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/scene-perception.html)<sup><a href="#w">[w]</a></sup> Create a digital representation of the observed environment and estimate in real-time the camera pose by leveraging the 3D camera.
+* [Face Tracking and Recognition](http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/face.html)<sup><a href="#w">[w]</a></sup> Access 3D camera for face tracking and recognition on the Web. 
 
 ## Multimedia & Graphics
 * [CSS Animations](http://www.w3.org/TR/css3-animations/) - Animate CSS properties over time using keyframes.

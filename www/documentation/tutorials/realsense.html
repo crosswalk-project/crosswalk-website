@@ -251,21 +251,19 @@
 <p>Web APIs for <a href="http://www.intel.com/realsense">Intel® RealSense™ technology</a> are now available for Windows applications. (Note: Support for Android will be considered once hardware is available and shipping with this capability.)</p>
 <p>Currently, the following features are supported:</p>
 <ul>
-<li>Depth Enhanced Photography (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">spec</a>)</li>
-<li>Scene Perception (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/scene-perception.html">spec</a>)</li>
-<li>Face Tracking and Recognition (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/face.html">spec</a>)</li>
+<li>Depth Enhanced Photography (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">API documentation</a>)</li>
+<li>Scene Perception (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/scene-perception.html">API documentation</a>)</li>
+<li>Face Tracking and Recognition (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/face.html">API documentation</a>)</li>
 </ul>
 <p>Developers can create 3D-aware web applications that can be run on any Windows tablet with a built-in <a href="https://software.intel.com/en-us/RealSense/R200Camera">R200 camera</a>, such as the <a href="http://store.hp.com/us/en/ContentView?storeId=10151&amp;langId=-1&amp;catalogId=10051&amp;eSpotName=new-detachable">HP Spectre x2</a>, or a Windows PC with peripheral R200 camera.</p>
 <h2>Setup</h2>
 <p>Setup the Windows host as described here: <a href="/documentation/windows/windows_host_setup.html">Windows System Setup</a>.</p>
-<p>Currently you need to install a beta version of <code>crosswalk-app-tools</code> from the git repo:</p>
-<pre><code>&gt; npm install -g https://github.com/crosswalk-project/crosswalk-app-tools.git</code></pre>
-<p>Ensure the version of <code>crosswalk-app-tools</code> is above 0.10.0:</p>
+<p>Ensure the version of <code>crosswalk-app-tools</code> is 0.10.0 or newer:</p>
 <pre><code>&gt; crosswalk-pkg -v
-0.10.0</code></pre>
-<p>Build a Crosswalk app by referring to <a href="https://crosswalk-project.org/documentation/windows/build_an_application.html">https://crosswalk-project.org/documentation/windows/build_an_application.html</a></p>
+0.10.2</code></pre>
+<p>Build a Crosswalk app by referring to this tutorial: <a href="https://crosswalk-project.org/documentation/windows/build_an_application.html">Build an Application</a>.</p>
 <h2>Use RealSense Extensions</h2>
-<p>Get the Crosswalk RealSense extensions. You can either fetch the binary zip from a release or build them by referring to <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Dev-Instructions-for-Windows#building-extensions">https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Dev-Instructions-for-Windows#building-extensions</a>.</p>
+<p>Get the Crosswalk RealSense extensions. You can either fetch the binary zip from a release or build them by referring to the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Dev-Instructions-for-Windows#building-extensions">instructions for building extensions</a>.</p>
 <ul>
 <li>Copy the <code>realsense_extensions</code> folder to the root directory of your app.</li>
 <li><p>Modify your application&#39;s <code>manifest.json</code> to include the realsense extensions:</p>
@@ -284,14 +282,38 @@
   ]
 }</code></pre>
 <h2>Sample App</h2>
-<p>A simple application has been created to demonstrate how to use the APIs.</p>
-<p>Download Crosswalk Windows 18.48.475.0 from <a href="https://download.01.org/crosswalk/releases/crosswalk/windows/canary/18.48.475.0/crosswalk-18.48.475.0.zip">https://download.01.org/crosswalk/releases/crosswalk/windows/canary/18.48.475.0/crosswalk-18.48.475.0.zip</a>.</p>
-<p>Package app with Crosswalk Runtime and RealSense Extensions to installers.</p>
-<pre><code>&gt; crosswalk-pkg -p windows -c C:\path\to\crosswalk-18.48.475.0.zip myapp</code></pre>
+<p>A <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/tree/v18.6.0/sample">simple application</a> has been created to demonstrate how to use the APIs.</p>
+<p>Download <a href="https://download.01.org/crosswalk/releases/crosswalk/windows/canary/19.48.498.0/crosswalk64-19.48.498.0.zip">Crosswalk for Windows 19.48.498.0</a>.</p>
+<p>Package the app with Crosswalk Runtime and RealSense Extensions to app installers.</p>
+<pre><code>&gt; crosswalk-pkg -p windows -c &lt;path to crosswalk zip file&gt; myapp</code></pre>
 <p>This creates two files:</p>
 <ul>
 <li><code>com.example.myapp-0.1.0.0.msi</code>: the MSI installer without Intel RealSense SDK (RSSDK) runtime installer.</li>
 <li><code>com.example.myapp_with_rssdk_runtime_0.1.0.0.exe</code>: the WiX bootstrapper installer with the RSSDK runtime web installer. It launches the RSSDK runtime web installer to install dependencies during the application installation.</li>
+</ul>
+<h2>Examples</h2>
+<p>The following are examples from the API documentation.</p>
+<h3>Depth Enabled Photography</h3>
+<ul>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#taking-a-depth-photo">Taking a Depth Photo</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#load-a-depth-photo-from-file-system">Load a Depth Photo from File System</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#load-a-depth-photo-from-network">Load a Depth Photo from Network</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#refocus-a-depth-photo">Refocus a Depth Photo</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#access-photo-information">Access Photo Information</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#use-photoutils">Use PhotoUtils</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#measure-within-a-depth-photo">Measure Within a Depth Photo</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#apply-motion-effect">Apply Motion Effect</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo-segmentation">Photo Segmentation </a></li>
+</ul>
+<h3>Scene Perception</h3>
+<ul>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/scene-perception.html#configure-and-control-scene-perception-sp-module">Configure and Control Scene Perception(SP) module</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/scene-perception.html#handle-events-of-sp-module">Handle events of SP module </a></li>
+</ul>
+<h3>Face Recognition</h3>
+<ul>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/face.html#start-stop-face-module">Start/Stop face module</a></li>
+<li><a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/face.html#face-module-configuration.x">Face module configuration</a></li>
 </ul>
 
   <footer class="article-next">
