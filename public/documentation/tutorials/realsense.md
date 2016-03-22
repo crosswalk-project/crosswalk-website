@@ -23,7 +23,7 @@ Build a Crosswalk app by referring to this tutorial: [Build an Application](http
 
 ## Use RealSense Extensions
 
-Get the Crosswalk RealSense extensions. You can either fetch the binary zip from a release or build them by referring to the [instructions for building extensions](https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Dev-Instructions-for-Windows#building-extensions).
+Get the Crosswalk RealSense extensions. You can either fetch the [binary zip](https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v19.6.0/realsense_extensions_v19.6.0.zip) from a release or build them by referring to the [instructions for building extensions](https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Dev-Instructions-for-Windows#building-extensions).
 
 * Copy the `realsense_extensions` folder to the root directory of your app.
 * Modify your application's `manifest.json` to include the realsense extensions:
