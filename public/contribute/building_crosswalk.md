@@ -57,11 +57,6 @@ at least the following:
     export NO_AUTH_BOTO_CONFIG=/path/to/boto-file
     ```
 
-1. Set up your Subversion proxy settings. At least `http-proxy-host` and
-   `http-proxy-port` must be set in the `[global]` section. On Linux, the file
-   is called `.subversion/servers`, and on Windows it is
-   `C:\Users\<YOUR_USER>\AppData\Roaming\Subversion\servers`.
-
 ## Download the Crosswalk source
 
 ### Before starting: Android
@@ -216,7 +211,7 @@ Chrome's process, so make sure you are
     libXrender-devel.i686 libXScrnSaver-devel libXtst-devel \
     libXtst-devel.i686 lighttpd nss-devel nss.i686 pango-devel.i686 \
     pciutils-devel pciutils-devel.i686 pulseaudio-libs-devel python-pexpect \
-    svn systemd-devel systemd-devel.i686 xorg-x11-server-Xvfb \
+    systemd-devel systemd-devel.i686 xorg-x11-server-Xvfb \
     xorg-x11-utils zlib-devel.i686 zlib.i686
     ```
 
