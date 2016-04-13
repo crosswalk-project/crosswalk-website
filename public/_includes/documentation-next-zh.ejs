@@ -5,10 +5,10 @@
     <% var item = subpages._data[slug] %>
     <% if(slug === current.source) { %>
       <% var next = true %>
-    <% } else if(next === true && item.language === "en") { %>
+    <% } else if(next === true && item.language === "zh") { %>
       <% next = false %>
       <a href="/documentation/<%= current.path[1] %>/<%= slug %>.html" class="article-promo well">
-        <em>What’s next?</em>
+        <em>下一节是什么？</em>
         <h3><%= item.title %></h3>
       </a>
     <% } %>

@@ -4,5 +4,8 @@
   },
   "feed": {
     "layout": false
+  },
+  "index_zh": {
+    "layout": "_layout-zh"
   }
 }

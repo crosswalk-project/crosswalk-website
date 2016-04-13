@@ -1,29 +1,85 @@
 {
   "": {
-    "title": "Overview"
+    "title": "Overview",
+    "language": "en",
+    "layout": "_layout"
   },
   "building_crosswalk": {
-    "title": "Building Crosswalk"
+    "title": "Building Crosswalk",
+    "language": "en"
   },
   "contributing-code": {
-    "title": "Contributing code"
+    "title": "Contributing code",
+    "language": "en"
   },
   "contributing_tests": {
-    "title": "Contributing tests"
+    "title": "Contributing test",
+    "language": "en"
   },
   "coding_style": {
-    "title": "Coding style"
+    "title": "Coding style",
+    "language": "en"
   },
   "visual_studio": {
-  "title": "Visual Studio Support"
+    "title": "Visual Studio Support",
+    "language": "en"
   },
   "downstream-chromium": {
-    "title": "Downstream Chromium"
+    "title": "Downstream Chromium",
+    "language": "en"
   },
   "reviewer_policy": {
-    "title": "Reviewer policy"
+    "title": "Reviewer policy",
+    "language": "en"
   },
   "report_bugs": {
-    "title": "Report bugs"
+    "title": "Report bugs",
+    "language": "en"
+  },
+  "index_zh":{
+    "title": "预览",
+    "language": "zh",
+    "layout": "../_layout-zh"
+  },
+  "building_crosswalk_zh": {
+    "title": "创建Crosswalk",
+    "language": "zh",
+    "layout": "../_layout-zh"
+  },
+  "contributing-code_zh": {
+    "title": "贡献代码",
+    "language": "zh",
+    "layout": "../_layout-zh"
+  },
+  "contributing_tests_zh": {
+    "title": "贡献测试",
+    "language": "zh",
+    "layout": "../_layout-zh"
+  },
+  "coding_style_zh": {
+    "title": "代码风格",
+    "language": "zh",
+    "layout": "../_layout-zh"
+  },
+  "visual_studio_zh": {
+    "title": "Visual Studio支持",
+    "language": "zh",
+    "layout": "../_layout-zh"
+  },
+  "downstream-chromium_zh": {
+    "title": "Chromium",
+    "language": "zh",
+    "layout": "../_layout-zh"
+  },
+  "reviewer_policy_zh": {
+    "title": "审阅策略",
+    "language": "zh",
+    "layout": "../_layout-zh"
+  },
+  "report_bugs_zh": {
+    "title": "报告bugs",
+    "language": "zh",
+    "layout": "../_layout-zh"
   }
 }
+

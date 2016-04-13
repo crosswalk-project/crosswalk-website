@@ -11,6 +11,7 @@
 
 const TOOLS_PAGE = 1;
 const HOME_PAGE = 2;
+const LOCAL_LANG_COOKIE = "local_lang";
 
 var imgSize = 130;
 var hoverImgSize = 150;
@@ -138,3 +139,35 @@ function getToolURLParameters() {
     return toolNum;
 }
 
+function createCookie(name, value, days) {
+    var expires;
+
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    } else {
+        expires = "";
+    }
+    document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = encodeURIComponent(name) + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+}
+
+function checkCookie() {
+   var name = readCookie(LOCAL_LANG_COOKIE);
+   alter(name);
+}
+
+function eraseCookie(name) {
+    createCookie(name, "", -1);
+}

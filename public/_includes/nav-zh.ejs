@@ -1,27 +1,28 @@
 
-  <% if(current.path.length === 1 && current.source === 'index') { %>
+
+  <% if(current.path.length === 1 && current.source === 'index_zh') { %>
 <nav class="nav">
-  <a href="/" class="nav-logo logo">
+  <a href="/index_zh" class="nav-logo logo">
     <img src="/assets/identity/crosswalkproject-logo-horizontal-light.png" class="logo-image">
   </a>
   <ul class="nav-list">
     <li class="nav-item">
-      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+      <a href="/documentation/getting_started_zh.html" class="nav-link">文档</a>
     </li>
     <li class="nav-item">
-      <a href="/blog" class="nav-link">Blog</a>
+      <a href="/blog/index_zh" class="nav-link">博客</a>
     </li>
     <li class="nav-item">
-      <a href="/contribute" class="nav-link">Contribute</a>
+      <a href="/contribute/index_zh" class="nav-link">贡献</a>
     </li>
     <li class="nav-item">
       <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">Wiki</a>
     </li>
     <li class="nav-item">
-      <a href="/documentation/about/faq.html" class="nav-link">FAQ</a>
+      <a href="/documentation/about/faq_zh.html" class="nav-link">常见问题回答</a>
     </li>
     <li class="nav-item">
-      <a href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
+      <a href="/documentation/getting_started_zh.html" class="nav-link button button--tertiary" id="getting-started-nav">开始</a>
     </li>
   </ul>
 </nav>
@@ -30,34 +31,34 @@
      } else { %>
 
   <div class="doc-logo-div">
-     <a href="/" class="doc-logo-link">
+     <a href="/index_zh" class="doc-logo-link">
        <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
      </a>
   </div>
   <div class="doc-nav-div">
     <ul class="doc-nav-list">
       <li class="doc-nav-item">
-        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+        <a href="/documentation/getting_started_zh.html" class="doc-nav-link">文档</a>
       </li>
       <li class="doc-nav-item">
-        <a href="/blog" class="doc-nav-link">Blog</a>
+        <a href="/blog/index_zh" class="doc-nav-link">博客</a>
       </li>
       <li class="doc-nav-item">
-        <a href="/contribute" class="doc-nav-link">Contribute</a>
+        <a href="/contribute/index_zh" class="doc-nav-link">贡献</a>
       </li>
       <li class="doc-nav-item">
         <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
       </li>
       <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+        <a href="/documentation/about/faq_zh.html" class="doc-nav-link">常见问题</a>
       </li>
       <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+        <a href="/documentation/getting_started_zh.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >开始</a>
       </li>
       <li class="doc-nav-item">
         <select name="language" id="select_id" onchange="myFunction()">
-           <option value="English" selected="selected">English</option>
-           <option value="Chinese">Chinese</option>
+           <option value="English">English</option>
+           <option value="Chinese" selected="selected">Chinese</option>
         </select>
       </li>
     </ul>
@@ -68,13 +69,14 @@
 function myFunction() {
    var selectElement = document.getElementById('select_id');
    var selected = selectElement.value;
-   var cur_url = window.location.href; 
+   var cur_url = window.location.href;
    var fileName = "<%= current.source%>";
    if(fileName != 'index' && fileName != 'index_zh')
    {
       var url_list = cur_url.split('/');
       fileName = url_list[url_list.length - 1];
    }
+
    var flag = fileName.lastIndexOf("_zh");
    if(selected == "English")
    {
@@ -91,6 +93,7 @@ function myFunction() {
      if(flag <= 0 )
      {
         var tmp = fileName.split('.');
+        //document.write(tmp);
         newfileName = tmp[0] + "_zh";
         if( tmp.length > 1)
         {
@@ -99,9 +102,11 @@ function myFunction() {
                newfileName = newfileName + "." +  tmp[i];
            }
         }
+        //document.write(newfileName);
         window.location.replace(newfileName);
      }
-  } 
+  }
+
 }
 </script>
-
+	
