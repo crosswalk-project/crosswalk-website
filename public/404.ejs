@@ -1,0 +1,21 @@
+<script>
+   var lang = readLocalLang();
+   var url = "404_zh.html";
+   if( lang == "Chinese")
+   {
+     window.location.href="/404_zh";
+   }
+</script>
+<div class="container">
+  <div class="doc-header">
+    <% include _includes/nav.ejs %>
+  </div>
+  <br />
+  <div class="doc-main">
+    <div id="en">
+      <h1> 404 Page Not Found </h1>
+      <p>Unfortunately the page requested is not here.</p>
+    </div>
+  </div>
+</div>
+

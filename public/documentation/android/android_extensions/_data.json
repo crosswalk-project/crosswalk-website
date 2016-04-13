@@ -1,14 +1,38 @@
 {
   "host_and_target_setup": {
-    "title": "Host and target setup"
+    "title": "Host and target setup",
+    "language": "en"
   },
   "write_an_extension": {
-    "title": "Write an extension"
+    "title": "Write an extension",
+    "language": "en"
   },
   "write_a_web_application": {
-    "title": "Write a web application"
+    "title": "Write a web application",
+    "language": "en"
   },
   "run_on_android": {
-    "title": "Run on Android"
+    "title": "Run on Android",
+    "language": "en"
+  },
+  "host_and_target_setup_zh": {
+    "title": "主机和目标搭建",
+    "language": "zh",
+    "layout": "../../../_layout_zh"
+  },
+  "write_an_extension_zh": {
+    "title": "编写extension",
+    "language": "zh",
+    "layout": "../../../_layout_zh"
+  },
+  "write_a_web_application_zh": {
+    "title": "编写一个web应用",
+    "language": "zh",
+    "layout": "../../../_layout_zh"
+  },
+  "run_on_android_zh": {
+    "title": "运行在Android上",
+    "language": "zh",
+    "layout": "../../../_layout_zh"
   }
 }

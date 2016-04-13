@@ -59,7 +59,7 @@
   list-style-type: none;
   margin-left: 0;
   display: block;
-  text-align: right;
+  text-align: left;
   font-size: modular-scale($base-font-size, -1, $base-ratio);
   margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
   @include media($mid) {

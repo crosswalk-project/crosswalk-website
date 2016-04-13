@@ -1,50 +1,146 @@
 {
   "about": {
-    "title": "About"
+    "title": "About",
+    "language": "en"
   },
   "getting_started": {
-    "title": "Getting Started"
+    "title": "Getting Started",
+    "language": "en"
   },
   "android": {
-    "title": "Android"
+    "title": "Android",
+    "language": "en"
   },
   "ios": {
-    "title": "iOS"
+    "title": "iOS",
+    "language": "en"
   },
   "windows": {
-    "title": "Windows"
+    "title": "Windows",
+    "language": "en"
   },
   "linux": {
-    "title": "Linux"
+    "title": "Linux",
+    "language": "en"
   },
   "cordova": {
-    "title": "Cordova"
+    "title": "Cordova",
+    "language": "en"
   },
   "tizen": {
-    "title": "Tizen"
+    "title": "Tizen",
+    "language": "en"
   },
   "manifest": {
-    "title": "Manifest"
+    "title": "Manifest",
+    "language": "en"
   },
   "apis": {
-    "title": "APIs"
+    "title": "APIs",
+    "language": "en"
   },
   "downloads": {
-    "title": "Downloads"
+    "title": "Downloads",
+    "language": "en"
   },
   "shared_mode": {
-    "title": "Shared Mode"
+    "title": "Shared Mode",
+    "language": "en"
   },
   "tutorials": {
-    "title": "Tutorials"
+    "title": "Tutorials",
+    "language": "en"
   },
   "samples": {
-    "title": "Samples"
+    "title": "Samples",
+    "language": "en"
   },
   "community": {
-    "title": "Community"
+    "title": "Community",
+    "language": "en"
   },
   "qa": {
-    "title": "Quality Assurance"
-  }
+    "title": "Quality Assurance",
+    "language": "en"
+  },
+  "about_zh": {
+    "title": "关于",
+    "language": "zh",
+    "origin": "about"
+  },
+  "getting_started_zh": {
+    "title": "开始",
+    "language": "zh",
+    "origin": "getting_started"
+  },
+  "android_zh": {
+    "title": "安卓",
+    "language": "zh",
+    "origin": "android"
+  },
+  "ios_zh": {
+    "title": "iOS",
+    "language": "zh",
+    "origin": "ios"
+  },
+  "windows_zh": {
+    "title": "Windows",
+    "language": "zh",
+    "origin": "windows"
+  },
+  "linux_zh": {
+    "title": "Linux",
+    "language": "zh",
+    "origin": "linux"
+  },
+  "cordova_zh": {
+    "title": "Cordova",
+    "language": "zh",
+    "origin": "cordova"
+  },
+ "tizen_zh": {
+    "title": "Tizen",
+    "language": "zh",
+    "origin": "tizen"   
+  },
+ "manifest_zh": {
+    "title": "Manifest",
+    "language": "zh",
+    "origin": "manifest"
+  },
+  "apis_zh": {
+    "title": "APIs",
+    "language": "zh",
+    "origin": "api_zh"
+  },
+  "downloads_zh": {
+    "title": "下载",
+    "language": "zh",
+    "origin": "downloads"
+  },
+  "shared_mode_zh": {
+    "title": "共享模式",
+    "language": "zh",
+    "origin": "shared_mode"
+  },
+  "tutorials_zh": {
+    "title": "教程",
+    "language": "zh",
+    "origin": "tutorials"
+  },
+  "samples_zh": {
+    "title": "样例",
+    "language": "zh",
+    "origin": "samples"
+  },
+  "community_zh": {
+    "title": "社区",
+    "language": "zh",
+    "origin": "samples"
+  },
+  "qa_zh": {
+    "title": "QA",
+    "language": "zh",
+    "origin": "qa"
+  } 
 }

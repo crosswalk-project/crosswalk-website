@@ -1,14 +1,16 @@
 <% var subpages = public.documentation[current.path[1]] %>
+<% var content = public.content._data; %>
+<% var lang = ( current.source.lastIndexOf("_zh") > 0 ? "zh": "en"); %>
 <% if(typeof subpages === 'object') { %>
   <% var next = false %>
   <% for(var slug in subpages._data) { %>
     <% var item = subpages._data[slug] %>
     <% if(slug === current.source) { %>
       <% var next = true %>
-    <% } else if(next === true) { %>
+    <% } else if(next === true && item.language === lang) { %>
       <% next = false %>
       <a href="/documentation/<%= current.path[1] %>/<%= slug %>.html" class="article-promo well">
-        <em>What’s next?</em>
+        <em><%= content["next"][lang].title %></em>
         <h3><%= item.title %></h3>
       </a>
     <% } %>
