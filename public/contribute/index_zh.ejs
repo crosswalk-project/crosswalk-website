@@ -1,12 +1,13 @@
 <script>
-  if( readCookie(LOCAL_LANG_COOKIE) == "Chinese" )
+  if( readCookie(LOCAL_LANG_COOKIE) == "English" )
   {
-      window.location.href = "index_zh";
+      window.location.href = "index";
   }
 </script>
+
 <div class="container">
   <div class="doc-header">
-    <% include ../_includes/nav.ejs %>
+    <% include ../_includes/nav-zh.ejs %>
   </div>
   <br />
   <div class="doc-main">
@@ -17,7 +18,7 @@
       <ul class="article-list nav-toggleHide">
         <% for(var slug in public.contribute._data) { %>
           <% var article = public.contribute._data[slug] %>
-          <% if( article.language === "en") { %>
+          <% if( article.language === "zh" ) { %>
             <li class="article-item <%= current.source === slug.toLowerCase() ? ' nav-item--active' : '' %>">
                <a href="/contribute/<%= slug ? slug.toLowerCase() + '.html' : '' %>"><%= article.title %></a>
             </li>
@@ -26,7 +27,7 @@
       </ul>
     </nav>
     <article class="article article--withSide">
-      <%- partial("_overview") %>
+      <%- partial("_overview_zh") %>
       <footer class="article-next">
       </footer>
     </article>
