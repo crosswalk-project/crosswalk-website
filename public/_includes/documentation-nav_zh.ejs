@@ -12,52 +12,62 @@ function endsWith(str, suffix) {
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
-    <% /* For each article in documentation/_data.json */ 
+    <% /* For each article in documentation/_data-zh.json */ 
        for(var item1 in public.documentation._data) { 
+         var item1_origin = item1;
          var article1 = public.documentation._data[item1];
-         if ( article1.language === "en" ) {
+         if( article1.language === "zh") {
          /* if item1 in _data.json matches a file, add .nav-item--active class */
          var isFile = (current.path.length === 2 && current.path[0] === item1.toLowerCase()) || 
                        current.source === 'index' && current.path[current.path.length - 2] === item1.toLowerCase();
          var pageRef = "/documentation/" + item1.toLowerCase() + (endsWith (item1, ".php") ? "" : ".html"); %>
        <li class="article-item <%= isFile ? ' nav-item--active' : '' %>">
-         <a class="article-link" href="<%= pageRef %>"><%= article1.title %></a>
+         <a class="article-link" href="<%= pageRef %>"><%= article1.title  %></a>
 
          <% /* check second level documentation in tree */
-           if (current.path[current.path.length - 2] === item1.toLowerCase() && 
-               typeof public.documentation[item1] !== 'undefined' && 
-               typeof public.documentation[item1]._data !== 'undefined') { %>
+           if (typeof article1.origin !== 'undefined') {
+               item1_origin = article1.origin;
+           }
+           if ((current.path[current.path.length - 2] === item1.toLowerCase() ||
+                current.path[current.path.length - 2] === item1_origin.toLowerCase()) && 
+               typeof public.documentation[item1_origin] !== 'undefined' && 
+               typeof public.documentation[item1_origin]._data !== 'undefined') { %>
 
          <ul class="article-list">
-            <% for(var item2 in public.documentation[item1]._data) {
-                 var article2 = public.documentation[item1]._data[item2]; 
-                 if ( article2.language === "en" ) { 
+            <% for(var item2 in public.documentation[item1_origin]._data) {
+                 var item2_origin = item2;
+                 var article2 = public.documentation[item1_origin]._data[item2]; 
+                 if ( article2.language === "zh" ) {
                 /* if item2 in _data.json matches a file, add .nav-item--active class */
                var isFile = (current.path.length === 3 && current.path[0] === item2.toLowerCase()) || 
                        current.source === 'index' && current.path[current.path.length - 3] === item2.toLowerCase()
-                var pageRef = "/documentation/" + current.path[current.path.length - 2] + "/" + item2.toLowerCase() +
+                var pageRef = "/documentation/" + item1_origin.toLowerCase() + "/" + item2.toLowerCase() +
                               (endsWith (item2, ".php") ? "" : ".html"); %>
            <li class="article-item <%= isFile ? ' nav-item--active' : '' %>">
              <a class="article-link" href="<%= pageRef %>"><%= article2.title %></a>
 
              <% /* check thrid level documentation in tree */
-                if (current.path[current.path.length - 3] === item2.toLowerCase() && 
-                      typeof public.documentation[item1][item2] !== 'undefined' && 
-                      typeof public.documentation[item1][item2]._data !== 'undefined') { %>
+                if (typeof article2.origin !== 'undefined') {
+                    item2_origin = article2.origin;
+                }
+                if ((current.path[current.path.length - 3] === item2.toLowerCase() ||
+                     current.path[current.path.length - 3] === item2_origin.toLowerCase()) && 
+                      typeof public.documentation[item1_origin][item2_origin] !== 'undefined' && 
+                      typeof public.documentation[item1_origin][item2_origin]._data !== 'undefined') { %>
              <ul class="article-list">
-               <% for(var item3 in public.documentation[item1][item2]._data) {
-                    var article3 = public.documentation[item1][item2]._data[item3]; 
-                    if ( article3.language === "en" ) {
+               <% for(var item3 in public.documentation[item1_origin][item2_origin]._data) {
+                    var article3 = public.documentation[item1_origin][item2_origin]._data[item3]; 
+                    if ( article3.language === "zh" ) {
                     var isFile = (current.path.length === 4 && current.path[0] === item3.toLowerCase()) || 
                         current.source === 'index' && current.path[current.path.length - 4] === item3.toLowerCase()
-                    var pageRef = "/documentation/" + current.path[current.path.length - 2] + "/" + 
-                              current.path[current.path.length - 3] + "/" + item3 + 
+                    var pageRef = "/documentation/" + item1_origin.toLowerCase() + "/" + 
+                              item2_origin.toLowerCase() + "/" + item3 + 
                               (endsWith (item3, ".php") ? "" : ".html"); %>
                <li class="article-item <%= isFile ? ' nav-item--active' : '' %>">
                  <a class="article-link" href="<%= pageRef %>"><%= article3.title %></a>
                </li>
                <% } %>
-               <% } %>
+　　　　　　　<% } %>
              </ul>
              <% } %>
            </li>
@@ -65,8 +75,8 @@ function endsWith(str, suffix) {
            <% } %>
          </ul>
          <% } %>
-       </li>
-    <% } %>
+       </li> 
+     <% } %>
     <% } %>
   </ul>
 

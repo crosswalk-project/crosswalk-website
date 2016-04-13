@@ -11,6 +11,7 @@
 
 const TOOLS_PAGE = 1;
 const HOME_PAGE = 2;
+const LOCAL_LANG_COOKIE = "local_lang";
 
 var imgSize = 130;
 var hoverImgSize = 150;
@@ -138,3 +139,73 @@ function getToolURLParameters() {
     return toolNum;
 }
 
+function createCookie(name, value, days) {
+    var expires;
+
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    } else {
+        expires = "";
+    }
+    document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = encodeURIComponent(name) + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name, "", -1);
+}
+
+function toggleLanguageDropdown() {
+  document.getElementById("languageDropdown").classList.toggle("show");
+}
+
+function switchLanguage(lang) {
+   var cur_url = window.location.href;
+   var url_list = cur_url.split('/');
+   var fileName = url_list[url_list.length - 1];
+   if(fileName == "")
+   {
+      fileName = "index";
+   }
+   var flag = fileName.lastIndexOf("_zh");
+   var newfileName;
+   if(lang == "English")
+   {
+     createCookie(LOCAL_LANG_COOKIE, "English");
+     if( flag > 0 )
+     {
+        newfileName = fileName.substring(0,flag) + fileName.substring(flag+3);
+        window.location.replace(newfileName);
+     }
+   }
+   else
+   {
+     createCookie(LOCAL_LANG_COOKIE, "Chinese");
+     if(flag <= 0 )
+     {
+        var tmp = fileName.split('.');
+        newfileName = tmp[0] + "_zh";
+        if( tmp.length > 1)
+        {
+           for( var i = 1; i < tmp.length; i++ )
+           {
+               newfileName = newfileName + "." +  tmp[i];
+           }
+        }
+        window.location.replace(newfileName);
+     }
+  }
+  toggleLanguageDropdown();
+}

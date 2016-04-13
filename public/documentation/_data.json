@@ -1,50 +1,104 @@
 {
   "about": {
-    "title": "About"
+    "title": "About",
+    "language": "en"
   },
   "getting_started": {
-    "title": "Getting Started"
+    "title": "Getting Started",
+    "language": "en"
   },
   "android": {
-    "title": "Android"
+    "title": "Android",
+    "language": "en"
   },
   "ios": {
-    "title": "iOS"
+    "title": "iOS",
+    "language": "en"
   },
   "windows": {
-    "title": "Windows"
+    "title": "Windows",
+    "language": "en"
   },
   "linux": {
-    "title": "Linux"
+    "title": "Linux",
+    "language": "en"
   },
   "cordova": {
-    "title": "Cordova"
+    "title": "Cordova",
+    "language": "en"
   },
   "tizen": {
-    "title": "Tizen"
+    "title": "Tizen",
+    "language": "en"
   },
   "manifest": {
-    "title": "Manifest"
+    "title": "Manifest",
+    "language": "en"
   },
   "apis": {
-    "title": "APIs"
+    "title": "APIs",
+    "language": "en"
   },
   "downloads": {
-    "title": "Downloads"
+    "title": "Downloads",
+    "language": "en"
   },
   "shared_mode": {
-    "title": "Shared Mode"
+    "title": "Shared Mode",
+    "language": "en"
   },
   "tutorials": {
-    "title": "Tutorials"
+    "title": "Tutorials",
+    "language": "en"
   },
   "samples": {
-    "title": "Samples"
+    "title": "Samples",
+    "language": "en"
   },
   "community": {
-    "title": "Community"
+    "title": "Community",
+    "language": "en"
   },
   "qa": {
-    "title": "Quality Assurance"
+    "title": "Quality Assurance",
+    "language": "en"
+  },
+  "about_zh": {
+    "title": "关于",
+    "language": "zh",
+    "layout": "../_layout_zh",
+    "origin": "about"
+  },
+  "getting_started_zh": {
+    "title": "开始",
+    "language": "zh",
+    "layout": "../_layout_zh",
+    "origin": "getting_started"
+  },
+  "android_zh": {
+    "title": "Android",
+    "language": "zh",
+    "layout": "../_layout_zh",
+    "origin": "android"
+  },
+  "ios_zh": {
+    "title": "iOS",
+    "language": "zh",
+    "layout": "../_layout_zh"
+  },
+  "windows_zh": {
+    "title": "Windows",
+    "language": "zh",
+    "layout": "../_layout_zh"
+  },
+  "linux_zh": {
+    "title": "Linux",
+    "language": "zh",
+    "layout": "../_layout_zh"
+  },
+  "cordova_zh": {
+    "title": "Cordova",
+    "language": "zh",
+    "layout": "../_layout_zh"
   }
 }

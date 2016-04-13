@@ -1,8 +1,20 @@
 {
   "faq": {
-    "title": "FAQ"
+    "title": "FAQ",
+    "language": "en"
   },
   "demos": {
-    "title": "Demos"
+    "title": "Demos",
+    "language": "en"
+  },
+  "faq_zh": {
+    "title": "常见问题",
+    "language": "zh",
+    "layout": "../../_layout_zh"
+  },
+  "demos_zh": {
+    "title": "演示",
+    "language": "zh",
+    "layout": "../../_layout_zh"
   }
 }
