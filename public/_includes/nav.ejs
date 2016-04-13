@@ -1,60 +1,88 @@
-
-
-  <% if(current.path.length === 1 && current.source === 'index') { %>
+<%		
+   var content = public.content._data;
+   var lang = (current.source.lastIndexOf("_zh") > 0 ? "zh": "en");
+%>
+<% if(current.path.length === 1 && (current.source === 'index' || current.source === 'index_zh')) { %>
 <nav class="nav">
-  <a href="/" class="nav-logo logo">
+  <a href="<%= content["image"][lang].url %>" class="nav-logo logo">
     <img src="/assets/identity/crosswalkproject-logo-horizontal-light.png" class="logo-image">
   </a>
   <ul class="nav-list">
     <li class="nav-item">
-      <a href="/documentation/getting_started.html" class="nav-link">Documentation</a>
+      <a href="<%= content["documentation"][lang].url %>" class="nav-link"><%= content["documentation"][lang].title %></a>
     </li>
     <li class="nav-item">
-      <a href="/blog" class="nav-link">Blog</a>
+      <a href="<%= content["blog"][lang].url %>" class="nav-link"><%= content["blog"][lang].title %></a>
     </li>
     <li class="nav-item">
-      <a href="/contribute" class="nav-link">Contribute</a>
+      <a href="<%= content["contribute"][lang].url %>" class="nav-link"><%= content["contribute"][lang].title %></a>
     </li>
     <li class="nav-item">
-      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">Wiki</a>
+      <a href="<%= content["wiki"][lang].url %>" class="nav-link" id="wiki-nav"><%= content["wiki"][lang].title %></a>
     </li>
     <li class="nav-item">
-      <a href="/documentation/about/faq.html" class="nav-link">FAQ</a>
+      <a href="<%= content["faq"][lang].url %>" class="nav-link" id="faq-nav"><%= content["faq"][lang].title %></a>
     </li>
     <li class="nav-item">
-      <a href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
-    </li>
+        <div class="dropdown-nav-item">
+           <button id="languageButton" onclick="toggleLanguageDropdown()"><%= content["languageButton"][lang].title %></button>
+           <div id="languageDropdown" class="dropdown-content">
+               <a onclick="switchLanguage('English')">English Version</a>
+               <a onclick="switchLanguage('Chinese')">中文版</a>
+           </div>
+        </div>
+     </li>
   </ul>
 </nav>
 
-  <% /* -------- nav area for documentation pages ---------- */
+  <% /* -------- nav area for documentation pages of English version---------- */
      } else { %>
 
   <div class="doc-logo-div">
-     <a href="/" class="doc-logo-link">
+     <a href="<%= content["image"][lang].url %>" class="doc-logo-link">
        <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
      </a>
   </div>
   <div class="doc-nav-div">
     <ul class="doc-nav-list">
       <li class="doc-nav-item">
-        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+        <a href="<%= content["documentation"][lang].url %>" class="doc-nav-link"><%= content["documentation"][lang].title %></a>
       </li>
       <li class="doc-nav-item">
-        <a href="/blog" class="doc-nav-link">Blog</a>
+        <a href="<%= content["blog"][lang].url %>" class="doc-nav-link"><%= content["blog"][lang].title %></a>
       </li>
       <li class="doc-nav-item">
-        <a href="/contribute" class="doc-nav-link">Contribute</a>
+        <a href="<%= content["contribute"][lang].url %>" class="doc-nav-link"><%= content["contribute"][lang].title %></a>
       </li>
       <li class="doc-nav-item">
-        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+        <a href="<%= content["wiki"][lang].url %>" class="doc-nav-link"><%= content["wiki"][lang].title %></a>
       </li>
       <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+        <a href="<%= content["faq"][lang].url %>" class="doc-nav-link"><%= content["faq"][lang].title %></a>
       </li>
       <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+        <div>
+           <button id="languageButton" onclick="toggleLanguageDropdown()"><%= content["languageButton"][lang].title %></button>
+           <div id="languageDropdown" class="dropdown-content">
+               <a onclick="switchLanguage('English')">English Version</a>
+               <a onclick="switchLanguage('Chinese')">中文版</a>
+           </div>
+        </div>
       </li>
     </ul>
   </div>
   <% } %>
+<script>
+window.onclick = function(event) {
+  if (!event.target.matches('#languageButton')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>

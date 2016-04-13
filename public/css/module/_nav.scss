@@ -59,7 +59,7 @@
   list-style-type: none;
   margin-left: 0;
   display: block;
-  text-align: right;
+  text-align: left;
   font-size: modular-scale($base-font-size, -1, $base-ratio);
   margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
   @include media($mid) {
@@ -81,13 +81,15 @@
   font-size: modular-scale($base-font-size, 1, $base-ratio);
   margin-left: 0;
   margin-bottom: modular-scale($base-font-size, -8, $base-ratio);
-  #getting-started-nav{display:none}
+  #faq-nav{display:none};
+  #wiki-nav{display:none};
   @include media($mid) {
     margin: 0;
   }
   @include media($wide) {
     display: inline-block;
-    #getting-started-nav{display:initial}
+    #faq-nav{display:initial}
+    #wiki-nav{display:initial}
   }
 }
 

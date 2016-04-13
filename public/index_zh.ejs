@@ -1,0 +1,289 @@
+<% include _includes/redirect-hash %>
+<header class="hero hero--bg1 knockout">
+  <div class="container">
+    <div class="row">
+      <% include _includes/nav.ejs %>
+    </div>
+    <div class="row">
+      <h1 class="hero-heading">构建世界级hybrid应用</h1>
+    </div>
+    <div class="row hero-row">
+      <p>使用集成了最前沿Web技术的Crosswalk运行时环境开发功能强大的Android和Cordova应用。</p>
+    </div>
+    <div class="row" id="hero-button-group">
+      <div class="button-group">
+        <a class="button" id="main-get-started-button" href="/documentation/getting_started_zh.html" >开始</a>
+        <a class="button" id="main-downloads-button" href="/documentation/downloads_zh.html">下载</a><br/>
+<!--    
+	<br />
+	<a href="/documentation/community/senchacon2015.html">
+	 <div style="color:white; border:solid 1px gray; height:82px; width:480px">
+	   <img src="/assets/senchacon-horiz-blue.jpg" style="height:80px;float:left;padding:5px 10px 5px 5px;" ><br/>Join the Crosswalk Project <br>at SenchaCon 2015!
+	 </div>
+	</a>
+...
+        <a class="button-follower" id="main-follow-twitter-button" href="/documentation/community/phonegapday2015.html">
+          <img src="/assets/pgd-banner.jpg" width="425px"><br>
+          Join us at PhoneGap Day EU 2015!
+       </a>
+-->
+        <a href="/documentation/cordova_zh.html">
+          <div style="color:white;">
+            &nbsp;Cordova 4.0现已支持Crosswalk webview插件!
+          </div>
+        </a>
+        <a class="button-follower" id="main-follow-twitter-button" href="http://weibo.com/crosswalk">
+          <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 关注Crosswalk项目微博
+       </a>
+     </div>
+    </div>
+  </div>
+  <div class="hero-seperator">
+      <div class="container">
+        <div class="row">
+
+        <aside class="media">
+          <ul class="media-list">
+            <li class="media-item">
+              <a class="media-link" href="/documentation/cordova_zh.html">
+                <img class="media-image" src="/assets/icons/logo-cordova-white.png" alt="Apache Cordova logo" />
+                <p class="media-description">
+                  <strong class="media-heading">兼容Apache Cordova</strong>
+                  在你的Cordova应用中轻松添加Crosswalk webview插件
+                </p>
+              </a>
+            </li>
+            <li class="media-item">
+              <a class="media-link" href="/documentation/android_zh.html">
+                <img class="media-image" src="/assets/icons/logo-android-white.png" alt="Google Android logo" />
+                <p class="media-description">
+                  <strong class="media-heading">支持Android</strong>
+                  将Crosswalk Project作为应用的WebView或内嵌浏览器
+                </p>
+              </a>
+            </li>
+            <li class="media-item">
+              <a class="media-link" href="/documentation/ios_zh.html">
+                <img class="media-image" src="/assets/icons/logo-apple-white.png" alt="Tizen logo" />
+                <p class="media-description">
+                  <strong class="media-heading">支持iOS</strong>
+                  在你的iOS应用中使用Crosswalk WebView
+                </p>
+              </a>
+            </li>
+            <li class="media-item">
+              <a class="media-link" href="/documentation/windows_zh.html">
+                <img class="media-image" src="/assets/icons/logo-windows-white.png" alt="Windows logo" />
+                <p class="media-description">
+                  <strong class="media-heading">支持Windows</strong>
+                  使用Crosswalk WebView创建Windows应用
+                </p>
+              </a>
+            </li>
+<!--
+            <li class="media-item">
+              <a class="media-link" href="/documentation/getting_started.html">
+                <img class="media-image" src="/assets/icons/logo-chrome-white.png" alt="Google Chromium logo" />
+                <p class="media-description">
+                  <strong class="media-heading">Built with Google Chromium</strong>
+                  The Crosswalk Project is powered by Chromium and Blink
+                </p>
+              </a>
+            </li>
+-->
+
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </div>
+</header>
+<main role="main" id="main" class="main">
+  <div class="container">
+    <div class="row row--narrow article">
+      <p class="lead">没有开发者希望<strong>老旧过时的设备</strong>阻止他们使用最新最酷的API。</p>
+
+      <p>平台的碎片化使我们意识到每个Android版本<code>WebView</code>的表现都有差别。这些差别体现在：
+      <ul>
+        <li>对JavaScript API的支持</li>
+        <li>对CSS属性及语义的支持</li>
+        <li>应用程序界面的渲染方式</li>
+      </ul>
+      <p>…还有更多。你想要支持尽可能多的Android版本，但现实情况却总让你感到沮丧和费时。</p>
+    </div>
+    <div class="row">
+      <img src="assets/illustrations/crosswalk-landing-variety.png" />
+    </div>
+  </div>
+  <div class="container">
+    <div class="row row--narrow article article--noLead">
+      <p><strong>当然，有更好的方案。</strong>如果你只需考虑唯一一个始终和最新版本的Google Chromium保持一致的<code>WebView</code>，情况又会如何呢？</p>
+      <p>将<strong>Crosswalk项目</strong>提供的web runtime引入你的hybrid <strong>Android</strong> 或者 <strong>Cordova / PhoneGap</strong> 应用，你的用户将会体验到一个基于Google Chromium稳定而强大的<code>WebView</code>构建的应用。</p>
+
+<br>
+      <h3>Crosswalk项目的优势：</h3>
+      <ul>
+        <li>最大限度降低Android碎片化的影响，得到一致的，可预测的行为。</li>
+        <li>使用最新的Web技术及API。在Android 4.0+版本上提供丰富的功能。</li>
+        <li>使用Chrome DevTools轻松调试。</li>
+        <li>提升应用中HTML，CSS和JavaScript的性能。</li>
+      </ul>
+    </div>
+  </div>
+
+  <a id="What-experts-say-about-Crosswalk-Project"></a>
+  <div class="quoteArea">
+    <h1 style="text-align:center">Crosswalk项目之专家说</h1><br>
+    <div class="quoteRow">
+      <div class="quoteBlock">
+        <div class="quoteText">
+         “Crosswalk为Phonegap开发者提供了高效及一致的跨平台的用户体验。”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/brian-leroux.jpg" /> 
+          <div class="speakerTitle">
+            <a href="http://brian.io/"><strong>Brian LeRoux</strong></a><br>
+            Principal Scientist, Adobe Systems Canada
+          </div>
+        </div>
+      </div>
+      <div class="quoteBlock">
+        <div class="quoteText">
+        “Crosswalk对于使用Ember/SPAs构建Cordova/Phonegap应用极为重要。它解决了日渐增多的设备碎片化问题，并在很多设备上提供了更好的性能表现。”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/alex-blom.jpg" />
+          <div class="speakerTitle">
+            <b>Alex Blom</b><br>
+            Partner at <a href="http://isleofcode.com">Isle of Code</a>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+    <div class="quoteRow">
+      <div class="quoteBlock">
+        <div class="quoteText">
+         “Crosswalk项目看起来是一个新的，最好的在Android发布HTML5内容的方法。”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/ashley-gullen.jpg" /> 
+          <div class="speakerTitle">
+            <a href="https://twitter.com/AshleyGullen"><strong>Ashley Gullen</strong></a><br>
+            Creator of the Construct 2 game engine
+          </div>
+        </div>
+      </div>
+      <div class="quoteBlock">
+        <div class="quoteText">
+        “终于可以使用现代的webview构建hybrid应用，并在几乎所有三年内发布的Android和iOS设备上运行。”
+        </div>
+        <div class="speakerBlock">
+          <a href="https://www.youtube.com/watch?v=nU4lvgTrjFI" style="text-decoration:none"><img class="speakerImg" src="/assets/testimonials/max-woghiren.jpg" /></a> 
+          <div class="speakerTitle">
+            <b>Max Woghiren</b><br>
+            Software Engineer at Google
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="quoteRow">
+      <div class="quoteBlock">
+        <div class="quoteText">
+        “Crosswalk为Android开发者提供了平等的平台，使之能够使用他们喜爱的web技术开发功能丰富，性能出色的应用。我们建议所有Telerik平台的用户使用Crosswalk webview，立即提升性能！”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/rob-lauer.jpg" /> 
+          <div class="speakerTitle">
+            <a href="http://developer.telerik.com/author/rlauer/"><strong>Rob Lauer</strong></a><br>
+            Principal Product Manager, <a href="http://developer.telerik.com/">Telerik</a>
+          </div>
+        </div>
+      </div>
+      <div class="quoteBlock">
+        <div class="quoteText">
+         “Crosswalk帮助解决了Android的碎片化问题，并使web应用的性能表现接近于原生应用。我们鼓励所有hybrid及Intel® XDK开发者使用Crosswalk部署Android应用。”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/ian-maffet-80.jpg" /> 
+          <div class="speakerTitle">
+            <b>Ian Maffet</b><br>
+            Developer Advocate <a href="http://software.intel.com/en-us/intel-xdk">Intel XDK</a>, Intel.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="quoteShowMore">
+      <a href="/documentation/community/testimonials_zh.html">还有更多...</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <a id="Sencha-video"></a>
+    <div class="row">
+      <figure>
+        <div onclick="play();" id="vidwrap" class="embed-container embed-container--overlay" style="background-image: url('/assets/illustrations/sencha-nick-video.jpg')"></div>
+             <script type="text/javascript">function play(){document.getElementById('vidwrap').innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/sSYTKOy-Y_s?enablejsapi=1&modestbranding=1&autoplay=1&rel=0&showinfo=0&theme=light&color=white" frameborder="0"></iframe>';}</script>
+        <figcaption>Discover how Sencha uses Crosswalk to reduce fragmentation with Android apps running in Sencha's Web Application Manager.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row row--full">
+    <div class="container container--full">
+      <% include _includes/landing-promo-1_zh %>
+    </div>
+  </div>
+
+  <div class="row row--full">
+    <div class="container container--full">
+      <% include _includes/landing-promo-2_zh %>
+    </div>
+  </div>
+
+  <div class="row row--full">
+    <div class="container container--full">
+      <% include _includes/landing-promo-3_zh %>
+    </div>
+  </div>
+
+  <div class="row row--full">
+    <div class="tools-hp-block">
+      <div class="tools-hp-title">
+        <a id="Crosswalk-tools"></a>
+        <h2 style="text-align:center">Crosswalk已与这些出色的开发工具集成</h2>
+      </div>
+      <div class="tools-hp-block-inner" id="tool-div">
+      </div>
+    </div>
+    <script>
+      $(window).load(onHomePageTools());
+    </script>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h3 class="text-center">Crosswalk兼容</h3>
+      <div class="cards cards--filled">
+        <ul class="cards-list">
+          <li class="cards-item">
+            <img class="cards-icon" src="/assets/icons/logo-cordova.png" alt="" />
+            <h3 class="cards-heading">为Apache Cordova定制的Crosswalk</h3>
+            <p class="text">通过升级WebView提高应用的性能</p>
+            <a class="button button--secondary" href="/documentation/cordova.html">开启Cordova之旅</a>
+          </li>
+          <li class="cards-item">
+            <img src="/assets/icons/logo-android.png" alt="Cordova logo" class="cards-icon" />
+            <h3 class="cards-heading">为Android定制的Crosswalk</h3>
+            <p>使用Crosswalk作为你的WebView或内嵌浏览器。</p>
+            <a class="button button--secondary" href="/documentation/android/android_target_setup.html">开启Android之旅</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container-intro">
+        <h2>我能用...吗？没问题。</h2>
+        <p>Crosswalk项目提供了强大且可预测的环境来构建出色的Android应用。</p>
+        <a href="/documentation/getting_started_zh.html" class="button">开始</a>
+      </div>
+    </div>
+  </div>
+</main>

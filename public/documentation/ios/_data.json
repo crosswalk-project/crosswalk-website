@@ -1,18 +1,43 @@
 {
   "quick_start_guide": {
-    "title": "Quick Start Guide"
+    "title": "Quick Start Guide",
+    "language": "en"
   },
   "embedding_mode_&_native_apis": {
-    "title": "Embedding mode & native APIs"
+    "title": "Embedding mode & native APIs",
+    "language": "en"
   },
   "manifest": {
-    "title": "Manifest"
+    "title": "Manifest",
+    "language": "en"
   },
   "extensions": {
-    "title": "Extensions"
+    "title": "Extensions",
+    "language": "en"
   },
   "cordova_plugin_support": {
-    "title": "Cordova plugin support"
+    "title": "Cordova plugin support",
+    "language": "en"
+  },
+  "quick_start_guide_zh": {
+    "title": "快速安装指南",
+    "language": "zh"
+  },
+  "embedding_mode_&_native_apis_zh": {
+    "title": "Embedding模式&原生APIs",
+    "language": "zh"
+  },
+  "manifest_zh": {
+    "title": "Manifest",
+    "language": "zh"
+  },
+  "extensions_zh": {
+    "title": "Extensions",
+    "language": "zh"
+  },
+  "cordova_plugin_support_zh": {
+    "title": "Cordova插件支持",
+    "language": "zh"
   }
 }
 
