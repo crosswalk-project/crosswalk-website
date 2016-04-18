@@ -21,5 +21,12 @@ In the documentation you can find APIs description, including parameters details
 See details here: https://software.intel.com/en-us/app-security-api/api.
  
 ## Build Crosswalk app with App Security API extension
-You can start building your applications with the Intel App Security API plugin immediately.  Find the extension file and the API JS file here: https://github.com/01org/AppSecurityApi/tree/master/windows_crosswalk.
+You can start building your applications with the Intel App Security API plugin immediately.  Find the extension file and the API JS file here: https://github.com/AppSecurityApi/com-intel-security-crosswalk-extension
+
+Version 2.0.0 has now been released and includes an [npm module for crosswalk](https://www.npmjs.com/package/com-intel-security-crosswalk-extension):
+
+    $ sudo npm install -g com-intel-security-crosswalk-extension
+
+
+
 
