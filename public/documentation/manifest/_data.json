@@ -1,1 +1,82 @@
-{  "using_the_manifest": {    "title": "Using the manifest"  },  "entry_points": {    "title": "Entry points"  },  "content_security_policy": {    "title": "Content security policy"  },  "display": {    "title": "Display"  },  "icons": {    "title": "Icons"  },  "launch_screen": {    "title": "Launch screen"  },  "orientation": {    "title": "Orientation"  },  "permissions": {    "title": "Permissions"  },  "xwalk_hosts": {    "title": "xwalk hosts"  },  "other_fields": {    "title": "Other fields"  }}
+{
+  "using_the_manifest": {
+     "title": "Using the manifest",
+     "language": "en"
+  },
+  "entry_points": {
+     "title": "Entry points",
+     "language": "en"
+  },
+  "content_security_policy": {
+     "title": "Content security policy",
+     "language": "en"
+  },
+  "display": {
+     "title": "Display",
+     "language": "en"
+  },
+  "icons": {
+     "title": "Icons",
+     "language": "en"
+  },
+  "launch_screen": {
+     "title": "Launch screen",
+     "language": "en"
+  },
+  "orientation": {
+     "title": "Orientation",
+     "language": "en"
+  },
+  "permissions": {
+     "title": "Permissions",
+     "language": "en"
+  },
+  "xwalk_hosts": {
+     "title": "xwalk hosts",
+     "language": "en"
+  },
+  "other_fields": {
+     "title": "Other fields",
+     "language": "en"
+  },
+  "using_the_manifest_zh": {
+     "title": "使用manifest文件",
+     "language": "zh"
+  },
+  "entry_points_zh": 
+     "title": "应用入口点",
+     "language": "zh"
+  },
+  "content_security_policy_zh": {
+     "title": "内容安全策略",
+     "language": "zh"
+  },
+  "display_zh": {
+     "title": "展示",
+     "language": "zh"
+  },
+  "icons_zh": {
+     "title": "图标",
+     "language": "zh"
+  },
+  "launch_screen_zh": {
+     "title": "启动画面",
+     "language": "zh"
+  },
+  "orientation_zh": {
+     "title": "防线",
+     "language": "zh"
+  },
+  "permissions_zh": {
+     "title": "许可证",
+     "language": "zh"
+  },
+  "xwalk_hosts_zh": {
+     "title": "xwalk环境",
+     "language": "zh"
+  },
+  "other_fields_zh": {
+     "title": "其他属性",
+     "language": "zh"
+  }        
+}
