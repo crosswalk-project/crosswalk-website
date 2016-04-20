@@ -1,6 +1,8 @@
-Crosswalk-Lite disable some features on Crosswalk-Normal for size reducing purpose.
-We suggest you check whether or not your app has dependency on some of the disabled features. You can contact us for release which is built with customized flags, or turn to Crosswalk-Normal build.
-  
+# Crosswalk Lite Features
+
+Crosswalk Lite disables features to reduce the library size. Before using Crosswalk Lite, please ensure that your application does not have a dependency on a disabled feature. You can also contact us for a release which is built with customized flags or use the full Crosswalk build.
+
+This is the list used for Crosswalk Lite v17 (previous build version was based on Crosswalk 10)
 
 | Feature                             | Description                    | Reduced size (arm) |
 | ----------------------------------- |:------------------------------:|:-------------------|
@@ -23,13 +25,12 @@ We suggest you check whether or not your app has dependency on some of the disab
 | Web CL                              | Disabled                       |  44K   |
 | Indexed DB                          | Disabled                       |  230K  |
 | Web Accessibility                   | Disabled                       |  72K   |
-| Geolocation & Geofencing            | Disabled                       |  26K   |
 | Web Bluetooth                       | Disabled                       |  20K   |
 | Web Database                        | Disabled                       |  38K   |
 | Web MIDI                            | Disabled                       |  26K   |
 | Plugin                              | Disabled                       |  440K  |
 
-Known issue:<br/>
-ICU: with this feature, some languages(Hindi for example) needs complexShaper might not be displayed correctly. Some Text operation by JS such like "Range" "Selections" are not well supported.
+### Known issue
+ICU: with this feature, some languages (e.g. Hindi) needs complexShaper and might not be displayed correctly. Some Text operation by JS such as `Range` and `Selections` are not well supported.
 
 For Crosswalk-Lite-10, refer to the legacy document ([Crosswalk Lite-10 Disabled feature list](/documentation/crosswalk_lite/lite_10_disabled_feature_list.html))
