@@ -224,13 +224,13 @@
 
 <article class="article article--hasToC">
   <h1>Using Crosswalk Lite</h1>
-<p>Building your application with Crosswalk Lite, or &quot;Lite&quot;, is the same as the normal Crosswalk build.  For details on setting up your development system, see the <a href="/documentation/getting_started.html">Getting Started page</a>.  The NPM-based <code>crosswalk-app-tools</code> is the packaging tool for creating Crosswalk applications. For details on the tool, refer to <a href="https://github.com/crosswalk-project/crosswalk-app-tools/">Usage of crosswalk-app-tools</a>.</p>
+<p>Building your application with Crosswalk Lite, or &quot;Lite&quot;, is the same as the normal Crosswalk build.  For details on setting up your development system, see the <a href="/documentation/getting_started.html">Getting Started page</a>.  The NPM-based <code>crosswalk-app-tools</code> is the packaging tool for creating Crosswalk applications. For details on the tool, refer to <a href="/documentation/crosswalk-app-tools.html">Usage of crosswalk-app-tools</a>.</p>
 <h2>Build with Lite</h2>
 <p>To build your application with Lite, add the <code>--android=&quot;lite&quot;</code> parameter to the packaging command:</p>
 <pre><code>$ crosswalk-pkg --android=&quot;lite&quot; &lt;your webapp path&gt;</code></pre>
 <p><code>crosswalk-pkg</code> will download the Lite engine and create an APK of your application.</p>
 <h3>Download Crosswalk-Lite Manually</h3>
-<p>Alternatively, you can manually download the Lite engine from the <a href="https://download.01.org/crosswalk/releases/crosswalk-lite/android/canary/latest/">build directory</a>) onto your local machine and then run:</p>
+<p>Alternatively, you can manually download the Lite engine from the <a href="https://download.01.org/crosswalk/releases/crosswalk-lite/android/canary/latest/">build directory</a> onto your local machine and then run:</p>
 <pre><code>$ crosswalk-pkg --android=&quot;lite&quot; \
                 --crosswalk=&lt;downloads path&gt;/crosswalk-17.46.455.1.zip \
                 &lt;your webapp path&gt;</code></pre>

@@ -30,7 +30,7 @@ The table below shows the estimated <i>additional</i> size added to a web applic
 
 * Lite is approximately half the size of regular Crosswalk
 * At ~10MB in size, using Lite leaves about 40MB for application data, due to the current limit of 50MB in Google Play store
-* The list of features removed is evaluated closely and tracked on the project wiki page: [Crosswalk Lite Disabled feature list](/documentation/crosswalk_lite/lite_disabled_feature_list.html). We use flags to disable features like WebRTC, WebDatabase, etc.
+* The list of features removed is evaluated closely and tracked on the project wiki page: [Crosswalk Lite disabled feature list](/documentation/crosswalk_lite/lite_disabled_feature_list.html). We use flags to disable features like WebRTC, WebDatabase, etc.
 * The final library is compressed using LZMA to produce a smaller APK. The APK must then be decompressed when the application is first run.  See [Runtime behavior](#runtime-behavior) below.
 * The compile options are set to optimize for size.
 
@@ -38,7 +38,7 @@ The table below shows the estimated <i>additional</i> size added to a web applic
 Ideally developers could select which options they need and build a custom runtime for their project. Unfortunately Chromium, a large and relatively complex project, is not designed to be modular and the ability of the team to restructure it and guarantee reliable builds is not feasible at this time. In the long term, we would like to improve Chromium, Blink, and Crosswalk to modularize its features so that specific features (like WebRTC) can be turned on/off at APK build time.
 
 ### <a class="doc-anchor" id="runtime-behavior"></a> Runtime behavior
-* A dialog showing ["Preparing runtime..."](src='/assets/crosswalk-lite-uncompress-dialog.png') pops up when an application built with Lite is first started. This only happens the first time it is run.
+* A dialog showing ["Preparing runtime..."](/assets/crosswalk-lite-uncompress-dialog.png) pops up when an application built with Lite is first started. This only happens the first time it is run.
   
 ### Release cycle
 

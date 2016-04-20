@@ -251,7 +251,7 @@
 <ul>
 <li>Lite is approximately half the size of regular Crosswalk</li>
 <li>At ~10MB in size, using Lite leaves about 40MB for application data, due to the current limit of 50MB in Google Play store</li>
-<li>The list of features removed is evaluated closely and tracked on the project wiki page: <a href="/documentation/crosswalk_lite/lite_disabled_feature_list.html">Crosswalk Lite Disabled feature list</a>. We use flags to disable features like WebRTC, WebDatabase, etc.</li>
+<li>The list of features removed is evaluated closely and tracked on the project wiki page: <a href="/documentation/crosswalk_lite/lite_disabled_feature_list.html">Crosswalk Lite disabled feature list</a>. We use flags to disable features like WebRTC, WebDatabase, etc.</li>
 <li>The final library is compressed using LZMA to produce a smaller APK. The APK must then be decompressed when the application is first run.  See <a href="#runtime-behavior">Runtime behavior</a> below.</li>
 <li>The compile options are set to optimize for size.</li>
 </ul>
@@ -259,7 +259,7 @@
 <p>Ideally developers could select which options they need and build a custom runtime for their project. Unfortunately Chromium, a large and relatively complex project, is not designed to be modular and the ability of the team to restructure it and guarantee reliable builds is not feasible at this time. In the long term, we would like to improve Chromium, Blink, and Crosswalk to modularize its features so that specific features (like WebRTC) can be turned on/off at APK build time.</p>
 <h3><a class="doc-anchor" id="runtime-behavior"></a> Runtime behavior</h3>
 <ul>
-<li>A dialog showing <a href="src=&#39;/assets/crosswalk-lite-uncompress-dialog.png&#39;">&quot;Preparing runtime...&quot;</a> pops up when an application built with Lite is first started. This only happens the first time it is run.</li>
+<li>A dialog showing <a href="/assets/crosswalk-lite-uncompress-dialog.png">&quot;Preparing runtime...&quot;</a> pops up when an application built with Lite is first started. This only happens the first time it is run.</li>
 </ul>
 <h3>Release cycle</h3>
 <ul>

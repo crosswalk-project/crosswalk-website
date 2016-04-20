@@ -1,6 +1,6 @@
 # Using Crosswalk Lite
 
-Building your application with Crosswalk Lite, or "Lite", is the same as the normal Crosswalk build.  For details on setting up your development system, see the [Getting Started page](/documentation/getting_started.html).  The NPM-based `crosswalk-app-tools` is the packaging tool for creating Crosswalk applications. For details on the tool, refer to [Usage of crosswalk-app-tools](https://github.com/crosswalk-project/crosswalk-app-tools/).
+Building your application with Crosswalk Lite, or "Lite", is the same as the normal Crosswalk build.  For details on setting up your development system, see the [Getting Started page](/documentation/getting_started.html).  The NPM-based `crosswalk-app-tools` is the packaging tool for creating Crosswalk applications. For details on the tool, refer to [Usage of crosswalk-app-tools](/documentation/crosswalk-app-tools.html).
 
 ## Build with Lite
 To build your application with Lite, add the `--android="lite"` parameter to the packaging command:
@@ -12,7 +12,7 @@ $ crosswalk-pkg --android="lite" <your webapp path>
 
 
 ### Download Crosswalk-Lite Manually
-Alternatively, you can manually download the Lite engine from the [build directory](https://download.01.org/crosswalk/releases/crosswalk-lite/android/canary/latest/)) onto your local machine and then run:
+Alternatively, you can manually download the Lite engine from the [build directory](https://download.01.org/crosswalk/releases/crosswalk-lite/android/canary/latest/) onto your local machine and then run:
 
 ```
 $ crosswalk-pkg --android="lite" \
