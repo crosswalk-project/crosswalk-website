@@ -35,6 +35,9 @@
   "shared_mode": {
     "title": "Shared Mode"
   },
+  "crosswalk_lite": {
+    "title": "Crosswalk Lite"
+  },
   "tutorials": {
     "title": "Tutorials"
   },

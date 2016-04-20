@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html id="top" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/crosswalk_lite/lite_10_disabled_feature_list" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/crosswalk_lite/lite_10_disabled_feature_list" />
+    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+  
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/windows.html">Windows</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
+
+         
+
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/crosswalk_lite/use_crosswalk_lite.html">Using Crosswalk Lite</a>
+
+             
+           </li>
+           
+         </ul>
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+
+         
+       </li>
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
+
+         
+       </li>
+    
+  </ul>
+
+</nav>
+
+
+
+<article class="article article--hasToC">
+  <p>Crosswalk Lite disable some features on Crosswalk for size reducing purpose:                                                                      </p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th align="center">Description</th>
+<th align="center">xwalk PR</th>
+<th align="center">chromium PR</th>
+<th align="center">blink PR</th>
+<th align="left">Reduced size (arm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICU</td>
+<td align="center">Replace with Java</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2569">2569</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/202">202</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/blink-crosswalk/pull/30">30</a></td>
+<td align="left">3.5M</td>
+</tr>
+<tr>
+<td>ANGLE</td>
+<td align="center">Remove, only needed on Windows</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2683">2683</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/211">211</a></td>
+<td align="center">N/A</td>
+<td align="left">120K</td>
+</tr>
+<tr>
+<td>Web Inspector nor remote debugging</td>
+<td align="center">Disalbed</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2685">2685</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/207">207</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/blink-crosswalk/pull/32">32</a></td>
+<td align="left">360K</td>
+</tr>
+<tr>
+<td>Experimental QUIC protocol</td>
+<td align="center">Disabled</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2686">2686</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/212">212</a></td>
+<td align="center">N/A</td>
+<td align="left">200K</td>
+</tr>
+<tr>
+<td>FTP protocol</td>
+<td align="center">Disabled</td>
+<td align="center">N/A</td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/202">part of 202</a></td>
+<td align="center">N/A</td>
+<td align="left">11.4K</td>
+</tr>
+<tr>
+<td>WebRTC and Media streams</td>
+<td align="center">Disabled</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2596">2596</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/206">206</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/blink-crosswalk/pull/31">31</a></td>
+<td align="left">1.5M</td>
+</tr>
+<tr>
+<td>WebP</td>
+<td align="center">Disabled</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2670">2670</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/210">210</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/blink-crosswalk/pull/35">35</a></td>
+<td align="left">100K</td>
+</tr>
+<tr>
+<td>XSLT</td>
+<td align="center">Disabled</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2628">2628</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/208">208</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/blink-crosswalk/pull/33">33</a></td>
+<td align="left">90K</td>
+</tr>
+<tr>
+<td>Builtin extensoins(Sysapps, Presentation, LaunchScreen)</td>
+<td align="center">Disabled</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2844">2844</a></td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="left">40K</td>
+</tr>
+<tr>
+<td>Exclued unnessary recouse in pak</td>
+<td align="center">Remove, not used resources</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2763">2763</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/222">222</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/blink-crosswalk/pull/40">40</a></td>
+<td align="left">150K</td>
+</tr>
+<tr>
+<td>Sync compositing</td>
+<td align="center">Disabled</td>
+<td align="center"><a href="https://github.com/crosswalk-project/crosswalk/pull/2700">2700</a></td>
+<td align="center"><a href="https://github.com/crosswalk-project/chromium-crosswalk/pull/213">213</a></td>
+<td align="center">N/A</td>
+<td align="left">20K</td>
+</tr>
+</tbody>
+</table>
+
+  <footer class="article-next">
+    
+
+  
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div">
+            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Introducing Crosswalk Project Extensions for Intel® RealSense™ Technology</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Tue, 23 Feb 2016 00:00:00 GMT">2016-02-23T00:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation">Documentation</a> &nbsp;
+             <a href="/blog">Blog</a> &nbsp;
+             <a href="/documentation/downloads.html">Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>
