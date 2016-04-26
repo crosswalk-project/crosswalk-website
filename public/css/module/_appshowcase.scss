@@ -1,0 +1,81 @@
+// Styles for the app showcase button/link and rotate cube on home page
+
+$showcase-box-height: 56px;
+$showcase-box-width:  280px;
+$showcase-box-height-half: 28px;  //1/2 * box-height
+$showcase-box-perspective: 616px; //11*box-height
+
+.showcase-container {
+    color: white;
+    display: inline-block;
+    text-shadow: none !important;
+
+}
+
+#showcase-wrapper {
+  -webkit-perspective: $showcase-box-perspective;
+  -webkit-perspective-origin: 50% $showcase-box-height;
+  perspective: $showcase-box-perspective;
+  perspective-origin: 50% $showcase-box-height;
+  margin: 0 auto;
+}
+
+#showcase-cube {
+  position: relative;
+  margin: 0 auto;
+  height: $showcase-box-height;
+  width:  $showcase-box-width;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 3s ease;
+  transform-style: preserve-3d;
+  transition: all 3s ease;
+}
+
+.showcase-face {
+  position: absolute;
+  height: $showcase-box-height;
+  width:  $showcase-box-width;
+  outline: 1px solid rgba(36,180,186,0); //#24B4BA crosswalk blue, needs to be set before animation
+}
+
+.showcase-faceImg {
+    width:48px; 
+    float:left; 
+    margin:4px 8px 4px 4px;
+}
+.showcase-faceDiv {
+    color: white;
+    margin:4px 4px 4px 0px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+.showcase-faceDiv a {
+    color: rgb(36,180,186);
+}
+
+#showcase-cube .one {
+  -webkit-transform: translateZ($showcase-box-height-half);
+  transform: translateZ($showcase-box-height-half);
+}
+    
+#showcase-cube .two {
+  /* This is the top of the cube */
+  -webkit-transform: rotateX(90deg) translateZ($showcase-box-height-half);
+  transform: rotateX(90deg) translateZ($showcase-box-height-half);
+}
+
+#showcase-cube .three {
+  -webkit-transform: rotateY(180deg) translateZ($showcase-box-height-half) rotate(180deg);
+  transform: rotateY(180deg) translateZ($showcase-box-height-half) rotate(180deg);
+}
+
+#showcase-cube .four {
+  -webkit-transform: rotateX(-90deg) translateZ($showcase-box-height-half);
+  transform: rotateX(-90deg) translateZ($showcase-box-height-half);
+}  
+
+
+
+
