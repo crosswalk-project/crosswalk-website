@@ -57,7 +57,10 @@
          do custom layouts. (home screen, blog, app-mgmt page)
          Else, provide doc header and nav. -->
     
-    
+    <script src="/js/app-utils.js"></script>
+<script src="/js/app-showcase.js"></script>
+
+
 <script>
   var reservedIds = ['main', 'front-end', 'predictability', 'games'];
   if(window.location.hash && reservedIds.indexOf(window.location.hash.replace('#', '')) === -1) {
@@ -109,28 +112,32 @@
     <div class="row" id="hero-button-group">
       <div class="button-group">
         <a class="button" id="main-get-started-button" href="/documentation/getting_started.html" >Get started</a>
-        <a class="button" id="main-downloads-button" href="/documentation/downloads.html">Download</a><br/>
-<!--    
-	<br />
+        <a class="button" id="main-downloads-button" href="/documentation/downloads.html">Download</a>
+	<br/>
+
+<!--
 	<a href="/documentation/community/senchacon2015.html">
 	 <div style="color:white; border:solid 1px gray; height:82px; width:480px">
 	   <img src="/assets/senchacon-horiz-blue.jpg" style="height:80px;float:left;padding:5px 10px 5px 5px;" ><br/>Join the Crosswalk Project <br>at SenchaCon 2015!
 	 </div>
 	</a>
-...
-        <a class="button-follower" id="main-follow-twitter-button" href="/documentation/community/phonegapday2015.html">
-          <img src="/assets/pgd-banner.jpg" width="425px"><br>
-          Join us at PhoneGap Day EU 2015!
-       </a>
 -->
-        <a href="/documentation/cordova.html">
-          <div style="color:white;">
-            &nbsp;Cordova 4.0 now supports Crosswalk pluggable webview!
-          </div>
-        </a>
         <a class="button-follower" id="main-follow-twitter-button" href="http://twitter.com/xwalk_project">
           <img src="/assets/Twitter_logo_white.png" width="20px" /> Follow the Crosswalk Project on Twitter
        </a>
+	<br>
+        <div class="showcase-container">
+          Check out our <a href="/apps.html">application showcase.</a> New submissions welcome.
+	  <br><br>
+	  <div id="showcase-wrapper">
+	    <div id="showcase-cube">
+	      <div id="showcase-face0" class="showcase-face one"></div>
+	      <div id="showcase-face1" class="showcase-face two"></div>
+	      <div id="showcase-face2" class="showcase-face three"></div>
+	      <div id="showcase-face3" class="showcase-face four"></div> 
+	    </div>
+	  </div>
+        </div>
      </div>
     </div>
   </div>
@@ -145,7 +152,7 @@
                 <img class="media-image" src="/assets/icons/logo-cordova-white.png" alt="Apache Cordova logo" />
                 <p class="media-description">
                   <strong class="media-heading">Apache Cordova compatible</strong>
-                  Easily add the Crosswalk pluggable webview in your Cordova app
+		  Cordova now supports Crosswalk pluggable webview!
                 </p>
               </a>
             </li>
