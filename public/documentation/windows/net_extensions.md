@@ -113,5 +113,5 @@ If you did not use the Visual Studio template you need to do the next two steps.
                  http://localhost:8000
    ```
 
-Your extension should be loaded.
+Your extension should be loaded. Please note that you can put multiple extensions (and their respective bridges) in the same directory, Crosswalk will load all of them.
 

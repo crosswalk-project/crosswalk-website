@@ -285,12 +285,12 @@ Inside your command line, navigate to the path where you unzipped Crosswalk and 
 
 * --allow-external-extensions-for-remote-sources (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and
 
-* --external-extensions-path=/path/to/myextension/myextension.dll.
+* --external-extensions-path=/path/to/myextension/myextension/directory.
 
 The command line should look like this :
 
     > xwalk.exe --allow-external-extensions-for-remote-sources \
-                --external-extensions-path=/path/to/myextension/myextension.dll \
+                --external-extensions-path=/path/to/myextension/directory \
                 http://localhost:8000
 
-Your extension should be loaded.
+Your extension should be loaded. Please note that you can put multiple extensions in the same directory, Crosswalk will load all of them.
