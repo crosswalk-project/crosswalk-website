@@ -23,6 +23,8 @@ $(document).ready(function () {
 		shuffle(dbRows);
 		prepCubeFace (0);
 		rotTimer = setInterval(rotateApp, waitTime);
+	    } else {
+		console.log ("No apps returned from server.");
 	    }
 	}
     });
@@ -44,10 +46,10 @@ $(document).ready(function () {
 	$({alpha:(alphaStart)}).animate({alpha:alphaEnd}, {
 	    duration: fadeTime,
 	    step: function() {
-		for (var i=0; i<4; i++) {
-		    var f = $("#showcase-face" + i);
+		for (var i=faceNum; i<=faceNum+1; i++) {
+		    var f = $("#showcase-face" + (i%4));
 		    f.css('outline-color','rgba(36,180,186,' + this.alpha + ')');
-		    f.css('background-color','rgba(100,100,100,' + this.alpha + ')');
+		    f.css('background-color','rgba(255,255,255,' + (this.alpha*0.2) + ')');
 		}
 	    }
 	});
@@ -55,16 +57,17 @@ $(document).ready(function () {
 
     function rotateApp() {
 	//create div contents for next cube face
-        faceNum = (faceNum+1) % 4;
-        prepCubeFace (faceNum);
+        prepCubeFace ((faceNum+1)%4);
 
-        //show border of visible face
+        //show border of visible faces (current and +1)
 	bordersVisible(true, faceNum);
 	//scroll next cube face into view
         rotDeg += 90;
         $("#showcase-cube").css("transform", "rotateX(-" + rotDeg + "deg)");
 	//turn off borders after tranform finished
-	setTimeout(bordersVisible, spinTime, false);
+	setTimeout(bordersVisible, spinTime, false, faceNum);
+	//newly scrolled face number
+        faceNum = (faceNum+1) % 4;
     }
 
     function prepCubeFace (faceNum) {
@@ -83,12 +86,16 @@ $(document).ready(function () {
 	    "<img src='" + imgDir + app.image + "' class='showcase-faceImg' /></a>" + 
             "<div class='showcase-faceDiv'>" + 
               "<a href='" + app.storeUrl + "'>" + app.name + "</a> <br>" + 
-              "Downloads: " + getNumEst(app.downloads) + 
+              "<span class='meta'>Downloads: " + getNumEst(app.downloads) + "</span>" + 
 	    "</div>";
 	prepDiv.html (content);
 
-	//now erase the bottom and back of cube (so they don't show during rotate
-	$("#showcase-face" + (faceNum+1)%4).html ("");
-	$("#showcase-face" + (faceNum+2)%4).html ("");
+	//now erase the bottom and back of cube (so they don't show during rotate)
+	for (var i=(faceNum+1); i<=(faceNum+2); i++) {
+	    var f = $("#showcase-face" + (i%4));
+	    f.css('outline-color','rgba(36,180,186,0)');
+	    f.css('background-color','rgba(255,255,255,0)');
+	    f.html ("");
+	}
     }
 });
