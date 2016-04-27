@@ -9,34 +9,33 @@ $showcase-box-perspective: 616px; //11*box-height
     color: white;
     display: inline-block;
     text-shadow: none !important;
-
-    font-size: modular-scale($base-font-size, 0, $base-ratio);;
 }
 
 #showcase-wrapper {
-  -webkit-perspective: $showcase-box-perspective;
-  -webkit-perspective-origin: 50% $showcase-box-height;
-  perspective: $showcase-box-perspective;
-  perspective-origin: 50% $showcase-box-height;
-  margin: 0 auto;
+    -webkit-perspective: $showcase-box-perspective;
+    -webkit-perspective-origin: 50% $showcase-box-height;
+    perspective: $showcase-box-perspective;
+    perspective-origin: 50% $showcase-box-height;
+
+    margin: 0 auto;
 }
 
 #showcase-cube {
-  position: relative;
-  margin: 0 auto;
-  height: $showcase-box-height;
-  width:  $showcase-box-width;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: all 3s ease;
-  transform-style: preserve-3d;
-  transition: all 3s ease;
+    position: relative;
+    margin: 0 auto;
+    height: $showcase-box-height;
+    width:  $showcase-box-width;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: all 3s ease;
+    transform-style: preserve-3d;
+    transition: all 3s ease;
 }
 
 .showcase-face {
-  position: absolute;
-  height: $showcase-box-height;
-  width:  $showcase-box-width;
-  outline: 1px solid rgba(36,180,186,0); //#24B4BA crosswalk blue, needs to be set before animation
+    position: absolute;
+    height: $showcase-box-height;
+    width:  $showcase-box-width;
+    outline: 1px solid rgba(36,180,186,0); //#24B4BA crosswalk blue, needs to be set before animation
 }
 
 .showcase-faceImg {
@@ -59,9 +58,9 @@ $showcase-box-perspective: 616px; //11*box-height
   -webkit-transform: translateZ($showcase-box-height-half);
   transform: translateZ($showcase-box-height-half);
 }
-    
+
+// This is the top of the cube
 #showcase-cube .two {
-  /* This is the top of the cube */
   -webkit-transform: rotateX(90deg) translateZ($showcase-box-height-half);
   transform: rotateX(90deg) translateZ($showcase-box-height-half);
 }
