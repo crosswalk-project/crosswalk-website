@@ -157,7 +157,7 @@ are then used as the basis for the actual code compilation.
 
    If you want to create a Visual Studio solution so you can build/edit in Visual Studio you should set the GYP_GENERATORS like this :
    ```
-   set GYP_GENERATORS=ninja,ninja-msvs
+   set GYP_GENERATORS=ninja,msvs-ninja
    ```
    
    Note: in Windows, `set` takes effect in the current cmd window. `setx` makes the setting permanent in *future* cmd windows, similar to setting the variable in the Environment Variables dialog.
