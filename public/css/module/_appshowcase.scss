@@ -10,6 +10,7 @@ $showcase-box-perspective: 616px; //11*box-height
     display: inline-block;
     text-shadow: none !important;
 
+    font-size: modular-scale($base-font-size, 0, $base-ratio);;
 }
 
 #showcase-wrapper {
@@ -44,15 +45,14 @@ $showcase-box-perspective: 616px; //11*box-height
     margin:4px 8px 4px 4px;
 }
 .showcase-faceDiv {
-    color: white;
+    color: rgb(36,180,186); //set for whole div so ellipsis is correct color
     margin:4px 4px 4px 0px;
-
     text-overflow: ellipsis;
     white-space: nowrap; 
     overflow: hidden;
 }
-.showcase-faceDiv a {
-    color: rgb(36,180,186);
+.showcase-faceDiv .meta {
+    color: white;
 }
 
 #showcase-cube .one {
