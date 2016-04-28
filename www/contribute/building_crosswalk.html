@@ -261,7 +261,7 @@ python xwalk/gyp_xwalk</code></pre>
 <pre><code>set GYP_GENERATORS=ninja
 python xwalk\gyp_xwalk</code></pre>
 <p>If you want to create a Visual Studio solution so you can build/edit in Visual Studio you should set the GYP_GENERATORS like this :</p>
-<pre><code>set GYP_GENERATORS=ninja,ninja-msvs</code></pre>
+<pre><code>set GYP_GENERATORS=ninja,msvs-ninja</code></pre>
 <p>Note: in Windows, <code>set</code> takes effect in the current cmd window. <code>setx</code> makes the setting permanent in <em>future</em> cmd windows, similar to setting the variable in the Environment Variables dialog.</p>
 </li>
 <li><p>At this point you have built the projects with <code>gyp</code> and are ready for

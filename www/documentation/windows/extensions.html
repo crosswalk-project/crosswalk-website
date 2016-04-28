@@ -524,14 +524,14 @@ Its parameters are:</p>
 <ul>
 <li><p>--allow-external-extensions-for-remote-sources (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and</p>
 </li>
-<li><p>--external-extensions-path=/path/to/myextension/myextension.dll.</p>
+<li><p>--external-extensions-path=/path/to/myextension/myextension/directory.</p>
 </li>
 </ul>
 <p>The command line should look like this :</p>
 <pre><code>&gt; xwalk.exe --allow-external-extensions-for-remote-sources \
-            --external-extensions-path=/path/to/myextension/myextension.dll \
+            --external-extensions-path=/path/to/myextension/directory \
             http://localhost:8000</code></pre>
-<p>Your extension should be loaded.</p>
+<p>Your extension should be loaded. Please note that you can put multiple extensions in the same directory, Crosswalk will load all of them.</p>
 
   <footer class="article-next">
     
