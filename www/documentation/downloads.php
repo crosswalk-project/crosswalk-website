@@ -389,40 +389,6 @@ if ($canaryVersion == "N/A") {
 ?>      
     </tr>
 
-
-    <tr>
-      <th>Android Library Project (AAR)<br/></th>
-<?php
-// crosswalk-18.48.477.13-64bit.aar (44M)
-// crosswalk-18.48.477.13.aar       (42M)
-// crosswalk-shared-18.48.477.13.aar(303K)
-
-if ($stableVersion == "N/A") {
-    echo '<td>Not available</td>';
-} else {
-    echo '      <td><a href="' . $baseUrl . '/stable/latest/crosswalk-' . $stableVersion . '.aar">32-bit</a> / ' .
-                   '<a href="' . $baseUrl . '/stable/latest/crosswalk-' . $stableVersion . '-64bit.aar">64-bit</a> / <br>' .
-                   '<a href="' . $baseUrl . '/stable/latest/crosswalk-shared-' . $stableVersion . '.aar">Shared</a></td>';
-}
-if ($betaVersion == "N/A") {
-    echo '<td>Not available</td>';
-} else { 
-    echo '      <td><a href="' . $baseUrl . '/beta/latest/crosswalk-' . $betaVersion . '.aar">32-bit</a> / ' .
-                   '<a href="' . $baseUrl . '/beta/latest/crosswalk-' . $betaVersion . '-64bit.aar">64-bit</a> / <br>' .
-                   '<a href="' . $baseUrl . '/beta/latest/crosswalk-shared-' . $betaVersion . '.aar">Shared</a></td>';
-}
-if ($canaryVersion == "N/A") {
-    echo '<td>Not available</td>';
-} else {
-    echo '      <td><a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '.aar">32-bit</a> / ' .
-                   '<a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '-64bit.aar">64-bit</a> / <br>' .
-                   '<a href="' . $baseUrl . '/canary/latest/crosswalk-shared-' . $canaryVersion . '.aar">Shared</a></td>';
-}
-
-?>      
-    </tr>
-
-
   </table>
 
 <p><a href="https://download.01.org/crosswalk/releases/crosswalk/">All versions...</a></p>
