@@ -2,19 +2,23 @@
 The Crosswalk Project will be participating in the following conferences in 2016.  To view presentations from past conferences, visit the [Presentations](/documentation/community/presentations.html) page.
 
 <h2>Upcoming</h2>
+<p>[PhoneGap Day EU](conferences/phonegapdayamsterdam2016.html), May 19, Amsterdam</p>
+<a href="conferences/phonegapdayamsterdam2016.html">
+  <img src="/assets/conferences/phonegap-may19-banner.jpg" style="height:80px;display:block;">
+</a>
+<hr>
+<p>Intel Developer Networking Event, May 17, San Carlos, CA</p>
+<img src="/assets/conferences/google-io-intel-2016.jpg" style="height:80px;display:block;">
+
+Additional conferences will be added as the schedule is known.
+<br>
+
+<h2>Previous Conferences </h2>
 <p>[Fluent 2016](conferences/fluent2016.html), Mar 8-10, San Francisco, CA</p>
 <a href="conferences/fluent2016.html">
   <img src="/assets/conferences/fluent16-banner.jpg" style="height:80px;display:block;">
 </a>
 <hr>
-<p>[PhoneGap Day EU](conferences/phonegapdayAmsterdam2016.html), May 19, Amsterdam</p>
-<a href="conferences/phonegapdayAmsterdam2016.html">
-  <img src="/assets/conferences/phonegap-may19-banner.jpg" style="height:80px;display:block;">
-</a>
-
-Additional conferences will be added as the schedule is known.
-<br>
-<h2>Previous Conferences </h2>
 <p>[PhoneGap Day US](conferences/phonegapday2016.html), Jan 29, Lehi, Utah</p>
 <a href="conferences/phonegapday2016.html">
   <img src="/assets/conferences/phonegap-jan16-banner.jpg" style="height:80px;display:block;">
