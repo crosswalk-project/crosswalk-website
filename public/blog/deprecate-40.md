@@ -1,0 +1,5 @@
+Given the low number of existing Android 4.0 (ICS)-based phones in the market, the loss of support for Android 4.0 in Chromium (March 2016), and the increasingly time-consuming task of maintaining support for this version, the Crosswalk Project has decided to end support for Android 4.0 starting with build 20 (est build date is July 2016).  We will continue to support 4.0 up through build 19.
+
+Our decision comes after reaching out to the many web development tool and framework creators that have integrated Crosswalk in their IDE or build tools. Their responses were in support of this action, many noting that they had also stopped support for 4.0 devices due to the low percentage in the market and had no requests from developers targeting Android 4.0 devices.
+
+One of the strengths of the Crosswalk Project is helping to level the playing field for web applications across as many devices as possible. We hope this change will not impact our developers in a significant way. We welcome your feedback and look forward to continued support of the broadest Android market possible.
