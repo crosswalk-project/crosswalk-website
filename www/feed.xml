@@ -10,6 +10,18 @@
       
         
         <item>
+          <title>Crosswalk Project to stop support for Android 4.0</title>
+          <description>Android 4.0 will not be supported starting in Crosswalk build 20 (July 2016).</description>
+          <pubDate>2016-05-05T17:00</pubDate>
+          <link>http://crosswalk-project.org/blog/deprecate-40.html</link>
+          <guid isPermaLink="true">http://crosswalk-project.org/blog/deprecate-40.html</guid>
+        </item>
+          
+    
+      
+      
+        
+        <item>
           <title>Introducing Crosswalk Project Extensions for Intel® RealSense™ Technology</title>
           <description>Time to develop RealSense applications with Web Technology.</description>
           <pubDate>2016-02-23T00:00</pubDate>

@@ -9,6 +9,11 @@ Join the Crosswalk team at PhoneGap Day EU -- May 19, 2016 in Amsterdam.
 </a></p>
 <p>Now that the [Crosswalk plugin is part of PhoneGap build service](http://cordova.apache.org/announcements/2015/04/15/cordova-android-4.0.0.html), it is easier than ever to use the best web runtime with your Cordova/PhoneGap hybrid applications!
 
-<p>Join us for our workshop or talk, or drop by our table for a chat.</p>
+<table>
+ <tr><td><strong>Crosswalk Project Empowers PhoneGap Apps</strong> <br>
+         Presented by Raphael Kubo Da Costa, Software Engineer, Intel<br></td> </tr>
+ <tr><td>Crosswalk build engineer, Raphael Kubo Da Costa, explains how to use new, cutting-edge, or experimental APIs and extensions and deploy complex web applications with confidence.</td></tr>
+</table>
 
-More details to come...
+<p>Come by the Crosswalk table and visit with Raphael, discover why there are over 9000 applications in the Google Play store using Crosswalk, and grab a nice shirt.</p>
+
