@@ -1,14 +1,16 @@
-# Using the Crosswalk Project Runtime in Download Mode
+# Download Mode
 
-Download Mode provides another way to shrink the application size just like what shared mode does. Your application is still bundled with xwalk_shared_library which contains only the API layer of crosswalk, while the crosswalk core libraries/resources will be downloaded in the background at the first launch of your application from your specified server. Compared to shared mode, the crosswalk runtime is exclusive to your application therefor you are on control of the crosswalk runtime full lifecycle, and the crosswalk runtime download in the background could be done silently without any end user interaction.
+Download Mode provides another way to shrink the size of your APK and is similar to shared mode. Your application is still bundled with the `xwalk_shared_library` which contains only the API layer of Crosswalk.  When the application is first run on the client device, the Crosswalk core libraries and resources are downloaded in the background from a server that you specify. Compared to shared mode, the Crosswalk runtime is exclusive to your application and therefore you control the runtime lifecycle.  The Crosswalk runtime can be downloaded silently in the background without user interaction.
 
-# How to enable Download Mode with Embedding API
+## Enabling Download Mode using the Embedding API
 
-## Initialize crosswalk with XWalkInitializer/XWalkUpdater
+### Initialize crosswalk with XWalkInitializer/XWalkUpdater
 
+The following code shows one example of how to use the `XWalkUpdater` class to download of the runtime during application initialization.
 ```
 public class XWalkDownloadActivity extends Activity
-        implements XWalkInitializer.XWalkInitListener, XWalkUpdater.XWalkBackgroundUpdateListener {
+        implements XWalkInitializer.XWalkInitListener, 
+		XWalkUpdater.XWalkBackgroundUpdateListener {
 
     XWalkInitializer mXWalkInitializer;
     XWalkUpdater mXWalkUpdater;
@@ -44,8 +46,10 @@ public class XWalkDownloadActivity extends Activity
 
     @Override
     public void onXWalkInitFailed() {
-        // Initialization failed then to trigger the crosswalk runtime download
-        if (mXWalkUpdater == null) mXWalkUpdater = new XWalkUpdater(this, this);
+        // Initialization failed. Trigger the Crosswalk runtime download
+        if (mXWalkUpdater == null) {
+			mXWalkUpdater = new XWalkUpdater(this, this);
+		}
         mXWalkUpdater.updateXWalkRuntime();
     }
 
@@ -82,12 +86,11 @@ public class XWalkDownloadActivity extends Activity
 
 ## Configure AndroidManifest.xml
 
-### Specify the URL from where to download crosswalk runtime APK
+### Specify the download URL of the Crosswalk runtime APK
 ```
-<meta-data android:name="xwalk_apk_url" android:value="http://10.0.2.2/XWalkRuntimeLibLzma.apk" />
+<meta-data android:name="xwalk_apk_url" android:value="http:// [URL to your server] /XWalkRuntimeLib.apk" />
 ```
-Please note that when the HTTP request is sent to server, the URL will be appended with "?arch=CPU_API" to indicate that on which CPU architecture it's currently running.
-The CPU_API is the same as the value returned from "adb shell getprop ro.product.cpu_abi", e.g. x86 for IA 32bit, x86_64 for IA 64bit, armeabi-v7a for ARM 32bit and arm64-v8a for ARM 64bit.
+Please note that when the request is sent to server, the value of the device CPU will be appended ("?arch=CPU_API"). The CPU_API is the same as the value returned from `adb shell getprop ro.product.cpu_abi`. It returns `x86` for IA 32bit, `x86_64` for IA 64bit, `armeabi-v7a` for ARM 32bit and `arm64-v8a` for ARM 64bit.
 
 ### Enable download mode
 ```
@@ -95,12 +98,11 @@ The CPU_API is the same as the value returned from "adb shell getprop ro.product
 ```
 
 ## Deployment
-After the crosswalk runtime APK was downloaded from the server, we will do a signature check to ensure the integrity of the downloaded crosswalk runtime APK. And the signature check requires that the crosswalk runtime APK must be signed with the same key used in your application signing. You could also disable the signature check, for example, in development phase by inserting a meta-data to AndroidManifest.xml.
+After the Crosswalk runtime APK is downloaded from the server, a signature check is done to ensure its integrity. The signature check requires that the Crosswalk runtime APK be signed with the same key used to sign your application. You can disable this signature check during development by setting `xwalk_verify` to `disable` in the AndroidManifest.xml:
 ```
 <meta-data android:name="xwalk_verify" android:value="disable" />
 ```
-Besides the normal crosswalk runtime APK (named XWalkRuntimeLib.apk), we also provde a LZMA compressed runtime APK (named XWalkRuntimeLibLzma.apk) which has smaller size, for example, the size of XWalkRuntimeLib.apk for x86 is ~28M while the size of XWalkRuntimeLibLzma.apk is ~18M. The compressed one could save your users' network bandwidth in download but it will take a little more time in decompressing at the first launch of your application. You could choose which one to deploy based on your need.
 
-## Crosswalk Runtime auto update
-Basically, it requires that the build version of the xwalk_shared_library which you used to bundle with your application must be the same as that of crosswalk runtime APK, otherwise the initialization will fail and then it will trigger an update to try to download a new crosswalk runtime APK from the server. This will guarantee that the crosswalk runtime is always up to date in user's device after you upgrade your application with a new crosswalk library. 
+The normal crosswalk runtime APK (`XWalkRuntimeLib.apk`) is ~28MB.  We also provde an LZMA-compressed runtime APK (`XWalkRuntimeLibLzma.apk`) which is ~18MB. While the compressed APK can save network bandwidth, when the application is first launched the APK must be decompressed (a dialog is displayed during this process).  This only happens during the first launch.
+
 
