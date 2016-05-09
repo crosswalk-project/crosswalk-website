@@ -1,4 +1,10 @@
 {
+  "crosswalk-download-mode": {
+    "title": "Introducing 'Download mode' in Crosswalk for Android",
+    "date": "2016-05-09T17:00",
+    "author": "Xiaosong Wei",
+    "desc": "It is now possible to package application in download mode."
+  },
   "deprecate-40": {
       "title": "Crosswalk Project to stop support for Android 4.0",
       "date": "2016-05-05T17:00",

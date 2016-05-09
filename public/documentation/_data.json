@@ -35,6 +35,9 @@
   "shared_mode": {
     "title": "Shared Mode"
   },
+  "download_mode": {
+    "title": "Download Mode"
+  },
   "crosswalk_lite": {
     "title": "Crosswalk Lite"
   },
