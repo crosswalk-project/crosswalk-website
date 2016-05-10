@@ -4,7 +4,7 @@ Download Mode provides another way to shrink the size of your APK and is similar
 
 ## Enabling Download Mode using the Embedding API
 
-### Initialize crosswalk with XWalkInitializer/XWalkUpdater
+### Initialize Crosswalk with XWalkInitializer/XWalkUpdater
 
 The following code shows one example of how to use the `XWalkUpdater` class to download of the runtime during application initialization.
 ```
@@ -55,6 +55,7 @@ public class XWalkDownloadActivity extends Activity
 
     @Override
     public void onXWalkInitCompleted() {
+        // Initialization successfully, ready to invoke any XWalk embedded API
         mXWalkView.load("file:///android_asset/create_window_1.html", null);
     }
 
@@ -103,6 +104,9 @@ After the Crosswalk runtime APK is downloaded from the server, a signature check
 <meta-data android:name="xwalk_verify" android:value="disable" />
 ```
 
-The normal crosswalk runtime APK (`XWalkRuntimeLib.apk`) is ~28MB.  We also provde an LZMA-compressed runtime APK (`XWalkRuntimeLibLzma.apk`) which is ~18MB. While the compressed APK can save network bandwidth, when the application is first launched the APK must be decompressed (a dialog is displayed during this process).  This only happens during the first launch.
+The normal crosswalk runtime APK (`XWalkRuntimeLib.apk`) is ~28MB.  We also provde an LZMA-compressed runtime APK (`XWalkRuntimeLibLzma.apk`) which is ~18MB. While the compressed APK can save network bandwidth, when the application is first launched the APK must be decompressed. This only happens during the first launch.
+
+## Crosswalk Runtime Auto-update
+When your app is built with a later version of Crosswalk and got updated on the client device, the prevoius downloaded Crosswalk Runtime on the client device becomes out-of-date. In order to trigger an update to fetch a new copy of Crosswalk Runtime from your web server, we restrict that the build version of the '''xwalk_shared_library''' that you use to build your app must be the same as that in Crosswalk Runtime APK. That means, the '''xwalk_shared_library''' and XWalkRuntimeLib[Lzma].apk must come from the same build. Also, once you build and update your app with a newer '''xwalk_shared_library''', you have to update the Crosswalk Runtime APK on your web server before publishing your app.
 
 
