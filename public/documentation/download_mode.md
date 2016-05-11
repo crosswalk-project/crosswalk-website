@@ -4,7 +4,7 @@ Download Mode provides another way to shrink the size of your APK and is similar
 
 ## Enabling Download Mode using the Embedding API
 
-### Initialize crosswalk with XWalkInitializer/XWalkUpdater
+### Initialize Crosswalk with XWalkInitializer/XWalkUpdater
 
 The following code shows one example of how to use the `XWalkUpdater` class to download of the runtime during application initialization.
 ```
@@ -55,6 +55,7 @@ public class XWalkDownloadActivity extends Activity
 
     @Override
     public void onXWalkInitCompleted() {
+        // Initialization successfully, ready to invoke any XWalk embedded API
         mXWalkView.load("file:///android_asset/create_window_1.html", null);
     }
 
@@ -82,16 +83,26 @@ public class XWalkDownloadActivity extends Activity
         // Crosswalk Runtime update finished, re-init again.
         mXWalkInitializer.initAsync();
     }
+	...
+	
 ```
 
 ## Configure AndroidManifest.xml
 
 ### Specify the download URL of the Crosswalk runtime APK
 ```
-<meta-data android:name="xwalk_apk_url" android:value="http:// [URL to your server] /XWalkRuntimeLib.apk" />
+<meta-data android:name="xwalk_apk_url" 
+           android:value="https:// [URL of your server] /XWalkRuntimeLib.apk" />
 ```
-Please note that when the request is sent to server, the value of the device CPU will be appended ("?arch=CPU_API"). The CPU_API is the same as the value returned from `adb shell getprop ro.product.cpu_abi`. It returns `x86` for IA 32bit, `x86_64` for IA 64bit, `armeabi-v7a` for ARM 32bit and `arm64-v8a` for ARM 64bit.
-
+Please note that when the request is sent to server, the value of the device CPU architecture will be appended ("?arch=&lt;cpu arch&gt;"). The "cpu arch" is the same as the value returned from `adb shell getprop ro.product.cpu_abi` as shown in the table below:
+<table style="max-width: 380px; margin:0 auto">
+  <tr><th>Device CPU arch</th><th>Value of "cpu arch"</th></tr>
+  <tr><td>IA 32-bit</td><td>`x86`</td></tr>
+  <tr><td>IA 64-bit</td><td>`x86_64`</td></tr>
+  <tr><td>ARM 32-bit</td><td>`armeabi-v7a`</td></tr>
+  <tr><td>ARM 64-bit</td><td>`arm64-v8a`</td></tr>
+</table>
+<br>
 ### Enable download mode
 ```
 <meta-data android:name="xwalk_enable_download_mode" android:value="enable" />
@@ -103,6 +114,9 @@ After the Crosswalk runtime APK is downloaded from the server, a signature check
 <meta-data android:name="xwalk_verify" android:value="disable" />
 ```
 
-The normal crosswalk runtime APK (`XWalkRuntimeLib.apk`) is ~28MB.  We also provde an LZMA-compressed runtime APK (`XWalkRuntimeLibLzma.apk`) which is ~18MB. While the compressed APK can save network bandwidth, when the application is first launched the APK must be decompressed (a dialog is displayed during this process).  This only happens during the first launch.
+The normal Crosswalk runtime APK (`XWalkRuntimeLib.apk`) is ~28MB.  We also provde an LZMA-compressed runtime APK (`XWalkRuntimeLibLzma.apk`) which is ~18MB. While the compressed APK can save network bandwidth, when the application is first launched the APK must be decompressed. This only happens during the first launch.
+
+## Crosswalk Runtime Updates
+A Crosswalk app that uses download-mode must be built with the same version of Crosswalk as the runtime APK on the server. Specifically, the `xwalk_shared_library` used by your application and the `XWalkRuntimeLib.apk` (or `XWalkRuntimeLibLzma.apk`) on the server must come from the same build.  Therefore, whenever you update your application in the store, you must also update the runtime APK on your server.  If a new version of your application is updated on a client device, your application will attempt to download the runtime again to match its new version, even if it has already downloaded the runtime for the previous version.
 
 
