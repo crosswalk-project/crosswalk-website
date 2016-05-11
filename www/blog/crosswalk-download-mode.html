@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Introducing Crosswalk Project for Debian Linux" />
-    <meta property="og:url" content="http://crosswalk-project.org/blog/announce-linux-dt" />
+    <meta property="og:title" content="Introducing &#39;Download mode&#39; in Crosswalk for Android" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-download-mode" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/blog/announce-linux-dt" />
-    <meta name="twitter:title" content="Introducing Crosswalk Project for Debian Linux" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-download-mode" />
+    <meta name="twitter:title" content="Introducing &#39;Download mode&#39; in Crosswalk for Android" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -99,21 +99,18 @@
           
           <article class="article">
   <header class="article-header">
-    <h1 class="article-title">Introducing Crosswalk Project for Debian Linux</h1>
+    <h1 class="article-title">Introducing 'Download mode' in Crosswalk for Android</h1>
     <span class="article-meta">
-      <a href="announce-linux-dt.html"><time class="js-vagueTime" datetime="Fri, 03 Jul 2015 12:00:00 GMT">Fri, 03 Jul 2015 12:00:00 GMT</time></a>
+      <a href="crosswalk-download-mode.html"><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">Mon, 09 May 2016 17:00:00 GMT</time></a>
        
-        by <span class="article-author">Xiang Long</span>
+        by <span class="article-author">Xiaosong Wei</span>
       
     </span>
   </header>
   
-  <p>We are pleased to announce the first version of <a href="/documentation/linux.html">Crosswalk Project for Linux</a>, a runtime for modern web applications on Debian based Linux desktop distributions.</p>
-<p>Crosswalk Project for Linux is based on the Chromium content layer and supports cutting-edge web technologies like WebGL, WebRTC, WebAudio, ServiceWorker, SIMD, and Web Manifest.</p>
-<p>The JavaScript API extension mechanism is also supported, allowing for developers to extend web application capabilities and bridge native code with their JavaScript code to make competitive hybrid Linux desktop applications.</p>
-<p>Finally, Crosswalk Project for Linux provides tools for developers to package their applications into Debian packages. Web applications with standard W3C web app manifests can easily be packaged one command line. See the <a href="/documentation/linux.html">documentation</a> for instructions.</p>
-<p>The Crosswalk Project Debian package is available from the <a href="https://download.01.org/crosswalk/releases/crosswalk/linux/deb/canary/">canary channel</a>, and has been tested on Ubuntu Linux 14.04 64-bit and Deepin Linux 2014.2.</p>
-<p>We look forward to hearing your feedback!</p>
+  <p>Starting with Crosswalk 17 beta, you can package your application in <strong>download mode</strong>. </p>
+<p>Download Mode provides another way to shrink the size of your APK and is similar to shared mode. Your application is still bundled with the <code>xwalk_shared_library</code> which contains only the API layer of Crosswalk.  When the application is first run on the client device, the Crosswalk core libraries and resources are downloaded in the background from a server that you specify. Compared to shared mode, the Crosswalk runtime is exclusive to your application and therefore you control the runtime lifecycle.  The Crosswalk runtime can be downloaded silently in the background without user interaction.</p>
+<p>Details on creating applications using Download Mode are here: <a href="/documentation/download_mode.html">Download Mode</a> </p>
 
   <a href="http://twitter.com/xwalk_project" class="article-promo well">
   <h4 class="article-promoTitle">Get more hybrid app secrets</h4>

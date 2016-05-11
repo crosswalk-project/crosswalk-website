@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/build_an_application_make_apk" />
+    <meta property="og:title" content="Download Mode" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/download_mode" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/build_an_application_make_apk" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/download_mode" />
+    <meta name="twitter:title" content="Download Mode" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -119,59 +119,6 @@
          <a class="article-link" href="/documentation/android.html">Android</a>
 
          
-
-         <ul class="article-list">
-            
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
-
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/embedding_crosswalk.html">Embedding Crosswalk</a>
-
-             
-           </li>
-           
-         </ul>
-         
        </li>
     
        <li class="article-item ">
@@ -228,7 +175,7 @@
          
        </li>
     
-       <li class="article-item ">
+       <li class="article-item  nav-item--active">
          <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
 
          
@@ -271,92 +218,111 @@
 
 
 <article class="article article--hasToC">
-  <h1>Building a Crosswalk application</h1>
-<p>Crosswalk is a runtime for HTML5 applications. This means that any existing HTML5 applications should run on Crosswalk, providing they already run in a modern browser (Chrome, Firefox, Safari).</p>
-<p>For the purposes of this tutorial, we use the simplest possible Crosswalk application: one HTML file.</p>
-<p>However, because Crosswalk applications are intended to integrate well with the target environment, they require an additional file, <code>manifest.json</code>, containing metadata for that purpose. The manifest can be used to specify icons to use at different resolutions, set an app description, adjust <a href="http://developer.chrome.com/extensions/contentSecurityPolicy.html">content security policy settings</a>, and otherwise configure how the app integrates with the target environment.</p>
-<h2 id="A-simple-application">A simple application</h2>
+  <h1>Download Mode</h1>
+<p>Download Mode provides another way to shrink the size of your APK and is similar to shared mode. Your application is still bundled with the <code>xwalk_shared_library</code> which contains only the API layer of Crosswalk.  When the application is first run on the client device, the Crosswalk core libraries and resources are downloaded in the background from a server that you specify. Compared to shared mode, the Crosswalk runtime is exclusive to your application and therefore you control the runtime lifecycle.  The Crosswalk runtime can be downloaded silently in the background without user interaction.</p>
+<h2>Enabling Download Mode using the Embedding API</h2>
+<h3>Initialize Crosswalk with XWalkInitializer/XWalkUpdater</h3>
+<p>The following code shows one example of how to use the <code>XWalkUpdater</code> class to download of the runtime during application initialization.</p>
+<pre><code>public class XWalkDownloadActivity extends Activity
+        implements XWalkInitializer.XWalkInitListener, 
+        XWalkUpdater.XWalkBackgroundUpdateListener {
 
-<ol>
-<li><p>First, create a directory called <code>xwalk-simple</code> for the project:</p>
-<pre><code>&gt; mkdir xwalk-simple/
-&gt; cd xwalk-simple/</code></pre>
-</li>
-<li><p>Next, copy an icon file to that directory, to serve as the application icon. You can use this image:</p>
-<p><img src="/assets/cw-app-icon.png"></p>
-<p>To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the <code>xwalk-simple</code> directory as <code>icon.png</code>. (Note that this image is from the Crosswalk source code and is <a href="https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE">BSD licensed</a>.)</p>
-<p>If you have your own favourite icon, copy that to the <code>xwalk-simple</code> directory instead. It should be 128 pixels square.</p>
-</li>
-<li><p>Create two text files inside <code>xwalk-simple</code> (create them using any text editor, e.g. Notepad on Windows, gedit on Ubuntu):</p>
-<ol>
-<li><p><code>index.html</code></p>
-<p>This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.</p>
-<p>The content should be:</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta name=&quot;viewport&quot;
-          content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;simple&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;p&gt;hello world&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-</li>
-<li><p><code>manifest.json</code></p>
-<p>This contains the application metadata (see above).</p>
-<p>The content should be:</p>
-<pre><code>{
-  &quot;name&quot;: &quot;simple&quot;,
-  &quot;xwalk_version&quot;: &quot;0.0.1&quot;,
-  &quot;start_url&quot;: &quot;index.html&quot;,
-  &quot;icons&quot;: [
-    {
-      &quot;src&quot;: &quot;icon.png&quot;,
-      &quot;sizes&quot;: &quot;128x128&quot;,
-      &quot;type&quot;: &quot;image/png&quot;,
-      &quot;density&quot;: &quot;4.0&quot;
+    XWalkInitializer mXWalkInitializer;
+    XWalkUpdater mXWalkUpdater;
+    XWalkView mXWalkView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
+
+        setContentView(R.layout.activity_xwalkview);
+
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
+        ....
     }
-  ]
-}</code></pre>
-<p>See <a href="/documentation/manifest.html">the manifest documentation</a> for more information.</p>
-</li>
-</ol>
-</li>
-</ol>
-<p>Once you&#39;ve done this, you&#39;re ready to run the application on a target.</p>
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mXWalkInitializer.initAsync();
+    }
+
+    @Override
+    public void onXWalkInitStarted() {
+    }
+
+    @Override
+    public void onXWalkInitCancelled() {
+        finish();
+    }
+
+    @Override
+    public void onXWalkInitFailed() {
+        // Initialization failed. Trigger the Crosswalk runtime download
+        if (mXWalkUpdater == null) {
+            mXWalkUpdater = new XWalkUpdater(this, this);
+        }
+        mXWalkUpdater.updateXWalkRuntime();
+    }
+
+    @Override
+    public void onXWalkInitCompleted() {
+        // Initialization successfully, ready to invoke any XWalk embedded API
+        mXWalkView.load(&quot;file:///android_asset/create_window_1.html&quot;, null);
+    }
+
+    @Override
+    public void onXWalkUpdateStarted() {
+    }
+
+    @Override
+    public void onXWalkUpdateProgress(int percentage) {
+        Log.d(TAG, &quot;XWalkUpdate progress: &quot; + percentage);
+    }
+
+    @Override
+    public void onXWalkUpdateCancelled() {
+        finish();
+    }
+
+    @Override
+    public void onXWalkUpdateFailed() {
+        finish();
+    }
+
+    @Override
+    public void onXWalkUpdateCompleted() {
+        // Crosswalk Runtime update finished, re-init again.
+        mXWalkInitializer.initAsync();
+    }
+    ...</code></pre>
+<h2>Configure AndroidManifest.xml</h2>
+<h3>Specify the download URL of the Crosswalk runtime APK</h3>
+<pre><code>&lt;meta-data android:name=&quot;xwalk_apk_url&quot; 
+           android:value=&quot;https:// [URL of your server] /XWalkRuntimeLib.apk&quot; /&gt;</code></pre>
+<p>Please note that when the request is sent to server, the value of the device CPU architecture will be appended (&quot;?arch=&lt;cpu arch&gt;&quot;). The &quot;cpu arch&quot; is the same as the value returned from <code>adb shell getprop ro.product.cpu_abi</code> as shown in the table below:</p>
+<p><table style="max-width: 380px; margin:0 auto">
+  <tr><th>Device CPU arch</th><th>Value of &quot;cpu arch&quot;</th></tr>
+  <tr><td>IA 32-bit</td><td><code>x86</code></td></tr>
+  <tr><td>IA 64-bit</td><td><code>x86_64</code></td></tr>
+  <tr><td>ARM 32-bit</td><td><code>armeabi-v7a</code></td></tr>
+  <tr><td>ARM 64-bit</td><td><code>arm64-v8a</code></td></tr>
+</table>
+<br></p>
+<h3>Enable download mode</h3>
+<pre><code>&lt;meta-data android:name=&quot;xwalk_enable_download_mode&quot; android:value=&quot;enable&quot; /&gt;</code></pre>
+<h2>Deployment</h2>
+<p>After the Crosswalk runtime APK is downloaded from the server, a signature check is done to ensure its integrity. The signature check requires that the Crosswalk runtime APK be signed with the same key used to sign your application. You can disable this signature check during development by setting <code>xwalk_verify</code> to <code>disable</code> in the AndroidManifest.xml:</p>
+<pre><code>&lt;meta-data android:name=&quot;xwalk_verify&quot; android:value=&quot;disable&quot; /&gt;</code></pre>
+<p>The normal Crosswalk runtime APK (<code>XWalkRuntimeLib.apk</code>) is ~28MB.  We also provde an LZMA-compressed runtime APK (<code>XWalkRuntimeLibLzma.apk</code>) which is ~18MB. While the compressed APK can save network bandwidth, when the application is first launched the APK must be decompressed. This only happens during the first launch.</p>
+<h2>Crosswalk Runtime Updates</h2>
+<p>A Crosswalk app that uses download-mode must be built with the same version of Crosswalk as the runtime APK on the server. Specifically, the <code>xwalk_shared_library</code> used by your application and the <code>XWalkRuntimeLib.apk</code> (or <code>XWalkRuntimeLibLzma.apk</code>) on the server must come from the same build.  Therefore, whenever you update your application in the store, you must also update the runtime APK on your server.  If a new version of your application is updated on a client device, your application will attempt to download the runtime again to match its new version, even if it has already downloaded the runtime for the previous version.</p>
 
   <footer class="article-next">
     
-
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
 
 
   </footer>

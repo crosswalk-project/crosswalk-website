@@ -29,7 +29,12 @@ local-config.php
 # Assets being edited locally
 assets-raw/
 
-#icons of submitted showcase apps
+#showcase apps: db access and icons
 _db-app-images/
 public/assets/apps/icons
 www/assets/apps/icons
+public/documentation/community/apps/
+public/password_protect.php
+www/documentation/community/apps/
+www/password_protect.php
+
