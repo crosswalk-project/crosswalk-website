@@ -372,7 +372,8 @@
 
 .i18n-label {
     color: $color-primary;
-    cursor: pointer;  //because we are not a menu, not a link like the other nav menu items    
+    cursor: pointer;
+    padding-left: 10px;
 }
 
 .doc-anchor,
