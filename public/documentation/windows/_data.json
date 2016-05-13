@@ -33,42 +33,34 @@
   },
   "windows_host_setup_zh": {
     "title": "Windows开发环境设置",
-    "language": "zh",
-    "layout": "../../_layout_zh"
+    "language": "zh"
   },
   "build_an_application_zh": {
     "title": "创建应用",
-    "language": "zh",
-    "layout": "../../_layout_zh"
+    "language": "zh"
   },
   "run_on_windows_zh": {
     "title": "在Windows环境运行",
-    "language": "zh",
-    "layout": "../../_layout_zh"
+    "language": "zh"
   },
   "web_inspector_debugging_zh": {
     "title": "Web Inspector Debugging",
-    "language": "zh",
-    "layout": "../../_layout_zh"
+    "language": "zh"
   },
   "deploy_windows_store_zh": {
     "title": "部署到Windows Store",
-    "language": "zh",
-    "layout": "../../_layout_zh"
+    "language": "zh"
   },
   "net_extensions_zh": {
     "title": ".NET extensions",
-    "language": "zh",
-    "layout": "../../_layout_zh"
+    "language": "zh"
   },
   "build_crosswalk_for_windows_zh": {
     "title": "在windows上编译Crosswalk",
-    "language": "zh",
-    "layout": "../../_layout_zh"
+    "language": "zh"
   },
   "extensions_zh": {
-    "title": "Extensions",
-    "language": "zh",
-    "layout": "../../_layout_zh"
+    "title": "扩展程序",
+    "language": "zh"
   }
 }
