@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="top" lang="en-us">
+<html id="top">
   <head>
     <meta charset="utf-8">
     <title>The Crosswalk Project</title>
@@ -51,12 +51,13 @@
     <script src="/js/testimonials.js"></script>
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
          do custom layouts. (home screen, blog, app-mgmt page)
          Else, provide doc header and nav. -->
-    <% if ((current.source == 'index' && current.path.length <= 2) ||
+    <% if (((current.source == 'index'||current.source == 'index_zh'||current.source == '404'||current.source == '404_zh') && current.path.length <= 2) ||
            (current.source == 'app-mgmt')) { %>
     <%- yield %>
     <% } else { %>
@@ -70,6 +71,7 @@
           <% if(current.path.length === 1) { %>
           <%- yield %>
           <% } else { %>
+          <% include _includes/bar.ejs %>
           <%- partial(current.path.reverse()[current.path.length - 1] + "/_nest") %>
           <% } %>
         </div>
@@ -77,46 +79,7 @@
     </div>
     <% } %>
 
-    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
-    <div style="position:relative; top:-30px;">
-       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
-    </div>
-    <footer class="footer footer--documentation" >
-      <div class="container" >
-        <div class="row">
-          <div  class="footer-div">
-            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/<%= social.twitter %>">@<%= social.twitter %> on Twitter</a> for the latest developer activities and project updates.
-          </div>
-          <div class="footer-div">
-             Latest blog post:</br>
-              <% for (slug in public.blog._data) { %>
-              <% var article = public.blog._data[slug] %>
-                <b><a href="/blog"><%- article.title %></a></b><br/>
-                &nbsp;(<span ><time class="js-vagueTime" datetime="<%- new Date(article.date).toUTCString() %>"><%- article.date %></time></span>)
-              <% break %>
-              <% } %>
-              <br/>
-           </div>
-          <div class="footer-div">
-              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
-          </div>
-          <div class="footer-div">
-             <a href="/documentation">Documentation</a> &nbsp;
-             <a href="/blog">Blog</a> &nbsp;
-             <a href="/documentation/downloads.html">Downloads</a> <br />
-             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
-             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
-             <a href="/sitemap.html">Sitemap</a> <br/>
-          </div>
-        </div>
-        <div class="row">
-            <small>
-              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
-            </small>
-        </div>
-      </div>
-    </footer>
-
+    <% include _includes/foot.ejs %>
     <% if(service.analytics) { %>
       <script type="text/javascript">
         var _gaq = _gaq || [];

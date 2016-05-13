@@ -1,0 +1,51 @@
+<%
+   var content = public.content._data;
+   var lang = (current.source.lastIndexOf("_zh") > 0 ? "zh": "en");
+%>
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/<%= social.twitter %>">@<%= social.twitter %> on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              <% for (slug in public.blog._data) { %>
+              <% var article = public.blog._data[slug] %>
+                <b><a href="/blog"><%- article.title %></a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="<%- new Date(article.date).toUTCString() %>"><%- article.date %></time></span>)
+              <% break %>
+              <% } %>
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="<%= content["documentation"][lang].url %>"> <%= content["documentation"][lang].title %></a> &nbsp;
+             <a href="<%= content["blog"][lang].url %>"> <%= content["blog"][lang].title %></a> &nbsp;
+             <a href="<%= content["download"][lang].url %>"> <%= content["download"][lang].title %></a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> <%= content["issue"][lang].title %></a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> <%= content["github"][lang].title %></a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              <%= content["footer_content"][lang].content_one %> <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  <%= content["footer_content"][lang].content_two %> </a>  <%= content["footer_content"][lang].content_three %>
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=<%= lang %>]").css("display","block");
+</script>

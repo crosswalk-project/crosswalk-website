@@ -1,0 +1,118 @@
+{
+  "language": {
+     "choice_one": "en",
+     "choice_two": "zh"
+  },
+  "image": {
+     "en": {
+        "url": "/"
+     },
+     "zh": {
+        "url": "/index_zh.html"
+     }
+  },
+  "documentation" : {
+     "en": {
+        "title": "Documentation",
+        "url": "/documentation/getting_started.html"
+     },
+     "zh": {
+        "title": "文档",
+        "url": "/documentation/getting_started_zh.html"
+     }
+  },
+  "blog": {
+     "en": {
+        "title": "Blog",
+        "url": "/blog"
+     },
+     "zh": {
+        "title": "博客",
+        "url": "/blog"
+     }
+  },
+  "contribute": {
+     "en": {
+        "title": "Contribute",
+        "url": "/contribute"
+     },
+     "zh": {
+        "title": "贡献",
+        "url": "/contribute/index_zh.html"
+     }
+  },
+  "wiki": {
+     "en": {
+        "title": "Wiki",
+        "url": "https://github.com/crosswalk-project/crosswalk-website/wiki"
+     },
+     "zh": {
+        "title": "维基",
+        "url": "https://github.com/crosswalk-project/crosswalk-website/wiki"
+     }
+  },
+  "faq": {
+     "en": {
+        "title": "FAQ",
+        "url": "/documentation/about/faq.html"
+     },
+     "zh": {
+        "title": "常见问题",
+        "url": "/documentation/about/faq_zh.html"
+     }
+  },
+  "languageButton": {
+     "en": {
+        "title": "English"
+     },
+     "zh": {
+        "title": "中文版"
+     }
+  },
+  "download": {
+     "en": {
+        "title": "Downloads",
+        "url": "/documentation/downloads.html"
+     },
+     "zh": {
+        "title": "下载",
+        "url": "/documentation/downloads_zh.html"
+     }
+  },
+  "issue": {
+     "en": {
+        "title": "Issues"
+     },
+     "zh": {
+        "title": "问题"
+     }
+  },
+  "github": {
+     "en": {
+        "title": "GitHub Source"
+     },
+     "zh": {
+        "title": "GitHub资源"
+     }
+  },
+  "footer_content": {
+     "en": {
+        "content_one": "The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All right reserved.",
+        "content_two": "Privacy policy",
+        "content_three": "*Other names and brands may be claimed as the property of others."
+     },
+     "zh": {
+        "content_one": "Crosswalk项目由Intel Open Source Technology Center开发。版权为 © 2013–2016 Intel Corporation。保留所有权利。",
+        "content_two": "Privacy策略",
+        "content_three": "*其他名称和商标可能被声明为他人财产"
+     }
+  },
+  "next": {
+     "en": {
+        "title": "What’s next?"
+     },
+     "zh": {
+        "title": "下一节关于什么？"
+     }
+  }
+}

@@ -81,13 +81,17 @@
   font-size: modular-scale($base-font-size, 1, $base-ratio);
   margin-left: 0;
   margin-bottom: modular-scale($base-font-size, -8, $base-ratio);
-  #getting-started-nav{display:none}
+  #getting-started-nav{display:none};
+//  #faq-nav{display:none};
+//  #wiki-nav{display:none};
   @include media($mid) {
     margin: 0;
   }
   @include media($wide) {
     display: inline-block;
-    #getting-started-nav{display:initial}
+    #getting-started-nav{display:initial};
+//    #faq-nav{display:initial}
+//    #wiki-nav{display:initial}
   }
 }
 
@@ -101,7 +105,9 @@
   }
 }
 
-.nav-link {
+.nav-link,
+.nav-item .i18n-label,
+.nav-item .i18n-menu {
   display: block;
   padding: modular-scale($base-font-size, -8, $base-ratio) 0;
   @include media($mid) {
@@ -310,10 +316,6 @@
   //<li>
   font-size: 17px;
   display: inline-block;
-
-  @include media($mid) {
-
-  }
 }
 
 // when screen size shrinks, hide these items
@@ -326,7 +328,6 @@
 
 .doc-nav-link {
   background-image: none;
-
 
   @include media($narrow) {
     padding: modular-scale($base-font-size, 2, $base-ratio) modular-scale($base-font-size, -4, $base-ratio) modular-scale($base-font-size, 0, $base-ratio);
@@ -349,4 +350,84 @@
     display: block;
     position: relative;
     top: -65px;
+}
+
+// Styles for language dropdown menu in nav
+
+.i18n-globe {
+    padding-right:($base-font-size, 0, $base-ratio);
+    width: modular-scale($base-font-size, 1, $base-ratio);
+
+    vertical-align: -3px;
+    @include media($wide) {
+	vertical-align: -2px; //the middle size needs this tweak to align text in menu
+    }
+    @include media($huge) {
+	vertical-align: -3px;
+    }      
+}
+.i18n-arrow {
+    padding: 0px 0px 2px 3px;
+}
+
+.i18n-label {
+    color: $color-primary;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.doc-anchor,
+.i18n-globe,
+.i18n-label,
+.i18n-menu {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.i18n-menu {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.i18n-menu-dark {
+    background-color: rgba(50,50,50,0.8);
+}
+.i18n-menu-light {
+    background-color: rgba(250,250,250,0.95); //doc page
+}
+.i18n-menu-dark a:hover {
+    background-color: rgba(80,80,80,0.5);
+}
+.i18n-menu-light a:hover {
+    background-color: rgb(255,255,255); //doc page
+}
+
+.i18n-menu a {
+    color: $color-primary;
+    display: block;
+    padding: 8px 6px;
+    background-image: none;
+    text-shadow: none;
+}
+.i18n-menu a:hover {
+    font-weight: bold;
+}
+
+.tmp-bar {
+  background-color: $color-primary;
+  display: none;
+  width: 100%;
+  height: 40px;
+  left: 0px;
+  padding-left: 0px;
+  font-weight: 100;
+  text-align: center;
 }

@@ -1,3 +1,6 @@
+// This is Javascript for the "Tools and Frameworks" page
+// It loads the list of tools from /documentation/community/tools.json
+// and displays them on the home page and on /documentation/community/tools.html
 /*
  * License
  */
@@ -11,10 +14,12 @@
 
 const TOOLS_PAGE = 1;
 const HOME_PAGE = 2;
+const LOCAL_LANG_COOKIE = "local_lang";
 
 var imgSize = 130;
 var hoverImgSize = 150;
-
+var xmlhttp = null;
+var file_url;
 function onHomePageImgClick (event) {
     window.open("/documentation/community/tools.html?tool=" + event.data.value, "_self");
 }
