@@ -8,7 +8,7 @@
         "url": "/"
      },
      "zh": {
-        "url": "/index_zh"
+        "url": "/index_zh.html"
      }
   },
   "documentation" : {
@@ -34,11 +34,11 @@
   "contribute": {
      "en": {
         "title": "Contribute",
-        "url": "/contribute/index"
+        "url": "/contribute"
      },
      "zh": {
         "title": "贡献",
-        "url": "/contribute/index_zh"
+        "url": "/contribute/index_zh.html"
      }
   },
   "wiki": {
@@ -63,7 +63,7 @@
   },
   "languageButton": {
      "en": {
-        "title": "English Version"
+        "title": "English"
      },
      "zh": {
         "title": "中文版"

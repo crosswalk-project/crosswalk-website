@@ -17,21 +17,25 @@
     <li class="nav-item">
       <a href="<%= content["contribute"][lang].url %>" class="nav-link"><%= content["contribute"][lang].title %></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item hide-on-small">
       <a href="<%= content["wiki"][lang].url %>" class="nav-link" id="wiki-nav"><%= content["wiki"][lang].title %></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item hide-on-small">
       <a href="<%= content["faq"][lang].url %>" class="nav-link" id="faq-nav"><%= content["faq"][lang].title %></a>
     </li>
     <li class="nav-item">
-        <div class="dropdown-nav-item">
-           <button id="languageButton" onclick="toggleLanguageDropdown()"><%= content["languageButton"][lang].title %></button>
-           <div id="languageDropdown" class="dropdown-content">
-               <a onclick="switchLanguage('English')">English Version</a>
-               <a onclick="switchLanguage('Chinese')">中文版</a>
-           </div>
-        </div>
-     </li>
+      <span class="i18n-label" id="i18n-label">
+	<span id="i18n-inner">
+	<img src="/assets/i18n-globe.png" class="i18n-globe" />
+	<%= content["languageButton"][lang].title %>
+	<img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	</span>
+      </span>
+      <div id="i18n-menu" class="i18n-menu i18n-menu-dark">
+        <a onclick="switchLanguage('English')">English</a>
+        <a onclick="switchLanguage('Chinese')">中文版</a>
+      </div>
+    </li>
   </ul>
 </nav>
 
@@ -51,38 +55,28 @@
       <li class="doc-nav-item">
         <a href="<%= content["blog"][lang].url %>" class="doc-nav-link"><%= content["blog"][lang].title %></a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="<%= content["contribute"][lang].url %>" class="doc-nav-link"><%= content["contribute"][lang].title %></a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="<%= content["wiki"][lang].url %>" class="doc-nav-link"><%= content["wiki"][lang].title %></a>
       </li>
       <li class="doc-nav-item hide-on-small">
         <a href="<%= content["faq"][lang].url %>" class="doc-nav-link"><%= content["faq"][lang].title %></a>
       </li>
-      <li class="doc-nav-item hide-on-small">
-        <div>
-           <button id="languageButton" onclick="toggleLanguageDropdown()"><%= content["languageButton"][lang].title %></button>
-           <div id="languageDropdown" class="dropdown-content">
-               <a onclick="switchLanguage('English')">English Version</a>
-               <a onclick="switchLanguage('Chinese')">中文版</a>
-           </div>
-        </div>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    <%= content["languageButton"][lang].title %>
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
       </li>
     </ul>
   </div>
   <% } %>
-<script>
-window.onclick = function(event) {
-  if (!event.target.matches('#languageButton')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
