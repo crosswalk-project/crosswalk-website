@@ -40,7 +40,7 @@
     "language": "zh"
   },
   "building_crosswalk_zh": {
-    "title": "创建Crosswalk",
+    "title": "编译Crosswalk",
     "language": "zh"
   },
   "contributing-code_zh": {
@@ -48,7 +48,7 @@
     "language": "zh"
   },
   "contributing_tests_zh": {
-    "title": "贡献测试",
+    "title": "贡献测试代码",
     "language": "zh"
   },
   "coding_style_zh": {
@@ -64,11 +64,11 @@
     "language": "zh"
   },
   "reviewer_policy_zh": {
-    "title": "审阅策略",
+    "title": "审阅者守则",
     "language": "zh"
   },
   "report_bugs_zh": {
-    "title": "报告bugs",
+    "title": "报告bug",
     "language": "zh"
   }
 }
