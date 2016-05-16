@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html id="top">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Visual Studio支持" />
+    <meta property="og:url" content="http://crosswalk-project.org/contribute/visual_studio_zh" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/contribute/visual_studio_zh" />
+    <meta name="twitter:title" content="Visual Studio支持" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+
+  <div class="doc-logo-div">
+     <a href="/index_zh.html" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started_zh.html" class="doc-nav-link">文档</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">博客</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/contribute/index_zh.html" class="doc-nav-link">贡献</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">维基</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq_zh.html" class="doc-nav-link">常见问题</a>
+      </li>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    中文版
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <div id="404_bar" class="tmp-bar">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/index_zh.html">预览</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/building_crosswalk_zh.html">编译Crosswalk</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/contributing-code_zh.html">贡献代码</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/contributing_tests_zh.html">贡献测试代码</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/coding_style_zh.html">代码风格</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item  nav-item--active">
+            <a href="/contribute/visual_studio_zh.html">Visual Studio支持</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/downstream-chromium_zh.html">Chromium</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/reviewer_policy_zh.html">审阅者守则</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/report_bugs_zh.html">报告bug</a>
+         </li>
+      
+    
+  </ul>
+</nav>
+<article class="article article--withSide">
+  <h1>在windows平台下使用Microsoft Visual Studio开发Crosswalk</h1>
+<p>我们可以使用Visual Studio IDE来开发、调试和运行Crosswalk。Visual Studio通过提供方便的功能使得贡献更加容易，例如代码补全，先进的debugger等。然而因为Crosswalk是一个相当大的代码库，所以Visual Studio可能需要很多的RAM用于操作（~1.2GB）。</p>
+<h2>Visual Studio入门</h2>
+<ol>
+<li><p>进入Tools -&gt; Options。打开&quot;Projects and Solutions&quot;，然后&quot;Build and Run&quot;。在新的屏幕上，输入１进行并行项目编译。这是因为<a href="https://chromium.googlesource.com/chromium/src/+/master/docs/ninja_build.md">Ninja</a>和MSVS的整合不支持并行编译。但是这并不意味着不存在多个编译作业。每个目标将会被一一建立（例如<code>base/</code>然后<code>content/</code>），但是为了建立不同的文件，多个作业将会被创建。最终，你的CPU内核将得到充分利用。</p>
+</li>
+<li><p>进入File -&gt; Open -&gt; Project/Solution。导航到<code>crosswalk-src/src/xwalk/</code>并且打开<code>xwalk.sln</code>。你也可以打开另一个工程，例如<code>content/content_shell.vcxproj</code>，如果你仅仅想编译<code>content_shell</code>。如果<code>xwalk.sln</code>不存在，请确定你是否正确地设定了<code>GYP_GENERATORS</code>（参见<a href="/contribute/building_crosswalk_zh.html">编译部分</a>）。</p>
+</li>
+<li><p>MSVS将会打开和解析所有的依赖。现在你已经准备充分了。首次解析将花费一段时间，然后加载所有的解决方案。解析只需要一次，然后便是增量式。</p>
+</li>
+<li><p>选择编译Release或者Debug模式:编译菜单下,进入&quot;Configuration Manager&quot;,选择需要的&quot;Active Solution configuration&quot;。然后进入&quot;Build&quot; -&gt; &quot;Build Solution&quot;后等待下一步。或者你也可以在Solution Explorer中选取一个目标（例如，<code>xwalk</code>或者<code>xwalk_builder</code>）并且仅仅建立那个。</p>
+</li>
+<li><p><code>xwalk.exe</code>可执行文件应该在<code>crosswalk-src/src/out/Release</code>或者<code>crosswalk-src/src/out/Debug</code>目录下。</p>
+</li>
+</ol>
+<h2>在Visual Studio内部运行和调试Crosswalk</h2>
+<ol>
+<li><p>在Solution Explorer (右侧面板)中，你可以点击想要调试的目标。假设你想调试<code>xwalk</code>，你可以立刻点击它并且选择&quot;Set as startup project&quot;。请确保你在调试中，否则断点将不会被触发。</p>
+</li>
+<li><p>现在你需要将正确的参数传递给Crosswalk的可执行文件，这样它便能加载一个页面／应用。在Debug菜单中，选择&quot;xwalk properties&quot;（或者&quot;mytarget properties&quot;），然后在新的窗口，导航到&quot;Configuration Properties&quot;，最后&quot;Debugging&quot;。在&quot;Command Arguments&quot;指定你想要传递的参数。点击OK。</p>
+</li>
+</ol>
+<p><a href="/assets/win-10-visual-studio-debug.png"><img src="/assets/win-10-visual-studio-debug.png" style="display: block; margin: 0 auto"/></a></p>
+<ol>
+<li>如果你按下F5或者点击&quot;Debug&quot; -&gt; &quot;Start Debugging&quot;，它将发布一个带有debugger的xwalk。注意它是附加到Browser Process。如果你想依附于Render Process，点击Debug菜单中的&quot;Attach to Process&quot;并点击正确的process。你可以在编辑器里面添加断点，并且观察变量等。非常方便。</li>
+</ol>
+<p><a href="/assets/win-10-visual-studio-debug2.png"><img src="/assets/win-10-visual-studio-debug2.png" style="display: block; margin: 0 auto"/></a></p>
+<h2>充分利用Visual Studio</h2>
+<p>关于充分利用Visual Studio创建的一些小技巧：</p>
+<ul>
+<li><p>因为Chromium工程很大，Visual Studio会花费大量的时间用于打开xwalk工程并解析很多在大多数情况下你并不需要的资源（例如，所有的第三方代码）。幸运的是有一款可以用于过滤加载素材的插件。请下载并安装<a href="https://visualstudiogallery.msdn.microsoft.com/5396fa4a-d638-471b-ac3d-671ccd2ea369">Funnel</a>。现在每次打开xwalk工程时，你可以选择是否部分加载项目并且可以选择哪些需要加载。一旦你开启你的过滤器，Funnel便会记下。它使得更快地加载整个解决方案，并且同时在保证优先使用IDE的所有优势的前提下，降低了内存使用。</p>
+</li>
+<li><p>确保安装了<code>Microsoft Web Essentials</code>，然后你便可以在编辑HTML/JS/CSS文件时获取额外的功能。</p>
+</li>
+<li><p>Visual Studio拥有一个“功能”——即使有错误发生它也会尽力尝试编译。有时候你想在编译结束之前就找到出现错误的地方。为了在第一个错误处停止编译（有点像ninja的-V1），你可以在<a href="https://visualstudiogallery.msdn.microsoft.com/91aaa139-5d3c-43a7-b39f-369196a84fa5">StopOnFirstBuildError extension</a>处下载相关的扩展包。 </p>
+</li>
+<li><p>如果你想为所有的xwalk进程自动附加调试器，请使用<a href="https://visualstudiogallery.msdn.microsoft.com/a1141bff-463f-465f-9b6d-d29b7b503d7a">Microsoft Child Process Debbugging Power Tool</a>。</p>
+</li>
+<li><p>如果你想减少链接时间，你可以设置<code>GYP_DEFINES = component=shared_library</code>。它会为每个crosswalk的子项目创建DLL并且避免xwalk.exe与所有其中的子项目链接。</p>
+</li>
+</ul>
+
+  <footer class="article-next">
+    
+
+
+
+
+  </footer>
+</article>
+
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation/getting_started_zh.html"> 文档</a> &nbsp;
+             <a href="/blog"> 博客</a> &nbsp;
+             <a href="/documentation/downloads_zh.html"> 下载</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> 问题</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub资源</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              Crosswalk项目由Intel Open Source Technology Center开发。版权为 © 2013–2016 Intel Corporation。保留所有权利。 <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy策略 </a>  *其他名称和商标可能被声明为他人财产
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=zh]").css("display","block");
+</script>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

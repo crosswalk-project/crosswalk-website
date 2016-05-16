@@ -1,0 +1,19 @@
+<h1>为64设备打包应用</h1>
+<p>Crosswalk应用默认是打包成32位的。打包基于ARM和x86的64位应用，需要在<code>crosswakl-pkg</code>命令中使用<code>-t &lt;target-archs&gt;</code>选项：</p>
+<pre><code>  &lt;target-archs&gt;
+    List of CPU architectures for which to create packages.
+    Currently supported ABIs are: armeabi-v7a, arm64-v8a, x86, x86_64
+    * Prefixes will be matched, so &quot;a&quot;,&quot;ar&quot;, or &quot;arm&quot; yield both ARM APKs
+    * Same for &quot;x&quot; and &quot;x8&quot;, but &quot;x86&quot; is an exact match, only x86-32 conforms
+    * Short-hands &quot;32&quot; and &quot;64&quot; build ARM and x86 for the requested word size
+    * Default behavior is equivalent to &quot;32&quot;, creation of 32-bit installers
+    Example: --targets=&quot;arm x86&quot; builds both ARM plus 32-bit x86 packages</code></pre>
+<p>例如打包基于ARM和x86的64位应用：</p>
+<pre><code>&gt; crosswalk-pkg -c beta -t 64 /path/to/app</code></pre>
+<p>打包基于x86的64位应用：</p>
+<pre><code>&gt; crosswalk-pkg -c beta -t x86_64 /path/to/app</code></pre>
+<p>打包基于x86架构的32位和64位应用：</p>
+<pre><code>&gt; crosswalk-pkg -c beta -t x /path/to/app</code></pre>
+<p>开发者可以将64位的应用上传到谷歌应用商店，谷歌应用商店将会根据用户设备选择相应版本的应用供用户下载。同时，由于64位暂时还未支持stable版本，所以开发者打包64位应用时需要指定Beta或者Canary版本。</p>
+<p>如果开发者使用的是Crosswalk共享模式，那么您开发的应用被用户下载时，将会自动下载Crosswalk 64位runtime APK，也就是您在打包应用的时候，不需要做额外的工作。</p>
+<p>注意：在Crosswalk Cordova Webview中，64位暂时还不支持，稍后会推出64位版本。</p>

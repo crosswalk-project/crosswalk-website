@@ -1,0 +1,51 @@
+<h1>系统配置</h1>
+<p>本节叙述如何使用<a href="/documentation/crosswalk-app-tools_zh.html">crosswalk-app-tools</a>来编译和调试，crosswalk-app-tools是一个全新的，简易的，基于NPM的工具。<a href="make_apk_docs_zh.html">过时的make_apk.py</a>依然可以用。</p>
+<p>下面这些步骤将引导您如何开发基于安卓系统的Crosswalk应用。</p>
+<h2>安装工具</h2>
+<p>在您的开发机上编译安卓程序，需要以下工具。无论是Windows还是Linux系统，这些工具是相同的。请下载并安装正确的版本。</p>
+<ul>
+<li><a href="#Java">Java JDK</a></li>
+<li><a href="#Ant">Apache Ant</a></li>
+<li><a href="#Android">Android SDK</a></li>
+<li><a href="#NPM">NPM</a></li>
+<li><a href="#Crosswalk">Crosswalk App Tools</a></li>
+</ul>
+<h3><a class="doc-anchor" id="Java"></a>安装Oracle Java Development Kit (JDK)</h3>
+<p>   Oracle JDK下载安装地址：<a href="http://www.oracle.com/technetwork/java/javase/downloads/">http://www.oracle.com/technetwork/java/javase/downloads/</a> (Java 7和8可以正常工作)</p>
+<h3><a class="doc-anchor" id="Ant"></a>安装Apache Ant</h3>
+<p>   编译工具Apache Ant下载地址： <a href="http://www.apache.org/dist/ant/binaries/">http://www.apache.org/dist/ant/binaries/</a> （版本1.9.3可以正常工作） </p>
+<h3><a class="doc-anchor" id="Android"></a>安装Android SDK</h3>
+<ul>
+<li><p>Android Studio下载地址： <a href='http://developer.android.com/sdk/index.html' target='_blank'><a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a></a>.</p>
+</li>
+<li><p>启动<em>SDK Manager</em>，可以从命令行或者Android Studio里面启动。
+ <p>在Windows上：<pre><code>&gt; &quot;SDK Manager.exe&quot;</code></pre></p>
+ <p>在Linux上：<pre><code>&gt; android</code></pre></p>
+ <p>或者在Android Studio中：</p>
+ <img src="/assets/sdk-manager1.png" style="margin: 0 auto"/></p>
+</li>
+<li><p>在SDK Manager中，安装您感兴趣的版本：Platform tools, Build tools和SDK Platform。
+  <img src="/assets/sdk-manager-select.png" style="display: block; margin: 0 auto"/></p>
+</li>
+</ul>
+<h3><a class="doc-anchor" id="NPM"></a>安装node.js和npm</h3>
+<p>   安装适合您系统的node.js:<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>. 其中附带安装npm。</p>
+<h3><a class="doc-anchor" id="Crosswalk"></a>安装crosswalk-app-tools</h3>
+<p>在命令行界面使用npm安装crosswalk-app-tools</p>
+<pre><code>    &gt; npm install -g crosswalk-app-tools</code></pre>
+<p>   注意: 如果您使用了代理, 请参考<a href="/documentation/npm-proxy-setup_zh.html">这里</a></p>
+<h2><a class="doc-anchor" id="Verify-your-environment"></a>验证环境</h2>
+<p>通过运行下面的命令，来验证您正确地安装了工具：</p>
+<p>在windows上：</p>
+<pre><code>C:\dev&gt;crosswalk-app check android
+  + Checking host setup for target android
+  + Checking for android... C:\dev\android\sdk\tools\android.bat
+  + Checking for ant... C:\dev\apache-ant-1.9.4\bin\ant
+  + Checking for java... C:\ProgramData\Oracle\Java\javapath\java.exe
+  + Checking for ANDROID_HOME... C:\dev\Android\
+  ...</code></pre>
+<p>如果界面显示有些工具丢失，那么在环境变量中，添加目录添加到指定路径。
+<em>注意：</em> 目前，如果lzma没有安装，会报如下的ERROR，您可以忽略这个错误。</p>
+<pre><code>  ERROR: Checking for lzma... null</code></pre>
+<h2>下一步</h2>
+<p>您的系统已经具备使用Crosswalk开发安卓应用了。</p>

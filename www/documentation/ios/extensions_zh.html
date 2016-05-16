@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html id="top">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Extensions" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/ios/extensions_zh" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/ios/extensions_zh" />
+    <meta name="twitter:title" content="Extensions" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+
+  <div class="doc-logo-div">
+     <a href="/index_zh.html" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started_zh.html" class="doc-nav-link">文档</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">博客</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/contribute/index_zh.html" class="doc-nav-link">贡献</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">维基</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq_zh.html" class="doc-nav-link">常见问题</a>
+      </li>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    中文版
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <div id="404_bar" class="tmp-bar">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+      
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about_zh.html">关于</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started_zh.html">开始</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios_zh.html">iOS</a>
+         
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/ios/quick_start_guide_zh.html">快速安装指南</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/ios/embedding_mode_&amp;_native_apis_zh.html">Embedding模式&amp;原生APIs</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/ios/manifest_zh.html">Manifest</a>
+             
+           </li>
+           
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/ios/extensions_zh.html">Extensions</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/ios/cordova_plugin_support_zh.html">Cordova插件支持</a>
+             
+           </li>
+           
+         </ul>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux_zh.html">Linux</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova_zh.html">Cordova</a>
+         
+       </li> 
+    
+  </ul>
+
+</nav>
+
+<article class="article article--hasToC">
+  <h1>扩展</h1>
+<p>扩展机制可以帮助你扩展Crosswalk运行时环境的功能。通过创建一个扩展程序，你可以向Javascript环境中引入新的对象或者函数，并且用原生代码实现这些功能，可以选择使用Objective-C或者Swift。一个Crosswalk扩展包括：</p>
+<ul>
+<li><p>原生代码（使用Objective-C或者Swift）：</p>
+<ul>
+<li>一个源自XWalkExtension的继承类。</li>
+</ul>
+</li>
+<li><p>JavaScript包装（可选）：</p>
+<ul>
+<li>暴露原生代码给一个运行在Crosswalk中的app的Javascript文件。</li>
+</ul>
+</li>
+</ul>
+<p>针对iOS运行时的Crosswalk提供了一种自动生成JavaScript映射代码的方法并且允许你注入自己的JavaScript代码。</p>
+<h2>如何编写一个扩展程序</h2>
+<p>本小节将展示如何实现一个扩展程序。</p>
+<h3>创建一个Cocoa Touch Framework</h3>
+<ol>
+<li><p>打开Xcode, 然后执行&quot;File&quot; -&gt; &quot;New&quot; -&gt; &quot;Project...&quot;。 创建一个&quot;Cocoa Touch Framework&quot; 项目。</p>
+</li>
+<li><p>选择你已经在Navigator面板上创建的工程，然后选取 &quot;File&quot; -&gt; &quot;Save As Workspace...&quot;，为该项目创建一个工作空间。</p>
+</li>
+<li><p>使用CocoaPod整合<code>crosswalk-ios</code>库。关于CocoaPods的安装和使用，请参考：<a href="https://cocoapods.org/">CocoaPods</a>。</p>
+<p> 在项目目录中，创建一个文件命名为<code>Podfile</code>：</p>
+<pre><code> touch Podfile;</code></pre>
+<p> 内容如下：</p>
+<pre><code> platform :ios, &#39;8.1&#39;
+ use_frameworks!
+ pod &#39;crosswalk-ios&#39;, &#39;~&gt; 1.2&#39;</code></pre>
+<p> 在项目中安装<code>Pods</code>目标。首先关闭Xcode，然后进入项目目录中，执行命令：</p>
+<pre><code> pod install</code></pre>
+<p> 在安装结束后，你将会发现生成了一个<code>&lt;projectName&gt;.xcworkspace</code>，并且CocaPods的输出会通知你从现在开始使用这个工作空间来代替 <code>&lt;projectName&gt;.xcodeproj</code>。</p>
+</li>
+<li><p>创建一个<code>extensions.plist</code>文件来定义应用JavaScript运行时和原生扩展类的映射信息。</p>
+<p> 在<code>File</code> -&gt; <code>New...</code> -&gt; <code>File...</code>下选取<code>iOS</code> -&gt; <code>Resource</code> -&gt; <code>Property List</code>。在项目目录下创建一个名为<code>extensions.plist</code>的plist文件。</p>
+<p> 新添加命名为<code>XWalkExtensions</code>的一行，并且类型为<code>Dictionary</code>。键／值对定义如下： </p>
+</li>
+</ol>
+<table style="table-layout: auto;">
+ <tr><th>字段</th><th>类型</th><th width="100%">内容</th><th>样例</th></tr>
+ <tr><td>键</td><td>String</td><td>JavaScript运行时的外部命名空间</td><td><code>&quot;xwalk.sample.echo&quot;</code></td></tr>
+ <tr><td>值</td><td>String</td><td>原生类名</td><td><code>&quot;EchoExtension&quot;</code></td></tr>
+</table>
+
+<h3>扩展程序的实现</h3>
+<ol>
+<li><p>根据你在<strong>extensions.plist</strong>中定义的名字创建一个源自<code>XWalkExtension</code>的子类。其中你的子类可以用Object-C或者Swift实现，推荐使用Swift。</p>
+</li>
+<li><p>在这个类中写你自己的逻辑。</p>
+</li>
+</ol>
+<p>针对iOS平台的Crosswalk提供了一个最方便的方法来生成原生代码和JavaScript之间的映射，这意味着你不需要同时写原生代码和JavaScript逻辑，然后通过JSON序列化／反序列化支持的底层postMessage的方式进行通信。通过映射，你仅需要根据CrossWalk iOS要求的前缀来命名原生属性和方法，javaScript实现将会据此自动生成并在运行时自动注入，你可以直接使用它。</p>
+<h4>原生代码到JavaScript的映射</h4>
+<h5>方法映射</h5>
+<ul>
+<li><p>本地方法前缀：<code>jsfunc_</code></p>
+</li>
+<li><p>本地定义：<code>func jsfunc_&lt;functionName&gt;(cid: UInt32, &lt;params...&gt;) {}</code></p>
+</li>
+<li><p>JavaScript映射：<code>function &lt;functionName&gt;(&lt;params...&gt;) {}</code></p>
+</li>
+<li><p>例如：</p>
+</li>
+</ul>
+<table style="table-layout: auto;">
+ <tr><th>World</th><th width="100%">定义</th></tr>
+ <tr><td>本地</td><td><code>func jsfunc_echo(cid: UInt32, message: String, callback: UInt32)</code></td></tr>
+ <tr><td>JavaScript</td><td><code>function echo(message, callback)</code></td></tr>
+</table>
+
+<ul>
+<li><p>调用JavaScript:</p>
+<p><code>echo.echo(&quot;Echo from native:&quot;, function(msg) {...})</code></p>
+</li>
+</ul>
+<h5>属性映射</h5>
+<ul>
+<li><p>原生方法前缀：<code>jsprop_</code></p>
+</li>
+<li><p>原生定义：<code>dynamic var jsprop_&lt;propertyName&gt;: &lt;Type&gt;</code></p>
+</li>
+<li><p>JavaScript映射： <code>&lt;propertyName&gt;</code></p>
+</li>
+<li><p>样例：</p>
+</li>
+</ul>
+<table style="table-layout: auto;">
+ <tr><th>World</th><th width="100%">定义</th></tr>
+ <tr><td>本地</td><td><code>dynamic var jsprop_prefix: String = &quot;&quot;</code></td></tr>
+ <tr><td>JavaScript</td><td><code>prefix</code></td></tr>
+</table>
+
+<ul>
+<li><p>调用JavaScript:</p>
+<p><code>var prefix = echo.prefix;</code>
+<code>echo.prefix = &#39;HelloWorld&#39;;</code></p>
+</li>
+</ul>
+<h5>构造器映射</h5>
+<ul>
+<li><p>原生方法前缀：<code>none</code></p>
+</li>
+<li><p>原生定义：<code>initFromJavaScript</code></p>
+</li>
+<li><p>JavaScript映射：<code>&lt;Constructor&gt;</code></p>
+</li>
+</ul>
+<h3>测试你的扩展程序</h3>
+<ol>
+<li><p>创建一个测试应用和工作空间。</p>
+</li>
+<li><p>嵌入XWalkView框架和扩展框架到应用中。</p>
+</li>
+<li><p>引入或者创建HTML5资源。</p>
+</li>
+<li><p>加载扩展程序。</p>
+</li>
+</ol>
+
+  <footer class="article-next">
+    
+
+
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+      <a href="/documentation/ios/cordova_plugin_support_zh.html" class="article-promo well">
+        <em>下一节关于什么？</em>
+        <h3>Cordova插件支持</h3>
+      </a>
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation/getting_started_zh.html"> 文档</a> &nbsp;
+             <a href="/blog"> 博客</a> &nbsp;
+             <a href="/documentation/downloads_zh.html"> 下载</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> 问题</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub资源</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              Crosswalk项目由Intel Open Source Technology Center开发。版权为 © 2013–2016 Intel Corporation。保留所有权利。 <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy策略 </a>  *其他名称和商标可能被声明为他人财产
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=zh]").css("display","block");
+</script>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

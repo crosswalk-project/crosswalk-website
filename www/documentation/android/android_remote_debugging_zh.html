@@ -1,0 +1,80 @@
+<style>
+.simple-table {
+    table-layout:fixed;
+    padding: 0px;
+}
+
+.simple-table td {
+    height: 5px !important;
+}
+
+</style>
+
+<h1>远程调试</h1>
+<p>基于Crosswalk的web应用，是可以用<a href="https://developer.chrome.com/devtools/index">Chrome dev tools</a>进行远程调试的。</p>
+<p>如果想取得最佳的调试效果，请使用和您现在的Crosswalk匹配的(或者更新的)Chrome版本。可以使用下面的下拉框查看匹配关系。</p>
+<p><select>
+  <option>Crosswalk 18, 使用Chrome &gt;= 47</option>
+  <option>Crosswalk 17, 使用Chrome &gt;= 46</option>
+  <option>Crosswalk 16, 使用Chrome &gt;= 45</option>
+  <option>Crosswalk 15, 使用Chrome &gt;= 44</option>
+  <option>Crosswalk 14, 使用Chrome &gt;= 43</option>
+  <option>Crosswalk 13, 使用Chrome &gt;= 42</option>
+  <option>Crosswalk 12, 使用Chrome &gt;= 41</option>
+  <option>...</option>
+  <option>Crosswalk &nbsp;x, 使用Chrome &gt;= (x+29)</option>
+</select>
+在安卓设备上，<a href="/documentation/android/system_setup_zh.html#Android">Android SDK</a>中的<a href="http://developer.android.com/tools/help/adb.html"><code>adb</code></a>用来建立它和主机的联系。同时，您还需要设置安卓并安装Crosswalk应用。详情参见<a href="/documentation/android/android_target_setup_zh.html">这些命令</a>。</p>
+<p>调试开关打开与否是在编译Crosswalk应用的时候决定的。</p>
+<h2><a class="doc-anchor" id="Enable-debugging"></a>打开调试选项</h2>
+<ul>
+<li><p><strong>crosswalk-app build</strong></p>
+<p><code>crosswalk-app build</code>接受&quot;release&quot;和&quot;debug&quot;两个选项。debug是默认选项，因此创建debug版本时不需要做任何事，但是使用“debug”选项会提示你在正式发布您的应用之前改变编译版本。</p>
+<pre><code>  &gt; crosswalk-app build [release|debug] [&lt;dir&gt;] </code></pre>
+</li>
+<li><p><strong>cordova build</strong></p>
+<p><code>cordova build</code>默认也是创建debug版本。它接受<code>--debug</code>和<code>--release</code>两个选项。</p>
+<pre><code>  &gt; cordova build android [--release|--debug]</code></pre>
+</li>
+<li><p><strong>应用中嵌入Crosswalk</strong></p>
+<p>如果您使用Crosswalk嵌入模式下的api，将Crosswalk嵌入到应用中（例如在本地应用中使用Crosswalk webview)，您可以使用<a href="/documentation/android/embedding_crosswalk_zh.html">embedding API</a>来打开debug选项。</p>
+<ul>
+<li><p>修改应用中的main activity来打开调试选项。例如：</p>
+<pre><code>XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);</code></pre>
+</li>
+<li><p>按照正常方式编译应用（比如Ant或者ADT）。</p>
+</li>
+</ul>
+<p>详情参见<a href="/documentation/android/embedding_crosswalk_zh.html#Debugging">Crosswalk嵌入模式教程</a>。</p>
+</li>
+</ul>
+<h2>安装与调试</h2>
+<ul>
+<li><p>安装应用：</p>
+<pre><code>&gt; adb install com.abc.myapp</code></pre>
+</li>
+<li><p>点击应用图标运行<a href="/documentation/android/run_on_android_zh.html">更多</a></p>
+</li>
+<li><p>在主机上（电脑上），打开Chrome浏览器并在地址栏输入 &quot;chrome://inspect&quot;。将会显示已经挂载的所有设备，例如：</p>
+<p><img src="/assets/crosswalk-debug-in-chrome.png" title="Debugging a Crosswalk application in Chrome" style="display:block;margin:0 auto;"></p>
+</li>
+<li><p>点击&quot;inspect&quot;打开应用，就可以用Chrome dev tools进行调试。</p>
+<p><img src="/assets/crosswalk-debug-in-chrome2.png" style="display:block;margin:0 auto;"></p>
+</li>
+</ul>
+<h2>问题解决</h2>
+<ul>
+<li><p><strong>adb 无法连接到设备</strong></p>
+<p>偶尔您可能会发现adb无法连接到安卓设备，远程调试无法工作。您可以尝试插拔USB线 (如果您使用的是USB线连接)，然后重新插入，这种办法可能会解决问题；或者你可以尝试<a href="/documentation/android/android_target_setup_zh.html#Fixing-device-access-issues-on-Linux">以root身份运行<code>adb</code></a>。</p>
+</li>
+<li><p><strong>应用无法在chrome://inspect页面显示</strong></p>
+<p>如果应用在chrome的inpectation页面无法显示，那么用<code>adb</code>检查应用是否打开调试选项</p>
+<pre><code>  host$ adb shell
+  shell@android$ cat /proc/net/unix |grep devtools_remote
+  00000000: 00000002 00000000 00010000 0001 01 1102698 @org.crosswalkproject.app_devtools_remote
+  00000000: 00000002 00000000 00010000 0001 01 1092981 @org.xwalk.core.xwview.shell_devtools_remote</code></pre>
+<p>如果没有看到任何以<code>_devtools_remote</code>结尾的条目，那么可能是应用没有打开调试选项。遵循上面的步骤，打开debug选项重新编译应用或者在运行的时候打开调试选项。</p>
+</li>
+</ul>
+<h2>更多信息</h2>
+<p>更多使用chrome dev tools信息，参考<a href="https://developer.chrome.com/devtools/index">页面</a>。</p>

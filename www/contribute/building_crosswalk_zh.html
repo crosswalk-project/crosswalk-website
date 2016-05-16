@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html id="top">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="编译Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/contribute/building_crosswalk_zh" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/contribute/building_crosswalk_zh" />
+    <meta name="twitter:title" content="编译Crosswalk" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+
+  <div class="doc-logo-div">
+     <a href="/index_zh.html" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started_zh.html" class="doc-nav-link">文档</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">博客</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/contribute/index_zh.html" class="doc-nav-link">贡献</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">维基</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq_zh.html" class="doc-nav-link">常见问题</a>
+      </li>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    中文版
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <div id="404_bar" class="tmp-bar">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/index_zh.html">预览</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item  nav-item--active">
+            <a href="/contribute/building_crosswalk_zh.html">编译Crosswalk</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/contributing-code_zh.html">贡献代码</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/contributing_tests_zh.html">贡献测试代码</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/coding_style_zh.html">代码风格</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/visual_studio_zh.html">Visual Studio支持</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/downstream-chromium_zh.html">Chromium</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/reviewer_policy_zh.html">审阅者守则</a>
+         </li>
+      
+    
+      
+      
+         <li class="article-item ">
+            <a href="/contribute/report_bugs_zh.html">报告bug</a>
+         </li>
+      
+    
+  </ul>
+</nav>
+<article class="article article--withSide">
+  <h1>编译Crosswalk</h1>
+<h2>环境</h2>
+<ol>
+<li><p>请遵循Chromium wiki上面的步骤，搭建你的编译环境。</p>
+<ul>
+<li><a href="http://www.chromium.org/developers/how-tos/build-instructions-windows">Building on Windows</a></li>
+<li><a href="http://code.google.com/p/chromium/wiki/LinuxBuildInstructionsPrerequisites">Building on Linux</a></li>
+<li><a href="https://code.google.com/p/chromium/wiki/MacBuildInstructions">Building on Mac</a></li>
+</ul>
+</li>
+<li><p>如果你打算编译Android平台的Crosswalk，则需要安装额外的编译依赖工具，参考页面<a href="http://code.google.com/p/chromium/wiki/AndroidBuildInstructions">编译Android平台的Chrome</a>。</p>
+<p>下一小节总结了包含的步骤。</p>
+</li>
+<li><p><a href="http://www.chromium.org/developers/how-tos/install-depot-tools">depot_tools</a>
+包含下列用于管理和编译Crosswalk的工具：</p>
+ <ul>
+ <li><code>gclient</code> 管理代码和依赖关系。</li>
+ <li><code>Ninja</code>是一个在多数平台上推荐使用的用于编译Crosswalk的工具。
+ 它的<a href="https://chromium.googlesource.com/chromium/src/+/master/docs/ninja_build.md">网站</a>
+ 包含了详细的使用说明。</li>
+ </ul>
+
+</li>
+</ol>
+<h2>代理设置</h2>
+<p>如果你在使用一个网络代理，那么你需要确保你的环境是否被正确地创建，以及变量设置是否合适。在Linux环境下，你至少需要做以下几步：</p>
+<ol>
+<li><p>设置<code>http_proxy</code>和<code>https_proxy</code>环境变量:</p>
+<pre><code> export http_proxy=http://example-host:port
+ export https_proxy=http://example-host:port</code></pre>
+</li>
+<li><p>在某处创建一个Boto配置文件，包含以下内容：</p>
+<pre><code> [Boto]
+ proxy = example-host
+ proxy_port = port number</code></pre>
+<p> 然后, 将<code>NO_AUTH_BOTO_CONFIG</code>环境变量指向你创建的文件：</p>
+<pre><code> export NO_AUTH_BOTO_CONFIG=/path/to/boto-file</code></pre>
+</li>
+</ol>
+<h2>下载Crosswalk源码</h2>
+<h3>开始之前： Android</h3>
+<p>如果编译的是Android平台上的Crosswalk，你首先应该设置
+<code>XWALK_OS_ANDROID</code>环境变量：</p>
+<pre><code>export XWALK_OS_ANDROID=1</code></pre>
+<p>你必须这样做，否则你下载的代码将不会包含某些对于Android环境下编译必要的组件。</p>
+<p>如果你在下载源码时没有这个设置，你可以在之后设置并且再执行一次<code>gclient sync</code>，将其它的针对Android平台的组件包含进来。</p>
+<h3>获取源码</h3>
+<ol>
+<li><p>创建一个源码目录：</p>
+<pre><code>cd &lt;home directory&gt;
+mkdir crosswalk-src
+cd crosswalk-src</code></pre>
+</li>
+<li><p>自动生成gclient的配置文件(<code>.gclient</code>)：</p>
+<pre><code>gclient config --name=src/xwalk \
+  https://github.com/crosswalk-project/crosswalk.git</code></pre>
+<p>你可以将<code>https://</code>替换成<code>git://</code>或者<code>ssh://git@</code>，依赖于你的代理需求和你是否想使用你的GitHub证书。</p>
+</li>
+<li><p>在包含<code>.gclient</code>文件的目录下，获取源码：</p>
+<pre><code>gclient sync</code></pre>
+</li>
+</ol>
+<h3>追踪一个不同的Crosswalk分支</h3>
+<p>如果你想要追踪一个不是<code>master</code>的分支（例如beta或者一个稳定分支），你可以使用下面两种方式：</p>
+<p><em>在初次checkout之前设定分支</em></p>
+<p>如果你还没有Crosswalk的源代码，则将你需要checkout的分支的URL传递给<code>gclient config</code>调用。例如，为了追终<em>crosswalk-2</em> branch:</p>
+<pre><code>gclient config --name=src/xwalk \
+  git://github.com/crosswalk-project/crosswalk.git@origin/crosswalk-2</code></pre>
+<p><em>为一个已经存在的checkout改变分支</em></p>
+<p>如果你已经克隆了一个Crosswalk，并且想改变追踪的分支，你需要新建一个git分支，然后编辑你的<code>.gclient</code>文件。</p>
+<p>例如，假设你想要追踪<em>crosswalk-2</em>分支。
+首先，在你的Crosswalk仓库中新建一个分支：</p>
+<pre><code>cd /path/to/src/xwalk
+git checkout -b crosswalk-2 origin/crosswalk-2</code></pre>
+<p>然后，编辑你的<code>.gclient</code>文件（上面产生的）并且改变入口<code>url</code>。它看上去应该像这样：</p>
+<pre><code class="language-python">&quot;url&quot;: &quot;git://github.com/crosswalk-project/crosswalk.git@origin/crosswalk-2&quot;,</code></pre>
+<p>然后，再次同步你的代码：</p>
+<pre><code>gclient sync</code></pre>
+<h2>构建桌面版Crosswalk</h2>
+<p>下面这些步骤涵盖了编译Crosswalk的方方面面。编译的Crosswalk是运行在桌面环境(Windows, Linux,或Mac OS)下的。</p>
+<ol>
+<li><p><code>gyp</code>是被用于生成Crosswalk项目的工具。这些项目然后会被用作实际代码编译的基础。</p>
+<p>为了编译项目，进入<code>src</code>目录并运行</p>
+<p>在Linux, Mac操作系统下：</p>
+<pre><code>export GYP_GENERATORS=&#39;ninja&#39;
+python xwalk/gyp_xwalk</code></pre>
+<p>在Windows下：</p>
+<pre><code>set GYP_GENERATORS=ninja
+python xwalk\gyp_xwalk</code></pre>
+<p>如果你想创建一个Visual Studio项目，以便使用Visual Studio下编译／编辑Crosswalk，你应该按如下方式设置GYP_GENERATORS：</p>
+<pre><code>set GYP_GENERATORS=ninja,ninja-msvs</code></pre>
+<p>注意：在Windows下，<code>set</code>在当前的cmd窗口下有效。<code>setx</code>使得在<em>未来的</em>cmd窗口下永久有效，类似于在环境变量对话框内设置变量。</p>
+</li>
+<li><p>现在你已经使用<code>gyp</code>构建了项目，并且已经准备实际编译。编译Crosswalk启动器（可以运行一个web应用）:</p>
+<pre><code> ninja -C out/Release xwalk</code></pre>
+</li>
+</ol>
+<h3>测试桌面版Crosswalk</h3>
+<p>启动一个Crosswalk应用最简单的方式是使用一个应用的manifest作为参数的<code>xwalk</code>命令：</p>
+<pre><code>xwalk /path/to/manifest.json</code></pre>
+<p>Crosswalk将会解析manifest，并且从已经在<code>start_url</code>中定义好的入口处启动应用。</p>
+<p>如果你没有任何的HTML应用来测试，
+<a href="/documentation/samples_zh.html">Crosswalk样例</a>中包含一些你可以试试。 </p>
+<h2>编译Android版Crosswalk</h2>
+<p>如上面所提到的，Android平台的Crosswalk的编译过程主要基于Chrome的过程，所以需要确定你
+<a href="http://code.google.com/p/chromium/wiki/AndroidBuildInstructions">对其很熟悉</a>。</p>
+<ol>
+<li><p>为Android平台的Crosswalk安装依赖关系：</p>
+<pre><code>./build/install-build-deps-android.sh</code></pre>
+<p>注意这个需要你的系统对<code>apt-get</code>的支持。 
+如果你的系统中没有<code>apt-get</code> (例如Fedora Linux)，下面的命令可以安装依赖：</p>
+<pre><code>sudo yum install alsa-lib-devel alsa-lib-devel.i686 bison \
+cairo-devel.i686 cups-devel cups-devel.i686 dbus-devel \
+dbus-devel.i686 elfutils-libelf-devel.i686 elfutils-libelf-devel.x86_64 \
+expat-devel expat-devel.i686 fontconfig-devel.i686 freetype-devel.i686 \
+gcc-c++ gconf GConf2-devel GConf2-devel.i686 gconf-devel git \
+glib2-devel.i686 glibc-devel.i686 gperf gtk2-devel harfbuzz-devel.i686 \
+krb5-devel.i686 libcap-devel libcap-devel.i686 libcom_err-devel.i686 \
+libgcrypt-devel libgcrypt-devel.i686 libgnome-keyring-devel \
+libgpg-error-devel.i686 libgudev1-devel libpciaccess-devel \
+libstdc++.i686 libX11-devel.i686  libXcomposite-devel.i686 \
+libXcursor-devel.i686 libXdamage-devel.i686 libXext-devel.i686 \
+libXfixes-devel.i686 libXi-devel.i686 libXrandr-devel.i686 \
+libXrender-devel.i686 libXScrnSaver-devel libXtst-devel \
+libXtst-devel.i686 lighttpd nss-devel nss.i686 pango-devel.i686 \
+pciutils-devel pciutils-devel.i686 pulseaudio-libs-devel python-pexpect \
+svn systemd-devel systemd-devel.i686 xorg-x11-server-Xvfb \
+xorg-x11-utils zlib-devel.i686 zlib.i686</code></pre>
+</li>
+<li><p>配置 gyp。</p>
+<p>gyp是在Chromium中使用的编译系统生成器，用于为Ninja和其他系统生成实际的编译文件。为了生成Android环境的编译文件还需要一些变量。</p>
+<p>在包含你的<code>.gclient</code>文件的目录下（在<code>src/</code>之上）生成一个名为<code>chromium.gyp_env</code>的文件。</p>
+<pre><code>echo &quot;{ &#39;GYP_DEFINES&#39;: &#39;OS=android target_arch=ia32&#39;, }&quot; &gt; chromium.gyp_env</code></pre>
+<p>如果你需要编译ARM版，使用<code>target_arch=arm</code>代替上述的
+<code>target_arch=ia32</code>。</p>
+</li>
+<li><p>配置setup来生成Crosswalk项目。</p>
+<pre><code>export GYP_GENERATORS=&#39;ninja&#39;
+python xwalk/gyp_xwalk</code></pre>
+</li>
+<li><p>通过工具和嵌入式库，编译Android版Crosswalk的主要部分，你可以运行：</p>
+<pre><code>ninja -C out/Release xwalk_core_library</code></pre>
+<p>这样将会在<code>out/Release</code>下创建一个名为<code>xwalk_core_library</code>的目录，目录中包含有特定平台（例如X86或者ARM版）的Crosswalk库，这些库可以将Crosswalk嵌入到项目中。</p>
+<p>编译Crosswalk的运行时库（在Crosswalk共享模式下，一个可以作为应用的runtime的APK），运行：</p>
+<pre><code>ninja -C out/Release xwalk_runtime_lib_apk</code></pre>
+<p>这将会在<code>out/Release/apks</code>下生成一个名称为<code>XWalkRuntimeLib.apk</code>的APK。</p>
+<p>为了构造一个简单的web应用APK（为了快速安装／目标测试），只要执行：</p>
+<pre><code>ninja -C out/Release xwalk_app_template_apk</code></pre>
+<p>这将会在<code>out/Release/apks</code>下生成一个名称为<code>XWalkAppTemplate.apk</code>的APK。</p>
+<p>最终，你也可以通过使用Gradle和Maven构建AAR文件。下列命令将会生成特定平台下的AAR文件，AAR文件包含了Crosswalk库。</p>
+<pre><code>ninja -C out/Release xwalk_core_library_aar xwalk_shared_library_aar</code></pre>
+<p>ARR文件都将位于<code>out/Release</code>目录下。</p>
+</li>
+</ol>
+<h2>运行测试用例</h2>
+<p>如果你有兴趣运行Crosswalk的测试用例，你可以在<code>src</code>目录下编译测试用例：</p>
+<pre><code>ninja -C out/Release xwalk_unittest
+ninja -C out/Release xwalk_browsertest</code></pre>
+<p>然后运行它们：</p>
+<pre><code>./out/Release/xwalk_unitttest
+./out/Release/xwalk_browsertest</code></pre>
+
+  <footer class="article-next">
+    
+
+
+
+
+  </footer>
+</article>
+
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation/getting_started_zh.html"> 文档</a> &nbsp;
+             <a href="/blog"> 博客</a> &nbsp;
+             <a href="/documentation/downloads_zh.html"> 下载</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> 问题</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub资源</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              Crosswalk项目由Intel Open Source Technology Center开发。版权为 © 2013–2016 Intel Corporation。保留所有权利。 <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy策略 </a>  *其他名称和商标可能被声明为他人财产
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=zh]").css("display","block");
+</script>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

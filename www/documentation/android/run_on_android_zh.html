@@ -1,0 +1,15 @@
+<h1>在安卓系统上运行Crosswalk应用</h1>
+<p>在安卓系统上，安装并运行基于Crosswalk的应用(在虚拟机或者物理机中都可以)。 如需帮助，参照<a href="android_target_setup_zh.html">安卓配置</a>页面。</p>
+<h2>安装应用</h2>
+<p>安装在<a href="build_an_application_zh.html">编译app页面</a>生成的APK，请参考下面命令：</p>
+<ul>
+<li><p>x86设备</p>
+<pre><code>&gt; adb install -r com.abc.myapp-0.1-debug.x86.apk</code></pre>
+</li>
+<li><p>ARM设备</p>
+<pre><code>&gt; adb install -r com.abc.myapp-0.1-debug.armeabi-v7a.apk</code></pre>
+</li>
+</ul>
+<p><code>-r</code>标签代表&quot;reinstall&quot;。第一次安装时这个标签不是必须的，但是对于后续的重新安装是非常有帮助的。</p>
+<p>如果安装成功，您的应用图标将会出现在设备上。</p>
+<p><img src="/assets/xwalk-simple-on-android.png" style="display:block;margin:0 auto;"></p>
