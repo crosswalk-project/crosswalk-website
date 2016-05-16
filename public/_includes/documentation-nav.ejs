@@ -18,7 +18,10 @@ function endsWith(str, suffix) {
       for (var item1 in public.documentation._data) {
 	  var item1_origin = item1;
           var article1 = public.documentation._data[item1];
-          if (article1.language && article1.language !== lang) {
+	  if (!article1.language) {
+	     article1.language = "en";
+	  }
+          if (article1.language !== lang) {
 	      continue;
           }
           /* if item1 in _data.json matches a file, add .nav-item--active class */
@@ -36,10 +39,13 @@ function endsWith(str, suffix) {
                 public.documentation[item1_origin] &&
                 public.documentation[item1_origin]._data) { %>
          <ul class="article-list">
-            <% for(var item2 in public.documentation[item1_origin]._data) {
+            <% for (var item2 in public.documentation[item1_origin]._data) {
                 var item2_origin = item2;
                 var article2 = public.documentation[item1_origin]._data[item2];
-		if (article2.language && article2.language !== lang) {
+		if (!article2.language) {
+		    article2.language = "en";
+		}
+		if (article2.language !== lang) {
 		    continue;
 		}
                 /* if item2 in _data.json matches a file, add .nav-item--active class */
@@ -60,7 +66,10 @@ function endsWith(str, suffix) {
              <ul class="article-list">
                <% for (var item3 in public.documentation[item1_origin][item2_origin]._data) {
                    var article3 = public.documentation[item1_origin][item2_origin]._data[item3];
-		   if (article3.language && article3.language !== lang) {
+		   if (!article3.language) {
+		       article3.language = "en";
+		   }
+		   if (article3.language !== lang) {
 		       continue;
 		   }
                    var isFile = (current.path.length === 4 && current.path[0] === item3.toLowerCase()) ||
