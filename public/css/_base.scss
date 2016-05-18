@@ -152,33 +152,51 @@ code {
 }
 
 
-
 // Normally <pre><code> … </code></pre>
 // is prefered, but most code blocks in
 // the existing content have just been
 // written as <pre>
 pre {
-  width: 100%;
-  background: $color-text;
-  color: $color-background;
-  padding: 5px;
-  margin: 0;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  overflow-x: auto;
-  overflow-y: hidden;
+    background-color: black;
+    border-radius: 3px;
 
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  code {
-    padding: 0;
-    font-size: 75%;
-    background-color: transparent;
-    color: $color-background;
-    text-shadow: none;
-  }
+    
+    code,
+    .language-cmdline {
+	display:  block;
+	width: 100%;
+	border: 1px solid #ababab;
+	border-radius: 3px;
+	margin: 0;
+	padding: 7px;
+	font-size: 80%;
+	text-shadow: none;
+	
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	overflow-x: auto;
+	overflow-y: hidden;
+	&::-webkit-scrollbar {
+	    width: 0;
+	    height: 0;
+	}
+	&::selection {
+	    background: #9de1e0;
+	}
+	&::-moz-selection {
+	    background: #9de1e0;
+	}
+    }
+    .language-cmdline {
+	border: 0;
+	background-color: black;
+	color: white;
+	&::selection {
+	    background: #1ebcba; //webkit/blink
+	}
+	&::-moz-selection {
+	    background: #1ebcba; //gecko
+	}
+    }
 }
 
 .usage {
@@ -337,7 +355,7 @@ h6,
 
 p,
 pre {
-  margin: 0 0 ($base-line-height * 1em / 2);
+    margin: 0 0 ($base-line-height * 1em / 2);
 }
 
 // Helpers

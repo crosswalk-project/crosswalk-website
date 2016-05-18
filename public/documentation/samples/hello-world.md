@@ -19,7 +19,7 @@ follow the steps in [Run on Android](/documentation/android/run_on_android.html)
 
 The quick version is that you can build the Hello World apk with:
 
-```sh
+```cmdline
 > <crosswalk-app-tools>/src/crosswalk-pkg --crosswalk=<crosswalk version> \
     --platforms=android <path to crosswalk-samples>/hello-world
 ```
@@ -28,7 +28,7 @@ The quick version is that you can build the Hello World apk with:
 
 Then install the apk file on Android:
 
-```sh
+```cmdline
 > adb install org.xwalk.helloworld*.apk
 ```
 

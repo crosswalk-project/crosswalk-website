@@ -55,7 +55,7 @@ Ideally developers could select which options they need and build a custom runti
 ## How to contribute
 To contribute to Crosswalk Lite, follow the same guideline as in https://crosswalk-project.org/contribute/.
 
-```
+```cmdline
 $ gclient config --name=src/xwalk \
     git://github.com/crosswalk-project/crosswalk.git@origin/crosswalk-lite
 ```

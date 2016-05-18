@@ -54,14 +54,14 @@ We need to create an application project to host the Cordova plugin and the web 
 2. Use [CocoaPods](https://cocoapods.org/) to integrate the [crosswalk-ios](https://cocoapods.org/pods/crosswalk-ios) and [crosswalk-extension-cordova](https://cocoapods.org/pods/crosswalk-extension-cordova) into the project.
 
   * In the `DeviceDemo` directory, create a file called `Podfile`:
-  ```bash
-  cd DeviceDemo
-  touch Podfile
+  ```cmdline
+  > cd DeviceDemo
+  > touch Podfile
   ```
 
   With the contents as below:
 
-  ```ruby
+  ```
   platform :ios, '8.1'
   use_frameworks!
   pod 'crosswalk-extension-cordova', '~> 1.1'
@@ -75,8 +75,8 @@ We need to create an application project to host the Cordova plugin and the web 
 
   Quit the Xcode firstly, then in the `DeviceDemo` directory, use the following command to install pods:
 
-  ```bash
-  pod install
+  ```cmdline
+  > pod install
   ```
 
   Then you'll find a `DeviceDemo.xcworkspace` is generated, and CocoaPods will notify you to use this workspace instead of the `DeviceDemo.xcodeproj` from now on.
@@ -89,8 +89,8 @@ Next step is to import both native and html5 resources from [org.apache.cordova.
 
 1. Clone org.apache.cordova.device
 
-  ```bash
-  git clone https://github.com/apache/cordova-plugin-device.git
+  ```cmdline
+  > git clone https://github.com/apache/cordova-plugin-device.git
   ```
 
 2. Add native part of the plugin source file in to the application
@@ -103,10 +103,12 @@ Next step is to import both native and html5 resources from [org.apache.cordova.
 
 3. Add HTML5 part of resources into the application
 
-  ```bash
-  cd DeviceDemo; mkdir -p www/plugins/org.apache.cordova.device/www/
-  cd www; cp ../../cordova-plugin-device/www/device.js plugins/org.apache.cordova.device/www
-  vim plugins/org.apache.cordova.device/www/device.js
+  ```cmdline
+  > cd DeviceDemo; mkdir -p www/plugins/org.apache.cordova.device/www/
+  > cd www; 
+  > cp ../../cordova-plugin-device/www/device.js \
+       plugins/org.apache.cordova.device/www
+  > vim plugins/org.apache.cordova.device/www/device.js
   ```
 
   As the `device.js` only provides the content of implementation of the `device` object, we need to wrap it into a cordova module before importing it into the web app's context. (We will provide a script to make this step automatic.)
@@ -122,9 +124,9 @@ Next step is to import both native and html5 resources from [org.apache.cordova.
 
   We also need to add a configuration file to tell Cordova Extension how to load the Cordova Plugin. Here we simulated the way that Cordova project does, in order to provide the same behavior as the Cordova project. In `www` directory:
 
-  ```bash
-  touch cordova_plugins.js
-  vim cordova_plugins.js
+  ```cmdline
+  > touch cordova_plugins.js
+  > vim cordova_plugins.js
   ```
 
   With the content:
@@ -155,9 +157,9 @@ After importing the device plugin, we need to create the web application part to
 
 1. Create `index.html` in `www` directory.
 
-  ```bash
-  touch index.html
-  vim index.html
+  ```cmdline
+  > touch index.html
+  > vim index.html
   ```
 
   With the content:

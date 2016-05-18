@@ -2,32 +2,32 @@
 
 By default, Crosswalk applications are packaged for 32-bit architectures. It's possible to specify 64-bit targets for both ARM and x86 using the `-t <target-archs>` option in the `crosswalk-pkg` command:
 
-```
-  <target-archs>
-    List of CPU architectures for which to create packages.
-    Currently supported ABIs are: armeabi-v7a, arm64-v8a, x86, x86_64
-    * Prefixes will be matched, so "a","ar", or "arm" yield both ARM APKs
-    * Same for "x" and "x8", but "x86" is an exact match, only x86-32 conforms
-    * Short-hands "32" and "64" build ARM and x86 for the requested word size
-    * Default behavior is equivalent to "32", creation of 32-bit installers
-    Example: --targets="arm x86" builds both ARM plus 32-bit x86 packages
+```cmdline
+<target-archs>
+   List of CPU architectures for which to create packages.
+   Currently supported ABIs are: armeabi-v7a, arm64-v8a, x86, x86_64
+   * Prefixes will be matched, so "a","ar", or "arm" yield both ARM APKs
+   * Same for "x" and "x8", but "x86" is an exact match, only x86-32 conforms
+   * Short-hands "32" and "64" build ARM and x86 for the requested word size
+   * Default behavior is equivalent to "32", creation of 32-bit installers
+   Example: --targets="arm x86" builds both ARM plus 32-bit x86 packages
 ```
 
 For example to build both ARM and x86 64-bit packages:
 
-```
+```cmdline
 > crosswalk-pkg -c beta -t 64 /path/to/app
 ```
 
 To build only an x86 64-bit package:
 
-```
+```cmdline
 > crosswalk-pkg -c beta -t x86_64 /path/to/app
 ```
 
 To build both 32-bit and 64-bit packages for x86 architectures:
 
-```
+```cmdline
 > crosswalk-pkg -c beta -t x /path/to/app
 ```
 

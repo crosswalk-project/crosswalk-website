@@ -15,8 +15,8 @@ This guide describes how to create a Crosswalk web application, and how to creat
 
 1. Create a demo application `org.example.foo`
 
-   ```
-   crosswalk-app create org.example.foo
+   ```cmdline
+   > crosswalk-app create org.example.foo
    ```
 
 2. Develop the application
@@ -27,9 +27,9 @@ This guide describes how to create a Crosswalk web application, and how to creat
 
 3. Build the application
 
-   ```
-   cd org.example.foo
-   crosswalk-app build
+   ```cmdline
+   > cd org.example.foo
+   > crosswalk-app build
    ```
 
    If the build succeeds the file `foo.ipa` will be in the directory.
@@ -48,9 +48,9 @@ This guide describes how to create a Crosswalk web application, and how to creat
 
     In the `Echo` directory, create a file called `Podfile`:
 
-    ```
-    cd Echo;
-    touch Podfile;
+    ```cmdline
+    > cd Echo;
+    > touch Podfile;
     ```
 
     With the contents as below:
@@ -66,7 +66,7 @@ This guide describes how to create a Crosswalk web application, and how to creat
     Install `Pods` target into the project. Quit the Xcode first, then in the `Echo` directory, use command:
 
     ```
-    pod install
+    > pod install
     ```
 
     After the installation, you will find an `Echo.xcworkspace` is generated, and CocoaPods output will notify you to use this workspace instead of the `Echo.xcodeproj` from now on.

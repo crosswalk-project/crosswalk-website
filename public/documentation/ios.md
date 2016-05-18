@@ -49,9 +49,9 @@ The following 3 demos are available:
 
 NOTE: Try the demos after the project's submodules get initialized, using:
 
-  ```bash
-  git submodule update --init --recursive
-  ```
+```cmdline
+> git submodule update --init --recursive
+```
 
 ## Licence
 

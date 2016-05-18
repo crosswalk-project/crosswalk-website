@@ -17,7 +17,7 @@ After adding the icon(s) and manifest, You can proceed to [build your applicatio
 
 ## <a class="doc-anchor" id="create"></a>Create a sample project using crosswalk-app
 The crosswalk-app tool can create a starting template for your application:
-```
+```cmdline
 > crosswalk-app create <package id>
 ```
 `package-id` is the 3-part Internet-domain name for your package, such as com.abc.myappname. For details on the format, see the [Android package documentation](http://developer.android.com/guide/topics/manifest/manifest-element.html#package).
@@ -32,9 +32,10 @@ Once created, you can proceed to [build your application](#build-application).
 For the purposes of this tutorial, we use the simplest possible Crosswalk application: one HTML file.
 
 1.  First, create a directory called `xwalk-simple` for the project:
-
-        > mkdir xwalk-simple/
-        > cd xwalk-simple/
+    ```cmdline
+    > mkdir xwalk-simple/
+    > cd xwalk-simple/
+	```
 
 2.  Next, copy an icon file to that directory, to serve as the application icon. You can use this image:
 
@@ -87,10 +88,14 @@ For the purposes of this tutorial, we use the simplest possible Crosswalk applic
 ## <a class="doc-anchor" id="build-application"></a>Build the application
 Once your application is ready, with an icon and manifest.json file, it is ready to be packaged with Crosswalk. 
 
-    > crosswalk-pkg <folder with manifest.json>
+```cmdline
+> crosswalk-pkg <folder with manifest.json>
+```
 
 This command downloads and imports Crosswalk and creates a package using the files in the path. By default, it will create [debug](android_remote_debugging.html), [embedded](/documentation/shared_mode.html), [32-bit](android_64bit.html) APKs for both x86 and ARM architectures (recommended). 64-bit APKs can also be created. For options, see the "Usage" section of the [Crosswalk-app-tools page](/documentation/crosswalk-app-tools.html), or view the help:
 
-    > crosswalk-pkg help
+```cmdline
+> crosswalk-pkg help
+```
 
 You are now ready to run the application on a target.

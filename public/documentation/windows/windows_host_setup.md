@@ -34,7 +34,7 @@ Edit the `Path` environment variable as follows:
    </ol>
 
 The same task can be done on the command-line (note the quotes ""):
-```
+```cmdline
 > setx path "%path%;C:\Program Files (x86)\WiX Toolset v3.10\bin"
 ```
 
@@ -43,7 +43,7 @@ Crosswalk-app-tools is a simple, NPM-based tool to create installable packages o
 
 Type the following inside a command shell (using cmd.exe for example):
 
-```
+```cmdline
 > npm install -g crosswalk-app-tools
 ```
 
@@ -52,7 +52,7 @@ Note: If you are developing behind a proxy, see [this page](/documentation/npm-p
 ## <a class="doc-anchor" id="Verify-your-environment"></a>Verify your environment
 Check that you have installed the tools properly by running these commands:
 
-```
+```cmdline
 > crosswalk-app check windows
   + Checking host setup for target windows
   + Checking for candle... ...ram Files (x86)\WiX Toolset v3.10\bin\candle.exe

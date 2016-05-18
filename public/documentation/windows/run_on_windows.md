@@ -11,24 +11,24 @@
 
 If you want faster code -> test -> debug cycles you can run Crosswalk for Windows from the command line. This enables you to test your code changes without creating an .msi every time.
 
-1.  Download and unzip Crosswalk for Windows from https://download.01.org/crosswalk/releases/crosswalk/windows/
-2.  Open a console (cmd.exe)
-3.  Navigate to your project index.html
-4.  Run the python script below. This creates a local webserver that Crosswalk uses.  We do not support loading from the filesystem.
+1. Download and unzip Crosswalk for Windows from https://download.01.org/crosswalk/releases/crosswalk/windows/
+2. Open a console (cmd.exe)
+3. Navigate to your project index.html
+4. Run the python script below. This creates a local webserver that Crosswalk uses.  We do not support loading from the filesystem.
 
-   ```
+   ```cmdline
    > python -m SimpleHTTPServer 8000;
    ```
 
 5. In another console, navigate to where Crosswalk for Windows was unzipped and run:
 
-   ```
+   ```cmdline
    > xwalk.exe http://localhost:8000
    ```
    Your index.html should load.
    
    Alternatively you can also call :
-   ```
+   ```cmdline
    > xwalk.exe "C:\Users\path\to\my\crosswalk\app\manifest.json"
    ```
    This will not use the local webserver to serve the files of your application but rather will read the manifest.

@@ -25,8 +25,9 @@ You can start building your applications with the Intel App Security API plugin 
 
 Version 2.0.0 has now been released and includes an [npm module for crosswalk](https://www.npmjs.com/package/com-intel-security-crosswalk-extension):
 
-    $ sudo npm install -g com-intel-security-crosswalk-extension
-
+```cmdline
+$ sudo npm install -g com-intel-security-crosswalk-extension
+```
 
 
 

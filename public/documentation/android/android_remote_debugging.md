@@ -37,13 +37,17 @@ Debugging on Android must be enabled during build time.
 
   `crosswalk-app build` accepts "release" and "debug" as options.  Debug is the default, so you don't need to add anything to create a debug version, although using "debug" may remind you that you should change the build before releasing the app.
 
-        > crosswalk-app build [release|debug] [<dir>] 
+  ```cmdline
+  > crosswalk-app build [release|debug] [<dir>] 
+  ```
 
 * **cordova build**
 
   `cordova build` also defaults to creating a debug version. It accepts `--debug` and `--release` parameters.
-  
-        > cordova build android [--release|--debug]
+
+  ```cmdline
+  > cordova build android [--release|--debug]
+  ```
 
 * **Embedding Crosswalk in your application**
 
@@ -51,7 +55,9 @@ Debugging on Android must be enabled during build time.
 
   * Modify your application's main activity to set the remote debugging preference. For example:
 
-        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+    ```
+    XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+	```
 
   * Build the application package the usual way (e.g. using Ant or ADT).
 
@@ -61,7 +67,10 @@ Debugging on Android must be enabled during build time.
 ## Install and debug
 
 * Install your application on the target:
-      > adb install com.abc.myapp
+
+  ```cmdline
+  > adb install com.abc.myapp
+  ```
 
 * Run the application on the target by clicking on the application icon. [More details](/documentation/android/run_on_android.html)
 
@@ -83,12 +92,12 @@ Debugging on Android must be enabled during build time.
 
   If the application is not visible in the inspection page, use `adb` to check that remote debugging is enabled for the application:
 
-    ```
-    host$ adb shell
-    shell@android$ cat /proc/net/unix |grep devtools_remote
-    00000000: 00000002 00000000 00010000 0001 01 1102698 @org.crosswalkproject.app_devtools_remote
-    00000000: 00000002 00000000 00010000 0001 01 1092981 @org.xwalk.core.xwview.shell_devtools_remote
-    ```
+  ```cmdline
+  host$ adb shell
+  shell@android$ cat /proc/net/unix |grep devtools_remote
+  00000000: 00000002 00000000 00010000 0001 01 1102698 @org.crosswalkproject.app_devtools_remote
+  00000000: 00000002 00000000 00010000 0001 01 1092981 @org.xwalk.core.xwview.shell_devtools_remote
+  ```
 
   If you cannot see any entries ending with `_devtools_remote`, it's likely that remote debugging is not enabled for the application. Follow the steps above to either rebuild the application with remote debugging support, or switch remote debugging on at run time.
 

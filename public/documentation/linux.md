@@ -18,7 +18,7 @@ Alternatively, you can directly use `sudo dpkg -i crosswalk_xxx.deb` to install 
 
 The simplest way to start a Crosswalk application is to use the `xwalk` command with the [application’s manifest](/documentation/manifest.html) as argument:
 
-```
+```cmdline
 $ xwalk /path/to/manifest.json
 ```
 
@@ -26,7 +26,7 @@ Crosswalk will parse the manifest and launch the application from the entry poin
 
 If the application was packaged in the XPK format, it can be launched directly with the xwalk command:
 
-```
+```cmdline
 $ xwalk /path/to/app.xpk
 ```
 
@@ -52,7 +52,7 @@ Crosswalk follows the [W3C manifest specification](http://www.w3.org/TR/appmanif
 
 When launching an application, Crosswalk will display the error
 
-```
+```cmdline
 [0630/233246:ERROR:browser_main_loop.cc(185)] Running without the SUID sandbox! 
 See https://code.google.com/p/chromium/wiki/LinuxSUIDSandboxDevelopment 
 for more information on developing with the sandbox on.
