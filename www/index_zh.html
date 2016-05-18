@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html id="top">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/_zh" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/_zh" />
+    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    
+<script>
+  var reservedIds = ['main', 'front-end', 'predictability', 'games'];
+  if(window.location.hash && reservedIds.indexOf(window.location.hash.replace('#', '')) === -1) {
+    window.location.href = window.location.href.replace('/#', '/').replace(/\/$/, '') + '.html'
+  }
+</script>
+
+<header class="hero hero--bg1 knockout">
+  <div class="container">
+    <div class="row">
+      
+
+<nav class="nav">
+  <a href="/index_zh.html" class="nav-logo logo">
+    <img src="/assets/identity/crosswalkproject-logo-horizontal-light.png" class="logo-image">
+  </a>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/documentation/getting_started_zh.html" class="nav-link">文档</a>
+    </li>
+    <li class="nav-item">
+      <a href="/blog" class="nav-link">博客</a>
+    </li>
+    <li class="nav-item">
+      <a href="/contribute/index_zh.html" class="nav-link">贡献</a>
+    </li>
+    <li class="nav-item hide-on-small">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link" id="wiki-nav">维基</a>
+    </li>
+    <li class="nav-item hide-on-small">
+      <a href="/documentation/about/faq_zh.html" class="nav-link" id="faq-nav">常见问题</a>
+    </li>
+    <li class="nav-item">
+      <span class="i18n-label" id="i18n-label">
+	<span id="i18n-inner">
+	<img src="/assets/i18n-globe.png" class="i18n-globe" />
+	中文版
+	<img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	</span>
+      </span>
+      <div id="i18n-menu" class="i18n-menu i18n-menu-dark">
+        <a onclick="switchLanguage('English')">English</a>
+        <a onclick="switchLanguage('Chinese')">中文版</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+  
+
+    </div>
+    <div class="row">
+      <h1 class="hero-heading">构建世界级hybrid应用</h1>
+    </div>
+    <div class="row hero-row">
+      <p>使用集成了最前沿Web技术的Crosswalk运行时环境开发功能强大的Android和Cordova应用。</p>
+    </div>
+    <div class="row" id="hero-button-group">
+      <div class="button-group">
+        <a class="button" id="main-get-started-button" href="/documentation/getting_started_zh.html" >开始</a>
+        <a class="button" id="main-downloads-button" href="/documentation/downloads_zh.html">下载</a><br/>
+<!--    
+	<br />
+	<a href="/documentation/community/senchacon2015.html">
+	 <div style="color:white; border:solid 1px gray; height:82px; width:480px">
+	   <img src="/assets/senchacon-horiz-blue.jpg" style="height:80px;float:left;padding:5px 10px 5px 5px;" ><br/>Join the Crosswalk Project <br>at SenchaCon 2015!
+	 </div>
+	</a>
+...
+        <a class="button-follower" id="main-follow-twitter-button" href="/documentation/community/phonegapday2015.html">
+          <img src="/assets/pgd-banner.jpg" width="425px"><br>
+          Join us at PhoneGap Day EU 2015!
+       </a>
+-->
+        <a href="/documentation/cordova_zh.html">
+          <div style="color:white;">
+            &nbsp;Cordova 4.0现已支持Crosswalk webview插件!
+          </div>
+        </a>
+        <a class="button-follower" id="main-follow-twitter-button" href="http://weibo.com/crosswalk">
+          <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 关注Crosswalk项目微博
+       </a>
+     </div>
+    </div>
+  </div>
+  <div class="hero-seperator">
+      <div class="container">
+        <div class="row">
+
+        <aside class="media">
+          <ul class="media-list">
+            <li class="media-item">
+              <a class="media-link" href="/documentation/cordova_zh.html">
+                <img class="media-image" src="/assets/icons/logo-cordova-white.png" alt="Apache Cordova logo" />
+                <p class="media-description">
+                  <strong class="media-heading">兼容Apache Cordova</strong>
+                  在你的Cordova应用中轻松添加Crosswalk webview插件
+                </p>
+              </a>
+            </li>
+            <li class="media-item">
+              <a class="media-link" href="/documentation/android_zh.html">
+                <img class="media-image" src="/assets/icons/logo-android-white.png" alt="Google Android logo" />
+                <p class="media-description">
+                  <strong class="media-heading">支持Android</strong>
+                  将Crosswalk Project作为应用的WebView或内嵌浏览器
+                </p>
+              </a>
+            </li>
+            <li class="media-item">
+              <a class="media-link" href="/documentation/ios_zh.html">
+                <img class="media-image" src="/assets/icons/logo-apple-white.png" alt="Tizen logo" />
+                <p class="media-description">
+                  <strong class="media-heading">支持iOS</strong>
+                  在你的iOS应用中使用Crosswalk WebView
+                </p>
+              </a>
+            </li>
+            <li class="media-item">
+              <a class="media-link" href="/documentation/windows_zh.html">
+                <img class="media-image" src="/assets/icons/logo-windows-white.png" alt="Windows logo" />
+                <p class="media-description">
+                  <strong class="media-heading">支持Windows</strong>
+                  使用Crosswalk WebView创建Windows应用
+                </p>
+              </a>
+            </li>
+<!--
+            <li class="media-item">
+              <a class="media-link" href="/documentation/getting_started.html">
+                <img class="media-image" src="/assets/icons/logo-chrome-white.png" alt="Google Chromium logo" />
+                <p class="media-description">
+                  <strong class="media-heading">Built with Google Chromium</strong>
+                  The Crosswalk Project is powered by Chromium and Blink
+                </p>
+              </a>
+            </li>
+-->
+
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </div>
+</header>
+<main role="main" id="main" class="main">
+  <div class="container">
+    <div class="row row--narrow article">
+      <p class="lead">没有开发者希望<strong>老旧过时的设备</strong>阻止他们使用最新最酷的API。</p>
+
+      <p>平台的碎片化使我们意识到每个Android版本<code>WebView</code>的表现都有差别。这些差别体现在：
+      <ul>
+        <li>对JavaScript API的支持</li>
+        <li>对CSS属性及语义的支持</li>
+        <li>应用程序界面的渲染方式</li>
+      </ul>
+      <p>…还有更多。你想要支持尽可能多的Android版本，但现实情况却总让你感到沮丧和费时。</p>
+    </div>
+    <div class="row">
+      <img src="assets/illustrations/crosswalk-landing-variety.png" />
+    </div>
+  </div>
+  <div class="container">
+    <div class="row row--narrow article article--noLead">
+      <p><strong>当然，有更好的方案。</strong>如果你只需考虑唯一一个始终和最新版本的Google Chromium保持一致的<code>WebView</code>，情况又会如何呢？</p>
+      <p>将<strong>Crosswalk项目</strong>提供的web runtime引入你的hybrid <strong>Android</strong> 或者 <strong>Cordova / PhoneGap</strong> 应用，你的用户将会体验到一个基于Google Chromium稳定而强大的<code>WebView</code>构建的应用。</p>
+
+<br>
+      <h3>Crosswalk项目的优势：</h3>
+      <ul>
+        <li>最大限度降低Android碎片化的影响，得到一致的，可预测的行为。</li>
+        <li>使用最新的Web技术及API。在Android 4.0+版本上提供丰富的功能。</li>
+        <li>使用Chrome DevTools轻松调试。</li>
+        <li>提升应用中HTML，CSS和JavaScript的性能。</li>
+      </ul>
+    </div>
+  </div>
+
+  <a id="What-experts-say-about-Crosswalk-Project"></a>
+  <div class="quoteArea">
+    <h1 style="text-align:center">Crosswalk项目之专家说</h1><br>
+    <div class="quoteRow">
+      <div class="quoteBlock">
+        <div class="quoteText">
+         “Crosswalk为Phonegap开发者提供了高效及一致的跨平台的用户体验。”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/brian-leroux.jpg" /> 
+          <div class="speakerTitle">
+            <a href="http://brian.io/"><strong>Brian LeRoux</strong></a><br>
+            Principal Scientist, Adobe Systems Canada
+          </div>
+        </div>
+      </div>
+      <div class="quoteBlock">
+        <div class="quoteText">
+        “Crosswalk对于使用Ember/SPAs构建Cordova/Phonegap应用极为重要。它解决了日渐增多的设备碎片化问题，并在很多设备上提供了更好的性能表现。”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/alex-blom.jpg" />
+          <div class="speakerTitle">
+            <b>Alex Blom</b><br>
+            Partner at <a href="http://isleofcode.com">Isle of Code</a>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+    <div class="quoteRow">
+      <div class="quoteBlock">
+        <div class="quoteText">
+         “Crosswalk项目看起来是一个新的，最好的在Android发布HTML5内容的方法。”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/ashley-gullen.jpg" /> 
+          <div class="speakerTitle">
+            <a href="https://twitter.com/AshleyGullen"><strong>Ashley Gullen</strong></a><br>
+            Creator of the Construct 2 game engine
+          </div>
+        </div>
+      </div>
+      <div class="quoteBlock">
+        <div class="quoteText">
+        “终于可以使用现代的webview构建hybrid应用，并在几乎所有三年内发布的Android和iOS设备上运行。”
+        </div>
+        <div class="speakerBlock">
+          <a href="https://www.youtube.com/watch?v=nU4lvgTrjFI" style="text-decoration:none"><img class="speakerImg" src="/assets/testimonials/max-woghiren.jpg" /></a> 
+          <div class="speakerTitle">
+            <b>Max Woghiren</b><br>
+            Software Engineer at Google
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="quoteRow">
+      <div class="quoteBlock">
+        <div class="quoteText">
+        “Crosswalk为Android开发者提供了平等的平台，使之能够使用他们喜爱的web技术开发功能丰富，性能出色的应用。我们建议所有Telerik平台的用户使用Crosswalk webview，立即提升性能！”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/rob-lauer.jpg" /> 
+          <div class="speakerTitle">
+            <a href="http://developer.telerik.com/author/rlauer/"><strong>Rob Lauer</strong></a><br>
+            Principal Product Manager, <a href="http://developer.telerik.com/">Telerik</a>
+          </div>
+        </div>
+      </div>
+      <div class="quoteBlock">
+        <div class="quoteText">
+         “Crosswalk帮助解决了Android的碎片化问题，并使web应用的性能表现接近于原生应用。我们鼓励所有hybrid及Intel® XDK开发者使用Crosswalk部署Android应用。”
+        </div>
+        <div class="speakerBlock">
+          <img class="speakerImg" src="/assets/testimonials/ian-maffet-80.jpg" /> 
+          <div class="speakerTitle">
+            <b>Ian Maffet</b><br>
+            Developer Advocate <a href="http://software.intel.com/en-us/intel-xdk">Intel XDK</a>, Intel.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="quoteShowMore">
+      <a href="/documentation/community/testimonials_zh.html">还有更多...</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <a id="Sencha-video"></a>
+    <div class="row">
+      <figure>
+        <div onclick="play();" id="vidwrap" class="embed-container embed-container--overlay" style="background-image: url('/assets/illustrations/sencha-nick-video.jpg')"></div>
+             <script type="text/javascript">function play(){document.getElementById('vidwrap').innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/sSYTKOy-Y_s?enablejsapi=1&modestbranding=1&autoplay=1&rel=0&showinfo=0&theme=light&color=white" frameborder="0"></iframe>';}</script>
+        <figcaption>Discover how Sencha uses Crosswalk to reduce fragmentation with Android apps running in Sencha's Web Application Manager.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row row--full">
+    <div class="container container--full">
+      <div class="features" id="front-end">
+  <div class="features-wrap">
+    <div class="features-list"><!-- class="media-description" -->
+      <header class="features-item">
+      <h2>需要什么样的<code>WebView</code>？</h2>
+      <!-- <p class="text-center features-intro">
+        Build great interfaces with the Crosswalk Project
+      </p> -->
+      <!-- <div class="features-intro">
+        <p>It’s impossible to imagine and painful to test how your native hybrid app will render or perform in every situation if you’ve chosen the default Android <code>WebView</code>.</p>
+        <p>Stop choosing a fragmented development environment. Over 1.3 million Android device are activated everyday, each with an slightly different interpretation of the web.</p>
+      </div>
+    -->
+    </header>
+      <div class="features-item">
+        <h4 class="features-heading">使用Crosswalk构建出色的界面</h4>
+        <hr class="features-pointer" />
+         <p>新功能有保障。Crosswalk项目为CSS和JavaScript中以往被认为不稳定的属性和API提供一致性的支持。</p>
+      </div>
+      <div class="features-item">
+        <h4 class="features-heading">不依赖于Cordova的Device API支持</h4>
+        <hr class="features-pointer" />
+        <p>无论你是否使用Cordova，Crosswalk均支持Geolocation API, File API, Vibration API及更多Device APIs。</p>
+      </div>
+      <div class="features-item">
+        <h4 class="features-heading">在旧版本Android设备上支持最新的Flexbox</h4>
+        <hr class="features-pointer" />
+        <p>使用Flexbox为你的应用构建可靠的响应式界面，并通过Crosswalk在运行Android 4.0以上版本的设备上正确渲染该应用。</p>
+      </div>
+      <table class="table--ftcomp">
+        <thead>
+          <tr>
+            <td>HTML5特征</td>
+            <td>不使用Crosswalk</td>
+            <td>使用Crosswalk</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WebRTC</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td>WebGL</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td>Vibration <abbr>API</abbr></td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td>Presentation <abbr>API</abbr></td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td><code>WebView</code> updates</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/documentation/getting_started_zh" class="button">开始</a>
+    </div>
+    <div class="features-media"><!-- class="media-image" -->
+      <img src="assets/illustrations/crosswalk-landing-promo-1.png" />
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <div class="row row--full">
+    <div class="container container--full">
+      <div class="features features--left" id="games">
+  <div class="features-wrap">
+    <div class="features-media">
+      <img src="/assets/illustrations/crosswalk-landing-promo-2.png" />
+    </div>
+    <div class="features-list">
+      <header class="features-item">
+        <h2>使你的<code>WebView</code>更上一层楼</h2>
+        <!-- <p><abbr>HTML5</abbr> is ready for games, but is your WebView? The Crosswalk Project gives you the latest possible implementation of <abbr>HTML5</abbr> features that make immersive games possible.</p> -->
+      </header>
+      <div class="features-item">
+        <h4 class="features-heading">提升<abbr>HTML5</abbr>构建游戏应用的极限</h4>
+        <hr class="features-pointer" />
+        <p>如你所期望的一样，Crosswalk完全支持基于Google Chromium和Blink内核的WebView的强大功能，让你的应用内浏览体验尽可能好。</p>
+
+      </div>
+      <div class="features-item">
+        <h4 class="features-heading">提升<abbr>HTML5</abbr>构建游戏应用的极限</h4>
+        <hr class="features-pointer" />
+        <p>Crosswalk项目在将性能提升至接近原生应用的同时，仍然为开发者提供了熟悉的<abbr>API</abbr>，使开发变得快速和容易。</p>
+      </div>
+      <h3>什么样的<code>WebView</code>能够增强你的游戏应用的性能表现？</h3>
+      <table class="table--ftcomp">
+        <thead>
+          <tr>
+            <td>HTML5功能</td>
+            <td>不使用Crosswalk</td>
+            <td>使用Crosswalk</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WebRTC</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td>WebGL</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td>Vibration <abbr>API</abbr></td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td>Presentation <abbr>API</abbr></td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td><code>WebView</code> updates</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/documentation/getting_started_zh" class="button">开始</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <div class="row row--full">
+    <div class="container container--full">
+      <div class="features" id="predictability">
+  <div class="features-wrap">
+    <div class="features-list">
+      <header class="features-item">
+        <h2>为你的用户提供最新的web技术</h2>
+        <!-- <p>With the Crosswalk Project, your app will render the same across every Android 4.0 device, so you can simultaneously test on less devices and know your apps works in more places.</p> -->
+      </header>
+      <div class="features-item">
+        <h4 class="features-heading">提供一个类似于Google Chrome的内嵌浏览器</h4>
+        <hr class="features-pointer" />
+        <p>内嵌浏览器的应用场景比Android默认浏览器更多。将Crosswalk作为应用的内嵌浏览器，为你的用户提供最新的web技术。</p>
+      </div>
+      <div class="features-item">
+        <h4 class="features-heading">con字体，<abbr>SVG</abbr>，Flexbox，以及更多功能</h4>
+        <hr class="features-pointer" />
+        <p>如你所期望的一样，Crosswalk完全支持基于Google Chromium和Blink内核的WebView的强大功能，轻松提升用户的浏览及使用体验。</p>
+      </div>
+      <div class="features-item">
+        <h4 class="features-heading">新的监控<abbr>API</abbr></h4>
+        <hr class="features-pointer" />
+        <p>当越来越多的浏览器都在使用性能监控<abbr>API</abbr>，你的应用的性能度量变得越来越精确。Crosswalk可以帮助你增加样本的数量。</p>
+      </div>
+      <h3>你在使用什么样的<code>WebView</code>？</h3>
+      <table class="table--ftcomp">
+        <thead>
+          <tr>
+            <td>HTML5功能</td>
+            <td>不使用Crosswalk项目</td>
+            <td>使用Crosswalk项目</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Predictable layout</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td><abbr>CSS</abbr> feature queries</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td>Current Flexbox</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td><abbr>WOFF</abbr> web fonts</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+          <tr>
+            <td>Controlled <code>WebView</code> updates</td>
+            <td><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M9.5,15.3l0-0.7c-0.1-1.4,0.4-2.9,1.6-4.4c0.9-1.1,1.6-1.9,1.6-2.9c0-1-0.6-1.6-2-1.7C9.8,5.7,8.7,6,8,6.5L7,3.5
+		c1-0.6,2.7-1.1,4.6-1.1c3.7,0,5.3,2,5.3,4.3c0,2.1-1.3,3.5-2.4,4.7c-1,1.1-1.4,2.2-1.4,3.5v0.5H9.5z M8.8,19.2c0-1.5,1-2.5,2.5-2.5
+		c1.5,0,2.5,1.1,2.5,2.5c0,1.4-1,2.5-2.5,2.5C9.8,21.7,8.8,20.6,8.8,19.2z"/>
+</svg>
+</td>
+            <td><svg version="1.1" id="crosswalk-check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	<path d="M0,12.1l2.8-2.8l5.7,5.7L20.6,2.8L24,6.2L9.1,21.2L0,12.1z"/>
+</svg>
+</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/documentation/getting_started_zh" class="button">开始</a>
+    </div>
+    <div class="features-media">
+      <img src="assets/illustrations/crosswalk-landing-promo-3.png" />
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <div class="row row--full">
+    <div class="tools-hp-block">
+      <div class="tools-hp-title">
+        <a id="Crosswalk-tools"></a>
+        <h2 style="text-align:center">Crosswalk已与这些出色的开发工具集成</h2>
+      </div>
+      <div class="tools-hp-block-inner" id="tool-div">
+      </div>
+    </div>
+    <script>
+      $(window).load(onHomePageTools());
+    </script>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h3 class="text-center">Crosswalk兼容</h3>
+      <div class="cards cards--filled">
+        <ul class="cards-list">
+          <li class="cards-item">
+            <img class="cards-icon" src="/assets/icons/logo-cordova.png" alt="" />
+            <h3 class="cards-heading">为Apache Cordova定制的Crosswalk</h3>
+            <p class="text">通过升级WebView提高应用的性能</p>
+            <a class="button button--secondary" href="/documentation/cordova.html">开启Cordova之旅</a>
+          </li>
+          <li class="cards-item">
+            <img src="/assets/icons/logo-android.png" alt="Cordova logo" class="cards-icon" />
+            <h3 class="cards-heading">为Android定制的Crosswalk</h3>
+            <p>使用Crosswalk作为你的WebView或内嵌浏览器。</p>
+            <a class="button button--secondary" href="/documentation/android/android_target_setup.html">开启Android之旅</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container-intro">
+        <h2>我能用...吗？没问题。</h2>
+        <p>Crosswalk项目提供了强大且可预测的环境来构建出色的Android应用。</p>
+        <a href="/documentation/getting_started_zh.html" class="button">开始</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+    
+
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation/getting_started_zh.html"> 文档</a> &nbsp;
+             <a href="/blog"> 博客</a> &nbsp;
+             <a href="/documentation/downloads_zh.html"> 下载</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> 问题</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub资源</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              Crosswalk项目由Intel Open Source Technology Center开发。版权为 © 2013–2016 Intel Corporation。保留所有权利。 <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy策略 </a>  *其他名称和商标可能被声明为他人财产
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=zh]").css("display","block");
+</script>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

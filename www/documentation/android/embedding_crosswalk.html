@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html id="top">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/embedding_crosswalk" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/embedding_crosswalk" />
+    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    English
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <div id="404_bar" class="tmp-bar">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+      
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+         
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
+             
+           </li>
+           
+           <li class="article-item  nav-item--active">
+             <a class="article-link" href="/documentation/android/embedding_crosswalk.html">Embedding Crosswalk</a>
+             
+             <ul class="article-list">
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/embedding_crosswalk/extensions.html">Extensions</a>
+               </li>
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/embedding_crosswalk/crosswalk_aar.html">Crosswalk AAR</a>
+               </li>
+               
+             </ul>
+             
+           </li>
+           
+         </ul>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/windows.html">Windows</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
+         
+       </li> 
+    
+  </ul>
+
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Embedding the Crosswalk Project</h1>
+<p>The Crosswalk Project embedding API enables you to embed the Crosswalk Project runtime in an Android application. You can then load a web page (or whole web application) into the embedded runtime, similar to how you might with an Android <a href="http://developer.android.com/guide/webapps/webview.html">WebView</a>.</p>
+<p>Using the embedding API is only recommended for cases where you have a substantial amount of Java code in your application, but want to write the UI (or parts of the UI) using web technologies. If you just need a runtime wrapper for a web application, there are two simpler options for deploying to Android with Crosswalk:</p>
+<ul>
+<li><a href="/documentation/android/build_an_application.html">Use the default Crosswalk packaging tools</a> to generate an Android package for your web application.</li>
+<li><a href="/documentation/cordova.html">Use Cordova with Crosswalk</a>: that way, you get de facto standard device APIs, as well as advanced web APIs, but can still mostly build your application using web technologies.</li>
+</ul>
+<p>If you do decide to use the embedding API, follow the instructions below which explain how to use it.</p>
+<h2>Creating an application with the embedding API</h2>
+<p>In this tutorial, you&#39;ll learn how to create an Android application with an embedded Crosswalk webview.</p>
+<p>To follow the tutorial, you&#39;ll need to be familiar with Android development. Because Android applications are typically developed using <a href="http://developer.android.com/tools/sdk/eclipse-adt.html">ADT</a>, this tutorial also uses that tool; so familiarity with that will be useful.</p>
+<p>The tutorial steps were tested on Linux (Fedora 20), but should be adaptable to other platforms and operating systems (e.g. Windows).</p>
+<p><strong>By the end of the tutorial</strong>, you will be able to develop Android applications which embed the Crosswalk runtime.</p>
+<h3>Set up the host and target</h3>
+<p>Before you use the embedding API, ensure that you have <a href="/documentation/android/system_setup.html">set up your host environment for Android development</a>.</p>
+<p>You will also need to set up an Android target to deploy the application to, as described on the <a href="/documentation/android/android_target_setup.html">Android target setup</a> page.</p>
+<p>As this tutorial uses ADT, ensure that you have <a href="http://developer.android.com/tools/sdk/eclipse-adt.html">installed the necessary ADT components</a> for your host.</p>
+<h3>Download the Crosswalk webview bundle</h3>
+<button onclick="location.href = '/documentation/downloads.html';">Downloads</button>
+
+<p>Download the Crosswalk webview bundle to your development system. The webview bundle contains the libraries and supporting tools for embedding Crosswalk in an application.  Note that the webview is architecture specific, so you will need to build multiple version for ARM, x86, and 64-bit devices.</p>
+<p>Unzip the downloaded <code>.zip</code> file.</p>
+<h3>Import the Crosswalk webview project into ADT</h3>
+<p>The next step is to create a project in ADT by importing the unpacked Crosswalk webview bundle. Your own application projects can then reference this project to build against the Crosswalk embedding API.</p>
+<p>To set up this project:</p>
+<ol>
+<li><p>Open ADT.</p>
+</li>
+<li><p>Select <em>File</em> &gt; <em>New</em> &gt; <em>Project...</em>, then <em>Android</em> &gt; <em>Android Project From Existing Code</em>.</p>
+</li>
+<li><p>Set <em>Root Directory</em> to the path of the <code>crosswalk-webview/</code> directory you extracted.</p>
+</li>
+<li><p>Click <em>Finish</em>. The <strong>crosswalk-webview</strong> project will now be visible in the <em>Package Explorer</em>.</p>
+</li>
+</ol>
+<h3>Create an Android application with ADT</h3>
+<p>Next, create an Android application which will use the Crosswalk embedding API (still in ADT):</p>
+<ol>
+  <li>
+    <p>Select <em>File</em> &gt; <em>New</em> &gt; <em>Android Application Project</em>.</p>
+
+    <p>Fill in the <em>New Android Application</em> dialog as follows:</p>
+
+    <ul>
+      <li><em>Application Name:</em> <strong>XWalkEmbed</strong></li>
+      <li><em>Project Name:</em> <strong>XWalkEmbed</strong></li>
+      <li><em>Package Name:</em> <strong>org.crosswalkproject.xwalkembed</strong></li>
+      <li><em>Minimum Required SDK:</em> <strong>API 14</strong> (the minimum version supported by Crosswalk)</li>
+      <li><em>Target SDK:</em> <strong>API 19</strong> (or whatever version you have)</li>
+      <li><em>Compile With:</em> <strong>API 19</strong></li>
+      <li><em>Theme:</em> <strong>None</strong></li>
+    </ul>
+
+    <p>It should look like this:</p>
+
+    <img src="/assets/embedding-api-app1.png">
+
+    <p>Click <em>Next</em>.</p>
+  </li>
+
+  <li>
+    <p>In the <em>Configure Project</em> panel, set the options as follows:</p>
+
+    <ul>
+      <li>Untick <em>Create Custom Launcher Icon</em>.</li>
+      <li>Tick <em>Create activity</em>.</li>
+      <li>Untick <em>Mark this project as a library</em>.</li>
+      <li>Either create the project in your workspace or somewhere else on your filesystem. Add to working sets if you want to.</li>
+    </ul>
+
+    <p>The result should look like this:</p>
+
+    <img src="/assets/embedding-api-app2.png">
+
+    <p>Click <em>Next</em>.</p>
+  </li>
+
+  <li>
+    <p>In the <em>Create Activity</em> panel, select <em>Create Activity</em> and <em>Blank Activity</em>:</p>
+
+    <img src="/assets/embedding-api-app3.png">
+
+    <p>Click <em>Next</em>.</p>
+  </li>
+
+  <li>
+    <p>Fill in the <em>Blank Activity</em> panel as follows:</p>
+
+    <ul>
+      <li><em>Activity Name:</em> <strong>MainActivity</strong></li>
+      <li><em>Layout Name:</em> <strong>activity_main</strong></li>
+      <li><em>Fragment Layout Name:</em> <strong>fragment_main</strong></li>
+      <li><em>Navigation Type:</em> <strong>none</strong></li>
+    </ul>
+
+    <p>It should look like this:</p>
+
+    <img src="/assets/embedding-api-app4.png">
+
+    <p>Click <em>Finish</em>.</p>
+  </li>
+</ol>
+
+<p>Your project is now ready to work on.</p>
+<h3>Reference Crosswalk webview from your project</h3>
+<p>The next step is to add a reference for the Crosswalk webview project to your application project.</p>
+<p>Do the following (in ADT):</p>
+<ol>
+<li><p>Right-click on your project in the <em>Package Explorer</em> and select <em>Properties</em>.</p>
+</li>
+<li><p>Select <em>Android</em>.</p>
+</li>
+<li><p>In the <em>Library</em> tab, click <em>Add</em>. Select the <strong>crosswalk-webview-${XWALK-BETA-ANDROID-X86}-x86</strong> project and click OK.</p>
+</li>
+</ol>
+<p>Click Ok to accept.</p>
+<p>Your project should now be linked to the Crosswalk webview project.</p>
+<h3><a class="doc-anchor" id="Add-code-to-integrate-the-webview"></a>Add code to integrate the webview</h3>
+<ol>
+<li><p>Crosswalk requires a few permissions to be enabled on Android. To enable these, modify the <code>AndroidManifest.xml</code> file, adding permission lines before the <code>&lt;application&gt;</code> element. The minimal permissions required for the Crosswalk WebView to render pages are:</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;</code></pre>
+<p>Depending on the features of your app, you may need to request additional permissions. It is considered good security practice on Android to request only those permissions that your app actually needs.</p>
+<p><em>Accessing Location Information</em></p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</code></pre>
+<p><em>Accessing Camera, Video and Microphone</em></p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;</code></pre>
+<p><em>Writing data to SD Card</em></p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</code></pre>
+<p><em>Keeping Screen On</em></p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;</code></pre>
+</li>
+<li><p>When the application was generated, some default layout resources were added to the project. Replace the content of the main layout resource file, <code>res/layout/activity_main.xml</code>, with this:</p>
+<pre><code>&lt;org.xwalk.core.XWalkView android:id=&quot;@+id/activity_main&quot;
+  xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+  android:layout_width=&quot;fill_parent&quot;
+  android:layout_height=&quot;fill_parent&quot;&gt;
+&lt;/org.xwalk.core.XWalkView&gt;</code></pre>
+<p>This replaces the default view for the application with a single <code>XWalkView</code> (Crosswalk webview) resource.</p>
+<p>You can remove the other default file, <code>res/layout/fragment_main.xml</code>, as you won&#39;t be needing it.</p>
+</li>
+<li><p>Edit the <code>MainActivity</code> class (find it via the <em>Package Explorer</em>, in <code>src/org.crosswalkproject.xwalkembed/MainActivity.java</code>). Replace its content with this:</p>
+<pre><code>package org.crosswalkproject.xwalkembed;
+
+import org.xwalk.core.XWalkView;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class MainActivity extends Activity {
+  private XWalkView mXWalkView;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    mXWalkView = (XWalkView) findViewById(R.id.activity_main);
+    mXWalkView.load(&quot;http://crosswalk-project.org/&quot;, null);
+  }
+}</code></pre>
+<p><code>R.layout.activity_main</code> refers to the <code>activity_main</code> layout component you defined above: the webview part of the Crosswalk runtime which is exposed by the embedding API. The activity&#39;s main content view is set to this webview.</p>
+<p>The code casts the layout component to an <code>XWalkView</code>, so its methods for loading web resources are accessible. In this case, the <code>load()</code> method is called to load the Crosswalk project website and render it into the webview component. Note that a <code>loadAppFromManifest()</code> method is also available, which can load a Crosswalk application via a manifest file. See <a href="/apis/embeddingapidocs/reference/org/xwalk/core/XWalkView.html">the embedding API docs</a> for full details.</p>
+</li>
+</ol>
+<p>You should now be able to run your application, as per usual: right click on the project in the <em>Package Explorer</em>, then select <em>Run As</em> &gt; <em>Android Application</em>.</p>
+<h3>Load an HTML page into the Crosswalk webview</h3>
+<p>In the previous section, you loaded a remote website into the webview, demonstrating a simple way to &quot;wrap&quot; an Android application around a website. However, you may want to distribute a web application as part of an Android application, rather than host it on a website. In this case, you need to load a local resource into the Crosswalk webview instead.</p>
+<p>To include local web resources, you need to place the web assets inside the Android application and distribute them as part of the application package (<code>.apk</code> file).</p>
+<p>Follow the steps below to add some web assets and bundle them with your application package:</p>
+<ol>
+<li><p>Create an <code>assets/</code> directory. This is the standard location for Android application assets, and is a good location for web assets.</p>
+</li>
+<li><p>Add an <code>index.html</code> file to the <code>assets/</code> directory with this content:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta name=&quot;viewport&quot;
+          content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;simple&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;hello world&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</li>
+<li><p>Edit the <code>MainActivity</code> class (<code>src/org.crosswalkproject.xwalkembed/MainActivity.java</code>):</p>
+<pre><code>package org.crosswalkproject.xwalkembed;
+
+import org.xwalk.core.XWalkView;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class MainActivity extends Activity {
+  private XWalkView mXWalkView;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    mXWalkView = (XWalkView) findViewById(R.id.activity_main);
+
+    // this loads a file from the assets/ directory
+    mXWalkView.load(&quot;file:///android_asset/index.html&quot;, null);
+  }
+}</code></pre>
+<p>The main difference here is that the <code>load()</code> function is passed an asset URL, rather than an absolute web-based URL:</p>
+<pre><code>mXWalkView.load(&quot;file:///android_asset/index.html&quot;, null);</code></pre>
+<p>The URL is just the prefix &quot;file:///android_asset/&quot;, followed by the path to the file you want to load, relative to the <code>assets/</code> directory.</p>
+<p>Once the main HTML page for the application is loaded, any URLs inside that page will resolve as per a normal web application, treating the <code>assets/</code> directory as the application root. For example, if you had a second HTML page called <code>page2.html</code> in the <code>assets/</code> directory, you could link to it with a standard hyperlink like:</p>
+<pre><code>&lt;a href=&quot;page2.html&quot;&gt;Page 2&lt;/a&gt;</code></pre>
+<p>Similarly, any CSS or media files (audio, video) can be added inside the <code>assets/</code> directory and referred to as per usual, for example:</p>
+<pre><code>&lt;!--
+HTML5 audio element in index.html referring to a file
+at assets/audio/mytrack.ogg
+--&gt;
+&lt;audio src=&quot;audio/mytrack.ogg&quot;&gt;
+
+/*
+CSS declaration in index.html referring to an
+image in assets/images/myimage.png
+*/
+.myclass {
+  background-image: url(images/myimage.png);
+}</code></pre>
+</li>
+</ol>
+<h3>Enable Proguard to compress apk size (Optional)</h3>
+<p>ProGuard is a free Java class file shrinker, optimizer, obfuscator and pre-verifier. Those operations are optional when generating your final apk. If you have developed your own Proguard config file along with your Java code, you might want to add some Proguard rules to compress the size of the Crosswalk library: <a href="/documentation/samples/proguard-xwalk.txt">Proguard rules for crosswalk example</a>.</p>
+<p>The purpose of using Proguard on the Crosswalk library is to shrink the size not for anti-decompilation consideration. Note that there are a lot of reflections in Crosswalk code, many of which directly reference class names as strings. Thus the shrink and obfuscate operations mainly affect the chromium areas. </p>
+<h3 id="Debugging">Debugging</h3>
+
+<p>To enable debugging of the web application running in an embedded Crosswalk webview, modify the <code>MainActivity.java</code> file to look like this:</p>
+<pre><code>package org.crosswalkproject.xwalkembed;
+
+import org.xwalk.core.XWalkPreferences;
+import org.xwalk.core.XWalkView;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class MainActivity extends Activity {
+  private XWalkView mXWalkView;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    mXWalkView = (XWalkView) findViewById(R.id.activity_main);
+
+    // turn on debugging
+    XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+
+    mXWalkView.load(&quot;file:///android_asset/index.html&quot;, null);
+  }
+}</code></pre>
+<p>The key line is:</p>
+<pre><code>XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);</code></pre>
+<p><code>XWalkPreferences.setValue()</code> sets global preferences for Crosswalk; in this case, you are turning on the debugging flag.</p>
+<p>Now install and run your application as usual. Then, to perform remote debugging, follow <a href="/documentation/android/android_remote_debugging.html">these instructions</a>.</p>
+<h2>Further information</h2>
+<p>Further resources about working with the embedding API are listed on the <a href="/documentation/apis/embedding_api.html">embedding API docs page</a>.</p>
+
+  <footer class="article-next">
+    
+
+
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation/getting_started.html"> Documentation</a> &nbsp;
+             <a href="/blog"> Blog</a> &nbsp;
+             <a href="/documentation/downloads.html"> Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub Source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All right reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy policy </a>  *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=en]").css("display","block");
+</script>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

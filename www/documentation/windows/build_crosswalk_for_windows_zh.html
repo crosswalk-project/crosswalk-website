@@ -1,0 +1,38 @@
+<h1>为Windows平台编译Crosswalk</h1>
+<ol>
+<li><p>下载并安装<a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Microsoft Visual Studio 2013</a>。目前我们还不支持Visual Studio 2015。</p>
+</li>
+<li><p>从<a href="http://git-scm.com/download/win处安装Windows平台的Git，并且确保将其添加到你的PATH中。设置你的用户环境变量。在Windows的开始菜单中，检索“环境变量”。或者，点击控制面板上的系统图标；然后进入高级系统设置中，点击环境变量按钮。你应该可以看到下列对话框：">http://git-scm.com/download/win处安装Windows平台的Git，并且确保将其添加到你的PATH中。设置你的用户环境变量。在Windows的开始菜单中，检索“环境变量”。或者，点击控制面板上的系统图标；然后进入高级系统设置中，点击环境变量按钮。你应该可以看到下列对话框：</a></p>
+<p><img src="/assets/win8.png" style="display: block; margin: 0 auto"/></p>
+</li>
+<li><p>通过运行下列命令从Google上克隆depot_tools：</p>
+<pre><code> &gt;  git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git</code></pre>
+<p>确保你已经使用上文中描述的过程将<code>depot_tools</code>目录添加到你的PATH中。</p>
+</li>
+<li><p>在环境变量的对话框中创建新的变量（使用&quot;新建...按钮&quot;）并且添加：</p>
+<ul>
+<li><code>GYP_GENERATORS</code>设置为<code>ninja,msvs-ninja</code> (如果你希望在IDE内运行针对Windows平台的Crosswalk，这个将创建Visual Studio的解决方案）</li>
+<li><code>DEPOT_TOOLS_WIN_TOOLCHAIN</code>设置为0(这将会通知Crosswalk使用你安装的Visual Studio 2013)</li>
+</ul>
+</li>
+<li><p>进入你希望检出Crosswalk Windows的目录，创建一个目录并进入，然后拉取源代码：</p>
+<pre><code>&gt; mkdir crosswalk-src
+&gt; cd crosswalk-src
+&gt; gclient config --name=src/xwalk git://github.com/crosswalk-project/crosswalk.git
+&gt; gclient sync</code></pre>
+</li>
+</ol>
+<p>这也许需要花费一段时间，下载大小超过了3GB。</p>
+<h2>创建Crosswalk</h2>
+<p>目前你有两种选择：</p>
+<ul>
+<li>通过命令行创建</li>
+<li>通过Visual Studio创建</li>
+</ul>
+<h3>命令行创建</h3>
+<p>为了从命令行创建，进入Crosswalk-src/src中并调用：</p>
+<pre><code>&gt; ninja -C out/Release xwalk or ninja -C out/Debug xwalk</code></pre>
+<h3>Visual Studio创建</h3>
+<p>为了生成解决方案和项目文件，进入crosswalk-src/src中并调用：</p>
+<pre><code>&gt; python xwalk\gyp_xwalk</code></pre>
+<p>为了在Visual Studio中创建，从<code>crosswalk-src/src/xwalk</code>中打开xwalk.sln，然后便可以开始。选择一个目标，点击Build(例如<code>xwalk</code>或者<code>xwalk_builder</code>)。请注意xwalk.sln依赖所有的Chromium代码，因此xwalk.sln包含大约600个子工程，它们需要一个用于很多RAM的强劲的机器以便能够正确地处理。我们建议使用<a href="http://vsfunnel.com/">Funnel extension</a>，它允许你选取你想要加载的子项目。</p>

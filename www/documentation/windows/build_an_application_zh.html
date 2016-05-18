@@ -1,0 +1,60 @@
+<h1>构造一个Crosswalk应用</h1>
+<p>Crosswalk是一个HTML5应用的运行时。这意味着任何已有的HTML5应用都可以在Crosswalk上运行，假设它们已经可以在一个现代浏览器上运行（Chrome,Firefox,Safari）。</p>
+<p>为了阐述这份教程，我们尽可能地使用一个最简单的Crosswalk应用：一个HTML文件。</p>
+<p>然而，因为Crosswalk应用将来需要集成到目标环境，所以它们需要一个额外的文件，<code>manifest.json</code>，该文件中包含了整合所需要的元数据。Manifest可以用于规定在不同环境下使用的图标，设置一个app描述，调整<a href="http://developer.chrome.com/extensions/contentSecurityPolicy.html">内容安全策略的设置</a>，以及其他关于应用和目标环境集成的配置。</p>
+<h2><a class="doc-anchor" id="A-simple-application"></a>一个简单的应用</h2>
+<ol>
+<li><p>首先，为项目创建一个名称为<code>xwalk-simple</code>的目录： </p>
+<pre><code>&gt; mkdir xwalk-simple/
+&gt; cd xwalk-simple/</code></pre>
+</li>
+<li><p>然后，复制一个图标文件到目录下，作为应用的图标。你可以使用下面这个图标：</p>
+<p><img src="/assets/crosswalk.ico" style="display: block; margin: 0 auto"/></p>
+<p>为了使用这个样例，右击图片并且选取<em>Save Image As...</em>（或者在浏览器中功能相同的选项）。将其命名为<code>icon.ico</code>存入<code>xwalk-simple</code>目录中。（注意这张图片来源于Crosswalk源代码并且通过<a href="https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE">BSD认证</a>。）</p>
+<p>如果你有自己喜欢的图标，将它拷贝到<code>xwalk-simple</code>目录。它应该是96像素的正方形或者更大。</p>
+</li>
+<li><p>在<code>xwalk-simple</code>中创建两个文本文件。（可以使用任何编辑器创建，例如Notepad。）：</p>
+<ol>
+<li><p><code>index.html</code></p>
+<p>这是一个单独的HTML文件，用于代表应用的用户接口。为了专注于这份教程的内容，我们不使用任何CSS或者JavaScript。</p>
+<p>内容应该如下：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta name=&quot;viewport&quot;
+          content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;simple&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;hello world&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</li>
+<li><p><code>manifest.json</code></p>
+<p>该文件包含应用的元数据（见上文）。</p>
+<p>内容应该如下：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;simple&quot;,
+  &quot;xwalk_package_id&quot;: &quot;com.app.simple&quot;,
+  &quot;xwalk_version&quot;: &quot;0.0.1&quot;,
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;icon.ico&quot;,
+      &quot;sizes&quot;: &quot;96x96&quot;,
+      &quot;type&quot;: &quot;image/vnd.microsoft.icon&quot;,
+      &quot;density&quot;: &quot;4.0&quot;
+    }
+  ]
+}</code></pre>
+<p>详细参见<a href="/documentation/manifest_zh.html">manifest文档</a>。</p>
+</li>
+</ol>
+</li>
+<li><p>在<code>xwalk-simple</code>目录下，运行：</p>
+<pre><code> &gt; crosswalk-pkg --platforms=windows .</code></pre>
+<p>通过工程目录路径作为最后一个参数，上面的<code>crosswalk-pkg</code>命令可以在任何地方运行。</p>
+<p>这条命令将下载Crosswalk库，按照规定好的manifest.json文件中的定义打包应用并且生成一个.msi文件（在我们的样例中是<code>com.app.simple-0.1.0.0.msi</code>）。这个.msi是Crosswalk Windows的64位安装包，且仅能运行在64位的Windows平台。一旦你完成了这些，便可以在目标上运行应用了。</p>
+</li>
+</ol>

@@ -2,20 +2,51 @@
   "about": {
     "title": "About"
   },
+  "about_zh": {
+    "title": "关于",
+    "origin": "about"
+  },
   "getting_started": {
     "title": "Getting Started"
+  },
+  "getting_started_zh": {
+    "title": "开始",
+    "origin": "getting_started"
   },
   "android": {
     "title": "Android"
   },
+  "android_zh": {
+    "title": "Android",
+    "origin": "android"
+  },
   "ios": {
     "title": "iOS"
+  },
+  "ios_zh": {
+    "title": "iOS",
+    "origin": "ios"
   },
   "windows": {
     "title": "Windows"
   },
+  "windows_zh": {
+    "title": "Windows",
+    "origin": "windows"
+  },
   "linux": {
     "title": "Linux"
+  },
+  "linux_zh": {
+    "title": "Linux",
+    "origin": "linux"
+  },
+  "cordova": {
+    "title": "Cordova"
+  },
+  "cordova_zh": {
+    "title": "Cordova",
+    "origin": "cordova"
   },
   "tizen": {
     "title": "Tizen"
@@ -26,26 +57,20 @@
   "apis": {
     "title": "APIs"
   },
-  "cordova": {
-    "title": "Cordova"
-  },
   "downloads": {
     "title": "Downloads"
-  },
-  "embedding_crosswalk": {
-    "title": "Embedding Crosswalk"
   },
   "shared_mode": {
     "title": "Shared Mode"
   },
-  "webrtc": {
-    "title": "WebRTC"
+  "download_mode": {
+    "title": "Download Mode"
   },
-  "webcl": {
-    "title": "WebCL"
+  "crosswalk_lite": {
+    "title": "Crosswalk Lite"
   },
-  "screens": {
-    "title": "Screens"
+  "tutorials": {
+    "title": "Tutorials"
   },
   "samples": {
     "title": "Samples"
@@ -53,13 +78,7 @@
   "community": {
     "title": "Community"
   },
-  "report_bugs": {
-    "title": "Report bugs"
-  },
-  "test_suite": {
-    "title": "Test Suite"
-  },
-  "quality_dashboard": {
-    "title": "Quality Dashboard"
+  "qa": {
+    "title": "Quality Assurance"
   }
 }

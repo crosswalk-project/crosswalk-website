@@ -13,7 +13,7 @@ Crosswalk 10 is updated to Chromium 39 and introduces the following new features
   - [onCreateWindowRequested](https://crosswalk-project.org/jira/browse/XWALK-2374)
   - [onIconAvailable and onReceivedIcon](https://crosswalk-project.org/jira/browse/XWALK-2373)
 - Support for Cordova 3.6.3
-- Crosswalk AAR package in Stable and Beta channels for Maven/Gradle integration ([documentation](https://crosswalk-project.org/documentation/embedding_crosswalk/crosswalk_aar.html))
+- Crosswalk AAR package in Stable and Beta channels for Maven/Gradle integration ([documentation](https://crosswalk-project.org/documentation/android/embedding_crosswalk/crosswalk_aar.html))
 - Remote debugging is disabled by default and needs to be enabled with `--enable-remote-debugging`
 
 Download Crosswalk 10 from the [Stable Channel](https://download.01.org/crosswalk/releases/crosswalk/android/stable/10.39.235.15/) 

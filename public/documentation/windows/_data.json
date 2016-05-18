@@ -2,25 +2,49 @@
   "windows_host_setup": {
     "title": "Windows host setup"
   },
+  "windows_host_setup_zh": {
+    "title": "Windows开发环境设置"
+  },
   "build_an_application": {
     "title": "Build an application"
+  },
+  "build_an_application_zh": {
+    "title": "创建应用"
   },
   "run_on_windows": {
     "title": "Run on Windows"
   },
+  "run_on_windows_zh": {
+    "title": "在Windows环境运行"
+  },
   "web_inspector_debugging": {
     "title": "Web Inspector Debugging"
+  },
+  "web_inspector_debugging_zh": {
+    "title": "Web Inspector调试"
   },
   "deploy_windows_store": {
     "title": "Deploy to Windows store"
   },
+  "deploy_windows_store_zh": {
+    "title": "部署到Windows store"
+  },
   "net_extensions": {
     "title": ".NET extensions"
+  },
+  "net_extensions_zh": {
+    "title": ".NET Extensions"
   },
   "build_crosswalk_for_windows": {
     "title": "Build Crosswalk for Windows"
   },
+  "build_crosswalk_for_windows_zh": {
+    "title": "在Windows上编译Crosswalk"
+  },
   "extensions": {
     "title": "Extensions"
+  },
+  "extensions_zh": {
+    "title": "扩展"
   }
 }

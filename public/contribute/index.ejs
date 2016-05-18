@@ -11,9 +11,11 @@
       <ul class="article-list nav-toggleHide">
         <% for(var slug in public.contribute._data) { %>
           <% var article = public.contribute._data[slug] %>
-          <li class="article-item <%= current.source === slug.toLowerCase() ? ' nav-item--active' : '' %>">
-            <a href="/contribute/<%= slug ? slug.toLowerCase() + '.html' : '' %>"><%= article.title %></a>
-          </li>
+          <% if(article.language === "en") { %>
+            <li class="article-item <%= current.source === slug.toLowerCase() ? ' nav-item--active' : '' %>">
+               <a href="/contribute/<%= slug ? slug.toLowerCase() + '.html' : '' %>"><%= article.title %></a>
+            </li>
+          <% } %>
         <% } %>
       </ul>
     </nav>

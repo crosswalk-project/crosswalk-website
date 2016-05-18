@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="top" lang="en-us">
+<html id="top">
   <head>
     <meta charset="utf-8">
     <title>The Crosswalk Project</title>
@@ -51,6 +51,7 @@
     <script src="/js/testimonials.js"></script>
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
@@ -61,7 +62,6 @@
   <div class="doc-header">
     
 
-  
 
   <div class="doc-logo-div">
      <a href="/" class="doc-logo-link">
@@ -76,17 +76,27 @@
       <li class="doc-nav-item">
         <a href="/blog" class="doc-nav-link">Blog</a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="/contribute" class="doc-nav-link">Contribute</a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
       </li>
       <li class="doc-nav-item hide-on-small">
         <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
       </li>
-      <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    English
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
       </li>
     </ul>
   </div>
@@ -103,7 +113,46 @@
         
           <li class="article-item ">
             <header class="article-header">
-              <h2 class="article-title"><a href="crosswalk-realsense-webapi.html">Introducing RealSense Web API</a></h2>
+              <h2 class="article-title"><a href="crosswalk-download-mode.html">Introducing 'Download mode' in Crosswalk for Android</a></h2>
+              <span class="article-meta">
+                <time class="article-time js-vagueTime" datetime="Mon May 09 2016 11:00:00 GMT-0600 (MDT)">Mon, 09 May 2016 17:00:00 GMT</time>
+                 by <span class="article-author">Xiaosong Wei</span>
+              </span>
+            </header>
+            
+            <div class="article-excerpt">
+              <p>Starting with Crosswalk 17 beta, you can package your application in download mode. 
+Download Mode provides another way to shrink the size of your APK and is similar to shared mode. Your application is still bundled with the xwalk_shared_library which contains only the API layer of Crosswalk. When the application <a href="crosswalk-download-mode.html" title="Read the rest of “Introducing &#39;Download mode&#39; in Crosswalk for Android”">Read more&hellip;</a></p>
+            </div>
+            
+              <hr class="presentation-splitter" style="margin:25px 0px 25px 0px"/>
+          </li>
+        
+      
+        
+        
+          <li class="article-item ">
+            <header class="article-header">
+              <h2 class="article-title"><a href="deprecate-40.html">Crosswalk Project to stop support for Android 4.0</a></h2>
+              <span class="article-meta">
+                <time class="article-time js-vagueTime" datetime="Thu May 05 2016 11:00:00 GMT-0600 (MDT)">Thu, 05 May 2016 17:00:00 GMT</time>
+                 by <span class="article-author">Bob Spencer</span>
+              </span>
+            </header>
+            
+            <div class="article-excerpt">
+              <p>Given the low number of existing Android 4.0 (ICS)-based phones in the market, the loss of support for Android 4.0 in Chromium (May 2015), and the increasingly time-consuming task of maintaining support for this version, the Crosswalk Project has decided to end support for Android 4.0 starting with version 20 <a href="deprecate-40.html" title="Read the rest of “Crosswalk Project to stop support for Android 4.0”">Read more&hellip;</a></p>
+            </div>
+            
+              <hr class="presentation-splitter" style="margin:25px 0px 25px 0px"/>
+          </li>
+        
+      
+        
+        
+          <li class="article-item ">
+            <header class="article-header">
+              <h2 class="article-title"><a href="crosswalk-realsense-webapi.html">Introducing Crosswalk Project Extensions for Intel® RealSense™ Technology</a></h2>
               <span class="article-meta">
                 <time class="article-time js-vagueTime" datetime="Mon Feb 22 2016 17:00:00 GMT-0700 (MST)">Tue, 23 Feb 2016 00:00:00 GMT</time>
                  by <span class="article-author">Web RealSense Team</span>
@@ -111,7 +160,7 @@
             </header>
             
             <div class="article-excerpt">
-              <p>Intel® RealSense™ technology redefines how we interact with our devices for a more natural, intuitive and immersive experience. By introducing 3D cameras with depth information combined with regular RGB data, new use cases are possible such as augmented reality, hand/face recognition, object tracking, and more. The Crosswalk Project Extensions for <a href="crosswalk-realsense-webapi.html" title="Read the rest of “Introducing RealSense Web API”">Read more&hellip;</a></p>
+              <p>Intel® RealSense™ Technology redefines how we interact with our devices for a more natural, intuitive and immersive experience. By introducing 3D cameras with depth information combined with regular RGB data, new use cases are possible such as augmented reality, hand/face recognition, object tracking, and more. The Crosswalk Project Extensions for <a href="crosswalk-realsense-webapi.html" title="Read the rest of “Introducing Crosswalk Project Extensions for Intel® RealSense™ Technology”">Read more&hellip;</a></p>
             </div>
             
               <hr class="presentation-splitter" style="margin:25px 0px 25px 0px"/>
@@ -742,22 +791,27 @@ Intel promotes HTML5 because of the many advantages that HTML5 offers developers
 
     
 
-    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
     <div style="position:relative; top:-30px;">
        <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
     </div>
     <footer class="footer footer--documentation" >
       <div class="container" >
         <div class="row">
-          <div  class="footer-div">
-            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
           </div>
           <div class="footer-div">
              Latest blog post:</br>
               
               
-                <b><a href="/blog">Introducing RealSense Web API</a></b><br/>
-                &nbsp;(<span ><time class="js-vagueTime" datetime="Tue, 23 Feb 2016 00:00:00 GMT">2016-02-23T00:00</time></span>)
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
               
               <br/>
            </div>
@@ -765,21 +819,25 @@ Intel promotes HTML5 because of the many advantages that HTML5 offers developers
               <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
           </div>
           <div class="footer-div">
-             <a href="/documentation">Documentation</a> &nbsp;
-             <a href="/blog">Blog</a> &nbsp;
-             <a href="/documentation/downloads.html">Downloads</a> <br />
-             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
-             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/documentation/getting_started.html"> Documentation</a> &nbsp;
+             <a href="/blog"> Blog</a> &nbsp;
+             <a href="/documentation/downloads.html"> Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub Source</a> &nbsp;
              <a href="/sitemap.html">Sitemap</a> <br/>
           </div>
         </div>
         <div class="row">
             <small>
-              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All right reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy policy </a>  *Other names and brands may be claimed as the property of others.
             </small>
         </div>
       </div>
     </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=en]").css("display","block");
+</script>
 
     
     

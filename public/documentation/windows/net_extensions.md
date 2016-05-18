@@ -13,9 +13,9 @@ There are two main classes you should know about while writing a .NET extension:
 Each .NET extension is required to ship with a bridge which is provided by Crosswalk. Simply copy it and rename it according to your .NET extension DLL name with the `_bridge` suffix.  For example, if your extension is called `echo_extension.dll`, the bridge should be `echo_extension_bridge.dll`.
 
 ## <a class='doc-anchor' id='Writing-your-Net-Extension'></a>Writing your .NET Extension
-1. Download and install [Visual Studio 2013](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx). (2015 has not been tested at the moment).
+1. Download and install [Visual Studio 2013 or 2015](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx).
 
-2. Download and install the [Crosswalk .NET Extensions Visual Studio Template](https://visualstudiogallery.msdn.microsoft.com/51e648be-c91a-40fa-9d13-8f49ec134e86). You can alternatively search for it in Visual Studio Extensions and Updates dialog.
+2. Download and install the [Crosswalk .NET Extensions Visual Studio Template](https://visualstudiogallery.msdn.microsoft.com/0e042110-a345-413c-9014-5418ff1f2d00). You can alternatively search for it in Visual Studio Extensions and Updates dialog.
 
    This template will help you to quickly create an extension in Visual Studio.
 
@@ -36,13 +36,13 @@ Each .NET extension is required to ship with a bridge which is provided by Cross
 In the `XWalkExtension` class there are two key methods you should implement:
 
 *   `ExtensionName()`: This is the prefix of your extension in JavaScript and how you are expected to call the API provided by your extension. For example you can return “echo” and all your call in JavaScript will be prefixed with “echo.”
-*   `ExtensionAPI()`: This is the API you’re going to expose to JavaScript. The image below is an example of how this API is used with a simple “Echo” app.
+*   `ExtensionAPI()`: This is the API you’re going to expose to JavaScript. This API is read from the file XWalkExtensionApi.js. Considering the "echo" example, here is how the API file looks like:
 
    <a href="/assets/win7-extension-config.png"><img src="/assets/win7-extension-config.png" style="display: block; margin: 0 auto"/></a>
 
 ### Writing the Extension API
 
-*   Any properties (methods, objects, constants, etc.) you want to expose as the JavaScript API for your extension should be appended to the exports object inside the JavaScript API string. This has a similar role to the exports object in nodejs modules, defining the public face of the API. Any other variables not attached to exports are only scoped to this file and won't pollute the web application's global scope. In this simple `echo` example we have two methods exposed : `echo` and `syncEcho`. In the JavaScript side they will be called like this: `echo.echo(“test”)` and `echo.syncEcho(“test”)`
+*   Any properties (methods, objects, constants, etc.) you want to expose as the JavaScript API for your extension should be appended to the exports object inside the JavaScript API file. This has a similar role to the exports object in nodejs modules, defining the public face of the API. Any other variables not attached to exports are only scoped to this file and won't pollute the web application's global scope. In this simple `echo` example we have two methods exposed : `echo` and `syncEcho`. In the JavaScript side they will be called like this: `echo.echo(“test”)` and `echo.syncEcho(“test”)`
 *   `extension` object is set by the .NET extension framework and contains methods to communicate with the .NET side of your extension: `extension.PostMessage()` and `extension.internal.sendSyncMessage()`. The former is simple, it sends a message from JavaScript to .NET which will be responsible to handle it. `sendSyncMessage` is similar however it is a synchronous call (and thus blocking) which means that it will not return until the .NET side gives an answer.
 *   `extension.setMessageListener()` sets a function to invoke for each message returned by the .NET side of the extension. In this simple example the `echo()` function takes a callback from the caller to be called when the .NET echoed our message. In that case the listener is called when .NET replied and the callback will be invoked.
 
@@ -95,6 +95,7 @@ The ability to package your .MSI installer with your .NET extension is being imp
 ### Testing your .NET Extension using Crosswalk for Windows binary
 After downloading Crosswalk for Windows and unzipping it you can easily try your extension.
 
+If you did not use the Visual Studio template you need to do the next two steps. Starting with version 2.0 of the template the bridge will automatically be added for you.
 1.  Make sure you copy xwalk_extension_bridge.dll in the folder where you built your .NET extension (where the .DLL is located).
 2.  Rename `xwalk_extension_bridge.dll` so that it looks identical as your extension DLL name with the suffix `_bridge` as the only difference. Here is an example:
 
@@ -112,5 +113,5 @@ After downloading Crosswalk for Windows and unzipping it you can easily try your
                  http://localhost:8000
    ```
 
-Your extension should be loaded.
+Your extension should be loaded. Please note that you can put multiple extensions (and their respective bridges) in the same directory, Crosswalk will load all of them.
 

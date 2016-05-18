@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="top" lang="en-us">
+<html id="top">
   <head>
     <meta charset="utf-8">
     <title>The Crosswalk Project</title>
@@ -51,6 +51,7 @@
     <script src="/js/testimonials.js"></script>
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
@@ -61,7 +62,6 @@
       <div class="doc-header">
         
 
-  
 
   <div class="doc-logo-div">
      <a href="/" class="doc-logo-link">
@@ -76,17 +76,27 @@
       <li class="doc-nav-item">
         <a href="/blog" class="doc-nav-link">Blog</a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="/contribute" class="doc-nav-link">Contribute</a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
       </li>
       <li class="doc-nav-item hide-on-small">
         <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
       </li>
-      <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    English
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
       </li>
     </ul>
   </div>
@@ -97,208 +107,163 @@
       <div class="doc-main">
         <div class="row">
           
+          <div id="404_bar" class="tmp-bar">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
           
 <nav id="contents" class="article-toc nav-toggleContainer">
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
-    
+      
        <li class="article-item ">
          <a class="article-link" href="/documentation/about.html">About</a>
-
          
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-
          
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/android.html">Android</a>
-
          
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/ios.html">iOS</a>
-
          
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/windows.html">Windows</a>
-
          
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/linux.html">Linux</a>
-
          
-       </li>
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+         
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/tizen.html">Tizen</a>
-
          
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-
          
-
          <ul class="article-list">
             
            <li class="article-item ">
              <a class="article-link" href="/documentation/manifest/using_the_manifest.html">Using the manifest</a>
-
              
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/manifest/entry_points.html">Entry points</a>
-
              
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/manifest/content_security_policy.html">Content security policy</a>
-
              
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/manifest/display.html">Display</a>
-
              
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/manifest/icons.html">Icons</a>
-
              
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/manifest/launch_screen.html">Launch screen</a>
-
              
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/manifest/orientation.html">Orientation</a>
-
              
            </li>
            
            <li class="article-item  nav-item--active">
              <a class="article-link" href="/documentation/manifest/permissions.html">Permissions</a>
-
              
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/manifest/xwalk_hosts.html">xwalk hosts</a>
-
              
            </li>
            
            <li class="article-item ">
              <a class="article-link" href="/documentation/manifest/other_fields.html">Other fields</a>
-
              
            </li>
            
          </ul>
          
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/apis.html">APIs</a>
-
          
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-
-         
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-
          
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/embedding_crosswalk.html">Embedding Crosswalk</a>
-
-         
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
-
          
-       </li>
+       </li> 
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/webrtc.html">WebRTC</a>
-
+         <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
          
-       </li>
+       </li> 
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/webcl.html">WebCL</a>
-
+         <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
          
-       </li>
+       </li> 
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/screens.html">Screens</a>
-
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
          
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/samples.html">Samples</a>
-
          
-       </li>
+       </li> 
     
        <li class="article-item ">
          <a class="article-link" href="/documentation/community.html">Community</a>
-
          
-       </li>
+       </li> 
     
        <li class="article-item ">
-         <a class="article-link" href="/documentation/report_bugs.html">Report bugs</a>
-
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
          
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/test_suite.html">Test Suite</a>
-
-         
-       </li>
-    
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/quality_dashboard.html">Quality Dashboard</a>
-
-         
-       </li>
+       </li> 
     
   </ul>
 
 </nav>
-
-
 
 <article class="article article--hasToC">
   <h1>Permissions</h1>
@@ -442,6 +407,8 @@
   <footer class="article-next">
     
 
+
+
   
   
     
@@ -493,22 +460,27 @@
     </div>
     
 
-    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
     <div style="position:relative; top:-30px;">
        <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
     </div>
     <footer class="footer footer--documentation" >
       <div class="container" >
         <div class="row">
-          <div  class="footer-div">
-            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
           </div>
           <div class="footer-div">
              Latest blog post:</br>
               
               
-                <b><a href="/blog">Introducing RealSense Web API</a></b><br/>
-                &nbsp;(<span ><time class="js-vagueTime" datetime="Tue, 23 Feb 2016 00:00:00 GMT">2016-02-23T00:00</time></span>)
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
               
               <br/>
            </div>
@@ -516,21 +488,25 @@
               <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
           </div>
           <div class="footer-div">
-             <a href="/documentation">Documentation</a> &nbsp;
-             <a href="/blog">Blog</a> &nbsp;
-             <a href="/documentation/downloads.html">Downloads</a> <br />
-             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
-             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/documentation/getting_started.html"> Documentation</a> &nbsp;
+             <a href="/blog"> Blog</a> &nbsp;
+             <a href="/documentation/downloads.html"> Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub Source</a> &nbsp;
              <a href="/sitemap.html">Sitemap</a> <br/>
           </div>
         </div>
         <div class="row">
             <small>
-              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All right reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy policy </a>  *Other names and brands may be claimed as the property of others.
             </small>
         </div>
       </div>
     </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=en]").css("display","block");
+</script>
 
     
     

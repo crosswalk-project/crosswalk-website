@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="top" lang="en-us">
+<html id="top">
   <head>
     <meta charset="utf-8">
     <title>The Crosswalk Project</title>
@@ -51,13 +51,17 @@
     <script src="/js/testimonials.js"></script>
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
          do custom layouts. (home screen, blog, app-mgmt page)
          Else, provide doc header and nav. -->
     
-    
+    <script src="/js/app-utils.js"></script>
+<script src="/js/app-showcase.js"></script>
+
+
 <script>
   var reservedIds = ['main', 'front-end', 'predictability', 'games'];
   if(window.location.hash && reservedIds.indexOf(window.location.hash.replace('#', '')) === -1) {
@@ -70,7 +74,6 @@
     <div class="row">
       
 
-  
 <nav class="nav">
   <a href="/" class="nav-logo logo">
     <img src="/assets/identity/crosswalkproject-logo-horizontal-light.png" class="logo-image">
@@ -85,14 +88,24 @@
     <li class="nav-item">
       <a href="/contribute" class="nav-link">Contribute</a>
     </li>
-    <li class="nav-item">
-      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link">Wiki</a>
+    <li class="nav-item hide-on-small">
+      <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="nav-link" id="wiki-nav">Wiki</a>
+    </li>
+    <li class="nav-item hide-on-small">
+      <a href="/documentation/about/faq.html" class="nav-link" id="faq-nav">FAQ</a>
     </li>
     <li class="nav-item">
-      <a href="/documentation/about/faq.html" class="nav-link">FAQ</a>
-    </li>
-    <li class="nav-item">
-      <a href="/documentation" class="nav-link button button--tertiary" id="getting-started-nav">Get&nbsp;Started</a>
+      <span class="i18n-label" id="i18n-label">
+	<span id="i18n-inner">
+	<img src="/assets/i18n-globe.png" class="i18n-globe" />
+	English
+	<img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	</span>
+      </span>
+      <div id="i18n-menu" class="i18n-menu i18n-menu-dark">
+        <a onclick="switchLanguage('English')">English</a>
+        <a onclick="switchLanguage('Chinese')">中文版</a>
+      </div>
     </li>
   </ul>
 </nav>
@@ -109,28 +122,32 @@
     <div class="row" id="hero-button-group">
       <div class="button-group">
         <a class="button" id="main-get-started-button" href="/documentation/getting_started.html" >Get started</a>
-        <a class="button" id="main-downloads-button" href="/documentation/downloads.html">Download</a><br/>
-<!--    
-	<br />
+        <a class="button" id="main-downloads-button" href="/documentation/downloads.html">Download</a>
+	<br/>
+
+<!--
 	<a href="/documentation/community/senchacon2015.html">
 	 <div style="color:white; border:solid 1px gray; height:82px; width:480px">
 	   <img src="/assets/senchacon-horiz-blue.jpg" style="height:80px;float:left;padding:5px 10px 5px 5px;" ><br/>Join the Crosswalk Project <br>at SenchaCon 2015!
 	 </div>
 	</a>
-...
-        <a class="button-follower" id="main-follow-twitter-button" href="/documentation/community/phonegapday2015.html">
-          <img src="/assets/pgd-banner.jpg" width="425px"><br>
-          Join us at PhoneGap Day EU 2015!
-       </a>
 -->
-        <a href="/documentation/cordova/cordova_4.html">
-          <div style="color:white;">
-            &nbsp;Cordova 4.0 now supports Crosswalk pluggable webview!
-          </div>
-        </a>
         <a class="button-follower" id="main-follow-twitter-button" href="http://twitter.com/xwalk_project">
           <img src="/assets/Twitter_logo_white.png" width="20px" /> Follow the Crosswalk Project on Twitter
-       </a>
+        </a>
+	<br>
+        <div class="showcase-container">
+          Check out our <a href="/apps.html">application showcase.</a> New submissions welcome.
+	  <br><br>
+	  <div id="showcase-wrapper">
+	    <div id="showcase-cube">
+	      <div id="showcase-face0" class="showcase-face one"></div>
+	      <div id="showcase-face1" class="showcase-face two"></div>
+	      <div id="showcase-face2" class="showcase-face three"></div>
+	      <div id="showcase-face3" class="showcase-face four"></div> 
+	    </div>
+	  </div>
+        </div>
      </div>
     </div>
   </div>
@@ -145,7 +162,7 @@
                 <img class="media-image" src="/assets/icons/logo-cordova-white.png" alt="Apache Cordova logo" />
                 <p class="media-description">
                   <strong class="media-heading">Apache Cordova compatible</strong>
-                  Easily add the Crosswalk pluggable webview in your Cordova app
+		  Cordova now supports Crosswalk pluggable webview!
                 </p>
               </a>
             </li>
@@ -245,17 +262,16 @@
       </div>
       <div class="quoteBlock">
         <div class="quoteText">
-"It’s finally possible to build hybrid apps that use a modern web view and run on almost every Android and iOS device released within the past three years."
+"Crosswalk is essential for building Cordova/Phonegap apps with Ember/SPAs. It solves challenges rising from device fragmentation and offers a much needed performance boost for many devices."
         </div>
         <div class="speakerBlock">
-          <a href="https://www.youtube.com/watch?v=nU4lvgTrjFI" style="text-decoration:none"><img class="speakerImg" src="/assets/testimonials/max-woghiren.jpg" /></a> 
+          <img class="speakerImg" src="/assets/testimonials/alex-blom.jpg" />
           <div class="speakerTitle">
-            <b>Max Woghiren</b><br>
-            Software Engineer at Google
+            <b>Alex Blom</b><br>
+            Partner at <a href="http://isleofcode.com">Isle of Code</a>
           </div>
         </div>
       </div>
-
     </div> 
 
     <div class="quoteRow">
@@ -273,13 +289,13 @@
       </div>
       <div class="quoteBlock">
         <div class="quoteText">
-"Providing a modern Chrome webview is the key to delivering performant hybrid apps for Android, and the Crosswalk Project is the best way to do that."
+"It’s finally possible to build hybrid apps that use a modern web view and run on almost every Android and iOS device released within the past three years."
         </div>
         <div class="speakerBlock">
-          <img class="speakerImg" src="/assets/testimonials/steve-newcomb.jpg" /> 
+          <a href="https://www.youtube.com/watch?v=nU4lvgTrjFI" style="text-decoration:none"><img class="speakerImg" src="/assets/testimonials/max-woghiren.jpg" /></a> 
           <div class="speakerTitle">
-            <b>Steve Newcomb</b><br>
-            CEO and Co-founder at <a href="http://famo.us">Famo.us</a>
+            <b>Max Woghiren</b><br>
+            Software Engineer at Google
           </div>
         </div>
       </div>
@@ -305,7 +321,7 @@
           <img class="speakerImg" src="/assets/testimonials/ian-maffet-80.jpg" /> 
           <div class="speakerTitle">
             <b>Ian Maffet</b><br>
-            Developer Advocate <a href="software.intel.com/en-us/intel-xdk">Intel XDK</a>, Intel.
+            Developer Advocate <a href="http://software.intel.com/en-us/intel-xdk">Intel XDK</a>, Intel.
           </div>
         </div>
       </div>
@@ -737,22 +753,27 @@
 
     
 
-    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
     <div style="position:relative; top:-30px;">
        <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
     </div>
     <footer class="footer footer--documentation" >
       <div class="container" >
         <div class="row">
-          <div  class="footer-div">
-            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
           </div>
           <div class="footer-div">
              Latest blog post:</br>
               
               
-                <b><a href="/blog">Introducing RealSense Web API</a></b><br/>
-                &nbsp;(<span ><time class="js-vagueTime" datetime="Tue, 23 Feb 2016 00:00:00 GMT">2016-02-23T00:00</time></span>)
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
               
               <br/>
            </div>
@@ -760,21 +781,25 @@
               <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
           </div>
           <div class="footer-div">
-             <a href="/documentation">Documentation</a> &nbsp;
-             <a href="/blog">Blog</a> &nbsp;
-             <a href="/documentation/downloads.html">Downloads</a> <br />
-             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
-             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/documentation/getting_started.html"> Documentation</a> &nbsp;
+             <a href="/blog"> Blog</a> &nbsp;
+             <a href="/documentation/downloads.html"> Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub Source</a> &nbsp;
              <a href="/sitemap.html">Sitemap</a> <br/>
           </div>
         </div>
         <div class="row">
             <small>
-              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All right reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy policy </a>  *Other names and brands may be claimed as the property of others.
             </small>
         </div>
       </div>
     </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=en]").css("display","block");
+</script>
 
     
     

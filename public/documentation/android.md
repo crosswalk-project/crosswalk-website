@@ -2,7 +2,7 @@
 
 This section describes how to create web and hybrid applications using the Crosswalk Project for the [Android operating system](http://developer.android.com/index.html).
 
-<strong>Note: For Cordova users</strong>, follow the tutorial in [Crosswalk WebView in Cordova 4.0](/documentation/cordova/cordova_4.html) to easily use the advanced Crosswalk webview with your Cordova 4.0 app.
+<strong>Note: For Cordova users</strong>, follow the tutorial in [Crosswalk WebView in Cordova 4.0](/documentation/cordova.html) to easily use the advanced Crosswalk webview with your Cordova 4.0 app.
 
 **This tutorial explains how to:**
 

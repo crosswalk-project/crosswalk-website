@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="top" lang="en-us">
+<html id="top">
   <head>
     <meta charset="utf-8">
     <title>The Crosswalk Project</title>
@@ -31,7 +31,7 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Introducing RealSense Web API" />
+    <meta property="og:title" content="Introducing Crosswalk Project Extensions for Intel® RealSense™ Technology" />
     <meta property="og:url" content="http://crosswalk-project.org/blog/crosswalk-realsense-webapi" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
@@ -39,7 +39,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="http://crosswalk-project.org/blog/crosswalk-realsense-webapi" />
-    <meta name="twitter:title" content="Introducing RealSense Web API" />
+    <meta name="twitter:title" content="Introducing Crosswalk Project Extensions for Intel® RealSense™ Technology" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -51,6 +51,7 @@
     <script src="/js/testimonials.js"></script>
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
@@ -61,7 +62,6 @@
       <div class="doc-header">
         
 
-  
 
   <div class="doc-logo-div">
      <a href="/" class="doc-logo-link">
@@ -76,17 +76,27 @@
       <li class="doc-nav-item">
         <a href="/blog" class="doc-nav-link">Blog</a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="/contribute" class="doc-nav-link">Contribute</a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
       </li>
       <li class="doc-nav-item hide-on-small">
         <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
       </li>
-      <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    English
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
       </li>
     </ul>
   </div>
@@ -97,9 +107,13 @@
       <div class="doc-main">
         <div class="row">
           
+          <div id="404_bar" class="tmp-bar">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
           <article class="article">
   <header class="article-header">
-    <h1 class="article-title">Introducing RealSense Web API</h1>
+    <h1 class="article-title">Introducing Crosswalk Project Extensions for Intel® RealSense™ Technology</h1>
     <span class="article-meta">
       <a href="crosswalk-realsense-webapi.html"><time class="js-vagueTime" datetime="Tue, 23 Feb 2016 00:00:00 GMT">Tue, 23 Feb 2016 00:00:00 GMT</time></a>
        
@@ -108,7 +122,7 @@
     </span>
   </header>
   
-  <p>Intel® <a href="https://software.intel.com/en-us/realsense/home">RealSense</a>™ technology redefines how we interact with our devices for a more natural, intuitive and immersive experience. By introducing 3D cameras with depth information combined with regular RGB data, new use cases are possible such as augmented reality, hand/face recognition, object tracking, and more. The <strong>Crosswalk Project Extensions for RealSense</strong> now brings these amazing capabilities to web developers.</p>
+  <p><a href="http://www.intel.com/realsense">Intel® RealSense™ Technology</a> redefines how we interact with our devices for a more natural, intuitive and immersive experience. By introducing 3D cameras with depth information combined with regular RGB data, new use cases are possible such as augmented reality, hand/face recognition, object tracking, and more. The <strong>Crosswalk Project Extensions for Intel® RealSense™ Technology</strong> now brings these amazing capabilities to web developers.</p>
 <p>Our first public release (part of <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/tag/v18.6.0">Crosswalk v18.6.0</a>) includes the following:</p>
 <ul>
 <li>Depth Enhanced Photography (<a href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">spec</a>)</li>
@@ -117,17 +131,17 @@
 </ul>
 <p>Developers can create 3D-aware web applications that can be run on any Windows tablet with a built-in <a href="https://software.intel.com/en-us/RealSense/R200Camera">R200 camera</a>, such as the <a href="http://store.hp.com/us/en/ContentView?storeId=10151&amp;langId=-1&amp;catalogId=10051&amp;eSpotName=new-detachable">HP Spectre x2</a>, or a Windows PC with peripheral R200 camera. </p>
 <h2>Getting Started</h2>
-<p>Follow the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Usage-of-RealSense-Extensions">quick start page</a> to build your Realsense-powered web application. You can also download the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v18.6.0/rs_sample_v18.6.0.0_signed.zip">sample</a> for a quick glance.</p>
+<p>Follow the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Usage-of-RealSense-Extensions">quick start page</a> to build your Intel® RealSense™ powered web application. You can also download the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v18.6.0/rs_sample_v18.6.0.0_signed.zip">sample</a> for a quick glance.</p>
 <h2>Get involved</h2>
 <p>We invite you to contribute. This project is under the Crosswalk Project umbrella. The APIs are developed as external Crosswalk extensions, and the source code is hosted at <a href="http://github.com/crosswalk-project/realsense-extensions-crosswalk">http://github.com/crosswalk-project/realsense-extensions-crosswalk</a>. Please share any ideas you have for discussion on our mailing list: <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-dev">crosswalk-dev</a> and <a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-help">crosswalk-help</a>. Follow the <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/Build-Instructions-for-Windows">instructions</a> to build the project.  Contribute your changes following regular github pull requests.</p>
-<p>The Crosswalk Project bug tracking system is: <a href="https://crosswalk-project.org/jira/">https://crosswalk-project.org/jira/</a>. For the RealSense API bugs, go to the <a href="https://crosswalk-project.org/jira/browse/XWALK/component/11000/?selectedTab=com.atlassian.jira.jira-projects-plugin:component-summary-panel"><em>Extensions for RealSense</em></a> component.</p>
+<p>The Crosswalk Project bug tracking system is: <a href="https://crosswalk-project.org/jira/">https://crosswalk-project.org/jira/</a>. For the API bugs, go to the <a href="https://crosswalk-project.org/jira/browse/XWALK/component/11000/?selectedTab=com.atlassian.jira.jira-projects-plugin:component-summary-panel"><em>Extensions for RealSense</em></a> component.</p>
 <h2>FAQ</h2>
 <h4>Is Windows the only platform supported? How about other platforms like Android?<br/></h4>
 <p>Currently Windows is the only platform shipping with R200 cameras. Support for Android will be considered once hardware is available and shipping with this capability.</p>
-<h4>RealSense SDK has a lot of native APIs.  Why are the web APIs limited to DEP, SP and Face?<br/></h4>
+<h4>Intel® RealSense™ SDK has a lot of native APIs.  Why are the web APIs limited to DEP, SP and Face?<br/></h4>
 <p>The team is working hard to add support for more capabilities. Please check the API dashboard <a href="https://github.com/crosswalk-project/realsense-extensions-crosswalk/wiki/API-Dashboard">page</a>.</p>
 <h2>Feature Examples</h2>
-<p>The screenshots below show a few of the features that are available with RealSense and the Web API.</p>
+<p>The screenshots below show a few of the features that are available with Crosswalk Project Extensions for Intel® RealSense™ Technology.</p>
 <figure>
 <a href="/assets/realsense/dep.png"><img src="/assets/realsense/dep.png"></a>
 <figcaption>Depth Enhanced Photography (DEP): Captures photo depth and provides various amazing effects on the photo, such as refocus, segmentation, and motion. </figcaption>
@@ -138,9 +152,6 @@
 
 <p><a href="/assets/realsense/face.png"><img src="/assets/realsense/face.png"></a></p>
 <figcaption>Face Tracking and Recognition (Face): Tracks faces and does face recognition in real-time.</figcaption>
-
-
-
 
   <a href="http://twitter.com/xwalk_project" class="article-promo well">
   <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
@@ -157,22 +168,27 @@
     </div>
     
 
-    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
     <div style="position:relative; top:-30px;">
        <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
     </div>
     <footer class="footer footer--documentation" >
       <div class="container" >
         <div class="row">
-          <div  class="footer-div">
-            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
           </div>
           <div class="footer-div">
              Latest blog post:</br>
               
               
-                <b><a href="/blog">Introducing RealSense Web API</a></b><br/>
-                &nbsp;(<span ><time class="js-vagueTime" datetime="Tue, 23 Feb 2016 00:00:00 GMT">2016-02-23T00:00</time></span>)
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
               
               <br/>
            </div>
@@ -180,21 +196,25 @@
               <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
           </div>
           <div class="footer-div">
-             <a href="/documentation">Documentation</a> &nbsp;
-             <a href="/blog">Blog</a> &nbsp;
-             <a href="/documentation/downloads.html">Downloads</a> <br />
-             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
-             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/documentation/getting_started.html"> Documentation</a> &nbsp;
+             <a href="/blog"> Blog</a> &nbsp;
+             <a href="/documentation/downloads.html"> Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub Source</a> &nbsp;
              <a href="/sitemap.html">Sitemap</a> <br/>
           </div>
         </div>
         <div class="row">
             <small>
-              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All right reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy policy </a>  *Other names and brands may be claimed as the property of others.
             </small>
         </div>
       </div>
     </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=en]").css("display","block");
+</script>
 
     
     

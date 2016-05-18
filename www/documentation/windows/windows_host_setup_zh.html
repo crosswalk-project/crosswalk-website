@@ -1,0 +1,49 @@
+<h1>Windows环境搭建</h1>
+<p>以下教程已经在Windows 8 Enterprise版64位环境下进行了测试。它们应该同样适用于常规的Windows Home版本以及最新的Windows 10。</p>
+<p>下列的这些步骤可以帮助你开发运行在Windows上的Crosswalk应用。</p>
+<ol>
+<li><a href="#Install-Nodejs">安装Node.js</a></li>
+<li><a href="#Install-WiX-Toolset">安装WiX工具集</a></li>
+<li><a href="#Install-crosswalk-app-tools">安装crosswalk-app-tools</a></li>
+<li><a href="#Verify-your-environment">验证你的环境</a></li>
+</ol>
+<h2><a class="doc-anchor" id="Install-Nodejs"></a>安装Node.js</h2>
+<ol>
+<li>从<a href="https://nodejs.org/en/上下载node.js。">https://nodejs.org/en/上下载node.js。</a></li>
+<li>当开始安装时，确定在路径中添加Node.js，如下所示：
+<br><br>
+<img src="/assets/win1-nodejs-setup.png" style="display: block; margin: 0 auto"/></li>
+</ol>
+<h2><a class="doc-anchor" id="Install-WiX-Toolset"></a>安装WiX工具集</h2>
+<ol>
+<li>下载WiX工具集：<a href="http://wixtoolset.org/。">http://wixtoolset.org/。</a></li>
+<li>安装WiX工具集。</li>
+<li>在你的路径中添加Wix工具集。编辑你账号中的环境变量。在Windows的开始菜单中，检索&quot;Environment variables&quot;。或者，点击控制面板中的系统图标；然后进入Advanced系统设置并且编辑你的用户环境变量。你可以看到下面的对话框：
+<br><br>
+<img src="/assets/win2-envvars.png" style="display: block; margin: 0 auto"/></li>
+</ol>
+<p>如下编辑<code>Path</code>环境变量：</p>
+   <ol type='a'>
+    <li>选取<em>Path</em>环境变量（在选取框的顶部，<em>User variables...</em>）。如果它不存在，添加它。</li>
+    <li>点击<em>Edit</em>。</li>
+    <li>在<em>Variable value</em>域，为每个已经安装的工具添加指向其<em>可执行文件</em>的路径，以&quot;;&quot;分割；例如，我们添加下文到Path变量的最后：<br>
+       <code>;C:\Program Files (x86)\WiX Toolset v3.10\bin</code>
+    </li>
+    <li>点击<em>OK</em>.</li>
+   </ol>
+
+<p>同样，这个任务也可以在命令行下完成（注意引号&quot;&quot;）：</p>
+<pre><code>&gt; setx path &quot;%path%;C:\Program Files (x86)\WiX Toolset v3.10\bin&quot;</code></pre>
+<h2><a class="doc-anchor" id="Install-crosswalk-app-tools"></a>安装crosswalk-app-tools</h2>
+<p>Crosswalk-app-tools是一个简单的基于NPM，为你的Crosswalk应用创建可安装包的工具。</p>
+<p>在一个命令行shell中输入如下命令（例如使用cmd.exe）：</p>
+<pre><code>&gt; npm install -g crosswalk-app-tools</code></pre>
+<p>注意：如果你在代理后开发，请参见<a href="/documentation/npm-proxy-setup_zh.html">这个页面</a>。</p>
+<h2><a class="doc-anchor" id="Verify-your-environment"></a>验证你的环境</h2>
+<p>通过运行下列命令确认你是否已经正确地安装了工具：</p>
+<pre><code>&gt; crosswalk-app check windows
+  + Checking host setup for target windows
+  + Checking for candle... ...ram Files (x86)\WiX Toolset v3.10\bin\candle.exe
+  + Checking for light... ...ogram Files (x86)\WiX Toolset v3.10\bin\light.exe</code></pre>
+<p>恭喜，你的系统已经可以用于Windows环境下的Crosswalk开发了。</p>
+<p>现在相关环境已经创建，你可以编译一个Crosswalk应用了。</p>

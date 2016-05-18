@@ -1,3 +1,6 @@
+<script src="/js/app-utils.js"></script>
+<script src="/js/app-showcase.js"></script>
+
 <% include _includes/redirect-hash %>
 <header class="hero hero--bg1 knockout">
   <div class="container">
@@ -13,28 +16,32 @@
     <div class="row" id="hero-button-group">
       <div class="button-group">
         <a class="button" id="main-get-started-button" href="/documentation/getting_started.html" >Get started</a>
-        <a class="button" id="main-downloads-button" href="/documentation/downloads.html">Download</a><br/>
-<!--    
-	<br />
+        <a class="button" id="main-downloads-button" href="/documentation/downloads.html">Download</a>
+	<br/>
+
+<!--
 	<a href="/documentation/community/senchacon2015.html">
 	 <div style="color:white; border:solid 1px gray; height:82px; width:480px">
 	   <img src="/assets/senchacon-horiz-blue.jpg" style="height:80px;float:left;padding:5px 10px 5px 5px;" ><br/>Join the Crosswalk Project <br>at SenchaCon 2015!
 	 </div>
 	</a>
-...
-        <a class="button-follower" id="main-follow-twitter-button" href="/documentation/community/phonegapday2015.html">
-          <img src="/assets/pgd-banner.jpg" width="425px"><br>
-          Join us at PhoneGap Day EU 2015!
-       </a>
 -->
-        <a href="/documentation/cordova/cordova_4.html">
-          <div style="color:white;">
-            &nbsp;Cordova 4.0 now supports Crosswalk pluggable webview!
-          </div>
-        </a>
         <a class="button-follower" id="main-follow-twitter-button" href="http://twitter.com/xwalk_project">
           <img src="/assets/Twitter_logo_white.png" width="20px" /> Follow the Crosswalk Project on Twitter
-       </a>
+        </a>
+	<br>
+        <div class="showcase-container">
+          Check out our <a href="/apps.html">application showcase.</a> New submissions welcome.
+	  <br><br>
+	  <div id="showcase-wrapper">
+	    <div id="showcase-cube">
+	      <div id="showcase-face0" class="showcase-face one"></div>
+	      <div id="showcase-face1" class="showcase-face two"></div>
+	      <div id="showcase-face2" class="showcase-face three"></div>
+	      <div id="showcase-face3" class="showcase-face four"></div> 
+	    </div>
+	  </div>
+        </div>
      </div>
     </div>
   </div>
@@ -49,7 +56,7 @@
                 <img class="media-image" src="/assets/icons/logo-cordova-white.png" alt="Apache Cordova logo" />
                 <p class="media-description">
                   <strong class="media-heading">Apache Cordova compatible</strong>
-                  Easily add the Crosswalk pluggable webview in your Cordova app
+		  Cordova now supports Crosswalk pluggable webview!
                 </p>
               </a>
             </li>
@@ -149,17 +156,16 @@
       </div>
       <div class="quoteBlock">
         <div class="quoteText">
-"It’s finally possible to build hybrid apps that use a modern web view and run on almost every Android and iOS device released within the past three years."
+"Crosswalk is essential for building Cordova/Phonegap apps with Ember/SPAs. It solves challenges rising from device fragmentation and offers a much needed performance boost for many devices."
         </div>
         <div class="speakerBlock">
-          <a href="https://www.youtube.com/watch?v=nU4lvgTrjFI" style="text-decoration:none"><img class="speakerImg" src="/assets/testimonials/max-woghiren.jpg" /></a> 
+          <img class="speakerImg" src="/assets/testimonials/alex-blom.jpg" />
           <div class="speakerTitle">
-            <b>Max Woghiren</b><br>
-            Software Engineer at Google
+            <b>Alex Blom</b><br>
+            Partner at <a href="http://isleofcode.com">Isle of Code</a>
           </div>
         </div>
       </div>
-
     </div> 
 
     <div class="quoteRow">
@@ -177,13 +183,13 @@
       </div>
       <div class="quoteBlock">
         <div class="quoteText">
-"Providing a modern Chrome webview is the key to delivering performant hybrid apps for Android, and the Crosswalk Project is the best way to do that."
+"It’s finally possible to build hybrid apps that use a modern web view and run on almost every Android and iOS device released within the past three years."
         </div>
         <div class="speakerBlock">
-          <img class="speakerImg" src="/assets/testimonials/steve-newcomb.jpg" /> 
+          <a href="https://www.youtube.com/watch?v=nU4lvgTrjFI" style="text-decoration:none"><img class="speakerImg" src="/assets/testimonials/max-woghiren.jpg" /></a> 
           <div class="speakerTitle">
-            <b>Steve Newcomb</b><br>
-            CEO and Co-founder at <a href="http://famo.us">Famo.us</a>
+            <b>Max Woghiren</b><br>
+            Software Engineer at Google
           </div>
         </div>
       </div>
@@ -209,7 +215,7 @@
           <img class="speakerImg" src="/assets/testimonials/ian-maffet-80.jpg" /> 
           <div class="speakerTitle">
             <b>Ian Maffet</b><br>
-            Developer Advocate <a href="software.intel.com/en-us/intel-xdk">Intel XDK</a>, Intel.
+            Developer Advocate <a href="http://software.intel.com/en-us/intel-xdk">Intel XDK</a>, Intel.
           </div>
         </div>
       </div>

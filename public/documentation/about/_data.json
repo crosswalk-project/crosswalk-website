@@ -2,7 +2,13 @@
   "faq": {
     "title": "FAQ"
   },
+  "faq_zh": {
+    "title": "常见问题"
+  },
   "demos": {
     "title": "Demos"
+  },
+  "demos_zh": {
+    "title": "演示"
   }
 }

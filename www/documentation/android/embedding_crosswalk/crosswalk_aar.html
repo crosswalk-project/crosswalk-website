@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html id="top">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Crosswalk AAR" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/android/embedding_crosswalk/crosswalk_aar" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/android/embedding_crosswalk/crosswalk_aar" />
+    <meta name="twitter:title" content="Crosswalk AAR" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    English
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <div id="404_bar" class="tmp-bar">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+      
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/about.html">About</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/android.html">Android</a>
+         
+         <ul class="article-list">
+            
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
+             
+           </li>
+           
+           <li class="article-item ">
+             <a class="article-link" href="/documentation/android/embedding_crosswalk.html">Embedding Crosswalk</a>
+             
+             <ul class="article-list">
+               
+               <li class="article-item ">
+                 <a class="article-link" href="/documentation/android/embedding_crosswalk/extensions.html">Extensions</a>
+               </li>
+               
+               <li class="article-item  nav-item--active">
+                 <a class="article-link" href="/documentation/android/embedding_crosswalk/crosswalk_aar.html">Crosswalk AAR</a>
+               </li>
+               
+             </ul>
+             
+           </li>
+           
+         </ul>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/ios.html">iOS</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/windows.html">Windows</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/linux.html">Linux</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/apis.html">APIs</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/samples.html">Samples</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/community.html">Community</a>
+         
+       </li> 
+    
+       <li class="article-item ">
+         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
+         
+       </li> 
+    
+  </ul>
+
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Developing with Crosswalk AAR</h1>
+<p>The Crosswalk AAR bundle is the binary distribution of the <code>xwalk_core_library</code> and includes both x86 and armv7 architectures. A developer no longer needs to download the crosswalk-webview bundle manually but can specify a version code using either the Gradle or Maven projects.</p>
+<h2>Set up host</h2>
+<h3>Install JDK</h3>
+<p>Gradle requires JDK version 6 or higher. The JAVA_HOME environment variable must be set to the correct JDK installation directory.</p>
+<pre><code>$ export JAVA_HOME=&lt;path to JDK&gt;</code></pre>
+<h3>Install the Android SDK</h3>
+<ol>
+<li><p>Download the Android SDK from <a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a>.</p>
+</li>
+<li><p>Extract the SDK from the archive file you downloaded.</p>
+</li>
+<li><p>Add the Android SDK directories to your PATH:</p>
+<pre><code>$ export PATH=&lt;path to Android SDK&gt;:$PATH
+$ export PATH=&lt;path to Android SDK&gt;/tools:$PATH
+$ export PATH=&lt;path to Android SDK&gt;/platform-tools:$PATH</code></pre>
+</li>
+<li><p>In the SDK Manager window, select the following items from the list:</p>
+<pre><code>[ ] Tools
+  [x] Android SDK Platform-tools 19.0.1
+  [x] Android SDK Build tools 18.0.1
+[ ] Android 4.3 (API 18)
+  [x] SDK Platform</code></pre>
+<p>Note: if you are using devices with versions of Android later than 4.3, you should also install the <code>platform tools</code>, <code>build tools</code> and <code>SDK platform</code> for those versions.</p>
+</li>
+</ol>
+<h3>Develop With the Gradle Project</h3>
+<h4>Install Gradle</h4>
+<ol>
+<li><p>Download a recent version of the <code>gradle</code> binary (~40MB): <a href="http://www.gradle.org/downloads"><a href="http://www.gradle.org/downloads/">http://www.gradle.org/downloads/</a></a></p>
+</li>
+<li><p>Unzip it:</p>
+<pre><code>$ unzip gradle-&lt;version&gt;-bin.zip</code></pre>
+</li>
+<li><p>For convenience, add the <code>gradle</code> binary to your PATH environment variable:</p>
+<pre><code>$ export PATH=$PATH:&lt;path to gradle&gt;/bin</code></pre>
+</li>
+</ol>
+<h3>Develop With Maven Project</h3>
+<h4>Install Maven</h4>
+<ol>
+<li><p>Download Maven from <a href="http://maven.apache.org/download.cgi"><a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></a>. Version 3.2.2 is known to work.</p>
+</li>
+<li><p>Unzip it:</p>
+<pre><code>$ tar -zxvf apache-maven-3.2.2-bin.tar.gz</code></pre>
+</li>
+<li><p>Set the Maven enviroment variables to point to the install directory:</p>
+<pre><code>$ M2_HOME=/path/to/apache-maven-3.2.2
+$ export MAVEN_OPTS=&quot;-Xms256m -Xmx512m&quot;
+$ export PATH=$M2_HOME/bin:$PATH</code></pre>
+</li>
+</ol>
+<h4>Install Maven Android SDK Deployer</h4>
+<ol>
+<li><p>Checkout Maven Android SDK deployer from <a href="https://github.com/mosabua/maven-android-sdk-deployer">git</a> </p>
+<pre><code>$ git clone git@github.com:mosabua/maven-android-sdk-deployer.git</code></pre>
+</li>
+<li><p>Use the Maven Android SDK deployer to install the Maven components for Android 4.4*:</p>
+<pre><code>$ cd maven-android-sdk-deployer
+$ mvn install -P 4.4</code></pre>
+</li>
+</ol>
+<h4>Install Maven Android Plugin</h4>
+<ol>
+<li><p>Checkout Maven Android Plugin from <a href="https://github.com/jayway/maven-android-plugin">git</a></p>
+<pre><code>$ git clone git@github.com:jayway/maven-android-plugin.git</code></pre>
+</li>
+<li><p>Install Maven Android Plugin into your local Maven repository</p>
+<pre><code>$ cd maven_android_plugin
+$ mvn clean install</code></pre>
+</li>
+</ol>
+<h2>Crosswalk AAR Version</h2>
+<p>The AAR remote Maven repository is <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/">https://download.01.org/crosswalk/releases/crosswalk/android/maven2/</a>. Versions are available for <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library/">stable</a> and <a href="https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/xwalk_core_library_beta/">beta</a>. If you need the canary version you can download it:</p>
+<pre><code>$ wget https://download.01.org/crosswalk/releases/crosswalk/android/canary/9.38.207.0/crosswalk-9.38.207.0.aar</code></pre>
+<p>Then install it into the local Maven repository:</p>
+<pre><code>$ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library_canary \
+      -Dversion=9.38.207.0 -Dpackaging=aar  -Dfile=crosswalk-9.38.207.0.aar \
+      -DgeneratePom=true</code></pre>
+<h2>Create and Build your Android project with Crosswalk AAR</h2>
+<ol>
+<li><p>Create Android Project with the Crosswalk embedding APIs.</p>
+<p>Refer to the section in the Embedding Crosswalk article called <a href="/documentation/android/embedding_crosswalk.html#Add-code-to-integrate-the-webview">Add code to integrate the webview</a>.</p>
+</li>
+<li><p>The reference to Maven repo in build.gradle will look like:</p>
+<pre><code>Repositories {
+    Maven {
+        url &#39;https://download.01.org/crosswalk/releases/crosswalk/android/maven2&#39;
+    }
+}</code></pre>
+<p>Use <code>mavenLocal()</code> instead of the remote repo url to refer to the local aar:</p>
+<pre><code>Repositories {
+    mavenLocal()
+}</code></pre>
+</li>
+<li><p>The dependency (a reference) to the AAR library will look like (9.38.208.8 is a crosswalk version):</p>
+<pre><code> Dependencies {
+     Compile &#39;org.xwalk:xwalk_core_library_beta:9.38.208.8&#39;
+ }</code></pre>
+<p>The latest AAR need set compileSdkVersion to 21 in build.gradle file.</p>
+<p>Gradle places the AAR library in its project directory:</p>
+<p> ~/.gradle/caches/modules-2/files-2.1/</p>
+</li>
+<li><p>Support different CPU architectures with each APK (such as for ARM, x86).</p>
+<p>A product flavor defines a customized version of the application build by the project. We can have different flavors which generate apk for each  architecture.</p>
+<pre><code>android {
+  ...
+  productFlavors {
+    armv7 {
+      ndk {
+        abiFilters &quot;armeabi-v7a&quot;, &quot;&quot;
+      }
+    }
+    x86 {
+      ndk {
+        abiFilters &quot;x86&quot;, &quot;&quot;
+      }
+    }
+  }
+}</code></pre>
+<p>Get the version code from the manifest.  Add an extra digit to the end of the version code which implicity specifies the architecture. The x86 final digit is 4, arm is 2.</p>
+<pre><code>versionCode manifest.versionCode + 4</code></pre>
+</li>
+<li><p>Build your project with Gradle, the following commands will build the corresponding arch apk in build/apk directory.</p>
+<pre><code>$ gradle assemblex86
+$ gradle assemblearmv7</code></pre>
+<p>Use <code>$ gradle build</code> to build both arm and x86 APKs at once.</p>
+</li>
+</ol>
+<h2>Build with Maven</h2>
+<p>The Maven android plugin has a known issue that it can&#39;t build multiple APKs for different architectures automatically. We need to specify x86/arm aar in classifier. You can try to test from <a href="/documentation/samples/AAR-Sample.tar.gz">the sample</a></p>
+<h3>Create Maven Project</h3>
+<ol>
+<li><p>Create Android Project with the Crosswalk webview APIs.</p>
+<p>Refer to the section in the Embedding Crosswalk article called <a href="/documentation/android/embedding_crosswalk.html#Add-code-to-integrate-the-webview">Add code to integrate the webview</a>.</p>
+</li>
+<li><p>The reference to the remote repo in pom.xml will look like:</p>
+<pre><code>&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;01-org&lt;/id&gt;
+    &lt;name&gt;o1 org repo&lt;/name&gt;
+    &lt;url&gt;https://download.01.org/crosswalk/releases/crosswalk/android/maven2&lt;/url&gt;
+    &lt;layout&gt;default&lt;/layout&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;</code></pre>
+</li>
+<li><p>The dependency (a reference) to the x86 AAR library in pom.xml will look like:</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.xwalk &lt;/groupId&gt;
+  &lt;artifactId&gt; xwalk_core_library_beta&lt;/artifactId&gt;
+  &lt;version&gt;9.38.208.8&lt;/version&gt;
+  &lt;classifier&gt;x86&lt;/classifier&gt;
+  &lt;typr&gt;aar&lt;/type&gt;
+&lt;/dependency&gt;</code></pre>
+<p>If you want to use arm AAR in your Maven project, you can set classifier to arm:</p>
+<pre><code>&lt;classifier&gt;arm&lt;/classifier&gt;</code></pre>
+<p>Maven will download the AARs automatically into project repository:</p>
+<pre><code>~/.m2/repository/</code></pre>
+</li>
+<li><p>Support multiple APKs</p>
+<ul>
+<li><p>Build different APKs using &#39;Build profile&#39;</p>
+<p>A Build profile is a set of configuration values which can be used to set or override default values of Maven build.</p>
+<pre><code> &lt;profile&gt;
+   &lt;id&gt;x86&lt;/id&gt;
+ &lt;/profile&gt;</code></pre>
+<p>Execute the following mvn command. Pass the profile name as argument using -P option.</p>
+<pre><code> $ mvn install -Px86</code></pre>
+</li>
+<li><p>Update manifest versioncode and versionname. Refer to <a href="http://stackoverflow.com/questions/10803088/how-do-i-change-my-androidmanifest-as-its-being-packaged-by-maven">stackoverflow</a></p>
+<p>android-maven-plugin support resource filtering to update manifest.</p>
+<p>Modify AndroidManifest.xml:</p>
+<pre><code>&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+  package=&quot;com.example.xwalkEmbedd&quot;
+  android:versionCode=&quot;${app.version.code}&quot;
+  android:versionName=&quot;${app.version.name}&quot;  &gt;</code></pre>
+<p>Set versioncode and versionname.</p>
+<p>arm profile:</p>
+<pre><code>&lt;app.version.code&gt;1.0.0.2&lt;/app.version.code&gt;
+&lt;app.version.name&gt;1.0.0-SNAPSHOT&lt;/app.version.name&gt;</code></pre>
+<p>x86 profile:</p>
+<pre><code>&lt;app.version.code&gt;1.0.0.4&lt;/app.version.code&gt;
+&lt;app.version.name&gt;1.0.0-SNAPSHOT&lt;/app.version.name&gt;</code></pre>
+<p>Filter manifest and put filtered file in target/filtered-manifest:</p>
+<pre><code>&lt;resource&gt;
+  &lt;directory&gt;${project.basedir}&lt;/directory&gt;
+  &lt;filtering&gt;true&lt;/filtering&gt;
+  &lt;targetPath&gt;${project.build.directory}/filtered-manifest&lt;/targetPath&gt;
+  &lt;includes&gt;
+    &lt;include&gt;src/main/AndroidManifest.xml&lt;/include&gt;
+  &lt;/includes&gt;
+&lt;/resource&gt;
+...
+&lt;plugins&gt;
+  &lt;plugin&gt;
+    &lt;groupId&gt;com.jayway.maven.plugins.android.generation2&lt;/groupId&gt;
+    &lt;artifactId&gt;android-maven-plugin&lt;/artifactId&gt;
+    &lt;extensions&gt;true&lt;/extensions&gt;
+    &lt;configuration&gt;
+      &lt;undeployBeforeDeploy&gt;true&lt;/undeployBeforeDeploy&gt;
+      &lt;!-- tell build process to use filtered manifest --&gt;
+      &lt;androidManifestFile&gt;${project.build.directory}/src/main/filtered-manifest/AndroidManifest.xml&lt;/androidManifestFile&gt;
+    &lt;/configuration&gt;
+  &lt;/plugin&gt;
+  ...</code></pre>
+</li>
+<li><p>Output different name to apk:</p>
+<pre><code> &lt;finalName&gt;${project.artifactId}-${project.version}-${profile-id}&lt;/finalName&gt;
+ &lt;profile-id&gt;x86&lt;/profile-id&gt;
+ &lt;profile-id&gt;arm&lt;/profile-id&gt;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Build your project with Maven, the following commands will build the corresponding arch apk in target/ directory:</p>
+<pre><code>$ mvn clean install -Px86
+$ adb install ./target/xwalk-aar-example-1.0.0-SNAPSHOT-x86.apk
+$ mvn clean install -Parm
+$ adb install ./target/xwalk-aar-example-1.0.0-SNAPSHOT-arm.apk</code></pre>
+</li>
+</ol>
+<h2>Samples</h2>
+<p>You can get the sample of using Crosswalk runtime library with Android Studio in <a href="https://github.com/crosswalk-project/crosswalk-samples/tree/master/embedded-gradle">crosswalk-samples</a>. An sample using classifier AAR with Maven you can get from <a href="/documentation/samples/xwalkEmbed-Maven.tar.gz">xwalkEmbed-Maven.tar.gz</a>. </p>
+<p>After downloading, unzip it from the command line:</p>
+<pre><code>$ tar -xzvf xwalkEmbed-Maven.tar.gz</code></pre>
+
+  <footer class="article-next">
+    
+
+
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation/getting_started.html"> Documentation</a> &nbsp;
+             <a href="/blog"> Blog</a> &nbsp;
+             <a href="/documentation/downloads.html"> Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub Source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All right reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy policy </a>  *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=en]").css("display","block");
+</script>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>

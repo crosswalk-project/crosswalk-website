@@ -38,7 +38,7 @@ For the purposes of this tutorial, we use the simplest possible Crosswalk applic
 
 2.  Next, copy an icon file to that directory, to serve as the application icon. You can use this image:
 
-    <img src="/assets/cw-app-icon.png">
+    <img src="/assets/cw-app-icon.png" style="width: 128px; margin:0 auto;display:block;" />
 
     To use this example, right click on the image and select <em>Save Image As...</em> (or its equivalent in your browser). Save it into the `xwalk-simple` directory as `icon.png`. (Note that this image is from the Crosswalk source code and is [BSD licensed](https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE).)
 
@@ -52,48 +52,45 @@ For the purposes of this tutorial, we use the simplest possible Crosswalk applic
 
        The content should be:
 
-            <!DOCTYPE html>
-            <html>
-              <head>
-                <meta name="viewport"
-                      content="width=device-width, initial-scale=1.0">
-                <meta charset="utf-8">
-                <title>simple</title>
-              </head>
-              <body>
-                <p>hello world</p>
-              </body>
-            </html>
+           <!DOCTYPE html>
+           <html>
+			  <head>
+			    <meta name="viewport"
+					  content="width=device-width, initial-scale=1.0">
+			    <meta charset="utf-8">
+			    <title>Crosswalk Simple</title>
+			  </head>
+			  <body>
+			    <p>Hello World! Crosswalk is great.</p>
+			  </body>
+		   </html>
 
     2. <a class="doc-anchor" id="manifest"></a>`manifest.json`
 
-       This contains the application metadata (see above).
+       This contains the application metadata (see above). The minimum manifest.json required to build is:
+	   
+		   {
+			  "name": "Crosswalk Simple",
+			  "xwalk_app_version": "0.1",
+			  "start_url": "index.html",
+			  "xwalk_package_id": "com.xwalk.simple",
+			  "icons": [
+			    {
+					"src": "icon.png",
+					"sizes": "72x72"
+				}
+			  ]
+		   }
 
-       The content should be:
-
-            {
-              "name": "simple",
-              "xwalk_version": "0.0.1",
-              "start_url": "index.html",
-              "icons": [
-                {
-                  "src": "icon.png",
-                  "sizes": "128x128",
-                  "type": "image/png",
-                  "density": "4.0"
-                }
-              ]
-            }
-
-        See [the manifest documentation](/documentation/manifest.html) for more information.
+    See [the manifest documentation](/documentation/manifest.html) for more information.
 
 ## <a class="doc-anchor" id="build-application"></a>Build the application
 Once your application is ready, with an icon and manifest.json file, it is ready to be packaged with Crosswalk. 
 
-    > crosswalk-app build <path>
+    > crosswalk-pkg <folder with manifest.json>
 
 This command downloads and imports Crosswalk and creates a package using the files in the path. By default, it will create [debug](android_remote_debugging.html), [embedded](/documentation/shared_mode.html), [32-bit](android_64bit.html) APKs for both x86 and ARM architectures (recommended). 64-bit APKs can also be created. For options, see the "Usage" section of the [Crosswalk-app-tools page](/documentation/crosswalk-app-tools.html), or view the help:
 
-    > crosswalk-app help
+    > crosswalk-pkg help
 
 You are now ready to run the application on a target.

@@ -11,7 +11,7 @@ Updated Embedding API (v4), adding the following methods:
 
 Support for Cordova 3.6.3
 
-Crosswalk Project AAR package in Stable and Beta channels for Maven/Gradle integration ([documentation](https://crosswalk-project.org/documentation/embedding_crosswalk/crosswalk_aar.html))
+Crosswalk Project AAR package in Stable and Beta channels for Maven/Gradle integration ([documentation](https://crosswalk-project.org/documentation/android/embedding_crosswalk/crosswalk_aar.html))
 
 Remote debugging is disabled by default and needs to be enabled with `--enable-remote-debugging` 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="top" lang="en-us">
+<html id="top">
   <head>
     <meta charset="utf-8">
     <title>The Crosswalk Project</title>
@@ -31,7 +31,7 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Contributing tests" />
+    <meta property="og:title" content="Contributing test" />
     <meta property="og:url" content="http://crosswalk-project.org/contribute/contributing_tests" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
@@ -39,7 +39,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="http://crosswalk-project.org/contribute/contributing_tests" />
-    <meta name="twitter:title" content="Contributing tests" />
+    <meta name="twitter:title" content="Contributing test" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -51,6 +51,7 @@
     <script src="/js/testimonials.js"></script>
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
@@ -61,7 +62,6 @@
       <div class="doc-header">
         
 
-  
 
   <div class="doc-logo-div">
      <a href="/" class="doc-logo-link">
@@ -76,17 +76,27 @@
       <li class="doc-nav-item">
         <a href="/blog" class="doc-nav-link">Blog</a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="/contribute" class="doc-nav-link">Contribute</a>
       </li>
-      <li class="doc-nav-item">
+      <li class="doc-nav-item hide-on-small">
         <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
       </li>
       <li class="doc-nav-item hide-on-small">
         <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
       </li>
-      <li class="doc-nav-item hide-on-small">
-        <a href="/documentation/getting_started.html" class="doc-nav-link" style="border:1px solid #ec543b;padding:8px;color:#ec543b;" >get started</a>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    English
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
       </li>
     </ul>
   </div>
@@ -97,62 +107,112 @@
       <div class="doc-main">
         <div class="row">
           
-          <nav id="contents" class="article-toc nav-toggleContainer">
+          <div id="404_bar" class="tmp-bar">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
+          
+<nav id="contents" class="article-toc nav-toggleContainer">
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
     
       
-      <li class="article-item ">
-        <a href="/contribute/index.html">Overview</a>
-      </li>
+      
+         <li class="article-item ">
+            <a href="/contribute/index.html">Overview</a>
+         </li>
+      
     
       
-      <li class="article-item ">
-        <a href="/contribute/building_crosswalk.html">Building Crosswalk</a>
-      </li>
+      
+         <li class="article-item ">
+            <a href="/contribute/building_crosswalk.html">Building Crosswalk</a>
+         </li>
+      
     
       
-      <li class="article-item ">
-        <a href="/contribute/contributing-code.html">Contributing code</a>
-      </li>
+      
+         <li class="article-item ">
+            <a href="/contribute/contributing-code.html">Contributing code</a>
+         </li>
+      
     
       
-      <li class="article-item  nav-item--active">
-        <a href="/contribute/contributing_tests.html">Contributing tests</a>
-      </li>
+      
+         <li class="article-item  nav-item--active">
+            <a href="/contribute/contributing_tests.html">Contributing test</a>
+         </li>
+      
     
       
-      <li class="article-item ">
-        <a href="/contribute/coding_style.html">Coding style</a>
-      </li>
+      
+         <li class="article-item ">
+            <a href="/contribute/coding_style.html">Coding style</a>
+         </li>
+      
     
       
-      <li class="article-item ">
-        <a href="/contribute/visual_studio.html">Visual Studio Support</a>
-      </li>
+      
+         <li class="article-item ">
+            <a href="/contribute/visual_studio.html">Visual Studio Support</a>
+         </li>
+      
     
       
-      <li class="article-item ">
-        <a href="/contribute/downstream-chromium.html">Downstream Chromium</a>
-      </li>
+      
+         <li class="article-item ">
+            <a href="/contribute/downstream-chromium.html">Downstream Chromium</a>
+         </li>
+      
     
       
-      <li class="article-item ">
-        <a href="/contribute/reviewer_policy.html">Reviewer policy</a>
-      </li>
+      
+         <li class="article-item ">
+            <a href="/contribute/reviewer_policy.html">Reviewer policy</a>
+         </li>
+      
     
       
-      <li class="article-item ">
-        <a href="/contribute/report_bugs.html">Report bugs</a>
-      </li>
+      
+         <li class="article-item ">
+            <a href="/contribute/report_bugs.html">Report bugs</a>
+         </li>
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
     
   </ul>
 </nav>
 <article class="article article--withSide">
   <h1>Contributing Tests</h1>
 <p>This page outlines the process for contributing test cases or test suites to Crosswalk.  The process follows <a href="/contribute/contributing-code.html">contributing code</a> but with more details as follows.</p>
-<p>For information on obtaining the source code, see <a href="/documentation/test_suite.html">Crosswalk Test Suite</a>.</p>
+<p>For information on obtaining the source code, see <a href="/documentation/qa/test_suite.html">Crosswalk Test Suite</a>.</p>
 <h2>Overview</h2>
 <p>Everyone is welcome and even encouraged to contribute test cases and test suites. </p>
 <p>These are the recommended steps for contributing test cases to Crosswalk Test Suite:</p>
@@ -210,6 +270,8 @@ BUG=https://crosswalk-project.org/jira/browse/XWALK-4782</code></pre>
     
 
 
+
+
   </footer>
 </article>
 
@@ -220,22 +282,27 @@ BUG=https://crosswalk-project.org/jira/browse/XWALK-4782</code></pre>
     </div>
     
 
-    <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
     <div style="position:relative; top:-30px;">
        <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
     </div>
     <footer class="footer footer--documentation" >
       <div class="container" >
         <div class="row">
-          <div  class="footer-div">
-            <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
           </div>
           <div class="footer-div">
              Latest blog post:</br>
               
               
-                <b><a href="/blog">Introducing RealSense Web API</a></b><br/>
-                &nbsp;(<span ><time class="js-vagueTime" datetime="Tue, 23 Feb 2016 00:00:00 GMT">2016-02-23T00:00</time></span>)
+                <b><a href="/blog">Introducing 'Download mode' in Crosswalk for Android</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Mon, 09 May 2016 17:00:00 GMT">2016-05-09T17:00</time></span>)
               
               <br/>
            </div>
@@ -243,21 +310,25 @@ BUG=https://crosswalk-project.org/jira/browse/XWALK-4782</code></pre>
               <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
           </div>
           <div class="footer-div">
-             <a href="/documentation">Documentation</a> &nbsp;
-             <a href="/blog">Blog</a> &nbsp;
-             <a href="/documentation/downloads.html">Downloads</a> <br />
-             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa">Issues</a> &nbsp;
-             <a href="https://github.com/crosswalk-project">GitHub source</a> &nbsp;
+             <a href="/documentation/getting_started.html"> Documentation</a> &nbsp;
+             <a href="/blog"> Blog</a> &nbsp;
+             <a href="/documentation/downloads.html"> Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub Source</a> &nbsp;
              <a href="/sitemap.html">Sitemap</a> <br/>
           </div>
         </div>
         <div class="row">
             <small>
-              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All rights reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">Privacy policy</a>. *Other names and brands may be claimed as the property of others.
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All right reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy policy </a>  *Other names and brands may be claimed as the property of others.
             </small>
         </div>
       </div>
     </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=en]").css("display","block");
+</script>
 
     
     

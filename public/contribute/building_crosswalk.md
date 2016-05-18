@@ -7,12 +7,12 @@ on the Chromium wiki:
 
     <ul>
     <li><a href="http://www.chromium.org/developers/how-tos/build-instructions-windows">Building on Windows</a></li>
-    <li><a href="http://code.google.com/p/chromium/wiki/LinuxBuildInstructionsPrerequisites">Building on Linux</a></li>
+    <li><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/linux_build_instructions_prerequisites.md">Building on Linux</a></li>
     <li><a href="https://code.google.com/p/chromium/wiki/MacBuildInstructions">Building on Mac</a></li>
     </ul>
 
 2.  You need to install extra pre-requisites if you're building Crosswalk
-for Android, covered in [building Chrome for Android](http://code.google.com/p/chromium/wiki/AndroidBuildInstructions).
+for Android, covered in [building Chrome for Android](https://www.chromium.org/developers/how-tos/android-build-instructions).
 
     The
     [section below](#contribute/building_crosswalk/Building-Crosswalk-for-Android)
@@ -56,11 +56,6 @@ at least the following:
     ```
     export NO_AUTH_BOTO_CONFIG=/path/to/boto-file
     ```
-
-1. Set up your Subversion proxy settings. At least `http-proxy-host` and
-   `http-proxy-port` must be set in the `[global]` section. On Linux, the file
-   is called `.subversion/servers`, and on Windows it is
-   `C:\Users\<YOUR_USER>\AppData\Roaming\Subversion\servers`.
 
 ## Download the Crosswalk source
 
@@ -162,7 +157,7 @@ are then used as the basis for the actual code compilation.
 
    If you want to create a Visual Studio solution so you can build/edit in Visual Studio you should set the GYP_GENERATORS like this :
    ```
-   set GYP_GENERATORS=ninja,ninja-msvs
+   set GYP_GENERATORS=ninja,msvs-ninja
    ```
    
    Note: in Windows, `set` takes effect in the current cmd window. `setx` makes the setting permanent in *future* cmd windows, similar to setting the variable in the Environment Variables dialog.
@@ -216,7 +211,7 @@ Chrome's process, so make sure you are
     libXrender-devel.i686 libXScrnSaver-devel libXtst-devel \
     libXtst-devel.i686 lighttpd nss-devel nss.i686 pango-devel.i686 \
     pciutils-devel pciutils-devel.i686 pulseaudio-libs-devel python-pexpect \
-    svn systemd-devel systemd-devel.i686 xorg-x11-server-Xvfb \
+    systemd-devel systemd-devel.i686 xorg-x11-server-Xvfb \
     xorg-x11-utils zlib-devel.i686 zlib.i686
     ```
 

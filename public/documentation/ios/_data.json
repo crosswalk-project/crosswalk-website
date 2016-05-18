@@ -2,17 +2,32 @@
   "quick_start_guide": {
     "title": "Quick Start Guide"
   },
+  "quick_start_guide_zh": {
+    "title": "快速安装指南"
+  },
   "embedding_mode_&_native_apis": {
     "title": "Embedding mode & native APIs"
   },
+  "embedding_mode_&_native_apis_zh": {
+    "title": "Embedding模式&原生APIs"
+  },
   "manifest": {
+    "title": "Manifest"
+  },
+  "manifest_zh": {
     "title": "Manifest"
   },
   "extensions": {
     "title": "Extensions"
   },
+  "extensions_zh": {
+    "title": "Extensions"
+  },
   "cordova_plugin_support": {
     "title": "Cordova plugin support"
+  },
+  "cordova_plugin_support_zh": {
+    "title": "Cordova插件支持"
   }
 }
 
