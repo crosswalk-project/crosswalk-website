@@ -19,7 +19,7 @@ to install and run the WebGL sample on Android.
 
 The quick version is that you can build the WebGL apk with:
 
-```sh
+```cmdline
 > <crosswalk-app-tools>/src/crosswalk-pkg --crosswalk=<crosswalk version> \
     --platforms=android  <path to crosswalk-samples>/webgl
 ```
@@ -28,7 +28,7 @@ The quick version is that you can build the WebGL apk with:
 
 Then install the apk file on Android:
 
-```sh
+```cmdline
 > adb install org.xwalk.webgl*.apk
 ```
 

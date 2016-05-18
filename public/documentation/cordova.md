@@ -9,50 +9,68 @@ Make sure you have an up-to-date version of [node.js](https://nodejs.org/) insta
 
 1.  Install the Cordova Command Line Interface (CLI)
 
-        $ npm install -g cordova
+    ```cmdline
+    > npm install -g cordova
+    ```
 
     Check that the version of Cordova CLI is >= 5.0.0:
 
-        $ cordova -v
-        5.0.0
+    ```cmdline
+    > cordova -v
+    5.0.0
+    ```
 
 2.  Create a Cordova example app, which can be used as a stub for creating new projects
 
-        $ cordova create hello com.example.hello HelloWorld
-
+    ```cmdline
+    > cordova create hello com.example.hello HelloWorld
+    ```
+	
 3.  Navigate to the newly created project directory
 
-        $ cd hello
-
+    ```cmdline
+    > cd hello
+    ```
+	
     All subsequent commands must be run within the project's directory (e.g. `hello`)
 
 4.  Add Android as the target platform
 
-        $ cordova platform add android
-
+    ```cmdline
+    > cordova platform add android
+    ```
+	
     This adds the Cordova Android platform (version >= 4.0.0) into the app.
 
 5.  Install the Crosswalk WebView plugin
 
-        $ cordova plugin add cordova-plugin-crosswalk-webview
-
+    ```cmdline
+    > cordova plugin add cordova-plugin-crosswalk-webview
+    ```
+	
     This adds the [Crosswalk WebView cordova plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview/) into the app.
 
 6.  Build with Crosswalk WebView engine for Android
 
-        $ cordova build android
-
+    ```cmdline
+    > cordova build android
+    ```
+	
     This automatically fetches the stable Crosswalk WebView libraries from the Crosswalk Project download site (https://download.01.org/crosswalk/releases/crosswalk/android/) and build for both X86 and ARM architectures. For example, building a `HelloWorld` project generates:
 
-        /path/to/hello/platforms/android/build/outputs/apk/android-x86-debug.apk
-        /path/to/hello/platforms/android/build/outputs/apk/android-armv7-debug.apk
+    ```cmdline
+    /path/to/hello/platforms/android/build/outputs/apk/android-x86-debug.apk
+    /path/to/hello/platforms/android/build/outputs/apk/android-armv7-debug.apk
+    ```
 
     The Crosswalk WebView library will be embedded in your app. This adds about 18MB to the APK size.
 
 7.  Launch it in the emulator
 
-        $ cordova emulate android
-
+    ```cmdline
+    > cordova emulate android
+    ```
+	
     Launching a Cordova app using the Crosswalk WebView is done the same way as Cordova app. The command will launch the emulator, install the application APK, and then launch your app. As an example, after launching the above Cordova example, you will see the following result on your screen:
 
     <img src="/assets/cordova-in-emulator.jpg" />
@@ -83,49 +101,67 @@ This workflow is for developers who want to stay on the bleeding edge of develop
 
 1.  Pull the cordova-android repo
 
-        $ git clone https://github.com/apache/cordova-android.git
+    ```cmdline
+    > git clone https://github.com/apache/cordova-android.git
+	```
 
 2.  Install plugman
 
-        $ npm install -g plugman
+    ```cmdline
+    > npm install -g plugman
+	```
 
     Check that the version of plugman is >= 0.22.17
 
-        $ plugman -v
-        0.23.1
+    ```cmdline
+    > plugman -v
+    0.23.1
+    ```
 
     For more information about plugman, please refer to [Using Plugman to Manage Plugins](https://cordova.apache.org/docs/en/4.0.0/plugin_ref_plugman.md.html#Using%20Plugman%20to%20Manage%20Plugins).
 
 4.  Create a Cordova example app
 
-        $ /path/to/cordova-android/bin/create hello com.example.hello HelloWorld
+    ```cmdline
+    > /path/to/cordova-android/bin/create hello com.example.hello HelloWorld
+	```
 
 5.  Navigate to the project directory
 
-        $ cd hello
+    ```cmdline
+    > cd hello
+	```
 
     All subsequent commands need to be run within the project's directory.
 
 6.  Install Crosswalk WebView engine plugin
 
-        $ plugman install --platform android \
-         --plugin https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview.git \
-         --project .
-
+    ```cmdline
+    > plugman install --platform android \
+      --plugin https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview.git \
+      --project .
+    ```
+	
     Note: as there are binary files in the git history, the first git cloning downloads about 100MB. This  might be slow across a low bandwidth connection.
 
 7.  Build with the Crosswalk WebView engine
 
-        $ ./cordova/build
+    ```cmdline
+    > ./cordova/build
+	```
 
     This automatically fetches the Crosswalk WebView libraries from the Crosswalk Project release site (https://download.01.org/crosswalk/releases/crosswalk/android/) and builds for both X86 and ARM architectures. For example, it generates:
 
-        /path/to/hello/build/outputs/apk/hello-x86-debug.apk
-        /path/to/hello/build/outputs/apk/hello-armv7-debug.apk
-
+    ```cmdline
+    /path/to/hello/build/outputs/apk/hello-x86-debug.apk
+    /path/to/hello/build/outputs/apk/hello-armv7-debug.apk
+    ```
+	
 8.  Launch in emulator
 
-        $ ./cordova/run --emulator --nobuild
+    ```cmdline
+    > ./cordova/run --emulator --nobuild
+	```
 
     This launches the emulator, installs the application APK, and launches your app. 
 

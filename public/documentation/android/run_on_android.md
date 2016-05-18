@@ -8,12 +8,15 @@ To install APKs created in the [build application page](build_an_application.htm
 
 * x86 device
 
-      > adb install -r com.abc.myapp-0.1-debug.x86.apk
-
+  ```cmdline
+  > adb install -r com.abc.myapp-0.1-debug.x86.apk
+  ```
 * ARM device
 
-      > adb install -r com.abc.myapp-0.1-debug.armeabi-v7a.apk
-
+  ```cmdline
+  > adb install -r com.abc.myapp-0.1-debug.armeabi-v7a.apk
+  ```
+  
 The `-r` flag stands for "reinstall". It is not required for the first installation, but useful for subsequent reinstalls of the same package.
 
 If the installation is successful, your application icon will appear on the Android target.

@@ -25,27 +25,35 @@ Using Crosswalk we can convert these samples to Android applications (Kudos to P
 
 2. Pick any sample you wish to build and copy the directory to a new location. For this tutorial, we will build the Composite example:
 
-       > cp -r ./aframe-master/examples/showcase-composite ~/src/
-
+   ```cmdline
+   > cp -r ./aframe-master/examples/showcase-composite ~/src/
+   ```
+   
 3. Copy required resources
    * Investigate the `index.html` file and note any resources that are not included in the directory. In the Composite index.html we see there are 2 resources pulled from other locations:
 
-     `<script src="../../dist/aframe.js"></script>`<br>
-     `<a-sky src="../_skies/lake.jpg"></a-sky>`
+     ```
+     <script src="../../dist/aframe.js"></script>
+     <a-sky src="../_skies/lake.jpg"></a-sky>
+	 ```
    
    * Find these resources in the master tree and copy them to your new folder.
 
-         > cp ./aframe-master/dist/aframe.min.js ~/src/showcase-composite/
-         > cp ./aframe-master/examples/_skies/lake.jpg ~/src/showcase-composite/
+     ```cmdline
+     > cp ./aframe-master/dist/aframe.min.js ~/src/showcase-composite/
+     > cp ./aframe-master/examples/_skies/lake.jpg ~/src/showcase-composite/
+	 ```
 
-     (aframe.min.js can also be used online:<br>
-	 `<script src="https://aframe.io/releases/latest/aframe.min.js"></script>` )
+     aframe.min.js can also be used online:
+	 ```
+	 <script src="https://aframe.io/releases/latest/aframe.min.js"></script>
+	 ``` 
 	 
    * Update the index.html to reference the local versions.  In our case:
-
-     `<script src="aframe.min.js"></script>`<br>
-     `<a-sky src="lake.jpg"></a-sky>`
-   
+     ```
+     <script src="aframe.min.js"></script>
+     <a-sky src="lake.jpg"></a-sky>
+     ```
 4. Copy an icon to your project folder. Name it "icon.png" or whatever you call it in the manifest.json file (next step). Here is an icon you can use:
 
    <img src="/assets/cw-app-icon.png" style="width:128px; margin:0 auto;display:block;" />
@@ -67,8 +75,10 @@ Using Crosswalk we can convert these samples to Android applications (Kudos to P
 
 6. Build the apk and install
 
-	   > crosswalk-pkg ./showcase-composite/
-       > adb install -r <apk for your architecture>
+   ```cmdline
+   > crosswalk-pkg ./showcase-composite/
+   > adb install -r <apk for your architecture>
+   ```
 
 7. On your device, run the program. Below is what the Composite application looks like. As you move your phone around, the accelerometer will adjust the view. Drop your phone into Google Cardboard and take a trip to beautiful Portland!
 
@@ -84,13 +94,13 @@ If you would like to try all the applications on your phone without individually
 
 2. Copy the contents into the aframe-master directory. This adds a manifests.json, icon, and top-level index.html to launch all example applications:
 
-       > cp -r ./aframe-allinone/* ./aframe-master
+   ```cmdline
+   > cp -r ./aframe-allinone/* ./aframe-master
+   ```
 
 3. Build and install
 
-       > crosswalk-pkg ./aframe-master
-	   > adb install -r <apk for your architecture>
-	   
-
-
-
+   ```cmdline
+   > crosswalk-pkg ./aframe-master
+   > adb install -r <apk for your architecture>
+   ```

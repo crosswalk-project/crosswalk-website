@@ -17,8 +17,10 @@ Setup the Windows host as described here: [Windows System Setup](/documentation/
 
 Ensure the version of `crosswalk-app-tools` is 0.10.0 or newer:
 
-    > crosswalk-pkg -v
-	0.10.2
+```cmdline
+> crosswalk-pkg -v
+0.10.2
+```
 
 Build a Crosswalk app by referring to this tutorial: [Build an Application](https://crosswalk-project.org/documentation/windows/build_an_application.html).
 
@@ -60,7 +62,9 @@ Download [Crosswalk for Windows 19.48.498.0](https://download.01.org/crosswalk/r
 
 Package your app with the Crosswalk Runtime and RealSense Extensions:
 
-    > crosswalk-pkg -p windows -c <path to crosswalk zip file> myapp
+```cmdline
+> crosswalk-pkg -p windows -c <path to crosswalk zip file> myapp
+```
 
 This creates two files:
 

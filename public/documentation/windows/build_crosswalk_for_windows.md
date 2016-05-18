@@ -8,8 +8,8 @@
 
 3. Clone depot_tools from Google by running:
 
-   ```
-    >  git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+   ```cmdline
+   > git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
    ```
 
    Make sure you add the `depot_tools` directory in your PATH using the documented procedure above.
@@ -21,7 +21,7 @@
 
 5. Navigate where you want to checkout Crosswalk for Windows, create a directory, navigate into it, and pull the source:
 
-   ```
+   ```cmdline
    > mkdir crosswalk-src
    > cd crosswalk-src
    > gclient config --name=src/xwalk git://github.com/crosswalk-project/crosswalk.git
@@ -40,14 +40,14 @@ At this point you have two alternatives :
 ### Command line build
 To build from the command line, navigate into crosswalk-src/src and invoke:
 
-```
+```cmdline
 > ninja -C out/Release xwalk or ninja -C out/Debug xwalk
 ```
 
 ### Visual Studio build
 To generate solution and project files, navigate into crosswalk-src/src and invoke:
 
-```
+```cmdline
 > python xwalk\gyp_xwalk
 ```
 

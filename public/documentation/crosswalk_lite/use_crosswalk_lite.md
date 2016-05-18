@@ -4,7 +4,7 @@ Building your application with Crosswalk Lite, or "Lite", is the same as the nor
 
 ## Build with Lite
 To build your application with Lite, add the `--android="lite"` parameter to the packaging command:
-```
+```cmdline
 $ crosswalk-pkg --android="lite" <your webapp path>
 ```
 
@@ -14,7 +14,7 @@ $ crosswalk-pkg --android="lite" <your webapp path>
 ### Download Crosswalk-Lite Manually
 Alternatively, you can manually download the Lite engine from the [build directory](https://download.01.org/crosswalk/releases/crosswalk-lite/android/canary/latest/) onto your local machine and then run:
 
-```
+```cmdline
 $ crosswalk-pkg --android="lite" \
                 --crosswalk=<downloads path>/crosswalk-17.46.455.1.zip \
 				<your webapp path> 

@@ -111,7 +111,7 @@ A work-around is available if you want to test an application using WebGL on a d
 
 However, you can use a custom command-line (Crosswalk 6 or later) by adding a text file called `xwalk-command-line` (no suffix) to the `assets/` directory of your Android `apk` package. This file should contain a single line, representing the `xwalk` command line to run; in this case, the line would be:
 
-```bash
+```cmdline
 > xwalk --ignore-gpu-blacklist
 ```
 
@@ -125,7 +125,7 @@ The method for adding this file to your Android package depends on how you are u
 
 *   If you are **[building an Android package with the `make_apk.py` script](/documentation/android/run_on_android.html)**, you can pass an option to create the file inside the output Android package:
 
-    ```bash
+    ```cmdline
     > make_apk.py --manifest=mygame/manifest.json \
       --xwalk-command-line="--ignore-gpu-blacklist"
     ```

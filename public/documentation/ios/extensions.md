@@ -26,8 +26,8 @@ This section shows how to implement an extension.
 
     In the project directory, create a file called `Podfile`:
 
-    ```
-    touch Podfile;
+    ```cmdline
+    > touch Podfile;
     ```
 
     With the contents as below:
@@ -40,8 +40,8 @@ This section shows how to implement an extension.
 
     Install `Pods` target into the project. Quit the Xcode first, then in the project directory, use command:
 
-    ```
-    pod install
+    ```cmdline
+    > pod install
     ```
     
     After the installation, you will find an `<projectName>.xcworkspace` is generated, and CocoaPods output will notify you to use this workspace instead of the `<projectName>.xcodeproj` from now on.

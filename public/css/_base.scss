@@ -160,10 +160,18 @@ pre {
     background-color: black;
     border-radius: 3px;
 
+    
     code,
     .language-cmdline {
+	display:  block;
+	width: 100%;
 	border: 1px solid #ababab;
-	font-size: 75%;
+	border-radius: 3px;
+	margin: 0;
+	padding: 7px;
+	font-size: 80%;
+	text-shadow: none;
+	
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 	overflow-x: auto;
 	overflow-y: hidden;
@@ -171,17 +179,23 @@ pre {
 	    width: 0;
 	    height: 0;
 	}
-	margin: 0;
-	text-shadow: none;
-	background: #9de1e0; //#24f1ea; //$color-primary;
+	&::selection {
+	    background: #9de1e0;
+	}
 	&::-moz-selection {
-	    background: #9de1e0; //#24f1ea; //$color-primary;
+	    background: #9de1e0;
 	}
     }
     .language-cmdline {
 	border: 0;
 	background-color: black;
 	color: white;
+	&::selection {
+	    background: #1ebcba; //webkit/blink
+	}
+	&::-moz-selection {
+	    background: #1ebcba; //gecko
+	}
     }
 }
 

@@ -12,13 +12,13 @@ You may refer to the implementation in AppShell, which is a standalone applicati
 
 `XWalkView` is derived from `WKWebView` and extends `WKWebView` as follows:
 
-```swift
+```
 public func loadExtension(object: AnyObject, namespace: String)
 ```
 
 `loadExtension` is used to load the extension instance object in the Crosswalk runtime, and inject the instance object under `namespace` in the Javascript world.
 
-```swift
+```
 public func loadFileURL(URL: NSURL, allowingReadAccessToURL readAccessToURL: NSURL) -> WKNavigation?
 ```
 
@@ -28,15 +28,15 @@ public func loadFileURL(URL: NSURL, allowingReadAccessToURL readAccessToURL: NSU
 
 This class is responsible for creating an extension instance with its name. The extension should be packed as a framework and placed in the `Frameworks` folder of the application.
 
-```swift
+```
 public class func createExtension(name: String) -> AnyObject?
 ```
 
-```swift
+```
 public class func createExtension(name: String, initializer: Selector, arguments: [AnyObject]) -> AnyObject?
 ```
 
-```swift
+```
 public class func createExtension(name: String, initializer: Selector, varargs: AnyObject...) -> AnyObject?
 ```
 

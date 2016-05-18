@@ -4,7 +4,7 @@ These sample applications can help get you up and running with the Crosswalk Pro
 
 All sample source is available on [github](https://github.com/crosswalk-project/crosswalk-samples) (MIT license). To use the samples, clone this project:
 
-```sh
+```cmdline
 $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
 ```
 

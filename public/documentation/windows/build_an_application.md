@@ -10,8 +10,10 @@ However, because Crosswalk applications are intended to integrate well with the 
 
 1.  First, create a directory called `xwalk-simple` for the project:
 
-        > mkdir xwalk-simple/
-        > cd xwalk-simple/
+    ```cmdline
+    > mkdir xwalk-simple/
+    > cd xwalk-simple/
+	```
 
 2.  Next, copy an icon file to that directory, to serve as the application icon. You can use this icon:
 
@@ -23,7 +25,7 @@ However, because Crosswalk applications are intended to integrate well with the 
 
 3.  Create two text files inside `xwalk-simple`. (Create them using any text editor, such as Notepad.):
 
-    1.  `index.html`
+    *   `index.html`
 
         This is a single HTML file which represents the user interface for the application. For the purposes of this tutorial, we are not using any CSS or JavaScript.
 
@@ -42,7 +44,7 @@ However, because Crosswalk applications are intended to integrate well with the 
               </body>
             </html>
 
-    2.  `manifest.json`
+    *   `manifest.json`
 
         This contains the application metadata (see above).
 
@@ -67,8 +69,8 @@ However, because Crosswalk applications are intended to integrate well with the 
 
 3. From inside the `xwalk-simple` directory, run:
 
-   ```
-    > crosswalk-pkg --platforms=windows .
+   ```cmdline
+   > crosswalk-pkg --platforms=windows .
    ```
    The `crosswalk-pkg` command above can be run from any location by putting the path to your project directory as the last parameter.
 

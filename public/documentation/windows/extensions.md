@@ -289,8 +289,10 @@ Inside your command line, navigate to the path where you unzipped Crosswalk and 
 
 The command line should look like this :
 
-    > xwalk.exe --allow-external-extensions-for-remote-sources \
-                --external-extensions-path=/path/to/myextension/directory \
-                http://localhost:8000
+```cmdline
+> xwalk.exe --allow-external-extensions-for-remote-sources \
+            --external-extensions-path=/path/to/myextension/directory \
+            http://localhost:8000
+```
 
 Your extension should be loaded. Please note that you can put multiple extensions in the same directory, Crosswalk will load all of them.

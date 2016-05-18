@@ -29,7 +29,7 @@ to install and run the SIMD sample on Android.
 
 The quick version is that you can build the SIMD apk with:
 
-```sh
+```cmdline
 > <crosswalk-app-tools>/src/crosswalk-pkg --crosswalk=<crosswalk version> \
     --platforms=android <path to crosswalk-samples>/simd
 ```
@@ -38,6 +38,6 @@ The quick version is that you can build the SIMD apk with:
 
 Then install the apk file on Android:
 
-```sh
+```cmdline
 > adb install org.xwalk.simd*.apk
 ```
