@@ -52,6 +52,8 @@
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
     <script src="/js/i18n.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
@@ -107,7 +109,7 @@
       <div class="doc-main">
         <div class="row">
           
-          <div id="404_bar" class="tmp-bar">
+          <div id="translation-missing-toaster">
   <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
 </div>
 
@@ -116,140 +118,140 @@
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
-      
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/about.html">About</a>
-         
-       </li> 
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/android.html">Android</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/ios.html">iOS</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/android.html">Android</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/windows.html">Windows</a>
-         
-         <ul class="article-list">
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/ios.html">iOS</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/windows.html">Windows</a>
+        
+            <ul class="article-list">
             
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/windows/windows_host_setup.html">Windows host setup</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/build_an_application.html">Build an application</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/run_on_windows.html">Run on Windows</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/web_inspector_debugging.html">Web Inspector Debugging</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/deploy_windows_store.html">Deploy to Windows store</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/net_extensions.html">.NET extensions</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/build_crosswalk_for_windows.html">Build Crosswalk for Windows</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/windows/extensions.html">Extensions</a>
-             
-           </li>
-           
-         </ul>
-         
-       </li> 
+              <li class="article-item  nav-item--active">
+                <a class="article-link" href="/documentation/windows/windows_host_setup.html">Windows host setup</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/windows/build_an_application.html">Build an application</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/windows/run_on_windows.html">Run on Windows</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/windows/web_inspector_debugging.html">Web Inspector Debugging</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/windows/deploy_windows_store.html">Deploy to Windows store</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/windows/net_extensions.html">.NET extensions</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/windows/build_crosswalk_for_windows.html">Build Crosswalk for Windows</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/windows/extensions.html">Extensions</a>
+                
+              </li>
+            
+            </ul>
+          
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/linux.html">Linux</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/linux.html">Linux</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/samples.html">Samples</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/community.html">Community</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
+        
+        </li>
     
   </ul>
 
@@ -291,15 +293,15 @@
    </ol>
 
 <p>The same task can be done on the command-line (note the quotes &quot;&quot;):</p>
-<pre><code>&gt; setx path &quot;%path%;C:\Program Files (x86)\WiX Toolset v3.10\bin&quot;</code></pre>
+<pre><code class="language-cmdline">&gt; setx path &quot;%path%;C:\Program Files (x86)\WiX Toolset v3.10\bin&quot;</code></pre>
 <h2><a class="doc-anchor" id="Install-crosswalk-app-tools"></a>Install crosswalk-app-tools</h2>
 <p>Crosswalk-app-tools is a simple, NPM-based tool to create installable packages of your Crosswalk application.</p>
 <p>Type the following inside a command shell (using cmd.exe for example):</p>
-<pre><code>&gt; npm install -g crosswalk-app-tools</code></pre>
+<pre><code class="language-cmdline">&gt; npm install -g crosswalk-app-tools</code></pre>
 <p>Note: If you are developing behind a proxy, see <a href="/documentation/npm-proxy-setup.html">this page</a></p>
 <h2><a class="doc-anchor" id="Verify-your-environment"></a>Verify your environment</h2>
 <p>Check that you have installed the tools properly by running these commands:</p>
-<pre><code>&gt; crosswalk-app check windows
+<pre><code class="language-cmdline">&gt; crosswalk-app check windows
   + Checking host setup for target windows
   + Checking for candle... ...ram Files (x86)\WiX Toolset v3.10\bin\candle.exe
   + Checking for light... ...ogram Files (x86)\WiX Toolset v3.10\bin\light.exe</code></pre>
@@ -320,14 +322,14 @@
   
     
     
+  
+    
+    
       
       <a href="/documentation/windows/build_an_application.html" class="article-promo well">
         <em>What’s next?</em>
         <h3>Build an application</h3>
       </a>
-    
-  
-    
     
   
     

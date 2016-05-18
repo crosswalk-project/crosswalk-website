@@ -52,6 +52,8 @@
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
     <script src="/js/i18n.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
@@ -107,7 +109,7 @@
       <div class="doc-main">
         <div class="row">
           
-          <div id="404_bar" class="tmp-bar">
+          <div id="translation-missing-toaster">
   <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
 </div>
 
@@ -116,140 +118,140 @@
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
-      
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/about.html">About</a>
-         
-       </li> 
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/android.html">Android</a>
-         
-         <ul class="article-list">
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/android.html">Android</a>
+        
+            <ul class="article-list">
             
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
-             
-           </li>
-           
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/embedding_crosswalk.html">Embedding Crosswalk</a>
-             
-           </li>
-           
-         </ul>
-         
-       </li> 
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
+                
+              </li>
+            
+              <li class="article-item  nav-item--active">
+                <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/embedding_crosswalk.html">Embedding Crosswalk</a>
+                
+              </li>
+            
+            </ul>
+          
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/ios.html">iOS</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/ios.html">iOS</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/windows.html">Windows</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/windows.html">Windows</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/linux.html">Linux</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/linux.html">Linux</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/samples.html">Samples</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/community.html">Community</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
+        
+        </li>
     
   </ul>
 
@@ -288,11 +290,11 @@ On Android, the connection between the host and target is established using <a h
 <ul>
 <li><p><strong>crosswalk-app build</strong></p>
 <p><code>crosswalk-app build</code> accepts &quot;release&quot; and &quot;debug&quot; as options.  Debug is the default, so you don&#39;t need to add anything to create a debug version, although using &quot;debug&quot; may remind you that you should change the build before releasing the app.</p>
-<pre><code>  &gt; crosswalk-app build [release|debug] [&lt;dir&gt;] </code></pre>
+<pre><code class="language-cmdline">&gt; crosswalk-app build [release|debug] [&lt;dir&gt;]</code></pre>
 </li>
 <li><p><strong>cordova build</strong></p>
 <p><code>cordova build</code> also defaults to creating a debug version. It accepts <code>--debug</code> and <code>--release</code> parameters.</p>
-<pre><code>  &gt; cordova build android [--release|--debug]</code></pre>
+<pre><code class="language-cmdline">&gt; cordova build android [--release|--debug]</code></pre>
 </li>
 <li><p><strong>Embedding Crosswalk in your application</strong></p>
 <p>If you are embedding Crosswalk in your application using the Crosswalk embedding API (for example in a native application using the Crosswalk webview), you can enable debugging in your application code using the <a href="/documentation/android/embedding_crosswalk.html">embedding API</a></p>
@@ -309,7 +311,7 @@ On Android, the connection between the host and target is established using <a h
 <h2>Install and debug</h2>
 <ul>
 <li><p>Install your application on the target:</p>
-<pre><code>&gt; adb install com.abc.myapp</code></pre>
+<pre><code class="language-cmdline">&gt; adb install com.abc.myapp</code></pre>
 </li>
 <li><p>Run the application on the target by clicking on the application icon. <a href="/documentation/android/run_on_android.html">More details</a></p>
 </li>
@@ -327,10 +329,10 @@ On Android, the connection between the host and target is established using <a h
 </li>
 <li><p><strong>The application doesn&#39;t appear in the chrome://inspect page</strong></p>
 <p>If the application is not visible in the inspection page, use <code>adb</code> to check that remote debugging is enabled for the application:</p>
-<pre><code>  host$ adb shell
-  shell@android$ cat /proc/net/unix |grep devtools_remote
-  00000000: 00000002 00000000 00010000 0001 01 1102698 @org.crosswalkproject.app_devtools_remote
-  00000000: 00000002 00000000 00010000 0001 01 1092981 @org.xwalk.core.xwview.shell_devtools_remote</code></pre>
+<pre><code class="language-cmdline">host$ adb shell
+shell@android$ cat /proc/net/unix |grep devtools_remote
+00000000: 00000002 00000000 00010000 0001 01 1102698 @org.crosswalkproject.app_devtools_remote
+00000000: 00000002 00000000 00010000 0001 01 1092981 @org.xwalk.core.xwview.shell_devtools_remote</code></pre>
 <p>If you cannot see any entries ending with <code>_devtools_remote</code>, it&#39;s likely that remote debugging is not enabled for the application. Follow the steps above to either rebuild the application with remote debugging support, or switch remote debugging on at run time.</p>
 </li>
 </ul>
@@ -355,7 +357,19 @@ On Android, the connection between the host and target is established using <a h
   
     
     
+  
+    
+    
+  
+    
+    
+  
+    
+    
       
+    
+  
+    
     
   
     
@@ -365,24 +379,6 @@ On Android, the connection between the host and target is established using <a h
         <em>What’s next?</em>
         <h3>Deploy to Android store</h3>
       </a>
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
     
   
     

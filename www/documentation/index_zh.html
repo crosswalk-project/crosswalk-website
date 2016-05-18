@@ -52,6 +52,8 @@
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
     <script src="/js/i18n.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,

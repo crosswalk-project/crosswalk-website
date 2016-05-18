@@ -52,6 +52,8 @@
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
     <script src="/js/i18n.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
@@ -107,7 +109,7 @@
       <div class="doc-main">
         <div class="row">
           
-          <div id="404_bar" class="tmp-bar">
+          <div id="translation-missing-toaster">
   <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
 </div>
 
@@ -116,125 +118,125 @@
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
-      
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/about.html">About</a>
-         
-       </li> 
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/android.html">Android</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/ios.html">iOS</a>
-         
-         <ul class="article-list">
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/android.html">Android</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/ios.html">iOS</a>
+        
+            <ul class="article-list">
             
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/ios/quick_start_guide.html">Quick Start Guide</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/ios/embedding_mode_&amp;_native_apis.html">Embedding mode &amp; native APIs</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/ios/manifest.html">Manifest</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/ios/extensions.html">Extensions</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/ios/cordova_plugin_support.html">Cordova plugin support</a>
-             
-           </li>
-           
-         </ul>
-         
-       </li> 
+              <li class="article-item  nav-item--active">
+                <a class="article-link" href="/documentation/ios/quick_start_guide.html">Quick Start Guide</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/ios/embedding_mode_&amp;_native_apis.html">Embedding mode &amp; native APIs</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/ios/manifest.html">Manifest</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/ios/extensions.html">Extensions</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/ios/cordova_plugin_support.html">Cordova plugin support</a>
+                
+              </li>
+            
+            </ul>
+          
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/windows.html">Windows</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/windows.html">Windows</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/linux.html">Linux</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/linux.html">Linux</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/samples.html">Samples</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/community.html">Community</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
+        
+        </li>
     
   </ul>
 
@@ -254,15 +256,15 @@
 <h3>Creation</h3>
 <ol>
 <li><p>Create a demo application <code>org.example.foo</code></p>
-<pre><code>crosswalk-app create org.example.foo</code></pre>
+<pre><code class="language-cmdline">&gt; crosswalk-app create org.example.foo</code></pre>
 </li>
 <li><p>Develop the application</p>
 <p>In the directory <code>org.example.foo/app</code> the template files <code>icon.png</code>, <code>index.html</code> and <code>manifest.json</code> have already been created.</p>
 <p>The <code>manifest.json</code> file is the main configuration interface for your web application. It is cross platform. Refer to the <a href="manifest.html">iOS Manifest</a> page for more details on the iOS platform.</p>
 </li>
 <li><p>Build the application</p>
-<pre><code>cd org.example.foo
-crosswalk-app build</code></pre>
+<pre><code class="language-cmdline">&gt; cd org.example.foo
+&gt; crosswalk-app build</code></pre>
 <p>If the build succeeds the file <code>foo.ipa</code> will be in the directory.</p>
 </li>
 <li><p>Install the application</p>
@@ -276,15 +278,15 @@ crosswalk-app build</code></pre>
 </li>
 <li><p>Use CocoaPods to integrate the <code>crosswalk-ios</code> library and Crosswalk extensions (if needed) into the demo application. For the CocoaPods installation and usage, please refer to: <a href="https://cocoapods.org/">CocoaPods</a>.</p>
 <p> In the <code>Echo</code> directory, create a file called <code>Podfile</code>:</p>
-<pre><code> cd Echo;
- touch Podfile;</code></pre>
+<pre><code class="language-cmdline"> &gt; cd Echo;
+ &gt; touch Podfile;</code></pre>
 <p> With the contents as below:</p>
 <pre><code> platform :ios, &#39;8.1&#39;
  use_frameworks!
  pod &#39;crosswalk-ios&#39;, &#39;~&gt; 1.2&#39;</code></pre>
 <p> This tells CocoaPods that the deploy target is iOS 8.1+ and to integrate library <code>crosswalk-ios</code> with the latest version of <code>1.2.x</code>. Remember to add <code>use_frameworks!</code> because <code>crosswalk-ios</code> is partly written in Swift and it has to be built as a framework instead of a static library.</p>
 <p> Install <code>Pods</code> target into the project. Quit the Xcode first, then in the <code>Echo</code> directory, use command:</p>
-<pre><code> pod install</code></pre>
+<pre><code> &gt; pod install</code></pre>
 <p> After the installation, you will find an <code>Echo.xcworkspace</code> is generated, and CocoaPods output will notify you to use this workspace instead of the <code>Echo.xcodeproj</code> from now on.</p>
 <p>Open the <code>Echo.xcworkspace</code>. There will be two projects: <code>Echo</code> and <code>Pods</code>.</p>
 <ul>
@@ -330,14 +332,14 @@ crosswalk-app build</code></pre>
   
     
     
+  
+    
+    
       
       <a href="/documentation/ios/embedding_mode_&amp;_native_apis.html" class="article-promo well">
         <em>What’s next?</em>
         <h3>Embedding mode &amp; native APIs</h3>
       </a>
-    
-  
-    
     
   
     

@@ -52,6 +52,8 @@
     <script src="/js/tools.js"></script>
     <script src="/js/qualityindicators.js"></script>
     <script src="/js/i18n.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
@@ -107,7 +109,7 @@
       <div class="doc-main">
         <div class="row">
           
-          <div id="404_bar" class="tmp-bar">
+          <div id="translation-missing-toaster">
   <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
 </div>
 
@@ -116,140 +118,140 @@
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
-      
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/about.html">About</a>
-         
-       </li> 
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/android.html">Android</a>
-         
-         <ul class="article-list">
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/android.html">Android</a>
+        
+            <ul class="article-list">
             
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
-             
-           </li>
-           
-           <li class="article-item  nav-item--active">
-             <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
-             
-           </li>
-           
-           <li class="article-item ">
-             <a class="article-link" href="/documentation/android/embedding_crosswalk.html">Embedding Crosswalk</a>
-             
-           </li>
-           
-         </ul>
-         
-       </li> 
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/system_setup.html">System setup</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/build_an_application.html">Build an application</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/run_on_android.html">Run on Android</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/android_remote_debugging.html">Remote debugging</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/deploy_to_android_store.html">Deploy to Android store</a>
+                
+              </li>
+            
+              <li class="article-item  nav-item--active">
+                <a class="article-link" href="/documentation/android/android_64bit.html">64-bit Support</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/android_extensions.html">Android extensions</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/android/embedding_crosswalk.html">Embedding Crosswalk</a>
+                
+              </li>
+            
+            </ul>
+          
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/ios.html">iOS</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/ios.html">iOS</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/windows.html">Windows</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/windows.html">Windows</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/linux.html">Linux</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/linux.html">Linux</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/cordova.html">Cordova</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tizen.html">Tizen</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/manifest.html">Manifest</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/apis.html">APIs</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/downloads.html">Downloads</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/samples.html">Samples</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/community.html">Community</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        </li>
     
-       <li class="article-item ">
-         <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
-         
-       </li> 
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
+        
+        </li>
     
   </ul>
 
@@ -258,20 +260,20 @@
 <article class="article article--hasToC">
   <h1>Packaging apps for 64-bit devices</h1>
 <p>By default, Crosswalk applications are packaged for 32-bit architectures. It&#39;s possible to specify 64-bit targets for both ARM and x86 using the <code>-t &lt;target-archs&gt;</code> option in the <code>crosswalk-pkg</code> command:</p>
-<pre><code>  &lt;target-archs&gt;
-    List of CPU architectures for which to create packages.
-    Currently supported ABIs are: armeabi-v7a, arm64-v8a, x86, x86_64
-    * Prefixes will be matched, so &quot;a&quot;,&quot;ar&quot;, or &quot;arm&quot; yield both ARM APKs
-    * Same for &quot;x&quot; and &quot;x8&quot;, but &quot;x86&quot; is an exact match, only x86-32 conforms
-    * Short-hands &quot;32&quot; and &quot;64&quot; build ARM and x86 for the requested word size
-    * Default behavior is equivalent to &quot;32&quot;, creation of 32-bit installers
-    Example: --targets=&quot;arm x86&quot; builds both ARM plus 32-bit x86 packages</code></pre>
+<pre><code class="language-cmdline">&lt;target-archs&gt;
+   List of CPU architectures for which to create packages.
+   Currently supported ABIs are: armeabi-v7a, arm64-v8a, x86, x86_64
+   * Prefixes will be matched, so &quot;a&quot;,&quot;ar&quot;, or &quot;arm&quot; yield both ARM APKs
+   * Same for &quot;x&quot; and &quot;x8&quot;, but &quot;x86&quot; is an exact match, only x86-32 conforms
+   * Short-hands &quot;32&quot; and &quot;64&quot; build ARM and x86 for the requested word size
+   * Default behavior is equivalent to &quot;32&quot;, creation of 32-bit installers
+   Example: --targets=&quot;arm x86&quot; builds both ARM plus 32-bit x86 packages</code></pre>
 <p>For example to build both ARM and x86 64-bit packages:</p>
-<pre><code>&gt; crosswalk-pkg -c beta -t 64 /path/to/app</code></pre>
+<pre><code class="language-cmdline">&gt; crosswalk-pkg -c beta -t 64 /path/to/app</code></pre>
 <p>To build only an x86 64-bit package:</p>
-<pre><code>&gt; crosswalk-pkg -c beta -t x86_64 /path/to/app</code></pre>
+<pre><code class="language-cmdline">&gt; crosswalk-pkg -c beta -t x86_64 /path/to/app</code></pre>
 <p>To build both 32-bit and 64-bit packages for x86 architectures:</p>
-<pre><code>&gt; crosswalk-pkg -c beta -t x /path/to/app</code></pre>
+<pre><code class="language-cmdline">&gt; crosswalk-pkg -c beta -t x /path/to/app</code></pre>
 <p>The 64-bit packages can be uploaded to the Google Play Store and will be automatically selected for compatible devices. At the moment you need to specify either the Beta or Canary channel because 64-bit support is not yet available from the stable releases.</p>
 <p>If you are using Crosswalk in shared mode, your application will automatically download the 64-bit optimized version of Crosswalk from the Play Store and no special action is required when packaging.</p>
 <p>Note: support for 64-bit is not yet available in the Crosswalk Cordova Webview plugin and will be enabled soon.</p>
@@ -300,7 +302,25 @@
   
     
     
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
       
+    
+  
+    
     
   
     
@@ -310,30 +330,6 @@
         <em>What’s next?</em>
         <h3>Android extensions</h3>
       </a>
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
     
   
     
