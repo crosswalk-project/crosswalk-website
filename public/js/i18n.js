@@ -59,7 +59,7 @@ function switchLanguage(lang) {
     //default file is index
     if (fileName == "") {
 	fileName = "index";
-	cur_url = cur_url + "/index";
+	cur_url = cur_url + "index";
     }
     //check if the current page is of Chinese version
     var flag = fileName.lastIndexOf("_zh");
