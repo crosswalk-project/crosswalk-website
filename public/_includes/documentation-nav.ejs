@@ -7,87 +7,88 @@
 */
 var lang = ( current.source.lastIndexOf("_zh") > 0 ? "zh": "en");
 function endsWith(str, suffix) {
-    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+  return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+function languageDetect(entry, article) {
+  if (endsWith(entry, "_zh")) {
+    article.language = "zh";
+  } else {
+    article.language = "en";
+  }
 }
 %>
 <nav id="contents" class="article-toc nav-toggleContainer">
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
   <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
   <ul class="article-list nav-toggleHide">
-      <% /* For each section in documentation/_data.json */
+    <% /* For each section in documentation/_data.json */
       for (var item1 in public.documentation._data) {
-	  var item1_origin = item1;
-          var article1 = public.documentation._data[item1];
-	  if (!article1.language) {
-	     article1.language = "en";
-	  }
-          if (article1.language !== lang) {
-	      continue;
+        var item1_origin = item1;
+        var article1 = public.documentation._data[item1];
+        languageDetect(item1, article1);
+        if (article1.language !== lang) {
+	        continue;
+        }
+        /* if item1 in _data.json matches a file, add .nav-item--active class */
+        var isFile = (current.path.length === 2 && current.path[0] === item1.toLowerCase()) ||
+                      current.source === 'index' && current.path[current.path.length - 2] === item1.toLowerCase();
+        var pageRef = "/documentation/" + item1.toLowerCase() + (endsWith (item1, ".php") ? "" : ".html"); %>
+        <li class="article-item <%= isFile ? ' nav-item--active' : '' %>">
+        <a class="article-link" href="<%= pageRef %>"><%= article1.title %></a>
+        <% /* check second level documentation in tree */
+          if (article1.origin) {
+              item1_origin = article1.origin;
           }
-          /* if item1 in _data.json matches a file, add .nav-item--active class */
-          var isFile = (current.path.length === 2 && current.path[0] === item1.toLowerCase()) ||
-                        current.source === 'index' && current.path[current.path.length - 2] === item1.toLowerCase();
-          var pageRef = "/documentation/" + item1.toLowerCase() + (endsWith (item1, ".php") ? "" : ".html"); %>
-       <li class="article-item <%= isFile ? ' nav-item--active' : '' %>">
-         <a class="article-link" href="<%= pageRef %>"><%= article1.title %></a>
-         <% /* check second level documentation in tree */
-           if (article1.origin) {
-               item1_origin = article1.origin;
-           }
-           if ((current.path[current.path.length - 2] === item1.toLowerCase() ||
-                current.path[current.path.length - 2] === item1_origin.toLowerCase()) && 
-                public.documentation[item1_origin] &&
-                public.documentation[item1_origin]._data) { %>
-         <ul class="article-list">
+          if ((current.path[current.path.length - 2] === item1.toLowerCase() ||
+              current.path[current.path.length - 2] === item1_origin.toLowerCase()) &&
+              public.documentation[item1_origin] &&
+              public.documentation[item1_origin]._data) { %>
+            <ul class="article-list">
             <% for (var item2 in public.documentation[item1_origin]._data) {
-                var item2_origin = item2;
-                var article2 = public.documentation[item1_origin]._data[item2];
-		if (!article2.language) {
-		    article2.language = "en";
-		}
-		if (article2.language !== lang) {
-		    continue;
-		}
-                /* if item2 in _data.json matches a file, add .nav-item--active class */
-                var isFile = (current.path.length === 3 && current.path[0] === item2.toLowerCase()) ||
-                       current.source === 'index' && current.path[current.path.length - 3] === item2.toLowerCase()
-                var pageRef = "/documentation/" + item1_origin.toLowerCase() + "/" + item2.toLowerCase() +
-                              (endsWith (item2, ".php") ? "" : ".html"); %>
-           <li class="article-item <%= isFile ? ' nav-item--active' : '' %>">
-             <a class="article-link" href="<%= pageRef %>"><%= article2.title %></a>
-             <% /* check third level documentation in tree */
+              var item2_origin = item2;
+              var article2 = public.documentation[item1_origin]._data[item2];
+              languageDetect(item2, article2);
+		          if (article2.language !== lang) {
+		            continue;
+		          }
+              /* if item2 in _data.json matches a file, add .nav-item--active class */
+              var isFile = (current.path.length === 3 && current.path[0] === item2.toLowerCase()) ||
+                     current.source === 'index' && current.path[current.path.length - 3] === item2.toLowerCase()
+              var pageRef = "/documentation/" + item1_origin.toLowerCase() + "/" + item2.toLowerCase() +
+                            (endsWith (item2, ".php") ? "" : ".html"); %>
+              <li class="article-item <%= isFile ? ' nav-item--active' : '' %>">
+                <a class="article-link" href="<%= pageRef %>"><%= article2.title %></a>
+                <% /* check third level documentation in tree */
                 if (article2.origin) {
                     item2_origin = article2.origin;
                 }
                 if ((current.path[current.path.length - 3] === item2.toLowerCase() ||
-                     current.path[current.path.length - 3] === item2_origin.toLowerCase()) && 
+                     current.path[current.path.length - 3] === item2_origin.toLowerCase()) &&
                       public.documentation[item1_origin][item2_origin] &&
                       public.documentation[item1_origin][item2_origin]._data) { %>
-             <ul class="article-list">
-               <% for (var item3 in public.documentation[item1_origin][item2_origin]._data) {
-                   var article3 = public.documentation[item1_origin][item2_origin]._data[item3];
-		   if (!article3.language) {
-		       article3.language = "en";
-		   }
-		   if (article3.language !== lang) {
-		       continue;
-		   }
-                   var isFile = (current.path.length === 4 && current.path[0] === item3.toLowerCase()) ||
-                                 current.source === 'index' && current.path[current.path.length - 4] === item3.toLowerCase()
-                   var pageRef = "/documentation/" + item1_origin.toLowerCase() + "/" +
-                              item2_origin.toLowerCase() + "/" + item3 + 
+                  <ul class="article-list">
+                  <% for (var item3 in public.documentation[item1_origin][item2_origin]._data) {
+                      var article3 = public.documentation[item1_origin][item2_origin]._data[item3];
+                      languageDetect(item2, article2);
+		                  if (article3.language !== lang) {
+		                    continue;
+		                  }
+                      var isFile = (current.path.length === 4 && current.path[0] === item3.toLowerCase()) ||
+                                    current.source === 'index' && current.path[current.path.length - 4] === item3.toLowerCase()
+                      var pageRef = "/documentation/" + item1_origin.toLowerCase() + "/" +
+                              item2_origin.toLowerCase() + "/" + item3 +
                               (endsWith (item3, ".php") ? "" : ".html"); %>
-               <li class="article-item <%= isFile ? ' nav-item--active' : '' %>">
-                 <a class="article-link" href="<%= pageRef %>"><%= article3.title %></a>
-               </li>
-               <% } %>
-             </ul>
-             <% } %>
-           </li>
-           <% } %>
-         </ul>
-         <% } %>
-       </li> 
+                      <li class="article-item <%= isFile ? ' nav-item--active' : '' %>">
+                        <a class="article-link" href="<%= pageRef %>"><%= article3.title %></a>
+                      </li>
+                  <% } %>
+                  </ul>
+                <% } %>
+              </li>
+            <% } %>
+            </ul>
+          <% } %>
+        </li>
     <% } %>
   </ul>
 

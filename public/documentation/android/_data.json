@@ -1,58 +1,44 @@
 {
   "system_setup": {
-    "title": "System setup",
-    "language": "en"
+    "title": "System setup"
   },
   "system_setup_zh": {
-    "title": "系统设置",
-    "language": "zh"
+    "title": "系统设置"
   },
   "build_an_application": {
-    "title": "Build an application",
-    "language": "en"
+    "title": "Build an application"
   },
   "build_an_application_zh": {
-    "title": "创建应用",
-    "language": "zh"
+    "title": "创建应用"
   },
   "run_on_android": {
-    "title": "Run on Android",
-    "language": "en"
+    "title": "Run on Android"
   },
   "run_on_android_zh": {
-    "title": "运行在安卓平台",
-    "language": "zh"
+    "title": "运行在安卓平台"
   },
   "android_remote_debugging": {
-    "title": "Remote debugging",
-    "language": "en"
+    "title": "Remote debugging"
   },
   "android_remote_debugging_zh": {
-    "title": "远程调试",
-    "language": "zh"
+    "title": "远程调试"
   },
   "deploy_to_android_store": {
-    "title": "Deploy to Android store",
-    "language": "en"
+    "title": "Deploy to Android store"
   },
   "deploy_to_android_store_zh": {
-    "title": "部署到Android Store",
-    "language": "zh"
+    "title": "部署到Android Store"
   },
   "android_64bit": {
-    "title": "64-bit Support",
-    "language": "en"
+    "title": "64-bit Support"
   },
   "android_64bit_zh": {
-    "title": "64-bit支持",
-    "language": "zh"
+    "title": "64-bit支持"
   },
   "android_extensions": {
-    "title": "Android extensions",
-    "language": "en"
+    "title": "Android extensions"
   },
   "embedding_crosswalk": {
-    "title": "Embedding Crosswalk",
-    "language": "en"
+    "title": "Embedding Crosswalk"
   }
 }

@@ -1,20 +1,8 @@
 {
   "extensions": {
-    "title": "Extensions",
-    "language": "en"
+    "title": "Extensions"
   },
   "crosswalk_aar": {
-    "title": "Crosswalk AAR",
-    "language": "en"
-  },
-  "extensions_zh": {
-    "title": "Extensions",
-    "language": "zh",
-    "layout": "../../../_layout_zh"
-  },
-  "crosswalk_aar_zh": {
-    "title": "Crosswalk AAR",
-    "language": "zh",
-    "layout": "../../../_layout_zh"
+    "title": "Crosswalk AAR"
   }
 }

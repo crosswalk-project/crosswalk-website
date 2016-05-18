@@ -1,86 +1,67 @@
 {
   "about": {
-    "title": "About",
-    "language": "en"
+    "title": "About"
   },
   "about_zh": {
     "title": "关于",
-    "language": "zh",
     "origin": "about"
   },
   "getting_started": {
-    "title": "Getting Started",
-    "language": "en"
+    "title": "Getting Started"
   },
   "getting_started_zh": {
     "title": "开始",
-    "language": "zh",
     "origin": "getting_started"
   },
   "android": {
-    "title": "Android",
-    "language": "en"
+    "title": "Android"
   },
   "android_zh": {
     "title": "Android",
-    "language": "zh",
     "origin": "android"
   },
   "ios": {
-    "title": "iOS",
-    "language": "en"
+    "title": "iOS"
   },
   "ios_zh": {
     "title": "iOS",
-    "language": "zh",
     "origin": "ios"
   },
   "windows": {
-    "title": "Windows",
-    "language": "en"
+    "title": "Windows"
   },
   "windows_zh": {
     "title": "Windows",
-    "language": "zh",
     "origin": "windows"
   },
   "linux": {
-    "title": "Linux",
-    "language": "en"
+    "title": "Linux"
   },
   "linux_zh": {
     "title": "Linux",
-    "language": "zh",
     "origin": "linux"
   },
   "cordova": {
-    "title": "Cordova",
-    "language": "en"
+    "title": "Cordova"
   },
   "cordova_zh": {
     "title": "Cordova",
-    "language": "zh",
     "origin": "cordova"
   },
   "tizen": {
-    "title": "Tizen",
-    "language": "en"
+    "title": "Tizen"
   },
   "manifest": {
-    "title": "Manifest",
-    "language": "en"
+    "title": "Manifest"
   },
   "apis": {
-    "title": "APIs",
-    "language": "en"
+    "title": "APIs"
   },
   "downloads": {
-    "title": "Downloads",
-    "language": "en"
+    "title": "Downloads"
   },
   "shared_mode": {
-    "title": "Shared Mode",
-    "language": "en"
+    "title": "Shared Mode"
   },
   "download_mode": {
     "title": "Download Mode"
@@ -89,19 +70,15 @@
     "title": "Crosswalk Lite"
   },
   "tutorials": {
-    "title": "Tutorials",
-    "language": "en"
+    "title": "Tutorials"
   },
   "samples": {
-    "title": "Samples",
-    "language": "en"
+    "title": "Samples"
   },
   "community": {
-    "title": "Community",
-    "language": "en"
+    "title": "Community"
   },
   "qa": {
-    "title": "Quality Assurance",
-    "language": "en"
+    "title": "Quality Assurance"
   }
 }
