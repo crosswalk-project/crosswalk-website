@@ -27,8 +27,8 @@ The following tools are needed on your development system to build Android apps.
 
    * Start the *SDK Manager*, from the command-line or inside Android Studio:
 
-      <p>In Windows: <pre><code>> "SDK Manager.exe"</code></pre></p>
-      <p>In Linux: <pre><code>> android</code></pre></p>
+      <p>In Windows: <pre><code class="bash">> "SDK Manager.exe"</code></pre></p>
+      <p>In Linux: <pre><code class="bash">> android</code></pre></p>
       <p>or</p>
       <img src="/assets/sdk-manager1.png" style="margin: 0 auto"/>
 
@@ -43,7 +43,9 @@ The following tools are needed on your development system to build Android apps.
 ### <a class="doc-anchor" id="Crosswalk"></a>Install crosswalk-app-tools
 From a cmd shell use npm to install crosswalk-app-tools
 
-        > npm install -g crosswalk-app-tools
+```bash
+> npm install -g crosswalk-app-tools
+```
 
    Note: If you are developing behind a proxy, see [this page](/documentation/npm-proxy-setup.html)
 
@@ -51,7 +53,7 @@ From a cmd shell use npm to install crosswalk-app-tools
 Check that you have installed the tools properly by running these commands:
 
 Example on Windows:
-```
+```cmdline
 C:\dev>crosswalk-app check android
   + Checking host setup for target android
   + Checking for android... C:\dev\android\sdk\tools\android.bat
@@ -62,8 +64,8 @@ C:\dev>crosswalk-app check android
 ```
 If any items report missing, add the directory to the program binaries in your PATH.
 *Note:* Currently the tool reports an ERROR if lzma is not found. You can safely ignore this for now.
-```
-  ERROR: Checking for lzma... null
+```bash
+ERROR: Checking for lzma... null
 ```
 
 ## Next Steps

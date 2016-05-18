@@ -152,33 +152,37 @@ code {
 }
 
 
-
 // Normally <pre><code> … </code></pre>
 // is prefered, but most code blocks in
 // the existing content have just been
 // written as <pre>
 pre {
-  width: 100%;
-  background: $color-text;
-  color: $color-background;
-  padding: 5px;
-  margin: 0;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  overflow-x: auto;
-  overflow-y: hidden;
+    background-color: black;
+    border-radius: 3px;
 
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  code {
-    padding: 0;
-    font-size: 75%;
-    background-color: transparent;
-    color: $color-background;
-    text-shadow: none;
-  }
+    code,
+    .language-cmdline {
+	border: 1px solid #ababab;
+	font-size: 75%;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	overflow-x: auto;
+	overflow-y: hidden;
+	&::-webkit-scrollbar {
+	    width: 0;
+	    height: 0;
+	}
+	margin: 0;
+	text-shadow: none;
+	background: #9de1e0; //#24f1ea; //$color-primary;
+	&::-moz-selection {
+	    background: #9de1e0; //#24f1ea; //$color-primary;
+	}
+    }
+    .language-cmdline {
+	border: 0;
+	background-color: black;
+	color: white;
+    }
 }
 
 .usage {
@@ -337,7 +341,7 @@ h6,
 
 p,
 pre {
-  margin: 0 0 ($base-line-height * 1em / 2);
+    margin: 0 0 ($base-line-height * 1em / 2);
 }
 
 // Helpers

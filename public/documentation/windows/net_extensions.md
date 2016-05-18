@@ -106,8 +106,8 @@ If you did not use the Visual Studio template you need to do the next two steps.
     *  `--allow-external-extensions-for-remote-sources` (which allow external extension for localhost, you do not need to worry about that when packing with Crosswalk app tools), and
     *  `--external-extensions-path=/path/to/myextensiondir/`.
   
-  The command line should look like this :
-   ```
+  The command line should look like this:
+   ```cmdline
     > xwalk.exe --allow-external-extensions-for-remote-sources \
                  --external-extensions-path=/path/to/myextensiondir/ \
                  http://localhost:8000
