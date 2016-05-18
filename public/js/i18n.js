@@ -9,7 +9,7 @@
 /*jslint node: true */
 /*jslint plusplus: true */
 
-/*global $, jQuery, alert*/ 
+/*global $, jQuery, alert*/
 
 function readLocalLang() {
     var lang = readCookie(LOCAL_LANG_COOKIE);
@@ -98,9 +98,9 @@ function switchLanguage(lang) {
 
 function state_Change()
 {
-    if (xmlhttp.readyState == 4) { 
+    if (xmlhttp.readyState == 4) {
 	if(xmlhttp.status == 404) {
-            document.getElementById('404_bar').style.display = "block";
+            document.getElementById('translation-missing-toaster').style.display = "block";
 	} else {
             window.location.replace(file_url);
 	}
@@ -122,7 +122,7 @@ $(function() {
 	    //all scenarios to hide menu: mouseleave, click outside, esc key, resize
 	    $("#i18n-menu").mouseleave (function() {
 		$("#i18n-menu").slideUp("fast");
-		$(document).off("resize click keyup");		
+		$(document).off("resize click keyup");
 	    });
 	    $(document).on("click keyup", function() {
 		$("#i18n-menu").hide();

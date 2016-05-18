@@ -71,7 +71,7 @@
           <% if(current.path.length === 1) { %>
           <%- yield %>
           <% } else { %>
-          <% include _includes/bar.ejs %>
+          <% include _includes/translation-missing-toaster.ejs %>
           <%- partial(current.path.reverse()[current.path.length - 1] + "/_nest") %>
           <% } %>
         </div>
