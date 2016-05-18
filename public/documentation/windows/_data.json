@@ -3,72 +3,64 @@
     "title": "Windows host setup",
     "language": "en"
   },
+  "windows_host_setup_zh": {
+    "title": "Windows开发环境设置",
+    "language": "zh"
+  },
   "build_an_application": {
     "title": "Build an application",
     "language": "en"
+  },
+  "build_an_application_zh": {
+    "title": "创建应用",
+    "language": "zh"
   },
   "run_on_windows": {
     "title": "Run on Windows",
     "language": "en"
   },
+  "run_on_windows_zh": {
+    "title": "在Windows环境运行",
+    "language": "zh"
+  },
   "web_inspector_debugging": {
     "title": "Web Inspector Debugging",
     "language": "en"
+  },
+  "web_inspector_debugging_zh": {
+    "title": "Web Inspector调试",
+    "language": "zh"
   },
   "deploy_windows_store": {
     "title": "Deploy to Windows store",
     "language": "en"
   },
+  "deploy_windows_store_zh": {
+    "title": "部署到Windows store",
+    "language": "zh"
+  },
   "net_extensions": {
     "title": ".NET extensions",
     "language": "en"
+  },
+  "net_extensions_zh": {
+    "title": ".NET Extensions",
+    "language": "zh"
   },
   "build_crosswalk_for_windows": {
     "title": "Build Crosswalk for Windows",
     "language": "en"
   },
+  "build_crosswalk_for_windows_zh": {
+    "title": "在Windows上编译Crosswalk",
+    "language": "zh"
+  },
   "extensions": {
     "title": "Extensions",
     "language": "en"
   },
-  "windows_host_setup_zh": {
-    "title": "Windows开发环境设置",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "build_an_application_zh": {
-    "title": "创建应用",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "run_on_windows_zh": {
-    "title": "在Windows环境运行",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "web_inspector_debugging_zh": {
-    "title": "Web Inspector Debugging",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "deploy_windows_store_zh": {
-    "title": "部署到Windows Store",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "net_extensions_zh": {
-    "title": ".NET extensions",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "build_crosswalk_for_windows_zh": {
-    "title": "在windows上编译Crosswalk",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
   "extensions_zh": {
-    "title": "Extensions",
-    "language": "zh",
-    "layout": "../../_layout_zh"
+    "title": "扩展",
+    "language": "zh"
   }
 }

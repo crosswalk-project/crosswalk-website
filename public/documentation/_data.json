@@ -3,29 +3,64 @@
     "title": "About",
     "language": "en"
   },
+  "about_zh": {
+    "title": "关于",
+    "language": "zh",
+    "origin": "about"
+  },
   "getting_started": {
     "title": "Getting Started",
     "language": "en"
+  },
+  "getting_started_zh": {
+    "title": "开始",
+    "language": "zh",
+    "origin": "getting_started"
   },
   "android": {
     "title": "Android",
     "language": "en"
   },
+  "android_zh": {
+    "title": "Android",
+    "language": "zh",
+    "origin": "android"
+  },
   "ios": {
     "title": "iOS",
     "language": "en"
+  },
+  "ios_zh": {
+    "title": "iOS",
+    "language": "zh",
+    "origin": "ios"
   },
   "windows": {
     "title": "Windows",
     "language": "en"
   },
+  "windows_zh": {
+    "title": "Windows",
+    "language": "zh",
+    "origin": "windows"
+  },
   "linux": {
     "title": "Linux",
     "language": "en"
   },
+  "linux_zh": {
+    "title": "Linux",
+    "language": "zh",
+    "origin": "linux"
+  },
   "cordova": {
     "title": "Cordova",
     "language": "en"
+  },
+  "cordova_zh": {
+    "title": "Cordova",
+    "language": "zh",
+    "origin": "cordova"
   },
   "tizen": {
     "title": "Tizen",
@@ -68,30 +103,5 @@
   "qa": {
     "title": "Quality Assurance",
     "language": "en"
-  },
-  "about_zh": {
-    "title": "关于",
-    "language": "zh",
-    "origin": "about"
-  },
-  "getting_started_zh": {
-    "title": "开始",
-    "language": "zh",
-    "origin": "getting_started"
-  },
-  "ios_zh": {
-    "title": "iOS",
-    "language": "zh",
-    "origin": "ios"
-  },
-  "linux_zh": {
-    "title": "Linux",
-    "language": "zh",
-    "origin": "linux"
-  },
-  "cordova_zh": {
-    "title": "Cordova",
-    "language": "zh",
-    "origin": "cordova"
   }
 }

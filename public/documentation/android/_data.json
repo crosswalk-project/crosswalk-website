@@ -3,25 +3,49 @@
     "title": "System setup",
     "language": "en"
   },
+  "system_setup_zh": {
+    "title": "系统设置",
+    "language": "zh"
+  },
   "build_an_application": {
     "title": "Build an application",
     "language": "en"
+  },
+  "build_an_application_zh": {
+    "title": "创建应用",
+    "language": "zh"
   },
   "run_on_android": {
     "title": "Run on Android",
     "language": "en"
   },
+  "run_on_android_zh": {
+    "title": "运行在安卓平台",
+    "language": "zh"
+  },
   "android_remote_debugging": {
     "title": "Remote debugging",
     "language": "en"
+  },
+  "android_remote_debugging_zh": {
+    "title": "远程调试",
+    "language": "zh"
   },
   "deploy_to_android_store": {
     "title": "Deploy to Android store",
     "language": "en"
   },
+  "deploy_to_android_store_zh": {
+    "title": "部署到Android Store",
+    "language": "zh"
+  },
   "android_64bit": {
     "title": "64-bit Support",
     "language": "en"
+  },
+  "android_64bit_zh": {
+    "title": "64-bit支持",
+    "language": "zh"
   },
   "android_extensions": {
     "title": "Android extensions",
@@ -30,47 +54,5 @@
   "embedding_crosswalk": {
     "title": "Embedding Crosswalk",
     "language": "en"
-  },
-  "system_setup_zh": {
-    "title": "系统设置",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "build_an_application_zh": {
-    "title": "创建应用",
-    "language": "zh",
-    "layout": "../../_layout_zh"    
-  },
-  "run_on_android_zh": {
-    "title": "运行在安卓平台",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "android_remote_debugging_zh": {
-    "title": "远程调试",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "deploy_to_android_store_zh": {
-    "title": "部署到Android store",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "android_64bit_zh": {
-    "title": "64-bit支持",
-    "language": "zh",
-    "layout": "../../_layout_zh"
-  },
-  "android_extensions_zh": {
-    "title": "安卓extensions",
-    "language": "zh",
-    "layout": "../../_layout_zh",
-    "origin": "android_extensions"
-  },
-  "embedding_crosswalk_zh": {
-    "title": "Embedding Crosswalk",
-    "language": "zh",
-    "layout": "../../_layout_zh",
-    "origin": "embedding_crosswalk"
   }
 }
