@@ -1,51 +1,67 @@
 {
   "about": {
-    "title": "About",
-    "language": "en"
+    "title": "About"
+  },
+  "about_zh": {
+    "title": "关于",
+    "origin": "about"
   },
   "getting_started": {
-    "title": "Getting Started",
-    "language": "en"
+    "title": "Getting Started"
+  },
+  "getting_started_zh": {
+    "title": "开始",
+    "origin": "getting_started"
   },
   "android": {
+    "title": "Android"
+  },
+  "android_zh": {
     "title": "Android",
-    "language": "en"
+    "origin": "android"
   },
   "ios": {
+    "title": "iOS"
+  },
+  "ios_zh": {
     "title": "iOS",
-    "language": "en"
+    "origin": "ios"
   },
   "windows": {
+    "title": "Windows"
+  },
+  "windows_zh": {
     "title": "Windows",
-    "language": "en"
+    "origin": "windows"
   },
   "linux": {
+    "title": "Linux"
+  },
+  "linux_zh": {
     "title": "Linux",
-    "language": "en"
+    "origin": "linux"
   },
   "cordova": {
+    "title": "Cordova"
+  },
+  "cordova_zh": {
     "title": "Cordova",
-    "language": "en"
+    "origin": "cordova"
   },
   "tizen": {
-    "title": "Tizen",
-    "language": "en"
+    "title": "Tizen"
   },
   "manifest": {
-    "title": "Manifest",
-    "language": "en"
+    "title": "Manifest"
   },
   "apis": {
-    "title": "APIs",
-    "language": "en"
+    "title": "APIs"
   },
   "downloads": {
-    "title": "Downloads",
-    "language": "en"
+    "title": "Downloads"
   },
   "shared_mode": {
-    "title": "Shared Mode",
-    "language": "en"
+    "title": "Shared Mode"
   },
   "download_mode": {
     "title": "Download Mode"
@@ -54,44 +70,15 @@
     "title": "Crosswalk Lite"
   },
   "tutorials": {
-    "title": "Tutorials",
-    "language": "en"
+    "title": "Tutorials"
   },
   "samples": {
-    "title": "Samples",
-    "language": "en"
+    "title": "Samples"
   },
   "community": {
-    "title": "Community",
-    "language": "en"
+    "title": "Community"
   },
   "qa": {
-    "title": "Quality Assurance",
-    "language": "en"
-  },
-  "about_zh": {
-    "title": "关于",
-    "language": "zh",
-    "origin": "about"
-  },
-  "getting_started_zh": {
-    "title": "开始",
-    "language": "zh",
-    "origin": "getting_started"
-  },
-  "ios_zh": {
-    "title": "iOS",
-    "language": "zh",
-    "origin": "ios"
-  },
-  "linux_zh": {
-    "title": "Linux",
-    "language": "zh",
-    "origin": "linux"
-  },
-  "cordova_zh": {
-    "title": "Cordova",
-    "language": "zh",
-    "origin": "cordova"
+    "title": "Quality Assurance"
   }
 }

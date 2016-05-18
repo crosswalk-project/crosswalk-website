@@ -1,4 +1,4 @@
-# Web Inspector Debugging
+# Web Inspector调试
 
 如果你的包在Crosswalk-app-tool调试下编译，则在Windows平台下的Crosswalk中运行的应用可以被调试。只需点击窗口的任一处并且选取“inspect element”来启动web inspector。
 

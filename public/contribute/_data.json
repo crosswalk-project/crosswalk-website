@@ -1,74 +1,56 @@
 {
   "": {
-    "title": "Overview",
-    "language": "en"
-  },
-  "building_crosswalk": {
-    "title": "Building Crosswalk",
-    "language": "en"
-  },
-  "contributing-code": {
-    "title": "Contributing code",
-    "language": "en"
-  },
-  "contributing_tests": {
-    "title": "Contributing test",
-    "language": "en"
-  },
-  "coding_style": {
-    "title": "Coding style",
-    "language": "en"
-  },
-  "visual_studio": {
-    "title": "Visual Studio Support",
-    "language": "en"
-  },
-  "downstream-chromium": {
-    "title": "Downstream Chromium",
-    "language": "en"
-  },
-  "reviewer_policy": {
-    "title": "Reviewer policy",
-    "language": "en"
-  },
-  "report_bugs": {
-    "title": "Report bugs",
-    "language": "en"
+    "title": "Overview"
   },
   "index_zh":{
-    "title": "预览",
-    "language": "zh"
+    "title": "预览"
+  },
+  "building_crosswalk": {
+    "title": "Building Crosswalk"
   },
   "building_crosswalk_zh": {
-    "title": "编译Crosswalk",
-    "language": "zh"
+    "title": "编译Crosswalk"
+  },
+  "contributing-code": {
+    "title": "Contributing code"
   },
   "contributing-code_zh": {
-    "title": "贡献代码",
-    "language": "zh"
+    "title": "贡献代码"
+  },
+  "contributing_tests": {
+    "title": "Contributing test"
   },
   "contributing_tests_zh": {
-    "title": "贡献测试代码",
-    "language": "zh"
+    "title": "贡献测试代码"
+  },
+  "coding_style": {
+    "title": "Coding style"
   },
   "coding_style_zh": {
-    "title": "代码风格",
-    "language": "zh"
+    "title": "代码风格"
+  },
+  "visual_studio": {
+    "title": "Visual Studio Support"
   },
   "visual_studio_zh": {
-    "title": "Visual Studio支持",
-    "language": "zh"
+    "title": "Visual Studio支持"
+  },
+  "downstream-chromium": {
+    "title": "Downstream Chromium"
   },
   "downstream-chromium_zh": {
-    "title": "Chromium",
-    "language": "zh"
+    "title": "Downstream Chromium"
+  },
+  "reviewer_policy": {
+    "title": "Reviewer policy"
   },
   "reviewer_policy_zh": {
-    "title": "审阅者守则",
-    "language": "zh"
+    "title": "审阅者守则"
+  },
+  "report_bugs": {
+    "title": "Report bugs"
   },
   "report_bugs_zh": {
-    "title": "报告bug",
-    "language": "zh"
+    "title": "报告bug"
   }
 }
