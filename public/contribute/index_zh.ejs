@@ -1,3 +1,19 @@
+<%
+   function endsWith(str, suffix) {
+       if(str.length > suffix.length) {
+           return str.indexOf(suffix, str.length - suffix.length) !== -1;
+       } else {
+           return 0;
+       }
+   }
+   function languageDetect(entry, article) {
+        if(endsWith(entry, "_zh")) {
+            article.language = "zh";
+        } else {
+            article.language = "en";
+        }
+    }
+%>
 <div class="container">
   <div class="doc-header">
     <% include ../_includes/nav.ejs %>
@@ -11,6 +27,7 @@
       <ul class="article-list nav-toggleHide">
         <% for(var slug in public.contribute._data) { %>
           <% var article = public.contribute._data[slug] %>
+          <% languageDetect(slug, article); %>
           <% if(article.language === "zh") { %>
             <li class="article-item <%= current.source === slug.toLowerCase() ? ' nav-item--active' : '' %>">
                <a href="/contribute/<%= slug ? slug.toLowerCase() + '.html' : '' %>"><%= article.title %></a>

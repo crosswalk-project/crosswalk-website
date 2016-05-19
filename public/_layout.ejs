@@ -59,7 +59,7 @@
     <!-- If curr page named 'index' and less than 2 dirs deep,
          do custom layouts. (home screen, blog, app-mgmt page)
          Else, provide doc header and nav. -->
-    <% if (((current.source == 'index'||current.source == 'index_zh'||current.source == '404'||current.source == '404_zh') && current.path.length <= 2) ||
+    <% if (((current.source == 'index'||current.source == 'index_zh'||current.source == '404') && current.path.length <= 2) ||
            (current.source == 'app-mgmt')) { %>
     <%- yield %>
     <% } else { %>
