@@ -1,0 +1,30 @@
+# WebGL样例
+
+<img class='sample-thumb' src='/assets/sampapp-icon-webgl.png'>
+
+本小节提供了一个将TreeJS集成到Crosswalk应用的简单示例。
+
+这个应用是
+[Crosswalk samples](https://github.com/crosswalk-project/crosswalk-samples)的一部分。
+
+关于如何为Crosswalk搭建环境的步骤，在[开始](/documentation/getting_started.html)教程中有详细介绍。
+
+## Android环境下的WebGL
+
+一旦你已经搭建好Crosswalk Android安装包之间的依赖关系，便可以遵循[如何在Android平台运行](/documentation/android/run_on_android_zh.html)中的步骤在Android平台上安装和运行WebGL样例。
+
+在便捷方式下，你可以通过如下命令来编译生成WebGL apk:
+
+```sh
+> <crosswalk-app-tools>/src/crosswalk-pkg --crosswalk=<crosswalk version> \
+    --platforms=android  <path to crosswalk-samples>/webgl
+```
+
+`<crosswalk-app-tools>`表示你下载crosswalk-app-tools的目录。
+
+然后在Android环境下安装apk文件：
+
+```sh
+> adb install org.xwalk.webgl*.apk
+```
+

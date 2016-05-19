@@ -10,5 +10,17 @@
   },
   "demoexpress": {
     "title": "DemoExpress"
+  },
+  "hello-world_zh": {
+    "title": "HelloWorld"
+  },
+  "webgl_zh": {
+    "title": "WebGL"
+  },
+  "simd_zh": {
+    "title": "SIMD"
+  },
+  "demoexpress_zh": {
+    "title": "DemoExpress"
   }
 }
