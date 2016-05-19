@@ -28,7 +28,7 @@
      },
      "zh": {
         "title": "博客",
-        "url": "/blog"
+        "url": "/blog/index_zh.ejs"
      }
   },
   "contribute": {

@@ -13,7 +13,12 @@
     <img class="article-hero" src="<%= hero %>" alt="" />
   <% } %>
   <%- yield %>
-  <% include ../_includes/blog-promo-1 %>
+  <% var lang = (current.source.lastIndexOf("_zh") > 0 ? "zh": "en"); %>
+  <% if(lang == "en") { %> 
+     <% include ../_includes/blog-promo-1 %>
+  <% } else if(lang == "zh") { %>
+     <% include ../_includes/blog-promo-1_zh %>
+  <% } %>
 </article>
 
 
