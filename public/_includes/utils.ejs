@@ -1,0 +1,14 @@
+<%
+endsWith = function(str, suffix) {
+    return str.indexOf (suffix, str.length - suffix.length) !== -1;
+}   
+
+languageDetect = function(entry, article) {
+    if (endsWith(entry, "_zh")) {
+        article.language = "zh";
+    } else {
+        article.language = "en";
+    }
+}
+%>
+
