@@ -1,3 +1,4 @@
+<% include ../_includes/utils.ejs %>
 <%
 /* This file creates the navigation column with links to docs as
    directed by the _data.json file in each directory. Max 3 menu deep.
@@ -5,17 +6,8 @@
    For Chinese version, only show items with language propert == "zh"
    in _data.json.
 */
+
 var lang = ( current.source.lastIndexOf("_zh") > 0 ? "zh": "en");
-function endsWith(str, suffix) {
-  return str.indexOf(suffix, str.length - suffix.length) !== -1;
-}
-function languageDetect(entry, article) {
-  if (endsWith(entry, "_zh")) {
-    article.language = "zh";
-  } else {
-    article.language = "en";
-  }
-}
 %>
 <nav id="contents" class="article-toc nav-toggleContainer">
   <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>

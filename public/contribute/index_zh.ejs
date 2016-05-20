@@ -1,19 +1,4 @@
-<%
-   function endsWith(str, suffix) {
-       if(str.length > suffix.length) {
-           return str.indexOf(suffix, str.length - suffix.length) !== -1;
-       } else {
-           return 0;
-       }
-   }
-   function languageDetect(entry, article) {
-        if(endsWith(entry, "_zh")) {
-            article.language = "zh";
-        } else {
-            article.language = "en";
-        }
-    }
-%>
+<% include ../_includes/utils.ejs %>
 <div class="container">
   <div class="doc-header">
     <% include ../_includes/nav.ejs %>
