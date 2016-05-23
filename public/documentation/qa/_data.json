@@ -4,5 +4,11 @@
   },
   "quality_dashboard": {
     "title": "Quality Dashboard"
+  },
+  "test_suite_zh": {
+    "title": "测试套件"
+  },
+  "quality_dashboard_zh": {
+    "title": "质量Dashboard"
   }
 }
