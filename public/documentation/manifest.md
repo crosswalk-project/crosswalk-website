@@ -8,7 +8,7 @@ See [Using the manifest](manifest/using_the_manifest.html) for details of how to
 
 The minimal manifest.json required to build a simple application is:
 
-````
+```
 {
     "name": "My App Name",
     "start_url": "index.html",
@@ -21,17 +21,19 @@ The minimal manifest.json required to build a simple application is:
       }
 	]
 }
-````
+```
 
 Below is the default manifest created by `crosswalk-build app` when creating a template. 
 
 Running this command: 
 
-    > crosswalk-app create com.abc.myapp
+```cmdline
+> crosswalk-app create com.abc.myapp
+```
 
 creates the following manifest.json in your project's root directory:
 
-````
+```
 {
   "name": "myapp",
   "short_name": "myapp",
@@ -58,5 +60,5 @@ creates the following manifest.json in your project's root directory:
     }
   ]
 }
-````
+```
 

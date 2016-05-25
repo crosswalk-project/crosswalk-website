@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Cordova" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/cordova_zh" />
+    <meta property="og:title" content="DemoExpress" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/samples/demoexpress_zh" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/cordova_zh" />
-    <meta name="twitter:title" content="Cordova" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/samples/demoexpress_zh" />
+    <meta name="twitter:title" content="DemoExpress" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -152,7 +152,7 @@
         
         </li>
     
-        <li class="article-item  nav-item--active">
+        <li class="article-item ">
         <a class="article-link" href="/documentation/cordova_zh.html">Cordova</a>
         
         </li>
@@ -175,6 +175,30 @@
         <li class="article-item ">
         <a class="article-link" href="/documentation/samples_zh.html">样例</a>
         
+            <ul class="article-list">
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/samples/hello-world_zh.html">HelloWorld</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/samples/webgl_zh.html">WebGL</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/samples/simd_zh.html">SIMD</a>
+                
+              </li>
+            
+              <li class="article-item  nav-item--active">
+                <a class="article-link" href="/documentation/samples/demoexpress_zh.html">DemoExpress</a>
+                
+              </li>
+            
+            </ul>
+          
         </li>
     
         <li class="article-item ">
@@ -187,100 +211,51 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>支持Cordova 4.0的Crosswalk</h1>
-<h2>概述</h2>
-<p>随着<a href="http://cordova.apache.org/announcements/2015/04/15/cordova-android-4.0.0.html">Cordova Android 4.0.0</a>引入了对插入式webview的支持，现在你可以方便地在你的Cordova应用上使用Crosswalk的webview。通过使用Crosswalk的webview插件，开发者可以享用远程调试的功能，前沿的HTML5特性，例如WebGL, WebAudio和WebRTC，以及在包括Android 4.0 Ice Cream Sandwich(ICS)在内的Android设备上性能的显著提升。</p>
-<h2>先决条件</h2>
-<p>请参见<a href="https://cordova.apache.org/docs/en/4.0.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Android平台指导</a>建立起针对Cordova应用开发的Android SDK环境。</p>
-<p>确保你的系统是否已经安装了最新版本的<a href="https://nodejs.org/">node.js</a>。</p>
-<h2>工作流程</h2>
-<ol>
-<li><p>安装Cordova命令行工具（CLI）</p>
-<pre><code>$ npm install -g cordova</code></pre>
-<p>检查Cordova的版本是否大于等于5.0.0:</p>
-<pre><code>$ cordova -v
-5.0.0</code></pre>
-</li>
-<li><p>创建一个Cordova样例应用，它可以被用来作为创建新项目的模板</p>
-<pre><code>$ cordova create hello com.example.hello HelloWorld</code></pre>
-</li>
-<li><p>进入新创建的项目目录</p>
-<pre><code>$ cd hello</code></pre>
-<p>所有后续命令必须在该目录下运行（例如，<code>hello</code>）</p>
-</li>
-<li><p>添加Android作为目标平台</p>
-<pre><code>$ cordova platform add android</code></pre>
-<p>这样便可以将Cordova Android平台（版本大于等于4.0.0）添加到应用中。</p>
-</li>
-<li><p>安装Crosswalk的Webview插件</p>
-<pre><code>$ cordova plugin add cordova-plugin-crosswalk-webview</code></pre>
-<p>这条命令实现了将<a href="https://www.npmjs.com/package/cordova-plugin-crosswalk-webview/">Crosswalk WebView以Cordova插件形式</a>添加进应用。</p>
-</li>
-<li><p>　编译</p>
-<pre><code> $ cordova build android</code></pre>
-<p> 它会自动从Crosswalk项目的下载网站(<a href="https://download.01.org/crosswalk/releases/crosswalk/android/)上取到稳定版本的Crosswalk">https://download.01.org/crosswalk/releases/crosswalk/android/)上取到稳定版本的Crosswalk</a> WebView库，并且针对X86和ARM架构分别编译。例如，编译一个<code>HelloWorld</code>项目会生成：</p>
-<pre><code> /path/to/hello/platforms/android/build/outputs/apk/android-x86-debug.apk
- /path/to/hello/platforms/android/build/outputs/apk/android-armv7-debug.apk</code></pre>
-<p> 至此，Crosswalk WebView库将会被嵌入到你的应用中。这大概会使APK的大小增加18MB。</p>
-</li>
-<li><p>在模拟器上启动它</p>
-<pre><code>$ cordova emulate android</code></pre>
-<p>使用Crosswalk WebView启动一个Cordova应用的做法和直接使用Cordova应用差不多。上述命令行将会启动模拟器，安装应用的APK，然后启动你的应用。例如，在启动上述的Cordova样例应用后，你将在你的屏幕上看到下列的结果：</p>
-<p><img src="/assets/cordova-in-emulator.jpg" /></p>
-<p>关于详细的命令行和选项，请参见<a href="https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html#The%20Command-Line%20Interface">命令行接口</a>。</p>
-</li>
-</ol>
-<h2>通过Crosswalk远程调控</h2>
-<p>Crosswalk的WebView允许远程调试Cordova应用，即使是较旧的Android设备上(4.0+)也可以。</p>
-<p>你可以使用Google的Chrome浏览器远程调试任何运行在Crosswalk上的应用。在应用启动之后，进入“chrome://inspect”便可以看到设备上的所有可调试的应用。例如，当观察运行在Crosswalk环境下的模拟器中的<code>helloWorld</code>应用时：</p>
-<p><img src="/assets/cordova-devtools-inspect.jpg" /></p>
-<p>点击<code>helloWorld</code>下方的&quot;inspect&quot;链接，将会打开一个Chrome的DevTools窗口。在JavaScript控制台选项中，你可以通过查看<code>navigator.userAgent</code>来确认应用当前是否运行在Crosswalk环境中。例如，该应用正运行在Crosswalk 13 (Chromium M42)中：</p>
-<p><img src="/assets/cordova-with-devtools.jpg" /></p>
-<p>关于使用手册请参见<a href="https://developer.chrome.com/devtools/docs/remote-debugging">使用Chrome远程调试Android应用</a>。</p>
-<h2>(可选) 仅针对Android平台的工作流</h2>
-<p>这个工作流主要针对那些对前沿开发技术感兴趣的开发者。如果你想要一个稳定版本，可以参考Cordova CLI工作流。</p>
-<p>需要<a href="http://www.google.com/url?q=http%3A%2F%2Fgit-scm.com%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFOqwvh2KbuCJQUVsR5fW38FrTRTw">git</a>。</p>
-<ol>
-<li><p>Pull Crodova-android的资源库</p>
-<pre><code>$ git clone https://github.com/apache/cordova-android.git</code></pre>
-</li>
-<li><p>安装plugman</p>
-<pre><code>$ npm install -g plugman</code></pre>
-<p>检测plugman版本是否大于等于0.22.17</p>
-<pre><code>$ plugman -v
-0.23.1</code></pre>
-<p>关于plugman的更多信息，请参见<a href="https://cordova.apache.org/docs/en/4.0.0/plugin_ref_plugman.md.html#Using%20Plugman%20to%20Manage%20Plugins">使用Plugman管理Plugins</a>.</p>
-</li>
-<li><p>创建一个Cordova的应用样例</p>
-<pre><code>$ /path/to/cordova-android/bin/create hello com.example.hello HelloWorld</code></pre>
-</li>
-<li><p>进入项目目录</p>
-<pre><code>$ cd hello</code></pre>
-<p>所有后续命令都需要在该项目目录下运行。</p>
-</li>
-<li><p>安装Crosswalk WebView引擎插件</p>
-<pre><code>$ plugman install --platform android \
- --plugin https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview.git \
- --project .</code></pre>
-<p>注意：因为在git记录中均是二进制文件，所以第一次的git克隆下载量大约为100MB。在低宽带连接的情况下，该过程可能会比较慢。</p>
-</li>
-<li><p>编译Crosswalk WebView引擎</p>
-<pre><code>$ ./cordova/build</code></pre>
-<p>这样将会自动去Crosswalk项目发布网站(<a href="https://download.01.org/crosswalk/releases/crosswalk/android/)获取Crosswalk">https://download.01.org/crosswalk/releases/crosswalk/android/)获取Crosswalk</a> WebView库，并且可以为X86和ARM架构编译。例如，它会产生：</p>
-<pre><code>/path/to/hello/build/outputs/apk/hello-x86-debug.apk
-/path/to/hello/build/outputs/apk/hello-armv7-debug.apk</code></pre>
-</li>
-<li><p>在模拟器上启动它</p>
-<pre><code>$ ./cordova/run --emulator --nobuild</code></pre>
-<p>这条命令启动了模拟器，安装了应用的APK并启动了你的应用。</p>
-</li>
-</ol>
-<p>关于cordova-android的更多命令，请参见<a href="https://github.com/apache/cordova-android">cordova-android README.md</a>.</p>
+  <h1>DemoExpress</h1>
+<p><strong>DemoExpress</strong> 是Crosswalk的一组示例应用，通过广泛的API展示了Crosswalk的优势：W3C标准API，嵌入API，Cordova API和web运行时特性。它包括针对Android和Linux环境的优秀web样例。</p>
+<p><img class='sample-thumb' src='/assets/sampapp-icon-demoexpress.png'></p>
+<p>请在页面(<a href="https://github.com/crosswalk-project/demo-express/tree/master/image)上[浏览更多关于DemoExpress的快照]。关于[DemoExpress在github上的综述]请参见页面(https://github.com/crosswalk-project/demo-express#introduction)。">https://github.com/crosswalk-project/demo-express/tree/master/image)上[浏览更多关于DemoExpress的快照]。关于[DemoExpress在github上的综述]请参见页面(https://github.com/crosswalk-project/demo-express#introduction)。</a></p>
+<h2>编译</h2>
+<p>关于编译DemoExpress for Crosswalk应用的细节可以参见页面<a href="https://github.com/crosswalk-project/demo-express#building">DemoExpress github主页</a></p>
+<h2>下载</h2>
+<p>从Play Store下载DemoExpress应用（共享模式）：<a href="https://play.google.com/store/apps/details?id=org.xwalk.demoexpress">Web API展示</a>, <a href="https://play.google.com/store/apps/details?id=org.xwalk.core.demoexpress">嵌入API展示</a>.</p>
+<p>浏览<a href="https://github.com/crosswalk-project/demo-express/releases">所有可用的DemoExpress下载资源</a></p>
+<h2>联系</h2>
+<p>可以通过<a href="https://lists.crosswalk-project.org/mailman/listinfo/crosswalk-help">crosswalk-help</a>邮箱列表，随意给我们发送一些反馈信息。</p>
 
   <footer class="article-next">
     
 
 
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
 
 
   </footer>

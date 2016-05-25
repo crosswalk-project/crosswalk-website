@@ -8,72 +8,57 @@ Crosswalk项目使用了一个基于[专门针对Web应用的W3C](http://w3c.git
 
 为了编译一个简单应用所需要的最基本的manifest.json文件如下：
 
-````
+```
 {
-        "name": "My App Name",
-            "start_url": "index.html",
-                "xwalk_app_version": "0.1",
-                    "xwalk_package_id": "com.abc.myapp",
-                        "icons": [
-                              {
-                                        "src": "icon.png",
-                                                "sizes": "72x72"
-                                                      }
-                                                        ]
+    "name": "My App Name",
+    "start_url": "index.html",
+	"xwalk_app_version": "0.1",
+	"xwalk_package_id": "com.abc.myapp",
+	"icons": [
+	  {
+		"src": "icon.png",
+		"sizes": "72x72"
+      }
+	]
 }
-````
+```
 
 下列是当创建模板时，由`crosswalk-build应用`生成的默认manifest。
 
 运行这个命令：
 
-　　> crosswalk-app create com.abc.myapp
+```cmdline
+> crosswalk-app create com.abc.myapp
+```
 
 在你的项目根目录下创建下列manifest.json文件：
 
-````
-	{
-	  "name": "Hello World",
-	  "icons": [
-	    {
-	      "src": "images/icon192.png",
-	      "sizes": "192x192",
-	      "type": "image/png",
-	      "density": "4.0"
-	    },
-	    {
-	      "src": "images/icon144.png",
-	      "sizes": "144x144",
-	      "type": "image/png",
-	      "density": "3.0"
-	    },
-	    {
-	      "src": "images/icon96.png",
-	      "sizes": "96x96",
-	      "type": "image/png",
-	      "density": "2.0"
-	    },
-	    {
-	      "src": "images/icon72.png",
-	      "sizes": "72x72",
-	      "type": "image/png",
-	      "density": "1.5"
-	    },
-	    {
-	      "src": "images/icon48.png",
-	      "sizes": "48x48",
-	      "type": "image/png",
-	      "density": "1.0"
-	    },
-	    {
-	      "src": "images/icon36.png",
-	      "sizes": "36x36",
-	      "type": "image/png",
-	      "density": "0.75"
-	    }
-	  ],
-	  "start_url": "index.html",
-	  "display": "standalone",
-	  "orientation": "any"
-	}
-````　
+```
+{
+  "name": "myapp",
+  "short_name": "myapp",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "any",
+  "start_url": "index.html",
+  "xwalk_app_version": "0.1",
+  "xwalk_command_line": "",
+  "xwalk_package_id": "com.abc.myapp",
+  "xwalk_target_platforms": ["android"],
+  "xwalk_android_animatable_view": true,
+  "xwalk_android_keep_screen_on": false,
+  "xwalk_android_permissions": [
+    "ACCESS_NETWORK_STATE",
+    "ACCESS_WIFI_STATE",
+    "INTERNET"
+  ],
+  "xwalk_windows_update_id": "73148800-8517-7725-5290-324729867281",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "72x72"
+    }
+  ]
+}
+```
+

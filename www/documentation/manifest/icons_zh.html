@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Windows开发环境设置" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/windows/windows_host_setup_zh" />
+    <meta property="og:title" content="图标" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/icons_zh" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/windows/windows_host_setup_zh" />
-    <meta name="twitter:title" content="Windows开发环境设置" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/icons_zh" />
+    <meta name="twitter:title" content="图标" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -145,50 +145,6 @@
         <li class="article-item ">
         <a class="article-link" href="/documentation/windows_zh.html">Windows</a>
         
-            <ul class="article-list">
-            
-              <li class="article-item  nav-item--active">
-                <a class="article-link" href="/documentation/windows/windows_host_setup_zh.html">Windows开发环境设置</a>
-                
-              </li>
-            
-              <li class="article-item ">
-                <a class="article-link" href="/documentation/windows/build_an_application_zh.html">创建应用</a>
-                
-              </li>
-            
-              <li class="article-item ">
-                <a class="article-link" href="/documentation/windows/run_on_windows_zh.html">在Windows环境运行</a>
-                
-              </li>
-            
-              <li class="article-item ">
-                <a class="article-link" href="/documentation/windows/web_inspector_debugging_zh.html">Web Inspector调试</a>
-                
-              </li>
-            
-              <li class="article-item ">
-                <a class="article-link" href="/documentation/windows/deploy_windows_store_zh.html">部署到Windows store</a>
-                
-              </li>
-            
-              <li class="article-item ">
-                <a class="article-link" href="/documentation/windows/net_extensions_zh.html">.NET Extensions</a>
-                
-              </li>
-            
-              <li class="article-item ">
-                <a class="article-link" href="/documentation/windows/build_crosswalk_for_windows_zh.html">在Windows上编译Crosswalk</a>
-                
-              </li>
-            
-              <li class="article-item ">
-                <a class="article-link" href="/documentation/windows/extensions_zh.html">扩展</a>
-                
-              </li>
-            
-            </ul>
-          
         </li>
     
         <li class="article-item ">
@@ -204,6 +160,60 @@
         <li class="article-item ">
         <a class="article-link" href="/documentation/manifest_zh.html">Manifest</a>
         
+            <ul class="article-list">
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/manifest/using_the_manifest_zh.html">使用manifest文件</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/manifest/entry_points_zh.html">应用入口点</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/manifest/content_security_policy_zh.html">内容安全策略</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/manifest/display_zh.html">展示</a>
+                
+              </li>
+            
+              <li class="article-item  nav-item--active">
+                <a class="article-link" href="/documentation/manifest/icons_zh.html">图标</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/manifest/launch_screen_zh.html">启动画面</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/manifest/orientation_zh.html">方向</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/manifest/permissions_zh.html">许可证</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk环境</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/manifest/other_fields_zh.html">其他属性</a>
+                
+              </li>
+            
+            </ul>
+          
         </li>
     
         <li class="article-item ">
@@ -231,55 +241,101 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>Windows环境搭建</h1>
-<p>以下教程已经在Windows 8 Enterprise版64位环境下进行了测试。它们应该同样适用于常规的Windows Home版本以及最新的Windows 10。</p>
-<p>下列的这些步骤可以帮助你开发运行在Windows上的Crosswalk应用。</p>
-<ol>
-<li><a href="#Install-Nodejs">安装Node.js</a></li>
-<li><a href="#Install-WiX-Toolset">安装WiX工具集</a></li>
-<li><a href="#Install-crosswalk-app-tools">安装crosswalk-app-tools</a></li>
-<li><a href="#Verify-your-environment">验证你的环境</a></li>
-</ol>
-<h2><a class="doc-anchor" id="Install-Nodejs"></a>安装Node.js</h2>
-<ol>
-<li>从<a href="https://nodejs.org/en/上下载node.js。">https://nodejs.org/en/上下载node.js。</a></li>
-<li>当开始安装时，确定在路径中添加Node.js，如下所示：
-<br><br>
-<img src="/assets/win1-nodejs-setup.png" style="display: block; margin: 0 auto"/></li>
-</ol>
-<h2><a class="doc-anchor" id="Install-WiX-Toolset"></a>安装WiX工具集</h2>
-<ol>
-<li>下载WiX工具集：<a href="http://wixtoolset.org/。">http://wixtoolset.org/。</a></li>
-<li>安装WiX工具集。</li>
-<li>在你的路径中添加Wix工具集。编辑你账号中的环境变量。在Windows的开始菜单中，检索&quot;Environment variables&quot;。或者，点击控制面板中的系统图标；然后进入Advanced系统设置并且编辑你的用户环境变量。你可以看到下面的对话框：
-<br><br>
-<img src="/assets/win2-envvars.png" style="display: block; margin: 0 auto"/></li>
-</ol>
-<p>如下编辑<code>Path</code>环境变量：</p>
-   <ol type='a'>
-    <li>选取<em>Path</em>环境变量（在选取框的顶部，<em>User variables...</em>）。如果它不存在，添加它。</li>
-    <li>点击<em>Edit</em>。</li>
-    <li>在<em>Variable value</em>域，为每个已经安装的工具添加指向其<em>可执行文件</em>的路径，以&quot;;&quot;分割；例如，我们添加下文到Path变量的最后：<br>
-       <code>;C:\Program Files (x86)\WiX Toolset v3.10\bin</code>
-    </li>
-    <li>点击<em>OK</em>.</li>
-   </ol>
+  <h1>图标</h1>
+<p><code>icons</code>字段用于规定在视觉上代表应用的一个或者多个图标图形。</p>
+<p>一个图标可能被一个任务转换器使用，或者在一个通知区域或者一个设备上的应用列表中。下图展示了在Android平台中，<em>townxelliot media player</em>在<em>应用列表</em>（左边）和<em>最近使用应用</em>（右边）环境下的图标。</p>
+<p><img src="/assets/manifest-icon-contexts.png" alt="Manifest icon used in &quot;application list&quot; and &quot;recent apps&quot; context on Android"></p>
+<p><code>icons</code>字段与<a href="http://w3c.github.io/manifest/#icons-member"><code>icons</code>字段在W3C manifest specification</a>一致。</p>
+<p>注意当被使用在一个<code>manifest.json</code>文件<a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">loaded into an embedded Crosswalk on Android</a>中时这个字段不生效。</p>
+<p>该字段是一个图标对象列表，每一个对象至少定义了一个图标的URL（通过<code>src</code>属性）。图标的<code>type</code>属性可以用于设置述图标的图形格式；图标将要展现的最佳呈现<code>sizes</code>和屏幕像素<code>density</code>也可以被设置。</p>
+<p>例如，这里有一个规定三个图标的简单的Crosswalk manifest：一个在需要64x64像素图标时被使用；一个在需要128x128像素图标时被使用；一个在需要128x128像素图标并且屏幕像素密度为２时被使用：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;simple_app&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;icon_small.png&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;sizes&quot;: &quot;64x64&quot;
+    },
+    {
+      &quot;src&quot;: &quot;icon_large.png&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;sizes&quot;: &quot;128x128&quot;
+    },
+    {
+      &quot;src&quot;: &quot;icon_large_hd.png&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;sizes&quot;: &quot;128x128&quot;,
+      &quot;density&quot;: &quot;2&quot;
+    }
+  ],
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;display&quot;: &quot;fullscreen&quot;,
+  &quot;orientation&quot;: &quot;landscape&quot;
+}</code></pre>
+<p>在<code>icons</code>列中每个对象的属性值都在上文中给出。</p>
+<h3>src</h3>
+<p>相对于manifest文件，到达图标文件的路径。</p>
+<h3>type</h3>
+<p>图标的<a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a>。</p>
+<h3>sizes</h3>
+<p>图片适合的图标大小，用以空格分离的<code>&lt;width&gt;x&lt;height&gt;</code>字串表示。例如：</p>
+<ul>
+<li><code>&quot;sizes&quot;: &quot;128x128&quot;</code>: 这个图片适合被用做一个128x128像素的图标。</li>
+<li><code>&quot;sizes&quot;: &quot;128x128 256x256&quot;</code>: 这个图片适合被用做一个128x128或者256x256像素的图标。</li>
+</ul>
+<p>请注意<code>sizes</code>属性的值<em>不是</em>图片的固有大小（例如，图片文件存储的像素大小）：它是这个图片文件适合的图标大小的集合。这意味着可以使用一个固有大小小于或者大于它将应用的图标的图片文件。</p>
+<p>例如，一个图片文件大小可能为128x128；但是manifest中规定这个图片可以被用于128x128或者256x256像素的图标，这个图片将被按比例放大(2x)以适应需要的图标大小（这可能导致其外观有些降解）。</p>
+<h3>density</h3>
+<p><code>density</code>属性用于规定一个图标应该被应用于哪个屏幕密度。外加<code>sizes</code>属性，在给定一个屏幕密度后便可以调整哪个图片文件被用于某个特殊的图标大小。</p>
+<p>如果你不熟悉屏幕密度的概念，请参见<a href="/documentation/screens/screen_measurements_zh.html">屏幕测量页面</a>。</p>
+<p>属性值是一个代表图片适合的屏幕密度的浮点数，即每个点的像素（dppx）。例如：</p>
+<ul>
+<li><code>&quot;density&quot;: &quot;2&quot;</code>: 这个图片适合于密度为2dppx的屏幕。</li>
+<li><code>&quot;density&quot;: &quot;1.5&quot;</code>: 这个图片适合于密度为1.5dppx的屏幕。</li>
+</ul>
+<p>如果<code>density</code>没有设定，则默认为<code>1.0</code>。</p>
+<p>为了展示它在实际中如何工作，假设你有一个128x128原始像素的图标。现在你将其按每个CSS像素(1dppx)一个物理像素放到一个需要一个128x128像素图标的设备中。原图中的每个原始像素占据设备屏幕中图标的一个像素。</p>
+<p>现在假设有一个密度为2dppx的不同设备，也需要一个128x128的图标。如果相同的那个128x128像素的图片文件被用于填充屏幕的那块空白，图片的每个原始像素将占据设备屏幕的4个像素(2x2)。结果就是一张模糊图像，因为相同的单个像素被用于填充屏幕中的4个像素。</p>
+<p>为了解决这个，<a href="http://www.whatwg.org/specs/web-apps/current-work/#attr-link-sizes">W3C specification</a>推荐根据需要的图标大小和屏幕密度选择不同原始大小的图片。其中提供了这个例子：</p>
+<blockquote>
+<p>&quot;一个50 CSS像素宽的图标，假设它将展示在一个像素密度为每个CSS像素两个设备像素(2x, 192dpi)的设备上，则宽度的原始像素需要为100。</p>
+</blockquote>
+<p>从这里我们可以得出一个用于计算对于一个给定的图标大小和密度需要多大的原始图像文件。</p>
+<blockquote>
+<p>原始图像尺寸 = 设备独立像素下需要的图标的尺寸 * 设备屏幕像素密度</p>
+</blockquote>
+<p>对于我们这种情况，我们使用两个图像文件：</p>
+<ul>
+<li>原始大小为128x128像素的<code>foo.png</code>，打算被用于密度为1dppx的屏幕中的一个128x128倾斜图标。</li>
+<li>原始大小为256x256像素的<code>foo_hd.png</code>，打算被用于密度为2dppx的屏幕中的一个128x128倾斜图标。 </li>
+</ul>
+<p>并且在manifest中设置<code>icons</code>属性如下：</p>
+<pre><code>&quot;icons&quot;: [
+  {
+    &quot;src&quot;: &quot;foo.png&quot;,
+    &quot;type&quot;: &quot;image/png&quot;,
+    &quot;sizes&quot;: &quot;128x128&quot;,
+    &quot;density&quot;: &quot;1.0&quot;
+  },
 
-<p>同样，这个任务也可以在命令行下完成（注意引号&quot;&quot;）：</p>
-<pre><code>&gt; setx path &quot;%path%;C:\Program Files (x86)\WiX Toolset v3.10\bin&quot;</code></pre>
-<h2><a class="doc-anchor" id="Install-crosswalk-app-tools"></a>安装crosswalk-app-tools</h2>
-<p>Crosswalk-app-tools是一个简单的基于NPM，为你的Crosswalk应用创建可安装包的工具。</p>
-<p>在一个命令行shell中输入如下命令（例如使用cmd.exe）：</p>
-<pre><code>&gt; npm install -g crosswalk-app-tools</code></pre>
-<p>注意：如果你在代理后开发，请参见<a href="/documentation/npm-proxy-setup_zh.html">这个页面</a>。</p>
-<h2><a class="doc-anchor" id="Verify-your-environment"></a>验证你的环境</h2>
-<p>通过运行下列命令确认你是否已经正确地安装了工具：</p>
-<pre><code>&gt; crosswalk-app check windows
-  + Checking host setup for target windows
-  + Checking for candle... ...ram Files (x86)\WiX Toolset v3.10\bin\candle.exe
-  + Checking for light... ...ogram Files (x86)\WiX Toolset v3.10\bin\light.exe</code></pre>
-<p>恭喜，你的系统已经可以用于Windows环境下的Crosswalk开发了。</p>
-<p>现在相关环境已经创建，你可以编译一个Crosswalk应用了。</p>
+  {
+    &quot;src&quot;: &quot;foo_hd.png&quot;,
+    &quot;type&quot;: &quot;image/png&quot;,
+    &quot;sizes&quot;: &quot;128x128&quot;,
+    &quot;density&quot;: &quot;2.0&quot;
+  }
+]</code></pre>
+<p>注意我们没有提到<code>foo_hd.png</code>原始像素大小为256x256：我们仅仅说明它适合于一个密度为2dppx的屏幕中的一个128x128像素的图标。</p>
+<h2 id="Effect-on-Android-packaging">对Android打包的影响</h2>
+
+<p>不会直接影响Android中的Crosswalk运行时环境，<code>icons</code>字段影响一个应用如何被<a href="/documentation/android/run_on_android.html"><code>make_apk.py</code></a>打包。<code>make_apk.py</code>脚本丢弃了一些在<code>icon</code>字段中包含的信息，例如<code>density</code>。</p>
+<p>如果<code>icons</code>字段包含多个图标大小，<code>make_apk.py</code>将根据它们的大小选择对应的图标文件到<a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a>。</p>
+<p>当一个应用被安装，Android将会选取适合目标屏幕分辨率的文件作为主屏幕上，应用列表和其他相关位置上的应用图标。</p>
+<h2>致谢</h2>
+<p><em>townxelliot media player</em>图标是在<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA licence</a>下，根据<a href="http://www.wpzoom.com/">wpzoom.com</a>原创的一个图标修改得来。它来源于<a href="http://findicons.com/icon/457729/radio?id=457887">Find Icons</a>。</p>
+<p>为了满足证书上的条款，修改后的图标在这里可用，并且在相同的CC BY-SA许可下发布：</p>
+<p><img alt="Modified radio icon" title="Modified radio icon" src="/assets/radio.png"></p>
 
   <footer class="article-next">
     
@@ -293,7 +349,11 @@
   
     
     
-      
+  
+    
+    
+  
+    
     
   
     
@@ -301,35 +361,43 @@
   
     
     
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
       
-      <a href="/documentation/windows/build_an_application_zh.html" class="article-promo well">
+    
+  
+    
+    
+      
+      <a href="/documentation/manifest/launch_screen_zh.html" class="article-promo well">
         <em>下一节关于什么？</em>
-        <h3>创建应用</h3>
+        <h3>启动画面</h3>
       </a>
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
     
   
     

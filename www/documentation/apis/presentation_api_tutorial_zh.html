@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html id="top">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/apis/presentation_api_tutorial_zh" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/apis/presentation_api_tutorial_zh" />
+    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+
+  <div class="doc-logo-div">
+     <a href="/index_zh.html" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started_zh.html" class="doc-nav-link">文档</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog/index_zh.html" class="doc-nav-link">博客</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/contribute/index_zh.html" class="doc-nav-link">贡献</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">维基</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq_zh.html" class="doc-nav-link">常见问题</a>
+      </li>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    中文版
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <div id="translation-missing-toaster">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
+          
+
+
+
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/about_zh.html">关于</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started_zh.html">开始</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/android_zh.html">Android</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/ios_zh.html">iOS</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/windows_zh.html">Windows</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/linux_zh.html">Linux</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova_zh.html">Cordova</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest_zh.html">Manifest</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/apis_zh.html">API</a>
+        
+            <ul class="article-list">
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/apis/web_apis_zh.html">Web APIs</a>
+                
+              </li>
+            
+              <li class="article-item ">
+                <a class="article-link" href="/documentation/apis/embedding_api_zh.html">嵌入模式API</a>
+                
+              </li>
+            
+            </ul>
+          
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/shared_mode_zh.html">共享模式</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/samples_zh.html">样例</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/qa_zh.html">质量保证</a>
+        
+        </li>
+    
+  </ul>
+
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Presentation API教程</h1>
+<p>Presentation API允许一个web应用在一个连接在设备上的第二显示屏上展示web内容。它有如下几个用途：展示幻灯片，分享视频和图片，以及通过移动设备在一个大屏幕电视上玩游戏。</p>
+<p>Presentation API是是针对Android 4.2版本Crosswalk的一个实验性功能，它基于兼容Miracast的wireless display支持实现。它在<a href="https://crosswalk-project.org/documentation/downloads.html">当前版本</a>的Crosswalk中可以使用。这篇教程是基于<a href="http://html5hub.com/presentation-api-tutorial/">HTML5 Hub</a>上由Hongbo Min发表的一篇文章，并且已经经过<a href="https://crosswalk-project.org/documentation/downloads.html">Crosswalk Stable 11.40.277.7</a>的测试。</p>
+<p>Presentation API定义如下：</p>
+<pre><code>interface Presentation :EventTarget {
+           void requestShow(DOMString url, successCallback, errorCallback);
+                  readonly attribute boolean displayAvailable;
+                         attributeEventHandler ondisplayavailablechange;
+};</code></pre>
+<p>在Crosswalk中，Presentation API作为navigator对象的一个附加属性被外界调用： </p>
+<pre><code>```
+navigator.presentation.requestShow
+navigator.presentation.displayAvailable
+navigator.presentation.displayavailablechange
+```
+
+注意：[Presentation API W3C spec](http://w3c.github.io/presentation-api/)还在不断地改进，并且可能为了满足新的使用场景而继续修改，例如和Chromecast设备的集成。</code></pre>
+<h2>搭建无线展示环境</h2>
+<p><strong>需求</strong></p>
+<ol>
+<li>支持Miracast协议的Android 4.2或者更新版本的设备。</li>
+<li>一台TV或者有HDMI端口的显示器。</li>
+<li>一个Miracast认证的无线显卡，例如Netgear PTV3000 (已通过测试)。</li>
+<li>将无线显卡插入显示器的HDMI端口。</li>
+<li>在Android设备上，打开“setting”应用并选取“display”。</li>
+<li>打开“wireless display”，连接到可用的无线显示器上。</li>
+</ol>
+<p><strong>其他方法: 没有无线显示器</strong></p>
+<p>如果你没有无线显卡，但是希望在你的设备上运行应用，Android模拟器可为你提供一个用于测试目的的第二显示器。这个模拟显示器会覆盖你设备的屏幕。为了使用它，你需要执行以下步骤：</p>
+<ol>
+<li>打开<code>Settings</code>应用并选取<code>Developer Options</code>。</li>
+<li>使用<code>Simulate Secondary Display</code>选项来选择一个用于模拟的显示器。</li>
+</ol>
+<h2>简单代码</h2>
+<p>在下文的样例中存在两个HTML文件：</p>
+<ul>
+<li><code>index.html</code> – 一个展示主屏幕的控制页，同时还会打开第二显示器上的一个页面。</li>
+<li><p><code>content.html</code> – 在第二显示器上展示的页面内容</p>
+<p><strong>index.html</strong></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+var presentationWindow = null;
+
+ function onsuccess(w) {
+       presentationWindow = w;
+         w.postMessage(&quot;Hello from the primary display&quot;, &quot;*&quot;);
+ }
+
+  function onerror(error) {
+        alert(&quot;Failed to requestShow: &quot; + error.name);
+  }
+
+   function showPresentation() {
+         if (!navigator.presentation.displayAvailable) {
+                 alert(&quot;No available display found.&quot;);
+                     return;
+                       }
+
+                          navigator.presentation.addEventListener(&quot;displayavailablechange&quot;, function() {
+                                  if (!navigator.presentation.displayAvailable)
+                                            presentationWindow = null;
+                                              });
+                            navigator.presentation.requestShow(&quot;content.html&quot;, onsuccess, onerror);
+   }
+
+    window.addEventListener(&quot;message&quot;, function(event) {
+          var msg = event.data;
+
+             var elem = document.getElementById(“msg”);
+
+                elem.innerHTML= ”Message from secondary display: ” + msg;
+    });
+    &lt;/script&gt;
+    &lt;/head&gt;
+      &lt;body&gt;
+        &lt;input type=&quot;button&quot; onclick=&quot;showPresentation();&quot; value=”Show Presentation”&gt;
+          &lt;/input&gt;
+
+               &lt;div id=”msg”&gt;Error: No message from primary display&lt;/div&gt;
+                 &lt;/body&gt;
+                 &lt;/html&gt;</code></pre>
+<pre><code>             **content.html**
+             ```
+             &lt;html&gt;
+             &lt;head&gt;
+               &lt;script&gt;
+                  window.addEventListener(&quot;message&quot;, function(event) {
+                           var msg = event.data;
+                                var elem = document.getElementById(“output”);
+                                     elem.innerHTML = msg;
+                                          event.source.postMessage(&quot;Hello from the secondary display&quot;, &quot;*&quot;);
+                                             });
+                    &lt;/script&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                      Message from its opener:
+                        &lt;div id=”output”&gt;Error: No message received from secondary dispaly&lt;/div&gt;
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                        ```</code></pre>
+</li>
+</ul>
+<p>遵循<a href="/documentation/android/build_an_application_zh.html">如何编译一个Crosswalk应用</a>来将上文中的两个HTML文件打包成一个Android应用；然后根据<a href="/documentation/android/run_on_android_zh.html">如何在Android环境下运行</a>的指导在一个Android 4.2+的设备上启动应用。在运行应用前请确保至少有一个可用的第二显示器：参见上文中的如何搭建一个无线显示器。</p>
+<p>一旦应用开始运行，点击&quot;show Presentation&quot;按钮将会在第二显示器上打开<code>content.html</code>页面。</p>
+<p>你应该可以在主屏幕上看到如下的输入：</p>
+<blockquote>
+<p>Hello from the secondary display</p>
+</blockquote>
+<p>在第二显示屏上看到如下输出:</p>
+<blockquote>
+<p>Hello from the primary display</p>
+</blockquote>
+<p>如果没有可用的无线显示器，你将会收到显示如下信息的警告对话框&quot;No available display found&quot;。</p>
+<p>关于一个使用第二显示屏的更加实际的HTML5应用的详细信息，请参见<a href="https://github.com/crosswalk-project/crosswalk-demos/tree/master/Gallery">ImageGallery</a>。它展示了如何使用Presesntation API在一个无线显示屏上展示照片。</p>
+<h3>关于JavaScript API的细节</h3>
+<h4><code>presentation.requestShow Method</code></h4>
+<p><code>requestShow</code>为了展示一个presentation向用户代理发送一个请求。如果第二显示屏已经可以使用，那么在第二显示屏上将会打开一个通过url规定的HTML页面。第二个窗口是在当前浏览器环境下打开的。一旦页面完成加载，则<code>successCallback</code>方法会被新页面的window对象作为输入参数调用。因此，控制窗口和展示窗口之间的通信遵循<a href="http://www.w3.org/TR/webmessaging/">HTML5 Web Messaging</a>的方法。你可以调用<code>postMessage</code>发送一条消息，同时注册一个<code>onmessage</code>事件监听器来处理从另一端传来的消息。</p>
+<p>如果发生错误，<code>requestShow</code>将失败， 并且<code>errorCallback</code>函数将被DOMError对象调用。下表描述了可能的错误：</p>
+<table>
+<tr><th>Error名称</th><th>描述信息</th></tr>
+<tr><td>NotFoundError</t><td>没有发现可用的第二显示屏</td></tr>
+<tr><td>InvalidAccessError</td><td>在第二显示屏上已经有展示内容</td></tr>
+<tr><td>NotSupportedError</td><td>平台不支持Miracast协议</td></tr>
+<tr><td>InvalidParameterError</td><td>传递了一个无效的url参数</td></tr>
+</table>
+
+<p>注意：因为在第二显示屏上没有输入通道，我们推荐：</p>
+<ol>
+<li>为大屏展示设计便于阅读的用户界面。</li>
+<li>避免JavaScript对话框(例如alert和confirm).</li>
+<li>不要期待点击，触屏或者键盘事件，或者和展示页面内容的交互。</li>
+</ol>
+<h4><code>presentation.displayAvailable属性</code></h4>
+<p>如果至少存在一个可以用来显示presentation的第二显示屏，<code>presentation.displayAvailable</code>属性便是true。否则，它是false。如果一个第二显示屏不能连接时：</p>
+<ol>
+<li>如果这不是唯一与设备连接的第二显示屏，那么页面的内容将会自动转向下一个可用的显示屏。</li>
+<li>如果这个唯一的第二显示屏，则页面内容将不会被显示，并且<code>displayAvailable</code>属性将被设置成false。</li>
+</ol>
+<h4><code>presentation.displayavailablechange事件</code></h4>
+<p>当第一个第二显示屏可用或者最近使用的一个第二显示屏被移出时，<code>displayavailablechange</code>事件会被触发。<code>displayAvailable</code>的属性值会被更新成true或者false（参见上文）。</p>
+<p>如果第二显示屏不可用时，展示的浏览器窗口将被关闭。应用无需关闭它。</p>
+<h3>总结</h3>
+<p>在这份指南中，为了在一个第二显示屏上呈现web内容，我们引入了一个新的W3C Presentation API。目前，它还是在Android 4.2+设备上的Crosswalk中实现的一个实验性特性。基于社区的反馈，它在将来会不断改进。</p>
+<h3>资源</h3>
+<p>这里是一些相关的链接：</p>
+<ul>
+<li><a href="http://w3c.github.io/presentation-api/">W3C Presentation API Draft</a></li>
+<li><a href="http://www.w3.org/community/webscreens/">Second Screen Presentation Community Group</a></li>
+<li><a href="http://lists.w3.org/Archives/Public/public-webscreens/">Web Screens Mail List</a></li>
+</ul>
+
+  <footer class="article-next">
+    
+
+
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Chinese translation of website released</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 20 May 2016 12:00:00 GMT">2016-05-20T12:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation/getting_started_zh.html"> 文档</a> &nbsp;
+             <a href="/blog/index_zh.html"> 博客</a> &nbsp;
+             <a href="/documentation/downloads_zh.html"> 下载</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> 问题</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub资源</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              Crosswalk项目由Intel Open Source Technology Center开发。版权为 © 2013–2016 Intel Corporation。保留所有权利。 <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy策略 </a>  *其他名称和商标可能被声明为他人财产
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=zh]").css("display","block");
+</script>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>
