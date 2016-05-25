@@ -12,7 +12,8 @@
 
 2.  如果你打算编译Android平台的Crosswalk，则需要安装额外的编译依赖工具，参考页面[编译Android平台的Chrome](http://code.google.com/p/chromium/wiki/AndroidBuildInstructions)。
 
-    下一小节总结了包含的步骤。
+    [下一小节](#contribute/building_crosswalk/Building-Crosswalk-for-Android)
+    总结了包含的步骤。
 
 3. [depot_tools](http://www.chromium.org/developers/how-tos/install-depot-tools)
 包含下列用于管理和编译Crosswalk的工具：
@@ -115,7 +116,7 @@
 
 下面这些步骤涵盖了编译Crosswalk的方方面面。编译的Crosswalk是运行在桌面环境(Windows, Linux,或Mac OS)下的。
 
-1. `gyp`是被用于生成Crosswalk项目的工具。这些项目然后会被用作实际代码编译的基础。
+1. `gyp`是被用于生成Crosswalk项目的工具。这些项目随后会被用作实际代码编译的基础。
 
    为了编译项目，进入`src`目录并运行
 
@@ -137,7 +138,7 @@
    ```
    set GYP_GENERATORS=ninja,ninja-msvs
    ```
-   
+
    注意：在Windows下，`set`在当前的cmd窗口下有效。`setx`使得在*未来的*cmd窗口下永久有效，类似于在环境变量对话框内设置变量。
 
 2. 现在你已经使用`gyp`构建了项目，并且已经准备实际编译。编译Crosswalk启动器（可以运行一个web应用）:
@@ -153,7 +154,7 @@
 Crosswalk将会解析manifest，并且从已经在`start_url`中定义好的入口处启动应用。
 
 如果你没有任何的HTML应用来测试，
-[Crosswalk样例](/documentation/samples_zh.html)中包含一些你可以试试。 
+[Crosswalk样例](/documentation/samples_zh.html)中包含一些你可以试试。
 
 ## 编译Android版Crosswalk
 
@@ -164,7 +165,7 @@ Crosswalk将会解析manifest，并且从已经在`start_url`中定义好的入�
 
         ./build/install-build-deps-android.sh
 
-    注意这个需要你的系统对`apt-get`的支持。 
+    注意这个需要你的系统对`apt-get`的支持。
     如果你的系统中没有`apt-get` (例如Fedora Linux)，下面的命令可以安装依赖：
 
     ```
