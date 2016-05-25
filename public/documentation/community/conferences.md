@@ -2,6 +2,15 @@
 The Crosswalk Project will be participating in the following conferences in 2016.  To view presentations from past conferences, visit the [Presentations](/documentation/community/presentations.html) page.
 
 <h2>Upcoming</h2>
+<p>[HelsinkiJS Meet-up](https://meetabit.com/events/127), May 26, Helsinki</p>
+<a href="https://meetabit.com/events/127">
+  <img src="/assets/conferences/helsinki-meetup-may26.jpg" style="height:80px;display:block;">
+</a>
+
+Additional conferences will be added as the schedule is known.
+<br>
+
+<h2>Previous Conferences </h2>
 <p>[PhoneGap Day EU](conferences/phonegapdayamsterdam2016.html), May 19, Amsterdam</p>
 <a href="conferences/phonegapdayamsterdam2016.html">
   <img src="/assets/conferences/phonegap-may19-banner.jpg" style="height:80px;display:block;">
@@ -9,11 +18,7 @@ The Crosswalk Project will be participating in the following conferences in 2016
 <hr>
 <p>Intel Developer Networking Event, May 17, San Carlos, CA</p>
 <img src="/assets/conferences/google-io-intel-2016.jpg" style="height:80px;display:block;">
-
-Additional conferences will be added as the schedule is known.
-<br>
-
-<h2>Previous Conferences </h2>
+<hr>
 <p>[Fluent 2016](conferences/fluent2016.html), Mar 8-10, San Francisco, CA</p>
 <a href="conferences/fluent2016.html">
   <img src="/assets/conferences/fluent16-banner.jpg" style="height:80px;display:block;">
