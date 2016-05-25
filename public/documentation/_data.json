@@ -54,14 +54,26 @@
   "manifest": {
     "title": "Manifest"
   },
+  "manifest_zh": {
+    "title": "Manifest",
+    "origin": "manifest"
+  },
   "apis": {
     "title": "APIs"
+  },
+  "apis_zh": {
+    "title": "API",
+    "origin": "apis"
   },
   "downloads": {
     "title": "Downloads"
   },
   "shared_mode": {
     "title": "Shared Mode"
+  },
+  "shared_mode_zh": {
+    "title": "共享模式",
+    "origin": "shared_mode"
   },
   "download_mode": {
     "title": "Download Mode"
@@ -75,10 +87,18 @@
   "samples": {
     "title": "Samples"
   },
+  "samples_zh": {
+    "title": "样例",
+    "origin": "samples"
+  },
   "community": {
     "title": "Community"
   },
   "qa": {
     "title": "Quality Assurance"
+  },
+  "qa_zh": {
+    "title": "质量保证",
+    "origin": "qa"
   }
 }
