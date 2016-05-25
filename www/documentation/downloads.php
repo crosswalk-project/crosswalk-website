@@ -398,26 +398,14 @@ if ($canaryVersion == "N/A") {
 
 <p><a href="https://download.01.org/crosswalk/releases/crosswalk/">All versions...</a></p>
 
+<p><strong>Release notes</strong> can be found here: <a href="https://github.com/crosswalk-project/crosswalk/blob/master/RELEASENOTES.md">Crosswalk Project Release Notes</a>. <br>
+(Features, API changes, and known issues)</p>
+
 <p>See also:
   <ul><li><a href="/documentation/getting_started.html">Getting started</a>: How to use these downloads.</li>
     <li><a href="/documentation/qa/quality_dashboard.html">Quality Dashboard</a>: Test coverage and results for each build.</li>
     <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/release-methodology/version-numbers">Release methodology</a>: The meaning of the version numbers.</li>
   </ul>
-
-  <h2>Release notes</h2>
-
-  <ul>
-    <li><a href="/blog/crosswalk-14-beta.html">Crosswalk-14</a></li>
-    <li><a href="/blog/crosswalk-12-beta.html">Crosswalk-12</a></li>
-    <li><a href="/blog/crosswalk-11-beta.html">Crosswalk-11</a></li>
-    <li><a href="/blog/crosswalk-10-beta.html">Crosswalk-10</a></li>
-    <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-9-release-notes">Crosswalk-9</a></li>
-    <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-8-release-notes">Crosswalk-8</a></li>
-    <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Release-dates">More... (past versions and future schedule)</a></li>
-  </ul>
-
-<p>Note that release notes are only produced for stable and beta
-  versions.</p>
 
 <h2>Quality Summary</h2>
 

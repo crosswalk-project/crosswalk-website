@@ -244,7 +244,8 @@
 </ul>
 </li>
 <li><p>如果你打算编译Android平台的Crosswalk，则需要安装额外的编译依赖工具，参考页面<a href="http://code.google.com/p/chromium/wiki/AndroidBuildInstructions">编译Android平台的Chrome</a>。</p>
-<p>下一小节总结了包含的步骤。</p>
+<p><a href="#contribute/building_crosswalk/Building-Crosswalk-for-Android">下一小节</a>
+总结了包含的步骤。</p>
 </li>
 <li><p><a href="http://www.chromium.org/developers/how-tos/install-depot-tools">depot_tools</a>
 包含下列用于管理和编译Crosswalk的工具：</p>
@@ -314,7 +315,7 @@ git checkout -b crosswalk-2 origin/crosswalk-2</code></pre>
 <h2>构建桌面版Crosswalk</h2>
 <p>下面这些步骤涵盖了编译Crosswalk的方方面面。编译的Crosswalk是运行在桌面环境(Windows, Linux,或Mac OS)下的。</p>
 <ol>
-<li><p><code>gyp</code>是被用于生成Crosswalk项目的工具。这些项目然后会被用作实际代码编译的基础。</p>
+<li><p><code>gyp</code>是被用于生成Crosswalk项目的工具。这些项目随后会被用作实际代码编译的基础。</p>
 <p>为了编译项目，进入<code>src</code>目录并运行</p>
 <p>在Linux, Mac操作系统下：</p>
 <pre><code>export GYP_GENERATORS=&#39;ninja&#39;
@@ -335,14 +336,14 @@ python xwalk\gyp_xwalk</code></pre>
 <pre><code>xwalk /path/to/manifest.json</code></pre>
 <p>Crosswalk将会解析manifest，并且从已经在<code>start_url</code>中定义好的入口处启动应用。</p>
 <p>如果你没有任何的HTML应用来测试，
-<a href="/documentation/samples_zh.html">Crosswalk样例</a>中包含一些你可以试试。 </p>
+<a href="/documentation/samples_zh.html">Crosswalk样例</a>中包含一些你可以试试。</p>
 <h2>编译Android版Crosswalk</h2>
 <p>如上面所提到的，Android平台的Crosswalk的编译过程主要基于Chrome的过程，所以需要确定你
 <a href="http://code.google.com/p/chromium/wiki/AndroidBuildInstructions">对其很熟悉</a>。</p>
 <ol>
 <li><p>为Android平台的Crosswalk安装依赖关系：</p>
 <pre><code>./build/install-build-deps-android.sh</code></pre>
-<p>注意这个需要你的系统对<code>apt-get</code>的支持。 
+<p>注意这个需要你的系统对<code>apt-get</code>的支持。
 如果你的系统中没有<code>apt-get</code> (例如Fedora Linux)，下面的命令可以安装依赖：</p>
 <pre><code>sudo yum install alsa-lib-devel alsa-lib-devel.i686 bison \
 cairo-devel.i686 cups-devel cups-devel.i686 dbus-devel \
