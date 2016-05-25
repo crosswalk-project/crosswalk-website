@@ -296,150 +296,127 @@ if ($betaVersion == "N/A") {
     echo '<td>Not available</td>';
 } else { 
     echo '      <td><a href="' . $baseUrl . '/beta/latest/crosswalk-'   . $betaVersion   . '.zip">32-bit</a> / ' .
-                                                                         '<a href="' . $baseUrl . '/beta/latest/crosswalk-'   . $betaVersion   . '-64bit.zip">64-bit</a></td>';
-                                              }
-                                              if ($canaryVersion == "N/A") {
-                                                      echo '<td>Not available</td>';
-                                              } else {
-                                                      echo '      <td><a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '.zip">32-bit</a> / ' .
-                                                                         '<a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '-64bit.zip">64-bit</a></td>';
-                                              }
-                                              ?>
-                                                  </tr>
+                    '<a href="' . $baseUrl . '/beta/latest/crosswalk-'   . $betaVersion   . '-64bit.zip">64-bit</a></td>';
+}
+if ($canaryVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '.zip">32-bit</a> / ' .
+                '<a href="' . $baseUrl . '/canary/latest/crosswalk-' . $canaryVersion . '-64bit.zip">64-bit</a></td>';
+}
+?>
+    </tr>
 
-                                                      <tr>
-                                                            <th>Android webview<br/>(x86)</th>
-                                                            <?php
-                                                            //    x86/crosswalk-webview-16.45.421.19-x86.zip
-                                                            // x86_64/crosswalk-webview-16.45.421.19-x86_64.zip
+    <tr>
+       <th>Android webview<br/>(x86)</th>
+<?php
+//    x86/crosswalk-webview-16.45.421.19-x86.zip
+// x86_64/crosswalk-webview-16.45.421.19-x86_64.zip
 
-                                                            if ($stableVersion == "N/A") {
-                                                                    echo '<td>Not available</td>';
-                                                            } else {
-                                                                    echo '      <td><a href="' . $baseUrl . '/stable/latest/x86/crosswalk-webview-'    . $stableVersion . '-x86.zip">32-bit</a> / ' .
-                                                                                       '<a href="' . $baseUrl . '/stable/latest/x86_64/crosswalk-webview-' . $stableVersion . '-x86_64.zip">64-bit</a></td>';
-                                                            }
-                                                            if ($betaVersion == "N/A") {
-                                                                    echo '<td>Not available</td>';
-                                                            } else { 
-                                                                    echo '      <td><a href="' . $baseUrl . '/beta/latest/x86/crosswalk-webview-'      . $betaVersion   . '-x86.zip">32-bit</a> / ' .
-                                                                                       '<a href="' . $baseUrl . '/beta/latest/x86_64/crosswalk-webview-'   . $betaVersion   . '-x86_64.zip">64-bit</a></td>';
-                                                            }
-                                                            if ($canaryVersion == "N/A") {
-                                                                    echo '<td>Not available</td>';
-                                                            } else {
-                                                                    echo '      <td><a href="' . $baseUrl . '/canary/latest/x86/crosswalk-webview-'    . $canaryVersion . '-x86.zip">32-bit</a> / ' .
-                                                                                       '<a href="' . $baseUrl . '/canary/latest/x86_64/crosswalk-webview-' . $canaryVersion . '-x86_64.zip">64-bit</a></td>';
-                                                            }
+if ($stableVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/stable/latest/x86/crosswalk-webview-'    . $stableVersion . '-x86.zip">32-bit</a> / ' .
+                                '<a href="' . $baseUrl . '/stable/latest/x86_64/crosswalk-webview-' . $stableVersion . '-x86_64.zip">64-bit</a></td>';
+}
+if ($betaVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else { 
+    echo '      <td><a href="' . $baseUrl . '/beta/latest/x86/crosswalk-webview-'      . $betaVersion   . '-x86.zip">32-bit</a> / ' .
+    '<a href="' . $baseUrl . '/beta/latest/x86_64/crosswalk-webview-'   . $betaVersion   . '-x86_64.zip">64-bit</a></td>';
+}
+if ($canaryVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/canary/latest/x86/crosswalk-webview-'    . $canaryVersion . '-x86.zip">32-bit</a> / ' .
+                        '<a href="' . $baseUrl . '/canary/latest/x86_64/crosswalk-webview-' . $canaryVersion . '-x86_64.zip">64-bit</a></td>';
+}
 
-                                                            ?>
-                                                                </tr>
+?>
+    </tr>
 
-                                                                    <tr>
-                                                                          <th>Android webview<br/>(ARM)</th>
-                                                                          <?php
-                                                                          //   arm/crosswalk-webview-16.45.421.19-arm.zip
-                                                                          //arm64/crosswalk-webview-16.45.421.19-arm64.zip
+    <tr>
+       <th>Android webview<br/>(ARM)</th>
+<?php
+//   arm/crosswalk-webview-16.45.421.19-arm.zip
+//arm64/crosswalk-webview-16.45.421.19-arm64.zip
 
-                                                                          if ($stableVersion == "N/A") {
-                                                                                  echo '<td>Not available</td>';
-                                                                          } else {
-                                                                                  echo '      <td><a href="' . $baseUrl . '/stable/latest/arm/crosswalk-webview-'    . $stableVersion . '-arm.zip">32-bit</a> / ' .
-                                                                                                     '<a href="' . $baseUrl . '/stable/latest/arm64/crosswalk-webview-' . $stableVersion . '-arm64.zip">64-bit</a></td>';
-                                                                          }
-                                                                          if ($betaVersion == "N/A") {
-                                                                                  echo '<td>Not available</td>';
-                                                                          } else { 
-                                                                                  echo '      <td><a href="' . $baseUrl . '/beta/latest/arm/crosswalk-webview-'      . $betaVersion   . '-arm.zip">32-bit</a> / ' .
-                                                                                                     '<a href="' . $baseUrl . '/beta/latest/arm64/crosswalk-webview-'   . $betaVersion   . '-arm64.zip">64-bit</a></td>';
-                                                                          }
-                                                                          if ($canaryVersion == "N/A") {
-                                                                                  echo '<td>Not available</td>';
-                                                                          } else {
-                                                                                  echo '      <td><a href="' . $baseUrl . '/canary/latest/arm/crosswalk-webview-'    . $canaryVersion . '-arm.zip">32-bit</a> / ' .
-                                                                                                     '<a href="' . $baseUrl . '/canary/latest/arm64/crosswalk-webview-' . $canaryVersion . '-arm64.zip">64-bit</a></td>';
-                                                                          }
+if ($stableVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/stable/latest/arm/crosswalk-webview-'    . $stableVersion . '-arm.zip">32-bit</a> / ' .
+                                '<a href="' . $baseUrl . '/stable/latest/arm64/crosswalk-webview-' . $stableVersion . '-arm64.zip">64-bit</a></td>';
+}
+if ($betaVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else { 
+    echo '      <td><a href="' . $baseUrl . '/beta/latest/arm/crosswalk-webview-'      . $betaVersion   . '-arm.zip">32-bit</a> / ' .
+                                    '<a href="' . $baseUrl . '/beta/latest/arm64/crosswalk-webview-'   . $betaVersion   . '-arm64.zip">64-bit</a></td>';
+}
+if ($canaryVersion == "N/A") {
+    echo '<td>Not available</td>';
+} else {
+    echo '      <td><a href="' . $baseUrl . '/canary/latest/arm/crosswalk-webview-'    . $canaryVersion . '-arm.zip">32-bit</a> / ' .
+                                '<a href="' . $baseUrl . '/canary/latest/arm64/crosswalk-webview-' . $canaryVersion . '-arm64.zip">64-bit</a></td>';
+}
 
-                                                                          ?>      
-                                                                              </tr>
+?>      
+    </tr>
 
-                                                                                </table>
+</table>
 
-                                                                                <p><a href="https://download.01.org/crosswalk/releases/crosswalk/">All versions...</a></p>
+<p><a href="https://download.01.org/crosswalk/releases/crosswalk/">所有版本...</a></p>
 
-                                                                                <p>See also:
-                                                                                  <ul><li><a href="/documentation/getting_started.html">Getting started</a>: How to use these downloads.</li>
-                                                                                      <li><a href="/documentation/qa/quality_dashboard.html">Quality Dashboard</a>: Test coverage and results for each build.</li>
-                                                                                          <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/release-methodology/version-numbers">Release methodology</a>: The meaning of the version numbers.</li>
-                                                                                            </ul>
+<p>另请参见：
+   <ul><li><a href="/documentation/getting_started_zh.html">开始</a>: 怎样使用这些下载链接。</li>
+      <li><a href="/documentation/qa/quality_dashboard_zh.html">质量Dashboard</a>: 每个版本的测试覆盖率和结果。</li>
+      <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/release-methodology/version-numbers">发行方式</a>: 版本号的意义。</li>
+   </ul>
+                                                                                          
+<h2>发行说明</h2>
 
-                                                                                              <h2>Release notes</h2>
+<ul>
+   <li><a href="/blog/crosswalk-14-beta.html">Crosswalk-14</a></li>
+   <li><a href="/blog/crosswalk-12-beta.html">Crosswalk-12</a></li>
+   <li><a href="/blog/crosswalk-11-beta.html">Crosswalk-11</a></li>
+   <li><a href="/blog/crosswalk-10-beta.html">Crosswalk-10</a></li>
+   <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-9-release-notes">Crosswalk-9</a></li>
+   <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-8-release-notes">Crosswalk-8</a></li>
+   <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Release-dates">更多... (旧版本和新的规划)</a></li>
+</ul>
 
-                                                                                                <ul>
-                                                                                                    <li><a href="/blog/crosswalk-14-beta.html">Crosswalk-14</a></li>
-                                                                                                        <li><a href="/blog/crosswalk-12-beta.html">Crosswalk-12</a></li>
-                                                                                                            <li><a href="/blog/crosswalk-11-beta.html">Crosswalk-11</a></li>
-                                                                                                                <li><a href="/blog/crosswalk-10-beta.html">Crosswalk-10</a></li>
-                                                                                                                    <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-9-release-notes">Crosswalk-9</a></li>
-                                                                                                                        <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Crosswalk-8-release-notes">Crosswalk-8</a></li>
-                                                                                                                            <li><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Release-dates">More... (past versions and future schedule)</a></li>
-                                                                                                                              </ul>
+<p>注意发行说明仅针对stable版本和beta版本。</p>
 
-                                                                                                                              <p>Note that release notes are only produced for stable and beta
-                                                                                                                                versions.</p>
+<h2>质量总结</h2>
 
-                                                                                                                                <h2>Quality Summary</h2>
+<p>关于详细的质量总结，请参见页面<a href="/documentation/quality_dashboard_zh.html">质量Dashboard</a>。 </p>
 
-                                                                                                                                <p>Please view <a href="/documentation/quality_dashboard.html">Quality Dashboard</a> for detailed quality summary.</p>
+<h2><a class="doc-anchor" id="Release-channels"></a>发布频道</h2>
 
-                                                                                                                                <h2><a class="doc-anchor" id="Release-channels"></a>Release channels</h2>
+<p>这里有三个发行频道(为了增加不稳定性)：</p>
 
-                                                                                                                                <p>There are three release channels (in order of increasing
-                                                                                                                                  instability):</p>
+<ol>
+　<li>
+    <p><a class="doc-anchor" id="Stable"></a><strong>Stable</strong></p>
+   <p>Stable版本是针对最终用户发行的。一旦一个Crosswalk发行版本被提升到Stable频道，便只能在该版本中看到针对关键bug和安全问题的新二进制文件。</p>
+  </li>
 
-                                                                                                                                  <ol>
-                                                                                                                                    <li>
-                                                                                                                                        <p><a class="doc-anchor" id="Stable"></a><strong>Stable</strong></p>
+  <li>
+    <p><a class="doc-anchor" id="Beta"></a><strong>Beta</strong></p>
 
-                                                                                                                                            <p>A Stable release is a release intended for end users. Once a
-                                                                                                                                                  Crosswalk release is promoted to the Stable channel, that
-                                                                                                                                                        release will only see new binaries for critical bugs and
-                                                                                                                                                              security issues.</p>
-                                                                                                                                                                </li>
+    <p>Beta版本主要用于应用开发人员测试Crosswalk新的变化部分，或者是即将要发布为下一个Stable版本的特性。Beta版本的发布是基于自动的基础验收测试(ABAT),人工测试结果和功能变化。Beta版本的发布需要满足一个预期的稳定性水平的要求；但是，它仍然只是一个Beta版，可能包含大量的bug。</p>
+</li>
 
-                                                                                                                                                                  <li>
-                                                                                                                                                                      <p><a class="doc-anchor" id="Beta"></a><strong>Beta</strong></p>
+<li>
+  <p><a class="doc-anchor" id="Canary"></a><strong>Canary</strong></p>
 
-                                                                                                                                                                          <p>A Beta release is intended primarily for application
-                                                                                                                                                                                developers looking to test their application against
-                                                                                                                                                                                      any new changes to Crosswalk, or use new features due
-                                                                                                                                                                                            to land in the next Stable release. Beta builds are
-                                                                                                                                                                                                  published based on automated basic acceptance tests (ABAT),
-                                                                                                                                                                                                        manual testing results, and functionality changes. There is
-                                                                                                                                                                                                              an expected level of stability with Beta releases; however,
-                                                                                                                                                                                                                    it is still Beta, and may contain significant bugs.</p>
-                                                                                                                                                                                                                      </li>
+  <p>Canary版本的发布很频繁（有时候可以达到每天）。It is based on a recent tip of master that passes a full build and automatic basic acceptance test.对于那些只关心Crosswalk最新特性而不想自己编译的开发者而言，Canary版本是一个不错的选择。</p>
+  </li>
+</ul>
 
-                                                                                                                                                                                                                        <li>
-                                                                                                                                                                                                                            <p><a class="doc-anchor" id="Canary"></a><strong>Canary</strong></p>
+<p>更多的信息请参见<a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Release-methodology">发布频道页面</a>。</p>
 
-                                                                                                                                                                                                                                <p>The Canary release is generated on a frequent basis
-                                                                                                                                                                                                                                      (sometimes daily). It is based on a recent tip of master that
-                                                                                                                                                                                                                                            passes a full build and automatic basic acceptance test. The
-                                                                                                                                                                                                                                                  Canary build is an easy option for developers who are interested
-                                                                                                                                                                                                                                                        in the absolute latest features, but don't want to build
-                                                                                                                                                                                                                                                              Crosswalk themselves.</p>
-                                                                                                                                                                                                                                                                </li>
-                                                                                                                                                                                                                                                                </ul>
-
-                                                                                                                                                                                                                                                                <p>More information is available on the
-                                                                                                                                                                                                                                                                  <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Release-methodology">Release Channels page</a>.</p>
-                                                                                                                                                                                                                                                                  <!--
-                                                                                                                                                                                                                                                                      <p>The <a href="/contribute/channels_viewer">Channel Viewer</a>
-                                                                                                                                                                                                                                                                            shows detailed information about the status of each release channel.</p>
-                                                                                                                                                                                                                                                                                -->
-                                                                                                                                                                                                                                                                                <p>The <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/release-methodology/version-numbers">Crosswalk
-                                                                                                                                                                                                                                                                                    version numbers page</a> describes how Crosswalk versions are assigned.</p>
+<p><a href="https://github.com/crosswalk-project/crosswalk-website/wiki/release-methodology/version-numbers">Crosswalk版本编号页面</a>描述了Crosswalk版本号是如何分配的。</p>
 
   <footer class="article-next">
     
