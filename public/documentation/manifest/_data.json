@@ -1,82 +1,62 @@
 {
   "using_the_manifest": {
-     "title": "Using the manifest",
-     "language": "en"
+     "title": "Using the manifest"
   },
   "entry_points": {
-     "title": "Entry points",
-     "language": "en"
+     "title": "Entry points"
   },
   "content_security_policy": {
-     "title": "Content security policy",
-     "language": "en"
+     "title": "Content security policy"
   },
   "display": {
-     "title": "Display",
-     "language": "en"
+     "title": "Display"
   },
   "icons": {
-     "title": "Icons",
-     "language": "en"
+     "title": "Icons"
   },
   "launch_screen": {
-     "title": "Launch screen",
-     "language": "en"
+     "title": "Launch screen"
   },
   "orientation": {
-     "title": "Orientation",
-     "language": "en"
+     "title": "Orientation"
   },
   "permissions": {
-     "title": "Permissions",
-     "language": "en"
+     "title": "Permissions"
   },
   "xwalk_hosts": {
-     "title": "xwalk hosts",
-     "language": "en"
+     "title": "xwalk hosts"
   },
   "other_fields": {
-     "title": "Other fields",
-     "language": "en"
+     "title": "Other fields"
   },
   "using_the_manifest_zh": {
-     "title": "使用manifest文件",
-     "language": "zh"
+     "title": "使用manifest文件"
   },
-  "entry_points_zh": 
-     "title": "应用入口点",
-     "language": "zh"
+  "entry_points_zh": {
+     "title": "应用入口点"
   },
   "content_security_policy_zh": {
-     "title": "内容安全策略",
-     "language": "zh"
+     "title": "内容安全策略"
   },
   "display_zh": {
-     "title": "展示",
-     "language": "zh"
+     "title": "展示"
   },
   "icons_zh": {
-     "title": "图标",
-     "language": "zh"
+     "title": "图标"
   },
   "launch_screen_zh": {
-     "title": "启动画面",
-     "language": "zh"
+     "title": "启动画面"
   },
   "orientation_zh": {
-     "title": "防线",
-     "language": "zh"
+     "title": "防线"
   },
   "permissions_zh": {
-     "title": "许可证",
-     "language": "zh"
+     "title": "许可证"
   },
   "xwalk_hosts_zh": {
-     "title": "xwalk环境",
-     "language": "zh"
+     "title": "xwalk环境"
   },
   "other_fields_zh": {
-     "title": "其他属性",
-     "language": "zh"
+     "title": "其他属性"
   }        
 }
