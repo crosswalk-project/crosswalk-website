@@ -4,7 +4,7 @@
 
 <strong>注意：Cordova开发者</strong>可以利用[Crosswalk WebView in Cordova 4.0](/documentation/cordova_zh.html)教程，轻松地让您在Cordova 4.0应用中使用高级Crosswalk webview。
 
-**本章节介绍了以下及方面内容：**
+**本章节介绍了以下几方面内容：**
 
 1.  [搭建*主机*环境](/documentation/android/system_setup.html)：主机，是您用来开发应用的机器。Crosswalk官方支持Windows系统和Linux系统。
 

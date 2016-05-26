@@ -65,7 +65,7 @@
 
 ### <a class="doc-anchor" id="Can-one-Crosswalk-installation-be-shared-between-multiple-applications"></a>一个Crosswalk安装包可以在多个应用之间共享吗？
 
-将运行时环境绑定应用（又称为“嵌入式模式”）是解决应用分发的最简单的方法。另外，多个Crosswalk应用*可以*共享同一个Crosswalk运行时环境库（“共享模式”）；共享模式的Crosswalk运行时环境库需要作为Crosswalk fpr Android一部分来开发，用户需要自己部署这个共享的运行时环境库。
+将运行时环境绑定应用（又称为“嵌入式模式”）是解决应用分发的最简单的方法。另外，多个Crosswalk应用*可以*共享同一个Crosswalk运行时环境库（“共享模式”）；共享模式的Crosswalk运行时环境库需要作为Crosswalk for Android一部分来开发，用户需要自己部署这个共享的运行时环境库。
 
 ### <a class="doc-anchor" id="How-can-I-distribute-a-Crosswalk-Android-application-across-multiple-architectures"></a>如何在多个架构上部署Crosswalk的Android应用？
 
