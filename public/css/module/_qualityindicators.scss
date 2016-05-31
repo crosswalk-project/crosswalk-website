@@ -322,12 +322,20 @@ License: MIT
     width:100%;
     padding:0
 }
+@media screen and (min-width: 50em) {
+    .qa-dashboard-div {
+        width:130%
+    }
+}
 .qa-dashboard-seg-td {
     font-weight:600;
     width:auto;
     min-width:20px;
     word-wrap:break-word;
     text-align:center
+}
+.qa-dashboard-seg-border {
+    border:1px solid #000;
 }
 .qa-dashboard-component-th {
     width:20%;
@@ -340,7 +348,7 @@ License: MIT
     word-wrap:break-word
 }
 .qa-dashboard-issue-li {
-    font-size:77%;
+    font-size:77%
 
 }
 .qa-dashboard-component-info {
