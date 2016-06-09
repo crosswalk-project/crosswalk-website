@@ -161,3 +161,32 @@ a.button--large {
     }
 }
 
+#main-follow-wechat-button,
+#main-follow-wechat-button:visited {
+    max-width: 204px;
+    margin: 10px 0px 20px 0px;
+    padding: 0px;
+    font-size: modular-scale($base-font-size, -1, $base-ratio);
+    font-weight: 400;
+    line-height: $base-line-height;
+
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: none;
+
+    @include media($mid) {
+        margin: 20px 20px 20px 5px;
+        max-width: none;
+        text-align: left;
+        width: auto;
+    }
+
+    &:hover,
+    &:focus {
+        color: darken($color-gray, 7.5%);
+    }
+    &:active {
+        color: darken($color-gray, 15%);
+    }
+}
