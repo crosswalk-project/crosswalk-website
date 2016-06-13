@@ -1,1 +1,10 @@
-{  "use_crosswalk_lite": {    "title": "Using Crosswalk Lite"  },  "use_crosswalk_lite_zh": {    "title": "使用Crosswalk Lite"  }}
+{
+  "use_crosswalk_lite": {
+    "title": "Using Crosswalk Lite"
+  },
+  "use_crosswalk_lite_zh": {
+    "title": "使用Crosswalk Lite",
+    "origin": "use_crosswalk_lite"
+  }
+}
+

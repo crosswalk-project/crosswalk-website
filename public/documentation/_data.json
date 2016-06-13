@@ -78,8 +78,16 @@
   "download_mode": {
     "title": "Download Mode"
   },
+  "download_mode_zh": {
+    "title": "下载模式",
+    "origin": "download_mode"
+  },
   "crosswalk_lite": {
     "title": "Crosswalk Lite"
+  },
+  "crosswalk_lite_zh": {
+    "title": "Crosswalk Lite",
+    "origin": "crosswalk_lite"
   },
   "tutorials": {
     "title": "Tutorials"
