@@ -38,6 +38,9 @@
   "android_extensions": {
     "title": "Android extensions"
   },
+  "android_extensions_zh": {
+    "title": "安卓扩展程序"
+  },
   "embedding_crosswalk": {
     "title": "Embedding Crosswalk"
   },
