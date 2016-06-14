@@ -40,5 +40,9 @@
   },
   "embedding_crosswalk": {
     "title": "Embedding Crosswalk"
+  },
+  "embedding_crosswalk_zh": {
+    "title": "Crosswalk嵌入模式"
   }
+
 }
