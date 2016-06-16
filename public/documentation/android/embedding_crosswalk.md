@@ -145,7 +145,12 @@ Your project should now be linked to the Crosswalk webview project.
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     ```
-    
+ 
+   Invoid to call lifecycle when screen orientation changes, especially play video in full screen, It is recommended that add the following configuration for your activity:
+   ```
+   android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
+   ```
+
     Depending on the features of your app, you may need to request additional permissions. It is considered good security practice on Android to request only those permissions that your app actually needs.
     
     *Accessing Location Information*
