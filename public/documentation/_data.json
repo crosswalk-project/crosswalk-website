@@ -13,6 +13,10 @@
     "title": "开始",
     "origin": "getting_started"
   },
+  "crosswalk-app-tools_zh": {
+    "title": "Crosswalk App Tools",
+    "origin": "crosswalk_app_tools"
+  },
   "android": {
     "title": "Android"
   },
