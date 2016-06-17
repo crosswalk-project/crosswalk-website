@@ -145,31 +145,32 @@ Your project should now be linked to the Crosswalk webview project.
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     ```
- 
-   Invoid to call lifecycle when screen orientation changes, especially play video in full screen, It is recommended that add the following configuration for your activity:
-   ```
-   android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
-   ```
+
+    In some cases, for example when playing full-screen video, you may want to prevent certain changes in the device configuration (e.g. orientation changes) from interrupting your application. To do so you need to declare that your application handles the changes itself by adding the following configuration for your activity:
+    ```
+    android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
+    ```
+    See the [Android documentation](https://developer.android.com/guide/topics/resources/runtime-changes.html) for more details.
 
     Depending on the features of your app, you may need to request additional permissions. It is considered good security practice on Android to request only those permissions that your app actually needs.
-    
+
     *Accessing Location Information*
     ```
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     ```
-    
+
     *Accessing Camera, Video and Microphone*
     ```
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     ```
-    
+
     *Writing data to SD Card*
     ```
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     ```
-    
+
     *Keeping Screen On*
     ```
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -305,7 +306,7 @@ Follow the steps below to add some web assets and bundle them with your applicat
 ### Enable Proguard to compress apk size (Optional)
 ProGuard is a free Java class file shrinker, optimizer, obfuscator and pre-verifier. Those operations are optional when generating your final apk. If you have developed your own Proguard config file along with your Java code, you might want to add some Proguard rules to compress the size of the Crosswalk library: <a href="/documentation/samples/proguard-xwalk.txt">Proguard rules for crosswalk example</a>.
 
-The purpose of using Proguard on the Crosswalk library is to shrink the size not for anti-decompilation consideration. Note that there are a lot of reflections in Crosswalk code, many of which directly reference class names as strings. Thus the shrink and obfuscate operations mainly affect the chromium areas. 
+The purpose of using Proguard on the Crosswalk library is to shrink the size not for anti-decompilation consideration. Note that there are a lot of reflections in Crosswalk code, many of which directly reference class names as strings. Thus the shrink and obfuscate operations mainly affect the chromium areas.
 
 <h3 id="Debugging">Debugging</h3>
 
