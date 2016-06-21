@@ -1,12 +1,12 @@
 # 启动画面
 
-启动画面是一个当应用启动后立刻展示的静态用户接口。当应用的“真实”用户接口可以被构建后，启动画面将会被隐藏：例如，当应用和任何需要的资源被加载后。
+启动画面是一个当应用启动后立刻显示的静态用户界面。当应用的“真实”用户界面可以被构建后，也就是说，当应用和任何需要的资源被加载后，启动画面将会被隐藏。
 
-因为启动画面几乎可以让用户立刻浏览应用的内容，所以它可以显著地提高他们对应用性能的感知并且提高用户体验。
+因为启动画面几乎可以让用户立刻浏览应用的内容，所以它可以显著地提高用户对app性能好感并且提升用户体验。
 
 ## 完整的规范
 
-[Interstitial launch screens](https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit).
+[启动画面](https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit).
 
 ## manifest属性的定义
 
@@ -34,34 +34,34 @@
        }
     }
 
-## xwalk_launch_screen` 成员
+## xwalk_launch_screen` 属性成员
 
-|Member | Description|
+|属性成员 | 描述|
 |---|---|
-|`"ready_when"` |  The application readiness state at which to hide the launch screen. If undefined, defaults to `"first-paint"`. See the next section for more details.|
-|`"default"` | The launch screen to use for both landscape and portrait mode.|
-|`"landscape"` | The launch screen to use for landscape mode.|
-|`"portrait"` | The launch screen to use for portrait mode.|
+|`"ready_when"` |  应用就绪状态，即隐藏启动画面的状态。如果没有定义，默认值是"first-paint"`。详情参考下文。|
+|`"default"` | 横屏和竖屏下都适用的启动画面。|
+|`"landscape"` | 横屏模式下使用启动画面。|
+|`"portrait"` | 竖屏模式下使用启动画面。|
 
 ### `ready_when`
 
-Application readiness state | Preconditions
+应用就绪状态 | 前置条件
 --- | ---
-`"first-paint"` | * The first visually non-empty paint has occurred.
-`"user-interactive"` | * The first visually non-empty paint has occurred.<br>* The DOM and CSSOM have been constructed.
-`"complete"` | * The first visually non-empty paint has occurred. <br>* All the resources have been loaded.<br> **WARNING: This may take a long time, as it only triggers after all sub-resources have been downloaded.**
-`"custom"` | * The first visually non-empty paint has occurred. <br>* The ```window.screen.show()``` method was called.
+`"first-paint"` | *第一帧非空画面开始渲染*
+`"user-interactive"` | * 第一帧非空画面开始渲染。<br>* DOM和CSSOM构建完成。
+`"complete"` | * 第一帧非空画面开始渲染。 <br>* 所有资源完成加载<br> **警示：这可能会消耗很长时间，因为只有所有的资源下载完成后，才会触发此状态。**
+`"custom"` | * 第一帧非空画面开始渲染。<br>* ```window.screen.show()``` 函数被调用。
 
 ### `default` / `portrait` / `landscape`
 
-这些属性规定了在不同的屏幕方向上的启动画面时使用的图像和背景。如果仅仅`portrait`或者`landscape`被设定，启动画面将仅仅出现在对应的方向上（分别为纵向或者横向）。
+这些属性规定了在不同的屏幕方向上的启动画面时使用的图像和背景。如果仅仅设定`portrait`或者`landscape`，启动画面将仅仅出现在设定的方向上（分别为竖屏或者横屏）。
 
-每一个方向属性均可以被包含下列属性的对象定义：
+每一个方向属性均可以被含有下列字段的对象定义：
 
-* `background_color`: 启动画面的背景颜色，在[hexadecimal notation](http://www.w3.org/TR/css3-color/#rgb-color)。
-* `background_image`: 重复的背景图片。图像的左上角对齐屏幕浏览区域的左上角。详细请参见 [background_image spec](https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.p51ynj4nuqv7)。
+* `background_color`: 启动画面的背景颜色，形式为[16进制](http://www.w3.org/TR/css3-color/#rgb-color)。
+* `background_image`: 重复的背景图片。图像的左上角对齐屏幕浏览区域的左上角。详细请参见 [背景图片规范](https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.p51ynj4nuqv7)。
 * `image`: 在背景中水平和垂直方向居中的图片。
-* `image_border`: 一个边界图片，分成９小块与中间边界块扩展和／或延伸来填满整个视图。详见[Image Border spec](https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.rq1ayw778vp6)。
+* `image_border`: 一个边界图片，它被切分成９小块缩小和／或延伸来填满整个视图。详见[图像边界规范](https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.rq1ayw778vp6)。
 
 注意：当用户启动应用时，`background_color`和`background_image`将是第一个被展示的。在`image`属性中规定的图片将在背景上展示。
 
@@ -73,7 +73,7 @@ Application readiness state | Preconditions
 
     "<filename1> <density1>, <filename2> <density2>, ..."
 
-其中`<filename*>`是一个相对于manifest的指向图像文件的路径；`<density*>`是图像将被应用的屏幕的密度（如果仅规定了一个文件`density`是随意的）。例如，对于下列的字段值：
+其中`<filename*>`是一个相对于manifest的图像文件的路径；`<density*>`是图像将被应用的屏幕的密度（如果仅规定了一个文件`density`是随意的）。例如，对于下列的字段值：
 
     "background_image": "file1.png 1x, file2.png 2x, file3.png"
 
