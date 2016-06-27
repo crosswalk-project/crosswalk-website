@@ -8,7 +8,7 @@ This is necessary because Android applications cannot request permissions at run
 
 <h2 id="Effect-on-Android-packaging">Effect on Android packaging</h2>
 
-The `make_apk.py` script translates the `permissions` or `xwalk_permissions` field in `manifest.json` into `<android:uses-permission>` elements in `AndroidManifest.xml`.
+The `crosswalk-pkg` tool translates the `permissions` or `xwalk_permissions` field in `manifest.json` into `<android:uses-permission>` elements in `AndroidManifest.xml`.
 
 For example, given the following manifest:
 
@@ -30,10 +30,9 @@ For example, given the following manifest:
       ]
     }
 
-...and this `make_apk.py` command line:
+...and this `crosswalk-pkg` command line:
 
-    python make_apk.py --package=org.crosswalkproject.example \
-      --manifest=manifest.json
+    crosswalk-pkg <Path to directory that contains a web app>
 
 ...the following `AndroidManifest.xml` permission elements are generated:
 
@@ -58,19 +57,11 @@ For example, given the following manifest:
     <uses-permission android:name="android.permission.WRITE_SMS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
 
-Note that the `make_apk.py` script always adds a default set of permissions (the first group in the example above). Only the second group of permissions are the ones added because of the presence of the `xwalk_permissions` field in the manifest. The mappings from permissions in the manifest to Android permissions are shown in the [table in the next section](#Permissions-required-by-API).
-
-Alternatively, permissions can be specified on the command line and not included in `manifest.json`. For example, the following command line option would have the same effect as the manifest shown:
-
-    --permissions=Contacts:Geolocation:Messaging:Vibration
-
-Note that permission values are not case sensitive (either in the manifest or on the command line), so the following would be equivalent:
-
-    --permissions=contacts:geolocation:messaging:vibration
+Note that the `crosswalk-pkg` tool always adds a default set of permissions (the first group in the example above). Only the second group of permissions are the ones added because of the presence of the `xwalk_permissions` field in the manifest. The mappings from permissions in the manifest to Android permissions are shown in the [table in the next section](#Permissions-required-by-API).
 
 <h2 id="Permissions-required-by-API">Permissions required by API</h2>
 
-If you want to use some of Crosswalk's web APIs in an application, you may need to add permissions to `AndroidManifest.xml` to make those APIs accessible. You can either do this via the [packaging script](/documentation/android/run_on_android.html), or manually (if you are using the embedding API).
+If you want to use some of Crosswalk's web APIs in an application, you may need to add permissions to `AndroidManifest.xml` to make those APIs accessible. You can either do this in manifest.json when packaging the web app, or manually (if you are using the embedding API).
 
 The table below shows which web APIs require which permissions.
 
@@ -81,19 +72,11 @@ The table below shows which web APIs require which permissions.
     </th>
 
     <th>
-      Permission in manifest.json or on <code>make_apk.py</code> command line
-    </th>
-
-    <th>
       AndroidManifest.xml permission(s)
     </th>
   </tr>
 
   <tr>
-    <td>
-      Contacts
-    </td>
-
     <td>
       Contacts
     </td>
@@ -110,19 +93,11 @@ The table below shows which web APIs require which permissions.
     </td>
 
     <td>
-      Geolocation
-    </td>
-
-    <td>
       android.permission.ACCESS_FINE_LOCATION
     </td>
   </tr>
 
   <tr>
-    <td>
-      Messaging
-    </td>
-
     <td>
       Messaging
     </td>
@@ -139,10 +114,6 @@ The table below shows which web APIs require which permissions.
   <tr>
     <td>
       <a href="http://www.w3.org/TR/vibration/">Vibration</a>
-    </td>
-
-    <td>
-      Vibration
     </td>
 
     <td>
