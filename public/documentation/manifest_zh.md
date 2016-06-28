@@ -1,12 +1,12 @@
 # Manifest
 
-manifest文件（例如manifest.json）位于你的项目源代码中并且用于具体规定你应用中的元数据（标题，图标等）以及它如何表现和展示自己。
+manifest文件（例如manifest.json）位于你的项目源代码中,它用于具体规定你应用中的元数据（标题，图标等）和如何体现作用。
 
-Crosswalk项目使用了一个基于[专门针对Web应用的W3C](http://w3c.github.io/manifest/)的json文件。除此之外，Crosswalk项目的manifest通过添加以`xwalk_` keyword`为前缀的字段对W3C manifest进行了扩展。
+Crosswalk项目使用了一个基于[专门针对Web应用的W3C](http://w3c.github.io/manifest/)的json文件。除此之外，Crosswalk项目的manifest通过添加以`xwalk_` 关键字`为前缀的字段对W3C manifest进行扩展。
 
 关于在Corsswalk应用中如何使用`manifest.json`文件的详细信息请参见[使用manifest](manifest/using_the_manifest_zh.html)。
 
-为了编译一个简单应用所需要的最基本的manifest.json文件如下：
+满足编译一个简单应用所需要的最简单的manifest.json文件如下：
 
 ```
 {
@@ -23,7 +23,7 @@ Crosswalk项目使用了一个基于[专门针对Web应用的W3C](http://w3c.git
 }
 ```
 
-下列是当创建模板时，由`crosswalk-build应用`生成的默认manifest。
+当创建模板时，由`crosswalk-build app`生成的默认manifest如下。
 
 运行这个命令：
 
@@ -31,7 +31,7 @@ Crosswalk项目使用了一个基于[专门针对Web应用的W3C](http://w3c.git
 > crosswalk-app create com.abc.myapp
 ```
 
-在你的项目根目录下创建下列manifest.json文件：
+在你的项目根目录下创建如下manifest.json文件：
 
 ```
 {

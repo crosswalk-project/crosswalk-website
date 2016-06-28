@@ -51,10 +51,10 @@
      "title": "方向"
   },
   "permissions_zh": {
-     "title": "许可证"
+     "title": "权限"
   },
   "xwalk_hosts_zh": {
-     "title": "xwalk环境"
+     "title": "xwalk hosts"
   },
   "other_fields_zh": {
      "title": "其他属性"
