@@ -133,6 +133,11 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/android.html">Android</a>
         
             <ul class="article-list">
@@ -388,6 +393,9 @@
 <pre><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
 &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
 &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;</code></pre>
+<p>In some cases, for example when playing full-screen video, you may want to prevent certain changes in the device configuration (e.g. orientation changes) from interrupting your application. To do so you need to declare that your application handles the changes itself by adding the following configuration for your activity:</p>
+<pre><code>android:configChanges=&quot;orientation|keyboardHidden|keyboard|screenSize&quot;</code></pre>
+<p>See the <a href="https://developer.android.com/guide/topics/resources/runtime-changes.html">Android documentation</a> for more details.</p>
 <p>Depending on the features of your app, you may need to request additional permissions. It is considered good security practice on Android to request only those permissions that your app actually needs.</p>
 <p><em>Accessing Location Information</em></p>
 <pre><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</code></pre>
@@ -498,7 +506,7 @@ image in assets/images/myimage.png
 </ol>
 <h3>Enable Proguard to compress apk size (Optional)</h3>
 <p>ProGuard is a free Java class file shrinker, optimizer, obfuscator and pre-verifier. Those operations are optional when generating your final apk. If you have developed your own Proguard config file along with your Java code, you might want to add some Proguard rules to compress the size of the Crosswalk library: <a href="/documentation/samples/proguard-xwalk.txt">Proguard rules for crosswalk example</a>.</p>
-<p>The purpose of using Proguard on the Crosswalk library is to shrink the size not for anti-decompilation consideration. Note that there are a lot of reflections in Crosswalk code, many of which directly reference class names as strings. Thus the shrink and obfuscate operations mainly affect the chromium areas. </p>
+<p>The purpose of using Proguard on the Crosswalk library is to shrink the size not for anti-decompilation consideration. Note that there are a lot of reflections in Crosswalk code, many of which directly reference class names as strings. Thus the shrink and obfuscate operations mainly affect the chromium areas.</p>
 <h3 id="Debugging">Debugging</h3>
 
 <p>To enable debugging of the web application running in an embedded Crosswalk webview, modify the <code>MainActivity.java</code> file to look like this:</p>

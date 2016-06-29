@@ -133,6 +133,11 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools_zh.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/android_zh.html">Android</a>
         
         </li>
@@ -198,12 +203,12 @@
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/permissions_zh.html">许可证</a>
+                <a class="article-link" href="/documentation/manifest/permissions_zh.html">权限</a>
                 
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk环境</a>
+                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk hosts</a>
                 
               </li>
             
@@ -227,6 +232,16 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode_zh.html">下载模式</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite_zh.html">Crosswalk Lite</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/samples_zh.html">样例</a>
         
         </li>
@@ -242,7 +257,7 @@
 
 <article class="article article--hasToC">
   <h1>方向</h1>
-<p><code>orientation</code>字段用于设定在Crosswalk上运行的应用的默认方向。即使物理设备在不同的方向上旋转，应用将仍然能保持在manifest中设置的方向。然而，在运行时方向仍然可以改变；例如，通过使用<a href="http://www.w3.org/TR/screen-orientation/">screen orientation API</a>。</p>
+<p><code>orientation</code>字段用于设定在Crosswalk上运行的应用的默认方向。即使物理设备在不同的方向上旋转，应用将仍然能保持在manifest中设置的方向。然而，在运行时方向仍然可以改变；例如，通过使用<a href="http://www.w3.org/TR/screen-orientation/">屏幕方向API</a>。</p>
 <p>一个将默认方向设置为纵向的manifet样例：</p>
 <pre><code>{
   &quot;name&quot;: &quot;app name&quot;,
@@ -255,7 +270,7 @@
   &quot;start_url&quot;: &quot;index.html&quot;,
   &quot;orientation&quot;: &quot;landscape&quot;
 }</code></pre>
-<p>其他<code>orientation</code>字段可以使用的值：例如，在Crosswalk Android中，<code>&quot;portrait-primary&quot;</code>表示对于用户的“自然”纵向（例如纵向的应用，其中应用的顶部位于设备屏幕的<em>顶部</em>）；然而<code>&quot;portrait-secondary&quot;</code>表示“反向”纵向（例如纵向的应用，但是应用的顶部却位于设备屏幕的<em>底部</em>）。同样，<code>&quot;landscape-primary&quot;</code>用于设定“自然”横向，<code>&quot;landscape-secondary&quot;</code>设定“反向”横向。所有的有效值均定义在<a href="https://w3c.github.io/screen-orientation/#idl-def-OrientationLockType">关于画面方向的具体规定</a>中。</p>
+<p>其他<code>orientation</code>字段可以使用的值：例如，在Crosswalk Android中，<code>&quot;portrait-primary&quot;</code>表示对于用户的“自然”纵向（例如纵向的应用，其中应用的顶部位于设备屏幕的<em>顶部</em>）；然而<code>&quot;portrait-secondary&quot;</code>表示“反向”纵向（例如纵向的应用，但是应用的顶部却位于设备屏幕的<em>底部</em>）。同样，<code>&quot;landscape-primary&quot;</code>用于设定“自然”横向，<code>&quot;landscape-secondary&quot;</code>设定“反向”横向。所有的有效值均定义在<a href="https://w3c.github.io/screen-orientation/#idl-def-OrientationLockType">关于画面方向的具体规范</a>中。</p>
 
   <footer class="article-next">
     
@@ -322,7 +337,7 @@
       
       <a href="/documentation/manifest/permissions_zh.html" class="article-promo well">
         <em>下一节关于什么？</em>
-        <h3>许可证</h3>
+        <h3>权限</h3>
       </a>
     
   

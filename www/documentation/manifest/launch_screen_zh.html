@@ -133,6 +133,11 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools_zh.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/android_zh.html">Android</a>
         
         </li>
@@ -198,12 +203,12 @@
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/permissions_zh.html">许可证</a>
+                <a class="article-link" href="/documentation/manifest/permissions_zh.html">权限</a>
                 
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk环境</a>
+                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk hosts</a>
                 
               </li>
             
@@ -227,6 +232,16 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode_zh.html">下载模式</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite_zh.html">Crosswalk Lite</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/samples_zh.html">样例</a>
         
         </li>
@@ -242,10 +257,10 @@
 
 <article class="article article--hasToC">
   <h1>启动画面</h1>
-<p>启动画面是一个当应用启动后立刻展示的静态用户接口。当应用的“真实”用户接口可以被构建后，启动画面将会被隐藏：例如，当应用和任何需要的资源被加载后。</p>
-<p>因为启动画面几乎可以让用户立刻浏览应用的内容，所以它可以显著地提高他们对应用性能的感知并且提高用户体验。</p>
+<p>启动画面是一个当应用启动后立刻显示的静态用户界面。当应用的“真实”用户界面可以被构建后，也就是说，当应用和任何需要的资源被加载后，启动画面将会被隐藏。</p>
+<p>因为启动画面几乎可以让用户立刻浏览应用的内容，所以它可以显著地提高用户对app性能好感并且提升用户体验。</p>
 <h2>完整的规范</h2>
-<p><a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit">Interstitial launch screens</a>.</p>
+<p><a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit">启动画面</a>.</p>
 <h2>manifest属性的定义</h2>
 <p>在manifest中启动画面的属性被称为<code>xwalk_launch_screen</code>并且定义如下：</p>
 <pre><code>&quot;xwalk_launch_screen&quot;: {
@@ -267,30 +282,30 @@
      &quot;image_border&quot;: &quot;30px 40px stretch&quot;,
    }
 }</code></pre>
-<h2>xwalk_launch_screen` 成员</h2>
+<h2>xwalk_launch_screen` 属性成员</h2>
 <table>
 <thead>
 <tr>
-<th>Member</th>
-<th>Description</th>
+<th>属性成员</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>&quot;ready_when&quot;</code></td>
-<td>The application readiness state at which to hide the launch screen. If undefined, defaults to <code>&quot;first-paint&quot;</code>. See the next section for more details.</td>
+<td>应用就绪状态，即隐藏启动画面的状态。如果没有定义，默认值是&quot;first-paint&quot;`。详情参考下文。</td>
 </tr>
 <tr>
 <td><code>&quot;default&quot;</code></td>
-<td>The launch screen to use for both landscape and portrait mode.</td>
+<td>横屏和竖屏下都适用的启动画面。</td>
 </tr>
 <tr>
 <td><code>&quot;landscape&quot;</code></td>
-<td>The launch screen to use for landscape mode.</td>
+<td>横屏模式下使用启动画面。</td>
 </tr>
 <tr>
 <td><code>&quot;portrait&quot;</code></td>
-<td>The launch screen to use for portrait mode.</td>
+<td>竖屏模式下使用启动画面。</td>
 </tr>
 </tbody>
 </table>
@@ -298,44 +313,44 @@
 <table>
 <thead>
 <tr>
-<th>Application readiness state</th>
-<th>Preconditions</th>
+<th>应用就绪状态</th>
+<th>前置条件</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>&quot;first-paint&quot;</code></td>
-<td>* The first visually non-empty paint has occurred.</td>
+<td><em>第一帧非空画面开始渲染</em></td>
 </tr>
 <tr>
 <td><code>&quot;user-interactive&quot;</code></td>
-<td><em> The first visually non-empty paint has occurred.<br></em> The DOM and CSSOM have been constructed.</td>
+<td><em> 第一帧非空画面开始渲染。<br></em> DOM和CSSOM构建完成。</td>
 </tr>
 <tr>
 <td><code>&quot;complete&quot;</code></td>
-<td><em> The first visually non-empty paint has occurred. <br></em> All the resources have been loaded.<br> <strong>WARNING: This may take a long time, as it only triggers after all sub-resources have been downloaded.</strong></td>
+<td><em> 第一帧非空画面开始渲染。 <br></em> 所有资源完成加载<br> <strong>警示：这可能会消耗很长时间，因为只有所有的资源下载完成后，才会触发此状态。</strong></td>
 </tr>
 <tr>
 <td><code>&quot;custom&quot;</code></td>
-<td><em> The first visually non-empty paint has occurred. <br></em> The <code>window.screen.show()</code> method was called.</td>
+<td><em> 第一帧非空画面开始渲染。<br></em> <code>window.screen.show()</code> 函数被调用。</td>
 </tr>
 </tbody>
 </table>
 <h3><code>default</code> / <code>portrait</code> / <code>landscape</code></h3>
-<p>这些属性规定了在不同的屏幕方向上的启动画面时使用的图像和背景。如果仅仅<code>portrait</code>或者<code>landscape</code>被设定，启动画面将仅仅出现在对应的方向上（分别为纵向或者横向）。</p>
-<p>每一个方向属性均可以被包含下列属性的对象定义：</p>
+<p>这些属性规定了在不同的屏幕方向上的启动画面时使用的图像和背景。如果仅仅设定<code>portrait</code>或者<code>landscape</code>，启动画面将仅仅出现在设定的方向上（分别为竖屏或者横屏）。</p>
+<p>每一个方向属性均可以被含有下列字段的对象定义：</p>
 <ul>
-<li><code>background_color</code>: 启动画面的背景颜色，在<a href="http://www.w3.org/TR/css3-color/#rgb-color">hexadecimal notation</a>。</li>
-<li><code>background_image</code>: 重复的背景图片。图像的左上角对齐屏幕浏览区域的左上角。详细请参见 <a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.p51ynj4nuqv7">background_image spec</a>。</li>
+<li><code>background_color</code>: 启动画面的背景颜色，形式为<a href="http://www.w3.org/TR/css3-color/#rgb-color">16进制</a>。</li>
+<li><code>background_image</code>: 重复的背景图片。图像的左上角对齐屏幕浏览区域的左上角。详细请参见 <a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.p51ynj4nuqv7">背景图片规范</a>。</li>
 <li><code>image</code>: 在背景中水平和垂直方向居中的图片。</li>
-<li><code>image_border</code>: 一个边界图片，分成９小块与中间边界块扩展和／或延伸来填满整个视图。详见<a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.rq1ayw778vp6">Image Border spec</a>。</li>
+<li><code>image_border</code>: 一个边界图片，它被切分成９小块缩小和／或延伸来填满整个视图。详见<a href="https://docs.google.com/a/intel.com/document/d/17PuNuHRTQuREUpaCvj-eEx7uYi2avd-VW-oaMXMpvwo/edit?pli=1#heading=h.rq1ayw778vp6">图像边界规范</a>。</li>
 </ul>
 <p>注意：当用户启动应用时，<code>background_color</code>和<code>background_image</code>将是第一个被展示的。在<code>image</code>属性中规定的图片将在背景上展示。</p>
 <h3>图像和颜色定义</h3>
 <p>支持的图片格式包括<strong>png</strong>, <strong>bmp</strong>, <strong>jpg</strong>, and <strong>gif</strong>。</p>
 <p><code>background_image</code>和<code>image</code>属性包含如下格式：</p>
 <pre><code>&quot;&lt;filename1&gt; &lt;density1&gt;, &lt;filename2&gt; &lt;density2&gt;, ...&quot;</code></pre>
-<p>其中<code>&lt;filename*&gt;</code>是一个相对于manifest的指向图像文件的路径；<code>&lt;density*&gt;</code>是图像将被应用的屏幕的密度（如果仅规定了一个文件<code>density</code>是随意的）。例如，对于下列的字段值：</p>
+<p>其中<code>&lt;filename*&gt;</code>是一个相对于manifest的图像文件的路径；<code>&lt;density*&gt;</code>是图像将被应用的屏幕的密度（如果仅规定了一个文件<code>density</code>是随意的）。例如，对于下列的字段值：</p>
 <pre><code>&quot;background_image&quot;: &quot;file1.png 1x, file2.png 2x, file3.png&quot;</code></pre>
 <p>并且一个2.5 dppx（每个像素点）的屏幕密度，<code>file2.png</code>将会被选取（因为它是低于dppx的最近的值）</p>
 <p>对于这个字段值:</p>

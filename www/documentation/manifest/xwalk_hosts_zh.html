@@ -31,7 +31,7 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="xwalk环境" />
+    <meta property="og:title" content="xwalk hosts" />
     <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/xwalk_hosts_zh" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
@@ -39,7 +39,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/xwalk_hosts_zh" />
-    <meta name="twitter:title" content="xwalk环境" />
+    <meta name="twitter:title" content="xwalk hosts" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -133,6 +133,11 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools_zh.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/android_zh.html">Android</a>
         
         </li>
@@ -198,12 +203,12 @@
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/permissions_zh.html">许可证</a>
+                <a class="article-link" href="/documentation/manifest/permissions_zh.html">权限</a>
                 
               </li>
             
               <li class="article-item  nav-item--active">
-                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk环境</a>
+                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk hosts</a>
                 
               </li>
             
@@ -227,6 +232,16 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode_zh.html">下载模式</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite_zh.html">Crosswalk Lite</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/samples_zh.html">样例</a>
         
         </li>
@@ -242,15 +257,15 @@
 
 <article class="article article--hasToC">
   <h1>xwalk_hosts</h1>
-<p><a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest对象</a>用于通过HTTP与远程服务器通信（一个通常称为<a href="http://www.adaptivepath.com/ideas/ajax-new-approach-web-applications/">Ajax</a>的方法）。正常情况下，这些请求会被<a href="http://www.w3.org/Security/wiki/Same_Origin_Policy">same-origin policy</a>限制：只有与发出请求的脚本位于相同主机的资源才可以被访问。</p>
-<p>如果你已经尝试从你的web应用访问资源，但是它们却位于不同的来源，你可能已经看到下列信息：</p>
+<p><a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest对象</a>用于通过HTTP与远程服务器通信（例如大名鼎鼎的<a href="http://www.adaptivepath.com/ideas/ajax-new-approach-web-applications/">Ajax</a>）。正常情况下，这些请求会被<a href="http://www.w3.org/Security/wiki/Same_Origin_Policy">同源访问策略</a>限制：只有与发出请求的脚本位于相同主机的资源才可以被访问。</p>
+<p>如果你尝试从你的web应用访问资源，但是它们却位于不同的来源，你可能已经看到下列信息：</p>
 <pre><code>XMLHttpRequest cannot load http://crosswalk-project.org/. No
 &#39;Access-Control-Allow-Origin&#39; header is present on the requested
 resource. Origin &#39;file://&#39; is therefore not allowed access.</code></pre>
-<p>这表明如果提供你要访问的服务器返回正确的头部，便有可能发出这样的请求。这里提到的&#39;Access-Control-Allow-Origin&#39;头部是<a href="http://www.w3.org/TR/cors/">cross-origin resource sharing specification</a>的一部分。跨源的资源分享使得客户端可以向不同源的服务器发出请求，通过需要的header提供客户端和服务器的通信。然而实际上，很多你可能想要访问的web服务（除非你自己控制它们）在没有认证的情况下均不允许跨源的资源共享。</p>
+<p>这表明如果发出这样的请求，那么你要访问的服务器会返回正确的头部。这里提到的&#39;Access-Control-Allow-Origin&#39;头部是<a href="http://www.w3.org/TR/cors/">跨域资源共享规范</a>的一部分。跨域的资源分享使得客户端可以向不同源的服务器发出请求，通过需要的header提供客户端和服务器的通信。然而实际上，很多你可能想要访问的web服务（除非你自己控制它们）在没有认证的情况下均不允许跨域的资源共享。</p>
 <p>Crosswalk为部署在Android上的应用提供了一种绕开这些限制的方法。</p>
-<h2>允许跨源请求</h2>
-<p>Crosswalk提供了一个manifest字段,<code>xwalk_hosts</code>, 其中它可以保证在Android平台上应用可以使用XMLHttpRequest发出跨源请求。这样避免了同源的约束，同时也避免了使用跨源资源共享的需求。</p>
+<h2>允许跨域请求</h2>
+<p>Crosswalk提供了一个manifest字段,<code>xwalk_hosts</code>, 其中它可以保证在Android平台上应用可以使用XMLHttpRequest发出跨域请求。这样避免了同源的约束，同时也避免了使用跨域资源共享的需求。</p>
 <p>这个字段包含一组代表应用可以访问的主机的URL模式。其中值完全可以表示主机名，像：</p>
 <ul>
 <li><code>&quot;http://crosswalk-project.org/&quot;</code></li>

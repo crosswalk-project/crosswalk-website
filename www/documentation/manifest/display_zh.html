@@ -133,6 +133,11 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools_zh.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/android_zh.html">Android</a>
         
         </li>
@@ -198,12 +203,12 @@
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/permissions_zh.html">许可证</a>
+                <a class="article-link" href="/documentation/manifest/permissions_zh.html">权限</a>
                 
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk环境</a>
+                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk hosts</a>
                 
               </li>
             
@@ -227,6 +232,16 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode_zh.html">下载模式</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite_zh.html">Crosswalk Lite</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/samples_zh.html">样例</a>
         
         </li>
@@ -241,16 +256,16 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>展示</h1>
-<p><code>display</code>字段用于为应用设定更优的<em>展现模式</em>：应用占据多大的可用展示区域，用户接口的其他元素（导航栏，其他工具栏）是否可见。 </p>
-<p>当前，下列展示模式可用：</p>
+  <h1>显示</h1>
+<p><code>display</code>字段用于为应用设定更优的<em>显示模式</em>：应用占据多大的可用显示区域，用户界面的其他元素（导航栏，其他工具栏）是否可见。 </p>
+<p>当前，下面显示模式可用：</p>
 <ul>
-<li><p><code>&quot;全屏&quot;</code></p>
-<p>在这种模式下，应用的展示将充满整个屏幕，没有任何运行时的Chrome UI元素可见。</p>
-<p>注意规定&quot;fullscreen&quot;展现模式和使用应用内部的<a href="http://fullscreen.spec.whatwg.org/">fullscreen API</a>是不同的：前一种情况下，你在指导运行时展示应用，使其充满整个展示区域；然而后一种情况下，一个应用可以要求它的一个UI元素填充整个展示区域。</p>
+<li><p><code>&quot;fullscreen&quot;</code></p>
+<p>在这种模式下，应用的显示将充满整个屏幕，Chrome UI将不可见。</p>
+<p>注意规定&quot;fullscreen&quot;显示模式和在应用里中使用的<a href="http://fullscreen.spec.whatwg.org/">fullscreen API</a>是不同的：前一种情况下，运行时显示应用，使其充满整个显示区域；然而后一种情况下，一个应用可以要求它的一个UI元素填充整个显示区域。</p>
 </li>
-<li><p><code>&quot;单机&quot;</code> (默认)</p>
-<p>在这种模式下，应用展示的方式和本地应用相同。上下文中标准的UI元素（例如，设备的状态栏）依然可见。</p>
+<li><p><code>&quot;stanalone&quot;</code> (默认)</p>
+<p>在这种模式下，应用显示的方式和本地应用相同。上下文中标准的UI元素（例如，设备的状态栏）依然可见。</p>
 </li>
 </ul>
 <p>详见<a href="http://w3c.github.io/manifest/#display-member">W3C spec</a> 。</p>

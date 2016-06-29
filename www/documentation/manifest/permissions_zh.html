@@ -31,7 +31,7 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="许可证" />
+    <meta property="og:title" content="权限" />
     <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/permissions_zh" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
@@ -39,7 +39,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/permissions_zh" />
-    <meta name="twitter:title" content="许可证" />
+    <meta name="twitter:title" content="权限" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -133,6 +133,11 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools_zh.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/android_zh.html">Android</a>
         
         </li>
@@ -198,12 +203,12 @@
               </li>
             
               <li class="article-item  nav-item--active">
-                <a class="article-link" href="/documentation/manifest/permissions_zh.html">许可证</a>
+                <a class="article-link" href="/documentation/manifest/permissions_zh.html">权限</a>
                 
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk环境</a>
+                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk hosts</a>
                 
               </li>
             
@@ -227,6 +232,16 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode_zh.html">下载模式</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite_zh.html">Crosswalk Lite</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/samples_zh.html">样例</a>
         
         </li>
@@ -241,13 +256,13 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>Permissions</h1>
-<p><code>xwalk_permissions</code>字段是一个W3C manifest的Crossswalk extension。它用于在Android平台上为Crosswalk打包一个应用时，在<code>AndroidManifest.xml</code>文件中设定permission。</p>
-<p>这是必须的，因为Android应用不可以在运行时请求permission：所有应用需要的permission必须在安装的时候被授予。在其他上下文中（(Crosswalk Tizen，嵌入式API），这个字段是被忽略的。</p>
-<p><strong>注意：</strong> 如果你正在<a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">通过一个嵌入式API从一个manifest加载一个应用</a>，你将必须在<code>AndroidManifest.xml</code>中为Crosswalk手动规定permission。请参见 <a href="#Permissions-required-by-API">section below</a>，其中是关于Crosswalk的<a href="/documentation/apis/web_apis.html">web APIs</a>需要的permission的指导。</p>
+  <h1>权限</h1>
+<p><code>xwalk_permissions</code>字段是Crosswalk对于W3C manifest的扩展。在打包安卓版Crosswalk应用时，它被用来在<code>AndroidManifest.xml</code>文件中设定权限。</p>
+<p>这是必须的，因为Android应用不可以在运行时请求permission：所有应用需要的permission必须在安装的时候被授予。在其他章节中（(Crosswalk Tizen，嵌入式API），这个字段是被忽略的。</p>
+<p><strong>注意：</strong> 如果你正在<a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">通过个嵌入式API从manifest中加载应用</a>，那么你必须在<code>AndroidManifest.xml</code>中为Crosswalk应用手动添加permission。请参见 <a href="#Permissions-required-by-API">下文</a>，其中是关于Crosswalk的<a href="/documentation/apis/web_apis.html">web APIs</a>需要的permission的指导。</p>
 <h2 id="Effect-on-Android-packaging">对Android打包的影响</h2>
 
-<p><code>make_apk.py</code>脚本将<code>manifest.json</code>中的<code>permissions</code>或者<code>xwalk_permissions</code>转换成<code>AndroidManifest.xml</code>中的<code>&lt;android:uses-permission&gt;</code>元素。</p>
+<p><code>Crosswalk App Tools</code>将<code>manifest.json</code>中的<code>permissions</code>或者<code>xwalk_permissions</code>转换成<code>AndroidManifest.xml</code>中的<code>&lt;android:uses-permission&gt;</code>元素。</p>
 <p>例如，给定下列的manifest：</p>
 <pre><code>{
   &quot;name&quot;: &quot;simple&quot;,
@@ -266,11 +281,10 @@
     }
   ]
 }</code></pre>
-<p>...并且这个<code>make_apk.py</code>命令行：</p>
-<pre><code>python make_apk.py --package=org.crosswalkproject.example \
-  --manifest=manifest.json</code></pre>
-<p>...生成下列的<code>AndroidManifest.xml</code>permission元素：</p>
-<pre><code>&lt;!-- permissions always added during packaging --&gt;
+<p>...并且这个<code>crosswalk-pkg &lt;Path to directory that contains a web app&gt;</code>命令行：</p>
+<pre><code>crosswalk-pkg &lt;Path to directory that contains a web app&gt;</code></pre>
+<p>...生成下列的<code>AndroidManifest.xml</code>权限：</p>
+<pre><code>&lt;!-- 打包过程中默认添加的权限 --&gt;
 &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot;/&gt;
 &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;
 &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot;/&gt;
@@ -280,7 +294,7 @@
 &lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot;/&gt;
 &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;
 
-&lt;!-- permissions added due to the &quot;permissions&quot; manifest field --&gt;
+&lt;!-- 在manifest文件中添加的权限--&gt;
 &lt;uses-permission android:name=&quot;android.permission.READ_CONTACTS&quot;/&gt;
 &lt;uses-permission android:name=&quot;android.permission.WRITE_CONTACTS&quot;/&gt;
 &lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot;/&gt;
@@ -290,14 +304,10 @@
 &lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;
 &lt;uses-permission android:name=&quot;android.permission.WRITE_SMS&quot;/&gt;
 &lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot;/&gt;</code></pre>
-<p>注意<code>make_apk.py</code>脚本通常添加一个默认集合的permission（在上例中的第一组）。只有第二组的permission是因为在manifest中的<code>xwalk_permissions</code>字段而添加的。manifest中的permission和Android permission的对应关系在<a href="#Permissions-required-by-API">table in the next section</a>中展示。</p>
-<p>或者，permission可以在命令行中规定并且不被包含在<code>manifest.json</code>中。例如，下列的命令行选项将会产生和manifest相同的效果：</p>
-<pre><code>--permissions=Contacts:Geolocation:Messaging:Vibration</code></pre>
-<p>注意permission值不是大小写敏感（无论是在manifest中还是命令行），所以下列效果等同：</p>
-<pre><code>--permissions=contacts:geolocation:messaging:vibration</code></pre>
+<p>注意<code>crosswalk-pkg</code>命令通常添加一个默认集合的permission（在上例中的第一组）。第二组的permission是在manifest中的<code>xwalk_permissions</code>字段添加的。manifest中的permission和Android permission的对应关系在<a href="#Permissions-required-by-API">下表</a>中展示。</p>
 <h2 id="Permissions-required-by-API">API需要的permission</h2>
 
-<p>如果你想在应用中使用一些Crosswalk的web API，你可能需要在<code>AndroidManifest.xml</code>中添加权限使得那些API可访问。你可以通过<a href="/documentation/android/run_on_android.html">打包脚本</a>，或者手动完成（如果你在使用嵌入式API）。</p>
+<p>如果你想在应用中使用一些Crosswalk的web API，你可能需要在<code>AndroidManifest.xml</code>中添加权限使得那些API可访问。你需要手动添加（如果你在使用嵌入式API）。</p>
 <p>下表展示了web API分别需要哪些permission。</p>
 <table>
   <tr>
@@ -306,19 +316,11 @@
     </th>
 
     <th>
-      Permission in manifest.json or on <code>make_apk.py</code> command line
-    </th>
-
-    <th>
       AndroidManifest.xml permission(s)
     </th>
   </tr>
 
   <tr>
-    <td>
-      Contacts
-    </td>
-
     <td>
       Contacts
     </td>
@@ -335,19 +337,11 @@
     </td>
 
     <td>
-      Geolocation
-    </td>
-
-    <td>
       android.permission.ACCESS_FINE_LOCATION
     </td>
   </tr>
 
   <tr>
-    <td>
-      Messaging
-    </td>
-
     <td>
       Messaging
     </td>
@@ -367,16 +361,12 @@
     </td>
 
     <td>
-      Vibration
-    </td>
-
-    <td>
       android.permission.VIBRATE
     </td>
   </tr>
 </table>
 
-<p>例如，你可能有一个嵌入Crosswalk的Android应用，并且想要在应用的web应用部分使用JavaScript <a href="http://www.w3.org/TR/vibration/">Vibration API</a>。这种情况下，你将需要手动地将这个permission加入到<code>AndroidManifest.xml</code>中：</p>
+<p>例如，你可能有一个嵌入Crosswalk运行时的Android应用，并且想要在应用的web应用部分使用JavaScript <a href="http://www.w3.org/TR/vibration/">震动API</a>。这种情况下，你需要手动地将这个permission加入到<code>AndroidManifest.xml</code>中：</p>
 <pre><code>&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot;/&gt;</code></pre>
 
   <footer class="article-next">
@@ -447,7 +437,7 @@
       
       <a href="/documentation/manifest/xwalk_hosts_zh.html" class="article-promo well">
         <em>下一节关于什么？</em>
-        <h3>xwalk环境</h3>
+        <h3>xwalk hosts</h3>
       </a>
     
   

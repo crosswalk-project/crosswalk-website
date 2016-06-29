@@ -133,6 +133,11 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools_zh.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/android_zh.html">Android</a>
         
         </li>
@@ -198,12 +203,12 @@
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/permissions_zh.html">许可证</a>
+                <a class="article-link" href="/documentation/manifest/permissions_zh.html">权限</a>
                 
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk环境</a>
+                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk hosts</a>
                 
               </li>
             
@@ -227,6 +232,16 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode_zh.html">下载模式</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite_zh.html">Crosswalk Lite</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/samples_zh.html">样例</a>
         
         </li>
@@ -242,39 +257,39 @@
 
 <article class="article article--hasToC">
   <h1>使用manifest文件</h1>
-<p>这个页面展示了在部署Crosswalk应用的时候如何使用<code>manifest.json</code>文件。</p>
-<p>manifest可以通过以下&quot;modes&quot;使用：</p>
+<p>这个页面叙述了在部署Crosswalk应用的时候如何使用<code>manifest.json</code>文件。</p>
+<p>manifest可以通过以下&quot;方式&quot;使用：</p>
 
 <ol>
-<li><a href="#Configure-Android-packaging_zh">配置如何为Android打包Crosswalk应用</a>.</li>
-<li><a href="#Load-an-application-into-an-embedded-Crosswalk_zh">如何将一个应用加载到嵌入式Crosswalk运行时环境</a>.</li>
+<li><a href="#Configure-Android-packaging_zh">配置将Crosswalk应用打包成Android应用</a>.</li>
+<li><a href="#Load-an-application-into-an-embedded-Crosswalk_zh">将一个应用加载到嵌入式Crosswalk运行时</a>.</li>
 </ol>
 <h2 id="Configure-Android-packaging_zh">配置Android打包</h2>
 
-<p>Crosswalk manifest文件可以被用来作为一个应用生成Android包的基础。详细指导请参见<a href="/documentation/getting_started_zh.html">入门指导</a>。</p>
-<p>然而，那个指导只使用了一个基本的manifest，并没有详细地解释某些manifest字段如何影响Android包生成。下面的链接提供了关于这些的额外信息：</p>
+<p>Crosswalk manifest文件可以被用来作为一个应用生成Android包的基础。详情参见<a href="/documentation/getting_started_zh.html">入门指导</a>。</p>
+<p>然而，上述教程只使用了一个基本版的manifest，并没有详细地解释某些manifest字段如何影响Android打包过程。下面的链接提供了关于这些的额外信息：</p>
 <ul>
-<li><p><code>图标</code>: <a href="/documentation/manifest/icons_zh.html#Effect-on-Android-packaging_zh">在打包Android上的作用</a></p>
+<li><p><code>图标</code>: <a href="/documentation/manifest/icons_zh.html#Effect-on-Android-packaging_zh">在Android打包过程中的作用</a></p>
 </li>
-<li><p><code>permissions</code>: <a href="/documentation/manifest/permissions_zh.html#Effect-on-Android-packaging_zh">在打包Android上的应用</a>
-如果没有被包含进<code>manifest.json</code>文件<a href="#Load-an-application-into-an-embedded-Crosswalk_zh">加载进嵌入式Crosswalk中</a>，则这些字段不会生效。</p>
+<li><p><code>permissions</code>: <a href="/documentation/manifest/permissions_zh.html#Effect-on-Android-packaging_zh">在Android打包过程中的应用</a>
+注意，在<a href="#Load-an-application-into-an-embedded-Crosswalk_zh">嵌入式Crosswalk中</a>，上述俩个字段在<code>manifest</code>中不会生效。</p>
 </li>
 </ul>
-<h2 id="Load-an-application-into-an-embedded-Crosswalk_zh">加载嵌入模式Crosswalk应用</h2>
+<h2 id="Load-an-application-into-an-embedded-Crosswalk_zh">加载应用到嵌入模式Crosswalk</h2>
 
-<p><a href="/documentation/apis/embedding_api_zh.html">嵌入式API</a> 使得你可以将Crosswalk运行时环境嵌入到一个Android应用中。<a href="/documentation/embedding_crosswalk_zh.html">嵌入模式Crosswalk指南</a>解释了如何使用这个API加载一个应用的主要HTML文件到嵌入式Crosswalk。</p>
-<p>然而，API<a href="/documentation/apis/embedding_api_zh.html">从manifest文件输出加载一个应用的方法</a>也可以作为另一种选择。从manifest加载一个应用的优点是它比通过URL加载一个应用提供更多的灵活性。</p>
-<p>例如，如果你决定为你的应用修改入口点（例如，将<code>index.html</code>改名成<code>home.html</code>），你可以在manifest中进行而不用去修改任何Java应用代码。同样，如果新字段对于Crosswalk manifest变得可用，你便可以利用你自己manifest中的这些字段而不用去修改任何Java代码。</p>
-<p>为了展示该方法如何工作，<a href="/documentation/embedding_crosswalk_zh.html">嵌入模式API的应用开发指南</a>可以很容易地被采用来指导使用manifest。遵循指南，然后按下文修改项目：</p>
+<p><a href="/documentation/apis/embedding_api_zh.html">嵌入式API</a> 使得你可以将Crosswalk运行时环境嵌入到一个Android应用中。<a href="/documentation/embedding_crosswalk_zh.html">嵌入模式Crosswalk指南</a>解释了如何使用embedding API加载一个应用的主HTML文件到嵌入式Crosswalk。</p>
+<p>然而，embedding API也提供了另外一个选择：<a href="/documentation/apis/embedding_api_zh.html">从manifest文件加载应用</a>。比起通过URL加载应用,从manifest文件加载应用的优点是更加灵活。</p>
+<p>例如，如果你决定修改应用的入口点（例如，将<code>index.html</code>改名成<code>home.html</code>），你可以在manifest中修改，而不用去修改任何Java代码。同样，如果新字段对于Crosswalk manifest变得可用，你可以在自己的manifest文件中利用这些字段的优势，而不用去修改任何Java代码。</p>
+<p>为了展示该方法如何工作，可以很容易地遵循<a href="/documentation/embedding_crosswalk_zh.html">嵌入模式API的应用开发指南</a>使用manifest。按照上述指南做完所有步骤，然后按如下内容修改项目：</p>
 <ol>
-<li><p>添加一个<code>manifest.json</code>文件到应用的web根目录（至于指南中的嵌入API应用，这个便是<code>assets/</code>目录）：</p>
+<li><p>添加一个<code>manifest.json</code>文件到应用的web根目录（对于教程中使用embedding API的应用，根目录便是<code>assets/</code>目录）：</p>
 <pre><code>{
     &quot;name&quot;: &quot;XWalkEmbed&quot;,
     &quot;xwalk_version&quot;: &quot;0.0.1&quot;,
     &quot;start_url&quot;: &quot;index.html&quot;
 }</code></pre>
 </li>
-<li><p>修改<code>org.crosswalkproject.xwalkembed.MainActivity</code>类（在<code>src/</code>下）所以它使用<code>loadAppFromManifest()</code>方法而不是<code>load()</code>方法：</p>
+<li><p>修改<code>org.crosswalkproject.xwalkembed.MainActivity</code>类（在<code>src/</code>下），它使用<code>loadAppFromManifest()</code>方法而不是<code>load()</code>方法：</p>
 <pre><code>package org.crosswalkproject.xwalkembed;
 
 import org.xwalk.core.XWalkView;
@@ -299,8 +314,8 @@ public class MainActivity extends Activity {
 }</code></pre>
 </li>
 </ol>
-<p>现在你可以运行应用，<code>manifest.json</code>中<code>start_url</code>属性所规定的HTML文件将会被加载。它是跟之前被加载的相同的<code>index.html</code>文件；但是使用manifest使得在不修改Java代码的情况下，更容易对项目进行修改。</p>
-<p>注意在<code>manifest.json</code>中，某些被用于打包android应用的字段<em>不</em>被用于在嵌入式Crosswalk中加载manifest。关于这些字段详见<a href="#Configure-Android-packaging">this section</a>。</p>
+<p>当你运行应用时，<code>manifest.json</code>中<code>start_url</code>属性所规定的HTML文件将会被加载。它跟之前被加载的<code>index.html</code>文件相同；但是修改应用时，使用manifest会更加容易，而不用修改Java代码。</p>
+<p>注意，在嵌入式crosswalk模式中，<code>manifest.json</code>中某些被用于打包android应用的字段<em>不</em>会奏效。关于这些字段详见<a href="##Configure-Android-packaging_zh">this section</a>。</p>
 
   <footer class="article-next">
     

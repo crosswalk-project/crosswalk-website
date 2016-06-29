@@ -133,6 +133,11 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools_zh.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/android_zh.html">Android</a>
         
         </li>
@@ -198,12 +203,12 @@
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/permissions_zh.html">许可证</a>
+                <a class="article-link" href="/documentation/manifest/permissions_zh.html">权限</a>
                 
               </li>
             
               <li class="article-item ">
-                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk环境</a>
+                <a class="article-link" href="/documentation/manifest/xwalk_hosts_zh.html">xwalk hosts</a>
                 
               </li>
             
@@ -227,6 +232,16 @@
         </li>
     
         <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode_zh.html">下载模式</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite_zh.html">Crosswalk Lite</a>
+        
+        </li>
+    
+        <li class="article-item ">
         <a class="article-link" href="/documentation/samples_zh.html">样例</a>
         
         </li>
@@ -243,11 +258,11 @@
 <article class="article article--hasToC">
   <h1>图标</h1>
 <p><code>icons</code>字段用于规定在视觉上代表应用的一个或者多个图标图形。</p>
-<p>一个图标可能被一个任务转换器使用，或者在一个通知区域或者一个设备上的应用列表中。下图展示了在Android平台中，<em>townxelliot media player</em>在<em>应用列表</em>（左边）和<em>最近使用应用</em>（右边）环境下的图标。</p>
+<p>一个图标可能被一个任务转换器使用，或者在一个通知区域或者一个设备上的应用列表中。下图展示了在Android平台中，<em>townxelliot media player</em>在<em>应用列表</em>（左边）和<em>最近使用应用</em>（右边）的图标。</p>
 <p><img src="/assets/manifest-icon-contexts.png" alt="Manifest icon used in &quot;application list&quot; and &quot;recent apps&quot; context on Android"></p>
-<p><code>icons</code>字段与<a href="http://w3c.github.io/manifest/#icons-member"><code>icons</code>字段在W3C manifest specification</a>一致。</p>
-<p>注意当被使用在一个<code>manifest.json</code>文件<a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">loaded into an embedded Crosswalk on Android</a>中时这个字段不生效。</p>
-<p>该字段是一个图标对象列表，每一个对象至少定义了一个图标的URL（通过<code>src</code>属性）。图标的<code>type</code>属性可以用于设置述图标的图形格式；图标将要展现的最佳呈现<code>sizes</code>和屏幕像素<code>density</code>也可以被设置。</p>
+<p><code>icons</code>字段与<a href="http://w3c.github.io/manifest/#icons-member">W3C manifest标准中的<code>icon</code>字段</a>一致。</p>
+<p>注意<a href="/documentation/manifest/using_the_manifest.html#Load-an-application-into-an-embedded-Crosswalk">在嵌入式Crosswalk应用中</a>，<code>manifest.json</code>中的<code>icon</code>字段不生效。</p>
+<p>该字段是一个图标对象列表，每一个对象至少定义了一个图标的URL（通过<code>src</code>属性）。图标的<code>type</code>属性可以用于设置图标的类型；也可以设置图标的最佳渲染<code>sizes</code>和屏幕像素<code>density</code>。</p>
 <p>例如，这里有一个规定三个图标的简单的Crosswalk manifest：一个在需要64x64像素图标时被使用；一个在需要128x128像素图标时被使用；一个在需要128x128像素图标并且屏幕像素密度为２时被使用：</p>
 <pre><code>{
   &quot;name&quot;: &quot;simple_app&quot;,
@@ -273,21 +288,21 @@
   &quot;display&quot;: &quot;fullscreen&quot;,
   &quot;orientation&quot;: &quot;landscape&quot;
 }</code></pre>
-<p>在<code>icons</code>列中每个对象的属性值都在上文中给出。</p>
+<p>在<code>icons</code>中每个对象的属性值解释都在下文中。</p>
 <h3>src</h3>
-<p>相对于manifest文件，到达图标文件的路径。</p>
+<p>指定图标文件的路径，路径是相对于manifest文件所在目录。</p>
 <h3>type</h3>
-<p>图标的<a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a>。</p>
+<p>图标的<a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME类型</a>。</p>
 <h3>sizes</h3>
-<p>图片适合的图标大小，用以空格分离的<code>&lt;width&gt;x&lt;height&gt;</code>字串表示。例如：</p>
+<p>图片适合的图标大小，用以空格分离的<code>&lt;width&gt;x&lt;height&gt;</code>字符串表示。例如：</p>
 <ul>
 <li><code>&quot;sizes&quot;: &quot;128x128&quot;</code>: 这个图片适合被用做一个128x128像素的图标。</li>
 <li><code>&quot;sizes&quot;: &quot;128x128 256x256&quot;</code>: 这个图片适合被用做一个128x128或者256x256像素的图标。</li>
 </ul>
-<p>请注意<code>sizes</code>属性的值<em>不是</em>图片的固有大小（例如，图片文件存储的像素大小）：它是这个图片文件适合的图标大小的集合。这意味着可以使用一个固有大小小于或者大于它将应用的图标的图片文件。</p>
-<p>例如，一个图片文件大小可能为128x128；但是manifest中规定这个图片可以被用于128x128或者256x256像素的图标，这个图片将被按比例放大(2x)以适应需要的图标大小（这可能导致其外观有些降解）。</p>
+<p>请注意<code>sizes</code>属性的值<em>不是</em>图片的实际大小（例如，图片文件存储的像素大小）：它指定了这个图片文件所适合的图标集合。这意味着可以使用一个大于或小于图标应有尺寸的图片作为图标。</p>
+<p>例如，一个图片文件大小可能为128x128；但是manifest中规定这个图片可以被用于128x128或者256x256像素的图标，这个图片将被按比例放大(2x)以适应需要的图标大小（这可能导致其看起来有些模糊）。</p>
 <h3>density</h3>
-<p><code>density</code>属性用于规定一个图标应该被应用于哪个屏幕密度。外加<code>sizes</code>属性，在给定一个屏幕密度后便可以调整哪个图片文件被用于某个特殊的图标大小。</p>
+<p><code>density</code>属性用于规定一个图标应该被应用于哪个屏幕密度。外加<code>sizes</code>属性，在给定一个屏幕密度后便可以调整哪个图片文件被用于某个特殊的图标。</p>
 <p>如果你不熟悉屏幕密度的概念，请参见<a href="/documentation/screens/screen_measurements_zh.html">屏幕测量页面</a>。</p>
 <p>属性值是一个代表图片适合的屏幕密度的浮点数，即每个点的像素（dppx）。例如：</p>
 <ul>
@@ -297,13 +312,13 @@
 <p>如果<code>density</code>没有设定，则默认为<code>1.0</code>。</p>
 <p>为了展示它在实际中如何工作，假设你有一个128x128原始像素的图标。现在你将其按每个CSS像素(1dppx)一个物理像素放到一个需要一个128x128像素图标的设备中。原图中的每个原始像素占据设备屏幕中图标的一个像素。</p>
 <p>现在假设有一个密度为2dppx的不同设备，也需要一个128x128的图标。如果相同的那个128x128像素的图片文件被用于填充屏幕的那块空白，图片的每个原始像素将占据设备屏幕的4个像素(2x2)。结果就是一张模糊图像，因为相同的单个像素被用于填充屏幕中的4个像素。</p>
-<p>为了解决这个，<a href="http://www.whatwg.org/specs/web-apps/current-work/#attr-link-sizes">W3C specification</a>推荐根据需要的图标大小和屏幕密度选择不同原始大小的图片。其中提供了这个例子：</p>
+<p>为了解决这个，<a href="http://www.whatwg.org/specs/web-apps/current-work/#attr-link-sizes">W3C标准</a>推荐根据需要的图标大小和屏幕密度选择不同原始大小的图片。其中提供了这个例子：</p>
 <blockquote>
 <p>&quot;一个50 CSS像素宽的图标，假设它将展示在一个像素密度为每个CSS像素两个设备像素(2x, 192dpi)的设备上，则宽度的原始像素需要为100。</p>
 </blockquote>
-<p>从这里我们可以得出一个用于计算对于一个给定的图标大小和密度需要多大的原始图像文件。</p>
+<p>从这里我们可以得出一个计算公式:对于一个给定的图标大小和密度时,需要多大的原始图像文件。</p>
 <blockquote>
-<p>原始图像尺寸 = 设备独立像素下需要的图标的尺寸 * 设备屏幕像素密度</p>
+<p>原始图像尺寸 = 设备独立像素下的图标尺寸 * 设备屏幕像素密度</p>
 </blockquote>
 <p>对于我们这种情况，我们使用两个图像文件：</p>
 <ul>
@@ -329,8 +344,8 @@
 <p>注意我们没有提到<code>foo_hd.png</code>原始像素大小为256x256：我们仅仅说明它适合于一个密度为2dppx的屏幕中的一个128x128像素的图标。</p>
 <h2 id="Effect-on-Android-packaging">对Android打包的影响</h2>
 
-<p>不会直接影响Android中的Crosswalk运行时环境，<code>icons</code>字段影响一个应用如何被<a href="/documentation/android/run_on_android.html"><code>make_apk.py</code></a>打包。<code>make_apk.py</code>脚本丢弃了一些在<code>icon</code>字段中包含的信息，例如<code>density</code>。</p>
-<p>如果<code>icons</code>字段包含多个图标大小，<code>make_apk.py</code>将根据它们的大小选择对应的图标文件到<a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android drawable resources</a>。</p>
+<p>不会直接影响Android中的Crosswalk运行时，<code>icons</code>字段影响一个应用如何被<a href="/documentation/android/run_on_android.html"><code>make_apk.py</code></a>打包。<code>make_apk.py</code>脚本丢弃了一些在<code>icon</code>字段中包含的信息，例如<code>density</code>。</p>
+<p>如果<code>icons</code>字段包含多个图标大小，<code>make_apk.py</code>将根据它们的大小选择对应的图标文件到<a href="http://developer.android.com/guide/topics/resources/providing-resources.html">Android可绘制资源</a>。</p>
 <p>当一个应用被安装，Android将会选取适合目标屏幕分辨率的文件作为主屏幕上，应用列表和其他相关位置上的应用图标。</p>
 <h2>致谢</h2>
 <p><em>townxelliot media player</em>图标是在<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA licence</a>下，根据<a href="http://www.wpzoom.com/">wpzoom.com</a>原创的一个图标修改得来。它来源于<a href="http://findicons.com/icon/457729/radio?id=457887">Find Icons</a>。</p>
