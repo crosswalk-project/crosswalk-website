@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html id="top">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="下载模式" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/download_mode_zh" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/download_mode_zh" />
+    <meta name="twitter:title" content="下载模式" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+
+  <div class="doc-logo-div">
+     <a href="/index_zh.html" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started_zh.html" class="doc-nav-link">文档</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog/index_zh.html" class="doc-nav-link">博客</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/contribute/index_zh.html" class="doc-nav-link">贡献</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">维基</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq_zh.html" class="doc-nav-link">常见问题</a>
+      </li>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    中文版
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <div id="translation-missing-toaster">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
+          
+
+
+
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/about_zh.html">关于</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started_zh.html">开始</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools_zh.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/android_zh.html">Android</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/ios_zh.html">iOS</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/windows_zh.html">Windows</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/linux_zh.html">Linux</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova_zh.html">Cordova</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest_zh.html">Manifest</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/apis_zh.html">API</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/shared_mode_zh.html">共享模式</a>
+        
+        </li>
+    
+        <li class="article-item  nav-item--active">
+        <a class="article-link" href="/documentation/download_mode_zh.html">下载模式</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite_zh.html">Crosswalk Lite</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/samples_zh.html">样例</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/qa_zh.html">质量保证</a>
+        
+        </li>
+    
+  </ul>
+
+</nav>
+
+<article class="article article--hasToC">
+  <h1>下载模式</h1>
+<p>下载模式为缩小APK的大小提供了另一种与共享模式相似的解决方案。你的应用仍然绑定仅包含Crosswalk API层的<code>xwalk_shared_library</code>。当应用第一次在客户端设备上运行时，后台将会从你规定好的服务器上下载Crosswalk核心库和资源。与共享模式相比，你的应用可以独享Crosswalk运行时，因此你便可以控制运行时的生命周期。Crosswalk运行时可以不需要用户交互，在后台完成下载。</p>
+<h2>使用嵌入式API完成下载模式</h2>
+<h3>使用XWalkInitializer/XWalkUpdater初始化Crosswalk</h3>
+<p>下文中的代码展示了在应用初始化过程中，如何使用<code>XWalkUpdater</code>类来下载运行时。</p>
+<pre><code>public class XWalkDownloadActivity extends Activity
+        implements XWalkInitializer.XWalkInitListener, 
+        XWalkUpdater.XWalkBackgroundUpdateListener {
+
+    XWalkInitializer mXWalkInitializer;
+    XWalkUpdater mXWalkUpdater;
+    XWalkView mXWalkView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
+
+        setContentView(R.layout.activity_xwalkview);
+
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
+        ....
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mXWalkInitializer.initAsync();
+    }
+
+    @Override
+    public void onXWalkInitStarted() {
+    }
+
+    @Override
+    public void onXWalkInitCancelled() {
+        finish();
+    }
+
+    @Override
+    public void onXWalkInitFailed() {
+        // Initialization failed. Trigger the Crosswalk runtime download
+        if (mXWalkUpdater == null) {
+            mXWalkUpdater = new XWalkUpdater(this, this);
+        }
+        mXWalkUpdater.updateXWalkRuntime();
+    }
+
+    @Override
+    public void onXWalkInitCompleted() {
+        // Initialization successfully, ready to invoke any XWalk embedded API
+        mXWalkView.load(&quot;file:///android_asset/create_window_1.html&quot;, null);
+    }
+
+    @Override
+    public void onXWalkUpdateStarted() {
+    }
+
+    @Override
+    public void onXWalkUpdateProgress(int percentage) {
+        Log.d(TAG, &quot;XWalkUpdate progress: &quot; + percentage);
+    }
+
+    @Override
+    public void onXWalkUpdateCancelled() {
+        finish();
+    }
+
+    @Override
+    public void onXWalkUpdateFailed() {
+        finish();
+    }
+
+    @Override
+    public void onXWalkUpdateCompleted() {
+        // Crosswalk Runtime update finished, re-init again.
+        mXWalkInitializer.initAsync();
+    }
+    ...</code></pre>
+<h2>配置AndroidManifest.xml</h2>
+<h3>规定Crosswalk运行时APK的下载链接</h3>
+<pre><code>&lt;meta-data android:name=&quot;xwalk_apk_url&quot; 
+           android:value=&quot;https:// [URL of your server] /XWalkRuntimeLib.apk&quot; /&gt;</code></pre>
+<p>注意当请求被发送到服务器端时，描述设备CPU架构的值将会被附加(&quot;?arch=&lt;cpu arch&gt; &quot;)。&quot;cpu arch&quot;与<code>adb shell getprop ro.product.cpu_abi</code>的返回值相同，参见下表：</p>
+<p><table style="max-width: 380px; margin:0 auto">
+  <tr><th>设备CPU架构</th><th>&quot;cpu arch&quot;的值</th></tr>
+  <tr><td>IA 32-bit</td><td><code>x86</code></td></tr>
+  <tr><td>IA 64-bit</td><td><code>x86_64</code></td></tr>
+  <tr><td>ARM 32-bit</td><td><code>armeabi-v7a</code></td></tr>
+  <tr><td>ARM 64-bit</td><td><code>arm64-v8a</code></td></tr>
+</table>
+<br></p>
+<h3>使用下载模式</h3>
+<pre><code>&lt;meta-data android:name=&quot;xwalk_enable_download_mode&quot; android:value=&quot;enable&quot; /&gt;</code></pre>
+<h2>部署</h2>
+<p>在Crosswalk运行时APK从服务器端下载完成后，需要进行一个签名检测来保证它的完整性。签名检测要求签署Crosswalk运行时APK的关键字与用来签署你的应用的关键字相同。你可以通过在AndroidManifest.xml文件中将<code>xwalk_verify</code>设置为<code>disable</code>来取消部署阶段的签名检测:</p>
+<pre><code>&lt;meta-data android:name=&quot;xwalk_verify&quot; android:value=&quot;disable&quot; /&gt;</code></pre>
+<p>通常，一个Crosswalk运行时APK(<code>XWalkRuntimeLib.apk</code>)大小约为为~28MB。我们也提供一个大小约为~18MB的LZMA压缩版的运行时APK。虽然压缩后的APK可以节省带宽，但是当应用第一次启动时，APK必须被解压。仅在第一次启动时执行。</p>
+<h2>Crosswalk运行时更新</h2>
+<p>一个使用下载模式的Crosswalk应用必须使用服务器端相同版本的Crosswalk运行时APK进行编译。特别是你的应用使用的<code>xwalk_shared_library</code>和服务器端<code>XWalkRuntimeLib.apk</code> (或者<code>XWalkRuntimeLibLzma.apk</code>)必须来自同一版本。因此，无论你何时在应用商店更新你的应用，你也必须更新你服务器的运行时APK。如果你客户端设备上的应用更新到了一个新版本，你的应用将尝试重新下载与新版本匹配的运行时，即使它已经下载过之前的版本。</p>
+
+  <footer class="article-next">
+    
+
+
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">Chinese translation of website released</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Fri, 20 May 2016 12:00:00 GMT">2016-05-20T12:00</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation/getting_started_zh.html"> 文档</a> &nbsp;
+             <a href="/blog/index_zh.html"> 博客</a> &nbsp;
+             <a href="/documentation/downloads_zh.html"> 下载</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> 问题</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub资源</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              Crosswalk项目由Intel Open Source Technology Center开发。版权为 © 2013–2016 Intel Corporation。保留所有权利。 <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy策略 </a>  *其他名称和商标可能被声明为他人财产
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=zh]").css("display","block");
+</script>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>
