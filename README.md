@@ -27,7 +27,9 @@ First, [install Node.js](http://nodejs.org). Then, run the following commands:
 
 ```
 # Install Harp. You may need to preface this command with `sudo`
-npm install --global harp
+# Note that v 0.14.0 of Harp is required to build the website. 
+# Using later versions will produce errors.
+npm install --global harp@0.14.0
 
 # Clone this project from GitHub
 git clone https://github.com/crosswalk-project/crosswalk-website.git
