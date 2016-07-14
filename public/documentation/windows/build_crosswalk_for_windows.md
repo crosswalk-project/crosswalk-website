@@ -1,6 +1,6 @@
 # Building Crosswalk For Windows
 
-1. Download and install [Microsoft Visual Studio 2013](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx). We do not support Visual Studio 2015 at the moment.
+1. Download and install [Microsoft Visual Studio 2015](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx). If you are building a Crosswalk version before 21 Microsoft Visual Studio 2013 is required.
 
 2. Install Git For Windows from http://git-scm.com/download/win and make sure it’s added to your PATH. Edit environment variables for your account. In the Windows Start menu, search for "Environment variables". Alternatively, click on the System icon in the Control Panel; then go to Advanced system settings and click the Environment Variables button. You should see this dialog box:
 
@@ -16,6 +16,7 @@
 
 4. In the Environment Variables dialog create new variables (using the “New...” button) and add:
 
+   *  `GYP_DEFINES` set to `target_arch=x64` as Crosswalk only supports 64 bits builds.
    *  `GYP_GENERATORS` set to `ninja,msvs-ninja` (this will create Visual Studio solutions if you want to run Crosswalk for Windows inside the IDE)
    *  `DEPOT_TOOLS_WIN_TOOLCHAIN`  set to 0 (which will tell Crosswalk for Windows to use your installation of Visual Studio 2013)
 
@@ -41,7 +42,7 @@ At this point you have two alternatives :
 To build from the command line, navigate into crosswalk-src/src and invoke:
 
 ```cmdline
-> ninja -C out/Release xwalk or ninja -C out/Debug xwalk
+> ninja -C out/Release_64 xwalk or ninja -C out/Debug_x64 xwalk
 ```
 
 ### Visual Studio build
