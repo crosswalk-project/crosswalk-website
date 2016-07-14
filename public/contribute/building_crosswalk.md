@@ -151,6 +151,7 @@ are then used as the basis for the actual code compilation.
    on Windows:
 
    ```
+   set GYP_DEFINES=target_arch=x64
    set GYP_GENERATORS=ninja
    python xwalk\gyp_xwalk
    ```
@@ -166,7 +167,7 @@ are then used as the basis for the actual code compilation.
 the actual compilation. To build the Crosswalk launcher (which can
 run a web application):
 
-        ninja -C out/Release xwalk
+        ninja -C out/Release xwalk or ninja -C out/Release_x64 xwalk (on Windows)
 
 ### Testing a desktop build
 
