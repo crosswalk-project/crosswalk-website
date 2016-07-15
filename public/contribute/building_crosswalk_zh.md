@@ -130,6 +130,7 @@
    在Windows下：
 
    ```
+   set GYP_DEFINES=target_arch=x64
    set GYP_GENERATORS=ninja
    python xwalk\gyp_xwalk
    ```
@@ -143,7 +144,7 @@
 
 2. 现在你已经使用`gyp`构建了项目，并且已经准备实际编译。编译Crosswalk启动器（可以运行一个web应用）:
 
-        ninja -C out/Release xwalk
+        ninja -C out/Release xwalk or ninja -C out/Release_x64 xwalk (on Windows)
 
 ### 测试桌面版Crosswalk
 
