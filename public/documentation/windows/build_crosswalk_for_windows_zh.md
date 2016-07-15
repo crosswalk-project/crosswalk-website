@@ -1,6 +1,6 @@
 # 为Windows平台编译Crosswalk
 
-1. 下载并安装[Microsoft Visual Studio 2013](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)。目前我们还不支持Visual Studio 2015。
+1. 下载并安装[Microsoft Visual Studio 2015](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)。如果你在编译21版本之前的Crosswalk，则需要使用Microsoft Visual Studio 2013。
 
 2. 从http://git-scm.com/download/win处安装Windows平台的Git，并且确保将其添加到你的PATH中。设置你的用户环境变量。在Windows的开始菜单中，检索“环境变量”。或者，点击控制面板上的系统图标；然后进入高级系统设置中，点击环境变量按钮。你应该可以看到下列对话框：
 
@@ -16,6 +16,7 @@
 
 4. 在环境变量的对话框中创建新的变量（使用"新建...按钮"）并且添加：
 
+   *  `GYP_DEFINES`设置为`target_arch=x64`，因为Crosswalk仅支持64位编译。 
    *  `GYP_GENERATORS`设置为`ninja,msvs-ninja` (如果你希望在IDE内运行针对Windows平台的Crosswalk，这个将创建Visual Studio的解决方案）
    *  `DEPOT_TOOLS_WIN_TOOLCHAIN`设置为0(这将会通知Crosswalk使用你安装的Visual Studio 2013)
 
@@ -40,7 +41,7 @@
 ### 命令行创建
 为了从命令行创建，进入Crosswalk-src/src中并调用：
 ```
-> ninja -C out/Release xwalk or ninja -C out/Debug xwalk
+> ninja -C out/Release_64 xwalk or ninja -C out/Debug_x64 xwalk
 ```
 
 ### Visual Studio创建
