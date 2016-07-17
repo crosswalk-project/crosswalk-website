@@ -248,8 +248,22 @@
 <article class="article article--hasToC">
   <h1>为Windows平台编译Crosswalk</h1>
 <ol>
-<li><p>下载并安装<a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Microsoft Visual Studio 2013</a>。目前我们还不支持Visual Studio 2015。</p>
+<li><p>下载并安装<a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Microsoft Visual Studio 2015 update 2</a>。目前我们还不支持Visual Studio 2015 update 3。</p>
 </li>
+<li><p>Windows 系统必须设置为English。否则，有可能会遇到文件名和路径包含飞英文字符的错误。</p>
+<li><p>只支持Windows 7 x64或以上系统。不支持x86的32位操作系统</p>
+</li>
+<li><p>如果License合适，请安装Visual Studio 2015 Update 2 - Community Edition. 下列子选项必须安装:</p>
+<li style="list-style-type:none">
+<ul>
+    <li>Visual C++, which will select three sub-categories including MFC</li>
+    <li>Universal Windows Apps Development Tools &gt; Tools</li>
+    <li>Universal Windows Apps Development Tools &gt; Windows 10 SDK (10.0.10586)</li>
+</ul>
+</li>
+<p>执行 set DEPOT_TOOLS_WIN_TOOLCHAIN=0, 或者在系统环境变量中配置DEPOT_TOOLS_WIN_TOOLCHAIN为0.</p>
+</li>
+
 <li><p>从<a href="http://git-scm.com/download/win">http://git-scm.com/download/win处安装Windows平台的Git，并且确保将其添加到你的PATH中。设置你的用户环境变量。在Windows的开始菜单中，检索“环境变量”。或者，点击控制面板上的系统图标；然后进入高级系统设置中，点击环境变量按钮。你应该可以看到下列对话框：</a></p>
 <p><img src="/assets/win8.png" style="display: block; margin: 0 auto"/></p>
 </li>
