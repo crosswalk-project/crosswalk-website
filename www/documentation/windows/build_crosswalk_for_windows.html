@@ -268,8 +268,22 @@
 <article class="article article--hasToC">
   <h1>Building Crosswalk For Windows</h1>
 <ol>
-<li><p>Download and install <a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Microsoft Visual Studio 2013</a>. We do not support Visual Studio 2015 at the moment.</p>
+<li><p>Download and install <a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Microsoft Visual Studio 2015 update 2</a>. We do not support Visual Studio 2015 update 3 at the moment.</p>
 </li>
+<li><p>Windows system local must be set to English.or else you may get build errors about “The file contains a character that cannot be represented in the current code page.”</p></li>
+<li><p>Windows 7 x64 or later is only supported. x86 OSs are unsupported.</p></li>
+
+<li><p>Visual Studio 2015 Update 2 - Community Edition should work if its license is appropriate. Use the Custom Install option and select:</p>
+<li style="list-style-type:none">
+<ul>
+    <li>Visual C++, which will select three sub-categories including MFC</li>
+    <li>Universal Windows Apps Development Tools &gt; Tools</li>
+    <li>Universal Windows Apps Development Tools &gt; Windows 10 SDK (10.0.10586)</li>
+</ul>
+</li>
+<p>Run set DEPOT_TOOLS_WIN_TOOLCHAIN=0, or set that variable in your global environment.</p>
+</li>
+
 <li><p>Install Git For Windows from <a href="http://git-scm.com/download/win">http://git-scm.com/download/win</a> and make sure it’s added to your PATH. Edit environment variables for your account. In the Windows Start menu, search for &quot;Environment variables&quot;. Alternatively, click on the System icon in the Control Panel; then go to Advanced system settings and click the Environment Variables button. You should see this dialog box:</p>
 <p><img src="/assets/win8.png" style="display: block; margin: 0 auto"/></p>
 </li>
