@@ -2,7 +2,7 @@
 
 Crosswalk applications will run on either a hardware or emulated Android device.
 
-Any version of Android from 4.0 or higher should work.
+Any version of Android from 4.1 or higher should work.
 
 ## Android device
 
