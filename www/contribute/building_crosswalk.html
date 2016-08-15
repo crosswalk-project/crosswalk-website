@@ -341,7 +341,8 @@ are then used as the basis for the actual code compilation.</p>
 <pre><code>export GYP_GENERATORS=&#39;ninja&#39;
 python xwalk/gyp_xwalk</code></pre>
 <p>on Windows:</p>
-<pre><code>set GYP_GENERATORS=ninja
+<pre><code>set GYP_DEFINES=target_arch=x64
+set GYP_GENERATORS=ninja
 python xwalk\gyp_xwalk</code></pre>
 <p>If you want to create a Visual Studio solution so you can build/edit in Visual Studio you should set the GYP_GENERATORS like this :</p>
 <pre><code>set GYP_GENERATORS=ninja,msvs-ninja</code></pre>
@@ -350,7 +351,7 @@ python xwalk\gyp_xwalk</code></pre>
 <li><p>At this point you have built the projects with <code>gyp</code> and are ready for
 the actual compilation. To build the Crosswalk launcher (which can
 run a web application):</p>
-<pre><code> ninja -C out/Release xwalk</code></pre>
+<pre><code> ninja -C out/Release xwalk or ninja -C out/Release_x64 xwalk (on Windows)</code></pre>
 </li>
 </ol>
 <h3>Testing a desktop build</h3>

@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="应用入口点" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/entry_points_zh" />
+    <meta property="og:title" content="扩展程序" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/manifest/extensions_zh" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/entry_points_zh" />
-    <meta name="twitter:title" content="应用入口点" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/manifest/extensions_zh" />
+    <meta name="twitter:title" content="扩展程序" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -172,7 +172,7 @@
                 
               </li>
             
-              <li class="article-item  nav-item--active">
+              <li class="article-item ">
                 <a class="article-link" href="/documentation/manifest/entry_points_zh.html">应用入口点</a>
                 
               </li>
@@ -202,7 +202,7 @@
                 
               </li>
             
-              <li class="article-item ">
+              <li class="article-item  nav-item--active">
                 <a class="article-link" href="/documentation/manifest/extensions_zh.html">扩展程序</a>
                 
               </li>
@@ -261,14 +261,24 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>应用入口点</h1>
-<p>web应用的<em>入口点</em>就是第一次应用第一次启动时应该首先被加载的资源（或者资源集合）。</p>
-<p>推荐使用一个单独的HTML文件作为入口点，并且使用<code>start_url</code>指定它。</p>
-<p><code>start_url</code>是<a href="https://w3c.github.io/manifest/#start_url-member">W3C manifest标准</a>的一部分。</p>
-<p>样例：</p>
+  <h1>扩展程序</h1>
+<p><code>xwalk_extensions</code>字段用于指定Crosswalk应用中的插件程序。如果您使用crosswalk-app-tools打包Crosswalk应用时，并且需要连同插件一起打包进去，那么需要在manifest文件中指定插件。</p>
+<p>一个包含插件的manifet样例：</p>
 <pre><code>{
   &quot;name&quot;: &quot;app name&quot;,
-  &quot;start_url&quot;: &quot;index.html&quot;
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;xwalk_extensions&quot;: [&quot;xwalk-echo-extension&quot;]
+}</code></pre>
+<p>注意，<code>&quot;xwalk-extensions&quot;</code>字段的值表示含有插件目录的路径，上文中的<code>&quot;xwalk-echo-extension&quot;</code>与<code>&quot;index.html&quot;</code>在同一目录下，其中包含的插件程序如下：</p>
+<pre><code class="language-ruby">xwalk-echo-extension.jar
+xwalk-echo-extension.js
+xwalk-echo-extension.json</code></pre>
+<p>关于插件程序的更多细节，请参考<a href="https://github.com/crosswalk-project/crosswalk-samples">crosswalk-samples</a>(在extensions-android目录里)。</p>
+<p>如果您的程序中同时包含多个插件，那么<code>&quot;xwalk_extensions&quot;</code>的值可以包含多个插件的路径：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;app name&quot;,
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;xwalk_extensions&quot;: [&quot;path to extension1&quot;, &quot;path to extension2&quot;]
 }</code></pre>
 
   <footer class="article-next">
@@ -316,34 +326,34 @@
   
     
     
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
       
     
   
     
     
       
-      <a href="/documentation/manifest/content_security_policy_zh.html" class="article-promo well">
+      <a href="/documentation/manifest/permissions_zh.html" class="article-promo well">
         <em>下一节关于什么？</em>
-        <h3>内容安全策略</h3>
+        <h3>权限</h3>
       </a>
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
     
   
     

@@ -321,14 +321,15 @@ git checkout -b crosswalk-2 origin/crosswalk-2</code></pre>
 <pre><code>export GYP_GENERATORS=&#39;ninja&#39;
 python xwalk/gyp_xwalk</code></pre>
 <p>在Windows下：</p>
-<pre><code>set GYP_GENERATORS=ninja
+<pre><code>set GYP_DEFINES=target_arch=x64
+set GYP_GENERATORS=ninja
 python xwalk\gyp_xwalk</code></pre>
 <p>如果你想创建一个Visual Studio项目，以便使用Visual Studio下编译／编辑Crosswalk，你应该按如下方式设置GYP_GENERATORS：</p>
 <pre><code>set GYP_GENERATORS=ninja,ninja-msvs</code></pre>
 <p>注意：在Windows下，<code>set</code>在当前的cmd窗口下有效。<code>setx</code>使得在<em>未来的</em>cmd窗口下永久有效，类似于在环境变量对话框内设置变量。</p>
 </li>
 <li><p>现在你已经使用<code>gyp</code>构建了项目，并且已经准备实际编译。编译Crosswalk启动器（可以运行一个web应用）:</p>
-<pre><code> ninja -C out/Release xwalk</code></pre>
+<pre><code> ninja -C out/Release xwalk or ninja -C out/Release_x64 xwalk (on Windows)</code></pre>
 </li>
 </ol>
 <h3>测试桌面版Crosswalk</h3>

@@ -248,9 +248,18 @@
 <article class="article article--hasToC">
   <h1>为Windows平台编译Crosswalk</h1>
 <ol>
-<li><p>下载并安装<a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Microsoft Visual Studio 2013</a>。目前我们还不支持Visual Studio 2015。</p>
+<li><p>下载并安装<a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Microsoft Visual Studio 2015 update 2</a>。目前不支持Visual Studio 2015 update 3，请在使用web-installer时注意不要自动升级到update 3。Crosswalk对Visual Studio的版本依赖与Chromium保持一致，如果你在编译21版本之前的Crosswalk，则需要使用Microsoft Visual Studio 2013。如果需要编译Crosswalk 21及后续版本，请安装Visual Studio 2015 update 2。在安装Visual Studio 2015 Update 2或以上版本时，请确认以下子选项都已被选择安装:</p>
+<ul>
+<li>Visual C++ 包括MFC在内的3个子项都需要安装</li>
+<li>Universal Windows Apps Development Tools &gt; Tools</li>
+<li>Universal Windows Apps Development Tools &gt; Windows 10 SDK (10.0.10586)</li>
+</ul>
 </li>
-<li><p>从<a href="http://git-scm.com/download/win处安装Windows平台的Git，并且确保将其添加到你的PATH中。设置你的用户环境变量。在Windows的开始菜单中，检索“环境变量”。或者，点击控制面板上的系统图标；然后进入高级系统设置中，点击环境变量按钮。你应该可以看到下列对话框：">http://git-scm.com/download/win处安装Windows平台的Git，并且确保将其添加到你的PATH中。设置你的用户环境变量。在Windows的开始菜单中，检索“环境变量”。或者，点击控制面板上的系统图标；然后进入高级系统设置中，点击环境变量按钮。你应该可以看到下列对话框：</a></p>
+<li><p>Windows系统语言请设置为英文以避免安装路径中包含非英文字符的错误。</p>
+</li>
+<li><p>目前测试验证过支持Windows 7 x64或以上操作系统。不提供32位的x86操作系统上的编译测试和验证支持。</p>
+</li>
+<li><p>从<a href="http://git-scm.com/download/win">win-git</a>处安装Windows平台的Git，并且确保将其添加到你的PATH中。设置你的用户环境变量。在Windows的开始菜单中，检索“环境变量”。或者，点击控制面板上的系统图标；然后进入高级系统设置中，点击环境变量按钮。你应该可以看到下列对话框：</p>
 <p><img src="/assets/win8.png" style="display: block; margin: 0 auto"/></p>
 </li>
 <li><p>通过运行下列命令从Google上克隆depot_tools：</p>
@@ -259,8 +268,9 @@
 </li>
 <li><p>在环境变量的对话框中创建新的变量（使用&quot;新建...按钮&quot;）并且添加：</p>
 <ul>
+<li><code>GYP_DEFINES</code>设置为<code>target_arch=x64</code>，因为Crosswalk仅支持64位编译。 </li>
 <li><code>GYP_GENERATORS</code>设置为<code>ninja,msvs-ninja</code> (如果你希望在IDE内运行针对Windows平台的Crosswalk，这个将创建Visual Studio的解决方案）</li>
-<li><code>DEPOT_TOOLS_WIN_TOOLCHAIN</code>设置为0(这将会通知Crosswalk使用你安装的Visual Studio 2013)</li>
+<li><code>DEPOT_TOOLS_WIN_TOOLCHAIN</code>设置为0(这将会通知Crosswalk使用你安装的Visual Studio)</li>
 </ul>
 </li>
 <li><p>进入你希望检出Crosswalk Windows的目录，创建一个目录并进入，然后拉取源代码：</p>
@@ -279,7 +289,7 @@
 </ul>
 <h3>命令行创建</h3>
 <p>为了从命令行创建，进入Crosswalk-src/src中并调用：</p>
-<pre><code>&gt; ninja -C out/Release xwalk or ninja -C out/Debug xwalk</code></pre>
+<pre><code>&gt; ninja -C out/Release_64 xwalk or ninja -C out/Debug_x64 xwalk</code></pre>
 <h3>Visual Studio创建</h3>
 <p>为了生成解决方案和项目文件，进入crosswalk-src/src中并调用：</p>
 <pre><code>&gt; python xwalk\gyp_xwalk</code></pre>
