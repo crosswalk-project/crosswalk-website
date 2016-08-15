@@ -20,6 +20,9 @@
   "orientation": {
      "title": "Orientation"
   },
+  "extensions": {
+     "title": "Extensions"
+  },
   "permissions": {
      "title": "Permissions"
   },
@@ -49,6 +52,9 @@
   },
   "orientation_zh": {
      "title": "方向"
+  },
+  "extensions_zh": {
+     "title": "扩展程序"
   },
   "permissions_zh": {
      "title": "权限"
