@@ -1,21 +1,19 @@
 # 为Windows平台编译Crosswalk
 
-1. 下载并安装[Microsoft Visual Studio 2015 update 2](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)。目前不支持Visual Studio 2015 update 3，请在使用web-installer时注意不要自动升级到update 3。 如果你在编译21版本之前的Crosswalk，则需要使用Microsoft Visual Studio 2013。
-
-2. Windows系统语言请设置为英文以避免安装路径中包含非英文字符的错误。
-
-3. 仅支持Windows 7 x64或以上操作系统。不支持32位的x86操作系统。
-
-4. 安装Visual Studio 2015 Update 2或以上版本时，请确认以下子选项都已被选择安装:
+1. 下载并安装[Microsoft Visual Studio 2015 update 2](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)。目前不支持Visual Studio 2015 update 3，请在使用web-installer时注意不要自动升级到update 3。Crosswalk对Visual Studio的版本依赖与Chromium保持一致，如果你在编译21版本之前的Crosswalk，则需要使用Microsoft Visual Studio 2013。如果需要编译Crosswalk 21及后续版本，请安装Visual Studio 2015 update 2。在安装Visual Studio 2015 Update 2或以上版本时，请确认以下子选项都已被选择安装:
    * Visual C++ 包括MFC在内的3个子项都需要安装
    * Universal Windows Apps Development Tools > Tools
    * Universal Windows Apps Development Tools > Windows 10 SDK (10.0.10586)
 
-5. 从[win-git](http://git-scm.com/download/win)处安装Windows平台的Git，并且确保将其添加到你的PATH中。设置你的用户环境变量。在Windows的开始菜单中，检索“环境变量”。或者，点击控制面板上的系统图标；然后进入高级系统设置中，点击环境变量按钮。你应该可以看到下列对话框：
+2. Windows系统语言请设置为英文以避免安装路径中包含非英文字符的错误。
+
+3. 目前测试验证过支持Windows 7 x64或以上操作系统。不提供32位的x86操作系统上的编译测试和验证支持。
+
+2. 从[win-git](http://git-scm.com/download/win)处安装Windows平台的Git，并且确保将其添加到你的PATH中。设置你的用户环境变量。在Windows的开始菜单中，检索“环境变量”。或者，点击控制面板上的系统图标；然后进入高级系统设置中，点击环境变量按钮。你应该可以看到下列对话框：
 
    <img src="/assets/win8.png" style="display: block; margin: 0 auto"/>
 
-6. 通过运行下列命令从Google上克隆depot_tools：
+3. 通过运行下列命令从Google上克隆depot_tools：
 
    ```
     >  git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
@@ -23,13 +21,13 @@
 
    确保你已经使用上文中描述的过程将`depot_tools`目录添加到你的PATH中。
 
-7. 在环境变量的对话框中创建新的变量（使用"新建...按钮"）并且添加：
+4. 在环境变量的对话框中创建新的变量（使用"新建...按钮"）并且添加：
 
    *  `GYP_DEFINES`设置为`target_arch=x64`，因为Crosswalk仅支持64位编译。 
    *  `GYP_GENERATORS`设置为`ninja,msvs-ninja` (如果你希望在IDE内运行针对Windows平台的Crosswalk，这个将创建Visual Studio的解决方案）
    *  `DEPOT_TOOLS_WIN_TOOLCHAIN`设置为0(这将会通知Crosswalk使用你安装的Visual Studio)
 
-8. 进入你希望检出Crosswalk Windows的目录，创建一个目录并进入，然后拉取源代码：
+5. 进入你希望检出Crosswalk Windows的目录，创建一个目录并进入，然后拉取源代码：
 
    ```
    > mkdir crosswalk-src
