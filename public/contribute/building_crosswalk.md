@@ -6,9 +6,9 @@
 on the Chromium wiki:
 
     <ul>
-    <li><a href="http://www.chromium.org/developers/how-tos/build-instructions-windows">Building on Windows</a></li>
-    <li><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/linux_build_instructions_prerequisites.md">Building on Linux</a></li>
-    <li><a href="https://code.google.com/p/chromium/wiki/MacBuildInstructions">Building on Mac</a></li>
+    <li><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/windows_build_instructions.md">Building on Windows</a></li>
+    <li><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/linux_build_instructions.md">Building on Linux</a></li>
+    <li><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/mac_build_instructions.md">Building on Mac</a></li>
     </ul>
 
 2.  You need to install extra pre-requisites if you're building Crosswalk
