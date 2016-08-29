@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/documentation/tutorials" />
+    <meta property="og:title" content="Web Assembly" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/tutorials/webassembly" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tutorials" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/tutorials/webassembly" />
+    <meta name="twitter:title" content="Web Assembly" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -197,7 +197,7 @@
         
         </li>
     
-        <li class="article-item  nav-item--active">
+        <li class="article-item ">
         <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
         
             <ul class="article-list">
@@ -232,7 +232,7 @@
                 
               </li>
             
-              <li class="article-item ">
+              <li class="article-item  nav-item--active">
                 <a class="article-link" href="/documentation/tutorials/webassembly.html">Web Assembly</a>
                 
               </li>
@@ -261,22 +261,81 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>Tutorials</h1>
-<p>The tutorials section includes documentation and introductions for a few differentiating features of the Crosswalk Project. We welcome feedback on tutorials you would like to see and welcome additions contributed by the community.</p>
+  <h1>Web Assembly</h1>
+<p>WebAssembly or wasm is a new portable, size- and load-time-efficient format suitable for compilation to the web. It has the following advantages:</p>
 <ul>
-<li><a href="tutorials/realsense.html">Crosswalk Project Extensions for Intel® RealSense™ technology</a>:  Use the new Web APIs to start to experiment with 3D camera images.</li>
-<li><a href="tutorials/webvr.html">WebVR</a>:  Package WebVR samples from the <a href="http://www.aframe.io">A-Frame</a> website as basic Android applications</li>
-<li><a href="/documentation/tutorials/security-api.html">Intel Security APIs</a>: Take advantage of security capabilities supported by the platform in your web app.</li>
-<li><a href="tutorials/webrtc.html">WebRTC</a>: Create a client/server application with audio/video communication.</li>
-<li><a href="tutorials/webcl.html">WebCL</a>: An introduction to WebCL and how it can be used to accelerate graphics on devices that support the feature. Also see the <a href="/documentation/about/demos.html">Demos page</a> for a video of WebCL in action.</li>
-<li><a href="tutorials/screens.html">Screens</a>: Ideas for creating screen-size-aware applications</li>
-<li><a href="tutorials/webassembly.html">Web Assembly</a>: Package WebAssembly app by app tools.</li>
+<li>Efficient and fast.</li>
+<li>Safe.</li>
+<li>Open and debuggable.</li>
+<li>Part of the open web platform.</li>
+</ul>
+<p>WebAssembly is currently being designed as an open standard by a <a href="https://www.w3.org/community/webassembly/">W3C Community Group</a> that includes representatives from all major browsers. It&#39;s also <a href="https://hacks.mozilla.org/2016/03/a-webassembly-milestone/">supported in multiple browsers</a>. Starting with Crosswalk 22, it is available as an experimental feature for Android, Windows and Linux.</p>
+<p>In the following tutorial, you&#39;ll learn how to enable WebAssembly in Crosswalk and run the demo <a href="https://webassembly.github.io/demo/">Angrybots</a> on Windows and Android platforms.</p>
+<ol>
+<li><p>Check out the binary file of Angrybots:</p>
+<pre><code> $ git clone https://github.com/WebAssembly/webassembly.github.io.git</code></pre>
+</li>
+<li><p>Go to the demo folder of Angrybots:</p>
+<pre><code> $ cd webassembly.github.io/demo/AngryBots/</code></pre>
+</li>
+<li><p>Create a minimal <a href="/documentation/manifest.html">Crosswalk manifest</a> file, <code>manifest.json</code>, with this content:</p>
+<pre><code> {
+   &quot;name&quot;: &quot;Angrybots&quot;,
+   &quot;description&quot;: &quot;WebAssembly demo&quot;,
+   &quot;xwalk_version&quot;: &quot;0.0.1&quot;,
+   &quot;start_url&quot;: &quot;index.html&quot;,
+   &quot;xwalk_package_id&quot;: &quot;com.wasm.angrybots&quot;,
+   &quot;xwalk_command_line&quot;: &quot;--js-flags=--expose_wasm&quot;
+ }</code></pre>
+</li>
+<li><p>Use <a href="https://github.com/crosswalk-project/crosswalk-app-tools">crosswalk-app-tools</a>  to create the Windows .msi file (on crosswalk 22 or above):</p>
+<pre><code> $ crosswalk-pkg -p windows --crosswalk=&quot;22.52.557.0&quot; .</code></pre>
+<p>or .apk file for Android, then <a href="https://developer.android.com/studio/publish/app-signing.html#signing-manually">sign</a> it:</p>
+<pre><code> $ crosswalk-pkg  -p android --crosswalk=&quot;22.52.557.0&quot; .</code></pre>
+</li>
+<li><p>Install the .msi file on Windows by double-clicking on it, or the apk file on Android via command line:</p>
+<pre><code> $ adb install com.wasm.angrybots-0.1-debug.armeabi-v7a.apk</code></pre>
+</li>
+<li><p>Run AngryBots.
+<img src="/assets/crosswalk-webassembly-angrybots.png" alt="Angrybots on Windows"></p>
+</li>
+</ol>
+<h2>Useful WebAssembly resources</h2>
+<ul>
+<li><a href="https://www.w3.org/community/webassembly/">W3C Community Group</a></li>
+<li><a href="https://github.com/WebAssembly/design">WebAssembly Design Documents</a></li>
 </ul>
 
   <footer class="article-next">
     
 
 
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
 
 
   </footer>
