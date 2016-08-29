@@ -8,3 +8,4 @@ The tutorials section includes documentation and introductions for a few differe
 * [WebRTC](tutorials/webrtc.html): Create a client/server application with audio/video communication.
 * [WebCL](tutorials/webcl.html): An introduction to WebCL and how it can be used to accelerate graphics on devices that support the feature. Also see the [Demos page](/documentation/about/demos.html) for a video of WebCL in action.
 * [Screens](tutorials/screens.html): Ideas for creating screen-size-aware applications
+* [Web Assembly](tutorials/webassembly.html): Package WebAssembly app by app tools.

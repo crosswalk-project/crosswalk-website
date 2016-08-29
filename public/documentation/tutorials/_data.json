@@ -16,5 +16,8 @@
   },
   "screens": {
     "title": "Screens"
+  },
+  "webassembly": {
+    "title": "Web Assembly"
   }
 }
