@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/assets/icons/crosswalk-landing-question" />
+    <meta property="og:title" content="WebCL APIs removed from Crosswalk 22" />
+    <meta property="og:url" content="http://crosswalk-project.org/blog/webcl-removal" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/assets/icons/crosswalk-landing-question" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/blog/webcl-removal" />
+    <meta name="twitter:title" content="WebCL APIs removed from Crosswalk 22" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -113,7 +113,32 @@
   <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
 </div>
 
-          
+          <article class="article">
+  <header class="article-header">
+    <h1 class="article-title">WebCL APIs removed from Crosswalk 22</h1>
+    <span class="article-meta">
+      <a href="webcl-removal.html"><time class="js-vagueTime" datetime="Tue, 30 Aug 2016 09:30:00 GMT">Tue, 30 Aug 2016 09:30:00 GMT</time></a>
+       
+        by <span class="article-author">Crosswalk Team</span>
+      
+    </span>
+  </header>
+  
+  <p><a href="https://www.khronos.org/webcl/">WebCL</a> is an API that defines JavaScript bindings to the Khronos OpenCL standard for heterogeneous parallel computing. It has been part of Crosswalk as an experimental feature since version 14.</p>
+<p>Given the fact that there aren’t any current plans to implement it in any of the major browsers, and that we are unaware of anyone actively using it with Crosswalk, we have decided that the non-trivial effort required to maintain it is no longer justified, and that it will be removed starting with Crosswalk 22. We encourage users interested in parallel execution of their code to look at <a href="http://tc39.github.io/ecmascript_simd/">SIMD.JS</a>, <a href="https://crosswalk-project.org/documentation/tutorials/webassembly.html">WASM</a> and <a href="https://www.w3.org/TR/workers/">Web Workers</a>.</p>
+
+  
+   
+     <a href="http://twitter.com/xwalk_project" class="article-promo well">
+  <h4 class="article-promoTitle">Get more hybrid app secrets</h4>
+  <p>Build powerful hybrid apps for Android or Cordova / PhoneGap more reliably with <span class="a-faux">tips from the Intel Crosswalk team</span>.</p>
+</a>
+
+  
+</article>
+
+
+
           
         </div>
       </div>
