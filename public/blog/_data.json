@@ -1,4 +1,9 @@
 {
+  "webcl-removal": {
+    "title": "WebCL APIs removed from Crosswalk 22",
+    "date": "2016-08-30T09:30",
+    "author": "Crosswalk Team"
+  },
   "chinese-web-release": {
     "title": "Chinese translation of website released",
     "date": "2016-05-20T12:00",
@@ -15,31 +20,31 @@
       "date": "2016-05-05T17:00",
       "author": "Bob Spencer",
       "desc": "Android 4.0 will not be supported starting in Crosswalk build 20 (July 2016)."
-  },  
+  },
   "crosswalk-realsense-webapi": {
     "title": "Introducing Crosswalk Project Extensions for Intel® RealSense™ Technology",
     "date": "2016-02-23T00:00",
     "author": "Web RealSense Team",
     "desc": "Time to develop RealSense applications with Web Technology."
-  },  
+  },
   "crosswalk-2015-summary": {
     "title": "Crosswalk Project 2015: Highlights of a great year",
     "date": "2016-01-21T00:00",
     "author": "Bob Spencer",
     "desc": "Crosswalk had an incredible 2015, growing in adoption, features, and integration. Here's raising a glass to all that was accomplished."
-  },  
+  },
   "crosswalk-16": {
     "title": "Crosswalk Project 16: Chromium 45, background_color, Widevine support",
     "date": "2016-01-14T12:00",
     "author": "Crosswalk Team",
     "desc": "It is now possible to create 64-bit-optimized versions of Crosswalk applications."
-  },  
+  },
   "android-64bit": {
     "title": "Crosswalk for 64-bit Android Devices",
     "date": "2015-11-06T12:00",
     "author": "Crosswalk Team",
     "desc": "It is now possible to create 64-bit-optimized versions of Crosswalk applications."
-  },  
+  },
   "crosswalk-windows": {
     "title": "Introducing Crosswalk Project For Windows",
     "date": "2015-10-28T12:01",
