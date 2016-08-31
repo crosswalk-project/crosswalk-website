@@ -58,10 +58,17 @@ function loadTestimonials(sortOrder) {
     var items = [];
 
     var gridContent="", index, item;
-    
+    var cur_url = window.location.href;
+    var url_list = cur_url.split("/");
+    var flag = url_list[url_list.length - 1];
+    var load_url = "/documentation/community/testimonials.json";
+    if (flag.indexOf("_zh") >= 0) {
+      load_url = "/documentation/community/testimonials_zh.json";
+    }
+   
     //read objects from .json file
     index = 0;
-    $.getJSON( "/documentation/community/testimonials.json", function( data ) {
+    $.getJSON( load_url, function( data ) {
         $.each( data, function(id, item ) {
             item.index = index;
             console.log (item.name);

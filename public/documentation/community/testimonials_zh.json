@@ -1,0 +1,89 @@
+
+{
+    "quote1": {
+        "date": "2015年8月",
+        "name": "Brian LeRoux",
+        "title": "Principal Scientist",
+        "company": "Adobe Systems Canada",
+        "link": "http://brian.io/",
+        "companyLogo": "",
+        "faceImg": "brian-leroux.jpg",
+        "quote": "Crosswalk为Phonegap开发者提供了高效及一致的跨平台的用户体验。"
+    },  
+    "quote8": {
+        "date": "2016年3月",
+        "name": "Alex Blom",
+        "title": "Awesome Ember Hacker",
+        "company": "Isle of Code",
+        "link": "http://isleofcode.com/",
+        "companyLogo": "",
+        "faceImg": "alex-blom.jpg",
+        "quote": "Crosswalk对于使用Ember/SPAs构建Cordova/Phonegap应用极为重要。它解决了日渐增多的设备碎片化问题，并在很多设备上提供了更好的性能表现。"
+    },
+    "quote7": {
+        "date": "2015年7月",
+        "name": "Nick Harlow",
+        "title": "Director of Product Management",
+        "company": "Sencha",
+        "link": "https://www.sencha.com/products/web-application-manager/#overview",
+        "companyLogo": "",
+        "faceImg": "nick-harlow.jpg",
+        "faceLink": "https://youtu.be/sSYTKOy-Y_s",
+        "videoLink": "https://youtu.be/sSYTKOy-Y_s",
+        "quote": "Crosswalk解决了客户的碎片化问题，使用Sencha's web应用管家。它也降低了编译和维护产品的成本。"
+    },
+    "quote5": {
+        "date": "2015年7月",
+        "name": "Rob Lauer",
+        "title": "Principal Product Manager",
+        "company": "Telerik",
+        "link": "http://developer.telerik.com/",
+        "companyLogo": "",
+        "faceImg": "rob-lauer.jpg",
+        "quote": "Crosswalk为Android开发者提供了平等的平台，使之能够使用他们喜爱的web技术开发功能丰富，性能出色的应用。我们建议所有Telerik平台的用户使用Crosswalk webview，立即提升性能！"
+    },
+    "quote6": {
+        "date": "2015年5月",
+        "name": "Ian Maffet",
+        "title": "Developer Advocate",
+        "company": "Intel",
+        "link": "https://software.intel.com/en-us/intel-xdk",
+        "companyLogo": "",
+        "faceImg": "ian-maffet-80.jpg",
+        "quote": "Crosswalk帮助解决了Android的碎片化问题，并使web应用的性能表现接近于原生应用。我们鼓励所有hybrid及Intel® XDK开发者使用Crosswalk部署Android应用。"
+    },
+    "quote4": {
+        "date": "2014年11月",
+        "name": "Steve Newcomb",
+        "title": "CEO and Co-founder",
+        "company": "famo.us",
+        "link": "http://famo.us/",
+        "companyLogo": "",
+        "faceImg": "steve-newcomb.jpg",
+        "quote": "提供一个最新的Chrome webview是开发安卓平台上混合式应用的关键，而Crosswalk是最佳的解决方案。"
+    },
+    "quote2": {
+        "date": "2014年6月",
+        "name": "Max Woghiren",
+        "title": "Software Engineer",
+        "company": "Google",
+        "link": "http://www.google.com",
+        "companyLogo": "",
+        "faceImg": "max-woghiren.jpg",
+        "faceLink" : "https://www.youtube.com/watch?v=nU4lvgTrjFI",
+        "videoLink": "https://www.youtube.com/watch?v=nU4lvgTrjFI",
+        "quote": "终于可以使用现代的webview构建hybrid应用，并在几乎所有三年内发布的Android和iOS设备上运行。"
+    },
+    "quote3": {
+        "date": "2014",
+        "name": "Ashley Gullen",
+        "title": "Creator of the Construct 2 game engine",
+        "company": "Scirra",
+        "link": "https://www.scirra.com/construct2",
+        "companyLogo": "",
+        "faceImg": "ashley-gullen.jpg",
+        "faceLink": "https://twitter.com/AshleyGullen",
+        "quote": "Crosswalk项目看起来是一个新的，最好的在Android发布HTML5内容的方法。"
+    }
+}
+

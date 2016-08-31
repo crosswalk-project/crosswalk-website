@@ -99,8 +99,15 @@ function loadToolsFromFile(pageType, toolNum) {
     var items = [];
 
     //read objects from .json file
+    var cur_url = window.location.href;
+    var url_list = cur_url.split("/");
+    var flag = url_list[url_list.length - 1];
+    var load_url = "/documentation/community/tools.json";
+    if (flag.indexOf("_zh") >= 0) {
+      load_url = "/documentation/community/tools_zh.json";
+    }
     index = 0;
-    $.getJSON( "/documentation/community/tools.json", function( data ) {
+    $.getJSON(load_url, function( data ) {
         $.each( data, function(id, item ) {
             item.index = index;
             item.name = item.name || "*Missing Name*";

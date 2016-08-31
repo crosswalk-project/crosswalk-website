@@ -109,6 +109,10 @@
   "community": {
     "title": "Community"
   },
+  "community_zh": {
+    "title": "社区",
+    "origin": "community"
+  },
   "qa": {
     "title": "Quality Assurance"
   },
