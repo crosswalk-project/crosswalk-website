@@ -2,19 +2,38 @@
   "awards": {
     "title": "Awards"
   },
+  "awards_zh": {
+    "title": "获奖"
+  },
   "branding-guide": {
     "title": "Branding Guide"
+  },
+  "branding-guide_zh": {
+    "title": "商标使用指南"
   },
   "conferences": {
     "title": "Conferences"
   },
+  "conferences_zh": {
+    "title": "会议"
+  },
   "presentations": {
     "title": "Presentations"
+  },
+  "presentations_zh": {
+    "title": "展示"
   },
   "testimonials": {
     "title": "Testimonials"
   },
+  "testimonials_zh": {
+    "title": "名人录"
+  },
   "tools": {
     "title": "Tools"
+  },
+  "tools_zh": {
+    "title": "工具"
   }
+
 }
