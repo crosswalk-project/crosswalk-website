@@ -1,0 +1,81 @@
+{
+    "tool1": {
+        "name": "Intel XDK",
+        "appImg": "xdk-icon150.jpg",
+        "link": "https://software.intel.com/en-us/html5/tools",
+        "company": "software.intel.com/en-us/html5/tools",
+        "description": "Intel® XDK 是一款跨平台的HTML5开发工具。它为开发者提供了一套简单的工作流，能够创建，在多个app商店中部署web应用和混合式应用，, and form factor devices."
+    },
+    "tool7": {
+        "name": "ionic",
+        "appImg": "ionic-icon150.jpg",
+        "link": "http://ionicframework.com/",
+        "company": "ionicframework.com",
+        "description": "一款最优美的开发手机HTML5应用的开源前端SDK。"
+    },
+    "tool2": {
+        "name": "Sencha",
+        "appImg": "sencha-icon150.jpg",
+        "link": "http://www.sencha.com",        
+        "company": "sencha.com",
+        "description": "HTML5 and web技术把网页转变成位一流的应用平台。Sencha是开源web框架和工具的一流供应商。"
+    },
+    "tool9": {
+        "name": "PhoneGap",
+        "appImg": "phonegap-icon150.jpg",
+        "link": "http://phonegap.com/",
+        "company": "phonegap.com",
+        "description": "PhoneGap是一款免费开源的框架。它使用平台标准的web APIs开发移动应用。"
+    },
+    "tool3": {
+        "name": "Construct 2",
+        "appImg": "construct2-icon150.jpg",
+        "link": "https://www.scirra.com/construct2",
+        "company": "scirra.com/construct2",
+        "description": "Construct 2是一款打破HTML5游戏开发的工具，特别是2D游戏。它可以使任何人不用写代码来开发游戏。"
+    },
+    "tool8": {
+        "name": "Monaca",
+        "appImg": "monaca-icon150.jpg",
+        "link": "http://monaca.io/",
+        "company": "monaca.io",
+        "description": "一款综合的基于云端的服务提供工具。它能使您用PhoneGap/Cordova更加方便的开发混合式应用。"
+    },
+    "tool5": {
+        "name": "App Gyver",
+        "appImg": "appgyver-icon150.jpg",
+        "link": "http://www.appgyver.com/",
+        "company": "appgyver.com",
+        "description": "最早引入编译混合式应用的UI框架：提供了完美的HTML5，原声APIs和一流的框架。"
+    },
+    "tool6": {
+        "name": "cocos2D-X",
+        "appImg": "cocos2dx-icon150.jpg",
+        "link": "http://www.cocos2d-x.org/",
+        "company": "cocos2d-x.org",
+        "description": "一款广泛流行的，超过400000个开发者使用，包括了中国前10款流行游戏中的7款游戏开发者。使用Cocos2D-x开发移动应用吧！"
+    },
+    "tool10": {
+        "name": "ManifoldJS",
+        "appImg": "manifoldjs-icon150.jpg",
+        "link": "http://www.manifoldjs.com/",
+        "company": "manifoldjs.com",
+        "description": "一款提供简易方式取创建跨平台和设备的app工具。将web程序打包成安卓，IOS和Windows应用程序。"
+    },
+    "tool11": {
+        "name": "Telerik Platform",
+        "appImg": "telerik-icon150.jpg",
+        "link": "http://www.telerik.com/platform",
+        "company": "telerik.com/platform",
+        "description": "Telerik Platform为开发者提供一套基于PhoneGap/Cordova的即时开发环境。开发者可以使用HTML5, JavaScript and CSS开发跨平台的混合式应用。"
+    },
+    "tool12": {
+        "name": "Trigger.io",
+        "appImg": "trigger-io-icon150.jpg",
+        "link": "https://trigger.io/",
+        "company": "trigger.io",
+        "description": "一款针对web领域艺术家的混合式应用Runtime。"
+    }
+}
+
+
