@@ -14,7 +14,7 @@ Cordova developers are encouraged to use the [Crosswalk Webview Plugin](/documen
 
 All versions (including our betas and canaries) can be found in https://download.01.org/crosswalk/releases/crosswalk/.
 
-**Release notes** can be found here: [Crosswalk Project Release Notes](https://github.com/crosswalk-project/crosswalk/blob/master/RELEASENOTES.md)
+**Release notes** can be found here: [Crosswalk Project Release Notes](/documentation/release-notes)
 (Features, API changes, and known issues).
 
 See also:

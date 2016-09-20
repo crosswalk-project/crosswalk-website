@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html id="top">
+  <head>
+    <meta charset="utf-8">
+    <title>The Crosswalk Project</title>
+    <link rel="shorcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script>
+      WebFontConfig = {
+        custom: {
+          families: ['Clear Sans'],
+          urls: ['/css/fonts.css']
+        },
+        google: {
+          families: ['Source Code Pro:n4,n6']
+        },
+        timeout: 2000
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script async defer src="//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <meta name="description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="author" content="Crosswalk" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="mobileoptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Facebook -->
+    <meta property="og:side_name" content="Crosswalk" />
+    <meta property="og:title" content="Crosswalk" />
+    <meta property="og:url" content="http://crosswalk-project.org/documentation/release-notes" />
+    <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/documentation/release-notes" />
+    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
+    <meta name="twitter:site" content="@xwalk_project" />
+
+    <!-- Relevant original Crosswalk Project JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/xwalk.js"></script>
+    <script src="/js/versions.js"></script>
+    <script src="/js/demos.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/qualityindicators.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <!-- If curr page named 'index' and less than 2 dirs deep,
+         do custom layouts. (home screen, blog, app-mgmt page)
+         Else, provide doc header and nav. -->
+    
+    <div class="container">
+      <div class="doc-header">
+        
+
+
+  <div class="doc-logo-div">
+     <a href="/" class="doc-logo-link">
+       <img src="/assets/identity/crosswalkproject-logo-horizontal-dark.png" class="doc-logo-img">
+     </a>
+  </div>
+  <div class="doc-nav-div">
+    <ul class="doc-nav-list">
+      <li class="doc-nav-item">
+        <a href="/documentation/getting_started.html" class="doc-nav-link">Documentation</a>
+      </li>
+      <li class="doc-nav-item">
+        <a href="/blog" class="doc-nav-link">Blog</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/contribute" class="doc-nav-link">Contribute</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="https://github.com/crosswalk-project/crosswalk-website/wiki" class="doc-nav-link">Wiki</a>
+      </li>
+      <li class="doc-nav-item hide-on-small">
+        <a href="/documentation/about/faq.html" class="doc-nav-link">FAQ</a>
+      </li>
+      <li class="doc-nav-item">
+	<span class="i18n-label" id="i18n-label">
+	  <span id="i18n-inner">
+	    <img src="/assets/i18n-globe.png" class="i18n-globe" />
+	    English
+	    <img src="/assets/i18n-arrow.png" class="i18n-arrow"/>
+	  </span>
+	  <div id="i18n-menu" class="i18n-menu i18n-menu-light">
+            <a onclick="switchLanguage('English')">English</a>
+            <a onclick="switchLanguage('Chinese')">中文版</a>
+	  </div>
+	</span>
+      </li>
+    </ul>
+  </div>
+  
+
+      </div>
+      <br />
+      <div class="doc-main">
+        <div class="row">
+          
+          <div id="translation-missing-toaster">
+  <p style="padding:10px"> 抱歉，该网页目前还不存在中文版本，请继续浏览其他网页！ </p>
+</div>
+
+          
+
+
+
+<nav id="contents" class="article-toc nav-toggleContainer">
+  <a href="#contents" id="contents-toggle" class="button button--small button--tertiary nav-toggle">Table of Contents</a>
+  <a href="./#contents-toggle" class="button button--small button--tertiary nav-toggle--dummy">Table of Contents</a>
+  <ul class="article-list nav-toggleHide">
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/about.html">About</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/getting_started.html">Getting Started</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk-app-tools.html">Crosswalk App Tools</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/android.html">Android</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/ios.html">iOS</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/windows.html">Windows</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/linux.html">Linux</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/cordova.html">Cordova</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tizen.html">Tizen</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/manifest.html">Manifest</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/apis.html">APIs</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/downloads.html">Downloads</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/shared_mode.html">Shared Mode</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/download_mode.html">Download Mode</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/crosswalk_lite.html">Crosswalk Lite</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/tutorials.html">Tutorials</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/samples.html">Samples</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/community.html">Community</a>
+        
+        </li>
+    
+        <li class="article-item ">
+        <a class="article-link" href="/documentation/qa.html">Quality Assurance</a>
+        
+        </li>
+    
+  </ul>
+
+</nav>
+
+<article class="article article--hasToC">
+  <h1>Crosswalk Project release notes</h1>
+<p>Note: dates indicate the day when the release was promoted to the Stable channel.</p>
+<h2>Crosswalk 21 (Sep 8, 2016)</h2>
+<ul>
+<li>Rebase to Chromium 51</li>
+</ul>
+<h3>Embedding API changes</h3>
+<ul>
+<li>Get the rendering backend type of XWalkView (XWalkView.getBackendType)</li>
+<li>Expose setSaveFormData/getSaveFormData in XWalkSettings</li>
+<li>Expose setDomStorageEnabled in XWalkSettings</li>
+<li>Expose setCacheMode API in XWalkSettings</li>
+<li>Expose accessing file and content schemes related APIs</li>
+<li>Expose set/getJavaScriptEnabled</li>
+<li>Expose set/getJavaScriptCanOpenWindowsAutomatically</li>
+</ul>
+<h3>Notable bug fixes</h3>
+<ul>
+<li>[XWALK-3889] Fail to exit fullscreen when invoking the &#39;leaveFullScreen&#39; method of embeddingAPI on Android</li>
+</ul>
+<h2>Crosswalk 20 (Jul 27, 2016)</h2>
+<ul>
+<li>Rebase to Chromium 50</li>
+<li>Remove support for Android 4.0</li>
+<li>Android: launch external apps via custom URL schemes</li>
+<li>Windows: add download support</li>
+<li>Windows: support notifications</li>
+</ul>
+<h3>Embedding API changes</h3>
+<ul>
+<li>Add support for removeJavascriptInterface</li>
+<li>setLoadWithOverviewMode</li>
+<li>New APIs to find text in web page and manage the results</li>
+<li>New APIs to customize the dialog shown when downloading shared Crosswalk</li>
+<li>Add support for getContentHeight</li>
+</ul>
+<h3>Notable bug fixes</h3>
+<ul>
+<li>[XWALK-6630] - shouldOverrideUrlLoading blocks js execution in some cases</li>
+</ul>
+<h2>Crosswalk 19 (Jun 22, 2016)</h2>
+<ul>
+<li>Rebase to Chromium 49</li>
+<li>First stable release for Windows</li>
+<li>Native File System extension (xwalk.experimental.native_file_system) changes:<ul>
+<li>The getDirectoryList() function has been removed. The existing implementation never worked (it always returned an empty string).</li>
+<li>The requestNativeFileSystem() function no longer passes a JSON string to the optional error callback it accepts. Instead, a regular Error object is passed instead.</li>
+</ul>
+</li>
+<li>The sysapps_promise module has been removed. Chromium has implemented Promises natively since version 32 (released in early 2014). This means calling requireNative(‘sysapps_promise’) in JavaScript extension code will not work, and regular Promise objects should be used instead.</li>
+<li>Windows: support fullscreen apps</li>
+<li>Windows: support manifest orientation field</li>
+<li>Support Google API Keys for Geolocation when packaging the application.</li>
+<li>Allow for a separate 64-bit Crosswalk APK in Play Store</li>
+<li>Extension to support TouchID on Android and iOS</li>
+</ul>
+<h3>Embedding API Changes</h3>
+<ul>
+<li>computeHorizontalScrollRange related APIs:<ul>
+<li>computeHorizontalScrollRange()</li>
+<li>computeHorizontalScrollOffset()</li>
+<li>computeVerticalScrollRange()</li>
+<li>computeVerticalScrollOffset()</li>
+<li>computeVerticalScrollExtent()</li>
+<li>computeScroll()</li>
+</ul>
+</li>
+<li>load(String url, String content, HashMap<String, String> headers)</li>
+<li>clearClientCertPreferences()</li>
+<li>Add isFirstAttempt as part of public XWalkHttpAuthHandler API</li>
+<li>getPrincipals and getKeyTypes for ClientCertRequest</li>
+</ul>
+<h3>Notable bug fixes</h3>
+<ul>
+<li>[XWALK-4871] - &#39;onOverScrolled&#39; method doesn&#39;t work in the subclass of XWalkView</li>
+<li>[XWALK-4894] - &#39;overScrollBy&#39; method doesn&#39;t work in the subclass of XWalkView</li>
+<li>[XWALK-5503] - Page Visibility API visibilitychange event not triggered on Windows OS</li>
+<li>[XWALK-5929] - setTextZoom does not work with CSS3 columns</li>
+</ul>
+<h2>Crosswalk 18 (Apr 22, 2016)</h2>
+<ul>
+<li>Rebase to Chromium 48</li>
+<li>Modify Presentation API Implementation on Android to follow W3C Spec</li>
+<li>Windows: Generic mechanism to request permissions to use APIs from user</li>
+<li>Binary message interface support for Java extension</li>
+<li>Support external extensions for Crosswalk Webview on Android</li>
+<li>make_apk is replaced by crosswalk-app-tools</li>
+<li>Option to disable theme-color support on Android</li>
+<li>Enable access to set-cookie in Android cordova xwalk</li>
+<li>In-App Purchase extension with support for Google Play and Xiaomi store on Android, Apple Store on iOS</li>
+<li>Support RealSense Cameras on Windows</li>
+</ul>
+<h3>Embedding API updates</h3>
+<ul>
+<li>Access response cookies with XWalkWebResourceResponse</li>
+<li>getFavicon()</li>
+<li>webview.clearSslPreferences()</li>
+</ul>
+<h3>Notable bug fixes</h3>
+<ul>
+<li>[XWALK-4401] - Crosswalk crashes when running benchmark JS/DROMAEO-DOM after re-basing to M44</li>
+<li>[XWALK-6141] - Crosswalk 16+ stable crashes in Genymotion</li>
+<li>[XWALK-6482] - Message &quot;Please repackage xxx&quot; pops up after launching embedded arm app on x86_64 devices</li>
+<li>[XWALK-6631] - android project which using crosswalk run in genymotion will crash when simulator os below 6.0</li>
+<li>[XWALK-6746] - Cannot build Crosswalk 18 for Android with LibPhoneNumber</li>
+</ul>
+<h2>Crosswalk 17 (Mar 4, 2016)</h2>
+<ul>
+<li>Rebased to Chromium 46</li>
+<li>Add ability to intercept touch events on the XWalkView</li>
+<li>Initial Support Presentation API on Windows</li>
+<li>Support security APIs for Crosswalk</li>
+<li>set background color in Cordova-plugin-xwalkview</li>
+<li>XWalkRuntimeLib.apk can be downloaded and installed silently in shared-mode</li>
+<li>WiFi Direct API for Android</li>
+<li>Implement support for .NET extensions</li>
+<li>Remove support for Cordova Android 3.x</li>
+</ul>
+<h3>Embedding API updates</h3>
+<ul>
+<li>XWalkView.getUserAgentString</li>
+<li>XWalkSettings.setSupportZoom</li>
+<li>onJsAlert/onJsConfirm/onJsPrompt</li>
+<li>XWalkView.clearFormData</li>
+<li>XWalkSettings.setTextZoom/ XWalkSettings.getTextZoom</li>
+<li>captureBitmapAsync</li>
+</ul>
+<h3>Notable bug fixes</h3>
+<ul>
+<li>[XWALK-3112] - View.scrollTo() and other functions do not work as expected</li>
+<li>[XWALK-4045] - Duplicate history per URL visit</li>
+<li>[XWALK-4255] - XWalk crashes upon back nav if intercepted request has not finished loading</li>
+<li>[XWALK-4514] - &quot;A network change was detected&quot; when create 5 xwalkviews which load different pages</li>
+<li>[XWALK-5621] - shouldInterceptLoadRequest is unreliable with iframes</li>
+<li>[XWALK-6178] - A network change was detected</li>
+</ul>
+<h2>Crosswalk 16 (Jan 11, 2016)</h2>
+<ul>
+<li>Update to Chromium 45, which includes new JavaScript language features, an improved audio experience on Android, and a large number of minor API improvements and deprecations. Read the <a href="http://blog.chromium.org/2015/07/chrome-45-beta-new-es2015-features.html">announcement</a> for more details.</li>
+<li>Crosswalk can now play back Widevine DRM-protected content (<a href="https://crosswalk-project.org/jira/browse/XWALK-5030">XWALK-5030</a>)</li>
+<li>A new xwalk_view.background_color field can be added to the manifest.json, to specify the background color of the XWalkView</li>
+<li>When onReceivedLoadError occurs, a Toast notification is displayed to the user instead of a dialog (as the user cannot do anything to respond to the error)</li>
+<li>Presentation API on Android follows an updated <a href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/">W3C Spec</a>.</li>
+<li>External extensions have an additional binary messaging interface for better performance when large amounts of data need to be passed to and from the extension.</li>
+<li>The signature of the downloaded Crosswalk APK is verified when starting the application in shared mode.</li>
+<li>Android support libraries (e.g. support-v4, support-v7 etc) are no longer bundled by Crosswalk and should be included explicitly if required.</li>
+</ul>
+<h2>Crosswalk 15 (Oct 26, 2015)</h2>
+<ul>
+<li>Rebased to Chromium 44</li>
+<li>Reintroduced support for Android 4.0 which was dropped in Chromium 44</li>
+<li>Preserve local storage when upgrading an existing application from platform webview to Crosswalk</li>
+<li>Support for the <code>theme-color</code> meta tag</li>
+</ul>
+<h3>Embedding API updates</h3>
+<ul>
+<li>XWalkView now uses <a href="http://developer.android.com/reference/android/view/SurfaceView.html"><code>SurfaceView</code></a> as the default rendering backend. This solves several visual glitches, for example when opening/closing the virtual keyboard, and gives better performance, however it doesn’t support animating the view. If you need to animate the XWalkView, select <a href="http://developer.android.com/reference/android/view/TextureView.html"><code>TextureView</code></a> as the rendering backend. To change the view type to TextureView, use <code>XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true)</code></li>
+<li>New methods to programmatically zoom the view: <a href="https://crosswalk-project.org/jira/browse/XWALK-4171"><code>XWalkView.zoomOut</code></a>,<a href="https://crosswalk-project.org/jira/browse/XWALK-4170"><code>XWalkView.zoomIn</code></a>, <a href="https://crosswalk-project.org/jira/browse/XWALK-4169"><code>XWalkView.zoomBy</code></a></li>
+<li>Override the default DownloadListener with <a href="https://crosswalk-project.org/jira/browse/XWALK-3958"><code>XWalkView.setDownloadListener</code></a></li>
+<li>New helper class <a href="https://crosswalk-project.org/jira/browse/XWALK-3971"><code>XWalkInitializer</code></a> to initialize XWalkView asynchronously</li>
+</ul>
+<h3>Extension framework</h3>
+<p>JavaScript stub auto-generation for Java extensions on Android <a href="https://crosswalk-project.org/jira/browse/XWALK-3969">[XWALK-3969</a>]</p>
+<h3>Size optimizations</h3>
+<p>The following features were ported from the Crosswalk Lite branch to support better compression of the APK:</p>
+<ul>
+<li>Enable ProGuard for Crosswalk to compress APK size <a href="https://crosswalk-project.org/jira/browse/XWALK-3854">[XWALK-3854</a>]</li>
+<li>LZMA support <a href="https://crosswalk-project.org/jira/browse/XWALK-3810">[XWALK-3810</a>]</li>
+<li>Ability to customize the dialog shown when uncompressing Crosswalk <a href="https://crosswalk-project.org/jira/browse/XWALK-3475">[XWALK-3475</a>]</li>
+</ul>
+<h2>Crosswalk 14 (Jul 3, 2015)</h2>
+<ul>
+<li>First release <a href="https://play.google.com/store/apps/details?id=org.xwalk.core&amp;hl=en">available</a> in the Google Play Store. Applications can be configured to download it on demand</li>
+<li>Rebased to Chromium 43</li>
+<li>New WebCL API for devices that support OpenCL</li>
+<li>SIMD support for code written in asm.js.</li>
+</ul>
+<h3>Embedding API Updates</h3>
+<p>The Crosswalk XwalkView class has a new method to control whether its surface is placed on top of its window. Note that this only works when XWalkPreferences.ANIMATABLE_XWALK_VIEW is false.</p>
+<p><code>public void setZOrderOnTop (boolean onTop);</code></p>
+<h3>Notable bug fixes</h3>
+<p>The --disk-cache-size command line switch now behaves as expected (bug XWALK-3821)</p>
+<h2>Crosswalk 13 (May 11, 2015)</h2>
+<ul>
+<li>Rebased to Chromium 42</li>
+<li>First version available via the Cordova Crosswalk Webview plugin</li>
+<li>64-bit support</li>
+<li>Enable shared mode in xwalk core library and related signature verification</li>
+<li>Expose API to specify xwalk_hosts programatically</li>
+</ul>
+<h3>Bug Fixes</h3>
+<ul>
+<li>[XWALK-1621] - The webkitSpeechRecognition method is not defined when running “WebAPI/webspeech” on Android OS</li>
+<li>[XWALK-1899] - One XWalkView cannot be displayed on top of another XWalkView</li>
+<li>[XWALK-2132] - XWalk Cordova doesn&#39;t seem to set window.navigator.language - always en-US</li>
+<li>[XWALK-2352] - Some methods in XWalkView and XWalkUIClient interface do not support when running “WebAPI/Embeddingapi” on Android OS</li>
+<li>[XWALK-2511] - screen.orientation.lock() fails to return Promise when running “WebAPI/Screenorientation” on Android OS</li>
+<li>[XWALK-2643] - getUserMedia Get low FPS in IA devices</li>
+<li>[XWALK-3308] - transparent webview appears white, fixed in chromium</li>
+<li>[XWALK-3736] - Failed to execute &#39;start&#39; on &#39;SpeechRecognition&#39;</li>
+<li>[XWALK-3897] - Fail to load the external link when clicking the link with &#39;_blank&#39; target on Android</li>
+</ul>
+<h2>Crosswalk 12 (Mar 17, 2015)</h2>
+<ul>
+<li>Rebased to Chromium 41, which brings new ES6 template literals and new debugging features for CSS Animation and Service Worker.</li>
+</ul>
+<h2>Embedding API updates</h2>
+<h3>XWalkView</h3>
+<p>Set the User Agent string of the application:</p>
+<pre><code>void setUserAgentString(String userAgent)</code></pre>
+<p>Use <code>XWalkView.setBackgroundColor(0)</code> to make the XWalkView transparent (<a href="https://crosswalk-project.org/jira/browse/XWALK-3308">XWALK-3308</a>)</p>
+<h3>XWalkUIClient</h3>
+<p>Notify the host application of a console message.:</p>
+<pre><code>void onConsoleMessage(XWalkView view, String message, int lineNumber, String sourceId, ConsoleMessageType messageType)</code></pre>
+<h2>SIMD updates</h2>
+<p>The <a href="https://github.com/johnmccutchan/ecmascript_simd/">SIMD.js API</a> now implements load and store of data types. These APIs allow developers to load or store all or partial elements of SIMD data from or to variable typed arrays and are important for several use cases:</p>
+<p>Adds &quot;ByScalar&quot; suffix to shift operations according to the latest <a href="https://github.com/johnmccutchan/ecmascript_simd/">SIMD.js spec</a>. It clarifies that their shift count is a scalar value, and to make namespace room for adding vector-vector shifts in the future.</p>
+<pre><code>SIMD.int32x4.shiftLeftByScalar
+SIMD.int32x4.shiftRightLogicalByScalar
+SIMD.int32x4.shiftRightArithmeticByScalar</code></pre>
+<p>SIMD.js introduces new swizzle and shuffle APIs to rearrange lanes in SIMD data types. They include:</p>
+<pre><code>SIMD.float32x4.swizzle
+SIMD.float32x4.shuffle
+SIMD.float64x2.swizzle
+SIMD.float64x2.shuffle
+SIMD.int32x4.swizzle
+SIMD.int32x4.shuffle</code></pre>
+<h2>Crosswalk 11 (Feb 26, 2015)</h2>
+<ul>
+<li>Rebased to Chromium 40, which introduces the <a href="http://www.w3.org/TR/service-workers/">Service Worker API</a>.</li>
+</ul>
+<h2>SIMD updates</h2>
+<p>The <a href="https://github.com/johnmccutchan/ecmascript_simd/">SIMD.js API</a> now implements load and store of data types. These APIs allow developers to load or store all or partial elements of SIMD data from or to variable typed arrays and are important for several use cases:</p>
+<ol>
+<li>load/store SIMD data from/to non 16 bytes aligned memory.</li>
+<li>load/store 1, 2 or 3 float32/int32 packed data structure from/to memory to/from SIMD types.</li>
+<li>enable Emscripten (<a href="https://github.com/kripken/emscripten">https://github.com/kripken/emscripten</a>) generated SIMD.js code.</li>
+</ol>
+<p>APIs include:</p>
+<pre><code>SIMD.float32x4.load
+SIMD.float32x4.loadX
+SIMD.float32x4.loadXY
+SIMD.float32x4.loadXYZ
+SIMD.float32x4.store
+SIMD.float32x4.storeX
+SIMD.float32x4.storeXY
+SIMD.float32x4.storeXYZ
+SIMD.float64x2.load
+SIMD.float64x2.loadX
+SIMD.float64x2.store
+SIMD.float64x2.storeX
+SIMD.int32x4.load
+SIMD.int32x4.loadX
+SIMD.int32x4.loadXY
+SIMD.int32x4.loadXYZ
+SIMD.int32x4.store
+SIMD.int32x4.storeX
+SIMD.int32x4.storeXY
+SIMD.int32x4.storeXYZ</code></pre>
+<h2>Crosswalk 10 (Dec 31, 2014)</h2>
+<ul>
+<li>Updates the SSL implementation to BoringSSL. This solves an issue with the Google Play Store warning about a security vulnerability in the version of OpenSSL previously used by Crosswalk (<a href="https://crosswalk-project.org/jira/browse/XWALK-3217">XWALK-3217</a>)</li>
+<li>Due to some changes to support multiple profiles, upgrading an application to Crosswalk 9 was causing local storage data to disappear. With Crosswalk 10 the data is migrated correctly (<a href="https://crosswalk-project.org/jira/browse/XWALK-3252">XWALK-3252</a>)</li>
+<li>Rebased to Chromium 39</li>
+<li>Updated Embedding API (v4), adding the following methods:<ul>
+<li><a href="https://crosswalk-project.org/jira/browse/XWALK-2763">getRemoteDebuggingUrl</a></li>
+<li><a href="https://crosswalk-project.org/jira/browse/XWALK-2762">onReceivedSslError</a></li>
+<li><a href="https://crosswalk-project.org/jira/browse/XWALK-2374">onCreateWindowRequested</a></li>
+<li><a href="https://crosswalk-project.org/jira/browse/XWALK-2373">onIconAvailable and onReceivedIcon</a></li>
+</ul>
+</li>
+<li>Support for Cordova 3.6.3</li>
+<li>Crosswalk AAR package in Stable and Beta channels for Maven/Gradle integration (<a href="https://crosswalk-project.org/documentation/android/embedding_crosswalk/crosswalk_aar.html">documentation</a>)</li>
+<li>Remote debugging is disabled by default and needs to be enabled with <code>--enable-remote-debugging</code></li>
+</ul>
+<h2>Crosswalk 9 (Nov 25, 2014)</h2>
+<ul>
+<li>Rebased to Chromium 38, bringing:<ul>
+<li><code>&lt;picture&gt;</code> Element</li>
+<li>File constructor</li>
+<li>JS iterators (ES6)</li>
+<li>Map (ES6)</li>
+<li>Math functions (ES6)</li>
+<li>Screen Orientation API</li>
+<li>Set (ES6)</li>
+<li>Symbols (ES6)</li>
+<li>Unscopables (ES6)<ul>
+<li>image-rendering: pixelated</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Crosswalk on Android</h3>
+<ul>
+<li>[XWALK-1638] - Enable shared mode for Crosswalk core.</li>
+<li>[XWALK-1914] - Implement the changes in SIMD.JS according to API spec change</li>
+<li>[XWALK-1930] - Add Crosswalk library to the Maven repository</li>
+<li>[XWALK-1947] - Packaging enhancement for external extensions  (extension_manager.py )</li>
+<li>[XWALK-2376] - Embedding API: Preference value</li>
+<li>[XWALK-2378] - Add a new onNewIntent method that users can override to handle a new Intent</li>
+<li>[XWALK-2391] - Crosswalk script make_apk.py is runnable from any location</li>
+<li>[XWALK-2394] - Temporary build directories are in system &quot;temp&quot; location</li>
+<li><a href="https://crosswalk-project.org/apis/embeddingapidocs_v3/index.html">Embedding API version 3.0</a></li>
+</ul>
+<h3>Notable Bug Fixes</h3>
+<ul>
+<li>[XWALK-1664] - Unable to save the image in Capture component on Cordova 3.5.0</li>
+<li>[XWALK-2150] - Fail to switch to Full Screen mode when tapping &quot;Request&quot; button in Webapi Usecase/Full Screen Test</li>
+<li>[XWALK-2154] - Unable to get cpu/storage/memory/display/avcodecs info of the device and system in Webapi/DeviceCapabilities on Android</li>
+<li>[XWALK-2188] - [Android] XWalkView will display a short white screen when press home button</li>
+<li>[XWALK-2417] - CordovaCrossWalk - onPause javascript code not executed until onresume</li>
+<li>[XWALK-2432] - [Android] Crash on <a href="http://www.w3schools.com/html/tryit.asp?filename=tryhtml5_video_all">http://www.w3schools.com/html/tryit.asp?filename=tryhtml5_video_all</a></li>
+<li>[XWALK-2462] - [REG] Fail to run Cordova remote debug testing in chrome browser</li>
+<li>[XWALK-2051] - screen.orientation.type is undefined when running “W3C/ScreenOrientation” on Android OS</li>
+<li>[XWALK-1321] - No words show in the text area when running “Usecase/WebSpeech” on Android OS</li>
+<li>[XWALK-2229] - White Flash between application transitions</li>
+</ul>
+<h2>Crosswalk 8 (Sep 30, 2014)</h2>
+<ul>
+<li><p>Rebased to Chromium 37 which brings:</p>
+<ul>
+<li>&#60;dialog&#62; element</li>
+<li>CSS Shapes Module Level 1</li>
+<li>Navigator.hardwareConcurrency</li>
+<li>NavigatorLanguage: navigator.languages and languagechange event</li>
+<li>Subpixels font scaling</li>
+<li>[Web Crypto API] (<a href="http://www.w3.org/TR/WebCryptoAPI/">http://www.w3.org/TR/WebCryptoAPI/</a>)</li>
+</ul>
+</li>
+<li><p>Initial support of <a href="http://w3c.github.io/manifest/">http://w3c.github.io/manifest/</a></p>
+</li>
+</ul>
+<h3>Android</h3>
+<ul>
+<li>Support for Copy/Paste</li>
+<li>[W3C Gamepad API] (<a href="http://www.w3.org/TR/gamepad/">http://www.w3.org/TR/gamepad/</a>) (on devices that support it in the <a href="http://developer.android.com/reference/android/view/MotionEvent.html">MotionEvent API</a> - so far tested on Nexus 7 and Nexus 5 with Android 4.4.2)</li>
+<li>Pluggable extensions for embedded Crosswalk</li>
+<li>[Embedding API v2.1] (<a href="https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/package-summary.html">https://crosswalk-project.org/apis/embeddingapidocs_v2/reference/org/xwalk/core/package-summary.html</a>)</li>
+<li>~30% performance improvement when transferring large blocks of data with extensions</li>
+</ul>
+<h3>Notable bug fixes</h3>
+<ul>
+<li>[XWALK-1037] - Open web pages in default browser instead of in-app browsing</li>
+<li>[XWALK-1348] - Fail to get correct value of “client.statusText” when running “WebAPI/xmlhttprequest” on Android OS</li>
+<li>[XWALK-1408] - Resource timing data contains negative values when running “Use Case/ResourceTiming” on Android OS</li>
+<li>[XWALK-1833] - [REG]Crosswalk crashed when running “WebAPI/getUserMedia” component on Android OS</li>
+<li>[XWALK-1931] - [REG] Webapp 100% crashes on Android Crosswalk if no SD card on test device</li>
+<li>[XWALK-1952] - Native filesystem API initialize crash for cordova</li>
+<li>[XWALK-1970] - XWalkView shows a white background momentarily as the app starts and stops from the task switcher</li>
+<li>[XWALK-2010] - Hook the native destroying into GC</li>
+<li>[XWALK-2053] - &quot;version&quot; field in manifest should not be mandatory and should be renamed to &quot;xwalk_version&quot;</li>
+<li>[XWALK-2059] - The scroll experience is poor when scrolling a rich and long page</li>
+<li>[XWALK-2135] - [Android] make apk doesn&#39;t take alias password as argument</li>
+<li>[XWALK-2292] - App goes into full screen mode after switching from Android task manager</li>
+</ul>
+<h2>Crosswalk 7 (Aug 1, 2014)</h2>
+<ul>
+<li>Rebased to Chromium 36 which brings:<ul>
+<li>CSS touch-action</li>
+<li>CSS will-change</li>
+<li>HTML imports</li>
+<li>Object.observe()</li>
+<li>Unprefixed CSS Transforms</li>
+<li>Web Animations JavaScript API [element.animate()]</li>
+</ul>
+</li>
+<li>Enabled Native Client (NaCL) on Tizen and Linux for 32 and 64-bit</li>
+<li>Capability to access file system directly on Android and Tizen/Linux</li>
+</ul>
+<h3>Android</h3>
+<ul>
+<li>Support for Cordova 3.5.0</li>
+<li><a href="https://github.com/crosswalk-project/crosswalk-android-extensions/wiki/A-Possible-IAP-Web-IDL">API for In-App Purchases</a></li>
+<li>Ability to open a file with third party app based on the MIME type</li>
+<li>Only letters, digits, &quot; &quot; and &quot;_&quot; are allowed for the application&#39;s name in the manifest</li>
+<li>Use TextureView and SurfaceView for embedding API</li>
+</ul>
+<h3>Notable bug fixes</h3>
+<ul>
+<li>[XWALK-978] - Pixel game got blurred on crosswalk</li>
+<li>[XWALK-1207], [XWALK-1209] - Exception thrown when minifying CSS and JS files packer tool minify css files with compressor option</li>
+<li>[XWALK-1245] - Font rendering is weird in Crosswalk 5</li>
+<li>[XWALK-1367] - Unable to launch application in fullscreen mode</li>
+<li>[XWALK-1466] - make_apk_test fails when out/ has both ARM and x86 builds</li>
+<li>[XWALK-1476] - Crosswalk crashes if the application name has a space in it</li>
+<li>[XWALK-1538] - Power consumption of HTML5 video has increased ~14% on Android/Geek</li>
+<li>[XWALK-1608] - Can not re-enter fullscreen mode again when playing embeded video</li>
+<li>[XWALK-1616] - Launching Crosswalk-Cordova ARM app on IA device doesn&#39;t report Architecture mismatch error</li>
+<li>[XWALK-1618] - Apk will crash when set ‘undefined’ arch option</li>
+<li>[XWALK-1623] - Launch screen display is delayed in Crosswalk 6</li>
+<li>[XWALK-1627] - Javascript&#39;s native confirm box locks the app</li>
+<li>[XWALK-1633] - Always get IntentReceiverLeaked message when exiting app using Presentation API</li>
+<li>[XWALK-1635] - White screen displayed when no &#39;image&#39; provided in Launch Screen</li>
+<li>[XWALK-1639] - XWalk will crash when exit.</li>
+<li>[XWALK-1653] - Timer can not resumed when resuming back</li>
+<li>[XWALK-1695] - onRsourceLoadStarted callback must be posted to UI thread to run</li>
+<li>[XWALK-1702] - Blank browser after loading URL until it is resized</li>
+<li>[XWALK-1711] - &quot;space&quot; in application name is replaced with &quot;underscore&quot;</li>
+<li>[XWALK-1713] - Python 3 deprecated sys.maxint</li>
+<li>[XWALK-1760] - Get a half black and white screen before going to the game when loading the splashscreen</li>
+<li>[XWALK-1780] - onPageStarted will be fired when iframe URL changes.</li>
+<li>[XWALK-1815] - XWalkView evaluateJavascript API should allow null resultCallback to align with Android WebView</li>
+<li>[XWALK-1859] - Crosswalk Cordova should allow universal access from file URLs for Android 4.0.x</li>
+<li>[XWALK-1863] - Start app and quickly press back button, the app will crash</li>
+<li>[XWALK-1882] - XWalkViewClient.onPageStarted not being called</li>
+<li>[XWALK-1908] - Cache mode does not work.</li>
+<li>[XWALK-1963] - Webapp 100% crashes on Android Crosswalk if no SD card on test device</li>
+</ul>
+<h2>Crosswalk 6 (Jun 25, 2014)</h2>
+<ul>
+<li>Rebased to Chromium 35</li>
+</ul>
+<h3>Android</h3>
+<ul>
+<li>First version of [public API for embedded usage (XWalkView)] (<a href="https://crosswalk-project.org/#documentation/apis/embedding_api">https://crosswalk-project.org/#documentation/apis/embedding_api</a>)</li>
+<li>[Build Crosswalk applications with Eclipse] (<a href="https://crosswalk-project.org/#wiki/Crosswalk-Developer-Tools-Eclipse-plugin">https://crosswalk-project.org/#wiki/Crosswalk-Developer-Tools-Eclipse-plugin</a>)</li>
+<li>Packaging tool generates APKs for both ARM and x86 processor architectures</li>
+<li>Support for Cordova 3.4.0</li>
+<li>Full support for [&quot;Launch Screen&quot; specification] (<a href="https://crosswalk-project.org/#wiki/Launch-Screen">https://crosswalk-project.org/#wiki/Launch-Screen</a>)</li>
+<li>[Pass Chromium command line options via configuration file] (<a href="https://crosswalk-project.org/#wiki/Use-Chromium-command-lines-in-your-apps-on-Android">https://crosswalk-project.org/#wiki/Use-Chromium-command-lines-in-your-apps-on-Android</a>)</li>
+<li>[Option to prevent screen from switching off] (<a href="https://crosswalk-project.org/#wiki/Try-Crosswalk">https://crosswalk-project.org/#wiki/Try-Crosswalk</a>)</li>
+<li>[Option to ignore GPU blacklist] (<a href="https://crosswalk-project.org/#wiki/Use-Chromium-command-lines-in-your-apps-on-Android">https://crosswalk-project.org/#wiki/Use-Chromium-command-lines-in-your-apps-on-Android</a>)</li>
+</ul>
+<h3>Notable bug fixes</h3>
+<ul>
+<li>[XWALK-817] - TCPSocket does not support addressReuse/bufferedAmount /noDelay attributes on Android OS</li>
+<li>[XWALK-822] - Handle security exception in Android messaging api</li>
+<li>[XWALK-985] - White screen when package web page named as &quot;http.html&quot; with --manifest</li>
+<li>[XWALK-1200] - Fullscreen immersive mode doesn&#39;t work by swiping up from bottom on Android OS</li>
+<li>[XWALK-1210] - Application with space in its name cannot be launched</li>
+<li>[XWALK-1212] - The webapp can be created successfully when set incorrect value of app-local-path option</li>
+<li>[XWALK-1250] - d8 crashes when constructing Float32x4Array or Int32x4Array without --simd-object flag</li>
+<li>[XWALK-1274] - There is an empty alert dialog popped up caused by network error when opening a remote site</li>
+<li>[XWALK-1460] -  Packaging tool enable set long string in package option</li>
+<li>[XWALK-1463] - The space is not replaced with &#39;_&#39; when the Manifest name is tail with space</li>
+<li>[XWALK-1582] - space is replaced with &#39;_&#39; when name contain space</li>
+</ul>
+<h2>Crosswalk 5 (Apr 20, 2014)</h2>
+<p>Based on Chromium 34</p>
+<ul>
+<li>Use SIMD (Single Instruction, Multiple Data) in JavaScript with the [SIMD4JS API] (<a href="https://github.com/johnmccutchan/ecmascript_simd">https://github.com/johnmccutchan/ecmascript_simd</a>) (<em>Note: SIMD operations are only accelerated on x86 architecture at present</em>)</li>
+<li>Support for declaring a default [Content Security Policy] (<a href="https://dvcs.w3.org/hg/content-security-policy/raw-file/tip/csp-specification.dev.html">https://dvcs.w3.org/hg/content-security-policy/raw-file/tip/csp-specification.dev.html</a>) in the manifest file</li>
+<li>New download folder and package structure to support multiple architectures in one packaging tool</li>
+<li>New --compressor option in make_apk to minify web app resources (JS, CSS) during packaging</li>
+<li>Rebased to Chromium 34, which brings:<ul>
+<li>Unprefixed Web Audio support</li>
+<li>Responsive images</li>
+<li>[Vibration API] (<a href="http://www.w3.org/TR/vibration/">http://www.w3.org/TR/vibration/</a>)</li>
+</ul>
+</li>
+</ul>
+<h3>Android</h3>
+<ul>
+<li>Android 4.4+ now uses <a href="https://developer.android.com/about/versions/kitkat.html#44-immersive">Immersive Mode</a> when in fullscreen</li>
+<li>Integration with system notifications</li>
+<li>Initial support for declaring a <a href="https://crosswalk-project.org/#wiki/Launch-Screen">launch screen</a> in the manifest file</li>
+<li>New downloadable archive containing all the tools needed to package Cordova applications with Crosswalk (see the <a href="https://crosswalk-project.org/#wiki/crosswalk-cordova-android">documentation</a>)</li>
+</ul>
+<h2>Notable Bugs Fixed</h2>
+<ul>
+<li>Failed to get correct result of &quot;background-position&quot; when running tct-backgrounds-css3-tests on Android OS [XWALK-470]</li>
+<li>setWebContentsDebuggingEnabled API missing in XWalk [XWALK-753]</li>
+<li>packaging tool does not work with minimal manifest [XWALK-909]</li>
+<li>make_apk.py --enable-remote-debugging not working [XWALK-933]</li>
+<li>Crosswalk doesn&#39;t honor Chrome GPU blacklist [XWALK-934]</li>
+<li>window.close doesn&#39;t work on Android OS [XWALK-939]</li>
+<li>Unable to get the &quot;messaging&quot; permission on Android OS [XWALK-940]</li>
+<li>Volume is too low when playing audio via WebAudio API [XWALK-980]</li>
+<li>XWalkView shouldInterceptRequest never called [XWALK-996]</li>
+<li>Remote debugging not enabled for debug build of Crosswalk Cordova application [XWALK-1039]</li>
+<li>Capture API test in cordova_mob_spec crashes after recording the audio [XWALK-1116]</li>
+</ul>
+<h2>Known issues</h2>
+<ul>
+<li>Music does not seamlessly loop [XWALK-1125]</li>
+<li>Setting gain to 0 does not mute [XWALK-1126]</li>
+<li>Web app cannot detect the right motion when device orientation change [XWALK-1264]</li>
+<li>Full screen immersive mode doesn&#39;t work by swiping up from bottom [XWALK-1200]</li>
+<li>Fail to get correct value of CSS3 multicolumn column-rule-width [XWALK-1093]</li>
+<li>W3C Notification onclick event callback is not working on Cordova packaged app [XWALK-1080]</li>
+<li>Can&#39;t save content to a file by using W3C file API [XWALK-1079]</li>
+</ul>
+<h2>Crosswalk 4 (Mar 28, 2014)</h2>
+<p>Based on Chromium 32</p>
+<h3>Runtime</h3>
+<h4>Android</h4>
+<ul>
+<li>Support app:// scheme for web apps</li>
+<li>Add &quot;crosswalk&quot; in User Agent</li>
+<li>Bridge crosswalk manifest permission to Android Manifest in packaging tool</li>
+<li>Apps can be moved to SD Card</li>
+</ul>
+<h4>Tizen (note: Crosswalk 4 on Tizen is only available in the Beta channel)</h4>
+<ul>
+<li>&quot;Run As Service&quot; - Allow to run Crosswalk as a central daemon process with additional render/extension process for each running application</li>
+<li>Extension Process SMACK support for Tizen 2.x</li>
+<li>Support for Tizen legacy application packages (wgt)</li>
+<li>Initial support for Tizen IVI</li>
+<li>Update an already installed web application with xwalk --install</li>
+<li>Support App.runtime APIs (onLaunched, onRestarted, on Suspend, onInstalled)</li>
+<li>Extension namespace is read-only</li>
+</ul>
+<h3>API</h3>
+<ul>
+<li>WebAudio</li>
+<li>WebRTC</li>
+<li>Screen orientation</li>
+<li>app: URI</li>
+<li>HTML5 fullscreen API support</li>
+<li>WebGL 1.0</li>
+<li>Cross-Origin Resource Sharing</li>
+<li>iframe</li>
+<li>Server-Sent Events</li>
+<li>Navigation Timing</li>
+<li>Resource Timing</li>
+<li>User Timing</li>
+<li>High Resolution Time</li>
+</ul>
+<h4>Android</h4>
+<ul>
+<li>Support for Cordova 3.3.0</li>
+<li>Speech Recognition API</li>
+</ul>
+<h2>Crosswalk 3 (Jan 24, 2014)</h2>
+<p>Based on Chromium 32</p>
+<h3>Runtime</h3>
+<h4>Common</h4>
+<ul>
+<li>Non-persistent &quot;main&quot; document</li>
+<li>Basic application event API support</li>
+<li>[Manifest format] (<a href="https://crosswalk-project.org/#wiki/Crosswalk-manifest">https://crosswalk-project.org/#wiki/Crosswalk-manifest</a>)</li>
+</ul>
+<h4>Android Runtime</h4>
+<ul>
+<li>Embedded mode enabled by default</li>
+<li>Support for &#39;mailto:&#39; scheme</li>
+<li>Support for &#39;geo:0,0?q=&#39; scheme</li>
+<li>Support for &#39;content://&#39; scheme</li>
+<li>Cookie support</li>
+<li>Enable HTTP authentication</li>
+<li>Support manifest.json when running web apps</li>
+<li>onTitleChanged callback added in XWalkViewTestBase</li>
+<li>Back key bahavior for XWalkView</li>
+</ul>
+<h4>Tizen Runtime</h4>
+<ul>
+<li>Rotation support</li>
+<li>Runtime flags to enable/disable experimental features</li>
+</ul>
+<h4>Extensions framework</h4>
+<ul>
+<li>Extension Process Crash Handling</li>
+<li>Android permission support</li>
+</ul>
+<h3>API</h3>
+<h4>Common</h4>
+<ul>
+<li>[Device Capabilities API] (<a href="http://www.w3.org/2012/sysapps/device-capabilities/">http://www.w3.org/2012/sysapps/device-capabilities/</a>)</li>
+<li>[DeviceOrientation event API] (<a href="http://www.w3.org/TR/orientation-event/">http://www.w3.org/TR/orientation-event/</a>)</li>
+<li>[Raw Sockets] (<a href="http://www.w3.org/TR/raw-sockets/">http://www.w3.org/TR/raw-sockets/</a>)</li>
+<li>[Media Capture and Streams] (<a href="http://www.w3.org/TR/mediacapture-streams/">http://www.w3.org/TR/mediacapture-streams/</a>)</li>
+<li>HTML5 Audio/Video</li>
+<li>[Page Visibility API] (<a href="http://www.w3.org/TR/page-visibility/">http://www.w3.org/TR/page-visibility/</a>)</li>
+</ul>
+<h4>Android API</h4>
+<ul>
+<li>Phonegap: Accelerometer</li>
+<li>Phonegap: Camera</li>
+<li>Phonegap: Capture</li>
+<li>Phonegap: Compass</li>
+<li>Phonegap: Connection</li>
+<li>Phonegap: Contacts</li>
+<li>Phonegap: Device</li>
+<li>Phonegap: Events</li>
+<li>Phonegap: File</li>
+<li>Phonegap: Geolocation</li>
+<li>Phonegap: Globalization</li>
+<li>Phonegap: InAppBrowser</li>
+<li>Phonegap: Media</li>
+<li>Phonegap: Notification</li>
+<li>Phonegap: Splashscreen</li>
+<li>Phonegap: Storage</li>
+<li>Presentation API for WiDi Support</li>
+<li>Contacts Manager API</li>
+</ul>
+<h4>Tizen Device API</h4>
+<ul>
+<li>Message Port API</li>
+<li>Notification API</li>
+<li>Filesystem API</li>
+<li>Bookmark API</li>
+</ul>
+<h2>Crosswalk 2 (Dec 20, 2013)</h2>
+<p>Based on Chromium 31</p>
+<h3>Runtime</h3>
+<ul>
+<li>Initial Digital Signature in XPK Package Header</li>
+<li>Web Manifest</li>
+<li>Application runtime APIs (getMainDocument, getManifest)</li>
+</ul>
+<h3>Android</h3>
+<ul>
+<li>WebRTC support</li>
+<li>Support version, description, permissions in packaging and manifest parsing tools</li>
+<li>Support the properties in manifest.json</li>
+<li>Media Capture and Streams</li>
+<li>DeviceOrientation event API</li>
+</ul>
+<h3>Tizen</h3>
+<ul>
+<li>--install, --uninstall and --list-apps command line options</li>
+<li>Bluetooth API</li>
+</ul>
+<h3>Extensions framework</h3>
+<ul>
+<li>Extension support for Android (except permissions for external extensions). See [documentation] (<a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Writing-a-Crosswalk-Java-Extension-on-Android">https://github.com/crosswalk-project/crosswalk-website/wiki/Writing-a-Crosswalk-Java-Extension-on-Android</a>).</li>
+<li>Improved robustness: better browser and unit tests coverage, fixed race conditions and tons of internal fixes.</li>
+<li>Improved internal extensions execution model: now external extensions run in the main thread.</li>
+<li>Only load Extensions on demand, exactly on the first time they are used on a frame.</li>
+<li>Extensions writers can make use of JS helpers and small libraries by using the &quot;requireNative()&quot; function and the v8tools module.</li>
+<li>Create one Extension Process per Render Process. Now each WebApp will have its own pair of Renderer+Extensions Processes.</li>
+</ul>
+<h2>Crosswalk 1 (Nov 11, 2013)</h2>
+<p>Based on Chromium 29
+Supports Android 4.0 and later, Tizen 2.x mobile
+Create and install packaged applications (.apk on Android, .xpk on Tizen)
+Initial manifest parsing
+Launch app in fullscreen mode
+Persistent event page
+Command line package installation
+Launch installed applications from home screen
+Web application integrated with task manager
+Viewport meta tag handling across all Crosswalk configurations
+Sample web applications to demonstrate HTML5 features and performance
+(Android) Run a simple web application without manifest support
+(Android) Package HTML/JS/CSS files into web app APKs
+(Android) Initial web app APK template
+(Android) Android API for debugging over USB
+(Tizen) First release of Crosswalk RPM for Tizen with Aura support
+(Tizen) First release of extension system - developers can create their own API extensions and install them as separate packages
+(Tizen) Support for HW keys (menu&amp;back)
+(Tizen) Basic virtual keyboard support
+(Extensions) Run extensions in separated extension process, also support running them in-process
+(Extensions) Support require() primitive in JS API extensions
+(Extensions) Allows providing convenience and native functions when needed
+(Extensions) Basic support for dependency tracking, focusing on Tizen Device APIs case
+(Extensions) Provide bindings for code running in renderer process and tools for generating bindings.</p>
+<h3>APIs</h3>
+<ul>
+<li>[app: URI] (<a href="http://www.w3.org/2012/sysapps/app-uri/">http://www.w3.org/2012/sysapps/app-uri/</a>) (<em>Tizen only</em>)</li>
+<li>[Fullscreen] (<a href="http://fullscreen.spec.whatwg.org/">http://fullscreen.spec.whatwg.org/</a>)</li>
+<li>[Touch Events] (<a href="https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html">https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html</a>)</li>
+<li>[Typed Array 1.0] (<a href="http://www.khronos.org/registry/typedarray/specs/latest/">http://www.khronos.org/registry/typedarray/specs/latest/</a>)</li>
+<li>[Media Queries Level 3] (<a href="http://w3c-test.org/csswg/mediaqueries3/">http://w3c-test.org/csswg/mediaqueries3/</a>)</li>
+<li>[Scalable Vector Graphics (SVG) 1.1] (<a href="http://www.w3.org/TR/SVG11/">http://www.w3.org/TR/SVG11/</a>)</li>
+<li>[HTML Canvas 2D Context] (<a href="http://www.w3.org/TR/2dcontext/">http://www.w3.org/TR/2dcontext/</a>)</li>
+<li>[Online State] (<a href="http://www.w3.org/html/wg/drafts/html/CR/browsers.html#browser-state">http://www.w3.org/html/wg/drafts/html/CR/browsers.html#browser-state</a>)</li>
+<li>[XMLHttpRequest] (<a href="http://www.w3.org/TR/XMLHttpRequest/">http://www.w3.org/TR/XMLHttpRequest/</a>)</li>
+<li>[WebSocket] (<a href="http://www.w3.org/TR/websockets/">http://www.w3.org/TR/websockets/</a>)</li>
+<li>[HTML5 web Messaging] (<a href="http://www.w3.org/TR/webmessaging/">http://www.w3.org/TR/webmessaging/</a>)</li>
+<li>[HTML5 Date and Time state of input element] (<a href="http://www.w3.org/TR/html5/forms.html#date-and-time-state-(type=datetime">http://www.w3.org/TR/html5/forms.html#date-and-time-state-(type=datetime</a>)) (<em>Android only</em>)</li>
+<li>[HTML5 telephone, email and URL state of input element] (<a href="http://www.w3.org/TR/html5/forms.html#telephone-state-(type=tel">http://www.w3.org/TR/html5/forms.html#telephone-state-(type=tel</a>)) (<em>Android only</em>)</li>
+<li>[Indexed DB] (<a href="https://dvcs.w3.org/hg/IndexedDB/raw-file/default/Overview.html">https://dvcs.w3.org/hg/IndexedDB/raw-file/default/Overview.html</a>)</li>
+<li>[Web Storage] (<a href="http://www.w3.org/TR/webstorage/">http://www.w3.org/TR/webstorage/</a>)</li>
+<li>[File API] (<a href="http://dev.w3.org/2006/webapi/FileAPI/">http://dev.w3.org/2006/webapi/FileAPI/</a>)</li>
+<li>[File API: Directories and System] (<a href="http://dev.w3.org/2009/dap/file-system/file-dir-sys.html">http://dev.w3.org/2009/dap/file-system/file-dir-sys.html</a>)</li>
+<li>[File API: Writer] (<a href="http://dev.w3.org/2009/dap/file-system/file-writer.html">http://dev.w3.org/2009/dap/file-system/file-writer.html</a>)</li>
+<li>[Web SQL] (<a href="http://www.w3.org/TR/webdatabase/">http://www.w3.org/TR/webdatabase/</a>)</li>
+<li>[CSS Color Module Level 3] (<a href="http://www.w3.org/TR/css3-color/">http://www.w3.org/TR/css3-color/</a>)</li>
+<li>[Selectors Level 1] (<a href="http://www.w3.org/TR/selectors-api/">http://www.w3.org/TR/selectors-api/</a>)</li>
+<li>[Selectors Level 2] (<a href="http://www.w3.org/TR/selectors-api2/">http://www.w3.org/TR/selectors-api2/</a>)</li>
+<li>[CSS Backgrounds and Borders Level 3] (<a href="http://www.w3.org/TR/css3-background/">http://www.w3.org/TR/css3-background/</a>)</li>
+<li>[CSS Multi-column Layout] (<a href="http://www.w3.org/TR/css3-multicol/">http://www.w3.org/TR/css3-multicol/</a>)</li>
+<li>[CSS Flexible Box Layout ] (<a href="http://www.w3.org/TR/css3-flexbox/">http://www.w3.org/TR/css3-flexbox/</a>)</li>
+<li>[CSS Text Decoration Level 3] (<a href="http://www.w3.org/TR/css-text-decor-3/">http://www.w3.org/TR/css-text-decor-3/</a>)</li>
+<li>[CSS Animations] (<a href="http://www.w3.org/TR/css3-animations/">http://www.w3.org/TR/css3-animations/</a>)</li>
+<li>[CSS Fonts Level 3] (<a href="http://www.w3.org/TR/css3-webfonts/">http://www.w3.org/TR/css3-webfonts/</a>)</li>
+<li>[CSS Transforms] (<a href="http://www.w3.org/TR/css3-transforms/">http://www.w3.org/TR/css3-transforms/</a>)</li>
+<li>[CSS Transitions] (<a href="http://www.w3.org/TR/css3-transitions/">http://www.w3.org/TR/css3-transitions/</a>)</li>
+<li>[Navigation Timing] (<a href="http://www.w3.org/TR/navigation-timing/">http://www.w3.org/TR/navigation-timing/</a>)</li>
+<li>[Resource Timing] (<a href="http://www.w3.org/TR/resource-timing/">http://www.w3.org/TR/resource-timing/</a>)</li>
+<li>[Page Visibility] (<a href="http://www.w3.org/TR/page-visibility/">http://www.w3.org/TR/page-visibility/</a>)</li>
+<li>[Web Workers] (<a href="http://www.w3.org/TR/workers/">http://www.w3.org/TR/workers/</a>)</li>
+</ul>
+
+  <footer class="article-next">
+    
+
+
+
+
+  </footer>
+</article>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+    
+ 
+  <hr class="footer-divider" style="margin-top:125px; margin-bottom:0px" />
+    <div style="position:relative; top:-30px;">
+       <a href="/"><img src="/assets/cw-logo-circle.png" width="60px" style="display:block; margin: 0 auto;" /></a>
+    </div>
+    <footer class="footer footer--documentation" >
+      <div class="container" >
+        <div class="row">
+          <div  class="footer-div" language="en">
+          <img src="/assets/Twitter_logo_blue.png" width="20px" /> Follow  <a href="http://twitter.com/xwalk_project">@xwalk_project on Twitter</a> for the latest developer activities and project updates.
+          </div>
+           <div  class="footer-div" language="zh" style="display:none">
+           <img src="/assets/Sina_Weibo_Blue.png" width="60px" /> 参考<a href="http://weibo.com/crosswalk">微博</a> 最新的开发者活动或者更新。
+          </div>
+          <div class="footer-div">
+             Latest blog post:</br>
+              
+              
+                <b><a href="/blog">WebCL APIs removed from Crosswalk 22</a></b><br/>
+                &nbsp;(<span ><time class="js-vagueTime" datetime="Tue, 30 Aug 2016 09:30:00 GMT">2016-08-30T09:30</time></span>)
+              
+              <br/>
+           </div>
+          <div class="footer-div">
+              <strong><a href="/feed.xml"><img src="/assets/rss-icon-16.gif" style="vertical-align:middle" /> RSS Feed</a></strong>
+          </div>
+          <div class="footer-div">
+             <a href="/documentation/getting_started.html"> Documentation</a> &nbsp;
+             <a href="/blog"> Blog</a> &nbsp;
+             <a href="/documentation/downloads.html"> Downloads</a> <br />
+             <a href="https://crosswalk-project.org/jira/secure/Dashboard.jspa"> Issues</a> &nbsp;
+             <a href="https://github.com/crosswalk-project"> GitHub Source</a> &nbsp;
+             <a href="/sitemap.html">Sitemap</a> <br/>
+          </div>
+        </div>
+        <div class="row">
+            <small>
+              The Crosswalk Project was created by the Intel Open Source Technology Center. Copyright © 2013–2016 Intel Corporation. All right reserved. <a href="https://github.com/crosswalk-project/crosswalk-website/wiki/Privacy-Policy">  Privacy policy </a>  *Other names and brands may be claimed as the property of others.
+            </small>
+        </div>
+      </div>
+    </footer>
+<script>
+    $("[language=en]").css("display","none");
+    $("[language=en]").css("display","block");
+</script>
+
+    
+    
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WC843Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WC843Q');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/vagueTime.js"></script>
+    <!-- <script async defer src="/js/trmix.js"></script> -->
+  </body>
+</html>
