@@ -35,9 +35,6 @@
   "net_extensions_zh": {
     "title": ".NET Extensions"
   },
-  "build_crosswalk_for_windows": {
-    "title": "Build Crosswalk for Windows"
-  },
   "build_crosswalk_for_windows_zh": {
     "title": "在Windows上编译Crosswalk"
   },
