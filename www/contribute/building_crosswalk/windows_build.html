@@ -31,15 +31,15 @@
 
     <!-- Facebook -->
     <meta property="og:side_name" content="Crosswalk" />
-    <meta property="og:title" content="Crosswalk" />
-    <meta property="og:url" content="http://crosswalk-project.org/contribute/building_crosswalk" />
+    <meta property="og:title" content="Windows build instructions" />
+    <meta property="og:url" content="http://crosswalk-project.org/contribute/building_crosswalk/windows_build" />
     <meta property="og:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta property="og:image" content="/assets/crosswalk-og-banner.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="http://crosswalk-project.org/contribute/building_crosswalk" />
-    <meta name="twitter:title" content="Crosswalk" />
+    <meta name="twitter:url" content="http://crosswalk-project.org/contribute/building_crosswalk/windows_build" />
+    <meta name="twitter:title" content="Windows build instructions" />
     <meta name="twitter:description" content="Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps." />
     <meta name="twitter:site" content="@xwalk_project" />
 
@@ -127,7 +127,7 @@
         
         </li>
     
-        <li class="article-item  nav-item--active">
+        <li class="article-item ">
         <a class="article-link" href="/contribute/building_crosswalk.html">Building Crosswalk</a>
         
             <ul class="article-list">
@@ -147,7 +147,7 @@
                 
               </li>
             
-              <li class="article-item ">
+              <li class="article-item  nav-item--active">
                 <a class="article-link" href="/contribute/building_crosswalk/windows_build.html">Windows build instructions</a>
                 
               </li>
@@ -206,40 +206,176 @@
 </nav>
 
 <article class="article article--hasToC">
-  <h1>Building Crosswalk</h1>
-<p>The Crosswalk Project is structured around and heavily depends on the
-<a href="https://www.chromium.org/Home">Chromium project</a>.</p>
-<p>As such, Crosswalk uses the same build system and auxiliary tools as Chromium:</p>
-<ul>
-<li><code>depot_tools</code> manages source code checkouts, the dependencies among them and
-ships some additional tools required to build Chromium and Crosswalk (such as
-ninja on all platforms and git and Python on Windows).</li>
-<li><code>ninja</code> is the actual build system, responsible for invoking the compiler,
-running scripts, linking binaries and creating APKs.</li>
-</ul>
-<p>The following sub-pages describe all the steps required in order to build your
-own copy of Crosswalk, from setting up network proxies to building to running
-our tests.</p>
-<p>The instructions below correspond to the operating system you are using to
-<em>build</em> Crosswalk (the &quot;host&quot;), not the platform you are targeting. That is, if
-you want to build Crosswalk for Android, you still need to follow the
-instructions for Linux below.</p>
+  <h1>Windows build instructions</h1>
+<h2>Requirements</h2>
+<p>Just like Chromium itself, building Crosswalk for Windows requires Visual Studio and the Windows 10 SDK. Also similarly to Chromium, different Crosswalk releases only work with specific versions of Visual Studio and the Windows 10 SDK. The table below summarizes the requirements for each Crosswalk release that supports Windows.</p>
+<table>
+<thead>
+<tr>
+<th>Crosswalk version</th>
+<th>Visual Studio version</th>
+<th>Other</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19</td>
+<td>Visual Studio 2013 Update 4 or Visual Studio 2015 Update 1</td>
+<td>Windows 10 SDK (10.0.10586)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Visual Studio 2013 Update 4 or Visual Studio 2015 Update 1</td>
+<td>Windows 10 SDK (10.0.10586)</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Visual Studio 2015 Update 2</td>
+<td>Windows 10 SDK (10.0.10586)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Visual Studio 2015 Update 2</td>
+<td>Windows 10 SDK (10.0.10586)</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Visual Studio 2015 Update 2</td>
+<td>Windows 10 SDK (10.0.10586)</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, you must use at least Windows 7 to be able to build Crosswalk.
+32-bit installations are <strong>not</strong> supported. Also make sure your system locale
+is set to English, otherwise you might run into error messages such as <em>&quot;The
+file contains a character that cannot be represented in the current code
+page&quot;</em>.</p>
+<p>These instructions assume you have already downloaded <code>depot_tools</code>,
+bootstrapped it (ie. git and Python have been installed) and it is in your
+<code>PATH</code> environment variable. See the <a href="prerequisites.html">prerequisites</a> page
+for further information.</p>
+<h2>Environment setup</h2>
+<p>By default, when checking out Chromium as part of Crosswalk&#39;s check out
+process, the scripts will attempt to download Visual Studio from internal
+Google servers by default (this comes from Chromium).</p>
+<p>The first thing you need to do then is to make sure this does not happen, as
+only Google employees are able to reach those servers. You need to install
+Visual Studio yourself.</p>
+<p>When using <code>cmd</code>:</p>
+<pre><code>set DEPOT_TOOLS_WIN_TOOLCHAIN=0
+setx DEPOT_TOOLS_WIN_TOOLCHAIN 0</code></pre>
+<p>The first command will set the environment variable for the existing prompt,
+while the second will set it for all future prompts.</p>
+<p>See the <a href="prerequisites.html">prerequisites</a> section if you prefer to configure
+those environment variables using a GUI.</p>
+<h2>Crosswalk 22 and earlier: gyp setup</h2>
+<p>Up to Crosswalk 22, both Chromium and Crosswalk used gyp as a meta-build system
+that generated the actual build system files used by ninja.</p>
+<p>gyp accepts flags to change its behavior. They can be used to tell it you want
+to create a 64-bit build, for example.</p>
+<p>There are two ways to define those flags:</p>
 <ol>
-<li><a href="building_crosswalk/prerequisites.html">Prerequisites</a> covers dealing with
-network proxies and correctly installing and bootstrapping <code>depot_tools</code>.</li>
-<li>The platform-specific pages detail how to check out and build Crosswalk for
-different operating systems:<ul>
-<li><a href="building_crosswalk/android_build.html">Android</a></li>
-<li><a href="building_crosswalk/linux_build.html">Linux</a></li>
-<li><a href="building_crosswalk/windows_build.html">Windows</a></li>
-</ul>
+<li><p>Create a file called <code>chromium.gyp_env</code> on the directory where you will
+later call <code>gclient config</code> and <code>gclient sync</code> (so the one above <code>src/</code>).
+It needs to look like this:</p>
+<pre><code> {
+   &#39;GYP_DEFINES&#39;: &#39;key1=value1 key2=value2&#39;,
+ }</code></pre>
 </li>
-<li><a href="building_crosswalk/running_tests.html">Running tests</a> covers how to run
-Crosswalk&#39;s tests, with instructions for all different platforms we support.</li>
-<li><a href="building_crosswalk/tracking_branches.html">Tracking a different branch</a>
-covers how to build a Crosswalk branch other than <code>master</code> (a stable or
-older branch, for example).</li>
+<li><p>Use <code>set</code> and/or <code>setx</code> in a command prompt to set <code>GYP_DEFINES</code> as an
+environment variable.</p>
+</li>
 </ol>
+<p>These values are read every time you run the <code>src/xwalk/gyp_xwalk</code> script, so
+whenever you want to change them remember to run the script afterwards.</p>
+<p>To generate a 64-bit build instead of a 32-bit one, you can set <code>target_arch</code>
+to <code>x64</code>. For example, if you are using <code>chromium.gyp_env</code>, its contents should
+look like this:</p>
+<pre><code>{
+  &#39;GYP_DEFINES&#39;: &#39;target_arch=x64&#39;,
+}</code></pre>
+<h2>Fetching the source code</h2>
+<ol>
+<li><p>Choose where you want to download and build Crosswalk. If you are using gyp
+and opted for having a <code>chromium.gyp_env</code> file, this directory must contain
+that file.</p>
+<pre><code>cd C:\path\to\crosswalk-checkout</code></pre>
+</li>
+<li><p>Generate a <code>.gclient</code> file. This tells <code>gclient</code> where to fetch Crosswalk
+from. It assumes <code>depot_tools</code> is in your <code>PATH</code> variable.</p>
+<pre><code> gclient config --name src/xwalk https://github.com/crosswalk-project/crossswalk.git</code></pre>
+</li>
+<li><p>Run <code>gclient sync</code> to fetch Crosswalk, all other git repositories it depends
+on as well as any additional helper files. If you are using Crosswalk 22 or
+earlier, this will also automatically run the <code>gyp_xwalk</code> script in the end.</p>
+<pre><code> gclient sync</code></pre>
+</li>
+</ol>
+<h2>Crosswalk 23 and later: GN setup</h2>
+<p>Starting with Crosswalk 23, GN has replaced gyp as the meta-build system for
+both Chromium and Crosswalk. Its setup is a bit different compared to gyp, as
+<code>chromium.gyp_env</code> (and the <code>GYP_DEFINES</code> environment variable) does not have
+any effect, and the <code>gyp_xwalk</code> is not used.</p>
+<p>Instead, you use the <code>gn</code> binary to both edit a file with your settings as well
+as generate the files required by Ninja to build.</p>
+<p>In order to build Crosswalk, you need to have at least one line in your
+settings to pull some default variables we set:</p>
+<pre><code>cd C:\path\to\crosswalk-checkout\src
+gn args out/Default</code></pre>
+<p>A text editor will be shown, where you must add the following line:</p>
+<pre><code>import(&quot;//xwalk/build/windows.gni&quot;)</code></pre>
+<p>You can add other settings after this statement, such as <code>is_debug = false</code> for
+a release build or <code>target_arch = &quot;x64&quot;</code> to create a 64-bit build.</p>
+<p>Once you have done this once, you can later call <code>gn gen out/Default</code> to just
+regenerate the ninja files based on your existing settings if you need to (most
+of the time, this will be done automatically for you when building).</p>
+<p>See Chromium&#39;s
+<a href="https://www.chromium.org/developers/gn-build-configuration">page about GN</a> for
+more information, including other common settings.</p>
+<h2>Building Crosswalk</h2>
+<p>Once either gyp or GN has been properly configured, it is time to build
+Crosswalk.</p>
+<pre><code>cd C:\path\to\crosswalk-checkout\src
+ninja -C YOUR-BUILD-DIR YOUR-TARGET</code></pre>
+<p>You should replace <strong>YOUR-BUILD-DIR</strong> above with the appropriate directory
+created with gyp or GN:
+<em> With gyp and a 32-bit build, it&#39;s <code>out/Release</code>.
+</em> With gyp and a 64-bit build, it&#39;s <code>out/Release_x64</code>.
+* With GN, it&#39;s whatever directory you chose, such as <code>out/Default</code>.</p>
+<h2>Special topics: Visual Studio integration</h2>
+<p>It is possible to use Visual Studio as an IDE when working on Chromium and
+Crosswalk with minimal changes.</p>
+<h3>gyp</h3>
+<p>If you are using <code>gyp</code>, you need to set the <code>GYP_GENERATORS</code> flag to
+<code>ninja,msvs-ninja</code> and call the <code>gyp_xwalk</code> script again.</p>
+<p>To build in Visual Studio, open xwalk.sln from
+<code>path\to\crosswalk-checkout\src\xwalk</code> and you’re ready to go. Select a target
+and click Build (for example <code>xwalk</code>, or <code>xwalk_builder</code>). Please note that
+<code>xwalk.sln</code> actually has all the Chromium code as a dependency therefore
+xwalk.sln has something like 600 subprojects which requires a pretty powerful
+machine with a lot of RAM to be able to handle that correctly.</p>
+<p>We suggest using the <a href="http://vsfunnel.com/">Funnel extension</a> which allows you
+to select which subproject you want to load.</p>
+<h3>GN</h3>
+<p>If you are using <code>gn</code>, you need to pass <code>--ide=vs</code> to <code>gn gen</code>.</p>
+<p>GN will produce a file called <code>all.sln</code> in your build directory. It will
+internally use Ninja to compile while still allowing most IDE functions to
+work. If you manually run <code>gn gen</code> again you will need to resupply this
+argument, but normally GN will keep the build and IDE files up to date
+automatically when you build.</p>
+<p>The generated solution will contain several thousand projects and will be very
+slow to load. Use the <code>--filters</code> argument to restrict generating project files
+for only the code you&#39;re interested in, although this will also limit what
+files appear in the project explorer. A minimal solution that will let you
+compile and run Chrome in the IDE but will not show any source files is:</p>
+<pre><code>gn gen --ide=vs --filters=//xwalk out\Default</code></pre>
+<h2>Chromium information</h2>
+<p>Most of the instructions described in this page are similar to Chromium&#39;s own
+instructions. We suggest you take a look at its instructions as well; it might
+help solve any questions you have after reading our documentation.</p>
+<ul>
+<li><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/windows_build_instructions.md">Chromium Windows build instructions</a></li>
+</ul>
 
   <footer class="article-next">
     
