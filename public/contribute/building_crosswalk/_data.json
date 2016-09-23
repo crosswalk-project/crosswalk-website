@@ -1,0 +1,20 @@
+{
+    "prerequisites": {
+        "title": "Prerequisites"
+    },
+    "android_build": {
+        "title": "Android build instructions"
+    },
+    "linux_build": {
+        "title": "Linux build instructions"
+    },
+    "windows_build": {
+        "title": "Windows build instructions"
+    },
+    "running_tests": {
+        "title": "Running tests"
+    },
+    "tracking_branches": {
+        "title": "Tracking a different branch"
+    }
+}
