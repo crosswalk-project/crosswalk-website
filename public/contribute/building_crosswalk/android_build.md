@@ -71,7 +71,7 @@ two separate builds.
    from. It assumes `depot_tools` is in your `PATH` variable.
 
     ```
-    gclient config --name src/xwalk https://github.com/crosswalk-project/crossswalk.git
+    gclient config --name src/xwalk https://github.com/crosswalk-project/crosswalk.git
     ```
 
 1. Edit this newly-created `.gclient` file, and add the following to the
