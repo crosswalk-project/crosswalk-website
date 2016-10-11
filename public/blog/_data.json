@@ -1,4 +1,9 @@
 {
+  "monaca-crosswalk": {
+    "title": "Guest blog post: Monaca, Onsen UI and Crossawlk",
+    "date": "2016-10-11T09:30",
+    "author": "Monaca X Onsen UI Team"
+  },
   "webcl-removal": {
     "title": "WebCL APIs removed from Crosswalk 22",
     "date": "2016-08-30T09:30",
