@@ -9,7 +9,17 @@
         "companyLogo": "",
         "faceImg": "brian-leroux.jpg",
         "quote": "Crosswalk helps Phonegap developers ensure a highly performant and consistent user experience across a wide breadth of mobile devices."
-    },  
+    },
+  "quote9": {
+      "date": "October 2016",
+      "name": "Masahiro Tanaka",
+      "title": "Founder and CEO",
+      "company": "Monaca X Onsen UI",
+      "link": "https://monaca.io",
+      "companyLogo": "",
+      "faceImg": "masa.jpg",
+      "quote": "Crosswalk enables the most advanced web innovations in intuitive and fast mobile app development, while decreasing the device dependency to the bare minimum. It adds great value to Monaca, enabling us to provide cutting-edge solutions to app developers."
+  },
     "quote8": {
         "date": "March 2016",
         "name": "Alex Blom",
@@ -86,4 +96,3 @@
         "quote": "The Crosswalk Project looks like the new, best way to publish HTML5 content to Android."
     }
 }
-
