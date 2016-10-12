@@ -6,11 +6,11 @@ The recommended approach to building web applications with Crosswalk is to use t
 
 Cordova developers are encouraged to use the [Crosswalk Webview Plugin](/documentation/cordova.html), which will download the Crosswalk library automatically.
 
-| | Stable (21.51.546.6)
+| | Stable (21.51.546.7)
 | ------------ | -------------
-| **Android (ARM + x86)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/crosswalk-21.51.546.6.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/crosswalk-21.51.546.6-64bit.zip)
-| **Android webview (x86)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/x86/crosswalk-webview-21.51.546.6-x86.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/x86_64/crosswalk-webview-21.51.546.6-x86_64.zip)
-| **Android webview (ARM)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/arm/crosswalk-webview-21.51.546.6-arm.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/arm64/crosswalk-webview-21.51.546.6-arm64.zip)
+| **Android (ARM + x86)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/crosswalk-21.51.546.7.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/crosswalk-21.51.546.7-64bit.zip)
+| **Android webview (x86)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/x86/crosswalk-webview-21.51.546.7-x86.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/x86_64/crosswalk-webview-21.51.546.7-x86_64.zip)
+| **Android webview (ARM)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/arm/crosswalk-webview-21.51.546.7-arm.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/arm64/crosswalk-webview-21.51.546.7-arm64.zip)
 
 All versions (including our betas and canaries) can be found in https://download.01.org/crosswalk/releases/crosswalk/.
 
