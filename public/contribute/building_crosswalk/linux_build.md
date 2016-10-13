@@ -41,7 +41,7 @@ There are two ways to define those flags:
    from. It assumes `depot_tools` is in your `PATH` variable.
 
     ```
-    gclient config --name src/xwalk https://github.com/crosswalk-project/crossswalk.git
+    gclient config --name src/xwalk https://github.com/crosswalk-project/crosswalk.git
     ```
 
 1. Run `gclient sync` to fetch Crosswalk, all other git repositories it depends
