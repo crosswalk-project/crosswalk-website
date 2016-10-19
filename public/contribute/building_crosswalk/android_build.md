@@ -142,8 +142,8 @@ target_os = "android"
 ```
 
 You can add other settings after this statement, such as `is_debug = false` for
-a release build or `target_arch = "x64"` to create a 64-bit IA build. By
-default, `target_arch` is set to `arm`, which creates a 32-bit ARM build.
+a release build or `target_cpu = "x64"` to create a 64-bit IA build. By
+default, `target_cpu` is set to `arm`, which creates a 32-bit ARM build.
 
 Once you have done this once, you can later call `gn gen out/Default` to just
 regenerate the ninja files based on your existing settings if you need to (most
