@@ -276,7 +276,7 @@ gn args out/Default</code></pre>
 <p>A text editor will be shown, where you must add the following line:</p>
 <pre><code>import(&quot;//xwalk/build/linux.gni&quot;)</code></pre>
 <p>You can add other settings after this statement, such as <code>is_debug = false</code> for
-a release build or <code>target_arch = &quot;arm&quot;</code> to create a 32-bit ARM build.</p>
+a release build or <code>target_cpu = &quot;arm&quot;</code> to create a 32-bit ARM build.</p>
 <p>Once you have done this once, you can later call <code>gn gen out/Default</code> to just
 regenerate the ninja files based on your existing settings if you need to (most
 of the time, this will be done automatically for you when building).</p>
