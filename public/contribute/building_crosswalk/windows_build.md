@@ -44,41 +44,15 @@ while the second will set it for all future prompts.
 See the [prerequisites](prerequisites.html) section if you prefer to configure
 those environment variables using a GUI.
 
-## Crosswalk 22 and earlier: gyp setup
+## Configure gyp
 
-Up to Crosswalk 22, both Chromium and Crosswalk used gyp as a meta-build system
-that generated the actual build system files used by ninja.
+Older (< 23) Crosswalk versions are based on Chromium releases that use gyp as
+their meta-build system.
 
-gyp accepts flags to change its behavior. They can be used to tell it you want
-to create a 64-bit build, for example.
-
-There are two ways to define those flags:
-
-1. Create a file called `chromium.gyp_env` on the directory where you will
-   later call `gclient config` and `gclient sync` (so the one above `src/`).
-   It needs to look like this:
-
-    ```
-    {
-      'GYP_DEFINES': 'key1=value1 key2=value2',
-    }
-    ```
-
-1. Use `set` and/or `setx` in a command prompt to set `GYP_DEFINES` as an
-   environment variable.
-
-These values are read every time you run the `src/xwalk/gyp_xwalk` script, so
-whenever you want to change them remember to run the script afterwards.
-
-To generate a 64-bit build instead of a 32-bit one, you can set `target_arch`
-to `x64`. For example, if you are using `chromium.gyp_env`, its contents should
-look like this:
-
-```
-{
-  'GYP_DEFINES': 'target_arch=x64',
-}
-```
+If you want to build one of those versions, make sure you follow the gyp setup
+in the section **Crosswalk 22 and earlier: gyp setup** at the end of this page
+if you would like to build for a different CPU architecture or adjust any build
+parameters.
 
 ## Fetching the source code
 
@@ -139,6 +113,46 @@ of the time, this will be done automatically for you when building).
 See Chromium's
 [page about GN](https://www.chromium.org/developers/gn-build-configuration) for
 more information, including other common settings.
+
+## Crosswalk 22 and earlier: gyp setup
+
+Up to Crosswalk 22, both Chromium and Crosswalk used gyp as a meta-build system
+that generated the actual build system files used by ninja.
+
+gyp accepts flags to change its behavior. They can be used to tell it you want
+to create a 64-bit build, for example.
+
+There are two ways to define those flags:
+
+1. Create a file called `chromium.gyp_env` on the directory where you will
+   later call `gclient config` and `gclient sync` (so the one above `src/`).
+   It needs to look like this:
+
+    ```
+    {
+      'GYP_DEFINES': 'key1=value1 key2=value2',
+    }
+    ```
+
+1. Use `set` and/or `setx` in a command prompt to set `GYP_DEFINES` as an
+   environment variable.
+
+These values are read every time you run the `src\xwalk\gyp_xwalk` script, so
+whenever you want to change them remember to run the script afterwards.
+
+To generate a 64-bit build instead of a 32-bit one, you can set `target_arch`
+to `x64`. For example, if you are using `chromium.gyp_env`, its contents should
+look like this:
+
+```
+{
+  'GYP_DEFINES': 'target_arch=x64',
+}
+```
+
+Do not forget to run `src\xwalk\gyp_xwalk` (it is run automatically with
+`gclient sync`) whenever you modify your gyp flags, otherwise your changes will
+have no effect.
 
 ## Building Crosswalk
 

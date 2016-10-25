@@ -11,43 +11,14 @@ These instructions assume you have already downloaded `depot_tools` and that it
 is in your `PATH` environment variable. See the
 [prerequisites](prerequisites.html) page for further information.
 
-## Crosswalk 22 and earlier: gyp setup
+## Configure gyp
 
-Up to Crosswalk 22, both Chromium and Crosswalk used gyp as a meta-build system
-that generated the actual build system files used by ninja.
+Older (< 23) Crosswalk versions are based on Chromium releases that use gyp as
+their meta-build system.
 
-gyp accepts flags to change its behavior, and you **must** set some of those
-flags in order to create an Android build.
-
-There are two ways to define those flags:
-
-1. Create a file called `chromium.gyp_env` on the directory where you will
-   later call `gclient config` and `gclient sync` (so the one above `src/`).
-   It needs to look like this:
-
-    ```
-    {
-      'GYP_DEFINES': 'key1=value1 key2=value2',
-    }
-    ```
-
-1. Using `export` in your shell to set the `GYP_DEFINES` environment variable.
-
-The very least you need to add to your `GYP_DEFINES` is `OS=android`. The
-default build will target 32-bit ARM; if you want to target a different
-architecture, you must also set the `target_arch` variable to `ia32`, `x64` or
-`arm64`. For example, if you are using `chromium.gyp_env`, it should look like
-this to create an Android build for 64-bit Intel processors.
-
-```
-{
-  'GYP_DEFINES': 'OS=android target_arch=x64',
-}
-```
-
-Note that at the moment it is **not** possible to target multiple architectures
-in a single build: if you want to build for both ARM and x86, you need to have
-two separate builds.
+If you want to build one of those versions, you _must_ follow the section
+**Crosswalk 22 and earlier: gyp setup** at the end of this page before
+proceeding.
 
 ## Fetching the source code
 
@@ -152,6 +123,44 @@ of the time, this will be done automatically for you when building).
 See Chromium's
 [page about GN](https://www.chromium.org/developers/gn-build-configuration) for
 more information, including other common settings.
+
+## Crosswalk 22 and earlier: gyp setup
+
+Up to Crosswalk 22, both Chromium and Crosswalk used gyp as a meta-build system
+that generated the actual build system files used by ninja.
+
+gyp accepts flags to change its behavior, and you **must** set some of those
+flags in order to create an Android build.
+
+There are two ways to define those flags:
+
+1. Create a file called `chromium.gyp_env` on the directory where you will
+   later call `gclient config` and `gclient sync` (so the one above `src/`).
+   It needs to look like this:
+
+    ```
+    {
+      'GYP_DEFINES': 'key1=value1 key2=value2',
+    }
+    ```
+
+1. Using `export` in your shell to set the `GYP_DEFINES` environment variable.
+
+The very least you need to add to your `GYP_DEFINES` is `OS=android`. The
+default build will target 32-bit ARM; if you want to target a different
+architecture, you must also set the `target_arch` variable to `ia32`, `x64` or
+`arm64`. For example, if you are using `chromium.gyp_env`, it should look like
+this to create an Android build for 64-bit Intel processors.
+
+```
+{
+  'GYP_DEFINES': 'OS=android target_arch=x64',
+}
+```
+
+Note that at the moment it is **not** possible to target multiple architectures
+in a single build: if you want to build for both ARM and x86, you need to have
+two separate builds.
 
 ## Building Crosswalk
 
