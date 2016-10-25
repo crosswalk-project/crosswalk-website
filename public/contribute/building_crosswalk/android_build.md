@@ -49,7 +49,7 @@ Note that at the moment it is **not** possible to target multiple architectures
 in a single build: if you want to build for both ARM and x86, you need to have
 two separate builds.
 
-## Fetching the source code
+## All versions: fetching the source code
 
 1. Before calling `gclient sync` below, you have to set the `XWALK_OS_ANDROID`
    environment variable so that all Android-specific git repositories are
@@ -93,7 +93,7 @@ two separate builds.
     them is covered in a later section, after which you can run `gyp_xwalk`
     manually again.
 
-## Dependency installation
+## All versions: dependency installation
 
 The Crosswalk for Android build requires several packages to be present on your
 Linux installation. All dependencies are checked for at configuration time --
