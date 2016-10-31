@@ -6,11 +6,11 @@ Crosswalk为多种操作系统和平台提供二进制文件。
 
 推荐Cordova开发者使用[Crosswalk Webview插件程序](/documentation/cordova.html)，它将自动下载Crosswalk库。
 
-| | 稳定版 (21.51.546.7)
+| | 稳定版 (22.52.561.4)
 | ------------ | -------------
-| **Android (ARM + x86)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/crosswalk-21.51.546.7.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/crosswalk-21.51.546.7-64bit.zip)
-| **Android webview (x86)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/x86/crosswalk-webview-21.51.546.7-x86.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/x86_64/crosswalk-webview-21.51.546.7-x86_64.zip)
-| **Android webview (ARM)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/arm/crosswalk-webview-21.51.546.7-arm.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/arm64/crosswalk-webview-21.51.546.7-arm64.zip)
+| **Android (ARM + x86)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/crosswalk-22.52.561.4.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/crosswalk-22.52.561.4-64bit.zip)
+| **Android webview (x86)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/x86/crosswalk-webview-22.52.561.4-x86.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/x86_64/crosswalk-webview-22.52.561.4-x86_64.zip)
+| **Android webview (ARM)** | [32-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/arm/crosswalk-webview-22.52.561.4-arm.zip) / [64-bit](https://download.01.org/crosswalk/releases/crosswalk/android/stable/latest/arm64/crosswalk-webview-22.52.561.4-arm64.zip)
 
 如需其他版本(包括beta或者canary版本)，请查阅https://download.01.org/crosswalk/releases/crosswalk/。
 
