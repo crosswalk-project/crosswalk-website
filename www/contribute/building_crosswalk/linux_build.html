@@ -212,21 +212,13 @@
 is in your <code>PATH</code> environment variable. See the
 <a href="prerequisites.html">prerequisites</a> page for further information.</p>
 <p>Additionally, you are expected to be using a 64-bit Linux installation.</p>
-<h2>Crosswalk 22 and earlier: gyp setup</h2>
-<p>Up to Crosswalk 22, both Chromium and Crosswalk used gyp as a meta-build system
-that generated the actual build system files used by ninja. gyp accepts flags to change its behavior.</p>
-<p>There are two ways to define those flags:</p>
-<ol>
-<li><p>Create a file called <code>chromium.gyp_env</code> on the directory where you will
-later call <code>gclient config</code> and <code>gclient sync</code> (so the one above <code>src/</code>).
-It needs to look like this:</p>
-<pre><code> {
-   &#39;GYP_DEFINES&#39;: &#39;key1=value1 key2=value2&#39;,
- }</code></pre>
-</li>
-<li><p>Using <code>export</code> in your shell to set the <code>GYP_DEFINES</code> environment variable.</p>
-</li>
-</ol>
+<h2>Configure gyp</h2>
+<p>Older (&lt; 23) Crosswalk versions are based on Chromium releases that use gyp as
+their meta-build system.</p>
+<p>If you want to build one of those versions, make sure you follow the gyp setup
+in the section <strong>Crosswalk 22 and earlier: gyp setup</strong> at the end of this page
+if you would like to build for a different CPU architecture or adjust any build
+parameters.</p>
 <h2>Fetching the source code</h2>
 <ol>
 <li><p>Choose where you want to download and build Crosswalk. If you are using gyp
@@ -283,6 +275,34 @@ of the time, this will be done automatically for you when building).</p>
 <p>See Chromium&#39;s
 <a href="https://www.chromium.org/developers/gn-build-configuration">page about GN</a> for
 more information, including other common settings.</p>
+<h2>Crosswalk 22 and earlier: gyp setup</h2>
+<p>Up to Crosswalk 22, both Chromium and Crosswalk used gyp as a meta-build system
+that generated the actual build system files used by ninja.</p>
+<p>gyp accepts flags to change its behavior. They can be used to tell it you want
+to create a 32-bit build, for example.</p>
+<p>There are two ways to define those flags:</p>
+<ol>
+<li><p>Create a file called <code>chromium.gyp_env</code> on the directory where you will
+later call <code>gclient config</code> and <code>gclient sync</code> (so the one above <code>src/</code>).
+It needs to look like this:</p>
+<pre><code> {
+   &#39;GYP_DEFINES&#39;: &#39;key1=value1 key2=value2&#39;,
+ }</code></pre>
+</li>
+<li><p>Use <code>export</code> in your shell to set the <code>GYP_DEFINES</code> environment variable.</p>
+</li>
+</ol>
+<p>These values are read every time you run the <code>src/xwalk/gyp_xwalk</code> script, so
+whenever you want to change them remember to run the script afterwards.</p>
+<p>To generate a 32-bit build instead of a 64-bit one, you can set <code>target_arch</code>
+to <code>x86</code>. For example, if you are using <code>chromium.gyp_env</code>, its contents should
+look like this:</p>
+<pre><code>{
+  &#39;GYP_DEFINES&#39;: &#39;target_arch=x86,
+}</code></pre>
+<p>Do not forget to run <code>src/xwalk/gyp_xwalk</code> (it is run automatically with
+<code>gclient sync</code>) whenever you modify your gyp flags, otherwise your changes will
+have no effect.</p>
 <h2>Building Crosswalk</h2>
 <p>Once either gyp or GN has been properly configured, it is time to build
 Crosswalk.</p>
