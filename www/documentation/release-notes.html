@@ -224,6 +224,30 @@
 <article class="article article--hasToC">
   <h1>Crosswalk Project release notes</h1>
 <p>Note: dates indicate the day when the release was promoted to the Stable channel.</p>
+<h2>Crosswalk 22 (Nov 1, 2016)</h2>
+<ul>
+<li>Rebase to Chromium 52</li>
+<li>Experimental support for <a href="https://crosswalk-project.org/documentation/tutorials/webassembly.html">Web Assembly</a></li>
+</ul>
+<h3>Embedding API changes</h3>
+<ul>
+<li>getHitTestResult to be notified when user long-clicks on a web page</li>
+<li>Expose new APIs for compatibility with system WebView:<ul>
+<li>ClearHistory</li>
+<li>minsetLoadsImagesAutomatically/getLoadsImagesAutomatically</li>
+<li>set/getBlockNetworkImage</li>
+<li>set/getDatabaseEnabled</li>
+<li>set/getMediaPlaybackRequiresUserGesture</li>
+<li>set/getSupportMultipleWindows</li>
+</ul>
+</li>
+</ul>
+<h3>Notable bug fixes</h3>
+<ul>
+<li>[XWALK-7312] Viewport not working correctly</li>
+<li>[XWALK-7251] Android WebView app gets white screen, then black screen at startup</li>
+<li>[XWALK-6894] Cannot get WebRTC relay ICECandidates after network switching</li>
+</ul>
 <h2>Crosswalk 21 (Sep 8, 2016)</h2>
 <ul>
 <li>Rebase to Chromium 51</li>
