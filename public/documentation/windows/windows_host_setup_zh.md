@@ -16,7 +16,7 @@
 <img src="/assets/win1-nodejs-setup.png" style="display: block; margin: 0 auto"/>
 
 ## <a class="doc-anchor" id="Install-WiX-Toolset"></a>安装WiX工具集
-1.  下载WiX工具集：http://wixtoolset.org/。
+1.  下载WiX工具集：http://wixtoolset.org/ 。
 2.  安装WiX工具集。
 3.  在你的路径中添加Wix工具集。编辑你账号中的环境变量。在Windows的开始菜单中，检索"Environment variables"。或者，点击控制面板中的系统图标；然后进入Advanced系统设置并且编辑你的用户环境变量。你可以看到下面的对话框：
 <br><br>
