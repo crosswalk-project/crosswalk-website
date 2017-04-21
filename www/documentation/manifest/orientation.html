@@ -54,6 +54,19 @@
     <script src="/js/i18n.js"></script>
     <script src="/js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script language="javascript" type="text/javascript">
+      var style = document.createElement('style');
+      style.type = "text/css";
+      style.id = "antiClickjack";
+      style.innerHTML = "body{display:none !important;}";
+      if (self === top) {
+        var antiClickjack = document.getElementById("antiClickjack");
+        antiClickjack.parentNode.removeChild(antiClickjack);
+      } else {
+        top.location = self.location;
+      }
+    </script>
+
   </head>
   <body>
     <!-- If curr page named 'index' and less than 2 dirs deep,
