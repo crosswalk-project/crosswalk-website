@@ -20,7 +20,7 @@ If you want to build one of those versions, you _must_ follow the section
 **Crosswalk 22 and earlier: gyp setup** at the end of this page before
 proceeding.
 
-## Fetching the source code
+## All versions: fetching the source code
 
 1. Before calling `gclient sync` below, you have to set the `XWALK_OS_ANDROID`
    environment variable so that all Android-specific git repositories are
@@ -64,7 +64,7 @@ proceeding.
     them is covered in a later section, after which you can run `gyp_xwalk`
     manually again.
 
-## Dependency installation
+## All versions: dependency installation
 
 The Crosswalk for Android build requires several packages to be present on your
 Linux installation. All dependencies are checked for at configuration time --
