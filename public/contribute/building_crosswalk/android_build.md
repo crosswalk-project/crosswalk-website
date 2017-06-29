@@ -169,7 +169,7 @@ Crosswalk.
 
 ```
 cd C:\path\to\crosswalk-checkout\src
-ninja -C YOUR-BUILD-DIR xwalk
+ninja -C YOUR-BUILD-DIR YOUR-TARGET
 ```
 
 You should replace **YOUR-BUILD-DIR** above with the appropriate directory
